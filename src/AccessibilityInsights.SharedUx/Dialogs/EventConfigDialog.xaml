@@ -1,0 +1,63 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="AccessibilityInsights.SharedUx.Dialogs.EventConfigWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+        xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+        mc:Ignorable="d"
+        Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico"
+        Title="Event Configuration" Height="400" Width="580" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterOwner"
+        AutomationProperties.Name="{x:Static Properties:Resources.EventConfigWindowWindowAutomationPropertiesName}"
+        ShowInTaskbar="False" Topmost="True">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <TabControl SelectedIndex="0">
+                <TabItem x:Name="tabEvents" Header="_Events" AutomationProperties.Name="{x:Static Properties:Resources.tabEventsAutomationPropertiesName}"
+                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabEventsAutomationPropertiesHelpText}">
+                    <Grid Grid.IsSharedSizeScope="True" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbEventConfig" Grid.Row="0" Grid.Column="0" FontSize="12" FontWeight="Bold" Content="{x:Static Properties:Resources.lbEventConfigContent}" />
+                        <DockPanel Grid.Row="1">
+                            <controls:EventConfigurationControl x:Name="controlEvents"
+                                                                AutomationProperties.LabeledBy="{Binding ElementName=lbEventConfig}"/>
+                        </DockPanel>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabProperties" Header="_Properties" AutomationProperties.Name="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesName}"
+                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesHelpText}">
+                    <Grid Grid.IsSharedSizeScope="True" Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lbPropertyConfig" Grid.Row="0" Grid.Column="0" FontSize="12" FontWeight="Bold" Content="{x:Static Properties:Resources.lbPropertyConfigContent}" />
+                        <DockPanel Grid.Row="1">
+                            <controls:EventConfigurationControl x:Name="controlProperties"
+                                                                AutomationProperties.LabeledBy="{Binding ElementName=lbPropertyConfig}"/>
+                        </DockPanel>
+                    </Grid>                
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="80"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonOk" Grid.Column="1" Margin="5,5,15,5" Click="buttonOk_Click" Content="{x:Static Properties:Resources.buttonOkContent}" />
+            <Button x:Name="buttonCancel" Grid.Column="2" Margin="5,5,15,5" Click="buttonCancel_Click" Content="{x:Static Properties:Resources.buttonCancelContent}" />
+        </Grid>
+    </Grid>
+</Window>

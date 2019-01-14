@@ -1,0 +1,1596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnActionAutomationPropertiesName" xml:space="preserve">
+    <value>Run action with the value</value>
+  </data>
+  <data name="dgParamsParameterHeader" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="dgParamsParameterValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="dgParamsTextBoxAutomationPropertiesName" xml:space="preserve">
+    <value>Type in the value in the indicated type.</value>
+  </data>
+  <data name="dgReturnAutomationPropertiesName" xml:space="preserve">
+    <value>Return value</value>
+  </data>
+  <data name="lbDelayContent" xml:space="preserve">
+    <value>Delay in sec</value>
+  </data>
+  <data name="tbResultAutomationPropertiesName" xml:space="preserve">
+    <value>Execution result</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Execution_result_failed" xml:space="preserve">
+    <value>Execution result failed</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Failed_HResult_0x_0_X8" xml:space="preserve">
+    <value>Failed:HResult (0x{0:X8})</value>
+  </data>
+  <data name="GeneralActionView_Button_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
+    <value>Input should be int value greater than or equal to 0.</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Execution_result_passed" xml:space="preserve">
+    <value>Execution result passed</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Failed__" xml:space="preserve">
+    <value>Failed!!</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Failed" xml:space="preserve">
+    <value>Failed!!</value>
+  </data>
+  <data name="ButtonContent" xml:space="preserve">
+    <value>I want this Action!!!</value>
+  </data>
+  <data name="TextBlockText" xml:space="preserve">
+    <value>The below Action is not supported yet. If you want this action to be provided in this tool. please click below button.</value>
+  </data>
+  <data name="ReturnA11yElementsView_btnRun_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
+    <value>Input should be int value greater than or equal to 0.</value>
+  </data>
+  <data name="ReturnA11yElementsView_ExecuteAction_Succeeded" xml:space="preserve">
+    <value>Succeeded!!</value>
+  </data>
+  <data name="ReturnA11yElementsView_ExecuteAction_Execution_result_passed" xml:space="preserve">
+    <value>Execution result passed</value>
+  </data>
+  <data name="ReturnA11yElementsView_ExecuteAction_Succeeded_with_no_element_returned" xml:space="preserve">
+    <value>Succeeded with no element returned.</value>
+  </data>
+  <data name="ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8" xml:space="preserve">
+    <value>Failed:HResult (0x{0:X8})</value>
+  </data>
+  <data name="dgParamsAutomationPropertiesName" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="TextBoxAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Type in the value in the indicated type.</value>
+  </data>
+  <data name="DataGridTemplateColumnHeader" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="btnActionContent" xml:space="preserve">
+    <value>Run action</value>
+  </data>
+  <data name="lbElementsContent" xml:space="preserve">
+    <value>UI Element(s)</value>
+  </data>
+  <data name="btnSettingAutomationPropertiesName" xml:space="preserve">
+    <value>Properties settings</value>
+  </data>
+  <data name="gsPropertiesAutomationPropertiesName" xml:space="preserve">
+    <value>splitter between Properties and Patterns</value>
+  </data>
+  <data name="labalFixFollowingContent" xml:space="preserve">
+    <value>Patterns</value>
+  </data>
+  <data name="TextRangeActionView_Button_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
+    <value>Input should be int value greater than or equal to 0.</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_Execution_result_passed" xml:space="preserve">
+    <value>Execution result passed</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_Failed_HResult__0x_0_X8" xml:space="preserve">
+    <value>Failed:HResult (0x{0:X8})</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_Execution_result_failed" xml:space="preserve">
+    <value>Execution result failed</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_No_error_but_No_TextRange_is_returned" xml:space="preserve">
+    <value>No error but No TextRange is returned</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_Failed" xml:space="preserve">
+    <value>Failed!!</value>
+  </data>
+  <data name="TextRangeActionView_ExecuteAction_Succeeded" xml:space="preserve">
+    <value>Succeeded!!</value>
+  </data>
+  <data name="tmbColorMarkerAutomationPropertiesName" xml:space="preserve">
+    <value>Color picker</value>
+  </data>
+  <data name="sliderColorSliderAutomationPropertiesName" xml:space="preserve">
+    <value>Hue</value>
+  </data>
+  <data name="lblHexContent" xml:space="preserve">
+    <value>Hex</value>
+  </data>
+  <data name="lblRedContent" xml:space="preserve">
+    <value>Red</value>
+  </data>
+  <data name="lblGreenContent" xml:space="preserve">
+    <value>Green</value>
+  </data>
+  <data name="lblBlueContent" xml:space="preserve">
+    <value>Blue</value>
+  </data>
+  <data name="LabelContentAccessibilityInsightsForWindows" xml:space="preserve">
+    <value>Accessibility Insights for Windows</value>
+  </data>
+  <data name="LabelContentByMicrosoftCorporation" xml:space="preserve">
+    <value>by Microsoft Corporation</value>
+  </data>
+  <data name="LabelContentVersion" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="hlTermsAutomationPropertiesName" xml:space="preserve">
+    <value>License terms</value>
+  </data>
+  <data name="hlNoticesAutomationPropertiesName" xml:space="preserve">
+    <value>Third party notices</value>
+  </data>
+  <data name="LabelContentShortcuts" xml:space="preserve">
+    <value>Shortcuts</value>
+  </data>
+  <data name="lblHkToggleContent" xml:space="preserve">
+    <value>Run tests on the selected element</value>
+  </data>
+  <data name="MultiBindingStringFormat" xml:space="preserve">
+    <value>Change {0} hotkey to {1}</value>
+  </data>
+  <data name="lblHkActivateWindowContent" xml:space="preserve">
+    <value>_Activate or minimize the main window</value>
+  </data>
+  <data name="lblHkRecorderContent" xml:space="preserve">
+    <value>Enter or toggle event recording</value>
+  </data>
+  <data name="lblHkPauseContent" xml:space="preserve">
+    <value>Pause or Resume UIA Tree in Live Mode</value>
+  </data>
+  <data name="lblToParentContent" xml:space="preserve">
+    <value>Inspect the Parent element in UIAutomation tree.</value>
+  </data>
+  <data name="lblToBeforeContent" xml:space="preserve">
+    <value>Inspect the Previous sibling element in UIAutomation tree.</value>
+  </data>
+  <data name="lblToNextContent" xml:space="preserve">
+    <value>Inspect the Next sibling element in UIAutomation tree.</value>
+  </data>
+  <data name="lblToFirstChildContent" xml:space="preserve">
+    <value>Inspect the First child element in UIAutomation tree.</value>
+  </data>
+  <data name="lblToLastChildContent" xml:space="preserve">
+    <value>Inspect the Last child element in UIAutomation tree.</value>
+  </data>
+  <data name="lblFocusLabelContent" xml:space="preserve">
+    <value>Selection by _focus</value>
+  </data>
+  <data name="lblMouseLabelContent" xml:space="preserve">
+    <value>Selection by _mouse hover</value>
+  </data>
+  <data name="lblDelayContent" xml:space="preserve">
+    <value>Set _delay</value>
+  </data>
+  <data name="LabelContentOtherOptions" xml:space="preserve">
+    <value>Other options</value>
+  </data>
+  <data name="lblAlwaysOnTopLabelContent" xml:space="preserve">
+    <value>Always _on top</value>
+  </data>
+  <data name="lblPlayScanningSoundLabelContent" xml:space="preserve">
+    <value>Play _sound while scanning</value>
+  </data>
+  <data name="lblHighlighterModeLabelContent" xml:space="preserve">
+    <value>_Highlighter Mode</value>
+  </data>
+  <data name="cbiHLBKTTAutomationPropertiesName" xml:space="preserve">
+    <value>Highlighter+Beaker+Tooltip</value>
+  </data>
+  <data name="cbiHLBKAutomationPropertiesName" xml:space="preserve">
+    <value>Highlighter+Beaker</value>
+  </data>
+  <data name="cbiHLTTAutomationPropertiesName" xml:space="preserve">
+    <value>Highlighter+Tooltip</value>
+  </data>
+  <data name="cbiHLAutomationPropertiesName" xml:space="preserve">
+    <value>Highlighter</value>
+  </data>
+  <data name="TTAutomationPropertiesName" xml:space="preserve">
+    <value>Tooltip</value>
+  </data>
+  <data name="fontSizeComboBoxAutomationPropertiesName" xml:space="preserve">
+    <value>Select Font Size</value>
+  </data>
+  <data name="cbiSmallFontContent" xml:space="preserve">
+    <value>Small Font</value>
+  </data>
+  <data name="cbiStandardFontContent" xml:space="preserve">
+    <value>Standard Font</value>
+  </data>
+  <data name="ApplicationSettingsControl_btnToggleHk_Click_The_hotkey_you_assigned_is_duplicated_with_the_existing_one_please_set_a_new_hotkey" xml:space="preserve">
+    <value>The hotkey you assigned is duplicated with the existing one. please set a new hotkey.</value>
+  </data>
+  <data name="connectionInstrText" xml:space="preserve">
+    <value>To create bugs and save test results, you must first enter the Azure DevOps URL and click Next to sign in.</value>
+  </data>
+  <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
+    <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
+  </data>
+  <data name="accountPlaceholderText" xml:space="preserve">
+    <value>https://dev.azure.com/fabrikam</value>
+  </data>
+  <data name="btnNextAutomationPropertiesName" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ButtonAutomationPropertiesName" xml:space="preserve">
+    <value>Disconnect</value>
+  </data>
+  <data name="TextBlockTextSelectedteam" xml:space="preserve">
+    <value>Selected team</value>
+  </data>
+  <data name="ButtonAutomationPropertiesNameChangeTeam" xml:space="preserve">
+    <value>Change team</value>
+  </data>
+  <data name="TextBlockTextChange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="ButtonAutomationPropertiesNameRefresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="tbTeamProjectSearchAutomationPropertiesName" xml:space="preserve">
+    <value>Search for team project</value>
+  </data>
+  <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
+    <value>Team project</value>
+  </data>
+  <data name="FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url" xml:space="preserve">
+    <value>Failed to navigate to requested url. Please contact us using https://aka.ms/A11yStackOverflowInternal.</value>
+  </data>
+  <data name="FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent" xml:space="preserve">
+    <value>Feedback has been successfully sent. Thanks for sending us feedback.</value>
+  </data>
+  <data name="sliderFeedbackTextText" xml:space="preserve">
+    <value>Rate your overall satisfaction with desktop diagnostics:</value>
+  </data>
+  <data name="LabelContentZero" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="LabelContentFive" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="LabelContentTen" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="hlLinkAutomationPropertiesName" xml:space="preserve">
+    <value>For questions or feedback: https://aka.ms/accessibilityinsights-stackoverflow</value>
+  </data>
+  <data name="lblDefaultTestSetContent" xml:space="preserve">
+    <value>_Microsoft standard rules</value>
+  </data>
+  <data name="LabelContentAutomatedChecks" xml:space="preserve">
+    <value>Automated checks</value>
+  </data>
+  <data name="lblCustomTestConfigContent" xml:space="preserve">
+    <value>C_ustom rules (Supported soon)</value>
+  </data>
+  <data name="WhatsNewTabControlAutomationPropertiesName" xml:space="preserve">
+    <value>What's new</value>
+  </data>
+  <data name="AutomatedChecksControlAutomationPropertiesName" xml:space="preserve">
+    <value>Automated checks</value>
+  </data>
+  <data name="RunTextFastPass" xml:space="preserve">
+    <value>FastPass:</value>
+  </data>
+  <data name="RunTextAutomatedChecks" xml:space="preserve">
+    <value>Automated Checks</value>
+  </data>
+  <data name="RunTextTabStops" xml:space="preserve">
+    <value>Tab Stops</value>
+  </data>
+  <data name="RunTextzeroFalsePositives" xml:space="preserve">
+    <value>We are committed to zero false positives. If you feel you have found one, please contact</value>
+  </data>
+  <data name="RunTextEmailSupport" xml:space="preserve">
+    <value>Email Support.</value>
+  </data>
+  <data name="lblTitleContent" xml:space="preserve">
+    <value>AUTOMATED CHECKS</value>
+  </data>
+  <data name="CustomGridViewColumnHeaderAutomationPropertiesNameAUTOMATEDCHECKS" xml:space="preserve">
+    <value>Highlight or expand results</value>
+  </data>
+  <data name="chbxSelectAllAutomationPropertiesNameHighlightAllResults" xml:space="preserve">
+    <value>Highlight all results</value>
+  </data>
+  <data name="chbxRowAutomationPropertiesNameHighlightThisElement" xml:space="preserve">
+    <value>Highlight this element</value>
+  </data>
+  <data name="RunTextHelpFindIssues" xml:space="preserve">
+    <value> will help you find about 25% of accessibility issues.</value>
+  </data>
+  <data name="localCustomGridViewColumnHeaderAutomationPropertiesName" xml:space="preserve">
+    <value>Highlight or expand results</value>
+  </data>
+  <data name="btnExpandAllAutomationPropertiesName" xml:space="preserve">
+    <value>Expand all results</value>
+  </data>
+  <data name="chbxRowAutomationPropertiesName" xml:space="preserve">
+    <value>Highlight this element</value>
+  </data>
+  <data name="ButtonAutomationPropertiesNameInspectDetails" xml:space="preserve">
+    <value>Inspect details about {0}</value>
+  </data>
+  <data name="tbViewResultsText" xml:space="preserve">
+    <value>View results in UIA tree</value>
+  </data>
+  <data name="chbxSelectAllAutomationPropertiesName" xml:space="preserve">
+    <value>Highlight all results</value>
+  </data>
+  <data name="btnFileBugContent" xml:space="preserve">
+    <value>+ New bug</value>
+  </data>
+  <data name="runFailuresTextOneFailure" xml:space="preserve">
+    <value>1 failure was</value>
+  </data>
+  <data name="btnFileBugAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Bug for {0}</value>
+  </data>
+  <data name="btnFileBugAutomationPropertiesName" xml:space="preserve">
+    <value>Open link to bug #{0}</value>
+  </data>
+  <data name="btnFileBugAutomationPropertiesNameTargetValue" xml:space="preserve">
+    <value>File a bug</value>
+  </data>
+  <data name="lvResultsHelpText" xml:space="preserve">
+    <value>Press Enter to inspect detail or right arrow key for column options</value>
+  </data>
+  <data name="lvResultsCheckBoxAutomationPropertiesName" xml:space="preserve">
+    <value>Highlight elements</value>
+  </data>
+  <data name="lvResultsListViewAutomationPropertiesName" xml:space="preserve">
+    <value>{2} errors - {0}, rule from {1}, {3} children highlighted</value>
+  </data>
+  <data name="lvResultsListViewHelpText" xml:space="preserve">
+    <value>Press right arrow key to expand, enter to view {0} in browser, or space to toggle children highlighting</value>
+  </data>
+  <data name="lvResultsLabelAutomationPropertiesName" xml:space="preserve">
+    <value>Open link to {0} rule information</value>
+  </data>
+  <data name="lblCongratsContent" xml:space="preserve">
+    <value>Congratulations</value>
+  </data>
+  <data name="lblNoFailText" xml:space="preserve">
+    <value>No issues were found with the automated tests, now move onto the next test</value>
+  </data>
+  <data name="AutomatedChecksControl_SetRuleResults_0_failures_were" xml:space="preserve">
+    <value>{0} failures were</value>
+  </data>
+  <data name="AutomatedChecksControl_SetRuleResults_1_failure_was" xml:space="preserve">
+    <value>1 failure was</value>
+  </data>
+  <data name="AutomatedChecksControl_SetRuleResults_No_failure_was" xml:space="preserve">
+    <value>No failure was</value>
+  </data>
+  <data name="AutomatedChecksControl_SetRuleResults_TitleURL" xml:space="preserve">
+    <value>TitleURL</value>
+  </data>
+  <data name="AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded" xml:space="preserve">
+    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
+  </data>
+  <data name="AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
+    <value>Please sign into Azure DevOps &amp; ensure both account name and team project are selected.</value>
+  </data>
+  <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
+    <value>Hi,
+
+Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
+
+To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
+
+
+Best,
+Accessibility Insights Support Team
+
+
+
+</value>
+  </data>
+  <data name="AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_false_positive_report" xml:space="preserve">
+    <value>Accessibility Insights for Windows false positive report</value>
+  </data>
+  <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
+    <value>Color contrast</value>
+  </data>
+  <data name="RunTextHowToTest" xml:space="preserve">
+    <value>How to test</value>
+  </data>
+  <data name="TextBlockAutomationPropertiesNameInstructions" xml:space="preserve">
+    <value>Instructions</value>
+  </data>
+  <data name="TextBlockTextCCRatioResult" xml:space="preserve">
+    <value>Use the eyedropper to pick two colors to test the contrast ratio results:</value>
+  </data>
+  <data name="RunTextCCA45" xml:space="preserve">
+    <value>text with a contrast of 4.5 or greater </value>
+  </data>
+  <data name="RunTextPasses" xml:space="preserve">
+    <value>passes</value>
+  </data>
+  <data name="RunTextCCA30" xml:space="preserve">
+    <value>Large text (18pt or 14pt bold) with a contrast of 3.0 or greater </value>
+  </data>
+  <data name="RunTextCCA30Below" xml:space="preserve">
+    <value>Any text with a contrast below 3.0 </value>
+  </data>
+  <data name="RunTextFails" xml:space="preserve">
+    <value>fails</value>
+  </data>
+  <data name="noElementSelected" xml:space="preserve">
+    <value>no element selected</value>
+  </data>
+  <data name="firstChooserAutomationPropertiesName" xml:space="preserve">
+    <value>first color</value>
+  </data>
+  <data name="secondChooserAutomationPropertiesName" xml:space="preserve">
+    <value>second color</value>
+  </data>
+  <data name="TextBlockTextResult" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="TextBlockTextTextSize" xml:space="preserve">
+    <value>Text size</value>
+  </data>
+  <data name="TextBlockTextSampleText" xml:space="preserve">
+    <value>Sample text</value>
+  </data>
+  <data name="SetterValueFail" xml:space="preserve">
+    <value>Fail</value>
+  </data>
+  <data name="SetterValuePass" xml:space="preserve">
+    <value>Pass</value>
+  </data>
+  <data name="TextBlockTextRegular" xml:space="preserve">
+    <value>Regular</value>
+  </data>
+  <data name="TextBlockTextRequiresRatio" xml:space="preserve">
+    <value>(Requires ratio ≥ 4.5)</value>
+  </data>
+  <data name="smallSampleText" xml:space="preserve">
+    <value>The quick brown fox</value>
+  </data>
+  <data name="largeTextResultAutomationPropertiesName" xml:space="preserve">
+    <value>Test result large text</value>
+  </data>
+  <data name="ColorContrast_hlHowToTest_Click" xml:space="preserve">
+    <value>Failed to open link:
+{0}</value>
+  </data>
+  <data name="TabStopControlAutomationPropertiesName" xml:space="preserve">
+    <value>Tab stop text</value>
+  </data>
+  <data name="lblRecordContent" xml:space="preserve">
+    <value>Record tab stops</value>
+  </data>
+  <data name="tabIntroContent" xml:space="preserve">
+    <value>How to Test</value>
+  </data>
+  <data name="RunTextHowStartTabStops" xml:space="preserve">
+    <value>Start the tab stops test only after running the Automated checks on a suitable UI element such as a window or dialog.</value>
+  </data>
+  <data name="RunTextHowTurnOnThe" xml:space="preserve">
+    <value>1. Turn on the </value>
+  </data>
+  <data name="RunTextHowToggleSwitch" xml:space="preserve">
+    <value> toggle switch (or press </value>
+  </data>
+  <data name="RunTextHowBracket" xml:space="preserve">
+    <value>).</value>
+  </data>
+  <data name="RunTextHowSetFocusOnThePart" xml:space="preserve">
+    <value>2. Set focus on the part of the application you want to test tab stops on and press the keyboard's </value>
+  </data>
+  <data name="RunTextHowKeyToMoveTheInput" xml:space="preserve">
+    <value> key to move the input focus through all the interactive elements within your test scope.</value>
+  </data>
+  <data name="RunTextHowAsYouTab" xml:space="preserve">
+    <value>3. As you tab to each element, look for these </value>
+  </data>
+  <data name="RunTextHowAccessibilityProblems" xml:space="preserve">
+    <value>accessibility problems</value>
+  </data>
+  <data name="RunTextHowPColon" xml:space="preserve">
+    <value>:</value>
+  </data>
+  <data name="RunTextHowBullet" xml:space="preserve">
+    <value>     •</value>
+  </data>
+  <data name="RunTextHowAnInteractiveElement" xml:space="preserve">
+    <value> An interactive element can't be reached using the </value>
+  </data>
+  <data name="RunTextTab" xml:space="preserve">
+    <value>Tab</value>
+  </data>
+  <data name="RunTextHowKey" xml:space="preserve">
+    <value> key.</value>
+  </data>
+  <data name="RunTextHowKeyboardTrap" xml:space="preserve">
+    <value> A "keyboard trap" prevents tabbing away from an element.</value>
+  </data>
+  <data name="RunTextHowAnInteractiveElementDoesNotGiveVisible" xml:space="preserve">
+    <value> An interactive element does not give a visible indication when it has input focus.</value>
+  </data>
+  <data name="RunTextHowTabOrderIsInconsistent" xml:space="preserve">
+    <value> The tab order is inconsistent with the logical order that's communicated visually.</value>
+  </data>
+  <data name="RunTextHowInputFocusMovesUnexpectedly" xml:space="preserve">
+    <value> Input focus moves unexpectedly without the user initiating it.</value>
+  </data>
+  <data name="RunTextHowStopRecording" xml:space="preserve">
+    <value>4. Stop recording when you have tabbed to every element within your test scope.</value>
+  </data>
+  <data name="RunTextHowHideTabStopHighlight" xml:space="preserve">
+    <value>5. If you wish to hide a tab stop highlight in the application, unselect it from the list below. </value>
+  </data>
+  <data name="tabInteroContent" xml:space="preserve">
+    <value>Why tab stops matter</value>
+  </data>
+  <data name="RunTextHowManyPeopleRelyOnKeyboard" xml:space="preserve">
+    <value>Many people – not just those with disabilities – rely on their keyboard to interact with software applications.  Users of assistive technology are especially likely to use a keyboard (or its functional equivalent), and poorly-designed tab stops create high-impact accessibility problems.</value>
+  </data>
+  <data name="RunTextHowGoodTabStopDesign" xml:space="preserve">
+    <value>Good tab stop design allows keyboard users to</value>
+  </data>
+  <data name="RunTextHowTabThroughApplication" xml:space="preserve">
+    <value> Tab through an application's interactive elements in a predictable order</value>
+  </data>
+  <data name="RunTextHowIdentifyWhichElement" xml:space="preserve">
+    <value> Identify which element currently has the input focus</value>
+  </data>
+  <data name="TabStopControl_StartRecordingEvent_NoSelection" xml:space="preserve">
+    <value>No element is selected yet. please select first!!</value>
+  </data>
+  <data name="tbTitleText" xml:space="preserve">
+    <value>What's new</value>
+  </data>
+  <data name="RunTextSetDefaultStartupMode" xml:space="preserve">
+    <value>set the default startup mode to Inspect or Test in the application settings:</value>
+  </data>
+  <data name="RunTextInspectLiveUIATree" xml:space="preserve">
+    <value> (default): inspect the live UIA tree or run automated checks by clicking on the beaker.</value>
+  </data>
+  <data name="RunTextAutomatedChecksHelp" xml:space="preserve">
+    <value>run automated checks to help you find accessibility issues.</value>
+  </data>
+  <data name="RunTextTestMode" xml:space="preserve">
+    <value>Test mode: </value>
+  </data>
+  <data name="RunTextInspectMode" xml:space="preserve">
+    <value>Inspect mode</value>
+  </data>
+  <data name="tbFastPassInfoText" xml:space="preserve">
+    <value>in &lt; 5 minutes, run 2 tests from Test mode to find about 25% of accessibility issues before check-in.</value>
+  </data>
+  <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
+    <value>{0} in less than {1}</value>
+  </data>
+  <data name="RunTextFileBugs" xml:space="preserve">
+    <value>File bugs: </value>
+  </data>
+  <data name="RunTextLogBugsIn" xml:space="preserve">
+    <value>log bugs in Azure DevOps with a single click using the </value>
+  </data>
+  <data name="RunTextNewBug" xml:space="preserve">
+    <value>+New Bug</value>
+  </data>
+  <data name="RunTextLink" xml:space="preserve">
+    <value> link.</value>
+  </data>
+  <data name="RunTextEvents" xml:space="preserve">
+    <value>listen to UI automation events from inspect mode.</value>
+  </data>
+  <data name="WhatsNewControl_Version_What_s_new" xml:space="preserve">
+    <value>What's new</value>
+  </data>
+  <data name="WhatsNewControl_Version_What_s_new_value" xml:space="preserve">
+    <value>What's new - {0}</value>
+  </data>
+  <data name="RunTextColorContrast" xml:space="preserve">
+    <value>Color contrast test:</value>
+  </data>
+  <data name="RunTextManualColorTest" xml:space="preserve">
+    <value>manual color contrast test that helps you investigate color contrast ratios to find color contrast issues.</value>
+  </data>
+  <data name="RunTextUseThe" xml:space="preserve">
+    <value>use the</value>
+  </data>
+  <data name="RunTextLinkFromUIATree" xml:space="preserve">
+    <value>link from the UIA tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  </value>
+  </data>
+  <data name="RunTextSemiBold" xml:space="preserve">
+    <value>SemiBold</value>
+  </data>
+  <data name="ColorChooserAutomationPropertiesName" xml:space="preserve">
+    <value>Color chooser</value>
+  </data>
+  <data name="colorPickerAutomationPropertiesName" xml:space="preserve">
+    <value>Eyedropper</value>
+  </data>
+  <data name="colorTbAutomationPropertiesName" xml:space="preserve">
+    <value>hex code</value>
+  </data>
+  <data name="cbColorPickerAutomationPropertiesName" xml:space="preserve">
+    <value>{0} color picker</value>
+  </data>
+  <data name="tbElementAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Glimpse of the selected element</value>
+  </data>
+  <data name="trviewConfigEventsAutomationPropertiesName" xml:space="preserve">
+    <value>Configure events</value>
+  </data>
+  <data name="btnConfigAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Configure the events settings for recording. You can set scope and list of events to record.</value>
+  </data>
+  <data name="EventConfigTabControl_EventConfigTabControl_Select_events_to_listen_to_then_start_recording_with__0__or_by_pressing_the_record_button" xml:space="preserve">
+    <value>Select events to listen to then start recording with {0} or by pressing the record button</value>
+  </data>
+  <data name="EventConfigTabControl_SetElement_Expected_Events_based_on_the_0_control_type" xml:space="preserve">
+    <value>Expected Events based on the {0} control type</value>
+  </data>
+  <data name="EventConfigTabControl_SetElement_Edit_My_Events" xml:space="preserve">
+    <value>Edit My Events...</value>
+  </data>
+  <data name="EventConfigurationControlAutomationPropertiesName" xml:space="preserve">
+    <value>Event Configuration</value>
+  </data>
+  <data name="textboxSearchAutomationPropertiesName" xml:space="preserve">
+    <value>filter</value>
+  </data>
+  <data name="textboxSearchAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Filter the items in the both lists.</value>
+  </data>
+  <data name="lvLeftAutomationPropertiesName" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="btnMoveRightAutomationPropertiesName" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnMoveRightAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Move selected items from Available to Selected.</value>
+  </data>
+  <data name="btnMoveLeftAutomationPropertiesName" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="btnMoveLeftAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Move selected items from Selected to Available.</value>
+  </data>
+  <data name="btnMoveUpAutomationPropertiesName" xml:space="preserve">
+    <value>Move up</value>
+  </data>
+  <data name="btnMoveUpAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Move selected items up in right list</value>
+  </data>
+  <data name="btnMoveDownAutomationPropertiesName" xml:space="preserve">
+    <value>Move down</value>
+  </data>
+  <data name="btnMoveDownAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Move selected items down in right list</value>
+  </data>
+  <data name="EventDetailControlAutomationPropertiesName" xml:space="preserve">
+    <value>Event details</value>
+  </data>
+  <data name="DataGridTextColumnHeader" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="DataGridTextColumnHeaderValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="EventRecordControlAutomationPropertiesName" xml:space="preserve">
+    <value>Record Events</value>
+  </data>
+  <data name="labelEventsContent" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="SetterValueStartRecording" xml:space="preserve">
+    <value>Start recording</value>
+  </data>
+  <data name="SetterValueStartRecordingCapitalized" xml:space="preserve">
+    <value>Start Recording</value>
+  </data>
+  <data name="SetterValueStartRecordingHelpText" xml:space="preserve">
+    <value>Start recording the events of the selected elements and descendants.</value>
+  </data>
+  <data name="SetterValueStopRecording" xml:space="preserve">
+    <value>Stop recording</value>
+  </data>
+  <data name="SetterValueStopRecordingCapitalized" xml:space="preserve">
+    <value>Stop Recording</value>
+  </data>
+  <data name="SetterValueStopRecordingHelpText" xml:space="preserve">
+    <value>Stop recording the events of the selected elements and descendants.</value>
+  </data>
+  <data name="btnSettingAutomationPropertiesNameEventStting" xml:space="preserve">
+    <value>Event settings menu</value>
+  </data>
+  <data name="SetterValueEventSetting" xml:space="preserve">
+    <value>Event setting</value>
+  </data>
+  <data name="mniRawAutomationPropertiesName" xml:space="preserve">
+    <value>Selected UI element</value>
+  </data>
+  <data name="radiobuttonScopeSubtreeContent" xml:space="preserve">
+    <value>Selected UI element and descendants</value>
+  </data>
+  <data name="radiobuttonScopeDescendentsContent" xml:space="preserve">
+    <value>Descendants only</value>
+  </data>
+  <data name="tbIntroText" xml:space="preserve">
+    <value>Select the Events you want to listen to in the Configure Events tab and press record to start recording.</value>
+  </data>
+  <data name="mniContentAutomationPropertiesName" xml:space="preserve">
+    <value>Descendants only</value>
+  </data>
+  <data name="DataGridTextColumnHeaderTimeStamp" xml:space="preserve">
+    <value>Time Stamp</value>
+  </data>
+  <data name="DataGridTextColumnHeaderEventName" xml:space="preserve">
+    <value>Event Name</value>
+  </data>
+  <data name="DataGridTextColumnHeaderSender" xml:space="preserve">
+    <value>Sender</value>
+  </data>
+  <data name="EventRecordControl_StartRecordingEvent_No_element_is_selected_yet__please_select_first" xml:space="preserve">
+    <value>No element is selected yet. please select first!!</value>
+  </data>
+  <data name="HierarchyControlAutomationPropertiesName" xml:space="preserve">
+    <value>Diagnose UIElement Hierarchy</value>
+  </data>
+  <data name="SetterValueTest" xml:space="preserve">
+    <value>Test</value>
+  </data>
+  <data name="MenuItemHeaderNewBug" xml:space="preserve">
+    <value>New bug</value>
+  </data>
+  <data name="MenuItemAutomationPropertiesName" xml:space="preserve">
+    <value>New bug</value>
+  </data>
+  <data name="SetterValueBug" xml:space="preserve">
+    <value>Bug {0}</value>
+  </data>
+  <data name="SetterValueSearchByString" xml:space="preserve">
+    <value>Search by common string properties and patterns.</value>
+  </data>
+  <data name="SetterValueSearchByName" xml:space="preserve">
+    <value>Search by name and control type.</value>
+  </data>
+  <data name="btnSettingAutomationPropertiesName1" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="btnSettingToolTip1" xml:space="preserve">
+    <value>UIA Tree Settings</value>
+  </data>
+  <data name="mniRawAutomationPropertiesName1" xml:space="preserve">
+    <value>Walk tree in Raw view</value>
+  </data>
+  <data name="mniControlAutomationPropertiesName" xml:space="preserve">
+    <value>Walk tree in Control view</value>
+  </data>
+  <data name="mniContentAutomationPropertiesName1" xml:space="preserve">
+    <value>Walk tree in Content view</value>
+  </data>
+  <data name="btnTestElementAutomationPropertiesName" xml:space="preserve">
+    <value>Test this element</value>
+  </data>
+  <data name="btnMenuAutomationPropertiesName" xml:space="preserve">
+    <value>More options menu</value>
+  </data>
+  <data name="SetterValueMoreOptions" xml:space="preserve">
+    <value>More options</value>
+  </data>
+  <data name="tbTimeSpanAutomationPropertiesName" xml:space="preserve">
+    <value>Perf info</value>
+  </data>
+  <data name="HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy" xml:space="preserve">
+    <value>No data to populate hierarchy.</value>
+  </data>
+  <data name="HierarchyControl_btnMoveToParent_Click_The_parent_is_Desktop_Element__Desktop_Element_can_t_be_snapshot" xml:space="preserve">
+    <value>The parent is Desktop Element. Desktop Element can't be snapshot.</value>
+  </data>
+  <data name="HierarchyControl_btnMoveToParent_Click_Parent_element_can_t_be_retrieved" xml:space="preserve">
+    <value>Parent element can't be retrieved.</value>
+  </data>
+  <data name="HierarchyControl_FileBug_Could_not_find_the_selected_item__the_bug_filing_is_canceled" xml:space="preserve">
+    <value>Could not find the selected item, the bug filing is canceled.</value>
+  </data>
+  <data name="HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
+    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
+  </data>
+  <data name="HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project" xml:space="preserve">
+    <value>Please sign in to Azure DevOps &amp; specify both Azure DevOps organization name and project.</value>
+  </data>
+  <data name="TextBlockTextDetails" xml:space="preserve">
+    <value>DETAILS</value>
+  </data>
+  <data name="tbElementAutomationPropertiesName" xml:space="preserve">
+    <value>Glimpse</value>
+  </data>
+  <data name="ExpanderAutomationPropertiesNameProps" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="btnSettingAutomationPropertiesName2" xml:space="preserve">
+    <value>Properties settings</value>
+  </data>
+  <data name="gsPropertiesAutomationPropertiesName1" xml:space="preserve">
+    <value>splitter between Properties and Patterns</value>
+  </data>
+  <data name="labalFixFollowingContent1" xml:space="preserve">
+    <value>Patterns</value>
+  </data>
+  <data name="gsEventsAutomationPropertiesName1" xml:space="preserve">
+    <value>splitter between Patterns and Event Details</value>
+  </data>
+  <data name="LabelContentEventDetails" xml:space="preserve">
+    <value>Event details</value>
+  </data>
+  <data name="TextBlockTextHowToFix" xml:space="preserve">
+    <value>HOW TO FIX</value>
+  </data>
+  <data name="TextBlockTextCONFIGURATION" xml:space="preserve">
+    <value>CONFIGURATION</value>
+  </data>
+  <data name="PatternInfoControlAutomationPropertiesName" xml:space="preserve">
+    <value>Selected Element Patterns</value>
+  </data>
+  <data name="treePatternsAutomationPropertiesName" xml:space="preserve">
+    <value>Patterns</value>
+  </data>
+  <data name="copyMenuItemPatternHeader" xml:space="preserve">
+    <value>Copy available patterns</value>
+  </data>
+  <data name="SetterValueYouCanInspect" xml:space="preserve">
+    <value>You can inspect or drive the selected pattern.</value>
+  </data>
+  <data name="lbNoPatternContent" xml:space="preserve">
+    <value>No available pattern...</value>
+  </data>
+  <data name="ProgressRingControlAutomationPropertiesName" xml:space="preserve">
+    <value>Progress Loading Ring</value>
+  </data>
+  <data name="LabelContentLoading" xml:space="preserve">
+    <value>Loading...</value>
+  </data>
+  <data name="ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp" xml:space="preserve">
+    <value>Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp</value>
+  </data>
+  <data name="PropertyInfoControlAutomationPropertiesName" xml:space="preserve">
+    <value>Selected Element Properties</value>
+  </data>
+  <data name="tbSearchText" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="dgPropertiesAutomationPropertiesName" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="copyMenuItemPropertyTag" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="copyMenuItemPropertyHeader" xml:space="preserve">
+    <value>Copy selected properties</value>
+  </data>
+  <data name="DataGridTextColumnHeaderName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="PropertyDoesNotExist" xml:space="preserve">
+    <value>Property does not exist</value>
+  </data>
+  <data name="ScannerResultControlAutomationPropertiesName" xml:space="preserve">
+    <value>Test results</value>
+  </data>
+  <data name="btnFileBugContent1" xml:space="preserve">
+    <value>+ New bug</value>
+  </data>
+  <data name="btnFileBugAutomationPropertiesHelpText1" xml:space="preserve">
+    <value>Bug for {0}</value>
+  </data>
+  <data name="btnFileBugAutomationPropertiesName1" xml:space="preserve">
+    <value>File a bug</value>
+  </data>
+  <data name="tbShowAllText" xml:space="preserve">
+    <value>Pass or Uncertain test(s)</value>
+  </data>
+  <data name="gsFixAutomationPropertiesName1" xml:space="preserve">
+    <value>splitter between rules failed and fix the following</value>
+  </data>
+  <data name="ScannerResultControl_UpdateTree_Passed_tests" xml:space="preserve">
+    <value>Passed tests</value>
+  </data>
+  <data name="ScannerResultControl_UpdateTree_Passed_and_Uncertain_tests" xml:space="preserve">
+    <value>Passed and Uncertain tests</value>
+  </data>
+  <data name="ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
+    <value>Please log in to Azure DevOps &amp; ensure both Azure DevOps account name and team project are selected.</value>
+  </data>
+  <data name="ScannerResultControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
+    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
+  </data>
+  <data name="ScannerResultControl_Thumb_DragDelta_Rule" xml:space="preserve">
+    <value>Rule</value>
+  </data>
+  <data name="ScannerResultControl_Thumb_DragDelta_Bug" xml:space="preserve">
+    <value>Bug</value>
+  </data>
+  <data name="ImageAutomationPropertiesName" xml:space="preserve">
+    <value>Accessibility Insights for Windows toast notification icon</value>
+  </data>
+  <data name="TextBlockAutomationPropertiesName" xml:space="preserve">
+    <value>Accessibility Insights for Windows - Accessibility Diagnostics</value>
+  </data>
+  <data name="TextBlockAutomationPropertiesName1" xml:space="preserve">
+    <value>Start pressing Tab to start visualizing tab stops</value>
+  </data>
+  <data name="btnHilightAutomationPropertiesName" xml:space="preserve">
+    <value>Highlight bounding rectangles</value>
+  </data>
+  <data name="btnHilightAutomationPropertiesName1" xml:space="preserve">
+    <value>Unhighlight bounding rectangles</value>
+  </data>
+  <data name="textboxSearchAutomationPropertiesName1" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="textboxSearchAutomationPropertiesHelpText1" xml:space="preserve">
+    <value>Search nodes in hierarchy.</value>
+  </data>
+  <data name="btnSettingAutomationPropertiesNameTextPattern" xml:space="preserve">
+    <value>Text pattern attribute settings</value>
+  </data>
+  <data name="TextBlockTextDoesNtExist" xml:space="preserve">
+    <value>Attribute does not exist</value>
+  </data>
+  <data name="GridSplitterAutomationPropertiesNameTextPattern" xml:space="preserve">
+    <value>splitter for Test pane</value>
+  </data>
+  <data name="GridSplitterAutomationPropertiesHelpTextTextPattern" xml:space="preserve">
+    <value>change vertical size of Test pane</value>
+  </data>
+  <data name="btnSettingTextAutomationPropertiesNameTextPattern" xml:space="preserve">
+    <value>Text pattern text settings</value>
+  </data>
+  <data name="btnSettingToolTip2" xml:space="preserve">
+    <value>UIA Tree Properties Settings</value>
+  </data>
+  <data name="MenuItemHeaderListenToEvents" xml:space="preserve">
+    <value>Listen to Events</value>
+  </data>
+  <data name="ActionViewModelConverter_Convert_passed_value_is_not_supported_type" xml:space="preserve">
+    <value>passed value is not supported type.</value>
+  </data>
+  <data name="CheckStateConverter_Convert_Currently_checked" xml:space="preserve">
+    <value>Currently checked</value>
+  </data>
+  <data name="CheckStateConverter_Convert_Currently_unchecked" xml:space="preserve">
+    <value>Currently unchecked</value>
+  </data>
+  <data name="ColorStringConverter_Convert_0_X2_1_X2_2_X2" xml:space="preserve">
+    <value>#{0:X2}{1:X2}{2:X2}</value>
+  </data>
+  <data name="ElementToSenderTextConverter_Convert_Event_Recorder" xml:space="preserve">
+    <value>Event Recorder</value>
+  </data>
+  <data name="AddTextRangeToCustomListDialogWindowTitle" xml:space="preserve">
+    <value>Add TextRange to the custom list</value>
+  </data>
+  <data name="lbNameContent" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ControlPatternDialogWindowTitle" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="ControlPatternDialog_ControlPatternDialog__0__Action" xml:space="preserve">
+    <value>{0} Action(s)</value>
+  </data>
+  <data name="ElementInfoDialogWindowTitle" xml:space="preserve">
+    <value>Element Information</value>
+  </data>
+  <data name="lElementsContent" xml:space="preserve">
+    <value>Child Elements:</value>
+  </data>
+  <data name="propertiesLabelContent" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="btnSettingContextMenuAutomationPropertiesName" xml:space="preserve">
+    <value>Properties settings</value>
+  </data>
+  <data name="mniShowCorePropsHeader" xml:space="preserve">
+    <value>_Include all properties that have values</value>
+  </data>
+  <data name="mniIncludeAllPropsHeader" xml:space="preserve">
+    <value>_Configure properties to always show</value>
+  </data>
+  <data name="gsPropertiesAutomationPropertiesName2" xml:space="preserve">
+    <value>splitter between Properties and Patterns</value>
+  </data>
+  <data name="labalFixFollowingContent2" xml:space="preserve">
+    <value>Patterns</value>
+  </data>
+  <data name="btnCloseAutomationPropertiesName" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="btnCloseContent" xml:space="preserve">
+    <value>_Close</value>
+  </data>
+  <data name="EventConfigWindowWindowAutomationPropertiesName" xml:space="preserve">
+    <value>Settings for recording events</value>
+  </data>
+  <data name="tabEventsAutomationPropertiesName" xml:space="preserve">
+    <value>Events 2 of 3</value>
+  </data>
+  <data name="tabEventsAutomationPropertiesHelpText" xml:space="preserve">
+    <value>with this tab, select events to record</value>
+  </data>
+  <data name="lbEventConfigContent" xml:space="preserve">
+    <value>Events configuration</value>
+  </data>
+  <data name="tabPropertiesAutomationPropertiesName" xml:space="preserve">
+    <value>Properties 3 of 3</value>
+  </data>
+  <data name="tabPropertiesAutomationPropertiesHelpText" xml:space="preserve">
+    <value>With this tab, select properties to record changes.</value>
+  </data>
+  <data name="lbPropertyConfigContent" xml:space="preserve">
+    <value>Properties configuration</value>
+  </data>
+  <data name="buttonOkContent" xml:space="preserve">
+    <value>_Ok</value>
+  </data>
+  <data name="buttonCancelContent" xml:space="preserve">
+    <value>_Cancel</value>
+  </data>
+  <data name="EyedropperWindowWindowTitle" xml:space="preserve">
+    <value>EyedropperWindow</value>
+  </data>
+  <data name="EyedropperWindowWindowAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Use eyedropper to select color or press escape to cancel.</value>
+  </data>
+  <data name="GlobalEyedropperWindowWindowAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Use eyedropper to select color. Press escape or enter to exit.</value>
+  </data>
+  <data name="GlobalEyedropperWindowWindowTitle" xml:space="preserve">
+    <value>EyedropperWindow</value>
+  </data>
+  <data name="HotkeyGrabDialogWindowTitle" xml:space="preserve">
+    <value>Type a keyboard shortcut</value>
+  </data>
+  <data name="RunTextToChangeKeyBoard" xml:space="preserve">
+    <value>To change the keyboard shortcut, press modifier(s) (Control, Shift, Alt) in combination with any single non-modifier key on the keyboard.</value>
+  </data>
+  <data name="TextBlockTextPressEscabeToCancel" xml:space="preserve">
+    <value>Press Escape to cancel.</value>
+  </data>
+  <data name="MessageDialogWindowTitle" xml:space="preserve">
+    <value>Microsoft Accessibility Insights</value>
+  </data>
+  <data name="btnCloseAutomationPropertiesName1" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MoveTextRangeDialogWindowTitle" xml:space="preserve">
+    <value>Move/Compare TextRange...</value>
+  </data>
+  <data name="DataGridTemplateColumnHeaderValue" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="lbTargetTRContent" xml:space="preserve">
+    <value>Select a Target TextRange</value>
+  </data>
+  <data name="btnActionAutomationPropertiesNameMethod" xml:space="preserve">
+    <value>Run a method with the value</value>
+  </data>
+  <data name="TextBoxAutomationPropertiesHelpTextTypeIndicatedValue" xml:space="preserve">
+    <value>Type in the value in the indicated type.</value>
+  </data>
+  <data name="MoveTextRangeDialog_GetExceptionString_HResult_0x_0_X8" xml:space="preserve">
+    <value>HResult: 0x{0:X8}</value>
+  </data>
+  <data name="MoveTextRangeDialog_btnAction_Click_Return_0" xml:space="preserve">
+    <value>Return: {0}</value>
+  </data>
+  <data name="ProcessWindowWindowTitle" xml:space="preserve">
+    <value>Snapshot to a process</value>
+  </data>
+  <data name="lbProcessesContent" xml:space="preserve">
+    <value>Available Processes</value>
+  </data>
+  <data name="btnRefreshAutomationPropertiesName" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="btnRefreshAutomationPropertiesHelpText" xml:space="preserve">
+    <value>Refresh Available process list</value>
+  </data>
+  <data name="btnSelectContent" xml:space="preserve">
+    <value>_Snapshot</value>
+  </data>
+  <data name="ProcessWindow_btnSelect_Click_Please_select_a_process_first" xml:space="preserve">
+    <value>Please select a process first.</value>
+  </data>
+  <data name="PropertyConfigDialogWindowTitle" xml:space="preserve">
+    <value>Properties Configuration</value>
+  </data>
+  <data name="buttonOkContentSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="ctrlPropertySelectRightColumnTitle" xml:space="preserve">
+    <value>Selected Properties</value>
+  </data>
+  <data name="ctrlPropertySelectLeftColumnTitle" xml:space="preserve">
+    <value>All Properties</value>
+  </data>
+  <data name="TextPatternExplorerDialogWindowTitle" xml:space="preserve">
+    <value>TextPattern Explorer</value>
+  </data>
+  <data name="cbRangesAutomationPropertiesName" xml:space="preserve">
+    <value>Text range</value>
+  </data>
+  <data name="LabelContentTextRange" xml:space="preserve">
+    <value>Text range(s):</value>
+  </data>
+  <data name="ComboBoxItemContentDocument" xml:space="preserve">
+    <value>Document</value>
+  </data>
+  <data name="ComboBoxItemContentSelected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+  <data name="ComboBoxItemContentVisible" xml:space="preserve">
+    <value>Visible</value>
+  </data>
+  <data name="ComboBoxItemContentCaret" xml:space="preserve">
+    <value>Caret</value>
+  </data>
+  <data name="ComboBoxItemContentListed" xml:space="preserve">
+    <value>Listed</value>
+  </data>
+  <data name="btnRefreshAutomationPropertiesNameUpdateRange" xml:space="preserve">
+    <value>Update range</value>
+  </data>
+  <data name="MenuItemAutomationPropertiesNameControlSelectedTextRange" xml:space="preserve">
+    <value>Control the selected TextRange</value>
+  </data>
+  <data name="mniCloneHeader" xml:space="preserve">
+    <value>Clone</value>
+  </data>
+  <data name="MenuItemHeaderCompare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="MenuItemHeaderCompareEndPoints" xml:space="preserve">
+    <value>Compare EndPoints</value>
+  </data>
+  <data name="MenuItemHeaderExpand" xml:space="preserve">
+    <value>Expand to Enclosing Unit</value>
+  </data>
+  <data name="MenuItemHeaderChar" xml:space="preserve">
+    <value>Character</value>
+  </data>
+  <data name="MenuItemHeaderFormat" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="MenuItemHeaderWord" xml:space="preserve">
+    <value>Word</value>
+  </data>
+  <data name="MenuItemHeaderLine" xml:space="preserve">
+    <value>Line</value>
+  </data>
+  <data name="MenuItemHeaderParagraph" xml:space="preserve">
+    <value>Paragraph</value>
+  </data>
+  <data name="MenuItemHeaderPage" xml:space="preserve">
+    <value>Page</value>
+  </data>
+  <data name="mniFindHeader" xml:space="preserve">
+    <value>Find...</value>
+  </data>
+  <data name="MenuItemHeaderGetElements" xml:space="preserve">
+    <value>Get Element(s)</value>
+  </data>
+  <data name="MenuItemHeaderChilds" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="MenuItemHeaderEnclosure" xml:space="preserve">
+    <value>Enclosure</value>
+  </data>
+  <data name="MenuItemHeaderMove" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="MenuItemHeaderByUnit" xml:space="preserve">
+    <value>By Unit</value>
+  </data>
+  <data name="MenuItemHeaderByRange" xml:space="preserve">
+    <value>EndPoint By Range</value>
+  </data>
+  <data name="MenuItemHeaderEndByUnit" xml:space="preserve">
+    <value>Endpoint By Unit</value>
+  </data>
+  <data name="mniSelectHeader" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="MenuItemHeaderSelection" xml:space="preserve">
+    <value>Selection</value>
+  </data>
+  <data name="MenuItemHeaderAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="MenuItemHeaderRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="MenuItemHeaderScroll" xml:space="preserve">
+    <value>Scroll To</value>
+  </data>
+  <data name="MenuItemHeaderTop" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="MenuItemHeaderAddToList" xml:space="preserve">
+    <value>Add to List</value>
+  </data>
+  <data name="MenuItemHeaderRemoveFromList" xml:space="preserve">
+    <value>Remove from List</value>
+  </data>
+  <data name="GridSplitterAutomationPropertiesName1" xml:space="preserve">
+    <value>splitter for Hierarchy pane</value>
+  </data>
+  <data name="GridSplitterAutomationPropertiesHelpText1" xml:space="preserve">
+    <value>change horizontal size of Hierarchy pane</value>
+  </data>
+  <data name="TextPatternExplorerDialog_GetRanges_This_option_is_not_supported_yet" xml:space="preserve">
+    <value>This option is not supported yet.</value>
+  </data>
+  <data name="TextPatternExplorerDialog_GetRanges_Failed_to_retrieve_range_s____0" xml:space="preserve">
+    <value>Failed to retrieve range(s): {0}</value>
+  </data>
+  <data name="TextPatternExplorerDialog_UpdateTextRanges__0___1" xml:space="preserve">
+    <value>{0}[{1}]</value>
+  </data>
+  <data name="TextPatternExplorerDialog_UpdateTextRanges__0" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="TextRangeFindDialogWindowTitle" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="lbAttributeContent" xml:space="preserve">
+    <value>Attribute:</value>
+  </data>
+  <data name="lbValueContent" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="chbIgnoreCaseAutomationPropertiesName" xml:space="preserve">
+    <value>Ignore case</value>
+  </data>
+  <data name="btnBackwardAutomationPropertiesName" xml:space="preserve">
+    <value>Backward</value>
+  </data>
+  <data name="btnForwardAutomationPropertiesName" xml:space="preserve">
+    <value>Forward</value>
+  </data>
+  <data name="TextRangeFindDialog_cbAttributes_SelectionChanged" xml:space="preserve">
+    <value> ({0}):</value>
+  </data>
+  <data name="TextRangeFindDialog_ConvertToType__0__type_is_not_supported" xml:space="preserve">
+    <value>{0} type is not supported.</value>
+  </data>
+  <data name="TextRangeFindDialog_FindTextRange_No_matched_range_is_found" xml:space="preserve">
+    <value>No matched range is found.</value>
+  </data>
+  <data name="TextRangeFindDialog_FindTextRange_Please_check_value__it_may_not_be_matched_with_expected" xml:space="preserve">
+    <value>Please check value. it may not be matched with expected.</value>
+  </data>
+  <data name="ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard" xml:space="preserve">
+    <value>Error copying to clipboard: </value>
+  </data>
+  <data name="ColorContrastViewModel_GetBugInformation" xml:space="preserve">
+    <value>Regular requires ratio &gt;= {0}</value>
+  </data>
+  <data name="ColorContrastViewModel_GetBugInformation1" xml:space="preserve">
+    <value>Large (14pt+bold or 18pt) requires ratio &gt;= {0}</value>
+  </data>
+  <data name="ColorContrastViewModel_GetBugInformation_Color_contrast_ratio_is_less_than_required" xml:space="preserve">
+    <value>Color contrast ratio is less than required</value>
+  </data>
+  <data name="EventConfigNodeViewModel_ToString_checked" xml:space="preserve">
+    <value> checked</value>
+  </data>
+  <data name="EventConfigNodeViewModel_ToString_unchecked" xml:space="preserve">
+    <value> unchecked</value>
+  </data>
+  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants" xml:space="preserve">
+    <value> has failed test results in descendants.</value>
+  </data>
+  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants" xml:space="preserve">
+    <value> has uncertain test results in descendants.</value>
+  </data>
+  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result" xml:space="preserve">
+    <value> has no failed or uncertain test result.</value>
+  </data>
+  <data name="PatternViewModel_GetActionButtonText_Actions" xml:space="preserve">
+    <value>Actions...</value>
+  </data>
+  <data name="PatternViewModel_GetActionButtonText_Explore" xml:space="preserve">
+    <value>Explore...</value>
+  </data>
+  <data name="ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_the_information_link_button" xml:space="preserve">
+    <value>This result has the information link button</value>
+  </data>
+  <data name="ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_fix_snippet_link_button" xml:space="preserve">
+    <value>This result has fix snippet link button</value>
+  </data>
+  <data name="TextRangeViewModel_GetTextRangeAttributeKeyValuePair_AnnotationObjects_0" xml:space="preserve">
+    <value>AnnotationObjects[{0}]</value>
+  </data>
+  <data name="GridAutomationPropertiesNameTabStopsToastNotification" xml:space="preserve">
+    <value>Tab Stops toast notification</value>
+  </data>
+  <data name="ButtonAutomationPropertiesNameCloseToastNotification" xml:space="preserve">
+    <value>Close the notification toast</value>
+  </data>
+  <data name="MenuItemHeaderBottom" xml:space="preserve">
+    <value>Bottom</value>
+  </data>
+  <data name="ApplicationSettingsControlAutomationName" xml:space="preserve">
+    <value>Application settings</value>
+  </data>
+  <data name="ApplicationSettingsControl_HighlighterModeComboboxAutomationName" xml:space="preserve">
+    <value>Select Highlighter Mode</value>
+  </data>
+  <data name="ApplicationSettingsControl_KeyboardIconAutomationName" xml:space="preserve">
+    <value>Focus select icon</value>
+  </data>
+  <data name="ApplicationSettingsControl_MouseIconAutomationName" xml:space="preserve">
+    <value>Mouse select icon</value>
+  </data>
+  <data name="ColorPickerControlAutomationName" xml:space="preserve">
+    <value>Color Picker</value>
+  </data>
+  <data name="dgParamsAutomationName" xml:space="preserve">
+    <value>Parameters</value>
+  </data>
+  <data name="DisplayCountControlAutomationName" xml:space="preserve">
+    <value>Display Delay count</value>
+  </data>
+  <data name="EventConfigTabControlAutomationName" xml:space="preserve">
+    <value>Configure Events</value>
+  </data>
+  <data name="EventConfigurationControl_lvRightAutomationName" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+  <data name="HierarchyControl_textboxSearchAutomationName" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="HierarchyControl_treeviewHierarchyAutomationName" xml:space="preserve">
+    <value>UIA Hierarchy</value>
+  </data>
+  <data name="AutomatedChecksControlAutomationName" xml:space="preserve">
+    <value>Automated checks</value>
+  </data>
+  <data name="ColorContrast_LargeSampleHelpText" xml:space="preserve">
+    <value>Sample large text</value>
+  </data>
+  <data name="ColorContrast_SmallSampleBoldHelpText" xml:space="preserve">
+    <value>Sample small bold text</value>
+  </data>
+  <data name="ColorContrast_SmallSampleHelpText" xml:space="preserve">
+    <value>Sample small text</value>
+  </data>
+  <data name="ColorContrast_SmallTextResultHelpText" xml:space="preserve">
+    <value>Test result small text</value>
+  </data>
+  <data name="PropertyConfigDialogAutomationName" xml:space="preserve">
+    <value>Select properties to always show</value>
+  </data>
+  <data name="TestSettingsControlAutomationName" xml:space="preserve">
+    <value>Test settings</value>
+  </data>
+  <data name="GeneralActionView_ExecuteAction_Succeeded" xml:space="preserve">
+    <value>Succeeded!!</value>
+  </data>
+  <data name="SetterValueExpandAllDescendants" xml:space="preserve">
+    <value>Expand all descendants</value>
+  </data>
+  <data name="AutomatedChecksControl_emailSupport" xml:space="preserve">
+    <value>Email Support.</value>
+  </data>
+  <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
+    <value>detected.</value>
+  </data>
+  <data name="ConnectionControl_selectTeam" xml:space="preserve">
+    <value>Select your team</value>
+  </data>
+  <data name="ConnectionControl_serverURL" xml:space="preserve">
+    <value>Server URL</value>
+  </data>
+  <data name="FeedbackControl_questions" xml:space="preserve">
+    <value>For questions or feedback:</value>
+  </data>
+  <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
+    <value>Search nodes in hierarchy.</value>
+  </data>
+  <data name="ScannerResultControl_noFailures" xml:space="preserve">
+    <value>There were no failures.</value>
+  </data>
+  <data name="ColorContrast_Background" xml:space="preserve">
+    <value>Background</value>
+  </data>
+  <data name="ColorContrast_FontSizes" xml:space="preserve">
+    <value>(14 pt. bold or 18 pt. regular)</value>
+  </data>
+  <data name="ColorContrast_Foreground" xml:space="preserve">
+    <value>Foreground</value>
+  </data>
+  <data name="ColorContrast_Large" xml:space="preserve">
+    <value>Large</value>
+  </data>
+  <data name="ColorContrast_OutputAutomationName" xml:space="preserve">
+    <value>current ratio is {0}</value>
+  </data>
+  <data name="ColorContrast_Ratio" xml:space="preserve">
+    <value>Ratio</value>
+  </data>
+  <data name="ColorContrast_Requires" xml:space="preserve">
+    <value>(Requires ratio ≥ 3.0)</value>
+  </data>
+  <data name="EventConfigTabControl_ckbxAllEvents" xml:space="preserve">
+    <value>Listen to All Events</value>
+  </data>
+  <data name="EventConfigTabControl_SelectEvents" xml:space="preserve">
+    <value>Select the Events you want to listen to:</value>
+  </data>
+  <data name="btnOkContent" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="lblEnableTelemetryContent" xml:space="preserve">
+    <value>Enable Telemetry</value>
+  </data>
+  <data name="LabelContentSelectionType" xml:space="preserve">
+    <value>Selection type</value>
+  </data>
+  <data name="LabelContentTelemetry" xml:space="preserve">
+    <value>Telemetry</value>
+  </data>
+  <data name="TextBlockTelemetrySettingInfo" xml:space="preserve">
+    <value>By opting into telemetry, you help the community develop inclusive software.
+
+We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features.</value>
+  </data>
+  <data name="PrivacyLearnMore1" xml:space="preserve">
+    <value>Read our</value>
+  </data>
+  <data name="PrivacyLearnMore2" xml:space="preserve">
+    <value>to learn more.</value>
+  </data>
+  <data name="PrivacyLearnMoreLink" xml:space="preserve">
+    <value>privacy statement</value>
+  </data>
+  <data name="InvalidLink" xml:space="preserve">
+    <value>Invalid link {0}</value>
+  </data>
+</root>

@@ -1,0 +1,272 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.Core.Bases;
+using AccessibilityInsights.Core.Enums;
+using AccessibilityInsights.Core.Misc;
+using AccessibilityInsights.Core.Results;
+using AccessibilityInsights.Desktop.Utility;
+using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Media;
+using AccessibilityInsights.SharedUx.Properties;
+using static System.FormattableString;
+
+namespace AccessibilityInsights.SharedUx.Utilities
+{
+    /// <summary>
+    /// Static class for extension methods
+    /// </summary>
+    public static class ExtensionMethods
+    {
+        /// <summary>
+        /// Get the suggested file name based on Filetype.
+        /// format would be 
+        /// A11yTestFile mm-dd-yy [0-9].a11ytest
+        /// try up to 100 and if there still is existing one, exit with 100. 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="filetype"> type of file</param>
+        /// <returns></returns>
+        public static string GetSuggestedFileName(this string path, FileType filetype)
+        {
+            var dt = DateTime.Now.ToString("MM-dd-yy", CultureInfo.InvariantCulture);
+            string namebase = Invariant($"{filetype} {dt}");
+            string fn = null;
+
+            for (int idx = 0; idx <= 100; idx++)
+            {
+                fn = GetTestResultFileNameWithId(namebase, idx, filetype);
+
+                if(File.Exists(Path.Combine(path,fn)) == false)
+                {
+                    break;
+                }
+            }
+
+            return fn;
+        }
+
+        internal static bool IsTextAllowed(this string text)
+        {
+            Regex regex = new Regex("[^0-9]+"); //regex that matches disallowed text
+            return !regex.IsMatch(text);
+        }
+
+        /// <summary>
+        /// Get the file name with index id
+        /// if Id is 0, it is not appended.
+        /// </summary>
+        /// <param name="namebase"></param>
+        /// <param name="idx">index</param>
+        /// <param name="filetype">File type</param>
+        /// <returns></returns>
+        private static string GetTestResultFileNameWithId(string namebase, int idx, FileType filetype)
+        {
+            StringBuilder sb = new StringBuilder(namebase);
+
+            if (idx != 0)
+            {
+                sb.Append(Invariant($" {idx}"));
+            }
+
+            switch (filetype)
+            {
+                case FileType.TestResults:
+                    sb.Append(FileFilters.TestExtension);
+                    break;
+                case FileType.SarifFile:
+                    sb.Append(FileFilters.SarifExtension);
+                    break;
+                default:
+                    sb.Append(FileFilters.EventsExtension);
+                    break;
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
+        /// Send Configuration to telemetry if configuration is changed. 
+        /// A copy of the configuration is made with some fields removed
+        ///     that we don't want in our telemetry (mainly filepaths that could expose username)
+        /// </summary>
+        /// <param name="ctx"></param>
+        /// <param name="action"></param>
+        /// <param name="config"></param>
+        public static void TraceConfigurationIntoTelemetry(this ConfigurationModel config)
+        {
+            var dic = new Dictionary<string, string>();
+            dic.Add("Json", config.CloneForTelemetry().ToJsonString());
+        }
+
+        /// <summary>
+        /// Copy string to clipboard with error handling. 
+        /// </summary>
+        /// <param name="sb"></param>
+        public static void CopyStringToClipboard(this StringBuilder sb)
+        {
+            try
+            {
+                Clipboard.SetText(sb.ToString());
+            }
+            catch (Exception ex)
+            {
+                Dialogs.MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
+            }
+        }        
+
+        /// <summary>
+        /// Get Root Node Hierarchy ViewModel based on currently populated data. 
+        /// </summary>
+        /// <param name="dc">Datacontext to create nodes from</param>
+        /// <param name="showAncestry">Should ancestory be shown</param>
+        /// <param name="showUncertain">Should uncertain scans be shown</param>
+        /// <param name="isLiveMode">Is node for live mode</param>
+        public static HierarchyNodeViewModel GetRootNodeHierarchyViewModel(this ElementDataContext dc, bool showAncestry, bool showUncertain, bool isLiveMode)
+        {
+            if (dc.RootElment != null && dc.RootElment.Properties != null && dc.RootElment.Properties.Count != 0 && dc.Element != null)
+            {
+                // if need to show ancestry, start from rootnode
+                // if not show ancestry, but element has no parent, return element itself. 
+                return new HierarchyNodeViewModel(showAncestry ? dc.RootElment : dc.Element.Parent != null ? dc.Element.Parent : dc.Element, showUncertain, isLiveMode);
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Get ScanResultsViewModel List
+        /// Any results with Fail or ScanNotSupported state are picked up for this. 
+        /// </summary>
+        /// <returns></returns>
+        public static List<RuleResultViewModel> GetRuleResultsViewModelList(this ElementDataContext sc)
+        {
+            List<Tuple<RuleResult, A11yElement>> list = new List<Tuple<RuleResult, A11yElement>>();
+
+            foreach (var e in sc.Elements.Values)
+            {
+                if (e.ScanResults != null && e.ScanResults.Items != null && e.ScanResults.Items.Count != 0)
+                {
+                    foreach (var sr in e.ScanResults.Items)
+                    {
+                        var fsrs = from rr in sr.Items
+                                   where rr.Status == ScanStatus.Fail || rr.Status == ScanStatus.ScanNotSupported
+                                   select new Tuple<RuleResult, A11yElement>(rr, e);
+                        list.AddRange(fsrs);
+                    }
+                }
+            }
+
+            if (list.Count != 0)
+            {
+                var gs = from l in list
+                         orderby l.Item1.Description, l.Item2.Glimpse                         
+                         select new RuleResultViewModel(l.Item2, l.Item1);
+
+                return gs.ToList();
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Returns the top left point of the given window
+        ///     .Top and .Left are not updated when a window is maximized,
+        ///     so this method finds the actual values of top / left
+        /// </summary>
+        /// <param name="window"></param>
+        /// <returns></returns>
+        public static Point GetTopLeftPoint(this Window window)
+        {
+            Point topLeft = new Point();
+            // .Top & .Left are not updated when window is maximized, so need to 
+            //  recover the position of the window in this case
+            var left = typeof(Window).GetField("_actualLeft", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            var top = typeof(Window).GetField("_actualTop", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+            topLeft.X = (double)left.GetValue(window);
+            topLeft.Y = (double)top.GetValue(window);
+            return topLeft;
+        }
+
+        /// <summary>
+        /// Returns a BugInformation with information from the given A11yElement
+        /// </summary>
+        /// <param name="this"></param>
+        /// <returns></returns>
+        public static BugInformation GetBugInformation(this A11yElement element, BugType? bugType)
+        {
+            return new BugInformation(
+                glimpse: element.Glimpse,
+                processName: element.GetProcessName(),
+                windowTitle: element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
+                elementPath: string.Join("<br/>", element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
+                internalGuid: Guid.NewGuid(),
+                bugType: bugType);
+        }
+
+        /// <summary>
+        /// Gets the header UIElement for a given datagrid and column
+        /// </summary>
+        /// <param name="root">Datagrid in which to search</param>
+        /// <param name="column">Column whose header is to be found</param>
+        /// <param name="root">Element in which to search</param>
+        /// <returns></returns>
+        public static DataGridColumnHeader GetDGColumnHeader(this DataGrid dg, DataGridColumn column, DependencyObject root=null)
+        {
+            if (root == null)
+                root = dg;
+
+            var count = VisualTreeHelper.GetChildrenCount(root);
+            for (int x = 0; x < count; x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(root, x);
+                DataGridColumnHeader header = child as DataGridColumnHeader;
+
+                if (header?.Column == column)
+                {
+                    return header;
+                }
+
+                header = dg.GetDGColumnHeader(column, child);
+
+                if (header != null)
+                {
+                    return header;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Resizes a column a given amount. Ensures that column size is not set below 0
+        /// </summary>
+        /// <param name="diff">Amount to resize column</param>
+        public static void ResizeColumn(this ColumnDefinition col, double diff)
+        {
+            var newWidth = col.Width.Value + diff;
+
+            if (newWidth > 0)
+            {
+                col.Width = new GridLength(newWidth);
+            }
+        }
+
+        public static Color ToMediaColor(this System.Drawing.Color color)
+        {
+            return Color.FromArgb(color.A, color.R, color.G, color.B);
+        }
+    }
+}

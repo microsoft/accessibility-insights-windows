@@ -1,0 +1,502 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="AccessibilityInsights.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccessibilityInsights"
+        xmlns:modecontrols="clr-namespace:AccessibilityInsights.Modes"
+        xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+        xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors;assembly=AccessibilityInsights.SharedUx"
+        mc:Ignorable="d"
+        Title="{x:Static properties:Resources.MainWindowWindowTitle}"
+        MinWidth="304" 
+        MinHeight="425"
+        ResizeMode="CanResize" 
+        Loaded="onLoaded"
+        Closed="onClosed"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+        WindowStyle="SingleBorderWindow"
+        BorderBrush="{DynamicResource ResourceKey=WindowBorderBrush}"
+        xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+        Topmost="True" KeyUp="Window_KeyUp" StateChanged="onStateChanged" Closing="Window_Closing" Height="601.918">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </Window.Resources>
+    <Window.InputBindings>
+        <KeyBinding Command="{x:Static local:MainWindow.F1Command}" Key="F1"/>
+        <KeyBinding Command="{x:Static local:MainWindow.ClickInspectCommand}"
+                    Key="I"
+                    Modifiers="Ctrl"/>
+        <KeyBinding Command="{x:Static local:MainWindow.ClickTestCommand}"
+                    Key="T"
+                    Modifiers="Ctrl"/>
+        <KeyBinding Command="{x:Static local:MainWindow.ClickColorContrastCommand}"
+                    Key="R"
+                    Modifiers="Ctrl"/>
+    </Window.InputBindings>
+    <DockPanel Name="dockPanelMain" LastChildFill="True">
+        <Grid Name="modeGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="44"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <controls:NamedPane Name="bdLeftNav" Grid.Column="0" BorderThickness="0,0,1,0" Panel.ZIndex="2" HorizontalAlignment="Left" Width="44" AutomationProperties.Name="{x:Static properties:Resources.bdLeftNavAutomationPropertiesName}" BorderBrush="{DynamicResource ResourceKey=LeftNavBorderBrush}" Background="{DynamicResource ResourceKey=LeftNavBarBrush}">
+                <Grid Name="NavigationBar"
+                      KeyboardNavigation.TabNavigation="Cycle">
+                    <Grid.InputBindings>
+                        <KeyBinding Command="{x:Static local:MainWindow.F6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"/>
+                        <KeyBinding Command="{x:Static local:MainWindow.ShiftF6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"
+                            Modifiers="Shift"/>
+                    </Grid.InputBindings>
+                    <Grid DockPanel.Dock="Top" Height="24" Width="40" VerticalAlignment="Top" Margin="0,11,0,0">
+                        <Image Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon_white.ico"  Width="24" Height="24" AutomationProperties.Name="{x:Static properties:Resources.ImageAutomationPropertiesName}" WindowChrome.IsHitTestVisibleInChrome="True" MouseEnter="Image_MouseEnter" MouseDown="Image_MouseDown"/>
+                    </Grid>
+                    <Grid x:Name="ictMainMenu" KeyboardNavigation.TabIndex="1"
+                             DockPanel.Dock="Top" KeyboardNavigation.DirectionalNavigation="Contained"
+                             WindowChrome.IsHitTestVisibleInChrome="True" 
+                             Margin="0,90,0,0"
+                             VerticalAlignment="Top"
+                             KeyboardNavigation.TabNavigation="Once">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnInspect" 
+                                Height="40" Width="40"
+                                Style="{StaticResource btnLeftNav}"
+                                AutomationProperties.Name="{Binding AutomationPropertiesNameInspect}"
+                                Command="{x:Static local:MainWindow.ClickInspectCommand}"
+                                AutomationProperties.AcceleratorKey="Ctrl+I">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <Run Text="{x:Static properties:Resources.btnInspectToolTip}" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <i:Interaction.Behaviors>
+                                <behaviors:KeyboardToolTipButtonBehavior/>
+                            </i:Interaction.Behaviors>
+                            <Grid Width="40" Height="40">
+                                <Canvas x:Name="cvsInspect" HorizontalAlignment="Left" Width="7" Height="Auto" Background="{DynamicResource ResourceKey=ActiveModeBrush}" Visibility="Collapsed"/>
+                                <fabric:FabricIconControl GlyphName="SearchAndApps" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"/>
+                            </Grid>
+                        </Button>
+                        <Button x:Name="btnTest" 
+                                Height="40" Width="40"
+                                Grid.Row="1"
+                                AutomationProperties.Name="{Binding AutomationPropertiesNameTest}"
+                                Command="{x:Static local:MainWindow.ClickTestCommand}"
+                                AutomationProperties.AcceleratorKey="Ctrl+T"
+                                Style="{StaticResource btnLeftNav}">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <Run Text="{x:Static properties:Resources.btnTestToolTip}" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <i:Interaction.Behaviors>
+                                <behaviors:KeyboardToolTipButtonBehavior/>
+                            </i:Interaction.Behaviors>
+                            <Grid Width="40" Height="40">
+                                <Canvas x:Name="cvsTest" HorizontalAlignment="Left" Width="7" Height="Auto" Background="{DynamicResource ResourceKey=ActiveModeBrush}"/>
+                                <fabric:FabricIconControl GlyphName="TestBeakerSolid" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"/>
+                            </Grid>
+                        </Button>
+                        <Button x:Name="btnCCA" 
+                                Height="40" Width="40"
+                                Grid.Row="2"
+                                AutomationProperties.Name="{Binding AutomationPropertiesNameCCA}"
+                                Command="{x:Static local:MainWindow.ClickColorContrastCommand}"
+                                AutomationProperties.AcceleratorKey="Ctrl+R"
+                                Style="{StaticResource btnLeftNav}">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <Run Text="{x:Static properties:Resources.btnCCAToolTip}" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <i:Interaction.Behaviors>
+                                <behaviors:KeyboardToolTipButtonBehavior/>
+                            </i:Interaction.Behaviors>
+                            <Grid Width="40" Height="40">
+                                <Canvas x:Name="cvsCCA" HorizontalAlignment="Left" Width="7" Height="Auto" Background="{DynamicResource ResourceKey=ActiveModeBrush}"/>
+                                <fabric:FabricIconControl GlyphName="Color" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"/>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                    <Grid x:Name="ictMainMenuBottop"
+                             VerticalAlignment="Bottom" Margin="0,0,0,20"
+                             WindowChrome.IsHitTestVisibleInChrome="True" 
+                             KeyboardNavigation.DirectionalNavigation="Contained"
+                             Width="40" Height="Auto" AutomationProperties.Name="{x:Static properties:Resources.ictMainMenuBottopAutomationPropertiesName}"
+                             KeyboardNavigation.TabNavigation="Once" KeyboardNavigation.TabIndex="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Width="40" Height="40"
+                                    x:Name="btnConfig"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnConfigAutomationPropertiesName}"
+                                    AutomationProperties.HelpText="{x:Static properties:Resources.btnConfigAutomationPropertiesHelpText}"
+                                    Style="{StaticResource btnLeftNav}" Click="onbtnConfigClicked">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <Run Text="{x:Static properties:Resources.btnConfigToolTip}" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <i:Interaction.Behaviors>
+                                <behaviors:KeyboardToolTipButtonBehavior/>
+                            </i:Interaction.Behaviors>
+                            <Grid>
+                                <AccessText Text="_c" Opacity="0"/>
+                                <fabric:FabricIconControl GlyphName="Settings" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"/>
+                            </Grid>
+                        </Button>
+                        <Button Width="40" Height="40" Grid.Row="1"
+                            Style="{StaticResource btnLeftNav}"
+                            x:Name="btnAccountConfig"
+                            Click="btnAccountConfig_Click"
+                            AutomationProperties.Name="{x:Static properties:Resources.btnAccountConfigAutomationPropertiesName}"
+                            AutomationProperties.HelpText="{x:Static properties:Resources.btnAccountConfigAutomationPropertiesHelpText}">
+                            <Button.ToolTip>
+                                <ToolTip>
+                                    <Run Text="{x:Static properties:Resources.btnAccountConfigToolTip}" />
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <i:Interaction.Behaviors>
+                                <behaviors:KeyboardToolTipButtonBehavior/>
+                            </i:Interaction.Behaviors>
+                            <Grid Width="40" Height="40" x:Name="addAccountGrid">
+                                <Image x:Name="imgAvatar" Visibility="Collapsed" Source="{Binding Path=vmAvatar.ByteData, TargetNullValue={x:Null}}"/>
+                                <Grid x:Name="newAccountGrid" Visibility="Visible">
+                                    <AccessText Text="_i" Opacity="0"/>
+                                    <fabric:FabricIconControl GlyphName="Contact" FontSize="24" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"  HorizontalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </controls:NamedPane>
+            <Border Grid.Column="0" Margin="0" Panel.ZIndex="2" HorizontalAlignment="Left" Width="44" Opacity=".8" Background="{DynamicResource ResourceKey=DisabledOverlayBrush}">
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding ElementName=bdLeftNav,Path=IsEnabled}" Value="False">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+            <Grid Name="gdModes" Grid.Column="1">
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Visibility" Value="Collapsed"/>
+                    </Style>
+                </Grid.Style>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Name="borderTitleBar" Grid.Row="0" Background="{DynamicResource ResourceKey=WindowBorderBrush}" Height="40" BorderThickness="0">
+                    <Grid>
+                        <TextBlock Text="{Binding Title, RelativeSource={RelativeSource FindAncestor,AncestorType=Window},FallbackValue=Title}" 
+                                Style="{DynamicResource VarTitleBarTextBlock}"
+                                Margin="7,0,0,0" VerticalAlignment="Center" 
+                                Name="txtBlkTitleBar" >
+                        </TextBlock>
+                        <ItemsControl WindowChrome.IsHitTestVisibleInChrome="True"
+                                        BorderBrush="{x:Null}" Background="Transparent"
+                                        Height="Auto" Width="Auto" 
+                                        HorizontalContentAlignment="Right" VerticalContentAlignment="Top" HorizontalAlignment="Right" VerticalAlignment="Stretch" 
+                                        Margin="0,0,-1,0" KeyboardNavigation.TabNavigation="Once" IsTabStop="False" TabIndex="0">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <Button Width="35" Height="28"
+                                    Style="{StaticResource BtnStandard}"
+                                    x:Name="btnHelp" 
+                                    ToolTip="{x:Static properties:Resources.btnHelpToolTip}" Focusable="False" IsTabStop="False"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnHelpAutomationPropertiesName}"
+                                    AutomationProperties.HelpText="{x:Static properties:Resources.btnHelpAutomationPropertiesHelpText}" Click="btnHelp_Click">
+                                <Grid>
+                                    <AccessText Text="_?" Opacity="0"/>
+                                    <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                </Grid>
+                            </Button>
+                            <Button Name="btnMin" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMin_Click"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnMinAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
+                                <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMin}">
+                                    <fabric:FabricIconControl GlyphName="ChromeMinimize" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                </Grid>
+                            </Button>
+                            <Button Name="btnMax" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMax_Click"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnMaxAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
+                                <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMax}">
+                                    <fabric:FabricIconControl GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                </Grid>
+                            </Button>
+                            <Button Name="btnClose" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnClose_Click"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnCloseAutomationPropertiesName}" Style="{StaticResource btnClose}">
+                                <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnClose}">
+                                    <fabric:FabricIconControl GlyphName="Cancel" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                </Grid>
+                            </Button>
+                        </ItemsControl>
+                    </Grid>
+                </Border>
+                <controls:NamedPane x:Name="ctrlNamedCommandbar"
+                                    KeyboardNavigation.DirectionalNavigation="Contained"
+                                    KeyboardNavigation.TabNavigation="Cycle"
+                                    Grid.Row="1" Grid.RowSpan="2" Height="Auto"
+                                    BorderThickness="0" Visibility="Collapsed"
+                                    AutomationProperties.Name="{x:Static properties:Resources.ctrlNamedCommandbarAutomationPropertiesName}">
+                    <controls:NamedPane.InputBindings>
+                        <KeyBinding Command="{x:Static local:MainWindow.F6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"/>
+                        <KeyBinding Command="{x:Static local:MainWindow.ShiftF6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"
+                            Modifiers="Shift"/>
+                    </controls:NamedPane.InputBindings>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=LightGreyBrush}"
+                            WindowChrome.IsHitTestVisibleInChrome="True" Focusable="True" GotKeyboardFocus="spCommandBar_GotKeyboardFocus"
+                            Orientation="Horizontal" KeyboardNavigation.DirectionalNavigation="Cycle"
+                            Height="28" KeyboardNavigation.TabNavigation="Once"
+                            HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0"/>
+                            <ComboBox x:Name="cbSelectionScope" AutomationProperties.Name="{x:Static properties:Resources.cbSelectionScopeAutomationPropertiesName}" Width="92" 
+                                      HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                                      FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" FontSize="{StaticResource ConstStandardTextSize}"
+                                      SelectionChanged="ComboBox_SelectionChanged" PreviewKeyDown="processComboBox_PreviewKeyDown">
+                                <ComboBoxItem x:Name="cbiElement" Content="{x:Static properties:Resources.cbiElementContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiElementAutomationPropertiesName}" IsSelected="True"/>
+                                <ComboBoxItem x:Name="cbiEntireApp" Content="{x:Static properties:Resources.cbiEntireAppContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiEntireAppAutomationPropertiesName}"/>
+                            </ComboBox>
+                            <Button x:Name="btnHilighter"
+                                VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                Click="onHilightButtonClicked">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                                        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
+                                                <Setter Property="Button.ToolTip">
+                                                    <Setter.Value>
+                                                        <ToolTip>
+                                                            <Run Text="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOn}" />
+                                                        </ToolTip>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOn}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
+                                                <Setter Property="Button.ToolTip">
+                                                    <Setter.Value>
+                                                        <ToolTip>
+                                                            <Run Text="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOff}" />
+                                                        </ToolTip>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOff}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default">
+                                    <fabric:FabricIconControl.Style>
+                                        <Style TargetType="fabric:FabricIconControl">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
+                                                    <Setter Property="GlyphName" Value="Photo"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
+                                                    <Setter Property="GlyphName" Value="UnSetColor"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </fabric:FabricIconControl.Style>
+                                </fabric:FabricIconControl>
+                            </Button>
+                            <Button x:Name="btnRefresh"
+                                    Style="{StaticResource BtnStandard}"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="16,0,0,0"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnRefreshAutomationPropertiesName}" Click="btnRefresh_Click">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        <Run Text="{x:Static properties:Resources.btnRefreshToolTip}"/>
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                            </Button>
+                            <Button x:Name="btnSave"
+                                    Style="{StaticResource BtnStandard}"
+                                    VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                    AutomationProperties.Name="{x:Static properties:Resources.btnSaveAutomationPropertiesName}" Click="btnSave_Click">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        <Run Text="{x:Static properties:Resources.btnSaveAutomationPropertiesName}" />
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <fabric:FabricIconControl GlyphName="Save" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                            </Button>
+                            <Button x:Name="btnPause"
+                                VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                Click="btnPause_Click">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <Button.Style>
+                                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                                        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
+                                                <Setter Property="Button.ToolTip">
+                                                    <Setter.Value>
+                                                        <ToolTip>
+                                                            <Run Text="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}" />
+                                                        </ToolTip>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
+                                                <Setter Property="Button.ToolTip">
+                                                    <Setter.Value>
+                                                        <ToolTip>
+                                                            <Run Text="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOff}" />
+                                                        </ToolTip>
+                                                    </Setter.Value>
+                                                </Setter>
+                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOff}"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>
+                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default">
+                                    <fabric:FabricIconControl.Style>
+                                        <Style TargetType="fabric:FabricIconControl">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
+                                                    <Setter Property="GlyphName" Value="Pause"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
+                                                    <Setter Property="GlyphName" Value="Play"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </fabric:FabricIconControl.Style>
+                                </fabric:FabricIconControl>
+                            </Button>
+                            <Button x:Name="btnTimer"
+                            Style="{StaticResource BtnStandard}"
+                            VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                            AutomationProperties.Name="{x:Static properties:Resources.btnTimerAutomationPropertiesName}">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        <Run Text="{x:Static properties:Resources.btnTimerAutomationPropertiesName}" />
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <i:Interaction.Behaviors>
+                                    <behaviors:DropDownButtonBehavior/>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                <Button.ContextMenu>
+                                    <ContextMenu>
+                                        <MenuItem Name="miTimer" AutomationProperties.Name="{x:Static properties:Resources.miTimerAutomationPropertiesName}" Click="btnTimer_Click">
+                                            <MenuItem.Header>
+                                                <TextBlock Name="tbTimer">
+                                                    <Run Text="{x:Static properties:Resources.tbTimerText1}"/>
+                                                    <TextBox TextChanged="tbxTimer_TextChanged" Name="tbxTimer" PreviewTextInput="tbxTimer_PreviewTextInput" Text="5" MaxLength="2" FontSize="11" Width="16" Margin="2,-4" 
+                                                             AutomationProperties.LabeledBy="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBlock}}}"/>                                                    
+                                                    <Run Text="{x:Static properties:Resources.tbTimerText2}"/>
+                                                </TextBlock>
+                                            </MenuItem.Header>
+                                        </MenuItem>
+                                    </ContextMenu>
+                                </Button.ContextMenu>
+                            </Button>
+                            <Button x:Name="btnLoad"
+                                Style="{StaticResource BtnStandard}"
+                                VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                AutomationProperties.Name="{x:Static properties:Resources.btnLoadAutomationPropertiesName}" Click="btnLoad_Click">
+                                <Button.ToolTip>
+                                    <ToolTip>
+                                        <Run Text="{x:Static properties:Resources.btnLoadAutomationPropertiesName}" />
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                            </Button>
+                        </StackPanel>
+                        <Label Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}"/>
+                        <StackPanel Margin="0" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
+                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                            <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbOne" Style="{StaticResource TbFocusable}" Margin="8,0,0,0" Text="Three" VerticalAlignment="Center" Height="Auto"/>
+                            <fabric:FabricIconControl Name="ctrlFabCrumbOne" GlyphName="ChevronRight" GlyphSize="Small" Margin="4,2,4,0" Foreground="{DynamicResource ResourceKey=IconBrush}" VerticalAlignment="Center"/>
+                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbTwo" Style="{StaticResource btnLink}" Content="Two" Click="btnCrumbTwo_Click" VerticalAlignment="Center"/>
+                            <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbTwo" Style="{StaticResource TbFocusable}" Text="Three" VerticalAlignment="Center" Height="Auto"/>
+                            <fabric:FabricIconControl Name="ctrlFabCrumbTwo" GlyphName="ChevronRight" GlyphSize="Small" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="4,2,4,0" VerticalAlignment="Center"/>
+                            <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbThree" Style="{StaticResource TbFocusable}" Text="Three" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </controls:NamedPane>
+                <Grid x:Name="gridLayerModes" Grid.Row="2"
+                      KeyboardNavigation.TabNavigation="Cycle">
+                    <Grid.InputBindings>
+                        <KeyBinding Command="{x:Static local:MainWindow.F6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"/>
+                        <KeyBinding Command="{x:Static local:MainWindow.ShiftF6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"
+                            Modifiers="Shift"/>
+                    </Grid.InputBindings>
+                    <Grid>
+                        <modecontrols:TestModeControl x:Name="ctrlTestMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                        <modecontrols:CCAModeControl x:Name="ctrlCCAMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                        <modecontrols:LiveModeControl x:Name="ctrlLiveMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                        <modecontrols:SnapshotModeControl x:Name="ctrlSnapMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                        <modecontrols:EventModeControl x:Name="ctrlEventMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
+                    </Grid>
+                    <Grid x:Name="gridlayerConfig" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Visibility="Collapsed">
+                        <modecontrols:ConfigurationModeControl x:Name="ctrlConfigurationMode" AutomationProperties.Name="{x:Static properties:Resources.ctrlConfigurationModeAutomationPropertiesName}" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <modecontrols:StartUpModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlStartUpMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="30,0,0,0" />
+            <modecontrols:TelemetryApproveModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlTelemetryDialog" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="0" />
+            <controls:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"
+                            x:Name="ctrlProgressRing"
+                            Panel.ZIndex="3"
+                            Visibility="Collapsed"/>
+        </Grid>
+    </DockPanel>
+</Window>

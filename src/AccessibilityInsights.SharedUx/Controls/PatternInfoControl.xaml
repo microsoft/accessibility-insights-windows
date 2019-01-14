@@ -1,0 +1,67 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.PatternInfoControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="310"
+             AutomationProperties.Name="{x:Static Properties:Resources.PatternInfoControlAutomationPropertiesName}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <TreeView x:Name="treePatterns" PreviewKeyDown="treePatterns_PreviewKeyDown"
+                      AutomationProperties.Name="{x:Static Properties:Resources.treePatternsAutomationPropertiesName}"
+                      BorderThickness="0" ContextMenuOpening="treePatterns_ContextMenuOpening"
+                      MinHeight="40" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectedItemChanged="treePatterns_SelectedItemChanged">
+            <TreeView.ContextMenu>
+                <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
+                    <MenuItem x:Name="copyMenuItemPattern" Tag="Copy" IsCheckable="False" 
+                              Header="{x:Static Properties:Resources.copyMenuItemPatternHeader}" Style="{StaticResource miFabIcon}"
+                              Click="copyMenuItemPattern_Click"/>
+                </ContextMenu>
+            </TreeView.ContextMenu>
+            <TreeView.ItemContainerStyle>
+                <Style TargetType="TreeViewItem" BasedOn="{StaticResource ResourceKey=tviStandard}">
+                    <Setter Property="AutomationProperties.Name" Value="{Binding Path=NodeValue, Mode=OneWay}"/>
+                    <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}"/>
+                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.SetterValueYouCanInspect}"/>
+                    <EventSetter Event="KeyUp" Handler="TreeViewItem_KeyUp"></EventSetter>
+                    <EventSetter Event="Expanded" Handler="TreeViewItem_Expanded"/>
+                    <EventSetter Event="Collapsed" Handler="TreeViewItem_Collapsed"/>
+                </Style>
+            </TreeView.ItemContainerStyle>
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=Properties}">
+                    <StackPanel Orientation="Horizontal" Margin="0,1">
+                        <TextBlock Text="{Binding Path=NodeValue}" VerticalAlignment="Center" ToolTip="{Binding Path=ToolTip}" Style="{DynamicResource VarStandardTextBlock}"/>
+                        <Button x:Name="buttonAction" Command="{Binding ClickCommand}"
+                                VerticalContentAlignment="Center" VerticalAlignment="Center"
+                                Visibility="{Binding Path=ActionVisibility, BindsDirectlyToSource=True}"
+                                Content="{Binding Path=ActionName, BindsDirectlyToSource=True}"
+                                IsEnabled="True" Padding="4,0" FontWeight="Normal"
+                                Height="18" IsTabStop="False"
+                                Margin="5,0,0,0">
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonGreyBGBrush}"/>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+        <Label x:Name="lbNoPattern" Content="{x:Static Properties:Resources.lbNoPatternContent}"
+                   Grid.Row="1"
+                   Style="{DynamicResource VarStandardLabel}"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"/>
+    </Grid>
+</UserControl>

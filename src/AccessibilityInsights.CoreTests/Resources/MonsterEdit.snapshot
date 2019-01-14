@@ -1,0 +1,1143 @@
+﻿{
+  "Name": null,
+  "ControlTypeId": 50004,
+  "LocalizedControlType": "edit",
+  "RuntimeId": "[7,3658,14EA886]",
+  "ProcessId": 13912,
+  "BoundingRectangle": "246, 778, 300, 26",
+  "IsKeyboardFocusable": true,
+  "IsContent": true,
+  "IsControl": true,
+  "TestStatus": 3,
+  "Glimpse": "edit \"\"",
+  "Properties": {
+    "30000": {
+      "Id": 30000,
+      "Name": "RuntimeId",
+      "Value": [
+        7,
+        13912,
+        21932166
+      ],
+      "TextValue": "[7,3658,14EA886]"
+    },
+    "30001": {
+      "Id": 30001,
+      "Name": "BoundingRectangle",
+      "Value": [
+        246.0,
+        778.0,
+        300.0,
+        26.0
+      ],
+      "TextValue": "[l=246,t=778,r=546,b=804]"
+    },
+    "30002": {
+      "Id": 30002,
+      "Name": "ProcessId",
+      "Value": 13912,
+      "TextValue": "13912"
+    },
+    "30003": {
+      "Id": 30003,
+      "Name": "ControlType",
+      "Value": 50004,
+      "TextValue": "Edit(50004)"
+    },
+    "30004": {
+      "Id": 30004,
+      "Name": "LocalizedControlType",
+      "Value": "edit",
+      "TextValue": "edit"
+    },
+    "30008": {
+      "Id": 30008,
+      "Name": "HasKeyboardFocus",
+      "Value": true,
+      "TextValue": "True"
+    },
+    "30009": {
+      "Id": 30009,
+      "Name": "IsKeyboardFocusable",
+      "Value": true,
+      "TextValue": "True"
+    },
+    "30010": {
+      "Id": 30010,
+      "Name": "IsEnabled",
+      "Value": true,
+      "TextValue": "True"
+    },
+    "30012": {
+      "Id": 30012,
+      "Name": "ClassName",
+      "Value": "TextBox",
+      "TextValue": "TextBox"
+    },
+    "30015": {
+      "Id": 30015,
+      "Name": "Culture",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30016": {
+      "Id": 30016,
+      "Name": "IsControlElement",
+      "Value": true,
+      "TextValue": "True"
+    },
+    "30017": {
+      "Id": 30017,
+      "Name": "IsContentElement",
+      "Value": true,
+      "TextValue": "True"
+    },
+    "30019": {
+      "Id": 30019,
+      "Name": "IsPassword",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30020": {
+      "Id": 30020,
+      "Name": "NativeWindowHandle",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30022": {
+      "Id": 30022,
+      "Name": "IsOffscreen",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30023": {
+      "Id": 30023,
+      "Name": "Orientation",
+      "Value": 0,
+      "TextValue": "None(0)"
+    },
+    "30024": {
+      "Id": 30024,
+      "Name": "FrameworkId",
+      "Value": "WPF",
+      "TextValue": "WPF"
+    },
+    "30025": {
+      "Id": 30025,
+      "Name": "IsRequiredForForm",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30103": {
+      "Id": 30103,
+      "Name": "IsDataValidForForm",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30107": {
+      "Id": 30107,
+      "Name": "ProviderDescription",
+      "Value": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+      "TextValue": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]"
+    },
+    "30111": {
+      "Id": 30111,
+      "Name": "OptimizeForVisualContent",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30135": {
+      "Id": 30135,
+      "Name": "LiveSetting",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30150": {
+      "Id": 30150,
+      "Name": "IsPeripheral",
+      "Value": false,
+      "TextValue": "False"
+    },
+    "30152": {
+      "Id": 30152,
+      "Name": "PositionInSet",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30153": {
+      "Id": 30153,
+      "Name": "SizeOfSet",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30154": {
+      "Id": 30154,
+      "Name": "Level",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30157": {
+      "Id": 30157,
+      "Name": "LandmarkType",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30162": {
+      "Id": 30162,
+      "Name": "FillType",
+      "Value": 0,
+      "TextValue": "0"
+    },
+    "30163": {
+      "Id": 30163,
+      "Name": "VisualEffects",
+      "Value": 0,
+      "TextValue": "0"
+    }
+  },
+  "PlatformProperties": {},
+  "Patterns": [
+    {
+      "Name": "ValuePattern",
+      "Id": 10002,
+      "Properties": [
+        {
+          "Name": "IsReadOnly",
+          "Value": false,
+          "NodeValue": "IsReadOnly = False"
+        },
+        {
+          "Name": "Value",
+          "Value": "",
+          "NodeValue": "Value = \"\""
+        }
+      ],
+      "IsUIActionable": true
+    },
+    {
+      "Name": "ScrollPattern",
+      "Id": 10004,
+      "Properties": [
+        {
+          "Name": "HorizontallyScrollable",
+          "Value": false,
+          "NodeValue": "HorizontallyScrollable = False"
+        },
+        {
+          "Name": "HorizontalScrollPercent",
+          "Value": -1.0,
+          "NodeValue": "HorizontalScrollPercent = -1"
+        },
+        {
+          "Name": "HorizontalViewSize",
+          "Value": 100.0,
+          "NodeValue": "HorizontalViewSize = 100"
+        },
+        {
+          "Name": "VerticallyScrollable",
+          "Value": false,
+          "NodeValue": "VerticallyScrollable = False"
+        },
+        {
+          "Name": "VerticalScrollPercent",
+          "Value": -1.0,
+          "NodeValue": "VerticalScrollPercent = -1"
+        },
+        {
+          "Name": "VerticalViewSize",
+          "Value": 100.0,
+          "NodeValue": "VerticalViewSize = 100"
+        }
+      ],
+      "IsUIActionable": false
+    },
+    {
+      "Name": "TextPattern",
+      "Id": 10014,
+      "Properties": [
+        {
+          "Name": "SupportedTextSelection",
+          "Value": 1,
+          "NodeValue": "SupportedTextSelection = SupportedTextSelection_Single"
+        }
+      ],
+      "IsUIActionable": true
+    },
+    {
+      "Name": "SynchronizedInputPattern",
+      "Id": 10021,
+      "Properties": [],
+      "IsUIActionable": false
+    }
+  ],
+  "Children": [
+    {
+      "Name": null,
+      "ControlTypeId": 50014,
+      "LocalizedControlType": "scroll bar",
+      "RuntimeId": "[7,3658,3C516CB]",
+      "ProcessId": 13912,
+      "BoundingRectangle": "0, 0, 0, 0",
+      "IsKeyboardFocusable": false,
+      "IsContent": false,
+      "IsControl": true,
+      "TestStatus": 1,
+      "Glimpse": "scroll bar \"\"",
+      "Properties": {
+        "30000": {
+          "Id": 30000,
+          "Name": "RuntimeId",
+          "Value": [
+            7,
+            13912,
+            63248075
+          ],
+          "TextValue": "[7,3658,3C516CB]"
+        },
+        "30001": {
+          "Id": 30001,
+          "Name": "BoundingRectangle",
+          "Value": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "TextValue": "[l=0,t=0,r=0,b=0]"
+        },
+        "30002": {
+          "Id": 30002,
+          "Name": "ProcessId",
+          "Value": 13912,
+          "TextValue": "13912"
+        },
+        "30003": {
+          "Id": 30003,
+          "Name": "ControlType",
+          "Value": 50014,
+          "TextValue": "ScrollBar(50014)"
+        },
+        "30004": {
+          "Id": 30004,
+          "Name": "LocalizedControlType",
+          "Value": "scroll bar",
+          "TextValue": "scroll bar"
+        },
+        "30008": {
+          "Id": 30008,
+          "Name": "HasKeyboardFocus",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30009": {
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30010": {
+          "Id": 30010,
+          "Name": "IsEnabled",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30011": {
+          "Id": 30011,
+          "Name": "AutomationId",
+          "Value": "VerticalScrollBar",
+          "TextValue": "VerticalScrollBar"
+        },
+        "30012": {
+          "Id": 30012,
+          "Name": "ClassName",
+          "Value": "ScrollBar",
+          "TextValue": "ScrollBar"
+        },
+        "30015": {
+          "Id": 30015,
+          "Name": "Culture",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30016": {
+          "Id": 30016,
+          "Name": "IsControlElement",
+          "Value": true,
+          "TextValue": "True"
+        },
+        "30017": {
+          "Id": 30017,
+          "Name": "IsContentElement",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30019": {
+          "Id": 30019,
+          "Name": "IsPassword",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30020": {
+          "Id": 30020,
+          "Name": "NativeWindowHandle",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30022": {
+          "Id": 30022,
+          "Name": "IsOffscreen",
+          "Value": true,
+          "TextValue": "True"
+        },
+        "30023": {
+          "Id": 30023,
+          "Name": "Orientation",
+          "Value": 2,
+          "TextValue": "Vertical(2)"
+        },
+        "30024": {
+          "Id": 30024,
+          "Name": "FrameworkId",
+          "Value": "WPF",
+          "TextValue": "WPF"
+        },
+        "30025": {
+          "Id": 30025,
+          "Name": "IsRequiredForForm",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30103": {
+          "Id": 30103,
+          "Name": "IsDataValidForForm",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30107": {
+          "Id": 30107,
+          "Name": "ProviderDescription",
+          "Value": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "TextValue": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]"
+        },
+        "30111": {
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30135": {
+          "Id": 30135,
+          "Name": "LiveSetting",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30150": {
+          "Id": 30150,
+          "Name": "IsPeripheral",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30152": {
+          "Id": 30152,
+          "Name": "PositionInSet",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30153": {
+          "Id": 30153,
+          "Name": "SizeOfSet",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30154": {
+          "Id": 30154,
+          "Name": "Level",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30157": {
+          "Id": 30157,
+          "Name": "LandmarkType",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30162": {
+          "Id": 30162,
+          "Name": "FillType",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30163": {
+          "Id": 30163,
+          "Name": "VisualEffects",
+          "Value": 0,
+          "TextValue": "0"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "RangeValuePattern",
+          "Id": 10003,
+          "Properties": [
+            {
+              "Name": "IsReadOnly",
+              "Value": true,
+              "NodeValue": "IsReadOnly = True"
+            },
+            {
+              "Name": "LargeChange",
+              "Value": 1.0,
+              "NodeValue": "LargeChange = 1"
+            },
+            {
+              "Name": "Maximum",
+              "Value": 0.0,
+              "NodeValue": "Maximum = 0"
+            },
+            {
+              "Name": "Minimum",
+              "Value": 0.0,
+              "NodeValue": "Minimum = 0"
+            },
+            {
+              "Name": "SmallChange",
+              "Value": 0.1,
+              "NodeValue": "SmallChange = 0.1"
+            },
+            {
+              "Name": "Value",
+              "Value": 0.0,
+              "NodeValue": "Value = 0"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 1,
+      "ScanResults": {
+        "Items": [
+          {
+            "Messages": [
+              "Check whether the bounding rectangle of the element contains the bounding rectangles of all children.",
+              "the element is hidden/collapsed. scan is not applicable."
+            ],
+            "Status": 1,
+            "Description": "[4.2.1] BoundingRectangle: All child elements must be contained within BoundingRectangle.",
+            "MetaInfo": {
+              "PropertyId": 30001,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "The property value may be one of [scroll bar]."
+            ],
+            "Status": 1,
+            "Description": "[4.2.1] LocalizedControlType",
+            "MetaInfo": {
+              "PropertyId": 30004,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "'IsContentElement' property value should be \"False\"."
+            ],
+            "Status": 1,
+            "Description": "[MSDN] IsContentElement Property",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671642(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30017,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "'IsControlElement' property value should be \"True\"."
+            ],
+            "Status": 1,
+            "Description": "[MSDN] IsControlElement Property",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671642(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30016,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "Orientation value is Vertical(2)"
+            ],
+            "Status": 1,
+            "Description": "[MSDN] Orientation",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee684017(v=vs.85).aspx#UIA_OrientationPropertyId",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30023,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [],
+            "Status": 1,
+            "Description": "[4.1.2] Name: Child element should have unique name.",
+            "MetaInfo": {
+              "PropertyId": 0,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "The DoNotSupport pattern(s): ScrollPattern"
+            ],
+            "Status": 1,
+            "Description": "[MSDN]: Based on control type, some patterns should not be supported.",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671193(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 0,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          }
+        ],
+        "Status": 1
+      }
+    },
+    {
+      "Name": null,
+      "ControlTypeId": 50014,
+      "LocalizedControlType": "scroll bar",
+      "RuntimeId": "[7,3658,1EDCD29]",
+      "ProcessId": 13912,
+      "BoundingRectangle": "0, 0, 0, 0",
+      "IsKeyboardFocusable": false,
+      "IsContent": false,
+      "IsControl": true,
+      "TestStatus": 1,
+      "Glimpse": "scroll bar \"\"",
+      "Properties": {
+        "30000": {
+          "Id": 30000,
+          "Name": "RuntimeId",
+          "Value": [
+            7,
+            13912,
+            32361769
+          ],
+          "TextValue": "[7,3658,1EDCD29]"
+        },
+        "30001": {
+          "Id": 30001,
+          "Name": "BoundingRectangle",
+          "Value": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "TextValue": "[l=0,t=0,r=0,b=0]"
+        },
+        "30002": {
+          "Id": 30002,
+          "Name": "ProcessId",
+          "Value": 13912,
+          "TextValue": "13912"
+        },
+        "30003": {
+          "Id": 30003,
+          "Name": "ControlType",
+          "Value": 50014,
+          "TextValue": "ScrollBar(50014)"
+        },
+        "30004": {
+          "Id": 30004,
+          "Name": "LocalizedControlType",
+          "Value": "scroll bar",
+          "TextValue": "scroll bar"
+        },
+        "30008": {
+          "Id": 30008,
+          "Name": "HasKeyboardFocus",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30009": {
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30010": {
+          "Id": 30010,
+          "Name": "IsEnabled",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30011": {
+          "Id": 30011,
+          "Name": "AutomationId",
+          "Value": "HorizontalScrollBar",
+          "TextValue": "HorizontalScrollBar"
+        },
+        "30012": {
+          "Id": 30012,
+          "Name": "ClassName",
+          "Value": "ScrollBar",
+          "TextValue": "ScrollBar"
+        },
+        "30015": {
+          "Id": 30015,
+          "Name": "Culture",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30016": {
+          "Id": 30016,
+          "Name": "IsControlElement",
+          "Value": true,
+          "TextValue": "True"
+        },
+        "30017": {
+          "Id": 30017,
+          "Name": "IsContentElement",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30019": {
+          "Id": 30019,
+          "Name": "IsPassword",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30020": {
+          "Id": 30020,
+          "Name": "NativeWindowHandle",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30022": {
+          "Id": 30022,
+          "Name": "IsOffscreen",
+          "Value": true,
+          "TextValue": "True"
+        },
+        "30023": {
+          "Id": 30023,
+          "Name": "Orientation",
+          "Value": 1,
+          "TextValue": "Horizontal(1)"
+        },
+        "30024": {
+          "Id": 30024,
+          "Name": "FrameworkId",
+          "Value": "WPF",
+          "TextValue": "WPF"
+        },
+        "30025": {
+          "Id": 30025,
+          "Name": "IsRequiredForForm",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30103": {
+          "Id": 30103,
+          "Name": "IsDataValidForForm",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30107": {
+          "Id": 30107,
+          "Name": "ProviderDescription",
+          "Value": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "TextValue": "[pid:13912,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]"
+        },
+        "30111": {
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30135": {
+          "Id": 30135,
+          "Name": "LiveSetting",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30150": {
+          "Id": 30150,
+          "Name": "IsPeripheral",
+          "Value": false,
+          "TextValue": "False"
+        },
+        "30152": {
+          "Id": 30152,
+          "Name": "PositionInSet",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30153": {
+          "Id": 30153,
+          "Name": "SizeOfSet",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30154": {
+          "Id": 30154,
+          "Name": "Level",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30157": {
+          "Id": 30157,
+          "Name": "LandmarkType",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30162": {
+          "Id": 30162,
+          "Name": "FillType",
+          "Value": 0,
+          "TextValue": "0"
+        },
+        "30163": {
+          "Id": 30163,
+          "Name": "VisualEffects",
+          "Value": 0,
+          "TextValue": "0"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "RangeValuePattern",
+          "Id": 10003,
+          "Properties": [
+            {
+              "Name": "IsReadOnly",
+              "Value": true,
+              "NodeValue": "IsReadOnly = True"
+            },
+            {
+              "Name": "LargeChange",
+              "Value": 1.0,
+              "NodeValue": "LargeChange = 1"
+            },
+            {
+              "Name": "Maximum",
+              "Value": 0.0,
+              "NodeValue": "Maximum = 0"
+            },
+            {
+              "Name": "Minimum",
+              "Value": 0.0,
+              "NodeValue": "Minimum = 0"
+            },
+            {
+              "Name": "SmallChange",
+              "Value": 0.1,
+              "NodeValue": "SmallChange = 0.1"
+            },
+            {
+              "Name": "Value",
+              "Value": 0.0,
+              "NodeValue": "Value = 0"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 1,
+      "ScanResults": {
+        "Items": [
+          {
+            "Messages": [
+              "Check whether the bounding rectangle of the element contains the bounding rectangles of all children.",
+              "the element is hidden/collapsed. scan is not applicable."
+            ],
+            "Status": 1,
+            "Description": "[4.2.1] BoundingRectangle: All child elements must be contained within BoundingRectangle.",
+            "MetaInfo": {
+              "PropertyId": 30001,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "The property value may be one of [scroll bar]."
+            ],
+            "Status": 1,
+            "Description": "[4.2.1] LocalizedControlType",
+            "MetaInfo": {
+              "PropertyId": 30004,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "'IsContentElement' property value should be \"False\"."
+            ],
+            "Status": 1,
+            "Description": "[MSDN] IsContentElement Property",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671642(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30017,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "'IsControlElement' property value should be \"True\"."
+            ],
+            "Status": 1,
+            "Description": "[MSDN] IsControlElement Property",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671642(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30016,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "Orientation value is Horizontal(1)"
+            ],
+            "Status": 1,
+            "Description": "[MSDN] Orientation",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee684017(v=vs.85).aspx#UIA_OrientationPropertyId",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 30023,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [],
+            "Status": 1,
+            "Description": "[4.1.2] Name: Child element should have unique name.",
+            "MetaInfo": {
+              "PropertyId": 0,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          },
+          {
+            "Messages": [
+              "The DoNotSupport pattern(s): ScrollPattern"
+            ],
+            "Status": 1,
+            "Description": "[MSDN]: Based on control type, some patterns should not be supported.",
+            "HelpUrl": {
+              "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671193(v=vs.85).aspx",
+              "Type": 0
+            },
+            "MetaInfo": {
+              "PropertyId": 0,
+              "UIFramework": "WPF",
+              "ControlType": "ScrollBar"
+            }
+          }
+        ],
+        "Status": 1
+      }
+    }
+  ],
+  "TreeWalkerMode": 1,
+  "ScanResults": {
+    "Items": [
+      {
+        "Messages": [
+          "Name property is required. but it doesn't exist or it has no value."
+        ],
+        "Status": 3,
+        "Description": "[4.1.2] Name",
+        "MetaInfo": {
+          "PropertyId": 30005,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [
+          "Check whether the bounding rectangle of the element contains the bounding rectangles of all children.",
+          "The BoundingRectagle of the current element is [l=246,t=778,r=546,b=804].",
+          "The BoundingRectangle of {0} child is zero size. possibily collapsed. it is considered as contained.",
+          "The BoundingRectangle of {0} child is zero size. possibily collapsed. it is considered as contained."
+        ],
+        "Status": 1,
+        "Description": "[4.2.1] BoundingRectangle: All child elements must be contained within BoundingRectangle.",
+        "MetaInfo": {
+          "PropertyId": 30001,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [],
+        "Status": 1,
+        "Description": "[4.2.1] IsKeyboardFocusable",
+        "MetaInfo": {
+          "PropertyId": 30009,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [
+          "The property value may be one of [edit]."
+        ],
+        "Status": 1,
+        "Description": "[4.2.1] LocalizedControlType",
+        "MetaInfo": {
+          "PropertyId": 30004,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [
+          "'IsContentElement' property value should be \"True\"."
+        ],
+        "Status": 1,
+        "Description": "[MSDN] IsContentElement Property",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671626(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 30017,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [
+          "'IsControlElement' property value should be \"True\"."
+        ],
+        "Status": 1,
+        "Description": "[MSDN] IsControlElement Property",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671626(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 30016,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [
+          "Expect to have no child in 'Control' mode.",
+          "Typically no child is expected, but there is."
+        ],
+        "Status": 2,
+        "Description": "[MSDN] Typical SubTree structure in Control mode",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671626(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 0,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [],
+        "Status": 1,
+        "Description": "[MSDN] Typical SubTree structure in Content mode",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671626(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 0,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [],
+        "Status": 1,
+        "Description": "[4.1.2] Name: Child element should have unique name.",
+        "MetaInfo": {
+          "PropertyId": 0,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [],
+        "Status": 1,
+        "Description": "[MSDN]: Based on available pattern(s) of parent element, some patterns are expected.",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671193(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 0,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      },
+      {
+        "Messages": [],
+        "Status": 1,
+        "Description": "Control Pattern",
+        "HelpUrl": {
+          "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671626(v=vs.85).aspx",
+          "Type": 0
+        },
+        "MetaInfo": {
+          "PropertyId": 0,
+          "UIFramework": "WPF",
+          "ControlType": "Edit"
+        }
+      }
+    ],
+    "Status": 3
+  }
+}

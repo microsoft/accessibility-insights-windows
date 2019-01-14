@@ -1,0 +1,126 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="AccessibilityInsights.SharedUx.Dialogs.TextPatternExplorerDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+        xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+        xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+        mc:Ignorable="d"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        WindowStartupLocation="CenterOwner"
+        Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico"
+        Title="{x:Static Properties:Resources.TextPatternExplorerDialogWindowTitle}" Height="600" Width="650"
+        ShowInTaskbar="False" Topmost="True" KeyUp="Window_KeyUp">
+    <Window.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--controls:TextRangeSelectorControl x:Name="ctrlSelector" Grid.Row="0" Margin="10,10,10,10"/-->
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <Label Padding="0" Margin="10" FontSize="16" FontWeight="Bold" Content="{x:Static Properties:Resources.LabelContentTextRange}" />
+                <ComboBox Margin="0,8" HorizontalAlignment="Left" Name="cbRanges" SelectionChanged="cbRanges_SelectionChanged" AutomationProperties.Name="{x:Static Properties:Resources.cbRangesAutomationPropertiesName}">
+                    <ComboBoxItem Content="{x:Static Properties:Resources.ComboBoxItemContentDocument}" Tag="{x:Static Member=local:TextPatternExplorerDialog+SourceTypes.Document}"/>
+                    <ComboBoxItem Content="{x:Static Properties:Resources.ComboBoxItemContentSelected}" Tag="{x:Static Member=local:TextPatternExplorerDialog+SourceTypes.Selection}"/>
+                    <ComboBoxItem Content="{x:Static Properties:Resources.ComboBoxItemContentVisible}" Tag="{x:Static Member=local:TextPatternExplorerDialog+SourceTypes.Visible}"/>
+                    <ComboBoxItem Content="{x:Static Properties:Resources.ComboBoxItemContentCaret}" Name="cbiCaret" Tag="{x:Static Member=local:TextPatternExplorerDialog+SourceTypes.Caret}"/>
+                    <ComboBoxItem Content="{x:Static Properties:Resources.ComboBoxItemContentListed}" Name="cbiListed" Tag="{x:Static Member=local:TextPatternExplorerDialog+SourceTypes.Listed}"/>
+                </ComboBox>
+                <Button x:Name="btnRefresh"
+                                Style="{StaticResource BtnStandard}"
+                                VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                ToolTip="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}" AutomationProperties.Name="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}" Click="btnRefresh_Click">
+                    <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                </Button>
+            </StackPanel>
+            <ListBox x:Name="ltbRanges" Grid.Row="1"
+                     AutomationProperties.LabeledBy="{Binding ElementName=lbRanges}"
+                     Margin="10,0,10,10" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                     HorizontalContentAlignment="Stretch" SelectionChanged="ltbRanges_SelectionChanged">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding Header}" />
+                            <Menu x:Name="mnTRControl" Grid.Column="1" Visibility="{Binding Path=MenuVisibility, Mode=OneWay}" Margin="10,0,0,0" >
+                                <MenuItem IsCheckable="False" Padding="0" AutomationProperties.Name="{x:Static Properties:Resources.MenuItemAutomationPropertiesNameControlSelectedTextRange}">
+                                    <MenuItem.Icon>
+                                        <fabric:FabricIconControl GlyphName="More" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default"/>
+                                    </MenuItem.Icon>
+                                    <MenuItem Header="{x:Static Properties:Resources.mniCloneHeader}" x:Name="mniClone" Click="mniClone_Click"/>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderCompare}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderCompare}" x:Name="mniCompare" Click="mniCompare_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderCompareEndPoints}" x:Name="mniCompareEndPoints" Click="mniCompareEndPoints_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderExpand}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderChar}" x:Name="mniExpandByCharacter" Click="mniExpandByCharacter_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderFormat}" x:Name="mniExpandByFormat" Click="mniExpandByFormat_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderWord}" x:Name="mniExpandByWord" Click="mniExpandByWord_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderLine}" x:Name="mniExpandByLine" Click="mniExpandByLine_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderParagraph}" x:Name="mniExpandByParagraph" Click="mniExpandByParagraph_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderPage}" x:Name="mniExpandByPage" Click="mniExpandByPage_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.ComboBoxItemContentDocument}" x:Name="mniExpandByDocument" Click="mniExpandByDocument_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.mniFindHeader}" x:Name="mniFind" Click="mniFind_Click"/>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderGetElements}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderChilds}" x:Name="mniElementChildren" Click="mniElementChildren_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderEnclosure}" x:Name="mniElementEnclosure" Click="mniElementEnclosure_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderMove}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderByUnit}" x:Name="mniMove" Click="mniMove_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderByRange}"  x:Name="mniMoveEndPointByRange" Click="mniMoveEndPointByRange_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderEndByUnit}"  x:Name="mniMoveEndPointByUnit" Click="mniMoveEndPointByUnit_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.mniSelectHeader}" x:Name="mniSelect" Click="mniSelect_Click" />
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderSelection}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderAdd}" x:Name="mniAddToSelection" Click="mniAddToSelection_Click" />
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderRemove}" x:Name="mniRemoveFromSelection" Click="mniRemoveFromSelection_Click" />
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderScroll}">
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderTop}" x:Name="mniScrollIntoTop" Click="mniScrollIntoTop_Click"/>
+                                        <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderBottom}"  x:Name="mniScrollIntoBottom" Click="mniScrollIntoBottom_Click"/>
+                                    </MenuItem>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderAddToList}" x:Name="mniAddToList" Visibility="{Binding Path=AddMenuVisibility, Mode=OneTime}" Click="mniAddToList_Click"/>
+                                    <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderRemoveFromList}" x:Name="mniRemoveFromList"  Visibility="{Binding Path=RemoveMenuVisibility, Mode=OneTime}" Click="mniRemoveFromList_Click"/>
+                                </MenuItem>
+                            </Menu>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Setter Property="IsSelected" Value="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </Grid>
+        <GridSplitter Grid.Row="1"
+                      VerticalAlignment="Bottom"
+                      HorizontalAlignment="Stretch"
+                      Background="Gray"
+                      ResizeDirection="Rows"
+                      Height="2"
+                      AutomationProperties.Name="{x:Static Properties:Resources.GridSplitterAutomationPropertiesName1}"
+                      AutomationProperties.HelpText="{x:Static Properties:Resources.GridSplitterAutomationPropertiesHelpText1}"/>
+        <controls:TextRangeControl x:Name="ctrlTextRangeInfo" Grid.Row="2" Margin="10,0,10,10"/>
+    </Grid>
+</Window>

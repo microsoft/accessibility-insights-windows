@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) Microsoft. All rights reserved.
+Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
+  <Product Id="*"
+           Name="Accessibility Insights For Windows v1.1" Language="1033" Version="$(var.BuildVer)" 
+           Manufacturer="Microsoft" 
+           UpgradeCode="0D760959-F713-46C4-9A3D-4E73619EE3B5">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x86"/>
+    <MajorUpgrade Schedule="afterInstallInitialize" RemoveFeatures="All"
+                  AllowDowngrades="no"
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." 
+                  AllowSameVersionUpgrades="no"/>
+    <UI>
+      <UIRef Id="WixUI_InstallDir"/>
+      <Publish Dialog="ExitDialog"
+            Control="Finish"
+            Event="DoAction"
+            Value="LaunchInstalledExe">NOT Installed</Publish>
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+
+    <WixVariable Id="WixUILicenseRtf" Value="..\AccessibilityInsights\bin\Release\eula.rtf" />
+
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="Accessibility Insights for Windows" Level="1">
+      <ComponentRef Id="ProductComponent" />
+      <ComponentRef Id="ExtensionsComp"/>
+      <ComponentRef Id="BugTemplateComp" />
+      <ComponentRef Id="ApplicationShortcut" />
+    </Feature>
+
+    <!--Until WIX_IS_NETFRAMEWORK_47_OR_LATER_INSTALLED property is supported,
+    this is our workaround as suggested here: https://github.com/wixtoolset/issues/issues/5575 -->
+    <PropertyRef Id="NETFRAMEWORK45" />
+    <Condition Message="[ProductName] requires .NET Framework 4.7.1 or later.">
+      <![CDATA[Installed OR (NETFRAMEWORK45 AND NETFRAMEWORK45 >= "#461308")]]>
+    </Condition>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="AccessibilityInsightsFolder" Name="AccessibilityInsights" >
+          <Directory Id="INSTALLFOLDER" Name="1.1">
+            <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
+              <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe" >
+                <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows (formerly Keros For Desktop) v1.1"
+                          Description="Accessibility Insights For Windows (formerly Keros for Desktop) v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
+              </File>
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Desktop.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Desktop.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.RuleSelection.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.ValueTuple.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Windows.Interactivity.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.txt"/>
+              <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
+              <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
+              <File Source="..\AccessibilityInsights.Automation\bin\Release\AccessibilityInsights.Automation.dll" />
+              <File Source="..\AccessibilityInsights.Automation\bin\Release\AccessibilityInsights.Automation.xml" />
+
+              <!-- BEGIN BACKWARD COMPATIBILITY SETTINGS. -->
+              <ProgId Id='K4D.Test' Description='Accessibility Insights For Windows Test file'>
+                <Extension Id='k4dtest' ContentType='AccessibilityInsights Test File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+              <ProgId Id='K4D.Event' Description='Accessibility Insights For Windows Events file'>
+                <Extension Id='k4devent' ContentType='AccessibilityInsights Events File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+              <!-- END BACKWARD COMPATIBILITY SETTINGS. -->
+
+              <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
+                <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+              <ProgId Id='A11y.Event' Description='Accessibility Insights For Windows Events file'>
+                <Extension Id='a11yevent' ContentType='AccessibilityInsights Events File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+            </Component>
+
+            <Directory Id="extensions" Name="Extensions">
+               <Directory Id="ExtensionsMSIGuid" Name="20FB3078-CDFD-4EDA-B541-10EA52B34552">
+                 <Component Id="ExtensionsComp" Guid="20FB3078-CDFD-4EDA-B541-10EA52B34552">
+                   <!-- HINT: please use the shorest suffix which can distingusish itself for the naming convention of the extension assembly Ids: -->
+
+                   <!-- AutoUpdate Extension Assemblies -->
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" Id="github_autoupdate_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id="windowsinstaller_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Newtonsoft.Json.dll" Id="newtonsoft_json_extension"/>
+
+                   <!-- Telemetry Extension Assemblies -->
+                   <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll" Id="telemetry_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll.config" />
+                   <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\Microsoft.ApplicationInsights.dll" Id="applicationinsights_extension" />
+
+                   <!-- AzureDevOps Extension Assemblies -->
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll" Id="extensions_AzureDevOps_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll.config" />
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" Id="activedirectory_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" Id="activedirectory_platform_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll" Id="jsonwebtokens.extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Logging.dll" Id="logging_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Tokens.dll" Id="tokens_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.ServiceBus.dll" Id="servicebus_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Build2.WebApi.dll" Id="build2_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Chat.WebApi.dll" Id="chat_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Core.WebApi.dll" Id="core_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Dashboards.WebApi.dll" Id="dashboards_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" Id="contracts_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Policy.WebApi.dll" Id="policy_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.SourceControl.WebApi.dll" Id="sourcecontrol_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.TestManagement.WebApi.dll" Id="testmanagement_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Test.WebApi.dll" Id="test_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" Id="workitemtracking_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Work.WebApi.dll" Id="work_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.Client.Interactive.dll" Id="client_interactive_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.Common.dll" Id="services_common_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.WebApi.dll" Id="services_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Collections.Immutable.dll" Id="immutable_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Data.Common.dll" Id="data_common_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Diagnostics.StackTrace.dll" Id="stacktrace_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Diagnostics.Tracing.dll" Id="diagnostics_tracing_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Globalization.Extensions.dll" Id="globalization_extensions_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.IO.Compression.dll" Id="compression_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.IdentityModel.Tokens.Jwt.dll" Id="tokens_jwt_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Net.Http.dll" Id="net_http_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Net.Http.Formatting.dll" Id="http_formatting_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Net.Sockets.dll" Id="net_sockets_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Runtime.Serialization.Primitives.dll" Id="primitives_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Security.Cryptography.Algorithms.dll" Id="algorithms_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Security.SecureString.dll" Id="securestring_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Threading.Overlapped.dll" Id="overlapped_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Xml.XPath.XDocument.dll" Id="xdocument_extension"/>
+                 </Component>
+
+                 <Directory Id="BugTemplates" Name="BugTemplates">
+                   <Component Id="BugTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.html"/>
+                   </Component>
+                 </Directory>
+               </Directory>
+            </Directory>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="DesktopFolder"/>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="AccessibilityInsights"/>
+      </Directory>
+    </Directory>
+
+    <Icon Id="AccessibilityInsights.exe" SourceFile="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe" />
+
+    <Property Id="WixShellExecTarget" Value="[#FileExe]"/>
+    <CustomAction Id="LaunchInstalledExe" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
+
+    <InstallExecuteSequence>
+      <Custom Action='LaunchInstalledExe' After='InstallFinalize'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
+    </InstallExecuteSequence>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="63DCD2B5-CF57-494B-A81F-748DFDA7E9CF">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+           Name="Accessibility Insights"
+           Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
+           Target="[#FileExe]"
+           WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\AccessibilityInsights" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+  </Product>
+</Wix>

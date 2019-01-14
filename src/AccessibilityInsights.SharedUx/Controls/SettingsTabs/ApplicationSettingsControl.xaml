@@ -1,0 +1,281 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.SettingsTabs.ApplicationSettingsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             xmlns:sharedControls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             mc:Ignorable="d"
+             AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControlAutomationName}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid Margin="20,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,17,0,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Content="{x:Static Properties:Resources.LabelContentShortcuts}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button Name="btnHotkeyToggle" HorizontalAlignment="Left" Height="16"  VerticalAlignment="Top" Width="120" 
+                     VerticalContentAlignment="Center" Click="btnToggleHk_Click"  Style="{StaticResource BtnHotkey}">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblHkToggle" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label Name="lblHkToggle" Content="{x:Static Properties:Resources.lblHkToggleContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyToggle}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button Name="btnHotkeyActivateWindow" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                     VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" 
+                     Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblHkActivateWindow" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label Name="lblHkActivateWindow" Content="{x:Static Properties:Resources.lblHkActivateWindowContent}" Margin="8,0,0,0"  Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyActivateWindow}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeyRecord" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" 
+                        Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblHkRecorder" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblHkRecorder" Content="{x:Static Properties:Resources.lblHkRecorderContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyRecord}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeyPause" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" 
+                        Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblHkPause" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblHkPause" Content="{x:Static Properties:Resources.lblHkPauseContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyPause}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="5" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeyToParent" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblToParent" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblToParent" Content="{x:Static Properties:Resources.lblToParentContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyToParent}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="6" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeyToBefore" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}"
+                        Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblToBefore" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblToBefore" Content="{x:Static Properties:Resources.lblToBeforeContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyToBefore}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="7" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotekyToNext" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblToNext" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblToNext" Content="{x:Static Properties:Resources.lblToNextContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotekyToNext}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="8" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeyToFirstChild" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblToFirstChild" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblToFirstChild" Content="{x:Static Properties:Resources.lblToFirstChildContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnHotkeyToFirstChild}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="9" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnTHotkeyoLastChild" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblToLastChild" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblToLastChild" Content="{x:Static Properties:Resources.lblToLastChildContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnTHotkeyoLastChild}"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1" Margin="0,17,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="{x:Static Properties:Resources.LabelContentSelectionType}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
+            <Grid Grid.Row="1" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="KeyboardClassic" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_KeyboardIconAutomationName}"/>
+                <Label Name="lblFocusLabel" Grid.Column="1" Content="{x:Static Properties:Resources.lblFocusLabelContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnKeyboard" AutomationProperties.LabeledBy="{Binding ElementName=lblFocusLabel}" IsChecked="{Binding SelectionByFocus}"/>
+            </Grid>
+            <Grid Grid.Row="2" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="130"/>
+                </Grid.ColumnDefinitions>
+                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="F12DevTools" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_MouseIconAutomationName}"/>
+                <Label Name="lblMouseLabel" Grid.Column="1" Margin="8,0,0,0" Content="{x:Static Properties:Resources.lblMouseLabelContent}"  RenderTransformOrigin="0.877,0.538" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnMouse" AutomationProperties.LabeledBy="{Binding ElementName=lblMouseLabel}" IsChecked="{Binding SelectionByMouse}"/>
+                <StackPanel Grid.Column="3" Margin="30,0,0,0" Orientation="Horizontal">
+                    <Label Name="lblDelay" Content="{x:Static Properties:Resources.lblDelayContent}" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=tbMouseDelay}"/>
+                    <TextBox Name="tbMouseDelay" Height="16" Width="28" Margin="5,0,5,0" PreviewTextInput="textboxMouseDelay_PreviewTextInput" MaxLines="1" MaxLength="4" 
+                     VerticalContentAlignment="Center" Style="{StaticResource TxtBxText}" AutomationProperties.LabeledBy="{Binding ElementName=lblDelay}" TextChanged="tbMouseDelay_TextChanged"/>
+                    <Label Content="ms" Padding="0" Style="{StaticResource LblText}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" Margin="0,17,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="{x:Static Properties:Resources.LabelContentOtherOptions}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
+            <Grid Grid.Row="2" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lblAlwaysOnTopLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblAlwaysOnTopLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnAlwaysOnTop" AutomationProperties.LabeledBy="{Binding ElementName=lblAlwaysOnTopLabel}" IsChecked="{Binding AlwaysOnTop}"/>
+            </Grid>
+            <Grid Grid.Row="3" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lblPlayScanningSoundLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblPlayScanningSoundLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnPlayScanningSound" AutomationProperties.LabeledBy="{Binding ElementName=lblPlayScanningSoundLabel}" IsChecked="{Binding PlayScanningSound}"/>
+            </Grid>
+            <Grid Grid.Row="5" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151"/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lblHighlighterModeLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblHighlighterModeLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="2" x:Name ="highlighterModeComboBox"
+                          SelectedIndex="{Binding HighlighterMode}"
+                          AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_HighlighterModeComboboxAutomationName}"
+                          PreviewKeyDown ="cbComboBox_PreviewKeyDown"
+                          FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                    <ComboBoxItem x:Name="cbiHLBKTT" Content="{x:Static Properties:Resources.cbiHLBKTTAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiHLBKTTAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiHLBK" Content="{x:Static Properties:Resources.cbiHLBKAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiHLBKAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiHLTT" Content="{x:Static Properties:Resources.cbiHLTTAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiHLTTAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiHL" Content="{x:Static Properties:Resources.cbiHLAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiHLAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="TT" Content="{x:Static Properties:Resources.TTAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.TTAutomationPropertiesName}"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="6" Margin="1,5,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="151"/>
+                    <ColumnDefinition Width="180"/>
+                </Grid.ColumnDefinitions>
+                <Label Name="lblFontSizeLabel" Grid.Column="0" Content="Font Size" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="2" x:Name ="fontSizeComboBox"
+                          SelectedIndex="{Binding FontSize}"
+                          AutomationProperties.Name="{x:Static Properties:Resources.fontSizeComboBoxAutomationPropertiesName}"
+                          PreviewKeyDown="cbComboBox_PreviewKeyDown"
+                          FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                    <ComboBoxItem x:Name="cbiSmallFont" Content="{x:Static Properties:Resources.cbiSmallFontContent}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSmallFontContent}"/>
+                    <ComboBoxItem x:Name="cbiStandardFont" Content="{x:Static Properties:Resources.cbiStandardFontContent}" AutomationProperties.Name="{x:Static Properties:Resources.cbiStandardFontContent}"/>
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="7" Margin="1,17,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Margin="1,5,0,0">
+                    <Label Content="{x:Static Properties:Resources.LabelContentTelemetry}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
+                </Grid>
+                <Grid Grid.Row="1" Margin="1,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="320"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Style="{StaticResource TxtTelemetrySettingInfo}" TextWrapping="Wrap">
+                        <Run Text="{x:Static Properties:Resources.TextBlockTelemetrySettingInfo}"/>
+                        <LineBreak/>
+                    </TextBlock>
+                    <sharedControls:PrivacyLearnMore Style="{StaticResource TxtTelemetrySettingInfo}" Grid.Row="1"/>
+                </Grid>
+                <Grid Grid.Row="2" Margin="1,5,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="151"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Name="lblEnableTelemetryLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblEnableTelemetryContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                    <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnEnableTelemetry" AutomationProperties.LabeledBy="{Binding ElementName=lblEnableTelemetryLabel}" IsChecked="{Binding EnableTelemetry}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

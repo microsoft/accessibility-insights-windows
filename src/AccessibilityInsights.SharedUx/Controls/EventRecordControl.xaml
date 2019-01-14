@@ -1,0 +1,185 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.EventRecordControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="310"
+             AutomationProperties.Name="{x:Static Properties:Resources.EventRecordControlAutomationPropertiesName}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:EventIdToEventNameConverter x:Key="cvtIdToName" />
+            <converters:ElementToSenderTextConverter x:Key="cvtElementToSender" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.InputBindings>
+        <KeyBinding Command="{x:Static local:EventRecordControl.RecordCommand}"
+                    Key="R"
+                    Modifiers="Alt"/>
+        <KeyBinding Command="{x:Static local:EventRecordControl.MoveFocusToEventsGridCommand}"
+                    Key="V"
+                    Modifiers="Alt"/>
+    </UserControl.InputBindings>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,5"
+              KeyboardNavigation.DirectionalNavigation="Contained">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" x:Name="labelEvents" Padding="0" Margin="0" Content="{x:Static Properties:Resources.labelEventsContent}" />
+            <ItemsControl WindowChrome.IsHitTestVisibleInChrome="True" 
+                          BorderBrush="{x:Null}"  
+                          Grid.Column="1"
+                          Height="Auto" Width="Auto" 
+                          HorizontalContentAlignment="Right" VerticalContentAlignment="Top" HorizontalAlignment="Right" VerticalAlignment="Stretch" 
+                          IsTabStop="False">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <Button x:Name="btnRecord"
+                    Width="35" Height="28"
+                    BorderThickness="0"  Background="{x:Null}" BorderBrush="{x:Null}"
+                    Command="{x:Static local:EventRecordControl.RecordCommand}"
+                    AutomationProperties.AcceleratorKey="Alt+R">
+                    <i:Interaction.Behaviors>
+                        <behaviors:KeyboardToolTipButtonBehavior/>
+                    </i:Interaction.Behaviors>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Path=vmEventRecorder.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EventRecordControl}}" Value="Off">
+                                    <Setter Property="Button.ToolTip" Value="{x:Static Properties:Resources.SetterValueStartRecording}" />
+                                    <Setter Property="AutomationProperties.Name" Value="{x:Static Properties:Resources.SetterValueStartRecordingCapitalized}"/>
+                                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.SetterValueStartRecordingHelpText}"/>
+                                </DataTrigger>
+                                <DataTrigger Binding="{Binding Path=vmEventRecorder.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EventRecordControl}}" Value="On">
+                                    <Setter Property="Button.ToolTip" Value="{x:Static Properties:Resources.SetterValueStopRecording}">
+                                    </Setter>
+                                    <Setter Property="AutomationProperties.Name" Value="{x:Static Properties:Resources.SetterValueStopRecordingCapitalized}"/>
+                                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.SetterValueStopRecordingHelpText}"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <fabric:FabricIconControl GlyphSize="Custom" FontSize="12" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <fabric:FabricIconControl.Style>
+                            <Style>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=vmEventRecorder.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EventRecordControl}}" Value="Off">
+                                        <Setter Property="fabric:FabricIconControl.Foreground" Value="#A80000"/>
+                                        <Setter Property="fabric:FabricIconControl.GlyphName" Value="CircleFill"/>
+                                        <Setter Property="fabric:FabricIconControl.Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=vmEventRecorder.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EventRecordControl}}" Value="On">
+                                        <Setter Property="fabric:FabricIconControl.GlyphName" Value="StopSolid"/>
+                                        <Setter Property="fabric:FabricIconControl.Visibility" Value="Visible"/>
+                                        <Setter Property="fabric:FabricIconControl.Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </fabric:FabricIconControl.Style>
+                    </fabric:FabricIconControl>
+                </Button>
+                <Button x:Name="btnSetting" Grid.Column="1"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                        Height="28" Width="35" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName}">
+                    <i:Interaction.Behaviors>
+                        <behaviors:DropDownButtonBehavior/>
+                        <behaviors:KeyboardToolTipButtonBehavior/>
+                    </i:Interaction.Behaviors>
+                    <Button.Style>
+                        <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                            <Setter Property="Button.ToolTip" Value="{x:Static Properties:Resources.SetterValueEventSetting}" />
+                        </Style>
+                    </Button.Style>
+                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <Button.ContextMenu>
+                        <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded">
+                            <MenuItem Header="Event recording scope" FontWeight="Bold" IsEnabled="False" IsCheckable="False"/>
+                            <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRB_Click"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName}">
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="radiobuttonScopeSelf" GroupName="groupScope" Content="{x:Static Properties:Resources.mniRawAutomationPropertiesName}" Focusable="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="mniControl" IsCheckable="False" Click="mniRB_Click"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.radiobuttonScopeSubtreeContent}">
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="radiobuttonScopeSubtree" GroupName="groupScope" Content="{x:Static Properties:Resources.radiobuttonScopeSubtreeContent}" Focusable="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="mniContent" IsCheckable="False" Click="mniRB_Click"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName}">
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="radiobuttonScopeDescendents" GroupName="groupScope" Content="{x:Static Properties:Resources.mniContentAutomationPropertiesName}" Focusable="False"/>
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <Separator/>
+                            <MenuItem Header="Record _AutomationFocusChanged Event" x:Name="mniFocusChanged" IsCheckable="True"/>
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+            </ItemsControl>
+        </Grid>
+        <TextBlock Name="tbIntro" Grid.Row="1" Text="{x:Static Properties:Resources.tbIntroText}" Padding="4" TextWrapping="Wrap" Style="{DynamicResource VarStandardTextBlock}"/>
+        <ScrollViewer Name="svData" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Visibility="Collapsed" Padding="2,0" Margin="-2,0">
+            <DataGrid x:Name="dgEvents" GotKeyboardFocus="dgEvents_GotKeyboardFocus"
+                      AutomationProperties.LabeledBy="{Binding ElementName=labelEvents}"
+                      AutomationProperties.AcceleratorKey="Alt+V"
+                      Height="Auto" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                      SelectionChanged="listEvents_SelectionChanged" SelectionMode="Single"                  
+                      HorizontalContentAlignment="Stretch"
+                      FontSize="11" Margin="2,0"
+                      KeyboardNavigation.TabNavigation="Once"
+                      Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
+                <i:Interaction.Behaviors>
+                    <behaviors:ColumnResizeHotkeyBehavior/>
+                </i:Interaction.Behaviors>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path=TimeStamp}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderTimeStamp}" Width="Auto" IsReadOnly="True" />
+                    <DataGridTextColumn Binding="{Binding Path=EventId, Converter={StaticResource cvtIdToName}}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderEventName}" Width="Auto" IsReadOnly="True" />
+                    <DataGridTextColumn Binding="{Binding Path=Element, Converter={StaticResource cvtElementToSender}, TargetNullValue='Error retrieving element'}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderSender}" Width="*" IsReadOnly="True">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock" BasedOn="{StaticResource DataGridTextCellStyle}">
+                                <Setter Property="FontStyle" Value="Normal"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Converter={StaticResource cvtElementToSender},Path=Element}" Value="{x:Null}">
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <local:ProgressRingControl x:Name="ctrlProgressRing" 
+                                   Size="30" 
+                                   Grid.Row="1" 
+                                   Visibility="Collapsed"
+                                   WithSound="True"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center">
+        </local:ProgressRingControl>
+    </Grid>
+</UserControl>

@@ -1,0 +1,370 @@
+﻿{
+  "Name": "Code Map",
+  "ControlTypeId": 50020,
+  "LocalizedControlType": "text",
+  "RuntimeId": "[7,1F48,24D4850]",
+  "ProcessId": 8008,
+  "BoundingRectangle": "1285, 91, 83, 25",
+  "IsKeyboardFocusable": false,
+  "IsContent": true,
+  "IsControl": true,
+  "TestStatus": 1,
+  "Header": "text \"Code Map\"",
+  "Bitmap": null,
+  "Properties": {
+    "30000": {
+      "Id": 30000,
+      "Name": "RuntimeId",
+      "Value": [
+        7,
+        8008,
+        38619216
+      ],
+      "LabeledBy": null,
+      "TextValue": "[7,1F48,24D4850]"
+    },
+    "30001": {
+      "Id": 30001,
+      "Name": "BoundingRectangle",
+      "Value": [
+        1285.0,
+        91.0,
+        83.0,
+        25.0
+      ],
+      "LabeledBy": null,
+      "TextValue": "[l=1285,t=91,r=1368,b=116]"
+    },
+    "30002": {
+      "Id": 30002,
+      "Name": "ProcessId",
+      "Value": 8008,
+      "LabeledBy": null,
+      "TextValue": "8008"
+    },
+    "30003": {
+      "Id": 30003,
+      "Name": "ControlType",
+      "Value": 50020,
+      "LabeledBy": null,
+      "TextValue": "Text(50020)"
+    },
+    "30004": {
+      "Id": 30004,
+      "Name": "LocalizedControlType",
+      "Value": "text",
+      "LabeledBy": null,
+      "TextValue": "text"
+    },
+    "30005": {
+      "Id": 30005,
+      "Name": "Name",
+      "Value": "Code Map",
+      "LabeledBy": null,
+      "TextValue": "Code Map"
+    },
+    "30006": {
+      "Id": 30006,
+      "Name": "AcceleratorKey",
+      "Value": [
+        0.7,
+        0.8,
+        0.3
+      ],
+      "LabeledBy": null,
+      "TextValue": "[0.7,0.8,0.3]"
+    },
+    "30008": {
+      "Id": 30008,
+      "Name": "HasKeyboardFocus",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30009": {
+      "Id": 30009,
+      "Name": "IsKeyboardFocusable",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30010": {
+      "Id": 30010,
+      "Name": "IsEnabled",
+      "Value": true,
+      "LabeledBy": null,
+      "TextValue": "True"
+    },
+    "30012": {
+      "Id": 30012,
+      "Name": "ClassName",
+      "Value": "TextBlock",
+      "LabeledBy": null,
+      "TextValue": "TextBlock"
+    },
+    "30015": {
+      "Id": 30015,
+      "Name": "Culture",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30016": {
+      "Id": 30016,
+      "Name": "IsControlElement",
+      "Value": true,
+      "LabeledBy": null,
+      "TextValue": "True"
+    },
+    "30017": {
+      "Id": 30017,
+      "Name": "IsContentElement",
+      "Value": true,
+      "LabeledBy": null,
+      "TextValue": "True"
+    },
+   "30018": {
+      "Id": 30018,
+      "Name": "LabelledBy",
+      "Value": "Test",
+      "LabeledBy": null,
+      "TextValue": "Test",
+    },
+    "30019": {
+      "Id": 30019,
+      "Name": "IsPassword",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30020": {
+      "Id": 30020,
+      "Name": "NativeWindowHandle",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30022": {
+      "Id": 30022,
+      "Name": "IsOffscreen",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30023": {
+      "Id": 30023,
+      "Name": "Orientation",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "None(0)"
+    },
+    "30024": {
+      "Id": 30024,
+      "Name": "FrameworkId",
+      "Value": "WPF",
+      "LabeledBy": null,
+      "TextValue": "WPF"
+    },
+    "30025": {
+      "Id": 30025,
+      "Name": "IsRequiredForForm",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30103": {
+      "Id": 30103,
+      "Name": "IsDataValidForForm",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30107": {
+      "Id": 30107,
+      "Name": "ProviderDescription",
+      "Value": "[pid:8008,hwnd:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+      "LabeledBy": null,
+      "TextValue": "[pid:8008,hwnd:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]"
+    },
+    "30111": {
+      "Id": 30111,
+      "Name": "OptimizeForVisualContent",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30135": {
+      "Id": 30135,
+      "Name": "LiveSetting",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30150": {
+      "Id": 30150,
+      "Name": "IsPeripheral",
+      "Value": false,
+      "LabeledBy": null,
+      "TextValue": "False"
+    },
+    "30152": {
+      "Id": 30152,
+      "Name": "PositionInSet",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30153": {
+      "Id": 30153,
+      "Name": "SizeOfSet",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30154": {
+      "Id": 30154,
+      "Name": "Level",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    },
+    "30157": {
+      "Id": 30157,
+      "Name": "LandmarkType",
+      "Value": 0,
+      "LabeledBy": null,
+      "TextValue": "0"
+    }
+  },
+  "Patterns": [
+    {
+      "Name": "SynchronizedInputPattern",
+      "Id": 10021,
+      "Properties": [],
+      "IsUIActionable": false
+    }
+  ],
+  "Children": [],
+  "TreeWalkerMode": 1,
+  "TestResults": [
+    {
+      "Description": "Scan Text control type",
+      "HelpUrl": {
+        "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+        "Type": 0
+      },
+      "Items": [
+        {
+          "Messages": [],
+          "Status": 1,
+          "Description": "Property: Name - 4.1.2(40B)",
+          "MetaInfo": {
+            "Property": "Name",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [
+            "Check whether the bounding rectangle of the element contains the bounding rectangles of all children.",
+            "the bounding rectagle of the current element is [l=1285,t=91,r=1368,b=116]."
+          ],
+          "Status": 1,
+          "Description": "Property: BoundingRectangle - Element33A",
+          "MetaInfo": {
+            "Property": "BoundingRectangle",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [],
+          "Status": 1,
+          "Description": "Property: IsKeyboardFocusable - Element36",
+          "MetaInfo": {
+            "Property": "IsKeyboardFocusable",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [
+            "The property value may be one of [text]."
+          ],
+          "Status": 1,
+          "Description": "Element33A: LocalizedControlType - Property",
+          "HelpUrl": {
+            "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+            "Type": 0
+          },
+          "MetaInfo": {
+            "Property": "LocalizedControlType",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [
+            "'IsContentElement' property value should exist."
+          ],
+          "Status": 1,
+          "Description": "Property: IsContentElement",
+          "HelpUrl": {
+            "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+            "Type": 0
+          },
+          "MetaInfo": {
+            "Property": "IsContentElement",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [
+            "'IsControlElement' property value should be \"True\"."
+          ],
+          "Status": 1,
+          "Description": "Property: IsControlElement",
+          "HelpUrl": {
+            "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+            "Type": 0
+          },
+          "MetaInfo": {
+            "Property": "IsControlElement",
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [],
+          "Status": 1,
+          "Description": "Children with same name and LocalizedControlType",
+          "HelpUrl": {
+            "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+            "Type": 0
+          },
+          "MetaInfo": {
+            "Property": null,
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        },
+        {
+          "Messages": [],
+          "Status": 1,
+          "Description": "Control Pattern",
+          "HelpUrl": {
+            "Url": "https://msdn.microsoft.com/en-us/library/windows/desktop/ee671651(v=vs.85).aspx",
+            "Type": 0
+          },
+          "MetaInfo": {
+            "Property": null,
+            "UIFramework": "WPF",
+            "ControlType": "Text"
+          }
+        }
+      ],
+      "Status": 1
+    }
+  ]
+}

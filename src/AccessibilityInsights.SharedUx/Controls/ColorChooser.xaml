@@ -1,0 +1,36 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.ColorChooser"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             AutomationProperties.Name="{x:Static Properties:Resources.ColorChooserAutomationPropertiesName}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Button x:Name="colorPicker" Style="{StaticResource BtnStandard}" Width="32" Height="32" BorderBrush="Transparent"
+                Click="colorPicker_Click" AutomationProperties.Name="{x:Static Properties:Resources.colorPickerAutomationPropertiesName}">
+                <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+            </Button>
+            <ComboBox Name="cbColorPicker" Width="120" Style="{StaticResource tgbtnColorPicker}" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.cbColorPickerAutomationPropertiesName}'}">
+                <ComboBox.Background>
+                    <SolidColorBrush Color="{Binding StoredColor}"/>
+                </ComboBox.Background>
+            </ComboBox>
+            <TextBox x:Name="colorTb" Width="100px" Height="32" BorderBrush="{DynamicResource ResourceKey=BorderBrush}" FontSize="17"
+                    Text="{Binding StoredColor, Converter={converters:ColorStringConverter}, FallbackValue=#FFFFFF}"
+                    VerticalContentAlignment="Center" TextAlignment="Center"
+                    AutomationProperties.Name="{x:Static Properties:Resources.colorTbAutomationPropertiesName}" IsTabStop="True" Focusable="True"
+                    PreviewTextInput="colorTb_PreviewTextInput">
+            </TextBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

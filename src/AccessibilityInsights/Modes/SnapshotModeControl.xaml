@@ -1,0 +1,43 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.Modes.SnapshotModeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             mc:Ignorable="d"
+             AutomationProperties.Name="{x:Static properties:Resources.SnapshotModeControlAutomationPropertiesName}" Height="600" Width="600">
+    <Grid Panel.ZIndex="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="columnSnap" Width="360"/>
+            <ColumnDefinition x:Name="columnInfo" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:HierarchyControl x:Name="ctrlHierarchy"
+                                                VerticalAlignment="Stretch"/>
+        </Grid>
+        <GridSplitter x:Name="gsMid" Grid.RowSpan="2"
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                        Grid.Column="0"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Right"
+                        ResizeDirection="Columns"
+                        BorderBrush="Gray" BorderThickness="1"
+                        AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
+                        AutomationProperties.HelpText="{x:Static properties:Resources.HandleFailedSelectionResetConnectionLostMessage}"/>
+        <controls:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="TestProperties" AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsElementAutomationPropertiesName}" Grid.RowSpan="2"/>
+        <controls:ProgressRingControl Size="30" Grid.RowSpan="2"
+                                x:Name="ctrlProgressRing"
+                                WithSound="True"
+                                Visibility="Collapsed"/>
+    </Grid>
+</UserControl>

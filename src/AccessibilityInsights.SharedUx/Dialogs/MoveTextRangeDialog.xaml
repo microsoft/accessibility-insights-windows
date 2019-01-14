@@ -1,0 +1,82 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="AccessibilityInsights.SharedUx.Dialogs.MoveTextRangeDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
+        xmlns:selector="clr-namespace:AccessibilityInsights.SharedUx.ActionViews"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+        xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+        mc:Ignorable="d" WindowStartupLocation="CenterOwner" 
+        Title="{x:Static Properties:Resources.MoveTextRangeDialogWindowTitle}" Height="320" Width="500"
+        ShowInTaskbar="False" Topmost="True">
+    <Window.Resources>
+        <ResourceDictionary>
+            <selector:DynamicDataTemplateSelector x:Key="DynamicDataTemplateSelector" />
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto" MaxHeight="150"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid Grid.Row="0"
+                  x:Name="dgParams"
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  AutomationProperties.Name="{x:Static Properties:Resources.dgParamsAutomationPropertiesName}">
+            <DataGrid.Resources>
+                <DataTemplate x:Key="TextBoxTemplate">
+                    <TextBox Text="{Binding ParamValue, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}"
+                             IsReadOnly="False"
+                             Grid.Column="1" VerticalContentAlignment="Center"
+                             AutomationProperties.Name="{Binding Name}"
+                             AutomationProperties.HelpText="{x:Static Properties:Resources.TextBoxAutomationPropertiesHelpTextTypeIndicatedValue}"/>
+                </DataTemplate>
+                <DataTemplate x:Key="ComboBoxTemplate">
+                    <ComboBox SelectedItem="{Binding ParamValue, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding ParamEnums}"/>
+                </DataTemplate>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="{x:Static Properties:Resources.DataGridTemplateColumnHeader}" Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}" Margin="0,0,5,0"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="{x:Static Properties:Resources.DataGridTemplateColumnHeaderValue}" Width="200" 
+                    CellTemplateSelector="{StaticResource DynamicDataTemplateSelector}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid Grid.Row="1" Margin="0,10,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lbTargetTR" Content="{x:Static Properties:Resources.lbTargetTRContent}" Padding="0" FontSize="16" FontWeight="Bold"/>
+            <ListBox x:Name="lbxTargetRanges">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Header}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
+        <TextBlock x:Name="tbResult" Focusable="True"
+                   Grid.Row="3"
+                   VerticalAlignment="Stretch"
+                   AutomationProperties.Name="{x:Static Properties:Resources.tbResultAutomationPropertiesName}"/>
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Row="5" HorizontalAlignment="Right">
+            <Button x:Name="btnAction"  Width="60" Content="Run"
+                    AutomationProperties.Name="{x:Static Properties:Resources.btnActionAutomationPropertiesNameMethod}" Click="btnAction_Click"/>
+            <Button Grid.Row="5" Margin="20,0,0,0" Width="60" Content="Close" IsDefault="True" IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

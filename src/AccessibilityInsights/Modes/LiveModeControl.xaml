@@ -1,0 +1,68 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<misc:UserControlWithPanes x:Class="AccessibilityInsights.Modes.LiveModeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AccessibilityInsights"
+             xmlns:misc="clr-namespace:AccessibilityInsights.Misc"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             mc:Ignorable="d"
+             AutomationProperties.Name="{x:Static properties:Resources.LiveModeControlAutomationPropertiesName}" Height="600" Width="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid Panel.ZIndex="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="columnSnap" Width="410"/>
+            <ColumnDefinition x:Name="columnInfo" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Name="HierarchyGrid"
+            Grid.Column="0" Grid.Row="1"
+              KeyboardNavigation.TabNavigation="Cycle">
+            <Grid.InputBindings>
+                <KeyBinding Command="{x:Static local:MainWindow.F6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"/>
+            </Grid.InputBindings>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <controls:HierarchyControl x:Name="ctrlHierarchy"
+                                        Grid.Row="1" Visibility="Collapsed"
+                                        VerticalAlignment="Stretch"/>
+            <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="tbInspect" Grid.Row="1" Padding="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"><Run Text="{x:Static properties:Resources.PleaseUseMouseToHover}"/><LineBreak/><Run/><LineBreak/><Run Text="{x:Static properties:Resources.clickOnTheBeaker}"/><Run Name="runHotkey" Text="{x:Static properties:Resources.ShiftF8}"/><Run Text="."/></TextBlock>
+            <controls:DisplayCountControl Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ccDisplayCount" Visibility="Collapsed"/>
+            <GridSplitter x:Name="gsMid"
+                            FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                            Grid.Column="0" Grid.RowSpan="2"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Right"
+                            ResizeDirection="Columns" Margin="0,-34,0,0"
+                            BorderBrush="Gray" BorderThickness="1"
+                            AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
+                            AutomationProperties.HelpText="{x:Static properties:Resources.gsMidAutomationPropertiesHelpText1}" DragDelta="gsMid_DragDelta" KeyDown="gsMid_KeyDown"/>
+        </Grid>
+        <controls:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="Live" Grid.RowSpan="2"
+                                     AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsElementAutomationPropertiesName}"
+                                     KeyboardNavigation.TabNavigation="Cycle">
+            <controls:InspectTabsControl.InputBindings>
+                <KeyBinding Command="{x:Static local:MainWindow.ShiftF6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"
+                            Modifiers="Shift"/>
+            </controls:InspectTabsControl.InputBindings>
+        </controls:InspectTabsControl>
+        <controls:ProgressRingControl Size="30" Grid.RowSpan="2" 
+                                      x:Name="ctrlProgressRing" 
+                                      WithSound="True" 
+                                      Visibility="Collapsed"/>
+    </Grid>
+</misc:UserControlWithPanes>

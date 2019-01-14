@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" />
+  <Import Project="..\packages\Text.Analyzers.2.6.2\build\Text.Analyzers.props" Condition="Exists('..\packages\Text.Analyzers.2.6.2\build\Text.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetFramework.Analyzers.2.6.2\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.2.6.2\build\Microsoft.NetFramework.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.NetCore.Analyzers.2.6.2\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.2.6.2\build\Microsoft.NetCore.Analyzers.props')" />
+  <Import Project="..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\build\Microsoft.CodeQuality.Analyzers.props" Condition="Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\build\Microsoft.CodeQuality.Analyzers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{723DDC93-8AB7-403C-9D03-C90B01CAE774}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <RootNamespace>AccessibilityInsights.SharedUx</RootNamespace>
+    <AssemblyName>AccessibilityInsights.SharedUx</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.UIAutomationClient, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\UIAAssemblies\Win10.17713\Interop.UIAutomationClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ActionViews\GeneralActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ActionViews\NotSupportActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ActionViews\ReturnA11yElementsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ActionViews\TextRangeActionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ColorChooser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ColorPicker\ColorPickerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingsTabs\WhatsNewTabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsTabs\ApplicationSettingsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsTabs\ConnectionControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\DisplayCountControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EventConfigurationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EventDetailControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EventConfigTabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\EventRecordControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsTabs\AboutTabControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsTabs\FeedbackControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\InspectTabsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PrivacyLearnMore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TestTabs\ColorContrast.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ToastNotification.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\WhatsNew\WhatsNewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\GlobalEyedropperWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\EyedropperWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\TestTabs\AutomatedChecksControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\HierarchyControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PatternInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ProgressRingControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\PropertyInfoControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\ScannerResultControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\SettingsTabs\TestSettingsControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TextRangeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\AddTextRangeToCustomListDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ControlPatternDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ElementInfoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\EventConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\HotkeyGrabDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\LoadingBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\MessageDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\MoveTextRangeDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\PropertyConfigDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\TextPatternExplorerDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\TextRangeFindDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\TestTabs\TabStopControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Font\SmallFont.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Font\StandardFont.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\HighContrast\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Resource Include="Resources\Light\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Resource Include="Resources\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
+    <Compile Include="ActionViews\DynamicDataTemplateSelector.cs" />
+    <Compile Include="ActionViews\GeneralActionView.xaml.cs">
+      <DependentUpon>GeneralActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ActionViews\NotSupportActionView.xaml.cs">
+      <DependentUpon>NotSupportActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ActionViews\ReturnA11yElementsView.xaml.cs">
+      <DependentUpon>ReturnA11yElementsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ActionViews\TextRangeActionView.xaml.cs">
+      <DependentUpon>TextRangeActionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Animations\GridLengthAnimation.cs" />
+    <Compile Include="Behaviors\ExpanderBehavior.cs" />
+    <Compile Include="Behaviors\DropDownButtonBehavior.cs" />
+    <Compile Include="Behaviors\ColumnResizeHotkeyBehavior.cs" />
+    <Compile Include="Behaviors\PropagateBindingsBehavior.cs" />
+    <Compile Include="Behaviors\KeyboardToolTipButtonBehavior.cs" />
+    <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
+      <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\FontSize.cs" />
+    <Compile Include="FileBug\BugFileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FileBug\BugFileForm.Designer.cs">
+      <DependentUpon>BugFileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FileBug\BugReporter.cs" />
+    <Compile Include="FileBug\FileBugAction.cs" />
+    <Compile Include="FileBug\ScriptInterface.cs" />
+    <Compile Include="Controls\ColorPicker\ColorPickerControl.xaml.cs">
+      <DependentUpon>ColorPickerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ColorPicker\ColorThumb.cs" />
+    <Compile Include="Controls\ColorPicker\ColorUtilities.cs" />
+    <Compile Include="Controls\ColorPicker\SpectrumSlider.cs" />
+    <Compile Include="Controls\CustomControls\CustomToggleButton.cs" />
+    <Compile Include="Controls\ToastNotification.xaml.cs">
+      <DependentUpon>ToastNotification.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Dialogs\GlobalEyedropperWindow.xaml.cs">
+      <DependentUpon>GlobalEyedropperWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\LoadingBox.xaml.cs">
+      <DependentUpon>LoadingBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\ContrastAnalysisType.cs" />
+    <Compile Include="Enums\InspectTabType.cs" />
+    <Compile Include="Enums\InspectTabMode.cs" />
+    <Compile Include="Interfaces\IHierarchyAction.cs" />
+    <Compile Include="Controls\ColorChooser.xaml.cs">
+      <DependentUpon>ColorChooser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NamedPane.cs" />
+    <Compile Include="Controls\SettingsTabs\WhatsNewTabControl.xaml.cs">
+      <DependentUpon>WhatsNewTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\ApplicationSettingsControl.xaml.cs">
+      <DependentUpon>ApplicationSettingsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\ConnectionControl.xaml.cs">
+      <DependentUpon>ConnectionControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomControls\CustomControlOverridingAutomationPeer.cs" />
+    <Compile Include="Controls\CustomControls\CustomGridView.cs" />
+    <Compile Include="Controls\CustomControls\CustomGridViewColumnHeader.cs" />
+    <Compile Include="Controls\DisplayCountControl.xaml.cs">
+      <DependentUpon>DisplayCountControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EventConfigurationControl.xaml.cs">
+      <DependentUpon>EventConfigurationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EventDetailControl.xaml.cs">
+      <DependentUpon>EventDetailControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EventConfigTabControl.xaml.cs">
+      <DependentUpon>EventConfigTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EventRecordControl.xaml.cs">
+      <DependentUpon>EventRecordControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\AboutTabControl.xaml.cs">
+      <DependentUpon>AboutTabControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\FeedbackControl.xaml.cs">
+      <DependentUpon>FeedbackControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\InspectTabsControl.xaml.cs">
+      <DependentUpon>InspectTabsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TestTabs\ColorContrast.xaml.cs">
+      <DependentUpon>ColorContrast.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WhatsNew\WhatsNewControl.xaml.cs">
+      <DependentUpon>WhatsNewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ColorStringConverter.cs" />
+    <Compile Include="Converters\TreeNodeToMarginConverter.cs" />
+    <Compile Include="Dialogs\EyedropperWindow.xaml.cs">
+      <DependentUpon>EyedropperWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Enums\EventConfigNodeType.cs" />
+    <Compile Include="Misc\ListViewSelectionLock.cs" />
+    <Compile Include="Settings\ConfigurationManager.cs" />
+    <Compile Include="Settings\Layout.cs" />
+    <Compile Include="Controls\TestTabs\AutomatedChecksControl.xaml.cs">
+      <DependentUpon>AutomatedChecksControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HierarchyControl.xaml.cs">
+      <DependentUpon>HierarchyControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TestTabs\TabStopControl.xaml.cs">
+      <DependentUpon>TabStopControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IModeControl.cs" />
+    <Compile Include="Controls\NPISlider.cs" />
+    <Compile Include="Controls\PatternInfoControl.xaml.cs">
+      <DependentUpon>PatternInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ProgressRingControl.xaml.cs">
+      <DependentUpon>ProgressRingControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\PropertyInfoControl.xaml.cs">
+      <DependentUpon>PropertyInfoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ScannerResultControl.xaml.cs">
+      <DependentUpon>ScannerResultControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\TestSettingsControl.xaml.cs">
+      <DependentUpon>TestSettingsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TextRangeControl.xaml.cs">
+      <DependentUpon>TextRangeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\ActionViewModelConverter.cs" />
+    <Compile Include="Converters\CheckStateConverter.cs" />
+    <Compile Include="Converters\ElementToSenderTextConverter.cs" />
+    <Compile Include="Converters\EventIdToEventNameConverter.cs" />
+    <Compile Include="Converters\A11yPropertyConverter.cs" />
+    <Compile Include="Converters\NegateBooleanConverter.cs" />
+    <Compile Include="Dialogs\AddTextRangeToCustomListDialog.xaml.cs">
+      <DependentUpon>AddTextRangeToCustomListDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ControlPatternDialog.xaml.cs">
+      <DependentUpon>ControlPatternDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\ElementInfoDialog.xaml.cs">
+      <DependentUpon>ElementInfoDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\EventConfigDialog.xaml.cs">
+      <DependentUpon>EventConfigDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\HotkeyGrabDialog.xaml.cs">
+      <DependentUpon>HotkeyGrabDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MessageDialog.xaml.cs">
+      <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\MoveTextRangeDialog.xaml.cs">
+      <DependentUpon>MoveTextRangeDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\PropertyConfigDialog.xaml.cs">
+      <DependentUpon>PropertyConfigDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TextPatternExplorerDialog.xaml.cs">
+      <DependentUpon>TextPatternExplorerDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\TextRangeFindDialog.xaml.cs">
+      <DependentUpon>TextRangeFindDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Interfaces\IMainWindow.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Settings\AppLayout.cs" />
+    <Compile Include="Settings\ConfigurationConstants.cs" />
+    <Compile Include="Settings\ConfigurationModel.cs" />
+    <Compile Include="Utilities\DirectoryManagement.cs" />
+    <Compile Include="Utilities\ExtensionMethods.cs" />
+    <Compile Include="Utilities\HelperMethods.cs" />
+    <Compile Include="Utilities\InstallationInfo.cs" />
+    <Compile Include="ViewModels\BaseActionViewModel.cs" />
+    <Compile Include="ViewModels\ByteArrayViewModel.cs" />
+    <Compile Include="ViewModels\ColorContrastViewModel.cs" />
+    <Compile Include="ViewModels\ApplicationSettingsViewModel.cs" />
+    <Compile Include="ViewModels\GeneralActionViewModel.cs" />
+    <Compile Include="ViewModels\EventConfigNodeViewModel.cs" />
+    <Compile Include="ViewModels\HierarchyNodeViewModel.cs" />
+    <Compile Include="ViewModels\NotSupportedActionViewModel.cs" />
+    <Compile Include="ViewModels\PatternViewModel.cs" />
+    <Compile Include="ViewModels\FingerprintListViewItemModel.cs" />
+    <Compile Include="ViewModels\PropertyListViewItemModel.cs" />
+    <Compile Include="ViewModels\ReturnA11yElementsViewModel.cs" />
+    <Compile Include="ViewModels\RuleResultViewModel.cs" />
+    <Compile Include="ViewModels\ScanListViewItemViewModel.cs" />
+    <Compile Include="ViewModels\TabStopItemViewModel.cs" />
+    <Compile Include="ViewModels\TargetActionViewAttribute.cs" />
+    <Compile Include="ViewModels\TeamProjectViewModel.cs" />
+    <Compile Include="ViewModels\TextAttributeViewModel.cs" />
+    <Compile Include="ViewModels\TextRangeActionViewModel.cs" />
+    <Compile Include="ViewModels\TextRangeViewModel.cs" />
+    <Compile Include="ViewModels\TwoStateButtonViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <EmbeddedResource Include="FileBug\BugFileForm.resx">
+      <DependentUpon>BugFileForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.SharedUx.dll" />
+  </ItemGroup>
+  <Import Project="..\..\build\settings.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
+      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
+      <Name>Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
+      <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
+      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
+      <Name>RuleSelection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
+      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
+      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
+      <Name>DesktopUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
+      <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
+      <Name>Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
+      <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Icons\BrandIcon.ico" />
+    <Resource Include="Resources\Icons\BrandIcon_white.ico" />
+    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\BrandIconDesktop.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\BrandIcon_256x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.CodeQuality.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.CodeQuality.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetCore.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetCore.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetCore.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetFramework.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.NetFramework.Analyzers.2.6.2\analyzers\dotnet\cs\Microsoft.NetFramework.CSharp.Analyzers.dll" />
+    <Analyzer Include="..\packages\Text.Analyzers.2.6.2\analyzers\dotnet\cs\Text.Analyzers.dll" />
+    <Analyzer Include="..\packages\Text.Analyzers.2.6.2\analyzers\dotnet\cs\Text.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="SHDocVw">
+      <Guid>{EAB22AC0-30C1-11CF-A7EB-0000C05BAE0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>1</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\build\Microsoft.CodeQuality.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeQuality.Analyzers.2.6.2\build\Microsoft.CodeQuality.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.6.2\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.6.2\build\Microsoft.NetCore.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.6.2\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.6.2\build\Microsoft.NetFramework.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Text.Analyzers.2.6.2\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Text.Analyzers.2.6.2\build\Text.Analyzers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets'))" />
+  </Target>
+  <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
+</Project>

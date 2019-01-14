@@ -1,0 +1,31 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.SettingsTabs.FeedbackControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid Margin="15,17,15,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left" FontWeight="SemiBold"><Run Text="{x:Static Properties:Resources.FeedbackControl_questions}"/>
+            <Hyperlink Name="hlLink" RequestNavigate="hlLink_RequestNavigate"
+                       AutomationProperties.Name="{x:Static Properties:Resources.hlLinkAutomationPropertiesName}"
+                       TextDecorations="None" NavigateUri="https://aka.ms/accessibilityinsights-stackoverflow"
+                       FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                https://aka.ms/accessibilityinsights-stackoverflow
+            </Hyperlink>
+        </TextBlock>
+    </Grid>
+</UserControl>

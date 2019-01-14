@@ -1,0 +1,56 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<misc:UserControlWithPanes x:Class="AccessibilityInsights.Modes.EventModeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+             xmlns:a11yInsights="clr-namespace:AccessibilityInsights"
+             xmlns:misc="clr-namespace:AccessibilityInsights.Misc"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             mc:Ignorable="d"
+             AutomationProperties.Name="{x:Static properties:Resources.EventModeControlAutomationPropertiesName}" Height="600" Width="600"
+             IsVisibleChanged="UserControl_IsVisibleChanged">
+    <Grid Panel.ZIndex="1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="columnSnap" Width="410"/>
+            <ColumnDefinition x:Name="columnInfo" Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0" Grid.Row="1">
+            <local:EventRecordControl x:Name="ctrlEvents"
+                                          VerticalAlignment="Stretch"
+                                          Grid.Row="1"
+                                          Margin="8"
+                                      KeyboardNavigation.TabNavigation="Cycle">
+                <local:EventRecordControl.InputBindings>
+                    <KeyBinding Command="{x:Static a11yInsights:MainWindow.F6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"/>
+                </local:EventRecordControl.InputBindings>
+            </local:EventRecordControl>
+        </Grid>
+        <GridSplitter x:Name="gsMid" Grid.RowSpan="2"
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                        Grid.Column="0"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Right"
+                        ResizeDirection="Columns"
+                        BorderBrush="Gray" BorderThickness="1"
+                        AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
+                        AutomationProperties.HelpText="{x:Static properties:Resources.gsMidAutomationPropertiesHelpText}"/>
+        <local:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="Events" AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsAutomationPropertiesName}"
+                                  KeyboardNavigation.TabNavigation="Cycle" Grid.RowSpan="2">
+            <local:InspectTabsControl.InputBindings>
+                <KeyBinding Command="{x:Static a11yInsights:MainWindow.ShiftF6Command}"
+                            CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=FrameworkElement}}"
+                            Key="F6"
+                            Modifiers="Shift"/>
+            </local:InspectTabsControl.InputBindings>
+        </local:InspectTabsControl>
+    </Grid>
+</misc:UserControlWithPanes>
