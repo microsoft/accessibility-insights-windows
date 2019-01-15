@@ -7,6 +7,7 @@ variables:
   MAICreateNuget: 'true'
   PublicRelease: 'true'
   SignAppForRelease: 'true'
+  TeamName: 'Accessibility Insights Windows'
 
 jobs:
 - job: Release
