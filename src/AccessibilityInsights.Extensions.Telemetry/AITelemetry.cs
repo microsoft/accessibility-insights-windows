@@ -100,5 +100,21 @@ namespace AccessibilityInsights.Extensions.Telemetry
                 ContextProperties[property] = value;
             }
         }
+
+        /// <summary>
+        /// Report an Exception into the pipeline
+        /// </summary>
+        /// <param name="e">The Exception to report</param>
+        public void ReportException(Exception e)
+        {
+            if (e != null)
+            {
+                try
+                {
+                    TClient.TrackException(e);
+                }
+                catch { } // Don't try to report this Exception
+            }
+        }
     }
 }

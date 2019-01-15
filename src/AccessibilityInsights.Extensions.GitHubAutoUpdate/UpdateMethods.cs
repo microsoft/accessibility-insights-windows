@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.Deployment.WindowsInstaller;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 existingApp = installations.Any<ProductInstallation>();
             }
-            catch (ArgumentException)
+            catch (ArgumentException e)
             {
+                e.ReportException();
                 // occurs when the upgrade code is formatted incorrectly
                 // exception text: "Parameter is incorrect"
                 return null;

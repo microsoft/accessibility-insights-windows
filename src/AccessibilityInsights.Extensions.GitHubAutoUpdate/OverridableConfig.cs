@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -20,15 +22,26 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="configFile">The name of the file that contains the config data</param>
         internal OverridableConfig(string configFile)
         {
-            try
+            string fullPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), configFile);
+            if (File.Exists(fullPath))
             {
-                string json = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), configFile));
-                _settings = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                try
+                {
+                    string json = File.ReadAllText(fullPath);
+                    if (json.Length > 0)
+                    {
+                        _settings = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+                        return;
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.ReportException();
+                }
             }
-            catch
-            {
-                _settings = new Dictionary<string, string>();
-            }
+
+            // This is our typical path
+            _settings = new Dictionary<string, string>();
         }
 
         /// <summary>

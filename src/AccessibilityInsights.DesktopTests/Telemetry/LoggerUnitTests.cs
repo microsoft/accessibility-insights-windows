@@ -106,7 +106,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
             {
                 ShimLogger.IsEnabledGet = () => false;
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Automation_Invoke_Snapshot, 
+                Logger.PublishTelemetryEvent(TelemetryAction.Automation_Invoke_Snapshot,
                     TelemetryProperty.By, "abc");
             }
         }
@@ -238,6 +238,104 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
 
                 Assert.AreEqual(expectedProperty.ToString(), actualProperty);
                 Assert.AreEqual(expectedValue, actualValue);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_IsNotEnabled_DoesNotChainThrough()
+        {
+            using (ShimsContext.Create())
+            {
+                Exception expectedException = new Exception("blah");
+
+                StubITelemetry telemetry = new StubITelemetry
+                {
+                    ReportExceptionException = (e) =>
+                    {
+                        Assert.Fail("This should not be called");
+                    }
+                };
+
+                ShimLogger.IsEnabledGet = () => false;
+                ShimLogger.TelemetryGet = () => telemetry;
+
+                Logger.ReportException(expectedException);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_IsEnabled_ExceptionIsNull_DoesNotChainThrough()
+        {
+            using (ShimsContext.Create())
+            {
+                Exception expectedException = null;
+                Exception actualException = null;
+
+                StubITelemetry telemetry = new StubITelemetry
+                {
+                    ReportExceptionException = (e) =>
+                    {
+                        Assert.Fail("This should not be called");
+                    }
+                };
+
+                ShimLogger.IsEnabledGet = () => true;
+                ShimLogger.TelemetryGet = () => telemetry;
+
+                Logger.ReportException(expectedException);
+                Assert.IsNull(actualException);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_IsEnabled_ExceptionIsNotNull_ChainsThrough()
+        {
+            using (ShimsContext.Create())
+            {
+                Exception expectedException = new Exception("blah");
+                Exception actualException = null;
+
+                StubITelemetry telemetry = new StubITelemetry
+                {
+                    ReportExceptionException = (e) =>
+                    {
+                        actualException = e;
+                    }
+                };
+
+                ShimLogger.IsEnabledGet = () => true;
+                ShimLogger.TelemetryGet = () => telemetry;
+
+                Logger.ReportException(expectedException);
+                Assert.AreSame(expectedException, actualException);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_CalledAsExtension_IsEnabled_ExceptionIsNotNull_ChainsThrough()
+        {
+            using (ShimsContext.Create())
+            {
+                Exception expectedException = new Exception("blah");
+                Exception actualException = null;
+
+                StubITelemetry telemetry = new StubITelemetry
+                {
+                    ReportExceptionException = (e) =>
+                    {
+                        actualException = e;
+                    }
+                };
+
+                ShimLogger.IsEnabledGet = () => true;
+                ShimLogger.TelemetryGet = () => telemetry;
+
+                expectedException.ReportException();
+                Assert.AreSame(expectedException, actualException);
             }
         }
     }

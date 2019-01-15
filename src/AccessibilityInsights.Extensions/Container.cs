@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
@@ -22,6 +23,8 @@ namespace AccessibilityInsights.Extensions
         private ResolveEventHandler _assemblyEventResolver;
         private readonly IEnumerable<string> _extensionPaths;
         const string ExtensionSearchPattern = "*.extensions.*.dll";
+
+        internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
         /// <summary>
         /// Get all the extension sub folder names under ...\AccessibilityInsights\Extensions directory
@@ -112,6 +115,21 @@ namespace AccessibilityInsights.Extensions
         #region static members
         readonly static object _lockObject = new object();
         static Container _defaultInstance = null;
+
+        /// <summary>
+        /// Report an Exception via ReportedExceptionEvent
+        /// </summary>
+        /// <param name="e">The Exception to buffer</param>
+        /// <param name="sender">The sender (can be null)</param>
+        internal static void ReportException(Exception e, object sender)
+        {
+            if (e != null && ReportedExceptionEvent != null)
+            {
+                ReportExceptionEventArgs args = new ReportExceptionEventArgs();
+                args.ReportedException = e;
+                ReportedExceptionEvent(sender, args);
+            }
+        }
 
         public static Container GetDefaultInstance()
         {

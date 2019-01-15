@@ -13,24 +13,38 @@ namespace AccessibilityInsights.Desktop.Telemetry
     /// </summary>
     public static class Logger
     {
+        // Use this within the class to get the ITelemetry interface
         private static ITelemetry Telemetry => Container.GetDefaultInstance()?.Telemetry;
 
         /// <summary>
-        /// Check if extension exists or not
+        /// Whether or not the extension is available
         /// </summary>
-        public static bool ExtensionExists => Telemetry != null;
+        private static bool IsTelemetryAvailable => Telemetry != null;
+
+        // Fields used for ReportException plumbing
+        private static bool IsTelemetryAllowedBackingValue = false;
+        private static bool IsReportExceptionHandlerAttached = false;
+        private readonly static object LockObject = new object();
+        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer();
 
         /// <summary>
         /// Whether or not telemetry toggle button is enabled in the settings.
         /// </summary>
-        public static bool IsTelemetryAllowed { get; set; } = false;
-
+        public static bool IsTelemetryAllowed
+        {
+            get => IsTelemetryAllowedBackingValue;
+            set
+            {
+                IsTelemetryAllowedBackingValue = value;
+                ReportExceptionBuffer.EnableForwarding();
+            }
+        }
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
-        public static bool IsEnabled => ExtensionExists && IsTelemetryAllowed;
+        public static bool IsEnabled => IsTelemetryAvailable && IsTelemetryAllowed;
 
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
@@ -83,6 +97,18 @@ namespace AccessibilityInsights.Desktop.Telemetry
             }
         }
 
+        /// <summary>
+        /// Report an Exception into the pipeline
+        /// </summary>
+        /// <param name="e">The Exception to report</param>
+        public static void ReportException(this Exception e)
+        {
+            if (IsEnabled && e != null)
+            {
+                Telemetry.ReportException(e);
+            }
+        }
+
         internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
         {
             if (properties == null || !properties.Any())
@@ -96,6 +122,32 @@ namespace AccessibilityInsights.Desktop.Telemetry
             }
 
             return output;
+        }
+
+        /// <summary>
+        /// Forward exceptions from the event handler to the logger
+        /// </summary>
+        private static void OnReportedException(object sender, ReportExceptionEventArgs args)
+        {
+            ReportExceptionBuffer.ReportException(args.ReportedException, ReportException);
+        }
+
+        /// <summary>
+        /// Attach the handler only once, no matter how many times this method gets called
+        /// </summary>
+        public static void AttachReportExceptionHandler()
+        {
+            if (!IsReportExceptionHandlerAttached)
+            {
+                lock (LockObject)
+                {
+                    if (!IsReportExceptionHandlerAttached)
+                    {
+                        Container.ReportedExceptionEvent += OnReportedException;
+                        IsReportExceptionHandlerAttached = true;
+                    }
+                }
+            }
         }
     }
 }
