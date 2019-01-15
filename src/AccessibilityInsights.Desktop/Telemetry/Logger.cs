@@ -36,6 +36,7 @@ namespace AccessibilityInsights.Desktop.Telemetry
             set
             {
                 IsTelemetryAllowedBackingValue = value;
+                AttachReportExceptionHandler();
                 ReportExceptionBuffer.EnableForwarding();
             }
         }
