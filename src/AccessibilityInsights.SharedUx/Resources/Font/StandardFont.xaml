@@ -1,0 +1,12 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <sys:Double x:Key="SmallTextSize">12</sys:Double>
+    <sys:Double x:Key="StandardTextSize">14</sys:Double>
+    <sys:Double x:Key="LargeTextSize">15</sys:Double>
+    <sys:Double x:Key="ExtraLargeTextSize">20</sys:Double>
+    <sys:Double x:Key="ExpanderCollapsedHeight">32</sys:Double>
+</ResourceDictionary>

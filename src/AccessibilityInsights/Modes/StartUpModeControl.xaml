@@ -1,0 +1,128 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.Modes.StartUpModeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AccessibilityInsights.Modes"
+             xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+             mc:Ignorable="d"
+             xmlns:whatsNew="clr-namespace:AccessibilityInsights.SharedUx.Controls.WhatsNew;assembly=AccessibilityInsights.SharedUx"
+             AutomationProperties.Name="{x:Static properties:Resources.StartUpModeControlAutomationPropertiesName}" Height="700" Width="700">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource ResourceKey=LightGreyBrush}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="72"/>
+            <RowDefinition Height="250"/>
+            <RowDefinition Height="6"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="12"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="12"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="32"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="18"/>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="94"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Name="tbVideo" Padding="16,10" FontSize="22" FontWeight="Light" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap"><Run Text="{x:Static properties:Resources.tbVideoText1}" /><LineBreak/><Run Text="{x:Static properties:Resources.tbVideoText2}" /></TextBlock>
+                <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="1" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.Name="{x:Static properties:Resources.btnVideoAutomationPropertiesName}" VerticalAlignment="Top">
+                    <Grid>
+                        <Image Width="240" Height="121" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
+                        <Border Opacity=".40" Name="bdOverlay">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="#403E3E"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=btnVideo,Path=IsMouseOver}" Value="True">
+                                            <Setter Property="Background" Value="#0C5086"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+                        </Border>
+                        <Border Width="20" Height="20" Background="#0C5086" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <fabric:FabricIconControl Foreground="#FFFFFF" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Button>
+            </Grid>
+        </Border>
+        <Border Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <StackPanel>
+                <whatsNew:WhatsNewControl/>
+                <TextBlock FontWeight="SemiBold" Margin="12,10" Grid.Row="2" Style="{StaticResource TbFocusable}"><Run Text="{x:Static properties:Resources.moreInformationText}"/><Run Text=" "/><Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://aka.ms/A11ymaiwhatsnew">aka.ms/A11ywhatsnew</Hyperlink></TextBlock>
+            </StackPanel>
+        </Border>
+        <Border Grid.Column="1" Grid.Row="4" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="66"/>
+                    <ColumnDefinition Width="14"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="9"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="24"/>
+                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10" FontSize="22" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="Light"><Run Text="{x:Static properties:Resources.helpfulShortcutsText}"/></TextBlock>
+                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource BrdrKey}">
+                    <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,1"/>
+                </Border>
+                <TextBlock Style="{StaticResource TbFocusable}" Grid.Row="1" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}"/>
+                <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}">
+                    <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,1"/>
+                </Border>
+                <TextBlock Style="{StaticResource TbFocusable}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}"/>
+                <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BrdrKey}">
+                    <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,1"/>
+                </Border>
+                <TextBlock Grid.Row="5" Grid.Column="3" Style="{StaticResource TbFocusable}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}"/>
+            </Grid>
+        </Border>
+        <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="14"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="14"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Content="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="24" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Padding="0" FontWeight="Light" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
+                    Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlue}"/>
+            <CheckBox Grid.Row="1" Content="{x:Static properties:Resources.ckbxDontShowContent}" VerticalAlignment="Bottom" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="SemiBold" Margin="0,18,0,0" Style="{StaticResource CkbxLeftSide}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+        </Grid>
+        <Grid Grid.ColumnSpan="8" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="Grid_MouseDown" Background="Transparent">
+            <Button x:Name="btnClose" Margin="0,12,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource BtnStandard}" Click="btnExit_Click" AutomationProperties.Name="{x:Static properties:Resources.btnCloseScreenAutomationPropertiesName}" Width="18" Height="18">
+                <fabric:FabricIconControl GlyphName="Clear" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="16"/>
+            </Button>
+        </Grid>
+    </Grid>
+</UserControl>

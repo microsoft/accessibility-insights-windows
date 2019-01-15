@@ -1,0 +1,64 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="WildlifeManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WildlifeManager"
+        mc:Ignorable="d"
+        Title="Wildlife Manager 2.0" Height="780" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="97.288"/>
+            <ColumnDefinition Width="251.712"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="51"/>
+            <RowDefinition Height="96"/>
+            <RowDefinition Height="92"/>
+            <RowDefinition Height="146"/>
+            <RowDefinition Height="103"/>
+            <RowDefinition Height="134"/>
+            <RowDefinition Height="91"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" Width="77" Margin="107.712,28,0,28" Grid.Row="7" Grid.Column="2">
+            <Glyphs VerticalAlignment="Center"
+                        UnicodeString="&#x263A;"
+                        Fill="#004000"
+                        FontRenderingEmSize="32"
+                        FontUri="C:\Windows\Fonts\Arial.ttf" RenderTransformOrigin="2.442,0.578" />
+        </Button>
+        <ListView Margin="10,10,66,56" Grid.Row="4" Grid.Column="2">
+            <ListViewItem Content="Beetle"/>
+            <ListViewItem Content="Owl"/>
+            <ListViewItem Content="Mouse" />
+        </ListView>
+        <DataGrid Width="215" HorizontalAlignment="Left" Margin="66,10,0,26" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Species" />
+                <DataGridTextColumn Header="Weight" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox Margin="10,11,66,18" Grid.Row="5" Grid.Column="2" />
+        <UserControl HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" Width="349" Background="Cyan" Content="Add New Animal" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" Margin="0,33,0,10" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+        <Menu Margin="81,10,83,99" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
+            <MenuItem Header="Flags">
+                <MenuItem Header="_Endangered" IsChecked="True" />
+                <MenuItem Header="_Fun"/>
+            </MenuItem>
+        </Menu>
+        <TextBlock TextWrapping="Wrap" Margin="10,10,96,46" Text="Wildlife Manager" Grid.Row="0" FontSize="16" Grid.Column="2" FontWeight="Bold" Grid.RowSpan="2"/>
+        <TextBlock TextWrapping="Wrap" Margin="10,26,123,10" Text="Current Animals:" Grid.Row="1" Grid.Column="2"/>
+        <TextBlock VerticalAlignment="Center" Margin="52,11,0,68" Height="24" Text="Weight:" Grid.Row="5" Grid.Column="1"/>
+        <TextBlock TextWrapping="Wrap" Margin="50,10,0,110" Text="Species:" RenderTransformOrigin="0.379,0.838" Grid.Row="4" Grid.Column="1"/>
+        <Button Width="71" Foreground="#0070FF" Background="LightBlue" HorizontalAlignment="Left" Margin="53,28,0,28" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" >
+           Cancel
+        </Button>
+    </Grid>
+</Window>

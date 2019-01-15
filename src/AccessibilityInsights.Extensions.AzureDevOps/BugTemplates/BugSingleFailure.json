@@ -1,0 +1,4 @@
+﻿{
+  "Title": "@[RuleSource]@: (@[ProcessName]@/@[Glimpse]@) @[RuleDescription]@",
+  "Tags": "A11y;Accessibility;@[RuleSource]@"
+}

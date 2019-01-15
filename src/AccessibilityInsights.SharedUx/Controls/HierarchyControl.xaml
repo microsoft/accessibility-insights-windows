@@ -1,0 +1,249 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.HierarchyControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="310"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControlAutomationPropertiesName}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+                <ResourceDictionary>
+                    <ContextMenu x:Key="ExpandDescendantsPopup" x:Name="ctxMenu" Style="{StaticResource menuPlainWhite}">
+                        <MenuItem IsCheckable="False" Click="MenuItem_Click">
+                            <MenuItem.Style>
+                                <Style TargetType="MenuItem" BasedOn="{StaticResource miFabIcon}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="true">
+                                            <Setter Property="Header" Value="{x:Static Properties:Resources.SetterValueTest}"/>
+                                            <Setter Property="Tag" Value="TestBeaker"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="false">
+                                            <Setter Property="Header" Value="{x:Static Properties:Resources.SetterValueExpandAllDescendants}"/>
+                                            <Setter Property="Tag" Value="DOM"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </MenuItem.Style>
+                        </MenuItem>
+                        <MenuItem IsCheckable="False" Click="mniFileBug_Click" 
+                                  Header="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemHeaderNewBug}'}" 
+                                  AutomationProperties.Name="{Binding StringFormat='{}Bug {0}',Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemAutomationPropertiesName}'}"
+                                  Visibility="{Binding FileBugVisibility}">
+                            <MenuItem.Style>
+                                <Style TargetType="MenuItem" BasedOn="{StaticResource miFabIcon}">
+                                    <Setter Property="MenuItem.HeaderStringFormat" Value="{x:Static Properties:Resources.SetterValueBug}"/>
+                                    <Setter Property="Tag" Value="LadyBugSolid"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="true">
+                                            <Setter Property="MenuItem.Visibility" Value="Collapsed"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="false">
+                                            <Setter Property="MenuItem.Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=BugIdString, Mode=OneWay}" Value="{x:Null}">
+                                            <Setter Property="MenuItem.HeaderStringFormat" Value="{x:Null}"/>
+                                            <Setter Property="Tag" Value="Add"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </MenuItem.Style>
+                        </MenuItem>
+                    </ContextMenu>
+                    <ContextMenu x:Key="cmLive" FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
+                        <MenuItem Tag="LightningBolt" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderListenToEvents}" Click="mniEvents_Click" Style="{StaticResource miFabIcon}"/>
+                        <MenuItem Tag="Add" Visibility ="{Binding FileBugVisibility}" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderNewBug}" Click="mniFileBugLive_Click" Style="{StaticResource miFabIcon}"/>
+                    </ContextMenu>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:TreeNodeToMarginConverter x:Key="nodeMargin"></converters:TreeNodeToMarginConverter>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid KeyboardNavigation.DirectionalNavigation="Contained">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1"  Margin="0,0,0,5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=LightGreyBrush}">
+                <DockPanel>
+                    <fabric:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <Grid>
+                        <TextBlock IsHitTestVisible="False" Name="tbSearch" VerticalAlignment="Center" FontSize="{StaticResource ConstStandardTextSize}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                    <Setter Property="FontStyle" Value="Italic"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
+                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="True">
+                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
+                         AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
+                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                         Height="24"
+                         HorizontalAlignment="Stretch"
+                         VerticalContentAlignment="Center"
+                         Style="{StaticResource StandardTextBox}" AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}"
+                         BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                         Background="Transparent"  GotKeyboardFocus="textboxSearch_GotKeyboardFocus" LostKeyboardFocus="textboxSearch_LostKeyboardFocus"/>
+                    </Grid>
+                </DockPanel>
+            </Border>
+            <Button x:Name="btnSetting" Grid.Column="1" Margin="0,0,8,0"
+                  BorderThickness="0"  HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                  Height="28" Width="35" 
+                  Style="{StaticResource BtnStandard}"
+                  AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName1}"
+                    ToolTip="{x:Static Properties:Resources.btnSettingToolTip1}">
+                <i:Interaction.Behaviors>
+                    <behaviors:KeyboardToolTipButtonBehavior/>
+                    <behaviors:DropDownButtonBehavior/>
+                </i:Interaction.Behaviors>
+                <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <Button.ContextMenu>
+                    <ContextMenu FlowDirection="LeftToRight">
+                        <MenuItem Header="Tree view" FontWeight="Bold" IsEnabled="False" IsCheckable="True"/>
+                        <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
+                            <MenuItem.Header>
+                                <RadioButton x:Name="rbRaw" Content="_Raw" Loaded="mniRaw_Loaded" Click="rbRaw_Click" Focusable="False" />
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem x:Name="mniControl" IsCheckable="False" Click="mniControl_Click" 
+                                  AutomationProperties.Name="{x:Static Properties:Resources.mniControlAutomationPropertiesName}">
+                            <MenuItem.Header>
+                                <RadioButton x:Name="rbControl" Content="_Control" Loaded="mniControl_Loaded" Click="rbControl_Click" Focusable="False" />
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <MenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName1}">
+                            <MenuItem.Header>
+                                <RadioButton x:Name="rbContent" Content="Con_tent" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
+                            </MenuItem.Header>
+                        </MenuItem>
+                        <Separator/>
+                        <MenuItem Header="Show _Ancestry" x:Name="mniShowAncestry" IsCheckable="True" 
+                                  Loaded="mniShowAncestry_Loaded" Click="mniShowAncestry_Click"/>
+                        <MenuItem Header="Show _Uncertain results" x:Name="mniShowUncertain" IsCheckable="True" 
+                                  Click="mniShowUncertain_Click" Loaded="mniShowUncertain_Loaded"/>
+                    </ContextMenu>
+                </Button.ContextMenu>
+            </Button>
+        </Grid>
+        <Grid ClipToBounds="True"  Grid.Row="3">
+            <TreeView x:Name="treeviewHierarchy"
+                      ScrollViewer.ScrollChanged="treeviewHierarchy_ScrollChanged"
+                      Margin="0,0,2,0"
+                      IsTextSearchEnabled="True" 
+                      SelectedItemChanged="treeviewHierarchy_SelectedItemChanged" 
+                      AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_treeviewHierarchyAutomationName}"
+                      FontSize="12" BorderThickness="0"
+                      VirtualizingPanel.IsVirtualizing="False"
+                      HorizontalContentAlignment="Left"
+                      Grid.IsSharedSizeScope="True" GotFocus="treeviewHierarchy_GotFocus">
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="TreeViewItem" BasedOn="{StaticResource ResourceKey=tviStandard}">
+                        <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Setter Property="Visibility" Value="{Binding Path=Visibility, Mode=OneWay}"/>
+                        <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Setter Property="AutomationProperties.Name" Value="{Binding Path=AutomationName, Mode=OneWay}"/>
+                        <EventSetter Event="RequestBringIntoView" Handler="TreeViewItem_RequestBringIntoView"/>
+                        <EventSetter Event="Selected" Handler="OnSelected"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsLiveMode}" Value="False">
+                                <Setter Property="ContextMenu" Value="{StaticResource ExpandDescendantsPopup}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsLiveMode}" Value="True">
+                                <Setter Property="ContextMenu" Value="{StaticResource cmLive}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                        <StackPanel Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left">
+                            <fabric:DualFabricIconControl Name="fabicnError" IconSizeBack="{Binding Path=IconSizeBack, Mode=OneWay}" IconSizeFront="{Binding Path=IconSizeFront, Mode=OneWay}" Visibility="{Binding Path=IconVisibility, Mode=OneWay}" GlyphNameFront="{Binding Path=IconFront}" GlyphNameBack="{Binding Path=IconBack}" Margin="0,2,2,0"/>
+                            <TextBlock Text="{Binding Path=Header}" Style="{DynamicResource VarStandardTextBlock}" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+            <Button Name="btnTestElement" AutomationProperties.Name="{x:Static Properties:Resources.btnTestElementAutomationPropertiesName}" HorizontalAlignment="Right" Width="24" Height="24" Margin="0,18,32,0"
+                    VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed" KeyDown="FloatingButton_KeyDown" BorderThickness="2" BorderBrush="{x:Null}">
+                <i:Interaction.Behaviors>
+                    <behaviors:KeyboardToolTipButtonBehavior/>
+                </i:Interaction.Behaviors>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                        <Setter Property="Button.ToolTip">
+                            <Setter.Value>
+                                <ToolTip>Test Element</ToolTip>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <fabric:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="14"/>
+            </Button>
+            <Button x:Name="btnMenu" Grid.Column="1" Margin="0,18,4,0"
+                   HorizontalAlignment="Right" VerticalContentAlignment="Center"
+                    VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed"
+                     Height="24" MinWidth="24" KeyDown="FloatingButton_KeyDown"
+                     BorderThickness="2" BorderBrush="{x:Null}"
+                  AutomationProperties.Name="{x:Static Properties:Resources.btnMenuAutomationPropertiesName}">
+                <i:Interaction.Behaviors>
+                    <behaviors:DropDownButtonBehavior/>
+                    <behaviors:KeyboardToolTipButtonBehavior/>
+                </i:Interaction.Behaviors>
+                <fabric:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <Button.Style>
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                        <Setter Property="Button.ToolTip" Value="{x:Static Properties:Resources.SetterValueMoreOptions}" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding IsLiveMode}" Value="False">
+                                <Setter Property="ContextMenu" Value="{StaticResource ExpandDescendantsPopup}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsLiveMode}" Value="True">
+                                <Setter Property="ContextMenu" Value="{StaticResource cmLive}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
+        <TextBlock x:Name="tbTimeSpan" Grid.Row="4" VerticalAlignment="Center" AutomationProperties.Name="{x:Static Properties:Resources.tbTimeSpanAutomationPropertiesName}"/>
+    </Grid>
+</UserControl>

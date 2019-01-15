@@ -1,0 +1,55 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.Modes.TestModeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:TestTabViews="clr-namespace:AccessibilityInsights.SharedUx.Controls.TestTabs;assembly=AccessibilityInsights.SharedUx"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:enums="clr-namespace:AccessibilityInsights.SharedUx.Enums;assembly=AccessibilityInsights.SharedUx"
+             xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             mc:Ignorable="d"
+             Height="600" Width="600"
+             AutomationProperties.Name="{x:Static properties:Resources.TestModeControlAutomationPropertiesName}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="34"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border BorderBrush="LightGray" BorderThickness="1" Padding="4" Margin="0" Grid.Row="1">
+            <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" UseLayoutRounding="False" BorderBrush="#FFEAEAEA" ItemContainerStyle="{StaticResource tabItemStyle}" SelectionChanged="TabControl_SelectionChanged">
+                <TabItem IsEnabled="False" AutomationProperties.LabeledBy="{Binding ElementName=lblFastpass}">
+                    <TabItem.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="14"/>
+                                <ColumnDefinition Width="4"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="#333333"/>
+                            <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top"/>
+                        </Grid>
+                    </TabItem.Header>
+                </TabItem>
+                <TabItem x:Name="tbiAutomatedChecks" Header="{x:Static properties:Resources.tbiAutomatedChecksHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiAutomatedChecksAutomationPropertiesName}" IsSelected="True">
+                    <TestTabViews:AutomatedChecksControl x:Name="ctrlAutomatedChecks" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </TabItem>
+                <TabItem x:Name="tbiTabStop" Header="{x:Static properties:Resources.tbiTabStopHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiTabStopAutomationPropertiesName}">
+                    <TestTabViews:TabStopControl x:Name="ctrlTabStop" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+                </TabItem>
+            </TabControl>
+        </Border>
+        <controls:ProgressRingControl Size="30" 
+                                   x:Name="ctrlProgressRing"
+                                   Visibility="Collapsed"
+                                   WithSound="True"
+                                   Grid.Row="1" Grid.Column="1"/>
+        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible"  FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top"><Run Text="To run tests, select Live Inspect and click on the beaker in the highlighted element or press "/><Run Name="runHotkey" Text="Shift + F8"/><Run Text="."/></TextBlock>
+    </Grid>
+</UserControl>
+

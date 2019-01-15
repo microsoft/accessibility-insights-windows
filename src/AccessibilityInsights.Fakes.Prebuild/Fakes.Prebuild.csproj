@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{149576B1-9947-4BE0-9008-DFFD0DA36E00}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AccessibilityInsights.Fakes.Prebuild</RootNamespace>
+    <AssemblyName>AccessibilityInsights.Fakes.Prebuild</AssemblyName>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Sarif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=21a5e83f6f5bb844, processorArchitecture=MSIL">
+      <HintPath>..\packages\Sarif.Sdk.2.0.0-csd.2.beta.2018-10-10\lib\net461\Sarif.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Actions.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Automation.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Core.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Desktop.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Extensions.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Extensions.AzureDevOps.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.RuleSelection.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="mscorlib.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
+      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
+      <Name>Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Automation\Automation.csproj">
+      <Project>{ae5ec69f-158a-41c8-ad2b-ec7b84d820ef}</Project>
+      <Name>Automation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
+      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj">
+      <Project>{58dbf9fe-0029-408f-a8a4-23ae500e938d}</Project>
+      <Name>Extensions.AzureDevOps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj">
+      <Project>{d17e1749-28fe-44b9-a9f6-af8985124fe4}</Project>
+      <Name>Extensions.Telemetry</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
+      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
+      <Name>RuleSelection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
+      <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
+      <Name>SharedUx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
+      <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="Sarif.fakes" />
+  </ItemGroup>
+  <ItemGroup>
+    <Fakes Include="AccessibilityInsights.Extensions.Telemetry.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
+    <None Include="app.config" />
+    <Fakes Include="AccessibilityInsights.SharedUx.fakes">
+      <SubType>Designer</SubType>
+    </Fakes>
+    <Fakes Include="System.Drawing.fakes" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

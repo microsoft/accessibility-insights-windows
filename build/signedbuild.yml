@@ -1,0 +1,202 @@
+name: $(date:yyyy-MM-dd)$(rev:.rr)
+trigger: none
+pr: none
+variables:
+  BuildPlatform: 'x86'
+  DropFolder: 'signed'
+  MAICreateNuget: 'true'
+  PublicRelease: 'true'
+  SignAppForRelease: 'true'
+
+jobs:
+- job: Release
+  pool: VSEng-MicroBuildVS2017
+  steps:
+  - task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@1
+    displayName: 'Install Localization Plugin'
+
+  - task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@1
+    displayName: 'Install Signing Plugin'
+    inputs:
+      signType: real
+
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 15.0
+      platform: '$(BuildPlatform)'
+      configuration: release
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\bin\release\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+    displayName: 'Run BinSkim '
+    inputs:
+      InputType: Basic
+      AnalyzeTarget: 'src\AccessibilityInsights\bin\Release\*.exe;src\AccessibilityInsights\bin\Release\*.dll;src\AccessibilityInsights.Automation\bin\Release\*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\*.dll;src\AccessibilityInsights.Extensions.ReferenceLinks\bin\Release\*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Release\*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\*.dll;'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
+    displayName: 'Create Security Analysis Report'
+    inputs:
+      CredScan: true
+      FxCop: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+    displayName: 'Publish Security Analysis Logs'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+    displayName: 'Post Analysis'
+    inputs:
+      CredScan: true
+      FxCop: true
+      FxCopBreakOn: CriticalError
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\*AccessibilityInsights.UI*.dll
+        !**\obj\**
+      uiTests: true
+      vsTestVersion: 15.0
+      codeCoverageEnabled: false
+      platform: '$(BuildPlatform)'
+      configuration: release
+      rerunFailedTests: true
+
+  - task: PublishSymbols@1
+    displayName: 'Index Sources'
+    inputs:
+      SearchPattern: '**\bin\**\*.pdb'
+    continueOnError: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: $(DropFolder)'
+    inputs:
+      PathtoPublish: 'src\MSI\bin\Release\msi'
+      ArtifactName: '$(DropFolder)'
+      publishLocation: FilePath
+      TargetPath: '$(DropRoot)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact (NuGet): AccessibilityInsights.Automation.Windows'
+    inputs:
+      PathtoPublish: 'src\AccessibilityInsights.CI\bin\Release\NuGet'
+      ArtifactName: '$(DropFolder)'
+      publishLocation: FilePath
+      TargetPath: '$(DropRoot)'
+    continueOnError: true
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: (NuGet): AccessibilityInsights.RulesLibrary'
+    inputs:
+      PathtoPublish: 'src\AccessibilityInsights.Rules\bin\Release\NuGet'
+      ArtifactName: '$(DropFolder)'
+      publishLocation: FilePath
+      TargetPath: '$(DropRoot)'
+    continueOnError: true
+
+  - task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
+    displayName: 'Publish Symbols'
+    inputs:
+      symbolServiceURI: 'https://microsoft.artifacts.visualstudio.com/DefaultCollection'
+      requestName: 'CollectionId/$(System.CollectionId)/ProjectId/$(System.TeamProjectId)/BuildId/$(Build.BuildId)'
+      sourcePath: '$(Build.ArtifactStagingDirectory)'
+      detailedLog: true
+      usePat: false
+
+  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+      
+  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
+    displayName: 'Perform Cleanup Tasks'
+    condition: succeededOrFailed()
+
+- job: Debug
+  pool: VSEng-MicroBuildVS2017
+  steps:
+  - task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@1
+    displayName: 'Install Localization Plugin'
+
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 15.0
+      platform: '$(BuildPlatform)'
+      configuration: debug
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\bin\debug\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-autoapplicability.AutoApplicability@1
+    displayName: 'Run AutoApplicability'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+    displayName: 'Run CredScan'
+    inputs:
+      debugMode: false
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-fxcop.FxCop@2
+    displayName: 'Run FxCop'
+    inputs:
+      inputType: Basic
+      targets: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Automation\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\AccessibilityInsights.*.dll'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
+    displayName: 'Create Security Analysis Report'
+    inputs:
+      CredScan: true
+      FxCop: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+    displayName: 'Publish Security Analysis Logs'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+    displayName: 'Post Analysis'
+    inputs:
+      CredScan: true
+      FxCop: true
+      FxCopBreakOn: CriticalError
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\** copy'
+    inputs:
+      testAssemblyVer2: |  
+        **\*test*.dll
+        !**\*AccessibilityInsights.UI*.dll
+        !**\obj\**
+      vsTestVersion: 15.0
+      codeCoverageEnabled: false
+      platform: '$(BuildPlatform)'
+      configuration: debug
+      rerunFailedTests: true
+      
+  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
+    displayName: 'Perform Cleanup Tasks'
+    condition: succeededOrFailed()

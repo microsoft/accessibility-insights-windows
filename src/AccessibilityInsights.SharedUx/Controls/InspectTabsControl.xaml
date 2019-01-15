@@ -1,0 +1,161 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.SharedUx.Controls.InspectTabsControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             mc:Ignorable="d" Background="{DynamicResource ResourceKey=UnselectedInspectTabBrush}" BorderThickness="0"
+             d:DesignHeight="300" d:DesignWidth="310">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
+    <TabControl Name="tabControlInspect" BorderThickness="0" SelectionChanged="TabControl_SelectionChanged">
+        <TabItem Name="tabDetails" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
+            <TabItem.Header>
+                <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextDetails}" Style="{StaticResource tbTabHead}"/>
+            </TabItem.Header>
+            <TabItem.InputBindings>
+                <KeyBinding Command="{x:Static controls:InspectTabsControl.PropertySettingsAcceleratorCommand}"
+                    Key="S"
+                    Modifiers="Alt"/>
+                <KeyBinding Command="{x:Static controls:InspectTabsControl.MoveFocusToPropertiesGridCommand}"
+                            Key="P"
+                            Modifiers="Alt"/>
+                <KeyBinding Command="{x:Static controls:InspectTabsControl.MoveFocusToPropertiesSearchCommand}"
+                            Key="E"
+                            Modifiers="Alt"/>
+                <KeyBinding Command="{x:Static controls:InspectTabsControl.MoveFocusToPatternsTreeCommand}"
+                            Key="A"
+                            Modifiers="Alt"/>
+                <KeyBinding Command="{x:Static controls:InspectTabsControl.MoveFocusToEventsMessagesCommand}"
+                            Key="V"
+                            Modifiers="Alt"/>
+            </TabItem.InputBindings>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="#A6A6A6" BorderThickness="0,0,0,1" >
+                    <Grid Margin="8,10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock 
+                           x:Name="tbElement" 
+                           VerticalAlignment="Center" 
+                           FontSize="{StaticResource ConstXXLTextSize}"
+                           FontWeight="Bold" 
+                           TextWrapping="Wrap"
+                           TextTrimming="CharacterEllipsis"
+                           Height="30" 
+                           AutomationProperties.Name="{x:Static Properties:Resources.tbElementAutomationPropertiesName}"/>
+                    </Grid>
+                </Border>
+                <Grid Grid.Row="1" Name="gdTab">
+                    <Grid.RowDefinitions>
+                        <RowDefinition x:Name="rowProperties" Height="7*" MinHeight="80"/>
+                        <RowDefinition x:Name="rowPatterns" Height="3*" MinHeight="80"/>
+                        <RowDefinition x:Name="rowEvents" Height="3*" MinHeight="80"/>
+                    </Grid.RowDefinitions>
+                    <Expander Grid.Row="0" IsExpanded="True" Style="{StaticResource expAccordion}"  AutomationProperties.Name="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}">
+                        <i:Interaction.Behaviors>
+                            <behaviors:ExpanderBehavior/>
+                        </i:Interaction.Behaviors>
+                        <Expander.Header>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" Target="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Content="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}" />
+                                <Button x:Name="btnSetting" Grid.Column="2"
+                                        BorderThickness="0"  HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center"
+                                        Height="22" Width="22" Padding="0"
+                                        Style="{StaticResource BtnStandard}"   
+                                        AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}"
+                                        ToolTip="{x:Static Properties:Resources.btnSettingToolTip2}">
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:KeyboardToolTipButtonBehavior/>
+                                        <behaviors:DropDownButtonBehavior/>
+                                    </i:Interaction.Behaviors>
+                                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                    <Button.ContextMenu>
+                                        <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
+                                            <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 
+                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
+                                            <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"
+                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}"/>
+                                        </ContextMenu>
+                                    </Button.ContextMenu>
+                                </Button>
+                            </Grid>
+                        </Expander.Header>
+                        <Grid x:Name="gridProperties" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,0,0.333,0">
+                            <controls:PropertyInfoControl x:Name="ctrlProperties" Margin="8" KeyboardNavigation.TabNavigation="Local"/>
+                        </Grid>
+                    </Expander>
+                    <GridSplitter x:Name="gsProperties"
+                                  Grid.Row="0" Style="{StaticResource gsStyle}"
+                                  ResizeBehavior="CurrentAndNext"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.gsPropertiesAutomationPropertiesName1}"
+                                  Grid.ColumnSpan="2"/>
+                    <Expander Grid.Row="1" IsExpanded="True" Style="{StaticResource expAccordion}">
+                        <i:Interaction.Behaviors>
+                            <behaviors:ExpanderBehavior/>
+                        </i:Interaction.Behaviors>
+                        <Expander.Header>
+                            <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labalFixFollowing" Content="{x:Static Properties:Resources.labalFixFollowingContent1}" />
+                        </Expander.Header>
+                        <Grid x:Name="gridPatterns" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
+                            <controls:PatternInfoControl x:Name="ctrlPatterns" Margin="0,4" KeyboardNavigation.TabNavigation="Local"/>
+                        </Grid>
+                    </Expander>
+                    <GridSplitter x:Name="gsEvents"
+                                  Grid.Row="1" Style="{StaticResource gsStyle}"
+                                  ResizeBehavior="CurrentAndNext"
+                                  AutomationProperties.Name="{x:Static Properties:Resources.gsEventsAutomationPropertiesName1}"
+                                  Grid.ColumnSpan="2"/>
+                    <Expander Name="expEvents" Grid.Row="2" IsExpanded="True" Style="{StaticResource expAccordion}">
+                        <i:Interaction.Behaviors>
+                            <behaviors:ExpanderBehavior/>
+                        </i:Interaction.Behaviors>
+                        <Expander.Header>
+                            <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" Content="{x:Static Properties:Resources.LabelContentEventDetails}" />
+                        </Expander.Header>
+                        <Grid x:Name="gridEvents" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
+                            <controls:EventDetailControl x:Name="ctrlEventMessage"
+                                                       Grid.Row="0"    Margin="8"                                                   
+                                                       Grid.ColumnSpan="2"
+                                                       />
+                        </Grid>
+                    </Expander>
+                    
+                </Grid>
+            </Grid>
+        </TabItem>
+        <TabItem Name="tabHowToFix" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
+            <TabItem.Header>
+                <TextBlock Text="{x:Static Properties:Resources.TextBlockTextHowToFix}" FontWeight="Bold" Style="{StaticResource tbTabHead}"/>
+            </TabItem.Header>
+            <controls:ScannerResultControl x:Name="ctrlTests"
+                                                       Grid.Row="0"                                                       
+                                                       Grid.ColumnSpan="2"
+                                                       />
+        </TabItem>
+        <TabItem Name="tabEvents" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
+            <TabItem.Header>
+                <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextCONFIGURATION}" Style="{StaticResource tbTabHead}"/>
+            </TabItem.Header>
+            <controls:EventConfigTabControl Margin="0,8"  x:Name="ctrlEventConfig"/>
+        </TabItem>
+    </TabControl>
+</UserControl>

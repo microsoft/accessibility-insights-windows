@@ -1,0 +1,35 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.DesktopUI.Controls.DualFabricIconControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AccessibilityInsights.DesktopUI.Controls"             
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style TargetType="local:FabricIconControl">
+            <Style.Triggers>
+                <Trigger Property="GlyphName" Value="AlertSolid">
+                    <Setter Property="Foreground" Value="#CC0000"/>
+                </Trigger>
+                <Trigger Property="GlyphName" Value="MapDirections">
+                    <Setter Property="Foreground" Value="#CC0000"/>
+                </Trigger>
+                <Trigger Property="GlyphName" Value="IncidentTriangle">
+                    <Setter Property="Foreground" Value="#FF8C00"/>
+                </Trigger>
+                <Trigger Property="GlyphName" Value="DOM">
+                    <Setter Property="Foreground" Value="#000000"/>
+                </Trigger>
+                <Trigger Property="GlyphName" Value="{x:Null}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <local:FabricIconControl x:Name="fabicnBack" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <local:FabricIconControl x:Name="fabicnFront" VerticalAlignment="Bottom" Margin="13,0,0,0"/>
+    </Grid>
+</UserControl>

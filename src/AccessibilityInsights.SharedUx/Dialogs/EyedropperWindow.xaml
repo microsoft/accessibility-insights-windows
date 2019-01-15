@@ -1,0 +1,49 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<Window x:Class="AccessibilityInsights.SharedUx.Dialogs.EyedropperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
+        xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+        mc:Ignorable="d"
+        Title="{x:Static Properties:Resources.EyedropperWindowWindowTitle}"
+        Background="White"
+        KeyDown="Window_KeyDown"
+        Closing="Window_Closing"
+        DataContext="{Binding Source={RelativeSource Self}}"
+        Topmost="True" PreviewMouseMove="Window_MouseMove"
+        AutomationProperties.HelpText="{x:Static Properties:Resources.EyedropperWindowWindowAutomationPropertiesHelpText}"
+        >
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="grid" ClipToBounds="True" PreviewMouseDown="Grid_MouseDown">
+            <Image x:Name="image" HorizontalAlignment="Left" VerticalAlignment="Top"
+                SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="NearestNeighbor" 
+                 ScrollViewer.HorizontalScrollBarVisibility="Visible">
+            </Image>
+            <Grid Visibility="Collapsed">
+                <Rectangle x:Name="topRect" Fill="Black" Opacity="0.3" Height="100" VerticalAlignment="Top"></Rectangle>
+                <Rectangle x:Name="bottomRect" Fill="Black" Opacity="0.3" Height="100" VerticalAlignment="Bottom"></Rectangle>
+                <Rectangle x:Name="leftRect" Fill="Black" Opacity="0.3" Width="200" HorizontalAlignment="Left" Margin="0 100"></Rectangle>
+                <Rectangle x:Name="rightRect" Fill="Black" Opacity="0.3" Width="100" HorizontalAlignment="Right"  Margin="0 100"></Rectangle>
+            </Grid>
+            <Rectangle x:Name="firstPixelRectPreview" Fill="Green" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top"
+                               Width="{x:Static local:EyedropperWindow.ScaleFactor}" Height="{x:Static local:EyedropperWindow.ScaleFactor}" SnapsToDevicePixels="True"
+                               Visibility="Collapsed"/>
+            <Rectangle x:Name="secondPixelRectPreview" Fill="Green" Stroke="Black" StrokeThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top"
+                               Width="{x:Static local:EyedropperWindow.ScaleFactor}" Height="{x:Static local:EyedropperWindow.ScaleFactor}" SnapsToDevicePixels="True"
+                               Visibility="Collapsed"/>
+            <Border x:Name="magborder" Visibility="Collapsed" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <Canvas Height="{x:Static local:EyedropperWindow.MagnifierSize}" Width="{x:Static local:EyedropperWindow.MagnifierSize}" x:Name="canvas" >
+                    <Image x:Name="magimage" SnapsToDevicePixels="True" Height="{x:Static local:EyedropperWindow.MagnifierSize}" 
+                           Width="{x:Static local:EyedropperWindow.MagnifierSize}" RenderOptions.BitmapScalingMode="NearestNeighbor">
+                    </Image>
+                    <Rectangle x:Name="pixelRect" Fill="White" Stroke="Black" StrokeThickness="1" Width="{x:Static local:EyedropperWindow.ScaleFactor}" Height="{x:Static local:EyedropperWindow.ScaleFactor}" 
+                       Canvas.Top="{x:Static local:EyedropperWindow.PixelRectangleOffset}" Canvas.Left="{x:Static local:EyedropperWindow.PixelRectangleOffset}" SnapsToDevicePixels="True"/>
+                </Canvas>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>

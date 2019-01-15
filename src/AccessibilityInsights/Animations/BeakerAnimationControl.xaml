@@ -1,0 +1,170 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<UserControl x:Class="AccessibilityInsights.Animations.BeakerAnimationControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AccessibilityInsights.Animations"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.Properties"
+             mc:Ignorable="d"
+             d:DesignHeight="150" d:DesignWidth="200"
+             AutomationProperties.Name="{x:Static Properties:Resources.BeakerAnimationControlAutomationPropertiesName}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="frame1">
+            <Viewbox Width="200" Height="150" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                <Rectangle Width="200" Height="150">
+                    <Rectangle.Fill>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M297,154L111,154 111,18 297,18z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M107,14L295,14 295,152 107,152z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M294,151L108,151 108,15 294,15z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M294,151L224,151 224,25 294,25z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M224,151L155,151 155,25 224,25z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M155,151L108,151 108,25 155,25z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M148,95L114,95 114,102 148,102z M148,80L114,80 114,87 148,87z M148,50L114,50 114,57 148,57z M148,42L114,42 114,35 148,35z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M148,72L114,72 114,65 148,65z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M224,65L155,65 155,50 224,50z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M169,38C169,40.209 167.209,42 165,42 162.791,42 161,40.209 161,38 161,35.791 162.791,34 165,34 167.209,34 169,35.791 169,38 M195,37L172,37 172,39 195,39z M221,41L202,41 202,35 221,35z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,37L208,37 208,39 216,39z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M273,103L231,103 231,105 273,105z M286,98L231,98 231,100 286,100z M286,93L231,93 231,95 286,95z M265,87L231,87 231,83 265,83z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M233,33C230.791,33 229,34.791 229,37 229,39.209 230.791,41 233,41 235.209,41 237,39.209 237,37 237,34.791 235.209,33 233,33 M263,38L240,38 240,36 263,36z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M221,61L202,61 202,55 221,55z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M165,54C162.791,54 161,55.791 161,58 161,60.209 162.791,62 165,62 167.209,62 169,60.209 169,58 169,55.791 167.209,54 165,54 M195,59L172,59 172,57 195,57z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M216,57L208,57 208,59 216,59z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M221,75L202,75 202,81 221,81z M165,74C162.791,74 161,75.791 161,78 161,80.209 162.791,82 165,82 167.209,82 169,80.209 169,78 169,75.791 167.209,74 165,74 M195,79L172,79 172,77 195,77z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,79L208,79 208,77 216,77z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M288.8535,18L288.1465,17.293 286.4995,18.939 284.8535,17.293 284.1465,18 285.7925,19.646 284.1465,21.293 284.8535,22 286.4995,20.354 288.1465,22 288.8535,21.293 287.2075,19.646z M275.9995,18L278.9995,18 278.9995,21 275.9995,21z M279.9995,17L274.9995,17 274.9995,22 279.9995,22z M271.4995,22L266.4995,22 266.4995,21 271.4995,21z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M287,77L231,77 231,47 287,47z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M252,120L231,120 231,114 252,114z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M278,120L257,120 257,114 278,114z" />
+                                        <GeometryDrawing Brush="#FFB2B2B2" Geometry="F1M231,77L231,74.6 243.8,64.2 249.4,68.2 267.8,53.8 287,69 287,77z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M252,54.5C252,56.433 250.433,58 248.5,58 246.567,58 245,56.433 245,54.5 245,52.567 246.567,51 248.5,51 250.433,51 252,52.567 252,54.5" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="frame2">
+            <Viewbox Width="200" Height="150" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                <Rectangle Width="200" Height="150">
+                    <Rectangle.Fill>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M297,154L111,154 111,18 297,18z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M107,14L295,14 295,152 107,152z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M294,151L108,151 108,15 294,15z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M294,151L224,151 224,25 294,25z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M224,151L155,151 155,25 224,25z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M155,151L108,151 108,25 155,25z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M148,95L114,95 114,102 148,102z M148,80L114,80 114,87 148,87z M148,50L114,50 114,57 148,57z M148,42L114,42 114,35 148,35z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M148,72L114,72 114,65 148,65z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M224,65L155,65 155,50 224,50z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M169,38C169,40.209 167.209,42 165,42 162.791,42 161,40.209 161,38 161,35.791 162.791,34 165,34 167.209,34 169,35.791 169,38 M195,37L172,37 172,39 195,39z M221,41L202,41 202,35 221,35z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,37L208,37 208,39 216,39z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M273,103L231,103 231,105 273,105z M286,98L231,98 231,100 286,100z M286,93L231,93 231,95 286,95z M265,87L231,87 231,83 265,83z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M233,33C230.791,33 229,34.791 229,37 229,39.209 230.791,41 233,41 235.209,41 237,39.209 237,37 237,34.791 235.209,33 233,33 M263,38L240,38 240,36 263,36z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M221,61L202,61 202,55 221,55z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M165,54C162.791,54 161,55.791 161,58 161,60.209 162.791,62 165,62 167.209,62 169,60.209 169,58 169,55.791 167.209,54 165,54 M195,59L172,59 172,57 195,57z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M216,57L208,57 208,59 216,59z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M221,75L202,75 202,81 221,81z M165,74C162.791,74 161,75.791 161,78 161,80.209 162.791,82 165,82 167.209,82 169,80.209 169,78 169,75.791 167.209,74 165,74 M195,79L172,79 172,77 195,77z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,79L208,79 208,77 216,77z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M288.8535,18L288.1465,17.293 286.4995,18.939 284.8535,17.293 284.1465,18 285.7925,19.646 284.1465,21.293 284.8535,22 286.4995,20.354 288.1465,22 288.8535,21.293 287.2075,19.646z M275.9995,18L278.9995,18 278.9995,21 275.9995,21z M279.9995,17L274.9995,17 274.9995,22 279.9995,22z M271.4995,22L266.4995,22 266.4995,21 271.4995,21z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M287,77L231,77 231,47 287,47z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M252,120L231,120 231,114 252,114z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M278,120L257,120 257,114 278,114z" />
+                                        <GeometryDrawing Brush="#FFB2B2B2" Geometry="F1M231,77L231,74.6 243.8,64.2 249.4,68.2 267.8,53.8 287,69 287,77z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M252,54.5C252,56.433 250.433,58 248.5,58 246.567,58 245,56.433 245,54.5 245,52.567 246.567,51 248.5,51 250.433,51 252,52.567 252,54.5" />
+                                        <GeometryDrawing Brush="#FF004880" Geometry="F1M153,149L110,149 110,27 130,27 130,50 153,50z M108,151L155,151 155,25 108,25z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M141.125,35.8306C141.125,36.0726,141.063,36.2976,140.94,36.5076L138.678,40.4516 145.322,40.4516 143.06,36.5076C142.937,36.2976,142.875,36.0726,142.875,35.8306L142.875,31.7016 141.125,31.7016z M147.708,42.8446C147.772,42.9496 147.82,43.0566 147.852,43.1656 147.883,43.2746 147.899,43.3916 147.899,43.5146 147.899,43.6966 147.865,43.8676 147.797,44.0266 147.729,44.1866 147.635,44.3256 147.517,44.4436 147.398,44.5626 147.259,44.6556 147.1,44.7246 146.94,44.7926 146.769,44.8266 146.587,44.8266L137.42,44.8266C137.238,44.8266 137.067,44.7926 136.907,44.7246 136.748,44.6556 136.609,44.5626 136.49,44.4436 136.372,44.3256 136.278,44.1866 136.21,44.0266 136.142,43.8676 136.107,43.6966 136.107,43.5146 136.107,43.3916 136.122,43.2746 136.152,43.1656 136.182,43.0566 136.228,42.9496 136.292,42.8446L140.182,36.0626C140.227,35.9986,140.25,35.9216,140.25,35.8306L140.25,31.7016 139.375,31.7016 139.375,30.8266 144.625,30.8266 144.625,31.7016 143.75,31.7016 143.75,35.8306C143.75,35.9166,143.773,35.9976,143.818,36.0696z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M150.9995,52.2554L152.9195,56.1354 149.9245,57.5004 148.1455,53.5004 145.1245,56.5414 145.1245,42.3964 154.9995,52.2084z" />
+                                        <GeometryDrawing Brush="#FF000000" Geometry="F1M145.125,42.396L145.125,56.542 148.146,53.5 149.925,57.5 152.919,56.135 151,52.255 155,52.209z M146.125,44.799L152.604,51.236 150.988,51.255 149.398,51.274 150.104,52.699 151.565,55.653 150.428,56.171 149.06,53.094 148.466,51.759 147.437,52.795 146.125,54.116z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Viewbox>
+        </DataTemplate>
+        <DataTemplate x:Key="frame3">
+            <Viewbox Width="200" Height="150" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+                <Rectangle Width="200" Height="150">
+                    <Rectangle.Fill>
+                        <DrawingBrush>
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup.Children>
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M297,154L111,154 111,18 297,18z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M107,14L295,14 295,152 107,152z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M294,151L108,151 108,15 294,15z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M294,151L224,151 224,25 294,25z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M224,151L155,151 155,25 224,25z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M155,151L108,151 108,25 155,25z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M148,95L114,95 114,102 148,102z M148,80L114,80 114,87 148,87z M148,50L114,50 114,57 148,57z M148,42L114,42 114,35 148,35z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M148,72L114,72 114,65 148,65z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M224,65L155,65 155,50 224,50z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M169,38C169,40.209 167.209,42 165,42 162.791,42 161,40.209 161,38 161,35.791 162.791,34 165,34 167.209,34 169,35.791 169,38 M195,37L172,37 172,39 195,39z M221,41L202,41 202,35 221,35z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,37L208,37 208,39 216,39z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M273,103L231,103 231,105 273,105z M286,98L231,98 231,100 286,100z M286,93L231,93 231,95 286,95z M265,87L231,87 231,83 265,83z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M233,33C230.791,33 229,34.791 229,37 229,39.209 230.791,41 233,41 235.209,41 237,39.209 237,37 237,34.791 235.209,33 233,33 M263,38L240,38 240,36 263,36z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M221,61L202,61 202,55 221,55z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M165,54C162.791,54 161,55.791 161,58 161,60.209 162.791,62 165,62 167.209,62 169,60.209 169,58 169,55.791 167.209,54 165,54 M195,59L172,59 172,57 195,57z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M216,57L208,57 208,59 216,59z" />
+                                        <GeometryDrawing Brush="#FFD2D2D2" Geometry="F1M221,75L202,75 202,81 221,81z M165,74C162.791,74 161,75.791 161,78 161,80.209 162.791,82 165,82 167.209,82 169,80.209 169,78 169,75.791 167.209,74 165,74 M195,79L172,79 172,77 195,77z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M216,79L208,79 208,77 216,77z" />
+                                        <GeometryDrawing Brush="#FF939393" Geometry="F1M288.8535,18L288.1465,17.293 286.4995,18.939 284.8535,17.293 284.1465,18 285.7925,19.646 284.1465,21.293 284.8535,22 286.4995,20.354 288.1465,22 288.8535,21.293 287.2075,19.646z M275.9995,18L278.9995,18 278.9995,21 275.9995,21z M279.9995,17L274.9995,17 274.9995,22 279.9995,22z M271.4995,22L266.4995,22 266.4995,21 271.4995,21z" />
+                                        <GeometryDrawing Brush="#FFE6E6E6" Geometry="F1M287,77L231,77 231,47 287,47z" />
+                                        <GeometryDrawing Brush="#FF40A195" Geometry="F1M252,120L231,120 231,114 252,114z" />
+                                        <GeometryDrawing Brush="#FFF3F3F3" Geometry="F1M278,120L257,120 257,114 278,114z" />
+                                        <GeometryDrawing Brush="#FFB2B2B2" Geometry="F1M231,77L231,74.6 243.8,64.2 249.4,68.2 267.8,53.8 287,69 287,77z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M252,54.5C252,56.433 250.433,58 248.5,58 246.567,58 245,56.433 245,54.5 245,52.567 246.567,51 248.5,51 250.433,51 252,52.567 252,54.5" />
+                                        <GeometryDrawing Brush="#FF004880" Geometry="F1M108,151L294,151 294,15 108,15z M296,153L106,153 106,13 296,13z" />
+                                        <GeometryDrawing Brush="#FF004880" Geometry="F1M294,36L270,36 270,15 294,15z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M282.125,22.8306C282.125,23.0726,282.063,23.2976,281.939,23.5076L279.678,27.4516 286.322,27.4516 284.059,23.5076C283.936,23.2976,283.875,23.0726,283.875,22.8306L283.875,18.7016 282.125,18.7016z M288.707,29.8446C288.771,29.9496 288.819,30.0566 288.852,30.1656 288.883,30.2746 288.898,30.3916 288.898,30.5146 288.898,30.6966 288.865,30.8676 288.797,31.0266 288.729,31.1866 288.635,31.3256 288.516,31.4436 288.397,31.5626 288.259,31.6556 288.1,31.7246 287.939,31.7926 287.769,31.8266 287.586,31.8266L278.42,31.8266C278.237,31.8266 278.066,31.7926 277.906,31.7246 277.747,31.6556 277.608,31.5626 277.49,31.4436 277.371,31.3256 277.277,31.1866 277.209,31.0266 277.141,30.8676 277.107,30.6966 277.107,30.5146 277.107,30.3916 277.121,30.2746 277.151,30.1656 277.182,30.0566 277.228,29.9496 277.291,29.8446L281.182,23.0626C281.227,22.9986,281.25,22.9216,281.25,22.8306L281.25,18.7016 280.375,18.7016 280.375,17.8266 285.625,17.8266 285.625,18.7016 284.75,18.7016 284.75,22.8306C284.75,22.9166,284.772,22.9976,284.818,23.0696z" />
+                                        <GeometryDrawing Brush="#FFFFFFFF" Geometry="F1M292.9375,39.2554L294.8575,43.1354 291.8625,44.5004 290.0835,40.5004 287.0625,43.5414 287.0625,29.3964 296.9375,39.2084z" />
+                                        <GeometryDrawing Brush="#FF000000" Geometry="F1M287.0625,29.396L287.0625,43.542 290.0835,40.5 291.8625,44.5 294.8575,43.135 292.9375,39.255 296.9375,39.209z M288.0625,31.799L294.5415,38.236 292.9255,38.255 291.3355,38.274 292.0415,39.699 293.5025,42.653 292.3655,43.171 290.9975,40.094 290.4035,38.759 289.3745,39.795 288.0625,41.116z" />
+                                    </DrawingGroup.Children>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </Viewbox>
+        </DataTemplate>
+        <Storyboard x:Key="Storyboard1" RepeatBehavior="3x">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="contentControl2">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="contentControl3">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="contentControl1">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard1}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid>
+        <ContentControl x:Name="contentControl1" ContentTemplate="{StaticResource frame1}" Focusable="False" KeyboardNavigation.IsTabStop="False"/>
+        <ContentControl x:Name="contentControl2" ContentTemplate="{StaticResource frame2}" Focusable="False" KeyboardNavigation.IsTabStop="False"/>
+        <ContentControl x:Name="contentControl3" ContentTemplate="{StaticResource frame3}" Focusable="False" KeyboardNavigation.IsTabStop="False"/>
+    </Grid>
+</UserControl>

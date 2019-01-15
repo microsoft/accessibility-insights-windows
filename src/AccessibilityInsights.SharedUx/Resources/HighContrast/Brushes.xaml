@@ -1,0 +1,50 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<!-- Contains theme for windows high contrast mode -->
+<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="DarkButtonHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="DarkGreyTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="LightBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="LightGreyBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="{x:Static SystemColors.ActiveCaptionColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="{x:Static SystemColors.ActiveCaptionTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLbrushRed" Color="#CC0000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLbrushPurple" Color="#A45EF4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLTextBrush" Color="#FFFF00 "/>
+    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
+</ResourceDictionary>

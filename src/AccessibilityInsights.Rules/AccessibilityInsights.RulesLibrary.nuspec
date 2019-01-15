@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>AccessibilityInsights.RulesLibrary</id>
+    <version>$buildnumber$</version>
+    <title>AccessibilityInsights Rules Library</title>
+    <summary>Run rules from the AccessibilityInsights.Rules library</summary>
+    <description>This package exposes core functionality from AccessibilityInsights Rules.</description>
+    <authors>AccessibilityInsights</authors>
+    <owners></owners>
+    <copyright>© 2018. All rights reserved.</copyright>
+    <tags>AccessibilityInsights Accessibility Rules</tags>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\AccessibilityInsights.Core.dll" target="lib\net471" />
+    <file src="bin\$configuration$\AccessibilityInsights.Win32.dll" target="lib\net471" />
+    <file src="bin\$configuration$\AccessibilityInsights.Rules.dll" target="lib\net471" />
+    <file src="bin\$configuration$\Newtonsoft.Json.dll" target="lib\net471" />
+  </files> 
+</package>
