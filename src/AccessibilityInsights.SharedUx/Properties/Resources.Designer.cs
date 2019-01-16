@@ -3161,7 +3161,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Support..
+        ///   Looks up a localized string similar to Join Accessibility Insights Updates and Discussions.
         /// </summary>
         public static string RunTextEmailSupport {
             get {
@@ -3494,6 +3494,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keros for Desktop has been rebranded to Accessibility Insights for Windows..
+        /// </summary>
+        public static string RunTextRebrand {
+            get {
+                return ResourceManager.GetString("RunTextRebrand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to to receive email announcements..
+        /// </summary>
+        public static string RunTextReceiveEmail {
+            get {
+                return ResourceManager.GetString("RunTextReceiveEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SemiBold.
         /// </summary>
         public static string RunTextSemiBold {
@@ -3553,15 +3571,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextUseThe {
             get {
                 return ResourceManager.GetString("RunTextUseThe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We are committed to zero false positives. If you feel you have found one, please contact.
-        /// </summary>
-        public static string RunTextzeroFalsePositives {
-            get {
-                return ResourceManager.GetString("RunTextzeroFalsePositives", resourceCulture);
             }
         }
         
