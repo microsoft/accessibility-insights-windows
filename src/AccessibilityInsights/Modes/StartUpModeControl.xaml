@@ -64,7 +64,7 @@
         <Border Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
             <StackPanel>
                 <whatsNew:WhatsNewControl/>
-                <TextBlock FontWeight="SemiBold" Margin="12,10" Grid.Row="2" Style="{StaticResource TbFocusable}"><Run Text="{x:Static properties:Resources.moreInformationText}"/><Run Text=" "/><Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://aka.ms/accessibilityinsights-windows-updates">aka.ms/A11ywhatsnew</Hyperlink></TextBlock>
+                <TextBlock FontWeight="SemiBold" Margin="12,10" Grid.Row="2" Style="{StaticResource TbFocusable}"><Run Text="{x:Static properties:Resources.moreInformationText}"/><Run Text=" "/><Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://aka.ms/accessibilityinsights-windows-updates">aka.ms/accessibilityinsights-windows-updates</Hyperlink></TextBlock>
             </StackPanel>
         </Border>
         <Border Grid.Column="1" Grid.Row="4" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
