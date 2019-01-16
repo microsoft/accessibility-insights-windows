@@ -26,8 +26,8 @@ namespace AccessibilityInsights.Actions
         /// <returns></returns>
         internal static LoadActionParts LoadSnapshotZip(string path)
         {
-            using (FileStream str = File.Open(path, FileMode.Open))
-            using (Package package = ZipPackage.Open(str, FileMode.Open))
+            using (FileStream str = File.Open(path, FileMode.Open, FileAccess.Read))
+            using (Package package = ZipPackage.Open(str, FileMode.Open, FileAccess.Read))
             {
                 var parts = package.GetParts();
 
