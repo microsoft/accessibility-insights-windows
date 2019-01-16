@@ -765,6 +765,7 @@ namespace AccessibilityInsights
                 var scope = this.cbiEntireApp.IsSelected ? AccessibilityInsights.Actions.Enums.SelectionScope.App : AccessibilityInsights.Actions.Enums.SelectionScope.Element;
                 SelectAction.GetDefaultInstance().Scope = scope;
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
+                Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
                 HighlightAction.GetDefaultInstance().Clear();
             }
