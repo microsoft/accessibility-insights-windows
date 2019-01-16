@@ -123,8 +123,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                     return UpdateResult.Success;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 if (File.Exists(tempFile))
                     File.Delete(tempFile);
             }
@@ -211,10 +212,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                             }
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception e)
                     {
+                        e.ReportException();
                         System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: "
-                            + ex.ToString());
+                            + e.ToString());
                     }
                 }
             }
@@ -238,6 +240,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
             catch (Exception e)
             {
+                e.ReportException();
                 System.Diagnostics.Trace.WriteLine($"Unable to get update info from meta file at {e.Message}");
             }
             finally
@@ -303,9 +306,10 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 {
                     return TryGetTargetAsset(_installerUri.ToString(), stream);
                 }
-                catch (Exception ex)
+                catch (Exception e)
                 {
-                    System.Diagnostics.Debug.WriteLine(ex.ToString());
+                    e.ReportException();
+                    System.Diagnostics.Debug.WriteLine(e.ToString());
                 }
                 finally
                 {

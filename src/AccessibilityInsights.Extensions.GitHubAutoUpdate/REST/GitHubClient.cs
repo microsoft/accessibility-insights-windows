@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
+using System;
 using System.IO;
 using System.Net;
 
@@ -31,10 +34,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate.REST
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
+                e.ReportException();
                 System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception in GET request: "
-                    + ex.ToString());
+                    + e.ToString());
                 return false;
             }
         }
