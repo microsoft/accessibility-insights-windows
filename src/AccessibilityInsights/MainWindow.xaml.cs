@@ -152,6 +152,7 @@ namespace AccessibilityInsights
         public MainWindow()
         {
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
+            Logger.AttachReportExceptionHandler();
 
             SetHighContrastTheme();
 

@@ -11,7 +11,7 @@ Licensed under the MIT License.
 
 Accessibility Insights for Windows is the project for Accessibility tools on Windows platform(Win7/Win8x/Win10)
 
-## Running the extension
+## Installing Accessibility Insights for Windows
 You can install the application from TBA.
 
 ## Building the code

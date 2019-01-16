@@ -517,7 +517,7 @@ namespace AccessibilityInsights
 
             var args = Environment.GetCommandLineArgs();
 
-            if (args.Length == 2)
+            if (args.Length > 1)
             {
                 path = args[1];
             }
