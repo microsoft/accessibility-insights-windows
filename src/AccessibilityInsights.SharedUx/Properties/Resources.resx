@@ -297,6 +297,9 @@
   <data name="lblDelayContent" xml:space="preserve">
     <value>Set _delay</value>
   </data>
+  <data name="tbMouseDelayAutomationName" xml:space="preserve">
+    <value>Set delay in MS</value>
+  </data>
   <data name="LabelContentOtherOptions" xml:space="preserve">
     <value>Other options</value>
   </data>
