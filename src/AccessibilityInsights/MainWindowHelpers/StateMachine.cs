@@ -237,6 +237,7 @@ namespace AccessibilityInsights
                 StartTestMode(TestView.AutomatedTestResults);
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Test_Requested, TelemetryProperty.By, method.ToString());
+                Logger.PublishTelemetryEvent(TelemetryAction.Test_Requested, TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString());
             }
             HighlightAction.GetDefaultInstance().Clear();
             UpdateMainWindowUI();
