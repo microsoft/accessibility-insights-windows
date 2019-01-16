@@ -414,9 +414,6 @@
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
-  <data name="RunTextRebrand" xml:space="preserve">
-    <value>Keros for Desktop has been rebranded to Accessibility Insights for Windows.</value>
-  </data>
   <data name="RunTextEmailSupport" xml:space="preserve">
     <value>Join Accessibility Insights Updates and Discussions</value>
   </data>

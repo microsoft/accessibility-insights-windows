@@ -3494,15 +3494,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keros for Desktop has been rebranded to Accessibility Insights for Windows..
-        /// </summary>
-        public static string RunTextRebrand {
-            get {
-                return ResourceManager.GetString("RunTextRebrand", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to to receive email announcements..
         /// </summary>
         public static string RunTextReceiveEmail {

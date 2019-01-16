@@ -39,9 +39,8 @@
                 <fabric:FabricIconControl GlyphName="Info" Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"
                                           GlyphSize="Custom" FontSize="16" Margin="8,2,8,0"/>
                 <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource TbFocusable}" KeyboardNavigation.IsTabStop="True">
-                    <Run Text="{x:Static Properties:Resources.RunTextRebrand}"/>
                     <Hyperlink FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None"
-                               NavigateUri="https://idwebelements/GroupManagement.aspx?Group=a11yInsightsUpdates&amp;Operation=join" RequestNavigate="Hyperlink_RequestNavigate">
+                               NavigateUri="https://aka.ms/accessibility-insights-announcements" RequestNavigate="Hyperlink_RequestNavigate">
                         <Run Name="tbLinkText" Text="{x:Static Properties:Resources.RunTextEmailSupport}"/>
                     </Hyperlink>
                     <Run Text="{x:Static Properties:Resources.RunTextReceiveEmail}"/>
