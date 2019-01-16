@@ -25,7 +25,7 @@ namespace AccessibilityInsights.Desktop.Telemetry
         private static bool IsTelemetryAllowedBackingValue = false;
         private static bool IsReportExceptionHandlerAttached = false;
         private readonly static object LockObject = new object();
-        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer();
+        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(ReportException);
 
         /// <summary>
         /// Whether or not telemetry toggle button is enabled in the settings.
@@ -130,7 +130,7 @@ namespace AccessibilityInsights.Desktop.Telemetry
         /// </summary>
         private static void OnReportedException(object sender, ReportExceptionEventArgs args)
         {
-            ReportExceptionBuffer.ReportException(args.ReportedException, ReportException);
+            ReportExceptionBuffer.ReportException(args.ReportedException);
         }
 
         /// <summary>
