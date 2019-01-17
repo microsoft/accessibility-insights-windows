@@ -414,11 +414,11 @@
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
-  <data name="RunTextzeroFalsePositives" xml:space="preserve">
-    <value>We are committed to zero false positives. If you feel you have found one, please contact</value>
-  </data>
   <data name="RunTextEmailSupport" xml:space="preserve">
-    <value>Email Support.</value>
+    <value>Join Accessibility Insights Updates and Discussions</value>
+  </data>
+  <data name="RunTextReceiveEmail" xml:space="preserve">
+    <value>to receive email announcements.</value>
   </data>
   <data name="lblTitleContent" xml:space="preserve">
     <value>AUTOMATED CHECKS</value>

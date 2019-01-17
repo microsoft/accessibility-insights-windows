@@ -284,7 +284,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             if (!String.IsNullOrEmpty(e.Uri.OriginalString))
             {
-                System.Diagnostics.Process.Start(e.Uri.ToString());
+                Process.Start(e.Uri.ToString());
             }
         }
 
@@ -1082,22 +1082,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private void btnTree_Click(object sender, RoutedEventArgs e)
         {
             NotifySelected(ElementContext.Element);
-        }
-
-        /// <summary>
-        /// Send email to support to report false positive
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void SendEmailToSupport(object sender, RoutedEventArgs e)
-        {
-
-            string subject = Properties.Resources.AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_false_positive_report;
-            string body = Properties.Resources.AutomatedChecksControl_SendEmailToSupport
-                ;
-            string link = String.Format(CultureInfo.InvariantCulture, "mailto:A11ySupport@microsoft.com?subject={0}&body={1}",
-            Uri.EscapeDataString(subject), Uri.EscapeDataString(body));
-            Process.Start(link);
         }
     }
 }
