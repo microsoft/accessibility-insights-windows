@@ -99,7 +99,7 @@ jobs:
     displayName: 'Run BinSkim '
     inputs:
       InputType: Basic
-      AnalyzeTarget: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\*.dll;src\AccessibilityInsights.Automation\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\*.dll;'
+      AnalyzeTarget: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\*.dll;src\AccessibilityInsights.Automation\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.AutoUpdate\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\*.dll;'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
@@ -111,7 +111,7 @@ jobs:
     displayName: 'Run FxCop'
     inputs:
       inputType: Basic
-      targets: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Automation\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\AccessibilityInsights.*.dll'
+      targets: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Automation\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\AccessibilityInsights.*.dll'
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
