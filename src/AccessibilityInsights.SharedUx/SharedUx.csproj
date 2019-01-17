@@ -186,10 +186,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\SettingsTabs\TestSettingsControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\TextRangeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -395,9 +391,6 @@
     </Compile>
     <Compile Include="Controls\ScannerResultControl.xaml.cs">
       <DependentUpon>ScannerResultControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SettingsTabs\TestSettingsControl.xaml.cs">
-      <DependentUpon>TestSettingsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\TextRangeControl.xaml.cs">
       <DependentUpon>TextRangeControl.xaml</DependentUpon>

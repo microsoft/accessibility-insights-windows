@@ -2151,24 +2151,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C_ustom rules (Supported soon).
-        /// </summary>
-        public static string lblCustomTestConfigContent {
-            get {
-                return ResourceManager.GetString("lblCustomTestConfigContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Microsoft standard rules.
-        /// </summary>
-        public static string lblDefaultTestSetContent {
-            get {
-                return ResourceManager.GetString("lblDefaultTestSetContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set _delay.
         /// </summary>
         public static string lblDelayContent {
@@ -4035,15 +4017,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tbViewResultsText {
             get {
                 return ResourceManager.GetString("tbViewResultsText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test settings.
-        /// </summary>
-        public static string TestSettingsControlAutomationName {
-            get {
-                return ResourceManager.GetString("TestSettingsControlAutomationName", resourceCulture);
             }
         }
         

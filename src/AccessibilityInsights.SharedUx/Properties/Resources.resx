@@ -393,14 +393,8 @@
   <data name="hlLinkAutomationPropertiesName" xml:space="preserve">
     <value>For questions or feedback: https://aka.ms/accessibilityinsights-stackoverflow</value>
   </data>
-  <data name="lblDefaultTestSetContent" xml:space="preserve">
-    <value>_Microsoft standard rules</value>
-  </data>
   <data name="LabelContentAutomatedChecks" xml:space="preserve">
     <value>Automated checks</value>
-  </data>
-  <data name="lblCustomTestConfigContent" xml:space="preserve">
-    <value>C_ustom rules (Supported soon)</value>
   </data>
   <data name="WhatsNewTabControlAutomationPropertiesName" xml:space="preserve">
     <value>What's new</value>
@@ -1509,9 +1503,6 @@ Accessibility Insights Support Team
   </data>
   <data name="PropertyConfigDialogAutomationName" xml:space="preserve">
     <value>Select properties to always show</value>
-  </data>
-  <data name="TestSettingsControlAutomationName" xml:space="preserve">
-    <value>Test settings</value>
   </data>
   <data name="GeneralActionView_ExecuteAction_Succeeded" xml:space="preserve">
     <value>Succeeded!!</value>
