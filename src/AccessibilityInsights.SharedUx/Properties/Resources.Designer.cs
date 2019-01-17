@@ -3967,6 +3967,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set delay in MS.
+        /// </summary>
+        public static string tbMouseDelayAutomationName {
+            get {
+                return ResourceManager.GetString("tbMouseDelayAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Execution result.
         /// </summary>
         public static string tbResultAutomationPropertiesName {
