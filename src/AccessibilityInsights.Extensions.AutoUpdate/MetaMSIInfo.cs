@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
         public const string PickLatestBuild = "@LATEST";
 
         /// <summary>
-        /// Microsoft.AccessibilityInsights MSI name
+        /// MSI file name
         /// </summary>
         public const string MSIPackageName = "AccessibilityInsights.msi";
 

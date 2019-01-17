@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.Deployment.WindowsInstaller;
 using Newtonsoft.Json;
 using System;
@@ -81,10 +82,11 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
             {
                 existingApp = installations.Any<ProductInstallation>();
             }
-            catch (System.ArgumentException)
+            catch (ArgumentException e)
             {
                 // occurs when the upgrade code is formatted incorrectly
                 // exception text: "Parameter is incorrect"
+                e.ReportException();
                 return null;
             }
             if (!existingApp)
@@ -133,8 +135,9 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                 {
                     return JsonConvert.DeserializeObject<MetaMSIInfo>(File.ReadAllText(pathToMetaFile));
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                     return null;
                 }
             });
