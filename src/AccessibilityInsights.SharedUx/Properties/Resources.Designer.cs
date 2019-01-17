@@ -2151,24 +2151,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C_ustom rules (Supported soon).
-        /// </summary>
-        public static string lblCustomTestConfigContent {
-            get {
-                return ResourceManager.GetString("lblCustomTestConfigContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to _Microsoft standard rules.
-        /// </summary>
-        public static string lblDefaultTestSetContent {
-            get {
-                return ResourceManager.GetString("lblDefaultTestSetContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Set _delay.
         /// </summary>
         public static string lblDelayContent {
@@ -3161,7 +3143,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Support..
+        ///   Looks up a localized string similar to Join Accessibility Insights Updates and Discussions.
         /// </summary>
         public static string RunTextEmailSupport {
             get {
@@ -3494,6 +3476,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to to receive email announcements..
+        /// </summary>
+        public static string RunTextReceiveEmail {
+            get {
+                return ResourceManager.GetString("RunTextReceiveEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SemiBold.
         /// </summary>
         public static string RunTextSemiBold {
@@ -3553,15 +3544,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextUseThe {
             get {
                 return ResourceManager.GetString("RunTextUseThe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We are committed to zero false positives. If you feel you have found one, please contact.
-        /// </summary>
-        public static string RunTextzeroFalsePositives {
-            get {
-                return ResourceManager.GetString("RunTextzeroFalsePositives", resourceCulture);
             }
         }
         
@@ -3967,6 +3949,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set delay in MS.
+        /// </summary>
+        public static string tbMouseDelayAutomationName {
+            get {
+                return ResourceManager.GetString("tbMouseDelayAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Execution result.
         /// </summary>
         public static string tbResultAutomationPropertiesName {
@@ -4026,15 +4017,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tbViewResultsText {
             get {
                 return ResourceManager.GetString("tbViewResultsText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test settings.
-        /// </summary>
-        public static string TestSettingsControlAutomationName {
-            get {
-                return ResourceManager.GetString("TestSettingsControlAutomationName", resourceCulture);
             }
         }
         
