@@ -287,7 +287,7 @@ namespace AccessibilityInsights
                     }
                     break;
                 case AppPage.Events:
-                    // inconclusive in current mode information. 
+                    StartTestMode(TestView.NoSelection);
                     break;
                 case AppPage.CCA:
                     StartTestMode(TestView.NoSelection);
