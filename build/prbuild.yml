@@ -44,27 +44,12 @@ jobs:
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
-        !**\*AccessibilityInsights.UI*.dll
         !**\obj\**
-      uiTests: true
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
-
-  - task: VSTest@2
-    displayName: 'Coded UI Tests'
-    inputs:
-      testAssemblyVer2: |
-        **\$(BuildConfiguration)\*test*.orderedtest
-        !**\obj\**
-      uiTests: true
-      runSettingsFile: AccessibilityInsights.UITesting/TestRunSettings.runsettings
-      overrideTestrunParameters: '-BuildConfiguration $(BuildConfiguration)'
-      platform: '$(BuildPlatform)'
-      configuration: '$(BuildConfiguration)'
-    enabled: false
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
@@ -137,10 +122,8 @@ jobs:
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
-        !**\*AccessibilityInsights.UIT*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      uiTests: true
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
