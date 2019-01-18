@@ -267,7 +267,16 @@ namespace AccessibilityInsights
         /// <param name="enabled"></param>
         internal void SetHighlightBtnState(bool enabled)
         {
-            this.vmHilighter.State = enabled ? ButtonState.On : ButtonState.Off;
+            if (enabled)
+            {
+                this.vmHilighter.State = ButtonState.On;
+                AutomationProperties.SetName(btnHilighter, Properties.Resources.btnHilighterAutomationPropertiesNameOn);
+            }
+            else
+            {
+                this.vmHilighter.State = ButtonState.Off;
+                AutomationProperties.SetName(btnHilighter, Properties.Resources.btnHilighterAutomationPropertiesNameOff);
+            }
             ConfigurationManager.GetDefaultInstance().AppConfig.IsHighlighterOn = enabled;
         }
 

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Automation;
 using AccessibilityInsights.Actions.Sarif;
 
 namespace AccessibilityInsights
@@ -635,11 +636,13 @@ namespace AccessibilityInsights
             {
                 this.vmLiveModePauseResume.State = ButtonState.On;
                 SelectAction.GetDefaultInstance().ResumeUIATreeTracker();
+                AutomationProperties.SetName(btnPause, Properties.Resources.btnPauseAutomationPropertiesNameOn);
             }
             else
             {
                 this.vmLiveModePauseResume.State = ButtonState.Off;
                 SelectAction.GetDefaultInstance().PauseUIATreeTracker();
+                AutomationProperties.SetName(btnPause, Properties.Resources.btnPauseAutomationPropertiesNameOff);
             }
             UpdateMainWindowUI();
         }
