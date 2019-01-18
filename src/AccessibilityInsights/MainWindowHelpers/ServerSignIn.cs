@@ -86,8 +86,9 @@ namespace AccessibilityInsights
                         UpdateMainWindowLoginFields();
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
+                    Logger.PublishTelemetryEvent(TelemetryAction.Connection_Login_Exception, TelemetryProperty.HandledException, ex.Message);
                     NotifyLoginUnsuccessful(promptIfNeeded);
                     BugReporter.FlushToken(serverUrl);
                     HandleLogoutRequest();
