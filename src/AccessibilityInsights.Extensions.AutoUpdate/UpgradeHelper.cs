@@ -87,12 +87,6 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                 OverridableConfig config = new OverridableConfig(ConfigFile);
                 _releaseLocation = UpdateMethods.GetReleaseLocation(config);
                 _metaMSISettings = UpdateMethods.ExtractMSIInfo(_releaseLocation);
-                _installerLocation = _metaMSISettings.GetMSIPathSafely(_releaseLocation);
-#pragma warning disable CA1806 // Do not ignore method results
-                Version.TryParse(_metaMSISettings.Version, out _latestVersion);
-                Version.TryParse(_metaMSISettings.MinimumVersion, out _minimumVersion);
-                Version.TryParse(UpdateMethods.GetInstalledProductVersion(), out _installedVersion);
-#pragma warning restore CA1806 // Do not ignore method results
 
                 if (_metaMSISettings == null)
                 {
@@ -100,6 +94,14 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                     System.Diagnostics.Trace.WriteLine($"Unable to get update info from meta file at {_releaseLocation}");
                     return AutoUpdateOption.Unknown;
                 }
+
+                _installerLocation = _metaMSISettings.GetMSIPathSafely(_releaseLocation);
+#pragma warning disable CA1806 // Do not ignore method results
+                Version.TryParse(_metaMSISettings.Version, out _latestVersion);
+                Version.TryParse(_metaMSISettings.MinimumVersion, out _minimumVersion);
+                Version.TryParse(UpdateMethods.GetInstalledProductVersion(), out _installedVersion);
+#pragma warning restore CA1806 // Do not ignore method results
+
                 if (_installedVersion != null && _latestVersion != null && _minimumVersion != null)
                 {
                     if (_latestVersion < _minimumVersion)

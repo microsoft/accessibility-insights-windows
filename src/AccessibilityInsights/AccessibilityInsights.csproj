@@ -258,6 +258,10 @@
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.AutoUpdate\Extensions.AutoUpdate.csproj">
+      <Project>{bbdb2193-7738-4e6d-8061-1daa64fccbb0}</Project>
+      <Name>Extensions.AutoUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
