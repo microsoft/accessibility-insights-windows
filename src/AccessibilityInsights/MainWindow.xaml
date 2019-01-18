@@ -290,7 +290,8 @@
                             </ComboBox>
                             <Button x:Name="btnHilighter"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
-                                Click="onHilightButtonClicked">
+                                Click="onHilightButtonClicked"
+                                AutomationProperties.Name="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOn}">
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
@@ -306,7 +307,6 @@
                                                         </ToolTip>
                                                     </Setter.Value>
                                                 </Setter>
-                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOn}"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
                                                 <Setter Property="Button.ToolTip">
@@ -316,7 +316,6 @@
                                                         </ToolTip>
                                                     </Setter.Value>
                                                 </Setter>
-                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOff}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
@@ -366,7 +365,8 @@
                             </Button>
                             <Button x:Name="btnPause"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
-                                Click="btnPause_Click">
+                                Click="btnPause_Click"
+                                AutomationProperties.Name="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}">
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
@@ -382,7 +382,6 @@
                                                         </ToolTip>
                                                     </Setter.Value>
                                                 </Setter>
-                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}"/>
                                             </DataTrigger>
                                             <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
                                                 <Setter Property="Button.ToolTip">
@@ -392,7 +391,6 @@
                                                         </ToolTip>
                                                     </Setter.Value>
                                                 </Setter>
-                                                <Setter Property="AutomationProperties.Name" Value="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOff}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
