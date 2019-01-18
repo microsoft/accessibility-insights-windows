@@ -70,9 +70,7 @@ jobs:
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
-        !**\*AccessibilityInsights.UI*.dll
         !**\obj\**
-      uiTests: true
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
@@ -190,7 +188,6 @@ jobs:
     inputs:
       testAssemblyVer2: |  
         **\*test*.dll
-        !**\*AccessibilityInsights.UI*.dll
         !**\obj\**
       vsTestVersion: 15.0
       codeCoverageEnabled: false
