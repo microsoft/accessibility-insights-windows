@@ -387,7 +387,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             config.SelectionByMouse = true;
             config.ShowWelcomeScreenOnLaunch = true;
             config.AlwaysOnTop = true;
-            config.PlayScanningSound = true;  // turn it on by default
+            config.PlayScanningSound = false;  // turn it off by default
             config.DisableTestsInSnapMode = false; // Run test in snapshot
             config.IsHighlighterOn = true; // turn on highlighter
             config.ShowUncertain = false; // not show
