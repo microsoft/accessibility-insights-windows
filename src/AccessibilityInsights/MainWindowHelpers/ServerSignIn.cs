@@ -88,7 +88,7 @@ namespace AccessibilityInsights
                 }
                 catch (Exception ex)
                 {
-                    Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Login_Failed, TelemetryProperty.HandledException, ex.ToString());
+                    ex.ReportException();
                     NotifyLoginUnsuccessful(promptIfNeeded);
                     BugReporter.FlushToken(serverUrl);
                     HandleLogoutRequest();
