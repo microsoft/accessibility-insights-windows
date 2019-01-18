@@ -47,7 +47,15 @@ jobs:
     displayName: 'Run BinSkim '
     inputs:
       InputType: Basic
-      AnalyzeTarget: 'src\AccessibilityInsights\bin\Release\*.exe;src\AccessibilityInsights\bin\Release\*.dll;src\AccessibilityInsights.Automation\bin\Release\*.dll;src\AccessibilityInsights.Extensions.AutoUpdate\bin\Release\*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\*.dll;src\AccessibilityInsights.Extensions.ReferenceLinks\bin\Release\*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Release\*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\*.dll;'
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\*.exe;\
+                      src\\AccessibilityInsights\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Automation\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
@@ -165,7 +173,15 @@ jobs:
     displayName: 'Run FxCop'
     inputs:
       inputType: Basic
-      targets: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Automation\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\AccessibilityInsights.*.dll'
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
