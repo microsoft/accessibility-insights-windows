@@ -108,7 +108,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
         Connection_Click_Next,
         Connection_Click_Change,
         Connection_Open_Configuration,
-        Connection_Login_Exception,
 
         Splash_Uncheck_ShowThis,
 
