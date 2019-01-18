@@ -965,21 +965,8 @@
         </Style.Resources>
         <Setter Property="FlowDirection" Value="RightToLeft" />
     </Style>
-
     <Style TargetType="{x:Type CheckBox}" x:Key="CkbxRightSide">
-        <Style.Resources>
-            <Style TargetType="{x:Type Path}">
-                <Setter Property="FlowDirection" Value="LeftToRight" />
-                <Setter Property="Stroke" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
-                <Setter Property="StrokeThickness" Value="1.5"/>
-            </Style>
-            <Style TargetType="{x:Type TextBlock}">
-                <Setter Property="FlowDirection" Value="LeftToRight" />
-                <Setter Property="FontSize" Value="14"/>
-            </Style>
-        </Style.Resources>
-        <Setter Property="FlowDirection" Value="LeftToRight" />
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+        <Setter Property="FontSize" Value="14"/>
     </Style>
     <Style TargetType="{x:Type MenuItem}" x:Key="miFabIcon">
         <Setter Property="Template">
