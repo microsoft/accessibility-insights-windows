@@ -387,20 +387,20 @@ namespace AccessibilityInsights.SharedUx.Settings
             config.SelectionByMouse = true;
             config.ShowWelcomeScreenOnLaunch = true;
             config.AlwaysOnTop = true;
-            config.PlayScanningSound = false;  // turn it off by default
-            config.DisableTestsInSnapMode = false; // Run test in snapshot
-            config.IsHighlighterOn = true; // turn on highlighter
-            config.ShowUncertain = false; // not show
-            config.TreeViewMode = TreeViewMode.Control; // control mode as default
+            config.PlayScanningSound = false;
+            config.DisableTestsInSnapMode = false;
+            config.IsHighlighterOn = true;
+            config.ShowUncertain = false;
+            config.TreeViewMode = TreeViewMode.Control;
             config.FontSize = FontSize.Standard;
             config.HighlighterMode = HighlighterMode.HighlighterBeakerTooltip;
-            config.ShowAncestry = true; // show ancestry by default.
-            config.ZoomLevel = 100; // default zoom for file bug dialog is 100%
-            config.EnableTelemetry = true; // telemetry is on by default
-            config.ShowTelemetryDialog = true; // telemetry dialog is on by default
+            config.ShowAncestry = true;
+            config.ZoomLevel = 100;
+            config.EnableTelemetry = true;
+            config.ShowTelemetryDialog = true;
 
             config.TestConfig = SuiteConfigurationType.Default;
-            config.IsUnderElementScope = true; // Element scope as default
+            config.IsUnderElementScope = true;
 
             config.CachedConnections = BugReporter.CreateConnectionCache(config.SerializedCachedConnections);
             config.SavedConnection = BugReporter.CreateConnectionInfo(config.SerializedSavedConnection);
