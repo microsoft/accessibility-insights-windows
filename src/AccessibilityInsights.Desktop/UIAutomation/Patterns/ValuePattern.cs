@@ -25,7 +25,15 @@ namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
         private void PopulateProperties()
         {
             this.Properties.Add(new A11yPatternProperty() { Name = "IsReadOnly", Value = Convert.ToBoolean(this.Pattern.CurrentIsReadOnly) });
-            this.Properties.Add(new A11yPatternProperty() { Name = "Value", Value = this.Pattern.CurrentValue });
+            try
+            {
+                this.Properties.Add(new A11yPatternProperty() { Name = "Value", Value = this.Pattern.CurrentValue });
+            }
+            catch(InvalidOperationException)
+            {
+                // there is a known case that CurrentValue is not ready. 
+                // to avoid catstrophic failure in down stream, handle it here. 
+            }
         }
 
         [PatternMethod]
