@@ -222,7 +222,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Avoids an experience where the bug description has duplicated information. 
+        /// Avoids an experience where the bug description has duplicated information.
         /// Currently geared to handle duplicate test message and rule description.
         /// </summary>
         /// <param name="bugFieldPairs">The collection of BugField/string pairs to streamline</param>
@@ -233,14 +233,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 bugFieldPairs.Remove(BugField.TestMessages);
                 if (bugFieldPairs.TryGetValue(BugField.RuleDescription, out string ruleDescription))
                 {
-                    if (!string.Equals(ruleDescription, testMessages, StringComparison.OrdinalIgnoreCase)
-                        && !string.IsNullOrWhiteSpace(ruleDescription)
-                        && !string.IsNullOrWhiteSpace(testMessages))
-                    {
-                        ruleDescription = string.Concat(ruleDescription, " <br /> ", testMessages);
-                        bugFieldPairs.Remove(BugField.TestMessages);
-                        bugFieldPairs[BugField.RuleDescription] = ruleDescription;
-                    }
+                    string shortOne = (ruleDescription.Length <= testMessages.Length) ? ruleDescription : testMessages;
+                    string longOne = string.Equals(shortOne, testMessages, StringComparison.OrdinalIgnoreCase) ? ruleDescription : testMessages;
+                    ruleDescription = longOne.Contains(shortOne) ? longOne : string.Concat(ruleDescription, " <br /> ", testMessages);
+                    bugFieldPairs[BugField.RuleDescription] = ruleDescription;
                 }
             }
         }
