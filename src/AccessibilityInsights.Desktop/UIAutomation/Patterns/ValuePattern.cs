@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Core.Attributes;
+using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Types;
 using System;
-using AccessibilityInsights.Core.Bases;
 using UIAutomationClient;
-using AccessibilityInsights.Core.Attributes;
 
 namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
 {
@@ -25,7 +25,15 @@ namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
         private void PopulateProperties()
         {
             this.Properties.Add(new A11yPatternProperty() { Name = "IsReadOnly", Value = Convert.ToBoolean(this.Pattern.CurrentIsReadOnly) });
-            this.Properties.Add(new A11yPatternProperty() { Name = "Value", Value = this.Pattern.CurrentValue });
+            try
+            {
+                this.Properties.Add(new A11yPatternProperty() { Name = "Value", Value = this.Pattern.CurrentValue });
+            }
+            catch(InvalidOperationException)
+            {
+                // there is a known case that CurrentValue is not ready. 
+                // to avoid catastrophic failure downstream, handle it here. 
+            }
         }
 
         [PatternMethod]
