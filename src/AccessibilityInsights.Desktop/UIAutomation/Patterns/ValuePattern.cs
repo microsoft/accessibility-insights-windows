@@ -32,7 +32,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
             catch(InvalidOperationException)
             {
                 // there is a known case that CurrentValue is not ready. 
-                // to avoid catstrophic failure in down stream, handle it here. 
+                // to avoid catastrophic failure downstream, handle it here. 
             }
         }
 
