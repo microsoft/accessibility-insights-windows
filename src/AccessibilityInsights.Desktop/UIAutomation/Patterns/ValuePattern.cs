@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Core.Attributes;
+using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Types;
 using System;
-using AccessibilityInsights.Core.Bases;
 using UIAutomationClient;
-using AccessibilityInsights.Core.Attributes;
 
 namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
 {
