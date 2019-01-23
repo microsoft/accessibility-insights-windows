@@ -10,8 +10,9 @@ namespace AccessibilityInsights.Rules
     public class RuleInfo : Attribute
     {
         public RuleId ID { get; set; }
-        public string ShortDescription { get; set;  }
+        //public string ShortDescription { get; set;  }
         public string Description { get; set; }
+        public string HowToFix { get; set; }
         public A11yCriteriaId Standard { get; set; }
         public int PropertyID { get; set; }
         public string Condition { get; set;  }
@@ -19,7 +20,6 @@ namespace AccessibilityInsights.Rules
         public override string ToString()
         {
             return Invariant($@"ID:   {this.ID}
-ShortDescription:    {this.ShortDescription}
 Description:    {this.Description}
 Condition:  {this.Condition}");
         }

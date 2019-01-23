@@ -18,7 +18,6 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleCompletelyObscuresContainer()
         {
             this.Info.Description = Descriptions.BoundingRectangleCompletelyObscuresContainer;
-            this.Info.ShortDescription = ShortDescriptions.BoundingRectangleCompletelyObscuresContainer;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }

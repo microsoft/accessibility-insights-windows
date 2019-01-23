@@ -14,7 +14,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsControlElementTrueOptional()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsControlElementTrueOptional;
             this.Info.Description = Descriptions.IsControlElementTrueOptional;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_IsControlElementPropertyId;

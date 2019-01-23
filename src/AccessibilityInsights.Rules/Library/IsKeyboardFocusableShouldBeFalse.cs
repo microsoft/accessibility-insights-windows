@@ -14,7 +14,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsKeyboardFocusableShouldBeFalse()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsKeyboardFocusableShouldBeFalse;
             this.Info.Description = Descriptions.IsKeyboardFocusableShouldBeFalse;
             this.Info.Standard = A11yCriteriaId.Keyboard;
             this.Info.PropertyID = PropertyType.UIA_IsKeyboardFocusablePropertyId;

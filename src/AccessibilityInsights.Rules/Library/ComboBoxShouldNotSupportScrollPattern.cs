@@ -14,7 +14,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public ComboBoxShouldNotSupportScrollPattern()
         {
-            this.Info.ShortDescription = ShortDescriptions.ComboBoxShouldNotSupportScrollPattern;
             this.Info.Description = Descriptions.ComboBoxShouldNotSupportScrollPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }

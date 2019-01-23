@@ -16,7 +16,6 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportSetInfo()
         {
             this.Info.Description = Descriptions.ControlShouldSupportSetInfo;
-            this.Info.ShortDescription = ShortDescriptions.ControlShouldSupportSetInfo;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
         }
 

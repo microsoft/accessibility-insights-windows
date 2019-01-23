@@ -61,7 +61,7 @@ namespace AccessibilityInsights.RuleSelection
 
             var scanResult = CreateResult(runResult.RuleInfo, runResult.element);
 
-            var description = string.IsNullOrEmpty(runResult.RuleInfo.ShortDescription) ? runResult.RuleInfo.Description : runResult.RuleInfo.ShortDescription;
+            var description = runResult.RuleInfo.Description;
             var ruleResult = scanResult.GetRuleResultInstance(runResult.RuleInfo.ID, description);
             ruleResult.Status = ConvertEvaluationCodeToScanStatus(runResult.EvaluationCode);
             ruleResult.AddMessage(runResult.RuleInfo.Description);

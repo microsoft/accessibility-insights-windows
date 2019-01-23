@@ -16,7 +16,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsContentElementPropertyExists()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsContentElementPropertyExists;
             this.Info.Description = Descriptions.IsContentElementPropertyExists;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_IsContentElementPropertyId;

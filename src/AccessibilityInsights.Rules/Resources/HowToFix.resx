@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BoundingRectangleCompletelyObscuresContainer" xml:space="preserve">
+    <value>The BoundingRectangle property of the given element completely obscures the BoundingRectangle of its parent or container element.</value>
+  </data>
+  <data name="BoundingRectangleContainedInParent" xml:space="preserve">
+    <value>The BoundingRectangle property of the given element should be contained within the BoundingRectangle of its parent element.</value>
+  </data>
+  <data name="BoundingRectangleDataFormatCorrect" xml:space="preserve">
+    <value>The BoundingRectangle property should be supplied as an array of type 'double' with a size of four. The values indicate top, left, width, and height, in that order.</value>
+  </data>
+  <data name="BoundingRectangleNotAllZeros" xml:space="preserve">
+    <value>The BoundingRectangle property should not be [0, 0, 0, 0].</value>
+  </data>
+  <data name="BoundingRectangleNotNull" xml:space="preserve">
+    <value>The BoundingRectangle property must not be null. if null BoundingRectangle is intended, the element should be marked with IsOffscreenProperty "true".</value>
+  </data>
+  <data name="BoundingRectangleNotValidButOffScreen" xml:space="preserve">
+    <value>The BoundingRectangle property is not valid, but the element is off-screen.</value>
+  </data>
+  <data name="BoundingRectangleOnUWPMenuBar" xml:space="preserve">
+    <value>The BoundingRectangle property of a menubar in UWP may have a null or empty value.</value>
+  </data>
+  <data name="BoundingRectangleOnUWPMenuItem" xml:space="preserve">
+    <value>The BoundingRectangle property of a menu item in UWP may have a null or empty value.</value>
+  </data>
+  <data name="BoundingRectangleOnWPFTextParent" xml:space="preserve">
+    <value>The BoundingRectangle property of a given element in the WPF framework whose parent is of type text may have a null or empty value.</value>
+  </data>
+  <data name="BoundingRectangleSizeReasonable" xml:space="preserve">
+    <value>The BoundingRectangle must represent a rectangle with an area of at least 25 pixels.</value>
+  </data>
+  <data name="ButtonWithSplitButtonParentPattern" xml:space="preserve">
+    <value>A button element should only support the one of Invoke, Toggle, or ExpandCollapse patterns when a splitbutton is the parent. </value>
+  </data>
+  <data name="ButtonShouldHavePatterns" xml:space="preserve">
+    <value>A button must support at least one of the Invoke, Toggle, or ExpandCollapse patterns.</value>
+  </data>
+  <data name="SiblingUniqueAndFocusable" xml:space="preserve">
+    <value>The given element has siblings with the same Name and LocalizedControlType.</value>
+  </data>
+  <data name="SiblingUniqueAndNotFocusable" xml:space="preserve">
+    <value>The given element has siblings with the same Name and LocalizedControlType.</value>
+  </data>
+  <data name="ChildrenNotAllowedInContentView" xml:space="preserve">
+    <value>The given element is not allowed to have any children where the value of a child's IsContent property is true.</value>
+  </data>
+  <data name="ComboBoxShouldNotSupportScrollPattern" xml:space="preserve">
+    <value>A combo box should not support the Scroll pattern. This rule may be reported as a warning because some platforms have combo boxes support the scroll pattern by default, which app developers can't easily fix.</value>
+  </data>
+  <data name="ControlShouldNotSupportInvokePattern" xml:space="preserve">
+    <value>An element of the given type should not support the Invoke pattern.</value>
+  </data>
+  <data name="ControlShouldNotSupportScrollPattern" xml:space="preserve">
+    <value>An element of the given type should not support the Scroll pattern.</value>
+  </data>
+  <data name="ControlShouldNotSupportTablePattern" xml:space="preserve">
+    <value>Because the element supports the Table pattern, the type is expected to be either Grid or Table. Either the type or the pattern should be changed.</value>
+  </data>
+  <data name="ControlShouldNotSupportTogglePattern" xml:space="preserve">
+    <value>An element of the given type should not support the Toggle pattern.</value>
+  </data>
+  <data name="ControlShouldNotSupportValuePattern" xml:space="preserve">
+    <value>An element of the given type should not support the Value pattern.</value>
+  </data>
+  <data name="ControlShouldNotSupportWindowPattern" xml:space="preserve">
+    <value>An element of the given type should not support the Window pattern.</value>
+  </data>
+  <data name="ControlShouldSupportExpandCollapsePattern" xml:space="preserve">
+    <value>An element of the given type must support the ExpandCollapse pattern.</value>
+  </data>
+  <data name="ControlShouldSupportGridItemPattern" xml:space="preserve">
+    <value>An element whose parent supports the grid pattern, or one of its children, must support the GridItem pattern.</value>
+  </data>
+  <data name="ControlShouldSupportGridPattern" xml:space="preserve">
+    <value>An element of the given type must support the Grid pattern.</value>
+  </data>
+  <data name="ControlShouldSupportInvokePattern" xml:space="preserve">
+    <value>An element of the given type must support the Invoke pattern.</value>
+  </data>
+  <data name="ControlShouldSupportScrollItemPattern" xml:space="preserve">
+    <value>An element whose parent supports the Scroll pattern, or one of its children, must support the ScrollItem pattern.</value>
+  </data>
+  <data name="ControlShouldSupportSelectionItemPattern" xml:space="preserve">
+    <value>An element of the given type must support the SelectionItem pattern.</value>
+  </data>
+  <data name="ControlShouldSupportSelectionPattern" xml:space="preserve">
+    <value>An element of the given type must support the Selection pattern.</value>
+  </data>
+  <data name="ControlShouldSupportSpreadsheetItemPattern" xml:space="preserve">
+    <value>An element whose parent supports the Spreadsheet pattern, or one of its children, must support the SpreadsheetItem pattern.</value>
+  </data>
+  <data name="ControlShouldSupportTableItemPattern" xml:space="preserve">
+    <value>An element whose parent supports the Table pattern, or one of its children, must support the TableItem pattern.</value>
+  </data>
+  <data name="ControlShouldSupportTablePattern" xml:space="preserve">
+    <value>An element of the given type must support the Table pattern.</value>
+  </data>
+  <data name="ControlShouldSupportTextPattern" xml:space="preserve">
+    <value>An element of the given type must support the Text pattern.</value>
+  </data>
+  <data name="ControlShouldSupportTogglePattern" xml:space="preserve">
+    <value>An element of the given type must support the Toggle pattern.</value>
+  </data>
+  <data name="ControlShouldSupportTransformPattern" xml:space="preserve">
+    <value>If the TransformPattern_CanResize property is true, the element must support the Transform pattern.</value>
+  </data>
+  <data name="EditSupportsIncorrectRangeValuePattern" xml:space="preserve">
+    <value>The LargeChange property of the RangeValue pattern should be null for an Edit control.</value>
+  </data>
+  <data name="EditSupportsOnlyValuePattern" xml:space="preserve">
+    <value>It is best when Edit controls support the Text pattern. The Value pattern is acceptable, but much less accessible.</value>
+  </data>
+  <data name="HeadingLevelDescendsWhenNested" xml:space="preserve">
+    <value>The HeadingLevel property for an element must be greater than (i.e., lower) or equal to the heading levels of its ancestors.</value>
+  </data>
+  <data name="IsContentElementPropertyExists" xml:space="preserve">
+    <value>The IsContentElement property for the given control type must exist.</value>
+  </data>
+  <data name="HelpTextNotEqualToName" xml:space="preserve">
+    <value>The HelpText property of an element must not be the same as the element's Name property.</value>
+  </data>
+  <data name="IsContentElementFalseOptional" xml:space="preserve">
+    <value>The recommended value of the IsContentElement property for the given control type is false. Please consider if this is an element that should be reported to an assistive technology user as content.</value>
+  </data>
+  <data name="IsContentElementTrueOptional" xml:space="preserve">
+    <value>The recommended value of the IsContentElement property for the given control type is true. Please consider if this is an element that should be reported to an assistive technology user as content.</value>
+  </data>
+  <data name="IsControlElementPropertyExists" xml:space="preserve">
+    <value>The IsControlElement property for the given control type must exist.</value>
+  </data>
+  <data name="IsControlElementTrueOptional" xml:space="preserve">
+    <value>The recommended value of the IsControlElement property for the given control type is true. Please consider if this is an element that should be reported to an assistive technology user as a control. Note that almost all controls are required to have the IsControl Property set to true.</value>
+  </data>
+  <data name="IsControlElementTrueRequired" xml:space="preserve">
+    <value>The IsControlElement property for the given control type must be true.</value>
+  </data>
+  <data name="IsKeyboardFocusableShouldBeTrue" xml:space="preserve">
+    <value>The IsKeyboardFocusable property for the given element should be true based on its control type.</value>
+  </data>
+  <data name="IsKeyboardFocusableFalseButDisabled" xml:space="preserve">
+    <value>The IsKeyboardFocusable property is false for an element where it would normally be true. However, the IsEnabled property on the element is also false, so the value of IsKeyboardFocusable may be acceptable.</value>
+  </data>
+  <data name="IsKeyboardFocusableForListItemShouldBeTrue" xml:space="preserve">
+    <value>The IsKeyboardFocusable property for the given list item is false, but the element has children that are focusable. The element should probably be focusable instead of its children.</value>
+  </data>
+  <data name="IsKeyboardFocusableFalseButOffscreen" xml:space="preserve">
+    <value>The IsKeyboardFocusable property for the given element is false for an element where it would normally be true. However, the IsOffscreen property on the element is true, so the value of IsKeyboardFocusable may be acceptable.</value>
+  </data>
+  <data name="IsKeyboardFocusableForCustomShouldBeTrue" xml:space="preserve">
+    <value>The IsKeyboardFocusable property for a custome element should be true when the element supports actionable patterns.</value>
+  </data>
+  <data name="IsKeyboardFocusableDescendantTextPattern" xml:space="preserve">
+    <value>The IsKeyboardFocusable property may be false when the given element supports the text pattern and is the descendant of an element that also supports the text pattern. Please consider if the given element should or should not be focusable.</value>
+  </data>
+  <data name="IsKeyboardFocusableOnEmptyContainer" xml:space="preserve">
+    <value>The IsKeyboardFocusable property should be true when you want an empty container to be discoverable by assistive technology users. IsKeyboardFocusable may be false when you want an empty container not to be discoverable by AT users.</value>
+  </data>
+  <data name="IsKeyboardFocusableShouldBeFalse" xml:space="preserve">
+    <value>The IsKeyboardFocusable property for the given element is expected to be false because of the element's control type.</value>
+  </data>
+  <data name="IsKeyboardFocusableTopLevelTextPattern" xml:space="preserve">
+    <value>The IsKeyboardFocusable property should be true for an element that supports the text pattern, is not a descendant of an element that supports the text pattern, and which supports text selection.</value>
+  </data>
+  <data name="ItemStatusExists" xml:space="preserve">
+    <value>The ItemStatus property for the given element should exist.</value>
+  </data>
+  <data name="LandmarkBannerIsTopLevel" xml:space="preserve">
+    <value>An element with the localized landmark type property of "banner" should not be a descendant of an element with any landmark type.</value>
+  </data>
+  <data name="LandmarkComplementaryIsTopLevel" xml:space="preserve">
+    <value>An element with the localized landmark type property of "complementary" should not be a descendant of an element with any landmark type.</value>
+  </data>
+  <data name="LandmarkContentInfoIsTopLevel" xml:space="preserve">
+    <value>An element with the localized landmark type property of "contentinfo" should not be a descendant of an element with any landmark type.</value>
+  </data>
+  <data name="LandmarkMainIsTopLevel" xml:space="preserve">
+    <value>An element with the landmark type property of "main" should not be a descendant of an element with any landmark type.</value>
+  </data>
+  <data name="LandmarkNoDuplicateBanner" xml:space="preserve">
+    <value>An element with the localized landmark type property of "banner" may only be used once per page.</value>
+  </data>
+  <data name="LandmarkNoDuplicateContentInfo" xml:space="preserve">
+    <value>An element with the localized landmark type property of "contentinfo" may only be used once per page.</value>
+  </data>
+  <data name="LandmarkOneMain" xml:space="preserve">
+    <value>An element with the landmark type property of "main" must occur once per page.</value>
+  </data>
+  <data name="LocalizedControlTypeNotCustom" xml:space="preserve">
+    <value>The localized control type property of a custom control element must not be "custom".</value>
+  </data>
+  <data name="LocalizedControlTypeNotEmpty" xml:space="preserve">
+    <value>The localized control type property of an element must not be an empty string.</value>
+  </data>
+  <data name="LocalizedControlTypeNotNull" xml:space="preserve">
+    <value>The localized control type property of an element must not be null.</value>
+  </data>
+  <data name="LocalizedControlTypeNotWhiteSpace" xml:space="preserve">
+    <value>The localized control type property of an element must not contain only white space.</value>
+  </data>
+  <data name="LocalizedControlTypeReasonable" xml:space="preserve">
+    <value>The localized control type should be reasonable based on ControlTypeId.</value>
+  </data>
+  <data name="LocalizedLandmarkTypeExcludesSpecialCharacters" xml:space="preserve">
+    <value>The localized landmark type property of an element should not contain any special characters.</value>
+  </data>
+  <data name="LocalizedLandmarkTypeIsReasonableLength" xml:space="preserve">
+    <value>The localized landmark type property of an element must not be longer than {0} characters.</value>
+    <comment>{0} is an integer indicating the character limit</comment>
+  </data>
+  <data name="LocalizedLandmarkTypeNotCustom" xml:space="preserve">
+    <value>The localized landmark type property of an element must not be "custom" when the landmark type is custom.</value>
+  </data>
+  <data name="LocalizedLandmarkTypeNotEmpty" xml:space="preserve">
+    <value>The localized landmark type property of an element must not be an empty string when the landmark type property is set.</value>
+  </data>
+  <data name="LocalizedLandmarkTypeNotNull" xml:space="preserve">
+    <value>The localized landmark type property of an element must not be null when the landmark type property is set.</value>
+  </data>
+  <data name="LocalizedLandmarkTypeNotWhiteSpace" xml:space="preserve">
+    <value>The localized landmark type property of an element must not contain only white space.</value>
+  </data>
+  <data name="ItemTypeRecommended" xml:space="preserve">
+    <value>The ItemType property for the given element has no content, and the element has a child image. Please consider including an item type so that assistive technology users can obtain the information provided by the image. If this information is already provided in another way, the item type may not be necessary.</value>
+  </data>
+  <data name="NameEmptyButElementNotKeyboardFocusable" xml:space="preserve">
+    <value>The Name property for the given element is empty, but the element isn't focusable. Please consider whether or not the element should have a name.</value>
+  </data>
+  <data name="NameExcludesControlType" xml:space="preserve">
+    <value>The name property of an element should not contain the element's control type.</value>
+  </data>
+  <data name="NameExcludesLocalizedControlType" xml:space="preserve">
+    <value>The name property of an element should not contain the same text as its LocalizedControlType property.</value>
+  </data>
+  <data name="NameExcludesSpecialCharacters" xml:space="preserve">
+    <value>The name property of an element should not contain any special characters.</value>
+  </data>
+  <data name="NameIsInformative" xml:space="preserve">
+    <value>The name property of an element should not contain class names like 'Microsoft.*.*' or 'Windows.*.*' as these are not usually informative.</value>
+  </data>
+  <data name="NameNoSiblingsOfSameType" xml:space="preserve">
+    <value>The name property of the given element may be null or empty if the element has no siblings of the same type.</value>
+  </data>
+  <data name="NameNotEmpty" xml:space="preserve">
+    <value>The name property of a focusable element must not be an empty string.</value>
+  </data>
+  <data name="NameNotNull" xml:space="preserve">
+    <value>The name property of a focusable element must not be null.</value>
+  </data>
+  <data name="NameNotWhiteSpace" xml:space="preserve">
+    <value>The name property of an element must not contain only white space.</value>
+  </data>
+  <data name="NameNullButElementNotKeyboardFocusable" xml:space="preserve">
+    <value>The Name property for the given element is null, but the element isn't focusable. Please consider whether or not the element should have a name.</value>
+  </data>
+  <data name="NameOnCustomWithParentWPFDataItem" xml:space="preserve">
+    <value>The name property of a custom control may be empty if the parent is a wpf dataitem.</value>
+  </data>
+  <data name="NameOnOptionalType" xml:space="preserve">
+    <value>The name property for the given element type is optional.</value>
+  </data>
+  <data name="NameReasonableLength" xml:space="preserve">
+    <value>The name property of an element must not be longer than {0} characters.</value>
+    <comment>{0} is an integer indicating the character limit</comment>
+  </data>
+  <data name="NameWithValidBoundingRectangle" xml:space="preserve">
+    <value>An interactive element with a valid name property is usually expected to have a valid bounding rectangle that is not null and has area.</value>
+  </data>
+  <data name="OrientationPropertyExists" xml:space="preserve">
+    <value>For an element of this type, the Orientation property must exist.</value>
+  </data>
+  <data name="ProgressBarRangeValue" xml:space="preserve">
+    <value>For a progress bar element, the RangeValue pattern must return a Minimum value of 0.0, a Maximum value of 100.0, and IsReadOnly true.</value>
+  </data>
+  <data name="Structure" xml:space="preserve">
+    <value>The given element is expected to have the following structure: {0}.</value>
+  </data>
+  <data name="SelectionPatternSelectionRequired" xml:space="preserve">
+    <value>The IsSelectionRequired property for the Selection pattern for the given element must be true.</value>
+  </data>
+  <data name="SelectionPatternSingleSelection" xml:space="preserve">
+    <value>The given element supports the Selection pattern, but it may not support multiple selection.</value>
+  </data>
+  <data name="SelectionItemPatternSingleSelection" xml:space="preserve">
+    <value>The given element is one of multiple selected siblings according to the SelectionItem pattern. Only one item should be selected.</value>
+  </data>
+  <data name="ControlShouldSupportSetInfo" xml:space="preserve">
+    <value>The PositionInSet and SizeOfSet properties for the given element type should have valid values. Since there is a known issue with WPF itself, the WPF case is a warning instead of an error.</value>
+  </data>
+  <data name="SplitButtonInvokeAndTogglePatterns" xml:space="preserve">
+    <value>A split button element should support either the Invoke or the Toggle pattern, but must not support both.</value>
+    <comment>Since Office product support Toggle instead of Invoke for Splitbutton in some cases. we have this rule different than MSDN description of splitbutton.</comment>
+  </data>
+  <data name="ButtonInvokeAndTogglePatterns" xml:space="preserve">
+    <value>A button should not support the Invoke and Toggle patterns together. </value>
+  </data>
+  <data name="ButtonInvokeAndExpandCollapsePatterns" xml:space="preserve">
+    <value>A button may have invoke and expandcollapse patterns together. but it is not recommended. if possible, please have only one of them. </value>
+  </data>
+  <data name="ButtonToggleAndExpandCollapsePatterns" xml:space="preserve">
+    <value>A button should not support Toggle and ExpandCollapse patterns together. </value>
+  </data>
+  <data name="ParentChildShouldNotHaveSameNameAndLocalizedControlType" xml:space="preserve">
+    <value>A parent element and its child element should not have a same name and a same localized control type.</value>
+  </data>
+</root>

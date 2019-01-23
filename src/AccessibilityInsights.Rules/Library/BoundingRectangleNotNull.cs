@@ -13,7 +13,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public BoundingRectangleNotNull()
         {
-            this.Info.ShortDescription = ShortDescriptions.BoundingRectangleNotNull;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = Core.Types.PropertyType.UIA_BoundingRectanglePropertyId;
             this.Info.Description = Descriptions.BoundingRectangleNotNull;

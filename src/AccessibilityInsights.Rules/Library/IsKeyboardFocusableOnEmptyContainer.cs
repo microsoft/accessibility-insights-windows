@@ -14,7 +14,6 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsKeyboardFocusableOnEmptyContainer()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsKeyboardFocusableOnEmptyContainer;
             this.Info.Description = Descriptions.IsKeyboardFocusableOnEmptyContainer;
             this.Info.Standard = A11yCriteriaId.Keyboard;
             this.Info.PropertyID = PropertyType.UIA_IsKeyboardFocusablePropertyId;
