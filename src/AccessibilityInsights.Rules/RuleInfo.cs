@@ -10,7 +10,6 @@ namespace AccessibilityInsights.Rules
     public class RuleInfo : Attribute
     {
         public RuleId ID { get; set; }
-        //public string ShortDescription { get; set;  }
         public string Description { get; set; }
         public string HowToFix { get; set; }
         public A11yCriteriaId Standard { get; set; }
