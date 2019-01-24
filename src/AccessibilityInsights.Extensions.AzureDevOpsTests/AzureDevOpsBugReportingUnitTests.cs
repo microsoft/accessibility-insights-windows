@@ -18,58 +18,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         private const string TestMessage = "Test message";
         private const string RuleDescription = "Rule Description";
 
-        [TestMethod]
-        [Timeout(1000)]
-        public void StreamlineBugFieldPairs_RuleDescriptionAndTestMessagesAreDifferent_TestMessagesIsRemoved_RuleDescriptionIsConcatenated()
-        {
-            PrivateType privateAzureDevOpsBugReporting = new PrivateType(typeof(AzureDevOpsBugReporting));
-            Dictionary<BugField, string> bugFieldPairs = new Dictionary<BugField, string>
-            {
-                { BugField.RuleDescription, RuleDescription },
-                { BugField.TestMessages, TestMessage },
-            };
-
-            privateAzureDevOpsBugReporting.InvokeStatic("StreamlineBugFieldPairs", bugFieldPairs);
-
-            Assert.IsFalse(bugFieldPairs.TryGetValue(BugField.TestMessages, out string actualTestMessages));
-            Assert.IsTrue(bugFieldPairs.TryGetValue(BugField.RuleDescription, out string actualRuleDescription));
-            Assert.AreEqual(RuleDescription + " <br /> " + TestMessage, actualRuleDescription);
-        }
-
-        [TestMethod]
-        [Timeout(1000)]
-        public void StreamlineBugFieldPairs_RuleDescriptionAndTestMessagesAreIdentical_TestMessagesIsRemoved_RuleDescriptionIsUnchanged()
-        {
-            PrivateType privateAzureDevOpsBugReporting = new PrivateType(typeof(AzureDevOpsBugReporting));
-            Dictionary<BugField, string> bugFieldPairs = new Dictionary<BugField, string>
-            {
-                { BugField.RuleDescription, TestMessage },
-                { BugField.TestMessages, TestMessage },
-            };
-
-            privateAzureDevOpsBugReporting.InvokeStatic("StreamlineBugFieldPairs", bugFieldPairs);
-
-            Assert.IsFalse(bugFieldPairs.TryGetValue(BugField.TestMessages, out string actualTestMessages));
-            Assert.IsTrue(bugFieldPairs.TryGetValue(BugField.RuleDescription, out string actualRuleDescription));
-            Assert.AreEqual(TestMessage, actualRuleDescription);
-        }
-
-        [TestMethod]
-        [Timeout(1000)]
-        public void StreamlineBugFieldPairs_TestMessagesIsAbsent_RuleDescriptionIsUnchanged()
-        {
-            PrivateType privateAzureDevOpsBugReporting = new PrivateType(typeof(AzureDevOpsBugReporting));
-            Dictionary<BugField, string> bugFieldPairs = new Dictionary<BugField, string>
-            {
-                { BugField.RuleDescription, RuleDescription },
-            };
-
-            privateAzureDevOpsBugReporting.InvokeStatic("StreamlineBugFieldPairs", bugFieldPairs);
-
-            Assert.IsFalse(bugFieldPairs.TryGetValue(BugField.TestMessages, out string actualTestMessages));
-            Assert.IsTrue(bugFieldPairs.TryGetValue(BugField.RuleDescription, out string actualRuleDescription));
-            Assert.AreEqual(RuleDescription, actualRuleDescription);
-        }
 
         [TestMethod]
         [Timeout(1000)]
