@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ItemStatusExists()
         {
             this.Info.Description = Descriptions.ItemStatusExists;
+            this.Info.HowToFix = HowToFix.ItemStatusExists;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_ItemStatusPropertyId;
         }

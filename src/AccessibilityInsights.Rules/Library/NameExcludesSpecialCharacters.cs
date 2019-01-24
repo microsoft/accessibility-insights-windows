@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameExcludesSpecialCharacters()
         {
             this.Info.Description = Descriptions.NameExcludesSpecialCharacters;
+            this.Info.HowToFix = HowToFix.NameExcludesSpecialCharacters;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

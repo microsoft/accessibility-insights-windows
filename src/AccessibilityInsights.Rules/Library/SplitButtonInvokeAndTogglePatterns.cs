@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public SplitButtonInvokeAndTogglePatterns()
         {
             this.Info.Description = Descriptions.SplitButtonInvokeAndTogglePatterns;
+            this.Info.HowToFix = HowToFix.SplitButtonInvokeAndTogglePatterns;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

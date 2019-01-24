@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedControlTypeIsNotNull()
         {
             this.Info.Description = Descriptions.LocalizedControlTypeNotNull;
+            this.Info.HowToFix = HowToFix.LocalizedControlTypeNotNull;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_LocalizedControlTypePropertyId;
         }

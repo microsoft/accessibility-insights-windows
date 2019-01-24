@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldNotSupportTablePattern()
         {
             this.Info.Description = Descriptions.ControlShouldNotSupportTablePattern;
+            this.Info.HowToFix = HowToFix.ControlShouldNotSupportTablePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

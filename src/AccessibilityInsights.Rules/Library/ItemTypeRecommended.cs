@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ItemTypeRecommended()
         {
             this.Info.Description = Descriptions.ItemTypeRecommended;
+            this.Info.HowToFix = HowToFix.ItemTypeRecommended;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_ItemTypePropertyId;
         }

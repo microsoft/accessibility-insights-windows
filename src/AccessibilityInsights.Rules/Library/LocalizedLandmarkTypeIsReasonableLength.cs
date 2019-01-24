@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedLandmarkTypeIsReasonableLength()
         {
             this.Info.Description = String.Format(CultureInfo.InvariantCulture, Descriptions.LocalizedLandmarkTypeIsReasonableLength, ReasonableLength);
+            this.Info.HowToFix = String.Format(CultureInfo.InvariantCulture, HowToFix.LocalizedLandmarkTypeIsReasonableLength, ReasonableLength);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

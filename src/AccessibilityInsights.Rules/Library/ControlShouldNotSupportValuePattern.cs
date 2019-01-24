@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldNotSupportValuePattern()
         {
             this.Info.Description = Descriptions.ControlShouldNotSupportValuePattern;
+            this.Info.HowToFix = HowToFix.ControlShouldNotSupportValuePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

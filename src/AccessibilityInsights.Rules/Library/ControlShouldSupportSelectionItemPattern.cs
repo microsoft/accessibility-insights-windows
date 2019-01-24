@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportSelectionItemPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportSelectionItemPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportSelectionItemPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

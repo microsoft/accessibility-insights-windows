@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public IsKeyboardFocusableFalseButOffscreen()
         {
             this.Info.Description = Descriptions.IsKeyboardFocusableFalseButOffscreen;
+            this.Info.HowToFix = HowToFix.IsKeyboardFocusableFalseButOffscreen;
             this.Info.Standard = A11yCriteriaId.Keyboard;
             this.Info.PropertyID = PropertyType.UIA_IsKeyboardFocusablePropertyId;
         }

@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportScrollItemPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportScrollItemPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportScrollItemPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

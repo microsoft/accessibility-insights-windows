@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleNotValidButOffScreen()
         {
             this.Info.Description = Descriptions.BoundingRectangleNotValidButOffScreen;
+            this.Info.HowToFix = HowToFix.BoundingRectangleNotValidButOffScreen;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }

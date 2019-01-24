@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldNotSupportScrollPattern()
         {
             this.Info.Description = Descriptions.ControlShouldNotSupportScrollPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldNotSupportScrollPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

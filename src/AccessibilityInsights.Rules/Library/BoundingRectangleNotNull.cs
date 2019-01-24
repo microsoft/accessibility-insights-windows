@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = Core.Types.PropertyType.UIA_BoundingRectanglePropertyId;
             this.Info.Description = Descriptions.BoundingRectangleNotNull;
+            this.Info.HowToFix = HowToFix.BoundingRectangleNotNull;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

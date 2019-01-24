@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public IsKeyboardFocusableTopLevelTextPattern()
         {
             this.Info.Description = Descriptions.IsKeyboardFocusableTopLevelTextPattern;
+            this.Info.HowToFix = HowToFix.IsKeyboardFocusableTopLevelTextPattern;
             this.Info.Standard = A11yCriteriaId.Keyboard;
             this.Info.PropertyID = Core.Types.PropertyType.UIA_IsKeyboardFocusablePropertyId;
         }

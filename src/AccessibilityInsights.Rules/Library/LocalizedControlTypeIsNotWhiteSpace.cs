@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedControlTypeIsNotWhiteSpace()
         {
             this.Info.Description = Descriptions.LocalizedControlTypeNotWhiteSpace;
+            this.Info.HowToFix = HowToFix.LocalizedControlTypeNotWhiteSpace;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_LocalizedControlTypePropertyId;
         }

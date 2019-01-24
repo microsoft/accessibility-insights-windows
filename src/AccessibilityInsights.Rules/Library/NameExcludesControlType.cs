@@ -18,6 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameExcludesControlType()
         {
             this.Info.Description = Descriptions.NameExcludesControlType;
+            this.Info.HowToFix = HowToFix.NameExcludesControlType;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

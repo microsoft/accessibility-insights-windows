@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public SelectionPatternSingleSelection()
         {
             this.Info.Description = Descriptions.SelectionPatternSingleSelection;
+            this.Info.HowToFix = HowToFix.SelectionPatternSingleSelection;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

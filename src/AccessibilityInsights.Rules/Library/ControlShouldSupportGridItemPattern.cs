@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportGridItemPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportGridItemPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportGridItemPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

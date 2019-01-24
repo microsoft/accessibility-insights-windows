@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameIsNotWhiteSpace()
         {
             this.Info.Description = Descriptions.NameNotWhiteSpace;
+            this.Info.HowToFix = HowToFix.NameNotWhiteSpace;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

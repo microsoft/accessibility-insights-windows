@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ParentChildShouldNotHaveSameNameAndLocalizedControlType()
         {
             this.Info.Description = Descriptions.ParentChildShouldNotHaveSameNameAndLocalizedControlType;
+            this.Info.HowToFix = HowToFix.ParentChildShouldNotHaveSameNameAndLocalizedControlType;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

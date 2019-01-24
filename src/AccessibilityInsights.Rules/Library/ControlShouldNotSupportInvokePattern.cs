@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldNotSupportInvokePattern()
         {
             this.Info.Description = Descriptions.ControlShouldNotSupportInvokePattern;
+            this.Info.HowToFix = HowToFix.ControlShouldNotSupportInvokePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public ButtonToggleAndExpandCollapsePatterns()
         {
             this.Info.Description = Descriptions.ButtonToggleAndExpandCollapsePatterns;
+            this.Info.HowToFix = HowToFix.ButtonToggleAndExpandCollapsePatterns;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

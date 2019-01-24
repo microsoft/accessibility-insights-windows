@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ButtonShouldHavePatterns()
         {
             this.Info.Description = Descriptions.ButtonShouldHavePatterns;
+            this.Info.HowToFix = HowToFix.ButtonShouldHavePatterns;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

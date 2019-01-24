@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewComboBoxStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.ComboBoxStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.ComboBoxStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

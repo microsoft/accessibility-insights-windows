@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameIsNotEmpty()
         {
             this.Info.Description = Descriptions.NameNotEmpty;
+            this.Info.HowToFix = HowToFix.NameNotEmpty;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

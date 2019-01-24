@@ -33,6 +33,7 @@ namespace AccessibilityInsights.Rules.Library
         public SiblingUniqueAndFocusable()
         {
             this.Info.Description = Descriptions.SiblingUniqueAndFocusable;
+            this.Info.HowToFix = HowToFix.SiblingUniqueAndFocusable;
             this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
