@@ -1863,7 +1863,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For questions or feedback: https://aka.ms/accessibilityinsights-stackoverflow.
+        ///   Looks up a localized string similar to questions or feedback.
         /// </summary>
         public static string hlLinkAutomationPropertiesName {
             get {

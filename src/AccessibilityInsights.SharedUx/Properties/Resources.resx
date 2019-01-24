@@ -391,7 +391,7 @@
     <value>10</value>
   </data>
   <data name="hlLinkAutomationPropertiesName" xml:space="preserve">
-    <value>For questions or feedback: https://aka.ms/accessibilityinsights-stackoverflow</value>
+    <value>questions or feedback</value>
   </data>
   <data name="LabelContentAutomatedChecks" xml:space="preserve">
     <value>Automated checks</value>
