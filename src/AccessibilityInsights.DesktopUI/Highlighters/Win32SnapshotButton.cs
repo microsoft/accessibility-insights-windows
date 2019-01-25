@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Desktop.Utility;
+using AccessibilityInsights.DesktopUI.Utility;
 using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Concurrent;
@@ -17,9 +18,10 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 {
     public class Win32SnapshotButton : IDisposable
     {
-        private static ConcurrentBag<WndProc> WndProcsRef = new ConcurrentBag<WndProc>();
+        private readonly static ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
+        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+
         private IntPtr hWnd = default(IntPtr);
-        WndProc WndProcDelegate;
 
         const int BorderMargin = 1;
         const int DefaultWidth = 20;
@@ -59,9 +61,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             this.WindowClassName = cnb;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            WndProc newWndProc = new WndProc(WndProc);
-            WndProcsRef.Add(newWndProc);
-            this.WndProcDelegate = newWndProc;
             this.IsHovered = false;
 
             var brush = Application.Current.Resources["SnapshotBtnBGBrush"] as SolidColorBrush;
@@ -77,6 +76,16 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             RegisterWindowClass();
             this.hWnd = CreateWindow(this.HiLighterRect);
             this.IsVisible = true;
+            Holder.Add(this.hWnd, this);
+        }
+
+        public static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
+        {
+            if (Holder.TryGet(hWnd, out Win32SnapshotButton border))
+            {
+                return border.WndProc(hWnd, uMsg, wParam, lParam);
+            }
+            return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
 
         private static PrivateFontCollection LoadFontResource()
@@ -169,7 +178,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             wcex.style = (uint)ClassStyles.SaveBits | (uint)ClassStyles.VerticalRedraw | (uint)ClassStyles.HorizontalRedraw;
             wcex.cbWndExtra = 0;
             wcex.hInstance = this.hInstance;
-            wcex.lpfnWndProc = this.WndProcDelegate;
+            wcex.lpfnWndProc = MyWndProc;
             wcex.hIcon = IntPtr.Zero;
             wcex.hCursor = IntPtr.Zero;
             wcex.hbrBackground = IntPtr.Zero;
@@ -295,6 +304,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             if (!disposedValue)
             {
+                Holder.Remove(hWnd);
                 NativeMethods.DestroyWindow(this.hWnd);
                 UnRegisterWindowClass();
 
