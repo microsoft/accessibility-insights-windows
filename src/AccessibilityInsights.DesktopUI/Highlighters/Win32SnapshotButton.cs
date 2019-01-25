@@ -17,7 +17,10 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 {
     public class Win32SnapshotButton : IDisposable
     {
+        private static ArrayList WndProcsRef = new ArrayList();
         private IntPtr hWnd = default(IntPtr);
+        WndProc WndProcDelegate;
+
         const int BorderMargin = 1;
         const int DefaultWidth = 20;
         const int DefaultHeight = 20;
@@ -43,9 +46,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                 SetVisible(value);
             }
         }
-
-        WndProc WndProcDelegate;
-        private static ArrayList WndProcsRef = new ArrayList();
 
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
