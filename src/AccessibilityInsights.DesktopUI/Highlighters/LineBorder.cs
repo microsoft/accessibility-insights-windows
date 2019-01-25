@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Runtime.InteropServices;
 using AccessibilityInsights.Win32;
+using System;
+using System.Collections.Concurrent;
 using System.Drawing;
-using System.Collections;
-
+using System.Runtime.InteropServices;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
@@ -20,7 +19,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
 
-        private static ArrayList WndProcsRef = new ArrayList();
+        private static ConcurrentBag<WndProc> WndProcsRef = new ConcurrentBag<WndProc>();
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
 
