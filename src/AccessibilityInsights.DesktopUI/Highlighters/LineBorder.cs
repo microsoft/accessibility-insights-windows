@@ -21,7 +21,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         WndProc WndProcDelegate;
 
         private static ArrayList WndProcsRef = new ArrayList();
-
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
 

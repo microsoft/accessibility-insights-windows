@@ -22,9 +22,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         const int TEXTGAP = 8;       // Gep between object and rectangle
         const int Default_Font_Height = 25;
 
+        private static ArrayList WndProcsRef = new ArrayList();
         IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
-        private static ArrayList WndProcsRef = new ArrayList();
 
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
