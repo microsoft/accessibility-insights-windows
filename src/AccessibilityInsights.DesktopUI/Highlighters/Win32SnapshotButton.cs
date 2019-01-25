@@ -79,7 +79,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             Holder.Add(this.hWnd, this);
         }
 
-        public static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
+        private static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
         {
             if (Holder.TryGet(hWnd, out Win32SnapshotButton border))
             {
