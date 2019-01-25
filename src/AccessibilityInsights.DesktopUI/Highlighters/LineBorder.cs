@@ -4,6 +4,7 @@ using System;
 using System.Runtime.InteropServices;
 using AccessibilityInsights.Win32;
 using System.Drawing;
+using System.Collections;
 
 using static System.FormattableString;
 
@@ -18,6 +19,8 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
     {
         IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
+
+        private static ArrayList WndProcsRef = new ArrayList();
 
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
@@ -39,7 +42,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             this.WindowClassName = Invariant($"{cnb}-{id}");
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            this.WndProcDelegate = new WndProc(WndProc);
+            WndProc newWndProc = new WndProc(WndProc);
+            WndProcsRef.Add(newWndProc);
+            this.WndProcDelegate = newWndProc;
             this.Id = id;
             var r = RegisterWindowClass();
 
@@ -105,7 +110,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                             NativeMethods.MoveToEx(hDC, rc.left + this.Width + 1, rc.top, IntPtr.Zero);
                             NativeMethods.LineTo(hDC, rc.right - this.Width - 1, rc.top);
                         }
-                        
+
                         hPen = NativeMethods.SelectObject(hDC, hPen);
                         return (IntPtr)1;
                     }
