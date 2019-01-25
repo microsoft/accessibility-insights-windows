@@ -20,6 +20,7 @@ namespace AccessibilityInsights.Rules
         {
             return Invariant($@"ID:   {this.ID}
 Description:    {this.Description}
+HowToFix:    {this.HowToFix}
 Condition:  {this.Condition}");
         }
     } // class
