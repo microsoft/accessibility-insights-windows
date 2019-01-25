@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Win32;
 using System;
+using System.Collections.Concurrent;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using AccessibilityInsights.Win32;
-using System.Drawing;
-using System.Collections;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
 {
@@ -22,7 +22,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         const int TEXTGAP = 8;       // Gep between object and rectangle
         const int Default_Font_Height = 25;
 
-        private static ArrayList WndProcsRef = new ArrayList();
+        private static ConcurrentBag<WndProc> WndProcsRef = new ConcurrentBag<WndProc>();
         IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
 

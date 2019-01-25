@@ -3,6 +3,7 @@
 using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.Win32;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -11,13 +12,12 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
-using System.Collections;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
 {
     public class Win32SnapshotButton : IDisposable
     {
-        private static ArrayList WndProcsRef = new ArrayList();
+        private static ConcurrentBag<WndProc> WndProcsRef = new ConcurrentBag<WndProc>();
         private IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
 
