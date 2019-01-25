@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using AccessibilityInsights.Win32;
 using System.Drawing;
+using System.Collections;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
 {
@@ -23,6 +24,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 
         IntPtr hWnd = default(IntPtr);
         WndProc WndProcDelegate;
+        private static ArrayList WndProcsRef = new ArrayList();
 
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
@@ -36,11 +38,13 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         /// <param name="cn"></param>
         public TextTip(string cn)
         {
-            this.hFont = NativeMethods.CreateFont(Default_Font_Height, 0, 0, 0, FontWeight.FW_LIGHT, false, false, false,  FontCharSet.DEFAULT_CHARSET, FontPrecision.OUT_OUTLINE_PRECIS,
+            this.hFont = NativeMethods.CreateFont(Default_Font_Height, 0, 0, 0, FontWeight.FW_LIGHT, false, false, false, FontCharSet.DEFAULT_CHARSET, FontPrecision.OUT_OUTLINE_PRECIS,
                  FontClipPrecision.CLIP_DEFAULT_PRECIS, FontQuality.CLEARTYPE_QUALITY, FontPitchAndFamily.DEFAULT_PITCH, "Calibri");
             this.WindowClassName = cn;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            this.WndProcDelegate = new WndProc(WndProc);
+            WndProc newWndProc = new WndProc(WndProc);
+            WndProcsRef.Add(newWndProc);
+            this.WndProcDelegate = newWndProc;
             var r = RegisterWindowClass();
 
             this.hWnd = CreateWindow();
@@ -68,7 +72,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             set
             {
                 this.location = value;
-                if(this.IsVisible)
+                if (this.IsVisible)
                 {
                     AdjustLoc();
                 }
@@ -85,7 +89,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             set
             {
                 this.isVisible = value;
-                if(this.isVisible)
+                if (this.isVisible)
                 {
                     CalcSize();
                     AdjustLoc();
@@ -95,7 +99,8 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         }
 
         string text = null;
-        public string Text {
+        public string Text
+        {
             get
             {
                 return this.text;
@@ -122,7 +127,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
         }
 
-        int textColor = NativeMethods.RGB(0,0,0);
+        int textColor = NativeMethods.RGB(0, 0, 0);
         public int TextColor
         {
             get
@@ -148,7 +153,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
         }
 
-        int backgroundColor = NativeMethods.RGB(255,255,192);
+        int backgroundColor = NativeMethods.RGB(255, 255, 192);
         public int BackgroundColor
         {
             get
@@ -171,9 +176,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             //RECT rcAvail;
             //Win32Apis.GetWindowRect(hWnd, out rcAvail);
             var ss = (from s in Screen.AllScreens
-                       where s.Bounds.Left <= location.Left && s.Bounds.Right >= location.Left
-                            && s.Bounds.Top <= location.Top && s.Bounds.Bottom >= location.Top
-                       select s).FirstOrDefault();
+                      where s.Bounds.Left <= location.Left && s.Bounds.Right >= location.Left
+                           && s.Bounds.Top <= location.Top && s.Bounds.Bottom >= location.Top
+                      select s).FirstOrDefault();
 
             int left;
             int top;
@@ -241,7 +246,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                 while (ch != '\r' && ch != '\n' && ch != '\t')
                 {
                     idxEnd++;
-                    if(idxEnd < this.Text.Length)
+                    if (idxEnd < this.Text.Length)
                     {
                         ch = this.Text[idxEnd];
                     }
@@ -255,9 +260,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                 int Len = (int)(idxEnd - idxCur);
 
                 // Now pass the line to DrawText to get the height/length...
-                RECT rc = new RECT() { left = 0,top= 0, right= 2,bottom = 32768 };
+                RECT rc = new RECT() { left = 0, top = 0, right = 2, bottom = 32768 };
 
-                int Height = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur,Len), Len, ref rc,
+                int Height = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur, Len), Len, ref rc,
                         Win32Constants.DT_CALCRECT | Win32Constants.DT_LEFT | Win32Constants.DT_SINGLELINE | Win32Constants.DT_NOPREFIX);
                 if (rc.right > MaxWidth1)
                     MaxWidth1 = rc.right;
@@ -287,7 +292,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                     rc = new RECT() { left = 0, top = 0, right = 2, bottom = 32767 };
                     rc.right = NativeMethods.GetSystemMetrics(SystemMetric.SM_CXSCREEN) / 4;
 
-                    int Height2 = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur,Len), Len, ref rc, 
+                    int Height2 = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur, Len), Len, ref rc,
                         Win32Constants.DT_CALCRECT | Win32Constants.DT_LEFT | Win32Constants.DT_SINGLELINE | Win32Constants.DT_NOPREFIX | Win32Constants.DT_END_ELLIPSIS);
                     if (MaxWidth2 < rc.right)
                         MaxWidth2 = rc.right;
@@ -399,7 +404,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                             // Now pass the line to DrawText to get the height/length...
                             RECT rc = new RECT() { left = 1 + TEXTBORDER, top = CurYPos, right = rcClient.right, bottom = rcClient.bottom };
                             // TODO - set tab stops correctly (default is 8 - probably too small...
-                            int Height = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur,Len), Len, ref rc,
+                            int Height = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur, Len), Len, ref rc,
                                     Win32Constants.DT_NOCLIP | Win32Constants.DT_LEFT | Win32Constants.DT_SINGLELINE | Win32Constants.DT_NOPREFIX);
 
                             if (ch == '\t')
@@ -423,7 +428,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 
                                 rc.left += m_TabStop + TEXTTABMIN;
                                 Len = (int)(idxEnd - idxCur);
-                                int Height2 = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur,Len), Len, ref rc,
+                                int Height2 = NativeMethods.DrawText(hDC, this.Text.Substring(idxCur, Len), Len, ref rc,
                                         Win32Constants.DT_NOCLIP | Win32Constants.DT_LEFT | Win32Constants.DT_SINGLELINE | Win32Constants.DT_NOPREFIX | Win32Constants.DT_END_ELLIPSIS);
                                 if (Height < Height2)
                                     Height = Height2;
@@ -534,7 +539,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
         }
 
-         ~TextTip()
+        ~TextTip()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);

@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
+using System.Collections;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
 {
@@ -44,6 +45,8 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         }
 
         WndProc WndProcDelegate;
+        private static ArrayList WndProcsRef = new ArrayList();
+
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
@@ -56,7 +59,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             this.WindowClassName = cnb;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            this.WndProcDelegate = new WndProc(WndProc);
+            WndProc newWndProc = new WndProc(WndProc);
+            WndProcsRef.Add(newWndProc);
+            this.WndProcDelegate = newWndProc;
             this.IsHovered = false;
 
             var brush = Application.Current.Resources["SnapshotBtnBGBrush"] as SolidColorBrush;
@@ -146,13 +151,13 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         IntPtr CreateWindow(Rectangle rect)
         {
             return NativeMethods.CreateWindowEx(WindowStylesEx.WS_EX_TOOLWINDOW,
-                this.WindowClassName, 
+                this.WindowClassName,
                 "",
                 WindowStyles.WS_POPUP,
                 rect.Left, rect.Top, rect.Width, rect.Height,
                 IntPtr.Zero,
                 IntPtr.Zero,
-                this.hInstance, 
+                this.hInstance,
                 IntPtr.Zero);
         }
 
@@ -193,12 +198,12 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         public void SetLocation(Rectangle rc)
         {
             this.HiLighterRect = rc;
-            NativeMethods.SetWindowPos(hWnd, 
-                (IntPtr)Win32Constants.HWND_TOPMOST, 
+            NativeMethods.SetWindowPos(hWnd,
+                (IntPtr)Win32Constants.HWND_TOPMOST,
                 rc.Right - Width - BorderMargin,
                 rc.Top - BorderMargin,
                 Width,
-                Height, 
+                Height,
                 Win32Constants.SWP_NOACTIVATE);
         }
 
