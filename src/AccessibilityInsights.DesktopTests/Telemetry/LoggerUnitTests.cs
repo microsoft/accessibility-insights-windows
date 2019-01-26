@@ -1,4 +1,6 @@
-﻿using AccessibilityInsights.Desktop.Telemetry;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
