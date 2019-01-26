@@ -1,4 +1,6 @@
-﻿using AccessibilityInsights.Actions;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Contexts.Fakes;
 using AccessibilityInsights.Actions.Fakes;
