@@ -11,13 +11,13 @@ The target folder to search recursively.
 The path to a text file that contains the license header text
 
 .PARAMETER Extensions
-The extensions of the files in the target folder that will be processed. Currently supports xaml, xml, wxs, cs, ps1 extensions
+The extensions of the files in the target folder that will be processed. Currently supports xaml, xml, cs, ps1 extensions
 
 .PARAMETER AddIfAbsent
 If a file with no license header is detected, whether a header should be added.
 
 .Example Usage 
-.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.wxs,*.cs,*.ps1 -AddIfAbsent $false
+.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.cs,*.ps1 -AddIfAbsent $false
 #>
 
 param(
