@@ -81,9 +81,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 
         private static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
         {
-            if (Holder.TryGet(hWnd, out Win32SnapshotButton border))
+            if (Holder.TryGet(hWnd, out Win32SnapshotButton button))
             {
-                return border.WndProc(hWnd, uMsg, wParam, lParam);
+                return button.WndProc(hWnd, uMsg, wParam, lParam);
             }
             return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
