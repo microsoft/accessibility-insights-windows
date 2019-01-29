@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public EditSupportsIncorrectRangeValuePattern()
         {
             this.Info.Description = Descriptions.EditSupportsIncorrectRangeValuePattern;
+            this.Info.HowToFix = HowToFix.EditSupportsIncorrectRangeValuePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

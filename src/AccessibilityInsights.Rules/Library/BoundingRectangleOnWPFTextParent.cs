@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleOnWPFTextParent()
         {
             this.Info.Description = Descriptions.BoundingRectangleOnWPFTextParent;
+            this.Info.HowToFix = HowToFix.BoundingRectangleOnWPFTextParent;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }

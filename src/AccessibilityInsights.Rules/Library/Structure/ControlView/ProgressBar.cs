@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlViewProgressBarStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ControlView.ProgressBarStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ControlView.ProgressBarStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

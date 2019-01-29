@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportSpreadsheetItemPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportSpreadsheetItemPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportSpreadsheetItemPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

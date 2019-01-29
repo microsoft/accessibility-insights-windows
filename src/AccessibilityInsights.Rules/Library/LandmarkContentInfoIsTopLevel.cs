@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public LandmarkContentInfoIsTopLevel()
         {
             this.Info.Description = Descriptions.LandmarkContentInfoIsTopLevel;
+            this.Info.HowToFix = HowToFix.LandmarkContentInfoIsTopLevel;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

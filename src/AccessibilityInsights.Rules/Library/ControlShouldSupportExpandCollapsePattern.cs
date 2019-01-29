@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportExpandCollapsePattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportExpandCollapsePattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportExpandCollapsePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

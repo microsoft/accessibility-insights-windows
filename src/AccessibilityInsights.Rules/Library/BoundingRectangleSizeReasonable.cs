@@ -18,6 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleSizeReasonable()
         {
             this.Info.Description = Descriptions.BoundingRectangleSizeReasonable;
+            this.Info.HowToFix = HowToFix.BoundingRectangleSizeReasonable;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }

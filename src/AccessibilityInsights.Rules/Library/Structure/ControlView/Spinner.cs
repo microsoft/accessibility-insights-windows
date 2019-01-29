@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlViewSpinnerStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ControlView.SpinnerStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ControlView.SpinnerStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

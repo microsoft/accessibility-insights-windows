@@ -14,8 +14,8 @@ namespace AccessibilityInsights.Rules.Library
         public ButtonInvokeAndExpandCollapsePatterns()
         {
             this.Info.Description = Descriptions.ButtonInvokeAndExpandCollapsePatterns;
+            this.Info.HowToFix = HowToFix.ButtonInvokeAndExpandCollapsePatterns;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
-            this.Info.ShortDescription = ShortDescriptions.ButtonInvokeAndExpandCollapsePatterns;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

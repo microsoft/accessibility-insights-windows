@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameNoSiblingsOfSameType()
         {
             this.Info.Description = Descriptions.NameNoSiblingsOfSameType;
+            this.Info.HowToFix = HowToFix.NameNoSiblingsOfSameType;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

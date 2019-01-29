@@ -247,6 +247,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConditionDescriptions.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\HowToFix.Designer.cs">
+      <DependentUpon>HowToFix.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Resources\Descriptions.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -261,11 +266,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resources\ShortDescriptions.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShortDescriptions.resx</DependentUpon>
     </Compile>
     <Compile Include="RuleFactory.cs" />
     <Compile Include="RuleProvider.cs" />
@@ -302,6 +302,11 @@
       <LastGenOutput>ConditionDescriptions.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\HowToFix.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>HowToFix.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Descriptions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -314,11 +319,6 @@
     <EmbeddedResource Include="Resources\Messages.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\ShortDescriptions.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>ShortDescriptions.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>

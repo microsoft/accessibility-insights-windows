@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportTogglePattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportTogglePattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportTogglePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewRadioButtonStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.RadioButtonStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.RadioButtonStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

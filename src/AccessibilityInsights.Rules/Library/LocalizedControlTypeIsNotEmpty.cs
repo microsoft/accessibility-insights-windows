@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedControlTypeIsNotEmpty()
         {
             this.Info.Description = Descriptions.LocalizedControlTypeNotEmpty;
+            this.Info.HowToFix = HowToFix.LocalizedControlTypeNotEmpty;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_LocalizedControlTypePropertyId;
         }

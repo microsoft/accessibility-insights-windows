@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportTransformPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportTransformPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportTransformPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

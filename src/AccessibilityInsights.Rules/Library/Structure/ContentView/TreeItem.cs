@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewTreeItemStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.TreeItemStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.TreeItemStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

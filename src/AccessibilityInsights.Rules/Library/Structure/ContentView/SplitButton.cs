@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewSplitButtonStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.SplitButtonStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.SplitButtonStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

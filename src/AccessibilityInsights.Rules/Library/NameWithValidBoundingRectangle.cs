@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameWithValidBoundingRectangle()
         {
             this.Info.Description = Descriptions.NameWithValidBoundingRectangle;
+            this.Info.HowToFix = HowToFix.NameWithValidBoundingRectangle;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

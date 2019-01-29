@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportTextPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportTextPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportTextPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

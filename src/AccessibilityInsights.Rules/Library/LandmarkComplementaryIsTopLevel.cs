@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public LandmarkComplementaryIsTopLevel()
         {
             this.Info.Description = Descriptions.LandmarkComplementaryIsTopLevel;
+            this.Info.HowToFix = HowToFix.LandmarkComplementaryIsTopLevel;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

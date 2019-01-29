@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public LandmarkOneMain()
         {
             this.Info.Description = Descriptions.LandmarkOneMain;
+            this.Info.HowToFix = HowToFix.LandmarkOneMain;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

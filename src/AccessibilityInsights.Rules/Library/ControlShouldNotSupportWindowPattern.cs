@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldNotSupportWindowPattern()
         {
             this.Info.Description = Descriptions.ControlShouldNotSupportWindowPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldNotSupportWindowPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

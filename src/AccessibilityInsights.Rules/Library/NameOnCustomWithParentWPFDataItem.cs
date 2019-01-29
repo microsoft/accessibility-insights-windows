@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameOnCustomWithParentWPFDataItem()
         {
             this.Info.Description = Descriptions.NameOnCustomWithParentWPFDataItem;
+            this.Info.HowToFix = HowToFix.NameOnCustomWithParentWPFDataItem;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public ButtonInvokeAndTogglePatterns()
         {
             this.Info.Description = Descriptions.ButtonInvokeAndTogglePatterns;
+            this.Info.HowToFix = HowToFix.ButtonInvokeAndTogglePatterns;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

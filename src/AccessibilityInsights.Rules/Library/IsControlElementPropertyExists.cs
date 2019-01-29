@@ -15,8 +15,8 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsControlElementPropertyExists()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsControlElementPropertyExists;
             this.Info.Description = Descriptions.IsControlElementPropertyExists;
+            this.Info.HowToFix = HowToFix.IsControlElementPropertyExists;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_IsControlElementPropertyId;
         }
