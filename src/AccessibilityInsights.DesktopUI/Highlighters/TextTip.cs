@@ -52,9 +52,9 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 
         private static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
         {
-            if (Holder.TryGet(hWnd, out TextTip border))
+            if (Holder.TryGet(hWnd, out TextTip text))
             {
-                return border.WndProc(hWnd, uMsg, wParam, lParam);
+                return text.WndProc(hWnd, uMsg, wParam, lParam);
             }
             return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
