@@ -1,4 +1,4 @@
-# Supporting High Constrast
+# Supporting High Contrast
 
 When adding new controls with custom colors, attempt to follow patterns from other controls in the project. Here are some tips:
 - Hard code the color value into the control or style **only** if both these statements are true:<ul><li>a. The color/style in question will not affect usability and <li>b. The color/style in question will apply only to a small area of the ux (ex a single border on a button)</ul>
