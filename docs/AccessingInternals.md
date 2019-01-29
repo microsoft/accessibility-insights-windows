@@ -1,6 +1,6 @@
 # Accessing Internals
 
-You can safely ignore this entire file if you make everything publicly available from your assembly. If you wish to avoid having everything private, keep reading…
+You can safely ignore this entire file if you make everything publicly available from your assembly. If you wish to avoid having your internal intefaces and classes public for testing, keep reading…
 
 .NET provides a way to expose internal classes and data, using the InternalsVisibleTo attribute. This mechanism gets a little bit tricky when StrongName assemblies are involved. Since the same file will be used for both signed and unsigned build loops, we need to be flexible enough to support both sets of requirements in a single file. Here are the steps:
 
