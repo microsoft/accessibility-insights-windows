@@ -1,10 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Runtime.InteropServices;
+using AccessibilityInsights.DesktopUI.Utility;
 using AccessibilityInsights.Win32;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
-
+using System.Runtime.InteropServices;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
@@ -16,8 +17,10 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
     /// </summary>
     internal class LineBorder : IDisposable
     {
+        private readonly static ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
+        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+
         IntPtr hWnd = default(IntPtr);
-        WndProc WndProcDelegate;
 
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
@@ -39,11 +42,20 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             this.WindowClassName = Invariant($"{cnb}-{id}");
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            this.WndProcDelegate = new WndProc(WndProc);
             this.Id = id;
             var r = RegisterWindowClass();
 
             this.hWnd = CreateWindow();
+            Holder.Add(this.hWnd, this);
+        }
+
+        private static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
+        {
+            if (Holder.TryGet(hWnd, out LineBorder border))
+            {
+                return border.WndProc(hWnd, uMsg, wParam, lParam);
+            }
+            return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
 
         /// <summary>
@@ -105,7 +117,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                             NativeMethods.MoveToEx(hDC, rc.left + this.Width + 1, rc.top, IntPtr.Zero);
                             NativeMethods.LineTo(hDC, rc.right - this.Width - 1, rc.top);
                         }
-                        
+
                         hPen = NativeMethods.SelectObject(hDC, hPen);
                         return (IntPtr)1;
                     }
@@ -222,7 +234,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             wcex.style = (uint)ClassStyles.SaveBits | (uint)ClassStyles.VerticalRedraw | (uint)ClassStyles.HorizontalRedraw;
             wcex.cbWndExtra = 0;
             wcex.hInstance = this.hInstance;
-            wcex.lpfnWndProc = this.WndProcDelegate;
+            wcex.lpfnWndProc = MyWndProc;
             wcex.hIcon = IntPtr.Zero;
             wcex.hCursor = IntPtr.Zero;
             wcex.hbrBackground = IntPtr.Zero;
@@ -262,6 +274,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             if (!disposedValue)
             {
+                Holder.Remove(hWnd);
                 NativeMethods.DestroyWindow(this.hWnd);
                 UnRegisterWindowClass();
 

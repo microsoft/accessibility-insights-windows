@@ -1,8 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Desktop.Utility;
+using AccessibilityInsights.DesktopUI.Utility;
 using AccessibilityInsights.Win32;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -16,7 +18,11 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 {
     public class Win32SnapshotButton : IDisposable
     {
+        private readonly static ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
+        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+
         private IntPtr hWnd = default(IntPtr);
+
         const int BorderMargin = 1;
         const int DefaultWidth = 20;
         const int DefaultHeight = 20;
@@ -43,7 +49,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
         }
 
-        WndProc WndProcDelegate;
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
         IntPtr hInstance = default(IntPtr);
@@ -56,7 +61,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             this.WindowClassName = cnb;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            this.WndProcDelegate = new WndProc(WndProc);
             this.IsHovered = false;
 
             var brush = Application.Current.Resources["SnapshotBtnBGBrush"] as SolidColorBrush;
@@ -72,6 +76,16 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             RegisterWindowClass();
             this.hWnd = CreateWindow(this.HiLighterRect);
             this.IsVisible = true;
+            Holder.Add(this.hWnd, this);
+        }
+
+        private static IntPtr StaticWndProc(IntPtr hWnd, uint uMsg, IntPtr wParam, IntPtr lParam)
+        {
+            if (Holder.TryGet(hWnd, out Win32SnapshotButton button))
+            {
+                return button.WndProc(hWnd, uMsg, wParam, lParam);
+            }
+            return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
 
         private static PrivateFontCollection LoadFontResource()
@@ -146,13 +160,13 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         IntPtr CreateWindow(Rectangle rect)
         {
             return NativeMethods.CreateWindowEx(WindowStylesEx.WS_EX_TOOLWINDOW,
-                this.WindowClassName, 
+                this.WindowClassName,
                 "",
                 WindowStyles.WS_POPUP,
                 rect.Left, rect.Top, rect.Width, rect.Height,
                 IntPtr.Zero,
                 IntPtr.Zero,
-                this.hInstance, 
+                this.hInstance,
                 IntPtr.Zero);
         }
 
@@ -164,7 +178,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             wcex.style = (uint)ClassStyles.SaveBits | (uint)ClassStyles.VerticalRedraw | (uint)ClassStyles.HorizontalRedraw;
             wcex.cbWndExtra = 0;
             wcex.hInstance = this.hInstance;
-            wcex.lpfnWndProc = this.WndProcDelegate;
+            wcex.lpfnWndProc = MyWndProc;
             wcex.hIcon = IntPtr.Zero;
             wcex.hCursor = IntPtr.Zero;
             wcex.hbrBackground = IntPtr.Zero;
@@ -193,12 +207,12 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         public void SetLocation(Rectangle rc)
         {
             this.HiLighterRect = rc;
-            NativeMethods.SetWindowPos(hWnd, 
-                (IntPtr)Win32Constants.HWND_TOPMOST, 
+            NativeMethods.SetWindowPos(hWnd,
+                (IntPtr)Win32Constants.HWND_TOPMOST,
                 rc.Right - Width - BorderMargin,
                 rc.Top - BorderMargin,
                 Width,
-                Height, 
+                Height,
                 Win32Constants.SWP_NOACTIVATE);
         }
 
@@ -290,6 +304,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             if (!disposedValue)
             {
+                Holder.Remove(hWnd);
                 NativeMethods.DestroyWindow(this.hWnd);
                 UnRegisterWindowClass();
 
