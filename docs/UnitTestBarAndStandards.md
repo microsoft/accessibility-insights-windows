@@ -1,8 +1,8 @@
 # Bar
 * All new non-UI code must have unit tests.
-* Unit tests need to accompany the code in the PR. This provides implicit documentation of the expected behavior, and ensures that the behavior is being satisfied. In an exceptional circumstance, a PR might be approved without its unit tests, but that must not become the normal expectation
-* All unit tests should be passing locally before the PR is created
-* Unit tests need to conform to the standards listed below
+* Unit tests need to accompany the code in the PR. This provides implicit documentation of the expected behavior, and ensures that the behavior is being satisfied. In an exceptional circumstance, a PR might be approved without its unit tests, but that must not become the normal expectation.
+* All unit tests should be passing locally before the PR is created.
+* Unit tests need to conform to the standards listed below.
 
 # Standards
 * The test project is appropriately named (tests for the `Foo.Bar.dll` are in `Foo.BarTests.dll`)
