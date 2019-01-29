@@ -5,10 +5,11 @@ We use the [MSTest framework](https://docs.microsoft.com/en-us/dotnet/api/micros
 ## Unit Test Setup
 Setting up unit tests for an assembly is trivial. 
 The steps are:
-1. Use VisualStudio to **add a new Unit Test Project** (available as a new project template listed under Visual C#, then Test)
+1. Use Visual Studio to **add a new Unit Test Project** (available as a new project template listed under Visual C#, then Test)
    1. In Visual Studio, right-click on the solution and add a new project.
    2. Select unit tests from the template list.
    3. Name your project consistently with the existing test projects. If your project is Widgets.Stuff, then your test project should be named *Widgets.Stuff**Tests***.
+   4. Finish setting up the project by following instructions in the [Readme.md](../src/Readme.md)
 
 2. **Add a unit test class** to the project. Name the class after the class it will be testing--if the class is named *ExplodingWidget*, then the test class should be named *ExplodingWidget**Tests***
     1. In Visual Studio, right-click on the test project and add a new test class.
