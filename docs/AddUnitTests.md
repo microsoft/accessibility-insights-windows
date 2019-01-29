@@ -34,7 +34,7 @@ The required portions in the above example are:
 2. The test method be `public void`.
 
 
-When you build, this test will be built and made available for discovery. As long as `widget.Delay` returns a `TimeSpan` object that corresponds to 5 seconds, the test will fail. If the return value is a different type, or if it has a different value, then `Assert.AreEqual` will return `false`, and the test will fail.<br>
+When you build, this test will be built and made available for discovery. As long as `widget.Delay` returns a `TimeSpan` object that corresponds to 5 seconds, the test will pass. If the return value is a different type, or if it has a different value, then `Assert.AreEqual` will return `false`, and the test will fail.<br>
 
 If `widget.Delay` throws an exception, then the exception will be caught by the test framework and the test will also fail. In either case, all other tests will continue to execute, and the aggregate result will be rolled up into the reports that are included as part of the build loop.
 
@@ -46,7 +46,7 @@ will just tell you that `TryGetValue` failed, without telling you the key it was
 
 `Assert.IsTrue(dictionary.TryGetValue(key, out string value, "Couldn't find key: " + key));`
 
-The output will now tell you that `IsTrue` failed, but also why. This is especially handy in cases where your Assert statement appears within a loop
+The output will now tell you that `IsTrue` failed, but also why. This is especially handy in cases where your `Assert` statement appears within a loop
 
 ## Working with Fakes
 Due to the known issue (overwriting fakes assemblies from different unit tests if they have same name), all `Fakes` assemblies are generated in a single project (`AccessibilityInsights.Fakes.Prebuild`). 

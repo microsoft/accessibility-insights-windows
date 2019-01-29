@@ -13,7 +13,7 @@
   * If the test is expected to throw an `Exception`, the test should declare this via the `ExpectedException` attribute. If the test needs to check the contents of the `Exception`, the best pattern is to catch the expected `Exception` type, validate it, then re-throw the `Exception`
 * Each test uses appropriate `Assert` methods to validate its conditions--use the version with a hint where it seems helpful
 * Each test specifies a reasonable `Timeout` value (default to 1 second each). The test output is much more readable if the test times out and fails than if the entire build loop hangs and reaches the 60 minute time constraint
-  * One downside to the `Timeout` attribute--since the `Timeout` applies while debugging the unit test, it basically needs to be commented out to make debugging feasible. We could consider wrapping it in #if DEBUG, but that seems a little heavy-handed. Here's a case for macros in C# would be nice (not going to happen, though…)
+  * One downside to the `Timeout` attribute--since the `Timeout` applies while debugging the unit test, it basically needs to be commented out to make debugging feasible.
 * Appropriate mocks or fakes decouple the test class from the underlying dependencies (Dependency Injection is a common pattern for this). This is required for new classes, best effort for changes to existing classes
 * Static methods can be tested using `Microsoft Fakes`
 * If Moq is used, mocks should ideally use `MockBehavior.Strict`--this isn't always possible, but using it makes for a much stronger test
