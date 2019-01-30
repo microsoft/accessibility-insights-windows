@@ -41,4 +41,4 @@ You can install the application from TBA.
 We use the unit test framework from Visual Studio. 
 
 ## Contributing
-All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project
+All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project.
