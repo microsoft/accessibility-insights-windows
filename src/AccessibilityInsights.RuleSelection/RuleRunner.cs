@@ -64,7 +64,7 @@ namespace AccessibilityInsights.RuleSelection
             var description = runResult.RuleInfo.Description;
             var ruleResult = scanResult.GetRuleResultInstance(runResult.RuleInfo.ID, description);
             ruleResult.Status = ConvertEvaluationCodeToScanStatus(runResult.EvaluationCode);
-            ruleResult.AddMessage(runResult.RuleInfo.Description);
+            ruleResult.AddMessage(runResult.RuleInfo.HowToFix);
 
             return scanResult;
         }

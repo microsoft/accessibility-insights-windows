@@ -247,15 +247,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ConditionDescriptions.resx</DependentUpon>
     </Compile>
-    <Compile Include="Resources\HowToFix.Designer.cs">
-      <DependentUpon>HowToFix.resx</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Resources\Descriptions.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Descriptions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\HowToFix.Designer.cs">
+      <DependentUpon>HowToFix.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Resources\LocalizedControlTypeNames.Designer.cs">
       <AutoGen>True</AutoGen>

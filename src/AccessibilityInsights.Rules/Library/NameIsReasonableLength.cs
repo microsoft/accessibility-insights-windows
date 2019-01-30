@@ -18,8 +18,8 @@ namespace AccessibilityInsights.Rules.Library
 
         public NameIsReasonableLength()
         {
-            this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.NameReasonableLength, ReasonableLength);
-            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.NameReasonableLength, ReasonableLength);
+            Info.Description = Descriptions.NameReasonableLength;
+            this.Info.HowToFix = HowToFix.NameReasonableLength;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }
