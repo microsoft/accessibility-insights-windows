@@ -37,5 +37,8 @@ See something wrong / that can be improved upon? Vist the [issues](https://githu
 
 If it doesn't, feel free to [file an issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new).
 
+## FAQ
+Please visit our [FAQ section](docs/FAQ) to get answers to common questions.
+
 ## Get in touch
 TBA
