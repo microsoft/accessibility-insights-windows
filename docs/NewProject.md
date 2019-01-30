@@ -2,7 +2,7 @@
 Do the following when adding a new project:
 
 ## For all projects
-1. Add a project under AccessibilityInsights Solution(…\src\accessibilityinsights.sln).
+1. Add a project to the AccessibilityInsights Solution(`src\AccessibilityInsights.sln`).
 2. Right-click on the project and select Properties.
 2. In the Application tab, configure "Target Framework" to use the same .NET Framework version used by the `AccessibilityInsights.Core` project.
    - Currently .NET Framework 4.7.1 is used as target. 
