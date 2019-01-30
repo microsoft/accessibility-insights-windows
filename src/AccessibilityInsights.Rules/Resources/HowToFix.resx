@@ -352,11 +352,11 @@
   <data name="BoundingRectangleDataFormatCorrect" xml:space="preserve">
     <value>Make sure the BoundingRectangle property returns data in the expected format:
     1.     Specify the rectangle as an array with a type of double and a size of 4.
-      2.     Specify the rectangle's position and size (in pixels) by providing array values in the following order:
-    a.     Top edge
-    b.     Left edge
-    c.     Width
-    d.     Height</value>
+    2.     Specify the rectangle's position and size (in pixels) by providing array values in the following order:
+      a.     Top edge
+      b.     Left edge
+      c.     Width
+      d.     Height</value>
   </data>
   <data name="BoundingRectangleNotAllZeros" xml:space="preserve">
     <value>Specify the rectangle's position and size (in pixels) by providing array values in the following order:
@@ -419,73 +419,73 @@
     <value>Provide a string for the LocalizedLandmarkType property that does not include any special characters.
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeIsReasonableLength" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property that contains at most 64 characters.
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotCustom" xml:space="preserve">
     <value>Provide string for the LocalizedLandmarkType property that does not include "custom."
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotEmpty" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property.
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotNull" xml:space="preserve">
     <value>Provide a LocalizedLandmarkType property for the element.
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotWhiteSpace" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property.
     Where appropriate, use a standard localized landmark type:
     ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-      ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-      ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
     ·         Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
-      If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
+    If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedControlTypeNotCustom" xml:space="preserve">
     <value>Sufficient:

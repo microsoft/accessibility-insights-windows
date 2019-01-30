@@ -217,7 +217,7 @@
     <value>The given element is expected to have the following structure: {0}.</value>
   </data>
   <data name="ButtonInvokeAndExpandCollapsePatterns" xml:space="preserve">
-    <value>A button may have invoke and expandcollapse patterns together. but it is not recommended. if possible, please have only one of them. </value>
+    <value>A button may have the Invoke and ExpandCollapse patterns together, but it is not recommended. If possible, please have only one of them. </value>
   </data>
   <data name="ButtonShouldHavePatterns" xml:space="preserve">
     <value>A button must support one of these patterns: Invoke, Toggle, or ExpandCollapse.</value>

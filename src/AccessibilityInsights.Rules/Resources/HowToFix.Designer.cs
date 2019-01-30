@@ -81,11 +81,11 @@ namespace AccessibilityInsights.Rules.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Make sure the BoundingRectangle property returns data in the expected format:
         ///    1.     Specify the rectangle as an array with a type of double and a size of 4.
-        ///      2.     Specify the rectangle&apos;s position and size (in pixels) by providing array values in the following order:
-        ///    a.     Top edge
-        ///    b.     Left edge
-        ///    c.     Width
-        ///    d.     Height.
+        ///    2.     Specify the rectangle&apos;s position and size (in pixels) by providing array values in the following order:
+        ///      a.     Top edge
+        ///      b.     Left edge
+        ///      c.     Width
+        ///      d.     Height.
         /// </summary>
         internal static string BoundingRectangleDataFormatCorrect {
             get {
@@ -740,8 +740,8 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property that does not include any special characters.
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or  [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeExcludesSpecialCharacters {
             get {
@@ -753,8 +753,8 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property that contains at most 64 characters.
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the prima [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary c [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeIsReasonableLength {
             get {
@@ -766,8 +766,8 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide string for the LocalizedLandmarkType property that does not include &quot;custom.&quot;
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary cont [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content. [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotCustom {
             get {
@@ -779,9 +779,9 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property.
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;form [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
+        ///    ·         Use &quot;form&quot; fo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotEmpty {
             get {
@@ -793,9 +793,9 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide a LocalizedLandmarkType property for the element.
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;for [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
+        ///    ·         Use &quot;form&quot; f [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotNull {
             get {
@@ -807,9 +807,9 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property.
         ///    Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
-        ///      ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///      ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;form [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
+        ///    ·         Use &quot;form&quot; fo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotWhiteSpace {
             get {

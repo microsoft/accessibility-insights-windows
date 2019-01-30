@@ -151,7 +151,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A button may have invoke and expandcollapse patterns together. but it is not recommended. if possible, please have only one of them. .
+        ///   Looks up a localized string similar to A button may have the Invoke and ExpandCollapse patterns together, but it is not recommended. If possible, please have only one of them. .
         /// </summary>
         internal static string ButtonInvokeAndExpandCollapsePatterns {
             get {
