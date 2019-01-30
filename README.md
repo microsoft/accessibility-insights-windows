@@ -42,3 +42,6 @@ We use the unit test framework from Visual Studio.
 
 ## Contributing
 All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project.
+
+## FAQ
+Please visit our [FAQ section](docs/FAQ) to get answers to common questions.
