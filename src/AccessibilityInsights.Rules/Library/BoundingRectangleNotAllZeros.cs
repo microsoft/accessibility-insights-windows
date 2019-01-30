@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.BoundingRectangleNotAllZeros;
             this.Info.HowToFix = HowToFix.BoundingRectangleNotAllZeros;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }
 

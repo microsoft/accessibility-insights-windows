@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.BoundingRectangleContainedInParent;
             this.Info.HowToFix = HowToFix.BoundingRectangleContainedInParent;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }
 

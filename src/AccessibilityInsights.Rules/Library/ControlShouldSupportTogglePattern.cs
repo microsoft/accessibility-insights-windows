@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.ControlShouldSupportTogglePattern;
             this.Info.HowToFix = HowToFix.ControlShouldSupportTogglePattern;
-            this.Info.Standard = A11yCriteriaId.AvailableActions;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

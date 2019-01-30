@@ -19,7 +19,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.BoundingRectangleCompletelyObscuresContainer;
             this.Info.HowToFix = HowToFix.BoundingRectangleCompletelyObscuresContainer;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }
 

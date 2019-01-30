@@ -19,7 +19,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.NameExcludesControlType;
             this.Info.HowToFix = HowToFix.NameExcludesControlType;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }
 

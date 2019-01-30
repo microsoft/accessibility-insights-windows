@@ -17,7 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.NameIsInformative;
             this.Info.HowToFix = HowToFix.NameIsInformative;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }
 

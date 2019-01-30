@@ -17,7 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.ControlShouldSupportTransformPattern;
             this.Info.HowToFix = HowToFix.ControlShouldSupportTransformPattern;
-            this.Info.Standard = A11yCriteriaId.AvailableActions;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

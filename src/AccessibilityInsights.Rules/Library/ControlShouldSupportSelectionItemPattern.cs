@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.ControlShouldSupportSelectionItemPattern;
             this.Info.HowToFix = HowToFix.ControlShouldSupportSelectionItemPattern;
-            this.Info.Standard = A11yCriteriaId.AvailableActions;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

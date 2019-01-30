@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.SelectionPatternSingleSelection;
             this.Info.HowToFix = HowToFix.SelectionPatternSingleSelection;
-            this.Info.Standard = A11yCriteriaId.AvailableActions;
+            this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

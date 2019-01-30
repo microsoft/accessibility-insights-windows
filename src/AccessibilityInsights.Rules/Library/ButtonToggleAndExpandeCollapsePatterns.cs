@@ -15,7 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.ButtonToggleAndExpandCollapsePatterns;
             this.Info.HowToFix = HowToFix.ButtonToggleAndExpandCollapsePatterns;
-            this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

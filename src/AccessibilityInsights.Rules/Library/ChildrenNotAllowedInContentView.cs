@@ -17,7 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.ChildrenNotAllowedInContentView;
             this.Info.HowToFix = HowToFix.ChildrenNotAllowedInContentView;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)

@@ -18,7 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.IsContentElementPropertyExists;
             this.Info.HowToFix = HowToFix.IsContentElementPropertyExists;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
             this.Info.PropertyID = PropertyType.UIA_IsContentElementPropertyId;
         }
 

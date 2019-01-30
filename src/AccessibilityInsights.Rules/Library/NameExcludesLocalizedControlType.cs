@@ -18,7 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.NameExcludesLocalizedControlType;
             this.Info.HowToFix = HowToFix.NameExcludesLocalizedControlType;
-            this.Info.Standard = A11yCriteriaId.ObjectInformation;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }
 
