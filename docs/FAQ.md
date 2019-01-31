@@ -28,6 +28,9 @@ Please visit [Accessing Internals](AccessingInternals.md).
 ### Q. Is there anything that I need to support High Contrast?
 Excellent question. Please visit the [High Contrast Support](HighContrastSupport.md) page for more information.
 
+### Q. Where can I find out more about a specific rule?
+Explanations for all rules can be found at [Rules explained].
+
 ### Q. How do I create a new automated scan rule?
 Visit the [Add new automated scan rule] page for details.
 
