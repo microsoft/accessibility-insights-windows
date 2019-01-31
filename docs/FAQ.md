@@ -6,7 +6,7 @@ Accessibility Insights for Windows is the project for Accessibility tools on Win
 By contributing you will help ensure that differently abled people have full access to applications. Make the world a better place!
 
 ### Q. How do I get started?
-Visit the [Readme](../Readme.md) and the [Overview](Overview.md) page. 
+Visit the [Readme](../README.md) and the [Overview](Overview.md) page.
 
 Once you are ready to make a contribution visit the [Contributions](../Contributing.md) page.
 
@@ -32,6 +32,9 @@ Excellent question. Please visit the [High Contrast Support](HighContrastSupport
 All PRs need to be tested against the scenarios that are documented at [Test Scenarios](Scenarios.md). 
 
 If your PR includes UI changes please follow the additional instructions for UI changes in the [Test Scenarios](Scenarios.md) page.
+
+### Q. What happens after I submit a PR?
+All PRs kick off a build and the build status is visible in the PR checks section. Failures need to be addressed before the PR can be merged. 
 
 ### Q.How do I go about adding telemetry for my changes?
 Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so.
