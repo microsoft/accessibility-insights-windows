@@ -33,6 +33,9 @@ All PRs need to be tested against the scenarios that are documented at [Test Sce
 
 If your PR includes UI changes please follow the additional instructions for UI changes in the [Test Scenarios](Scenarios.md) page.
 
+### Q. What happens after I submit a PR?
+All PRs kick off a build and the build status is visible in the PR checks section. Failures need to be addressed before the PR can be merged. 
+
 ### Q.How do I go about adding telemetry for my changes?
 Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so.
 
