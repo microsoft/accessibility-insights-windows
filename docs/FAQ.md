@@ -28,6 +28,9 @@ Please visit [Accessing Internals](AccessingInternals.md).
 ### Q. Is there anything that I need to support High Contrast?
 Excellent question. Please visit the [High Contrast Support](HighContrastSupport.md) page for more information.
 
+### Q. How do I create a new automated scan rule?
+Visit the [Add new automated scan rule] page for details.
+
 ### Q. What scenarios must I test before creating a PR? 
 All PRs need to be tested against the scenarios that are documented at [Test Scenarios](Scenarios.md). 
 
