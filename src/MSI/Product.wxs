@@ -71,8 +71,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.txt"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
-              <File Source="..\AccessibilityInsights.Automation\bin\Release\AccessibilityInsights.Automation.dll" />
-              <File Source="..\AccessibilityInsights.Automation\bin\Release\AccessibilityInsights.Automation.xml" />
 
               <!-- BEGIN BACKWARD COMPATIBILITY SETTINGS. -->
               <ProgId Id='K4D.Test' Description='Accessibility Insights For Windows Test file'>
