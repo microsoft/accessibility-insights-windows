@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedLandmarkTypeNotCustom()
         {
             this.Info.Description = Descriptions.LocalizedLandmarkTypeNotCustom;
+            this.Info.HowToFix = HowToFix.LocalizedLandmarkTypeNotCustom;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

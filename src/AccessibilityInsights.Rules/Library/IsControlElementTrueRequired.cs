@@ -15,8 +15,8 @@ namespace AccessibilityInsights.Rules.Library
     {
         public IsControlElementTrueRequired()
         {
-            this.Info.ShortDescription = ShortDescriptions.IsControlElementTrueRequired;
             this.Info.Description = Descriptions.IsControlElementTrueRequired;
+            this.Info.HowToFix = HowToFix.IsControlElementTrueRequired;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_IsControlElementPropertyId;
         }

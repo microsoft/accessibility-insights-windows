@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Automation;
 using AccessibilityInsights.Actions.Sarif;
 
 namespace AccessibilityInsights
@@ -236,7 +237,11 @@ namespace AccessibilityInsights
                 // Based on Ux model feedback from PM team, we decided to go to AutomatedTestResults as default page view for snapshot.
                 StartTestMode(TestView.AutomatedTestResults);
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Test_Requested, TelemetryProperty.By, method.ToString());
+                Logger.PublishTelemetryEvent(TelemetryAction.Test_Requested, new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.By, method.ToString() },
+                    { TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString() }
+                });
             }
             HighlightAction.GetDefaultInstance().Clear();
             UpdateMainWindowUI();
@@ -283,7 +288,7 @@ namespace AccessibilityInsights
                     }
                     break;
                 case AppPage.Events:
-                    // inconclusive in current mode information. 
+                    StartTestMode(TestView.NoSelection);
                     break;
                 case AppPage.CCA:
                     StartTestMode(TestView.NoSelection);
@@ -517,7 +522,7 @@ namespace AccessibilityInsights
 
             var args = Environment.GetCommandLineArgs();
 
-            if (args.Length == 2)
+            if (args.Length > 1)
             {
                 path = args[1];
             }
@@ -631,11 +636,13 @@ namespace AccessibilityInsights
             {
                 this.vmLiveModePauseResume.State = ButtonState.On;
                 SelectAction.GetDefaultInstance().ResumeUIATreeTracker();
+                AutomationProperties.SetName(btnPause, Properties.Resources.btnPauseAutomationPropertiesNameOn);
             }
             else
             {
                 this.vmLiveModePauseResume.State = ButtonState.Off;
                 SelectAction.GetDefaultInstance().PauseUIATreeTracker();
+                AutomationProperties.SetName(btnPause, Properties.Resources.btnPauseAutomationPropertiesNameOff);
             }
             UpdateMainWindowUI();
         }

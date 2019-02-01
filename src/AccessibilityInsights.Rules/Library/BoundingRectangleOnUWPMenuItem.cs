@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleOnUWPMenuItem()
         {
             this.Info.Description = Descriptions.BoundingRectangleOnUWPMenuItem;
+            this.Info.HowToFix = HowToFix.BoundingRectangleOnUWPMenuItem;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_BoundingRectanglePropertyId;
         }

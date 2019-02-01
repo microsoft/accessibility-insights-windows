@@ -211,7 +211,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <returns></returns>
         private static string PopulateBugTemplateString(string inputTemplate, Dictionary<BugField, string> bugFieldPairs)
         {
-            StreamlineBugFieldPairs(bugFieldPairs);
             foreach (var pair in bugFieldPairs)
             {
                 var name = Enum.GetName(typeof(BugField), pair.Key);
@@ -219,30 +218,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 inputTemplate = inputTemplate.Replace($"@[{name}]@", value);
             }
             return inputTemplate;
-        }
-
-        /// <summary>
-        /// Avoids an experience where the bug description has duplicated information. 
-        /// Currently geared to handle duplicate test message and rule description.
-        /// </summary>
-        /// <param name="bugFieldPairs">The collection of BugField/string pairs to streamline</param>
-        private static void StreamlineBugFieldPairs(IDictionary<BugField, string> bugFieldPairs)
-        {
-            if (bugFieldPairs.TryGetValue(BugField.TestMessages, out string testMessages))
-            {
-                bugFieldPairs.Remove(BugField.TestMessages);
-                if (bugFieldPairs.TryGetValue(BugField.RuleDescription, out string ruleDescription))
-                {
-                    if (!string.Equals(ruleDescription, testMessages, StringComparison.OrdinalIgnoreCase)
-                        && !string.IsNullOrWhiteSpace(ruleDescription)
-                        && !string.IsNullOrWhiteSpace(testMessages))
-                    {
-                        ruleDescription = string.Concat(ruleDescription, " <br /> ", testMessages);
-                        bugFieldPairs.Remove(BugField.TestMessages);
-                        bugFieldPairs[BugField.RuleDescription] = ruleDescription;
-                    }
-                }
-            }
         }
 
         /// <summary>

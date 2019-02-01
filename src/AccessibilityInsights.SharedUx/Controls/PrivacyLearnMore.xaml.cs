@@ -1,4 +1,6 @@
-﻿using System.Windows.Controls;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;

@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewCalendarStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.CalendarStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.CalendarStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

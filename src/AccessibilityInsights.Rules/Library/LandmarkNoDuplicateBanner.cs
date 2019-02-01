@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public LandmarkNoDuplicateBanner()
         {
             this.Info.Description = Descriptions.LandmarkNoDuplicateBanner;
+            this.Info.HowToFix = HowToFix.LandmarkNoDuplicateBanner;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

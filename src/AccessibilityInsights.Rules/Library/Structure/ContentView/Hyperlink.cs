@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewHyperlinkStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.HyperlinkStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.HyperlinkStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

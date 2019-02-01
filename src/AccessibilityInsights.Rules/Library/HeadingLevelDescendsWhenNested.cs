@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public HeadingLevelDescendsWhenNested()
         {
             this.Info.Description = Descriptions.HeadingLevelDescendsWhenNested;
+            this.Info.HowToFix = HowToFix.HeadingLevelDescendsWhenNested;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

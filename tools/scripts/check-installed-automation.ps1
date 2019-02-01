@@ -1,35 +1,22 @@
-#Copyright (c) Microsoft. All rights reserved.
-#Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 #environment variables
+param(
+    $installationDir = 'C:\Program Files (x86)\AccessibilityInsights\1.1\'
+    )
+
 $VerbosePreference='continue'
-Clear-Host
-
-$flavor=$args[0]
-switch ($flavor)
-{
-  ''        {$flavor='debug'; break}
-  'debug'   {$flavor='debug'; break}
-  'release' {$flavor='release'; break}
-  default   {Write-Host -separator '' 'Argument "' $($flavor)'" is invalid. Please specify debug (default) or release'; exit}
-}
-
-$appPath='..\..\..\..\tools\WildlifeManager\WildlifeManager.exe'
-$rootPath=Join-Path '..\..\src\AccessibilityInsights.CI\bin\' $flavor
-$outputPath=Join-Path $rootPath 'AutomationCheck'
-
-if (-Not (Test-Path (Join-Path $rootPath AccessibilityInsights.CI.exe)))
-{
-  Write-Host 'Please build the' $flavor 'version of AccessibilityInsight.CI before running this script'
-  exit
-}
+$currLocation=Get-Location
+$appPath=Join-path $currLocation '..\WildlifeManager\WildlifeManager.exe'
+$outputPath=Join-path $currLocation '..\..\src\AccessibilityInsights.CI\bin\AutomationCheck'
 
 Remove-Item $outputPath -Recurse -Force -ErrorAction Ignore | Out-Null
 New-Item $outputPath -ItemType Directory | Out-Null
 
 Write-Verbose "Register & start AccessibilityInsights"
 Push-Location
-Set-Location $rootPath
+Set-Location $installationDir
 Write-Verbose '------------------------'
 Write-Verbose 'Importing module'
 Import-Module .\AccessibilityInsights.Automation.dll
@@ -40,9 +27,11 @@ Start-AccessibilityInsights -OutputPath $($outputPath)
 
 Write-Verbose '------------------------'
 Write-Verbose 'Launching WildlifeManager'
-Start-Process -FilePath $($appPath)
+Write-Verbose $appPath
+Start-Process -FilePath ($appPath)
 Start-Sleep 5
 $procId=get-process WildlifeManager | select -expand id
+
 Write-Verbose "WildlifeManager has processId of $($procId)"
 
 Write-Verbose '------------------------'
@@ -56,5 +45,5 @@ Write-Verbose 'Stopping AccessibilityInsights'
 Stop-AccessibilityInsights
 Pop-Location
 
-Write-Host "Press ENTER to exit"
+Write-Host "Results stored in ..\..\src\AccessibilityInsights.CI\bin\AutomationCheck. Press ENTER to exit"
 Read-Host

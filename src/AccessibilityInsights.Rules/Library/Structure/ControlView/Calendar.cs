@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlViewCalendarStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ControlView.CalendarStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ControlView.CalendarStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

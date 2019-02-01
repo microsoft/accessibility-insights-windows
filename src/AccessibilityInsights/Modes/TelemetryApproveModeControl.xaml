@@ -20,7 +20,7 @@
             <DropShadowEffect Opacity="0.5" BlurRadius="120"></DropShadowEffect>
         </Border.Effect>
         <Grid Height="380" Width="370"  HorizontalAlignment="Center" VerticalAlignment="Center"
-              Background="{DynamicResource ResourceKey=WhiteTextBrush}">
+              Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

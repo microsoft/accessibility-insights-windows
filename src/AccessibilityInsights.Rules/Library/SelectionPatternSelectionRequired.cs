@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public SelectionPatternSelectionRequired()
         {
             this.Info.Description = Descriptions.SelectionPatternSelectionRequired;
+            this.Info.HowToFix = HowToFix.SelectionPatternSelectionRequired;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

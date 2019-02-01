@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedLandmarkTypeExcludesSpecialCharacters()
         {
             this.Info.Description = Descriptions.LocalizedLandmarkTypeExcludesSpecialCharacters;
+            this.Info.HowToFix = HowToFix.LocalizedLandmarkTypeExcludesSpecialCharacters;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

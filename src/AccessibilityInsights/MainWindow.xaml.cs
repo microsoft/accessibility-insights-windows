@@ -152,6 +152,7 @@ namespace AccessibilityInsights
         public MainWindow()
         {
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
+            Logger.AttachReportExceptionHandler();
 
             SetHighContrastTheme();
 
@@ -266,7 +267,16 @@ namespace AccessibilityInsights
         /// <param name="enabled"></param>
         internal void SetHighlightBtnState(bool enabled)
         {
-            this.vmHilighter.State = enabled ? ButtonState.On : ButtonState.Off;
+            if (enabled)
+            {
+                this.vmHilighter.State = ButtonState.On;
+                AutomationProperties.SetName(btnHilighter, Properties.Resources.btnHilighterAutomationPropertiesNameOn);
+            }
+            else
+            {
+                this.vmHilighter.State = ButtonState.Off;
+                AutomationProperties.SetName(btnHilighter, Properties.Resources.btnHilighterAutomationPropertiesNameOff);
+            }
             ConfigurationManager.GetDefaultInstance().AppConfig.IsHighlighterOn = enabled;
         }
 
@@ -764,6 +774,7 @@ namespace AccessibilityInsights
                 var scope = this.cbiEntireApp.IsSelected ? AccessibilityInsights.Actions.Enums.SelectionScope.App : AccessibilityInsights.Actions.Enums.SelectionScope.Element;
                 SelectAction.GetDefaultInstance().Scope = scope;
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
+                Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
                 HighlightAction.GetDefaultInstance().Clear();
             }

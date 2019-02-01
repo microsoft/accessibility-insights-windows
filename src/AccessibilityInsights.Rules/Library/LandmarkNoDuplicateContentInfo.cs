@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public LandmarkNoDuplicateContentInfo()
         {
             this.Info.Description = Descriptions.LandmarkNoDuplicateContentInfo;
+            this.Info.HowToFix = HowToFix.LandmarkNoDuplicateContentInfo;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

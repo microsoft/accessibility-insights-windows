@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public EditSupportsOnlyValuePattern()
         {
             this.Info.Description = Descriptions.EditSupportsOnlyValuePattern;
+            this.Info.HowToFix = HowToFix.EditSupportsOnlyValuePattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

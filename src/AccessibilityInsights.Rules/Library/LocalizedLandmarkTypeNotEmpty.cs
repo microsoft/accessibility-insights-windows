@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedLandmarkTypeNotEmpty()
         {
             this.Info.Description = Descriptions.LocalizedLandmarkTypeNotEmpty;
+            this.Info.HowToFix = HowToFix.LocalizedLandmarkTypeNotEmpty;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

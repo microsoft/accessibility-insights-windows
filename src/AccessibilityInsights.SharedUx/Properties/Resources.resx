@@ -297,6 +297,9 @@
   <data name="lblDelayContent" xml:space="preserve">
     <value>Set _delay</value>
   </data>
+  <data name="tbMouseDelayAutomationName" xml:space="preserve">
+    <value>Set delay in MS</value>
+  </data>
   <data name="LabelContentOtherOptions" xml:space="preserve">
     <value>Other options</value>
   </data>
@@ -388,16 +391,10 @@
     <value>10</value>
   </data>
   <data name="hlLinkAutomationPropertiesName" xml:space="preserve">
-    <value>For questions or feedback: https://aka.ms/accessibilityinsights-stackoverflow</value>
-  </data>
-  <data name="lblDefaultTestSetContent" xml:space="preserve">
-    <value>_Microsoft standard rules</value>
+    <value>questions or feedback</value>
   </data>
   <data name="LabelContentAutomatedChecks" xml:space="preserve">
     <value>Automated checks</value>
-  </data>
-  <data name="lblCustomTestConfigContent" xml:space="preserve">
-    <value>C_ustom rules (Supported soon)</value>
   </data>
   <data name="WhatsNewTabControlAutomationPropertiesName" xml:space="preserve">
     <value>What's new</value>
@@ -414,11 +411,11 @@
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
-  <data name="RunTextzeroFalsePositives" xml:space="preserve">
-    <value>We are committed to zero false positives. If you feel you have found one, please contact</value>
-  </data>
   <data name="RunTextEmailSupport" xml:space="preserve">
-    <value>Email Support.</value>
+    <value>Join Accessibility Insights Updates and Discussions</value>
+  </data>
+  <data name="RunTextReceiveEmail" xml:space="preserve">
+    <value>to receive email announcements.</value>
   </data>
   <data name="lblTitleContent" xml:space="preserve">
     <value>AUTOMATED CHECKS</value>
@@ -1506,9 +1503,6 @@ Accessibility Insights Support Team
   </data>
   <data name="PropertyConfigDialogAutomationName" xml:space="preserve">
     <value>Select properties to always show</value>
-  </data>
-  <data name="TestSettingsControlAutomationName" xml:space="preserve">
-    <value>Test settings</value>
   </data>
   <data name="GeneralActionView_ExecuteAction_Succeeded" xml:space="preserve">
     <value>Succeeded!!</value>

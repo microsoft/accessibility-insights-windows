@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlViewTabStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ControlView.TabStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ControlView.TabStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

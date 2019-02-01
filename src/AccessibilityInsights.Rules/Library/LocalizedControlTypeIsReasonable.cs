@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedControlTypeIsReasonable()
         {
             this.Info.Description = Descriptions.LocalizedControlTypeReasonable;
+            this.Info.HowToFix = HowToFix.LocalizedControlTypeReasonable;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_LocalizedControlTypePropertyId;
         }

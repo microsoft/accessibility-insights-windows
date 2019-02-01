@@ -18,6 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         public IsKeyboardFocusableShouldBeTrue()
         {
             this.Info.Description = Descriptions.IsKeyboardFocusableShouldBeTrue;
+            this.Info.HowToFix = HowToFix.IsKeyboardFocusableShouldBeTrue;
             this.Info.Standard = A11yCriteriaId.Keyboard;
             this.Info.PropertyID = PropertyType.UIA_IsKeyboardFocusablePropertyId;
         }

@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameIsNotNull()
         {
             this.Info.Description = Descriptions.NameNotNull;
+            this.Info.HowToFix = HowToFix.NameNotNull;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

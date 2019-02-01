@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlViewListStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ControlView.ListStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ControlView.ListStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ContentViewCheckBoxStructure()
         {
             this.Info.Description = string.Format(CultureInfo.InvariantCulture, Descriptions.Structure, ContentView.CheckBoxStructure);
+            this.Info.HowToFix = string.Format(CultureInfo.InvariantCulture, HowToFix.Structure, ContentView.CheckBoxStructure);
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 

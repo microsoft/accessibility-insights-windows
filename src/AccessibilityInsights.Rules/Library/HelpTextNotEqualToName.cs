@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public HelpTextNotEqualToName()
         {
             this.Info.Description = Descriptions.HelpTextNotEqualToName;
+            this.Info.HowToFix = HowToFix.HelpTextNotEqualToName;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
         }
 

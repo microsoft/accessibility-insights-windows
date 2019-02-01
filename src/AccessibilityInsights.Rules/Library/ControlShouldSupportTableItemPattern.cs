@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ControlShouldSupportTableItemPattern()
         {
             this.Info.Description = Descriptions.ControlShouldSupportTableItemPattern;
+            this.Info.HowToFix = HowToFix.ControlShouldSupportTableItemPattern;
             this.Info.Standard = A11yCriteriaId.AvailableActions;
         }
 

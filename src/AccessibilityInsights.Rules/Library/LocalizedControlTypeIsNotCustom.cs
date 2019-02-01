@@ -18,6 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedControlTypeIsNotCustom()
         {
             this.Info.Description = Descriptions.LocalizedControlTypeNotCustom;
+            this.Info.HowToFix = HowToFix.LocalizedControlTypeNotCustom;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_LocalizedControlTypePropertyId;
         }

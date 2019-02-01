@@ -18,6 +18,13 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
+  - task: PowerShell@2
+    displayName: 'License Header Check'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
@@ -44,27 +51,12 @@ jobs:
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
-        !**\*AccessibilityInsights.UI*.dll
         !**\obj\**
-      uiTests: true
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
-
-  - task: VSTest@2
-    displayName: 'Coded UI Tests'
-    inputs:
-      testAssemblyVer2: |
-        **\$(BuildConfiguration)\*test*.orderedtest
-        !**\obj\**
-      uiTests: true
-      runSettingsFile: AccessibilityInsights.UITesting/TestRunSettings.runsettings
-      overrideTestrunParameters: '-BuildConfiguration $(BuildConfiguration)'
-      platform: '$(BuildPlatform)'
-      configuration: '$(BuildConfiguration)'
-    enabled: false
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
@@ -99,7 +91,15 @@ jobs:
     displayName: 'Run BinSkim '
     inputs:
       InputType: Basic
-      AnalyzeTarget: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\*.dll;src\AccessibilityInsights.Automation\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\*.dll;'
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                      src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Automation\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
@@ -111,7 +111,15 @@ jobs:
     displayName: 'Run FxCop'
     inputs:
       inputType: Basic
-      targets: 'src\AccessibilityInsights\bin\Debug\*.exe;src\AccessibilityInsights\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Automation\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.Telemetry\bin\Debug\AccessibilityInsights.*.dll;src\AccessibilityInsights.Extensions.AzureDevOps\bin\Debug\AccessibilityInsights.*.dll'
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
@@ -137,10 +145,8 @@ jobs:
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
-        !**\*AccessibilityInsights.UIT*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      uiTests: true
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'

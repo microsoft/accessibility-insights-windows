@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ChildrenNotAllowedInContentView()
         {
             this.Info.Description = Descriptions.ChildrenNotAllowedInContentView;
+            this.Info.HowToFix = HowToFix.ChildrenNotAllowedInContentView;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
         }
 

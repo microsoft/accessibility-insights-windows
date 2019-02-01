@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         public ProgressBarRangeValue()
         {
             this.Info.Description = Descriptions.ProgressBarRangeValue;
+            this.Info.HowToFix = HowToFix.ProgressBarRangeValue;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_IsRangeValuePatternAvailablePropertyId;
         }

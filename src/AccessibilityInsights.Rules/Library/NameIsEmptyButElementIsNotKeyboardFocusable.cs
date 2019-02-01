@@ -18,6 +18,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameIsEmptyButElementIsNotKeyboardFocusable()
         {
             this.Info.Description = Descriptions.NameEmptyButElementNotKeyboardFocusable;
+            this.Info.HowToFix = HowToFix.NameEmptyButElementNotKeyboardFocusable;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

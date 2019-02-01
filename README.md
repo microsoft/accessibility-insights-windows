@@ -1,7 +1,5 @@
-<!--
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the MIT License.
--->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved.
+     Licensed under the MIT License. -->
 # Accessibility Insights for Windows
 
 [![Build Status](https://dev.azure.com/mseng/AzureDevOps/_apis/build/status/Accessibility%20Insights%20for%20Windows%20Signed?branchName=master)](https://dev.azure.com/mseng/AzureDevOps/_build/latest?definitionId=7909&branchName=master)
@@ -9,9 +7,9 @@ Licensed under the MIT License.
 ![Product Logo](./brand/brand-blue-128px.png)
 
 
-Accessibility Insights for Windows is the project for Accessibility tools on Windows platform(Win7/Win8x/Win10)
+Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10).
 
-## Running the extension
+## Installing Accessibility Insights for Windows
 You can install the application from TBA.
 
 ## Building the code
@@ -28,30 +26,27 @@ You can install the application from TBA.
   ``` bash
   cd accessibility-insights-windows
   ```
+
 ### 2. Open the solution in visual studio
-- .../src/AccessibilityInsights.sln
+- Use the `src/AccessibilityInsights.sln` file to open the solution.
 
 ### 3. Build and run unit tests
 
 ## More Information
-
-  [Developer Workflow](./docs/workflow.md)
+  Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
 ## Testing
-We use the unit test framework from Visual Studio. 
+We use the unit test framework from Visual Studio. Find more information in our [FAQ section](docs/FAQ.md).
 
-# Contributing
-
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
-
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+## Contributing
+All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project.
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
 Testing
+=======
+## FAQ
+Please visit our [FAQ section](docs/FAQ.md) to get answers to common questions.
+

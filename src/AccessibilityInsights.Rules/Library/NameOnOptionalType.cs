@@ -15,6 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public NameOnOptionalType()
         {
             this.Info.Description = Descriptions.NameOnOptionalType;
+            this.Info.HowToFix = HowToFix.NameOnOptionalType;
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
             this.Info.PropertyID = PropertyType.UIA_NamePropertyId;
         }

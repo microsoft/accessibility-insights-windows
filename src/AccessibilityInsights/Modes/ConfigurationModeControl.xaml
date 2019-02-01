@@ -40,9 +40,6 @@
                             <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
                                 <controls:ConnectionControl x:Name="connectionCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsTestHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Test}">
-                                <controls:TestSettingsControl x:Name="testSettingsCtrl"/>
-                            </TabItem>
                             <TabItem Header="{x:Static properties:Resources.tcTabsWhatsNewHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">
                                 <controls:WhatsNewTabControl x:Name="whatsNewTabCtrl"/>
                             </TabItem>

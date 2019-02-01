@@ -14,6 +14,7 @@ namespace AccessibilityInsights.Rules.Library
         public LocalizedLandmarkTypeNotWhiteSpace()
         {
             this.Info.Description = Descriptions.LocalizedLandmarkTypeNotWhiteSpace;
+            this.Info.HowToFix = HowToFix.LocalizedLandmarkTypeNotWhiteSpace;
             this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
         }
 
