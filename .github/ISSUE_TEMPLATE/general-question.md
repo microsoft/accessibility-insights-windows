@@ -8,8 +8,8 @@ assignees: ''
 
 ---
 
-<We encourage tool related questions to be asked on stackoverflow.com and tag it with AI4Windows.>
+**We encourage tool related questions to be asked on stackoverflow.com and tag it with AI4Windows.**
 
-<You question here>
+**You question here**
 Make sure to provide enough context. If you have spoken to a team member please mention them here.
-Add any items (Screenshots etc) that will help.
+Add any items (screenshots etc) that will help.
