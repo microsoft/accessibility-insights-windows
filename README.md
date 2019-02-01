@@ -1,7 +1,5 @@
-<!--
-Copyright (c) Microsoft Corporation. All rights reserved.
-Licensed under the MIT License.
--->
+<!-- Copyright (c) Microsoft Corporation. All rights reserved.
+     Licensed under the MIT License. -->
 # Accessibility Insights for Windows
 
 [![Build Status](https://dev.azure.com/mseng/AzureDevOps/_apis/build/status/Accessibility%20Insights%20for%20Windows%20Signed?branchName=master)](https://dev.azure.com/mseng/AzureDevOps/_build/latest?definitionId=7909&branchName=master)
@@ -9,7 +7,7 @@ Licensed under the MIT License.
 ![Product Logo](./brand/brand-blue-128px.png)
 
 
-Accessibility Insights for Windows is the project for Accessibility tools on Windows platform(Win7/Win8x/Win10)
+Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10).
 
 ## Installing Accessibility Insights for Windows
 You can install the application from TBA.
@@ -28,17 +26,17 @@ You can install the application from TBA.
   ``` bash
   cd accessibility-insights-windows
   ```
+
 ### 2. Open the solution in visual studio
-- .../src/AccessibilityInsights.sln
+- Use the `src/AccessibilityInsights.sln` file to open the solution.
 
 ### 3. Build and run unit tests
 
 ## More Information
-
-  [Developer Workflow](./docs/workflow.md)
+  Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
 ## Testing
-We use the unit test framework from Visual Studio. 
+We use the unit test framework from Visual Studio. Find more information in our [FAQ section](docs/FAQ.md).
 
 ## Contributing
 All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project.
