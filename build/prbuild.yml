@@ -61,17 +61,18 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-  - task: "PublishGitHubRelease@0"
+  - task: "PublishGitHubRelease@1"
     displayName: 'Publish GitHub Release release_test'
     inputs:
-      applicationName: 'first trial'
-      token: '608f8592b98ea90adc2b494cabb8f32b235efd20'
-      repo: 'pipeline_upgrade_spike'
-      owner: 'babylonbee'
-      tagName: 'release_test'
-      releaseName: 'release_test'
-      releaseBody: 'test test'
+      applicationName: trial
+      token: 608f8592b98ea90adc2b494cabb8f32b235efd20
+      repo: pipeline_upgrade_spike
+      owner: babylonbee
+      tagName: release_test
+      releaseName: release_test
+      releaseBody: test
       assetsPattern: 'src\AccessibilityInsights.Win32Tests\packages.config'
+      preReleease: true
 
 - job: Debug
   pool:
