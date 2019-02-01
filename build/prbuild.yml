@@ -61,7 +61,7 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-  - task: "PublishGitHubRelease"
+  - task: "PublishGitHubRelease@0"
     displayName: 'Publish GitHub Release release_test'
     inputs:
       applicationName: 'first trial'
