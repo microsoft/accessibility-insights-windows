@@ -61,7 +61,7 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-  - task: "PublishGitHubRelease@1"
+  - task: PublishGitHubRelease@0.11.2
     displayName: 'Publish GitHub Release release_test'
     inputs:
       applicationName: trial
@@ -71,7 +71,7 @@ jobs:
       tagName: release_test
       releaseName: release_test
       releaseBody: test
-      assetsPattern: 'src\AccessibilityInsights.Win32Tests\packages.config'
+      assetsPattern: src\AccessibilityInsights.Win32Tests\packages.config
       preReleease: true
 
 - job: Debug
