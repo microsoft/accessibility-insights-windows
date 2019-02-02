@@ -1,5 +1,9 @@
 name: $(date:yyyy-MM-dd)$(rev:.rr)
-trigger: none
+trigger:
+  branches:
+    include:
+    - refs/tags/*
+
 pr: none
 variables:
   BuildPlatform: 'x86'
