@@ -61,18 +61,20 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-  - task: PublishGitHubRelease@0.11.2
-    displayName: 'Publish GitHub Release release_test'
+  - task: GitHubRelease@0
     inputs:
-      applicationName: trial
-      token: 608f8592b98ea90adc2b494cabb8f32b235efd20
-      repo: pipeline_upgrade_spike
-      owner: babylonbee
-      tagName: release_test
-      releaseName: release_test
-      releaseBody: test
-      assetsPattern: src\AccessibilityInsights.Win32Tests\packages.config
-      preReleease: true
+      gitHubConnection: AccInsightsWindowsPublishConnection
+      repositoryName: babylonbee\pipeline_upgrade_spike
+      action: 'create'
+      target: $(Build.SourceVersion)
+      tagSource: 'auto'
+      tag: $(tagName)
+      title: 'Release Test'
+      assets: 'src\AccessibilityInsights.Win32Tests\packages.config'
+      assetUploadMode: delete
+      isDraft: false
+      isPreRelease: true
+      addChangeLog: false
 
 - job: Debug
   pool:
