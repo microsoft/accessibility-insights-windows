@@ -27,10 +27,11 @@ What actually happened.
 If applicable, add screenshots to help explain your problem.
 
 **Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Application [e.g. chrome, safari]
- - Application Version [e.g. 22]
- - Accessibility for Windows Version
+ - OS: [e.g. Windows 10 1809] (Get the version by running `winver` from the command line)
+ - Accessibility Insights for Windows Version:
+ - Target Application: [e.g. chrome, safari]
+ - Target Application Version: [e.g. 22]
+
 
 **Additional context**
 Priority requested -
