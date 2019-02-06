@@ -6,9 +6,9 @@ Windows UI Automation (UIA) is the platform-provided way for accessibility tools
 - Hierarchy: The entire surface of all interactive applications is represented as a tree of Elements.
 - Elements: Each Element may optionally have any combination of Properties, Patterns, and child Elements.
 - Properties: Each Property is a Key/Value pair that identifies some aspect of the Element. The key is the property type (for example, IsVisible) and the value is the state of that property (for example, true or false).
-- Patterns: There are several patterns that map to functionality that is exposed via the UI. For example, a list element will typically support a pattern that exposes all of the items in the list, as well as the ability to learn which item is current selected, and the ability to select a different element, if desired.
+- Patterns: There are several patterns that map to functionality that is exposed via the UI. For example, a list element will typically support a pattern that exposes all of the items in the list, as well as the ability to learn which item is currently selected, and the ability to select a different element, if desired.
 
-Accessibilty Insights will take the data provided by UIA, then will compare that data to a set of rules that identify cases where that data would create issues for any users who relied upon UIA to interact with the application. The results of these rules are then displayed in an environment that supports exploration of the data in its appropriate context. The results can be saved to disk for later use or analysis. If these files are later loaded into Accessibility Insights, the rich exploration environment is re-created.
+Accessibility Insights takes the data provided by UIA and compares it to a set of rules which identify cases where the given data would create issues for users of the assistive technologies which consume UIA data. The results of these rules are then displayed in an environment that supports exploration of the data in its appropriate context. The results can be saved to disk for later use or analysis. If these files are later loaded into Accessibility Insights, the rich exploration environment is re-created.
 
 ## Code Organization
 The code is organized into the following general areas:
@@ -16,9 +16,9 @@ The code is organized into the following general areas:
 ### Runtime components
 These assemblies provide the interaction with UIA, as well as layers that allow the application to interact with that information in a more structured manner:
 
-Assembly | Responsibilty
+Assembly | Responsibility
 --- | ---
-AccessibilityInsights.Core | Provide data abstractions that are intended to represent UIA in a platform-agnostic manner.
+AccessibilityInsights.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
 AccessibilityInsights.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
 AccessibilityInsights.DesktopUI | Provide platform-specific (Windows) implementations of platform-agnostic UI abstractions. This includes things like element highlighters.
 AccessibilityInsights.Actions | Provide a high-level set of Actions that are the primary interface into the Runtime components.
@@ -40,11 +40,11 @@ Assembly | Responsibility
 --- | ---
 AccessibilityInsights | Provide the UI for most users. This application is built using WPF.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
-AccessibiltyInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
-AccessibilityAutomations.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
+AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
+AccessibilityInsights.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
 
 ### Extensions
-Extensions are intended to allow loose coupling of non-core code. They build upon [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
+Extensions are intended to allow loose coupling of non-core code. They build upon the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
 
 - Telemetry : Send information about product usage. **Limited** diagnostic data is also sent to help identify trends in user issues.
 - Updates : Provide a centralized control mechanism to notify users of updated releases.
@@ -64,7 +64,7 @@ The packaging projects exist to gather assemblies into their shipping vehicles:
 
 Project | Responsibility
 --- | ---
-MSI | Builds the MSI file that will be used by most users. This requires the Wix tools from http://wixtoolset.org.
+MSI | Builds the MSI file used by most users. This requires the Wix tools from http://wixtoolset.org.
 ApplicationInsights-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
 
 ### Tests
