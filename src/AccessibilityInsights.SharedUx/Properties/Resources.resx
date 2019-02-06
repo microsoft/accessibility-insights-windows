@@ -1546,8 +1546,14 @@ Accessibility Insights Support Team
   <data name="ColorContrast_OutputAutomationName" xml:space="preserve">
     <value>current ratio is {0}</value>
   </data>
+  <data name="ColorContrast_tbConfidenceAutomationName" xml:space="preserve">
+    <value>Current confidence in automatic color selection is {0}</value>
+  </data>
   <data name="ColorContrast_Ratio" xml:space="preserve">
     <value>Ratio</value>
+  </data>
+  <data name="ColorContrast_Confidence" xml:space="preserve">
+    <value>Confidence</value>
   </data>
   <data name="ColorContrast_Requires" xml:space="preserve">
     <value>(Requires ratio ≥ 3.0)</value>
@@ -1586,5 +1592,8 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="InvalidLink" xml:space="preserve">
     <value>Invalid link {0}</value>
+  </data>
+  <data name="lblAutoDetectContent" xml:space="preserve">
+    <value>Auto detect colors on hover</value>
   </data>
 </root>
