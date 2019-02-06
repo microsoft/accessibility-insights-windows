@@ -1,15 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using AccessibilityInsights.SharedUx.Properties;
-using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -30,10 +23,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Constructor
         /// </summary>
-        public ColorContrastViewModel()
-        {
-            this.LoadingVisibility = System.Windows.Visibility.Collapsed;
-        }
+        public ColorContrastViewModel() { }
 
         /// <summary>
         /// Reset fields to initial state
@@ -188,55 +178,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             {
                 return BugId.HasValue ? BugId.ToString() : null;
             }
-        }
-
-        private System.Windows.Visibility loadingVisibility;
-        /// <summary>
-        /// Attachment loading
-        /// </summary>
-        public System.Windows.Visibility LoadingVisibility
-        {
-            get
-            {
-                return loadingVisibility;
-            }
-            set
-            {
-                loadingVisibility = value;
-                OnPropertyChanged(nameof(LoadingVisibility));
-            }
-        }
-
-        /// <summary>
-        /// Returns a BugInformation with information from the given A11yElement
-        /// </summary>
-        /// <returns></returns>
-        public BugInformation GetBugInformation()
-        {
-            // TODO: Typically issue details comes from a RuleResults with TestMessages. There is no rule for
-            // color contrast (yet?) and it is not an automated test.
-            var failureStrings = new List<string>() { string.Format(CultureInfo.InvariantCulture, Resources.ColorContrastViewModel_GetBugInformation, SMALL_TEXT_THRESHOLD)};
-            if (!PassSmallText)
-            {
-                failureStrings.Add(string.Format(CultureInfo.InvariantCulture, Resources.ColorContrastViewModel_GetBugInformation1, LARGE_TEXT_THRESHOLD));
-            }
-            
-            return new BugInformation
-            (
-                glimpse: Element.Glimpse,
-                ruleSource: "1.4.2",
-                ruleDescription: Resources.ColorContrastViewModel_GetBugInformation_Color_contrast_ratio_is_less_than_required,
-                ruleForTelemetry: "Color contrast", // temporary ?
-                uiFramework: Element.GetUIFramework(),
-                processName: Element.GetProcessName(),
-                windowTitle: Element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
-                elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
-                internalGuid: Guid.NewGuid(),
-                contrastRatio: (Math.Truncate(1000 * this.Ratio) / 1000),
-                firstColor: FirstColor,
-                secondColor: SecondColor,
-                contrastFailureText: string.Join("<br/>", failureStrings)
-            );
         }
 
         /// <summary>

@@ -469,5 +469,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_hlHowToTest_Click, HelpURL));
             }
         }
+
+        private void TgbtnAutoDetect_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
