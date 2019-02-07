@@ -138,6 +138,7 @@ namespace AccessibilityInsights
 
         public static readonly RoutedCommand F1Command = new RoutedCommand();
         public static readonly RoutedCommand F6Command = new RoutedCommand();
+        public static readonly RoutedCommand CtrlOCommand = new RoutedCommand();
         public static readonly RoutedCommand ShiftF6Command = new RoutedCommand();
         public static readonly RoutedCommand ClickInspectCommand = new RoutedCommand();
         public static readonly RoutedCommand ClickTestCommand = new RoutedCommand();
@@ -237,6 +238,8 @@ namespace AccessibilityInsights
             this.CommandBindings.Add(ClickTestBinding);
             var ClickColorContrastBinding = new CommandBinding(ClickColorContrastCommand, btnCCA_Click);
             this.CommandBindings.Add(ClickColorContrastBinding);
+            var loadFile = new CommandBinding(CtrlOCommand, btnLoad_Click);
+            this.CommandBindings.Add(loadFile);
         }
 
         void InitPanes()
