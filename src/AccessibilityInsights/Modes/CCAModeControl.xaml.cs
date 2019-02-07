@@ -149,7 +149,9 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         public bool ToggleHighlighter()
         {
-            return true;
+            var enabled = !HighlightAction.GetDefaultInstance().IsEnabled;
+            HighlightAction.GetDefaultInstance().IsEnabled = enabled;
+            return enabled;
         }
 
         /// <summary>
