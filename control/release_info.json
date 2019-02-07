@@ -1,0 +1,8 @@
+{
+  "default": {
+    "current_version": "1.1.0764.02",
+    "minimum_version": "1.1.0764.02",
+    "installer_url": "https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0764.02/ApplicationInsights.msi",
+    "release_notes_url": "https://babylonbee.github.io/accessibility-insights-windows/release/ReleaseNotes.html#release_v1.1.0764.02"
+  }
+}
