@@ -813,24 +813,27 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            this.DisableElementSelector();
-
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
-            dlg.Filter = FileFilters.A11yFileFilter;
-            dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
-
-            if (dlg.ShowDialog() == true)
+            if (IsCurrentModeAllowingSelection())
             {
-                if (!TryOpenFile(dlg.FileName))
+                this.DisableElementSelector();
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
+                dlg.Filter = FileFilters.A11yFileFilter;
+                dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
+
+                if (dlg.ShowDialog() == true)
                 {
-                    MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                    if (!TryOpenFile(dlg.FileName))
+                    {
+                        MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                        this.EnableElementSelector();
+                    }
+                }
+                else
+                {
                     this.EnableElementSelector();
                 }
-            }
-            else
-            {
-                this.EnableElementSelector();
             }
         }
 
