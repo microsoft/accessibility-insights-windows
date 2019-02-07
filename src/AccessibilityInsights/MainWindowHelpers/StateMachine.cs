@@ -304,7 +304,7 @@ namespace AccessibilityInsights
             ctrlCurMode.HideControl();
             ctrlCurMode = ctrlCCAMode;
             ctrlCurMode.ShowControl();
-            CurrentView = null;
+            CurrentView = CCAView.Automatic;
             CurrentPage = AppPage.CCA;
             UpdateMainWindowUI();
 
@@ -614,7 +614,8 @@ namespace AccessibilityInsights
         internal bool IsCapturingData()
         {
             return (CurrentPage == AppPage.Inspect && ((InspectView)CurrentView) == InspectView.CapturingData) ||
-                (CurrentPage == AppPage.Test && ((TestView)CurrentView) == TestView.CapturingData);
+                (CurrentPage == AppPage.Test && ((TestView)CurrentView) == TestView.CapturingData) ||
+                (CurrentPage == AppPage.CCA && ((CCAView)CurrentView) == CCAView.CapturingData);
         }
 
         /// <summary>

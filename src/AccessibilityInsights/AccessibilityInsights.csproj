@@ -91,6 +91,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Enums\CCAView.cs" />
     <Compile Include="Modes\TelemetryApproveModeControl.xaml.cs">
       <DependentUpon>TelemetryApproveModeControl.xaml</DependentUpon>
     </Compile>
