@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Rules.Library
         {
             this.Info.Description = Descriptions.SplitButtonInvokeAndTogglePatterns;
             this.Info.HowToFix = HowToFix.SplitButtonInvokeAndTogglePatterns;
-            this.Info.Standard = A11yCriteriaId.InfoAndRelationships;
+            this.Info.Standard = A11yCriteriaId.NameRoleValue;
         }
 
         public override EvaluationCode Evaluate(IA11yElement e)
