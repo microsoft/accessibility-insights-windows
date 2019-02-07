@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Deque.ColorContrast;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ namespace Deque.ColorContrast.Tests
     [TestClass()]
     public class IDequeImageTests
     {
+
         // A convenience method for loading Bitmap images from test resources.
         public static DequeBitmap LoadFromResources(string name)
         {
@@ -24,7 +27,7 @@ namespace Deque.ColorContrast.Tests
             return new DequeBitmap(bmp);
         }
 
-        [TestMethod()]
+        [TestMethod, Timeout(2000)]
         public void SimpleBlackAndGreyButton()
         {
             DequeImage dequeImage = LoadFromResources("simple_black_and_grey_button.bmp");
@@ -41,7 +44,7 @@ namespace Deque.ColorContrast.Tests
          * In this test we are analyzing two similar images. One with text near the bottom of the image
          * and the other with the text near the top. The results should be identical.
          */
-        [TestMethod()]
+        [TestMethod, Timeout(2000)]
         public void CortanaImagesWithDifferentOffsets()
         {
             CCColorPair expected = new CCColorPair(new DequeColor(0, 0, 0), new DequeColor(139, 204, 41));
@@ -64,7 +67,7 @@ namespace Deque.ColorContrast.Tests
          * approximately what we expect, this allows our algorithm a little flexibility, without having to modify
          * these tests every time we sneeze on our configuration file.
          */
-        [TestMethod()]
+        [TestMethod, Timeout(2000)]
         public void WeirdTextArrangement()
         {
             DequeImage dequeImage = LoadFromResources("weird_text_arrangement.bmp");
@@ -78,7 +81,7 @@ namespace Deque.ColorContrast.Tests
             Assert.AreEqual(Confidence.HIGH, result.ConfidenceValue());
         }
 
-        [TestMethod()]
+        [TestMethod, Timeout(2000)]
         public void BinaryRowSearchIterator()
         {
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -97,6 +99,7 @@ namespace Deque.ColorContrast
 
         /*
          * The Luminance calculation from the w3c website.
+         * http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef
          */
         public double Luminance()
         {
@@ -112,6 +115,7 @@ namespace Deque.ColorContrast
         /**
          * The W3C Luinance calculation separates the component colors. This function calculates
          * the Luminance component from a given color component.
+         * 
          */
         private static double LuminanceComponent(int color)
         {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 
 namespace Deque.ColorContrast
 {
@@ -31,7 +33,7 @@ namespace Deque.ColorContrast
         }
 
         /**
-         * Truw when the pair of colors are not visually different.
+         * True when the pair of colors are not visually different.
          */
         public Boolean AreVisuallySimilarColors()
         {
