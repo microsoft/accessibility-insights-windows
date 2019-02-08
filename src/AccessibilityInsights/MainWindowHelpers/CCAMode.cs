@@ -20,11 +20,15 @@ namespace AccessibilityInsights
         /// <returns></returns>
         void StartCCAMode(CCAView view)
         {
+            if(this.CurrentPage==AppPage.CCA && (CCAView) this.CurrentView == CCAView.CapturingData)
+            {
+                return;
+            }
             switch (view)
             {
                 case CCAView.Automatic:
                     StartCCAMode();
-                    break;             
+                    break;
             }
         }
 
@@ -59,8 +63,6 @@ namespace AccessibilityInsights
                 this.ctrlCurMode.SetElement(ecId.Value);
             }
 
-            SetCurrentViewAndUpdateUI(CCAView.Automatic);
-            
             // enable element selector
             EnableElementSelector();
 
