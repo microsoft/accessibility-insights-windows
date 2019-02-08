@@ -64,6 +64,11 @@ namespace AccessibilityInsights
                 UpdateTabSelection();
                 UpdateTitleString();
             }
+
+            if (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Automatic)
+            {
+                StartCCAMode(CCAView.Automatic);
+            }
         }
 
         /// <summary>
@@ -304,8 +309,19 @@ namespace AccessibilityInsights
             ctrlCurMode.HideControl();
             ctrlCurMode = ctrlCCAMode;
             ctrlCurMode.ShowControl();
+
+            StartCCAMode(CCAView.Automatic);
+
             CurrentView = CCAView.Automatic;
             CurrentPage = AppPage.CCA;
+
+
+            // enable element selector
+            EnableElementSelector();
+
+            // if it was open when the switch back button is clicked. 
+            HideConfigurationMode();
+
             UpdateMainWindowUI();
 
         }

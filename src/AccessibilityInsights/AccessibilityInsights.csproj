@@ -180,6 +180,7 @@
     <Compile Include="MainWindowHelpers\StateMachine.cs" />
     <Compile Include="MainWindowHelpers\Initialize.cs" />
     <Compile Include="MainWindowHelpers\InspectMode.cs" />
+	<Compile Include="MainWindowHelpers\CCAMode.cs" />
     <Compile Include="MainWindowHelpers\Timers.cs" />
     <Compile Include="MainWindowHelpers\TestMode.cs" />
     <Compile Include="MainWindowHelpers\TreeNavigator.cs" />

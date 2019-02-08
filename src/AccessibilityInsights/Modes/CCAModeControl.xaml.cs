@@ -9,6 +9,10 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.Actions;
 using System.Windows.Automation.Peers;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.Actions.Contexts;
+using System.Windows.Input;
+using AccessibilityInsights.Enums;
+using AccessibilityInsights.DesktopUI.Enums;
 
 namespace AccessibilityInsights.Modes
 {
@@ -93,6 +97,7 @@ namespace AccessibilityInsights.Modes
         public void ShowControl()
         {
             this.Visibility = Visibility.Visible;
+            HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
             HighlightAction.GetDefaultInstance().Clear();
             Dispatcher.InvokeAsync(() =>
@@ -107,13 +112,27 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         /// <param name="ec"></param>
 #pragma warning disable CS1998
-        public async Task SetElement(Guid ec) { }
+        public async Task SetElement(Guid ecId) {
+            //HighlightAction.GetDefaultInstance().
+            HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+        }
+
+        /// <summary>
+        /// Make sure that statemachine and UI are updated for Live mode. 
+        /// </summary>
+        private static void UpdateStateMachineForCCAAutomaticMode()
+        {
+            // enable selector once UI update is finished. 
+            MainWin?.SetCurrentViewAndUpdateUI(CCAView.Automatic);
+            MainWin?.EnableElementSelector();
+        }
 #pragma warning restore CS1998
 
         /// <summary>
         /// Not needed
         /// </summary>
-        public void UpdateConfigWithSize() { }
+        public void UpdateConfigWithSize() {
+        }
 
         public void Clear()
         {
