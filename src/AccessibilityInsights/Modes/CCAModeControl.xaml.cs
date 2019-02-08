@@ -118,10 +118,13 @@ namespace AccessibilityInsights.Modes
         {
             ElementContext ec = GetDataAction.GetElementContext(ecId);
 
+            HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+
             //ScreenShotAction.CaptureScreenShot(ecId);
 
-            HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
             HighlightAction.GetDefaultInstance().SetText("Ratio: 3.5:1\nConfidence: Excellent");
+
+            MainWin.CurrentView = CCAView.Automatic;
 
         }
 

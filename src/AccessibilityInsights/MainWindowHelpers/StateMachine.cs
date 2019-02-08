@@ -310,7 +310,9 @@ namespace AccessibilityInsights
             {
                 HandlePauseButtonToggle(true);
             }
-            
+
+            this.CurrentPage = AppPage.CCA;
+            this.CurrentView = CCAView.Automatic;
 
             HideConfigurationMode();
             ctrlCurMode.HideControl();
@@ -318,10 +320,6 @@ namespace AccessibilityInsights
             ctrlCurMode.ShowControl();
 
             StartCCAMode(CCAView.Automatic);
-
-            CurrentView = CCAView.Automatic;
-            CurrentPage = AppPage.CCA;
-
 
             // enable element selector
             EnableElementSelector();
