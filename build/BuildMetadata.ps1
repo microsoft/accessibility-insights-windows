@@ -6,10 +6,21 @@ if ([System.String]::IsNullOrWhiteSpace($($basePath)))
     exit 1
 }
 
-$branch = (git status | Out-String).Split([System.Environment]::Newline)[0].Split(" ")[2]
-$sha = (git rev-parse HEAD | Out-String).Split([System.Environment]::Newline)[0]
+$status = git status | Out-String
+Write-host "*** Result of git status:" $($status)
+
+$revParse = git rev-parse HEAD | Out-String
+Write-Host "*** Result of git rev-parse HEAD:" $($revParse)
+
 $buildNumber = ${env:BUILD_BUILDNUMBER}
-$productVersion = [IO.File]::ReadLines(${env:temp} + "\A11yInsightsVersionInfo.cs")[0].Split('\"')[1]
+Write-Host "*** Build Number:" $($revParse)
+
+$rawVersion = [IO.File]::ReadLines(${env:temp} + "\A11yInsightsVersionInfo.cs")[0]
+Write-Host "*** Raw Version:" $($revParse)
+
+$branch = $($status).Split([System.Environment]::Newline)[0].Split(" ")[2]
+$sha = $($revParse).Split([System.Environment]::Newline)[0]
+$productVersion = $($rawVersion).Split('\"')[1]
 
 $folderPath = [IO.Path]::Combine($($basePath), 'signed', $($productVersion))
 if (![IO.Directory]::Exists($($folderPath)))
@@ -21,4 +32,6 @@ if (![IO.Directory]::Exists($($folderPath)))
 $metadataFilePath = [IO.Path]::Combine($($folderPath), 'build_info.json')
 
 $json = @{"sha"=$($sha); "branch"=$($branch); "buildNumber"=$($buildNumber); "productVersion"=$($productVersion)} | ConvertTo-Json
-$($json) | Out-File $($metadataFilePath)
+Write-Host $($metadataFilePath)
+Write-Host $($json)
+#$($json) | Out-File $($metadataFilePath)
