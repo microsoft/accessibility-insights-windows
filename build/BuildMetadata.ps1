@@ -14,13 +14,11 @@ $productVersion = [IO.File]::ReadLines(${env:temp} + "\A11yInsightsVersionInfo.c
 $folderPath = [IO.Path]::Combine($($basePath), 'signed', $($productVersion))
 if (![IO.Directory]::Exists($($folderPath)))
 {
-    Write-Host 'ERROR: Path not found: ' $($folderPath) -Separator ' '
+    Write-Host 'ERROR: Path not found: ' $($folderPath)
     exit 2
 }
 
 $metadataFilePath = [IO.Path]::Combine($($folderPath), 'build_info.json')
 
 $json = @{"sha"=$($sha); "branch"=$($branch); "buildNumber"=$($buildNumber); "productVersion"=$($productVersion)} | ConvertTo-Json
-Write-host $($metadataFilePath)
-Write-Host $($json)
-#$($json) | Out-File $($metadataFilePath)
+$($json) | Out-File $($metadataFilePath)
