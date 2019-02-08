@@ -1,40 +1,38 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Deque.ColorContrast;
-using System;
+using AccessibilityInsights.Desktop.ColorContrastAnalyzer;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Reflection;
 using System.IO;
 using System.Drawing;
-using static Deque.ColorContrast.ColorContrastResult;
+using static AccessibilityInsights.Desktop.ColorContrastAnalyzer.ColorContrastResult;
+using CCColor = AccessibilityInsights.Desktop.ColorContrastAnalyzer.Color;
 
-namespace Deque.ColorContrast.Tests
+namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
 {
     [TestClass()]
-    public class IDequeImageTests
+    public class ImageTests
     {
 
         // A convenience method for loading Bitmap images from test resources.
-        public static DequeBitmap LoadFromResources(string name)
+        public static BitmapCollection LoadFromResources(string name)
         {
             Assembly myAssembly = Assembly.GetExecutingAssembly();
-            Stream myStream = myAssembly.GetManifestResourceStream("ColorContrastTests.TestImages." + name);
+            Stream myStream = myAssembly.GetManifestResourceStream("AccessibilityInsights.DesktopTests.TestImages." + name);
             Bitmap bmp = new Bitmap(myStream);
-            return new DequeBitmap(bmp);
+            return new BitmapCollection(bmp);
         }
 
         [TestMethod, Timeout(2000)]
         public void SimpleBlackAndGreyButton()
         {
-            DequeImage dequeImage = LoadFromResources("simple_black_and_grey_button.bmp");
+            var image = LoadFromResources("simple_black_and_grey_button.bmp");
 
-            var result = dequeImage.RunColorContrastCalculation();
+            var result = image.RunColorContrastCalculation();
 
-            Assert.AreEqual(new CCColorPair(new DequeColor(204, 204, 204), new DequeColor(0, 0, 0)), 
+            Assert.AreEqual(new ColorPair(new CCColor(204, 204, 204), new CCColor(0, 0, 0)), 
                 result.GetMostLikelyColorPair());
 
             Assert.AreEqual(Confidence.HIGH, result.ConfidenceValue());
@@ -47,7 +45,7 @@ namespace Deque.ColorContrast.Tests
         [TestMethod, Timeout(2000)]
         public void CortanaImagesWithDifferentOffsets()
         {
-            CCColorPair expected = new CCColorPair(new DequeColor(0, 0, 0), new DequeColor(139, 204, 41));
+            ColorPair expected = new ColorPair(new CCColor(0, 0, 0), new CCColor(139, 204, 41));
 
             ColorContrastResult resultOffsetDownImage = LoadFromResources("cortana_with_offset_down.bmp")
                 .RunColorContrastCalculation();
@@ -70,11 +68,11 @@ namespace Deque.ColorContrast.Tests
         [TestMethod, Timeout(2000)]
         public void WeirdTextArrangement()
         {
-            DequeImage dequeImage = LoadFromResources("weird_text_arrangement.bmp");
+            var image = LoadFromResources("weird_text_arrangement.bmp");
 
-            CCColorPair approximateColorPair = new CCColorPair(new DequeColor(37, 37, 37), new DequeColor(193, 183, 165));
+            ColorPair approximateColorPair = new ColorPair(new CCColor(37, 37, 37), new CCColor(193, 183, 165));
 
-            ColorContrastResult result = dequeImage.RunColorContrastCalculation();
+            ColorContrastResult result = image.RunColorContrastCalculation();
 
             Assert.IsTrue(approximateColorPair.IsVisiblySimilarTo(result.GetMostLikelyColorPair()), result.GetMostLikelyColorPair().ToString());
 
@@ -92,12 +90,12 @@ namespace Deque.ColorContrast.Tests
 
             foreach (var pixel in LoadFromResources("simple_black_and_grey_button.bmp").GetBinaryRowSearchIterator())
             {
-                if (pixel.row != rowOrder.First())
+                if (pixel.Row != rowOrder.First())
                 {
                     rowOrder.RemoveAt(0);
                 }
 
-                Assert.AreEqual(rowOrder.First(), pixel.row);
+                Assert.AreEqual(rowOrder.First(), pixel.Row);
             }
 
             rowOrder.RemoveAt(0);

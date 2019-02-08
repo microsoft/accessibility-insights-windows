@@ -1,27 +1,24 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
     public class ColorContrastResult
     {
-        private Dictionary<CCColorPair, int> countsOfSimilarPairs = new Dictionary<CCColorPair, int>();
+        private Dictionary<ColorPair, int> countsOfSimilarPairs = new Dictionary<ColorPair, int>();
 
-        private Dictionary<CCColorPair, int> countsOfExactPairs = new Dictionary<CCColorPair, int>();
+        private Dictionary<ColorPair, int> countsOfExactPairs = new Dictionary<ColorPair, int>();
 
-        private Dictionary<DequeColor, int> countsOfExactColors = new Dictionary<DequeColor, int>();
+        private Dictionary<Color, int> countsOfExactColors = new Dictionary<Color, int>();
 
         public enum Confidence { LOW, MID, HIGH }
 
         /**
          * Returns the most occurent color pair with the highest color contrast.
          */
-        public CCColorPair GetMostLikelyColorPair()
+        public ColorPair GetMostLikelyColorPair()
         {
             var orderedPairs = countsOfSimilarPairs.OrderByDescending(x => x.Value);
 
@@ -47,9 +44,9 @@ namespace Deque.ColorContrast
                 .ThenByDescending(x => x.Key.ColorContrast());
 
             int lastCount = 0;
-            CCColorPair lastColorPair = null;
+            ColorPair lastColorPair = null;
 
-            if (orderedByCountThenContrast.First().Value >= ColorContrastConfig.MIN_NUMBER_COLOR_TRANSITIONS)
+            if (orderedByCountThenContrast.First().Value >= ColorContrastConfig.MinNumberColorTransitions)
             {
 
                 foreach (var entry in orderedByCountThenContrast)
@@ -64,7 +61,7 @@ namespace Deque.ColorContrast
                         }
                         else
                         {
-                            if (lastCount > entry.Value * ColorContrastConfig.TEXT_COLOR_PAIR_DOMINANCE_VALUE)
+                            if (lastCount > entry.Value * ColorContrastConfig.TextColorPairDominanceValue)
                             {
                                 return Confidence.HIGH;
                             }
@@ -89,7 +86,7 @@ namespace Deque.ColorContrast
             countsOfExactColors.Clear();
         }
 
-        internal void OnColorPair(CCColorPair newColorPair)
+        internal void OnColorPair(ColorPair newColorPair)
         {
 
             if (!countsOfSimilarPairs.ContainsKey(newColorPair))
@@ -108,7 +105,7 @@ namespace Deque.ColorContrast
                 }
             }
 
-            var similarPairs = new List<CCColorPair>(countsOfSimilarPairs.Keys.Where(x => x.IsVisiblySimilarTo(newColorPair)));
+            var similarPairs = new List<ColorPair>(countsOfSimilarPairs.Keys.Where(x => x.IsVisiblySimilarTo(newColorPair)));
 
             foreach (var colorPair in similarPairs)
             {
@@ -125,7 +122,7 @@ namespace Deque.ColorContrast
             }
         }
 
-        internal void OnColor(DequeColor color)
+        internal void OnColor(Color color)
         {
 
             if (!countsOfExactColors.ContainsKey(color))

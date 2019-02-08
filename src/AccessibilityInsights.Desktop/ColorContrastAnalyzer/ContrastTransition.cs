@@ -1,20 +1,16 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
     internal class ColorContrastTransition
     {
-        readonly DequeColor startingColor;
+        readonly Color startingColor;
 
         private double priorColorContrast = 1;
 
-        private DequeColor mostContrastingColor;
+        private Color mostContrastingColor;
 
         /**
          * We can no longer add colors to this transition.
@@ -41,13 +37,13 @@ namespace Deque.ColorContrast
          */
         private int size = 1;
 
-        internal ColorContrastTransition(DequeColor color)
+        internal ColorContrastTransition(Color color)
         {
             startingColor = color;
             mostContrastingColor = color;
         }
 
-        internal void AddColor(DequeColor color)
+        internal void AddColor(Color color)
         {
 
             if (startingColor.Equals(color))
@@ -94,9 +90,9 @@ namespace Deque.ColorContrast
         /**
          * Convert the starting color and most contrasting color to a ColorPair object.
          */
-        public CCColorPair ToColorPair()
+        public ColorPair ToColorPair()
         {
-            return new CCColorPair(startingColor, mostContrastingColor);
+            return new ColorPair(startingColor, mostContrastingColor);
         }
 
         /**

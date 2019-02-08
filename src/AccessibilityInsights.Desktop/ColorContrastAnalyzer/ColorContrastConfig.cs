@@ -1,27 +1,22 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
-    public class ColorContrastConfig
+    public static class ColorContrastConfig
     {
         /**
          * The number of Color transitions we expect to make us believe a "Row" of Pixels
          * contains Text.
          */
-        public static readonly int MIN_NUMBER_COLOR_TRANSITIONS = 10;
+        public static readonly int MinNumberColorTransitions = 10;
 
         /**
          * We will inevitably find other color combinations in a row. To be highly confident
          * we have text, we expect the most likely color combination to be at least this dominant.
          * Type: Double between 0 and 1.
          */
-        public static readonly double TEXT_COLOR_PAIR_DOMINANCE_VALUE = .2;
+        public static readonly double TextColorPairDominanceValue = .2;
 
         /**
          * We're going to binary search sample rows. Once two samples are this 
@@ -31,6 +26,6 @@ namespace Deque.ColorContrast
          * Note: Making this number too low will have dramatic performance impacts when a HIGH
          * confidence result is NOT found. EX: at 0, you would end up scanning the entire image.
          */
-        public static readonly int MIN_SPACE_BETWEEN_SAMPLES = 12;
+        public static readonly int MinSpaceBetweenSamples = 12;
     }
 }

@@ -42,13 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CCBitmap.cs" />
-    <Compile Include="CCColor.cs" />
-    <Compile Include="CCColorPair.cs" />
-    <Compile Include="CCImage.cs" />
-    <Compile Include="ColorContrastConfig.cs" />
-    <Compile Include="ContrastResult.cs" />
-    <Compile Include="ContrastTransition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

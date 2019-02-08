@@ -1,37 +1,19 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static Deque.ColorContrast.ColorContrastResult;
+using static AccessibilityInsights.Desktop.ColorContrastAnalyzer.ColorContrastResult;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
-    public class CCPixel
-    {
-        public readonly int row;
-        public readonly int column;
-        public readonly DequeColor color;
-
-        public CCPixel(DequeColor color, int row, int column)
-        {
-            this.row = row;
-            this.column = column;
-            this.color = color;
-        }
-    }
-
-    public abstract class DequeImage : IEnumerable<CCPixel>
+    public abstract class ImageCollection : IEnumerable<Pixel>
     {
 
         public abstract int NumColumns();
 
         public abstract int NumRows();
 
-        public abstract DequeColor GetColor(int row, int column);
+        public abstract Color GetColor(int row, int column);
 
         /**
          * Run the Color Contrast calculation on the image.
@@ -44,12 +26,12 @@ namespace Deque.ColorContrast
 
             var colorContrastTransitions = new List<ColorContrastTransition>();
 
-            CCPixel lastPixel = new CCPixel(DequeColor.WHITE, 0, 0);
+            Pixel lastPixel = new Pixel(Color.WHITE, 0, 0);
 
             foreach (var pixel in GetBinaryRowSearchIterator())
             {
 
-                if (!lastPixel.row.Equals(pixel.row))
+                if (!lastPixel.Row.Equals(pixel.Row))
                 {
                     if (contrastResult.ConfidenceValue().Equals(Confidence.HIGH))
                     {
@@ -67,11 +49,11 @@ namespace Deque.ColorContrast
                     }
                 }
 
-                colorContrastTransitions.Add(new ColorContrastTransition(pixel.color));
+                colorContrastTransitions.Add(new ColorContrastTransition(pixel.Color));
 
                 foreach (var transition in colorContrastTransitions)
                 {
-                    transition.AddColor(pixel.color);
+                    transition.AddColor(pixel.Color);
 
                     if (transition.IsPotentialForegroundBackgroundPair())
                     {
@@ -93,7 +75,7 @@ namespace Deque.ColorContrast
          * of the two pieces of image, until the given samples are some 
          * distance apart.
          */
-        public IEnumerable<CCPixel> GetBinaryRowSearchIterator()
+        public IEnumerable<Pixel> GetBinaryRowSearchIterator()
         {
             foreach (var pixel in GetRow(0, NumRows()))
             {
@@ -101,15 +83,15 @@ namespace Deque.ColorContrast
             }
         }
 
-        public IEnumerable<CCPixel> GetRow(int top, int bottom)
+        public IEnumerable<Pixel> GetRow(int top, int bottom)
         {
             int middle = (bottom + top) / 2;
 
-            if ((bottom - top) < ColorContrastConfig.MIN_SPACE_BETWEEN_SAMPLES) yield break;
+            if ((bottom - top) < ColorContrastConfig.MinSpaceBetweenSamples) yield break;
 
             for (var i = 0; i < NumColumns(); i++)
             {
-                yield return new CCPixel(GetColor(middle, i), middle, i);
+                yield return new Pixel(GetColor(middle, i), middle, i);
             }
 
             foreach (var pixel in GetRow(top, middle))
@@ -123,7 +105,7 @@ namespace Deque.ColorContrast
             }
         }
 
-        IEnumerator<CCPixel> IEnumerable<CCPixel>.GetEnumerator()
+        public IEnumerator<Pixel> GetEnumerator()
         {
             foreach (var pixel in GetRow(0, NumRows()))
             {

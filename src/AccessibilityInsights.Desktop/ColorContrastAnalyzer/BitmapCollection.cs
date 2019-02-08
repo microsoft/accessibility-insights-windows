@@ -1,22 +1,15 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
 
-    public class DequeBitmap : DequeImage
+    public class BitmapCollection : ImageCollection
     {
         private readonly System.Drawing.Bitmap bitmap;
 
-        public DequeBitmap(System.Drawing.Bitmap bitmap)
+        public BitmapCollection(System.Drawing.Bitmap bitmap)
         {
             this.bitmap = bitmap;
         }
@@ -31,11 +24,11 @@ namespace Deque.ColorContrast
             return bitmap.Height;
         }
 
-        public override DequeColor GetColor(int row, int column)
+        public override Color GetColor(int row, int column)
         {
-            Color color = bitmap.GetPixel(column, row);
+            System.Drawing.Color color = bitmap.GetPixel(column, row);
 
-            return new DequeColor(color);
+            return new Color(color);
         }
     }
 }

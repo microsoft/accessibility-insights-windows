@@ -1,54 +1,46 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
     /**
      * Provides utilities for working with Colors without an Alpha component.
      */
-    public class DequeColor
+    public class Color
     {
-
-        public class DequeColorException : System.Exception
-        {
-            public DequeColorException(string message) : base(message) { }
-        }
 
         /**
          * The luminance difference that will determine whether two colors are the same.
          * This helps deal with Anti-Aliasing in determining transitions for detecting text.
          */
-        public static readonly double SAME_COLOR_THRESHOLD = 1.1;
+        const double SAME_COLOR_THRESHOLD = 1.1;
 
         /**
          * Some commonly used colors.
          */
-        public static readonly DequeColor WHITE = new DequeColor(255, 255, 255);
-        public static readonly DequeColor BLACK = new DequeColor(0, 0, 0);
-        public static readonly DequeColor RED = new DequeColor(255, 0, 0);
-        public static readonly DequeColor GREEN = new DequeColor(0, 255, 0);
-        public static readonly DequeColor BLUE = new DequeColor(0, 0, 255);
+        public static readonly Color WHITE = new Color(255, 255, 255);
+        public static readonly Color BLACK = new Color(0, 0, 0);
+        public static readonly Color RED = new Color(255, 0, 0);
+        public static readonly Color GREEN = new Color(0, 255, 0);
+        public static readonly Color BLUE = new Color(0, 0, 255);
 
         /**
          * Below are constants from the W3C Luminance Calculation
          * http://www.w3.org/TR/WCAG/#dfn-relative-luminance
          */
-        internal static readonly double W3C_LUMINANCE_CALCULATION_THRESHOLD = .03928;
-        internal static readonly double W3C_LUMINANCE_RED_COMPONENT_MULTIPLIER = 0.2126;
-        internal static readonly double W3C_LUMINANCE_GREEN_COMPONENT_MULTIPLIER = 0.7152;
-        internal static readonly double W3C_LUMINANCE_BLUE_COMPONENT_MULTIPLIER = 0.0722;
+        const double W3C_LUMINANCE_CALCULATION_THRESHOLD = .03928;
+        const double W3C_LUMINANCE_RED_COMPONENT_MULTIPLIER = 0.2126;
+        const double W3C_LUMINANCE_GREEN_COMPONENT_MULTIPLIER = 0.7152;
+        const double W3C_LUMINANCE_BLUE_COMPONENT_MULTIPLIER = 0.0722;
 
         private readonly int Red;
         private readonly int Green;
         private readonly int Blue;
 
-        public DequeColor(int red, int green, int blue)
+        public Color(int red, int green, int blue)
         {
             const string failMessage = "Color components are values between 0 and 255";
 
@@ -62,7 +54,7 @@ namespace Deque.ColorContrast
             else throw new DequeColorException(failMessage);
         }
 
-        public DequeColor(Color color) : this(color.R, color.G, color.B)
+        public Color(System.Drawing.Color color) : this(color.R, color.G, color.B)
         {
             if (color.A < 255)
             {
@@ -74,7 +66,7 @@ namespace Deque.ColorContrast
         /**
          * Calculate contrast between this color and another color.
          */
-        public double Contrast(DequeColor otherColor)
+        public double Contrast(Color otherColor)
         {
             double luminance1 = Luminance();
             double luminance2 = otherColor.Luminance();
@@ -92,7 +84,7 @@ namespace Deque.ColorContrast
         /**
          * Determines if two colors are close enough to be considered the same to the naked eye.
          */
-        public bool IsSameColor(DequeColor otherColor)
+        public bool IsSameColor(Color otherColor)
         {
             return Contrast(otherColor) < SAME_COLOR_THRESHOLD;
         }
@@ -134,7 +126,7 @@ namespace Deque.ColorContrast
             }
             else
             {
-                DequeColor p = (DequeColor)obj;
+                Color p = (Color)obj;
                 return (Red == p.Red) && (Blue == p.Blue) && (Green == p.Green);
             }
         }
@@ -146,7 +138,26 @@ namespace Deque.ColorContrast
 
         public override string ToString()
         {
-            return String.Format("DequeColor({0}, {1}, {2})", Red, Green, Blue);
+            return string.Format(CultureInfo.InvariantCulture, "DequeColor({0}, {1}, {2})", Red, Green, Blue);
+        }
+    }
+
+    [Serializable]
+    public class DequeColorException : System.Exception
+    {
+        public DequeColorException(string message) : base(message) { }
+
+        public DequeColorException()
+        {
+        }
+
+        public DequeColorException(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected DequeColorException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
+        {
+            throw new NotImplementedException();
         }
     }
 }

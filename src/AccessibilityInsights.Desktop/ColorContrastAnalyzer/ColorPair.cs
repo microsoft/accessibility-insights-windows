@@ -2,17 +2,17 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace Deque.ColorContrast
+namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
-    public class CCColorPair
+    public class ColorPair
     {
-        readonly DequeColor lighterColor;
-        readonly DequeColor darkerColor;
+        readonly Color lighterColor;
+        readonly Color darkerColor;
 
-        public CCColorPair(DequeColor color1, DequeColor color2)
+        public ColorPair(Color color1, Color color2)
         {
-            double contrast1 = DequeColor.WHITE.Contrast(color1);
-            double contrast2 = DequeColor.WHITE.Contrast(color2);
+            double contrast1 = Color.WHITE.Contrast(color1);
+            double contrast2 = Color.WHITE.Contrast(color2);
 
             lighterColor = contrast1 < contrast2 ? color1 : color2;
             darkerColor = contrast1 < contrast2 ? color2 : color1;
@@ -27,8 +27,8 @@ namespace Deque.ColorContrast
             }
             else
             {
-                CCColorPair p = (CCColorPair)obj;
-                return p.ToString().Equals(ToString());
+                ColorPair p = (ColorPair)obj;
+                return p.ToString().Equals(ToString(), StringComparison.Ordinal);
             }
         }
 
@@ -43,7 +43,7 @@ namespace Deque.ColorContrast
         /**
          * True when a pair of colors have visibly similar pairs of colors.
          */
-        public Boolean IsVisiblySimilarTo(CCColorPair otherPair)
+        public Boolean IsVisiblySimilarTo(ColorPair otherPair)
         {
             return lighterColor.IsSameColor(otherPair.lighterColor) &&
                 darkerColor.IsSameColor(otherPair.darkerColor);

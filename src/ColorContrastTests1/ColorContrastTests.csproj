@@ -57,28 +57,10 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="CCColorTests.cs" />
-    <Compile Include="ColorContrastImageTests.cs" />
-    <Compile Include="CCColorPairTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ColorContrast\ColorContrast.csproj">
-      <Project>{A3BE9825-CFE0-4856-BF6A-56133EC96EE8}</Project>
-      <Name>ColorContrast</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TestImages\simple_black_and_grey_button.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TestImages\cortana_with_offset_down.bmp" />
-    <EmbeddedResource Include="TestImages\cortana_with_offset_up.bmp" />
-    <EmbeddedResource Include="TestImages\simple_black_and_white.bmp" />
-    <EmbeddedResource Include="TestImages\weird_text_arrangement.bmp" />
+    <Folder Include="TestImages\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
