@@ -19,10 +19,11 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <Revision Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER.Substring($(BUILD_BUILDNUMBER.LastIndexOf(`.`))))</Revision>
-    <Revision Condition=" '$(BUILD_BUILDNUMBER)' == '' ">.1</Revision>
+    <RawRevision Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER.Substring($(BUILD_BUILDNUMBER.LastIndexOf(`.`))).Substring(1))</RawRevision>
+    <RawRevision Condition=" '$(BUILD_BUILDNUMBER)' == '' ">1</RawRevision>
     <CurrentDateString Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER.Substring(0, $(BUILD_BUILDNUMBER.LastIndexOf(`.`))))</CurrentDateString>
     <CurrentDateString Condition=" '$(BUILD_BUILDNUMBER)' == '' ">$([System.DateTime]::Now.ToString(`yyyy-MM-dd`))</CurrentDateString>
+    <Revision>$([System.String]::Format(".{0:00}", $([System.Int32]::Parse($(RawRevision)))))</Revision>
     <CountDate>$([System.DateTime]::ParseExact(`2017-01-01`,`yyyy-MM-dd`,null))</CountDate>
     <BuildNumber>1.1.$([System.Math]::Round($([System.DateTime]::ParseExact($(CurrentDateString),`yyyy-MM-dd`,null).Subtract($(CountDate)).TotalDays)).ToString(`0000`))$(Revision)</BuildNumber>
   </PropertyGroup>
