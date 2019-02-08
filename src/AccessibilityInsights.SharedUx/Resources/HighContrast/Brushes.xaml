@@ -46,6 +46,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="HLTextBrush" Color="#FFFF00 "/>
-    <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#DCDCDC" />
+    <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="{x:Static SystemColors.InactiveBorderColor}" />
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
 </ResourceDictionary>

@@ -35,8 +35,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>
-    <SolidColorBrush po:Freeze="True" x:Key="BorderNoHCBrush" Color="#C7C7C7"/>
-
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/>
