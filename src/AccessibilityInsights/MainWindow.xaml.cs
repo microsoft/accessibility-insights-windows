@@ -138,6 +138,7 @@ namespace AccessibilityInsights
 
         public static readonly RoutedCommand F1Command = new RoutedCommand();
         public static readonly RoutedCommand F6Command = new RoutedCommand();
+        public static readonly RoutedCommand CtrlOCommand = new RoutedCommand();
         public static readonly RoutedCommand ShiftF6Command = new RoutedCommand();
         public static readonly RoutedCommand ClickInspectCommand = new RoutedCommand();
         public static readonly RoutedCommand ClickTestCommand = new RoutedCommand();
@@ -237,6 +238,8 @@ namespace AccessibilityInsights
             this.CommandBindings.Add(ClickTestBinding);
             var ClickColorContrastBinding = new CommandBinding(ClickColorContrastCommand, btnCCA_Click);
             this.CommandBindings.Add(ClickColorContrastBinding);
+            var loadFile = new CommandBinding(CtrlOCommand, btnLoad_Click);
+            this.CommandBindings.Add(loadFile);
         }
 
         void InitPanes()
@@ -810,24 +813,27 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void btnLoad_Click(object sender, RoutedEventArgs e)
         {
-            this.DisableElementSelector();
-
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
-            dlg.Filter = FileFilters.A11yFileFilter;
-            dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
-
-            if (dlg.ShowDialog() == true)
+            if (IsCurrentModeAllowingSelection())
             {
-                if (!TryOpenFile(dlg.FileName))
+                this.DisableElementSelector();
+
+                OpenFileDialog dlg = new OpenFileDialog();
+                dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
+                dlg.Filter = FileFilters.A11yFileFilter;
+                dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
+
+                if (dlg.ShowDialog() == true)
                 {
-                    MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                    if (!TryOpenFile(dlg.FileName))
+                    {
+                        MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                        this.EnableElementSelector();
+                    }
+                }
+                else
+                {
                     this.EnableElementSelector();
                 }
-            }
-            else
-            {
-                this.EnableElementSelector();
             }
         }
 
