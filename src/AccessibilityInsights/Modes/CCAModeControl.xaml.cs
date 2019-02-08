@@ -108,9 +108,9 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// not needed. 
+        /// set element
         /// </summary>
-        /// <param name="ec"></param>
+        /// <param name="ecId"></param>
 #pragma warning disable CS1998
         public async Task SetElement(Guid ecId) {
             //HighlightAction.GetDefaultInstance().

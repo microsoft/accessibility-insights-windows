@@ -200,14 +200,14 @@ namespace AccessibilityInsights
                 this.ctrlNamedCommandbar.Visibility = Visibility.Visible;
             }
 
-            this.btnHilighter.Visibility = (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Manual) ? Visibility.Collapsed : Visibility.Visible; this.btnRefresh.Visibility = this.ctrlCurMode.IsRefreshEnabled ? Visibility.Visible : Visibility.Collapsed;
+            this.btnHilighter.Visibility = (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Manual) ? Visibility.Collapsed : Visibility.Visible;
+            this.btnRefresh.Visibility = this.ctrlCurMode.IsRefreshEnabled ? Visibility.Visible : Visibility.Collapsed;
             this.btnSave.Visibility = this.ctrlCurMode.IsSaveEnabled ? Visibility.Visible : Visibility.Collapsed;
             this.btnLoad.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
             this.tbComboboxLabel.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
             this.btnTimer.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
             this.cbSelectionScope.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
-            this.btnPause.Visibility = (((this.CurrentPage == AppPage.Inspect) && (this.gridlayerConfig.Visibility == Visibility.Collapsed))||
-                ((this.CurrentPage == AppPage.CCA) && ((CCAView) this.CurrentView == CCAView.Automatic))) ? Visibility.Visible : Visibility.Collapsed;
+            this.btnPause.Visibility = (this.CurrentPage == AppPage.Inspect) && (this.gridlayerConfig.Visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
 
             // add n of m info to UIA name based on currently visible focusable controls
             var visibleCommands = new List<UIElement>();
