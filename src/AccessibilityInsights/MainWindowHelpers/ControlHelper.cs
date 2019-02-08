@@ -200,7 +200,7 @@ namespace AccessibilityInsights
                 this.ctrlNamedCommandbar.Visibility = Visibility.Visible;
             }
 
-            this.btnHilighter.Visibility = (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Manual) ? Visibility.Collapsed : Visibility.Visible;
+            this.btnHilighter.Visibility = this.CurrentPage == AppPage.CCA ? Visibility.Collapsed : Visibility.Visible;
             this.btnRefresh.Visibility = this.ctrlCurMode.IsRefreshEnabled ? Visibility.Visible : Visibility.Collapsed;
             this.btnSave.Visibility = this.ctrlCurMode.IsSaveEnabled ? Visibility.Visible : Visibility.Collapsed;
             this.btnLoad.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;

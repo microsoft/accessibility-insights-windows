@@ -305,6 +305,13 @@ namespace AccessibilityInsights
 
         private void HandleCCATabClick()
         {
+
+            if (SelectAction.GetDefaultInstance().IsPaused)
+            {
+                HandlePauseButtonToggle(true);
+            }
+            
+
             HideConfigurationMode();
             ctrlCurMode.HideControl();
             ctrlCurMode = ctrlCCAMode;

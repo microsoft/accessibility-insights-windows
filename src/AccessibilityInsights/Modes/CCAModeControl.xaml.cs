@@ -13,6 +13,8 @@ using AccessibilityInsights.Actions.Contexts;
 using System.Windows.Input;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
+using System.Windows.Threading;
+using System.Drawing;
 
 namespace AccessibilityInsights.Modes
 {
@@ -112,10 +114,27 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         /// <param name="ecId"></param>
 #pragma warning disable CS1998
-        public async Task SetElement(Guid ecId) {
-            //HighlightAction.GetDefaultInstance().
+        public async Task SetElement(Guid ecId)
+        {
+            ElementContext ec = GetDataAction.GetElementContext(ecId);
+
+            //ScreenShotAction.CaptureScreenShot(ecId);
+
             HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+            HighlightAction.GetDefaultInstance().SetText("Ratio: 3.5:1\nConfidence: Excellent");
+
         }
+
+
+        /*
+        /// <summary>
+        /// Will be replaced by Dequeue API
+        /// </summary>
+        /// <returns></returns>
+        private string getScreenShotRatio(Bitmap screenshot)
+        {
+            return "Ratio: 1:1\nConfiedency: Excellent";
+        }*/
 
         /// <summary>
         /// Make sure that statemachine and UI are updated for Live mode. 
