@@ -224,77 +224,77 @@
   </data>
   <data name="ButtonShouldHavePatterns" xml:space="preserve">
     <value>Modify the button to support exactly one of the following patterns:
-    ·         Support the Invoke pattern if the button performs a command at the request of the user.
-    ·         Support the Toggle pattern if the button can cycle through a series of up to three states.
-    ·         Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
+ · Support the Invoke pattern if the button performs a command at the request of the user.
+ · Support the Toggle pattern if the button can cycle through a series of up to three states.
+ · Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
   </data>
   <data name="ButtonInvokeAndTogglePatterns" xml:space="preserve">
     <value>Modify the button to support exactly one of the following patterns:
-    ·         Support the Invoke pattern if the button performs a command at the request of the user.
-    ·         Support the Toggle pattern if the button can cycle through a series of up to three states.
-    ·         Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
+ · Support the Invoke pattern if the button performs a command at the request of the user.
+ · Support the Toggle pattern if the button can cycle through a series of up to three states.
+ · Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
   </data>
   <data name="ButtonToggleAndExpandCollapsePatterns" xml:space="preserve">
     <value>Modify the button to support exactly one of the following patterns:
-    ·         Support the Invoke pattern if the button performs a command at the request of the user.
-    ·         Support the Toggle pattern if the button can cycle through a series of up to three states.
-    ·         Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
+ · Support the Invoke pattern if the button performs a command at the request of the user.
+ · Support the Toggle pattern if the button can cycle through a series of up to three states.
+ · Support the ExpandCollapse pattern if the button shows or hides additional content.</value>
   </data>
   <data name="ProgressBarRangeValue" xml:space="preserve">
     <value>Implement the progress bar's RangeValue pattern using the following properties and values:
-    ·         Minimum: 0.0
-    ·         Maximum: 100.0
-    ·         IsReadOnly: TRUE</value>
+ · Minimum: 0.0
+ · Maximum: 100.0
+ · IsReadOnly: TRUE</value>
   </data>
   <data name="EditSupportsIncorrectRangeValuePattern" xml:space="preserve">
     <value>Implement the edit control's RangeValue pattern with a null LargeChange property.</value>
   </data>
   <data name="SplitButtonInvokeAndTogglePatterns" xml:space="preserve">
     <value>Modify the split button to support exactly one of the following patterns:
-    ·         Support the Invoke pattern if the button performs a command at the request of the user.
-    ·         Support the Toggle pattern if the button can cycle through a series of up to three states.</value>
+ · Support the Invoke pattern if the button performs a command at the request of the user.
+ · Support the Toggle pattern if the button can cycle through a series of up to three states.</value>
   </data>
   <data name="ControlShouldNotSupportInvokePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     Modify the element to support only its allowed patterns.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. Modify the element to support only its allowed patterns.</value>
   </data>
   <data name="ControlShouldNotSupportScrollPattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     Modify the element to support only its allowed patterns.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. Modify the element to support only its allowed patterns.</value>
   </data>
   <data name="ControlShouldNotSupportTablePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     Modify the element to support only its allowed patterns.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. Modify the element to support only its allowed patterns.</value>
   </data>
   <data name="ControlShouldNotSupportTogglePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     Modify the element to support only its allowed patterns.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. Modify the element to support only its allowed patterns.</value>
   </data>
   <data name="ControlShouldSupportExpandCollapsePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the ExpandCollapse pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the ExpandCollapse pattern.</value>
   </data>
   <data name="ControlShouldSupportGridItemPattern" xml:space="preserve">
     <value>Modify the element (or one of its children) to support the GridItem pattern.</value>
   </data>
   <data name="ControlShouldSupportGridPattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Grid pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Grid pattern.</value>
   </data>
   <data name="ControlShouldSupportInvokePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Invoke pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Invoke pattern.</value>
   </data>
   <data name="ControlShouldSupportScrollItemPattern" xml:space="preserve">
     <value>Modify the element (or one of its children) to support the ScrollItem pattern.</value>
   </data>
   <data name="ControlShouldSupportSelectionItemPattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the SelectionItem pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the SelectionItem pattern.</value>
   </data>
   <data name="ControlShouldSupportSelectionPattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Selection pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Selection pattern.</value>
   </data>
   <data name="ControlShouldSupportSpreadsheetItemPattern" xml:space="preserve">
     <value>Modify the element (or one of its children) to support the SpreadsheetItem pattern.</value>
@@ -303,16 +303,16 @@
     <value>Modify the element (or one of its children) to support the TableItem pattern.</value>
   </data>
   <data name="ControlShouldSupportTablePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Table pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Table pattern.</value>
   </data>
   <data name="ControlShouldSupportTextPattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Text pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Text pattern.</value>
   </data>
   <data name="ControlShouldSupportTogglePattern" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     If the current ControlType is correct, modify the element to support the Toggle pattern.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. If the current ControlType is correct, modify the element to support the Toggle pattern.</value>
   </data>
   <data name="ControlShouldSupportTransformPattern" xml:space="preserve">
     <value>If the element can be resized, implement the Transform pattern.
@@ -322,14 +322,14 @@ If the element can't be resized, ensure the TransformPattern_CanResize property 
     <value>Make sure all of the element's children have the IsContentElement property set to FALSE.</value>
   </data>
   <data name="SelectionPatternSingleSelection" xml:space="preserve">
-    <value>1.     Make sure the element has the appropriate ControlType property for its function.
-2.     Make sure Selection is the correct pattern.
-3.     Set the element's CanSelectMultiple property to FALSE.</value>
+    <value>1. Make sure the element has the appropriate ControlType property for its function.
+2. Make sure Selection is the correct pattern.
+3. Set the element's CanSelectMultiple property to FALSE.</value>
   </data>
   <data name="SelectionItemPatternSingleSelection" xml:space="preserve">
     <value>Do one of the following:
-    1.     Modify the element and/or its siblings so that only one of them is selected at any given time, OR
-    2.     Modify the parent element so its CanSelectMultiple property is TRUE.</value>
+ 1. Modify the element and/or its siblings so that only one of them is selected at any given time, OR
+ 2. Modify the parent element so its CanSelectMultiple property is TRUE.</value>
   </data>
   <data name="ParentChildShouldNotHaveSameNameAndLocalizedControlType" xml:space="preserve">
     <value>Provide unique names for controls that have a parent/child relationship and the same ControlType property.</value>
@@ -348,19 +348,19 @@ If the element can't be resized, ensure the TransformPattern_CanResize property 
   </data>
   <data name="BoundingRectangleDataFormatCorrect" xml:space="preserve">
     <value>Make sure the BoundingRectangle property returns data in the expected format:
-    1.     Specify the rectangle as an array with a type of double and a size of 4.
-    2.     Specify the rectangle's position and size (in pixels) by providing array values in the following order:
-            a.     Top edge
-            b.     Left edge
-            c.     Width
-            d.     Height</value>
+ 1. Specify the rectangle as an array with a type of double and a size of 4.
+ 2. Specify the rectangle's position and size (in pixels) by providing array values in the following order:
+    a. Top edge
+    b. Left edge
+    c. Width
+    d. Height</value>
   </data>
   <data name="BoundingRectangleNotAllZeros" xml:space="preserve">
     <value>Specify the rectangle's position and size (in pixels) by providing array values in the following order:
-    1.     Top edge
-    2.     Left edge
-    3.     Width
-    4.     Height</value>
+ 1. Top edge
+ 2. Left edge
+ 3. Width
+ 4. Height</value>
   </data>
   <data name="BoundingRectangleNotNull" xml:space="preserve">
     <value>If the element is offscreen, set its IsOffscreen property to TRUE.
@@ -375,13 +375,13 @@ For example, if an element has a level-5 heading, its descendants can have only 
   </data>
   <data name="IsContentElementPropertyExists" xml:space="preserve">
     <value>Provide a value for the element's IsContentElement property:
-    ·         If the element should be included in the content view, set the property to TRUE.
-    ·         If the element should not be included in the content view, set the property to FALSE.</value>
+ · If the element should be included in the content view, set the property to TRUE.
+ · If the element should not be included in the content view, set the property to FALSE.</value>
   </data>
   <data name="IsControlElementPropertyExists" xml:space="preserve">
     <value>Provide a value for the element's IsControlElement property:
-    ·         If the element should be included in the control view, set the property to TRUE.
-    ·         If the element should not be included in the control view, set the property to FALSE.</value>
+ · If the element should be included in the control view, set the property to TRUE.
+ · If the element should not be included in the control view, set the property to FALSE.</value>
   </data>
   <data name="IsControlElementTrueRequired" xml:space="preserve">
     <value>Set the element's IsControlElement property to TRUE.</value>
@@ -415,34 +415,34 @@ For example, if an element has a level-5 heading, its descendants can have only 
   <data name="LocalizedLandmarkTypeExcludesSpecialCharacters" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property that does not include any special characters.
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
-    ·         Use "main" for the area with the page's primary content.
-    ·         Use "navigation" for an area containing links for page or site navigation.
-    ·         Use "search" for an area of the page containing search functionality.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
+ · Use "main" for the area with the page's primary content.
+ · Use "navigation" for an area containing links for page or site navigation.
+ · Use "search" for an area of the page containing search functionality.
 If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeIsReasonableLength" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property that contains at most 64 characters.
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
-    ·         Use "main" for the area with the page's primary content.
-    ·         Use "navigation" for an area containing links for page or site navigation.
-    ·         Use "search" for an area of the page containing search functionality.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
+ · Use "main" for the area with the page's primary content.
+ · Use "navigation" for an area containing links for page or site navigation.
+ · Use "search" for an area of the page containing search functionality.
 If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotCustom" xml:space="preserve">
     <value>Provide string for the LocalizedLandmarkType property that does not include "custom."
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
     ·         Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
@@ -451,11 +451,11 @@ If none of the standard landmark types is applicable, provide a string that conc
   <data name="LocalizedLandmarkTypeNotEmpty" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property.
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
-    ·         Use "main" for the area with the page's primary content.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
+ · Use "main" for the area with the page's primary content.
     ·         Use "navigation" for an area containing links for page or site navigation.
     ·         Use "search" for an area of the page containing search functionality.
 If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
@@ -463,32 +463,33 @@ If none of the standard landmark types is applicable, provide a string that conc
   <data name="LocalizedLandmarkTypeNotNull" xml:space="preserve">
     <value>Provide a LocalizedLandmarkType property for the element.
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
-    ·         Use "main" for the area with the page's primary content.
-    ·         Use "navigation" for an area containing links for page or site navigation.
-    ·         Use "search" for an area of the page containing search functionality.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
+ · Use "main" for the area with the page's primary content.
+ · Use "navigation" for an area containing links for page or site navigation.
+ · Use "search" for an area of the page containing search functionality.
 If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedLandmarkTypeNotWhiteSpace" xml:space="preserve">
     <value>Provide a string for the LocalizedLandmarkType property.
 Where appropriate, use a standard localized landmark type:
-    ·         Use "banner" for an area at the beginning of the page with site-oriented content.
-    ·         Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
-    ·         Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
-    ·         Use "form" for an area containing a set of form-related elements.
-    ·         Use "main" for the area with the page's primary content.
-    ·         Use "navigation" for an area containing links for page or site navigation.
-    ·         Use "search" for an area of the page containing search functionality.
+ · Use "banner" for an area at the beginning of the page with site-oriented content.
+ · Use "complementary" for an area with supporting content that remains meaningful when separated from the primary content.
+ · Use "contentinfo" for an area at the end of the page containing information about the site or the primary content.
+ · Use "form" for an area containing a set of form-related elements.
+ · Use "main" for the area with the page's primary content.
+ · Use "navigation" for an area containing links for page or site navigation.
+ · Use "search" for an area of the page containing search functionality.
 If none of the standard landmark types is applicable, provide a string that concisely describes its content.</value>
   </data>
   <data name="LocalizedControlTypeNotCustom" xml:space="preserve">
     <value>Sufficient:
-      Provide a string for the LocalizedControlType property that concisely describes the control's function or purpose.
+Provide a string for the LocalizedControlType property that concisely describes the control's function or purpose.
+
 Better:
-      If possible, use a predefined (non-custom) control type and the default localized control type. The UIA framework will provide the correct localized control type automatically.</value>
+If possible, use a predefined (non-custom) control type and the default localized control type. The UIA framework will provide the correct localized control type automatically.</value>
   </data>
   <data name="LocalizedControlTypeNotEmpty" xml:space="preserve">
     <value>Provide a string for the LocalizedControlType property that concisely describes the control's type.</value>
@@ -504,23 +505,23 @@ Better:
   </data>
   <data name="NameExcludesControlType" xml:space="preserve">
     <value>Provide a Name property for the element that:
-    ·         Concisely identifies the element, AND
-    ·         Does not include the control type.</value>
+ · Concisely identifies the element, AND
+ · Does not include the control type.</value>
   </data>
   <data name="NameExcludesLocalizedControlType" xml:space="preserve">
     <value>Provide a Name property for the element that:
-    ·         Concisely identifies the element, AND
-    ·         Does not include the same text as the element's LocalizedControlType property.</value>
+ · Concisely identifies the element, AND
+ · Does not include the same text as the element's LocalizedControlType property.</value>
   </data>
   <data name="NameExcludesSpecialCharacters" xml:space="preserve">
     <value>Provide a Name property for the element that:
-    ·         Concisely identifies the element, AND
-    ·         Does not include any special characters.</value>
+ · Concisely identifies the element, AND
+ · Does not include any special characters.</value>
   </data>
   <data name="NameIsInformative" xml:space="preserve">
     <value>Provide a Name property for the element that:
-    ·         Concisely identifies the element, AND
-    ·         Does not include the element's class name (such as Microsoft.*.* or Windows.*.*).</value>
+ · Concisely identifies the element, AND
+ · Does not include the element's class name (such as Microsoft.*.* or Windows.*.*).</value>
   </data>
   <data name="NameNotEmpty" xml:space="preserve">
     <value>Provide a Name property that concisely identifies the element.</value>
@@ -533,7 +534,7 @@ Better:
   </data>
   <data name="NameReasonableLength" xml:space="preserve">
     <value>Provide a Name property for the element that:
-    ·         Concisely identifies the element, AND
-    ·         Contains at most 512 characters.</value>
+ · Concisely identifies the element, AND
+ · Contains at most 512 characters.</value>
   </data>
 </root>
