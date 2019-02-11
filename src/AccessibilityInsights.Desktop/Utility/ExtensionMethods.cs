@@ -89,7 +89,7 @@ namespace AccessibilityInsights.Desktop.Utility
         /// <param name="width"></param>
         /// <param name="height"></param>
         /// <returns></returns>
-        public static Bitmap CaptureBitmap(this DesktopElement e)
+        public static Bitmap CaptureBitmap(this A11yElement e)
         {
             var rect = e.BoundingRectangle;
             IntPtr wndHWND = NativeMethods.GetDesktopWindow();
