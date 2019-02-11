@@ -12,7 +12,6 @@
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="400"
-             IsVisibleChanged="UserControl_IsVisibleChanged"
              AutomationProperties.Name="{x:Static Properties:Resources.ColorContrastAutomationPropertiesName}">
     <UserControl.Resources>
         <ResourceDictionary Source="..\..\Resources\Styles.xaml"/>

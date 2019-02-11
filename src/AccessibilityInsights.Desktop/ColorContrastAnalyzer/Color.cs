@@ -40,6 +40,11 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         private readonly int Green;
         private readonly int Blue;
 
+        public System.Drawing.Color DrawingColor => System.Drawing.Color.FromArgb(Red, Green, Blue);
+
+        public System.Windows.Media.Color MediaColor => 
+            System.Windows.Media.Color.FromRgb(DrawingColor.R, DrawingColor.G, DrawingColor.B);
+
         public Color(int red, int green, int blue)
         {
             const string failMessage = "Color components are values between 0 and 255";

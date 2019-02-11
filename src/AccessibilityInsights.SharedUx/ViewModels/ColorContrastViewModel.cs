@@ -31,8 +31,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public void Reset()
         {
             this.Element = null;
-            this.FirstPixel = null;
-            this.SecondPixel = null;
             this.BugId = null;
         }
 
@@ -80,34 +78,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 secondColor = value;
                 // Indicates all properties have changed
                 OnPropertyChanged(null);
-            }
-        }
-        
-        private System.Drawing.Point? firstPixel;
-        public System.Drawing.Point? FirstPixel
-        {
-            get
-            {
-                return firstPixel;
-            }
-            set
-            {
-                firstPixel = value;
-                OnPropertyChanged(nameof(FirstPixel));
-            }
-        }
-
-        private System.Drawing.Point? secondPixel;
-        public System.Drawing.Point? SecondPixel
-        {
-            get
-            {
-                return secondPixel;
-            }
-            set
-            {
-                secondPixel = value;
-                OnPropertyChanged(nameof(SecondPixel));
             }
         }
 
