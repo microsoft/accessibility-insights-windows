@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CCAControlTypesFilter.cs" />
     <Compile Include="Conditions\AndConditionTest.cs" />
     <Compile Include="Conditions\ConditionTest.cs" />
     <Compile Include="Conditions\OrConditionTest.cs" />

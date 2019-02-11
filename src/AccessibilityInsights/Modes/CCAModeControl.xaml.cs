@@ -10,15 +10,13 @@ using AccessibilityInsights.Actions;
 using System.Windows.Automation.Peers;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.Actions.Contexts;
-using System.Windows.Input;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
 using System.Windows.Threading;
-using System.Drawing;
 using System.Globalization;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.RulesTest;
 
 namespace AccessibilityInsights.Modes
 {
@@ -113,6 +111,7 @@ namespace AccessibilityInsights.Modes
             HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
 
             HighlightAction.GetDefaultInstance().Clear();
+
             Dispatcher.InvokeAsync(() =>
             {
                 this.SetFocusOnDefaultControl();
@@ -136,6 +135,7 @@ namespace AccessibilityInsights.Modes
 
                     ElementContext ec = null;
                     string warning = string.Empty;
+                    string toolTipText = string.Empty;
 
                     await Task.Run(() =>
                     {
@@ -155,19 +155,35 @@ namespace AccessibilityInsights.Modes
 
                     Application.Current.Dispatcher.Invoke(() =>
                     {
-                        Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+                        if (ec == null || ec.Element == null)
                         {
-                            ScreenShotAction.CaptureScreenShot(ecId);
-                            Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-                            Application.Current.MainWindow.Visibility = Visibility.Visible;
-                        })).Wait();
+                            toolTipText = "No Eelement Selected!";
+                        }
+                        else
+                        {
+
+                            if (CCAControlTypesFilter.GetDefaultInstance().Contains(ec.Element.ControlTypeId))
+                            {
+                                Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+                                {
+                                    ScreenShotAction.CaptureScreenShot(ecId);
+                                    Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                                    Application.Current.MainWindow.Visibility = Visibility.Visible;
+                                })).Wait();
+                                toolTipText = "Ratio: 3.5:1\nConfidence: Excellent\nControlTypeId: "+ec.Element.ControlTypeId;
+                            }
+                            else
+                            {
+                                toolTipText = "Unknown Element Type!";
+                            }
+                        }
 
                         MainWin.CurrentView = CCAView.Automatic;
 
                         HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
 
-                        HighlightAction.GetDefaultInstance().SetText("Ratio: 3.5:1\nConfidence: Excellent");
+                        HighlightAction.GetDefaultInstance().SetText(toolTipText);
 
                         // enable element selector
                         MainWin.EnableElementSelector();

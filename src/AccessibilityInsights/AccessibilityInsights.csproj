@@ -180,7 +180,7 @@
     <Compile Include="MainWindowHelpers\StateMachine.cs" />
     <Compile Include="MainWindowHelpers\Initialize.cs" />
     <Compile Include="MainWindowHelpers\InspectMode.cs" />
-	<Compile Include="MainWindowHelpers\CCAMode.cs" />
+    <Compile Include="MainWindowHelpers\CCAMode.cs" />
     <Compile Include="MainWindowHelpers\Timers.cs" />
     <Compile Include="MainWindowHelpers\TestMode.cs" />
     <Compile Include="MainWindowHelpers\TreeNavigator.cs" />
@@ -275,6 +275,10 @@
     <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
       <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
       <Name>DesktopUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.RulesTest\RulesTests.csproj">
+      <Project>{eb28aa55-c07a-4ee4-aaae-49338f3590a6}</Project>
+      <Name>RulesTests</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
