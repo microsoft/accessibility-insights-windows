@@ -82,10 +82,10 @@ namespace AccessibilityInsights.Rules.Resources {
         ///   Looks up a localized string similar to Make sure the BoundingRectangle property returns data in the expected format:
         ///    1.     Specify the rectangle as an array with a type of double and a size of 4.
         ///    2.     Specify the rectangle&apos;s position and size (in pixels) by providing array values in the following order:
-        ///      a.     Top edge
-        ///      b.     Left edge
-        ///      c.     Width
-        ///      d.     Height.
+        ///            a.     Top edge
+        ///            b.     Left edge
+        ///            c.     Width
+        ///            d.     Height.
         /// </summary>
         internal static string BoundingRectangleDataFormatCorrect {
             get {
@@ -108,7 +108,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to If the element is offscreen, set its IsOffscreen property to TRUE.
-        ///    If the element is onscreen, provide a BoundingRectangle property..
+        ///If the element is onscreen, provide a BoundingRectangle property..
         /// </summary>
         internal static string BoundingRectangleNotNull {
             get {
@@ -235,7 +235,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     Modify the element to support only its allowed patterns..
+        ///2.     Modify the element to support only its allowed patterns..
         /// </summary>
         internal static string ControlShouldNotSupportInvokePattern {
             get {
@@ -245,7 +245,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     Modify the element to support only its allowed patterns..
+        ///2.     Modify the element to support only its allowed patterns..
         /// </summary>
         internal static string ControlShouldNotSupportScrollPattern {
             get {
@@ -255,7 +255,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     Modify the element to support only its allowed patterns..
+        ///2.     Modify the element to support only its allowed patterns..
         /// </summary>
         internal static string ControlShouldNotSupportTablePattern {
             get {
@@ -265,7 +265,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     Modify the element to support only its allowed patterns..
+        ///2.     Modify the element to support only its allowed patterns..
         /// </summary>
         internal static string ControlShouldNotSupportTogglePattern {
             get {
@@ -293,7 +293,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the ExpandCollapse pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the ExpandCollapse pattern..
         /// </summary>
         internal static string ControlShouldSupportExpandCollapsePattern {
             get {
@@ -312,7 +312,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Grid pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Grid pattern..
         /// </summary>
         internal static string ControlShouldSupportGridPattern {
             get {
@@ -322,7 +322,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Invoke pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Invoke pattern..
         /// </summary>
         internal static string ControlShouldSupportInvokePattern {
             get {
@@ -341,7 +341,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the SelectionItem pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the SelectionItem pattern..
         /// </summary>
         internal static string ControlShouldSupportSelectionItemPattern {
             get {
@@ -351,7 +351,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Selection pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Selection pattern..
         /// </summary>
         internal static string ControlShouldSupportSelectionPattern {
             get {
@@ -388,7 +388,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Table pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Table pattern..
         /// </summary>
         internal static string ControlShouldSupportTablePattern {
             get {
@@ -398,7 +398,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Text pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Text pattern..
         /// </summary>
         internal static string ControlShouldSupportTextPattern {
             get {
@@ -408,7 +408,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     If the current ControlType is correct, modify the element to support the Toggle pattern..
+        ///2.     If the current ControlType is correct, modify the element to support the Toggle pattern..
         /// </summary>
         internal static string ControlShouldSupportTogglePattern {
             get {
@@ -418,7 +418,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to If the element can be resized, implement the Transform pattern.
-        ///    If the element can&apos;t be resized, ensure the TransformPattern_CanResize property is FALSE..
+        ///If the element can&apos;t be resized, ensure the TransformPattern_CanResize property is FALSE..
         /// </summary>
         internal static string ControlShouldSupportTransformPattern {
             get {
@@ -446,7 +446,7 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Modify the heading levels and/or nesting structure of the element and/or its ancestors.
-        ///      For example, if an element has a level-5 heading, its descendants can have only level-5 or level-6 headings..
+        ///For example, if an element has a level-5 heading, its descendants can have only level-5 or level-6 headings..
         /// </summary>
         internal static string HeadingLevelDescendsWhenNested {
             get {
@@ -691,7 +691,7 @@ namespace AccessibilityInsights.Rules.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Sufficient:
         ///      Provide a string for the LocalizedControlType property that concisely describes the control&apos;s function or purpose.
-        ///    Better:
+        ///Better:
         ///      If possible, use a predefined (non-custom) control type and the default localized control type. The UIA framework will provide the correct localized control type automatically..
         /// </summary>
         internal static string LocalizedControlTypeNotCustom {
@@ -738,10 +738,10 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property that does not include any special characters.
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the  [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the prim [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeExcludesSpecialCharacters {
             get {
@@ -751,10 +751,10 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property that contains at most 64 characters.
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary c [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary conte [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeIsReasonableLength {
             get {
@@ -764,10 +764,11 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide string for the LocalizedLandmarkType property that does not include &quot;custom.&quot;
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
-        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content. [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
+        ///   [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotCustom {
             get {
@@ -777,11 +778,11 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property.
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
         ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;form&quot; fo [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;form&quot; for an [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotEmpty {
             get {
@@ -791,11 +792,11 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide a LocalizedLandmarkType property for the element.
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
         ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;form&quot; f [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;form&quot; for a [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotNull {
             get {
@@ -805,11 +806,11 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to Provide a string for the LocalizedLandmarkType property.
-        ///    Where appropriate, use a standard localized landmark type:
+        ///Where appropriate, use a standard localized landmark type:
         ///    ·         Use &quot;banner&quot; for an area at the beginning of the page with site-oriented content.
         ///    ·         Use &quot;complementary&quot; for an area with supporting content that remains meaningful when separated from the primary content.
         ///    ·         Use &quot;contentinfo&quot; for an area at the end of the page containing information about the site or the primary content.
-        ///    ·         Use &quot;form&quot; fo [rest of string was truncated]&quot;;.
+        ///    ·         Use &quot;form&quot; for an [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string LocalizedLandmarkTypeNotWhiteSpace {
             get {
@@ -1005,8 +1006,8 @@ namespace AccessibilityInsights.Rules.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to 1.     Make sure the element has the appropriate ControlType property for its function.
-        ///    2.     Make sure Selection is the correct pattern.
-        ///    3.     Set the element&apos;s CanSelectMultiple property to FALSE..
+        ///2.     Make sure Selection is the correct pattern.
+        ///3.     Set the element&apos;s CanSelectMultiple property to FALSE..
         /// </summary>
         internal static string SelectionPatternSingleSelection {
             get {

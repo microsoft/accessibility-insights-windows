@@ -16,7 +16,21 @@
         <Canvas>
             <Image Stretch="None" Name="imgScreenshot" RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True" />
         </Canvas>
-        <Border UseLayoutRounding="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="99,99,0,0" Width="6" Height="6" BorderBrush="{DynamicResource ResourceKey=IconBrush}" Background="{x:Null}" BorderThickness="1"/>
+        <Border UseLayoutRounding="True" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="White" Margin="99,99,0,0" Width="6" Height="6" Background="{x:Null}" BorderThickness="1"/>
+        <Border UseLayoutRounding="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="99,99,0,0" Width="6" Height="6" Background="{x:Null}" BorderThickness="1">
+            <!-- The below code is from https://stackoverflow.com/questions/6195395/how-can-i-achieve-a-dashed-or-dotted-border-in-wpf by dotNet
+                 and modified to fit our need.
+            -->
+            <Border.BorderBrush>
+                <VisualBrush>
+                    <VisualBrush.Visual>
+                        <Rectangle StrokeDashArray="1 1" Stroke="Black" StrokeThickness="1"
+                             Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualWidth}"
+                             Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Border}}, Path=ActualHeight}"/>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Border.BorderBrush>
+        </Border>
         <Border HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="{DynamicResource ResourceKey=IconBrush}" BorderThickness="1"/>
     </Grid>
 </Window>

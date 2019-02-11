@@ -79,6 +79,9 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ColorContrastAnalyzer\ColorPairTests.cs" />
+    <Compile Include="ColorContrastAnalyzer\ColorTests.cs" />
+    <Compile Include="ColorContrastAnalyzer\ImageTests.cs" />
     <Compile Include="Keyboard\HotkeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SnapshotMetaInfoTests.cs" />
@@ -87,6 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="ColorContrastAnalyzer\packages.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
@@ -110,6 +114,21 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\cortana_with_offset_down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\cortana_with_offset_up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\simple_black_and_grey_button.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\simple_black_and_white.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\weird_text_arrangement.bmp" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
