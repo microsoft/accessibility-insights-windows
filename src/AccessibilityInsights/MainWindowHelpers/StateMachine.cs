@@ -320,15 +320,6 @@ namespace AccessibilityInsights
             ctrlCurMode.ShowControl();
 
             StartCCAMode(CCAView.Automatic);
-
-            // enable element selector
-            EnableElementSelector();
-
-            // if it was open when the switch back button is clicked. 
-            HideConfigurationMode();
-
-            UpdateMainWindowUI();
-
         }
 
         /// <summary>
