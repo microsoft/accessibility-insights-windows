@@ -46,7 +46,7 @@ jobs:
     inputs:
       targetType: filePath
       filePath: 'build\BuildMetadata.ps1'
-      arguments: '$(Build.ArtifactsStagingDirectory)'
+      arguments: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
