@@ -41,6 +41,13 @@ jobs:
       Contents: '**\bin\release\**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+  - task: PowerShell@2
+    displayName: 'Publish build metadata'
+    inputs:
+      targetType: filePath
+      filePath: 'build\BuildMetadata.ps1'
+      arguments: '$(Build.ArtifactsStagingDirectory)'
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
@@ -117,13 +124,6 @@ jobs:
       publishLocation: FilePath
       TargetPath: '$(DropRoot)'
     continueOnError: true
-
-  - task: PowerShell@2
-    displayName: 'Publish build metadata'
-    inputs:
-      targetType: filePath
-      filePath: 'build\BuildMetadata.ps1'
-      arguments: '$(DropRoot)'
 
   - task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
     displayName: 'Publish Symbols'

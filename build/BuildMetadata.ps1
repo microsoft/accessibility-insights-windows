@@ -1,11 +1,11 @@
 # Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-$basePath = $args[0]
+$artifactStagingDirectory = $args[0]
 
-if ([System.String]::IsNullOrWhiteSpace($($basePath)))
+if ([System.String]::IsNullOrWhiteSpace($($artifactStagingDirectory)))
 {
-    Write-Host 'ERROR: No basePath specified!'
+    Write-Host 'ERROR: No artifactStagingDirectory specified!'
     exit 1
 }
 
@@ -21,14 +21,14 @@ Write-Host "*** Raw Version:" $($rawVersion)
 $sha = $($revParse).Split([System.Environment]::Newline)[0]
 $productVersion = $($rawVersion).Split('\"')[1]
 
-$folderPath = [IO.Path]::Combine($($basePath), 'signed', $($productVersion))
-if (![IO.Directory]::Exists($($folderPath)))
+$msiReleaseFolderPath = [IO.Path]::Combine($($artifactStagingDirectory), 'src\MSI\bin\release')
+if (![IO.Directory]::Exists($($msiReleaseFolderPath)))
 {
-    Write-Host 'ERROR: Path not found: ' $($folderPath)
+    Write-Host 'ERROR: Path not found: ' $($msiReleaseFolderPath)
     exit 2
 }
 
-$metadataFilePath = [IO.Path]::Combine($($folderPath), 'build_info.json')
+$metadataFilePath = [IO.Path]::Combine($($msiReleaseFolderPath), 'build_info.json')
 
 $json = @{"sha"=$($sha); "buildNumber"=$($buildNumber); "productVersion"=$($productVersion)} | ConvertTo-Json
 Write-Host "*** Writing to file: " $($metadataFilePath)
