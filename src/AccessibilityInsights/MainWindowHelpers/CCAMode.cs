@@ -50,6 +50,8 @@ namespace AccessibilityInsights
                 SetWindowForAutomaticMode();
             }
 
+            SelectAction.GetDefaultInstance().Scope = SelectionScope.Element;
+
             // set the state to Capturing view. it will prevent testing for safety.
             this.CurrentView = CCAView.CapturingData;
 
