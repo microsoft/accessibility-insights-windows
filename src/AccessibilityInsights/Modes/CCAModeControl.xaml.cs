@@ -15,6 +15,10 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
 using System.Windows.Threading;
 using System.Drawing;
+using System.Globalization;
+using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Actions.Misc;
+using AccessibilityInsights.SharedUx.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -23,6 +27,13 @@ namespace AccessibilityInsights.Modes
     /// </summary>
     public partial class CCAModeControl : UserControl, IModeControl
     {
+
+        /// <summary>
+        /// Indicate how to do the data context population. 
+        /// Live/Snapshot/Load
+        /// </summary>
+        public DataContextMode DataContextMode { get; set; } = DataContextMode.Test;
+
         /// <summary>
         /// MainWindow to access shared methods
         /// </summary>
@@ -99,7 +110,7 @@ namespace AccessibilityInsights.Modes
         public void ShowControl()
         {
             this.Visibility = Visibility.Visible;
-            HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+            HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
 
             HighlightAction.GetDefaultInstance().Clear();
             Dispatcher.InvokeAsync(() =>
@@ -113,18 +124,65 @@ namespace AccessibilityInsights.Modes
         /// set element
         /// </summary>
         /// <param name="ecId"></param>
-#pragma warning disable CS1998
         public async Task SetElement(Guid ecId)
         {
-            ElementContext ec = GetDataAction.GetElementContext(ecId);
+            if (GetDataAction.ExistElementContext(ecId))
+            {
+                try
+                {
+                    HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
 
-            HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+                    HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
 
-            //ScreenShotAction.CaptureScreenShot(ecId);
+                    ElementContext ec = null;
+                    string warning = string.Empty;
 
-            HighlightAction.GetDefaultInstance().SetText("Ratio: 3.5:1\nConfidence: Excellent");
+                    await Task.Run(() =>
+                    {
+                        var updated = CaptureAction.SetTestModeDataContext(ecId, this.DataContextMode, Configuration.TreeViewMode);
+                        ec = GetDataAction.GetElementContext(ecId);
 
-            MainWin.CurrentView = CCAView.Automatic;
+                        // send telemetry of scan results.
+                        var dc = GetDataAction.GetElementDataContext(ecId);
+                        if (dc.ElementCounter.UpperBoundExceeded)
+                        {
+                            warning = string.Format(CultureInfo.InvariantCulture,
+                                Properties.Resources.SetElementCultureInfoFormatMessage,
+                                dc.ElementCounter.UpperBound);
+                        }
+                        dc.PublishScanResults();
+                    }).ConfigureAwait(false);
+
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+                        {
+                            ScreenShotAction.CaptureScreenShot(ecId);
+                            Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+                            Application.Current.MainWindow.Visibility = Visibility.Visible;
+                        })).Wait();
+
+                        MainWin.CurrentView = CCAView.Automatic;
+
+                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+
+
+                        HighlightAction.GetDefaultInstance().SetText("Ratio: 3.5:1\nConfidence: Excellent");
+
+                        // enable element selector
+                        MainWin.EnableElementSelector();
+                    });
+
+
+                }
+                catch (Exception)
+                {
+                    MainWin.CurrentView = CCAView.Automatic;
+                    // enable element selector
+                    MainWin.EnableElementSelector();
+                }
+
+            }
 
         }
 
@@ -153,7 +211,8 @@ namespace AccessibilityInsights.Modes
         /// <summary>
         /// Not needed
         /// </summary>
-        public void UpdateConfigWithSize() {
+        public void UpdateConfigWithSize()
+        {
         }
 
         public void Clear()

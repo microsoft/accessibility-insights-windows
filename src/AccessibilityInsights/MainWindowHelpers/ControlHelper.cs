@@ -44,8 +44,10 @@ namespace AccessibilityInsights
         {
             var sa = SelectAction.GetDefaultInstance();
             if (!sa.IsPaused && 
-                ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live) ||
-                (CurrentPage == AppPage.CCA&& (CCAView)CurrentView == CCAView.Automatic)))
+                ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live) 
+                ||
+                (CurrentPage == AppPage.CCA&& (CCAView)CurrentView == CCAView.Automatic)
+                ))
             {
                 this.AllowFurtherAction = true;
                 sa.Start();
