@@ -42,13 +42,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             // When user interacts with color chooser, reset selected element, hide pixel locations, and 
             //  begin recording if eyedropper action is selected
-            this.firstChooser.ColorChangerInvoked += (sender, colorChangerType) => {
-                this.ContrastVM.Element = null;
-                Chooser_ColorPickerClicked(sender, colorChangerType);
-            };
-            this.secondChooser.ColorChangerInvoked += (sender, colorChangerType) => {
-                Chooser_ColorPickerClicked(sender, colorChangerType);
-            };
+            this.firstChooser.ColorChangerInvoked += Chooser_ColorPickerClicked;
+            this.secondChooser.ColorChangerInvoked += Chooser_ColorPickerClicked;
 
             // initial colors
             this.ContrastVM.FirstColor = System.Windows.Media.Colors.Black;
@@ -57,7 +52,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void Dropper_Closed(object sender, EventArgs e)
         {
-            ToggleModalExperience(false);
             CurrentChooser = null;
         }
 
@@ -129,6 +123,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="e"></param>
         private void Chooser_ColorPickerClicked(object sender, SourceArgs e)
         {
+            SetAutoCCAState(false);
+
             this.ContrastVM.BugId = null;
             if (e.Source == ColorChanger.Eyedropper)
             {
@@ -136,17 +132,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 var cc = new GlobalEyedropperWindow(ContrastVM, SelectingFirstColor, SelectingSecondColor, Dropper_Closed) { Owner = Application.Current.MainWindow };
                 cc.Show();
             }
-        }
-
-        /// <summary>
-        /// Enables/disables the color choosers
-        /// when recording in the eyedropper has begun or ended
-        /// </summary>
-        /// <param name="start">true if recording has begun (should appear modal), false otherwise</param>
-        private void ToggleModalExperience(bool start)
-        {
-            this.firstChooser.IsEnabled = !start;
-            this.secondChooser.IsEnabled = !start;
         }
 
         /// <summary>
@@ -210,21 +195,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (this.tgbtnAutoDetect.IsChecked.HasValue)
             {
                 HandleToggleButtonSwitch(this.tgbtnAutoDetect.IsChecked.Value);
-                if (this.tgbtnAutoDetect.IsChecked.Value == true)
-                {
-                    this.firstChooser.IsEnabled = false;
-                    this.secondChooser.IsEnabled = false;
-                }
-                else
-                {
-                    this.firstChooser.IsEnabled = true;
-                    this.secondChooser.IsEnabled = true;
-                    this.tbConfidence.Text = "";
-                }
             }
         }
 
-        private static void HandleToggleButtonSwitch(bool isEnabled)
+        private void HandleToggleButtonSwitch(bool isEnabled)
         {
             ICCAMode CCAMode = Application.Current.MainWindow as ICCAMode;
 
@@ -234,9 +208,19 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 CCAMode.HandleToggleStatusChanged(isEnabled);
             }
 
+            this.tbConfidence.Text = "";
         }
 
-        public bool isToggleChecked()
+        public void SetAutoCCAState(bool state)
+        {
+            if (this.tgbtnAutoDetect.IsChecked.Value != state)
+            {
+                this.tgbtnAutoDetect.IsChecked = state;
+                HandleToggleButtonSwitch(state);
+            }
+        }
+
+        public bool IsToggleChecked()
         {
             return this.tgbtnAutoDetect.IsChecked.Value;
         }
