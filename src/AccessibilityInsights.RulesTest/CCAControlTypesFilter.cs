@@ -1,4 +1,6 @@
-﻿using AccessibilityInsights.RulesTest;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.RulesTest;
 using System;
 using System.Collections.Generic;
 

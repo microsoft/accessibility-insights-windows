@@ -112,6 +112,8 @@ namespace AccessibilityInsights.Modes
 
             HighlightAction.GetDefaultInstance().Clear();
 
+            SelectAction.GetDefaultInstance().ClearSelectedContext();
+
             Dispatcher.InvokeAsync(() =>
             {
                 this.SetFocusOnDefaultControl();
@@ -166,11 +168,10 @@ namespace AccessibilityInsights.Modes
                             {
                                 Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                                 {
-                                    ScreenShotAction.CaptureScreenShot(ecId);
-                                    Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
-                                    Application.Current.MainWindow.Visibility = Visibility.Visible;
+                                    this.ctrlContrast.SetElement(ec);
                                 })).Wait();
-                                toolTipText = "Ratio: 3.5:1\nConfidence: Excellent\nControlTypeId: "+ec.Element.ControlTypeId;
+                                //toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}\n",
+                                  //  this.ctrlContrast.output.Text, this.ctrlContrast.tbConfidence.Text);
                             }
                             else
                             {
@@ -193,9 +194,12 @@ namespace AccessibilityInsights.Modes
                 }
                 catch (Exception)
                 {
-                    MainWin.CurrentView = CCAView.Automatic;
-                    // enable element selector
-                    MainWin.EnableElementSelector();
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        MainWin.CurrentView = CCAView.Automatic;
+                        // enable element selector
+                        MainWin.EnableElementSelector();
+                    });
                 }
 
             }

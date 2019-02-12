@@ -64,6 +64,10 @@ namespace AccessibilityInsights
                 // Pass the currently selected Element Context
                 this.ctrlCurMode.SetElement(ecId.Value);
             }
+            else
+            {
+                this.CurrentView = CCAView.Automatic;
+            }
 
             // enable element selector
             EnableElementSelector();
