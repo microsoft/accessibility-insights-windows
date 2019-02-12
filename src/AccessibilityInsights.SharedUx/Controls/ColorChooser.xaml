@@ -20,7 +20,7 @@
                 Click="colorPicker_Click" AutomationProperties.Name="{x:Static Properties:Resources.colorPickerAutomationPropertiesName}">
                 <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Button>
-            <ComboBox Name="cbColorPicker" Width="120" Style="{StaticResource tgbtnColorPicker}" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.cbColorPickerAutomationPropertiesName}'}">
+            <ComboBox Name="cbColorPicker" DropDownOpened="Popup_Opened" Width="120" Style="{StaticResource tgbtnColorPicker}" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.cbColorPickerAutomationPropertiesName}'}">
                 <ComboBox.Background>
                     <SolidColorBrush Color="{Binding StoredColor}"/>
                 </ComboBox.Background>

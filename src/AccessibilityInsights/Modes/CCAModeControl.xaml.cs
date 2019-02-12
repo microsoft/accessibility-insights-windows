@@ -143,6 +143,8 @@ namespace AccessibilityInsights.Modes
                 this.SetFocusOnDefaultControl();
             }
             , System.Windows.Threading.DispatcherPriority.Input);
+
+            ctrlContrast.SetAutoCCAState(true);
         }
 
         /// <summary>
@@ -303,7 +305,7 @@ namespace AccessibilityInsights.Modes
 
         public bool isToggleChecked()
         {
-            return this.ctrlContrast.isToggleChecked();
+            return this.ctrlContrast.IsToggleChecked();
         }
     }
 }
