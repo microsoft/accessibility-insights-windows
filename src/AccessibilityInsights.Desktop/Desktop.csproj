@@ -63,6 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
+    <Compile Include="ColorContrastAnalyzer\BitmapCollection.cs" />
+    <Compile Include="ColorContrastAnalyzer\Color.cs" />
+    <Compile Include="ColorContrastAnalyzer\ColorPair.cs" />
+    <Compile Include="ColorContrastAnalyzer\ImageCollection.cs" />
+    <Compile Include="ColorContrastAnalyzer\Pixel.cs" />
+    <Compile Include="ColorContrastAnalyzer\ColorContrastConfig.cs" />
+    <Compile Include="ColorContrastAnalyzer\ColorContrastResult.cs" />
+    <Compile Include="ColorContrastAnalyzer\ContrastTransition.cs" />
     <Compile Include="Keyboard\HotKey.cs" />
     <Compile Include="Keyboard\HotkeysHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -888,6 +888,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confidence.
+        /// </summary>
+        public static string ColorContrast_Confidence {
+            get {
+                return ResourceManager.GetString("ColorContrast_Confidence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to (14 pt. bold or 18 pt. regular).
         /// </summary>
         public static string ColorContrast_FontSizes {
@@ -984,6 +993,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_SmallTextResultHelpText {
             get {
                 return ResourceManager.GetString("ColorContrast_SmallTextResultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current confidence in automatic color selection is {0}.
+        /// </summary>
+        public static string ColorContrast_tbConfidenceAutomationName {
+            get {
+                return ResourceManager.GetString("ColorContrast_tbConfidenceAutomationName", resourceCulture);
             }
         }
         
@@ -2129,6 +2147,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string lblAlwaysOnTopLabelContent {
             get {
                 return ResourceManager.GetString("lblAlwaysOnTopLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto detect colors on hover.
+        /// </summary>
+        public static string lblAutoDetectContent {
+            get {
+                return ResourceManager.GetString("lblAutoDetectContent", resourceCulture);
             }
         }
         
