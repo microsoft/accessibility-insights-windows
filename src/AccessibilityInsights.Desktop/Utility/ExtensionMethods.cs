@@ -97,7 +97,7 @@ namespace AccessibilityInsights.Desktop.Utility
             Graphics g = Graphics.FromImage(bmp);
 
             g.CopyFromScreen(rect.X, rect.Y, 0, 0, rect.Size);
-            bmp.Save("out.bmp");
+
             return bmp; 
         }
 
