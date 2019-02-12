@@ -242,7 +242,7 @@
     <Content Include="..\..\eula.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\thirdpartynotices.txt">
+    <Content Include="..\..\thirdpartynotices.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
