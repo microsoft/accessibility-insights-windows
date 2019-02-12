@@ -31,6 +31,9 @@
         <KeyBinding Command="{x:Static local:MainWindow.ClickInspectCommand}"
                     Key="I"
                     Modifiers="Ctrl"/>
+        <KeyBinding Command="{x:Static local:MainWindow.CtrlOCommand}"
+                    Key="O"
+                    Modifiers="Ctrl"/>
         <KeyBinding Command="{x:Static local:MainWindow.ClickTestCommand}"
                     Key="T"
                     Modifiers="Ctrl"/>
