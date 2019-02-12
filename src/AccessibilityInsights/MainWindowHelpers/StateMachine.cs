@@ -327,6 +327,11 @@ namespace AccessibilityInsights
             ctrlCurMode.ShowControl();
 
             StartCCAMode((CCAView)this.CurrentView);
+
+            // if it was open when the switch back button is clicked. 
+            HideConfigurationMode();
+
+            UpdateMainWindowUI();
         }
 
         /// <summary>

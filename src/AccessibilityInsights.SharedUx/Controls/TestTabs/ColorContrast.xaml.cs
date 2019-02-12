@@ -207,17 +207,33 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void TgbtnAutoDetect_Click(object sender, RoutedEventArgs e)
         {
-            IMainWindow wnd = Application.Current.MainWindow as IMainWindow;
-            ICCAMode ch = Application.Current.MainWindow as ICCAMode;
-
-            // Watson crashes suggest that this will be null sometimes
-            if (wnd != null)
+            if (this.tgbtnAutoDetect.IsChecked.HasValue)
             {
-                if (this.tgbtnAutoDetect.IsChecked.HasValue)
+                HandleToggleButtonSwitch(this.tgbtnAutoDetect.IsChecked.Value);
+                if (this.tgbtnAutoDetect.IsChecked.Value == true)
                 {
-                    ch.HandleToggleStatusChanged(this.tgbtnAutoDetect.IsChecked.Value);
+                    this.firstChooser.IsEnabled = false;
+                    this.secondChooser.IsEnabled = false;
+                }
+                else
+                {
+                    this.firstChooser.IsEnabled = true;
+                    this.secondChooser.IsEnabled = true;
+                    this.tbConfidence.Text = "";
                 }
             }
+        }
+
+        private static void HandleToggleButtonSwitch(bool isEnabled)
+        {
+            ICCAMode CCAMode = Application.Current.MainWindow as ICCAMode;
+
+            // Watson crashes suggest that this will be null sometimes
+            if (CCAMode!=null)
+            {
+                CCAMode.HandleToggleStatusChanged(isEnabled);
+            }
+
         }
 
         public bool isToggleChecked()

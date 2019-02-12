@@ -32,6 +32,9 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public DataContextMode DataContextMode { get; set; } = DataContextMode.Live;
 
+        private HighlighterMode prevMode;
+        private bool prevHighlighterState;
+
         /// <summary>
         /// MainWindow to access shared methods
         /// </summary>
@@ -113,6 +116,9 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void HideControl()
         {
+            HighlightAction.GetDefaultInstance().HighlighterMode = prevMode;
+            MainWin.SetHighlightBtnState(prevHighlighterState);
+            HighlightAction.GetDefaultInstance().IsEnabled = prevHighlighterState;
             UpdateConfigWithSize();
             this.Visibility = Visibility.Collapsed;
         }
@@ -123,8 +129,11 @@ namespace AccessibilityInsights.Modes
         public void ShowControl()
         {
             this.Visibility = Visibility.Visible;
+            this.prevHighlighterState = HighlightAction.GetDefaultInstance().IsEnabled;
+            this.prevMode = HighlightAction.GetDefaultInstance().HighlighterMode;
             HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
-
+            MainWin.SetHighlightBtnState(true);
+            HighlightAction.GetDefaultInstance().IsEnabled = true;
             HighlightAction.GetDefaultInstance().Clear();
 
             SelectAction.GetDefaultInstance().ClearSelectedContext();
