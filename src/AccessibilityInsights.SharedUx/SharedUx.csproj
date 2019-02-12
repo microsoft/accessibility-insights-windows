@@ -366,6 +366,7 @@
       <DependentUpon>EyedropperWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\EventConfigNodeType.cs" />
+    <Compile Include="Interfaces\ICCAMode.cs" />
     <Compile Include="Misc\ListViewSelectionLock.cs" />
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />

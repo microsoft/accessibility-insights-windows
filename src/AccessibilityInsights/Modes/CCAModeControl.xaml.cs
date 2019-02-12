@@ -16,7 +16,7 @@ using System.Windows.Threading;
 using System.Globalization;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.RulesTest;
+using AccessibilityInsights.Rules;
 
 namespace AccessibilityInsights.Modes
 {
@@ -63,6 +63,21 @@ namespace AccessibilityInsights.Modes
             {
                 return ConfigurationManager.GetDefaultInstance()?.AppLayout;
             }
+        }
+
+        public static void SetCurrentCCAView(bool isToogleOn)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (isToogleOn)
+                {
+                    MainWin.CurrentView = CCAView.Automatic;
+                }
+                else
+                {
+                    MainWin.CurrentView = CCAView.Manual;
+                }
+            });
         }
 
         /// <summary>
@@ -135,6 +150,8 @@ namespace AccessibilityInsights.Modes
 
                     HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
 
+                    this.ctrlContrast.ActivateProgressRing();
+
                     ElementContext ec = null;
                     string warning = string.Empty;
                     string toolTipText = string.Empty;
@@ -163,15 +180,14 @@ namespace AccessibilityInsights.Modes
                         }
                         else
                         {
-
                             if (CCAControlTypesFilter.GetDefaultInstance().Contains(ec.Element.ControlTypeId))
                             {
                                 Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                                 {
                                     this.ctrlContrast.SetElement(ec);
                                 })).Wait();
-                                //toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}\n",
-                                  //  this.ctrlContrast.output.Text, this.ctrlContrast.tbConfidence.Text);
+                                toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}\n",
+                                    this.ctrlContrast.getRatio(), this.ctrlContrast.getConfidence());
                             }
                             else
                             {
@@ -190,32 +206,27 @@ namespace AccessibilityInsights.Modes
                         MainWin.EnableElementSelector();
                     });
 
-
+                    this.ctrlContrast.DeactivateProgressRing();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         MainWin.CurrentView = CCAView.Automatic;
+                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+
+
+                        HighlightAction.GetDefaultInstance().SetText(ex.Message);
                         // enable element selector
                         MainWin.EnableElementSelector();
+
+                        this.ctrlContrast.DeactivateProgressRing();
                     });
                 }
 
             }
 
         }
-
-
-        /*
-        /// <summary>
-        /// Will be replaced by Dequeue API
-        /// </summary>
-        /// <returns></returns>
-        private string getScreenShotRatio(Bitmap screenshot)
-        {
-            return "Ratio: 1:1\nConfiedency: Excellent";
-        }*/
 
         /// <summary>
         /// Make sure that statemachine and UI are updated for Live mode. 
@@ -280,6 +291,11 @@ namespace AccessibilityInsights.Modes
         public void SetFocusOnDefaultControl()
         {
             this.ctrlContrast.Focus();
+        }
+
+        public bool isToggleChecked()
+        {
+            return this.ctrlContrast.isToggleChecked();
         }
     }
 }

@@ -67,7 +67,7 @@ namespace AccessibilityInsights
 
             if (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Automatic)
             {
-                StartCCAMode(CCAView.Automatic);
+                StartCCAMode((CCAView)this.CurrentView);
             }
         }
 
@@ -312,14 +312,21 @@ namespace AccessibilityInsights
             }
 
             this.CurrentPage = AppPage.CCA;
-            this.CurrentView = CCAView.Automatic;
+            if (ctrlCCAMode.isToggleChecked())
+            {
+                this.CurrentView = CCAView.Automatic;
+            }
+            else
+            {
+                this.CurrentView = CCAView.Manual;
+            }
 
             HideConfigurationMode();
             ctrlCurMode.HideControl();
             ctrlCurMode = ctrlCCAMode;
             ctrlCurMode.ShowControl();
 
-            StartCCAMode(CCAView.Automatic);
+            StartCCAMode((CCAView)this.CurrentView);
         }
 
         /// <summary>

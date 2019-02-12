@@ -7,7 +7,8 @@ namespace AccessibilityInsights.Rules
 {
     class ControlTypeCondition : Condition
     {
-        private readonly int ControlType = 0;
+        public int ControlType { get; } = 0;
+
 
         public ControlTypeCondition(int controlType)
         {

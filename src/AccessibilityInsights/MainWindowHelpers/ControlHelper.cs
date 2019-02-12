@@ -12,13 +12,14 @@ using System.Windows.Controls;
 
 using static System.FormattableString;
 using System.Globalization;
+using AccessibilityInsights.SharedUx.Interfaces;
 
 namespace AccessibilityInsights
 {
     /// <summary>
     /// MainWindow partial class for Helping flow control
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow: ICCAMode
     {
         /// <summary>
         /// flag to allow any further action
@@ -283,6 +284,22 @@ namespace AccessibilityInsights
             }
 
             this.lblVersion.Content = sb.ToString();
+        }
+
+        public void HandleToggleStatusChanged(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                this.CurrentView = CCAView.Automatic;
+                EnableElementSelector();
+            }
+            else
+            {
+                this.CurrentView = CCAView.Manual;
+                DisableElementSelector();
+                HighlightAction.GetDefaultInstance().Clear();
+                SelectAction.GetDefaultInstance().ClearSelectedContext();
+            }
         }
     }
 }

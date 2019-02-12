@@ -256,6 +256,10 @@
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
                            AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}"/>
             </Grid>
+            <controls:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"
+                                x:Name="ctrlProgressRing"
+                                Panel.ZIndex="3"
+                                Visibility="Collapsed"/>
         </Grid>
     </Grid>
 </UserControl>

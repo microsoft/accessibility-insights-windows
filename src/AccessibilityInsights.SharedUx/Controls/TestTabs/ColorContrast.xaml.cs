@@ -2,14 +2,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Desktop.ColorContrastAnalyzer;
-using AccessibilityInsights.Desktop.Settings;
 using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -160,7 +159,17 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.firstChooser.Reset();
             this.secondChooser.Reset();
         }
-        
+
+        public object getConfidence()
+        {
+            return this.tbConfidence.Text;
+        }
+
+        public object getRatio()
+        {
+            return this.output.Text;
+        }
+
         /// <summary>
         /// App configuration
         /// </summary>
@@ -198,7 +207,32 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void TgbtnAutoDetect_Click(object sender, RoutedEventArgs e)
         {
+            IMainWindow wnd = Application.Current.MainWindow as IMainWindow;
+            ICCAMode ch = Application.Current.MainWindow as ICCAMode;
 
+            // Watson crashes suggest that this will be null sometimes
+            if (wnd != null)
+            {
+                if (this.tgbtnAutoDetect.IsChecked.HasValue)
+                {
+                    ch.HandleToggleStatusChanged(this.tgbtnAutoDetect.IsChecked.Value);
+                }
+            }
         }
+
+        public bool isToggleChecked()
+        {
+            return this.tgbtnAutoDetect.IsChecked.Value;
+        }
+
+        public void ActivateProgressRing(){
+            this.ctrlProgressRing.Activate();
+        }
+
+        public void DeactivateProgressRing()
+        {
+            this.ctrlProgressRing.Deactivate();
+        }
+
     }
 }
