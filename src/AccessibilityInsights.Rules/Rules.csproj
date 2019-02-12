@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="A11yCriteriaId.cs" />
+    <Compile Include="CCAControlTypesFilter.cs" />
     <Compile Include="Conditions\ConditionContext.cs" />
     <Compile Include="Conditions\ContextCondition.cs" />
     <Compile Include="Conditions\RecursiveCondition.cs" />
