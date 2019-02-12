@@ -92,27 +92,12 @@ namespace AccessibilityInsights.Desktop.Utility
         public static Bitmap CaptureBitmap(this A11yElement e)
         {
             var rect = e.BoundingRectangle;
-            IntPtr wndHWND = NativeMethods.GetDesktopWindow();
-            IntPtr wndHDC = NativeMethods.GetDC(wndHWND);
 
-            Bitmap bmp;
-            IntPtr dc1;
-            IntPtr dc2;
-            Graphics g;
+            Bitmap bmp = new Bitmap(rect.Width, rect.Height);
+            Graphics g = Graphics.FromImage(bmp);
 
-            bmp = new Bitmap(rect.Width, rect.Height);
-            g = System.Drawing.Graphics.FromImage(bmp);
-
-            dc1 = g.GetHdc();
-            dc2 = NativeMethods.GetWindowDC(wndHDC);
-
-            NativeMethods.BitBlt(dc1, 0, 0, rect.Width, rect.Height, dc2, rect.Left, rect.Top, TernaryRasterOperations.SRCCOPY);
-
-            g.ReleaseHdc(dc1);
-
-            //  release window and capture resources
-            NativeMethods.ReleaseDC(wndHWND, wndHDC); // release window context
-
+            g.CopyFromScreen(rect.X, rect.Y, 0, 0, rect.Size);
+            bmp.Save("out.bmp");
             return bmp; 
         }
 

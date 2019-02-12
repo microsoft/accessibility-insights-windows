@@ -30,7 +30,7 @@ namespace AccessibilityInsights.Modes
         /// Indicate how to do the data context population. 
         /// Live/Snapshot/Load
         /// </summary>
-        public DataContextMode DataContextMode { get; set; } = DataContextMode.Test;
+        public DataContextMode DataContextMode { get; set; } = DataContextMode.Live;
 
         /// <summary>
         /// MainWindow to access shared methods
@@ -169,7 +169,6 @@ namespace AccessibilityInsights.Modes
                                 Properties.Resources.SetElementCultureInfoFormatMessage,
                                 dc.ElementCounter.UpperBound);
                         }
-                        dc.PublishScanResults();
                     }).ConfigureAwait(false);
 
                     Application.Current.Dispatcher.Invoke(() =>
@@ -186,7 +185,7 @@ namespace AccessibilityInsights.Modes
                                 {
                                     this.ctrlContrast.SetElement(ec);
                                 })).Wait();
-                                toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}\n",
+                                toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}",
                                     this.ctrlContrast.getRatio(), this.ctrlContrast.getConfidence());
                             }
                             else
