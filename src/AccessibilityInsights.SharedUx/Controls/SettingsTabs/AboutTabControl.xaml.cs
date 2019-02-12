@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="e"></param>
         private void hlNotices_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileFromAppDirectory("ThirdpartyNotices.txt");
+            OpenFileFromAppDirectory("ThirdpartyNotices.html");
         }
 
         /// <summary>
