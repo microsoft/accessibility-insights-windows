@@ -456,20 +456,20 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// Change the expanded and visibility properties on the view model and its children 
         /// based on whether they pass the given filter
         /// </summary>
-        /// <param name="root"></param>
+        /// <param name="node"></param>
         /// <param name="filter"></param>
-        private void ModifyVisibility(TeamProjectViewModel root, Func<TeamProjectViewModel, bool> filter)
+        private void ModifyVisibility(TeamProjectViewModel node, Func<TeamProjectViewModel, bool> filter)
         {
-            var matched = filter(root);
-            root.Children.ForEach(c => ModifyVisibility(c, filter));
-            root.Expanded = root.Children.Any(c => c.Visibility == Visibility.Visible);
-            bool shouldShow = matched || root.Expanded;
-            root.Visibility = shouldShow ? Visibility.Visible : Visibility.Collapsed;
-            // if a TreeViewItem previously selected by the user via mouse/keyboard/input is now 
-            // collapsed due to our search filter, we should deselect it.
-            if (shouldShow == false)
+            var matched = filter(node);
+            node.Children.ForEach(c => ModifyVisibility(c, filter));
+            node.Expanded = node.Children.Any(c => c.Visibility == Visibility.Visible);
+            bool shouldBeVisible = matched || node.Expanded;
+            node.Visibility = shouldBeVisible ? Visibility.Visible : Visibility.Collapsed;
+            // if a TreeViewItem previously selected by the user is now 
+            // hidden due to our search filter, we should deselect it.
+            if (shouldBeVisible == false)
             {
-                root.Selected = false;
+                node.Selected = false;
             }
 
         }
