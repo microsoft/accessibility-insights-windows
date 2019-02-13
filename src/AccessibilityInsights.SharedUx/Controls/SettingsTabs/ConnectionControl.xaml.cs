@@ -465,7 +465,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             root.Expanded = root.Children.Any(c => c.Visibility == Visibility.Visible);
             bool shouldShow = matched || root.Expanded;
             root.Visibility = shouldShow ? Visibility.Visible : Visibility.Collapsed;
-            root.Selected = shouldShow && root.Selected;
+            // if a TreeViewItem previously selected by the user via mouse/keyboard/input is now 
+            // collapsed due to our search filter, we should deselect it.
+            if (shouldShow == false)
+            {
+                root.Selected = false;
+            }
+
         }
 
         /// <summary>
