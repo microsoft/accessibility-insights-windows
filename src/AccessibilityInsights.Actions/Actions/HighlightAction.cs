@@ -135,7 +135,6 @@ namespace AccessibilityInsights.Actions
             this.Highlighter.IsVisible = false;
             this.Highlighter.SetLocation(Rectangle.Empty);
             this.BoundingRectangle = null;
-            this.SetElement(null);
         }
         #endregion
 

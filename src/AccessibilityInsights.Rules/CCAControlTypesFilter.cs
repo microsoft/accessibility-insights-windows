@@ -9,7 +9,7 @@ namespace AccessibilityInsights.Rules
     public class CCAControlTypesFilter
     {
         private static CCAControlTypesFilter DefaultInstance;
-        private HashSet<int> MainTypes = new HashSet<int>();
+        private readonly HashSet<int> MainTypes = new HashSet<int>();
 
         /// <summary>
         /// GetDefaultInstance
@@ -34,7 +34,6 @@ namespace AccessibilityInsights.Rules
             {
                     MainTypes.Add(((ControlTypeCondition)field.GetValue(field)).ControlType);
             }
-            MainTypes.Remove(((ControlTypeCondition) ControlType.Custom).ControlType);
         }
 
         public bool Contains(int typeId)
