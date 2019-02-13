@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Rules
             return DefaultInstance;
         }
 
-        public void Filter() {
+        private void Filter() {
             var type = typeof(ControlType);
             var fields = type.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static);
 
