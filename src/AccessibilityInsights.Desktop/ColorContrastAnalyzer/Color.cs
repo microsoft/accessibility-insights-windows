@@ -40,10 +40,10 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         private readonly int Green;
         private readonly int Blue;
 
+        /// <summary>
+        /// Gets this Color as System.Drawing.Color
+        /// </summary>
         public System.Drawing.Color DrawingColor => System.Drawing.Color.FromArgb(Red, Green, Blue);
-
-        public System.Windows.Media.Color MediaColor => 
-            System.Windows.Media.Color.FromRgb(DrawingColor.R, DrawingColor.G, DrawingColor.B);
 
         public Color(int red, int green, int blue)
         {
