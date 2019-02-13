@@ -1532,13 +1532,13 @@ Accessibility Insights Support Team
     <value>There were no failures.</value>
   </data>
   <data name="ColorContrast_Background" xml:space="preserve">
-    <value>Background</value>
+    <value>Color B</value>
   </data>
   <data name="ColorContrast_FontSizes" xml:space="preserve">
     <value>(14 pt. bold or 18 pt. regular)</value>
   </data>
   <data name="ColorContrast_Foreground" xml:space="preserve">
-    <value>Foreground</value>
+    <value>Color A</value>
   </data>
   <data name="ColorContrast_Large" xml:space="preserve">
     <value>Large</value>
