@@ -37,7 +37,7 @@
         <ListView Margin="10,10,66,56" Grid.Row="4" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListViewItem Content="Beetle" Width="200" HorizontalAlignment="Left"/>
             <ListViewItem Content="Owl" Width="200" HorizontalAlignment="Left"/>
-            <ListViewItem Content="Mouse" Width="500" HorizontalAlignment="Left"/>
+            <ListViewItem Content="Mouse" Width="200" HorizontalAlignment="Left"/>
         </ListView>
         <DataGrid AutomationProperties.Name="Current Animals datagrid" Width="215" HorizontalAlignment="Left" Margin="66,10,0,26" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <DataGrid.Columns>
@@ -57,9 +57,7 @@
         <TextBlock TextWrapping="Wrap" Margin="10,26,123,10" Text="Current Animals:" Grid.Row="1" Grid.Column="2"/>
         <TextBlock VerticalAlignment="Center" Margin="52,11,0,68" Height="24" Text="Weight:" Grid.Row="5" Grid.Column="1"/>
         <TextBlock TextWrapping="Wrap" Margin="50,10,0,110" Text="Species:" RenderTransformOrigin="0.379,0.838" Grid.Row="4" Grid.Column="1"/>
-        <local:InvokeToggleButton Width="71" AutomationProperties.Name="Ok" Foreground="#0070FF" Background="LightBlue" HorizontalAlignment="Left" Margin="26,29,0,26.667" Grid.Row="7" Grid.Column="1" >
-            Cancel
-        </local:InvokeToggleButton>
+        <local:InvokeToggleButton Width="71" AutomationProperties.Name="Ok" Foreground="#0070FF" Background="LightBlue" HorizontalAlignment="Left" Margin="26,29,0,26.667" Grid.Row="7" Grid.Column="1" Content="Close" Click="InvokeToggleButton_Click" />
         <local:InvokeToggleButton Width="71" Foreground="#0070FF" AutomationProperties.Name="Ok" Background="LightBlue" HorizontalAlignment="Left" Margin="78,27,0,28.667" Grid.Row="7" Content="Ok" />
         <local:CustomControl Width="71" HorizontalAlignment="Left" Margin="38.667,27,0,28.667" Grid.Row="7" Grid.Column="3" Focusable="True" />
     </Grid>
