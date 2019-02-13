@@ -208,7 +208,15 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 CCAMode.HandleToggleStatusChanged(isEnabled);
             }
 
-            this.tbConfidence.Text = "";
+            if (isEnabled)
+            {
+                spConfidence.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                spConfidence.Visibility = Visibility.Hidden;
+                tbConfidence.Text = "";
+            }
         }
 
         public void SetAutoCCAState(bool state)

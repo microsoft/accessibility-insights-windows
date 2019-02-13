@@ -879,7 +879,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Background.
+        ///   Looks up a localized string similar to Color B.
         /// </summary>
         public static string ColorContrast_Background {
             get {
@@ -906,7 +906,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foreground.
+        ///   Looks up a localized string similar to Color A.
         /// </summary>
         public static string ColorContrast_Foreground {
             get {
