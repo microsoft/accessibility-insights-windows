@@ -7,6 +7,7 @@ using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Diagnostics;
@@ -109,8 +110,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             var bmc = new BitmapCollection(bitmap);
             var result = bmc.RunColorContrastCalculation();
             var pair = result.GetMostLikelyColorPair();
-            this.ContrastVM.FirstColor = pair.DarkerColor.MediaColor;
-            this.ContrastVM.SecondColor = pair.LighterColor.MediaColor;
+            this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
+            this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
             tbConfidence.Text = result.ConfidenceValue().ToString();
         }
 
