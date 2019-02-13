@@ -40,7 +40,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean AreVisuallySimilarColors()
         {
-            return LighterColor.IsSameColor(darkerColor);
+            return LighterColor.IsSimilarColor(darkerColor);
         }
 
         /**
@@ -48,8 +48,8 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean IsVisiblySimilarTo(ColorPair otherPair)
         {
-            return LighterColor.IsSameColor(otherPair.LighterColor) &&
-                darkerColor.IsSameColor(otherPair.darkerColor);
+            return lighterColor.IsSimilarColor(otherPair.lighterColor) &&
+                darkerColor.IsSimilarColor(otherPair.darkerColor);
         }
 
         /**
@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public double ColorContrast()
         {
-            return Math.Round(LighterColor.Contrast(darkerColor), 2);
+            return Math.Round(lighterColor.Contrast(darkerColor), 2);
         }
 
         public override int GetHashCode()
@@ -67,7 +67,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         public override string ToString()
         {
-            return LighterColor.ToString() + " --" + ColorContrast() + "-> " + darkerColor.ToString();
+            return lighterColor.ToString() + " --" + ColorContrast() + "-> " + darkerColor.ToString();
         }
     }
 }

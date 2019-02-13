@@ -89,7 +89,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         /**
          * Determines if two colors are close enough to be considered the same to the naked eye.
          */
-        public bool IsSameColor(Color otherColor)
+        public bool IsSimilarColor(Color otherColor)
         {
             return Contrast(otherColor) < SAME_COLOR_THRESHOLD;
         }
