@@ -473,7 +473,7 @@ Please ensure that you are opening an valid test file using the most recent rele
     <value>Inspect (Scanning)</value>
   </data>
   <data name="TitleTextMapStart" xml:space="preserve">
-    <value>Starting...</value>
+    <value />
   </data>
   <data name="TitleTextMapTestElementDetails" xml:space="preserve">
     <value>Test - Element details</value>
@@ -602,7 +602,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>help the community</value>
   </data>
   <data name="ckbxAgreeToHelp" xml:space="preserve">
-    <value>I agree to help</value>
+    <value>I agree to enable telemetry</value>
   </data>
   <data name="RunTextPrivacyStatement" xml:space="preserve">
     <value>You can change this choice anytime under Settings.</value>
@@ -617,6 +617,6 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>We need your help</value>
   </data>
   <data name="AutomationNameTelemetryMode" xml:space="preserve">
-    <value>Telemetry Start up mode</value>
+    <value>Help us improve</value>
   </data>
 </root>
