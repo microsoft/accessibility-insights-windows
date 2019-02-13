@@ -1,22 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
+using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.DesktopUI.Enums;
+using AccessibilityInsights.Enums;
+using AccessibilityInsights.Rules;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Settings;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.Actions;
 using System.Windows.Automation.Peers;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Enums;
-using AccessibilityInsights.DesktopUI.Enums;
+using System.Windows.Controls;
 using System.Windows.Threading;
-using System.Globalization;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.Rules;
 
 namespace AccessibilityInsights.Modes
 {
@@ -220,13 +220,14 @@ namespace AccessibilityInsights.Modes
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         MainWin.CurrentView = CCAView.Automatic;
                         HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
 
-                        HighlightAction.GetDefaultInstance().SetText(ex.Message);
+                        HighlightAction.GetDefaultInstance().SetText("Unable to detect colors!");
                         // enable element selector
                         MainWin.EnableElementSelector();
 

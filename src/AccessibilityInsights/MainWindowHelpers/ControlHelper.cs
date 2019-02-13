@@ -1,18 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Enums;
 using AccessibilityInsights.Actions;
+using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Automation;
-using System.Windows;
-using System.Windows.Controls;
-
-using static System.FormattableString;
 using System.Globalization;
-using AccessibilityInsights.SharedUx.Interfaces;
+using System.Text;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Controls;
 
 namespace AccessibilityInsights
 {
@@ -24,17 +22,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// flag to allow any further action
         /// </summary>
-        private bool _allowFurtherAction = true;
-        public bool AllowFurtherAction {
-            get
-            {
-                return _allowFurtherAction;
-            }
-            set
-            {
-                _allowFurtherAction = value;
-            }
-        }
+        public bool AllowFurtherAction { get; set; } = true;
 
         /// <summary>
         /// Enable appropriate Tracker in SelectAction based on configuration
