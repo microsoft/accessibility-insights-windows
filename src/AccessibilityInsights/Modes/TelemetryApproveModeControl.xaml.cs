@@ -83,7 +83,7 @@ namespace AccessibilityInsights.Modes
 
         public void SetFocusOnDefaultControl()
         {
-            this.btnExit.Focus();
+            this.ckbxAgreeToHelp.Focus();
         }
     }
 }
