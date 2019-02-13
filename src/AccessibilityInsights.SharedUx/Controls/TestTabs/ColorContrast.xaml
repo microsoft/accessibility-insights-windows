@@ -102,7 +102,7 @@
             </StackPanel>
             <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical" Margin="20 10" MinWidth="132">
                 <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14"/>
-                <Border BorderThickness="0,1,0,0" BorderBrush="#EAEAEA"></Border>
+                <Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"></Border>
                 <DockPanel>
                     <TextBlock x:Name="output" FontSize="16" HorizontalAlignment="Left"
                    AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
@@ -126,7 +126,7 @@
             </StackPanel>
             <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Vertical" Margin="20 10" MinWidth="132">
                 <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Confidence}" FontSize="14"/>
-                <Border BorderThickness="0,1,0,0" BorderBrush="#EAEAEA"></Border>
+                <Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"></Border>
                 <DockPanel>
                     <TextBlock x:Name="tbConfidence" FontSize="16" HorizontalAlignment="Left"
                    AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
@@ -146,10 +146,10 @@
                     <Style TargetType="{x:Type fabric:FabricIconControl}" x:Key="GlyphToForeground">
                         <Style.Triggers>
                             <Trigger Property="GlyphName" Value="AlertSolid">
-                                <Setter Property="Foreground" Value="#CC0000"/>
+                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}"/>
                             </Trigger>
                             <Trigger Property="GlyphName" Value="CompletedSolid">
-                                <Setter Property="Foreground" Value="#107C10"/>
+                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushGreen}"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -164,12 +164,12 @@
                     <RowDefinition MinHeight="56px"/>
                     <RowDefinition MinHeight="72px"/>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="#EAEAEA" 
+                <Border Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
                 BorderThickness="0,0,0,1" Background="{x:Null}" />
                 <TextBlock Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="0"/>
                 <TextBlock Text="{x:Static Properties:Resources.TextBlockTextTextSize}" Grid.Row="0" Grid.Column="1"/>
                 <TextBlock Text="{x:Static Properties:Resources.TextBlockTextSampleText}" Grid.Row="0" Grid.Column="2" TextWrapping="NoWrap"/>
-                <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="#EAEAEA" 
+                <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
                 BorderThickness="0,0,0,1" Background="{x:Null}" />
                 <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="4,4">
                     <fabric:FabricIconControl x:Name="smallTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
@@ -209,7 +209,7 @@
                        Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                        Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                        AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallSampleHelpText}" HorizontalAlignment="Left"/>
-                <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="#EAEAEA" 
+                <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"
                 BorderThickness="0,0,0,1" Background="{x:Null}" />
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="4,4">
                     <fabric:FabricIconControl x:Name="largeTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
