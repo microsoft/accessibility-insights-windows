@@ -439,20 +439,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Allow user to press space when focused on treeview to go into it
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void serverTreeview_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key.Equals(Key.Space))
-            {
-                TreeViewItem item = (TreeViewItem)serverTreeview.ItemContainerGenerator.ContainerFromIndex(0);
-                item?.Focus();
-            }
-        }
-
-        /// <summary>
         /// If user presses enter on combobox, have same behavior as clicking "next"
         /// </summary>
         /// <param name="sender"></param>
@@ -477,7 +463,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             var matched = filter(root);
             root.Children.ForEach(c => ModifyVisibility(c, filter));
             root.Expanded = root.Children.Any(c => c.Visibility == Visibility.Visible);
-            root.Visibility = matched || root.Expanded ? Visibility.Visible : Visibility.Collapsed;
+            bool shouldShow = matched || root.Expanded;
+            root.Visibility = shouldShow ? Visibility.Visible : Visibility.Collapsed;
+            root.Selected = shouldShow && root.Selected;
         }
 
         /// <summary>

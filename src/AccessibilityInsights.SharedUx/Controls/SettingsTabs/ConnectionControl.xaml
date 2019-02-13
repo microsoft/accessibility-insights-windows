@@ -158,10 +158,11 @@
                     <Grid Grid.Row="2" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
                         <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=projects}" 
                                   SelectedItemChanged="serverTreeview_SelectedItemChanged" AutomationProperties.Name="{x:Static Properties:Resources.serverTreeviewAutomationPropertiesName}"
-                                  KeyUp="serverTreeview_KeyUp" VirtualizingStackPanel.IsVirtualizing="True">
+                                  VirtualizingStackPanel.IsVirtualizing="False">
                             <TreeView.ItemContainerStyle>
                                 <Style TargetType="TreeViewItem">
                                     <Setter Property="Visibility" Value="{Binding Path=Visibility}"/>
+                                    <Setter Property="IsSelected" Value="{Binding Path=Selected}"/>
                                     <Setter Property="IsExpanded" Value="{Binding Path=Expanded}"/>
                                     <Setter Property="AutomationProperties.Name" Value="{Binding Path=Name}"/>
                                 </Style>
