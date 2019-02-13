@@ -46,7 +46,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Name="lblAutoDetect" Content="{x:Static Properties:Resources.lblAutoDetectContent}" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
-                <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblRecord}" Click="TgbtnAutoDetect_Click"/>
+                <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click"/>
             </Grid>
             <TextBlock Grid.Row="2"  Margin="0,12,0,0" Grid.ColumnSpan="2" VerticalAlignment="Center">
             <Run FontWeight="SemiBold" FontSize="{DynamicResource StandardTextSize}" Text="{x:Static Properties:Resources.RunTextHowToTest}" />

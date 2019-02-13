@@ -943,7 +943,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to current ratio is {0}.
+        ///   Looks up a localized string similar to Ratio is {0}.
         /// </summary>
         public static string ColorContrast_OutputAutomationName {
             get {
@@ -997,7 +997,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current confidence in automatic color selection is {0}.
+        ///   Looks up a localized string similar to Confidence in automatic color selection is {0}.
         /// </summary>
         public static string ColorContrast_tbConfidenceAutomationName {
             get {

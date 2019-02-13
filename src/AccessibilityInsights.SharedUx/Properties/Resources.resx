@@ -1544,10 +1544,10 @@ Accessibility Insights Support Team
     <value>Large</value>
   </data>
   <data name="ColorContrast_OutputAutomationName" xml:space="preserve">
-    <value>current ratio is {0}</value>
+    <value>Ratio is {0}</value>
   </data>
   <data name="ColorContrast_tbConfidenceAutomationName" xml:space="preserve">
-    <value>Current confidence in automatic color selection is {0}</value>
+    <value>Confidence in automatic color selection is {0}</value>
   </data>
   <data name="ColorContrast_Ratio" xml:space="preserve">
     <value>Ratio</value>
