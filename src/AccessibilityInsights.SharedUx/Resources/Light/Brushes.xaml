@@ -63,6 +63,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TextHighlightBrush" Color="#FFF2CC"/>
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
     <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>
+    <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>
     <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>
