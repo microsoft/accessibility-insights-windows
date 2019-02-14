@@ -117,9 +117,9 @@
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Button x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
+            <CheckBox Grid.Row="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="SemiBold" Style="{StaticResource CkbxLeftSide}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+            <Button Grid.Row="1" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
                     Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlue}"/>
-            <CheckBox Grid.Row="1" Content="{x:Static properties:Resources.ckbxDontShowContent}" VerticalAlignment="Bottom" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="SemiBold" Margin="0,18,0,0" Style="{StaticResource CkbxLeftSide}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         </Grid>
         <Grid Grid.ColumnSpan="8" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="Grid_MouseDown" Background="Transparent">
             <Button x:Name="btnClose" Margin="0,12,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource BtnStandard}" Click="btnExit_Click" AutomationProperties.Name="{x:Static properties:Resources.btnCloseScreenAutomationPropertiesName}" Width="18" Height="18">
