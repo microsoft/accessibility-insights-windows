@@ -439,20 +439,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Allow user to press space when focused on treeview to go into it
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void serverTreeview_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.Key.Equals(Key.Space))
-            {
-                TreeViewItem item = (TreeViewItem)serverTreeview.ItemContainerGenerator.ContainerFromIndex(0);
-                item?.Focus();
-            }
-        }
-
-        /// <summary>
         /// If user presses enter on combobox, have same behavior as clicking "next"
         /// </summary>
         /// <param name="sender"></param>
@@ -470,14 +456,22 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// Change the expanded and visibility properties on the view model and its children 
         /// based on whether they pass the given filter
         /// </summary>
-        /// <param name="root"></param>
+        /// <param name="node"></param>
         /// <param name="filter"></param>
-        private void ModifyVisibility(TeamProjectViewModel root, Func<TeamProjectViewModel, bool> filter)
+        private void ModifyVisibility(TeamProjectViewModel node, Func<TeamProjectViewModel, bool> filter)
         {
-            var matched = filter(root);
-            root.Children.ForEach(c => ModifyVisibility(c, filter));
-            root.Expanded = root.Children.Any(c => c.Visibility == Visibility.Visible);
-            root.Visibility = matched || root.Expanded ? Visibility.Visible : Visibility.Collapsed;
+            var matched = filter(node);
+            node.Children.ForEach(c => ModifyVisibility(c, filter));
+            node.Expanded = node.Children.Any(c => c.Visibility == Visibility.Visible);
+            bool shouldBeVisible = matched || node.Expanded;
+            node.Visibility = shouldBeVisible ? Visibility.Visible : Visibility.Collapsed;
+            // if a TreeViewItem previously selected by the user is now 
+            // hidden due to our search filter, we should deselect it.
+            if (shouldBeVisible == false)
+            {
+                node.Selected = false;
+            }
+
         }
 
         /// <summary>

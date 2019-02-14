@@ -51,6 +51,20 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
+        private bool _selected;
+        public bool Selected
+        {
+            get
+            {
+                return _selected;
+            }
+            set
+            {
+                _selected = value;
+                OnPropertyChanged(nameof(Selected));
+            }
+        }
+
         private List<TeamProjectViewModel> _children;
         public List<TeamProjectViewModel> Children
         {
