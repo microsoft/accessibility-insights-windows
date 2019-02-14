@@ -64,6 +64,11 @@ namespace AccessibilityInsights
                 UpdateTabSelection();
                 UpdateTitleString();
             }
+
+            if (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.Automatic)
+            {
+                StartCCAMode((CCAView)this.CurrentView);
+            }
         }
 
         /// <summary>
@@ -300,14 +305,33 @@ namespace AccessibilityInsights
 
         private void HandleCCATabClick()
         {
+
+            if (SelectAction.GetDefaultInstance().IsPaused)
+            {
+                HandlePauseButtonToggle(true);
+            }
+
+            this.CurrentPage = AppPage.CCA;
+            if (ctrlCCAMode.isToggleChecked())
+            {
+                this.CurrentView = CCAView.Automatic;
+            }
+            else
+            {
+                this.CurrentView = CCAView.Manual;
+            }
+
             HideConfigurationMode();
             ctrlCurMode.HideControl();
             ctrlCurMode = ctrlCCAMode;
             ctrlCurMode.ShowControl();
-            CurrentView = null;
-            CurrentPage = AppPage.CCA;
-            UpdateMainWindowUI();
 
+            StartCCAMode((CCAView)this.CurrentView);
+
+            // if it was open when the switch back button is clicked. 
+            HideConfigurationMode();
+
+            UpdateMainWindowUI();
         }
 
         /// <summary>
@@ -614,7 +638,8 @@ namespace AccessibilityInsights
         internal bool IsCapturingData()
         {
             return (CurrentPage == AppPage.Inspect && ((InspectView)CurrentView) == InspectView.CapturingData) ||
-                (CurrentPage == AppPage.Test && ((TestView)CurrentView) == TestView.CapturingData);
+                (CurrentPage == AppPage.Test && ((TestView)CurrentView) == TestView.CapturingData) ||
+                (CurrentPage == AppPage.CCA && ((CCAView)CurrentView) == CCAView.CapturingData);
         }
 
         /// <summary>

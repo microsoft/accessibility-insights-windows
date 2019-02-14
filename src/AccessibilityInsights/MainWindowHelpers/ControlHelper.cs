@@ -1,29 +1,28 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Enums;
 using AccessibilityInsights.Actions;
+using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Windows.Automation;
-using System.Windows;
-using System.Windows.Controls;
-
-using static System.FormattableString;
 using System.Globalization;
+using System.Text;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Controls;
 
 namespace AccessibilityInsights
 {
     /// <summary>
     /// MainWindow partial class for Helping flow control
     /// </summary>
-    public partial class MainWindow
+    public partial class MainWindow: ICCAMode
     {
         /// <summary>
         /// flag to allow any further action
         /// </summary>
-        bool AllowFurtherAction = true;
+        public bool AllowFurtherAction { get; set; } = true;
 
         /// <summary>
         /// Enable appropriate Tracker in SelectAction based on configuration
@@ -33,7 +32,11 @@ namespace AccessibilityInsights
         internal void EnableElementSelector()
         {
             var sa = SelectAction.GetDefaultInstance();
-            if (!sa.IsPaused && CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live)
+            if (!sa.IsPaused && 
+                ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live) 
+                ||
+                (CurrentPage == AppPage.CCA&& (CCAView)CurrentView == CCAView.Automatic)
+                ))
             {
                 this.AllowFurtherAction = true;
                 sa.Start();
@@ -195,7 +198,7 @@ namespace AccessibilityInsights
             this.tbComboboxLabel.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
             this.btnTimer.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
             this.cbSelectionScope.Visibility = this.IsInSelectingState() ? Visibility.Visible : Visibility.Collapsed;
-            this.btnPause.Visibility = ((this.CurrentPage == AppPage.Inspect) && (this.gridlayerConfig.Visibility == Visibility.Collapsed)) ? Visibility.Visible : Visibility.Collapsed;
+            this.btnPause.Visibility = (this.CurrentPage == AppPage.Inspect) && (this.gridlayerConfig.Visibility == Visibility.Collapsed) ? Visibility.Visible : Visibility.Collapsed;
 
             // add n of m info to UIA name based on currently visible focusable controls
             var visibleCommands = new List<UIElement>();
@@ -269,6 +272,22 @@ namespace AccessibilityInsights
             }
 
             this.lblVersion.Content = sb.ToString();
+        }
+
+        public void HandleToggleStatusChanged(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                this.CurrentView = CCAView.Automatic;
+                EnableElementSelector();
+            }
+            else
+            {
+                this.CurrentView = CCAView.Manual;
+                DisableElementSelector();
+                HighlightAction.GetDefaultInstance().Clear();
+                SelectAction.GetDefaultInstance().ClearSelectedContext();
+            }
         }
     }
 }

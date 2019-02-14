@@ -1,14 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
+using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.DesktopUI.Enums;
+using AccessibilityInsights.Enums;
+using AccessibilityInsights.Rules;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Settings;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.Actions;
 using System.Windows.Automation.Peers;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace AccessibilityInsights.Modes
 {
@@ -17,6 +25,16 @@ namespace AccessibilityInsights.Modes
     /// </summary>
     public partial class CCAModeControl : UserControl, IModeControl
     {
+
+        /// <summary>
+        /// Indicate how to do the data context population. 
+        /// Live/Snapshot/Load
+        /// </summary>
+        public DataContextMode DataContextMode { get; set; } = DataContextMode.Live;
+
+        private HighlighterMode prevMode;
+        private bool prevHighlighterState;
+
         /// <summary>
         /// MainWindow to access shared methods
         /// </summary>
@@ -48,6 +66,21 @@ namespace AccessibilityInsights.Modes
             {
                 return ConfigurationManager.GetDefaultInstance()?.AppLayout;
             }
+        }
+
+        public static void SetCurrentCCAView(bool isToogleOn)
+        {
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                if (isToogleOn)
+                {
+                    MainWin.CurrentView = CCAView.Automatic;
+                }
+                else
+                {
+                    MainWin.CurrentView = CCAView.Manual;
+                }
+            });
         }
 
         /// <summary>
@@ -83,6 +116,9 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void HideControl()
         {
+            HighlightAction.GetDefaultInstance().HighlighterMode = prevMode;
+            MainWin.SetHighlightBtnState(prevHighlighterState);
+            HighlightAction.GetDefaultInstance().IsEnabled = prevHighlighterState;
             UpdateConfigWithSize();
             this.Visibility = Visibility.Collapsed;
         }
@@ -93,27 +129,133 @@ namespace AccessibilityInsights.Modes
         public void ShowControl()
         {
             this.Visibility = Visibility.Visible;
-
+            this.prevHighlighterState = HighlightAction.GetDefaultInstance().IsEnabled;
+            this.prevMode = HighlightAction.GetDefaultInstance().HighlighterMode;
+            HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
+            MainWin.SetHighlightBtnState(true);
+            HighlightAction.GetDefaultInstance().IsEnabled = true;
             HighlightAction.GetDefaultInstance().Clear();
+
+            SelectAction.GetDefaultInstance().ClearSelectedContext();
+
             Dispatcher.InvokeAsync(() =>
             {
                 this.SetFocusOnDefaultControl();
             }
             , System.Windows.Threading.DispatcherPriority.Input);
+
+            ctrlContrast.SetAutoCCAState(true);
         }
 
         /// <summary>
-        /// not needed. 
+        /// set element
         /// </summary>
-        /// <param name="ec"></param>
-#pragma warning disable CS1998
-        public async Task SetElement(Guid ec) { }
+        /// <param name="ecId"></param>
+        public async Task SetElement(Guid ecId)
+        {
+            if (GetDataAction.ExistElementContext(ecId))
+            {
+                try
+                {
+                    HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
+
+                    HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+
+                    this.ctrlContrast.ActivateProgressRing();
+
+                    ElementContext ec = null;
+                    string warning = string.Empty;
+                    string toolTipText = string.Empty;
+
+                    await Task.Run(() =>
+                    {
+                        var updated = CaptureAction.SetTestModeDataContext(ecId, this.DataContextMode, Configuration.TreeViewMode);
+                        ec = GetDataAction.GetElementContext(ecId);
+
+                        // send telemetry of scan results.
+                        var dc = GetDataAction.GetElementDataContext(ecId);
+                        if (dc.ElementCounter.UpperBoundExceeded)
+                        {
+                            warning = string.Format(CultureInfo.InvariantCulture,
+                                Properties.Resources.SetElementCultureInfoFormatMessage,
+                                dc.ElementCounter.UpperBound);
+                        }
+                    }).ConfigureAwait(false);
+
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        if (ec == null || ec.Element == null)
+                        {
+                            toolTipText = "No Eelement Selected!";
+                        }
+                        else
+                        {
+                            if (CCAControlTypesFilter.GetDefaultInstance().Contains(ec.Element.ControlTypeId))
+                            {
+                                Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
+                                {
+                                    this.ctrlContrast.SetElement(ec);
+                                })).Wait();
+                                toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}",
+                                    this.ctrlContrast.getRatio(), this.ctrlContrast.getConfidence());
+                            }
+                            else
+                            {
+                                toolTipText = "Unknown Element Type!";
+                            }
+                        }
+
+                        MainWin.CurrentView = CCAView.Automatic;
+
+                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+
+
+                        HighlightAction.GetDefaultInstance().SetText(toolTipText);
+
+                        // enable element selector
+                        MainWin.EnableElementSelector();
+                    });
+
+                    this.ctrlContrast.DeactivateProgressRing();
+                }
+                catch (Exception ex)
+                {
+                    ex.ReportException();
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        MainWin.CurrentView = CCAView.Automatic;
+                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+
+
+                        HighlightAction.GetDefaultInstance().SetText("Unable to detect colors!");
+                        // enable element selector
+                        MainWin.EnableElementSelector();
+
+                        this.ctrlContrast.DeactivateProgressRing();
+                    });
+                }
+
+            }
+
+        }
+
+        /// <summary>
+        /// Make sure that statemachine and UI are updated for Live mode. 
+        /// </summary>
+        private static void UpdateStateMachineForCCAAutomaticMode()
+        {
+            // enable selector once UI update is finished. 
+            MainWin?.SetCurrentViewAndUpdateUI(CCAView.Automatic);
+            MainWin?.EnableElementSelector();
+        }
 #pragma warning restore CS1998
 
         /// <summary>
         /// Not needed
         /// </summary>
-        public void UpdateConfigWithSize() { }
+        public void UpdateConfigWithSize()
+        {
+        }
 
         public void Clear()
         {
@@ -149,7 +291,9 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         public bool ToggleHighlighter()
         {
-            return true;
+            var enabled = !HighlightAction.GetDefaultInstance().IsEnabled;
+            HighlightAction.GetDefaultInstance().IsEnabled = enabled;
+            return enabled;
         }
 
         /// <summary>
@@ -158,6 +302,11 @@ namespace AccessibilityInsights.Modes
         public void SetFocusOnDefaultControl()
         {
             this.ctrlContrast.Focus();
+        }
+
+        public bool isToggleChecked()
+        {
+            return this.ctrlContrast.IsToggleChecked();
         }
     }
 }

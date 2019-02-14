@@ -9,6 +9,9 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         readonly Color lighterColor;
         readonly Color darkerColor;
 
+        public Color DarkerColor => darkerColor;
+        public Color LighterColor => lighterColor;
+
         public ColorPair(Color color1, Color color2)
         {
             double contrast1 = Color.WHITE.Contrast(color1);
@@ -37,7 +40,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean AreVisuallySimilarColors()
         {
-            return lighterColor.IsSameColor(darkerColor);
+            return LighterColor.IsSimilarColor(darkerColor);
         }
 
         /**
@@ -45,8 +48,8 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean IsVisiblySimilarTo(ColorPair otherPair)
         {
-            return lighterColor.IsSameColor(otherPair.lighterColor) &&
-                darkerColor.IsSameColor(otherPair.darkerColor);
+            return lighterColor.IsSimilarColor(otherPair.lighterColor) &&
+                darkerColor.IsSimilarColor(otherPair.darkerColor);
         }
 
         /**

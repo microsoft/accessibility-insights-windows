@@ -91,6 +91,7 @@
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
+    <Compile Include="Enums\CCAView.cs" />
     <Compile Include="Modes\TelemetryApproveModeControl.xaml.cs">
       <DependentUpon>TelemetryApproveModeControl.xaml</DependentUpon>
     </Compile>
@@ -179,6 +180,7 @@
     <Compile Include="MainWindowHelpers\StateMachine.cs" />
     <Compile Include="MainWindowHelpers\Initialize.cs" />
     <Compile Include="MainWindowHelpers\InspectMode.cs" />
+    <Compile Include="MainWindowHelpers\CCAMode.cs" />
     <Compile Include="MainWindowHelpers\Timers.cs" />
     <Compile Include="MainWindowHelpers\TestMode.cs" />
     <Compile Include="MainWindowHelpers\TreeNavigator.cs" />
@@ -273,6 +275,10 @@
     <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
       <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
       <Name>DesktopUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Rules\Rules.csproj">
+      <Project>{7fe58829-560e-4142-bf81-291a66d3844b}</Project>
+      <Name>Rules</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
