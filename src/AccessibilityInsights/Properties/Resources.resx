@@ -288,9 +288,6 @@
   <data name="btnOkContent" xml:space="preserve">
     <value>Save and close</value>
   </data>
-  <data name="btnVideoAutomationPropertiesName" xml:space="preserve">
-    <value>4-minute getting started video</value>
-  </data>
   <data name="CCAModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Test start up page</value>
   </data>
