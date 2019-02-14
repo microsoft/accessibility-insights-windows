@@ -36,11 +36,13 @@
         <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="94"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Name="tbVideo" Padding="16,10" FontSize="22" FontWeight="Light" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap"><Run Text="{x:Static properties:Resources.tbVideoText1}" /><LineBreak/><Run Text="{x:Static properties:Resources.tbVideoText2}" /></TextBlock>
-                <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="1" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.Name="{x:Static properties:Resources.btnVideoAutomationPropertiesName}" VerticalAlignment="Top">
+                <TextBlock Name="tbVideo" FontSize="22" Padding="16,10,16,0" FontWeight="Light" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap"><Run Text="{x:Static properties:Resources.tbVideoText1}"/></TextBlock>
+                <TextBlock Grid.Row="1" FontSize="12" FontWeight="Light"  Padding="16,10" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
+                <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.Name="{x:Static properties:Resources.btnVideoAutomationPropertiesName}" VerticalAlignment="Top">
                     <Grid>
                         <Image Width="240" Height="121" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
                         <Border Opacity=".40" Name="bdOverlay">

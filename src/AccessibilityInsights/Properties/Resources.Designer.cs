@@ -1235,7 +1235,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4-minute video.
+        ///   Looks up a localized string similar to Learn about Accessibility Insights for Windows with this 4-minute introductory video..
         /// </summary>
         public static string tbVideoText2 {
             get {
