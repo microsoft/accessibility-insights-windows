@@ -288,9 +288,6 @@
   <data name="btnOkContent" xml:space="preserve">
     <value>Save and close</value>
   </data>
-  <data name="btnVideoAutomationPropertiesName" xml:space="preserve">
-    <value>4-minute getting started video</value>
-  </data>
   <data name="CCAModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Test start up page</value>
   </data>
@@ -422,7 +419,7 @@ Please ensure that you are opening an valid test file using the most recent rele
     <value>Get started</value>
   </data>
   <data name="tbVideoText2" xml:space="preserve">
-    <value>4-minute video</value>
+    <value>Learn about Accessibility Insights for Windows with this 4-minute introductory video.</value>
   </data>
   <data name="tcTabsAboutHeader" xml:space="preserve">
     <value>About</value>

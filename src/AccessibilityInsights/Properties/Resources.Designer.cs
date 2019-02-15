@@ -440,15 +440,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4-minute getting started video.
-        /// </summary>
-        public static string btnVideoAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnVideoAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Element.
         /// </summary>
         public static string cbiElementAutomationPropertiesName {
@@ -1235,7 +1226,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 4-minute video.
+        ///   Looks up a localized string similar to Learn about Accessibility Insights for Windows with this 4-minute introductory video..
         /// </summary>
         public static string tbVideoText2 {
             get {
