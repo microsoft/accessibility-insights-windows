@@ -879,11 +879,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Background.
+        ///   Looks up a localized string similar to Color B.
         /// </summary>
         public static string ColorContrast_Background {
             get {
                 return ResourceManager.GetString("ColorContrast_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confidence.
+        /// </summary>
+        public static string ColorContrast_Confidence {
+            get {
+                return ResourceManager.GetString("ColorContrast_Confidence", resourceCulture);
             }
         }
         
@@ -897,7 +906,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Foreground.
+        ///   Looks up a localized string similar to Color A.
         /// </summary>
         public static string ColorContrast_Foreground {
             get {
@@ -934,7 +943,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to current ratio is {0}.
+        ///   Looks up a localized string similar to Ratio is {0}.
         /// </summary>
         public static string ColorContrast_OutputAutomationName {
             get {
@@ -984,6 +993,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_SmallTextResultHelpText {
             get {
                 return ResourceManager.GetString("ColorContrast_SmallTextResultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confidence in automatic color selection is {0}.
+        /// </summary>
+        public static string ColorContrast_tbConfidenceAutomationName {
+            get {
+                return ResourceManager.GetString("ColorContrast_tbConfidenceAutomationName", resourceCulture);
             }
         }
         
@@ -2129,6 +2147,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string lblAlwaysOnTopLabelContent {
             get {
                 return ResourceManager.GetString("lblAlwaysOnTopLabelContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto detect colors on hover.
+        /// </summary>
+        public static string lblAutoDetectContent {
+            get {
+                return ResourceManager.GetString("lblAutoDetectContent", resourceCulture);
             }
         }
         

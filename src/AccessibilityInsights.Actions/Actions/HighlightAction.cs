@@ -107,6 +107,16 @@ namespace AccessibilityInsights.Actions
             }
         }
 
+
+        /// <summary>
+        /// Set the text value
+        /// </summary>
+        /// <param name="text"></param>
+        public void SetText(string text)
+        {
+            this.Highlighter.SetText(text);
+        }
+
         /// <summary>
         /// Set call back for snapshot
         /// </summary>

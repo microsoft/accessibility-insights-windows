@@ -40,6 +40,11 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         private readonly int Green;
         private readonly int Blue;
 
+        /// <summary>
+        /// Gets this Color as System.Drawing.Color
+        /// </summary>
+        public System.Drawing.Color DrawingColor => System.Drawing.Color.FromArgb(Red, Green, Blue);
+
         public Color(int red, int green, int blue)
         {
             const string failMessage = "Color components are values between 0 and 255";
@@ -84,7 +89,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
         /**
          * Determines if two colors are close enough to be considered the same to the naked eye.
          */
-        public bool IsSameColor(Color otherColor)
+        public bool IsSimilarColor(Color otherColor)
         {
             return Contrast(otherColor) < SAME_COLOR_THRESHOLD;
         }

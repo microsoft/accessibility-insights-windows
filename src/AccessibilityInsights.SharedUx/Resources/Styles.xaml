@@ -168,6 +168,7 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsReadOnlyCaretVisible" Value="True"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="KeyboardNavigation.IsTabStop" Value="True"/>

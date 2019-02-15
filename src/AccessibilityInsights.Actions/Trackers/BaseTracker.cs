@@ -72,7 +72,11 @@ namespace AccessibilityInsights.Actions.Trackers
             {
                 var el = A11yAutomation.GetAppElement(e);
 
-                e.Dispose();
+                // if the original selection is Top most element of the app, it should not be released.
+                if (e != el)
+                {
+                    e.Dispose();
+                }
 
                 return el;
             }

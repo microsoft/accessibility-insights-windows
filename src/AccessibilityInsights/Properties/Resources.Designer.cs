@@ -61,7 +61,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Telemetry Start up mode.
+        ///   Looks up a localized string similar to Help us improve.
         /// </summary>
         public static string AutomationNameTelemetryMode {
             get {
@@ -503,7 +503,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree to help.
+        ///   Looks up a localized string similar to I agree to enable telemetry.
         /// </summary>
         public static string ckbxAgreeToHelp {
             get {
@@ -1415,7 +1415,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starting....
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string TitleTextMapStart {
             get {

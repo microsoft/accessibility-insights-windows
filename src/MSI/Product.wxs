@@ -68,7 +68,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.ValueTuple.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Windows.Interactivity.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.txt"/>
+              <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
 

@@ -26,6 +26,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="{x:Static SystemColors.ActiveCaptionColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="{x:Static SystemColors.ActiveCaptionTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
@@ -42,6 +43,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushRed" Color="#CC0000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushPurple" Color="#A45EF4"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
