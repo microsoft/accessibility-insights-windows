@@ -58,27 +58,27 @@ Pop-Location
 
 if ($result.Completed -eq $false)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FALIED TO COMPLETE' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FALIED TO COMPLETE ***' -ForegroundColor Red
   exit 2
 }
 elseif ($result.ScanResultsPassed -eq 0)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO PASSING RESULTS' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO PASSING RESULTS ***' -ForegroundColor Red
   exit 3
 }
 elseif ($result.ScanResultsFailed -eq 0)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO FAILING RESULTS' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO FAILING RESULTS ***' -ForegroundColor Red
   exit 4
 }
 elseif ($result.ScanResultsInconclusive -eq 0)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO INCONCLUSIVE RESULTS' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO INCONCLUSIVE RESULTS ***' -ForegroundColor Red
   exit 5
 }
 elseif ($result.ScanResultsUnsupported -ne 0)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FOUND UNSUPPORTED RESULTS' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND UNSUPPORTED RESULTS ***' -ForegroundColor Red
   exit 6
 }
 elseif ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.sarif').Length -eq 0)
