@@ -37,7 +37,7 @@ Error | if the violation represents an unambiguous accessibility issue and can b
 Open | if the violation can be conclusively determined by the tool but may or may not represent an accessibility issue
 Note | if the violation cannot be conclusively determined by the tool and may or may not represent an accessibility issue
 Warning | if the violation represents an unambiguous accessibility issue but cannot be conclusively determined by the tool
-RuleExecutionError | if a problem occured while executing the test
+RuleExecutionError | if a problem occurred while executing the test
 
 _Note:_ EvaluationCode.NotApplicable is never returned by the Evaluate method of the Rule class. It indicates that the rule in question is not applicable to the given situation. For example, a rule which checks for specific patterns on a button is not applicable to an edit control.
 
