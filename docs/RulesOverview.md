@@ -31,18 +31,13 @@ A rule represents a single, self-contained test. For example, NameIsNotNull, Nam
 
 The Evaluate method of a rule should return either EvaluationCode.Pass or only one of the following evaluation codes:
 
-<dl>
-<dt>Error</dt>
-<dd>if the violation represents an unambiguous accessibility issue and can be conclusively determined by the tool</dd>
-<dt>Open</dt>
-<dd>if the violation can be conclusively determined by the tool but may or may not represent an accessibility issue</dd>
-<dt>Note</dt>
-<dd>if the violation cannot be conclusively determined by the tool and may or may not represent an accessibility issue</dd>
-<dt>Warning</dt>
-<dd>if the violation represents an unambiguous accessibility issue but cannot be conclusively determined by the tool</dd>
-<dt>RuleExecutionError</dt>
-<dd>if a problem occured while executing the test</dd>
-</dl>
+EvaluationCode | Description
+--- | ---
+Error | if the violation represents an unambiguous accessibility issue and can be conclusively determined by the tool
+Open | if the violation can be conclusively determined by the tool but may or may not represent an accessibility issue
+Note | if the violation cannot be conclusively determined by the tool and may or may not represent an accessibility issue
+Warning | if the violation represents an unambiguous accessibility issue but cannot be conclusively determined by the tool
+RuleExecutionError | if a problem occured while executing the test
 
 _Note:_ EvaluationCode.NotApplicable is never returned by the Evaluate method of the Rule class. It indicates that the rule in question is not applicable to the given situation. For example, a rule which checks for specific patterns on a button is not applicable to an edit control.
 
