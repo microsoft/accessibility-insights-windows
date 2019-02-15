@@ -26,7 +26,7 @@ AccessibilityInsights.Extensions | Provide extension points that allow certain n
 AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
 ### Accessibility Rules
-These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions.
+These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
 
 Assembly | Responsibility
 --- | ---
