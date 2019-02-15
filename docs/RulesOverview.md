@@ -1,6 +1,6 @@
 # Rules Overview
 
-Rules are the automated accessibility tests run by AccessibilityInsights For Windows. Each rule is independent of any other and contains all information about itself.
+Rules are the automated accessibility tests run by Accessibility Insights For Windows. Each rule is independent of any other and contains all information about itself.
 
 ## Anatomy of a rule
 
