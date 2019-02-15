@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         protected override AutomationPeer OnCreateAutomationPeer()
         {
             var peer = new CustomControlOverridingAutomationPeer(this, "pane");
-            peer.OrientationProperty = AutomationOrientation;
+            peer.AutomationOrientation = AutomationOrientation;
             return peer;
         }
     }

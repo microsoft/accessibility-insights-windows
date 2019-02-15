@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private string LocalizedControlType;
 
-        public AutomationOrientation OrientationProperty { get; set; }
+        public AutomationOrientation AutomationOrientation { get; set; }
 
         public CustomControlOverridingAutomationPeer(UserControl owner,string localizedcontrol, bool isControlElement=true, bool isContentElement=false)
         : base(owner)
@@ -64,6 +64,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             return IsContentElem;
         }
 
-        protected override AutomationOrientation GetOrientationCore() => OrientationProperty;
+        protected override AutomationOrientation GetOrientationCore() => AutomationOrientation;
     }
 }
