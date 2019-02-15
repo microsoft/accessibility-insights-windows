@@ -41,11 +41,5 @@ namespace AccessibilityInsights.Automation
         /// Retain the data even if no violations are found (value for NoViolationPolicy key)
         /// </summary>
         public const string Retain = "Retain";
-
-
-        /// <summary>
-        /// Set the team name in telemetry
-        /// </summary>
-        public const string TeamName = "TeamName";
     }
 }
