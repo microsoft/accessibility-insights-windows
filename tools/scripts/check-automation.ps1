@@ -58,7 +58,7 @@ Pop-Location
 
 if ($result.Completed -eq $false)
 {
-  Write-Host '*** AUTOMATION FAILED: SCAN FALIED TO COMPLETE ***' -ForegroundColor Red
+  Write-Host '*** AUTOMATION FAILED: SCAN FAILED TO COMPLETE ***' -ForegroundColor Red
   exit 2
 }
 elseif ($result.ScanResultsPassed -eq 0)
