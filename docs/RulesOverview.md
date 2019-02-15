@@ -47,7 +47,7 @@ Using Conditions (described below) makes it possible to represent the evaluation
 
 ## Conditions
 
-Conditions are classses used to represent the properties, patterns, and values of an element in a grammatical form that is easy to read, reusable, and self-describing. Most of the work of a Condition class is done by the AccessibilityInsights.Rules.Condition base class, from which all Conditions must inherit. Conditions have the following features:
+Conditions are classses used to represent the properties, patterns, and values of an element in a grammatical form that is reusable, self-describing, and easy to read. Most of the work of a Condition class is done by the AccessibilityInsights.Rules.Condition base class, from which all Conditions must inherit. Conditions have the following features:
 
 - A condition evaluates to true or false via its Matches method.
 - A Condition has an associated text description. Descriptions can be assigned via the index operator, e.g., Button["Button"]
