@@ -30,12 +30,6 @@ namespace AccessibilityInsights.Automation.PowerShell
         public string ConfigFile { get; set; }
 
         /// <summary>
-        /// The team name in telemetry
-        /// </summary>
-        [Parameter(Mandatory = false)]
-        public string TeamName { get; set; }
-
-        /// <summary>
         /// Initialize the scan engine
         /// </summary>
         protected override void ProcessRecord()
@@ -47,9 +41,6 @@ namespace AccessibilityInsights.Automation.PowerShell
 
             if (!string.IsNullOrEmpty(this.OutputPath))
                 parameters[CommandConstStrings.OutputPath] = this.OutputPath;
-
-            if (!string.IsNullOrEmpty(this.TeamName))
-                parameters[CommandConstStrings.TeamName] = this.TeamName;
 
             string configFile = string.IsNullOrEmpty(this.ConfigFile) ? string.Empty : this.ConfigFile;
 
