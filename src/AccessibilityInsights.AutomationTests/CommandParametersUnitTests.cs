@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Automation;
+using Microsoft.QualityTools.Testing.Fakes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Fakes;
 using System.Linq;
-using AccessibilityInsights.Automation;
-using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AccessibilityInsights.AutomationTests
 {

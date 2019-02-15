@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Telemetry;
 using System;
 using System.Collections.Generic;
 
@@ -28,8 +27,6 @@ namespace AccessibilityInsights.Automation
             {
                 // Custom assembly resolver needs to be created before anything else, but only for PowerShell
                 IDisposable customAssemblyResolver = isPowerShell ? new CustomAssemblyResolver() : null;
-                AutomationLogger.DeclareSource(primaryConfig.ContainsKey(CommandConstStrings.TeamName) ? primaryConfig[CommandConstStrings.TeamName] : null);
-                AutomationLogger.LogAction(TelemetryAction.Automation_Start_Session, primaryConfig);
                 CommandParameters parameters = new CommandParameters(primaryConfig, configFile);
                 AutomationSession.NewInstance(parameters, customAssemblyResolver);
                 return new StartCommandResult

@@ -1,11 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-
-using Newtonsoft.Json;
 
 namespace AccessibilityInsights.Automation
 {
@@ -101,7 +100,7 @@ namespace AccessibilityInsights.Automation
         }
 
         /// <summary>
-        /// Provide a copy of the configs in this object. Used for telemetry
+        /// Provide a copy of the configs in this object. Used for testing
         /// </summary>
         internal Dictionary<string, string> ConfigCopy
         {

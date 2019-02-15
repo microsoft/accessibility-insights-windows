@@ -8,8 +8,6 @@ using AccessibilityInsights.Automation.Fakes;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
@@ -108,18 +106,10 @@ namespace AccessibilityInsights.AutomationTests
                     throw new A11yAutomationException(TestMessage);
                 };
 
-                TelemetryAction? actualAction = null;
-
-                InitializeShims(
-                    logAction: (a, d) =>
-                    {
-                        actualAction = a;
-                    });
+                InitializeShims();
 
                 SnapshotCommandResult result = SnapshotCommand.Execute(new Dictionary<string, string>());
 
-                Assert.IsTrue(actualAction.HasValue);
-                Assert.AreEqual(TelemetryAction.Automation_Invoke_Snapshot, actualAction.Value);
                 Assert.AreEqual(1, callsToInstance);
                 AssertIncompleteResult(result, TestMessage);
             }
@@ -493,7 +483,6 @@ namespace AccessibilityInsights.AutomationTests
         }
 
         private static void InitializeShims(
-            FakesDelegates.Action<TelemetryAction, IReadOnlyDictionary<string, string>> logAction = null,
             bool? populateLocationHelper = null,
             bool? enableRetention = null,
             bool shimTargetElementLocator = false,
@@ -505,9 +494,6 @@ namespace AccessibilityInsights.AutomationTests
             bool shimSarif = false,
             ShimSelectAction selectAction = null)
         {
-            ShimAutomationLogger.LogActionTelemetryActionIReadOnlyDictionaryOfStringString = 
-                logAction ?? DefaultLogActionStub;
-
             if (enableRetention.HasValue)
             {
                 ShimAutomationSession.Instance = () =>
@@ -569,10 +555,6 @@ namespace AccessibilityInsights.AutomationTests
             }
         }
 
-        private static void DefaultLogActionStub(TelemetryAction action, IReadOnlyDictionary<string, string> data)
-        {
-        }
-
         private static void CreateShimLocationHelper(LocationHelper locationHelper, bool populateData)
         {
             ShimLocationHelper shim = new ShimLocationHelper(locationHelper);
@@ -604,7 +586,6 @@ namespace AccessibilityInsights.AutomationTests
             };
 
             ShimGetDataAction.GetElementDataContextGuid = (_) => dc;
-            ShimLogger.IsEnabledGet = () => false;
         }
     }
 }

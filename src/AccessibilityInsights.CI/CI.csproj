@@ -55,10 +55,6 @@
       <Project>{ae5ec69f-158a-41c8-ad2b-ec7b84d820ef}</Project>
       <Name>Automation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj">
-      <Project>{d17e1749-28fe-44b9-a9f6-af8985124fe4}</Project>
-      <Name>Extensions.Telemetry</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Condition=" '$(MAICreateNuget)' == 'true' " Name="Pack" AfterTargets="Build">

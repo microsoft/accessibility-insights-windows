@@ -138,11 +138,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
 
         TestSelection_Set_Scope, // set the scope
 
-        // Automation events
-        Automation_Start_Session,
-        Automation_Invoke_Snapshot,
-        Automation_Stop_Session,
-        
         ColorContrast_Open_HowToTest,
         ColorContrast_Click_Eyedropper,
         ColorContrast_Click_Dropdown,

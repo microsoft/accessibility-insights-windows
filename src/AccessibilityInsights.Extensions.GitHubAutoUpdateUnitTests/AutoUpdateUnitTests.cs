@@ -228,7 +228,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             githubMock.Setup(x => x.TryGetSpecificAsset(It.IsAny<Uri>(), It.IsAny<Stream>()))
                                 .Callback<Uri, Stream>((Uri, stream) =>
                                 {
-                                    System.Threading.Thread.Sleep(10);
+                                    Thread.Sleep(1);
                                 })
                                 .Returns(true);
 

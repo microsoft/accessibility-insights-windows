@@ -89,7 +89,6 @@
     <Compile Include="StopCommandUnitTests.cs" />
     <Compile Include="SnapshotCommandUnitTests.cs" />
     <Compile Include="TargetElementLocatorUnitTests.cs" />
-    <Compile Include="AutomationLoggerUnitTests.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
