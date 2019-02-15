@@ -23,7 +23,7 @@ All rules must inherit from the AccessibilityInsights.Rules.Rule base class. Rul
 
 ### One test per rule
 
-A rule represents a single, self-contained test. For example, NameIsNotNull, NameIsNotEmpty, and NameIsNotWhiteSpace all test the value of the Name property in similar ways; but they are split into separate rules. This increases the specificity of the feedback given to the user and makes it possible to change the evaluation code or applicability (the Condition) of each rule individually without unintentionally effecting other rules.
+A rule represents a single, self-contained test. For example, NameIsNotNull, NameIsNotEmpty, and NameIsNotWhiteSpace all test the value of the Name property in similar ways; but they are split into separate rules. This increases the specificity of the feedback given to the user and makes it possible to change the evaluation code or applicability (the Condition) of each rule individually without unintentionally affecting other rules.
 
 ### The Evaluate method returns only one failing EvaluationCode
 
