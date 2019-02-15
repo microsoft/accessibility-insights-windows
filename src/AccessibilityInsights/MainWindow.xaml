@@ -47,7 +47,7 @@
                 <ColumnDefinition Width="44"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <controls:NamedPane Name="bdLeftNav" Grid.Column="0" BorderThickness="0,0,1,0" Panel.ZIndex="2" HorizontalAlignment="Left" Width="44" AutomationProperties.Name="{x:Static properties:Resources.bdLeftNavAutomationPropertiesName}" BorderBrush="{DynamicResource ResourceKey=LeftNavBorderBrush}" Background="{DynamicResource ResourceKey=LeftNavBarBrush}">
+            <controls:NamedPane Name="bdLeftNav" Orientation="Vertical" Grid.Column="0" BorderThickness="0,0,1,0" Panel.ZIndex="2" HorizontalAlignment="Left" Width="44" AutomationProperties.Name="{x:Static properties:Resources.bdLeftNavAutomationPropertiesName}" BorderBrush="{DynamicResource ResourceKey=LeftNavBorderBrush}" Background="{DynamicResource ResourceKey=LeftNavBarBrush}">
                 <Grid Name="NavigationBar"
                       KeyboardNavigation.TabNavigation="Cycle">
                     <Grid.InputBindings>

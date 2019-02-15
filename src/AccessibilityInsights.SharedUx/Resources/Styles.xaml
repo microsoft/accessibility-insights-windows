@@ -773,7 +773,6 @@
     <Style TargetType="{x:Type DataGrid}" x:Key="dgStyle">
         <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
         <Setter Property="IsReadOnly" Value="True"/>
-        <Setter Property="KeyboardNavigation.TabNavigation" Value="Once"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="CanUserSortColumns" Value="False"/>
         <Setter Property="SelectionUnit" Value="FullRow"/>
@@ -820,6 +819,7 @@
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="Height" Value="24"/>
         <Setter Property="ToolTip" Value="{Binding Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="IsTabStop" Value="False"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
