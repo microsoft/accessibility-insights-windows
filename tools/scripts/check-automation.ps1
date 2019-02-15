@@ -21,7 +21,7 @@ $outputPath=Join-Path $rootPath 'AutomationCheck'
 if (-Not (Test-Path (Join-Path $rootPath AccessibilityInsights.CI.exe)))
 {
   Write-Host 'Please build the' $flavor 'version of AccessibilityInsight.CI before running this script'
-  exit
+  exit 1
 }
 
 Remove-Item $outputPath -Recurse -Force -ErrorAction Ignore | Out-Null
@@ -56,5 +56,42 @@ Write-Verbose 'Stopping AccessibilityInsights'
 Stop-AccessibilityInsights
 Pop-Location
 
-Write-Host "Press ENTER to exit"
-Read-Host
+if ($result.Completed -eq $false)
+{
+  Write-Host '*** AUTOMATION FAILED: SCAN FALIED TO COMPLETE' -ForegroundColor Red
+  exit 2
+}
+elseif ($result.ScanResultsPassed -eq 0)
+{
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO PASSING RESULTS' -ForegroundColor Red
+  exit 3
+}
+elseif ($result.ScanResultsFailed -eq 0)
+{
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO FAILING RESULTS' -ForegroundColor Red
+  exit 4
+}
+elseif ($result.ScanResultsInconclusive -eq 0)
+{
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO INCONCLUSIVE RESULTS' -ForegroundColor Red
+  exit 5
+}
+elseif ($result.ScanResultsUnsupported -ne 0)
+{
+  Write-Host '*** AUTOMATION FAILED: SCAN FOUND UNSUPPORTED RESULTS' -ForegroundColor Red
+  exit 6
+}
+elseif ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.sarif').Length -eq 0)
+{
+  Write-Host '*** AUTOMATION FAILED: NO OUTPUT FILE GENERATED ***' -ForegroundColor Red
+  exit 7
+}
+elseif ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.*Teest').Length -ne 0)
+{
+  Write-Host '*** AUTOMATION FAILED: INTERMEDIATE FILE NOT DELETED ***' -ForegroundColor Red
+  exit 8
+}
+
+#keep these lines at the end of the script
+Write-Host '*** AUTOMATION SUCCEEDED ***' -ForegroundColor Green
+exit 0
