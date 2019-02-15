@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Collections.Generic;
 using AccessibilityInsights.Actions;
-using AccessibilityInsights.RuleSelection;
 using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.RuleSelection;
+using System;
 
 namespace AccessibilityInsights.Automation
 {
@@ -72,9 +70,6 @@ namespace AccessibilityInsights.Automation
 
                 instance = new AutomationSession(parameters, customAssemblyResolver);
                 instance.SessionParameters = parameters;
-
-                Dictionary<string, string> config = parameters.ConfigCopy;
-                config[TelemetryProperty.AutomationUsedConfigFile.ToString()] = parameters.UsedConfigFile.ToString();
 
                 return instance;
             }

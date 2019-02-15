@@ -7,7 +7,6 @@ using AccessibilityInsights.Actions.Misc;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Telemetry;
 using System.Collections.Generic;
 using System.Globalization;
 
@@ -44,7 +43,6 @@ namespace AccessibilityInsights.Automation
         {
             return ExecutionWrapper.ExecuteCommand<SnapshotCommandResult>(() =>
             {
-                AutomationLogger.LogAction(TelemetryAction.Automation_Invoke_Snapshot, primaryConfig);
                 CommandParameters parameters = new CommandParameters(primaryConfig,
                     AutomationSession.Instance().SessionParameters);
                 LocationHelper locationHelper = new LocationHelper(parameters);

@@ -42,8 +42,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
         TestResults, // parent container, has rule id and results
         Results,
         SessionType,
-        AutomationUsedConfigFile,
-        AutomationParametersSpecified,
         AppSessionID,
         PatternMethod,
         FilesLoaded,
