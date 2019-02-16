@@ -46,14 +46,6 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
-  - task: PowerShell@2
-    displayName: 'Check Automation'
-    inputs:
-      targetType: 'filePath'
-      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
-      arguments: 'release'
-      workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
-
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
     inputs:
