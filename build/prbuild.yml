@@ -95,6 +95,14 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
+  - task: PowerShell@2
+    displayName: 'Check Automation'
+    inputs:
+      targetType: 'filePath'
+      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
+      arguments: 'debug'
+      workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim '
     inputs:
