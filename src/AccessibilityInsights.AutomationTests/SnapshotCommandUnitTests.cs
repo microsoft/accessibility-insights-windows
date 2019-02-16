@@ -40,11 +40,11 @@ namespace AccessibilityInsights.AutomationTests
         private static void AssertIncompleteResult(SnapshotCommandResult result, string expectedString, bool matchExactString = true)
         {
             Assert.AreEqual(false, result.Completed);
-            Assert.AreEqual(0, result.ScanResultsFailed, "Mismatch in count of failures");
-            Assert.AreEqual(0, result.ScanResultsInconclusive, "Mismatch in count of inconclusives");
-            Assert.AreEqual(0, result.ScanResultsPassed, "Mismatch in count of passes");
-            Assert.AreEqual(0, result.ScanResultsUnsupported, "Mismatch in count of unsupporteds");
-            Assert.AreEqual(0, result.ScanResultsTotal);
+            Assert.AreEqual(0, result.ScanResultsFailedCount, "Mismatch in count of failures");
+            Assert.AreEqual(0, result.ScanResultsInconclusiveCount, "Mismatch in count of inconclusives");
+            Assert.AreEqual(0, result.ScanResultsPassedCount, "Mismatch in count of passes");
+            Assert.AreEqual(0, result.ScanResultsUnsupportedCount, "Mismatch in count of unsupporteds");
+            Assert.AreEqual(0, result.ScanResultsTotalCount);
             if (matchExactString)
             {
                 Assert.AreEqual(expectedString, result.SummaryMessage);
@@ -58,11 +58,11 @@ namespace AccessibilityInsights.AutomationTests
         private static void AssertCompleteResult(SnapshotCommandResult result, int expectedPass, int expectedFail, int expectedInconclusive, int expectedUnsupported)
         {
             Assert.AreEqual(true, result.Completed);
-            Assert.AreEqual(expectedFail, result.ScanResultsFailed, "Mismatch in count of failures");
-            Assert.AreEqual(expectedInconclusive, result.ScanResultsInconclusive, "Mismatch in count of inconclusives");
-            Assert.AreEqual(expectedPass, result.ScanResultsPassed, "Mismatch in count of passes");
-            Assert.AreEqual(expectedUnsupported, result.ScanResultsUnsupported, "Mismatch in count of unsupporteds");
-            Assert.AreEqual(expectedPass + expectedFail + expectedInconclusive + expectedUnsupported, result.ScanResultsTotal);
+            Assert.AreEqual(expectedFail, result.ScanResultsFailedCount, "Mismatch in count of failures");
+            Assert.AreEqual(expectedInconclusive, result.ScanResultsInconclusiveCount, "Mismatch in count of inconclusives");
+            Assert.AreEqual(expectedPass, result.ScanResultsPassedCount, "Mismatch in count of passes");
+            Assert.AreEqual(expectedUnsupported, result.ScanResultsUnsupportedCount, "Mismatch in count of unsupporteds");
+            Assert.AreEqual(expectedPass + expectedFail + expectedInconclusive + expectedUnsupported, result.ScanResultsTotalCount);
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.SummaryMessage), "SummaryMessage can't be trivial");
         }
 

@@ -12,27 +12,27 @@ namespace AccessibilityInsights.Automation
         /// <summary>
         /// The count of successful scan results
         /// </summary>
-        public int ScanResultsPassed { get; set; }
+        public int ScanResultsPassedCount { get; set; }
 
         /// <summary>
         /// The count of failed scan results
         /// </summary>
-        public int ScanResultsFailed { get; set; }
+        public int ScanResultsFailedCount { get; set; }
 
         /// <summary>
         /// The count of inconclusive scan results
         /// </summary>
-        public int ScanResultsInconclusive { get; set; }
+        public int ScanResultsInconclusiveCount { get; set; }
 
         /// <summary>
         /// The count of non-supported (typically web content) scan results
         /// </summary>
-        public int ScanResultsUnsupported { get; set; }
+        public int ScanResultsUnsupportedCount { get; set; }
 
         /// <summary>
         /// The sum of the reported results
         /// </summary>
-        public int ScanResultsTotal { get; set; }
+        public int ScanResultsTotalCount { get; set; }
 
         /// <summary>
         /// Convert contents to a user-friendly description
@@ -40,8 +40,8 @@ namespace AccessibilityInsights.Automation
         /// <returns>The user-friendly description</returns>
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "SnapshotCommandResult: ScanResultsPassed={0}, ScanResultsInconclusive={1}, ScanResultsFailed={2}, ScanResultsUnsupported={3}, ScanResultsTotal={4}, {5}",
-                ScanResultsPassed, ScanResultsInconclusive, ScanResultsFailed, ScanResultsUnsupported, ScanResultsTotal, ToStringProtected());
+            return string.Format(CultureInfo.InvariantCulture, "SnapshotCommandResult: ScanResultsPassedCount={0}, ScanResultsInconclusiveCount={1}, ScanResultsFailedCount={2}, ScanResultsUnsupportedCount={3}, ScanResultsTotalCount={4}, {5}",
+                ScanResultsPassedCount, ScanResultsInconclusiveCount, ScanResultsFailedCount, ScanResultsUnsupportedCount, ScanResultsTotalCount, ToStringProtected());
         }
     }
 }
