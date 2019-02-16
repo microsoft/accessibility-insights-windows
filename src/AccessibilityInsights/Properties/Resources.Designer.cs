@@ -701,15 +701,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Helpful shortcuts.
-        /// </summary>
-        public static string helpfulShortcutsText {
-            get {
-                return ResourceManager.GetString("helpfulShortcutsText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Failed to open link..
         /// </summary>
         public static string hlLink_RequestNavigateException {
@@ -854,7 +845,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimize or activate the main window..
+        ///   Looks up a localized string similar to Bring Accessibility Insights for Windows to the foreground or minimize it..
         /// </summary>
         public static string minmizeOrActivateWindowText {
             get {
@@ -980,7 +971,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run tests on the selected element anytime..
+        ///   Looks up a localized string similar to Run tests on the selected element..
         /// </summary>
         public static string runSelectedTestText {
             get {
@@ -1068,6 +1059,24 @@ namespace AccessibilityInsights.Properties {
         public static string ShiftF8 {
             get {
                 return ResourceManager.GetString("ShiftF8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Go to the full list of keyboard shortcuts for Accessibility Insights for Windows..
+        /// </summary>
+        public static string shortcutsDescription {
+            get {
+                return ResourceManager.GetString("shortcutsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequently used shortcuts.
+        /// </summary>
+        public static string shortcutsTitle {
+            get {
+                return ResourceManager.GetString("shortcutsTitle", resourceCulture);
             }
         }
         
@@ -1469,7 +1478,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter / toggle event recording on the selected element..
+        ///   Looks up a localized string similar to Start or stop event recording for the selected element..
         /// </summary>
         public static string toggleEventText {
             get {

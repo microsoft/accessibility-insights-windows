@@ -339,8 +339,8 @@
   <data name="HandleRequestRecordingByHotkeySelectElementMessage" xml:space="preserve">
     <value>Please select an element first before starting Event page.</value>
   </data>
-  <data name="helpfulShortcutsText" xml:space="preserve">
-    <value>Helpful shortcuts</value>
+  <data name="shortcutsTitle" xml:space="preserve">
+    <value>Frequently used shortcuts</value>
   </data>
   <data name="hlLink_RequestNavigateException" xml:space="preserve">
     <value>Failed to open link.</value>
@@ -355,7 +355,7 @@
     <value>Live Inspect page</value>
   </data>
   <data name="minmizeOrActivateWindowText" xml:space="preserve">
-    <value>Minimize or activate the main window.</value>
+    <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
   </data>
   <data name="moreInformationText" xml:space="preserve">
     <value>For more information visit</value>
@@ -373,7 +373,7 @@
     <value>Results in UIA Tree</value>
   </data>
   <data name="runSelectedTestText" xml:space="preserve">
-    <value>Run tests on the selected element anytime.</value>
+    <value>Run tests on the selected element.</value>
   </data>
   <data name="SetElementCultureInfoFormatMessage" xml:space="preserve">
     <value>Only the first {0:N0} elements are being scanned. You will not be able to save the results or file any bugs from this scan.</value>
@@ -491,7 +491,7 @@ Please ensure that you are opening an valid test file using the most recent rele
     <value>Test - Tab Stops</value>
   </data>
   <data name="toggleEventText" xml:space="preserve">
-    <value>Enter / toggle event recording on the selected element.</value>
+    <value>Start or stop event recording for the selected element.</value>
   </data>
   <data name="UpdateTitleStringTitle" xml:space="preserve">
     <value>Accessibility Insights for Windows</value>
@@ -615,5 +615,8 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="AutomationNameTelemetryMode" xml:space="preserve">
     <value>Help us improve</value>
+  </data>
+  <data name="shortcutsDescription" xml:space="preserve">
+    <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
   </data>
 </root>
