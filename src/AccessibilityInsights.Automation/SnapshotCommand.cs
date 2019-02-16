@@ -104,11 +104,11 @@ namespace AccessibilityInsights.Automation
                             {
                                 Completed = true,
                                 SummaryMessage = summaryMessage,
-                                ScanResultsPassed = accumulator.Passed,
-                                ScanResultsFailed = accumulator.Failed,
-                                ScanResultsInconclusive = accumulator.Inconclusive,
-                                ScanResultsUnsupported = accumulator.Unsupported,
-                                ScanResultsTotal = accumulator.Total,
+                                ScanResultsPassedCount = accumulator.Passed,
+                                ScanResultsFailedCount = accumulator.Failed,
+                                ScanResultsInconclusiveCount = accumulator.Inconclusive,
+                                ScanResultsUnsupportedCount = accumulator.Unsupported,
+                                ScanResultsTotalCount = accumulator.Total,
                             };
                         }
                     }
