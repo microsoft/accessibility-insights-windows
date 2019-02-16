@@ -50,7 +50,7 @@ jobs:
     displayName: 'Check Automation'
     inputs:
       targetType: 'filePath'
-      filePath: 'check-automation.ps1'
+      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
       arguments: 'release'
       workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
 
