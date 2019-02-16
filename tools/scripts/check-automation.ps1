@@ -61,32 +61,32 @@ if ($result.Completed -eq $false)
   Write-Host '*** AUTOMATION FAILED: SCAN FAILED TO COMPLETE ***' -ForegroundColor Red
   exit 2
 }
-elseif ($result.ScanResultsPassedCount -eq 0)
+if ($result.ScanResultsPassedCount -eq 0)
 {
   Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO PASSING RESULTS ***' -ForegroundColor Red
   exit 3
 }
-elseif ($result.ScanResultsFailedCount -eq 0)
+if ($result.ScanResultsFailedCount -eq 0)
 {
   Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO FAILING RESULTS ***' -ForegroundColor Red
   exit 4
 }
-elseif ($result.ScanResultsInconclusiveCount -eq 0)
+if ($result.ScanResultsInconclusiveCount -eq 0)
 {
   Write-Host '*** AUTOMATION FAILED: SCAN FOUND NO INCONCLUSIVE RESULTS ***' -ForegroundColor Red
   exit 5
 }
-elseif ($result.ScanResultsUnsupportedCount -ne 0)
+if ($result.ScanResultsUnsupportedCount -ne 0)
 {
   Write-Host '*** AUTOMATION FAILED: SCAN FOUND UNSUPPORTED RESULTS ***' -ForegroundColor Red
   exit 6
 }
-elseif ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.sarif').Length -eq 0)
+if ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.sarif').Length -eq 0)
 {
   Write-Host '*** AUTOMATION FAILED: NO OUTPUT FILE GENERATED ***' -ForegroundColor Red
   exit 7
 }
-elseif ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.A11yTest').Length -ne 0)
+if ((Get-ChildItem $($outputPath) -Filter 'WildlifeManager.A11yTest').Length -ne 0)
 {
   Write-Host '*** AUTOMATION FAILED: INTERMEDIATE FILE NOT DELETED ***' -ForegroundColor Red
   exit 8
