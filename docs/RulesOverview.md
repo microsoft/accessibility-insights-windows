@@ -8,7 +8,7 @@ For an overview of the Rules projects, please see the "Accessibility Rules" sect
 
 Rules have three basic components
 
-- `RuleInfo`
+- `RuleInfo` 
    - `ID`: a unique value from the RuleId enumeration (used for telemetry and for rules to be run individually)
    - `Description`: a short description (fewer than 80 characters) of the standards violation (e.g., "The Name property must not be null")
    - `HowToFix`: an in-depth description of the standards violation and suggested remediation(s)
@@ -50,16 +50,16 @@ Using conditions (described below) makes it possible to represent the evaluation
 Conditions are classses used to represent the properties, patterns, and values of an element in a grammatical form that is reusable, self-describing, and easy to read. All conditions must inherit from the `AccessibilityInsights.Rules.Condition` base class. Conditions have the following features:
 
 - A condition evaluates to true or false via its `Matches` method.
-- A condition has an associated text description. Descriptions can be assigned via the index operator, e.g., `Button["Button"]`
+- A condition has an associated text description. Descriptions can be assigned via the index operator, e.g., `Button["Button"]` 
 - Conditions can be combined using operators:
 
 operator | description | example
 --- | --- | ---
-`&` | logical and | `Button & Name.IsNotEmpty`
-`&#124;` | logical or | `Button &#124; Checkbox`
-`~` | unary logical not | `~IsContentElement`
-`&#45;` | binary logical not | `Button - IsKeyboardFocusable`
-`/` | hierarchical relationship | parent / child
+& | logical and | `Button & Name.IsNotEmpty`
+&#124; | logical or | `Button & Checkbox`
+~ | unary logical not | `~IsContentElement`
+&#45; | binary logical not | `Button - IsKeyboardFocusable`
+/ | hierarchical relationship | `parent / child`
 
 When conditions are combined using operators, so too are there associated descriptions, e.g., `(Button & IsKeyboardFocusable)` = "Button and IsKeyboardFocusable". Using this mechanism, all conditions can be written as text strings and used as documentation for the rules.
 
