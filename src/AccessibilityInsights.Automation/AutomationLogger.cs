@@ -14,8 +14,8 @@ namespace AccessibilityInsights.Automation
         static AutomationLogger()
         {
             // disable telemetry for now based on a decision on telemetry from Automation.
-            // we decided not to send a telemetry explicitly from Automation(Including powershell since there is no explicit user consent).
-            // later we may enable it again with an explicit user consent. 
+            // we decided not to send a telemetry from Automation(Including powershell since there is no explicit user consent).
+            // later we may enable it again with an user consent. 
             Logger.IsTelemetryAllowed = false;
         }
 
