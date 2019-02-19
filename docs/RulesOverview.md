@@ -41,6 +41,8 @@ The `Evaluate` method of a rule should return either `EvaluationCode.Pass` or on
 
 _Note:_ `EvaluationCode.NotApplicable` is never returned by the `Evaluate` method of the `Rule` class. It indicates that the rule in question is not applicable to the given situation. For example, a rule which checks for specific patterns on a button is not applicable to an edit control.
 
+_Note:_ Because results from automated tests in Accessibility Insights are represented in the SARIF format, evaluation codes are loosely based on the "Level" property described in the [SARIF specification](http://docs.oasis-open.org/sarif/sarif/v2.0/csprd01/sarif-v2.0-csprd01.html#_Toc517436065) under section 3.19.7.
+
 ### Use conditions in the `Evaluate` method
 
 Using conditions (described below) makes it possible to represent the evaluation logic both as code and as a string that can be understood by a user. Please see the "Future" section of this document for more details.
