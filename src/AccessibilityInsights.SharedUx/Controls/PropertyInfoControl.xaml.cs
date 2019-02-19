@@ -15,6 +15,7 @@ using System.Windows.Automation.Peers;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using System.Windows.Controls.Primitives;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
