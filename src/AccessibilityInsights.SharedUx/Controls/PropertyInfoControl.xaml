@@ -10,6 +10,7 @@
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
              xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+             xmlns:customcontrols="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="310"
              AutomationProperties.Name="{x:Static Properties:Resources.PropertyInfoControlAutomationPropertiesName}" Loaded="UserControl_Loaded">
@@ -46,7 +47,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <DataGrid
+                <customcontrols:CustomDataGrid
                     x:Name="dgProperties"
                     Grid.Row="2"
                     AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
@@ -80,10 +81,9 @@
                     <DataGrid.ItemContainerStyle>
                         <Style TargetType="{x:Type DataGridRow}">
                             <Setter Property="Focusable" Value="True"/>
-                            <Setter Property="IsTabStop" Value="False"/>
                         </Style>
                     </DataGrid.ItemContainerStyle>
-                </DataGrid>
+                </customcontrols:CustomDataGrid>
             </Grid>
         </ScrollViewer>
     </Grid>

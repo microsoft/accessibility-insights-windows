@@ -280,6 +280,7 @@
     <Compile Include="Behaviors\ColumnResizeHotkeyBehavior.cs" />
     <Compile Include="Behaviors\PropagateBindingsBehavior.cs" />
     <Compile Include="Behaviors\KeyboardToolTipButtonBehavior.cs" />
+    <Compile Include="Controls\CustomControls\CustomDataGrid.cs" />
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
