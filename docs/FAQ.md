@@ -13,6 +13,9 @@ Once you are ready to make a contribution visit the [Contributions](../Contribut
 ### Q. Where can I download the application?
 TBA
 
+### Q. How can I add or change an automated accessibility test?
+Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
+
 ### Q. How do I go about adding unit tests?
 Please follow the guidelines outline in the [Adding Unit Tests](AddUnitTests.md) page.
 
