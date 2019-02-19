@@ -81,7 +81,7 @@ jobs:
         **\*test*.dll
         !**\obj\**
       vsTestVersion: 15.0
-      codeCoverageEnabled: true
+      codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
