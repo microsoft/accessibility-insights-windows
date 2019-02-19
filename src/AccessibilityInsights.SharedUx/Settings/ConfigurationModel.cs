@@ -121,6 +121,12 @@ namespace AccessibilityInsights.SharedUx.Settings
         public string HotKeyForMoveToLastChild { get; set; }
 
         /// <summary>
+        /// Hot key for save button
+        /// Control + S is default value
+        /// </summary>
+        public string HotKeyForSave { get; set; }
+
+        /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
         public string HotKeyForMoveToNextSibbling { get; set; }
@@ -256,6 +262,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             m.HotKeyForActivatingMainWindow = this.HotKeyForActivatingMainWindow;
             m.HotKeyForMoveToFirstChild = this.HotKeyForMoveToFirstChild;
             m.HotKeyForMoveToLastChild = this.HotKeyForMoveToLastChild;
+            m.HotKeyForSave = this.HotKeyForSave;
             m.HotKeyForMoveToNextSibbling = this.HotKeyForMoveToNextSibbling;
             m.HotKeyForMoveToParent = this.HotKeyForMoveToParent;
             m.HotKeyForMoveToPreviousSibbling = this.HotKeyForMoveToPreviousSibbling;
@@ -318,6 +325,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 string hksnapshot = config.HotKeyForSnap;
                 string hkrecord = config.HotKeyForRecord == ConfigurationModel.OldHotKeyRecord ? null : config.HotKeyForRecord;
                 string hkpause = config.HotKeyForPause;
+                string hksave = config.HotKeyForSave;
 
                 string hkactivate = config.HotKeyForActivatingMainWindow;
 
@@ -325,6 +333,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 
                 config.HotKeyForRecord = hkrecord != null ? hkrecord : config.HotKeyForRecord;
                 config.HotKeyForPause = hkpause != null ? hkpause : config.HotKeyForPause;
+                config.HotKeyForPause = hksave != null ? hksave : config.HotKeyForSave;
                 config.HotKeyForSnap = hksnapshot;
                 config.HotKeyForActivatingMainWindow = hkactivate;
             }
@@ -351,6 +360,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             return config.HotKeyForRecord == null
                 || config.HotKeyForPause == null
                 || config.HotKeyForSnap == null
+                || config.HotKeyForSave == null
                 || config.HotKeyForActivatingMainWindow == null;
         }
 
@@ -376,6 +386,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             config.HotKeyForMoveToParent = ConfigurationModel.DefaultHotKeyMoveToParent;
             config.HotKeyForMoveToFirstChild = ConfigurationModel.DefaultHotKeyMoveToFirstChild;
             config.HotKeyForMoveToLastChild = ConfigurationModel.DefaultHotKeyMoveToLastChild;
+            config.HotKeyForSave = ConfigurationModel.DefaultHotKeySave;
             config.HotKeyForMoveToNextSibbling = ConfigurationModel.DefaultHotKeyMoveToNextSibbling;
             config.HotKeyForMoveToPreviousSibbling = ConfigurationModel.DefaultHotKeyMoveToPreviousSibbling;
 

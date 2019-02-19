@@ -32,6 +32,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Content="{x:Static Properties:Resources.LabelContentShortcuts}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
             <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="1,5,0,0">
@@ -145,6 +146,19 @@
                     </AutomationProperties.Name>
                 </Button>
                 <Label x:Name="lblToLastChild" Content="{x:Static Properties:Resources.lblToLastChildContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=btnTHotkeyoLastChild}"/>
+            </StackPanel>
+            <StackPanel Grid.Row="10" Orientation="Horizontal" Margin="1,5,0,0">
+                <Button x:Name="btnHotkeySave" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
+                        VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" 
+                        Click="btnToggleHk_Click">
+                    <AutomationProperties.Name>
+                        <MultiBinding StringFormat="{}Change {0} hotkey to {1}">
+                            <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                            <Binding ElementName="lblHkSave" Path="Content"/>
+                        </MultiBinding>
+                    </AutomationProperties.Name>
+                </Button>
+                <Label x:Name="lblHkSave" Content="Save Current Result" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=tbPauseHk}"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1" Margin="0,17,0,0">

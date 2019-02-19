@@ -30,6 +30,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         public const string DefaultHotKeyMoveToLastChild = "Control,Shift + F9";
         public const string DefaultHotKeyMoveToNextSibbling = "Control,Shift + F8";
         public const string DefaultHotKeyMoveToPreviousSibbling = "Control,Shift + F5";
+        public const string DefaultHotKeySave = "Control + S";
         public const int DefaultMouseSelectionDelayMilliSeconds = 800; // milliseconds 
         public const int DefaultSelectionDelayMilliSeconds = 100; // milliseconds 
         public const int MinimumSelectionDelayMilliSeconds = 50;

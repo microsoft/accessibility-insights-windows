@@ -65,7 +65,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 this.btnHotkeyToBefore,
                 this.btnHotkeyToFirstChild,
                 this.btnHotkeyToggle,
-                this.btnHotkeyToParent
+                this.btnHotkeyToParent,
+                this.btnHotkeySave,
             };
         }
 
@@ -169,6 +170,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 return true;
             }
+            if (config.HotKeyForSave != (string)this.btnHotkeySave.Content)
+            {
+                return true;
+            }
 
             // make sure that text is parsable. 
             int milsec;
@@ -215,6 +220,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             this.btnHotekyToNext.Content = config.HotKeyForMoveToNextSibbling;
             this.btnHotkeyToFirstChild.Content = config.HotKeyForMoveToFirstChild;
             this.btnTHotkeyoLastChild.Content = config.HotKeyForMoveToLastChild;
+            this.btnHotkeySave.Content = config.HotKeyForSave;
             this.tbMouseDelay.Text = config.MouseSelectionDelayMilliSeconds.ToString(CultureInfo.InvariantCulture);
             (this.DataContext as ApplicationSettingsViewModel).UpdateFromConfig(config);
         }
@@ -249,6 +255,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 dic.Add("HotkeyPause", (string)this.btnHotkeyPause.Content);
             }
 
+            if (config.HotKeyForPause != (string)this.btnHotkeyPause.Content)
+            {
+                var dic = new Dictionary<string, string>();
+                dic.Add("HotkeySave", (string)this.btnHotkeySave.Content);
+            }
+
             config.HotKeyForActivatingMainWindow = (string)this.btnHotkeyActivateWindow.Content;
             config.HotKeyForSnap = (string)this.btnHotkeyToggle.Content;
             config.HotKeyForRecord = (string)this.btnHotkeyRecord.Content;
@@ -258,6 +270,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             config.HotKeyForMoveToNextSibbling = (string)this.btnHotekyToNext.Content;
             config.HotKeyForMoveToFirstChild = (string)this.btnHotkeyToFirstChild.Content;
             config.HotKeyForMoveToLastChild = (string)this.btnTHotkeyoLastChild.Content;
+            config.HotKeyForSave = (string)this.btnHotkeySave.Content;
             config.MouseSelectionDelayMilliSeconds = Math.Max(int.Parse(this.tbMouseDelay.Text,CultureInfo.InvariantCulture), ConfigurationModel.MinimumSelectionDelayMilliSeconds); // make sure that we allow only bigger than minimum value.
             DataContextVM.SaveToConfig(config);
         }

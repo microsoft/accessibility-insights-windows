@@ -140,6 +140,7 @@ namespace AccessibilityInsights
             SetHotKeyForModeSwitch();
             SetHotKeyForToggleRecord();
             SetHotKeyForTogglePause();
+            SetHotKeyForSave();
 
             SetHotKeyForActivatingMainWindow();
 
@@ -261,6 +262,36 @@ namespace AccessibilityInsights
                       }),
                     ErrorMessage(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSnap));
         }
+
+        /// <summary>
+        /// Set Hot Key for event saving
+        /// honor the value from Configuration file. 
+        /// </summary>
+        private void SetHotKeyForSave()
+        {
+            SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSave,
+                      new Action(() =>
+                      {
+                          lock (this)
+                          {
+                              Dispatcher.Invoke(() =>
+                              {
+                                  lock (this)
+                                  {
+                                      if (this.btnSave.IsVisible)
+                                      {
+                                          if (!IsCapturingData())
+                                          {
+                                              this.ctrlCurMode.Save();
+                                          }
+                                      }
+                                  }
+                              });
+                          }
+                      }),
+                    ErrorMessage(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSnap));
+        }
+
 
         /// <summary>
         /// Set Hot Key for Mode Switch
