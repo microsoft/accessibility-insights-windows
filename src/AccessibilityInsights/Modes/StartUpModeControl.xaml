@@ -89,7 +89,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="22" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="Light"><Run Text="{x:Static properties:Resources.shortcutsTitle}"/></TextBlock>
-                <TextBlock Grid.Row="1" Grid.ColumnSpan="8" >
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="8" Padding="16,10" TextWrapping="Wrap">
                     <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
                                AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}">
                         <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" FontSize="12" FontWeight="Light"/>
