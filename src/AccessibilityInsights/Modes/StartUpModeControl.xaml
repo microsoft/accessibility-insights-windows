@@ -147,7 +147,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <CheckBox Grid.Column="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" 
-                      FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Bottom"
+                      FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center"
                       FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
             <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
                     Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlue}"/>
