@@ -911,9 +911,11 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable">
+    <Style TargetType="{x:Type TextBlock}" x:Key="TbBaseWrap">
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable" BasedOn="{StaticResource TbBaseWrap}">
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
     </Style>

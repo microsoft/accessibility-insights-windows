@@ -23,7 +23,7 @@
             <RowDefinition Height="6"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="12"/>
-            <RowDefinition Height="90"/>
+            <RowDefinition Height="48"/>
             <RowDefinition Height="12"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -79,27 +79,55 @@
                     <ColumnDefinition Width="9"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="66"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="32"/>
                     <RowDefinition Height="24"/>
                     <RowDefinition Height="32"/>
                     <RowDefinition Height="24"/>
-                    <RowDefinition Height="32"/>
+                    <RowDefinition Height="48"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10" FontSize="22" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="Light"><Run Text="{x:Static properties:Resources.helpfulShortcutsText}"/></TextBlock>
-                <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource BrdrKey}">
-                    <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,1"/>
+                <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="22" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="Light"><Run Text="{x:Static properties:Resources.shortcutsTitle}"/></TextBlock>
+                <TextBlock Grid.Row="1" Grid.ColumnSpan="8" Padding="16,10" TextWrapping="Wrap">
+                    <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
+                               AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}">
+                        <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" FontSize="12" FontWeight="Light"/>
+                    </Hyperlink>
+                </TextBlock>
+                <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource BrdrKey}">
+                    <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,1">
+                        <AutomationProperties.Name>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                                <Binding ElementName="txtEventHk" Path="Text"/>
+                            </MultiBinding>
+                        </AutomationProperties.Name>
+                    </Label>
                 </Border>
-                <TextBlock Style="{StaticResource TbFocusable}" Grid.Row="1" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}"/>
-                <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}">
-                    <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,1"/>
+                <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="2" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}"/>
+                <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource BrdrKey}">
+                    <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,1">
+                        <AutomationProperties.Name>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                                <Binding ElementName="txtTesttHk" Path="Text"/>
+                            </MultiBinding>
+                        </AutomationProperties.Name>
+                    </Label>
                 </Border>
-                <TextBlock Style="{StaticResource TbFocusable}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}"/>
-                <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BrdrKey}">
-                    <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,1"/>
+                <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="4" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}"/>
+                <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource BrdrKey}" Height="32" VerticalAlignment="Top">
+                    <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,1">
+                        <AutomationProperties.Name>
+                            <MultiBinding StringFormat="{}{0} {1}">
+                                <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
+                                <Binding ElementName="txtActivateHk" Path="Text"/>
+                            </MultiBinding>
+                        </AutomationProperties.Name>
+                    </Label>
                 </Border>
-                <TextBlock Grid.Row="5" Grid.Column="3" Style="{StaticResource TbFocusable}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}"/>
+                <TextBlock Name="txtActivateHk" Grid.Row="6" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}"/>
             </Grid>
         </Border>
         <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
@@ -113,13 +141,15 @@
             <Label Grid.Column="1" Content="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="24" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Padding="0" FontWeight="Light" VerticalAlignment="Top"/>
         </Grid>
         <Grid Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="4">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <CheckBox Grid.Row="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="SemiBold" Style="{StaticResource CkbxLeftSide}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-            <Button Grid.Row="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" 
+                      FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Bottom"
+                      FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+            <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
                     Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlue}"/>
         </Grid>
         <Grid Grid.ColumnSpan="8" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="Grid_MouseDown" Background="Transparent">
