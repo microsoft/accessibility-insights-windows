@@ -8,6 +8,17 @@ namespace AccessibilityInsights.Automation
 {
     internal static class AutomationLogger
     {
+        /// <summary>
+        /// Constructor to initialize behavior of Logger
+        /// </summary>
+        static AutomationLogger()
+        {
+            // disable telemetry for now based on a decision on telemetry from Automation.
+            // we decided not to send a telemetry explicitly from Automation(Including powershell since there is no explicit user consent).
+            // later we may enable it again with an explicit user consent. 
+            Logger.IsTelemetryAllowed = false;
+        }
+
         private static string convertMapToString(IReadOnlyDictionary<string, string> propertyBag)
         {
             if (propertyBag != null)
