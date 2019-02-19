@@ -1000,8 +1000,8 @@ Accessibility Insights Support Team
   <data name="copyMenuItemPropertyHeader" xml:space="preserve">
     <value>Copy selected properties</value>
   </data>
-  <data name="DataGridTextColumnHeaderName" xml:space="preserve">
-    <value>Name</value>
+  <data name="DataGridTextColumnHeaderProperty" xml:space="preserve">
+    <value>Property</value>
   </data>
   <data name="PropertyDoesNotExist" xml:space="preserve">
     <value>Property does not exist</value>

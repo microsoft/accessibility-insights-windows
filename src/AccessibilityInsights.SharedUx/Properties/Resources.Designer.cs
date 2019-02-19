@@ -1259,11 +1259,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Property.
         /// </summary>
-        public static string DataGridTextColumnHeaderName {
+        public static string DataGridTextColumnHeaderProperty {
             get {
-                return ResourceManager.GetString("DataGridTextColumnHeaderName", resourceCulture);
+                return ResourceManager.GetString("DataGridTextColumnHeaderProperty", resourceCulture);
             }
         }
         
