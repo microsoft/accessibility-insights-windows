@@ -147,10 +147,9 @@
                       AutomationProperties.LabeledBy="{Binding ElementName=labelEvents}"
                       AutomationProperties.AcceleratorKey="Alt+V"
                       Height="Auto" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
-                      SelectionChanged="listEvents_SelectionChanged" SelectionMode="Single"                  
+                      SelectionChanged="listEvents_SelectionChanged" SelectionMode="Single"
                       HorizontalContentAlignment="Stretch"
                       FontSize="11" Margin="2,0"
-                      KeyboardNavigation.TabNavigation="Once"
                       Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
                 <i:Interaction.Behaviors>
                     <behaviors:ColumnResizeHotkeyBehavior/>
