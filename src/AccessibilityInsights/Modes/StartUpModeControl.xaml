@@ -92,7 +92,7 @@
                 <TextBlock Grid.Row="1" Grid.ColumnSpan="8" >
                     <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
                                AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}">
-                        <TextBlock x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" TextWrapping="Wrap" FontSize="12" FontWeight="Light"  Padding="16,10" />
+                        <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" FontSize="12" FontWeight="Light"/>
                     </Hyperlink>
                 </TextBlock>
                 <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource BrdrKey}">
