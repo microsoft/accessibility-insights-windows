@@ -53,18 +53,17 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private FocusNavigationDirection? GetNavDir(Key key)
         {
-            if (Orientation == Orientation.Vertical)
-            {
-                switch (key)
-                {
-                    case Key.Left:
-                        return FocusNavigationDirection.Up;
-                    case Key.Right:
-                        return FocusNavigationDirection.Down;
-                }
-            }
+            if (Orientation != Orientation.Vertical) return null;
 
-            return null;
+            switch (key)
+            {
+                case Key.Left:
+                    return FocusNavigationDirection.Up;
+                case Key.Right:
+                    return FocusNavigationDirection.Down;
+                default:
+                    return null;
+            }
         }
 
         /// <summary>
@@ -75,10 +74,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         private static void OrientationPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             var control = d as NamedPane;
-            if (control != null)
-            {
-                control.Orientation = (Orientation) e.NewValue;
-            }
+
+            if (control == null) return;
+
+            control.Orientation = (Orientation) e.NewValue;
         }
 
         /// <summary>
