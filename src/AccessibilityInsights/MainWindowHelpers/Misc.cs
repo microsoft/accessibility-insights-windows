@@ -32,6 +32,9 @@ namespace AccessibilityInsights
             new Tuple<AppPage, dynamic, string>(AppPage.Events,EventsView.Load,Properties.Resources.TitleTextMapEventsLoad),
             new Tuple<AppPage, dynamic, string>(AppPage.Events,EventsView.Recording,Properties.Resources.TitleTextMapEventsRecord),
             new Tuple<AppPage, dynamic, string>(AppPage.Events,EventsView.Stopped,Properties.Resources.TitleTextMapEventsStopped),
+            new Tuple<AppPage, dynamic, string>(AppPage.CCA,CCAView.Automatic,Properties.Resources.TitleTextMapCCA),
+            new Tuple<AppPage, dynamic, string>(AppPage.CCA,CCAView.CapturingData,Properties.Resources.TitleTextMapCCA),
+            new Tuple<AppPage, dynamic, string>(AppPage.CCA,CCAView.Manual,Properties.Resources.TitleTextMapCCA),
             new Tuple<AppPage, dynamic, string>(AppPage.CCA,null,Properties.Resources.TitleTextMapCCA),
             new Tuple<AppPage, dynamic, string>(AppPage.Exit,null,Properties.Resources.TitleTextMapExit),
         };
