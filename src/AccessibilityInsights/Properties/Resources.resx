@@ -499,15 +499,25 @@ Please ensure that you are opening an valid test file using the most recent rele
   <data name="WelcomeToAccessibilityInsightsForWindowsLabelContent" xml:space="preserve">
     <value>Welcome to Accessibility Insights for Windows</value>
   </data>
-  <data name="PleaseUseMouseToHover" xml:space="preserve">
-    <value>Please use the mouse to hover over or use the keyboard to select an element that you want to inspect.</value>
+  <data name="LiveModeControl_HoverOverElement" xml:space="preserve">
+    <value>To verify an element has the expected UIA properties, hover over the element within the target application or focus on the element. To pause and resume the live UIA tree, select the Pause icon</value>
   </data>
-  <data name="clickOnTheBeaker" xml:space="preserve">
-    <value>To run automated checks, click on the beaker icon of the highlighted element or use the keyboard shortcut and press </value>
+  <data name="LiveModeControl_ResumeIcon" xml:space="preserve">
+    <value>and Resume icon</value>
   </data>
-  <data name="ShiftF8" xml:space="preserve">
-    <value>Shift + F8</value>
+  <data name="LiveModeControl_YouCanPress" xml:space="preserve">
+    <value>. You can also press</value>
   </data>
+  <data name="LiveModeControl_RunAutomatedChecks" xml:space="preserve">
+    <value>To run automated checks, hover over the element within the target application and select the Test icon</value>
+  </data>
+  <data name="LiveModeControl_FocusOnElement" xml:space="preserve">
+    <value>. You can also focus on the element, then press</value>
+  </data>
+  <data name="LiveModeControl_BringBackFocus" xml:space="preserve">
+    <value>. To bring back focus to Accessibility Insights for Windows, press</value>
+  </data>
+  
   <data name="LiveModeControl_CopyToClipboard_Available_properties" xml:space="preserve">
     <value>Available properties</value>
   </data>

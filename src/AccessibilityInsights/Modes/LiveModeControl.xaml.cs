@@ -176,7 +176,7 @@ namespace AccessibilityInsights.Modes
 
                     this.ctrlHierarchy.IsEnabled = false;
                     ctrlHierarchy.Visibility = Visibility.Visible;
-                    tbInspect.Visibility = Visibility.Collapsed;
+                    spInstructions.Visibility = Visibility.Collapsed;
                     await Task.Run(() =>
                     {
                         CaptureAction.SetLiveModeDataContext(ecId, Configuration.TreeViewMode);
@@ -279,7 +279,9 @@ namespace AccessibilityInsights.Modes
         {
             AdjustMainWindowSize();
             this.Visibility = Visibility.Visible;
-            this.runHotkey.Text = Configuration.HotKeyForSnap;
+            this.runHkTest.Text = Configuration.HotKeyForSnap;
+            this.runHkActivate.Text = Configuration.HotKeyForActivatingMainWindow;
+            this.runHkPause.Text = Configuration.HotKeyForPause;
             ClearSelectedItem();
             Dispatcher.Invoke(() =>
             {
@@ -296,7 +298,7 @@ namespace AccessibilityInsights.Modes
         public void Clear()
         {
             ctrlHierarchy.Visibility = Visibility.Collapsed;
-            tbInspect.Visibility = Visibility.Visible;
+            spInstructions.Visibility = Visibility.Visible;
 
             this.ElementContext = null;
             this.ctrlHierarchy.Clear();
@@ -424,7 +426,7 @@ namespace AccessibilityInsights.Modes
             } 
             else
             {
-                this.tbInspect.Focus();
+                this.tbInstructions.Focus();
             }
         }
 

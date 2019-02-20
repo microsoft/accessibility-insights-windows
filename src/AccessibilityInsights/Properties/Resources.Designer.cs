@@ -512,15 +512,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To run automated checks, click on the beaker icon of the highlighted element or use the keyboard shortcut and press .
-        /// </summary>
-        public static string clickOnTheBeaker {
-            get {
-                return ResourceManager.GetString("clickOnTheBeaker", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Color Contrast.
         /// </summary>
         public static string colorContrast {
@@ -755,6 +746,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to . To bring back focus to Accessibility Insights for Windows, press.
+        /// </summary>
+        public static string LiveModeControl_BringBackFocus {
+            get {
+                return ResourceManager.GetString("LiveModeControl_BringBackFocus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available properties.
         /// </summary>
         public static string LiveModeControl_CopyToClipboard_Available_properties {
@@ -769,6 +769,51 @@ namespace AccessibilityInsights.Properties {
         public static string LiveModeControl_CopyToClipboard_Glimpse_0 {
             get {
                 return ResourceManager.GetString("LiveModeControl_CopyToClipboard_Glimpse_0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . You can also focus on the element, then press.
+        /// </summary>
+        public static string LiveModeControl_FocusOnElement {
+            get {
+                return ResourceManager.GetString("LiveModeControl_FocusOnElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To verify an element has the expected UIA properties, hover over the element within the target application or focus on the element. To pause and resume the live UIA tree, select the Pause icon.
+        /// </summary>
+        public static string LiveModeControl_HoverOverElement {
+            get {
+                return ResourceManager.GetString("LiveModeControl_HoverOverElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to and Resume icon.
+        /// </summary>
+        public static string LiveModeControl_ResumeIcon {
+            get {
+                return ResourceManager.GetString("LiveModeControl_ResumeIcon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To run automated checks, hover over the element within the target application and select the Test icon.
+        /// </summary>
+        public static string LiveModeControl_RunAutomatedChecks {
+            get {
+                return ResourceManager.GetString("LiveModeControl_RunAutomatedChecks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . You can also press.
+        /// </summary>
+        public static string LiveModeControl_YouCanPress {
+            get {
+                return ResourceManager.GetString("LiveModeControl_YouCanPress", resourceCulture);
             }
         }
         
@@ -935,15 +980,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please use the mouse to hover over or use the keyboard to select an element that you want to inspect..
-        /// </summary>
-        public static string PleaseUseMouseToHover {
-            get {
-                return ResourceManager.GetString("PleaseUseMouseToHover", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There was an error loading the URL.\nURL:.
         /// </summary>
         public static string ReleaseNotes_ClickLoadErrorMessage {
@@ -1050,15 +1086,6 @@ namespace AccessibilityInsights.Properties {
         public static string SetElementInspectTestDetail {
             get {
                 return ResourceManager.GetString("SetElementInspectTestDetail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Shift + F8.
-        /// </summary>
-        public static string ShiftF8 {
-            get {
-                return ResourceManager.GetString("ShiftF8", resourceCulture);
             }
         }
         

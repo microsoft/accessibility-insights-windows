@@ -9,7 +9,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
-             mc:Ignorable="d"
+                           xmlns:controls1="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+                           mc:Ignorable="d"
              AutomationProperties.Name="{x:Static properties:Resources.LiveModeControlAutomationPropertiesName}" Height="600" Width="600">
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
@@ -38,7 +39,26 @@
             <controls:HierarchyControl x:Name="ctrlHierarchy"
                                         Grid.Row="1" Visibility="Collapsed"
                                         VerticalAlignment="Stretch"/>
-            <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Center" x:Name="tbInspect" Grid.Row="1" Padding="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"><Run Text="{x:Static properties:Resources.PleaseUseMouseToHover}"/><LineBreak/><Run/><LineBreak/><Run Text="{x:Static properties:Resources.clickOnTheBeaker}"/><Run Name="runHotkey" Text="{x:Static properties:Resources.ShiftF8}"/><Run Text="."/></TextBlock>
+            <StackPanel Name="spInstructions" Grid.Row="1" KeyboardNavigation.IsTabStop="True">
+                <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Padding="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_HoverOverElement}"/>
+                    <controls1:FabricIconControl GlyphName="Pause" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_ResumeIcon}"/>
+                    <controls1:FabricIconControl GlyphName="Play" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_YouCanPress}"/>
+                    <Run Name="runHkPause"/>
+                    <Run Text="."/>
+                </TextBlock>
+                <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Padding="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_RunAutomatedChecks}"/>
+                    <controls1:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
+                    <Run Name="runHkTest"/>
+                    <Run Text="{x:Static properties:Resources.LiveModeControl_BringBackFocus}"/>
+                    <Run Name="runHkActivate"/>
+                    <Run Text="."/>
+                </TextBlock>
+            </StackPanel>
             <controls:DisplayCountControl Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ccDisplayCount" Visibility="Collapsed"/>
             <GridSplitter x:Name="gsMid"
                             FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
