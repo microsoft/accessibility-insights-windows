@@ -746,15 +746,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to . To bring back focus to Accessibility Insights for Windows, press.
-        /// </summary>
-        public static string LiveModeControl_BringBackFocus {
-            get {
-                return ResourceManager.GetString("LiveModeControl_BringBackFocus", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Available properties.
         /// </summary>
         public static string LiveModeControl_CopyToClipboard_Available_properties {
@@ -782,7 +773,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To verify an element has the expected UIA properties, hover over the element within the target application or focus on the element. To pause and resume the live UIA tree, select the Pause icon.
+        ///   Looks up a localized string similar to To begin inspecting a UIA element, hover over the element within the target application or set keyboard focus on the element. To inspect its properties, bring focus back to Accessibility Insights for Windows by pressing.
         /// </summary>
         public static string LiveModeControl_HoverOverElement {
             get {
@@ -791,11 +782,20 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to and Resume icon.
+        ///   Looks up a localized string similar to Learn more about automated checks.
         /// </summary>
-        public static string LiveModeControl_ResumeIcon {
+        public static string LiveModeControl_LearnMoreAutomated {
             get {
-                return ResourceManager.GetString("LiveModeControl_ResumeIcon", resourceCulture);
+                return ResourceManager.GetString("LiveModeControl_LearnMoreAutomated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about Inspect.
+        /// </summary>
+        public static string LiveModeControl_LearnMoreInspect {
+            get {
+                return ResourceManager.GetString("LiveModeControl_LearnMoreInspect", resourceCulture);
             }
         }
         
@@ -805,15 +805,6 @@ namespace AccessibilityInsights.Properties {
         public static string LiveModeControl_RunAutomatedChecks {
             get {
                 return ResourceManager.GetString("LiveModeControl_RunAutomatedChecks", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to . You can also press.
-        /// </summary>
-        public static string LiveModeControl_YouCanPress {
-            get {
-                return ResourceManager.GetString("LiveModeControl_YouCanPress", resourceCulture);
             }
         }
         

@@ -17,6 +17,8 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Input;
 using System.Globalization;
+using System.Diagnostics;
+using AccessibilityInsights.SharedUx.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -281,7 +283,6 @@ namespace AccessibilityInsights.Modes
             this.Visibility = Visibility.Visible;
             this.runHkTest.Text = Configuration.HotKeyForSnap;
             this.runHkActivate.Text = Configuration.HotKeyForActivatingMainWindow;
-            this.runHkPause.Text = Configuration.HotKeyForPause;
             ClearSelectedItem();
             Dispatcher.Invoke(() =>
             {
@@ -478,6 +479,18 @@ namespace AccessibilityInsights.Modes
             {
                 columnSnap.ResizeColumn(increment);
                 e.Handled = true;
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+            catch
+            {
+                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }
     }
