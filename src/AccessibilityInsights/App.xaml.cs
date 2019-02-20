@@ -28,7 +28,8 @@ namespace AccessibilityInsights
         {
             get
             {
-                // Value stored in high order word
+                // Value stored in high order word. 
+                // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
                 int renderingTier = (RenderCapability.Tier >> 16);
                 return renderingTier == 0;
             }
@@ -101,6 +102,7 @@ namespace AccessibilityInsights
             Resources.MergedDictionaries.Add(this.fontResourceDictionary);
         }
 
+        // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
         protected override void OnStartup(StartupEventArgs e)
         {
             if (DisableHardwareRendering) {
