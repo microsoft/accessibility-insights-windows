@@ -925,6 +925,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use the mouse to hover over an element and see the automated contrast ratio results along  with the certainty. Autodetected colors selected will appear below along with the ratio..
+        /// </summary>
+        public static string ColorContrast_HowToTest {
+            get {
+                return ResourceManager.GetString("ColorContrast_HowToTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Large.
         /// </summary>
         public static string ColorContrast_Large {
@@ -3134,7 +3143,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Large text (18pt or 14pt bold) with a contrast of 3.0 or greater .
+        ///   Looks up a localized string similar to  •  Large text (18pt or 14pt bold) with a contrast of 3.0 or greater .
         /// </summary>
         public static string RunTextCCA30 {
             get {
@@ -3143,7 +3152,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Any text with a contrast below 3.0 .
+        ///   Looks up a localized string similar to  •  Any text with a contrast below 3.0 .
         /// </summary>
         public static string RunTextCCA30Below {
             get {
@@ -3152,7 +3161,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to text with a contrast of 4.5 or greater .
+        ///   Looks up a localized string similar to  •  Text with a contrast of 4.5 or greater .
         /// </summary>
         public static string RunTextCCA45 {
             get {
@@ -4095,7 +4104,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the eyedropper to pick two colors to test the contrast ratio results:.
+        ///   Looks up a localized string similar to Or use the eyedropper to pick two colors to test the contrast ratio results:.
         /// </summary>
         public static string TextBlockTextCCRatioResult {
             get {
