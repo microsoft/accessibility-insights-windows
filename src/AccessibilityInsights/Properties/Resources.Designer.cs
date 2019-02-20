@@ -1118,7 +1118,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Continue.
+        ///   Looks up a localized string similar to Get Started.
         /// </summary>
         public static string StartUpModeControl_btnExit {
             get {

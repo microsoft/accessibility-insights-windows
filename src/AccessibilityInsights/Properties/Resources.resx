@@ -585,7 +585,7 @@ Please ensure that you are opening an valid test file using the most recent rele
     <value>Settings</value>
   </data>
   <data name="StartUpModeControl_btnExit" xml:space="preserve">
-    <value>Continue</value>
+    <value>Get Started</value>
   </data>
   <data name="RunTextHelpCommunity3" xml:space="preserve">
     <value>develop inclusive software.
