@@ -4,8 +4,8 @@ using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.QualityTools.Testing.Fakes;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 
@@ -108,7 +108,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
             {
                 ShimLogger.IsEnabledGet = () => false;
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Automation_Invoke_Snapshot,
+                // TelemetryAction used here is arbitrary
+                Logger.PublishTelemetryEvent(TelemetryAction.Bug_Cancel,
                     TelemetryProperty.By, "abc");
             }
         }
@@ -119,6 +120,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
+                // TelemetryAction used here is arbitrary
                 const TelemetryAction action = TelemetryAction.ColorContrast_Click_Eyedropper;
                 const TelemetryProperty property = TelemetryProperty.Comment;
                 const string value = "Friday";
@@ -151,7 +153,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
             {
                 ShimLogger.IsEnabledGet = () => false;
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Automation_Invoke_Snapshot, null);
+                // TelemetryAction used here is arbitrary
+                Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, null);
             }
         }
 
@@ -161,6 +164,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
+                // TelemetryAction used here is arbitrary
                 const TelemetryAction action = TelemetryAction.ColorContrast_Click_Eyedropper;
                 const TelemetryProperty property = TelemetryProperty.Error;
                 const string value = "Saturday";
@@ -209,8 +213,6 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
             using (ShimsContext.Create())
             {
                 ShimLogger.IsEnabledGet = () => false;
-
-                Logger.AddOrUpdateContextProperty(TelemetryProperty.AutomationParametersSpecified, null);
             }
         }
 
@@ -220,7 +222,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                const TelemetryProperty expectedProperty = TelemetryProperty.AutomationUsedConfigFile;
+                const TelemetryProperty expectedProperty = TelemetryProperty.Comment;
                 const string expectedValue = "carrot";
 
                 string actualProperty = null;

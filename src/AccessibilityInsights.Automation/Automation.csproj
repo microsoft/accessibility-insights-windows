@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
-    <Compile Include="AutomationLogger.cs" />
     <Compile Include="CustomAssemblyResolver.cs" />
     <Compile Include="AutomationSession.cs" />
     <Compile Include="PowerShell\AppDomainAdjuster.cs" />
