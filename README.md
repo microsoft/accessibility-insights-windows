@@ -31,7 +31,7 @@ You can install the application from TBA.
 - Use the `src/AccessibilityInsights.sln` file to open the solution.
 
 ### 3. Build and run unit tests
-
+Note: The MSI project requires WIX. Download and install the Wix toolset from http://wixtoolset.org/. 
 ## More Information
   Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
