@@ -54,34 +54,34 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Actions.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Actions.fakes">
       <SubType>Designer</SubType>
     </Fakes>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Automation.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Automation.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Core.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Core.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Desktop.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Desktop.fakes">
       <SubType>Designer</SubType>
     </Fakes>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Extensions.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Extensions.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Extensions.AzureDevOps.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Extensions.AzureDevOps.fakes">
       <SubType>Designer</SubType>
     </Fakes>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.RuleSelection.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.RuleSelection.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="mscorlib.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="mscorlib.fakes" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
@@ -118,17 +118,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="Sarif.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Sarif.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Include="AccessibilityInsights.Extensions.Telemetry.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Extensions.Telemetry.fakes">
       <SubType>Designer</SubType>
     </Fakes>
     <None Include="app.config" />
-    <Fakes Include="AccessibilityInsights.SharedUx.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.SharedUx.fakes">
       <SubType>Designer</SubType>
     </Fakes>
-    <Fakes Include="System.Drawing.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="System.Drawing.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
