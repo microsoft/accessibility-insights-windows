@@ -925,7 +925,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the mouse to hover over an element and see the automated contrast ratio results along  with the certainty. Autodetected colors selected will appear below along with the ratio..
+        ///   Looks up a localized string similar to Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio..
         /// </summary>
         public static string ColorContrast_HowToTest {
             get {

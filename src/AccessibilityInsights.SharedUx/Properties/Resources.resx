@@ -532,7 +532,7 @@ Accessibility Insights Support Team
     <value>Instructions</value>
   </data>
   <data name="ColorContrast_HowToTest" xml:space="preserve">
-    <value>Use the mouse to hover over an element and see the automated contrast ratio results along  with the certainty. Autodetected colors selected will appear below along with the ratio.</value>
+    <value>Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio.</value>
   </data>
   <data name="TextBlockTextCCRatioResult" xml:space="preserve">
     <value>Or use the eyedropper to pick two colors to test the contrast ratio results:</value>
