@@ -45,10 +45,6 @@
     <sys:Double x:Key="ConstXLTextSize">17</sys:Double>
     <sys:Double x:Key="ConstXXLTextSize">21</sys:Double>
     <sys:Double x:Key="ConstXXXLTextSize">24</sys:Double>
-    <Style TargetType="{x:Type TextBlock}" x:Key="VarBulletedTextBlock" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Margin" Value="8,0,0,0" />
-        <Setter Property="TextWrapping" Value="Wrap" />
-    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnStandard">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>

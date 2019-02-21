@@ -531,20 +531,23 @@ Accessibility Insights Support Team
   <data name="TextBlockAutomationPropertiesNameInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
+  <data name="ColorContrast_HowToTest" xml:space="preserve">
+    <value>Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio.</value>
+  </data>
   <data name="TextBlockTextCCRatioResult" xml:space="preserve">
-    <value>Use the eyedropper to pick two colors to test the contrast ratio results:</value>
+    <value>Or use the eyedropper to pick two colors to test the contrast ratio results:</value>
   </data>
   <data name="RunTextCCA45" xml:space="preserve">
-    <value>text with a contrast of 4.5 or greater </value>
+    <value> •  Text with a contrast of 4.5 or greater </value>
   </data>
   <data name="RunTextPasses" xml:space="preserve">
     <value>passes</value>
   </data>
   <data name="RunTextCCA30" xml:space="preserve">
-    <value>Large text (18pt or 14pt bold) with a contrast of 3.0 or greater </value>
+    <value> •  Large text (18pt or 14pt bold) with a contrast of 3.0 or greater </value>
   </data>
   <data name="RunTextCCA30Below" xml:space="preserve">
-    <value>Any text with a contrast below 3.0 </value>
+    <value> •  Any text with a contrast below 3.0 </value>
   </data>
   <data name="RunTextFails" xml:space="preserve">
     <value>fails</value>
