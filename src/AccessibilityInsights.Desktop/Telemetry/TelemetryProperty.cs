@@ -7,7 +7,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
     /// </summary>
     public enum TelemetryProperty
     {
-        TargetApp,
         Version, 
         ModeName, 
         ModeSessionId,
@@ -22,7 +21,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
         MSIVersion,
         By,
         InteractionAllowed,
-        Url,
         Comment,
         TextPatternFrom,
         TextRangeType,

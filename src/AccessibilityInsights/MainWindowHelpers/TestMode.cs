@@ -63,7 +63,7 @@ namespace AccessibilityInsights
 
                 var tp = GetDataAction.GetProcessAndUIFrameworkOfElementContext(ecId.Value);
 
-                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item1, tp.Item2);
+                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item2);
 
                 this.ctrlCurMode.HideControl();
                 this.ctrlCurMode = this.ctrlSnapMode;
@@ -96,7 +96,7 @@ namespace AccessibilityInsights
             this.CurrentView = TestView.ElementHowToFix;
 
             var tp = GetDataAction.GetProcessAndUIFrameworkOfElementContext(ecId.Value);
-            PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item1, tp.Item2);
+            PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item2);
 
             this.ctrlCurMode.HideControl();
             this.ctrlCurMode = this.ctrlSnapMode;
@@ -156,7 +156,7 @@ namespace AccessibilityInsights
 #pragma warning restore CS4014
 
                 var tp = GetDataAction.GetProcessAndUIFrameworkOfElementContext(ec.Value);
-                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item1, tp.Item2);
+                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item2);
             }
             else
             {
@@ -178,7 +178,7 @@ namespace AccessibilityInsights
             if (ec != null)
             {
                 var tp = GetDataAction.GetProcessAndUIFrameworkOfElementContext(ec.Value);
-                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item1, tp.Item2);
+                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString(), tp.Item2);
             }
 
             UpdateTitleString();
