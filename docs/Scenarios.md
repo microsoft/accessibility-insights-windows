@@ -32,7 +32,7 @@ To make sure that a PR doesn't introduce a major regression, please run through 
   - Go to live inspect mode.
   - Load events file using the "File Open" button -- it should match what you just saved.
 - Automation
-  - Make sure that you build the debug version of AccessibilityInsights.CI.
+  - Build the debug configuration of the solution.
   - Run the following commands from a command prompt at the root of your repo:
     - `cd tools\scripts`
     - `powershell -f check-automation.ps1`
