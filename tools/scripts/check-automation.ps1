@@ -20,7 +20,7 @@ $outputPath=Join-Path $rootPath 'AutomationCheck'
 
 if (-Not (Test-Path (Join-Path $rootPath AccessibilityInsights.CI.exe)))
 {
-  Write-Host 'Please build the' $flavor 'version of AccessibilityInsight.CI before running this script'
+  Write-Host 'Please build the' $flavor 'version of AccessibilityInsights.CI before running this script'
   exit 1
 }
 
