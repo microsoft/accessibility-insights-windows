@@ -26,8 +26,9 @@ namespace WildlifeManager
     public class ButtonWithInvokeAndToggleAutomationPeer : ButtonAutomationPeer, IToggleProvider
     {
 
-        public ButtonWithInvokeAndToggleAutomationPeer(Button owner)
-        : base(owner) {  }
+        public ButtonWithInvokeAndToggleAutomationPeer(Button owner) : base(owner)
+        {
+        }
 
         ToggleState IToggleProvider.ToggleState => throw new NotImplementedException();
 
