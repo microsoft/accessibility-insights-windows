@@ -392,7 +392,7 @@
   </data>
   <data name="StartLoadingSnapshotLoadFileException" xml:space="preserve">
     <value>Unable to load the selected file.
-Please ensure that you are opening an valid test file using the most recent release of Accessibility Insights for Windows (https://go.microsoft.com/fwlink/?linkid=2077926)</value>
+Please ensure that you are opening an valid test file using the most recent release of Accessibility Insights for Windows (https://aka.ms/AccessibilityInsights).</value>
   </data>
   <data name="StartUpModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Welcome page</value>
@@ -514,7 +514,6 @@ Please ensure that you are opening an valid test file using the most recent rele
   <data name="LiveModeControl_LearnMoreAutomated" xml:space="preserve">
     <value>Learn more about automated checks</value>
   </data>
-  
   <data name="LiveModeControl_CopyToClipboard_Available_properties" xml:space="preserve">
     <value>Available properties</value>
   </data>
