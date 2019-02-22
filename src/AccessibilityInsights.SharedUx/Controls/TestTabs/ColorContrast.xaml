@@ -49,45 +49,28 @@
                 <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click"/>
             </Grid>
             <TextBlock Grid.Row="2"  Margin="0,12,0,0" Grid.ColumnSpan="2" VerticalAlignment="Center">
-            <Run FontWeight="SemiBold" FontSize="{DynamicResource StandardTextSize}" Text="{x:Static Properties:Resources.RunTextHowToTest}" />
-            <Hyperlink TextDecorations="{x:Null}" ToolTip="{x:Static Properties:Resources.RunTextHowToTest}" AutomationProperties.Name="{x:Static Properties:Resources.RunTextHowToTest}" Click="hlHowToTest_Click">
-                <fabric:FabricIconControl GlyphName="Info" GlyphSize="Small" Margin="0,0,0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
-            </Hyperlink>
+                <Run FontWeight="SemiBold" FontSize="{DynamicResource StandardTextSize}" Text="{x:Static Properties:Resources.RunTextHowToTest}" />
+                <Hyperlink TextDecorations="{x:Null}" ToolTip="{x:Static Properties:Resources.RunTextHowToTest}" AutomationProperties.Name="{x:Static Properties:Resources.RunTextHowToTest}" Click="hlHowToTest_Click">
+                    <fabric:FabricIconControl GlyphName="Info" GlyphSize="Small" Margin="0,0,0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                </Hyperlink>
             </TextBlock>
-            <TextBlock Grid.Row="3" TextWrapping="Wrap" Margin="0 4 0 4" Grid.ColumnSpan="2" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesNameInstructions}">
-                <TextBlock.Resources>
-                    <Style TargetType="Ellipse">
-                        <Setter Property="Height" Value="4"/>
-                        <Setter Property="Width" Value="4"/>
-                        <Setter Property="Margin" Value="4,0,4,0"/>
-                        <Setter Property="Fill" Value="Black"/>
-                    </Style>
-                </TextBlock.Resources>
-            <TextBlock Margin="0,0,0,8" TextWrapping="Wrap" Style="{DynamicResource VarStandardTextBlock}"
-                       Text="{x:Static Properties:Resources.TextBlockTextCCRatioResult}"></TextBlock>
-            <LineBreak/>
-            <BulletDecorator>
-                <BulletDecorator.Bullet><Ellipse/></BulletDecorator.Bullet>
-                <TextBlock Style="{DynamicResource VarBulletedTextBlock}">
-                   <Run Text="{x:Static Properties:Resources.RunTextCCA45}"/><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}"/></Bold>.
-                </TextBlock>
-            </BulletDecorator>
-            <LineBreak/>
-            <BulletDecorator>
-                <BulletDecorator.Bullet><Ellipse/></BulletDecorator.Bullet>
-                <TextBlock Style="{DynamicResource VarBulletedTextBlock}">
-                    <Run Text="{x:Static Properties:Resources.RunTextCCA30}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}" /></Bold>.
-                </TextBlock>
-            </BulletDecorator>
-            <LineBreak/>
-            <BulletDecorator>
-                <BulletDecorator.Bullet><Ellipse/></BulletDecorator.Bullet>
-                <TextBlock Style="{DynamicResource VarBulletedTextBlock}">
-                    <Run Text="{x:Static Properties:Resources.RunTextCCA30Below}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextFails}" /></Bold>.
-                </TextBlock>
-            </BulletDecorator>
-            <LineBreak/>
-        </TextBlock>
+            <RichTextBox Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" BorderThickness="0" IsReadOnly="True" IsReadOnlyCaretVisible="True"
+                         Margin="0 4 0 4" Grid.ColumnSpan="2" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesNameInstructions}">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTest}"/>
+                        <LineBreak/>
+                        <LineBreak/>
+                        <Run Text="{x:Static Properties:Resources.TextBlockTextCCRatioResult}"/>
+                        <LineBreak/>
+                        <Run Text="{x:Static Properties:Resources.RunTextCCA45}"/><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}"/></Bold>.
+                        <LineBreak/>
+                        <Run Text="{x:Static Properties:Resources.RunTextCCA30}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}" /></Bold>.
+                        <LineBreak/>
+                        <Run Text="{x:Static Properties:Resources.RunTextCCA30Below}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextFails}" /></Bold>.
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
             <StackPanel Grid.Row="4" Grid.Column="0" >
                 <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Foreground}" FontSize="14" Margin="0 4"></TextBlock>
                 <controls:ColorChooser x:Name="firstChooser"

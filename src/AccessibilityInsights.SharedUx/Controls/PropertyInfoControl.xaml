@@ -64,9 +64,9 @@
                         </ContextMenu>
                     </DataGrid.ContextMenu>
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderName}" Width="Auto"/>
+                        <DataGridTextColumn Binding="{Binding Path=Name}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" Width="Auto"/>
                         <DataGridTextColumn Binding="{Binding Path=Value, TargetNullValue='{x:Static Properties:Resources.PropertyDoesNotExist}'}" 
-                                            ElementStyle="{StaticResource DataGridTextCellStyle}" Header="Value" Width="Auto">
+                                            ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" Width="Auto">
                             <DataGridTextColumn.CellStyle>
                                 <Style TargetType="DataGridCell" BasedOn="{StaticResource dgcStyle}">
                                     <Style.Triggers>

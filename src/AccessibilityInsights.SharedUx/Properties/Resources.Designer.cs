@@ -807,6 +807,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Learn more about checking color contrast..
+        /// </summary>
+        public static string CCALink {
+            get {
+                return ResourceManager.GetString("CCALink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore case.
         /// </summary>
         public static string chbIgnoreCaseAutomationPropertiesName {
@@ -921,6 +930,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_hlHowToTest_Click {
             get {
                 return ResourceManager.GetString("ColorContrast_hlHowToTest_Click", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio..
+        /// </summary>
+        public static string ColorContrast_HowToTest {
+            get {
+                return ResourceManager.GetString("ColorContrast_HowToTest", resourceCulture);
             }
         }
         
@@ -1259,11 +1277,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Property.
         /// </summary>
-        public static string DataGridTextColumnHeaderName {
+        public static string DataGridTextColumnHeaderProperty {
             get {
-                return ResourceManager.GetString("DataGridTextColumnHeaderName", resourceCulture);
+                return ResourceManager.GetString("DataGridTextColumnHeaderProperty", resourceCulture);
             }
         }
         
@@ -1549,6 +1567,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Learn more about FastPass..
+        /// </summary>
+        public static string FastPassLink {
+            get {
+                return ResourceManager.GetString("FastPassLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Feedback has been successfully sent. Thanks for sending us feedback..
         /// </summary>
         public static string FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent {
@@ -1572,6 +1599,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string FeedbackControl_questions {
             get {
                 return ResourceManager.GetString("FeedbackControl_questions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about bug filing..
+        /// </summary>
+        public static string FileBugLink {
+            get {
+                return ResourceManager.GetString("FileBugLink", resourceCulture);
             }
         }
         
@@ -1922,6 +1958,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ImageAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ImageAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about Inspect..
+        /// </summary>
+        public static string InspectModeLink {
+            get {
+                return ResourceManager.GetString("InspectModeLink", resourceCulture);
             }
         }
         
@@ -3125,16 +3170,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to run automated checks to help you find accessibility issues..
-        /// </summary>
-        public static string RunTextAutomatedChecksHelp {
-            get {
-                return ResourceManager.GetString("RunTextAutomatedChecksHelp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Large text (18pt or 14pt bold) with a contrast of 3.0 or greater .
+        ///   Looks up a localized string similar to  •  Large text (18pt or 14pt bold) with a contrast of 3.0 or greater .
         /// </summary>
         public static string RunTextCCA30 {
             get {
@@ -3143,7 +3179,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Any text with a contrast below 3.0 .
+        ///   Looks up a localized string similar to  •  Any text with a contrast below 3.0 .
         /// </summary>
         public static string RunTextCCA30Below {
             get {
@@ -3152,7 +3188,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to text with a contrast of 4.5 or greater .
+        ///   Looks up a localized string similar to  •  Text with a contrast of 4.5 or greater .
         /// </summary>
         public static string RunTextCCA45 {
             get {
@@ -3161,7 +3197,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color contrast test:.
+        ///   Looks up a localized string similar to Check color contrast:.
         /// </summary>
         public static string RunTextColorContrast {
             get {
@@ -3179,15 +3215,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to listen to UI automation events from inspect mode..
-        /// </summary>
-        public static string RunTextEvents {
-            get {
-                return ResourceManager.GetString("RunTextEvents", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to fails.
         /// </summary>
         public static string RunTextFails {
@@ -3197,7 +3224,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FastPass:.
+        ///   Looks up a localized string similar to Quickly find accessibility issues with FastPass:.
         /// </summary>
         public static string RunTextFastPass {
             get {
@@ -3206,7 +3233,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File bugs: .
+        ///   Looks up a localized string similar to File bugs:.
         /// </summary>
         public static string RunTextFileBugs {
             get {
@@ -3431,7 +3458,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  (default): inspect the live UIA tree or run automated checks by clicking on the beaker..
+        ///   Looks up a localized string similar to Inspect the live UIA tree using Inspect mode..
         /// </summary>
         public static string RunTextInspectLiveUIATree {
             get {
@@ -3440,20 +3467,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect mode.
+        ///   Looks up a localized string similar to Verify an element has the expected UIA properties:.
         /// </summary>
         public static string RunTextInspectMode {
             get {
                 return ResourceManager.GetString("RunTextInspectMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  link..
-        /// </summary>
-        public static string RunTextLink {
-            get {
-                return ResourceManager.GetString("RunTextLink", resourceCulture);
             }
         }
         
@@ -3467,7 +3485,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to log bugs in Azure DevOps with a single click using the .
+        ///   Looks up a localized string similar to Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file..
         /// </summary>
         public static string RunTextLogBugsIn {
             get {
@@ -3476,20 +3494,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to manual color contrast test that helps you investigate color contrast ratios to find color contrast issues..
+        ///   Looks up a localized string similar to Investigate color contrast using Color Contrast..
         /// </summary>
         public static string RunTextManualColorTest {
             get {
                 return ResourceManager.GetString("RunTextManualColorTest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to +New Bug.
-        /// </summary>
-        public static string RunTextNewBug {
-            get {
-                return ResourceManager.GetString("RunTextNewBug", resourceCulture);
             }
         }
         
@@ -3544,15 +3553,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextTabStops {
             get {
                 return ResourceManager.GetString("RunTextTabStops", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test mode: .
-        /// </summary>
-        public static string RunTextTestMode {
-            get {
-                return ResourceManager.GetString("RunTextTestMode", resourceCulture);
             }
         }
         
@@ -3958,7 +3958,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to in &lt; 5 minutes, run 2 tests from Test mode to find about 25% of accessibility issues before check-in..
+        ///   Looks up a localized string similar to FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes..
         /// </summary>
         public static string tbFastPassInfoText {
             get {
@@ -4095,7 +4095,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use the eyedropper to pick two colors to test the contrast ratio results:.
+        ///   Looks up a localized string similar to Or use the eyedropper to pick two colors to test the contrast ratio results:.
         /// </summary>
         public static string TextBlockTextCCRatioResult {
             get {

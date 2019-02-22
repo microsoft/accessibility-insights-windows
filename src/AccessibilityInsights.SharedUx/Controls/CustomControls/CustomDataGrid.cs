@@ -24,10 +24,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void CustomDataGrid_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (!(e.Key == Key.Tab)) return;
+            var modKey = e.KeyboardDevice.Modifiers;
 
-            var dir = e.KeyboardDevice.Modifiers == 
-                ModifierKeys.Shift ? FocusNavigationDirection.Previous : FocusNavigationDirection.Next;
+            if (!(e.Key == Key.Tab) || !(modKey == ModifierKeys.None || modKey == ModifierKeys.Shift)) return;
+
+            var dir = modKey == ModifierKeys.Shift ? FocusNavigationDirection.Previous : FocusNavigationDirection.Next;
 
             // keep trying to move focus until focused element is not a descendant of the datagrid
             while (Keyboard.FocusedElement is Visual v && v.IsDescendantOf(this) && Keyboard.FocusedElement is FrameworkElement elem)

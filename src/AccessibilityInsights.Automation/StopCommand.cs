@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Telemetry;
 
 namespace AccessibilityInsights.Automation
 {
@@ -18,7 +17,6 @@ namespace AccessibilityInsights.Automation
         {
             return ExecutionWrapper.ExecuteCommand(() =>
             {
-                AutomationLogger.LogAction(TelemetryAction.Automation_Stop_Session);
                 AutomationSession.ClearInstance();
                 return new StopCommandResult
                 {

@@ -17,6 +17,8 @@ using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Input;
 using System.Globalization;
+using System.Diagnostics;
+using AccessibilityInsights.SharedUx.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -176,7 +178,7 @@ namespace AccessibilityInsights.Modes
 
                     this.ctrlHierarchy.IsEnabled = false;
                     ctrlHierarchy.Visibility = Visibility.Visible;
-                    tbInspect.Visibility = Visibility.Collapsed;
+                    spInstructions.Visibility = Visibility.Collapsed;
                     await Task.Run(() =>
                     {
                         CaptureAction.SetLiveModeDataContext(ecId, Configuration.TreeViewMode);
@@ -279,7 +281,8 @@ namespace AccessibilityInsights.Modes
         {
             AdjustMainWindowSize();
             this.Visibility = Visibility.Visible;
-            this.runHotkey.Text = Configuration.HotKeyForSnap;
+            this.runHkTest.Text = Configuration.HotKeyForSnap;
+            this.runHkActivate.Text = Configuration.HotKeyForActivatingMainWindow;
             ClearSelectedItem();
             Dispatcher.Invoke(() =>
             {
@@ -296,7 +299,7 @@ namespace AccessibilityInsights.Modes
         public void Clear()
         {
             ctrlHierarchy.Visibility = Visibility.Collapsed;
-            tbInspect.Visibility = Visibility.Visible;
+            spInstructions.Visibility = Visibility.Visible;
 
             this.ElementContext = null;
             this.ctrlHierarchy.Clear();
@@ -424,7 +427,7 @@ namespace AccessibilityInsights.Modes
             } 
             else
             {
-                this.tbInspect.Focus();
+                this.tbInstructions.Focus();
             }
         }
 
@@ -476,6 +479,18 @@ namespace AccessibilityInsights.Modes
             {
                 columnSnap.ResizeColumn(increment);
                 e.Handled = true;
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+            catch
+            {
+                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }
     }

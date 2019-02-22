@@ -4,6 +4,8 @@ using AccessibilityInsights.SharedUx.Enums;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights
@@ -20,6 +22,17 @@ namespace AccessibilityInsights
         {
             Light,
             HighContrast
+        }
+
+        public static bool DisableHardwareRendering
+        {
+            get
+            {
+                // Value stored in high order word. 
+                // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
+                int renderingTier = (RenderCapability.Tier >> 16);
+                return renderingTier == 0;
+            }
         }
 
         /// <summary>
@@ -87,6 +100,14 @@ namespace AccessibilityInsights
             Resources.MergedDictionaries.Remove(this.fontResourceDictionary);
             this.fontResourceDictionary = new ResourceDictionary() { Source = Fonts[fontSize] };
             Resources.MergedDictionaries.Add(this.fontResourceDictionary);
+        }
+
+        // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            if (DisableHardwareRendering) {
+                RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
+            }
         }
     }
 }
