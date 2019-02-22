@@ -50,16 +50,14 @@ namespace AccessibilityInsights.SharedUx.FileBug
                     if (bugInfo.RuleForTelemetry != null)
                     {
                         Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.RuleId, bugInfo.RuleForTelemetry },
-                        { TelemetryProperty.UIFramework, bugInfo.UIFramework ?? string.Empty },
-                        { TelemetryProperty.Url, url.GetLeftPart(UriPartial.Path) },
-                    });
+                        {
+                            { TelemetryProperty.RuleId, bugInfo.RuleForTelemetry },
+                            { TelemetryProperty.UIFramework, bugInfo.UIFramework ?? string.Empty },
+                        });
                     }
                     else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
                     {
-                        Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save,
-                            TelemetryProperty.Url, url.GetLeftPart(UriPartial.Path));
+                        Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save);
                     }
                 }
                 else

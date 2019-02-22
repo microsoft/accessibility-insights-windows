@@ -63,7 +63,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 (int? bugId, string newBugId) = FileBugAction.FileNewBug(bugInfo,
                     connInfo, false, 0, (_) => { } );
 
-                Assert.AreEqual(new Tuple<TelemetryAction, TelemetryProperty, string>(TelemetryAction.Bug_Save, TelemetryProperty.Url, FAKE_SERVER_URL.AbsoluteUri), telemetryLog[0]);
+                Assert.AreEqual(0, telemetryLog.Count);
             }
         }
 
@@ -94,7 +94,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
 
                 Assert.AreEqual(RuleId.BoundingRectangleContainedInParent.ToString(), telemetryLog[0].Item2[TelemetryProperty.RuleId]);
                 Assert.AreEqual("", telemetryLog[0].Item2[TelemetryProperty.UIFramework]);
-                Assert.AreEqual(FAKE_SERVER_URL, telemetryLog[0].Item2[TelemetryProperty.Url]);
+                Assert.AreEqual(2, telemetryLog[0].Item2.Count);
             }
         }
 
