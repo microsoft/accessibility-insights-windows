@@ -5,6 +5,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Automation.Provider;
 using System.Windows.Automation;
+using System.Windows.Media;
 
 namespace WildlifeManager
 {
@@ -25,8 +26,7 @@ namespace WildlifeManager
     public class ButtonWithInvokeAndToggleAutomationPeer : ButtonAutomationPeer, IToggleProvider
     {
 
-        public ButtonWithInvokeAndToggleAutomationPeer(Button owner)
-        : base(owner)
+        public ButtonWithInvokeAndToggleAutomationPeer(Button owner) : base(owner)
         {
         }
 

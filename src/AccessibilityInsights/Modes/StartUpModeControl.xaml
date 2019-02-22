@@ -152,10 +152,5 @@
             <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True"
                     Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlue}"/>
         </Grid>
-        <Grid Grid.ColumnSpan="8" WindowChrome.IsHitTestVisibleInChrome="True" MouseDown="Grid_MouseDown" Background="Transparent">
-            <Button x:Name="btnClose" Margin="0,12,20,0" VerticalAlignment="Top" HorizontalAlignment="Right" WindowChrome.IsHitTestVisibleInChrome="True" Style="{StaticResource BtnStandard}" Click="btnExit_Click" AutomationProperties.Name="{x:Static properties:Resources.btnCloseScreenAutomationPropertiesName}" Width="18" Height="18">
-                <fabric:FabricIconControl GlyphName="Clear" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="16"/>
-            </Button>
-        </Grid>
     </Grid>
 </UserControl>

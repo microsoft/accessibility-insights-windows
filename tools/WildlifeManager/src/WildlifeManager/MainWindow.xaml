@@ -27,13 +27,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Button HorizontalAlignment="Left" Width="77" Margin="108.667,28,0,26.667" Grid.Row="7" Grid.Column="2">
-            <Glyphs VerticalAlignment="Center"
-                        UnicodeString="&#x263A;"
-                        Fill="#004000"
-                        FontRenderingEmSize="32"
-                        FontUri="C:\Windows\Fonts\Arial.ttf" RenderTransformOrigin="2.442,0.578" />
-        </Button>
         <ListView Margin="10,10,66,56" Grid.Row="4" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListViewItem Content="Beetle" Width="200" HorizontalAlignment="Left"/>
             <ListViewItem Content="Owl" Width="200" HorizontalAlignment="Left"/>
@@ -46,7 +39,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Margin="10,11,66,18" Grid.Row="5" Grid.Column="2" />
-        <UserControl HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" Width="349" Background="Cyan" Content="Add New Animal" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" Margin="0,33,0,10" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+        <UserControl HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" Width="349" Background="gray" Foreground="navy" Content="Add New Animal" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" Margin="0,33,0,10" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
         <Menu Margin="81,10,83,99" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
             <MenuItem Header="Flags">
                 <MenuItem Header="_Endangered" IsChecked="True" />
@@ -57,8 +50,47 @@
         <TextBlock TextWrapping="Wrap" Margin="10,26,123,10" Text="Current Animals:" Grid.Row="1" Grid.Column="2"/>
         <TextBlock VerticalAlignment="Center" Margin="52,11,0,68" Height="24" Text="Weight:" Grid.Row="5" Grid.Column="1"/>
         <TextBlock TextWrapping="Wrap" Margin="50,10,0,110" Text="Species:" RenderTransformOrigin="0.379,0.838" Grid.Row="4" Grid.Column="1"/>
-        <local:InvokeToggleButton Width="71" AutomationProperties.Name="Ok" Foreground="#0070FF" Background="LightBlue" HorizontalAlignment="Left" Margin="26,29,0,26.667" Grid.Row="7" Grid.Column="1" Content="Close" Click="InvokeToggleButton_Click" />
-        <local:InvokeToggleButton Width="71" Foreground="#0070FF" AutomationProperties.Name="Ok" Background="LightBlue" HorizontalAlignment="Left" Margin="78,27,0,28.667" Grid.Row="7" Content="Ok" />
+        <local:InvokeToggleButton Width="71" Foreground="#0070FF" AutomationProperties.Name="Ok" Background="LightBlue" HorizontalAlignment="Left" Margin="78,27,0,28.667" Grid.Row="7" Content="Ok">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="bdr_main" BorderBrush="Black" Background="LightBlue" BorderThickness="1">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bdr_main" Property="Background" Value="LightBlue"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bdr_main" Property="Background" Value="Red"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </local:InvokeToggleButton>
+        <local:InvokeToggleButton Width="71" AutomationProperties.Name="Ok" Foreground="#0070FF" Background="LightBlue" HorizontalAlignment="Left" Margin="26,29,0,26.667" Grid.Row="7" Grid.Column="1" Content="Close" Click="InvokeToggleButton_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="bdr_main" BorderBrush="Black" Background="LightBlue" BorderThickness="1">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="8,6,8,6" ContentSource="Content" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bdr_main" Property="Background" Value="LightBlue"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="bdr_main" Property="Background" Value="Red"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </local:InvokeToggleButton>
+        <Button HorizontalAlignment="Left" Width="77" Margin="108.667,28,0,26.667" Grid.Row="7" Grid.Column="2">
+            <Glyphs VerticalAlignment="Center"
+                        UnicodeString="&#x263A;"
+                        Fill="#004000"
+                        FontRenderingEmSize="32"
+                        FontUri="C:\Windows\Fonts\Arial.ttf" RenderTransformOrigin="2.442,0.578" />
+        </Button>
         <local:CustomControl Width="71" HorizontalAlignment="Left" Margin="38.667,27,0,28.667" Grid.Row="7" Grid.Column="3" Focusable="True" />
     </Grid>
 </Window>
