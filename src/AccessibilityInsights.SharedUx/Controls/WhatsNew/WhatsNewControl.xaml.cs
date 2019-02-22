@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace AccessibilityInsights.SharedUx.Controls.WhatsNew
 {
@@ -74,6 +75,19 @@ namespace AccessibilityInsights.SharedUx.Controls.WhatsNew
             if (control != null)
             {
                 control.Version = e.NewValue as string;
+            }
+        }
+
+        /// <summary>
+        /// Handles hyperlink click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Uri.OriginalString))
+            {
+                Process.Start(e.Uri.ToString());
             }
         }
     }
