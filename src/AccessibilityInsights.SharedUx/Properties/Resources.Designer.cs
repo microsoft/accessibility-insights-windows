@@ -2277,7 +2277,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Activate or minimize the main window.
+        ///   Looks up a localized string similar to Bring Accessibility Insights for Windows to the foreground or minimize it..
         /// </summary>
         public static string lblHkActivateWindowContent {
             get {
@@ -2286,7 +2286,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause or Resume UIA Tree in Live Mode.
+        ///   Looks up a localized string similar to Pause or resume updates to the UIA tree view when focus changes via mouse or keyboard navigation..
         /// </summary>
         public static string lblHkPauseContent {
             get {
@@ -2295,7 +2295,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter or toggle event recording.
+        ///   Looks up a localized string similar to Start or stop event recording for the selected element..
         /// </summary>
         public static string lblHkRecorderContent {
             get {
@@ -2304,7 +2304,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run tests on the selected element.
+        ///   Looks up a localized string similar to Run tests on the selected element..
         /// </summary>
         public static string lblHkToggleContent {
             get {
