@@ -259,19 +259,19 @@
     <value>Shortcuts</value>
   </data>
   <data name="lblHkToggleContent" xml:space="preserve">
-    <value>Run tests on the selected element</value>
+    <value>Run tests on the selected element.</value>
   </data>
   <data name="MultiBindingStringFormat" xml:space="preserve">
     <value>Change {0} hotkey to {1}</value>
   </data>
   <data name="lblHkActivateWindowContent" xml:space="preserve">
-    <value>_Activate or minimize the main window</value>
+    <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
   </data>
   <data name="lblHkRecorderContent" xml:space="preserve">
-    <value>Enter or toggle event recording</value>
+    <value>Start or stop event recording for the selected element.</value>
   </data>
   <data name="lblHkPauseContent" xml:space="preserve">
-    <value>Pause or Resume UIA Tree in Live Mode</value>
+    <value>Pause or resume updates to the UIA tree view when focus changes via mouse or keyboard navigation.</value>
   </data>
   <data name="lblToParentContent" xml:space="preserve">
     <value>Inspect the Parent element in UIAutomation tree.</value>
