@@ -820,12 +820,15 @@ namespace AccessibilityInsights
             {
                 this.DisableElementSelector();
 
-                OpenFileDialog dlg = new OpenFileDialog();
-                dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
-                dlg.Filter = FileFilters.A11yFileFilter;
-                dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
+                var dlg = new System.Windows.Forms.OpenFileDialog
+                {
+                    Title = Properties.Resources.btnLoad_ClickDialogTitle,
+                    Filter = FileFilters.A11yFileFilter,
+                    InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
+                    AutoUpgradeEnabled = !SystemParameters.HighContrast,
+                };
 
-                if (dlg.ShowDialog() == true)
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     if (!TryOpenFile(dlg.FileName))
                     {

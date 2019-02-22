@@ -353,12 +353,16 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void Save()
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = FileFilters.TestFileFilter;
-            dlg.InitialDirectory = Configuration.TestReportPath;
+            var dlg = new System.Windows.Forms.SaveFileDialog
+            {
+                Filter = FileFilters.TestFileFilter,
+                InitialDirectory = Configuration.TestReportPath,
+                AutoUpgradeEnabled = !SystemParameters.HighContrast,
+            };
+
             dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.TestResults);
 
-            if (dlg.ShowDialog() == true)
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
