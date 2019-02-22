@@ -46,7 +46,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <TextBox Margin="10,11,66,18" Grid.Row="5" Grid.Column="2" />
-        <UserControl HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" Width="349" Background="Cyan" Content="Add New Animal" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" Margin="0,33,0,10" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
+        <UserControl HorizontalAlignment="Left" HorizontalContentAlignment="Center" FontWeight="SemiBold" VerticalContentAlignment="Center" Width="349" Background="gray" Foreground="navy" Content="Add New Animal" MouseLeftButtonDown="UserControl_MouseLeftButtonDown" Margin="0,33,0,10" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" />
         <Menu Margin="81,10,83,99" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
             <MenuItem Header="Flags">
                 <MenuItem Header="_Endangered" IsChecked="True" />
