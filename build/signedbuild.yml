@@ -9,6 +9,7 @@ variables:
   SignAppForRelease: 'true'
   TeamName: 'Accessibility Insights Windows'
   system.debug: 'true' #set to true in case our signed build flakes out again
+  FAKES_SUPPORTED: 1
 
 jobs:
 - job: Release
