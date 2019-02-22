@@ -24,6 +24,8 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using System.Windows.Documents;
+using System.Windows.Navigation;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -280,7 +282,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             if (!String.IsNullOrEmpty(e.Uri.OriginalString))
             {
@@ -596,34 +598,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Link click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var label = ((Label)sender);
-            if (label != null && label.Tag != null && !String.IsNullOrEmpty(label.Tag.ToString()))
-            {
-                System.Diagnostics.Process.Start(label.Tag.ToString());
-                e.Handled = true;
-            }
-        }
-
-        /// <summary>
-        /// Link click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Label_KeyDown(object sender, KeyEventArgs e)
-        {
-            if ((e.Key == Key.Enter || e.Key == Key.Space) && !String.IsNullOrEmpty(((Label)sender).Tag.ToString()))
-            {
-                System.Diagnostics.Process.Start(((Label)sender).Tag.ToString());
-            }
-        }
-
-        /// <summary>
         /// Add horizontal scroll bar when width is too narrow
         /// </summary>
         /// <param name="sender"></param>
@@ -880,7 +854,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             var gi = sender as GroupItem;
             var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            var urlLabel = FindChildren<Label>(sp).FirstOrDefault(obj => !string.IsNullOrEmpty(obj.Tag?.ToString()));
+            var urlLink = FindChildren<Label>(sp).FirstOrDefault(obj => obj.Content is Hyperlink).Content as Hyperlink;
             var exp = GetParentElem<Expander>(sp) as Expander;
 
             if (e.Key == Key.Right)
@@ -891,13 +865,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 else
                 {
-                    urlLabel?.Focus();
+                    urlLink?.Focus();
                 }
                 e.Handled = true;
             }
             else if (e.Key == Key.Left)
             {
-                if (Keyboard.FocusedElement is Label)
+                if (Keyboard.FocusedElement is Hyperlink)
                 {
                     gi.Focus();
                 }
@@ -917,8 +891,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
             else if (e.Key == Key.Enter && Keyboard.FocusedElement == sender)
             {
-                if (urlLabel != null)
-                    System.Diagnostics.Process.Start(((Label)urlLabel).Tag.ToString());
+                if (urlLink != null)
+                {
+                    Hyperlink_RequestNavigate(urlLink, new RequestNavigateEventArgs(urlLink.NavigateUri, null));
+                }
             }
             else if (e.Key == Key.Down)
             {
