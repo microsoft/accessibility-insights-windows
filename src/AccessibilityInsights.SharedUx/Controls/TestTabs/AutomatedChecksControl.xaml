@@ -61,9 +61,9 @@
                 </Grid.ColumnDefinitions>
                 <TextBlock Name="tbGlimpse" TextTrimming="CharacterEllipsis" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Style="{StaticResource tbHeaderDark}"/>
                 <Label Name="lblTitle" Grid.Row="2" Grid.Column="0" Content="{x:Static Properties:Resources.lblTitleContent}" VerticalAlignment="Top" Style="{StaticResource lblHeader3}"/>
-                <Button Grid.Column="1"  Grid.Row="1" Margin="8,0" Style="{StaticResource BtnNoHoverColor}" Foreground="#0078D7" HorizontalAlignment="Right" VerticalAlignment="Top" Name="btnTree" Click="btnTree_Click" AutomationProperties.Name="{Binding ElementName=tbViewResults,Path=Text}">
+                <Button Grid.Column="1"  Grid.Row="1" Margin="8,0" Style="{StaticResource BtnNoHoverColor}" Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" HorizontalAlignment="Right" VerticalAlignment="Top" Name="btnTree" Click="btnTree_Click" AutomationProperties.Name="{Binding ElementName=tbViewResults,Path=Text}">
                     <StackPanel Orientation="Horizontal">
-                        <fabric:FabricIconControl GlyphName="DOM" FontSize="14" Foreground="#0078D7" Margin="0,0,4,0"/>
+                        <fabric:FabricIconControl GlyphName="DOM" FontSize="14" Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" Margin="0,0,4,0"/>
                         <TextBlock Name="tbViewResults" Text="{x:Static Properties:Resources.tbViewResultsText}" Style="{StaticResource tbLink}" Focusable="False"/>
                     </StackPanel>
                 </Button>
@@ -91,10 +91,10 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox Grid.Column="0" VerticalAlignment="Center" Name="chbxSelectAll" Click="chbxSelectAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.chbxSelectAllAutomationPropertiesName}" IsEnabled="True"/>
-                                        <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left" Background="{x:Null}" BorderBrush="{x:Null}" Width="8" Height="8" Padding="0" BorderThickness="0" Click="btnExpandAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}" IsHitTestVisible="True">
+                                        <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left" Style="{StaticResource BtnStandard}" Width="8" Height="8" Padding="0" BorderThickness="0" Click="btnExpandAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}" IsHitTestVisible="True">
                                             <Grid>
                                                 <AccessText Text="_c" Opacity="0"/>
-                                                <fabric:FabricIconControl x:Name="fabicnExpandAll" GlyphName="CaretSolidRight" GlyphSize="Custom" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#666666" Margin="0,2,0,-2"/>
+                                                <fabric:FabricIconControl x:Name="fabicnExpandAll" GlyphName="CaretSolidRight" GlyphSize="Custom" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="0,2,0,-2"/>
                                             </Grid>
                                         </Button>
                                     </Grid>
@@ -284,11 +284,14 @@
                                                     <Expander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
-                                                            <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" Tag="{Binding Path=Items[0].URL}" 
-                                                                   VerticalAlignment="Center" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="False" Focusable="True" 
-                                                                   MouseDown="TextBlock_MouseDown" KeyDown="Label_KeyDown"
+                                                            <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" 
+                                                                   VerticalAlignment="Center" FontWeight="SemiBold"
                                                                    AutomationProperties.Name="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsLabelAutomationPropertiesName}'}">
-                                                                <TextBlock Foreground="#106EBE" Text="{Binding Path=Items[0].Source}" Style="{StaticResource tbLink}" Focusable="False"/>
+                                                                <Hyperlink KeyboardNavigation.IsTabStop="False" NavigateUri="{Binding Path=Items[0].URL}"
+                                                                           RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None"
+                                                                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                                                                    <Run Text="{Binding Mode=OneWay,Path=Items[0].Source}"/>
+                                                                </Hyperlink>
                                                             </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
                                                             <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}"  Foreground="#CC0000" GlyphSize="Custom" FontSize="14"/>
