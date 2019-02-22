@@ -288,6 +288,7 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void Clear()
         {
+            AutomationProperties.SetName(this, Properties.Resources.TestModeControlAutomationPropertiesName);
             this.ctrlAutomatedChecks.ClearUI();
             this.ctrlTabStop.ClearUI();
         }
