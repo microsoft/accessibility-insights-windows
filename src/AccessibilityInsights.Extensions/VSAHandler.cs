@@ -9,9 +9,18 @@ namespace AccessibilityInsights.Extensions
     {
         private readonly string appName = "AccessibilityInsights.VersionSwitcher.exe";
 
-        public static void RemoveVSAFrom(string vsaPath)
+        public static bool TryRemoveVSAFrom(string vsaPath)
         {
-            Directory.Delete(vsaPath, true);
+            try
+            {
+                Directory.Delete(vsaPath, true);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Trace.WriteLine("AccessibilityInsights - exception when removing VSA: " + ex.ToString());
+                return false;
+            }
         }
 
         public bool TryCopyFilesRecursively(string sourcePath, string targetPath)
