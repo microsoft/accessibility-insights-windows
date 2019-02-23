@@ -64,7 +64,6 @@ The packaging projects exist to gather assemblies into their shipping vehicles:
 
 Project | Responsibility
 --- | ---
-MSI | Builds the MSI file used by most users. This requires the Wix tools from http://wixtoolset.org.
 ApplicationInsights-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
 
 ### Tests

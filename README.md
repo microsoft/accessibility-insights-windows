@@ -32,6 +32,12 @@ You can install the application from TBA.
 
 ### 3. Build and run unit tests
 
+### 4. Build the MSI project
+The MSI project is used to package all the code into a installer that can be used to install Accessibility Insights for Web. This is not a required step. By default the MSI project is not built.
+- To build the MSI in the release configuration locally, add `{137DB774-6464-48BC-B577-091ABEAF0178}.Release|Any CPU.Build.0 = Release|x86` to `AccessibilityInsights.sln` (Global section).
+- Once the build is complete the MSI can be found at `\src\MSI\bin\Release`
+- The MSI project requires WIX. Download and install the Wix toolset from http://wixtoolset.org/.
+
 ## More Information
   Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
