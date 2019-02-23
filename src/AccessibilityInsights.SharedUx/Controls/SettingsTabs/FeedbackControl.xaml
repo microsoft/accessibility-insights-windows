@@ -17,19 +17,19 @@
                    Margin="0,10" Grid.Row="1" HorizontalAlignment="Left" Text="{x:Static Properties:Resources.FeedbackControl_thankYou}"/>
         <TextBlock Style="{StaticResource TbFocusable}" FontSize="{StaticResource ResourceKey=ConstLargeTextSize}" FontWeight="SemiBold"
                    Margin="0,30,0,5" HorizontalAlignment="Left" Text="{x:Static Properties:Resources.FeedbackControl_lookingToProvide}"/>
-        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left">
+        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left" FontSize="{StaticResource ResourceKey=ConstStandardTextSize}">
             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077847" RequestNavigate="hlLink_RequestNavigate"
                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None">
                 <Run Text="{x:Static Properties:Resources.FeedbackControl_searchRequests}"/>
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left">
+        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left" FontSize="{StaticResource ResourceKey=ConstStandardTextSize}">
             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077831" RequestNavigate="hlLink_RequestNavigate"
                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None">
                 <Run Text="{x:Static Properties:Resources.FeedbackControl_reportIssue}"/>
             </Hyperlink>
         </TextBlock>
-        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left">
+        <TextBlock Margin="0,7,0,0" HorizontalAlignment="Left" FontSize="{StaticResource ResourceKey=ConstStandardTextSize}">
             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077929" RequestNavigate="hlLink_RequestNavigate"
                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None">
                 <Run Text="{x:Static Properties:Resources.FeedbackControl_questions}"/>
