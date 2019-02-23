@@ -2,18 +2,16 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Dialogs;
 using System.Diagnostics;
-using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 {
     /// <summary>
-    /// Interaction logic for FeedbackControl1.xaml
+    /// Interaction logic for FeedbackControl.xaml
     /// </summary>
     public partial class FeedbackControl : UserControl
     {
-
         public FeedbackControl()
         {
             InitializeComponent();
