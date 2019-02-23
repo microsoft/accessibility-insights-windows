@@ -43,23 +43,17 @@
                 <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_HoverOverElement}"/>
                     <Run Name="runHkActivate"/><Run Text="."/>
-                    <TextBlock>
-                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                            <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreInspect}"/>
-                        </Hyperlink><Run Text="."/>
-                    </TextBlock>
+                    <Button x:Name="hlInspect" FontSize="{StaticResource ConstStandardTextSize}" Style="{StaticResource btnLink}" Content="{x:Static properties:Resources.LiveModeControl_LearnMoreInspect}" Click="hlInspect_Click" VerticalContentAlignment="Bottom"/>
                 </TextBlock>
-                <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16,0" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+
+                <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_RunAutomatedChecks}"/>
                     <controls1:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
                     <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
                     <Run Name="runHkTest"/><Run Text="."/>
-                    <TextBlock>
-                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                            <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}"/>
-                        </Hyperlink><Run Text="."/>
-                    </TextBlock>
+                    <Button x:Name="hlAutomatedChecks" FontSize="{StaticResource ConstStandardTextSize}" Style="{StaticResource btnLink}" Content="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}" Click="hlAutomatedChecks_Click" VerticalContentAlignment="Bottom"/>
                 </TextBlock>
+
             </StackPanel>
             <controls:DisplayCountControl Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ccDisplayCount" Visibility="Collapsed"/>
             <GridSplitter x:Name="gsMid"
