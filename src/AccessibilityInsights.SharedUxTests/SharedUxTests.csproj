@@ -113,9 +113,17 @@
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
+      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
+      <Name>DesktopUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
+      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
+      <Name>RuleSelection</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>

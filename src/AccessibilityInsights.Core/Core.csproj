@@ -84,6 +84,7 @@
     <Compile Include="Fingerprint\ScanResultFingerprint.cs" />
     <Compile Include="HelpLinks\HelpUrl.cs" />
     <Compile Include="Misc\BoundedCounter.cs" />
+    <Compile Include="Misc\FileHelpers.cs" />
     <Compile Include="Misc\Preconditions.cs" />
     <Compile Include="Misc\Utility.cs" />
     <Compile Include="Results\RuleResult.cs" />
