@@ -249,7 +249,13 @@ namespace AccessibilityInsights.Modes
                 {
                     MainWin.SetCurrentViewAndUpdateUI(TestView.AutomatedTestResults);
                 }
-                Application.Current.MainWindow.Visibility = Visibility.Visible;
+
+                // Improves the reliability of the rendering but does not solve across the board issues seen with all WPF apps.
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Send, new Action(() =>
+                {
+                    Application.Current.MainWindow.InvalidateVisual();
+                    Application.Current.MainWindow.Visibility = Visibility.Visible;
+                })).Wait();
             });
         }
 
