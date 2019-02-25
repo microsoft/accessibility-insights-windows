@@ -45,8 +45,8 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
           <Directory Id="INSTALLFOLDER" Name="1.1">
             <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
               <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe" >
-                <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows (formerly Keros For Desktop) v1.1"
-                          Description="Accessibility Insights For Windows (formerly Keros for Desktop) v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
+                <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows v1.1"
+                          Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
               </File>
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll.config" />
@@ -71,19 +71,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
-
-              <!-- BEGIN BACKWARD COMPATIBILITY SETTINGS. -->
-              <ProgId Id='K4D.Test' Description='Accessibility Insights For Windows Test file'>
-                <Extension Id='k4dtest' ContentType='AccessibilityInsights Test File'>
-                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
-                </Extension>
-              </ProgId>
-              <ProgId Id='K4D.Event' Description='Accessibility Insights For Windows Events file'>
-                <Extension Id='k4devent' ContentType='AccessibilityInsights Events File'>
-                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
-                </Extension>
-              </ProgId>
-              <!-- END BACKWARD COMPATIBILITY SETTINGS. -->
 
               <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
                 <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
