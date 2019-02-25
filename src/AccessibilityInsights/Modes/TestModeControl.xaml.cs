@@ -23,6 +23,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using static System.FormattableString;
+using System.Diagnostics;
 
 namespace AccessibilityInsights.Modes
 {
@@ -439,6 +440,18 @@ namespace AccessibilityInsights.Modes
             else
             {
                 this.tbSelectElement.Focus();
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+            catch
+            {
+                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }
     }

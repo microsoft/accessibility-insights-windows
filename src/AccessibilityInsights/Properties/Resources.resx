@@ -357,8 +357,11 @@
   <data name="minmizeOrActivateWindowText" xml:space="preserve">
     <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
   </data>
-  <data name="moreInformationText" xml:space="preserve">
-    <value>For more information visit</value>
+  <data name="StartupModeControl_moreInformationText" xml:space="preserve">
+    <value>For more information,</value>
+  </data>
+  <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
+    <value>go to the latest release notes</value>
   </data>
   <data name="noScreenShotAvailableMessage" xml:space="preserve">
     <value>The element's bounding rectangle is empty (app minimized?)- no screenshot is available.</value>
@@ -504,6 +507,12 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="LiveModeControl_LearnMoreInspect" xml:space="preserve">
     <value>Learn more about Inspect</value>
+  </data>
+  <data name="TestModeControl_RunAutomatedChecks" xml:space="preserve">
+    <value>To run automated checks, select the Inspect tab</value>
+  </data>
+  <data name="TestModeControl_HoverAndTest" xml:space="preserve">
+    <value>or press Ctrl + I to go to Inspect mode, hover over the element within the target application, and select the Test icon</value>
   </data>
   <data name="LiveModeControl_RunAutomatedChecks" xml:space="preserve">
     <value>To run automated checks, hover over the element within the target application and select the Test icon</value>
