@@ -35,7 +35,7 @@ namespace AccessibilityInsights.Core.Misc
         {
             T data = default(T);
 
-            if (path != null && File.Exists(path))
+            if (File.Exists(path))
             {
                 var json = File.ReadAllText(path);
                 data = JsonConvert.DeserializeObject<T>(json);
@@ -48,12 +48,16 @@ namespace AccessibilityInsights.Core.Misc
         /// Rename the existing configuration to .bak file.
         /// </summary>
         /// <param name="path">The file to rename</param>
-        public static void RenameFileAsBackup(string path)
+        /// <returns>true if the file was found and renamed</returns>
+        public static bool RenameFileAsBackup(string path)
         {
             if (File.Exists(path))
             {
                 File.Move(path, Invariant($"{path}.{DateTime.Now.Ticks}.bak"));
+                return true;
             }
+
+            return false;
         }
     }
 }
