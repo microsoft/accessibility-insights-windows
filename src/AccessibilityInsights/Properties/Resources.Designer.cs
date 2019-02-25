@@ -124,7 +124,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CCA.
+        ///   Looks up a localized string similar to Color Contrast analyzer.
         /// </summary>
         public static string btnCCAToolTip {
             get {
@@ -512,7 +512,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color Contrast.
+        ///   Looks up a localized string similar to Color Contrast analyzer.
         /// </summary>
         public static string colorContrast {
             get {

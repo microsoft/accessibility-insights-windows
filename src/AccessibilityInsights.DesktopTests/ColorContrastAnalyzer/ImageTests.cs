@@ -35,7 +35,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(new ColorPair(new CCColor(204, 204, 204), new CCColor(0, 0, 0)), 
                 result.GetMostLikelyColorPair());
 
-            Assert.AreEqual(Confidence.HIGH, result.ConfidenceValue());
+            Assert.AreEqual(Confidence.High, result.ConfidenceValue());
         }
 
         /**
@@ -56,8 +56,8 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(expected, resultOffsetUpImage.GetMostLikelyColorPair());
             Assert.AreEqual(expected, resultOffsetDownImage.GetMostLikelyColorPair());
 
-            Assert.AreEqual(Confidence.HIGH, resultOffsetDownImage.ConfidenceValue());
-            Assert.AreEqual(Confidence.HIGH, resultOffsetUpImage.ConfidenceValue());
+            Assert.AreEqual(Confidence.High, resultOffsetDownImage.ConfidenceValue());
+            Assert.AreEqual(Confidence.High, resultOffsetUpImage.ConfidenceValue());
         }
 
         /**
@@ -76,7 +76,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
 
             Assert.IsTrue(approximateColorPair.IsVisiblySimilarTo(result.GetMostLikelyColorPair()), result.GetMostLikelyColorPair().ToString());
 
-            Assert.AreEqual(Confidence.HIGH, result.ConfidenceValue());
+            Assert.AreEqual(Confidence.High, result.ConfidenceValue());
         }
 
         [TestMethod, Timeout(2000)]

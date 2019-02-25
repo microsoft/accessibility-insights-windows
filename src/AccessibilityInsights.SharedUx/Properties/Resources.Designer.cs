@@ -167,7 +167,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         ///   Looks up a localized string similar to Hi,
         ///
         ///Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
-        ///
         ///To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
         ///
         ///
@@ -816,6 +815,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hover over the element or set keyboard focus to auto detect color contrast ratio..
+        /// </summary>
+        public static string CCToggleToolTip {
+            get {
+                return ResourceManager.GetString("CCToggleToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore case.
         /// </summary>
         public static string chbIgnoreCaseAutomationPropertiesName {
@@ -888,7 +896,16 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color B.
+        ///   Looks up a localized string similar to Analyzer.
+        /// </summary>
+        public static string ColorContrast_Analyzer {
+            get {
+                return ResourceManager.GetString("ColorContrast_Analyzer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Background color.
         /// </summary>
         public static string ColorContrast_Background {
             get {
@@ -897,7 +914,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Confidence.
+        ///   Looks up a localized string similar to Confidence level.
         /// </summary>
         public static string ColorContrast_Confidence {
             get {
@@ -915,7 +932,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color A.
+        ///   Looks up a localized string similar to Foreground color.
         /// </summary>
         public static string ColorContrast_Foreground {
             get {
@@ -934,11 +951,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio..
+        ///   Looks up a localized string similar to To auto-detect an element&apos;s color contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the color contrast ratio, and the confidence level..
         /// </summary>
-        public static string ColorContrast_HowToTest {
+        public static string ColorContrast_HowToTestAuto {
             get {
-                return ResourceManager.GetString("ColorContrast_HowToTest", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_HowToTestAuto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To manually select two colors to test the color contrast ratio, select each color using the Eyedropper (eye dropper icon). You can also select a color using the Color Picker box or enter its hex code..
+        /// </summary>
+        public static string ColorContrast_HowToTestManual {
+            get {
+                return ResourceManager.GetString("ColorContrast_HowToTestManual", resourceCulture);
             }
         }
         
@@ -1024,7 +1050,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color contrast.
+        ///   Looks up a localized string similar to Color contrast analyzer.
         /// </summary>
         public static string ColorContrastAutomationPropertiesName {
             get {
@@ -3170,33 +3196,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  •  Large text (18pt or 14pt bold) with a contrast of 3.0 or greater .
-        /// </summary>
-        public static string RunTextCCA30 {
-            get {
-                return ResourceManager.GetString("RunTextCCA30", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  •  Any text with a contrast below 3.0 .
-        /// </summary>
-        public static string RunTextCCA30Below {
-            get {
-                return ResourceManager.GetString("RunTextCCA30Below", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  •  Text with a contrast of 4.5 or greater .
-        /// </summary>
-        public static string RunTextCCA45 {
-            get {
-                return ResourceManager.GetString("RunTextCCA45", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Check color contrast:.
         /// </summary>
         public static string RunTextColorContrast {
@@ -3211,15 +3210,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextEmailSupport {
             get {
                 return ResourceManager.GetString("RunTextEmailSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to fails.
-        /// </summary>
-        public static string RunTextFails {
-            get {
-                return ResourceManager.GetString("RunTextFails", resourceCulture);
             }
         }
         
@@ -3499,15 +3489,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextManualColorTest {
             get {
                 return ResourceManager.GetString("RunTextManualColorTest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to passes.
-        /// </summary>
-        public static string RunTextPasses {
-            get {
-                return ResourceManager.GetString("RunTextPasses", resourceCulture);
             }
         }
         
@@ -4091,15 +4072,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockText {
             get {
                 return ResourceManager.GetString("TextBlockText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Or use the eyedropper to pick two colors to test the contrast ratio results:.
-        /// </summary>
-        public static string TextBlockTextCCRatioResult {
-            get {
-                return ResourceManager.GetString("TextBlockTextCCRatioResult", resourceCulture);
             }
         }
         

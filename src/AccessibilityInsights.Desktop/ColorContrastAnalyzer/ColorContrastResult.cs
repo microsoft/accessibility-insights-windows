@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         private Dictionary<Color, int> countsOfExactColors = new Dictionary<Color, int>();
 
-        public enum Confidence { LOW, MID, HIGH }
+        public enum Confidence { Low, Mid, High }
 
         /**
          * Returns the most occurent color pair with the highest color contrast.
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
             if (countsOfSimilarPairs.Count == 0)
             {
-                return Confidence.LOW;
+                return Confidence.Low;
             }
 
             var orderedByCountThenContrast = countsOfSimilarPairs
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                         {
                             if (lastCount > entry.Value * ColorContrastConfig.TextColorPairDominanceValue)
                             {
-                                return Confidence.HIGH;
+                                return Confidence.High;
                             }
                         }
                     }
@@ -72,10 +72,10 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                     lastCount = entry.Value;
                 }
 
-                return Confidence.MID;
+                return Confidence.Mid;
             }
 
-            return Confidence.LOW;
+            return Confidence.Low;
         }
 
 
