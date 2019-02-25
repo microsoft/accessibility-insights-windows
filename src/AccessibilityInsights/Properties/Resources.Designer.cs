@@ -908,15 +908,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For more information visit.
-        /// </summary>
-        public static string moreInformationText {
-            get {
-                return ResourceManager.GetString("moreInformationText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The element&apos;s bounding rectangle is empty (app minimized?)- no screenshot is available..
         /// </summary>
         public static string noScreenShotAvailableMessage {
@@ -1145,6 +1136,24 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to go to the latest release notes.
+        /// </summary>
+        public static string StartupModeControl_latestReleaseNotes {
+            get {
+                return ResourceManager.GetString("StartupModeControl_latestReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For more information,.
+        /// </summary>
+        public static string StartupModeControl_moreInformationText {
+            get {
+                return ResourceManager.GetString("StartupModeControl_moreInformationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome page.
         /// </summary>
         public static string StartUpModeControlAutomationPropertiesName {
@@ -1339,6 +1348,24 @@ namespace AccessibilityInsights.Properties {
         public static string TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link {
             get {
                 return ResourceManager.GetString("TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to or press Ctrl + I to go to Inspect mode, hover over the element within the target application, and select the Test icon.
+        /// </summary>
+        public static string TestModeControl_HoverAndTest {
+            get {
+                return ResourceManager.GetString("TestModeControl_HoverAndTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To run automated checks, select the Inspect tab.
+        /// </summary>
+        public static string TestModeControl_RunAutomatedChecks {
+            get {
+                return ResourceManager.GetString("TestModeControl_RunAutomatedChecks", resourceCulture);
             }
         }
         
