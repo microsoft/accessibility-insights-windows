@@ -234,7 +234,6 @@ namespace AccessibilityInsights.Modes
                 {
                     Application.Current.Dispatcher.Invoke(() => {
                         this.ctrlProgressRing.Deactivate();
-                        this.tbiAutomatedChecks.Focus();
                     });
                 }
             }
@@ -256,6 +255,7 @@ namespace AccessibilityInsights.Modes
                 {
                     Application.Current.MainWindow.InvalidateVisual();
                     Application.Current.MainWindow.Visibility = Visibility.Visible;
+                    this.tbiAutomatedChecks.Focus();
                 })).Wait();
             });
         }
