@@ -1585,7 +1585,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to navigate to requested url. Please contact us using https://aka.ms/A11yStackOverflowInternal..
+        ///   Looks up a localized string similar to Failed to navigate to requested url..
         /// </summary>
         public static string FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url {
             get {
@@ -1594,11 +1594,47 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For questions or feedback:.
+        ///   Looks up a localized string similar to Looking to provide feedback?.
+        /// </summary>
+        public static string FeedbackControl_lookingToProvide {
+            get {
+                return ResourceManager.GetString("FeedbackControl_lookingToProvide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ask a question.
         /// </summary>
         public static string FeedbackControl_questions {
             get {
                 return ResourceManager.GetString("FeedbackControl_questions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Report an issue.
+        /// </summary>
+        public static string FeedbackControl_reportIssue {
+            get {
+                return ResourceManager.GetString("FeedbackControl_reportIssue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search feature requests.
+        /// </summary>
+        public static string FeedbackControl_searchRequests {
+            get {
+                return ResourceManager.GetString("FeedbackControl_searchRequests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you for using Accessibility Insights for Windows..
+        /// </summary>
+        public static string FeedbackControl_thankYou {
+            get {
+                return ResourceManager.GetString("FeedbackControl_thankYou", resourceCulture);
             }
         }
         
