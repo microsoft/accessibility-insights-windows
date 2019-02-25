@@ -35,7 +35,7 @@ namespace AccessibilityInsights
     public partial class MainWindow : Window, IMainWindow, IControlTreeNavigation
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
-        const string HelpDocLink = "https://aka.ms/AccessibilityInsights";
+        const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
         const string ArgAttach = "AttachAccessibilityInsights";
 
         IntPtr hWnd;

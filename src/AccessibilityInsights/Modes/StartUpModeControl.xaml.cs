@@ -24,7 +24,7 @@ namespace AccessibilityInsights.Modes
         /// <summary>
         /// URL to getting started video
         /// </summary>
-        const string VideoUrl = "https://aka.ms/hmeji4";
+        const string VideoUrl = "https://go.microsoft.com/fwlink/?linkid=2077681";
 
         /// <summary>
         /// MainWindow to access shared methods
