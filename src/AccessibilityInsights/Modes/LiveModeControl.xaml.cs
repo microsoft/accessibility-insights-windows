@@ -482,23 +482,11 @@ namespace AccessibilityInsights.Modes
             }
         }
 
-        private void hlInspect_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             try
             {
-                Process.Start(new ProcessStartInfo(("https://go.microsoft.com/fwlink/?linkid=2075123")));
-            }
-            catch
-            {
-                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
-            }
-        }
-
-        private void hlAutomatedChecks_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Process.Start(new ProcessStartInfo(("https://go.microsoft.com/fwlink/?linkid=2077027")));
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
             catch
             {
