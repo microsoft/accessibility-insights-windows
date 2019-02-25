@@ -22,9 +22,9 @@ namespace AccessibilityInsights.SharedUx.Settings
     public partial class ConfigurationModel : ICloneable
     {
         /// <summary>
-        /// The Settings Dictionary contains all of the persisted data
+        /// The SettingsDictionary contains all of the persisted data
         /// </summary>
-        private SettingsDictionary _settings = new SettingsDictionary();
+        private readonly SettingsDictionary _settings = new SettingsDictionary();
 
         // These are just backing properties for things where auto-properties are insufficient
         private IConnectionInfo _savedConnection;

@@ -42,7 +42,7 @@
   "ShowUncertain": false,
   "ShowWhitespaceInTextPatternViewer": false,
   "TreeViewMode": 2,
-  "IsUnderElementScope": false,
+  "IsUnderElementScope": true,
   "EnableTelemetry": false,
   "ShowTelemetryDialog": false,
   "Version": "1.1.9",

@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -83,26 +84,82 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         }
 
         [TestMethod]
-        public void ReadLegacyFormat_DataIsCorrect()
+        public void LoadFromJSON_FileDoesNotExist_DataIsCorrect()
         {
-            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
+            ConfigurationModel config = GetDefaultConfig();
 
-            ConfirmConfigMatchesExpectation(config); 
+            Assert.IsTrue(config.AlwaysOnTop);
+            Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
+            Assert.IsNull(config.CachedConnections);
+            ConfirmEnumerablesMatchExpectations(
+                new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
+                config.CoreProperties.ToArray());
+            ConfirmEnumerablesMatchExpectations(new int[] { }, config.CoreTPAttributes.ToArray());
+            Assert.IsFalse(config.DisableTestsInSnapMode);
+            Assert.IsTrue(config.EnableTelemetry);
+            Assert.IsTrue(config.EventRecordPath.EndsWith(@"\AccessibilityInsights"), config.EventRecordPath);
+            Assert.AreEqual(FontSize.Standard, config.FontSize);
+            Assert.AreEqual(HighlighterMode.HighlighterBeakerTooltip, config.HighlighterMode);
+            Assert.AreEqual("Shift + F9", config.HotKeyForActivatingMainWindow);
+            Assert.AreEqual("Control,Shift + F7", config.HotKeyForMoveToFirstChild);
+            Assert.AreEqual("Control,Shift + F9", config.HotKeyForMoveToLastChild);
+            Assert.AreEqual("Control,Shift + F8", config.HotKeyForMoveToNextSibling);
+            Assert.AreEqual("Control,Shift + F6", config.HotKeyForMoveToParent);
+            Assert.AreEqual("Control,Shift + F5", config.HotKeyForMoveToPreviousSibling);
+            Assert.AreEqual("Shift + F5", config.HotKeyForPause);
+            Assert.AreEqual("Shift + F7", config.HotKeyForRecord);
+            Assert.AreEqual("Shift + F8", config.HotKeyForSnap);
+            Assert.IsTrue(config.IsHighlighterOn);
+            Assert.IsTrue(config.IsUnderElementScope);
+            Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
+            Assert.IsFalse(config.PlayScanningSound);
+            Assert.IsNull(config.SavedConnection);
+            Assert.IsTrue(config.SelectionByFocus);
+            Assert.IsTrue(config.SelectionByMouse);
+            Assert.IsNull(config.SerializedCachedConnections);
+            Assert.IsNull(config.SerializedSavedConnection);
+            Assert.IsFalse(config.ShowAllProperties);
+            Assert.IsTrue(config.ShowAncestry);
+            Assert.IsTrue(config.ShowTelemetryDialog);
+            Assert.IsFalse(config.ShowUncertain);
+            Assert.IsTrue(config.ShowWelcomeScreenOnLaunch);
+            Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
+            Assert.AreEqual(SuiteConfigurationType.Default, config.TestConfig);
+            Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
+            Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
+            Assert.AreEqual("1.2.0", config.Version);
+            Assert.AreEqual(100, config.ZoomLevel);
+
+            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing all properties, then update the expected value");
         }
 
         [TestMethod]
-        public void ReadCurrentFormat_DataIsCorrect()
+        public void LoadFronJSON_LegacyFormat_DataIsCorrect()
+        {
+            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
+
+            ConfirmSharedOverrideConfigMatchesExpectation(config); 
+        }
+
+        [TestMethod]
+        public void LoadFronJSON_CurrentFormat_DataIsCorrect()
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
 
-            ConfirmConfigMatchesExpectation(config);
+            ConfirmSharedOverrideConfigMatchesExpectation(config);
         }
 
-        private void ConfirmConfigMatchesExpectation(ConfigurationModel config)
+        private static ConfigurationModel GetDefaultConfig()
+        {
+            return ConfigurationModel.LoadFromJSON(@"..\..\Resources\ThisFileDoesNotExist.json");
+        }
+
+        private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
             Assert.AreNotEqual("1.1.700.1", config.AppVersion);
+            Assert.IsNull(config.CachedConnections);
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());
@@ -122,6 +179,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("Alt + F1", config.HotKeyForRecord);
             Assert.AreEqual("Alt + F3", config.HotKeyForSnap);
             Assert.IsTrue(config.IsHighlighterOn);
+            Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
             Assert.IsNull(config.SavedConnection);
@@ -142,7 +200,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(350, config.ZoomLevel);
         }
 
-        private void ConfirmEnumerablesMatchExpectations(int[] expected, int[] actual)
+        private static void ConfirmEnumerablesMatchExpectations(int[] expected, int[] actual)
         {
             Assert.AreEqual(expected.Length, actual.Length);
             for (int loop = 0; loop < expected.Length; loop++)
