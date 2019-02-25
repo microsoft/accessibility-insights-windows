@@ -38,7 +38,7 @@ namespace AccessibilityInsights.Actions.Misc
         private const string ImageMimeType = "image/png";
         private const string PathSeperator = @" / ";
         private const string UniqueIdKey = "uniqueId";
-        private const string DownloadURI = @"https://aka.ms/AI-WinInstall";
+        private const string DownloadURI = @"https://go.microsoft.com/fwlink/?linkid=2077926";
         internal static Dictionary<string, Rule> RuleList = new Dictionary<string, Rule>();
         internal static Dictionary<string, A11yCriteria> A11yCriteriaList = new Dictionary<string, A11yCriteria>();
 
