@@ -71,8 +71,8 @@
                     <TextBlock>
                         <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077922">
                             <Run Text="{x:Static properties:Resources.StartupModeControl_latestReleaseNotes}"/>
-                        </Hyperlink>
-                    </TextBlock><Run Text="."/>
+                        </Hyperlink><Run Text="."/>
+                    </TextBlock>
                 </TextBlock>
             </StackPanel>
         </Border>
