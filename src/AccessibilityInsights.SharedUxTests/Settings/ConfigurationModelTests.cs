@@ -130,7 +130,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("1.2.0", config.Version);
             Assert.AreEqual(100, config.ZoomLevel);
 
-            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing all properties, then update the expected value");
+            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
