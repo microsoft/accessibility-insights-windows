@@ -67,9 +67,11 @@
             <StackPanel>
                 <whatsNew:WhatsNewControl/>
                 <TextBlock FontWeight="SemiBold" Margin="12,10" Grid.Row="2" Style="{StaticResource TbFocusable}">
-                    <Run Text="{x:Static properties:Resources.moreInformationText}"/><Run Text=" "/>
+                    <Run Text="{x:Static properties:Resources.StartupModeControl_moreInformationText}"/>
                     <TextBlock>
-                        <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://aka.ms/accessibilityinsights-windows-updates">aka.ms/accessibilityinsights-windows-updates</Hyperlink>
+                        <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077922">
+                            <Run Text="{x:Static properties:Resources.StartupModeControl_latestReleaseNotes}"/>
+                        </Hyperlink><Run Text="."/>
                     </TextBlock>
                 </TextBlock>
             </StackPanel>
