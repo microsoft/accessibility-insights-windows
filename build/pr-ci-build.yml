@@ -1,0 +1,105 @@
+name: $(date:yyyy-MM-dd)$(rev:.rr)
+trigger: none
+pr: none
+variables:
+  BuildPlatform: 'x86'
+  MAICreateNuget: 'true'
+  PublicRelease: 'false'
+  SignAppForRelease: 'false'
+  FAKES_SUPPORTED: 1
+
+jobs:
+- job: Release
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: PowerShell@2
+    displayName: 'License Header Check'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 15.0
+      platform: '$(BuildPlatform)'
+      configuration: release
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\bin\release\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+
+  - task: PowerShell@2
+    displayName: 'Check Automation'
+    inputs:
+      targetType: 'filePath'
+      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
+      arguments: 'release'
+      workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\obj\**
+      vsTestVersion: 15.0
+      codeCoverageEnabled: false
+      platform: '$(BuildPlatform)'
+      configuration: release
+      rerunFailedTests: true
+
+  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+
+- job: Debug
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 15.0
+      platform: '$(BuildPlatform)'
+      configuration: debug
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\bin\debug\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\obj\**
+      testFiltercriteria: 'TestCategory!=RequiresNetwork'
+      vsTestVersion: 15.0
+      codeCoverageEnabled: false
+      platform: '$(BuildPlatform)'
+      configuration: debug
+      rerunFailedTests: true
