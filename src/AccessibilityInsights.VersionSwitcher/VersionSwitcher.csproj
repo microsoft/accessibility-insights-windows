@@ -77,6 +77,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CommandLineParameters.cs" />
     <Compile Include="InstallHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -122,6 +123,12 @@
   </ItemGroup>
   <ItemGroup>
     <DropSignedFile Include="$(OutDir)\AccessibilityInsights.VersionSwitcher.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
+      <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
+      <Name>Extensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
