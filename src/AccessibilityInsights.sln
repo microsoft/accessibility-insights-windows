@@ -122,11 +122,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsTests", "Accessib
 		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9FB4091-51F3-433F-9427-BE03BC901881}"
-	ProjectSection(SolutionItems) = preProject
-		ReadMe.MD = ReadMe.MD
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RuleSelectionTests", "AccessibilityInsights.RuleSelectionTests\RuleSelectionTests.csproj", "{885E4A4A-CFCA-4F31-986E-AD04A8B60B60}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubAutoUpdate", "AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj", "{80165CCC-6D76-4590-A16B-1790A35B08E4}"

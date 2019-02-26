@@ -13,6 +13,8 @@ Accessibility Insights for Windows is the project for Accessibility tools on Win
 You can install the application from TBA.
 
 ## Building the code
+You may find out more information on how to set up your development environment [here](./doc/SetUpDevEnv.MD).
+
 ### 1. Clone the repository
 - Clone the repository using one of the following commands
   ``` bash
@@ -33,7 +35,7 @@ You can install the application from TBA.
 ### 3. Build and run unit tests
 
 ## More Information
-  Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
+Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
 ## Testing
 We use the unit test framework from Visual Studio. Find more information in our [FAQ section](docs/FAQ.md).
