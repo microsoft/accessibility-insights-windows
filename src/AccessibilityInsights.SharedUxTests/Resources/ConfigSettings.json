@@ -45,6 +45,7 @@
   "TestConfigPath": null,
   "TestReportPath": "C:\\blah\\AccessibilityInsightsTestFiles",
   "TreeViewMode": "Content",
+  "UpgradeRing":  "Canary",
   "Version": "1.1.10",
   "ZoomLevel": 350
 }

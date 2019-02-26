@@ -463,6 +463,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
+        /// The upgrade ring configured for this client
+        /// </summary>
+        public UpgradeRing UpgradeRing
+        {
+            get => GetEnumDataValue<UpgradeRing>(keyUpgradeRing);
+            set => SetEnumDataValue<UpgradeRing>(keyUpgradeRing, value);
+        }
+
+        /// <summary>
         /// If true, telemetry will be collected
         /// </summary>
         public bool EnableTelemetry

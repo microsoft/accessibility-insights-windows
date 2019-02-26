@@ -126,10 +126,11 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(SuiteConfigurationType.Default, config.TestConfig);
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
+            Assert.AreEqual(UpgradeRing.Production, config.UpgradeRing);
             Assert.AreEqual("1.1.10", config.Version);
             Assert.AreEqual(100, config.ZoomLevel);
 
-            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(40, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -137,7 +138,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config); 
+            ConfirmSharedOverrideConfigMatchesExpectation(config);
         }
 
         [TestMethod]
@@ -146,11 +147,15 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
 
             ConfirmSharedOverrideConfigMatchesExpectation(config);
+
+            // Test settings that don't exist in legacy mode (their legacy value is tested by
+            // LoadFromJSON_FileDoesNotExist_DataIsCorrect()
+            Assert.AreEqual(UpgradeRing.Canary, config.UpgradeRing);
         }
 
         private static ConfigurationModel GetDefaultConfig()
         {
-            return ConfigurationModel.LoadFromJSON(@"..\..\Resources\ThisFileDoesNotExist.json");
+            return ConfigurationModel.LoadFromJSON(null);
         }
 
         private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config)
