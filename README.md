@@ -2,7 +2,7 @@
      Licensed under the MIT License. -->
 # Accessibility Insights for Windows
 
-[![Build Status](https://dev.azure.com/mseng/AzureDevOps/_apis/build/status/Accessibility%20Insights%20for%20Windows%20Signed?branchName=master)](https://dev.azure.com/mseng/AzureDevOps/_build/latest?definitionId=7909&branchName=master)
+[![Build Status](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_apis/build/status/Microsoft.accessibility-insights-windows-CI?branchName=master)](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_build/latest?definitionId=3&branchName=master)
 
 ![Product Logo](./brand/brand-blue-128px.png)
 
