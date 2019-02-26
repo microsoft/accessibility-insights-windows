@@ -52,11 +52,11 @@ Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so
 Visit [Adding a new project](NewProject.md) for instructions.
 
 ### Q. How do I get in contact?
-Please file a [Github Issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new). We actively monitor PRs and issues.
+Please file a [Github Issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new/choose). We actively monitor PRs and issues.
 
 ### Q. I encountered a bug. Where do I report it?
 We use Github Issues for bug tracking.
 
 Vist the [issues](https://github.com/Microsoft/accessibility-insights-windows/issues?q=is%3Aissue+is%3Aopen%2Cclosed) page to see if an issue for it already exists.
 
-If it doesn't, feel free to [file an issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new).
+If it doesn't, feel free to [file an issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new/choose).

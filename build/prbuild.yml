@@ -6,6 +6,7 @@ variables:
   MAICreateNuget: 'true'
   PublicRelease: 'false'
   SignAppForRelease: 'false'
+  FAKES_SUPPORTED: 1
 
 jobs:
 - job: Release

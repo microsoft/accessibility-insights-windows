@@ -352,14 +352,14 @@ namespace AccessibilityInsights
 
         private void SetHotKeyForMoveToNextSibbling()
         {
-            SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForMoveToNextSibbling,
+            SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForMoveToNextSibling,
                       InvokeAction(this.TreeNavigator.MoveToNextSibbling),
                     ErrorMessage(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSnap));
         }
 
         private void SetHotKeyForMoveToPreviousSibbling()
         {
-            SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForMoveToPreviousSibbling,
+            SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForMoveToPreviousSibling,
                       InvokeAction(this.TreeNavigator.MoveToPreviousSibbling),
                     ErrorMessage(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSnap));
         }

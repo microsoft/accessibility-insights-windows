@@ -318,12 +318,16 @@ namespace AccessibilityInsights.SharedUx.Controls
                 var la = ListenAction.GetInstance(this.EventRecorderId.Value);
                 if (la.HasRecordedEvents())
                 {
-                    SaveFileDialog dlg = new SaveFileDialog();
-                    dlg.Filter = FileFilters.EventsFileFilter;
-                    dlg.InitialDirectory = AppConfiguration.EventRecordPath;
+                    var dlg = new System.Windows.Forms.SaveFileDialog
+                    {
+                        Filter = FileFilters.EventsFileFilter,
+                        InitialDirectory = AppConfiguration.EventRecordPath,
+                        AutoUpgradeEnabled = !SystemParameters.HighContrast,
+                    };
+
                     dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.EventRecord);
 
-                    if (dlg.ShowDialog() == true)
+                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
                         Logger.PublishTelemetryEvent(TelemetryAction.Event_Save);
 

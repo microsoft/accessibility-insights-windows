@@ -30,24 +30,37 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="12"/>
             </Grid.RowDefinitions>
             <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="0"/>
-            <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="0"><Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextInspectMode}"/><Run Text="{x:Static Properties:Resources.RunTextInspectLiveUIATree}"/></TextBlock>
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="TestBeakerSolid" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="1"/>
-            <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="1"><Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextTestMode}"/><Run Text="{x:Static Properties:Resources.RunTextAutomatedChecksHelp}"/></TextBlock>
-
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Color" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="2"/>
-            <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="2" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
-                <Run Name="tbColorContrast" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextColorContrast}"/>
-                <Run Text="{x:Static Properties:Resources.RunTextManualColorTest}"/>
+            <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="0">
+                <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextInspectMode}"/>
+                <Run Text="{x:Static Properties:Resources.RunTextInspectLiveUIATree}"/>
+                <TextBlock>
+                    <Hyperlink x:Name="hlInspectMode" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.InspectModeLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.InspectModeLink}" />
+                    </Hyperlink>
+                </TextBlock>
             </TextBlock>
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Rocket" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="3"/>
-            <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="3" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
+
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Rocket" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="1"/>
+            <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="1" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
                 <Run Name="tbFastPass" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFastPass}"/>
                 <Run Name="tbFastPassInfo" Text="{x:Static Properties:Resources.tbFastPassInfoText}"/>
+                <TextBlock>
+                    <Hyperlink x:Name="hlFastPass" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.FastPassLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075125" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.FastPassLink}" />
+                    </Hyperlink>
+                </TextBlock>
                 <AutomationProperties.Name>
                     <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormattbFastPass}">
                         <Binding ElementName="tbFastPass" Path="Text"/>
@@ -55,13 +68,38 @@
                     </MultiBinding>
                 </AutomationProperties.Name>
             </TextBlock>
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="4"/>
-            <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="4"><Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFileBugs}"/><Run Text="{x:Static Properties:Resources.RunTextLogBugsIn}"/><Run Text="{x:Static Properties:Resources.RunTextNewBug}" TextDecorations="Underline"/><Run Text="{x:Static Properties:Resources.RunTextLink}"/></TextBlock>
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="LightningBolt" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="5"/>
-            <TextBlock Style="{StaticResource TbFocusable}"  Margin="0,12" Grid.Column="2" Grid.Row="5">
-                <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextEvents}"/>
-                <Run Text="{x:Static Properties:Resources.RunTextEvents}"/>
+
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="2"/>
+            <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="2">
+                <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFileBugs}"/>
+                <Run Text="{x:Static Properties:Resources.RunTextLogBugsIn}"/>
+                <TextBlock>
+                    <Hyperlink x:Name="hlFileBug" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.FileBugLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.FileBugLink}" />
+                    </Hyperlink>
                 </TextBlock>
+            </TextBlock>
+
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Color" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="3"/>
+            <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="3" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
+                <Run Name="tbColorContrast" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextColorContrast}"/>
+                <Run Text="{x:Static Properties:Resources.RunTextManualColorTest}"/>
+                <TextBlock>
+                    <Hyperlink x:Name="hlCCA" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.CCALink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075365" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.CCALink}" />
+                    </Hyperlink>
+                </TextBlock>
+            </TextBlock>
         </Grid>
     </Grid>
 </UserControl>

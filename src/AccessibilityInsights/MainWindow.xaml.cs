@@ -35,7 +35,7 @@ namespace AccessibilityInsights
     public partial class MainWindow : Window, IMainWindow, IControlTreeNavigation
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
-        const string HelpDocLink = "https://aka.ms/AccessibilityInsights";
+        const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
         const string ArgAttach = "AttachAccessibilityInsights";
 
         IntPtr hWnd;
@@ -820,12 +820,15 @@ namespace AccessibilityInsights
             {
                 this.DisableElementSelector();
 
-                OpenFileDialog dlg = new OpenFileDialog();
-                dlg.Title = Properties.Resources.btnLoad_ClickDialogTitle;
-                dlg.Filter = FileFilters.A11yFileFilter;
-                dlg.InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath;
+                var dlg = new System.Windows.Forms.OpenFileDialog
+                {
+                    Title = Properties.Resources.btnLoad_ClickDialogTitle,
+                    Filter = FileFilters.A11yFileFilter,
+                    InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
+                    AutoUpgradeEnabled = !SystemParameters.HighContrast,
+                };
 
-                if (dlg.ShowDialog() == true)
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     if (!TryOpenFile(dlg.FileName))
                     {

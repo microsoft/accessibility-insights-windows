@@ -285,6 +285,7 @@
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
+    <Compile Include="Enums\UpgradeRing.cs" />
     <Compile Include="FileBug\BugFileForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -450,6 +451,7 @@
     <Compile Include="Settings\AppLayout.cs" />
     <Compile Include="Settings\ConfigurationConstants.cs" />
     <Compile Include="Settings\ConfigurationModel.cs" />
+    <Compile Include="Settings\SettingsDictionary.cs" />
     <Compile Include="Utilities\DirectoryManagement.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />

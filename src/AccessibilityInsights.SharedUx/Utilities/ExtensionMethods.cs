@@ -98,20 +98,6 @@ namespace AccessibilityInsights.SharedUx.Utilities
         }
 
         /// <summary>
-        /// Send Configuration to telemetry if configuration is changed. 
-        /// A copy of the configuration is made with some fields removed
-        ///     that we don't want in our telemetry (mainly filepaths that could expose username)
-        /// </summary>
-        /// <param name="ctx"></param>
-        /// <param name="action"></param>
-        /// <param name="config"></param>
-        public static void TraceConfigurationIntoTelemetry(this ConfigurationModel config)
-        {
-            var dic = new Dictionary<string, string>();
-            dic.Add("Json", config.CloneForTelemetry().ToJsonString());
-        }
-
-        /// <summary>
         /// Copy string to clipboard with error handling. 
         /// </summary>
         /// <param name="sb"></param>

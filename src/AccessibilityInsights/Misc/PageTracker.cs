@@ -13,9 +13,8 @@ namespace AccessibilityInsights.Misc
         /// </summary>
         /// <param name="page"></param>
         /// <param name="view"></param>
-        /// <param name="appname"></param>
         /// <param name="framework">name of UI framework</param>
-        public static void TrackPage(AppPage page, string view, string appname = null, string framework = null)
+        public static void TrackPage(AppPage page, string view, string framework = null)
         {
             if (!Logger.IsEnabled)
                 return;
@@ -27,10 +26,6 @@ namespace AccessibilityInsights.Misc
             if (framework != null)
             {
                 Logger.AddOrUpdateContextProperty(TelemetryProperty.UIFramework, framework);
-            }
-            if (appname != null)
-            {
-                Logger.AddOrUpdateContextProperty(TelemetryProperty.TargetApp, appname);
             }
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ModeName, page.ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ModeSessionId, Guid.NewGuid().ToString());

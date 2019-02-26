@@ -1,12 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Types;
+using AccessibilityInsights.Desktop.Types;
 using System.Collections.Generic;
 using System.Linq;
-using AccessibilityInsights.Core.Bases;
 using UIAutomationClient;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.Utility;
 
 namespace AccessibilityInsights.Desktop.Settings
 {

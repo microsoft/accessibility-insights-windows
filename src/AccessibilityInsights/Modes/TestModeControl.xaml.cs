@@ -23,6 +23,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using static System.FormattableString;
+using System.Diagnostics;
 
 namespace AccessibilityInsights.Modes
 {
@@ -233,7 +234,6 @@ namespace AccessibilityInsights.Modes
                 {
                     Application.Current.Dispatcher.Invoke(() => {
                         this.ctrlProgressRing.Deactivate();
-                        this.tbiAutomatedChecks.Focus();
                     });
                 }
             }
@@ -249,7 +249,14 @@ namespace AccessibilityInsights.Modes
                 {
                     MainWin.SetCurrentViewAndUpdateUI(TestView.AutomatedTestResults);
                 }
-                Application.Current.MainWindow.Visibility = Visibility.Visible;
+
+                // Improves the reliability of the rendering but does not solve across the board issues seen with all WPF apps.
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Send, new Action(() =>
+                {
+                    Application.Current.MainWindow.InvalidateVisual();
+                    Application.Current.MainWindow.Visibility = Visibility.Visible;
+                    this.tbiAutomatedChecks.Focus();
+                })).Wait();
             });
         }
 
@@ -288,6 +295,7 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void Clear()
         {
+            AutomationProperties.SetName(this, Properties.Resources.TestModeControlAutomationPropertiesName);
             this.ctrlAutomatedChecks.ClearUI();
             this.ctrlTabStop.ClearUI();
         }
@@ -353,12 +361,16 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void Save()
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = FileFilters.TestFileFilter;
-            dlg.InitialDirectory = Configuration.TestReportPath;
+            var dlg = new System.Windows.Forms.SaveFileDialog
+            {
+                Filter = FileFilters.TestFileFilter,
+                InitialDirectory = Configuration.TestReportPath,
+                AutoUpgradeEnabled = !SystemParameters.HighContrast,
+            };
+
             dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.TestResults);
 
-            if (dlg.ShowDialog() == true)
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 try
                 {
@@ -428,6 +440,18 @@ namespace AccessibilityInsights.Modes
             else
             {
                 this.tbSelectElement.Focus();
+            }
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+            catch
+            {
+                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }
     }

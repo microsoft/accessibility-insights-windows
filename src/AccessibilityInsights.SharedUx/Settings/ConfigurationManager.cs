@@ -97,7 +97,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             }
             catch (Exception)
             {
-                ConfigurationModel.RemoveConfiguration(fp);
+                AppLayout.RemoveConfiguration(fp);
                 this.AppLayout = new AppLayout(window.Top, window.Left);
                 this.AppLayout.SerializeInJSON(fp);
             }
@@ -113,7 +113,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             // Main configuration 
             try
             {
-                this.AppConfig = ConfigurationModel.LoadConfiguration(fp);
+                this.AppConfig = ConfigurationModel.LoadFromJSON(fp);
             }
             catch (Exception)
             {

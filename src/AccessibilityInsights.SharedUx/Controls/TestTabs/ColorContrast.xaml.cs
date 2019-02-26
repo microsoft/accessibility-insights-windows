@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
     /// </summary>
     public partial class ColorContrast : UserControl
     {
-        const string HelpURL = @"https://aka.ms/accessibility-insights-colorcontrast";
+        const string HelpURL = @"https://go.microsoft.com/fwlink/?linkid=2075365";
 
         public ElementContext ElementContext { get; private set; }
 

@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.Settings
     /// <summary>
     /// AppLayout represents the window information (size and location) for Live and Snapshot Modes.
     /// Specific data is stored in two Layouts; AppLayout houses these objects and provides JSON loading
-    /// and storing functions.    
+    /// and storing functions.
     /// </summary>
     public class AppLayout : ConfigurationBase
     {
@@ -68,8 +68,8 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <param name="top">Top coordinate of window.</param>
         /// <param name="left">Left coordinate of window.</param>
         public AppLayout(double top, double left)
+            : base(CurrentVersion)
         {
-            this.Version = CurrentVersion;
             Top = top;
             Left = left;
             Width = 870;
