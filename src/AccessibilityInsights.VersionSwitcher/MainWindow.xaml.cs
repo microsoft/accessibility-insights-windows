@@ -33,6 +33,7 @@ namespace AccessibilityInsights.VersionSwitcher
             catch(Exception e)
             {
                 Trace.TraceError(e.ToString());
+                MessageBox.Show(e.Message, "An error occurred during install");
             }
 
             Close();
