@@ -13,7 +13,7 @@ Accessibility Insights for Windows is the project for Accessibility tools on Win
 You can install the application from TBA.
 
 ## Building the code
-You may find out more information on how to set up your development environment [here](./doc/SetUpDevEnv.MD).
+You may find out more information on how to set up your development environment [here](./docs/SetUpDevEnv.MD).
 
 ### 1. Clone the repository
 - Clone the repository using one of the following commands
