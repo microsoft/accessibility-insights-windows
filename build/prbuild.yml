@@ -91,6 +91,59 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
+    displayName: 'Run BinSkim '
+    inputs:
+      InputType: Basic
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                      src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Automation\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;"
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
+    displayName: 'Run CredScan'
+    inputs:
+      verboseOutput: true
+      debugMode: false
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-fxcop.FxCop@2
+    displayName: 'Run FxCop'
+    inputs:
+      inputType: Basic
+      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
+      ignoreGeneratedCode: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
+    displayName: 'Create Security Analysis Report'
+    inputs:
+      BinSkim: true
+      CredScan: true
+      FxCop: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
+    displayName: 'Publish Security Analysis Logs'
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
+    displayName: 'Post Analysis'
+    inputs:
+      BinSkim: true
+      CredScan: true
+      FxCop: true
+      FxCopBreakOn: CriticalError
+
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
