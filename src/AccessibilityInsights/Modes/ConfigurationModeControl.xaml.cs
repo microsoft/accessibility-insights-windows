@@ -148,7 +148,7 @@ namespace AccessibilityInsights.Modes
             this.connectionCtrl.UpdateConfigFromSelections(Configuration);
             this.appSettingsCtrl.UpdateConfigFromSelections(Configuration);
 
-            IReadOnlyDictionary<PropertyInfo, Object> diff = ConfigurationModel.Diff(this.configSnapshot, Configuration);
+            IReadOnlyDictionary<string, object> diff = ConfigurationModel.Diff(this.configSnapshot, Configuration);
             if (diff.Count > 0)
             {
                 MainWin.HandleConfigurationChanged(diff);

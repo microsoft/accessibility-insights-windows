@@ -1,30 +1,26 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Win32;
-using AccessibilityInsights.Desktop.UIAutomation;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using UIAutomationClient;
-using System.Windows.Forms;
-using Newtonsoft.Json;
-using System.IO;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Types;
+using AccessibilityInsights.Desktop.UIAutomation;
+using AccessibilityInsights.Win32;
+using System.Collections.Generic;
 using System.Diagnostics;
-using System.Windows.Media.Imaging;
-using System.Windows.Interop;
-using System.Windows;
+using System.Drawing;
+using System.Linq;
 using System.Net;
+using System.Windows.Forms;
+using System.Windows.Interop;
+using System.Windows.Media.Imaging;
+using System.Windows;
+using System;
+using UIAutomationClient;
 
 namespace AccessibilityInsights.Desktop.Utility
 {
     public static class ExtensionMethods
     {
-
         /// <summary>
         /// Get Process name
         /// </summary>
@@ -126,18 +122,6 @@ namespace AccessibilityInsights.Desktop.Utility
             return (from s in Screen.AllScreens
                     where s.Bounds.Contains(p)
                     select s).Count() != 0;
-        }
-
-        /// <summary>
-        /// Store config file as JSON in given location
-        /// </summary>
-        /// <param name="kc">Calling config object</param>
-        /// <param name="path">Config file location and name</param>
-        public static void SerializeInJSON(this ConfigurationBase kc, string path)
-        {            
-            var json = JsonConvert.SerializeObject(kc, Formatting.Indented);
-
-            File.WriteAllText(path, json, Encoding.UTF8);
         }
 
         /// <summary>

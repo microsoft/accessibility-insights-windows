@@ -25,8 +25,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// Constructor for dialog
         /// </summary>
         /// <param name="coreProps"></param>
-        public PropertyConfigDialog(List<int> coreProps, TypeBase source, string title)
-        {            
+        public PropertyConfigDialog(IEnumerable<int> coreProps, TypeBase source, string title)
+        {
             InitializeComponent();
 
             this.Title = $"{title} Configuration";

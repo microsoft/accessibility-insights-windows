@@ -32,13 +32,13 @@ namespace AccessibilityInsights.Desktop.UIAutomation
             PropertyType.UIA_AriaRolePropertyId,
         };
 
-        static List<int> sCoreProperties = null;
+        static IEnumerable<int> sCoreProperties = null;
 
         /// <summary>
         /// Set the selected properties list
         /// </summary>
         /// <param name="pps"></param>
-        public static void SetCorePropertiesList(List<int> pps)
+        public static void SetCorePropertiesList(IEnumerable<int> pps)
         {
             sCoreProperties = pps;
         }
@@ -47,7 +47,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation
         /// Get the selected properties list
         /// </summary>
         /// <returns></returns>
-        public static List<int> GetCorePropertiesList()
+        public static IEnumerable<int> GetCorePropertiesList()
         {
             return sCoreProperties;
         }
