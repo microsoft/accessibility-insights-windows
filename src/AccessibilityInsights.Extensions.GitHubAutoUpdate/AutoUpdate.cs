@@ -94,6 +94,29 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return Task.Run(() => Update());
         }
 
+        private bool TryLaunchVersionSwitcher()
+        {
+            return true;
+        }
+
+        private void UpdateWithVersionSwitcher(AutoUpdateOption autoUpdateOption)
+        {
+            if (!TryLaunchVersionSwitcher())
+            {
+                if (autoUpdateOption == AutoUpdateOption.RequiredUpgrade)
+                {
+                    // error, notify the user
+                    //Exit the app
+                }
+                else if (autoUpdateOption == AutoUpdateOption.OptionalUpgrade)
+                {
+                    // error, notify the user
+                    // Continue
+                }
+            }
+            // Exit the app
+        }
+
         private UpdateResult Update()
         {
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
