@@ -33,11 +33,6 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
 
-  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0 
-    displayName: 'WPF Accessibility Checks' 
-    inputs: 
-      input: 'src\AccessibilityInsights\bin\Release' 
-
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
@@ -46,14 +41,6 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
-
-  - task: PowerShell@2
-    displayName: 'Check Automation'
-    inputs:
-      targetType: 'filePath'
-      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
-      arguments: 'release'
-      workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
