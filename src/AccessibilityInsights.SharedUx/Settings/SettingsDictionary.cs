@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Microsoft.CSharp.RuntimeBinder;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {
@@ -55,7 +57,8 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Return differences between two SettingsDictionary objects (this and other). The returned values will be from other
         /// </summary>
-        /// <returns>The values from other that are different from this--objects are only compared if the keys are in both objects</returns>
+        /// <returns>The values from other that are different from this--values are considered
+        /// different if they have incompatible types or different values</returns>
         public IReadOnlyDictionary<string, object> Diff(SettingsDictionary other)
         {
             Dictionary<string, object> diff = new Dictionary<string, object>();
@@ -67,7 +70,14 @@ namespace AccessibilityInsights.SharedUx.Settings
                     dynamic dynamicThisValue = pair.Value;
                     dynamic dynamicOtherValue = otherValue;
 
-                    if (dynamicThisValue != dynamicOtherValue)
+                    try
+                    {
+                        if (dynamicThisValue != dynamicOtherValue)
+                        {
+                            diff.Add(pair.Key, otherValue);
+                        }
+                    }
+                    catch (RuntimeBinderException)
                     {
                         diff.Add(pair.Key, otherValue);
                     }
@@ -105,9 +115,25 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (TryGetValue(settingKey, out object value))
             {
+                int? intValue = null;
+
                 if (value.GetType() == typeof(long))
                 {
-                    this[settingKey] = ((T)Enum.ToObject(typeof(T), (int)(long)value)).ToString();
+                    intValue = (int)(long)value;
+                }
+                else if (value.GetType() == typeof(int))
+                {
+                    intValue = (int)value;
+                }
+
+                if (intValue.HasValue && typeof(T).IsEnum)
+                {
+                    List<int> enumValues = Enum.GetValues(typeof(T)).Cast<int>().ToList();
+
+                    if (enumValues.Contains(intValue.Value))
+                    {
+                        this[settingKey] = ((T)Enum.ToObject(typeof(T), intValue.Value)).ToString();
+                    }
                 }
             }
         }

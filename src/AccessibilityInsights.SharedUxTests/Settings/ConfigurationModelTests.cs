@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(SuiteConfigurationType.Default, config.TestConfig);
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
-            Assert.AreEqual("1.2.0", config.Version);
+            Assert.AreEqual("1.1.10", config.Version);
             Assert.AreEqual(100, config.ZoomLevel);
 
             Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
@@ -195,7 +195,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(SuiteConfigurationType.MicrosoftStandard, config.TestConfig);
             Assert.AreEqual(@"C:\blah\AccessibilityInsightsTestFiles", config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Content, config.TreeViewMode);
-            Assert.AreEqual("1.2.0", config.Version);
+            Assert.AreEqual("1.1.10", config.Version);
             Assert.AreEqual(350, config.ZoomLevel);
         }
 

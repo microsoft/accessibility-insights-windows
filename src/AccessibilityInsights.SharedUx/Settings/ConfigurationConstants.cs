@@ -13,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Current version of configuration (should change only when the schema changes, which should be rare)
         /// </summary>
-        public const string CurrentVersion = "1.2.0";
+        public const string CurrentVersion = "1.1.10";
 
         /// <summary>
         /// Default values for the config
