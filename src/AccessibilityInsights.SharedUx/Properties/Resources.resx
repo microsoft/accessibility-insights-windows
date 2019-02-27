@@ -883,8 +883,8 @@ Accessibility Insights Support Team
   <data name="SetterValueSearchByName" xml:space="preserve">
     <value>Search by name and control type.</value>
   </data>
-  <data name="btnSettingAutomationPropertiesName1" xml:space="preserve">
-    <value>Setting</value>
+  <data name="btnSettingsAutomationPropertiesName1" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="btnSettingToolTip1" xml:space="preserve">
     <value>UIA Tree Settings</value>

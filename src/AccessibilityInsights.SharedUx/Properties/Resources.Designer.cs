@@ -573,15 +573,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Setting.
-        /// </summary>
-        public static string btnSettingAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnSettingAutomationPropertiesName1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Properties settings.
         /// </summary>
         public static string btnSettingAutomationPropertiesName2 {
@@ -614,6 +605,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string btnSettingContextMenuAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnSettingContextMenuAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string btnSettingsAutomationPropertiesName1 {
+            get {
+                return ResourceManager.GetString("btnSettingsAutomationPropertiesName1", resourceCulture);
             }
         }
         
