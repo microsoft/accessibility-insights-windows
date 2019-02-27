@@ -24,9 +24,11 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 CommandLineParameters parameters = GetCommandLineParameters();
                 string localFile = DownloadFromUriToLocalFile(parameters);
-                ValidateLocalFile(localFile);
-                InstallHelper.DeleteOldVersion(ProductName);
-                InstallHelper.InstallNewVersion(parameters.MsiPath);
+                using (ValidateLocalFile(localFile))
+                {
+                    InstallHelper.DeleteOldVersion(ProductName);
+                    InstallHelper.InstallNewVersion(parameters.MsiPath);
+                }
                 UpdateConfigWithNewRing(parameters.NewRing);
                 LaunchInstalledApp();
             }
@@ -77,16 +79,16 @@ namespace AccessibilityInsights.VersionSwitcher
             return parameters.MsiPath;
         }
 
-        private void ValidateLocalFile(string localFile)
+        private TrustVerifier ValidateLocalFile(string localFile)
         {
-            using (TrustVerifier verifier = new TrustVerifier(localFile))
+            TrustVerifier verifier = new TrustVerifier(localFile);
+            if (!verifier.IsVerified)
             {
-                if (!verifier.IsVerified)
-                {
-                    // TODO : Better error messaging
-                    throw new ArgumentException("Untrusted file!", nameof(localFile));
-                }
+                // TODO : Better error messaging
+                throw new ArgumentException("Untrusted file!", nameof(localFile));
             }
+
+            return verifier;
         }
 
         private void UpdateConfigWithNewRing(string newRing)
