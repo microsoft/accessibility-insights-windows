@@ -51,7 +51,7 @@
                                    Visibility="Collapsed"
                                    WithSound="True"
                                    Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top">
+        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible"  FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top">
             <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
             <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
             <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
