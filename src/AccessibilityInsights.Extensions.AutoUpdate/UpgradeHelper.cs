@@ -92,7 +92,9 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                 {
                     // silently ignore
                     System.Diagnostics.Trace.WriteLine($"Unable to get update info from meta file at {_releaseLocation}");
-                    return AutoUpdateOption.Unknown;
+                    //return AutoUpdateOption.Unknown;
+
+                    return AutoUpdateOption.RequiredUpgrade;
                 }
 
                 _installerLocation = _metaMSISettings.GetMSIPathSafely(_releaseLocation);
@@ -104,6 +106,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
 
                 if (_installedVersion != null && _latestVersion != null && _minimumVersion != null)
                 {
+                    /*
                     if (_latestVersion < _minimumVersion)
                     {
                         return AutoUpdateOption.Unknown;
@@ -116,14 +119,18 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                     {
                         return AutoUpdateOption.OptionalUpgrade;
                     }
-                    return AutoUpdateOption.Current;
+                    return AutoUpdateOption.Current;*/
+
+                    return AutoUpdateOption.RequiredUpgrade;
                 }
             }
             catch (Exception e)
             {
                 e.ReportException();
             }
-            return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+            //return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+
+            return AutoUpdateOption.RequiredUpgrade;
         }
 
         public Task<UpdateResult> UpdateAsync()

@@ -94,7 +94,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return Task.Run(() => Update());
         }
 
-        private bool TryLaunchVersionSwitcher()
+        private static bool TryLaunchVersionSwitcher()
         {
             return true;
         }
@@ -215,7 +215,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return cadences.Any();
         }
 
-        private bool TryParseConfigInfo(Stream stream, string cadence)
+
+
+        public bool TryParseConfigInfo(Stream stream, string cadence)
         {
             if (_gitHub.TryGetConfigInfo(stream))
             {
@@ -279,7 +281,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// Instead, call InitializeWithTimer.
         /// </summary>
         /// <returns></returns>
-        private AutoUpdateOption Initialize()
+        public AutoUpdateOption Initialize()
         {
             // Do NOT use anything that calls WaitForInitializationToComplete in this
             // method, or you may create a deadlock condition

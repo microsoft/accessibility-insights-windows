@@ -61,12 +61,12 @@ namespace AccessibilityInsights.Extensions
         /* we hard code this for now since our current thinking is that 
          * we'll have each ring in a separate folder, so we'll have Control/Insiders for Insiders,
          * Control/Production for production, etc. Part of this is to simplify the handling of release notes */
-        public static string GetLocationOfInstaller(string version)
+        public static string GetLocationOfInstaller(Version version)
         {
             return "https://github.com/Microsoft/accessibility-insights-windows/releases/download/" + version + "/AccessibilityInsights.msi";
         }
 
-        public string GeneratorCommandLine(string version, string targetRing)
+        public string GeneratorCommandLine(Version version, string targetRing)
         {
             if (String.IsNullOrEmpty(targetRing))
             {

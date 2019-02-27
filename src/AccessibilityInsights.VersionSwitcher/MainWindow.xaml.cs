@@ -13,7 +13,9 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         const string ProductName = "Accessibility Insights For Windows v1.1";
+        private Uri _installerUri = null;
 
         public MainWindow()
         {
@@ -70,9 +72,42 @@ namespace AccessibilityInsights.VersionSwitcher
             throw new ArgumentException("Invalid Input: " + input);
         }
 
+        private bool TryDownloadInstaller(string targetFilePath, TimeSpan timeout)
+        {
+            _installerDownloadStopwatch.Reset();
+
+            using (Stream stream = new FileStream(targetFilePath, FileMode.CreateNew))
+            {
+                _installerDownloadStopwatch.Start();
+
+                try
+                {
+                    return GitHubHelper.TryGet(_installerUri, stream, timeout);
+                }
+                catch (Exception e)
+                {
+                    e.ReportException();
+                    System.Diagnostics.Debug.WriteLine(e.ToString());
+                }
+                finally
+                {
+                    _installerDownloadStopwatch.Stop();
+                }
+            } // using
+
+            return false;
+        }
+
         private string DownloadFromUriToLocalFile(CommandLineParameters parameters)
         {
             // TODO - copy from MSI, throw exception on error
+            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
+            if (!TryDownloadInstaller(tempFile, TimeSpan.FromSeconds(60)))
+            {
+                throw new Exception("Unable to download installer");
+            }
+            parameters.MsiPath = tempFile;
+
             // Return value is where the local file was written
             return parameters.MsiPath;
         }
@@ -84,6 +119,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 if (!verifier.IsVerified)
                 {
                     // TODO : Better error messaging
+                    //System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: ");
                     throw new ArgumentException("Untrusted file!", nameof(localFile));
                 }
             }

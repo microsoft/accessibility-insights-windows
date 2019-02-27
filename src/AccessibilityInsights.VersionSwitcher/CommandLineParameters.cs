@@ -5,9 +5,9 @@ namespace AccessibilityInsights.VersionSwitcher
 {
     internal class CommandLineParameters
     {
-        internal string MsiPath { get; }
+        internal string MsiPath { get; set; }
 
-        internal string NewRing { get; }
+        internal string NewRing { get; set;  }
 
         internal CommandLineParameters(string msiPath, string newRing = null)
         {
