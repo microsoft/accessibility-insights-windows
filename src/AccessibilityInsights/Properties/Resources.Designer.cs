@@ -124,7 +124,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color Contrast analyzer.
+        ///   Looks up a localized string similar to Contrast.
         /// </summary>
         public static string btnCCAToolTip {
             get {
@@ -1118,7 +1118,7 @@ namespace AccessibilityInsights.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Unable to load the selected file.
-        ///Please ensure that you are opening a valid test file using the most recent release of Accessibility Insights for Windows (https://aka.ms/AccessibilityInsights).
+        ///Please ensure that you are opening a valid test file using the most recent release of Accessibility Insights for Windows (https://aka.ms/AccessibilityInsights)..
         /// </summary>
         public static string StartLoadingSnapshotLoadFileException {
             get {

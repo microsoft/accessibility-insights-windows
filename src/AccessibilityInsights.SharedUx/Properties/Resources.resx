@@ -531,13 +531,16 @@ Accessibility Insights Support Team
     <value>Instructions</value>
   </data>
   <data name="ColorContrast_HowToTestAuto" xml:space="preserve">
-    <value>To auto-detect an element's color contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the color contrast ratio, and the confidence level.</value>
+    <value>To auto detect an element's contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the contrast ratio, and the confidence level.</value>
   </data>
   <data name="ColorContrast_Analyzer" xml:space="preserve">
     <value>Analyzer</value>
   </data>
-  <data name="ColorContrast_HowToTestManual" xml:space="preserve">
-    <value>To manually select two colors to test the color contrast ratio, select each color using the Eyedropper (eye dropper icon). You can also select a color using the Color Picker box or enter its hex code.</value>
+  <data name="ColorContrast_HowToTestManualPre" xml:space="preserve">
+    <value>To manually select two colors to test the contrast ratio, select each color using the Eyedropper</value>
+  </data>
+  <data name="ColorContrast_HowToTestManualPost" xml:space="preserve">
+    <value>You can also select a color using the Color Picker box or enter its hex code.</value>
   </data>
   <data name="noElementSelected" xml:space="preserve">
     <value>no element selected</value>
@@ -1590,7 +1593,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Invalid link {0}</value>
   </data>
   <data name="lblAutoDetectContent" xml:space="preserve">
-    <value>Auto detect colors on hover</value>
+    <value>Auto detect contrast ratio</value>
   </data>
   <data name="InspectModeLink" xml:space="preserve">
     <value>Learn more about Inspect.</value>

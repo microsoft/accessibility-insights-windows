@@ -951,7 +951,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To auto-detect an element&apos;s color contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the color contrast ratio, and the confidence level..
+        ///   Looks up a localized string similar to To auto detect an element&apos;s contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the contrast ratio, and the confidence level..
         /// </summary>
         public static string ColorContrast_HowToTestAuto {
             get {
@@ -960,11 +960,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To manually select two colors to test the color contrast ratio, select each color using the Eyedropper (eye dropper icon). You can also select a color using the Color Picker box or enter its hex code..
+        ///   Looks up a localized string similar to You can also select a color using the Color Picker box or enter its hex code..
         /// </summary>
-        public static string ColorContrast_HowToTestManual {
+        public static string ColorContrast_HowToTestManualPost {
             get {
-                return ResourceManager.GetString("ColorContrast_HowToTestManual", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_HowToTestManualPost", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to To manually select two colors to test the contrast ratio, select each color using the Eyedropper.
+        /// </summary>
+        public static string ColorContrast_HowToTestManualPre {
+            get {
+                return ResourceManager.GetString("ColorContrast_HowToTestManualPre", resourceCulture);
             }
         }
         
@@ -2258,7 +2267,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto detect colors on hover.
+        ///   Looks up a localized string similar to Auto detect contrast ratio.
         /// </summary>
         public static string lblAutoDetectContent {
             get {

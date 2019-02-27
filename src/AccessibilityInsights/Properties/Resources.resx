@@ -130,7 +130,7 @@
     <value>Color contrast analyzer 3 of 3</value>
   </data>
   <data name="btnCCAToolTip" xml:space="preserve">
-    <value>Color Contrast analyzer</value>
+    <value>Contrast</value>
   </data>
   <data name="btnCloseAutomationPropertiesName" xml:space="preserve">
     <value>Close</value>
