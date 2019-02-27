@@ -249,10 +249,10 @@
   <data name="LabelContentVersion" xml:space="preserve">
     <value>Version:</value>
   </data>
-  <data name="hlTermsAutomationPropertiesName" xml:space="preserve">
+  <data name="hlTermsName" xml:space="preserve">
     <value>License terms</value>
   </data>
-  <data name="hlNoticesAutomationPropertiesName" xml:space="preserve">
+  <data name="hlThirdpartyNoticesName" xml:space="preserve">
     <value>Third party notices</value>
   </data>
   <data name="LabelContentShortcuts" xml:space="preserve">
@@ -371,12 +371,6 @@
   </data>
   <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
     <value>Team project</value>
-  </data>
-  <data name="FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url" xml:space="preserve">
-    <value>Failed to navigate to requested url.</value>
-  </data>
-  <data name="FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent" xml:space="preserve">
-    <value>Feedback has been successfully sent. Thanks for sending us feedback.</value>
   </data>
   <data name="sliderFeedbackTextText" xml:space="preserve">
     <value>Rate your overall satisfaction with desktop diagnostics:</value>
@@ -1519,21 +1513,6 @@ Accessibility Insights Support Team
   <data name="ConnectionControl_serverURL" xml:space="preserve">
     <value>Server URL</value>
   </data>
-  <data name="FeedbackControl_thankYou" xml:space="preserve">
-    <value>Thank you for using Accessibility Insights for Windows.</value>
-  </data>
-  <data name="FeedbackControl_lookingToProvide" xml:space="preserve">
-    <value>Looking to provide feedback?</value>
-  </data>
-  <data name="FeedbackControl_searchRequests" xml:space="preserve">
-    <value>Search feature requests</value>
-  </data>
-  <data name="FeedbackControl_reportIssue" xml:space="preserve">
-    <value>Report an issue</value>
-  </data>
-  <data name="FeedbackControl_questions" xml:space="preserve">
-    <value>Ask a question</value>
-  </data>
   <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
     <value>Search nodes in hierarchy.</value>
   </data>
@@ -1607,5 +1586,8 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="InspectModeLink" xml:space="preserve">
     <value>Learn more about Inspect.</value>
+  </data>
+  <data name="hlHelpName" xml:space="preserve">
+    <value>Help</value>
   </data>
 </root>

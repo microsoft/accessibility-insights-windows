@@ -1576,69 +1576,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feedback has been successfully sent. Thanks for sending us feedback..
-        /// </summary>
-        public static string FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent {
-            get {
-                return ResourceManager.GetString("FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to navigate to requested url..
-        /// </summary>
-        public static string FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url {
-            get {
-                return ResourceManager.GetString("FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Looking to provide feedback?.
-        /// </summary>
-        public static string FeedbackControl_lookingToProvide {
-            get {
-                return ResourceManager.GetString("FeedbackControl_lookingToProvide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ask a question.
-        /// </summary>
-        public static string FeedbackControl_questions {
-            get {
-                return ResourceManager.GetString("FeedbackControl_questions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report an issue.
-        /// </summary>
-        public static string FeedbackControl_reportIssue {
-            get {
-                return ResourceManager.GetString("FeedbackControl_reportIssue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search feature requests.
-        /// </summary>
-        public static string FeedbackControl_searchRequests {
-            get {
-                return ResourceManager.GetString("FeedbackControl_searchRequests", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thank you for using Accessibility Insights for Windows..
-        /// </summary>
-        public static string FeedbackControl_thankYou {
-            get {
-                return ResourceManager.GetString("FeedbackControl_thankYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Learn more about bug filing..
         /// </summary>
         public static string FileBugLink {
@@ -1953,6 +1890,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string hlHelpName {
+            get {
+                return ResourceManager.GetString("hlHelpName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to questions or feedback.
         /// </summary>
         public static string hlLinkAutomationPropertiesName {
@@ -1962,20 +1908,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Third party notices.
+        ///   Looks up a localized string similar to License terms.
         /// </summary>
-        public static string hlNoticesAutomationPropertiesName {
+        public static string hlTermsName {
             get {
-                return ResourceManager.GetString("hlNoticesAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("hlTermsName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License terms.
+        ///   Looks up a localized string similar to Third party notices.
         /// </summary>
-        public static string hlTermsAutomationPropertiesName {
+        public static string hlThirdpartyNoticesName {
             get {
-                return ResourceManager.GetString("hlTermsAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("hlThirdpartyNoticesName", resourceCulture);
             }
         }
         
