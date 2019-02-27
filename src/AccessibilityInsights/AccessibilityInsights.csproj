@@ -326,4 +326,22 @@
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>rd /S /Q $(TargetDir)Extensions
+md $(TargetDir)Extensions
+md $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+
+#rem Autoupdate
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.AutoUpdate\$(OutDir)AccessibilityInsights.Extensions.AutoUpdate.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.AutoUpdate\$(OutDir)Microsoft.Deployment.WindowsInstaller.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.AutoUpdate\$(OutDir)Newtonsoft.Json.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+
+#rem Telemetry
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.Telemetry\$(OutDir)AccessibilityInsights.Extensions.Telemetry.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.Telemetry\$(OutDir)AccessibilityInsights.Extensions.Telemetry.dll.config $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+xcopy $(SolutionDir)AccessibilityInsights.Extensions.Telemetry\$(OutDir)Microsoft.ApplicationInsights.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
+
+#rem AzureDevOps
+xcopy /S /Y $(SolutionDir)AccessibilityInsights.Extensions.AzureDevOps\$(OutDir)* $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552</PostBuildEvent>
+  </PropertyGroup>
 </Project>
