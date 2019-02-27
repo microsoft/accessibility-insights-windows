@@ -2,7 +2,7 @@
      Licensed under the MIT License. -->
 # Accessibility Insights for Windows
 
-[![Build Status](https://dev.azure.com/mseng/AzureDevOps/_apis/build/status/Accessibility%20Insights%20for%20Windows%20Signed?branchName=master)](https://dev.azure.com/mseng/AzureDevOps/_build/latest?definitionId=7909&branchName=master)
+[![Build Status](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_apis/build/status/Microsoft.accessibility-insights-windows-CI?branchName=master)](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_build/latest?definitionId=3&branchName=master)
 
 ![Product Logo](./brand/brand-blue-128px.png)
 
@@ -13,6 +13,8 @@ Accessibility Insights for Windows is the project for Accessibility tools on Win
 You can install the application from TBA.
 
 ## Building the code
+You can find more information on how to set up your development environment [here](./docs/SetUpDevEnv.md).
+
 ### 1. Clone the repository
 - Clone the repository using one of the following commands
   ``` bash
@@ -33,13 +35,13 @@ You can install the application from TBA.
 ### 3. Build and run unit tests
 
 ## More Information
-  Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
+Visit the [Overview of Accessibility Insights for Windows](./docs/Overview.md) page.
 
 ## Testing
-We use the unit test framework from Visual Studio. Find more information in our [FAQ section](docs/FAQ.md).
+We use the unit test framework from Visual Studio. Find more information in our [FAQ section](./docs/FAQ.md).
 
 ## Contributing
-All contributions are welcome! Please read through our guidelines on [contributions](Contributing.md) to this project.
+All contributions are welcome! Please read through our guidelines on [contributions](./Contributing.md) to this project.
 
 ## FAQ
-Please visit our [FAQ section](docs/FAQ.md) to get answers to common questions.
+Please visit our [FAQ section](./docs/FAQ.md) to get answers to common questions.

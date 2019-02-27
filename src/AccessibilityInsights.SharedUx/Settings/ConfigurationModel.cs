@@ -143,7 +143,11 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public IConnectionInfo SavedConnection
         {
-            get => _savedConnection;
+            get
+            {
+                return _savedConnection ??
+                    (_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
+            }
             set
             {
                 _savedConnection = value;
@@ -156,7 +160,11 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public IConnectionCache CachedConnections
         {
-            get => _savedConnectionCache;
+            get
+            {
+                return _savedConnectionCache ??
+                    (_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
+            }
             set
             {
                 _savedConnectionCache = value;
@@ -170,11 +178,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         public string SerializedSavedConnection
         {
             get => GetDataValue<string>(keySerializedSavedConnection);
-            set
-            {
-                SetDataValue<string>(keySerializedSavedConnection, value);
-                _savedConnection = BugReporter.CreateConnectionInfo(value);
-            }
+            set => SetDataValue<string>(keySerializedSavedConnection, value);
         }
 
         /// <summary>
@@ -183,11 +187,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         public string SerializedCachedConnections
         {
             get => GetDataValue<string>(keySerializedCachedConnections);
-            set
-            {
-                SetDataValue<string>(keySerializedSavedConnection, value);
-                _savedConnectionCache = BugReporter.CreateConnectionCache(value);
-            }
+            set => SetDataValue<string>(keySerializedCachedConnections, value);
         }
 
         /// <summary>
