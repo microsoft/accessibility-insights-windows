@@ -145,11 +145,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 return true;
             }
-            if (config.HotKeyForMoveToPreviousSibbling != (string)this.btnHotkeyToBefore.Content)
+            if (config.HotKeyForMoveToPreviousSibling != (string)this.btnHotkeyToBefore.Content)
             {
                 return true;
             }
-            if (config.HotKeyForMoveToNextSibbling != (string)this.btnHotekyToNext.Content)
+            if (config.HotKeyForMoveToNextSibling != (string)this.btnHotekyToNext.Content)
             {
                 return true;
             }
@@ -211,8 +211,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             this.btnHotkeyRecord.Content = config.HotKeyForRecord;
             this.btnHotkeyPause.Content = config.HotKeyForPause;
             this.btnHotkeyToParent.Content = config.HotKeyForMoveToParent;
-            this.btnHotkeyToBefore.Content = config.HotKeyForMoveToPreviousSibbling;
-            this.btnHotekyToNext.Content = config.HotKeyForMoveToNextSibbling;
+            this.btnHotkeyToBefore.Content = config.HotKeyForMoveToPreviousSibling;
+            this.btnHotekyToNext.Content = config.HotKeyForMoveToNextSibling;
             this.btnHotkeyToFirstChild.Content = config.HotKeyForMoveToFirstChild;
             this.btnTHotkeyoLastChild.Content = config.HotKeyForMoveToLastChild;
             this.tbMouseDelay.Text = config.MouseSelectionDelayMilliSeconds.ToString(CultureInfo.InvariantCulture);
@@ -254,11 +254,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             config.HotKeyForRecord = (string)this.btnHotkeyRecord.Content;
             config.HotKeyForPause = (string)this.btnHotkeyPause.Content;
             config.HotKeyForMoveToParent = (string)this.btnHotkeyToParent.Content;
-            config.HotKeyForMoveToPreviousSibbling = (string)this.btnHotkeyToBefore.Content;
-            config.HotKeyForMoveToNextSibbling = (string)this.btnHotekyToNext.Content;
+            config.HotKeyForMoveToPreviousSibling = (string)this.btnHotkeyToBefore.Content;
+            config.HotKeyForMoveToNextSibling = (string)this.btnHotekyToNext.Content;
             config.HotKeyForMoveToFirstChild = (string)this.btnHotkeyToFirstChild.Content;
             config.HotKeyForMoveToLastChild = (string)this.btnTHotkeyoLastChild.Content;
-            config.MouseSelectionDelayMilliSeconds = Math.Max(int.Parse(this.tbMouseDelay.Text,CultureInfo.InvariantCulture), ConfigurationModel.MinimumSelectionDelayMilliSeconds); // make sure that we allow only bigger than minimum value.
+            config.MouseSelectionDelayMilliSeconds = Math.Max(int.Parse(this.tbMouseDelay.Text,CultureInfo.InvariantCulture), ConfigurationModel.MinimumSelectionDelayMilliseconds); // make sure that we allow only bigger than minimum value.
             DataContextVM.SaveToConfig(config);
         }
 

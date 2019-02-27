@@ -559,7 +559,7 @@ namespace AccessibilityInsights
         /// - Send telemetry
         /// </summary>
         /// <param name="testconfig"></param>
-        internal void HandleConfigurationChanged(IReadOnlyDictionary<PropertyInfo, Object> changes)
+        internal void HandleConfigurationChanged(IReadOnlyDictionary<string, object> changes)
         {
             HotkeyHandler?.Dispose();
             InitHotKeys();
@@ -572,16 +572,13 @@ namespace AccessibilityInsights
 
             HighlightAction.GetDefaultInstance().HighlighterMode = configManager.AppConfig.HighlighterMode;
 
-            configManager.TestConfig = TestSetting.GenerateSuiteConfiguration(AccessibilityInsights.RuleSelection.SuiteConfigurationType.Default);
+            configManager.TestConfig = TestSetting.GenerateSuiteConfiguration(RuleSelection.SuiteConfigurationType.Default);
 
             InitSelectActionMode();
 
-            configManager.AppConfig.TraceConfigurationIntoTelemetry();
-
             HideConfigurationMode();
 
-            Type type = typeof(AccessibilityInsights.SharedUx.Settings.ConfigurationModel);
-            if (changes != null && changes.ContainsKey(type.GetProperty("FontSize")))
+            if (changes != null && changes.ContainsKey(ConfigurationModel.keyFontSize))
             {
                 SetFontSize();
             }

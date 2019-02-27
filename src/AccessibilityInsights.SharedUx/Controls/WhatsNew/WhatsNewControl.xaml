@@ -35,28 +35,32 @@
             <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="0">
                 <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextInspectMode}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextInspectLiveUIATree}"/>
-                <Hyperlink x:Name="hlInspectMode" 
-                    AutomationProperties.Name="{x:Static Properties:Resources.InspectModeLink}" 
-                    NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" 
-                    RequestNavigate="Hyperlink_RequestNavigate" 
-                    FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                    TextDecorations="None">
-                    <Run Text="{x:Static Properties:Resources.InspectModeLink}" />
-                </Hyperlink>
+                <TextBlock>
+                    <Hyperlink x:Name="hlInspectMode" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.InspectModeLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.InspectModeLink}" />
+                    </Hyperlink>
+                </TextBlock>
             </TextBlock>
 
             <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Rocket" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="1"/>
             <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="1" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
                 <Run Name="tbFastPass" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFastPass}"/>
                 <Run Name="tbFastPassInfo" Text="{x:Static Properties:Resources.tbFastPassInfoText}"/>
-                <Hyperlink x:Name="hlFastPass" 
-                    AutomationProperties.Name="{x:Static Properties:Resources.FastPassLink}" 
-                    NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075125" 
-                    RequestNavigate="Hyperlink_RequestNavigate" 
-                    FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                    TextDecorations="None">
-                    <Run Text="{x:Static Properties:Resources.FastPassLink}" />
-                </Hyperlink>
+                <TextBlock>
+                    <Hyperlink x:Name="hlFastPass" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.FastPassLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075125" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.FastPassLink}" />
+                    </Hyperlink>
+                </TextBlock>
                 <AutomationProperties.Name>
                     <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormattbFastPass}">
                         <Binding ElementName="tbFastPass" Path="Text"/>
@@ -69,28 +73,32 @@
             <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="2">
                 <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFileBugs}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextLogBugsIn}"/>
-                <Hyperlink x:Name="hlFileBug" 
-                    AutomationProperties.Name="{x:Static Properties:Resources.FileBugLink}" 
-                    NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" 
-                    RequestNavigate="Hyperlink_RequestNavigate" 
-                    FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                    TextDecorations="None">
-                    <Run Text="{x:Static Properties:Resources.FileBugLink}" />
-                </Hyperlink>
+                <TextBlock>
+                    <Hyperlink x:Name="hlFileBug" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.FileBugLink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.FileBugLink}" />
+                    </Hyperlink>
+                </TextBlock>
             </TextBlock>
 
             <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Color" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="3"/>
             <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="3" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
                 <Run Name="tbColorContrast" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextColorContrast}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextManualColorTest}"/>
-                <Hyperlink x:Name="hlCCA" 
-                    AutomationProperties.Name="{x:Static Properties:Resources.CCALink}" 
-                    NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075365" 
-                    RequestNavigate="Hyperlink_RequestNavigate" 
-                    FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                    TextDecorations="None">
-                    <Run Text="{x:Static Properties:Resources.CCALink}" />
-                </Hyperlink>
+                <TextBlock>
+                    <Hyperlink x:Name="hlCCA" 
+                        AutomationProperties.Name="{x:Static Properties:Resources.CCALink}" 
+                        NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075365" 
+                        RequestNavigate="Hyperlink_RequestNavigate" 
+                        FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
+                        TextDecorations="None">
+                        <Run Text="{x:Static Properties:Resources.CCALink}" />
+                    </Hyperlink>
+                </TextBlock>
             </TextBlock>
         </Grid>
     </Grid>

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
+using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
@@ -9,10 +9,9 @@ using AccessibilityInsights.RuleSelection;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Utilities;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
+using System.Linq;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {
@@ -20,36 +19,166 @@ namespace AccessibilityInsights.SharedUx.Settings
     /// Configuration class
     /// it contains all configuration data for AccessibilityInsights
     /// </summary>
-    public partial class ConfigurationModel : ConfigurationBase, ICloneable
+    public partial class ConfigurationModel : ICloneable
     {
-#pragma warning disable CA2227 // Collection properties should be read only. however since these properties will be serialized/deserialized via JSON, exempted.
+        /// <summary>
+        /// The SettingsDictionary contains all of the persisted data
+        /// </summary>
+        private readonly SettingsDictionary _settings = new SettingsDictionary();
+
+        // These are just backing properties for things where auto-properties are insufficient
+        private IConnectionInfo _savedConnection;
+        private IConnectionCache _savedConnectionCache;
+
+        #region Data Helpers
+
+        /// <summary>
+        /// Get a data value of the specific type--don't use for enumerated values
+        /// </summary>
+        /// <returns>The data if it exists, or the default if not</returns>
+        private T GetDataValue<T>(string key)
+        {
+            if (_settings.TryGetValue(key, out object dataValue))
+            {
+                if (dataValue != null && (dataValue.GetType() == typeof(T)))
+                {
+                    return (T)dataValue;
+                }
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
+        /// Set a data value of the specific type--don't use for enumerated values
+        /// </summary>
+        /// <remarks>The type 'T' is not strictly needed, but included for extra build-time checking</remarks>
+        private void SetDataValue<T>(string key, T value)
+        {
+            _settings[key] = value;
+        }
+
+        /// <summary>
+        /// Get an enumerated value (stored by name, not by number)
+        /// </summary>
+        /// <returns>The data if it exists, or the default if not</returns>
+        private T GetEnumDataValue<T>(string key) where T : struct
+        {
+            if (_settings.TryGetValue(key, out object stringValue))
+            {
+                if (stringValue != null && (stringValue.GetType() == typeof(string)))
+                {
+                    if (Enum.TryParse<T>((string)stringValue, out T dataValue))
+                    {
+                        return dataValue;
+                    }
+                }
+            }
+
+            return default(T);
+        }
+
+        /// <summary>
+        /// Get an enumerated value (stored by name, not by number), with a custom default
+        /// </summary>
+        /// <returns>The data if it exists, or the provided default if not</returns>
+        private T GetEnumDataValueWithDefault<T>(string key, T defaultValue) where T : struct
+        {
+            if (_settings.TryGetValue(key, out object stringValue))
+            {
+                if (stringValue.GetType() == typeof(string))
+                {
+                    if (Enum.TryParse<T>((string)stringValue, out T dataValue))
+                    {
+                        return dataValue;
+                    }
+                }
+            }
+
+            return defaultValue;
+        }
+
+        /// <summary>
+        /// Set an enumerated value (stored by name, not by number)
+        /// </summary>
+        private void SetEnumDataValue<T>(string key, T value) where T : struct
+        {
+            _settings[key] = value.ToString();
+        }
+
+        #endregion
+
         #region Setting options
+
+        /// <summary>
+        /// Schema version of the app that saved the data file -- do not discard data based on this value!
+        /// </summary>
+        public string Version
+        {
+            get => GetDataValue<string>(keyVersion);
+            set => SetDataValue<string>(keyVersion, value);
+        }
+
+        /// <summary>
+        /// Version of the app that saved the data file
+        /// </summary>
+        public string AppVersion
+        {
+            get => GetDataValue<string>(keyAppVersion);
+            set => SetDataValue<string>(keyAppVersion, value);
+        }
 
         /// <summary>
         /// Zoom level to set for embedded web browser as a percentage
         /// the percentage is based on DPI, so it may start off at values other than 100%
         /// </summary>
-        public int ZoomLevel { get; set; }
+        public int ZoomLevel
+        {
+            get => GetDataValue<int>(keyZoomLevel);
+            set => SetDataValue<int>(keyZoomLevel, value);
+        }
 
         /// <summary>
         /// The connection to automatically connect to when AccessibilityInsights starts up
         /// </summary>
-        [JsonIgnore]
-        public IConnectionInfo SavedConnection { get; set; }
+        public IConnectionInfo SavedConnection
+        {
+            get
+            {
+                return _savedConnection ??
+                    (_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
+            }
+            set
+            {
+                _savedConnection = value;
+                SetDataValue<string>(keySerializedSavedConnection, value?.ToConfigString());
+            }
+        }
 
         /// <summary>
         /// MRU connections
         /// </summary>
-        [JsonIgnore]
-        public IConnectionCache CachedConnections { get; set; }
+        public IConnectionCache CachedConnections
+        {
+            get
+            {
+                return _savedConnectionCache ??
+                    (_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
+            }
+            set
+            {
+                _savedConnectionCache = value;
+                SetDataValue<string>(keySerializedCachedConnections, value?.ToConfigString());
+            }
+        }
 
         /// <summary>
         /// Serialized form of SavedConnection
         /// </summary>
         public string SerializedSavedConnection
         {
-            get => SavedConnection?.ToConfigString();
-            set => SavedConnection = BugReporter.CreateConnectionInfo(value);
+            get => GetDataValue<string>(keySerializedSavedConnection);
+            set => SetDataValue<string>(keySerializedSavedConnection, value);
         }
 
         /// <summary>
@@ -57,231 +186,298 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public string SerializedCachedConnections
         {
-            get => CachedConnections?.ToConfigString();
-            set => CachedConnections = BugReporter.CreateConnectionCache(value);
+            get => GetDataValue<string>(keySerializedCachedConnections);
+            set => SetDataValue<string>(keySerializedCachedConnections, value);
         }
 
         /// <summary>
         /// Test Report Path
         /// </summary>
-        public string TestReportPath { get; set; }
+        public string TestReportPath
+        {
+            get => GetDataValue<string>(keyTestReportPath);
+            set => SetDataValue<string>(keyTestReportPath, value);
+        }
 
         /// <summary>
         /// Event Record Path
         /// </summary>
-        public string EventRecordPath { get; set; }
+        public string EventRecordPath
+        {
+            get => GetDataValue<string>(keyEventRecordPath);
+            set => SetDataValue<string>(keyEventRecordPath, value);
+        }
 
         /// <summary>
-        /// Test Config type (default, office, or custom)
+        /// Test Config type (default, standard, etc.)
         /// </summary>
-        public SuiteConfigurationType TestConfig { get; set; }
-
-        /// <summary>
-        /// Path to test config path
-        /// </summary>
-        public string TestConfigPath { get; set; }
+        public SuiteConfigurationType TestConfig
+        {
+            get => GetEnumDataValue<SuiteConfigurationType>(keyTestConfig);
+            set => SetEnumDataValue<SuiteConfigurationType>(keyTestConfig, value);
+        }
 
         /// <summary>
         /// Hot key for snap mode
         /// Shift + F7 is default value
         /// </summary>
-        public string HotKeyForRecord { get; set; }
+        public string HotKeyForRecord
+        {
+            get => GetDataValue<string>(keyHotKeyForRecord);
+            set => SetDataValue<string>(keyHotKeyForRecord, value);
+        }
 
         /// <summary>
         /// Hot key for pause button
         /// Shift + F5 is default value
         /// </summary>
-        public string HotKeyForPause { get; set; }
+        public string HotKeyForPause
+        {
+            get => GetDataValue<string>(keyHotKeyForPause);
+            set => SetDataValue<string>(keyHotKeyForPause, value);
+        }
 
         /// <summary>
         /// Hot key for snap mode
         /// Shift + F8 is default value
         /// </summary>
-        public string HotKeyForSnap { get; set; }
+        public string HotKeyForSnap
+        {
+            get => GetDataValue<string>(keyHotKeyForSnap);
+            set => SetDataValue<string>(keyHotKeyForSnap, value);
+        }
 
         /// <summary>
         /// Shift + F9
         /// Maximize and Minimize main window in live mode.
         /// </summary>
-        public string HotKeyForActivatingMainWindow { get; set; }
+        public string HotKeyForActivatingMainWindow
+        {
+            get => GetDataValue<string>(keyHotKeyForActivatingMainWindow);
+            set => SetDataValue<string>(keyHotKeyForActivatingMainWindow, value);
+        }
 
         /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
-        public string HotKeyForMoveToParent { get; set; }
+        public string HotKeyForMoveToParent
+        {
+            get => GetDataValue<string>(keyHotKeyForMoveToParent);
+            set => SetDataValue<string>(keyHotKeyForMoveToParent, value);
+        }
 
         /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
-        public string HotKeyForMoveToFirstChild { get; set; }
+        public string HotKeyForMoveToFirstChild
+        {
+            get => GetDataValue<string>(keyHotKeyForMoveToFirstChild);
+            set => SetDataValue<string>(keyHotKeyForMoveToFirstChild, value);
+        }
 
         /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
-        public string HotKeyForMoveToLastChild { get; set; }
+        public string HotKeyForMoveToLastChild
+        {
+            get => GetDataValue<string>(keyHotKeyForMoveToLastChild);
+            set => SetDataValue<string>(keyHotKeyForMoveToLastChild, value);
+        }
 
         /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
-        public string HotKeyForMoveToNextSibbling { get; set; }
+        public string HotKeyForMoveToNextSibling
+        {
+            get => GetDataValue<string>(keyHotKeyForMoveToNextSibling);
+            set => SetDataValue<string>(keyHotKeyForMoveToNextSibling, value);
+        }
 
         /// <summary>
         /// Hot key used for selecting an element using tree navigation.
         /// </summary>
-        public string HotKeyForMoveToPreviousSibbling { get; set; }
+        public string HotKeyForMoveToPreviousSibling
+        {
+            get => GetDataValue<string>(keyHotKeyForMoveToPreviousSibling);
+            set => SetDataValue<string>(keyHotKeyForMoveToPreviousSibling, value);
+        }
 
         /// <summary>
         /// Stores user's selected property selections
         /// </summary>
-        public List<int> CoreProperties { get; set; }
+        public IEnumerable<int> CoreProperties
+        {
+            get => GetDataValue<int[]>(keyCoreProperties);
+            set => SetDataValue<int[]>(keyCoreProperties, value.ToArray());
+        }
 
         /// <summary>
         /// Stores user's selected text pattern attributes
         /// </summary>
-        public List<int> CoreTPAttributes { get; set; }
+        public IEnumerable<int> CoreTPAttributes
+        {
+            get => GetDataValue<int[]>(keyCoreTPAttributes);
+            set => SetDataValue<int[]>(keyCoreTPAttributes, value.ToArray());
+        }
 
         /// <summary>
         /// Mouse Selection Delay in MilliSeconds
         /// </summary>
-        public int MouseSelectionDelayMilliSeconds { get; set; }
+        public int MouseSelectionDelayMilliSeconds
+        {
+            get => GetDataValue<int>(keyMouseSelectionDelayMilliSeconds);
+            set => SetDataValue<int>(keyMouseSelectionDelayMilliSeconds, value);
+        }
 
         /// <summary>
         /// Show splash window on launch
         /// </summary>
-        public bool ShowWelcomeScreenOnLaunch { get; set; }
+        public bool ShowWelcomeScreenOnLaunch
+        {
+            get => GetDataValue<bool>(keyShowWelcomeScreenOnLaunch);
+            set => SetDataValue<bool>(keyShowWelcomeScreenOnLaunch, value);
+        }
 
         /// <summary>
         /// If true, keyboard is used to select.
         /// </summary>
-        public bool SelectionByFocus { get; set; }
+        public bool SelectionByFocus
+        {
+            get => GetDataValue<bool>(keySelectionByFocus);
+            set => SetDataValue<bool>(keySelectionByFocus, value);
+        }
 
         /// <summary>
         /// If true, Mouse is used to select.
         /// </summary>
-        public bool SelectionByMouse { get; set; }
+        public bool SelectionByMouse
+        {
+            get => GetDataValue<bool>(keySelectionByMouse);
+            set => SetDataValue<bool>(keySelectionByMouse, value);
+        }
 
         /// <summary>
         /// If true, window will always be on top of other windows
         /// </summary>
-        public bool AlwaysOnTop { get; set; }
+        public bool AlwaysOnTop
+        {
+            get => GetDataValue<bool>(keyAlwaysOnTop);
+            set => SetDataValue<bool>(keyAlwaysOnTop, value);
+        }
 
         /// <summary>
         /// Indicate which font size to use
         /// </summary>
-        public FontSize FontSize { get; set; } = FontSize.Standard;
+        public FontSize FontSize
+        {
+            get => GetEnumDataValueWithDefault<FontSize>(keyFontSize, FontSize.Standard);
+            set => SetEnumDataValue<FontSize>(keyFontSize, value);
+        }
 
         /// <summary>
         /// Indicate which hightlighter mode to use
         /// </summary>
-        public HighlighterMode HighlighterMode {get; set;}
+        public HighlighterMode HighlighterMode
+        {
+            get => GetEnumDataValue<HighlighterMode>(keyHighlighterMode);
+            set => SetEnumDataValue<HighlighterMode>(keyHighlighterMode, value);
+        }
 
         /// <summary>
         /// If true, sound will be played while scanning is running with ATs
         /// </summary>
-        public bool PlayScanningSound { get; set; }
+        public bool PlayScanningSound
+        {
+            get => GetDataValue<bool>(keyPlayScanningSound);
+            set => SetDataValue<bool>(keyPlayScanningSound, value);
+        }
 
         /// <summary>
         /// If true, tests will be run in snapshot mode
         /// </summary>
-        public bool DisableTestsInSnapMode { get; set; }
+        public bool DisableTestsInSnapMode
+        {
+            get => GetDataValue<bool>(keyDisableTestsInSnapMode);
+            set => SetDataValue<bool>(keyDisableTestsInSnapMode, value);
+        }
 
         /// <summary>
         /// if it is true, show the full list of ancesters up to desktop in snap mode.
         /// </summary>
-        public bool ShowAncestry { get; set; }
+        public bool ShowAncestry
+        {
+            get => GetDataValue<bool>(keyShowAncestry);
+            set => SetDataValue<bool>(keyShowAncestry, value);
+        }
 
         /// <summary>
         /// if it is true, do not limit properties list to selected properties
         /// </summary>
-        public bool ShowAllProperties { get; set; }
+        public bool ShowAllProperties
+        {
+            get => GetDataValue<bool>(keyShowAllProperties);
+            set => SetDataValue<bool>(keyShowAllProperties, value);
+        }
 
         /// <summary>
         /// Global state of highlighter
         /// </summary>
-        [JsonIgnore]
         public bool IsHighlighterOn { get; set; } = true;
 
         /// <summary>
         /// Show/no show Uncertain results. 
         /// </summary>
-        public bool ShowUncertain { get; set; }
+        public bool ShowUncertain
+        {
+            get => GetDataValue<bool>(keyShowUncertain);
+            set => SetDataValue<bool>(keyShowUncertain, value);
+        }
 
         /// <summary>
         /// Replaces text pattern whitespace with formatting symbols
         /// </summary>
-        public bool ShowWhitespaceInTextPatternViewer { get; set; }
+        public bool ShowWhitespaceInTextPatternViewer
+        {
+            get => GetDataValue<bool>(keyShowWhitespaceInTextPatternViewer);
+            set => SetDataValue<bool>(keyShowWhitespaceInTextPatternViewer, value);
+        }
 
         /// <summary>
         /// Tree view mode : Raw/Control/Content
         /// default is control
         /// </summary>
-        public TreeViewMode TreeViewMode { get; set; }
+        public TreeViewMode TreeViewMode
+        {
+            get => GetEnumDataValue<TreeViewMode>(keyTreeViewMode);
+            set => SetEnumDataValue<TreeViewMode>(keyTreeViewMode, value);
+        }
 
         /// <summary>
         /// Inspect scope: Element/Entire App
         /// default is Element
         /// </summary>
-        public bool IsUnderElementScope { get; set; }
+        public bool IsUnderElementScope
+        {
+            get => GetDataValue<bool>(keyIsUnderElementScope);
+            set => SetDataValue<bool>(keyIsUnderElementScope, value);
+        }
 
         /// <summary>
         /// If true, telemetry will be collected
         /// </summary>
-        public bool EnableTelemetry { get; set; }
+        public bool EnableTelemetry
+        {
+            get => GetDataValue<bool>(keyEnableTelemetry);
+            set => SetDataValue<bool>(keyEnableTelemetry, value);
+        }
+
         /// <summary>
         /// If true, telemetry startup dialog will be displayed
         /// </summary>
-        public bool ShowTelemetryDialog { get; set; }
-        #endregion
-#pragma warning restore CA2227 // Collection properties should be read only
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public ConfigurationModel() { }
-
-        /// <summary>
-        /// Returns a copy of this object with relevant fields
-        /// to send to telemetry
-        /// </summary>
-        /// <returns>new config model with stripped fields</returns>
-        public ConfigurationModel CloneForTelemetry()
+        public bool ShowTelemetryDialog
         {
-            ConfigurationModel m = new ConfigurationModel();
-            m.AlwaysOnTop = this.AlwaysOnTop;
-            m.AppVersion = this.AppVersion;
-            m.CoreProperties = this.CoreProperties;
-            m.DisableTestsInSnapMode = this.DisableTestsInSnapMode;
-            m.EventRecordPath = null; // scrubbed
-            m.FontSize = this.FontSize;
-            m.HotKeyForActivatingMainWindow = this.HotKeyForActivatingMainWindow;
-            m.HotKeyForMoveToFirstChild = this.HotKeyForMoveToFirstChild;
-            m.HotKeyForMoveToLastChild = this.HotKeyForMoveToLastChild;
-            m.HotKeyForMoveToNextSibbling = this.HotKeyForMoveToNextSibbling;
-            m.HotKeyForMoveToParent = this.HotKeyForMoveToParent;
-            m.HotKeyForMoveToPreviousSibbling = this.HotKeyForMoveToPreviousSibbling;
-            m.HotKeyForRecord = this.HotKeyForRecord;
-            m.HotKeyForPause = this.HotKeyForPause;
-            m.HotKeyForSnap = this.HotKeyForSnap;
-            m.IsHighlighterOn = this.IsHighlighterOn;
-            m.MouseSelectionDelayMilliSeconds = this.MouseSelectionDelayMilliSeconds;
-            m.PlayScanningSound = this.PlayScanningSound;
-            m.HighlighterMode = this.HighlighterMode;
-            m.SelectionByFocus = this.SelectionByFocus;
-            m.SelectionByMouse = this.SelectionByMouse;
-            m.ShowAllProperties = this.ShowAllProperties;
-            m.ShowAncestry = this.ShowAncestry;
-            m.ShowUncertain = this.ShowUncertain;
-            m.ShowWelcomeScreenOnLaunch = this.ShowWelcomeScreenOnLaunch;
-            m.TestConfig = this.TestConfig;
-            m.TestConfigPath = null; // scrubbed
-            m.TestReportPath = null; // scrubbed
-            m.TreeViewMode = this.TreeViewMode;
-            m.Version = this.Version;
-            m.ZoomLevel = this.ZoomLevel;
-            m.IsUnderElementScope = this.IsUnderElementScope;
-            m.EnableTelemetry = this.EnableTelemetry;
-            m.ShowTelemetryDialog = this.ShowTelemetryDialog;
-            return m;
+            get => GetDataValue<bool>(keyShowTelemetryDialog);
+            set => SetDataValue<bool>(keyShowTelemetryDialog, value);
         }
 
         /// <summary>
@@ -290,29 +486,85 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns></returns>
         public bool NeedToShowWelcomeScreen()
         {
-            if(ShowWelcomeScreenOnLaunch == false)
+            if (ShowWelcomeScreenOnLaunch == false)
             {
-                if(this.AppVersion != AccessibilityInsights.Core.Misc.Utility.GetAppVersion())
+                if (this.AppVersion != Core.Misc.Utility.GetAppVersion())
                 {
-                    this.AppVersion = AccessibilityInsights.Core.Misc.Utility.GetAppVersion();
+                    this.AppVersion = Core.Misc.Utility.GetAppVersion();
                     this.ShowWelcomeScreenOnLaunch = true;
                     return true;
                 }
             }
 
-            return ShowWelcomeScreenOnLaunch; 
+            return ShowWelcomeScreenOnLaunch;
         }
 
-        #region static method
-        /// <summary>
-        /// Get the current configuration model instance
-        /// </summary>
-        /// <returns></returns>
-        public static ConfigurationModel LoadConfiguration(string path)
-        {
-            var config = ConfigurationModel.LoadFromJSON<ConfigurationModel>(path);
+        #endregion
 
-            if (config.Version != ConfigurationModel.CurrentVersion || ContainsNull(config))
+        #region Constructors
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public ConfigurationModel()
+        {
+            AppVersion = Core.Misc.Utility.GetAppVersion();
+            Version = CurrentVersion;
+        }
+
+        /// <summary>
+        /// ctor from DiskConfigurationModel
+        /// </summary>
+        private ConfigurationModel(SettingsDictionary source)
+        {
+            _settings = new SettingsDictionary(source);
+            AppVersion = Core.Misc.Utility.GetAppVersion();
+            Version = CurrentVersion;
+        }
+
+        /// <summary>
+        /// Copy ctor
+        /// </summary>
+        /// <param name="source"></param>
+        private ConfigurationModel(ConfigurationModel source)
+        {
+            _settings = new SettingsDictionary(source._settings);
+        }
+
+        #endregion
+
+        #region File Management methods
+
+        /// <summary>
+        /// Save the current configuration model data to disk
+        /// </summary>
+        /// <param name="path">The path to the client's data file</param>
+        public void SerializeInJSON(string path)
+        {
+            FileHelpers.SerializeDataToJSON(_settings, path);
+        }
+
+        #region static methods
+
+        /// <summary>
+        /// Rename the existing configuration to .bak file.
+        /// </summary>
+        /// <param name="path">The file to rename</param>
+        public static void RemoveConfiguration(string path)
+        {
+            FileHelpers.RenameFileAsBackup(path);
+        }
+
+        /// <summary>
+        /// Load the configuration model data from disk
+        /// </summary>
+        /// <param name="path">The path to the client's data file</param>
+        /// <returns>The ConfigurationModel to use</returns>
+        public static ConfigurationModel LoadFromJSON(string path)
+        {
+            ConfigurationModel config = LoadDataFromJSON(path) ?? GetDefaultConfigurationModel();
+
+            if (ContainsNull(config))
             {
                 // retain hot key mapping 
                 string hksnapshot = config.HotKeyForSnap;
@@ -329,7 +581,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.HotKeyForActivatingMainWindow = hkactivate;
             }
 
-            if (config.CoreProperties.Count == 0)
+            if (!config.CoreProperties.Any())
             {
                 config.CoreProperties = DesktopElementHelper.GetDefaultCoreProperties();
             }
@@ -341,6 +593,30 @@ namespace AccessibilityInsights.SharedUx.Settings
 
             return config;
         }
+
+        private static ConfigurationModel LoadDataFromJSON(string path)
+        {
+            var config = FileHelpers.LoadDataFromJSON<SettingsDictionary>(path);
+
+            if (config != null && config.Any())
+            {
+                // Fix misspelled keys from legacy schema
+                config.RemapSetting(keyHotKeyLegacyForMoveToNextSibling, keyHotKeyForMoveToNextSibling);
+                config.RemapSetting(keyHotKeyLegacyForMoveToPreviousSibling, keyHotKeyForMoveToPreviousSibling);
+
+                // Convert legacy values that are stored as numbers instead of enum names
+                config.RemapIntToEnumName<SuiteConfigurationType>(keyTestConfig);
+                config.RemapIntToEnumName<TreeViewMode>(keyTreeViewMode);
+                config.RemapIntToEnumName<HighlighterMode>(keyHighlighterMode);
+                config.RemapIntToEnumName<FontSize>(keyFontSize);
+
+                return new ConfigurationModel(config);
+            }
+
+            return null;
+        }
+
+        #endregion
 
         /// <summary>
         /// check if any hot key is null, like it was removed from the configuration file
@@ -359,51 +635,48 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         /// <returns></returns>
         public static ConfigurationModel GetDefaultConfigurationModel()
-        {          
-            ConfigurationModel config = new ConfigurationModel();
+        {
+            ConfigurationModel config = new ConfigurationModel
+            {
+                AppVersion = Core.Misc.Utility.GetAppVersion(),
+                Version = CurrentVersion,
 
-            config.Version = ConfigurationModel.CurrentVersion;
-            config.AppVersion = AccessibilityInsights.Core.Misc.Utility.GetAppVersion();
+                TestReportPath = DirectoryManagement.sUserDataFolderPath,
+                EventRecordPath = DirectoryManagement.sUserDataFolderPath,
 
-            config.TestReportPath = DirectoryManagement.sUserDataFolderPath;
-            config.EventRecordPath = DirectoryManagement.sUserDataFolderPath;
+                HotKeyForRecord = ConfigurationModel.DefaultHotKeyRecord,
+                HotKeyForPause = ConfigurationModel.DefaultHotKeyPause,
+                HotKeyForSnap = ConfigurationModel.DefaultHotKeySnap,
+                HotKeyForActivatingMainWindow = ConfigurationModel.DefaultHotKeyActivatingMainWindow,
+                HotKeyForMoveToParent = ConfigurationModel.DefaultHotKeyMoveToParent,
+                HotKeyForMoveToFirstChild = ConfigurationModel.DefaultHotKeyMoveToFirstChild,
+                HotKeyForMoveToLastChild = ConfigurationModel.DefaultHotKeyMoveToLastChild,
+                HotKeyForMoveToNextSibling = ConfigurationModel.DefaultHotKeyMoveToNextSibling,
+                HotKeyForMoveToPreviousSibling = ConfigurationModel.DefaultHotKeyMoveToPreviousSibling,
 
-            // select all available test suites
-            config.HotKeyForRecord = ConfigurationModel.DefaultHotKeyRecord;
-            config.HotKeyForPause = ConfigurationModel.DefaultHotKeyPause;
-            config.HotKeyForSnap = ConfigurationModel.DefaultHotKeySnap;
-            config.HotKeyForActivatingMainWindow = ConfigurationModel.DefaultHotKeyActivatingMainWindow;
-            config.HotKeyForMoveToParent = ConfigurationModel.DefaultHotKeyMoveToParent;
-            config.HotKeyForMoveToFirstChild = ConfigurationModel.DefaultHotKeyMoveToFirstChild;
-            config.HotKeyForMoveToLastChild = ConfigurationModel.DefaultHotKeyMoveToLastChild;
-            config.HotKeyForMoveToNextSibbling = ConfigurationModel.DefaultHotKeyMoveToNextSibbling;
-            config.HotKeyForMoveToPreviousSibbling = ConfigurationModel.DefaultHotKeyMoveToPreviousSibbling;
+                CoreProperties = DesktopElementHelper.GetDefaultCoreProperties(),
+                CoreTPAttributes = new List<int>(),
 
-            config.CoreProperties = DesktopElementHelper.GetDefaultCoreProperties();
-            config.CoreTPAttributes = new List<int>();
+                MouseSelectionDelayMilliSeconds = ConfigurationModel.DefaultSelectionDelayMilliseconds,
+                SelectionByFocus = true,
+                SelectionByMouse = true,
+                ShowWelcomeScreenOnLaunch = true,
+                AlwaysOnTop = true,
+                PlayScanningSound = false,
+                DisableTestsInSnapMode = false,
+                IsHighlighterOn = true,
+                ShowUncertain = false,
+                TreeViewMode = TreeViewMode.Control,
+                FontSize = FontSize.Standard,
+                HighlighterMode = HighlighterMode.HighlighterBeakerTooltip,
+                ShowAncestry = true,
+                ZoomLevel = 100,
+                EnableTelemetry = true,
+                ShowTelemetryDialog = true,
 
-            config.MouseSelectionDelayMilliSeconds = ConfigurationModel.DefaultSelectionDelayMilliSeconds;
-            config.SelectionByFocus = true;
-            config.SelectionByMouse = true;
-            config.ShowWelcomeScreenOnLaunch = true;
-            config.AlwaysOnTop = true;
-            config.PlayScanningSound = false;
-            config.DisableTestsInSnapMode = false;
-            config.IsHighlighterOn = true;
-            config.ShowUncertain = false;
-            config.TreeViewMode = TreeViewMode.Control;
-            config.FontSize = FontSize.Standard;
-            config.HighlighterMode = HighlighterMode.HighlighterBeakerTooltip;
-            config.ShowAncestry = true;
-            config.ZoomLevel = 100;
-            config.EnableTelemetry = true;
-            config.ShowTelemetryDialog = true;
-
-            config.TestConfig = SuiteConfigurationType.Default;
-            config.IsUnderElementScope = true;
-
-            config.CachedConnections = BugReporter.CreateConnectionCache(config.SerializedCachedConnections);
-            config.SavedConnection = BugReporter.CreateConnectionInfo(config.SerializedSavedConnection);
+                TestConfig = SuiteConfigurationType.Default,
+                IsUnderElementScope = true
+            };
 
             return config;
         }
@@ -413,31 +686,19 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         /// <param name="oldModel">the old model</param>
         /// <param name="newModel">the new model</param>
-        /// <returns>A dictionary of all the properties that has a new value. Key is the propertyInfo and value is new property value</returns>
-        public static IReadOnlyDictionary<PropertyInfo, object> Diff(ConfigurationModel oldModel, ConfigurationModel newModel)
+        /// <returns>A dictionary of all the properties that has a new value. Key is the name of the key and value is new property value</returns>
+        public static IReadOnlyDictionary<string, object> Diff(ConfigurationModel oldModel, ConfigurationModel newModel)
         {
-            Dictionary<PropertyInfo, object> diff = new Dictionary<PropertyInfo, object>();
-
-            Type type = typeof(ConfigurationModel);
-            foreach (PropertyInfo propertyInfo in type.GetProperties())
-            {
-                object oldValue = propertyInfo.GetValue(oldModel);
-                object newValue = propertyInfo.GetValue(newModel);
-                if (!object.Equals(oldValue, newValue))
-                {
-                    diff.Add(propertyInfo, propertyInfo.GetValue(newModel));
-                }
-            }
-            return diff;
+            return oldModel._settings.Diff(newModel._settings);
         }
 
         /// <summary>
         /// Clones the current configuration model - shallow clone
         /// </summary>
-        /// <returns>A cloned configumation model</returns>
+        /// <returns>A cloned ConfigurationModel</returns>
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return new ConfigurationModel(this);
         }
         #endregion
     }

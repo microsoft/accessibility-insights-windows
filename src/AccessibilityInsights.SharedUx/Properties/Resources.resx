@@ -373,7 +373,7 @@
     <value>Team project</value>
   </data>
   <data name="FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url" xml:space="preserve">
-    <value>Failed to navigate to requested url. Please contact us using https://aka.ms/A11yStackOverflowInternal.</value>
+    <value>Failed to navigate to requested url.</value>
   </data>
   <data name="FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent" xml:space="preserve">
     <value>Feedback has been successfully sent. Thanks for sending us feedback.</value>
@@ -1506,8 +1506,20 @@ Accessibility Insights Support Team
   <data name="ConnectionControl_serverURL" xml:space="preserve">
     <value>Server URL</value>
   </data>
+  <data name="FeedbackControl_thankYou" xml:space="preserve">
+    <value>Thank you for using Accessibility Insights for Windows.</value>
+  </data>
+  <data name="FeedbackControl_lookingToProvide" xml:space="preserve">
+    <value>Looking to provide feedback?</value>
+  </data>
+  <data name="FeedbackControl_searchRequests" xml:space="preserve">
+    <value>Search feature requests</value>
+  </data>
+  <data name="FeedbackControl_reportIssue" xml:space="preserve">
+    <value>Report an issue</value>
+  </data>
   <data name="FeedbackControl_questions" xml:space="preserve">
-    <value>For questions or feedback:</value>
+    <value>Ask a question</value>
   </data>
   <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
     <value>Search nodes in hierarchy.</value>
