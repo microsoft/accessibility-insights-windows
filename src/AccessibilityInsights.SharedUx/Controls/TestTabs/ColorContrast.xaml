@@ -196,7 +196,8 @@
                             </Style>
                         </fabric:FabricIconControl.Style>
                     </fabric:FabricIconControl>
-                    <TextBlock x:Name="smallTextResult" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
+                    <TextBlock x:Name="smallTextResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -236,7 +237,8 @@
                             </Style>
                         </fabric:FabricIconControl.Style>
                     </fabric:FabricIconControl>
-                    <TextBlock x:Name="largeTextResult" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" AutomationProperties.Name="{x:Static Properties:Resources.largeTextResultAutomationPropertiesName}" VerticalAlignment="Center">
+                    <TextBlock x:Name="largeTextResult" KeyboardNavigation.IsTabStop="True" Focusable="True" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.largeTextResultAutomationPropertiesName}" VerticalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
