@@ -342,6 +342,6 @@ xcopy $(SolutionDir)AccessibilityInsights.Extensions.Telemetry\$(OutDir)Accessib
 xcopy $(SolutionDir)AccessibilityInsights.Extensions.Telemetry\$(OutDir)Microsoft.ApplicationInsights.dll $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
 
 #rem AzureDevOps
-xcopy /S /Y $(SolutionDir)AccessibilityInsights.Extensions.AzureDevOps\$(OutDir)* $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552</PostBuildEvent>
+xcopy /S /Y "$(SolutionDir)AccessibilityInsights.Extensions.AzureDevOps\$(OutDir)*" "$(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552"</PostBuildEvent>
   </PropertyGroup>
 </Project>
