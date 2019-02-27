@@ -327,7 +327,7 @@
   </Target>
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>rd /S /Q $(TargetDir)Extensions
+    <PostBuildEvent>IF EXIST $(TargetDir)Extensions rd /S /Q $(TargetDir)Extensions
 md $(TargetDir)Extensions
 md $(TargetDir)Extensions\20FB3078-CDFD-4EDA-B541-10EA52B34552
 
