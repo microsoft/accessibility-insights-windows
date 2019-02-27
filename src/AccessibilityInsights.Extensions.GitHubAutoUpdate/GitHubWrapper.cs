@@ -15,7 +15,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Uri _configFileUri;
         private readonly TimeSpan _timeout;
 
-        private const string DefaultConfigFileUrl = "";  // TODO: Populate with actual path once we have it
+        private const string DefaultConfigFileUrl = "https://www.github.com/Microsoft/accessibility-insights-windows/blob/gh-pages/Channels/Production/release_info.json?raw=true";
 
         public GitHubWrapper()
         {

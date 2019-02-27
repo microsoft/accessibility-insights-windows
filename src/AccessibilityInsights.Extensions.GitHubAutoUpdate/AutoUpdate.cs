@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly Stopwatch _installerVerificationStopwatch = new Stopwatch();
 
-        public string ReleaseCadence { get; set; } = "stable";
+        public string ReleaseCadence { get; set; } = "default";
 
         public Version InstalledVersion
         {
@@ -215,7 +215,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                     catch (Exception e)
                     {
                         e.ReportException();
-                        System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: "
+                        Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: "
                             + e.ToString());
                     }
                 }
@@ -241,7 +241,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             catch (Exception e)
             {
                 e.ReportException();
-                System.Diagnostics.Trace.WriteLine($"Unable to get update info from meta file at {e.Message}");
+                Trace.WriteLine($"Unable to get update info from meta file at {e.Message}");
             }
             finally
             {
@@ -309,7 +309,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 catch (Exception e)
                 {
                     e.ReportException();
-                    System.Diagnostics.Debug.WriteLine(e.ToString());
+                    Debug.WriteLine(e.ToString());
                 }
                 finally
                 {
