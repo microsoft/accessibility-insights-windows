@@ -3,7 +3,6 @@
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Dialogs;
 using AccessibilityInsights.Extensions;
-using AccessibilityInsights.Extensions.GitHubAutoUpdate;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.Resources;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -11,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -65,8 +63,6 @@ namespace AccessibilityInsights
             try
             {
                 var t = autoUpdate.UpdateOptionAsync;
-
-        
                 if (!t.Wait(2000))
                 {
                     timeOutOccurred = true;
@@ -74,9 +70,7 @@ namespace AccessibilityInsights
                     return false;
                 }
                 updateOptionStopwatch.Stop();
-                //updateOption = t.Result;
-
-                updateOption = AutoUpdateOption.RequiredUpgrade;
+                updateOption = t.Result;
             }
             catch (AggregateException)
             {
@@ -179,16 +173,9 @@ namespace AccessibilityInsights
             {
                 try
                 {
-                    //DownLoadInstaller(autoUpdate, updateOption);
-                    //AutoUpdate updateObject = new AutoUpdate();
-                    //updateObject.Initialize();
-                    //string location_of_installer = VSAHandler.GetLocationOfInstaller(updateObject._latestVersion);
-
-                    string strCmdText = "AccessibilityInsights.VersionSwitcher.exe " + location_of_installer;
-                    System.Diagnostics.Process.Start("CMD.exe", strCmdText);
-                    this.Close();
+                    DownLoadInstaller(autoUpdate, updateOption);
                 }
-                catch (Exception) {}
+                catch (Exception) { }
             }
             else
             {
