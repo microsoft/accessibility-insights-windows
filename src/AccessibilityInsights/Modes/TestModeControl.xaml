@@ -22,7 +22,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="4" Margin="0" Grid.Row="1">
-            <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" UseLayoutRounding="False" BorderBrush="#FFEAEAEA" ItemContainerStyle="{StaticResource tabItemStyle}" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" 
+                        UseLayoutRounding="False" BorderBrush="#FFEAEAEA" ItemContainerStyle="{StaticResource tabItemStyle}" 
+                        SelectionChanged="TabControl_SelectionChanged" KeyboardNavigation.TabNavigation="Cycle">
                 <TabItem IsEnabled="False" AutomationProperties.LabeledBy="{Binding ElementName=lblFastpass}">
                     <TabItem.Header>
                         <Grid>
@@ -49,7 +51,7 @@
                                    Visibility="Collapsed"
                                    WithSound="True"
                                    Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible"  FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top">
+        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top">
             <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
             <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
             <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
@@ -58,7 +60,7 @@
             <Run Name="runHotkey"/><Run Text="."/>
             <TextBlock>
                 <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate"
-                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                            FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}"/>
                 </Hyperlink>
             </TextBlock><Run Text="."/>
