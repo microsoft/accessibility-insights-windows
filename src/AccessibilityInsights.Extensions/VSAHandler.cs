@@ -67,6 +67,10 @@ namespace AccessibilityInsights.Extensions
             return "https://github.com/babylonbee/pipeline_upgrade_spike/releases/download/v1.1.0968/cdburner_xp_setup.msi";
         }
 
+        /*
+         we hard code this installation path for now for testing purpose, after we modify the msi settings,
+         we will make it read the path from the actual installation path
+        */
         public static string GetAppInstallationPath()
         {
             return "C:\\Users\\biwu\\githome\\accessibility-insights-windows\\src\\AccessibilityInsights.VersionSwitcher";

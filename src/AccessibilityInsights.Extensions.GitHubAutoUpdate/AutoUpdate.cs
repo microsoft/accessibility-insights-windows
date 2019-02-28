@@ -96,15 +96,13 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
 
         private static UpdateResult Update()
         {
-            VSAHandler.RemoveVSAFromTempFolder();
-
-            if (!VSAHandler.TryCopyVSAToTempFolder())
-            {
-                return UpdateResult.Unknown;
-            }
-
             try
             {
+                VSAHandler.RemoveVSAFromTempFolder();
+                if (!VSAHandler.TryCopyVSAToTempFolder())
+                {
+                    return UpdateResult.Unknown;
+                }
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.FileName = VSAHandler.GetAppPathInTempFolder();
                 start.Arguments = VSAHandler.GetAppArguments("");
