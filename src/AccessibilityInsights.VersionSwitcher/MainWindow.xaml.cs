@@ -15,7 +15,6 @@ namespace AccessibilityInsights.VersionSwitcher
     {
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         const string ProductName = "Accessibility Insights For Windows v1.1";
-        private Uri _installerUri = null;
 
         public MainWindow()
         {
@@ -51,15 +50,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
             if (args.Length > 1)
             {
-                if (File.Exists(args[1]))
-                {
-                    msiPath = args[1];
-                }
-                else
-                {
-                    Trace.TraceError("Invalid Path: " + args[1]);
-                }
-
+                msiPath = args[1];
                 if (args.Length > 2)
                 {
                     newRing = args[2];
@@ -72,7 +63,7 @@ namespace AccessibilityInsights.VersionSwitcher
             throw new ArgumentException("Invalid Input: " + input);
         }
 
-        private bool TryDownloadInstaller(string targetFilePath, TimeSpan timeout)
+        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout)
         {
             _installerDownloadStopwatch.Reset();
 
@@ -82,7 +73,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    return GitHubHelper.TryGet(_installerUri, stream, timeout);
+                    return GitHubHelper.TryGet(new Uri(installerUri), stream, timeout);
                 }
                 catch (Exception e)
                 {
@@ -100,9 +91,8 @@ namespace AccessibilityInsights.VersionSwitcher
 
         private string DownloadFromUriToLocalFile(CommandLineParameters parameters)
         {
-            // TODO - copy from MSI, throw exception on error
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-            if (!TryDownloadInstaller(tempFile, TimeSpan.FromSeconds(60)))
+            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60)))
             {
                 throw new Exception("Unable to download installer");
             }
@@ -118,8 +108,7 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 if (!verifier.IsVerified)
                 {
-                    // TODO : Better error messaging
-                    //System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: ");
+                    System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception when verifying the file ");
                     throw new ArgumentException("Untrusted file!", nameof(localFile));
                 }
             }
@@ -135,7 +124,10 @@ namespace AccessibilityInsights.VersionSwitcher
 
         private void LaunchInstalledApp()
         {
-            // TODO : Launch the app
+            string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            string appRelativePath = "AccessibilityInsights\\1.1\\AccessibilityInsights.exe";
+            string appPath = Path.Combine(programPath, appRelativePath);
+            Process.Start(appPath);
         }
     }
 }

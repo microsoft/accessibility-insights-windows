@@ -94,30 +94,31 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return Task.Run(() => Update());
         }
 
-        private static bool TryLaunchVersionSwitcher()
+        private static UpdateResult Update()
         {
-            return true;
-        }
+            VSAHandler.RemoveVSAFromTempFolder();
 
-        private void UpdateWithVersionSwitcher(AutoUpdateOption autoUpdateOption)
-        {
-            if (!TryLaunchVersionSwitcher())
+            if (!VSAHandler.TryCopyVSAToTempFolder())
             {
-                if (autoUpdateOption == AutoUpdateOption.RequiredUpgrade)
-                {
-                    // error, notify the user
-                    //Exit the app
-                }
-                else if (autoUpdateOption == AutoUpdateOption.OptionalUpgrade)
-                {
-                    // error, notify the user
-                    // Continue
-                }
+                return UpdateResult.Unknown;
             }
-            // Exit the app
+
+            try
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.FileName = VSAHandler.GetAppPathInTempFolder();
+                start.Arguments = VSAHandler.GetAppArguments("");
+                System.Diagnostics.Process.Start(start);
+                return UpdateResult.Success;
+            }
+            catch (Exception e)
+            {
+                e.ReportException();
+            }
+            return UpdateResult.Unknown;
         }
 
-        private UpdateResult Update()
+        private UpdateResult UpdateOld()
         {
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
 
@@ -273,7 +274,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 _initializationStopwatch.Stop();
             }
 
-            return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+            //return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+            return AutoUpdateOption.OptionalUpgrade;
         }
 
         /// <summary>
@@ -305,13 +307,16 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                             {
                                 return AutoUpdateOption.OptionalUpgrade;
                             }
-                            return AutoUpdateOption.Current;
+                            //return AutoUpdateOption.Current;
+                            return AutoUpdateOption.OptionalUpgrade;
                         }
                     }
                 } // using
             }
 
-            return AutoUpdateOption.Unknown;
+            //return AutoUpdateOption.Unknown;
+
+            return AutoUpdateOption.OptionalUpgrade;
         }
 
         private void WaitForInitializationToComplete()
