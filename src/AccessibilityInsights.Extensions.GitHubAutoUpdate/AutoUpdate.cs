@@ -39,6 +39,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     [Export(typeof(IAutoUpdate))]
     public class AutoUpdate : IAutoUpdate
     {
+        // The release cadence we use unless overridden by setting the ReleaseCadence property
+        private const string DefaultReleaseCadence = "default";
+
         private readonly Func<string> _installedVersionProvider;
         private readonly IGitHubWrapper _gitHub;
         private readonly Task<AutoUpdateOption> _initTask;
@@ -51,8 +54,14 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly Stopwatch _installerVerificationStopwatch = new Stopwatch();
 
-        public string ReleaseCadence { get; set; } = "default";
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.ReleaseCadence"/>
+        /// </summary>
+        public string ReleaseCadence { get; set; } = DefaultReleaseCadence;
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.InstalledVersion"/>
+        /// </summary>
         public Version InstalledVersion
         {
             get
@@ -62,6 +71,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
         }
 
+        /// <summary>
+        /// Reports the latest version being considered
+        /// </summary>
         public Version LatestVersion
         {
             get
@@ -71,6 +83,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
         }
 
+        /// <summary>
+        /// Reports the minimum required version
+        /// </summary>
         public Version MinimumVersion
         {
             get
@@ -80,6 +95,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
         }
 
+        /// <summary>
+        /// The Uri to the release notes
+        /// </summary>
         public Uri ReleaseNotesUri
         {
             get
@@ -89,11 +107,18 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
         }
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.UpdateAsync"/>
+        /// </summary>
         public Task<UpdateResult> UpdateAsync()
         {
             return Task.Run(() => Update());
         }
 
+        /// <summary>
+        /// Synchronously update (gets wrapped into a tag)
+        /// </summary>
+        /// <returns>The result of the upgrade operation</returns>
         private UpdateResult Update()
         {
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
@@ -137,18 +162,30 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return UpdateResult.Unknown;
         }
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.UpdateOptionAsync"/>
+        /// </summary>
         public Task<AutoUpdateOption> UpdateOptionAsync => _initTask;
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.GetInitializationTime"/>
+        /// </summary>
         public TimeSpan? GetInitializationTime()
         {
             return _initializationStopwatch.Elapsed;
         }
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.GetInstallerDownloadTime"/>
+        /// </summary>
         public TimeSpan? GetInstallerDownloadTime()
         {
             return _installerDownloadStopwatch.Elapsed;
         }
 
+        /// <summary>
+        /// Implements <see cref="IAutoUpdate.GetInstallerVerificationTime"/>
+        /// </summary>
         public TimeSpan? GetInstallerVerificationTime()
         {
             return _installerVerificationStopwatch.Elapsed;
