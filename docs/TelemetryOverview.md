@@ -17,7 +17,7 @@ Logger.PublishTelemetryEvent(
 ### Multi-property action
 This version reports an action with multiple associated properties:
 ```
-Logger.PublishTelemetryEvent(TelemetryActions.Bug_Save, new Dictionary<TelemetryProperty, string>
+Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save, new Dictionary<TelemetryProperty, string>
     {
         { TelemetryProperty.RuleId, ruleId },  // values are locale-agnostic strings
         { TelemetryProperty.Url, url},
