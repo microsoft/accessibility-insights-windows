@@ -92,9 +92,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                 {
                     // silently ignore
                     System.Diagnostics.Trace.WriteLine($"Unable to get update info from meta file at {_releaseLocation}");
-                    //return AutoUpdateOption.Unknown;
-
-                    return AutoUpdateOption.RequiredUpgrade;
+                    return AutoUpdateOption.Unknown;
                 }
 
                 _installerLocation = _metaMSISettings.GetMSIPathSafely(_releaseLocation);
@@ -119,7 +117,6 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                         return AutoUpdateOption.OptionalUpgrade;
                     }
                     return AutoUpdateOption.Current;
-
                 }
             }
             catch (Exception e)
