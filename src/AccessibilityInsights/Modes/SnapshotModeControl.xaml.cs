@@ -223,8 +223,7 @@ namespace AccessibilityInsights.Modes
                     // if the previously focused element is no longer visible and focus has gone to the window,
                     // we will set focus back to the hierarchy control. We do this because disabling the hierarchy control
                     // will throw keyboard focus to mainwindow, where it is not very useful.
-                    if (prevFocus is FrameworkElement fe && !fe.IsVisible && Keyboard.FocusedElement is Window
-                        || prevFocus.Equals(this.ctrlHierarchy) && Keyboard.FocusedElement is Window)
+                    if (prevFocus is FrameworkElement fe && !fe.IsVisible && Keyboard.FocusedElement is Window)
                     {
                         this.ctrlHierarchy.Focus();
                     }
