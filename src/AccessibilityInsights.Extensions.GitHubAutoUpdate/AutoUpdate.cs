@@ -283,7 +283,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// Instead, call InitializeWithTimer.
         /// </summary>
         /// <returns></returns>
-        public AutoUpdateOption Initialize()
+        private AutoUpdateOption Initialize()
         {
             // Do NOT use anything that calls WaitForInitializationToComplete in this
             // method, or you may create a deadlock condition

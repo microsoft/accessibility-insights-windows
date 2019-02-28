@@ -175,7 +175,7 @@ namespace AccessibilityInsights
                 {
                     DownLoadInstaller(autoUpdate, updateOption);
                 }
-                catch (Exception) { }
+                catch (Exception) {}
             }
             else
             {
