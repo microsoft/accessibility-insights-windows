@@ -33,7 +33,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
                 if (!lastPixel.Row.Equals(pixel.Row))
                 {
-                    if (contrastResult.ConfidenceValue().Equals(Confidence.HIGH))
+                    if (contrastResult.ConfidenceValue().Equals(Confidence.High))
                     {
                         return contrastResult;
                     }
