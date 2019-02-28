@@ -129,7 +129,6 @@ namespace AccessibilityInsights.Modes
             EnableMenuButtons(this.DataContextMode != DataContextMode.Load);
 
             bool selectionFailure = false;
-            var prevFocus = Keyboard.FocusedElement;
 
             try
             {
@@ -220,10 +219,9 @@ namespace AccessibilityInsights.Modes
                     this.ctrlProgressRing.Deactivate();
                     this.ctrlHierarchy.IsEnabled = true;
 
-                    // if the previously focused element is no longer visible and focus has gone to the window,
-                    // we will set focus back to the hierarchy control. We do this because disabling the hierarchy control
+                    // if focus has gone to the window, we set focus to the hierarchy control. We do this because disabling the hierarchy control
                     // will throw keyboard focus to mainwindow, where it is not very useful.
-                    if (prevFocus is FrameworkElement fe && !fe.IsVisible && Keyboard.FocusedElement is Window)
+                    if (Keyboard.FocusedElement is Window)
                     {
                         this.ctrlHierarchy.Focus();
                     }
@@ -307,7 +305,7 @@ namespace AccessibilityInsights.Modes
                 HighlightImageAction.GetDefaultInstance().Show();
             }
             this.Visibility = Visibility.Visible;
-            Dispatcher.Invoke(() =>
+            Dispatcher.InvokeAsync(() =>
             {
                 this.SetFocusOnDefaultControl();
             }
