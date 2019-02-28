@@ -25,7 +25,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     ""installer_url"": ""https://somehost.com/somepath/1.1.1330/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1330/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1250"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
@@ -41,7 +41,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1250"",
     ""minimum_version"": ""1.1.1240"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
@@ -57,7 +57,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1234"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1234/installer.msi"",
