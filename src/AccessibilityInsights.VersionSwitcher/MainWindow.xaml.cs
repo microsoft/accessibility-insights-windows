@@ -14,7 +14,7 @@ namespace AccessibilityInsights.VersionSwitcher
     public partial class MainWindow : Window
     {
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
-        //const string ProductName = "Accessibility Insights For Windows v1.1";
+        const string ProductName = "Accessibility Insights For Windows v1.1";
 
         public MainWindow()
         {
@@ -27,7 +27,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 string localFile = DownloadFromUriToLocalFile(parameters);
                 using (ValidateLocalFile(localFile))
                 {
-                    //InstallHelper.DeleteOldVersion(ProductName);
+                    InstallHelper.DeleteOldVersion(ProductName);
                     InstallHelper.InstallNewVersion(parameters.MsiPath);
                 }
                 UpdateConfigWithNewRing(parameters.NewRing);
