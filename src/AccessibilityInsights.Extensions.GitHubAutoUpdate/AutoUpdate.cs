@@ -121,38 +121,17 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <returns>The result of the upgrade operation</returns>
         private UpdateResult Update()
         {
-            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-
             // Reset here; in case anything goes wrong in the Interim, the value will reflect that.
             _installerVerificationStopwatch.Reset();
 
             try
             {
                 WaitForInitializationToComplete();
-
-                if (!TryDownloadInstaller(tempFile))
-                    return UpdateResult.DownloadFailed;
-
-                // The verification wraps the beginning of the installation to preserve
-                // the integrity of the file by holding an open handle.
-                _installerVerificationStopwatch.Start();
-                using (var trustVerifier = new TrustVerifier(tempFile))
-                {
-                    if (!trustVerifier.IsVerified)
-                        return UpdateResult.VerificationFailed;
-
-                    _installerVerificationStopwatch.Stop();
-
-                    UpdateMethods.BeginMSIInstall(tempFile);
-
-                    return UpdateResult.Success;
-                }
+                return InstallHelper.Run(_installerUri);
             }
             catch (Exception e)
             {
                 e.ReportException();
-                if (File.Exists(tempFile))
-                    File.Delete(tempFile);
             }
             finally
             {

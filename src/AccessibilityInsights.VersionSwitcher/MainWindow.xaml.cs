@@ -13,6 +13,7 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         const string ProductName = "Accessibility Insights For Windows v1.1";
 
         public MainWindow()
@@ -51,15 +52,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
             if (args.Length > 1)
             {
-                if (File.Exists(args[1]))
-                {
-                    msiPath = args[1];
-                }
-                else
-                {
-                    Trace.TraceError("Invalid Path: " + args[1]);
-                }
-
+                msiPath = args[1];
                 if (args.Length > 2)
                 {
                     newRing = args[2];
@@ -72,11 +65,42 @@ namespace AccessibilityInsights.VersionSwitcher
             throw new ArgumentException("Invalid Input: " + input);
         }
 
+        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout)
+        {
+            _installerDownloadStopwatch.Reset();
+
+            using (Stream stream = new FileStream(targetFilePath, FileMode.CreateNew))
+            {
+                _installerDownloadStopwatch.Start();
+
+                try
+                {
+                    return GitHubHelper.TryGet(new Uri(installerUri), stream, timeout);
+                }
+                catch (Exception e)
+                {
+                    e.ReportException();
+                    System.Diagnostics.Debug.WriteLine(e.ToString());
+                }
+                finally
+                {
+                    _installerDownloadStopwatch.Stop();
+                }
+            } // using
+
+            return false;
+        }
+
         private string DownloadFromUriToLocalFile(CommandLineParameters parameters)
         {
-            // TODO - copy from MSI, throw exception on error
+            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
+            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60)))
+            {
+                throw new Exception("Unable to download installer");
+            }
+
             // Return value is where the local file was written
-            return parameters.MsiPath;
+            return tempFile;
         }
 
         private TrustVerifier ValidateLocalFile(string localFile)
@@ -101,7 +125,12 @@ namespace AccessibilityInsights.VersionSwitcher
 
         private void LaunchInstalledApp()
         {
-            // TODO : Launch the app
+            string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+            string appPath = Path.Combine(programPath, "AccessibilityInsights\\1.1\\AccessibilityInsights.exe");
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
+            start.Arguments = appPath;
+            Process.Start(start);
         }
     }
 }
