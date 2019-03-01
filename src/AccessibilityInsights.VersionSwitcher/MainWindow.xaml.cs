@@ -98,10 +98,9 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 throw new Exception("Unable to download installer");
             }
-            parameters.MsiPath = tempFile;
 
             // Return value is where the local file was written
-            return parameters.MsiPath;
+            return tempFile;
         }
 
         private TrustVerifier ValidateLocalFile(string localFile)

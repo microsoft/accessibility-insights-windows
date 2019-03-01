@@ -121,14 +121,23 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <returns>The result of the upgrade operation</returns>
         private UpdateResult Update()
         {
+            // Reset here; in case anything goes wrong in the Interim, the value will reflect that.
+            _installerVerificationStopwatch.Reset();
+
             try
             {
-                return VSAHandler.Run(_installerUri);
+                WaitForInitializationToComplete();
+                return InstallHelper.Run(_installerUri);
             }
             catch (Exception e)
             {
                 e.ReportException();
             }
+            finally
+            {
+                _installerVerificationStopwatch.Stop();
+            }
+
             return UpdateResult.Unknown;
         }
 

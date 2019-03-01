@@ -8,7 +8,7 @@ using System.IO;
 
 namespace AccessibilityInsights.Extensions
 {
-    public static class VSAHandler
+    public static class InstallHelper
     {
         private static void RemoveVSAFromTempFolder()
         {
@@ -97,14 +97,14 @@ namespace AccessibilityInsights.Extensions
 
         public static UpdateResult Run(Uri installerUrl)
         {
-            VSAHandler.RemoveVSAFromTempFolder();
-            if (!VSAHandler.TryCopyVSAToTempFolder())
+            InstallHelper.RemoveVSAFromTempFolder();
+            if (!InstallHelper.TryCopyVSAToTempFolder())
             {
                 return UpdateResult.Unknown;
             }
             ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = VSAHandler.GetAppPathInTempFolder();
-            start.Arguments = VSAHandler.GetAppArguments(installerUrl, "default");
+            start.FileName = InstallHelper.GetAppPathInTempFolder();
+            start.Arguments = InstallHelper.GetAppArguments(installerUrl, "default");
             System.Diagnostics.Process.Start(start);
             return UpdateResult.Success;
         }
