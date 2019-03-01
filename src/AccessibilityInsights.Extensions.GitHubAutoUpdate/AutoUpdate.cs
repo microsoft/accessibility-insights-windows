@@ -254,6 +254,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 _initializationStopwatch.Stop();
             }
+
             return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
         }
 
@@ -291,6 +292,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                     }
                 } // using
             }
+
             return AutoUpdateOption.Unknown;
         }
 
