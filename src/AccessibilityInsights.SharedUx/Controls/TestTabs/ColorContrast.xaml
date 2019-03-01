@@ -34,11 +34,13 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
+
             <Label Grid.Row="0" Content="{x:Static Properties:Resources.ColorContrastAutomationPropertiesName}"
-               FontSize="{DynamicResource LargeTextSize}"
-               Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0 0 0 4"/>
-            <Grid Grid.Row="1" Grid.ColumnSpan="2" Background="{DynamicResource ResourceKey=LightGreyBrush}" Height="24" VerticalAlignment="Top">
+               FontSize="{DynamicResource ConstXXLTextSize}"
+               Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0,10,0,16"/>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Height="24" VerticalAlignment="Top">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4"/>
                     <ColumnDefinition Width="Auto"/>
@@ -46,58 +48,58 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Label Name="lblAutoDetect" Content="{x:Static Properties:Resources.lblAutoDetectContent}" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
-                <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click"/>
+                <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click">
+                    <ToggleButton.ToolTip>
+                        <Run Text="{x:Static Properties:Resources.CCToggleToolTip}"/>
+                    </ToggleButton.ToolTip>
+                </ToggleButton>
             </Grid>
-            <TextBlock Grid.Row="2"  Margin="0,12,0,0" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <Run FontWeight="SemiBold" FontSize="{DynamicResource StandardTextSize}" Text="{x:Static Properties:Resources.RunTextHowToTest}" />
+            <TextBlock Grid.Row="2"  Margin="0,16,0,0" Grid.ColumnSpan="2" VerticalAlignment="Center">
+                <Run FontWeight="SemiBold" FontSize="{DynamicResource ConstXLTextSize}" Text="{x:Static Properties:Resources.RunTextHowToTest}" />
                 <Hyperlink TextDecorations="{x:Null}" ToolTip="{x:Static Properties:Resources.RunTextHowToTest}" AutomationProperties.Name="{x:Static Properties:Resources.RunTextHowToTest}" Click="hlHowToTest_Click">
                     <fabric:FabricIconControl GlyphName="Info" GlyphSize="Small" Margin="0,0,0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 </Hyperlink>
             </TextBlock>
-            <RichTextBox Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" BorderThickness="0" IsReadOnly="True" IsReadOnlyCaretVisible="True"
-                         Margin="0 4 0 4" Grid.ColumnSpan="2" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesNameInstructions}">
-                <FlowDocument>
-                    <Paragraph>
-                        <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTest}"/>
-                        <LineBreak/>
-                        <LineBreak/>
-                        <Run Text="{x:Static Properties:Resources.TextBlockTextCCRatioResult}"/>
-                        <LineBreak/>
-                        <Run Text="{x:Static Properties:Resources.RunTextCCA45}"/><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}"/></Bold>.
-                        <LineBreak/>
-                        <Run Text="{x:Static Properties:Resources.RunTextCCA30}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextPasses}" /></Bold>.
-                        <LineBreak/>
-                        <Run Text="{x:Static Properties:Resources.RunTextCCA30Below}" /><Bold><Run Text="{x:Static Properties:Resources.RunTextFails}" /></Bold>.
-                    </Paragraph>
-                </FlowDocument>
-            </RichTextBox>
-            <StackPanel Grid.Row="4" Grid.Column="0" >
-                <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Foreground}" FontSize="14" Margin="0 4"></TextBlock>
-                <controls:ColorChooser x:Name="firstChooser"
-                               HorizontalAlignment="Left"
-                               BorderBrush="Transparent"
-                               BorderThickness="2"
-                               KeyboardNavigation.TabIndex="1"
-                               ColorPickerName="{x:Static Properties:Resources.ColorContrast_Foreground}"
-                               AutomationProperties.Name="{x:Static Properties:Resources.firstChooserAutomationPropertiesName}" 
-                               StoredColor="{Binding Path=ContrastVM.FirstColor, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                               DefaultColor="Black"/>
-            </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Vertical" Margin="20 10" MinWidth="132">
-                <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14"/>
-                <Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"></Border>
-                <DockPanel>
-                    <TextBlock x:Name="output" FontSize="16" HorizontalAlignment="Left"
-                   AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
-                   AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
-                   KeyboardNavigation.TabIndex="3" Focusable="True"
-                   Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}">
+            <TextBlock Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" TextWrapping="Wrap" KeyboardNavigation.IsTabStop="True"
+                         Margin="0 5 115 4" Grid.ColumnSpan="2" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Style="{StaticResource TbFocusable}">
+                <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTestAuto}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_HowToTestAuto}"/>
+            </TextBlock>
+            <TextBlock Grid.Row="4" FontSize="{DynamicResource StandardTextSize}" TextWrapping="Wrap" KeyboardNavigation.IsTabStop="True" Foreground="{DynamicResource ResourceKey=TextBrushGray}"
+                         Margin="0 4 115 10" Grid.ColumnSpan="2" Style="{StaticResource TbFocusable}">
+                        <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTestManualPre}"/>
+                        <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=TextBrushGray}" FontSize="{DynamicResource StandardTextSize}"/>
+                        <Run Text=". "/>
+                        <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTestManualPost}"/>
+            </TextBlock>
+            <Label Grid.Row="5"  Margin="0,6,0,5" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource lblXLHeader}" Content="{x:Static Properties:Resources.ColorContrast_Analyzer}"></Label>
+            <Grid Grid.Row="6" Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="240"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" >
+                    <TextBlock FontSize="14" Margin="0 4">
+                        <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.ColorContrast_Foreground}"  AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Foreground}" />
                     </TextBlock>
-                </DockPanel>
-            </StackPanel>
-            <StackPanel Grid.Row="5" Margin="0 8" Grid.Column="0">
-                <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Background}" FontSize="14" Margin="0 4"></TextBlock>
-                <controls:ColorChooser x:Name="secondChooser"
+                    <controls:ColorChooser x:Name="firstChooser"
+                                   HorizontalAlignment="Left"
+                                   BorderBrush="Transparent"
+                                   BorderThickness="2"
+                                   KeyboardNavigation.TabIndex="1"
+                                   ColorPickerName="{x:Static Properties:Resources.ColorContrast_Foreground}"
+                                   AutomationProperties.Name="{x:Static Properties:Resources.firstChooserAutomationPropertiesName}" 
+                                   StoredColor="{Binding Path=ContrastVM.FirstColor, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
+                                   DefaultColor="Black"/>
+                </StackPanel>
+                <StackPanel Grid.Row="1" Margin="0 8" Grid.Column="0">
+                    <TextBlock FontSize="14" Margin="0 4">
+                    <Run FontWeight="SemiBold"  Text="{x:Static Properties:Resources.ColorContrast_Background}"  AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Background}" />
+                    </TextBlock>
+                    <controls:ColorChooser x:Name="secondChooser"
                                HorizontalAlignment="Left"
                                BorderBrush="Transparent"
                                BorderThickness="2" 
@@ -106,19 +108,44 @@
                                KeyboardNavigation.TabIndex="2"
                                AutomationProperties.Name="{x:Static Properties:Resources.secondChooserAutomationPropertiesName}"
                                />
-            </StackPanel>
-            <StackPanel Name="spConfidence" Grid.Row="5" Grid.Column="1" Orientation="Vertical" Margin="20 10" MinWidth="132">
-                <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Confidence}" FontSize="14"/>
-                <Border BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"></Border>
-                <DockPanel>
-                    <TextBlock x:Name="tbConfidence" FontSize="16" HorizontalAlignment="Left"
-                   AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
-                   AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_tbConfidenceAutomationName}}"
-                   KeyboardNavigation.TabIndex="4" Focusable="True">
-                    </TextBlock>
-                </DockPanel>
-            </StackPanel>
-            <Grid Grid.Row="6" Margin="0,12,0,0" Grid.ColumnSpan="2">
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="6" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" MinWidth="240"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Border Margin="20,27,20,0" BorderThickness="2" BorderBrush="{DynamicResource ResourceKey=CCABorderBrush}">
+                    <StackPanel Background="{DynamicResource ResourceKey=CCABackgroundBrush}">
+                        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" Margin="10,6,0,0" MinWidth="132">
+                            <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14"/>
+                            <DockPanel>
+                                <TextBlock x:Name="output" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
+                               AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
+                               AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
+                               KeyboardNavigation.TabIndex="3" Focusable="True"
+                               Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}">
+                                </TextBlock>
+                            </DockPanel>
+                        </StackPanel>
+                        <StackPanel Name="spConfidence" Grid.Row="1" Grid.Column="0" Orientation="Vertical" Margin="10,10,0,6" MinWidth="132">
+                            <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Confidence}" FontSize="14"/>
+                            <DockPanel>
+                                <TextBlock x:Name="tbConfidence" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
+                           AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
+                           AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_tbConfidenceAutomationName}}"
+                           KeyboardNavigation.TabIndex="4" Focusable="True">
+                                </TextBlock>
+                            </DockPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </Grid>
+            <Grid Grid.Row="8" Margin="0,12,115,0" Grid.ColumnSpan="2">
                 <Grid.Resources>
                     <Style TargetType="{x:Type TextBlock}">
                         <Setter Property="FontSize" Value="12"/>
@@ -169,7 +196,8 @@
                             </Style>
                         </fabric:FabricIconControl.Style>
                     </fabric:FabricIconControl>
-                    <TextBlock x:Name="smallTextResult" FontWeight="SemiBold" FontSize="15" Margin="8 0 0 0" AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
+                    <TextBlock x:Name="smallTextResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -185,13 +213,13 @@
                     </TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="4 0">
-                    <TextBlock Text="{x:Static Properties:Resources.TextBlockTextRegular}" FontSize="15" Margin="0 8 0 0"/>
+                    <TextBlock Text="{x:Static Properties:Resources.TextBlockTextRegular}" FontSize="{DynamicResource ConstStandardTextSize}" Margin="0 8 0 0"/>
                     <TextBlock Text="{x:Static Properties:Resources.TextBlockTextRequiresRatio}" Margin="0 0 0 8"/>
                 </StackPanel>
                 <TextBlock x:Name="smallSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" Grid.Column="2" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                        Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                        Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
-                       AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallSampleHelpText}" HorizontalAlignment="Left"/>
+                       AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallSampleHelpText}" HorizontalAlignment="Left" FontSize="{DynamicResource ConstStandardTextSize}"/>
                 <Border Grid.Row="2" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"
                 BorderThickness="0,0,0,1" Background="{x:Null}" />
                 <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Margin="4,4">
@@ -209,7 +237,8 @@
                             </Style>
                         </fabric:FabricIconControl.Style>
                     </fabric:FabricIconControl>
-                    <TextBlock x:Name="largeTextResult" FontWeight="SemiBold" FontSize="15" Margin="8 0 0 0" AutomationProperties.Name="{x:Static Properties:Resources.largeTextResultAutomationPropertiesName}" VerticalAlignment="Center">
+                    <TextBlock x:Name="largeTextResult" KeyboardNavigation.IsTabStop="True" Focusable="True" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.largeTextResultAutomationPropertiesName}" VerticalAlignment="Center">
                         <TextBlock.Style>
                             <Style TargetType="TextBlock">
                                 <Style.Triggers>
@@ -225,7 +254,7 @@
                     </TextBlock>
                 </StackPanel>
                 <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="4 0">
-                    <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Large}" FontSize="15"/>
+                    <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Large}" FontSize="{DynamicResource ConstStandardTextSize}"/>
                     <TextBlock Text="{x:Static Properties:Resources.ColorContrast_FontSizes}" Margin="0"/>
                     <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Requires}" Margin="0 0 0 8"/>
                 </StackPanel>
@@ -234,11 +263,11 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="smallSampleBold" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="0" FontSize="14pt" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                    <TextBlock x:Name="smallSampleBold" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="0" FontSize="{DynamicResource ConstStandardTextSize}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
                            FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}"/>
-                    <TextBlock x:Name="largeSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" FontSize="18pt" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
+                    <TextBlock x:Name="largeSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" FontSize="18" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
                            AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}"/>

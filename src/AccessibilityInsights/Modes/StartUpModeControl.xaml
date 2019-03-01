@@ -44,7 +44,7 @@
                 <TextBlock x:Name="videoDescription" Grid.Row="1" FontSize="12" Style="{StaticResource TbFocusable}" Padding="16,10" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
                 <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.LabeledBy="{Binding ElementName=videoDescription}" VerticalAlignment="Top">
                     <Grid>
-                        <Image Width="240" Height="121" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
+                        <Image Width="240" Height="135" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
                         <Border Opacity=".40" Name="bdOverlay">
                             <Border.Style>
                                 <Style TargetType="Border">
