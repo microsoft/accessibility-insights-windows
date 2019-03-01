@@ -14,7 +14,7 @@ namespace AccessibilityInsights.VersionSwitcher
     public partial class MainWindow : Window
     {
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
-        const string ProductName = "Accessibility Insights For Windows v1.1";
+        //const string ProductName = "Accessibility Insights For Windows v1.1";
 
         public MainWindow()
         {
@@ -27,7 +27,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 string localFile = DownloadFromUriToLocalFile(parameters);
                 using (ValidateLocalFile(localFile))
                 {
-                    InstallHelper.DeleteOldVersion(ProductName);
+                    //InstallHelper.DeleteOldVersion(ProductName);
                     InstallHelper.InstallNewVersion(parameters.MsiPath);
                 }
                 UpdateConfigWithNewRing(parameters.NewRing);
@@ -127,10 +127,9 @@ namespace AccessibilityInsights.VersionSwitcher
         private void LaunchInstalledApp()
         {
             string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-            string appRelativePath = "AccessibilityInsights\\1.1\\AccessibilityInsights.exe";
-            string appPath = Path.Combine(programPath, appRelativePath);
+            string appPath = Path.Combine(programPath, "AccessibilityInsights\\1.1\\AccessibilityInsights.exe");
             ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = "%windir%\\explorer.exe";
+            start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
             start.Arguments = appPath;
             Process.Start(start);
         }
