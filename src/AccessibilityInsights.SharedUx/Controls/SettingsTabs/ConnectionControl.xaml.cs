@@ -156,7 +156,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 }
                 else
                 {
-                    MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com");
+                    MessageDialog.Show("URL format is not valid. Example URL: https://dev.azure.com/fabrikam");
                 }
             }
         }
