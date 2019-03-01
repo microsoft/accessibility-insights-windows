@@ -372,9 +372,6 @@
   <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
     <value>Team project</value>
   </data>
-  <data name="sliderFeedbackTextText" xml:space="preserve">
-    <value>Rate your overall satisfaction with desktop diagnostics:</value>
-  </data>
   <data name="LabelContentZero" xml:space="preserve">
     <value>0</value>
   </data>

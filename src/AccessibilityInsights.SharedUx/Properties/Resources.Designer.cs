@@ -3832,15 +3832,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rate your overall satisfaction with desktop diagnostics:.
-        /// </summary>
-        public static string sliderFeedbackTextText {
-            get {
-                return ResourceManager.GetString("sliderFeedbackTextText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The quick brown fox.
         /// </summary>
         public static string smallSampleText {
