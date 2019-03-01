@@ -129,7 +129,10 @@ namespace AccessibilityInsights.VersionSwitcher
             string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string appRelativePath = "AccessibilityInsights\\1.1\\AccessibilityInsights.exe";
             string appPath = Path.Combine(programPath, appRelativePath);
-            Process.Start(appPath);
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = "%windir%\\explorer.exe";
+            start.Arguments = appPath;
+            Process.Start(start);
         }
     }
 }
