@@ -159,6 +159,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
+                <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
               </Component>
             </Directory>
 
