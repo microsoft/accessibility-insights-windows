@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+using Microsoft.Win32;
+using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 
@@ -7,11 +10,11 @@ namespace AccessibilityInsights.Extensions
 {
     public static class VSAHandler
     {
-        public static void RemoveVSAFromTempFolder()
+        private static void RemoveVSAFromTempFolder()
         {
             try
             {
-                Directory.Delete(Path.GetTempPath() + "AccessibilityInsights.VersionSwitcher", true);
+                Directory.Delete(GetAppFolderInTempFolder(), true);
             }
             catch (Exception ex)
             {
@@ -19,9 +22,9 @@ namespace AccessibilityInsights.Extensions
             }
         }
 
-        public static bool TryCopyVSAToTempFolder()
+        private static bool TryCopyVSAToTempFolder()
         {
-            return TryCopyFilesRecursively(GetAppInstallationPath(), Path.GetTempPath() + "AccessibilityInsights.VersionSwitcher");
+            return TryCopyFilesRecursively(GetAppInstallationPath(), Path.GetTempPath() + "VersionSwitcher");
         }
 
         private static bool TryCopyFilesRecursively(string sourcePath, string targetPath)
@@ -59,36 +62,51 @@ namespace AccessibilityInsights.Extensions
             }
         }
 
-        /* we hard code this for now since our current thinking is that 
-         * we'll have each ring in a separate folder, so we'll have Control/Insiders for Insiders,
-         * Control/Production for production, etc. Part of this is to simplify the handling of release notes */
-        public static string GetLocationOfInstaller()
+        private static string GetAppInstallationPath()
         {
-            return "https://github.com/babylonbee/pipeline_upgrade_spike/releases/download/v1.1.0968/cdburner_xp_setup.msi";
+            RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
+            {
+                string command = ((string)commandKey.GetValue(""));
+                string appPath = command.Substring(0, command.Length - 5).Replace("\"", "");
+                string root = Path.GetDirectoryName(appPath);
+                string versionSwitcherFolder = Path.Combine(root, "VersionSwitcher");
+                Console.WriteLine(versionSwitcherFolder);
+                return versionSwitcherFolder;
+            }
         }
 
-        /*
-         we hard code this installation path for now for testing purpose, after we modify the msi settings,
-         we will make it read the path from the actual installation path
-        */
-        public static string GetAppInstallationPath()
-        {
-            return "C:\\Users\\biwu\\githome\\accessibility-insights-windows\\src\\AccessibilityInsights.VersionSwitcher";
-        }
-
-        public static string GetAppPathInTempFolder()
+        private static string GetAppFolderInTempFolder()
         {
             string tempPath = Path.GetTempPath();
-            return Path.Combine(tempPath + "AccessibilityInsights.VersionSwitcher\\bin\\Debug\\", "AccessibilityInsights.VersionSwitcher.exe");
+            return Path.Combine(tempPath, "VersionSwitcher");
         }
 
-        public static string GetAppArguments(string targetRing)
+        private static string GetAppPathInTempFolder()
+        {
+            return Path.Combine(GetAppFolderInTempFolder(), "AccessibilityInsights.VersionSwitcher.exe");
+        }
+
+        private static string GetAppArguments(Uri installerUrl, string targetRing)
         {
             if (String.IsNullOrEmpty(targetRing))
             {
-                return GetLocationOfInstaller();
+                return installerUrl.ToString();
             }
-            return GetLocationOfInstaller() + " " + targetRing;
+            return installerUrl.ToString() + " " + targetRing;
+        }
+
+        public static UpdateResult Run(Uri installerUrl)
+        {
+            VSAHandler.RemoveVSAFromTempFolder();
+            if (!VSAHandler.TryCopyVSAToTempFolder())
+            {
+                return UpdateResult.Unknown;
+            }
+            ProcessStartInfo start = new ProcessStartInfo();
+            start.FileName = VSAHandler.GetAppPathInTempFolder();
+            start.Arguments = VSAHandler.GetAppArguments(installerUrl, "default");
+            System.Diagnostics.Process.Start(start);
+            return UpdateResult.Success;
         }
     }
 }

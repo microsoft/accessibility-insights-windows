@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly Stopwatch _installerVerificationStopwatch = new Stopwatch();
 
-        public string ReleaseCadence { get; set; } = "stable";
+        public string ReleaseCadence { get; set; } = "default";
 
         public Version InstalledVersion
         {
@@ -94,68 +94,16 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return Task.Run(() => Update());
         }
 
-        private static UpdateResult Update()
+        private UpdateResult Update()
         {
             try
             {
-                VSAHandler.RemoveVSAFromTempFolder();
-                if (!VSAHandler.TryCopyVSAToTempFolder())
-                {
-                    return UpdateResult.Unknown;
-                }
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.FileName = VSAHandler.GetAppPathInTempFolder();
-                start.Arguments = VSAHandler.GetAppArguments("");
-                System.Diagnostics.Process.Start(start);
-                return UpdateResult.Success;
+                return VSAHandler.Run(_installerUri);
             }
             catch (Exception e)
             {
                 e.ReportException();
             }
-            return UpdateResult.Unknown;
-        }
-
-        private UpdateResult UpdateOld()
-        {
-            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-
-            // Reset here; in case anything goes wrong in the Interim, the value will reflect that.
-            _installerVerificationStopwatch.Reset();
-
-            try
-            {
-                WaitForInitializationToComplete();
-
-                if (!TryDownloadInstaller(tempFile))
-                    return UpdateResult.DownloadFailed;
-
-                // The verification wraps the beginning of the installation to preserve
-                // the integrity of the file by holding an open handle.
-                _installerVerificationStopwatch.Start();
-                using (var trustVerifier = new TrustVerifier(tempFile))
-                {
-                    if (!trustVerifier.IsVerified)
-                        return UpdateResult.VerificationFailed;
-
-                    _installerVerificationStopwatch.Stop();
-
-                    UpdateMethods.BeginMSIInstall(tempFile);
-
-                    return UpdateResult.Success;
-                }
-            }
-            catch (Exception e)
-            {
-                e.ReportException();
-                if (File.Exists(tempFile))
-                    File.Delete(tempFile);
-            }
-            finally
-            {
-                _installerVerificationStopwatch.Stop();
-            }
-
             return UpdateResult.Unknown;
         }
 
@@ -213,8 +161,6 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
 
             return cadences.Any();
         }
-
-
 
         public bool TryParseConfigInfo(Stream stream, string cadence)
         {
@@ -305,16 +251,12 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                             {
                                 return AutoUpdateOption.OptionalUpgrade;
                             }
-                            //return AutoUpdateOption.Current;
-                            return AutoUpdateOption.OptionalUpgrade;
+                            return AutoUpdateOption.Current;
                         }
                     }
                 } // using
             }
-
-            //return AutoUpdateOption.Unknown;
-
-            return AutoUpdateOption.OptionalUpgrade;
+            return AutoUpdateOption.Unknown;
         }
 
         private void WaitForInitializationToComplete()
