@@ -411,7 +411,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 HasUserResizedLvHeader = true;
             }
-            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Bug)
+            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
             {
                 header.Column.Width = BugColumnWidth;
             }
