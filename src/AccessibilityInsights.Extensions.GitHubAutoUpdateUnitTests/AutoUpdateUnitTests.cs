@@ -14,18 +14,19 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     public class AutoUpdateUnitTests
     {
         private const string TestInstalledVersion = "1.1.1234";
+        private const string InsiderReleaseCadence = "insider";
 
         private static readonly IGitHubWrapper MinimalGitHubWrapper = BuildGitHubWrapper().Object;
 
-        private const string UptionalUpgradeData =
+        private const string UptionalUpgradeDataForDefaultRequiredUpdateForInsider =
 @"{
-  ""preview"": {
+  ""insider"": {
     ""current_version"": ""1.1.1330"",
     ""minimum_version"": ""1.1.1300"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1330/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1330/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1250"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
@@ -33,15 +34,15 @@ namespace Extensions.GitHubAutoUpdateUnitTests
   }
 }";
 
-        private const string RequiredUpgradeData =
+        private const string RequiredUpgradeDataForDefaultAndInsider =
 @"{
-  ""preview"": {
+  ""insider"": {
     ""current_version"": ""1.1.1330"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1250"",
     ""minimum_version"": ""1.1.1240"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
@@ -49,15 +50,15 @@ namespace Extensions.GitHubAutoUpdateUnitTests
   }
 }";
 
-        private const string CurrentUpgradeData =
+        private const string CurrentUpgradeDataForDefaultOptionalUpgradeForInsider =
 @"{
-  ""preview"": {
+  ""insider"": {
     ""current_version"": ""1.1.1330"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
     },
-  ""stable"": {
+  ""default"": {
     ""current_version"": ""1.1.1234"",
     ""minimum_version"": ""1.1.1000"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1234/installer.msi"",
@@ -87,6 +88,14 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             }
 
             return wrapperMock;
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        public void ReleaseCadence_DefaultsToExpectedValue()
+        {
+            IAutoUpdate update = new AutoUpdate();
+            Assert.AreEqual("default", update.ReleaseCadence);
         }
 
         [TestMethod]
@@ -131,7 +140,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_ReleaseCadenceIsNotFound_ReturnsUnknown_FieldsAreNull()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
             update.ReleaseCadence = "blah";
             Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
@@ -146,9 +155,9 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_SearchWithReleaseCadence_FindsCorrectData()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: UptionalUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: UptionalUpgradeDataForDefaultRequiredUpdateForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
-            update.ReleaseCadence = "preview";
+            update.ReleaseCadence = InsiderReleaseCadence;
             Assert.AreEqual(AutoUpdateOption.RequiredUpgrade, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
             Assert.AreEqual(new Version(1, 1, 1330), update.LatestVersion);
@@ -161,7 +170,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigShowsNoUpgrade_ReturnsCurrent_FieldsAreCorrect()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
             Assert.AreEqual(AutoUpdateOption.Current, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
@@ -175,7 +184,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigShowsOptionalUpgrade_ReturnsOptionalUpgrade()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: UptionalUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: UptionalUpgradeDataForDefaultRequiredUpdateForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
             Assert.AreEqual(AutoUpdateOption.OptionalUpgrade, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
@@ -189,7 +198,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigShowsRequiredUpgrade_ReturnsRequiredUpgrade()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: RequiredUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: RequiredUpgradeDataForDefaultAndInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
             Assert.AreEqual(AutoUpdateOption.RequiredUpgrade, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
@@ -211,7 +220,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_InitializationTimeGreaterZero()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
             // We have to wait for initialization to complete
             update.UpdateOptionAsync.Wait();
@@ -224,7 +233,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_InstallerDownloadTimeGreaterZero()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeData);
+            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
             githubMock.Setup(x => x.TryGetSpecificAsset(It.IsAny<Uri>(), It.IsAny<Stream>()))
                                 .Callback<Uri, Stream>((Uri, stream) =>
                                 {

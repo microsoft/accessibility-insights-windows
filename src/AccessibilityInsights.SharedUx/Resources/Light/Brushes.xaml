@@ -62,6 +62,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextHighlightBrush" Color="#FFF2CC"/>
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>
+    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>
     <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>
     <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>

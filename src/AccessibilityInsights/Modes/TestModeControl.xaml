@@ -22,7 +22,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="4" Margin="0" Grid.Row="1">
-            <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" UseLayoutRounding="False" BorderBrush="#FFEAEAEA" ItemContainerStyle="{StaticResource tabItemStyle}" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" 
+                        UseLayoutRounding="False" BorderBrush="#FFEAEAEA" ItemContainerStyle="{StaticResource tabItemStyle}" 
+                        SelectionChanged="TabControl_SelectionChanged" KeyboardNavigation.TabNavigation="Cycle">
                 <TabItem IsEnabled="False" AutomationProperties.LabeledBy="{Binding ElementName=lblFastpass}">
                     <TabItem.Header>
                         <Grid>
