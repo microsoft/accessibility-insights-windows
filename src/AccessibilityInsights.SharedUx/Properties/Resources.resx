@@ -499,7 +499,6 @@
     <value>Hi,
 
 Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
-
 To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
 
 
@@ -514,7 +513,7 @@ Accessibility Insights Support Team
     <value>Accessibility Insights for Windows false positive report</value>
   </data>
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
-    <value>Color contrast</value>
+    <value>Color contrast analyzer</value>
   </data>
   <data name="RunTextHowToTest" xml:space="preserve">
     <value>How to test</value>
@@ -522,26 +521,17 @@ Accessibility Insights Support Team
   <data name="TextBlockAutomationPropertiesNameInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
-  <data name="ColorContrast_HowToTest" xml:space="preserve">
-    <value>Hover over or set keyboard focus on an element to see the automated contrast ratio results along with the certainty. Autodetected colors selected will appear below along with the ratio.</value>
+  <data name="ColorContrast_HowToTestAuto" xml:space="preserve">
+    <value>To auto detect an element's contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the contrast ratio, and the confidence level.</value>
   </data>
-  <data name="TextBlockTextCCRatioResult" xml:space="preserve">
-    <value>Or use the eyedropper to pick two colors to test the contrast ratio results:</value>
+  <data name="ColorContrast_Analyzer" xml:space="preserve">
+    <value>Analyzer</value>
   </data>
-  <data name="RunTextCCA45" xml:space="preserve">
-    <value> •  Text with a contrast of 4.5 or greater </value>
+  <data name="ColorContrast_HowToTestManualPre" xml:space="preserve">
+    <value>To manually select two colors to test the contrast ratio, select each color using the Eyedropper</value>
   </data>
-  <data name="RunTextPasses" xml:space="preserve">
-    <value>passes</value>
-  </data>
-  <data name="RunTextCCA30" xml:space="preserve">
-    <value> •  Large text (18pt or 14pt bold) with a contrast of 3.0 or greater </value>
-  </data>
-  <data name="RunTextCCA30Below" xml:space="preserve">
-    <value> •  Any text with a contrast below 3.0 </value>
-  </data>
-  <data name="RunTextFails" xml:space="preserve">
-    <value>fails</value>
+  <data name="ColorContrast_HowToTestManualPost" xml:space="preserve">
+    <value>You can also select a color using the Color Picker box or enter its hex code.</value>
   </data>
   <data name="noElementSelected" xml:space="preserve">
     <value>no element selected</value>
@@ -1517,13 +1507,13 @@ Accessibility Insights Support Team
     <value>There were no failures.</value>
   </data>
   <data name="ColorContrast_Background" xml:space="preserve">
-    <value>Color B</value>
+    <value>Background color</value>
   </data>
   <data name="ColorContrast_FontSizes" xml:space="preserve">
     <value>(14 pt. bold or 18 pt. regular)</value>
   </data>
   <data name="ColorContrast_Foreground" xml:space="preserve">
-    <value>Color A</value>
+    <value>Foreground color</value>
   </data>
   <data name="ColorContrast_Large" xml:space="preserve">
     <value>Large</value>
@@ -1538,7 +1528,7 @@ Accessibility Insights Support Team
     <value>Ratio</value>
   </data>
   <data name="ColorContrast_Confidence" xml:space="preserve">
-    <value>Confidence</value>
+    <value>Confidence level</value>
   </data>
   <data name="ColorContrast_Requires" xml:space="preserve">
     <value>(Requires ratio ≥ 3.0)</value>
@@ -1579,10 +1569,13 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Invalid link {0}</value>
   </data>
   <data name="lblAutoDetectContent" xml:space="preserve">
-    <value>Auto detect colors on hover</value>
+    <value>Auto detect contrast ratio</value>
   </data>
   <data name="InspectModeLink" xml:space="preserve">
     <value>Learn more about Inspect.</value>
+  </data>
+  <data name="CCToggleToolTip" xml:space="preserve">
+    <value>Hover over the element or set keyboard focus to auto detect color contrast ratio.</value>
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>

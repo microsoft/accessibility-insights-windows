@@ -590,7 +590,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 e.Handled = true;
             }
-            else if (e.Key == Key.Return)
+            else if (e.Key == Key.Return && Keyboard.FocusedElement is ListViewItem)
             {
                 var btn = GetFirstChildElement<Button>(sender as DependencyObject) as Button;
                 ButtonElem_Click(btn, e);

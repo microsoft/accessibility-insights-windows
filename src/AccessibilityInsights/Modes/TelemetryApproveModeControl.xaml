@@ -8,7 +8,8 @@
         mc:Ignorable="d" KeyboardNavigation.TabNavigation="Cycle"
         xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
              xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
-             AutomationProperties.Name="{x:Static properties:Resources.AutomationNameTelemetryMode}">
+             AutomationProperties.Name="{x:Static properties:Resources.AutomationNameTelemetryMode}"
+             KeyboardNavigation.DirectionalNavigation="Cycle">
     <UserControl.Background>
         <SolidColorBrush Opacity="0.25" Color="Black"/>
     </UserControl.Background>
