@@ -162,7 +162,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return cadences.Any();
         }
 
-        public bool TryParseConfigInfo(Stream stream, string cadence)
+        private bool TryParseConfigInfo(Stream stream, string cadence)
         {
             if (_gitHub.TryGetConfigInfo(stream))
             {
@@ -217,9 +217,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 _initializationStopwatch.Stop();
             }
-
-            //return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
-            return AutoUpdateOption.OptionalUpgrade;
+            return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
         }
 
         /// <summary>
