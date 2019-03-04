@@ -582,77 +582,21 @@ Accessibility Insights Support Team
   <data name="tabIntroContent" xml:space="preserve">
     <value>How to Test</value>
   </data>
-  <data name="RunTextHowStartTabStops" xml:space="preserve">
-    <value>Start the tab stops test only after running the Automated checks on a suitable UI element such as a window or dialog.</value>
+  <data name="TabStopControl_target" xml:space="preserve">
+    <value>Target:</value>
   </data>
-  <data name="RunTextHowTurnOnThe" xml:space="preserve">
-    <value>1. Turn on the </value>
-  </data>
-  <data name="RunTextHowToggleSwitch" xml:space="preserve">
-    <value> toggle switch (or press </value>
-  </data>
-  <data name="RunTextHowBracket" xml:space="preserve">
-    <value>).</value>
-  </data>
-  <data name="RunTextHowSetFocusOnThePart" xml:space="preserve">
-    <value>2. Set focus on the part of the application you want to test tab stops on and press the keyboard's </value>
-  </data>
-  <data name="RunTextHowKeyToMoveTheInput" xml:space="preserve">
-    <value> key to move the input focus through all the interactive elements within your test scope.</value>
-  </data>
-  <data name="RunTextHowAsYouTab" xml:space="preserve">
-    <value>3. As you tab to each element, look for these </value>
-  </data>
-  <data name="RunTextHowAccessibilityProblems" xml:space="preserve">
-    <value>accessibility problems</value>
-  </data>
-  <data name="RunTextHowPColon" xml:space="preserve">
-    <value>:</value>
-  </data>
-  <data name="RunTextHowBullet" xml:space="preserve">
-    <value>     •</value>
-  </data>
-  <data name="RunTextHowAnInteractiveElement" xml:space="preserve">
-    <value> An interactive element can't be reached using the </value>
-  </data>
-  <data name="RunTextTab" xml:space="preserve">
-    <value>Tab</value>
-  </data>
-  <data name="RunTextHowKey" xml:space="preserve">
-    <value> key.</value>
-  </data>
-  <data name="RunTextHowKeyboardTrap" xml:space="preserve">
-    <value> A "keyboard trap" prevents tabbing away from an element.</value>
-  </data>
-  <data name="RunTextHowAnInteractiveElementDoesNotGiveVisible" xml:space="preserve">
-    <value> An interactive element does not give a visible indication when it has input focus.</value>
-  </data>
-  <data name="RunTextHowTabOrderIsInconsistent" xml:space="preserve">
-    <value> The tab order is inconsistent with the logical order that's communicated visually.</value>
-  </data>
-  <data name="RunTextHowInputFocusMovesUnexpectedly" xml:space="preserve">
-    <value> Input focus moves unexpectedly without the user initiating it.</value>
-  </data>
-  <data name="RunTextHowStopRecording" xml:space="preserve">
-    <value>4. Stop recording when you have tabbed to every element within your test scope.</value>
-  </data>
-  <data name="RunTextHowHideTabStopHighlight" xml:space="preserve">
-    <value>5. If you wish to hide a tab stop highlight in the application, unselect it from the list below. </value>
-  </data>
-  <data name="tabInteroContent" xml:space="preserve">
-    <value>Why tab stops matter</value>
-  </data>
-  <data name="RunTextHowManyPeopleRelyOnKeyboard" xml:space="preserve">
-    <value>Many people – not just those with disabilities – rely on their keyboard to interact with software applications.  Users of assistive technology are especially likely to use a keyboard (or its functional equivalent), and poorly-designed tab stops create high-impact accessibility problems.</value>
-  </data>
-  <data name="RunTextHowGoodTabStopDesign" xml:space="preserve">
-    <value>Good tab stop design allows keyboard users to</value>
-  </data>
-  <data name="RunTextHowTabThroughApplication" xml:space="preserve">
-    <value> Tab through an application's interactive elements in a predictable order</value>
-  </data>
-  <data name="RunTextHowIdentifyWhichElement" xml:space="preserve">
-    <value> Identify which element currently has the input focus</value>
+  <data name="TabStopControl_tbxInstructions" xml:space="preserve">
+    <value>1. Set focus on the element where you want to start testing.
+2. Turn on the Record tab stops toggle (or press {0}).
+3. Press the Tab key to move input focus through all the interactive elements in your test scope.
+4. As you tab to each element, look for these accessibility problems:
+  •  An interactive element can't be reached using the Tab key.
+  •  An interactive element "traps" input focus and prevents tabbing away.
+  •  An interactive element doesn't give a visible indication when it has input focus.
+  •  The tab order is inconsistent with the logical order that's communicated visually.
+  •  Input focus moves unexpectedly without the user initiating it.
+5. When you have tabbed to every element within your test scope, turn off the Record tab stops toggle (or press {1}).
+6. To un-highlight a tab stop, deselect it in the Tab stops list below.</value>
   </data>
   <data name="TabStopControl_StartRecordingEvent_NoSelection" xml:space="preserve">
     <value>No element is selected yet. please select first!!</value>
