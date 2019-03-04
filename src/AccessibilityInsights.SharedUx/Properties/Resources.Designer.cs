@@ -967,7 +967,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("ColorContrast_HowToTestManualPost", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to To manually select two colors to test the contrast ratio, select each color using the Eyedropper.
         /// </summary>
@@ -1611,69 +1611,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Feedback has been successfully sent. Thanks for sending us feedback..
-        /// </summary>
-        public static string FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent {
-            get {
-                return ResourceManager.GetString("FeedbackControl_btnSend_Click_Feedback_has_been_successfully_sent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to navigate to requested url..
-        /// </summary>
-        public static string FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url {
-            get {
-                return ResourceManager.GetString("FeedbackControl_hlLink_RequestNavigate_Failed_to_navigate_to_requested_url", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Looking to provide feedback?.
-        /// </summary>
-        public static string FeedbackControl_lookingToProvide {
-            get {
-                return ResourceManager.GetString("FeedbackControl_lookingToProvide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ask a question.
-        /// </summary>
-        public static string FeedbackControl_questions {
-            get {
-                return ResourceManager.GetString("FeedbackControl_questions", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Report an issue.
-        /// </summary>
-        public static string FeedbackControl_reportIssue {
-            get {
-                return ResourceManager.GetString("FeedbackControl_reportIssue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Search feature requests.
-        /// </summary>
-        public static string FeedbackControl_searchRequests {
-            get {
-                return ResourceManager.GetString("FeedbackControl_searchRequests", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Thank you for using Accessibility Insights for Windows..
-        /// </summary>
-        public static string FeedbackControl_thankYou {
-            get {
-                return ResourceManager.GetString("FeedbackControl_thankYou", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Learn more about bug filing..
         /// </summary>
         public static string FileBugLink {
@@ -1988,6 +1925,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        public static string hlHelpName {
+            get {
+                return ResourceManager.GetString("hlHelpName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to questions or feedback.
         /// </summary>
         public static string hlLinkAutomationPropertiesName {
@@ -1997,20 +1943,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Third party notices.
+        ///   Looks up a localized string similar to License terms.
         /// </summary>
-        public static string hlNoticesAutomationPropertiesName {
+        public static string hlTermsName {
             get {
-                return ResourceManager.GetString("hlNoticesAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("hlTermsName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to License terms.
+        ///   Looks up a localized string similar to Third party notices.
         /// </summary>
-        public static string hlTermsAutomationPropertiesName {
+        public static string hlThirdpartyNoticesName {
             get {
-                return ResourceManager.GetString("hlTermsAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("hlThirdpartyNoticesName", resourceCulture);
             }
         }
         
@@ -3286,209 +3232,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to accessibility problems.
-        /// </summary>
-        public static string RunTextHowAccessibilityProblems {
-            get {
-                return ResourceManager.GetString("RunTextHowAccessibilityProblems", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  An interactive element can&apos;t be reached using the .
-        /// </summary>
-        public static string RunTextHowAnInteractiveElement {
-            get {
-                return ResourceManager.GetString("RunTextHowAnInteractiveElement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  An interactive element does not give a visible indication when it has input focus..
-        /// </summary>
-        public static string RunTextHowAnInteractiveElementDoesNotGiveVisible {
-            get {
-                return ResourceManager.GetString("RunTextHowAnInteractiveElementDoesNotGiveVisible", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 3. As you tab to each element, look for these .
-        /// </summary>
-        public static string RunTextHowAsYouTab {
-            get {
-                return ResourceManager.GetString("RunTextHowAsYouTab", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to )..
-        /// </summary>
-        public static string RunTextHowBracket {
-            get {
-                return ResourceManager.GetString("RunTextHowBracket", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to      •.
-        /// </summary>
-        public static string RunTextHowBullet {
-            get {
-                return ResourceManager.GetString("RunTextHowBullet", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Good tab stop design allows keyboard users to.
-        /// </summary>
-        public static string RunTextHowGoodTabStopDesign {
-            get {
-                return ResourceManager.GetString("RunTextHowGoodTabStopDesign", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 5. If you wish to hide a tab stop highlight in the application, unselect it from the list below. .
-        /// </summary>
-        public static string RunTextHowHideTabStopHighlight {
-            get {
-                return ResourceManager.GetString("RunTextHowHideTabStopHighlight", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  Identify which element currently has the input focus.
-        /// </summary>
-        public static string RunTextHowIdentifyWhichElement {
-            get {
-                return ResourceManager.GetString("RunTextHowIdentifyWhichElement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  Input focus moves unexpectedly without the user initiating it..
-        /// </summary>
-        public static string RunTextHowInputFocusMovesUnexpectedly {
-            get {
-                return ResourceManager.GetString("RunTextHowInputFocusMovesUnexpectedly", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  key..
-        /// </summary>
-        public static string RunTextHowKey {
-            get {
-                return ResourceManager.GetString("RunTextHowKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  A &quot;keyboard trap&quot; prevents tabbing away from an element..
-        /// </summary>
-        public static string RunTextHowKeyboardTrap {
-            get {
-                return ResourceManager.GetString("RunTextHowKeyboardTrap", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  key to move the input focus through all the interactive elements within your test scope..
-        /// </summary>
-        public static string RunTextHowKeyToMoveTheInput {
-            get {
-                return ResourceManager.GetString("RunTextHowKeyToMoveTheInput", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Many people – not just those with disabilities – rely on their keyboard to interact with software applications.  Users of assistive technology are especially likely to use a keyboard (or its functional equivalent), and poorly-designed tab stops create high-impact accessibility problems..
-        /// </summary>
-        public static string RunTextHowManyPeopleRelyOnKeyboard {
-            get {
-                return ResourceManager.GetString("RunTextHowManyPeopleRelyOnKeyboard", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to :.
-        /// </summary>
-        public static string RunTextHowPColon {
-            get {
-                return ResourceManager.GetString("RunTextHowPColon", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 2. Set focus on the part of the application you want to test tab stops on and press the keyboard&apos;s .
-        /// </summary>
-        public static string RunTextHowSetFocusOnThePart {
-            get {
-                return ResourceManager.GetString("RunTextHowSetFocusOnThePart", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Start the tab stops test only after running the Automated checks on a suitable UI element such as a window or dialog..
-        /// </summary>
-        public static string RunTextHowStartTabStops {
-            get {
-                return ResourceManager.GetString("RunTextHowStartTabStops", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 4. Stop recording when you have tabbed to every element within your test scope..
-        /// </summary>
-        public static string RunTextHowStopRecording {
-            get {
-                return ResourceManager.GetString("RunTextHowStopRecording", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  The tab order is inconsistent with the logical order that&apos;s communicated visually..
-        /// </summary>
-        public static string RunTextHowTabOrderIsInconsistent {
-            get {
-                return ResourceManager.GetString("RunTextHowTabOrderIsInconsistent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  Tab through an application&apos;s interactive elements in a predictable order.
-        /// </summary>
-        public static string RunTextHowTabThroughApplication {
-            get {
-                return ResourceManager.GetString("RunTextHowTabThroughApplication", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  toggle switch (or press .
-        /// </summary>
-        public static string RunTextHowToggleSwitch {
-            get {
-                return ResourceManager.GetString("RunTextHowToggleSwitch", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to How to test.
         /// </summary>
         public static string RunTextHowToTest {
             get {
                 return ResourceManager.GetString("RunTextHowToTest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 1. Turn on the .
-        /// </summary>
-        public static string RunTextHowTurnOnThe {
-            get {
-                return ResourceManager.GetString("RunTextHowTurnOnThe", resourceCulture);
             }
         }
         
@@ -3561,15 +3309,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextSetDefaultStartupMode {
             get {
                 return ResourceManager.GetString("RunTextSetDefaultStartupMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tab.
-        /// </summary>
-        public static string RunTextTab {
-            get {
-                return ResourceManager.GetString("RunTextTab", resourceCulture);
             }
         }
         
@@ -3876,15 +3615,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rate your overall satisfaction with desktop diagnostics:.
-        /// </summary>
-        public static string sliderFeedbackTextText {
-            get {
-                return ResourceManager.GetString("sliderFeedbackTextText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to The quick brown fox.
         /// </summary>
         public static string smallSampleText {
@@ -3908,15 +3638,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tabEventsAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tabEventsAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Why tab stops matter.
-        /// </summary>
-        public static string tabInteroContent {
-            get {
-                return ResourceManager.GetString("tabInteroContent", resourceCulture);
             }
         }
         
@@ -3953,6 +3674,30 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TabStopControl_StartRecordingEvent_NoSelection {
             get {
                 return ResourceManager.GetString("TabStopControl_StartRecordingEvent_NoSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target:.
+        /// </summary>
+        public static string TabStopControl_target {
+            get {
+                return ResourceManager.GetString("TabStopControl_target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1. Set focus on the element where you want to start testing.
+        ///2. Turn on the Record tab stops toggle (or press {0}).
+        ///3. Press the Tab key to move input focus through all the interactive elements in your test scope.
+        ///4. As you tab to each element, look for these accessibility problems:
+        ///  •  An interactive element can&apos;t be reached using the Tab key.
+        ///  •  An interactive element &quot;traps&quot; input focus and prevents tabbing away.
+        ///  •  An interactive element doesn&apos;t give a visible indication when it has input foc [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string TabStopControl_tbxInstructions {
+            get {
+                return ResourceManager.GetString("TabStopControl_tbxInstructions", resourceCulture);
             }
         }
         

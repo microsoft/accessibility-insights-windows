@@ -170,6 +170,17 @@
         <Setter Property="KeyboardNavigation.IsTabStop" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
     </Style>
+    <Style TargetType="{x:Type RichTextBox}" x:Key="RtbReadonlyText">
+        <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="IsReadOnlyCaretVisible" Value="True"/>
+        <Setter Property="Focusable" Value="True"/>
+        <Setter Property="KeyboardNavigation.IsTabStop" Value="True"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnHotkey" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="11"/>
@@ -262,6 +273,11 @@
     <Style TargetType="{x:Type Label}" x:Key="lblXLHeader" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXLTextSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    <Style TargetType="{x:Type Label}" x:Key="lblLarge" >
+        <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstLargeTextSize}"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
@@ -912,6 +928,9 @@
     <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable" BasedOn="{StaticResource TbBaseWrap}">
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="TbHeaderFocusable" BasedOn="{StaticResource TbFocusable}">
+        <Setter Property="FontSize" Value="{DynamicResource ResourceKey=LargeTextBlockSize}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblKey">
         <Setter Property="IsTabStop" Value="True"/>

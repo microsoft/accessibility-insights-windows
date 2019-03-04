@@ -46,9 +46,6 @@
                             <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Feedback}">
                                 <controls:AboutTabControl x:Name="aboutTabCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsFeedbackHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.WhatsNew}">
-                                <controls:FeedbackControl x:Name="feedbackCtrl"/>
-                            </TabItem>
                         </TabControl>
                     </DockPanel>
                 </Grid>
