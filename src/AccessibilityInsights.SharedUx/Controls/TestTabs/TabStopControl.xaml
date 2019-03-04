@@ -19,16 +19,15 @@
         <Grid Name="gridTabText" HorizontalAlignment="Left" MinWidth="500" MinHeight="690" Width="Auto" Height="Auto" 
             KeyboardNavigation.TabNavigation="Local" VerticalAlignment="Stretch" AutomationProperties.Name="{x:Static Properties:Resources.TabStopControlAutomationPropertiesName}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="12"/>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="28"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="24"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="8"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="10"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Name="grwListViewRow" MinHeight="130" Height="*" MaxHeight="450"/>
                 <RowDefinition Height="16"/>
                 <RowDefinition Height="24"/>
@@ -39,47 +38,38 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="16"/>
             </Grid.ColumnDefinitions>
-            <Label Name="tabTitle" Grid.Row="2" Grid.Column="1" Content="Tab stops" Style="{StaticResource lblHeader}" HorizontalAlignment="Left"/>
-            <Label Name="lblGlimpse" Content="Glimpse" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Style="{StaticResource lblFaint}"/>
-            <Grid Grid.Row="3" Grid.Column="1" Background="{DynamicResource ResourceKey=LightGreyBrush}" Height="24" VerticalAlignment="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="4"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Label Name="lblRecord" Content="{x:Static Properties:Resources.lblRecordContent}" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
-                <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="3" Name="tgbtnRecord" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblRecord}" Click="btnRecord_Click"/>
-            </Grid>
+            <TextBlock Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" Style="{StaticResource TbHeaderFocusable}" Margin="0,0,0,24">
+                <Run Text="{x:Static Properties:Resources.TabStopControl_target}" FontWeight="SemiBold"/>
+                <Run Name="runElement"/>
+            </TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,10">
+                <Run FontWeight="SemiBold" FontSize="{DynamicResource ConstXLTextSize}" Text="{x:Static Properties:Resources.RunTextTabStops}" />
+                <Hyperlink TextDecorations="{x:Null}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                           ToolTip="{x:Static Properties:Resources.RunTextTabStops}"
+                           AutomationProperties.Name="{x:Static Properties:Resources.RunTextHowToTest}"
+                           NavigateUri="https://go.microsoft.com/fwlink/?linkid=2080645" RequestNavigate="Hyperlink_RequestNavigate">
+                    <fabric:FabricIconControl GlyphName="Info" GlyphSize="Custom" FontSize="17" Margin="8,0,0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                </Hyperlink>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Height="24" VerticalAlignment="Top" Margin="0,0,0,24">
+                <Label Name="lblRecord" Content="{x:Static Properties:Resources.lblRecordContent}" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
+                <ToggleButton Style="{StaticResource tgbSlider}" Name="tgbtnRecord" Margin="8,2,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblRecord}" Click="btnRecord_Click"/>
+            </StackPanel>
             <Label Name="tabIntro" Grid.Row="4" Grid.Column="1" Content="{x:Static Properties:Resources.tabIntroContent}" Style="{StaticResource lblRowStyle}" HorizontalAlignment="Left"/>
-            <TextBlock Focusable="True" KeyboardNavigation.IsTabStop="True" KeyboardNavigation.TabIndex="0" LineHeight="18" TextWrapping="Wrap" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource tbLine}">
-                <Run Text="{x:Static Properties:Resources.RunTextHowStartTabStops}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowTurnOnThe}"/><Run Text="{x:Static Properties:Resources.lblRecordContent}" FontWeight="SemiBold"/><Run Text="{x:Static Properties:Resources.RunTextHowToggleSwitch}"/><Run Name="runHK1" FontWeight="SemiBold"/><Run Text="{x:Static Properties:Resources.RunTextHowBracket}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowSetFocusOnThePart}"/><Run Text="{x:Static Properties:Resources.RunTextTab}" FontWeight="SemiBold"/><Run Text="{x:Static Properties:Resources.RunTextHowKeyToMoveTheInput}"/>
-            </TextBlock>
-            <TextBlock  Focusable="True" KeyboardNavigation.IsTabStop="True" KeyboardNavigation.TabIndex="1" LineHeight="18" TextWrapping="Wrap" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource tbLine}">
-                <Run Text="{x:Static Properties:Resources.RunTextHowAsYouTab}"/><Run Text="{x:Static Properties:Resources.RunTextHowAccessibilityProblems}" FontWeight="SemiBold"/><Run Text="{x:Static Properties:Resources.RunTextHowPColon}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowAnInteractiveElement}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><Run Text="{x:Static Properties:Resources.RunTextTab}" FontWeight="SemiBold" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><Run Text="{x:Static Properties:Resources.RunTextHowKey}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowKeyboardTrap}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text=""/><Run Text="{x:Static Properties:Resources.RunTextHowAnInteractiveElementDoesNotGiveVisible}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowTabOrderIsInconsistent}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowInputFocusMovesUnexpectedly}" Background="{DynamicResource ResourceKey=TextHighlightBrush}"/>
-            </TextBlock>
-            <TextBlock Focusable="True" KeyboardNavigation.IsTabStop="True" KeyboardNavigation.TabIndex="2" LineHeight="18" TextWrapping="Wrap" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource tbLine}">
-            <Run Text="{x:Static Properties:Resources.RunTextHowStopRecording}"/><LineBreak/>
-            <Run Text="{x:Static Properties:Resources.RunTextHowHideTabStopHighlight}"/>
-            </TextBlock>
+            <RichTextBox Margin="-4,0,0,0" Grid.Row="5" Grid.Column="1" Style="{StaticResource ResourceKey=RtbReadonlyText}" Name="rtbInstructions"  AutomationProperties.LabeledBy="{Binding ElementName=tabIntro}">
+                <FlowDocument LineHeight="6"/>
+            </RichTextBox>
+            <Label Name="lblResults" Grid.Row="7" Grid.Column="1" Content="Recorded order results" Style="{StaticResource lblHeader}" HorizontalAlignment="Left"/>
             <ListView x:Name="lvElements" 
                 Margin="0"
-                    VerticalAlignment="Stretch"
-                AutomationProperties.LabeledBy="{Binding ElementName=tabTitle}"
+                VerticalAlignment="Stretch"
+                AutomationProperties.LabeledBy="{Binding ElementName=lblResults}"
                 ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-                BorderBrush="#c8c8c8"
-                MinHeight="130" MaxHeight="450" Grid.Row="10" Grid.Column="1"        
-                BorderThickness="1"
+                MinHeight="0" MaxHeight="450" Grid.Row="9" Grid.Column="1"
+                BorderThickness="0"
                 SelectionChanged="lvElements_SelectionChanged" SelectionMode="Extended"
                 HorizontalContentAlignment="Stretch" 
-                IsTabStop="True" KeyboardNavigation.TabIndex="4" 
+                IsTabStop="True"
                 FontSize="12">
                 <ListView.Resources>
                     <converters:ElementToSenderTextConverter x:Key="cvtElementToSender" />
@@ -91,15 +81,6 @@
                     </GridView>
                 </ListView.View>
             </ListView>
-            <Label Name="tabIntero" Grid.Row="12" Grid.Column="1" Content="{x:Static Properties:Resources.tabInteroContent}" Style="{StaticResource lblRowStyle}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock KeyboardNavigation.IsTabStop="True" Focusable="True" 
-                    KeyboardNavigation.TabIndex="6"  TextWrapping="Wrap" Grid.Row="13" 
-                    Grid.Column="1" HorizontalAlignment="Left" Style="{StaticResource tbLine}">
-                <Run Text="{x:Static Properties:Resources.RunTextHowManyPeopleRelyOnKeyboard}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowGoodTabStopDesign}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowTabThroughApplication}"/><LineBreak/>
-                <Run Text="{x:Static Properties:Resources.RunTextHowBullet}"/><Run Text="{x:Static Properties:Resources.RunTextHowIdentifyWhichElement}"/>
-            </TextBlock>
         </Grid>
     </ScrollViewer>
 </UserControl>
