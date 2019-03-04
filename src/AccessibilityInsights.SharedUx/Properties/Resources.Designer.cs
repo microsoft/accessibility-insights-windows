@@ -2357,7 +2357,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start recording tab stops.
+        ///   Looks up a localized string similar to Record tab stops.
         /// </summary>
         public static string lblRecordContent {
             get {
