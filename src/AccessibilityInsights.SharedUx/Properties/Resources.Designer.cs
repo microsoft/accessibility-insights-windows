@@ -383,20 +383,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New bug.
+        ///   Looks up a localized string similar to + New issue.
         /// </summary>
-        public static string btnFileBugContent {
+        public static string btnFileIssueContent {
             get {
-                return ResourceManager.GetString("btnFileBugContent", resourceCulture);
+                return ResourceManager.GetString("btnFileIssueContent", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New bug.
+        ///   Looks up a localized string similar to + New issue.
         /// </summary>
-        public static string btnFileBugContent1 {
+        public static string btnFileIssueContent1 {
             get {
-                return ResourceManager.GetString("btnFileBugContent1", resourceCulture);
+                return ResourceManager.GetString("btnFileIssueContent1", resourceCulture);
             }
         }
         
@@ -2555,7 +2555,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New bug.
+        ///   Looks up a localized string similar to New issue.
         /// </summary>
         public static string MenuItemAutomationPropertiesName {
             get {
@@ -2726,11 +2726,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New bug.
+        ///   Looks up a localized string similar to New issue.
         /// </summary>
-        public static string MenuItemHeaderNewBug {
+        public static string MenuItemHeaderNewIssue {
             get {
-                return ResourceManager.GetString("MenuItemHeaderNewBug", resourceCulture);
+                return ResourceManager.GetString("MenuItemHeaderNewIssue", resourceCulture);
             }
         }
         
@@ -3390,11 +3390,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bug.
+        ///   Looks up a localized string similar to Issue.
         /// </summary>
-        public static string ScannerResultControl_Thumb_DragDelta_Bug {
+        public static string ScannerResultControl_Thumb_DragDelta_Issue {
             get {
-                return ResourceManager.GetString("ScannerResultControl_Thumb_DragDelta_Bug", resourceCulture);
+                return ResourceManager.GetString("ScannerResultControl_Thumb_DragDelta_Issue", resourceCulture);
             }
         }
         
