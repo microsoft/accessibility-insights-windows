@@ -25,6 +25,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Diagnostics;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -174,7 +175,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         public void SetElement(ElementContext ec)
         {
             this.ElementContext = ec;
-            this.lblGlimpse.Content = "Target: " + ec.Element.Glimpse;
+            this.runElement.Text = ec.Element.Glimpse;
             this.EventHandler?.Dispose();
             this.EventHandler = new EventListenerFactory(ec.Element);
             var brush = Application.Current.Resources["HLbrushPurple"] as SolidColorBrush;
@@ -529,7 +530,16 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         public void SetHotkeyText(string hk)
         {
-            this.runHK1.Text = hk;
+            rtbInstructions.Document.Blocks.Clear();
+            rtbInstructions.AppendText(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TabStopControl_tbxInstructions, hk, hk));
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(e.Uri.OriginalString))
+            {
+                Process.Start(e.Uri.ToString());
+            }
         }
     }
 }

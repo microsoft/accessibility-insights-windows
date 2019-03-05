@@ -130,10 +130,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\SettingsTabs\FeedbackControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controls\InspectTabsControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -349,9 +345,6 @@
     </Compile>
     <Compile Include="Controls\SettingsTabs\AboutTabControl.xaml.cs">
       <DependentUpon>AboutTabControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\SettingsTabs\FeedbackControl.xaml.cs">
-      <DependentUpon>FeedbackControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\InspectTabsControl.xaml.cs">
       <DependentUpon>InspectTabsControl.xaml</DependentUpon>

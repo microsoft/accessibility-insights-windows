@@ -238,16 +238,13 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>links.json</TargetPath>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="Resources\links-Release.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <TargetPath>links-Release.json</TargetPath>
-    </ContentWithTargetPath>
     <Content Include="..\..\eula.rtf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\thirdpartynotices.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\links-review.json" />
   </ItemGroup>
   <ItemGroup>
     <DropSignedFile Include="$(OutDir)\AccessibilityInsights.exe" />

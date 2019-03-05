@@ -1,8 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 {
@@ -21,32 +23,15 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// open EULA file
+        /// open a File
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void hlTerms_Click(object sender, RoutedEventArgs e)
+        private void FileLink_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileFromAppDirectory("eula.rtf");
-        }
+            var uri = ((Hyperlink)sender).NavigateUri;
 
-        /// <summary>
-        /// Open license file
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void hlNotices_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileFromAppDirectory("ThirdpartyNotices.html");
-        }
-
-        /// <summary>
-        /// Open a file from App bin folder
-        /// </summary>
-        /// <param name="v"></param>
-        private static void OpenFileFromAppDirectory(string file)
-        {
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, uri.OriginalString);
 
             try
             {
@@ -54,6 +39,25 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 {
                     System.Diagnostics.Process.Start(path);
                 }
+            }
+            catch
+            {
+                // silently ignore. 
+            }
+        }
+
+        /// <summary>
+        /// open a Hyper Link
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HyperLink_Click(object sender, RoutedEventArgs e)
+        {
+            var uri = ((Hyperlink)sender).NavigateUri;
+
+            try
+            {
+                Process.Start(uri.AbsoluteUri);
             }
             catch
             {
