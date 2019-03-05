@@ -130,6 +130,9 @@
   <ItemGroup>
     <EmbeddedResource Include="TestImages\weird_text_arrangement.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TestImages\visual_studio_tab.bmp" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

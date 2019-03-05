@@ -60,6 +60,14 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(Confidence.High, resultOffsetUpImage.ConfidenceValue());
         }
 
+        [TestMethod, Timeout(2000)]
+        public void VisualStudioTab()
+        {
+            var colorContrastResult = LoadFromResources("visual_studio_tab.bmp").RunColorContrastCalculation();
+
+            Assert.AreEqual(Confidence.High, colorContrastResult.ConfidenceValue());
+        }
+
         /**
          * Note in this test case we have Mide confidence. As such, we also are asserting that the color is only 
          * approximately what we expect, this allows our algorithm a little flexibility, without having to modify
