@@ -91,9 +91,9 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                    <!-- HINT: please use the shorest suffix which can distingusish itself for the naming convention of the extension assembly Ids: -->
 
                    <!-- AutoUpdate Extension Assemblies -->
-                   <File Source="..\AccessibilityInsights.Extensions.AutoUpdate\bin\Release\AccessibilityInsights.Extensions.AutoUpdate.dll" Id="autoupdate_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AutoUpdate\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id="windowsinstaller_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AutoUpdate\bin\Release\Newtonsoft.Json.dll" Id="newtonsoft_json_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" Id="autoupdate_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id="windowsinstaller_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Newtonsoft.Json.dll" Id="newtonsoft_json_extension"/>
 
                    <!-- Telemetry Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll" Id="telemetry_extension"/>
