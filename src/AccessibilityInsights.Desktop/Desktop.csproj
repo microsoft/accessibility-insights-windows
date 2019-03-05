@@ -65,7 +65,9 @@
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="ColorContrastAnalyzer\BitmapCollection.cs" />
     <Compile Include="ColorContrastAnalyzer\Color.cs" />
+    <Compile Include="ColorContrastAnalyzer\ColorContrastRunner.cs" />
     <Compile Include="ColorContrastAnalyzer\ColorPair.cs" />
+    <Compile Include="ColorContrastAnalyzer\CountMap.cs" />
     <Compile Include="ColorContrastAnalyzer\ImageCollection.cs" />
     <Compile Include="ColorContrastAnalyzer\Pixel.cs" />
     <Compile Include="ColorContrastAnalyzer\ColorContrastConfig.cs" />

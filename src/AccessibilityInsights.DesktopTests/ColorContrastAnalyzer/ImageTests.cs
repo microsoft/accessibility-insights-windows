@@ -65,7 +65,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
         {
             var colorContrastResult = LoadFromResources("visual_studio_tab.bmp").RunColorContrastCalculation();
 
-            Assert.AreEqual(Confidence.High, colorContrastResult.ConfidenceValue());
+            Assert.AreEqual(Confidence.Low, colorContrastResult.ConfidenceValue());
         }
 
         /**

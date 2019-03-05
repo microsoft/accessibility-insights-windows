@@ -95,12 +95,32 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
             return new ColorPair(startingColor, mostContrastingColor);
         }
 
+        public Boolean IsClosed()
+        {
+            return isClosed;
+        }
+
         /**
          * True when the Transition closed because it ended with a color identical to the starting color.
          */
         internal Boolean IsStartingAndEndingColorSame()
         {
             return isComplete;
+        }
+
+        internal Boolean IsConsequential()
+        {
+            return IsStartingAndEndingColorSame() && size > 2 && isMountainShaped;
+        }
+
+        internal Color StartingColor()
+        {
+            return startingColor;
+        }
+
+        internal Color MostContrastingColor()
+        {
+            return mostContrastingColor;
         }
 
         public override string ToString()

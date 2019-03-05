@@ -15,58 +15,57 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         public abstract Color GetColor(int row, int column);
 
+        private bool IsNewRow(Pixel pixel)
+        {
+            return pixel.Column == 0;
+        }
+
+        private bool IsEndOfRow(Pixel pixel)
+        {
+            return pixel.Column == (NumColumns() - 1);
+        }
         /**
          * Run the Color Contrast calculation on the image.
          */
         public ColorContrastResult RunColorContrastCalculation()
         {
-            var contrastResult = new ColorContrastResult();
 
-            ColorContrastResult oldContrastResult = null;
+            ColorContrastResult result = null;
 
-            var colorContrastTransitions = new List<ColorContrastTransition>();
+            ColorContrastRunner runner = new ColorContrastRunner();
 
-            Pixel lastPixel = new Pixel(Color.WHITE, 0, 0);
+            Color previousColor = null;
 
             foreach (var pixel in GetBinaryRowSearchIterator())
             {
+                if (IsNewRow(pixel)) runner.OnRowBegin();
 
-                if (!lastPixel.Row.Equals(pixel.Row))
+                runner.OnPixel(pixel.Color, previousColor);
+                previousColor = pixel.Color;
+
+
+                // If this is the end of a y, see if we can make conclusions about our color maps.
+
+                if (IsEndOfRow(pixel))
                 {
-                    if (contrastResult.ConfidenceValue().Equals(Confidence.High))
-                    {
-                        return contrastResult;
-                    }
+                    var newResult = runner.OnRowEnd();
 
-                    if (oldContrastResult == null)
-                    {
-                        oldContrastResult = contrastResult;
-                    }
+                    if (result == null) result = newResult;
 
-                    if (contrastResult.ConfidenceValue() > oldContrastResult.ConfidenceValue())
+                    if (newResult.ConfidenceValue() == Confidence.High)
                     {
-                        oldContrastResult = contrastResult;
+                        result = newResult;
+                        break;
+                    }
+                    else if (newResult.ConfidenceValue() == Confidence.Mid &&
+                      result.ConfidenceValue() == Confidence.Low)
+                    {
+                        result = newResult;
                     }
                 }
-
-                colorContrastTransitions.Add(new ColorContrastTransition(pixel.Color));
-
-                foreach (var transition in colorContrastTransitions)
-                {
-                    transition.AddColor(pixel.Color);
-
-                    if (transition.IsPotentialForegroundBackgroundPair())
-                    {
-                        contrastResult.OnColorPair(transition.ToColorPair());
-                    }
-                }
-
-                colorContrastTransitions.RemoveAll(transition => transition.IsStartingAndEndingColorSame());
-
-                lastPixel = pixel;
             }
 
-            return oldContrastResult;
+            return result;
         }
 
         /**
