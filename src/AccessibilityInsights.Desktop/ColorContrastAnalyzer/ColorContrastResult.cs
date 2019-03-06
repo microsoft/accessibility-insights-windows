@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
@@ -26,9 +25,9 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         internal ColorContrastResult Add(ColorPair newColorPair)
         {
-            var newTextColor = newColorPair.LighterColor;
+            var newTextColor = newColorPair.foregroundColor;
 
-            var newBackgroundColor = newColorPair.DarkerColor;
+            var newBackgroundColor = newColorPair.backgroundColor;
 
             if (mostContrastingPair == null ||
                 mostContrastingPair.ColorContrast() < newColorPair.ColorContrast())

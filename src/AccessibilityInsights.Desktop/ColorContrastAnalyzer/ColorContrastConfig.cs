@@ -6,10 +6,16 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
     public static class ColorContrastConfig
     {
         /**
+         * The maximum width we expect Text to be. This number can be much larger than this
+         * and still be helpful.
+         */
+        public static readonly int MaxTextThickness = 20;
+
+        /**
          * The number of Color transitions we expect to make us believe a "Row" of Pixels
          * contains Text.
          */
-        public static readonly int MinNumberColorTransitions = 10;
+        public static readonly int MinNumberColorTransitions = 4;
 
         /**
          * We will inevitably find other color combinations in a row. To be highly confident

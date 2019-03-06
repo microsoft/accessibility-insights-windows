@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections;
 using System.Collections.Generic;
-using static AccessibilityInsights.Desktop.ColorContrastAnalyzer.ColorContrastResult;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
@@ -15,7 +14,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         public abstract Color GetColor(int row, int column);
 
-        private bool IsNewRow(Pixel pixel)
+        private static bool IsNewRow(Pixel pixel)
         {
             return pixel.Column == 0;
         }
@@ -43,22 +42,19 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                 runner.OnPixel(pixel.Color, previousColor);
                 previousColor = pixel.Color;
 
-
-                // If this is the end of a y, see if we can make conclusions about our color maps.
-
                 if (IsEndOfRow(pixel))
                 {
                     var newResult = runner.OnRowEnd();
 
                     if (result == null) result = newResult;
 
-                    if (newResult.ConfidenceValue() == Confidence.High)
+                    if (newResult.ConfidenceValue() == ColorContrastResult.Confidence.High)
                     {
                         result = newResult;
                         break;
                     }
-                    else if (newResult.ConfidenceValue() == Confidence.Mid &&
-                      result.ConfidenceValue() == Confidence.Low)
+                    else if (newResult.ConfidenceValue() == ColorContrastResult.Confidence.Mid &&
+                      result.ConfidenceValue() == ColorContrastResult.Confidence.Low)
                     {
                         result = newResult;
                     }

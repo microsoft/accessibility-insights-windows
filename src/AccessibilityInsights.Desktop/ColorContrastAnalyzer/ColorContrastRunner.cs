@@ -1,10 +1,12 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
-    class ColorContrastRunner
+    internal class ColorContrastRunner
     {
         private Dictionary<Color, ColorContrastTransition> openTransitions = new Dictionary<Color, ColorContrastTransition>();
 
@@ -22,30 +24,35 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
             {
                 transition.AddColor(color);
 
-                if (transition.IsClosed())
+                if (transition.IsClosed)
                 {
                     newlyClosedTransitions.Add(transition);
 
-                    if (transition.IsConsequential())
+                    Debug.WriteLine("Closing: " + transition.ToString());
+                    if (transition.IsPotentialForegroundBackgroundPair())
                     {
+                        Debug.WriteLine("Is Potential Text Combo: " + transition.ToString());
                         countExactPairs.Increment(new ColorPair(
-                            transition.StartingColor(),
-                            transition.MostContrastingColor()
+                            transition.StartingColor,
+                            transition.MostContrastingColor
                         ));
                     }
                 }
             }
-            
+
+            Debug.WriteLine("Before: " + openTransitions.Count());
+
+            foreach (ColorContrastTransition transition in newlyClosedTransitions)
+            {
+                openTransitions.Remove(transition.StartingColor);
+            }
+
+            Debug.WriteLine("After: " + openTransitions.Count());
+
             if (previousColor != null && !color.Equals(previousColor))
             {
                 openTransitions[previousColor] = new ColorContrastTransition(previousColor);
             }
-
-            foreach (ColorContrastTransition transition in newlyClosedTransitions)
-            {
-                openTransitions.Remove(transition.StartingColor());
-            }
-
         }
 
         internal void OnRowBegin()
@@ -72,17 +79,9 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
             {
                 foreach (var exactPairInner in countExactPairs)
                 {
-                    if (exactPairOuter.Key.LighterColor.Equals(exactPairInner.Key.LighterColor))
+                    if (exactPairOuter.Key.backgroundColor.Equals(exactPairInner.Key.backgroundColor))
                     {
-                        if (exactPairOuter.Key.DarkerColor.IsSimilarColor(exactPairInner.Key.DarkerColor))
-                        {
-                            pairsWithSimilarTextColor.Increment(exactPairOuter.Key, exactPairInner.Value);
-                        }
-                    }
-
-                    if (exactPairOuter.Key.DarkerColor.Equals(exactPairInner.Key.DarkerColor))
-                    {
-                        if (exactPairOuter.Key.LighterColor.IsSimilarColor(exactPairInner.Key.LighterColor))
+                        if (exactPairOuter.Key.foregroundColor.IsSimilarColor(exactPairInner.Key.foregroundColor))
                         {
                             pairsWithSimilarTextColor.Increment(exactPairOuter.Key, exactPairInner.Value);
                         }
@@ -90,15 +89,18 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                 }
             }
 
-            var sortedByValueAndContrast = pairsWithSimilarTextColor.OrderBy(x => x.Value)
-                .ThenBy(x => x.Key.ColorContrast());
+            var sortedByValueAndContrast = pairsWithSimilarTextColor.OrderByDescending(x => x.Value)
+                .ThenByDescending(x => x.Key.ColorContrast());
 
             if (sortedByValueAndContrast.Count() <= 0) return result;
 
             var resultPairs = new HashSet<ColorPair>();
 
-            var firstEntryCountAdjusted = sortedByValueAndContrast.First().Value /
-                ColorContrastConfig.TransitionCountDominanceFactor;
+            var firstEntryCount = sortedByValueAndContrast.First().Value;
+
+            if (firstEntryCount < ColorContrastConfig.MinNumberColorTransitions) return result;
+
+            var firstEntryCountAdjusted = firstEntryCount / ColorContrastConfig.TransitionCountDominanceFactor;
 
             foreach (var entry in sortedByValueAndContrast)
             {

@@ -63,9 +63,13 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
         [TestMethod, Timeout(2000)]
         public void VisualStudioTab()
         {
+            ColorPair approximateColorPair = new ColorPair(new CCColor(9, 126, 206), new CCColor(37, 37, 38));
+
             var colorContrastResult = LoadFromResources("visual_studio_tab.bmp").RunColorContrastCalculation();
 
-            Assert.AreEqual(Confidence.Low, colorContrastResult.ConfidenceValue());
+            Assert.AreEqual(Confidence.Mid, colorContrastResult.ConfidenceValue());
+
+            Assert.AreEqual(approximateColorPair, colorContrastResult.GetMostLikelyColorPair());
         }
 
         /**
@@ -78,11 +82,11 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
         {
             var image = LoadFromResources("weird_text_arrangement.bmp");
 
-            ColorPair approximateColorPair = new ColorPair(new CCColor(37, 37, 37), new CCColor(193, 183, 165));
+            ColorPair approximateColorPair = new ColorPair(new CCColor(177, 199, 188), new CCColor(30, 30, 30));
 
             ColorContrastResult result = image.RunColorContrastCalculation();
 
-            Assert.IsTrue(approximateColorPair.IsVisiblySimilarTo(result.GetMostLikelyColorPair()), result.GetMostLikelyColorPair().ToString());
+            Assert.AreEqual(approximateColorPair, result.GetMostLikelyColorPair());
 
             Assert.AreEqual(Confidence.High, result.ConfidenceValue());
         }

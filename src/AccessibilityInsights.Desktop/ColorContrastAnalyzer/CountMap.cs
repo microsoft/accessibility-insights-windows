@@ -1,12 +1,10 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
-    class CountMap<T> : Dictionary<T, int>
+    internal class CountMap<T> : Dictionary<T, int>
     {        
         public void Increment(T item)
         {
@@ -16,7 +14,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
             }
             else
             {
-                this[item] = this[item] + 1;
+                this[item] = GetValue(item) + 1;
             }
         }
 
