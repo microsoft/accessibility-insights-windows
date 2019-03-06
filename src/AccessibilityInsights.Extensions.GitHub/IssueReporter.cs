@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
@@ -8,28 +9,28 @@ using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
-    public class IssueRepoter : IIssueReporting
+    public class IssueReporter : IIssueReporting
     {
-        private IssueRepoter _instance;
+        private IssueReporter _instance;
         private ConfigurationModel _configurationControl;
 
-        private IssueRepoter()
+        private IssueReporter()
         {
             _configurationControl = new ConfigurationModel();
         }
 
-        public IssueRepoter getDeafualtInstance()
+        public IssueReporter getDeafualtInstance()
         {
             if (_instance == null)
             {
-                _instance = new IssueRepoter();
+                _instance = new IssueReporter();
             }
             return _instance;
         }
 
         public string ServiceName => "GitHub Issues Reporting";
 
-        public Guid StableIdentifier => Guid.NewGuid();
+        public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; } = false;
 
         public IEnumerable<byte> Logo => null;
@@ -41,17 +42,13 @@ namespace AccessibilityInsights.Extensions.GitHub
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
             return new Task<IIssueResult>(()=> {
-                if (!this.IsConfigured)
+                if (this.IsConfigured)
                 {
-                    return null;
+                    string url = IssueFormatter.GetFormattedString(this._configurationControl.Config, issueInfo);
+                    System.Diagnostics.Process.Start(url);
                 }
 
-                string url = IssueFormatter.GetFormattedString(this._configurationControl.Config, issueInfo);
-                System.Diagnostics.Process.Start(url);
-
-                IssueResult retVal = new IssueResult("GitHub", new Uri(url));
-
-                return retVal;
+                return null;
             });
         }
 
@@ -59,11 +56,10 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             return new Task(()=>
             {
-                string deseriaizedConfig = string.Empty;
-                if(string.IsNullOrEmpty(deseriaizedConfig))
+                Configuration deserializedConfig = JsonConvert.DeserializeObject<Configuration>(serializedConfig); ;
+                if(string.IsNullOrEmpty(deserializedConfig.RepoLink))
                 {
-                    deseriaizedConfig = JsonConvert.DeserializeObject<string>(serializedConfig);
-                    this._configurationControl.Config = deseriaizedConfig;
+                    this._configurationControl.Config = deserializedConfig.RepoLink;
                     this.IsConfigured = true;
                 }
             });

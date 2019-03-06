@@ -51,11 +51,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurationModel.xaml.cs">
-      <DependentUpon>ConfigurationModel.xaml</DependentUpon>
+    <Compile Include="Configuration.cs" />
+    <Compile Include="ConfigurationModelControl.xaml.cs">
+      <DependentUpon>ConfigurationModelControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="IssueFormatter.cs" />
-    <Compile Include="IssueRepoter.cs" />
+    <Compile Include="IssueReporter.cs" />
     <Compile Include="IssueResult.cs" />
     <Compile Include="PlaceHolderTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -67,7 +68,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ConfigurationModel.xaml">
+    <Page Include="ConfigurationModelControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
