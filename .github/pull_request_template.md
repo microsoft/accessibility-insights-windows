@@ -8,7 +8,7 @@
 
 Note: 
 - After the PR has been created, certain checks will be kicked off. All of these checks must pass before a merge. 
-- An "accessibility-insights-windows-compliance-checks" build should be queued manually by a code owner using the last commit id.
+- An "accessibility-insights-windows-compliance-checks" build should be queued manually by a code owner, who approves this PR, using the last commit id.
 
 #### Describe the change
 (Please provide an overview of the change in this PR)
