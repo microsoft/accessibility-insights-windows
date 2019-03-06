@@ -51,8 +51,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private Uri _releaseNotesUri;
         private Uri _installerUri;
         private readonly Stopwatch _initializationStopwatch = new Stopwatch();
-        private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
-        private readonly Stopwatch _installerVerificationStopwatch = new Stopwatch();
+        private readonly Stopwatch _updateStopwatch = new Stopwatch();
 
         /// <summary>
         /// Implements <see cref="IAutoUpdate.ReleaseCadence"/>
@@ -122,7 +121,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private UpdateResult Update()
         {
             // Reset here; in case anything goes wrong in the Interim, the value will reflect that.
-            _installerVerificationStopwatch.Reset();
+            _updateStopwatch.Restart();
 
             try
             {
@@ -135,7 +134,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
             finally
             {
-                _installerVerificationStopwatch.Stop();
+                _updateStopwatch.Stop();
             }
 
             return UpdateResult.Unknown;
@@ -155,19 +154,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Implements <see cref="IAutoUpdate.GetInstallerDownloadTime"/>
+        /// Implements <see cref="IAutoUpdate.GetUpdateTime"/>
         /// </summary>
-        public TimeSpan? GetInstallerDownloadTime()
+        public TimeSpan? GetUpdateTime()
         {
-            return _installerDownloadStopwatch.Elapsed;
-        }
-
-        /// <summary>
-        /// Implements <see cref="IAutoUpdate.GetInstallerVerificationTime"/>
-        /// </summary>
-        public TimeSpan? GetInstallerVerificationTime()
-        {
-            return _installerVerificationStopwatch.Elapsed;
+            return _updateStopwatch.Elapsed;
         }
 
         /// <summary>
@@ -247,11 +238,10 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
 
         private AutoUpdateOption InitializeWithTimer()
         {
-            _initializationStopwatch.Reset();
+            _initializationStopwatch.Restart();
 
             try
             {
-                _initializationStopwatch.Start(); // stopped in the finally block
                 return Initialize();
             }
             catch (Exception e)
@@ -308,32 +298,6 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private void WaitForInitializationToComplete()
         {
             _initTask.Wait();
-        }
-
-        private bool TryDownloadInstaller(string targetFilePath)
-        {
-            _installerDownloadStopwatch.Reset();
-
-            using (Stream stream = new FileStream(targetFilePath, FileMode.CreateNew))
-            {
-                _installerDownloadStopwatch.Start();
-
-                try
-                {
-                    return TryGetTargetAsset(_installerUri.ToString(), stream);
-                }
-                catch (Exception e)
-                {
-                    e.ReportException();
-                    Debug.WriteLine(e.ToString());
-                }
-                finally
-                {
-                    _installerDownloadStopwatch.Stop();
-                }
-            } // using
-
-            return false;
         }
 
         private bool TryGetTargetAsset(string assetName, Stream stream)

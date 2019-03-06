@@ -52,8 +52,7 @@ namespace AccessibilityInsights.Desktop.Telemetry
         UpdateInitializationTime,
         UpdateOptionWaitTime,
         UpdateOption,
-        UpdateInstallerDownloadTime,
-        UpdateInstallerVerificationTime,
+        UpdateInstallerUpdateTime,
         UpdateResult,
     }
 }

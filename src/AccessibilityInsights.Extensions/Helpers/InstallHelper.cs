@@ -1,12 +1,13 @@
-﻿using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 
-
-namespace AccessibilityInsights.Extensions
+namespace AccessibilityInsights.Extensions.Helpers
 {
     public static class InstallHelper
     {
@@ -14,50 +15,55 @@ namespace AccessibilityInsights.Extensions
         {
             try
             {
-                Directory.Delete(GetAppFolderInTempFolder(), true);
+                string appFolder = GetAppFolderInTempFolder();
+
+                if (Directory.Exists(appFolder))
+                {
+                    Directory.Delete(GetAppFolderInTempFolder(), true);
+                }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine("AccessibilityInsights - exception when removing VSA: " + ex.ToString());
+                Trace.WriteLine("AccessibilityInsights - exception when removing VSA: " + ex.ToString());
             }
         }
 
         private static bool TryCopyVSAToTempFolder()
         {
-            return TryCopyFilesRecursively(GetAppInstallationPath(), Path.GetTempPath() + "VersionSwitcher");
+            return TryCopyFilesRecursively(GetAppInstallationPath(), GetAppPathInTempFolder());
         }
 
         private static bool TryCopyFilesRecursively(string sourcePath, string targetPath)
         {
             try
             {
-                if (Directory.Exists(sourcePath))
+                if (!Directory.Exists(sourcePath))
+                    return false;
+
+                if (!Directory.Exists(targetPath))
                 {
-                    if (!Directory.Exists(targetPath))
+                    Directory.CreateDirectory(targetPath);
+                }
+                // copy files
+                foreach (string file in Directory.GetFiles(sourcePath))
+                {
+                    FileInfo fileInfo = new FileInfo(file);
+                    fileInfo.CopyTo(string.Format(CultureInfo.CurrentCulture, @"{0}\{1}", targetPath, fileInfo.Name), true);
+                }
+                // copy folders
+                foreach (string dir in Directory.GetDirectories(sourcePath))
+                {
+                    DirectoryInfo directoryInfo = new DirectoryInfo(dir);
+                    if (!TryCopyFilesRecursively(dir, string.Format(CultureInfo.CurrentCulture, @"{0}\{1}", targetPath, directoryInfo.Name)))
                     {
-                        Directory.CreateDirectory(targetPath);
-                    }
-                    // copy files
-                    foreach (string file in Directory.GetFiles(sourcePath))
-                    {
-                        FileInfo fileInfo = new FileInfo(file);
-                        fileInfo.CopyTo(string.Format(CultureInfo.CurrentCulture, @"{0}\{1}", targetPath, fileInfo.Name), true);
-                    }
-                    // copy folders
-                    foreach (string dir in Directory.GetDirectories(sourcePath))
-                    {
-                        DirectoryInfo directoryInfo = new DirectoryInfo(dir);
-                        if (!TryCopyFilesRecursively(dir, string.Format(CultureInfo.CurrentCulture, @"{0}\{1}", targetPath, directoryInfo.Name)))
-                        {
-                            return false;
-                        }
+                        return false;
                     }
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.WriteLine("AccessibilityInsights - exception when copying VSA: " + ex.ToString());
+                Trace.WriteLine("AccessibilityInsights - exception when copying VSA: " + ex.ToString());
                 return false;
             }
         }
@@ -105,7 +111,7 @@ namespace AccessibilityInsights.Extensions
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = InstallHelper.GetAppPathInTempFolder();
             start.Arguments = InstallHelper.GetAppArguments(installerUrl, "default");
-            System.Diagnostics.Process.Start(start);
+            Process.Start(start);
             return UpdateResult.Success;
         }
     }

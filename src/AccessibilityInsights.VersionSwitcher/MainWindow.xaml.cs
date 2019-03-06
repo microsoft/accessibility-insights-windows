@@ -103,7 +103,7 @@ namespace AccessibilityInsights.VersionSwitcher
             return tempFile;
         }
 
-        private TrustVerifier ValidateLocalFile(string localFile)
+        private static TrustVerifier ValidateLocalFile(string localFile)
         {
             TrustVerifier verifier = new TrustVerifier(localFile);
             if (!verifier.IsVerified)
@@ -115,7 +115,7 @@ namespace AccessibilityInsights.VersionSwitcher
             return verifier;
         }
 
-        private void UpdateConfigWithNewRing(string newRing)
+        private static void UpdateConfigWithNewRing(string newRing)
         {
             if (newRing != null)
             {
@@ -123,7 +123,7 @@ namespace AccessibilityInsights.VersionSwitcher
             }
         }
 
-        private void LaunchInstalledApp()
+        private static void LaunchInstalledApp()
         {
             string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
             string appPath = Path.Combine(programPath, "AccessibilityInsights\\1.1\\AccessibilityInsights.exe");

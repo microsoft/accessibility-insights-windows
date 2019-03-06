@@ -213,12 +213,12 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         public void UpdateAsync_UnableToGetConfig_ReturnsDownloadFailed()
         {
             AutoUpdate update = new AutoUpdate(MinimalGitHubWrapper, () => TestInstalledVersion);
-            Assert.AreEqual(UpdateResult.DownloadFailed, update.UpdateAsync().Result);
+            Assert.AreEqual(UpdateResult.Unknown, update.UpdateAsync().Result);
         }
 
         [TestMethod]
         [Timeout(2000)]
-        public void UpdateOptionAsync_InitializationTimeGreaterZero()
+        public void UpdateOptionAsync_InitializationTimeIsNotZero()
         {
             Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
@@ -230,36 +230,23 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         }
 
         [TestMethod]
-        [Timeout(2000)]
-        public void UpdateOptionAsync_InstallerDownloadTimeGreaterZero()
+        //[Timeout(2000)]
+        public void UpdateOptionAsync_UpdateTimeIsNotZero()
         {
             Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(configInfo: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
-            githubMock.Setup(x => x.TryGetSpecificAsset(It.IsAny<Uri>(), It.IsAny<Stream>()))
-                                .Callback<Uri, Stream>((Uri, stream) =>
-                                {
-                                    Thread.Sleep(1);
-                                })
-                                .Returns(true);
-
             AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
 
-            // ensure that the timespans are 0 before calling UpdateAsync
-            TimeSpan? installerDownloadTime = update.GetInstallerDownloadTime();
-            Assert.IsTrue(installerDownloadTime.HasValue);
-            Assert.AreEqual(TimeSpan.Zero, installerDownloadTime.Value);
-            TimeSpan? installerVerificationTime = update.GetInstallerVerificationTime();
-            Assert.IsTrue(installerVerificationTime.HasValue);
-            Assert.AreEqual(TimeSpan.Zero, installerVerificationTime.Value);
+            // ensure that the UpdateTime is 0 before calling UpdateAsync
+            TimeSpan? updateTime = update.GetUpdateTime();
+            Assert.IsTrue(updateTime.HasValue);
+            Assert.AreEqual(TimeSpan.Zero, updateTime.Value);
 
             update.UpdateAsync().Wait();
 
-            // Ensure the timespans are > 0 after calling UpdateAsync
-            installerDownloadTime = update.GetInstallerDownloadTime();
-            Assert.IsTrue(installerDownloadTime.HasValue);
-            Assert.AreNotEqual(TimeSpan.Zero, installerDownloadTime.Value);
-            installerVerificationTime = update.GetInstallerVerificationTime();
-            Assert.IsTrue(installerVerificationTime.HasValue);
-            Assert.AreNotEqual(TimeSpan.Zero, installerVerificationTime.Value);
+            // ensure that the UpdateTime is not 0 after calling UpdateAsync
+            updateTime = update.GetUpdateTime();
+            Assert.IsTrue(updateTime.HasValue);
+            Assert.AreNotEqual(TimeSpan.Zero, updateTime.Value);
             githubMock.VerifyAll();
         }
     }

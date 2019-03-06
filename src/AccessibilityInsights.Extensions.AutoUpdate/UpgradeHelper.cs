@@ -65,8 +65,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
         public Task<AutoUpdateOption> UpdateOptionAsync => _initTask;
 
         public TimeSpan? GetInitializationTime() { return null; }
-        public TimeSpan? GetInstallerDownloadTime() { return null; }
-        public TimeSpan? GetInstallerVerificationTime() { return null; }
+        public TimeSpan? GetUpdateTime() { return null; }
 
         private AutoUpdateOption WaitForInitializationToComplete()
         {

@@ -43,13 +43,8 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         TimeSpan? GetInitializationTime();
 
         /// <summary>
-        /// Gets the time taken to download the installer
+        /// Gets the time taken to run the Update operation
         /// </summary>
-        TimeSpan? GetInstallerDownloadTime();
-
-        /// <summary>
-        /// Gets the time taken to verify that the installer is properly signed and has not been tampered with
-        /// </summary>
-        TimeSpan? GetInstallerVerificationTime();
+        TimeSpan? GetUpdateTime();
     }
 }

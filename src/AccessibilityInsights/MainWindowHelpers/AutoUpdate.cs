@@ -127,8 +127,7 @@ namespace AccessibilityInsights
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_DoInstallation, new Dictionary<TelemetryProperty, string>
                     {
-                        { TelemetryProperty.UpdateInstallerDownloadTime, GetTimeSpanTelemetryString(autoUpdate.GetInstallerDownloadTime())},
-                        { TelemetryProperty.UpdateInstallerVerificationTime, GetTimeSpanTelemetryString(autoUpdate.GetInstallerVerificationTime())},
+                        { TelemetryProperty.UpdateInstallerUpdateTime, GetTimeSpanTelemetryString(autoUpdate.GetUpdateTime())},
                         { TelemetryProperty.UpdateResult, updateOption.ToString()},
                     });
                 if (result == UpdateResult.Success)
