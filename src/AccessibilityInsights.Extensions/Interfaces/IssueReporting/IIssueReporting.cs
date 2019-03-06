@@ -24,6 +24,12 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         bool IsConfigured { get; }
 
         /// <summary>
+        /// True if the service can handle file attachments. Tells AI-Win whether or not to provide
+        /// a screenshot and snapshot file
+        /// </summary>
+        bool CanAttachFiles { get; }
+
+        /// <summary>
         /// The logo to display for the extension
         /// </summary>
         IEnumerable<byte> Logo { get; }
