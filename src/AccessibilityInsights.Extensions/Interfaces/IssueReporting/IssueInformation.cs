@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using System.Drawing;
 
 namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
 {
@@ -74,11 +75,21 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// </summary>
         public IssueType? IssueType { get; }
 
+        /// <summary>
+        /// Screenshot of element
+        /// </summary>
+        public Bitmap Screenshot { get; }
+
+        /// <summary>
+        /// Path to saved test file
+        /// </summary>
+        public string TestFileName { get; }
+
         public IssueInformation(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
-            string testMessages = null, Guid? internalGuid = null,
+            string testMessages = null, Guid? internalGuid = null, string testFileName = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
-            string processName = null, IssueType? issueType = null)
+            string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
             WindowTitle = GetStringValue(windowTitle);
             Glimpse = GetStringValue(glimpse);
@@ -89,17 +100,19 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
             TestMessages = GetStringValue(testMessages);
             ProcessName = GetStringValue(processName);
             InternalGuid = internalGuid;
+            TestFileName = testFileName;
             ElementPath = GetStringValue(elementPath);
             RuleForTelemetry = GetStringValue(ruleForTelemetry);
             UIFramework = GetStringValue(uiFramework);
             IssueType = issueType;
+            Screenshot = screenshot;
         }
 
         public IssueInformation OverwritingUnion(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
-            string testMessages = null, Guid? internalGuid = null,
+            string testMessages = null, Guid? internalGuid = null, string testFileName = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
-            string processName = null, IssueType? issueType = null)
+            string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
             return new IssueInformation(
                 windowTitle: GetReplacementString(windowTitle, WindowTitle),
@@ -111,11 +124,13 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
                 testMessages: GetReplacementString(testMessages, TestMessages),
                 processName: GetReplacementString(processName, ProcessName),
                 internalGuid: internalGuid ?? InternalGuid,
+                testFileName: testFileName ?? TestFileName,
                 elementPath: GetReplacementString(elementPath, ElementPath),
                 ruleForTelemetry: GetReplacementString(ruleForTelemetry, RuleForTelemetry),
                 uiFramework: GetReplacementString(uiFramework, UIFramework),
-                issueType: issueType ?? IssueType
-                );
+                issueType: issueType ?? IssueType,
+                screenshot: screenshot ?? Screenshot
+            );
         }
 
         private static string GetStringValue(string value)
