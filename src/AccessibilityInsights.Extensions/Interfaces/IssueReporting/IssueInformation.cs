@@ -89,7 +89,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
             string testMessages = null, Guid? internalGuid = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
-            string processName = null, IssueType? issueType = null)
+            string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
             WindowTitle = GetStringValue(windowTitle);
             Glimpse = GetStringValue(glimpse);
@@ -104,13 +104,14 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
             RuleForTelemetry = GetStringValue(ruleForTelemetry);
             UIFramework = GetStringValue(uiFramework);
             IssueType = issueType;
+            Screenshot = screenshot;
         }
 
         public IssueInformation OverwritingUnion(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
             string testMessages = null, Guid? internalGuid = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
-            string processName = null, IssueType? issueType = null)
+            string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
             return new IssueInformation(
                 windowTitle: GetReplacementString(windowTitle, WindowTitle),
@@ -125,8 +126,9 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
                 elementPath: GetReplacementString(elementPath, ElementPath),
                 ruleForTelemetry: GetReplacementString(ruleForTelemetry, RuleForTelemetry),
                 uiFramework: GetReplacementString(uiFramework, UIFramework),
-                issueType: issueType ?? IssueType
-                );
+                issueType: issueType ?? IssueType,
+                screenshot: screenshot ?? Screenshot
+            );
         }
 
         private static string GetStringValue(string value)
