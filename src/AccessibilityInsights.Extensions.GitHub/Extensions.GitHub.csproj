@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{82ED31C8-6F6F-4A5B-A601-DDBA4C417E5E}</ProjectGuid>
+    <ProjectGuid>{F421AAFD-D85F-49B8-B95E-CA17718C38DD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AccessibilityInsights.Extensions.GitHub</RootNamespace>
