@@ -10,8 +10,8 @@ namespace AccessibilityInsights.Extensions.GitHub
     public class PlaceHolderTextBox : TextBox
     {
         private readonly string PlaceHolder = "https//github.com/owner/repo";
-        private readonly SolidColorBrush BlackBrush = Application.Current.Resources["HLBlack"] as SolidColorBrush;
-        private readonly SolidColorBrush GrayBrush = Application.Current.Resources["HLGray"] as SolidColorBrush;
+        private readonly SolidColorBrush BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
+        private readonly SolidColorBrush GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
 
         public PlaceHolderTextBox()
         {
