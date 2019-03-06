@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,7 +10,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// <summary>
     /// Stores a cache of connections (AzureDevOps)
     /// </summary>
-    public class ConnectionCache : IConnectionCache
+    public class ConnectionCache
     {
         public const int CAPACITY = 5;
 
@@ -30,7 +29,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="configString">The previously saved connections. Supports null as a valid value</param>
         public ConnectionCache(string configString)
-            : this()
         {
             if (string.IsNullOrEmpty(configString))
                 return;
@@ -59,7 +57,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public bool AddToCache(IConnectionInfo connection)
+        public bool AddToCache(ConnectionInfo connection)
         {
             return AddToCachePrivate(connection);
         }
@@ -67,7 +65,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Private implementation of AddToCache. Exists so we can safely call it from our constructor
         /// </summary>
-        private bool AddToCachePrivate(IConnectionInfo connection)
+        private bool AddToCachePrivate(ConnectionInfo connection)
         {
             int removed = CachedConnections.RemoveAll(c => c.ServerUri.Equals(connection.ServerUri) && c.LastUsage <= connection.LastUsage);
 
@@ -94,7 +92,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="serverUri"></param>
         /// <returns></returns>
-        public IConnectionInfo GetMostRecentConnection(Uri serverUri = null)
+        public ConnectionInfo GetMostRecentConnection(Uri serverUri = null)
         {
             return (from c in CachedConnections
                     where serverUri == null || c.ServerUri.AbsoluteUri == serverUri.AbsoluteUri

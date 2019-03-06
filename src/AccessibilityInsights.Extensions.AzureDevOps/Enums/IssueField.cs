@@ -3,9 +3,9 @@
 namespace AccessibilityInsights.Extensions.AzureDevOps.Enums
 {
     /// <summary>
-    /// These values are exposed so that they can be used in bug-filing template strings
+    /// These values are exposed so that they can be used in issue-filing template strings
     /// </summary>
-    public enum BugField
+    public enum IssueField
     {
         WindowTitle,    // title of window that element belongs to
         Glimpse,        
@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Enums
         TestMessages,    // Messages shown in "Fix the following"
         ProcessName,
         ScreenshotLink,
-        InternalGuid, // Guid used internally when filing bugs
+        InternalGuid, // Guid used internally when filing issues
         ElementPath, // multi-line string of glimpses from ancestor to current element
         RuleForTelemetry,
         UIFramework,
