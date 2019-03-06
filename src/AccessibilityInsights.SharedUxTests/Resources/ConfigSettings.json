@@ -46,5 +46,6 @@
   "TestReportPath": "C:\\blah\\AccessibilityInsightsTestFiles",
   "TreeViewMode": "Content",
   "Version": "1.1.10",
-  "ZoomLevel": 350
+  "ZoomLevel": 350,
+  "IssueReportinGuid": "584ddf26-4702-4c7e-82b1-52d155d53d5f"
 }

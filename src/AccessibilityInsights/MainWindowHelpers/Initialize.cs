@@ -14,6 +14,8 @@ using System.Windows.Interop;
 using System.Windows.Shell;
 using System.Globalization;
 using AccessibilityInsights.Desktop.Telemetry;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {
@@ -112,7 +114,12 @@ namespace AccessibilityInsights
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
-
+            
+            //AK - remove
+            ConfigurationManager.GetDefaultInstance().AppConfig.SelectedIssueReporter = Guid.Parse("584ddf26-4702-4c7e-82b1-52d155d53d5f");
+            Dictionary<Guid, string> configs = new Dictionary<Guid, string>() { { Guid.Parse("584ddf26-4702-4c7e-82b1-52d155d53d5f"), "hello world" } };
+            string serializedConfig = JsonConvert.SerializeObject(configs);
+            ConfigurationManager.GetDefaultInstance().AppConfig.IssueReporterSerializedConfigs = serializedConfig;
             // enable/disable telemetry
             Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
         }

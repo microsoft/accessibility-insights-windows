@@ -72,5 +72,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyTreeViewMode = "TreeViewMode";
         private const string keyVersion = "Version";
         private const string keyZoomLevel = "ZoomLevel";
+        private const string keyIssueReporting= "IssueReportinGuid";
+        private const string keyIssueReporterSerializedConfig = "IssueReporterSerializedConfig";
     }
 }

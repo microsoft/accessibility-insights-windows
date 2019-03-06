@@ -36,6 +36,19 @@ namespace AccessibilityInsights.SharedUx.FileBug
             return Task.CompletedTask;
         }
 
+        public static Task RestoreConfigurationAsync(String serializedConfig)
+        {
+            //if (IsEnabled)
+            //    return BugReporting.ConnectAsync(serializedConfig);
+            System.Diagnostics.Trace.WriteLine(serializedConfig);
+
+            return Task.CompletedTask;
+        }
+
+        public static void SetSelectedIssueReporter(Guid issueReporterGuid) {
+            System.Diagnostics.Trace.WriteLine(issueReporterGuid);
+        }
+
         public static void FlushToken(Uri uri)
         {
             if (IsEnabled)

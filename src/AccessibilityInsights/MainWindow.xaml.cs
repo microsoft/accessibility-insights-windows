@@ -25,6 +25,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
 using AccessibilityInsights.Properties;
+using System.Web;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {
@@ -295,7 +297,8 @@ namespace AccessibilityInsights
         {
             if (BugReporter.IsEnabled)
             {
-                ConnectToSavedServerConnection();
+                //ConnectToSavedServerConnection();
+                RestoreConfigurationAsync();
             }
             else
             {
@@ -699,6 +702,28 @@ namespace AccessibilityInsights
             {
                 HandleLoginRequest(oldConnection.ServerUri, false, callback);
             }
+        }
+
+        /// <summary>
+        /// Initialize server integration and try logging in implicitly 
+        /// to the saved connection in the configuration if it exists.
+        /// </summary>
+        private void RestoreConfigurationAsync(Action callback = null)
+        {
+            var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
+            var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
+            if (selectedIssueReporterGuid != null)
+            {
+                BugReporter.SetSelectedIssueReporter(selectedIssueReporterGuid);
+                var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
+                Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+                configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
+                BugReporter.RestoreConfigurationAsync(serializedConfig);
+                HandleLoginRequest(null, false, null);
+            }
+            //Dictionary<string, string> configs = new Dictionary<string, string>() { { "Ashwin", "hello world"} };
+            //string serializedConfig = JsonConvert.SerializeObject(configs);
+            callback?.Invoke();
         }
 
         #endregion

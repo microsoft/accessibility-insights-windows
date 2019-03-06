@@ -172,6 +172,19 @@ namespace AccessibilityInsights.SharedUx.Settings
             }
         }
 
+        public Guid SelectedIssueReporter
+        {
+            get => GetDataValue<Guid>(keyIssueReporting);
+            set => SetDataValue<Guid>(keyIssueReporting, value);
+        }
+
+        public string IssueReporterSerializedConfigs
+        {
+            get => GetDataValue<string>(keyIssueReporterSerializedConfig);
+            set => SetDataValue<string>(keyIssueReporterSerializedConfig, value);
+        }
+
+
         /// <summary>
         /// Serialized form of SavedConnection
         /// </summary>
