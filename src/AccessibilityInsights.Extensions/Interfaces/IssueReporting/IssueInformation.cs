@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using System.Drawing;
 
 namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
 {
@@ -73,6 +74,16 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// The type of Issue being reported
         /// </summary>
         public IssueType? IssueType { get; }
+
+        /// <summary>
+        /// Screenshot of element
+        /// </summary>
+        public Bitmap Screenshot { get; }
+
+        /// <summary>
+        /// Path to saved test file
+        /// </summary>
+        public string TestFileName { get; }
 
         public IssueInformation(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
