@@ -87,7 +87,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
 
         public IssueInformation(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
-            string testMessages = null, Guid? internalGuid = null,
+            string testMessages = null, Guid? internalGuid = null, string testFileName = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
             string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
@@ -100,6 +100,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
             TestMessages = GetStringValue(testMessages);
             ProcessName = GetStringValue(processName);
             InternalGuid = internalGuid;
+            TestFileName = testFileName;
             ElementPath = GetStringValue(elementPath);
             RuleForTelemetry = GetStringValue(ruleForTelemetry);
             UIFramework = GetStringValue(uiFramework);
@@ -109,7 +110,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
 
         public IssueInformation OverwritingUnion(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,
-            string testMessages = null, Guid? internalGuid = null,
+            string testMessages = null, Guid? internalGuid = null, string testFileName = null,
             string elementPath = null, string ruleForTelemetry = null, string uiFramework = null,
             string processName = null, IssueType? issueType = null, Bitmap screenshot = null)
         {
@@ -123,6 +124,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
                 testMessages: GetReplacementString(testMessages, TestMessages),
                 processName: GetReplacementString(processName, ProcessName),
                 internalGuid: internalGuid ?? InternalGuid,
+                testFileName: testFileName ?? TestFileName,
                 elementPath: GetReplacementString(elementPath, ElementPath),
                 ruleForTelemetry: GetReplacementString(ruleForTelemetry, RuleForTelemetry),
                 uiFramework: GetReplacementString(uiFramework, UIFramework),
