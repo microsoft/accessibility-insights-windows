@@ -1,18 +1,6 @@
-﻿using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
@@ -21,6 +9,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// </summary>
     public partial class ConfigurationModel : IssueConfigurationControl
     {
+        public string Config { get; set;}
         public ConfigurationModel()
         {
             InitializeComponent();
@@ -32,7 +21,8 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// <returns>The extension’s new configuration, serialized</returns>
         public override string OnSave()
         {
-            return "";
+            this.Config = this.tbURL.Text;
+            return Config;
         }
 
         /// <summary>
@@ -40,7 +30,12 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// </summary>
         public override void OnDismiss()
         {
-
+            this.tbURL.Text = this.Config;
         }
+
+        /// <summary>
+        /// Can the save button be clicked
+        /// </summary>
+        public override bool CanSave ()=> !this.Config.Equals(this.tbURL.Text);
     }
 }

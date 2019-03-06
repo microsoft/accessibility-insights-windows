@@ -12,7 +12,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// <summary>
         /// Can the save button be clicked
         /// </summary>
-        public bool CanSave { get; }
+        public abstract bool CanSave();
 
         /// <summary>
         /// Called when save button clicked.
