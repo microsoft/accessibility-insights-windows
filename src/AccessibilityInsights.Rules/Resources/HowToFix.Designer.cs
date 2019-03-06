@@ -822,7 +822,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Name property for the given element is empty, but the element isn&apos;t focusable. Please consider whether or not the element should have a name..
+        ///   Looks up a localized string similar to The UIAutomation Name property for the given element is empty, but the element isn&apos;t focusable. Please consider whether or not the element should have a name..
         /// </summary>
         internal static string NameEmptyButElementNotKeyboardFocusable {
             get {
@@ -831,7 +831,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property for the element that:
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property for the element that:
         /// · Concisely identifies the element, AND
         /// · Does not include the control type..
         /// </summary>
@@ -842,7 +842,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property for the element that:
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property for the element that:
         /// · Concisely identifies the element, AND
         /// · Does not include the same text as the element&apos;s LocalizedControlType property..
         /// </summary>
@@ -853,7 +853,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property for the element that:
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property for the element that:
         /// · Concisely identifies the element, AND
         /// · Does not include any special characters..
         /// </summary>
@@ -864,7 +864,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property for the element that:
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property for the element that:
         /// · Concisely identifies the element, AND
         /// · Does not include the element&apos;s class name (such as Microsoft.*.* or Windows.*.*)..
         /// </summary>
@@ -875,7 +875,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name property of the given element may be null or empty if the element has no siblings of the same type..
+        ///   Looks up a localized string similar to The UIAutomation Name property of the given element may be null or empty if the element has no siblings of the same type..
         /// </summary>
         internal static string NameNoSiblingsOfSameType {
             get {
@@ -884,7 +884,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property that concisely identifies the element..
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property that concisely identifies the element..
         /// </summary>
         internal static string NameNotEmpty {
             get {
@@ -893,7 +893,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property that concisely identifies the element..
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property that concisely identifies the element..
         /// </summary>
         internal static string NameNotNull {
             get {
@@ -902,7 +902,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property that concisely identifies the element..
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property that concisely identifies the element..
         /// </summary>
         internal static string NameNotWhiteSpace {
             get {
@@ -911,7 +911,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Name property for the given element is null, but the element isn&apos;t focusable. Please consider whether or not the element should have a name..
+        ///   Looks up a localized string similar to The UIAutomation Name property for the given element is null, but the element isn&apos;t focusable. Please consider whether or not the element should have a name..
         /// </summary>
         internal static string NameNullButElementNotKeyboardFocusable {
             get {
@@ -920,7 +920,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name property of a custom control may be empty if the parent is a wpf dataitem..
+        ///   Looks up a localized string similar to The UIAutomation Name property of a custom control may be empty if the parent is a wpf dataitem..
         /// </summary>
         internal static string NameOnCustomWithParentWPFDataItem {
             get {
@@ -929,7 +929,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The name property for the given element type is optional..
+        ///   Looks up a localized string similar to The UIAutomation Name property for the given element type is optional..
         /// </summary>
         internal static string NameOnOptionalType {
             get {
@@ -938,7 +938,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provide a Name property for the element that:
+        ///   Looks up a localized string similar to Provide a UIAutomation Name property for the element that:
         /// · Concisely identifies the element, AND
         /// · Contains at most 512 characters..
         /// </summary>
@@ -949,7 +949,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An interactive element with a valid name property is usually expected to have a valid bounding rectangle that is not null and has area..
+        ///   Looks up a localized string similar to An interactive element with a valid UIAutomation Name property is usually expected to have a valid bounding rectangle that is not null and has area..
         /// </summary>
         internal static string NameWithValidBoundingRectangle {
             get {
