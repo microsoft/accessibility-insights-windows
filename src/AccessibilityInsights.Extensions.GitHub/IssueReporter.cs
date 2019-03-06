@@ -39,6 +39,8 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public IssueConfigurationControl ConfigurationControl => _configurationControl;
 
+        public bool CanAttachFiles => false;
+
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
             return new Task<IIssueResult>(()=> {
