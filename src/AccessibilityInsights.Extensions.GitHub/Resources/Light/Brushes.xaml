@@ -4,6 +4,6 @@
 <ResourceDictionary     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <SolidColorBrush x:Key="HLGray" Color="#9E9E9E"/>
-    <SolidColorBrush x:Key="HLBlack" Color="#1A1A1A "/>
+    <SolidColorBrush x:Key="HLGray" Color="{x:Static SystemColors.GrayTextColor}"/>
+    <SolidColorBrush x:Key="HLBlack" Color="{x:Static SystemColors.ControlTextColor}"/>
 </ResourceDictionary>

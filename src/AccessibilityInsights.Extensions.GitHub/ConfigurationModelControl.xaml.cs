@@ -36,6 +36,6 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// <summary>
         /// Can the save button be clicked
         /// </summary>
-        public override bool CanSave ()=> !this.Config.Equals(this.tbURL.Text);
+        public override bool CanSave => !this.Config.Equals(this.tbURL.Text);
     }
 }
