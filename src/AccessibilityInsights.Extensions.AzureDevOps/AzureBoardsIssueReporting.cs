@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using System.Windows;
-using Newtonsoft.Json;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
 {
@@ -17,7 +16,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     {
         private AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
 
-        private ExtensionConfiguration configuration = new ExtensionConfiguration();
+        private ExtensionConfiguration Configuration => AzureDevOps.Configuration;
 
         public bool IsConnected => AzureDevOps.ConnectedToAzureDevOps;
 
@@ -31,7 +30,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public string LogoText => null;
 
-        public IssueConfigurationControl ConfigurationControl => null;
+        public IssueConfigurationControl ConfigurationControl { get; } = new ConfigurationControl();
 
         public bool CanAttachFiles => true;
 
@@ -39,31 +38,31 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             if (!String.IsNullOrEmpty(serializedConfig))
             {
-                configuration = JsonConvert.DeserializeObject<ExtensionConfiguration>(serializedConfig);
+                Configuration.LoadFromSerializedString(serializedConfig);
             }
 
-            return HandleLoginAsync();
+            return AzureDevOps.HandleLoginAsync();
         }
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
             return new Task<IIssueResult>(() => {
 
-                Action<int> updateZoom = (int x) => configuration.ZoomLevel = x;
-                (int? bugId, string newBugId) = FileIssueAction.FileNewIssue(issueInfo, configuration.SavedConnection,
-                    Application.Current.MainWindow.Topmost, configuration.ZoomLevel, updateZoom);
+                Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
+                (int? issueId, string newIssueId) = FileIssueAction.FileNewIssue(issueInfo, Configuration.SavedConnection,
+                    Application.Current.MainWindow.Topmost, Configuration.ZoomLevel, updateZoom);
 
-                // Check whether bug was filed once dialog closed & process accordingly
-                if (bugId.HasValue)
+                // Check whether issue was filed once dialog closed & process accordingly
+                if (issueId.HasValue)
                 {
                     try
                     {
-                        var success = FileIssueAction.AttachIssueData(issueInfo, newBugId, bugId.Value).Result;
+                        var success = FileIssueAction.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result;
                         if (!success)
                         {
-                            //MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
+                            //MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                         }
-                        return new IssueResult() { DisplayText = newBugId, IssueLink = null };
+                        return new IssueResult() { DisplayText = newIssueId, IssueLink = null };
                     }
                     catch (Exception)
                     {
@@ -71,22 +70,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
                 return null;
             });
-        }
-
-        private async Task HandleLoginAsync()
-        {
-            try
-            {
-                if (configuration.SavedConnection.ServerUri != null)
-                {
-                    await FileIssueAction.ConnectAsync(configuration.SavedConnection.ServerUri, false).ConfigureAwait(true);
-                    await FileIssueAction.PopulateUserProfileAsync().ConfigureAwait(true);
-                }
-            }
-            catch (Exception)
-            {
-                FileIssueAction.FlushToken(configuration.SavedConnection.ServerUri);
-            }
         }
     }
 }

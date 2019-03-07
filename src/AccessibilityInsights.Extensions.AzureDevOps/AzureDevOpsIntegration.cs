@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
+using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
+using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.Core.WebApi.Types;
 using Microsoft.TeamFoundation.Work.WebApi;
@@ -46,6 +48,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Returns true if user has authenticated with VS server URL
         /// </summary>
         public bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
+
+        public ExtensionConfiguration Configuration { get; private set; } = new ExtensionConfiguration();
 
         /// <summary>
         /// Base uri of the AzureDevOps connection
@@ -429,6 +433,27 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 this.ConnectedUri.Host + this.ConnectedUri.PathAndQuery.TrimEnd('/'), -1, projectName + 
                 (teamName == null ? string.Empty : ("/" + teamName)));
             return builder.Uri;
+        }
+
+
+        public async Task HandleLoginAsync(bool showDialog=false, Uri serverUri = null)
+        {
+            if (serverUri == null)
+            {
+                serverUri = Configuration.SavedConnection.ServerUri;
+            }
+            try
+            {
+                if (Configuration.SavedConnection.ServerUri != null)
+                {
+                    await FileIssueAction.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
+                    await FileIssueAction.PopulateUserProfileAsync().ConfigureAwait(true);
+                }
+            }
+            catch (Exception)
+            {
+                FileIssueAction.FlushToken(Configuration.SavedConnection.ServerUri);
+            }
         }
 
         /// <summary>

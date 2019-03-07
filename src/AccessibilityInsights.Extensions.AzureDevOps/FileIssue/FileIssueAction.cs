@@ -87,7 +87,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     return true;
                 case WebException webEx:
                     return TransientWebExceptions.Contains(webEx.Status);
-                // This is what we saw happen to bug attachments in our telemetry
+                // This is what we saw happen to issue attachments in our telemetry
                 case TimeoutException tEx:
                     return true;
                 default:
@@ -184,7 +184,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="inputHTML"></param>
         /// <param name="keyText"></param>
         /// <returns></returns>
-        internal static string RemoveInternalHTML(string inputHTML, string keyText)
+        public static string RemoveInternalHTML(string inputHTML, string keyText)
         {
             object[] htmlText = { inputHTML };
             HTMLDocument doc = new HTMLDocument();

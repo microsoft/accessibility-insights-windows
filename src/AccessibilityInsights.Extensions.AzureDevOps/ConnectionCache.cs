@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Creates a cache with the given capacity and attempts to populate it with the saved connections
         /// </summary>
         /// <param name="configString">The previously saved connections. Supports null as a valid value</param>
-        public ConnectionCache(string configString)
+        public ConnectionCache(string configString) : this()
         {
             if (string.IsNullOrEmpty(configString))
                 return;
