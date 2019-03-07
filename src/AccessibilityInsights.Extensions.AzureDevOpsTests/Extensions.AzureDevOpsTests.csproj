@@ -64,7 +64,7 @@
     <Compile Include="ConnectionInfoTests.cs" />
     <Compile Include="FileIssue\FileIssueActionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AzureDevOpsBugReportingUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="AzureBoardsIssueReportingTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
     <Compile Include="AzureDevOpsIntegrationTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
   </ItemGroup>
   <ItemGroup>

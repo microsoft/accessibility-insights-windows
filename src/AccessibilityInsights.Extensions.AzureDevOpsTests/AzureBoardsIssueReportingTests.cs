@@ -13,7 +13,7 @@ using System.Collections.Generic;
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 {
     [TestClass]
-    public class AzureDevOpsIssueReportingUnitTests
+    public class AzureBoardsIssueReportingTests
     {
         private const string TestMessage = "Test message";
         private const string RuleDescription = "Rule Description";
@@ -24,8 +24,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringIsNull_ReturnsNull()
         {
             const string originalString = null;
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.IsNull(result);
         }
 
@@ -34,8 +34,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringIsWithinLimit_ReturnsOriginalString()
         {
             const string originalString = "abc";
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -44,8 +44,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringExceedsLimit_ReturnsTruncatedOriginalStringWithSuffix()
         {
             const string originalString = "abcd";
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.AreEqual("abc!!!", result);
         }
 
@@ -54,8 +54,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringIsNull_ReturnsNull()
         {
             const string originalString = null;
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.IsNull(result);
         }
 
@@ -64,8 +64,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasNoLeadingBracket_ReturnsOriginalString()
         {
             const string originalString = "abc]";
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -74,8 +74,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasNoTrailingBracket_ReturnsOriginalString()
         {
             const string originalString = "[abc";
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -84,8 +84,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasLeadingAndTrailingBrackets_ReturnsSubstring()
         {
             const string originalString = "[abc]";
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            string result = privateAzureDevOpsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            string result = privateAzureBoardsIssueReporting.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual("abc", result);
         }
 
@@ -96,8 +96,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation();
 
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            privateAzureDevOpsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            privateAzureBoardsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             Assert.IsNull(issueFieldPairs[IssueField.ProcessName]);
@@ -114,8 +114,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(processName: originalProcessName);
 
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            privateAzureDevOpsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            privateAzureBoardsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedProcessName = issueFieldPairs[IssueField.ProcessName];
@@ -133,8 +133,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(glimpse: originalGlimpse);
 
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            privateAzureDevOpsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            privateAzureBoardsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedGlimpse = issueFieldPairs[IssueField.Glimpse];
@@ -152,8 +152,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(testMessages: originalTestMessages);
 
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            privateAzureDevOpsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            privateAzureBoardsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedTestMessages = issueFieldPairs[IssueField.TestMessages];
@@ -173,8 +173,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(ruleSource: originalRuleSource);
 
-            PrivateType privateAzureDevOpsIssueReporting = new PrivateType(typeof(AzureDevOpsIssueReporting));
-            privateAzureDevOpsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateAzureBoardsIssueReporting = new PrivateType(typeof(AzureBoardsIssueReporting));
+            privateAzureBoardsIssueReporting.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedRuleSource = issueFieldPairs[IssueField.RuleSource];
@@ -209,7 +209,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ShimAzureDevOpsIntegration.GetCurrentInstance = () => integration;
 
-                IIssueReporting issueReporting = new AzureDevOpsIssueReporting();
+                IIssueReporting issueReporting = new AzureBoardsIssueReporting();
                 IConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
                     new Team(expectedTeamName, Guid.Empty));
@@ -248,7 +248,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ShimAzureDevOpsIntegration.GetCurrentInstance = () => integration;
 
-                IIssueReporting issueReporting = new AzureDevOpsIssueReporting();
+                IIssueReporting issueReporting = new AzureBoardsIssueReporting();
                 IConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
                     new Team(expectedTeamName, Guid.Empty));
