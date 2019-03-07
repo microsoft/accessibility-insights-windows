@@ -311,83 +311,83 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         //    return connection;
         //}
 
-        /// <summary>
-        /// Toggle whether the progress circle is visible and if user can click on "disconnect", etc
-        /// </summary>
-        /// <param name="starting">whether to start blocking (true) or stop blocking (false)</param>
-        private void ToggleLoading(bool starting)
-        {
-            InteractionAllowed = !starting;
-            this.ctrlProgressRing.IsActive = starting;
-            this.IsEnabled = InteractionAllowed;
-        }
+        ///// <summary>
+        ///// Toggle whether the progress circle is visible and if user can click on "disconnect", etc
+        ///// </summary>
+        ///// <param name="starting">whether to start blocking (true) or stop blocking (false)</param>
+        //private void ToggleLoading(bool starting)
+        //{
+        //    InteractionAllowed = !starting;
+        //    this.ctrlProgressRing.IsActive = starting;
+        //    this.IsEnabled = InteractionAllowed;
+        //}
 
-        /// <summary>
-        /// Repopulates the team projects and children teams
-        ///     returns a started Task so it can be awaited on
-        /// </summary>
-        private static Task<List<TeamProjectViewModel>> UpdateTeamProjects()
-        {
-            Task<List<TeamProjectViewModel>> t = Task.Run<List<TeamProjectViewModel>>(() =>
-            {
-                List<TeamProjectViewModel> result = new List<TeamProjectViewModel>();
-                try
-                {
-                    var projects = BugReporter.GetProjectsAsync().Result;
-                    foreach (var project in projects.OrderBy(project => project.Name))
-                    {
-                        var vm = new TeamProjectViewModel(project, new List<TeamProjectViewModel>());
-                        result.Add(vm);
-                    }
-                    PopulateTreeviewWithTeams(result);
-                    return result;
-                }
-                catch (Exception)
-                {
-                    return null;
-                }
-            });
+        ///// <summary>
+        ///// Repopulates the team projects and children teams
+        /////     returns a started Task so it can be awaited on
+        ///// </summary>
+        //private static Task<List<TeamProjectViewModel>> UpdateTeamProjects()
+        //{
+        //    Task<List<TeamProjectViewModel>> t = Task.Run<List<TeamProjectViewModel>>(() =>
+        //    {
+        //        List<TeamProjectViewModel> result = new List<TeamProjectViewModel>();
+        //        try
+        //        {
+        //            var projects = BugReporter.GetProjectsAsync().Result;
+        //            foreach (var project in projects.OrderBy(project => project.Name))
+        //            {
+        //                var vm = new TeamProjectViewModel(project, new List<TeamProjectViewModel>());
+        //                result.Add(vm);
+        //            }
+        //            PopulateTreeviewWithTeams(result);
+        //            return result;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            return null;
+        //        }
+        //    });
 
-            return t;
-        }
+        //    return t;
+        //}
 
-        /// <summary>
-        /// Populates each team project in the given list with specific teams, 
-        ///     e.g. somewhere underneath VSOnline
-        /// The teams are added to a project in sorted order
-        /// </summary>
-        private static void PopulateTreeviewWithTeams(List<TeamProjectViewModel> projectList)
-        {
-            object lockObject = new object();
-            List<Exception> caughtExceptions = new List<Exception>();
+        ///// <summary>
+        ///// Populates each team project in the given list with specific teams, 
+        /////     e.g. somewhere underneath VSOnline
+        ///// The teams are added to a project in sorted order
+        ///// </summary>
+        //private static void PopulateTreeviewWithTeams(List<TeamProjectViewModel> projectList)
+        //{
+        //    object lockObject = new object();
+        //    List<Exception> caughtExceptions = new List<Exception>();
 
-            projectList.AsParallel().ForAll(vm =>
-            {
-                try
-                {
-                    var teams = (vm.Project.GetTeamsAsync().Result)?.ToList();
-                    if (teams != null && teams.Any())
-                    {
-                        teams.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));
-                        var newVMList = new List<TeamProjectViewModel>();
-                        teams.ForEach(team => newVMList.Add(new TeamProjectViewModel(team, null)));
-                        vm.Children = newVMList;
-                    }
-                }
-                catch (Exception e)
-                {
-                    lock (lockObject)
-                    {
-                        caughtExceptions.Add(e);
-                    }
-                }
-            });
+        //    projectList.AsParallel().ForAll(vm =>
+        //    {
+        //        try
+        //        {
+        //            var teams = (vm.Project.GetTeamsAsync().Result)?.ToList();
+        //            if (teams != null && teams.Any())
+        //            {
+        //                teams.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));
+        //                var newVMList = new List<TeamProjectViewModel>();
+        //                teams.ForEach(team => newVMList.Add(new TeamProjectViewModel(team, null)));
+        //                vm.Children = newVMList;
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            lock (lockObject)
+        //            {
+        //                caughtExceptions.Add(e);
+        //            }
+        //        }
+        //    });
 
-            if (caughtExceptions.Any())
-            {
-                throw new AggregateException("Error populating Projects", caughtExceptions);
-            }
-        }
+        //    if (caughtExceptions.Any())
+        //    {
+        //        throw new AggregateException("Error populating Projects", caughtExceptions);
+        //    }
+        //}
 
         ///// <summary>
         ///// Update the save button when the selected treeview item changes
@@ -403,27 +403,27 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         //    //UpdateSaveButton();
         //}
 
-        /// <summary>
-        /// Change the expanded and visibility properties on the view model and its children 
-        /// based on whether they pass the given filter
-        /// </summary>
-        /// <param name="node"></param>
-        /// <param name="filter"></param>
-        private void ModifyVisibility(TeamProjectViewModel node, Func<TeamProjectViewModel, bool> filter)
-        {
-            var matched = filter(node);
-            node.Children.ForEach(c => ModifyVisibility(c, filter));
-            node.Expanded = node.Children.Any(c => c.Visibility == Visibility.Visible);
-            bool shouldBeVisible = matched || node.Expanded;
-            node.Visibility = shouldBeVisible ? Visibility.Visible : Visibility.Collapsed;
-            // if a TreeViewItem previously selected by the user is now 
-            // hidden due to our search filter, we should deselect it.
-            if (shouldBeVisible == false)
-            {
-                node.Selected = false;
-            }
+        ///// <summary>
+        ///// Change the expanded and visibility properties on the view model and its children 
+        ///// based on whether they pass the given filter
+        ///// </summary>
+        ///// <param name="node"></param>
+        ///// <param name="filter"></param>
+        //private void ModifyVisibility(TeamProjectViewModel node, Func<TeamProjectViewModel, bool> filter)
+        //{
+        //    var matched = filter(node);
+        //    node.Children.ForEach(c => ModifyVisibility(c, filter));
+        //    node.Expanded = node.Children.Any(c => c.Visibility == Visibility.Visible);
+        //    bool shouldBeVisible = matched || node.Expanded;
+        //    node.Visibility = shouldBeVisible ? Visibility.Visible : Visibility.Collapsed;
+        //    // if a TreeViewItem previously selected by the user is now 
+        //    // hidden due to our search filter, we should deselect it.
+        //    if (shouldBeVisible == false)
+        //    {
+        //        node.Selected = false;
+        //    }
 
-        }
+        //}
 
         ///// <summary>
         ///// Filters the search results based on the text box
