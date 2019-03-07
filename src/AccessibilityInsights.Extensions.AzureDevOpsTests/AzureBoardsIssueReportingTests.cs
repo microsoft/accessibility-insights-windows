@@ -3,6 +3,7 @@
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
+using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.QualityTools.Testing.Fakes;
@@ -209,13 +210,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ShimAzureDevOpsIntegration.GetCurrentInstance = () => integration;
 
-                IIssueReporting issueReporting = new AzureBoardsIssueReporting();
-                IConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
+                ConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
                     new Team(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
-                Uri actualUri = issueReporting.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
+                Uri actualUri = FileIssueAction.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
 
                 Assert.AreEqual(expectedUri, actualUri);
                 Assert.AreEqual(expectedProjectName, actualProjectName);
@@ -248,13 +248,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ShimAzureDevOpsIntegration.GetCurrentInstance = () => integration;
 
-                IIssueReporting issueReporting = new AzureBoardsIssueReporting();
-                IConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
+                ConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
                     new Team(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
-                Uri actualUri = issueReporting.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
+                Uri actualUri = FileIssueAction.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
 
                 Assert.AreEqual(expectedUri, actualUri);
                 Assert.AreEqual(expectedProjectName, actualProjectName);
