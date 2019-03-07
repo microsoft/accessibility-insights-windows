@@ -10,7 +10,7 @@
 Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10).
 
 ## Installing Accessibility Insights for Windows
-You can install the application from TBA.
+You can download and install the application from https://accessibilityinsights.io.
 
 ## Building the code
 You can find more information on how to set up your development environment [here](./docs/SetUpDevEnv.md).
