@@ -641,7 +641,7 @@ Accessibility Insights Support Team
     <value>Check color contrast:</value>
   </data>
   <data name="RunTextManualColorTest" xml:space="preserve">
-    <value>Investigate color contrast using Color Contrast.</value>
+    <value>Identify accessibility issues caused by low color contrast.</value>
   </data>
   <data name="CCALink" xml:space="preserve">
     <value>Learn more about checking color contrast.</value>
