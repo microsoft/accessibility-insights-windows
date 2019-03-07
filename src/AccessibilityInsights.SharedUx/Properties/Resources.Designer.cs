@@ -61,15 +61,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
-        /// </summary>
-        public static string accountPlaceholderText {
-            get {
-                return ResourceManager.GetString("accountPlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to passed value is not supported type..
         /// </summary>
         public static string ActionViewModelConverter_Convert_passed_value_is_not_supported_type {
@@ -653,24 +644,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disconnect.
-        /// </summary>
-        public static string ButtonAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change team.
-        /// </summary>
-        public static string ButtonAutomationPropertiesNameChangeTeam {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesNameChangeTeam", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Close the notification toast.
         /// </summary>
         public static string ButtonAutomationPropertiesNameCloseToastNotification {
@@ -685,15 +658,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ButtonAutomationPropertiesNameInspectDetails {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameInspectDetails", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        public static string ButtonAutomationPropertiesNameRefresh {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesNameRefresh", resourceCulture);
             }
         }
         
@@ -1173,24 +1137,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ComboBoxItemContentVisible {
             get {
                 return ResourceManager.GetString("ComboBoxItemContentVisible", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select your team.
-        /// </summary>
-        public static string ConnectionControl_selectTeam {
-            get {
-                return ResourceManager.GetString("ConnectionControl_selectTeam", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Server URL.
-        /// </summary>
-        public static string ConnectionControl_serverURL {
-            get {
-                return ResourceManager.GetString("ConnectionControl_serverURL", resourceCulture);
             }
         }
         
@@ -2330,6 +2276,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issue Filing.
+        /// </summary>
+        public static string lblIssueFiling {
+            get {
+                return ResourceManager.GetString("lblIssueFiling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selection by _mouse hover.
         /// </summary>
         public static string lblMouseLabelContent {
@@ -3453,15 +3408,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team project.
-        /// </summary>
-        public static string serverTreeviewAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("serverTreeviewAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bug {0}.
         /// </summary>
         public static string SetterValueBug {
@@ -3783,15 +3729,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for team project.
-        /// </summary>
-        public static string tbTeamProjectSearchAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("tbTeamProjectSearchAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Perf info.
         /// </summary>
         public static string tbTimeSpanAutomationPropertiesName {
@@ -3862,15 +3799,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockText {
             get {
                 return ResourceManager.GetString("TextBlockText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change.
-        /// </summary>
-        public static string TextBlockTextChange {
-            get {
-                return ResourceManager.GetString("TextBlockTextChange", resourceCulture);
             }
         }
         
@@ -3952,15 +3880,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockTextSampleText {
             get {
                 return ResourceManager.GetString("TextBlockTextSampleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected team.
-        /// </summary>
-        public static string TextBlockTextSelectedteam {
-            get {
-                return ResourceManager.GetString("TextBlockTextSelectedteam", resourceCulture);
             }
         }
         

@@ -175,7 +175,7 @@ namespace AccessibilityInsights.Modes
         /// <param name="mode"></param>
         private void UpdateUIBasedOnSettingMode(SettingModes mode)
         {
-            if (mode == SettingModes.Application || mode == SettingModes.Test)
+            if (mode == SettingModes.Application || mode == SettingModes.Connection)
             {
                 btnOk.Visibility = Visibility.Visible;    
             }

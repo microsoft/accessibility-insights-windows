@@ -54,25 +54,25 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public Action<bool> ShowSaveButton { get; set; }
 
 
-        /// <summary>
-        /// Avatar view model
-        /// </summary>
-        public ByteArrayViewModel vmAvatar { get; private set; } = new ByteArrayViewModel();
+        ///// <summary>
+        ///// Avatar view model
+        ///// </summary>
+        //public ByteArrayViewModel vmAvatar { get; private set; } = new ByteArrayViewModel();
 
-        /// <summary>
-        /// Current user display name
-        /// </summary>
-        public static string DisplayName => BugReporter.DisplayName;
+        ///// <summary>
+        ///// Current user display name
+        ///// </summary>
+        //public static string DisplayName => BugReporter.DisplayName;
 
-        /// <summary>
-        /// Current user email
-        /// </summary>
-        public static string Email => BugReporter.Email;
+        ///// <summary>
+        ///// Current user email
+        ///// </summary>
+        //public static string Email => BugReporter.Email;
 
         /// <summary>
         /// List of team projects
         /// </summary>
-        public BindingList<TeamProjectViewModel> projects { get; private set; } = new BindingList<TeamProjectViewModel>();
+        //public BindingList<TeamProjectViewModel> projects { get; private set; } = new BindingList<TeamProjectViewModel>();
 
         #region configuration updating code
         /// <summary>
@@ -83,13 +83,15 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public void UpdateFromConfig(ConfigurationModel configuration)
         {
+            // This needs to be replaced by whatever logic we need to populate the selected extensions UI
             if (InteractionAllowed) // in case team projects were already being loaded (todo: cancel old task)
             {
-                this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections().ToList();
-                IConnectionInfo connectionInfo = BugReporter.IsConnected ?
-                    ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection :
-                    configuration.CachedConnections?.GetMostRecentConnection();
-                this.ServerComboBox.Text = connectionInfo?.ServerUri == null ? string.Empty : connectionInfo.ServerUri.AbsoluteUri;
+                //this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections().ToList();
+                //IConnectionInfo connectionInfo = BugReporter.IsConnected ?
+                //    ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection :
+                //    configuration.CachedConnections?.GetMostRecentConnection();
+                //this.ServerComboBox.Text = connectionInfo?.ServerUri == null ? string.Empty : connectionInfo.ServerUri.AbsoluteUri;
+                var a =configuration.AppVersion;
                 InitializeView();
             }
         }
@@ -101,12 +103,15 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public void UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            var connection = GetConnectionFromTreeView();
-            if (connection != null)
-            {
-                configuration.CachedConnections?.AddToCache(connection);
-                configuration.SavedConnection = connection;
-            }
+            //remove. This is to make it compile
+            var a = this.ShowSaveButton;
+            var b = configuration.AppVersion;
+            //var connection = GetConnectionFromTreeView();
+            //if (connection != null)
+            //{
+            //    configuration.CachedConnections?.AddToCache(connection);
+            //    configuration.SavedConnection = connection;
+            //}
         }
 
         /// <summary>
@@ -117,150 +122,109 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <returns></returns>
         public bool IsConfigurationChanged()
         {
-            var connection = GetConnectionFromTreeView();
-            return connection?.IsPopulated == true;
+            // AK TODO Populate this.
+            // remove. This is to make it compile
+            var a = this.ShowSaveButton;
+            return true;
+            //var connection = GetConnectionFromTreeView();
+            //return connection?.IsPopulated == true;
         }
         #endregion
 
         #region state change button handlers
-        /// <summary>
-        /// Logs the user in and moves to editing server screen.
-        /// Forces a configuration change to the saved connection so the server URL is set, 
-        /// but the team project and team are null
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NextButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (InteractionAllowed)
-            {
-                if (Uri.IsWellFormedUriString(ServerComboBox.Text, UriKind.Absolute))
-                {
-                    var serverUri = ServerComboBox.Text.ToUri();
+        ///// <summary>
+        ///// Changes to second screen where user can select a team
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void changeButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.tbTeamProjectSearch.Clear();
+        //    ChangeStates(States.EditingServer);
+        //    ShowSaveButton(true);
+        //}
 
-                    // block clicking "next" until login request is done
-                    ToggleLoading(true);
-                    HandleLoginRequest(serverUri, true, () =>
-                    {
-                        if (BugReporter.IsConnected)
-                        {
-                            ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection = BugReporter.CreateConnectionInfo(serverUri, null, null);
-                            ChangeStates(States.EditingServer);
-                        }
-                        else
-                        {
-                            ToggleLoading(false);
-                            ServerComboBox.Focus();
-                        }
-                    });
-                }
-                else
-                {
-                    MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com");
-                }
-            }
-        }
+        ///// <summary>
+        ///// Logs the user out and moves to selecting a new server screen.
+        ///// Forces a configuration change to the saved connection so it is null. 
+        ///// This means we will not try to automatically connect when we next start up.
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void disconnectButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Don't allow disconnect until project teams have loaded
+        //    if (InteractionAllowed)
+        //    {
+        //        HandleLogoutRequest(() =>
+        //        {
+        //            ClearTreeviewSelection();
+        //            ChangeStates(States.NoServer);
+        //            ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection = null;
+        //        });
+        //    }
 
-        /// <summary>
-        /// Changes to second screen where user can select a team
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void changeButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.tbTeamProjectSearch.Clear();
-            ChangeStates(States.EditingServer);
-            ShowSaveButton(true);
-        }
+        //    // hide Save button
+        //    ShowSaveButton(false);
+        //}
 
-        /// <summary>
-        /// Logs the user out and moves to selecting a new server screen.
-        /// Forces a configuration change to the saved connection so it is null. 
-        /// This means we will not try to automatically connect when we next start up.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void disconnectButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Don't allow disconnect until project teams have loaded
-            if (InteractionAllowed)
-            {
-                HandleLogoutRequest(() =>
-                {
-                    ClearTreeviewSelection();
-                    ChangeStates(States.NoServer);
-                    ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection = null;
-                });
-            }
-
-            // hide Save button
-            ShowSaveButton(false);
-        }
-
-        /// <summary>
-        /// Refresh the project teams, equivalent to reloading this state
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void refreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            // Don't allow refresh until project teams have loaded
-            if (InteractionAllowed)
-            {
-                this.tbTeamProjectSearch.Clear();
-                ClearTreeviewSelection();
-                ChangeStates(States.EditingServer);
-            }
-        }
+        ///// <summary>
+        ///// Refresh the project teams, equivalent to reloading this state
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void refreshButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    // Don't allow refresh until project teams have loaded
+        //    if (InteractionAllowed)
+        //    {
+        //        this.tbTeamProjectSearch.Clear();
+        //        ClearTreeviewSelection();
+        //        ChangeStates(States.EditingServer);
+        //    }
+        //}
         #endregion
 
         /// <summary>
         /// Switch screens in this connection config view
         /// </summary>
         /// <param name="state"></param>
-        private async void ChangeStates(States state)
+        private void ChangeStates(States state)
         {
-            vmAvatar.ByteData = BugReporter.Avatar;
-            this.displayNameField.Text = BugReporter.DisplayName;
-            this.emailField.Text = BugReporter.Email;
+            //vmAvatar.ByteData = BugReporter.Avatar;
+            //this.displayNameField.Text = BugReporter.DisplayName;
+            //this.emailField.Text = BugReporter.Email;
             if (state == States.NoServer)
             {
                 this.selectServerGrid.Visibility = Visibility.Visible;
-                this.editProjectGrid.Visibility = Visibility.Collapsed;
-                this.teamSelectedGrid.Visibility = Visibility.Collapsed;
             }
             else if (state == States.EditingServer)
             {
-                this.editProjectGrid.Visibility = Visibility.Visible;
-                this.selectTeamGrid.Visibility = Visibility.Visible;
-                this.teamSelectedGrid.Visibility = Visibility.Collapsed;
+                //this.selectTeamGrid.Visibility = Visibility.Visible;
                 this.selectServerGrid.Visibility = Visibility.Collapsed;
 
                 // Load the team project list, show progress animation
-                try
-                {
-                    ToggleLoading(true);
-                    projects.Clear();
-                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
-                    newProjectList.ForEach(p => projects.Add(p));
-                    ToggleLoading(false);
-                }
-                catch (Exception)
-                {
-                    MessageDialog.Show("Error when retrieving team projects");
-                    ToggleLoading(false);
-                    disconnectButton_Click(null, null);
-                }
+                //try
+                //{
+                //    ToggleLoading(true);
+                //    projects.Clear();
+                //    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
+                //    newProjectList.ForEach(p => projects.Add(p));
+                //    ToggleLoading(false);
+                //}
+                //catch (Exception)
+                //{
+                //    MessageDialog.Show("Error when retrieving team projects");
+                //    ToggleLoading(false);
+                //}
 
                 FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
             }
             else if (state == States.HasServer)
             {
-                this.editProjectGrid.Visibility = Visibility.Visible;
-                this.teamSelectedGrid.Visibility = Visibility.Visible;
-                this.selectTeamGrid.Visibility = Visibility.Collapsed;
+                //this.selectTeamGrid.Visibility = Visibility.Collapsed;
                 this.selectServerGrid.Visibility = Visibility.Collapsed;
-                this.selectedTeamText.Text = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection.ToString();
+                //this.selectedTeamText.Text = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection.ToString();
             }
         }
 
@@ -301,50 +265,51 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
-        /// <summary>
-        /// Clears the selection in the treeview, useful when disconnecting
-        /// </summary>
-        private void ClearTreeviewSelection()
-        {
-            foreach (var item in serverTreeview.Items)
-            {
-                // Necessary because the treeview is virtualized for perf reasons
-                if (serverTreeview.ItemContainerGenerator.ContainerFromItem(item) is TreeViewItem tvItem)
-                {
-                    tvItem.IsSelected = false;
-                }
-            }
-        }
+        ///// <summary>
+        ///// Clears the selection in the treeview, useful when disconnecting
+        ///// </summary>
+        //private void ClearTreeviewSelection()
+        //{
+        //    foreach (var item in serverTreeview.Items)
+        //    {
+        //        // Necessary because the treeview is virtualized for perf reasons
+        //        if (serverTreeview.ItemContainerGenerator.ContainerFromItem(item) is TreeViewItem tvItem)
+        //        {
+        //            tvItem.IsSelected = false;
+        //        }
+        //    }
+        //}
 
-        /// <summary>
-        /// Returns a connection info object from the selected fields in the treeview
-        /// - also sets the date of last usage
-        /// </summary>
-        /// <returns></returns>
-        private IConnectionInfo GetConnectionFromTreeView()
-        {
-            if (this.serverTreeview.SelectedItem == null)
-            {
-                return null;
-            }
-            var item = this.serverTreeview.SelectedItem;
-            var vm = item as TeamProjectViewModel;
-            var team = vm.Team;
-            var project = vm.Project;
+        ///// <summary>
+        ///// Returns a connection info object from the selected fields in the treeview
+        ///// - also sets the date of last usage
+        ///// </summary>
+        ///// <returns></returns>
+        //private IConnectionInfo GetConnectionFromTreeView()
+        //{
+        //    if (this.serverTreeview.SelectedItem == null)
+        //    {
+        //        return null;
+        //    }
+        //    var item = this.serverTreeview.SelectedItem;
+        //    var vm = item as TeamProjectViewModel;
+        //    var team = vm.Team;
+        //    var project = vm.Project;
 
-            if (team != null)
-            {
-                project = team.ParentProject;
-            }
-            else if (project != null)
-            {
-                team = null;
-            }
+        //    if (team != null)
+        //    {
+        //        project = team.ParentProject;
+        //    }
+        //    else if (project != null)
+        //    {
+        //        team = null;
+        //    }
 
-            IConnectionInfo connection = BugReporter.CreateConnectionInfo(this.ServerComboBox.Text.ToUri(), project, team);
-            connection.SetLastUsage(DateTime.Now);
-            return connection;
-        }
+        //    IConnectionInfo connection = null;
+        //    //BugReporter.CreateConnectionInfo(this.ServerComboBox.Text.ToUri(), project, team);
+        //    //connection.SetLastUsage(DateTime.Now);
+        //    return connection;
+        //}
 
         /// <summary>
         /// Toggle whether the progress circle is visible and if user can click on "disconnect", etc
@@ -424,33 +389,19 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
-        /// <summary>
-        /// Update the save button when the selected treeview item changes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void serverTreeview_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
-        {
-            // show button first
-            ShowSaveButton(true);
+        ///// <summary>
+        ///// Update the save button when the selected treeview item changes
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void serverTreeview_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
+        //{
+        //    // show button first
+        //    ShowSaveButton(true);
 
-            // update status
-            UpdateSaveButton();
-        }
-
-        /// <summary>
-        /// If user presses enter on combobox, have same behavior as clicking "next"
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ServerComboBox_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter && this.btnNext.IsEnabled && InteractionAllowed)
-            {
-                e.Handled = true;
-                NextButton_Click(null, null);
-            }
-        }
+        //    // update status
+        //    //UpdateSaveButton();
+        //}
 
         /// <summary>
         /// Change the expanded and visibility properties on the view model and its children 
@@ -474,23 +425,23 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         }
 
-        /// <summary>
-        /// Filters the search results based on the text box
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var searchText = (sender as TextBox).Text;
-            foreach (TeamProjectViewModel vm in serverTreeview.Items)
-            {
-                ModifyVisibility(vm, (inputVM) =>
-                {
-                    return
-                        (inputVM.Project != null && inputVM.Project.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant()) ||
-                        (inputVM.Team != null && inputVM.Team.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant())));
-                });
-            }
-        }
+        ///// <summary>
+        ///// Filters the search results based on the text box
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        //{
+        //    var searchText = (sender as TextBox).Text;
+        //    foreach (TeamProjectViewModel vm in serverTreeview.Items)
+        //    {
+        //        ModifyVisibility(vm, (inputVM) =>
+        //        {
+        //            return
+        //                (inputVM.Project != null && inputVM.Project.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant()) ||
+        //                (inputVM.Team != null && inputVM.Team.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant())));
+        //        });
+        //    }
+        //}
     }
 }

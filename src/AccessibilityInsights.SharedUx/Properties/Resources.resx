@@ -345,33 +345,33 @@
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
     <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
   </data>
-  <data name="accountPlaceholderText" xml:space="preserve">
-    <value>https://dev.azure.com/fabrikam</value>
+  <data name="lblIssueFiling" xml:space="preserve">
+    <value>Issue Filing</value>
   </data>
   <data name="btnNextAutomationPropertiesName" xml:space="preserve">
     <value>Next</value>
   </data>
-  <data name="ButtonAutomationPropertiesName" xml:space="preserve">
+  <!--<data name="ButtonAutomationPropertiesName" xml:space="preserve">
     <value>Disconnect</value>
-  </data>
-  <data name="TextBlockTextSelectedteam" xml:space="preserve">
+  </data>-->
+  <!--<data name="TextBlockTextSelectedteam" xml:space="preserve">
     <value>Selected team</value>
-  </data>
-  <data name="ButtonAutomationPropertiesNameChangeTeam" xml:space="preserve">
+  </data>-->
+  <!--<data name="ButtonAutomationPropertiesNameChangeTeam" xml:space="preserve">
     <value>Change team</value>
-  </data>
-  <data name="TextBlockTextChange" xml:space="preserve">
+  </data>-->
+  <!--<data name="TextBlockTextChange" xml:space="preserve">
     <value>Change</value>
-  </data>
-  <data name="ButtonAutomationPropertiesNameRefresh" xml:space="preserve">
+  </data>-->
+  <!--<data name="ButtonAutomationPropertiesNameRefresh" xml:space="preserve">
     <value>Refresh</value>
-  </data>
-  <data name="tbTeamProjectSearchAutomationPropertiesName" xml:space="preserve">
+  </data>-->
+  <!--<data name="tbTeamProjectSearchAutomationPropertiesName" xml:space="preserve">
     <value>Search for team project</value>
-  </data>
-  <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
+  </data>-->
+  <!--<data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
     <value>Team project</value>
-  </data>
+  </data>-->
   <data name="LabelContentZero" xml:space="preserve">
     <value>0</value>
   </data>
@@ -1438,12 +1438,12 @@ Accessibility Insights Support Team
   <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
     <value>detected.</value>
   </data>
-  <data name="ConnectionControl_selectTeam" xml:space="preserve">
+  <!--<data name="ConnectionControl_selectTeam" xml:space="preserve">
     <value>Select your team</value>
-  </data>
-  <data name="ConnectionControl_serverURL" xml:space="preserve">
+  </data>-->
+  <!--<data name="ConnectionControl_serverURL" xml:space="preserve">
     <value>Server URL</value>
-  </data>
+  </data>-->
   <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
     <value>Search nodes in hierarchy.</value>
   </data>
