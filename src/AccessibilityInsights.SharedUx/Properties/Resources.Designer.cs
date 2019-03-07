@@ -392,7 +392,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string btnFileIssueContent {
             get {
@@ -401,7 +401,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string btnFileIssueContent1 {
             get {
