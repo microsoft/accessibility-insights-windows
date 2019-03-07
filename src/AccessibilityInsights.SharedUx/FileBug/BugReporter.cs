@@ -36,6 +36,9 @@ namespace AccessibilityInsights.SharedUx.FileBug
             return Task.CompletedTask;
         }
 
+        public static List<string> getIssueReporters() {
+            return new List<string>() { "Github", "Azure Devops" };
+        }
         public static Task RestoreConfigurationAsync(String serializedConfig)
         {
             //if (IsEnabled)

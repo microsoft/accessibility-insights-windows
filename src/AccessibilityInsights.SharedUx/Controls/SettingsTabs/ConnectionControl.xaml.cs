@@ -96,6 +96,43 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
+        public void onLoad(Object sender, RoutedEventArgs e) {
+            System.Diagnostics.Trace.WriteLine("AK ============================> Loaded");
+            List<string> options = BugReporter.getIssueReporters();
+            availableIssueReporters.Children.Clear();
+            foreach (string reporter in options)
+            {
+                RadioButton rb = CreateRadioButton(reporter);
+                availableIssueReporters.Children.Add(rb);
+            }
+        }
+
+        private RadioButton CreateRadioButton(string reporter)
+        {
+            RadioButton issueReportingOption = new RadioButton();
+            issueReportingOption.Content = reporter;
+            issueReportingOption.Name = "Ashwin";
+            issueReportingOption.Margin = new Thickness(2, 2, 2, 2);
+            issueReportingOption.Checked += RBMetLines_Checked;
+            return issueReportingOption;
+        }
+
+        private void RBMetLines_Checked(object sender, RoutedEventArgs e)
+        {
+            if (selectServerGrid.Children.Count == 4) {
+                selectServerGrid.Children.RemoveAt(3);
+            }
+            TextBlock exampleGrid = new TextBlock();
+            exampleGrid.Text = "Ashwin" + DateTime.Now.ToLongTimeString();
+            Grid.SetRow(exampleGrid, 3);
+            selectServerGrid.Children.Add(exampleGrid);
+
+            //TextBlock exampleGrid = new TextBlock();
+            //exampleGrid.Text = "Ashwin";
+            //Grid.SetRow(exampleGrid, 3);
+            //selectServerGrid.Children.Add(exampleGrid);
+        }
+
         /// <summary>
         /// Adds the currently selected connection to the configuration so it is persisted
         /// in the MRU cache as well as the auto-startup connection
