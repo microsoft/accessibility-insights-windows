@@ -15,6 +15,9 @@ jobs:
 - job: ComplianceRelease
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    PublicRelease: 'false'
+    SignAppForRelease: 'false'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
@@ -54,7 +57,7 @@ jobs:
     displayName: 'Check Automation'
     inputs:
       targetType: 'filePath'
-      filePath: tools\scripts\check-automation.ps1
+      filePath: '$(Build.Repository.LocalPath)\tools\scripts\check-automation.ps1'
       arguments: 'release'
       workingDirectory: '$(Build.Repository.LocalPath)\tools\scripts'
 
@@ -76,6 +79,9 @@ jobs:
 - job: ComplianceDebug
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    PublicRelease: 'false'
+    SignAppForRelease: 'false'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
@@ -294,8 +300,8 @@ jobs:
 
 - job: SignedDebug
   dependsOn: 
-  - ComplianceDebug
   - ComplianceRelease
+  - ComplianceDebug
   condition: and(succeeded(), succeeded())
   pool: VSEng-MicroBuildVS2017
   steps:
