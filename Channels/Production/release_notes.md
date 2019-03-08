@@ -1,4 +1,4 @@
-## March 2019 Release ([v1.1.0795.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0795.01))
+## March 2019 Release ([v1.1.0794.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0794.01))
 
 <a href="https://aka.ms/accessibilityinsights-windows/download" target="_blank">Download for Windows</a>
 
