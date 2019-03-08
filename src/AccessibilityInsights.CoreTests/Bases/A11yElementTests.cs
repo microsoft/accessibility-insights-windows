@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using Newtonsoft.Json;
+using AccessibilityInsights.UnitTestSharedLibrary;
 
 namespace AccessibilityInsights.CoreTests.Bases
 {
@@ -100,7 +101,7 @@ namespace AccessibilityInsights.CoreTests.Bases
         [TestMethod()]
         public void GetPropertySafelyTest()
         {
-            A11yElement ke = FromJson("Resources/A11yElementTest.hier");
+            A11yElement ke = Utility.LoadA11yElementsFromJSON("Resources/A11yElementTest.hier");
 
             Assert.AreEqual("Text Editor", ke.Name);
             ///Assert.AreEqual(ControlTypes.UIA_EditControlTypeId, ke.ControlTypeId);
@@ -119,41 +120,6 @@ namespace AccessibilityInsights.CoreTests.Bases
             Assert.IsTrue(ke.IsContentElement);
             Assert.IsTrue(ke.IsControlElement);
             Assert.IsTrue(ke.IsKeyboardFocusable);
-        }
-
-        /// <summary>
-        /// Deserialize saved A11yElement
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static A11yElement FromJson(string path)
-        {
-            A11yElement element = null;
-            if (File.Exists(path))
-            {
-                var json = File.ReadAllText(path);
-                element = JsonConvert.DeserializeObject<A11yElement>(json);
-                if (element == null)
-                {
-                    return null;
-                }
-                // Set parents
-                Queue<A11yElement> elements = new Queue<A11yElement>();
-                elements.Enqueue(element);
-                while (elements.Count > 0)
-                {
-                    var next = elements.Dequeue();
-                    if (next.Children != null)
-                    {
-                        next.Children.ForEach(c => {
-                            c.Parent = next;
-                            elements.Enqueue(c);
-                        });
-                    }
-                }
-            }
-            
-            return element;
         }
     }
 }

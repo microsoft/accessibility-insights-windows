@@ -108,10 +108,6 @@
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.CoreTests\CoreTests.csproj">
-      <Project>{BD29FE9B-6FB1-4141-92A5-34C4CAED8274}</Project>
-      <Name>CoreTests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>
@@ -135,6 +131,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
       <Name>Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
+      <Project>{01dc8363-73bc-47fa-bd23-12ac45618e1d}</Project>
+      <Name>UnitTestSharedLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
