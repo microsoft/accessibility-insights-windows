@@ -84,6 +84,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         }
 
         [TestMethod]
+        [Timeout(1000)]
         public void Ctor_ConfigStringIsTrivial_CacheIsEmpty()
         {
             ConnectionCache cache = new ConnectionCache(null);
@@ -91,6 +92,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         }
 
         [TestMethod]
+        [Timeout(1000)]
         public void Ctor_ConfigStringIsInvalidJson_CacheIsEmpty()
         {
             ConnectionCache cache = new ConnectionCache("This isn't valid Json");
@@ -98,6 +100,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         }
 
         [TestMethod]
+        [Timeout(1000)]
         public void Ctor_ConfigStringIsValidJson_CacheIsCorrect()
         {
             ConnectionCache cache = new ConnectionCache(KnownConfigString);
