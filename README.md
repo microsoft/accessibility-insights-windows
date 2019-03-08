@@ -56,7 +56,7 @@ All contributions are welcome! Please read through our guidelines on [contributi
 Please visit our [FAQ section](./docs/FAQ.md) to get answers to common questions.
 
 ## Data/Telemetry
-By opting into telemetry, you [help the community](https://go.microsoft.com/fwlink/?linkid=2077765) develop inclusive software. We collect anonymized data to identify the top accessibility issues found by the users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features.
+By opting into telemetry, you [help the community](https://go.microsoft.com/fwlink/?linkid=2077765) develop inclusive software. We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features.
 
 This project collects usage data and sends it to Microsoft to help improve our products and services. Read our [privacy statement](https://privacy.microsoft.com/en-us/privacystatement) to learn more.
 

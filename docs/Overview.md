@@ -1,6 +1,6 @@
-# Overview of Accessibility Insights for Windows
+## Overview of Accessibility Insights for Windows
 
-## Tool Overview
+### Tool Overview
 Windows UI Automation (UIA) is the platform-provided way for accessibility tools to interact with programs. A fully accessible program is a program whose full functionality can be accessed exclusively through the UIA-provided mechanism. AccessibilityInsights for Windows uses the UIA-provided information to scan programs for accessibility issues. The basic units of UIA are:
 
 - Hierarchy: The entire surface of all interactive applications is represented as a tree of Elements.
@@ -10,10 +10,10 @@ Windows UI Automation (UIA) is the platform-provided way for accessibility tools
 
 Accessibility Insights takes the data provided by UIA and compares it to a set of rules which identify cases where the given data would create issues for users of the assistive technologies which consume UIA data. The results of these rules are then displayed in an environment that supports exploration of the data in its appropriate context. The results can be saved to disk for later use or analysis. If these files are later loaded into Accessibility Insights, the rich exploration environment is re-created.
 
-## Code Organization
+### Code Organization
 The code is organized into the following general areas:
 
-### Runtime components
+#### Runtime components
 These assemblies provide the interaction with UIA, as well as layers that allow the application to interact with that information in a more structured manner:
 
 Assembly | Responsibility
@@ -25,7 +25,7 @@ AccessibilityInsights.Actions | Provide a high-level set of Actions that are the
 AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
-### Accessibility Rules
+#### Accessibility Rules
 These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
 
 Assembly | Responsibility
@@ -33,7 +33,7 @@ Assembly | Responsibility
 AccessibilityInsights.Rules | Provide a library of rules, each of which scans the platform-agnostic information for issues that are likely to be problematic. For example, a button without an accessible label will be flagged as an error.
 AccessibilityInsights.RulesSelection | Select the appropriate set of rules to run on a specific application, then coordinate their execution in a consistent and reproducible way.
 
-### Application Entry Points
+#### Application Entry Points
 These assemblies allow user interaction with the Runtime components and the Accessibility Rules.
 
 Assembly | Responsibility
@@ -43,7 +43,7 @@ AccessibilityInsights.SharedUx | Provide visual elements used by the main app. T
 AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
 AccessibilityInsights.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
 
-### Extensions
+#### Extensions
 Extensions are intended to allow loose coupling of non-core code. They build upon the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
 
 - Telemetry : Send information about product usage. **Limited** diagnostic data is also sent to help identify trends in user issues.
@@ -59,7 +59,7 @@ AccessibilityInsights.Extensions.GitHubAutoUpdate | Implement a web-based update
 AccessibilityInsights.Extensions.AzureDevOps | Implement bug filing support using AzureDevOps.
 AccessibilityInsights.Extensions.Telemetry | Implement simple telemetry built upon [Microsoft ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights).
 
-### Packaging
+#### Packaging
 The packaging projects exist to gather assemblies into their shipping vehicles:
 
 Project | Responsibility
@@ -67,7 +67,7 @@ Project | Responsibility
 MSI | Builds the MSI file used by most users.
 ApplicationInsights-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
 
-### Tests
+#### Tests
 Unit tests are built using a combination of Moq and Microsoft Fakes. The folllowing assemblies exist for testing purposes:
 - AccessibilityInsights.ActionsTests
 - AccessibilityInsights.AutomationTests
