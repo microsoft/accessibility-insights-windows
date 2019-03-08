@@ -38,7 +38,7 @@ To make sure that a PR doesn't introduce a major regression, please run through 
     - `powershell -f check-automation.ps1`
       - If the final message from the script says `*** AUTOMATION SUCCEEDED ***` in green text, then the script succeeded. Any other message (or any red text) indicates that the script failed and that a fix is required.
 
-#### Additional checks for UI related changes
+### Additional checks for UI related changes
 - Run the production version of Accessibility Insights for Windows against an instance of Accessibility Insights for Windows with the new changes.
   - Look for any new accessibility issues that might have been introduced by local changes.
 - Verify that guidelines for [High Contrast](HighContrastSupport.md) have been adhered to.
