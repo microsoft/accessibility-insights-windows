@@ -40,7 +40,7 @@ jobs:
       configuration: release
 
   - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
-    displayName: 'WPF Accessibility Checks'
+    displayName: 'WPF Static Analysis'
     inputs:
       input: 'src\AccessibilityInsights\bin\Release'
 
