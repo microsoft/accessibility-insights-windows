@@ -19,7 +19,8 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private static string GetTitle(IssueInformation issueInfo)
         {
-            return GetStringValue(issueInfo.WindowTitle);
+            string title = string.Format("{0}/{1} has an accessibility issue that needs investigation", issueInfo.ProcessName, issueInfo.Glimpse);
+            return GetStringValue(title);
         }
 
         private static string GetStringValue(string value)
