@@ -1,10 +1,10 @@
 <!-- Copyright (c) Microsoft Corporation. All rights reserved.
      Licensed under the MIT License. -->
-## Accessibility Insights for Windows
+## ![Product Logo](./brand/brand-blue-48px.png) Accessibility Insights for Windows
 
 [![Build Status](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_apis/build/status/Microsoft.accessibility-insights-windows-CI?branchName=master)](https://dev.azure.com/accessibility-insights/Accessibility%20Insights/_build/latest?definitionId=3&branchName=master)
 
-![Product Logo](./brand/brand-blue-128px.png)
+
 
 
 Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10).
