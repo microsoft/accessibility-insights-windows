@@ -9,6 +9,8 @@ Welcome to the March 2019 release of Accessibility Insights for Windows. Key hig
 - [**File bugs**](#file-bugs): Can't fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file.
 - [**Check color contrast**](#check-color-contrast): Identify accessibility issues caused by low color contrast using the Color Contrast Analyzer.
 
+In the following samples, we are testing an app called "Wildlife Manager". 
+
 ### Verify an element has the expected UI Automation properties
 
 Inspect enables you to easily verify that a UI element in a Windows app:
@@ -18,7 +20,7 @@ Inspect enables you to easily verify that a UI element in a Windows app:
 - Responds as expected to user input
 - Generates the expected events
 
-![Inspect UI Automation properties using Live Inspect](inspect.png)
+![Inspect Wildlife Manager app's UI Automation properties using Live Inspect](inspect.png)
 
 [Learn more about Inspect](https://go.microsoft.com/fwlink/?linkid=2075123).
 
@@ -31,15 +33,15 @@ FastPass is a lightweight, _two-step_ process that helps developers identify com
 
 We recommend developers run a FastPass before every check-in of UI code.
 
-![FastPass's automated checks results in Accessibility Insights for Windows](fastpass.png)
+![FastPass's automated checks results against the Wildlife Manager app in Accessibility Insights for Windows](fastpass.png)
 
 [Learn more about FastPass](https://go.microsoft.com/fwlink/?linkid=2075125).
 
 ### File bugs
 
-Can't fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file. You and your collaborators can load the snapshot file in Accessibility Insights for Windows to review the issue at a later time.
+Can't fix a bug right now? File the bug in Azure Boards, complete with a snapshot file. You and your collaborators can load the snapshot file in Accessibility Insights for Windows to review the issue at a later time.
 
-![Log a bug in Azure Boards from Accessibility Insights for Windows](bugfiling.png)
+![File a bug in Azure Boards against the Wildlife Manager app from Accessibility Insights for Windows](bugfiling.png)
 
 [Learn more about Bug filing](https://go.microsoft.com/fwlink/?linkid=2075269).
 
@@ -47,6 +49,6 @@ Can't fix a bug right now? Log the bug in Azure Boards, complete with a snapshot
 
 The Color Contrast Analyzer helps developers investigate contrast ratios. You can either automatically detect the contrast ratio, or manually select the foreground and background colors to test the contrast ratio.
 
-![Auto detect color contrast ratio](colorcontrast.png)
+![Auto detect color contrast ratio in the Wildlife Manager app](colorcontrast.png)
 
 [Learn more about Color contrast](https://go.microsoft.com/fwlink/?linkid=2075365).
