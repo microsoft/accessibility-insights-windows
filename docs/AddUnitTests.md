@@ -1,8 +1,8 @@
-# Unit Testing
+## Unit Testing
 
 We use the [MSTest framework](https://docs.microsoft.com/en-us/dotnet/api/microsoft.visualstudio.testtools.unittesting?view=mstest-net-1.2.0) to write unit tests.
 
-## Unit Test Setup
+### Unit Test Setup
 Setting up unit tests for an assembly is trivial. 
 The steps are:
 1. Use Visual Studio to **add a new Unit Test Project** (available as a new project template listed under Visual C#, then Test)
@@ -48,7 +48,7 @@ will just tell you that `TryGetValue` failed, without telling you the key it was
 
 The output will now tell you that `IsTrue` failed, but also why. This is especially handy in cases where your `Assert` statement appears within a loop
 
-## Working with Fakes
+### Working with Fakes
 Due to the known issue (overwriting fakes assemblies from different unit tests if they have same name), all `Fakes` assemblies are generated in a single project (`AccessibilityInsights.Fakes.Prebuild`). 
 
 If you need to add any new `Fake` assembly, please follow the below steps:
