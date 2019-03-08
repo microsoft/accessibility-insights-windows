@@ -294,8 +294,8 @@ jobs:
 
 - job: SignedDebug
   dependsOn: 
-  - ComplianceRelease
   - ComplianceDebug
+  - ComplianceRelease
   condition: succeeded()
   pool: VSEng-MicroBuildVS2017
   steps:
