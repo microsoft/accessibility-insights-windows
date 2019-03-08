@@ -142,12 +142,12 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
 
                  <Directory Id="BugTemplates" Name="BugTemplates">
                    <Component Id="BugTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.html"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.html"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueNoFailures.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueNoFailures.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueSingleFailure.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueSingleFailure.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueColorContrast.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueColorContrast.html"/>
                    </Component>
                  </Directory>
                </Directory>
