@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
@@ -92,12 +95,12 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="Actions\PrivacyExtensionsUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="Actions\PrivacyExtensionsUnitTests.cs"/>
     <Compile Include="Actions\ScreenShotActionUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
-    <Compile Include="Actions\CaptureActionUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="Actions\CaptureActionUnitTests.cs"/>
     <Compile Include="Misc\ExtensionMethodsTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
     <Compile Include="Misc\OpenSarifTests.cs" />
-    <Compile Include="Misc\ResultsFileSarifMapperUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="Misc\ResultsFileSarifMapperUnitTests.cs"/>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
