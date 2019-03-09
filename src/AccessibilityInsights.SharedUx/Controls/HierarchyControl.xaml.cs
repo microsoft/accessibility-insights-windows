@@ -817,7 +817,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.treeviewHierarchy.Focus();
         }
 
-        public async void FileBug(HierarchyNodeViewModel vm = null)
+        public void FileBug(HierarchyNodeViewModel vm = null)
         {
             vm = vm ?? this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel;
 
@@ -832,8 +832,10 @@ namespace AccessibilityInsights.SharedUx.Controls
                 // Bug already filed, open it in a new window
                 try
                 {
-                    Uri uri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
-                    var bugUrl = uri.ToString();
+                    //AK TO DO - Find out how to get the issue url here
+                    //Uri uri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
+                    //var bugUrl = uri.ToString();
+                    var bugUrl = "";
                     System.Diagnostics.Process.Start(bugUrl);
                 }
                 catch (Exception ex)
@@ -852,30 +854,31 @@ namespace AccessibilityInsights.SharedUx.Controls
                     { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
                 });
 
-                if (BugReporter.IsConnected && Configuration.SavedConnection?.IsPopulated == true)
+                if (BugReporter.IsConnected)
                 {
+                    // AK TODO File new bug with info change to what we need
                     Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
                     (int? bugId, string newBugId) = FileBugAction.FileNewBug(this.SelectedElement.GetBugInformation(BugType.NoFailure), Configuration.SavedConnection, Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
 
                     vm.BugId = bugId;
 
-                    // Check whether bug was filed once dialog closed & process accordingly
-                    if (vm.BugId.HasValue)
-                    {
-                        try
-                        {
-                            var success = await FileBugAction.AttachBugData(this.ElementContext.Id, this.SelectedElement.BoundingRectangle, 
-                                this.SelectedElement.UniqueId, newBugId, vm.BugId.Value).ConfigureAwait(false);
-                            if (!success)
-                            {
-                                MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
-                                vm.BugId = null;
-                            }
-                        }
-                        catch (Exception)
-                        {
-                        }
-                    }
+                    //// Check whether bug was filed once dialog closed & process accordingly
+                    //if (vm.BugId.HasValue)
+                    //{
+                    //    try
+                    //    {
+                    //        var success = await FileBugAction.AttachBugData(this.ElementContext.Id, this.SelectedElement.BoundingRectangle, 
+                    //            this.SelectedElement.UniqueId, newBugId, vm.BugId.Value).ConfigureAwait(false);
+                    //        if (!success)
+                    //        {
+                    //            MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
+                    //            vm.BugId = null;
+                    //        }
+                    //    }
+                    //    catch (Exception)
+                    //    {
+                    //    }
+                    //}
                 }
                 else
                 {

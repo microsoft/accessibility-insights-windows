@@ -145,8 +145,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get
             {
-                return _savedConnection ??
-                    (_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
+                // AK TO DO UNCOMMENT AND DEAL WITH
+                return _savedConnection; //??
+                    //(_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
             }
             set
             {
@@ -162,8 +163,10 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get
             {
-                return _savedConnectionCache ??
-                    (_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
+                // AK TO DO UNCOMMENT AND DEAL WITH
+
+                return _savedConnectionCache; // ??
+                    //(_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
             }
             set
             {

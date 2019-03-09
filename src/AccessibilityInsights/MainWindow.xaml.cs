@@ -170,7 +170,6 @@ namespace AccessibilityInsights
             InitializeComponent();
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
-
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
 

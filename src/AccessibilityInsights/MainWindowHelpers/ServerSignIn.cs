@@ -81,8 +81,8 @@ namespace AccessibilityInsights
                 {
                     if (serverUrl != null)
                     {
-                        await BugReporter.ConnectAsync(serverUrl, promptIfNeeded).ConfigureAwait(true);
-                        await BugReporter.PopulateUserProfileAsync().ConfigureAwait(true);
+                        //await BugReporter.ConnectAsync(serverUrl, promptIfNeeded).ConfigureAwait(true);
+                        //await BugReporter.PopulateUserProfileAsync().ConfigureAwait(true);
                         UpdateMainWindowLoginFields();
                     }
                 }
@@ -90,7 +90,7 @@ namespace AccessibilityInsights
                 {
                     ex.ReportException();
                     NotifyLoginUnsuccessful(promptIfNeeded);
-                    BugReporter.FlushToken(serverUrl);
+                    //BugReporter.FlushToken(serverUrl);
                     HandleLogoutRequest();
                 }
             }
@@ -120,7 +120,7 @@ namespace AccessibilityInsights
         private void UpdateMainWindowLoginFields()
         {
             // Main window UI changes
-            vmAvatar.ByteData = BugReporter.Avatar;
+            vmAvatar.ByteData = BugReporter.Logo;
 
             imgAvatar.Visibility = Visibility.Visible;
             this.newAccountGrid.Visibility = Visibility.Collapsed;
@@ -136,14 +136,14 @@ namespace AccessibilityInsights
         /// <param name="callback"></param>
         public void HandleLogoutRequest(Action callback = null)
         {
-            BugReporter.Disconnect();
-            // Main window UI changes
-            vmAvatar.ByteData = null;
-            imgAvatar.Visibility = Visibility.Collapsed;
-            this.newAccountGrid.Visibility = Visibility.Visible;
+            //BugReporter.Disconnect();
+            //// Main window UI changes
+            //vmAvatar.ByteData = null;
+            //imgAvatar.Visibility = Visibility.Collapsed;
+            //this.newAccountGrid.Visibility = Visibility.Visible;
             callback?.Invoke();
             AutomationProperties.SetName(btnAccountConfig, Properties.Resources.HandleLogoutRequestSignIn);
-            btnAccountConfig.ToolTip = Properties.Resources.HandleLogoutRequestSignIn;
+            //btnAccountConfig.ToolTip = Properties.Resources.HandleLogoutRequestSignIn;
         }
     }
 }

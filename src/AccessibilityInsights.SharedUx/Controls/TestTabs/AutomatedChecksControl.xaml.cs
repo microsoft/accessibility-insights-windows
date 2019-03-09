@@ -972,7 +972,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // Bug already filed, open it in a new window
                 try
                 {
-                    var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result.ToString();
+                    // TO DO ASKALBHO UNCOMMENT AND REPLACE with appropriate stuff
+                    //var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result.ToString();
+                    var bugUrl = "";
                     Process.Start(bugUrl);
                 }
                 catch (Exception ex)

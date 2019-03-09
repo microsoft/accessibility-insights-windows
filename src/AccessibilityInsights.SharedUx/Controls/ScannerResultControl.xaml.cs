@@ -283,7 +283,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 // Bug already filed, open it in a new window
                 try
                 {
-                    var bugUri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
+                    // TO DO ASKALBHO UNCOMMENT AND REPLACE with appropriate stuff
+                    //var bugUri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
+                    var bugUri = new Uri("");
                     System.Diagnostics.Process.Start(bugUri.ToString());
                 }
                 catch (Exception ex)

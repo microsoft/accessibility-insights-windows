@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,142 +15,101 @@ namespace AccessibilityInsights.SharedUx.FileBug
     /// </summary>
     static public class BugReporter
     {
-        private static IBugReporting BugReporting => Container.GetDefaultInstance().BugReporting;
+        private static IIssueReporting IssueReporter = null;
 
-        public static bool IsEnabled => BugReporting != null;
+        //Uncomment and replace with the line below this.
+        //public static bool IsEnabled => (IssueFilingManager.getIssueFilingOptionsDict() != null && IssueFilingManager.getIssueFilingOptionsDict().Any());
+        public static bool IsEnabled => true;
 
-        public static bool IsConnected => IsEnabled && BugReporting.IsConnected;
+        public static bool IsConnected => IsEnabled && (IssueReporter == null ? false : IssueReporter.IsConfigured);
 
 #pragma warning disable CA1819 // Properties should not return arrays
-        public static byte[] Avatar => IsEnabled ? BugReporting.Avatar?.ToArray() : null;
+        public static byte[] Logo => IsEnabled ? IssueReporter.Logo?.ToArray() : null;
 #pragma warning restore CA1819 // Properties should not return arrays
 
-        public static string DisplayName => IsEnabled ? BugReporting.DisplayName : null;
+        public static string DisplayName => IsEnabled ? IssueReporter.ServiceName : null;
 
-        public static string Email => IsEnabled ? BugReporting.Email : null;
+        //public static Task ConnectAsync(Uri uri, bool prompt)
+        //{
+        //    if (IsEnabled)
+        //        return IssueReporter.ConnectAsync(uri, prompt);
 
-        public static Task ConnectAsync(Uri uri, bool prompt)
-        {
-            if (IsEnabled)
-                return BugReporting.ConnectAsync(uri, prompt);
-
-            return Task.CompletedTask;
-        }
+        //    return Task.CompletedTask;
+        //}
 
         public static List<string> getIssueReporters() {
             return new List<string>() { "Github", "Azure Devops" };
-        }
-        public static Task RestoreConfigurationAsync(String serializedConfig)
-        {
-            //if (IsEnabled)
-            //    return BugReporting.ConnectAsync(serializedConfig);
-            System.Diagnostics.Trace.WriteLine(serializedConfig);
+        } 
 
+        public static Task RestoreConfigurationAsync(string serializedConfig)
+        {
+            // This is the correct version. Uncomment and make sure it plays well
+            //if (IsEnabled && IssueFilingManager.SelectedIssueReporterGuid != null)
+            //    return IssueReporter.RestoreConfigurationAsync(serializedConfig);
+
+            if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid == null)
+                return IssueReporter.RestoreConfigurationAsync(serializedConfig);
             return Task.CompletedTask;
         }
 
         public static void SetSelectedIssueReporter(Guid issueReporterGuid) {
-            System.Diagnostics.Trace.WriteLine(issueReporterGuid);
+            IssueReporterManager.SelectedIssueReporterGuid = issueReporterGuid;
         }
 
-        public static void FlushToken(Uri uri)
+        //public static Task<int?> AttachTestResultToBugAsync(string path, int bugId)
+        //{
+        //    if (IsEnabled)
+        //        //return IssueReporter.AttachTestResultToBugAsync(path, bugId);
+
+        //    return Task.FromResult((int?)null);
+        //}
+
+        //public static Task<string> AttachScreenshotToBugAsync(string path, int bugId)
+        //{
+        //    if (IsEnabled)
+        //        //return IssueReporter.AttachScreenshotToBugAsync(path, bugId);
+
+        //    return Task.FromResult(string.Empty);
+        //}
+
+        //public static Task<Uri> GetExistingBugUriAsync(int bugId)
+        //{
+        //    if (IsEnabled)
+        //        //return IssueReporter.GetExistingBugUriAsync(bugId);
+
+        //    return Task.FromResult((Uri)null);
+        //}
+
+        public static Task<IIssueResult> FileIssueAsync(IssueInformation issueInformation)
         {
-            if (IsEnabled)
-                BugReporting.FlushToken(uri);
+            if (IsEnabled && IsConnected)
+                return IssueReporter.FileIssueAsync(issueInformation);
+
+            return Task.FromResult((IIssueResult)null);
         }
 
-        public static Task PopulateUserProfileAsync()
-        {
-            if (IsEnabled)
-                return BugReporting.PopulateUserProfileAsync();
+        //public static IConnectionInfo CreateConnectionInfo(Uri serverUri, IProject project, ITeam team)
+        //{
+        //    if (IsEnabled)
+        //        return IssueReporter.CreateConnectionInfo(serverUri, project, team);
 
-            return Task.CompletedTask;
-        }
+        //    return null;
+        //}
 
-        public static void Disconnect()
-        {
-            if (IsEnabled)
-                BugReporting.Disconnect();
-        }
+        //public static IConnectionInfo CreateConnectionInfo(string configString)
+        //{
+        //    if (IsEnabled)
+        //        return IssueReporter.CreateConnectionInfo(configString);
 
-        public static Task<IEnumerable<IProject>> GetProjectsAsync()
-        {
-            if (IsEnabled)
-                return BugReporting.GetProjectsAsync();
+        //    return null;
+        //}
 
-            return Task.FromResult(Enumerable.Empty<IProject>());
-        }
+        //public static IConnectionCache CreateConnectionCache(string configString)
+        //{
+        //    if (IsEnabled)
+        //        return IssueReporter.CreateConnectionCache(configString);
 
-        public static Task<string> GetExistingBugDescriptionAsync(int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.GetExistingBugDescriptionAsync(bugId);
-
-            return Task.FromResult(string.Empty);
-        }
-
-        public static Task<int?> ReplaceBugDescriptionAsync(string description, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.ReplaceBugDescriptionAsync(description, bugId);
-
-            return Task.FromResult((int?)null);
-        }
-
-        public static Task<int?> AttachTestResultToBugAsync(string path, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.AttachTestResultToBugAsync(path, bugId);
-
-            return Task.FromResult((int?)null);
-        }
-
-        public static Task<string> AttachScreenshotToBugAsync(string path, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.AttachScreenshotToBugAsync(path, bugId);
-
-            return Task.FromResult(string.Empty);
-        }
-
-        public static Task<Uri> GetExistingBugUriAsync(int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.GetExistingBugUriAsync(bugId);
-
-            return Task.FromResult((Uri)null);
-        }
-
-        public static Task<Uri> CreateBugPreviewAsync(IConnectionInfo connectionInfo, BugInformation bugInfo)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateBugPreviewAsync(connectionInfo, bugInfo);
-
-            return Task.FromResult((Uri)null);
-        }
-
-        public static IConnectionInfo CreateConnectionInfo(Uri serverUri, IProject project, ITeam team)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionInfo(serverUri, project, team);
-
-            return null;
-        }
-
-        public static IConnectionInfo CreateConnectionInfo(string configString)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionInfo(configString);
-
-            return null;
-        }
-
-        public static IConnectionCache CreateConnectionCache(string configString)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionCache(configString);
-
-            return null;
-        }
+        //    return null;
+        //}
     }
 }
