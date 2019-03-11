@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AccessibilityInsights.SharedUx.Settings
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
     /// Strongly typed dictionary that represents the config settings that persist to disk

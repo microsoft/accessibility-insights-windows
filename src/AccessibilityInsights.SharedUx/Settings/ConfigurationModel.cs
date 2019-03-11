@@ -6,6 +6,7 @@ using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.RuleSelection;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Utilities;
