@@ -199,19 +199,19 @@
     <value>The UIAutomation Name property for the given element is empty, but the element isn't focusable. Please consider whether or not the element should have a name.</value>
   </data>
   <data name="NameNoSiblingsOfSameType" xml:space="preserve">
-    <value>The UIAutomation Name property of the given element may be null or empty if the element has no siblings of the same type.</value>
+    <value>The UI Automation Name property of the given element may be null or empty if the element has no siblings of the same type.</value>
   </data>
   <data name="NameNullButElementNotKeyboardFocusable" xml:space="preserve">
-    <value>The UIAutomation Name property for the given element is null, but the element isn't focusable. Please consider whether or not the element should have a name.</value>
+    <value>The UI Automation Name property for the given element is null, but the element isn't focusable. Please consider whether or not the element should have a name.</value>
   </data>
   <data name="NameOnCustomWithParentWPFDataItem" xml:space="preserve">
-    <value>The UIAutomation Name property of a custom control may be empty if the parent is a wpf dataitem.</value>
+    <value>The UI Automation Name property of a custom control may be empty if the parent is a wpf dataitem.</value>
   </data>
   <data name="NameOnOptionalType" xml:space="preserve">
-    <value>The UIAutomation Name property for the given element type is optional.</value>
+    <value>The UI Automation Name property for the given element type is optional.</value>
   </data>
   <data name="NameWithValidBoundingRectangle" xml:space="preserve">
-    <value>An interactive element with a valid UIAutomation Name property is usually expected to have a valid bounding rectangle that is not null and has area.</value>
+    <value>An interactive element with a valid UI Automation Name property is usually expected to have a valid bounding rectangle that is not null and has area.</value>
   </data>
   <data name="Structure" xml:space="preserve">
     <value>The given element is expected to have the following structure: {0}.</value>
@@ -504,36 +504,36 @@ If possible, use a predefined (non-custom) control type and the default localize
     <value>Provide an Orientation property for the element.</value>
   </data>
   <data name="NameExcludesControlType" xml:space="preserve">
-    <value>Provide a UIAutomation Name property for the element that:
+    <value>Provide a UI Automation Name property for the element that:
  · Concisely identifies the element, AND
  · Does not include the control type.</value>
   </data>
   <data name="NameExcludesLocalizedControlType" xml:space="preserve">
-    <value>Provide a UIAutomation Name property for the element that:
+    <value>Provide a UI Automation Name property for the element that:
  · Concisely identifies the element, AND
  · Does not include the same text as the element's LocalizedControlType property.</value>
   </data>
   <data name="NameExcludesSpecialCharacters" xml:space="preserve">
-    <value>Provide a UIAutomation Name property for the element that:
+    <value>Provide a UI Automation Name property for the element that:
  · Concisely identifies the element, AND
  · Does not include any special characters.</value>
   </data>
   <data name="NameIsInformative" xml:space="preserve">
-    <value>Provide a UIAutomation Name property for the element that:
+    <value>Provide a UI Automation Name property for the element that:
  · Concisely identifies the element, AND
  · Does not include the element's class name (such as Microsoft.*.* or Windows.*.*).</value>
   </data>
   <data name="NameNotEmpty" xml:space="preserve">
-    <value>Provide a UIAutomation Name property that concisely identifies the element.</value>
+    <value>Provide a UI Automation Name property that concisely identifies the element.</value>
   </data>
   <data name="NameNotNull" xml:space="preserve">
-    <value>Provide a UIAutomation Name property that concisely identifies the element.</value>
+    <value>Provide a UI Automation Name property that concisely identifies the element.</value>
   </data>
   <data name="NameNotWhiteSpace" xml:space="preserve">
-    <value>Provide a UIAutomation Name property that concisely identifies the element.</value>
+    <value>Provide a UI Automation Name property that concisely identifies the element.</value>
   </data>
   <data name="NameReasonableLength" xml:space="preserve">
-    <value>Provide a UIAutomation Name property for the element that:
+    <value>Provide a UI Automation Name property for the element that:
  · Concisely identifies the element, AND
  · Contains at most 512 characters.</value>
   </data>
