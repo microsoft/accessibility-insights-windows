@@ -3277,7 +3277,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Investigate color contrast using Color Contrast..
+        ///   Looks up a localized string similar to Identify accessibility issues caused by low color contrast..
         /// </summary>
         public static string RunTextManualColorTest {
             get {
