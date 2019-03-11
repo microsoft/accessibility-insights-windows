@@ -14,7 +14,8 @@ namespace AccessibilityInsights.UnitTestSharedLibrary
     public static class Utility
     {
         /// <summary>
-        /// Deserialize saved A11yElement from a JSON file
+        /// Load the UI Automation elements hierarchy tree from JSON file. 
+        /// it returns the root UI Automation element from the tree.
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>

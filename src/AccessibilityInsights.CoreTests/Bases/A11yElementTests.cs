@@ -1,12 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AccessibilityInsights.Core.Bases;
+using AccessibilityInsights.UnitTestSharedLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Drawing;
-using System.IO;
-using Newtonsoft.Json;
-using AccessibilityInsights.UnitTestSharedLibrary;
 
 namespace AccessibilityInsights.CoreTests.Bases
 {
