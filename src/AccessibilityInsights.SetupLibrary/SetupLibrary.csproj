@@ -62,6 +62,7 @@
     <Compile Include="REST\GitHubClient.cs" />
     <Compile Include="SettingsDictionary.cs" />
     <Compile Include="TempExtensions.cs" />
+    <Compile Include="TrustVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">

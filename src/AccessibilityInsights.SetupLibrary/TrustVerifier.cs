@@ -5,7 +5,7 @@ using System;
 using System.IO;
 using static AccessibilityInsights.Win32.NativeMethods;
 
-namespace AccessibilityInsights.Extensions.Helpers
+namespace AccessibilityInsights.SetupLibrary
 {
     public class TrustVerifier : IDisposable
     {

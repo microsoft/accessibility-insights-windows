@@ -10,13 +10,13 @@ namespace AccessibilityInsights.SetupLibrary.REST
     /// Class that actually makes calls to GitHub. So far, we're just making a simple GET call,
     /// with no GitHub-specific characteristics.
     /// </summary>
-    internal static class GitHubClient
+    public static class GitHubClient
     {
         /// <summary>
         /// Given a Uri, try to get its contents into a stream
         /// </summary>
         /// <returns>true if the call succeeded</returns>
-        internal static bool TryGet(Uri uri, Stream stream, TimeSpan timeout)
+        public static bool TryGet(Uri uri, Stream stream, TimeSpan timeout)
         {
             try
             {

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SetupLibrary.REST;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -75,11 +76,11 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    return GitHubHelper.TryGet(new Uri(installerUri), stream, timeout);
+                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout);
                 }
                 catch (Exception e)
                 {
-                    e.ReportException();
+                    e.ReportExceptionTemp();
                     System.Diagnostics.Debug.WriteLine(e.ToString());
                 }
                 finally
