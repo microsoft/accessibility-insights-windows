@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AccessibilityInsights.Core.Bases;
+using AccessibilityInsights.UnitTestSharedLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AccessibilityInsights.CoreTests.Bases
 {
@@ -17,7 +18,7 @@ namespace AccessibilityInsights.CoreTests.Bases
         [TestMethod()]
         public void NodeValueTest()
         {
-            A11yElement ke = A11yElementTests.FromJson("Resources/A11yPatternTest.hier");
+            A11yElement ke = Utility.LoadA11yElementsFromJSON("Resources/A11yPatternTest.hier");
 
             Assert.AreEqual("CanSelectMultiple = False", ke.Patterns[0].Properties[0].NodeValue);
             Assert.AreEqual("IsSelectionRequired = False", ke.Patterns[0].Properties[1].NodeValue);

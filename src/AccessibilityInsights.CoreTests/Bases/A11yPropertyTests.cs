@@ -1,8 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Types;
+using AccessibilityInsights.UnitTestSharedLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace AccessibilityInsights.CoreTests.Bases
 {
@@ -19,7 +20,7 @@ namespace AccessibilityInsights.CoreTests.Bases
         [TestMethod()]
         public void ToStringTest()
         {
-            A11yElement ke = A11yElementTests.FromJson("Resources/A11yPropertyTest.hier");            
+            A11yElement ke = Utility.LoadA11yElementsFromJSON("Resources/A11yPropertyTest.hier");            
             string kpVal;
             
             kpVal = ke.Properties[PropertyType.UIA_ControlTypePropertyId].ToString();

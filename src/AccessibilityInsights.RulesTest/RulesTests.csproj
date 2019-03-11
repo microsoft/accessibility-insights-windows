@@ -153,10 +153,6 @@
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.CoreTests\CoreTests.csproj">
-      <Project>{bd29fe9b-6fb1-4141-92a5-34c4caed8274}</Project>
-      <Name>CoreTests</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>
@@ -164,6 +160,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Rules\Rules.csproj">
       <Project>{7fe58829-560e-4142-bf81-291a66d3844b}</Project>
       <Name>Rules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
+      <Project>{01dc8363-73bc-47fa-bd23-12ac45618e1d}</Project>
+      <Name>UnitTestSharedLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
