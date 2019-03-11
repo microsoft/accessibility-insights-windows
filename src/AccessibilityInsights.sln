@@ -145,7 +145,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.TelemetryTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.AutoUpdate", "AccessibilityInsights.Extensions.AutoUpdate\Extensions.AutoUpdate.csproj", "{BBDB2193-7738-4E6D-8061-1DAA64FCCBB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSharedLibrary", "UnitTestSharedLibrary\UnitTestSharedLibrary.csproj", "{01DC8363-73BC-47FA-BD23-12AC45618E1D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSharedLibrary", "AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj", "{01DC8363-73BC-47FA-BD23-12AC45618E1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

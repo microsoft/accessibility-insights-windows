@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.SharedUx.ViewModels;
 using AccessibilityInsights.Core.Results;
+using AccessibilityInsights.SharedUx.ViewModels;
 using AccessibilityInsights.UnitTestSharedLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

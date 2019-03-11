@@ -123,7 +123,7 @@
       <Project>{2DA36FA6-4FF8-4DB4-AA7E-2F1CACAE6E35}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
+    <ProjectReference Include="..\AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
       <Project>{01dc8363-73bc-47fa-bd23-12ac45618e1d}</Project>
       <Name>UnitTestSharedLibrary</Name>
     </ProjectReference>

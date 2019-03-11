@@ -161,7 +161,7 @@
       <Project>{7fe58829-560e-4142-bf81-291a66d3844b}</Project>
       <Name>Rules</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
+    <ProjectReference Include="..\AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj">
       <Project>{01dc8363-73bc-47fa-bd23-12ac45618e1d}</Project>
       <Name>UnitTestSharedLibrary</Name>
     </ProjectReference>
