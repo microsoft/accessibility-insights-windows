@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         /// <summary>
         /// The Release cadence to use when fetching upgrade information
         /// </summary>
-        string ReleaseCadence { get; set; }
+        string ReleaseChannel { get; set; }
 
         /// <summary>
         /// Trigger an update. Async as it may go off-box

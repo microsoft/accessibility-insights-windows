@@ -57,6 +57,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyIsUnderElementScope = "IsUnderElementScope";
         private const string keyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
         private const string keyPlayScanningSound = "PlayScanningSound";
+        private const string keyReleaseChannel = "ReleaseChannel";
         private const string keySelectionByFocus = "SelectionByFocus";
         private const string keySelectionByMouse = "SelectionByMouse";
         private const string keySerializedSavedConnection = "SerializedSavedConnection";
@@ -70,7 +71,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyTestConfig = "TestConfig";
         private const string keyTestReportPath = "TestReportPath";
         private const string keyTreeViewMode = "TreeViewMode";
-        private const string keyUpgradeRing = "UpgradeRing";
         private const string keyVersion = "Version";
         private const string keyZoomLevel = "ZoomLevel";
     }

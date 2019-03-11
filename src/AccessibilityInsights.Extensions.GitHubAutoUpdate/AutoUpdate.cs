@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+using AccessibilityInsights.SetupLibrary;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -54,9 +55,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Stopwatch _updateStopwatch = new Stopwatch();
 
         /// <summary>
-        /// Implements <see cref="IAutoUpdate.ReleaseCadence"/>
+        /// Implements <see cref="IAutoUpdate.ReleaseChannel"/>
         /// </summary>
-        public string ReleaseCadence { get; set; } = DefaultReleaseCadence;
+        public string ReleaseChannel { get; set; } = DefaultReleaseCadence;
 
         /// <summary>
         /// Implements <see cref="IAutoUpdate.InstalledVersion"/>
@@ -180,36 +181,36 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             _initTask = Task.Run(() => InitializeWithTimer());
         }
 
-        private static bool TryGetCadencesFromStream(Stream stream, out Dictionary<string, CadenceInfo> cadences)
+        private static bool TryGetChannelsFromStream(Stream stream, out Dictionary<string, ChannelInfo> channelInfos)
         {
-            cadences = new Dictionary<string, CadenceInfo>();
+            channelInfos = new Dictionary<string, ChannelInfo>();
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            string configInfo = reader.ReadToEnd();
-            Dictionary<string, CadenceInfo> rawResults = JsonConvert.DeserializeObject<Dictionary<string, CadenceInfo>>(configInfo);
+            string channelString = reader.ReadToEnd();
+            Dictionary<string, ChannelInfo> rawResults = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
 
-            foreach (KeyValuePair<string, CadenceInfo> pair in rawResults)
+            foreach (KeyValuePair<string, ChannelInfo> pair in rawResults)
             {
                 if (pair.Value.IsValid)
                 {
-                    cadences.Add(pair.Key, pair.Value);
+                    channelInfos.Add(pair.Key, pair.Value);
                 }
             }
 
-            return cadences.Any();
+            return channelInfos.Any();
         }
 
-        private bool TryParseConfigInfo(Stream stream, string cadence)
+        private bool TryParseChannelInfo(Stream stream, string requestedChannel)
         {
-            if (_gitHub.TryGetConfigInfo(stream))
+            if (_gitHub.TryGetChannelInfo(stream))
             {
-                if (cadence != null)
+                if (requestedChannel != null)
                 {
                     try
                     {
-                        if (TryGetCadencesFromStream(stream, out Dictionary<string, CadenceInfo> cadences))
+                        if (TryGetChannelsFromStream(stream, out Dictionary<string, ChannelInfo> cadences))
                         {
-                            if (cadences.TryGetValue(cadence, out CadenceInfo cadenceInfo))
+                            if (cadences.TryGetValue(requestedChannel, out ChannelInfo cadenceInfo))
                             {
                                 _latestVersion = cadenceInfo.CurrentVersion;
                                 _minimumVersion = cadenceInfo.MinimumVersion;
@@ -270,7 +271,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 using (Stream configStream = new MemoryStream())
                 {
-                    if (TryParseConfigInfo(configStream, ReleaseCadence))
+                    if (TryParseChannelInfo(configStream, ReleaseChannel))
                     {
                         if (_installedVersion != null && _latestVersion != null && _minimumVersion != null)
                         {

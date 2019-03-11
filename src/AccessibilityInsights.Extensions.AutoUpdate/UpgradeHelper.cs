@@ -23,7 +23,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
         private string _releaseLocation = string.Empty;
         private string _installerLocation = string.Empty;
 
-        public string ReleaseCadence { get; set; } = "default";
+        public string ReleaseChannel { get; set; } = "default";
 
         public Version InstalledVersion
         {

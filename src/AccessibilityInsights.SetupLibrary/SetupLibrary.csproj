@@ -54,8 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
+    <Compile Include="ChannelInfo.cs" />
+    <Compile Include="GitHubWrapper.cs" />
+    <Compile Include="IGitHubWrapper.cs" />
+    <Compile Include="OverridableConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="REST\GitHubClient.cs" />
     <Compile Include="SettingsDictionary.cs" />
+    <Compile Include="TempExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">

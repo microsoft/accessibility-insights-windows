@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
 using System;
 using System.IO;
 using System.Net;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate.REST
+namespace AccessibilityInsights.SetupLibrary.REST
 {
     /// <summary>
     /// Class that actually makes calls to GitHub. So far, we're just making a simple GET call,
@@ -36,7 +35,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate.REST
             }
             catch (Exception e)
             {
-                e.ReportException();
+                e.ReportExceptionTemp();
                 System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception in GET request: "
                     + e.ToString());
                 return false;

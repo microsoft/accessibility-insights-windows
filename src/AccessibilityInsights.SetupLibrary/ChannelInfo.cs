@@ -3,14 +3,14 @@
 using Newtonsoft.Json;
 using System;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
-    /// Class to represent the state of a specific Release Cadence. This allows
+    /// Class to represent the state of a specific Release Channel. This allows
     /// us to use the same upgrade mechanism, but allow users some control over
     /// the rate of change of their client bits.
     /// </summary>
-    public class CadenceInfo
+    public class ChannelInfo
     {
         /// <summary>
         /// The most recent version for this release cadence

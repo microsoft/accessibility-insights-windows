@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
     /// Class to provide an option to override config values via an external JSON file. This class
@@ -36,7 +35,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 }
                 catch (Exception e)
                 {
-                    e.ReportException();
+                    e.ReportExceptionTemp();
                 }
             }
 

@@ -268,11 +268,11 @@ namespace AccessibilityInsights
         {
             StringBuilder sb = new StringBuilder();
 
-            UpgradeRing? ring = ConfigurationManager.GetDefaultInstance()?.AppConfig?.UpgradeRing;
+            ReleaseChannel? channel = ConfigurationManager.GetDefaultInstance()?.AppConfig?.ReleaseChannel;
 
-            if (ring.HasValue && ring.Value != UpgradeRing.Production)
+            if (channel.HasValue && channel.Value != ReleaseChannel.Production)
             {
-                sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", ring.Value);
+                sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
             }
 
             sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, Core.Misc.Utility.GetAppVersion());

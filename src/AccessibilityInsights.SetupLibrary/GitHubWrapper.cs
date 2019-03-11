@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.GitHubAutoUpdate.REST;
+using AccessibilityInsights.SetupLibrary.REST;
 using System;
 using System.Globalization;
 using System.IO;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
     /// Concrete implementation of IGitHubWrapper
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return GitHubClient.TryGet(uri, stream, _timeout);
         }
 
-        public bool TryGetConfigInfo(Stream stream)
+        public bool TryGetChannelInfo(Stream stream)
         {
             // Expect that the client's TryGet method will not leak Exceptions
             return GitHubClient.TryGet(_configFileUri, stream, _timeout);

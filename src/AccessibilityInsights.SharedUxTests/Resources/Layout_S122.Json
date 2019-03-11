@@ -1,27 +1,27 @@
 ﻿{
-  "ConfigVersion": null,
-  "LayoutSnapshot": {
-    "Height": 877.33333333333326,
-    "Width": 967.33333333333326,
-    "ColumnSnapWidth": 410.0,
-    "RowInfoHeight": 460.0,
-    "RowTestHeight": 0.0,
-    "WinState": 0,
-    "Version": null,
+    "ConfigVersion": null,
+    "LayoutSnapshot": {
+        "Height": 877.33333333333326,
+        "Width": 967.33333333333326,
+        "ColumnSnapWidth": 410.0,
+        "RowInfoHeight": 460.0,
+        "RowTestHeight": 0.0,
+        "WinState": 0,
+        "Version": null,
+        "AppVersion": null
+    },
+    "LayoutLive": {
+        "Height": 500.0,
+        "Width": 460.0,
+        "ColumnSnapWidth": 0.0,
+        "RowInfoHeight": 460.66666666666669,
+        "RowTestHeight": 0.0,
+        "WinState": 0,
+        "Version": null,
+        "AppVersion": null
+    },
+    "Left": 1338.6666666666665,
+    "Top": 160.66666666666666,
+    "Version": "1.0.1",
     "AppVersion": null
-  },
-  "LayoutLive": {
-    "Height": 500.0,
-    "Width": 460.0,
-    "ColumnSnapWidth": 0.0,
-    "RowInfoHeight": 460.66666666666669,
-    "RowTestHeight": 0.0,
-    "WinState": 0,
-    "Version": null,
-    "AppVersion": null
-  },
-  "Left": 1338.6666666666665,
-  "Top": 160.66666666666666,
-  "Version": "1.0.1",
-  "AppVersion": null
 }

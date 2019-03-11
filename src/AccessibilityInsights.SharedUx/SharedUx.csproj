@@ -281,7 +281,7 @@
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
-    <Compile Include="Enums\UpgradeRing.cs" />
+    <Compile Include="Enums\ReleaseChannel.cs" />
     <Compile Include="FileBug\BugFileForm.cs">
       <SubType>Form</SubType>
     </Compile>

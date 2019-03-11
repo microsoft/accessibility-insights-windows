@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(SuiteConfigurationType.Default, config.TestConfig);
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
-            Assert.AreEqual(UpgradeRing.Production, config.UpgradeRing);
+            Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
             Assert.AreEqual(100, config.ZoomLevel);
 
@@ -150,7 +150,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
             // Test settings that don't exist in legacy mode (their legacy value is tested by
             // LoadFromJSON_FileDoesNotExist_DataIsCorrect()
-            Assert.AreEqual(UpgradeRing.Canary, config.UpgradeRing);
+            Assert.AreEqual(ReleaseChannel.Canary, config.ReleaseChannel);
         }
 
         private static ConfigurationModel GetDefaultConfig()

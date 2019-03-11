@@ -4,9 +4,9 @@
 namespace AccessibilityInsights.SharedUx.Enums
 {
     /// <summary>
-    /// The upgrade ring for a specific client. Rings appear in increasing upgrade frequency
+    /// The release channel for a specific client. Channels appear in increasing upgrade frequency
     /// </summary>
-    public enum UpgradeRing
+    public enum ReleaseChannel
     {
         Production, // Least frequent upgrades (default value)
         Insiders,

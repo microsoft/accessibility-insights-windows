@@ -464,12 +464,12 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// The upgrade ring configured for this client
+        /// The release channel configured for this client
         /// </summary>
-        public UpgradeRing UpgradeRing
+        public ReleaseChannel ReleaseChannel
         {
-            get => GetEnumDataValue<UpgradeRing>(keyUpgradeRing);
-            set => SetEnumDataValue<UpgradeRing>(keyUpgradeRing, value);
+            get => GetEnumDataValue<ReleaseChannel>(keyReleaseChannel);
+            set => SetEnumDataValue<ReleaseChannel>(keyReleaseChannel, value);
         }
 
         /// <summary>

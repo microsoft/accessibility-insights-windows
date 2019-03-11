@@ -3,13 +3,13 @@
 using System;
 using System.IO;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
     /// Wrap the GitHub API to decouple parsing from GitHub operations
     /// (and to facilitate testing)
     /// </summary>
-    internal interface IGitHubWrapper
+    public interface IGitHubWrapper
     {
         /// <summary>
         /// Given a link to an asset, download its contents into the provided stream
@@ -20,10 +20,10 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         bool TryGetSpecificAsset(Uri uri, Stream stream);
 
         /// <summary>
-        /// Attempt to get the Config Info. This will be pulled from an online source
+        /// Attempt to get the Channel Info. This will be pulled from an online source
         /// </summary>
         /// <param name="stream">The stream to populate</param>
         /// <returns>true if the config was successfully read</returns>
-        bool TryGetConfigInfo(Stream stream);
+        bool TryGetChannelInfo(Stream stream);
     }
 }
