@@ -116,7 +116,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Synchronously update (gets wrapped into a tag)
+        /// Synchronously update
         /// </summary>
         /// <returns>The result of the upgrade operation</returns>
         private UpdateResult Update()
@@ -127,7 +127,10 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             try
             {
                 WaitForInitializationToComplete();
-                return InstallHelper.Run(_installerUri);
+                if (VersionSwitcherWrapper.DownloadAndRun(_installerUri, null)) // Update doesn't change channel
+                {
+                    return UpdateResult.Success;
+                }
             }
             catch (Exception e)
             {
@@ -165,7 +168,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Production ctor
         /// </summary>
-        public AutoUpdate() : this(new GitHubWrapper(), UpdateMethods.GetInstalledProductVersion)
+        public AutoUpdate() : this(new GitHubWrapper(ReportException), UpdateMethods.GetInstalledProductVersion)
         {
         }
 
@@ -200,7 +203,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             return channelInfos.Any();
         }
 
-        private bool TryParseChannelInfo(Stream stream, string requestedChannel)
+        private bool TryGetChannelInfo(Stream stream, string requestedChannel)
         {
             if (_gitHub.TryGetChannelInfo(stream))
             {
@@ -208,16 +211,13 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 {
                     try
                     {
-                        if (TryGetChannelsFromStream(stream, out Dictionary<string, ChannelInfo> cadences))
+                        if (ChannelInfo.TryGetChannelFromStream(stream, requestedChannel, out ChannelInfo channelInfo, ReportException))
                         {
-                            if (cadences.TryGetValue(requestedChannel, out ChannelInfo cadenceInfo))
-                            {
-                                _latestVersion = cadenceInfo.CurrentVersion;
-                                _minimumVersion = cadenceInfo.MinimumVersion;
-                                _releaseNotesUri = new Uri(cadenceInfo.ReleaseNotesAsset, UriKind.Absolute);
-                                _installerUri = new Uri(cadenceInfo.InstallAsset, UriKind.Absolute);
-                                return true;
-                            }
+                            _latestVersion = channelInfo.CurrentVersion;
+                            _minimumVersion = channelInfo.MinimumVersion;
+                            _releaseNotesUri = new Uri(channelInfo.ReleaseNotesAsset, UriKind.Absolute);
+                            _installerUri = new Uri(channelInfo.InstallAsset, UriKind.Absolute);
+                            return true;
                         }
                     }
                     catch (Exception e)
@@ -271,7 +271,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 using (Stream configStream = new MemoryStream())
                 {
-                    if (TryParseChannelInfo(configStream, ReleaseChannel))
+                    if (TryGetChannelInfo(configStream, ReleaseChannel))
                     {
                         if (_installedVersion != null && _latestVersion != null && _minimumVersion != null)
                         {
@@ -316,6 +316,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             }
 
             return false;
+        }
+
+        private static void ReportException(Exception e)
+        {
+            e.ReportException();
         }
     }
 }

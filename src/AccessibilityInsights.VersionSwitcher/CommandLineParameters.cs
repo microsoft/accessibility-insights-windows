@@ -7,12 +7,12 @@ namespace AccessibilityInsights.VersionSwitcher
     {
         internal string MsiPath { get; }
 
-        internal string NewRing { get; }
+        internal string NewChannel { get; }
 
-        internal CommandLineParameters(string msiPath, string newRing = null)
+        internal CommandLineParameters(string msiPath, string newChannel = null)
         {
             MsiPath = msiPath;
-            NewRing = newRing;
+            NewChannel = newChannel;
         }
     }
 }

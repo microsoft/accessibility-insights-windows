@@ -12,15 +12,16 @@ namespace AccessibilityInsights.SetupLibrary
     /// </summary>
     public class GitHubWrapper : IGitHubWrapper
     {
+        private readonly Action<Exception> _exceptionReporter;
         private readonly Uri _configFileUri;
         private readonly TimeSpan _timeout;
 
         private const string DefaultConfigFileUrl = "https://www.github.com/Microsoft/accessibility-insights-windows/blob/Control/Channels/Production/release_info.json?raw=true";
 
-        public GitHubWrapper()
+        public GitHubWrapper(Action<Exception> exceptionReporter)
         {
             const double defaultTimeout = 60.0;
-            OverridableConfig config = new OverridableConfig("GitHubUpdate.settings");
+            OverridableConfig config = new OverridableConfig("GitHubWrapper.settings", exceptionReporter);
             string url = config.GetConfigSetting("ConfigFileUrl", DefaultConfigFileUrl);
 
             if (!Uri.TryCreate(url, UriKind.Absolute, out _configFileUri))
@@ -30,19 +31,20 @@ namespace AccessibilityInsights.SetupLibrary
             if (!double.TryParse(configTimeout, NumberStyles.Number, CultureInfo.InvariantCulture, out double timeoutInSeconds) || timeoutInSeconds <= 0)
                 timeoutInSeconds = defaultTimeout;
 
+            _exceptionReporter = exceptionReporter;
             _timeout = TimeSpan.FromSeconds(timeoutInSeconds);
         }
 
         public bool TryGetSpecificAsset(Uri uri, Stream stream)
         {
             // Expect that the client's TryGet method will not leak Exceptions
-            return GitHubClient.TryGet(uri, stream, _timeout);
+            return GitHubClient.TryGet(uri, stream, _timeout, _exceptionReporter);
         }
 
         public bool TryGetChannelInfo(Stream stream)
         {
             // Expect that the client's TryGet method will not leak Exceptions
-            return GitHubClient.TryGet(_configFileUri, stream, _timeout);
+            return GitHubClient.TryGet(_configFileUri, stream, _timeout, _exceptionReporter);
         }
     }
 }

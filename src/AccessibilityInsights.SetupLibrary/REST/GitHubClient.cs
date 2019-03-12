@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SetupLibrary.REST
         /// Given a Uri, try to get its contents into a stream
         /// </summary>
         /// <returns>true if the call succeeded</returns>
-        public static bool TryGet(Uri uri, Stream stream, TimeSpan timeout)
+        public static bool TryGet(Uri uri, Stream stream, TimeSpan timeout, Action<Exception> exceptionReporter)
         {
             try
             {
@@ -35,8 +35,8 @@ namespace AccessibilityInsights.SetupLibrary.REST
             }
             catch (Exception e)
             {
-                e.ReportExceptionTemp();
-                System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade - exception in GET request: "
+                exceptionReporter(e);
+                System.Diagnostics.Trace.WriteLine("AccessibilityInsights - exception in GET request: "
                     + e.ToString());
                 return false;
             }

@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Container.cs" />
     <Compile Include="Helpers\ExceptionExtensions.cs" />
-    <Compile Include="Helpers\InstallHelper.cs" />
     <Compile Include="Interfaces\BugReporting\BugInformation.cs" />
     <Compile Include="Interfaces\BugReporting\BugType.cs" />
     <Compile Include="Interfaces\BugReporting\IBugReporting.cs" />

@@ -2,6 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace AccessibilityInsights.SetupLibrary
 {
@@ -41,5 +44,38 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         [JsonIgnore]
         public bool IsValid => CurrentVersion != null && MinimumVersion != null && InstallAsset != null && ReleaseNotesAsset != null;
+
+
+        /// <summary>
+        /// Given a stream containing a config file, try to find a specific channel
+        /// </summary>
+        /// <param name="stream">The stream containing the config file</param>
+        /// <param name="requestedChannel">The channel being sought</param>
+        /// <param name="channelInfo">The ChannelInfo that was located</param>
+        /// <returns>true if valid data was found, otherwise false</returns>
+        public static bool TryGetChannelFromStream(Stream stream, string requestedChannel, out ChannelInfo channelInfo, Action<Exception> exceptionReporter)
+        {
+            try
+            {
+                stream.Position = 0;
+                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+                string channelString = reader.ReadToEnd();
+                Dictionary<string, ChannelInfo> convertedData = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
+
+                if (convertedData.TryGetValue(requestedChannel, out ChannelInfo rawChannelInfo) &&
+                    rawChannelInfo.IsValid)
+                {
+                    channelInfo = rawChannelInfo;
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                exceptionReporter(e);
+            }
+
+            channelInfo = null;
+            return false;
+        }
     }
 }

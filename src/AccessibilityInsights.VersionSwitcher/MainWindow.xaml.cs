@@ -31,7 +31,7 @@ namespace AccessibilityInsights.VersionSwitcher
                     InstallHelper.DeleteOldVersion(ProductName);
                     InstallHelper.InstallNewVersion(parameters.MsiPath);
                 }
-                UpdateConfigWithNewRing(parameters.NewRing);
+                UpdateConfigWithNewRing(parameters.NewChannel);
                 LaunchInstalledApp();
             }
             catch(Exception e)
@@ -49,24 +49,24 @@ namespace AccessibilityInsights.VersionSwitcher
             string[] args = Environment.GetCommandLineArgs();
 
             string msiPath = null;
-            string newRing = null;
+            string newChannel = null;
 
             if (args.Length > 1)
             {
                 msiPath = args[1];
                 if (args.Length > 2)
                 {
-                    newRing = args[2];
+                    newChannel = args[2];
                 }
 
-                return new CommandLineParameters(msiPath, newRing);
+                return new CommandLineParameters(msiPath, newChannel);
             }
 
             string input = string.Join(" | ", args);
             throw new ArgumentException("Invalid Input: " + input);
         }
 
-        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout)
+        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout, Action<Exception> exceptionReporter)
         {
             _installerDownloadStopwatch.Reset();
 
@@ -76,12 +76,12 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout);
+                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout, exceptionReporter);
                 }
                 catch (Exception e)
                 {
-                    e.ReportExceptionTemp();
-                    System.Diagnostics.Debug.WriteLine(e.ToString());
+                    exceptionReporter(e);
+                    Debug.WriteLine(e.ToString());
                 }
                 finally
                 {
@@ -95,7 +95,7 @@ namespace AccessibilityInsights.VersionSwitcher
         private string DownloadFromUriToLocalFile(CommandLineParameters parameters)
         {
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60)))
+            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60), ReportException))
             {
                 throw new Exception("Unable to download installer");
             }
@@ -132,6 +132,11 @@ namespace AccessibilityInsights.VersionSwitcher
             start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
             start.Arguments = appPath;
             Process.Start(start);
+        }
+
+        private static void ReportException(Exception e)
+        {
+            Debug.WriteLine(e.ToString());
         }
     }
 }
