@@ -54,6 +54,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly Stopwatch _initializationStopwatch = new Stopwatch();
         private readonly Stopwatch _updateStopwatch = new Stopwatch();
 
+        private static readonly IExceptionReporter ExceptionReporter = new ExceptionReporter();
+
         /// <summary>
         /// Implements <see cref="IAutoUpdate.ReleaseChannel"/>
         /// </summary>
@@ -176,7 +178,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Production ctor
         /// </summary>
-        public AutoUpdate() : this(new GitHubWrapper(ReportException), UpdateMethods.GetInstalledProductVersion, TryGetChannelInfo)
+        public AutoUpdate() : this(new GitHubWrapper(ExceptionReporter), MsiUtilities.GetInstalledProductVersion, TryGetChannelInfo)
         {
         }
 
@@ -208,7 +210,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 {
                     if (requestedChannel != null)
                     {
-                        return ChannelInfo.TryGetChannelFromStream(stream, requestedChannel, out channelInfo, ReportException);
+                        return ChannelInfo.TryGetChannelFromStream(stream, requestedChannel, out channelInfo, ExceptionReporter);
                     }
                 }
             }
@@ -287,11 +289,6 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private void WaitForInitializationToComplete()
         {
             _initTask.Wait();
-        }
-
-        private static void ReportException(Exception e)
-        {
-            e.ReportException();
         }
     }
 }

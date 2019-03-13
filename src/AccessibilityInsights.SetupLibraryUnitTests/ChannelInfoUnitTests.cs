@@ -10,6 +10,17 @@ namespace SetupLibraryUnitTests
     [TestClass]
     public class ChannelInfoUnitTests
     {
+        private class TestExceptionReporter : IExceptionReporter
+        {
+            public Exception ActualException { get; private set; }
+            public void ReportException(Exception e)
+            {
+                Assert.IsNotNull(e);
+                Assert.IsNull(ActualException);
+                ActualException = e;
+            }
+        }
+
         private const string DefaultChannel = "default";
         private const string Path1 = "www.somehost.com/somepath/1";
         private const string Path2 = "www.somehost.com/somepath/2";
@@ -154,15 +165,14 @@ namespace SetupLibraryUnitTests
         {
             using (Stream stream = PopulateStream(string.Empty))
             {
-                Exception actualException = null;
-                Action<Exception> exceptionReporter = (e) => { actualException = e; };
+                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
 
                 bool result = ChannelInfo.TryGetChannelFromStream(stream, DefaultChannel,
                     out ChannelInfo channelInfo, exceptionReporter);
 
                 Assert.IsFalse(result);
                 Assert.IsNull(channelInfo);
-                Assert.IsNotNull(actualException);
+                Assert.IsNotNull(exceptionReporter.ActualException);
             }
         }
 
@@ -172,15 +182,14 @@ namespace SetupLibraryUnitTests
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                Exception actualException = null;
-                Action<Exception> exceptionReporter = (e) => { actualException = e; };
+                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
 
                 bool result = ChannelInfo.TryGetChannelFromStream(stream, "does not exist",
                     out ChannelInfo channelInfo, exceptionReporter);
 
                 Assert.IsFalse(result);
                 Assert.IsNull(channelInfo);
-                Assert.IsNull(actualException);
+                Assert.IsNull(exceptionReporter.ActualException);
             }
         }
 
@@ -190,14 +199,13 @@ namespace SetupLibraryUnitTests
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                Exception actualException = null;
-                Action<Exception> exceptionReporter = (e) => { actualException = e; };
+                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
 
                 bool result = ChannelInfo.TryGetChannelFromStream(stream, DefaultChannel,
                     out ChannelInfo channelInfo, exceptionReporter);
 
                 Assert.IsTrue(result);
-                Assert.IsNull(actualException);
+                Assert.IsNull(exceptionReporter.ActualException);
                 Assert.IsNotNull(channelInfo);
                 Assert.IsTrue(channelInfo.IsValid);
                 Assert.AreEqual(Version1234, channelInfo.CurrentVersion);
@@ -213,14 +221,13 @@ namespace SetupLibraryUnitTests
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                Exception actualException = null;
-                Action<Exception> exceptionReporter = (e) => { actualException = e; };
+                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
 
                 bool result = ChannelInfo.TryGetChannelFromStream(stream, "insider",
                     out ChannelInfo channelInfo, exceptionReporter);
 
                 Assert.IsTrue(result);
-                Assert.IsNull(actualException);
+                Assert.IsNull(exceptionReporter.ActualException);
                 Assert.IsNotNull(channelInfo);
                 Assert.IsTrue(channelInfo.IsValid);
                 Assert.AreEqual(Version1330, channelInfo.CurrentVersion);
@@ -236,15 +243,14 @@ namespace SetupLibraryUnitTests
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                Exception actualException = null;
-                Action<Exception> exceptionReporter = (e) => { actualException = e; };
+                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
 
                 bool result = ChannelInfo.TryGetChannelFromStream(stream, "invalid",
                     out ChannelInfo channelInfo, exceptionReporter);
 
                 Assert.IsFalse(result);
                 Assert.IsNull(channelInfo);
-                Assert.IsNull(actualException);
+                Assert.IsNull(exceptionReporter.ActualException);
             }
         }
     }

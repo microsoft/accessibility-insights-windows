@@ -14,6 +14,8 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     public partial class MainWindow : Window
     {
+        private readonly static IExceptionReporter ExceptionReporter = new ExceptionReporter();
+
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         const string ProductName = "Accessibility Insights For Windows v1.1";
 
@@ -66,7 +68,7 @@ namespace AccessibilityInsights.VersionSwitcher
             throw new ArgumentException("Invalid Input: " + input);
         }
 
-        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout, Action<Exception> exceptionReporter)
+        private bool TryDownloadInstaller(string installerUri, string targetFilePath, TimeSpan timeout)
         {
             _installerDownloadStopwatch.Reset();
 
@@ -76,11 +78,11 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout, exceptionReporter);
+                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout, ExceptionReporter);
                 }
                 catch (Exception e)
                 {
-                    exceptionReporter(e);
+                    ExceptionReporter.ReportException(e);
                     Debug.WriteLine(e.ToString());
                 }
                 finally
@@ -95,7 +97,7 @@ namespace AccessibilityInsights.VersionSwitcher
         private string DownloadFromUriToLocalFile(CommandLineParameters parameters)
         {
             string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60), ReportException))
+            if (!TryDownloadInstaller(parameters.MsiPath, tempFile, TimeSpan.FromSeconds(60)))
             {
                 throw new Exception("Unable to download installer");
             }
@@ -132,11 +134,6 @@ namespace AccessibilityInsights.VersionSwitcher
             start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
             start.Arguments = appPath;
             Process.Start(start);
-        }
-
-        private static void ReportException(Exception e)
-        {
-            Debug.WriteLine(e.ToString());
         }
     }
 }

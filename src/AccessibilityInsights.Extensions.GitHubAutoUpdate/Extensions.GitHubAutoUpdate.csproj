@@ -58,9 +58,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExceptionReporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
-    <Compile Include="UpdateMethods.cs" />
+    <Compile Include="MsiUtilities.cs" />
     <Compile Include="AutoUpdate.cs" />
   </ItemGroup>
   <ItemGroup>

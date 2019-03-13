@@ -53,7 +53,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <param name="channelInfo">The ChannelInfo that was located</param>
         /// <param name="exceptionReporter">Called to report exceptions</param>
         /// <returns>true if valid data was found, otherwise false</returns>
-        public static bool TryGetChannelFromStream(Stream stream, string requestedChannel, out ChannelInfo channelInfo, Action<Exception> exceptionReporter)
+        public static bool TryGetChannelFromStream(Stream stream, string requestedChannel, out ChannelInfo channelInfo, IExceptionReporter exceptionReporter)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.SetupLibrary
             }
             catch (Exception e)
             {
-                exceptionReporter(e);
+                exceptionReporter.ReportException(e);
             }
 
             channelInfo = null;

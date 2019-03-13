@@ -40,6 +40,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Deployment.WindowsInstaller, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -55,8 +56,10 @@
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="ChannelInfo.cs" />
+    <Compile Include="ExceptionReporter.cs" />
     <Compile Include="GitHubWrapper.cs" />
     <Compile Include="IGitHubWrapper.cs" />
+    <Compile Include="MsiUtilities.cs" />
     <Compile Include="VersionSwitcherWrapper.cs" />
     <Compile Include="OverridableConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

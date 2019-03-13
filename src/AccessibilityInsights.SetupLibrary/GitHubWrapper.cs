@@ -12,13 +12,13 @@ namespace AccessibilityInsights.SetupLibrary
     /// </summary>
     public class GitHubWrapper : IGitHubWrapper
     {
-        private readonly Action<Exception> _exceptionReporter;
+        private readonly IExceptionReporter _exceptionReporter;
         private readonly Uri _configFileUri;
         private readonly TimeSpan _timeout;
 
         private const string DefaultConfigFileUrl = "https://www.github.com/Microsoft/accessibility-insights-windows/blob/Control/Channels/Production/release_info.json?raw=true";
 
-        public GitHubWrapper(Action<Exception> exceptionReporter)
+        public GitHubWrapper(IExceptionReporter exceptionReporter)
         {
             const double defaultTimeout = 60.0;
             OverridableConfig config = new OverridableConfig("GitHubWrapper.settings", exceptionReporter);

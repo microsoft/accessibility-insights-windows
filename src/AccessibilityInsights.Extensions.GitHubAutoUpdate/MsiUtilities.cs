@@ -12,25 +12,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     /// <summary>
     /// Methods to help with updates
     /// </summary>
-    internal static class UpdateMethods
+    internal static class MsiUtilities
     {
         private const string UpdateGuid = "{0D760959-F713-46C4-9A3D-4E73619EE3B5}";
-
-        /// <summary>
-        /// Starts a process to install the MSI file at the specified location
-        ///     Method returns before installation is complete
-        /// </summary>
-        /// <param name="location"></param>
-        /// <returns></returns>
-        internal static void BeginMSIInstall(string location)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = "cmd.exe";
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.Arguments = "/K timeout /t 5 & msiexec /i " + location + " /qb-";
-            p.Start();
-        }
 
         /// <summary>
         /// Returns the product version of the currently installed
