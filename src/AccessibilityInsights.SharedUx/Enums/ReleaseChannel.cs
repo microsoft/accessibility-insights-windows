@@ -9,7 +9,7 @@ namespace AccessibilityInsights.SharedUx.Enums
     public enum ReleaseChannel
     {
         Production, // Least frequent upgrades (default value)
-        Insiders,
+        Insider,
         Canary,     // Most frequent upgrades
     }
 }

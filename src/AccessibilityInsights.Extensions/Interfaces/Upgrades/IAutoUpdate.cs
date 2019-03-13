@@ -26,9 +26,9 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         Version InstalledVersion { get; }
 
         /// <summary>
-        /// The Release channel to use when fetching upgrade information
+        /// The Release channel that was used when fetching upgrade information
         /// </summary>
-        string ReleaseChannel { get; set; }
+        string ReleaseChannel { get; }
 
         /// <summary>
         /// Trigger an update. Async as it may go off-box

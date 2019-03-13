@@ -9,17 +9,38 @@ using System.IO;
 namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
-    /// Methods to help with execution of AccessibilityInsights.VersionSwitcher.exe
+    /// Methods to provide support when switching versions (upgrading or changing channels)
     /// </summary>
     public static class VersionSwitcherWrapper
     {
         /// <summary>
-        /// Download and run the specified installer
+        /// Installs a more recent version in response to an upgrade (retain the same channel)
+        /// </summary>
+        /// <param name="installerUri">The uri to the web-hosted installer</param>
+        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
+        public static bool InstallUpgrade(Uri installerUri)
+        {
+            return DownloadAndInstall(installerUri, null);
+        }
+
+        /// <summary>
+        /// Installs a different version in response to a channel change
+        /// </summary>
+        /// <param name="installerUri">The uri to the web-hosted installer</param>
+        /// <param name="newChannel">The new channel to use</param>
+        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
+        public static bool ChangeChannel(Uri installerUri, string newChannel)
+        {
+            return DownloadAndInstall(installerUri, newChannel);
+        }
+
+        /// <summary>
+        /// Private method that does the work shared between InstallUpgrade and ChangeChannel
         /// </summary>
         /// <param name="installerUrl">The uri to the web-hosted installer</param>
-        /// <param name="newChannel">The new channel to set (leave null to retain the current value)</param>
-        /// <returns>true if the process started successfully, false if not</returns>
-        public static bool DownloadAndRun(Uri installerUrl, string newChannel)
+        /// <param name="newChannel">If not null, the new channel to select</param>
+        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
+        private static bool DownloadAndInstall(Uri installerUri, string newChannel)
         {
             List<FileStream> fileLocks = new List<FileStream>();
             try
@@ -32,7 +53,7 @@ namespace AccessibilityInsights.SetupLibrary
                     ProcessStartInfo start = new ProcessStartInfo
                     {
                         FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
-                        Arguments = GetAppArguments(installerUrl, newChannel)
+                        Arguments = GetVersionSwitcherArguments(installerUri, newChannel)
                     };
                     return Process.Start(start).Id != 0;
                 }
@@ -109,7 +130,12 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Find the folder where the Version Switcher is installed (based on the File.Open from the registry)
+        /// Extract the path to the installed app by parsing the registered verb to open a file.
+        /// This verb is a string in the following format:
+        /// "C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe" "%1"
+        ///
+        /// We want the following as our output:
+        /// C:\Program Files (x86)\AccessibilityInsights\1.1\VersionSwitcher
         /// </summary>
         private static string GetInstalledVersionSwitcherFolder()
         {
@@ -134,17 +160,20 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Create the command line to pass to the Version Switcher
+        /// Create the arguments to pass to the Version Switcher process
         /// </summary>
-        /// <param name="installerUrl">Where the installer lives</param>
-        /// <param name="newChannel">The new channel (null if not changing)</param>
-        private static string GetAppArguments(Uri installerUrl, string newChannel)
+        /// <param name="installerUri">The uri to the web-hosted installer</param>
+        /// <param name="newChannel">If not null, the new channel to select</param>
+        private static string GetVersionSwitcherArguments(Uri installerUri, string newChannel)
         {
-            if (String.IsNullOrEmpty(newChannel))
+            string arguments = installerUri.ToString();
+
+            if (newChannel != null)
             {
-                return installerUrl.ToString();
+                arguments += " " + newChannel;
             }
-            return installerUrl.ToString() + " " + newChannel;
+
+            return arguments;
         }
     }
 }

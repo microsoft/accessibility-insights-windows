@@ -49,11 +49,11 @@ namespace AccessibilityInsights.SetupLibrary
         /// Given a stream containing a config file, try to find a specific channel
         /// </summary>
         /// <param name="stream">The stream containing the config file</param>
-        /// <param name="requestedChannel">The channel being sought</param>
+        /// <param name="releaseChannel">The release channel to find</param>
         /// <param name="channelInfo">The ChannelInfo that was located</param>
         /// <param name="exceptionReporter">Called to report exceptions</param>
         /// <returns>true if valid data was found, otherwise false</returns>
-        public static bool TryGetChannelFromStream(Stream stream, string requestedChannel, out ChannelInfo channelInfo, IExceptionReporter exceptionReporter)
+        public static bool TryGetChannelFromStream(Stream stream, string releaseChannel, out ChannelInfo channelInfo, IExceptionReporter exceptionReporter)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace AccessibilityInsights.SetupLibrary
                 string channelString = reader.ReadToEnd();
                 Dictionary<string, ChannelInfo> convertedData = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
 
-                if (convertedData.TryGetValue(requestedChannel, out ChannelInfo rawChannelInfo) &&
+                if (convertedData.TryGetValue(releaseChannel, out ChannelInfo rawChannelInfo) &&
                     rawChannelInfo.IsValid)
                 {
                     channelInfo = rawChannelInfo;
