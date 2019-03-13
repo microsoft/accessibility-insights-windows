@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         Version InstalledVersion { get; }
 
         /// <summary>
-        /// The Release cadence to use when fetching upgrade information
+        /// The Release channel to use when fetching upgrade information
         /// </summary>
         string ReleaseChannel { get; set; }
 

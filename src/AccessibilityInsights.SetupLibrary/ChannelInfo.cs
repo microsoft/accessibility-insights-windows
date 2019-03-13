@@ -16,13 +16,13 @@ namespace AccessibilityInsights.SetupLibrary
     public class ChannelInfo
     {
         /// <summary>
-        /// The most recent version for this release cadence
+        /// The most recent version for this release channel
         /// </summary>
         [JsonProperty(PropertyName = "current_version")]
         public Version CurrentVersion { get; set; }
 
         /// <summary>
-        /// The minimum required version for this release cadence
+        /// The minimum required version for this release channel
         /// </summary>
         [JsonProperty(PropertyName = "minimum_version")]
         public Version MinimumVersion { get; set; }
@@ -43,8 +43,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// Indicates if the object has values for all fields
         /// </summary>
         [JsonIgnore]
-        public bool IsValid => CurrentVersion != null && MinimumVersion != null && InstallAsset != null && ReleaseNotesAsset != null;
-
+        public bool IsValid => CurrentVersion != null && MinimumVersion != null && CurrentVersion >= MinimumVersion && InstallAsset != null && ReleaseNotesAsset != null;
 
         /// <summary>
         /// Given a stream containing a config file, try to find a specific channel
@@ -52,6 +51,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <param name="stream">The stream containing the config file</param>
         /// <param name="requestedChannel">The channel being sought</param>
         /// <param name="channelInfo">The ChannelInfo that was located</param>
+        /// <param name="exceptionReporter">Called to report exceptions</param>
         /// <returns>true if valid data was found, otherwise false</returns>
         public static bool TryGetChannelFromStream(Stream stream, string requestedChannel, out ChannelInfo channelInfo, Action<Exception> exceptionReporter)
         {

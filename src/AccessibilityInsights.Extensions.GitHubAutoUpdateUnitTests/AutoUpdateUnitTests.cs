@@ -6,7 +6,6 @@ using AccessibilityInsights.SetupLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
-using System.IO;
 using System.Threading;
 
 namespace Extensions.GitHubAutoUpdateUnitTests
@@ -15,80 +14,59 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     public class AutoUpdateUnitTests
     {
         private const string TestInstalledVersion = "1.1.1234";
-        private const string InsiderReleaseChannel = "insider";
+        private const string UplevelVersion = "1.1.1260";
+        private const string DefaultReleaseChannel = "default";
 
-        private static readonly IGitHubWrapper MinimalGitHubWrapper = BuildGitHubWrapper().Object;
+        private static readonly IGitHubWrapper InertGitHubWrapper = new Mock<IGitHubWrapper>(MockBehavior.Strict).Object;
+        private static readonly AutoUpdate.ChannelInfoProvider InertChannelInfoProvider =
+            BuildChannelInfoProvider().Object;
 
-        private const string UptionalUpgradeDataForDefaultRequiredUpdateForInsider =
-@"{
-  ""insider"": {
-    ""current_version"": ""1.1.1330"",
-    ""minimum_version"": ""1.1.1300"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1330/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1330/releasenotes.html""
-    },
-  ""default"": {
-    ""current_version"": ""1.1.1250"",
-    ""minimum_version"": ""1.1.1000"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1250/releasenotes.html""
-  }
-}";
-
-        private const string RequiredUpgradeDataForDefaultAndInsider =
-@"{
-  ""insider"": {
-    ""current_version"": ""1.1.1330"",
-    ""minimum_version"": ""1.1.1000"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
-    },
-  ""default"": {
-    ""current_version"": ""1.1.1250"",
-    ""minimum_version"": ""1.1.1240"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1250/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1250/releasenotes.html""
-  }
-}";
-
-        private const string CurrentUpgradeDataForDefaultOptionalUpgradeForInsider =
-@"{
-  ""insider"": {
-    ""current_version"": ""1.1.1330"",
-    ""minimum_version"": ""1.1.1000"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1300/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1300/releasenotes.html""
-    },
-  ""default"": {
-    ""current_version"": ""1.1.1234"",
-    ""minimum_version"": ""1.1.1000"",
-    ""installer_url"": ""https://somehost.com/somepath/1.1.1234/installer.msi"",
-    ""release_notes_url"": ""https://somehost.com/somepath/1.1.1234/releasenotes.html""
-  }
-}";
-
-        private static Mock<IGitHubWrapper> BuildGitHubWrapper(string channelInfoString = null)
+        private static readonly ChannelInfo NoUpgradeChannelInfo = new ChannelInfo
         {
-            Mock<IGitHubWrapper> wrapperMock = new Mock<IGitHubWrapper>(MockBehavior.Strict);
+            CurrentVersion = new Version(TestInstalledVersion),
+            MinimumVersion = new Version(TestInstalledVersion),
+            InstallAsset = GetInstallerPath(TestInstalledVersion),
+            ReleaseNotesAsset = GetReleaseNotesPath(TestInstalledVersion)
+        };
 
-            if (channelInfoString == null)
+        private static readonly ChannelInfo OptionalUpgradeChannelInfo = new ChannelInfo
+        {
+            CurrentVersion = new Version(UplevelVersion),
+            MinimumVersion = new Version(TestInstalledVersion),
+            InstallAsset = GetInstallerPath(UplevelVersion),
+            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion)
+        };
+
+        private static readonly ChannelInfo RequiredUpgradeChannelInfo = new ChannelInfo
+        {
+            CurrentVersion = new Version(UplevelVersion),
+            MinimumVersion = new Version(UplevelVersion),
+            InstallAsset = GetInstallerPath(UplevelVersion),
+            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion)
+        };
+
+        private static string GetInstallerPath(string version)
+        {
+            return "https://www.mywebsite.com/" + version + "/installer.msi";
+        }
+
+        private static string GetReleaseNotesPath(string version)
+        {
+            return "https://www.mywebsite.com/" + version + "/release_notes.md";
+        }
+
+        private static Mock<AutoUpdate.ChannelInfoProvider> BuildChannelInfoProvider(string expectedChannel = null,
+            ChannelInfo channelInfo = null)
+        {
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock =
+                new Mock<AutoUpdate.ChannelInfoProvider>(MockBehavior.Strict);
+
+            if (expectedChannel != null)
             {
-                wrapperMock.Setup(x => x.TryGetChannelInfo(It.IsAny<Stream>()))
-                    .Returns(false);
-            }
-            else
-            {
-                wrapperMock.Setup(x => x.TryGetChannelInfo(It.IsAny<Stream>()))
-                    .Callback<Stream>((stream) =>
-                    {
-                        StreamWriter writer = new StreamWriter(stream);
-                        writer.Write(channelInfoString);
-                        writer.Flush();
-                    })
-                    .Returns(true);
+                providerMock.Setup(x => x(InertGitHubWrapper, expectedChannel, out channelInfo)).Returns(channelInfo != null);
             }
 
-            return wrapperMock;
+            return providerMock;
         }
 
         [TestMethod]
@@ -96,18 +74,18 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         public void ReleaseChannel_DefaultsToExpectedValue()
         {
             IAutoUpdate update = new AutoUpdate();
-            Assert.AreEqual("default", update.ReleaseChannel);
+            Assert.AreEqual(DefaultReleaseChannel, update.ReleaseChannel);
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void UpdateOptionAsync_UnableToGetInstalledVersion_ReturnsUnknown_FieldsAreNull()
         {
-            AutoUpdate update = new AutoUpdate(MinimalGitHubWrapper, () => "blah");
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => "blah", InertChannelInfoProvider);
             Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
             Assert.IsNull(update.InstalledVersion);
-            Assert.IsNull(update.LatestVersion);
-            Assert.IsNull(update.MinimumVersion);
+            Assert.IsNull(update.CurrentChannelVersion);
+            Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
         }
 
@@ -115,127 +93,115 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_UnableToGetConfig_ReturnsUnknown_FieldsAreNull()
         {
-            AutoUpdate update = new AutoUpdate(MinimalGitHubWrapper, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.IsNull(update.LatestVersion);
-            Assert.IsNull(update.MinimumVersion);
+            Assert.IsNull(update.CurrentChannelVersion);
+            Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigIsInvalid_ReturnsUnknown_FieldsAreNull()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: "blah");
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel,
+                new ChannelInfo
+                {
+                    CurrentVersion = new Version(UplevelVersion)
+                });  // Config is only partially set, so it's invalid
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.IsNull(update.LatestVersion);
-            Assert.IsNull(update.MinimumVersion);
+            Assert.IsNull(update.CurrentChannelVersion);
+            Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
-            githubMock.VerifyAll();
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
-        public void UpdateOptionAsync_ReleaseChannelIsNotFound_ReturnsUnknown_FieldsAreNull()
+        public void UpdateOptionAsync_ConfigShowsNoUpgrade_ReturnsCurrent_ReturnsNoUpgrade()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
-            update.ReleaseChannel = "blah";
-            Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
-            Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.IsNull(update.LatestVersion);
-            Assert.IsNull(update.MinimumVersion);
-            Assert.IsNull(update.ReleaseNotesUri);
-            githubMock.VerifyAll();
-        }
-
-        [TestMethod]
-        [Timeout(2000)]
-        public void UpdateOptionAsync_SearchWithReleaseChannel_FindsCorrectData()
-        {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: UptionalUpgradeDataForDefaultRequiredUpdateForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
-            update.ReleaseChannel = InsiderReleaseChannel;
-            Assert.AreEqual(AutoUpdateOption.RequiredUpgrade, update.UpdateOptionAsync.Result);
-            Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.AreEqual(new Version(1, 1, 1330), update.LatestVersion);
-            Assert.AreEqual(new Version(1, 1, 1300), update.MinimumVersion);
-            Assert.AreEqual("https://somehost.com/somepath/1.1.1330/releasenotes.html", update.ReleaseNotesUri.ToString());
-            githubMock.VerifyAll();
-        }
-
-        [TestMethod]
-        [Timeout(2000)]
-        public void UpdateOptionAsync_ConfigShowsNoUpgrade_ReturnsCurrent_FieldsAreCorrect()
-        {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, NoUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.Current, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.AreEqual(new Version(1, 1, 1234), update.LatestVersion);
-            Assert.AreEqual(new Version(1, 1, 1000), update.MinimumVersion);
-            Assert.AreEqual("https://somehost.com/somepath/1.1.1234/releasenotes.html", update.ReleaseNotesUri.ToString());
-            githubMock.VerifyAll();
+            Assert.AreEqual(NoUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
+            Assert.AreEqual(NoUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
+            Assert.AreEqual(NoUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigShowsOptionalUpgrade_ReturnsOptionalUpgrade()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: UptionalUpgradeDataForDefaultRequiredUpdateForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, OptionalUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.OptionalUpgrade, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.AreEqual(new Version(1, 1, 1250), update.LatestVersion);
-            Assert.AreEqual(new Version(1, 1, 1000), update.MinimumVersion);
-            Assert.AreEqual("https://somehost.com/somepath/1.1.1250/releasenotes.html", update.ReleaseNotesUri.ToString());
-            githubMock.VerifyAll();
+            Assert.AreEqual(OptionalUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
+            Assert.AreEqual(OptionalUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
+            Assert.AreEqual(OptionalUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void UpdateOptionAsync_ConfigShowsRequiredUpgrade_ReturnsRequiredUpgrade()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: RequiredUpgradeDataForDefaultAndInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, RequiredUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.RequiredUpgrade, update.UpdateOptionAsync.Result);
             Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
-            Assert.AreEqual(new Version(1, 1, 1250), update.LatestVersion);
-            Assert.AreEqual(new Version(1, 1, 1240), update.MinimumVersion);
-            Assert.AreEqual("https://somehost.com/somepath/1.1.1250/releasenotes.html", update.ReleaseNotesUri.ToString());
-            githubMock.VerifyAll();
+            Assert.AreEqual(RequiredUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
+            Assert.AreEqual(RequiredUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
+            Assert.AreEqual(RequiredUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
-        public void UpdateAsync_UnableToGetConfig_ReturnsDownloadFailed()
+        public void UpdateAsync_ConfigNotAvailable_ReturnsNoUpgradeAvailable()
         {
-            AutoUpdate update = new AutoUpdate(MinimalGitHubWrapper, () => TestInstalledVersion);
-            Assert.AreEqual(UpdateResult.Unknown, update.UpdateAsync().Result);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
+            Assert.AreEqual(UpdateResult.NoUpdateAvailable, update.UpdateAsync().Result);
+            providerMock.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        public void UpdateAsync_ConfigShowsNoUpgrade_ReturnsNoUpgradeAvailable()
+        {
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, NoUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
+            Assert.AreEqual(UpdateResult.NoUpdateAvailable, update.UpdateAsync().Result);
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void UpdateOptionAsync_InitializationTimeIsNotZero()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, NoUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
             // We have to wait for initialization to complete
             update.UpdateOptionAsync.Wait();
             Assert.IsTrue(update.GetInitializationTime().HasValue);
             Assert.AreNotEqual(TimeSpan.Zero, update.GetInitializationTime().Value);
-            githubMock.VerifyAll();
+            providerMock.VerifyAll();
         }
 
         [TestMethod]
-        //[Timeout(2000)]
-        public void UpdateOptionAsync_UpdateTimeIsNotZero()
+        [Timeout(2000)]
+        public void UpdateAsync_UpdateTimeIsNotZero()
         {
-            Mock<IGitHubWrapper> githubMock = BuildGitHubWrapper(channelInfoString: CurrentUpgradeDataForDefaultOptionalUpgradeForInsider);
-            AutoUpdate update = new AutoUpdate(githubMock.Object, () => TestInstalledVersion);
+            Mock<AutoUpdate.ChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, NoUpgradeChannelInfo);
+            AutoUpdate update = new AutoUpdate(InertGitHubWrapper, () => TestInstalledVersion, providerMock.Object);
 
             // ensure that the UpdateTime is 0 before calling UpdateAsync
             TimeSpan? updateTime = update.GetUpdateTime();
@@ -248,7 +214,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             updateTime = update.GetUpdateTime();
             Assert.IsTrue(updateTime.HasValue);
             Assert.AreNotEqual(TimeSpan.Zero, updateTime.Value);
-            githubMock.VerifyAll();
+            providerMock.VerifyAll();
         }
     }
 }
