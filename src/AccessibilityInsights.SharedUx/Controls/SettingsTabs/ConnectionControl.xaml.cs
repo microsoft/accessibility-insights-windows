@@ -121,6 +121,32 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             if (selectServerGrid.Children.Count == 4) {
                 selectServerGrid.Children.RemoveAt(3);
+            //if (InteractionAllowed)
+            //{
+            //    if (Uri.IsWellFormedUriString(ServerComboBox.Text, UriKind.Absolute))
+            //    {
+            //        var serverUri = ServerComboBox.Text.ToUri();
+
+            //        // block clicking "next" until login request is done
+            //        ToggleLoading(true);
+            //        HandleLoginRequest(serverUri, true, () =>
+            //        {
+            //            if (BugReporter.IsConnected)
+            //            {
+            //                ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection = BugReporter.CreateConnectionInfo(serverUri, null, null);
+            //                ChangeStates(States.EditingServer);
+            //            }
+            //            else
+            //            {
+            //                ToggleLoading(false);
+            //                ServerComboBox.Focus();
+            //            }
+            //        });
+            //    }
+            //    else
+            //    {
+            //        MessageDialog.Show(Properties.Resources.ADO_URL_Fromat_Message);
+            //    }
             }
             TextBlock exampleGrid = new TextBlock();
             exampleGrid.Text = "Ashwin" + DateTime.Now.ToLongTimeString();

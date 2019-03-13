@@ -79,6 +79,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to URL format is not valid. Example URL: https://dev.azure.com/fabrikam.
+        /// </summary>
+        public static string ADO_URL_Fromat_Message {
+            get {
+                return ResourceManager.GetString("ADO_URL_Fromat_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The hotkey you assigned is duplicated with the existing one. please set a new hotkey..
         /// </summary>
         public static string ApplicationSettingsControl_btnToggleHk_Click_The_hotkey_you_assigned_is_duplicated_with_the_existing_one_please_set_a_new_hotkey {
