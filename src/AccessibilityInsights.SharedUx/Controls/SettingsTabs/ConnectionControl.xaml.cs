@@ -129,10 +129,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             return issueReportingOption;
         }
 
+        //AK TODO RENAME THIS
         private void RBMetLines_Checked(object sender, RoutedEventArgs e)
         {
-            if (selectServerGrid.Children.Count == 4) {
-                selectServerGrid.Children.RemoveAt(3);
+            if (issueConfigurationControl != null) {
+                selectServerGrid.Children.Remove(issueConfigurationControl);
+                issueConfigurationControl = null;
                 UpdateSaveButton();
             //if (InteractionAllowed)
             //{
@@ -164,15 +166,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             //TextBlock exampleGrid = new TextBlock();
             //exampleGrid.Text = "Ashwin" + DateTime.Now.ToLongTimeString();
             Guid clickedButton  = (Guid)((RadioButton)sender).Tag;
-            BugReporter.GetIssueReporters().TryGetValue(clickedButton, out selectedIssueReporter);
+            IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().TryGetValue(clickedButton, out selectedIssueReporter);
             issueConfigurationControl = selectedIssueReporter.RetrieveConfigurationControl(this.UpdateSaveButton);
             Grid.SetRow(issueConfigurationControl, 3);
             selectServerGrid.Children.Add(issueConfigurationControl);
-
-            //TextBlock exampleGrid = new TextBlock();
-            //exampleGrid.Text = "Ashwin";
-            //Grid.SetRow(exampleGrid, 3);
-            //selectServerGrid.Children.Add(exampleGrid);
         }
 
         /// <summary>
@@ -182,20 +179,19 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public void UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            if (issueConfigurationControl.CanSave) {
+            if (issueConfigurationControl.CanSave)
+            {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
                 string seralizedConfigs = configuration.IssueReporterSerializedConfigs;
-                string newConfigs = issueConfigurationControl.OnSave();
                 Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
+
+                string newConfigs = issueConfigurationControl.OnSave();
+
                 configs[selectedIssueReporter.StableIdentifier] = newConfigs;
                 configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+                IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
+                issueConfigurationControl.OnDismiss();
             }
-                          //var connection = GetConnectionFromTreeView();
-            //if (connection != null)
-            //{
-            //    configuration.CachedConnections?.AddToCache(connection);
-            //    configuration.SavedConnection = connection;
-            //}
         }
 
         /// <summary>

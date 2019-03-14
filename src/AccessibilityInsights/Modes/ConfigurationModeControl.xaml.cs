@@ -154,6 +154,7 @@ namespace AccessibilityInsights.Modes
             {
                 MainWin.HandleConfigurationChanged(diff);
             }
+            MainWin.TransitionToSelectActionMode();
         }
 
         /// <summary>

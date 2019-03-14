@@ -2,6 +2,8 @@
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.SettingsTabs;
+using AccessibilityInsights.SharedUx.Settings;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -31,13 +33,27 @@ namespace AccessibilityInsights.SharedUx.FileBug
 
         private IssueReporterManager()
         {
+            // Get all serialized configs
+            ConfigurationModel configs = ConfigurationManager.GetDefaultInstance().AppConfig;
+            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
+            Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+
             List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReporting;
             foreach (IIssueReporting issueReporter in IssueReportingOptions)
             {
                 try
                 {
                     if (issueReporter != null)
+                    {
                         IssueReportingOptionsDict.Add(issueReporter.StableIdentifier, issueReporter);
+
+                        // If config exists, restore it.
+                        configsDictionary.TryGetValue(issueReporter.StableIdentifier, out string serializedConfig);
+                        if (!string.IsNullOrWhiteSpace(serializedConfig))
+                        {
+                            issueReporter.RestoreConfigurationAsync(serializedConfig);
+                        }
+                    }
                 }
                 catch (ArgumentException ex)
                 {
@@ -47,9 +63,12 @@ namespace AccessibilityInsights.SharedUx.FileBug
             }
             TestIssueProvider TIP = new TestIssueProvider();
             IssueReportingOptionsDict.Add(TIP.StableIdentifier, TIP);
+
+            TestIssueProvider2 TIP2 = new TestIssueProvider2();
+            IssueReportingOptionsDict.Add(TIP2.StableIdentifier, TIP2);
         }
 
-        public IReadOnlyDictionary<Guid, IIssueReporting> GetIssueFilingOptionsDict()
+        public Dictionary<Guid, IIssueReporting> GetIssueFilingOptionsDict()
         {
             return IssueReportingOptionsDict;
         }

@@ -95,6 +95,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\SettingsTabs\TestIssueConfigurationControl2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\SettingsTabs\TestIssueConfigurationControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -285,9 +289,13 @@
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingsTabs\TestIssueConfigurationControl2.xaml.cs">
+      <DependentUpon>TestIssueConfigurationControl2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\SettingsTabs\TestIssueConfigurationControl.xaml.cs">
       <DependentUpon>TestIssueConfigurationControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingsTabs\TestIssueProvider2.cs" />
     <Compile Include="Controls\SettingsTabs\TestIssueProvider.cs" />
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="FileBug\BugFileForm.cs">

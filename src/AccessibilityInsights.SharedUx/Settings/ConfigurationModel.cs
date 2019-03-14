@@ -187,7 +187,6 @@ namespace AccessibilityInsights.SharedUx.Settings
             set => SetDataValue<string>(keyIssueReporterSerializedConfig, value);
         }
 
-
         /// <summary>
         /// Serialized form of SavedConnection
         /// </summary>

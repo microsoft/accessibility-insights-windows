@@ -37,9 +37,9 @@ namespace AccessibilityInsights.SharedUx.FileBug
         //    return Task.CompletedTask;
         //}
 
-        public static IReadOnlyDictionary<Guid, IIssueReporting> GetIssueReporters() {
+        public static Dictionary<Guid, IIssueReporting> GetIssueReporters() {
             return IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
-        } 
+        }
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
         {
