@@ -10,56 +10,30 @@ namespace AccessibilityInsights.VersionSwitcher
 {
     internal static class InstallHelper
     {
-        internal static bool InstallNewVersion(string msiPath)
+        internal static void InstallNewVersion(string msiPath)
         {
-            try
-            {
-                Trace.TraceInformation("Attempting to install from \"{0}\"", msiPath);
-                Stopwatch stopwatch = Stopwatch.StartNew();
-                Installer.SetInternalUI(InstallUIOptions.Silent);
-                Installer.InstallProduct(msiPath, "");
-                stopwatch.Stop();
-                Trace.TraceInformation("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
-                return true;
-            }
-            catch (ArgumentException e)
-            {
-                Trace.TraceError("Caught ArgumentException: " + e.ParamName + " " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Trace.TraceError("Caught Exception: " + e);
-            }
-            return false;
+            Trace.TraceInformation("Attempting to install from \"{0}\"", msiPath);
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            Installer.SetInternalUI(InstallUIOptions.Silent);
+            Installer.InstallProduct(msiPath, "");
+            stopwatch.Stop();
+            Trace.TraceInformation("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
         }
 
-        internal static bool DeleteOldVersion(string productName)
+        internal static void DeleteOldVersion(string productName)
         {
-            try
-            {
-                Trace.TraceInformation("Attempting to find product: \"{0}\"", productName);
-                Stopwatch stopwatch = Stopwatch.StartNew();
-                string productId = FindInstalledProductKey(productName).ToString("B", CultureInfo.InvariantCulture);
-                stopwatch.Stop();
+            Trace.TraceInformation("Attempting to find product: \"{0}\"", productName);
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            string productId = FindInstalledProductKey(productName).ToString("B", CultureInfo.InvariantCulture);
+            stopwatch.Stop();
 
-                Trace.TraceInformation("Found productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
+            Trace.TraceInformation("Found productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
 
-                stopwatch.Restart();
-                Installer.SetInternalUI(InstallUIOptions.Silent);
-                Installer.ConfigureProduct(productId, 0, InstallState.Absent, "");
-                stopwatch.Start();
-                Trace.TraceInformation("Deleted productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
-                return true;
-            }
-            catch (ArgumentException e)
-            {
-                Trace.TraceError("Caught ArgumentException: " + e.ParamName + " " + e.Message);
-            }
-            catch (Exception e)
-            {
-                Trace.TraceError("Caught Exception: " + e);
-            }
-            return false;
+            stopwatch.Restart();
+            Installer.SetInternalUI(InstallUIOptions.Silent);
+            Installer.ConfigureProduct(productId, 0, InstallState.Absent, "");
+            stopwatch.Start();
+            Trace.TraceInformation("Deleted productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
         }
 
         private static Guid FindInstalledProductKey(string productName)

@@ -13,33 +13,23 @@ namespace AccessibilityInsights.SetupLibrary.REST
     public static class GitHubClient
     {
         /// <summary>
-        /// Given a Uri, try to get its contents into a stream
+        /// Load the contents of the given Uri into a Stream
         /// </summary>
-        /// <returns>true if the call succeeded</returns>
-        public static bool TryGet(Uri uri, Stream stream, TimeSpan timeout, IExceptionReporter exceptionReporter)
+        public static void LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout)
         {
-            try
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
+            request.Timeout = (int)timeout.TotalMilliseconds;
+            request.AutomaticDecompression = DecompressionMethods.GZip;
+            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
             {
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
-                request.Timeout = (int)timeout.TotalMilliseconds;
-                request.AutomaticDecompression = DecompressionMethods.GZip;
-                using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+                if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        response.GetResponseStream().CopyTo(stream);
-                        return true;
-                    }
-                    return false;
+                    response.GetResponseStream().CopyTo(stream);
+                    return;
                 }
             }
-            catch (Exception e)
-            {
-                exceptionReporter.ReportException(e);
-                System.Diagnostics.Trace.WriteLine("AccessibilityInsights - exception in GET request: "
-                    + e.ToString());
-                return false;
-            }
+
+            throw new ArgumentException("Unable to get contents from " + uri.ToString(), nameof(uri));
         }
     }
 }

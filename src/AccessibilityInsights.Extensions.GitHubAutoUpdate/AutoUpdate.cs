@@ -205,15 +205,17 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <returns>true if the data was located, otherwise false</returns>
         private static bool TryGetChannelInfo(IGitHubWrapper gitHub, string releaseChannel, out ChannelInfo channelInfo)
         {
-            if (!string.IsNullOrEmpty(releaseChannel))
+            try
             {
                 using (Stream stream = new MemoryStream())
                 {
-                    if (gitHub.TryGetChannelInfo(stream))
-                    {
-                        return ChannelInfo.TryGetChannelFromStream(stream, releaseChannel, out channelInfo, ExceptionReporter);
-                    }
+                    gitHub.LoadChannelInfoIntoStream(releaseChannel, stream);
+                    return ChannelInfo.TryGetChannelFromStream(stream, releaseChannel, out channelInfo, ExceptionReporter);
                 }
+            }
+            catch (Exception e)
+            {
+                ExceptionReporter.ReportException(e);
             }
 
             // Default values

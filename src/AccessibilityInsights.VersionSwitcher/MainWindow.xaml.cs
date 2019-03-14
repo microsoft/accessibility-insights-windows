@@ -2,8 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SetupLibrary.REST;
+using Microsoft.Deployment.WindowsInstaller;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Windows;
 
@@ -30,8 +32,30 @@ namespace AccessibilityInsights.VersionSwitcher
                 string localFile = DownloadFromUriToLocalFile(parameters);
                 using (ValidateLocalFile(localFile))
                 {
-                    InstallHelper.DeleteOldVersion(ProductName);
-                    InstallHelper.InstallNewVersion(parameters.MsiPath);
+                    using (Transaction transaction = new Transaction("transaction", TransactionAttributes.ChainEmbeddedUI))
+                    {
+                        Stopwatch stopwatch = Stopwatch.StartNew();
+                        bool success = false;
+                        try
+                        {
+                            InstallHelper.DeleteOldVersion(ProductName);
+                            InstallHelper.InstallNewVersion(parameters.MsiPath);
+                            transaction.Commit();
+                            success = true;
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                        finally
+                        {
+                            stopwatch.Stop();
+                            string message = string.Format(CultureInfo.InvariantCulture, "VersionSwitcher {0} in {1} ms",
+                                success ? "succeeded" : "failed", stopwatch.ElapsedMilliseconds);
+                            Trace.WriteLine(message);
+                        }
+                    }
                 }
                 UpdateConfigWithNewRing(parameters.NewChannel);
                 LaunchInstalledApp();
@@ -78,7 +102,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    return GitHubClient.TryGet(new Uri(installerUri), stream, timeout, ExceptionReporter);
+                    GitHubClient.LoadUriContentsIntoStream(new Uri(installerUri), stream, timeout);
                 }
                 catch (Exception e)
                 {

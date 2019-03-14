@@ -12,18 +12,17 @@ namespace AccessibilityInsights.SetupLibrary
     public interface IGitHubWrapper
     {
         /// <summary>
-        /// Given a link to an asset, download its contents into the provided stream
+        /// Given a link to an asset, load its contents into the provided Stream
         /// </summary>
         /// <param name="uri">Uri to the specific asset (assumed from metadata)</param>
         /// <param name="stream">Where the contents of the asset should be put</param>
-        /// <returns>true if the call succeeded</returns>
-        bool TryGetSpecificAsset(Uri uri, Stream stream);
+        void LoadUriContentsIntoStream(Uri uri, Stream stream);
 
         /// <summary>
-        /// Attempt to get the Channel Info. This will be pulled from an online source
+        /// Load the channel-specific channel information file into the Stream
         /// </summary>
+        /// <param name="releaseChannel">The channel being requested</param>
         /// <param name="stream">The stream to populate</param>
-        /// <returns>true if the config was successfully read</returns>
-        bool TryGetChannelInfo(Stream stream);
+        void LoadChannelInfoIntoStream(string releaseChannel, Stream stream);
     }
 }

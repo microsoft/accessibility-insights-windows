@@ -94,18 +94,6 @@ namespace Extensions.GitHubAutoUpdateUnitTests
 
         [TestMethod]
         [Timeout(2000)]
-        public void UpdateOptionAsync_ReleaseChannelIsEmpty_ReturnsUnknown_FieldsAreNull()
-        {
-            AutoUpdate update = BuildAutoUpdate(testInstalledVersion: "blah");
-            Assert.AreEqual(AutoUpdateOption.Unknown, update.UpdateOptionAsync.Result);
-            Assert.IsNull(update.InstalledVersion);
-            Assert.IsNull(update.CurrentChannelVersion);
-            Assert.IsNull(update.MinimumChannelVersion);
-            Assert.IsNull(update.ReleaseNotesUri);
-        }
-
-        [TestMethod]
-        [Timeout(2000)]
         public void UpdateOptionAsync_UnableToGetInstalledVersion_ReturnsUnknown_FieldsAreNull()
         {
             AutoUpdate update = BuildAutoUpdate(testInstalledVersion: "blah");
