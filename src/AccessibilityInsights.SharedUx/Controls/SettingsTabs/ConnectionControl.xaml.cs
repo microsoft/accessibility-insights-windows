@@ -2,10 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,7 +45,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// Represents whether user should be allowed to click "disconnect" or "refresh"
         ///     - used to block while loading treeview
         /// </summary>
-        private bool InteractionAllowed { get; set; } = true;
+        //private bool InteractionAllowed { get; set; } = true;
 
         /// <summary>
         /// Delegates
@@ -53,6 +55,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public Action<Action> HandleLogoutRequest { get; set; }
         public Action<bool> ShowSaveButton { get; set; }
 
+        IssueConfigurationControl issueConfigurationControl = null;
+        IIssueReporting selectedIssueReporter = null;
 
         ///// <summary>
         ///// Avatar view model
@@ -81,37 +85,45 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// the MRU server or to the currently connected server
         /// </summary>
         /// <param name="configuration"></param>
-        public void UpdateFromConfig(ConfigurationModel configuration)
+        public void UpdateFromConfig()
         {
             // This needs to be replaced by whatever logic we need to populate the selected extensions UI
-            if (InteractionAllowed) // in case team projects were already being loaded (todo: cancel old task)
-            {
+            //if (InteractionAllowed) // in case team projects were already being loaded (todo: cancel old task)
+            //{
                 //this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections().ToList();
                 //IConnectionInfo connectionInfo = BugReporter.IsConnected ?
                 //    ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection :
                 //    configuration.CachedConnections?.GetMostRecentConnection();
                 //this.ServerComboBox.Text = connectionInfo?.ServerUri == null ? string.Empty : connectionInfo.ServerUri.AbsoluteUri;
-                var a =configuration.AppVersion;
+                //var a =configuration.AppVersion;
                 InitializeView();
-            }
+            //}
         }
 
         public void onLoad(Object sender, RoutedEventArgs e) {
             System.Diagnostics.Trace.WriteLine("AK ============================> Loaded");
-            List<string> options = BugReporter.getIssueReporters();
-            availableIssueReporters.Children.Clear();
-            foreach (string reporter in options)
-            {
-                RadioButton rb = CreateRadioButton(reporter);
-                availableIssueReporters.Children.Add(rb);
-            }
+            //IReadOnlyDictionary<Guid,IIssueReporting> options = BugReporter.GetIssueReporters();
+            //availableIssueReporters.Children.Clear();
+            //Guid selectedGUID = BugReporter.IssueReporter != null ? BugReporter.IssueReporter.StableIdentifier : default(Guid);
+            //foreach (var reporter in options)
+            //{
+            //    RadioButton rb = CreateRadioButton(reporter.Value);
+            //    if (reporter.Key.Equals(selectedGUID))
+            //    {
+            //        rb.IsChecked = true;
+            //        issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
+            //        Grid.SetRow(issueConfigurationControl, 3);
+            //        selectServerGrid.Children.Add(issueConfigurationControl);
+            //    }
+            //    availableIssueReporters.Children.Add(rb);
+            //}
         }
 
-        private RadioButton CreateRadioButton(string reporter)
+        private RadioButton CreateRadioButton(IIssueReporting reporter)
         {
             RadioButton issueReportingOption = new RadioButton();
-            issueReportingOption.Content = reporter;
-            issueReportingOption.Name = "Ashwin";
+            issueReportingOption.Content = reporter.ServiceName;
+            issueReportingOption.Tag =reporter.StableIdentifier;
             issueReportingOption.Margin = new Thickness(2, 2, 2, 2);
             issueReportingOption.Checked += RBMetLines_Checked;
             return issueReportingOption;
@@ -121,6 +133,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             if (selectServerGrid.Children.Count == 4) {
                 selectServerGrid.Children.RemoveAt(3);
+                UpdateSaveButton();
             //if (InteractionAllowed)
             //{
             //    if (Uri.IsWellFormedUriString(ServerComboBox.Text, UriKind.Absolute))
@@ -148,10 +161,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             //        MessageDialog.Show(Properties.Resources.ADO_URL_Fromat_Message);
             //    }
             }
-            TextBlock exampleGrid = new TextBlock();
-            exampleGrid.Text = "Ashwin" + DateTime.Now.ToLongTimeString();
-            Grid.SetRow(exampleGrid, 3);
-            selectServerGrid.Children.Add(exampleGrid);
+            //TextBlock exampleGrid = new TextBlock();
+            //exampleGrid.Text = "Ashwin" + DateTime.Now.ToLongTimeString();
+            Guid clickedButton  = (Guid)((RadioButton)sender).Tag;
+            BugReporter.GetIssueReporters().TryGetValue(clickedButton, out selectedIssueReporter);
+            issueConfigurationControl = selectedIssueReporter.RetrieveConfigurationControl(this.UpdateSaveButton);
+            Grid.SetRow(issueConfigurationControl, 3);
+            selectServerGrid.Children.Add(issueConfigurationControl);
 
             //TextBlock exampleGrid = new TextBlock();
             //exampleGrid.Text = "Ashwin";
@@ -166,10 +182,15 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public void UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            //remove. This is to make it compile
-            var a = this.ShowSaveButton;
-            var b = configuration.AppVersion;
-            //var connection = GetConnectionFromTreeView();
+            if (issueConfigurationControl.CanSave) {
+                configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
+                string seralizedConfigs = configuration.IssueReporterSerializedConfigs;
+                string newConfigs = issueConfigurationControl.OnSave();
+                Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
+                configs[selectedIssueReporter.StableIdentifier] = newConfigs;
+                configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+            }
+                          //var connection = GetConnectionFromTreeView();
             //if (connection != null)
             //{
             //    configuration.CachedConnections?.AddToCache(connection);
@@ -181,14 +202,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// For this control we want SaveAndClose to be enabled if any team project
         /// is selected, regardless of whether it differs from the current configuration.
         /// </summary>
-        /// <param name="configuration"></param>
-        /// <returns></returns>
-        public bool IsConfigurationChanged()
+            public bool IsConfigurationChanged()
         {
             // AK TODO Populate this.
             // remove. This is to make it compile
-            var a = this.ShowSaveButton;
-            return true;
+            return issueConfigurationControl != null ? issueConfigurationControl.CanSave : false;
             //var connection = GetConnectionFromTreeView();
             //return connection?.IsPopulated == true;
         }
@@ -264,7 +282,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             else if (state == States.EditingServer)
             {
                 //this.selectTeamGrid.Visibility = Visibility.Visible;
-                this.selectServerGrid.Visibility = Visibility.Collapsed;
 
                 // Load the team project list, show progress animation
                 //try
@@ -286,7 +303,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             else if (state == States.HasServer)
             {
                 //this.selectTeamGrid.Visibility = Visibility.Collapsed;
-                this.selectServerGrid.Visibility = Visibility.Collapsed;
+                this.selectServerGrid.Visibility = Visibility.Visible;
                 //this.selectedTeamText.Text = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection.ToString();
             }
         }
@@ -298,19 +315,23 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public void InitializeView()
         {
             // TODO - move "chose team project yet" state into server integration
-            var connection = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection;
-            if (!BugReporter.IsConnected)
+            IReadOnlyDictionary<Guid, IIssueReporting> options = BugReporter.GetIssueReporters();
+            availableIssueReporters.Children.Clear();
+            Guid selectedGUID = BugReporter.IssueReporter != null ? BugReporter.IssueReporter.StableIdentifier : default(Guid);
+            foreach (var reporter in options)
             {
-                ChangeStates(States.NoServer);
+                RadioButton rb = CreateRadioButton(reporter.Value);
+                if (reporter.Key.Equals(selectedGUID))
+                {
+                    rb.IsChecked = true;
+                    issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
+                    Grid.SetRow(issueConfigurationControl, 3);
+                    selectServerGrid.Children.Add(issueConfigurationControl);
+                }
+                availableIssueReporters.Children.Add(rb);
             }
-            else if (connection?.IsPopulated == true)
-            {
-                ChangeStates(States.HasServer);
-            }
-            else
-            {
-                ChangeStates(States.EditingServer);
-            }
+
+            this.selectServerGrid.Visibility = Visibility.Visible;
         }
 
         /// <summary>

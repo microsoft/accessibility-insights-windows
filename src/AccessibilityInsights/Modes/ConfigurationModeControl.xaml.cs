@@ -97,25 +97,25 @@ namespace AccessibilityInsights.Modes
             }
         }
 
-        /// <summary>
-        /// Redirect to main window login 
-        /// </summary>
-        /// <param name="serverUrl"></param>
-        /// <param name="prompt"></param>
-        /// <param name="callback"></param>
-        void HandleLoginRequest(Uri serverUrl = null, bool prompt = true, Action callback = null)
-        {
-            MainWin.HandleLoginRequest(serverUrl, prompt, callback);
-        }
+        ///// <summary>
+        ///// Redirect to main window login 
+        ///// </summary>
+        ///// <param name="serverUrl"></param>
+        ///// <param name="prompt"></param>
+        ///// <param name="callback"></param>
+        //void HandleLoginRequest(Uri serverUrl = null, bool prompt = true, Action callback = null)
+        //{
+        //    MainWin.HandleLoginRequest(serverUrl, prompt, callback);
+        //}
 
-        /// <summary>
-        /// Redirect to main window logout
-        /// </summary>
-        /// <param name="callback"></param>
-        void HandleLogoutRequest(Action callback = null)
-        {
-            MainWin.HandleLogoutRequest(callback);
-        }
+        ///// <summary>
+        ///// Redirect to main window logout
+        ///// </summary>
+        ///// <param name="callback"></param>
+        //void HandleLogoutRequest(Action callback = null)
+        //{
+        //    MainWin.HandleLogoutRequest(callback);
+        //}
 
         /// <summary>
         /// Check whether any configuration is changed. 
@@ -123,8 +123,9 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         private bool IsConfigurationChanged()
         {
-            return appSettingsCtrl.IsConfigurationChanged(Configuration) 
-                || connectionCtrl.IsConfigurationChanged();
+            bool app = appSettingsCtrl.IsConfigurationChanged(Configuration);
+            bool connection = connectionCtrl.IsConfigurationChanged();
+            return app || connection;
         }
 
         /// <summary>
@@ -202,8 +203,8 @@ namespace AccessibilityInsights.Modes
             this.appSettingsCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.ShowSaveButton = ShowSaveButton;
-            this.connectionCtrl.HandleLoginRequest = HandleLoginRequest;
-            this.connectionCtrl.HandleLogoutRequest = HandleLogoutRequest;
+            //this.connectionCtrl.HandleLoginRequest = HandleLoginRequest;
+            //this.connectionCtrl.HandleLogoutRequest = HandleLogoutRequest;
 
             UpdateUIFromConfig();
             this.configSnapshot = (ConfigurationModel)Configuration.Clone();
@@ -228,7 +229,7 @@ namespace AccessibilityInsights.Modes
         private void UpdateUIFromConfig()
         {
             appSettingsCtrl.UpdateFromConfig(Configuration);
-            connectionCtrl.UpdateFromConfig(Configuration);
+            connectionCtrl.UpdateFromConfig();
         }
 
         /// <summary>

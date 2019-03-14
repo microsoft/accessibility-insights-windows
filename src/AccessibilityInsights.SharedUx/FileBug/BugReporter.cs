@@ -15,11 +15,11 @@ namespace AccessibilityInsights.SharedUx.FileBug
     /// </summary>
     static public class BugReporter
     {
-        private static IIssueReporting IssueReporter = null;
+        public static IIssueReporting IssueReporter { get; set; }
 
         //Uncomment and replace with the line below this.
-        //public static bool IsEnabled => (IssueFilingManager.getIssueFilingOptionsDict() != null && IssueFilingManager.getIssueFilingOptionsDict().Any());
-        public static bool IsEnabled => true;
+        public static bool IsEnabled => (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
+        //public static bool IsEnabled => true;
 
         public static bool IsConnected => IsEnabled && (IssueReporter == null ? false : IssueReporter.IsConfigured);
 
@@ -37,8 +37,8 @@ namespace AccessibilityInsights.SharedUx.FileBug
         //    return Task.CompletedTask;
         //}
 
-        public static List<string> getIssueReporters() {
-            return new List<string>() { "Github", "Azure Devops" };
+        public static IReadOnlyDictionary<Guid, IIssueReporting> GetIssueReporters() {
+            return IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
         } 
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
@@ -47,13 +47,18 @@ namespace AccessibilityInsights.SharedUx.FileBug
             //if (IsEnabled && IssueFilingManager.SelectedIssueReporterGuid != null)
             //    return IssueReporter.RestoreConfigurationAsync(serializedConfig);
 
-            if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid == null)
+            if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid != null)
                 return IssueReporter.RestoreConfigurationAsync(serializedConfig);
             return Task.CompletedTask;
         }
 
+        // this should move to the issue reporter
         public static void SetSelectedIssueReporter(Guid issueReporterGuid) {
             IssueReporterManager.SelectedIssueReporterGuid = issueReporterGuid;
+            IReadOnlyDictionary<Guid, IIssueReporting> issuReporterss= GetIssueReporters();
+            IIssueReporting x;
+            issuReporterss.TryGetValue(issueReporterGuid, out x);
+            IssueReporter = x;
         }
 
         //public static Task<int?> AttachTestResultToBugAsync(string path, int bugId)

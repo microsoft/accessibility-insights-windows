@@ -690,39 +690,39 @@ namespace AccessibilityInsights
             HandleConfigurationModeStart(true);
         }
 
-        /// <summary>
-        /// Initialize server integration and try logging in implicitly 
-        /// to the saved connection in the configuration if it exists.
-        /// </summary>
-        private void ConnectToSavedServerConnection(Action callback = null)
-        {
-            var oldConnection = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection;
-            if (oldConnection?.ServerUri != null)
-            {
-                HandleLoginRequest(oldConnection.ServerUri, false, callback);
-            }
-        }
+        ///// <summary>
+        ///// Initialize server integration and try logging in implicitly 
+        ///// to the saved connection in the configuration if it exists.
+        ///// </summary>
+        //private void ConnectToSavedServerConnection(Action callback = null)
+        //{
+        //    var oldConnection = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection;
+        //    if (oldConnection?.ServerUri != null)
+        //    {
+        //        HandleLoginRequest(oldConnection.ServerUri, false, callback);
+        //    }
+        //}
 
         /// <summary>
         /// Initialize server integration and try logging in implicitly 
         /// to the saved connection in the configuration if it exists.
         /// </summary>
-        private void RestoreConfigurationAsync(Action callback = null)
+        private static void RestoreConfigurationAsync(/*Action callback = null*/)
         {
             var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
             var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
             if (selectedIssueReporterGuid != null)
             {
-                BugReporter.SetSelectedIssueReporter(selectedIssueReporterGuid);
+                IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
                 var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
                 Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
                 configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
                 BugReporter.RestoreConfigurationAsync(serializedConfig);
-                HandleLoginRequest(null, false, null);
+                //HandleLoginRequest(null, false, null);
             }
             //Dictionary<string, string> configs = new Dictionary<string, string>() { { "Ashwin", "hello world"} };
             //string serializedConfig = JsonConvert.SerializeObject(configs);
-            callback?.Invoke();
+            //callback?.Invoke();
         }
 
         #endregion

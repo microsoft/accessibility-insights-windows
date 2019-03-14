@@ -52,55 +52,55 @@ namespace AccessibilityInsights
             });
         }
 
-        /// <summary>
-        /// Attempt to connect to the service at the given server URL.
-        /// Populates user profile if connection is made correctly. 
-        /// If connection fails, a message dialog will be shown to the user
-        /// if promptIfNeeded is true.
-        /// </summary>
-        /// <param name="serverUrl">url like https://accountname.visualstudio.com to connect to</param>
-        /// <param name="promptIfNeeded">if true, may show account picker & error dialog. Otherwise, no dialogs are shown to user</param>
-        /// <param name="callback">Action to execute after attempt to connect before reallowing further action</param>
-        public async void HandleLoginRequest(Uri serverUrl = null, bool promptIfNeeded = true, Action callback = null)
-        {
-            SetAllowFurtherAction(false);
+        ///// <summary>
+        ///// Attempt to connect to the service at the given server URL.
+        ///// Populates user profile if connection is made correctly. 
+        ///// If connection fails, a message dialog will be shown to the user
+        ///// if promptIfNeeded is true.
+        ///// </summary>
+        ///// <param name="serverUrl">url like https://accountname.visualstudio.com to connect to</param>
+        ///// <param name="promptIfNeeded">if true, may show account picker & error dialog. Otherwise, no dialogs are shown to user</param>
+        ///// <param name="callback">Action to execute after attempt to connect before reallowing further action</param>
+        //public async void HandleLoginRequest(Uri serverUrl = null, bool promptIfNeeded = true, Action callback = null)
+        //{
+        //    SetAllowFurtherAction(false);
 
-            // If the main window is always on top, then an error occurs where
-            //  the login dialog is not a child of the main window, so we temporarily
-            //  turn topmost off and turn it back on after logging in
-            bool oldTopmost = this.Topmost;
-            this.Topmost = false;
+        //    // If the main window is always on top, then an error occurs where
+        //    //  the login dialog is not a child of the main window, so we temporarily
+        //    //  turn topmost off and turn it back on after logging in
+        //    bool oldTopmost = this.Topmost;
+        //    this.Topmost = false;
 
-            if (serverUrl != null && await CheckWebsiteAvailability(serverUrl).ConfigureAwait(true) == false)
-            {
-                NotifyLoginUnsuccessful(promptIfNeeded);
-            }
-            else
-            {
-                try
-                {
-                    if (serverUrl != null)
-                    {
-                        //await BugReporter.ConnectAsync(serverUrl, promptIfNeeded).ConfigureAwait(true);
-                        //await BugReporter.PopulateUserProfileAsync().ConfigureAwait(true);
-                        UpdateMainWindowLoginFields();
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    NotifyLoginUnsuccessful(promptIfNeeded);
-                    //BugReporter.FlushToken(serverUrl);
-                    HandleLogoutRequest();
-                }
-            }
+        //    if (serverUrl != null && await CheckWebsiteAvailability(serverUrl).ConfigureAwait(true) == false)
+        //    {
+        //        NotifyLoginUnsuccessful(promptIfNeeded);
+        //    }
+        //    else
+        //    {
+        //        try
+        //        {
+        //            if (serverUrl != null)
+        //            {
+        //                //await BugReporter.ConnectAsync(serverUrl, promptIfNeeded).ConfigureAwait(true);
+        //                //await BugReporter.PopulateUserProfileAsync().ConfigureAwait(true);
+        //                UpdateMainWindowLoginFields();
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ex.ReportException();
+        //            NotifyLoginUnsuccessful(promptIfNeeded);
+        //            //BugReporter.FlushToken(serverUrl);
+        //            HandleLogoutRequest();
+        //        }
+        //    }
 
-            this.Topmost = oldTopmost;
-            callback?.Invoke();
+        //    this.Topmost = oldTopmost;
+        //    callback?.Invoke();
 
-            Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Login_Attempted, TelemetryProperty.PromptIfNeeded, promptIfNeeded.ToString(CultureInfo.InvariantCulture));
-            SetAllowFurtherAction(true);
-        }
+        //    Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Login_Attempted, TelemetryProperty.PromptIfNeeded, promptIfNeeded.ToString(CultureInfo.InvariantCulture));
+        //    SetAllowFurtherAction(true);
+        //}
 
         /// <summary>
         /// Show user dialog with error and log telemetry for failure
@@ -129,21 +129,21 @@ namespace AccessibilityInsights
             btnAccountConfig.ToolTip = txt;
         }
 
-        /// <summary>
-        /// Disconnect from the current server connection
-        /// and update main window UI
-        /// </summary>
-        /// <param name="callback"></param>
-        public void HandleLogoutRequest(Action callback = null)
-        {
-            //BugReporter.Disconnect();
-            //// Main window UI changes
-            //vmAvatar.ByteData = null;
-            //imgAvatar.Visibility = Visibility.Collapsed;
-            //this.newAccountGrid.Visibility = Visibility.Visible;
-            callback?.Invoke();
-            AutomationProperties.SetName(btnAccountConfig, Properties.Resources.HandleLogoutRequestSignIn);
-            //btnAccountConfig.ToolTip = Properties.Resources.HandleLogoutRequestSignIn;
-        }
+        ///// <summary>
+        ///// Disconnect from the current server connection
+        ///// and update main window UI
+        ///// </summary>
+        ///// <param name="callback"></param>
+        //public void HandleLogoutRequest(Action callback = null)
+        //{
+        //    //BugReporter.Disconnect();
+        //    //// Main window UI changes
+        //    //vmAvatar.ByteData = null;
+        //    //imgAvatar.Visibility = Visibility.Collapsed;
+        //    //this.newAccountGrid.Visibility = Visibility.Visible;
+        //    callback?.Invoke();
+        //    AutomationProperties.SetName(btnAccountConfig, Properties.Resources.HandleLogoutRequestSignIn);
+        //    //btnAccountConfig.ToolTip = Properties.Resources.HandleLogoutRequestSignIn;
+        //}
     }
 }

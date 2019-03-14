@@ -23,7 +23,7 @@ namespace AccessibilityInsights.Extensions
         private CompositionContainer _container;
         private ResolveEventHandler _assemblyEventResolver;
         private readonly IEnumerable<string> _extensionPaths;
-        const string ExtensionSearchPattern = "*.extensions.*.dll";
+        const string ExtensionSearchPattern = "*.extensions.*.dll *.exe";
 
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 

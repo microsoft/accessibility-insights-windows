@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Windows.Controls;
 
 namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
@@ -9,6 +10,12 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
     /// </summary>
     public abstract class IssueConfigurationControl : UserControl
     {
+        /// <summary>
+        ///  To be called to enable the save button in AI-WIN. Will be  passed in.
+        /// </summary>
+        /// AK TODO adjust when finished with testing
+        public abstract Action UpdateSaveButton { get; set; }
+
         /// <summary>
         /// Can the save button be clicked
         /// </summary>

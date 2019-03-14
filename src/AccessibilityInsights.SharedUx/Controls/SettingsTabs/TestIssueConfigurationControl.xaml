@@ -1,0 +1,25 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<src:IssueConfigurationControl
+    x:Class="AccessibilityInsights.SharedUx.Controls.SettingsTabs.TestIssueConfigurationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs"
+    xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
+    mc:Ignorable="d">
+    
+    <Canvas HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="360">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="Enter desired GitHub repo link" TextWrapping="Wrap" Margin="0 8px" />
+            <Button Grid.Row="1" x:Name="Ashwin" Content="ClickMe" Click="Ashwin_Click"/>
+            <Button Grid.Row="2" x:Name="Ashwin1" Content="Can Save?" Click="Ashwin_Click" IsEnabled="{Binding Path=CanSave, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+    </Canvas>
+</src:IssueConfigurationControl>

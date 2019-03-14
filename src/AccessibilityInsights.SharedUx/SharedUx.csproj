@@ -53,6 +53,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -93,6 +94,10 @@
     <Page Include="Controls\ColorPicker\ColorPickerControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\SettingsTabs\TestIssueConfigurationControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Controls\SettingsTabs\WhatsNewTabControl.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -280,6 +285,10 @@
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SettingsTabs\TestIssueConfigurationControl.xaml.cs">
+      <DependentUpon>TestIssueConfigurationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SettingsTabs\TestIssueProvider.cs" />
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="FileBug\BugFileForm.cs">
       <SubType>Form</SubType>
@@ -289,7 +298,7 @@
     </Compile>
     <Compile Include="FileBug\BugReporter.cs" />
     <Compile Include="FileBug\FileBugAction.cs" />
-    <Compile Include="FileBug\IssueFilingManager.cs" />
+    <Compile Include="FileBug\IssueReporterManager.cs" />
     <Compile Include="FileBug\ScriptInterface.cs" />
     <Compile Include="Controls\ColorPicker\ColorPickerControl.xaml.cs">
       <DependentUpon>ColorPickerControl.xaml</DependentUpon>
