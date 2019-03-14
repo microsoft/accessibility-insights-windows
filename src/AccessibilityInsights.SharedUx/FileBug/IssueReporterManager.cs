@@ -51,7 +51,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
                         configsDictionary.TryGetValue(issueReporter.StableIdentifier, out string serializedConfig);
                         if (!string.IsNullOrWhiteSpace(serializedConfig))
                         {
-                            issueReporter.RestoreConfigurationAsync(serializedConfig);
+                            issueReporter.RestoreConfigurationAsync(serializedConfig).Start();
                         }
                     }
                 }

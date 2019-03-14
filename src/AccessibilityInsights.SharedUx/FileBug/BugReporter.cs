@@ -85,12 +85,12 @@ namespace AccessibilityInsights.SharedUx.FileBug
         //    return Task.FromResult((Uri)null);
         //}
 
-        public static Task<IIssueResult> FileIssueAsync(IssueInformation issueInformation)
+        public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
-            if (IsEnabled && IsConnected)
-                return IssueReporter.FileIssueAsync(issueInformation);
-
-            return Task.FromResult((IIssueResult)null);
+            if (IsEnabled && IsConnected) {
+                return (IssueReporter.FileIssueAsync(issueInformation)).Result;
+            }
+            return null;
         }
 
         //public static IConnectionInfo CreateConnectionInfo(Uri serverUri, IProject project, ITeam team)

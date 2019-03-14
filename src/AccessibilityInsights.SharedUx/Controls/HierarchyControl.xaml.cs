@@ -27,6 +27,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using System.Threading.Tasks;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -857,11 +859,13 @@ namespace AccessibilityInsights.SharedUx.Controls
                 if (BugReporter.IsConnected)
                 {
                     // AK TODO File new bug with info change to what we need
+                    IssueInformation issueInformation = new IssueInformation();
+                    IIssueResult issueResult = BugReporter.FileIssueAsync(issueInformation);
                     Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
+                    // This deals with showing the form and waiting for save. Nad telemetery for the save.
                     (int? bugId, string newBugId) = FileBugAction.FileNewBug(this.SelectedElement.GetBugInformation(BugType.NoFailure), Configuration.SavedConnection, Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
 
-                    vm.BugId = bugId;
-
+                    //vm.BugId = issueResult.DisplayText;
                     //// Check whether bug was filed once dialog closed & process accordingly
                     //if (vm.BugId.HasValue)
                     //{
