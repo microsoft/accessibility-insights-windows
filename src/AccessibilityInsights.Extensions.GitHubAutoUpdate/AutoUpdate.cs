@@ -210,7 +210,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 using (Stream stream = new MemoryStream())
                 {
                     gitHub.LoadChannelInfoIntoStream(releaseChannel, stream);
-                    return ChannelInfo.TryGetChannelFromStream(stream, releaseChannel, out channelInfo, ExceptionReporter);
+                    channelInfo = ChannelInfo.GetChannelFromStream(releaseChannel, stream);
+                    return true;
                 }
             }
             catch (Exception e)

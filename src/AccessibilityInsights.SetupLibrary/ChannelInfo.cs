@@ -46,36 +46,25 @@ namespace AccessibilityInsights.SetupLibrary
         public bool IsValid => CurrentVersion != null && MinimumVersion != null && CurrentVersion >= MinimumVersion && InstallAsset != null && ReleaseNotesAsset != null;
 
         /// <summary>
-        /// Given a stream containing a config file, try to find a specific channel
+        /// Given a stream containing a config file, get a specific channel
         /// </summary>
-        /// <param name="stream">The stream containing the config file</param>
         /// <param name="releaseChannel">The release channel to find</param>
-        /// <param name="channelInfo">The ChannelInfo that was located</param>
-        /// <param name="exceptionReporter">Called to report exceptions</param>
-        /// <returns>true if valid data was found, otherwise false</returns>
-        public static bool TryGetChannelFromStream(Stream stream, string releaseChannel, out ChannelInfo channelInfo, IExceptionReporter exceptionReporter)
+        /// <param name="stream">The stream containing the config file</param>
+        /// <returns>The valid ChannelInfo</returns>
+        public static ChannelInfo GetChannelFromStream(string releaseChannel, Stream stream)
         {
-            try
-            {
-                stream.Position = 0;
-                StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-                string channelString = reader.ReadToEnd();
-                Dictionary<string, ChannelInfo> convertedData = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
+            stream.Position = 0;
+            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+            string channelString = reader.ReadToEnd();
+            Dictionary<string, ChannelInfo> convertedData = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
 
-                if (convertedData.TryGetValue(releaseChannel, out ChannelInfo rawChannelInfo) &&
-                    rawChannelInfo.IsValid)
-                {
-                    channelInfo = rawChannelInfo;
-                    return true;
-                }
-            }
-            catch (Exception e)
+            if (convertedData.TryGetValue(releaseChannel, out ChannelInfo channelInfo) &&
+                channelInfo.IsValid)
             {
-                exceptionReporter.ReportException(e);
+                return channelInfo;
             }
 
-            channelInfo = null;
-            return false;
+            throw new InvalidDataException("Unable to get ChannelInfo");
         }
     }
 }

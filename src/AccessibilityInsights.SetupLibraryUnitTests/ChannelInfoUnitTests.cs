@@ -39,7 +39,7 @@ namespace SetupLibraryUnitTests
     ""installer_url"": ""https://somehost.com/somepath/1.1.1234/installer.msi"",
     ""release_notes_url"": ""https://somehost.com/somepath/1.1.1234/releasenotes.html""
   },
-  ""insider"": {
+  ""Insider"": {
     ""current_version"": ""1.1.1330"",
     ""minimum_version"": ""1.1.1300"",
     ""installer_url"": ""https://somehost.com/somepath/1.1.1330/installer.msi"",
@@ -160,52 +160,35 @@ namespace SetupLibraryUnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
         [Timeout(2000)]
-        public void TryGetChannelFromStream_StreamIsEmpty_ReturnsFalse()
+        public void GetChannelFromStream_StreamIsEmpty_ThrowsNullReferenceException()
         {
             using (Stream stream = PopulateStream(string.Empty))
             {
-                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
+                ChannelInfo.GetChannelFromStream(DefaultChannel, stream);
+            }
+        }
 
-                bool result = ChannelInfo.TryGetChannelFromStream(stream, DefaultChannel,
-                    out ChannelInfo channelInfo, exceptionReporter);
-
-                Assert.IsFalse(result);
-                Assert.IsNull(channelInfo);
-                Assert.IsNotNull(exceptionReporter.ActualException);
+        [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
+        [Timeout(2000)]
+        public void GetChannelFromStream_StreamDoesNotContainChannel_ThrowsInvalidDataException()
+        {
+            using (Stream stream = PopulateStream(TestCaseContents))
+            {
+                ChannelInfo.GetChannelFromStream("does not exist", stream);
             }
         }
 
         [TestMethod]
         [Timeout(2000)]
-        public void TryGetChannelFromStream_StreamDoesNotContainChannel_ReturnsFalse()
+        public void GetChannelFromStream_DefaultChannel_ReturnsCorrectData()
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
+                ChannelInfo channelInfo = ChannelInfo.GetChannelFromStream(DefaultChannel, stream);
 
-                bool result = ChannelInfo.TryGetChannelFromStream(stream, "does not exist",
-                    out ChannelInfo channelInfo, exceptionReporter);
-
-                Assert.IsFalse(result);
-                Assert.IsNull(channelInfo);
-                Assert.IsNull(exceptionReporter.ActualException);
-            }
-        }
-
-        [TestMethod]
-        [Timeout(2000)]
-        public void TryGetChannelFromStream_DefaultChannel_ReturnsTrue()
-        {
-            using (Stream stream = PopulateStream(TestCaseContents))
-            {
-                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
-
-                bool result = ChannelInfo.TryGetChannelFromStream(stream, DefaultChannel,
-                    out ChannelInfo channelInfo, exceptionReporter);
-
-                Assert.IsTrue(result);
-                Assert.IsNull(exceptionReporter.ActualException);
                 Assert.IsNotNull(channelInfo);
                 Assert.IsTrue(channelInfo.IsValid);
                 Assert.AreEqual(Version1234, channelInfo.CurrentVersion);
@@ -217,17 +200,12 @@ namespace SetupLibraryUnitTests
 
         [TestMethod]
         [Timeout(2000)]
-        public void TryGetChannelFromStream_InsiderChannel_ReturnsTrue()
+        public void GetChannelFromStream_InsiderChannel_ReturnsCorrectData()
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
+                ChannelInfo channelInfo = ChannelInfo.GetChannelFromStream("Insider", stream);
 
-                bool result = ChannelInfo.TryGetChannelFromStream(stream, "insider",
-                    out ChannelInfo channelInfo, exceptionReporter);
-
-                Assert.IsTrue(result);
-                Assert.IsNull(exceptionReporter.ActualException);
                 Assert.IsNotNull(channelInfo);
                 Assert.IsTrue(channelInfo.IsValid);
                 Assert.AreEqual(Version1330, channelInfo.CurrentVersion);
@@ -238,19 +216,13 @@ namespace SetupLibraryUnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(InvalidDataException))]
         [Timeout(2000)]
-        public void TryGetChannelFromStream_StreamIsInvalid_ReturnsFalse()
+        public void GetChannelFromStream_StreamIsInvalid_ThrowsInvalidDataException()
         {
             using (Stream stream = PopulateStream(TestCaseContents))
             {
-                TestExceptionReporter exceptionReporter = new TestExceptionReporter();
-
-                bool result = ChannelInfo.TryGetChannelFromStream(stream, "invalid",
-                    out ChannelInfo channelInfo, exceptionReporter);
-
-                Assert.IsFalse(result);
-                Assert.IsNull(channelInfo);
-                Assert.IsNull(exceptionReporter.ActualException);
+                ChannelInfo.GetChannelFromStream("invalid", stream);
             }
         }
     }
