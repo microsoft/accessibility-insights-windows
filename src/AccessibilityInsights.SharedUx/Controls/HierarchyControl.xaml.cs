@@ -29,6 +29,7 @@ using System.Windows.Threading;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -829,22 +830,18 @@ namespace AccessibilityInsights.SharedUx.Controls
                 return;
             }
 
-            if (vm.BugId.HasValue)
+            if (vm.IssueLink != null)
             {
                 // Bug already filed, open it in a new window
                 try
                 {
-                    //AK TO DO - Find out how to get the issue url here
-                    //Uri uri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
-                    //var bugUrl = uri.ToString();
-                    var bugUrl = "";
-                    System.Diagnostics.Process.Start(bugUrl);
+                    System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
                 }
                 catch (Exception ex)
                 {
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
-                    vm.BugId = null;
+                    vm.IssueDisplayText = null;
                 }
             }
             else
@@ -858,35 +855,19 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 if (BugReporter.IsConnected)
                 {
-                    // AK TODO File new bug with info change to what we need
-                    IssueInformation issueInformation = new IssueInformation();
-                    IIssueResult issueResult = BugReporter.FileIssueAsync(issueInformation);
-                    Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-                    // This deals with showing the form and waiting for save. Nad telemetery for the save.
-                    (int? bugId, string newBugId) = FileBugAction.FileNewBug(this.SelectedElement.GetBugInformation(BugType.NoFailure), Configuration.SavedConnection, Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
-
-                    //vm.BugId = issueResult.DisplayText;
-                    //// Check whether bug was filed once dialog closed & process accordingly
-                    //if (vm.BugId.HasValue)
-                    //{
-                    //    try
-                    //    {
-                    //        var success = await FileBugAction.AttachBugData(this.ElementContext.Id, this.SelectedElement.BoundingRectangle, 
-                    //            this.SelectedElement.UniqueId, newBugId, vm.BugId.Value).ConfigureAwait(false);
-                    //        if (!success)
-                    //        {
-                    //            MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
-                    //            vm.BugId = null;
-                    //        }
-                    //    }
-                    //    catch (Exception)
-                    //    {
-                    //    }
-                    //}
+                    IssueInformation issueInformation = this.SelectedElement.GetIssueInformation(IssueType.NoFailure);
+                    FileBugAction.AttachIssueData(issueInformation, this.ElementContext.Id, this.SelectedElement.BoundingRectangle,
+                                this.SelectedElement.UniqueId);
+                    IIssueResult issueResult = FileBugAction.FileIssueAsync(issueInformation);
+                    if (issueResult != null) {
+                        vm.IssueDisplayText = issueResult.DisplayText;
+                        vm.IssueLink = issueResult.IssueLink;
+                    }
+                    File.Delete(issueInformation.TestFileName);
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         this.HierarchyActions.SwitchToServerLogin();

@@ -519,7 +519,7 @@ namespace AccessibilityInsights.Core.Bases
         /// <summary>
         /// Returns the bug id, null if no bug id has been associated
         /// </summary>
-        public int? BugId { get; set; }
+        public string IssueDisplayText { get; set; }
 
         public ScanResults GetScannerResultInstance()
         {

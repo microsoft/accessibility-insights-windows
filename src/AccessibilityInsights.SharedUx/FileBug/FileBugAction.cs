@@ -5,6 +5,7 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using mshtml;
 using System;
 using System.Collections.Generic;
@@ -24,80 +25,73 @@ namespace AccessibilityInsights.SharedUx.FileBug
         /// <summary>
         /// Opens bug filing window with prepopulated data
         /// </summary>
-        /// <param name="bugInfo">Dictionary of bug info from with which to populate the bug</param>
+        /// <param name="issueInformation">Dictionary of bug info from with which to populate the bug</param>
         /// <param name="connection">connection info</param>
         /// <param name="onTop">Is window always on top</param>
         /// <param name="zoomLevel">Zoom level for bug file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
-        public static (int? bugId, string newBugId) FileNewBug(BugInformation bugInfo, IConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
             if (!BugReporter.IsEnabled)
-                return (null, string.Empty);
+                return null;
 
             try
             {
-                var a = bugInfo.BugType;
-                var b = connection.IsPopulated;
-                var c = onTop;
-                var d = zoomLevel;
-                var e = updateZoom;
-                // Create a A11y-specific Guid for this bug to verify that we are uploading
-                //  attachment to the correct bug
-                //var a11yBugId = bugInfo.InternalGuid.HasValue
-                //    ? bugInfo.InternalGuid.Value.ToString()
-                //    : string.Empty;
-                //Uri url = BugReporter.FileIssueAsync(connection, bugInfo).Result;
-                //var bugId = FileBugWindow(url, onTop, zoomLevel, updateZoom);
+                // Create a A11y-specific Guid for this bug if absent
+                var a11yBugId = issueInformation.InternalGuid.HasValue
+                    ? issueInformation.InternalGuid.Value.ToString()
+                    : string.Empty;
 
-                //if (bugId.HasValue)
-                //{
-                //    if (bugInfo.RuleForTelemetry != null)
-                //    {
-                //        Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save, new Dictionary<TelemetryProperty, string>
-                //        {
-                //            { TelemetryProperty.RuleId, bugInfo.RuleForTelemetry },
-                //            { TelemetryProperty.UIFramework, bugInfo.UIFramework ?? string.Empty },
-                //        });
-                //    }
-                //    else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
-                //    {
-                //        Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save);
-                //    }
-                //}
-                //else
-                //{
-                //    Logger.PublishTelemetryEvent(TelemetryAction.Bug_Cancel);
-                //}
-                //return (bugId, a11yBugId);
-                return (null, string.Empty);
+                IIssueResult issueResult = BugReporter.FileIssueAsync(issueInformation);
+
+                if (issueResult.IssueLink != null)
+                {
+                    if (issueInformation.RuleForTelemetry != null)
+                    {
+                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
+                        {
+                            { TelemetryProperty.RuleId, issueInformation.RuleForTelemetry },
+                            { TelemetryProperty.UIFramework, issueInformation.UIFramework ?? string.Empty },
+                        });
+                    }
+                    else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
+                    {
+                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save);
+                    }
+                }
+                else
+                {
+                    Logger.PublishTelemetryEvent(TelemetryAction.Issue_File_Attempt);
+                }
+                return issueResult;
             }
             catch
             {
-                return (null, string.Empty);
+                return null;
             }
         }
 
-        /// <summary>
-        /// Attaches screenshot and results file to existing bug
-        /// Specify file mode and additional parameters to affect how the added snapshot file will be opened
-        /// </summary>
-        /// <param name="ecId">Element context id</param>
-        /// <param name="rect">Bounding rect of element for screenshot</param>
-        /// <param name="elId">Element unique id</param>
-        /// <param name="a11yBugId">Bug's A11y-specific id</param>
-        /// <param name="bugId">Bug's server-side id</param>
-        /// <param name="fileMode">File mode that the resulting results file should open in</param>
-        /// <param name="otherProperties">Meta properties that affect how the resulting results file should open</param>
-        /// <returns></returns>
-        public static async Task<bool> AttachBugData(Guid ecId, Rectangle? rect, int? elId, string a11yBugId, int bugId, 
-            Desktop.Settings.A11yFileMode fileMode, Dictionary<Desktop.Settings.SnapshotMetaPropertyName, object> otherProperties = null)
-        {
-            // Save snapshot locally in prep for uploading attachment
-            var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
-            SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, fileMode, otherProperties);
-            return await AttachBugDataInternal(ecId, rect, a11yBugId, bugId, snapshotFileName).ConfigureAwait(false);
-        }
+        ///// <summary>
+        ///// Attaches screenshot and results file to existing bug
+        ///// Specify file mode and additional parameters to affect how the added snapshot file will be opened
+        ///// </summary>
+        ///// <param name="ecId">Element context id</param>
+        ///// <param name="rect">Bounding rect of element for screenshot</param>
+        ///// <param name="elId">Element unique id</param>
+        ///// <param name="a11yBugId">Bug's A11y-specific id</param>
+        ///// <param name="bugId">Bug's server-side id</param>
+        ///// <param name="fileMode">File mode that the resulting results file should open in</param>
+        ///// <param name="otherProperties">Meta properties that affect how the resulting results file should open</param>
+        ///// <returns></returns>
+        //public static async Task<bool> AttachBugData(Guid ecId, Rectangle? rect, int? elId, string a11yBugId, int bugId, 
+        //    Desktop.Settings.A11yFileMode fileMode, Dictionary<Desktop.Settings.SnapshotMetaPropertyName, object> otherProperties = null)
+        //{
+        //    // Save snapshot locally in prep for uploading attachment
+        //    var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
+        //    SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, fileMode, otherProperties);
+        //    return await AttachBugDataInternal(ecId, rect, a11yBugId, bugId, snapshotFileName).ConfigureAwait(false);
+        //}
 
         /// <summary>
         /// Attaches screenshot and results file to existing bug
@@ -109,13 +103,15 @@ namespace AccessibilityInsights.SharedUx.FileBug
         /// <param name="a11yBugId">Bug's A11y-specific id</param>
         /// <param name="bugId">Bug's server-side id</param>
         /// <returns>Success or failure</returns>
-        public static async Task<bool> AttachBugData(Guid ecId, Rectangle? rect, int? elId, string a11yBugId, int bugId)
+        public static void AttachIssueData(IssueInformation issueInformation, Guid ecId, Rectangle? rect, int? elId)
         {
             // Save snapshot locally in prep for uploading attachment
             var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
+            
             // when the file is open, it will be open in Inspect view, not Test view.
             SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, Desktop.Settings.A11yFileMode.Inspect);
-            return await AttachBugDataInternal(ecId, rect, a11yBugId, bugId, snapshotFileName).ConfigureAwait(false);
+            issueInformation.Screenshot = GetScreenShotForBugDescription(ecId, rect);
+            issueInformation.TestFileName = snapshotFileName;
         }
 
         /// <summary>
@@ -127,62 +123,56 @@ namespace AccessibilityInsights.SharedUx.FileBug
         /// <param name="bugId">Bug's server-side id</param>
         /// <param name="snapshotFileName">saved snapshot file name</param>
         /// <returns>Success or failure</returns>
-        private static Task<bool> AttachBugDataInternal(Guid ecId, Rectangle? rect, string a11yBugId, int bugId, string snapshotFileName)
-        {
-            var a = ecId;
-            var b = rect;
-            var c = a11yBugId;
-            var d = bugId;
-            var e = snapshotFileName;
-            //var imageFileName = GetTempFileName(".png");
+        //private static IssueInformation AttachBugDataInternal(IssueInformation issueInformation, Guid ecId, Rectangle? rect, string snapshotFileName)
+        //{
+            // Attaches snapshot file using filename passed in
+            // Creates a screenshot, saves it and attaches it to the bug
+            // Deletes both files
+            //var a = ecId;
+            //var b = rect;
+            //var c = a11yBugId;
+            //var d = bugId;
+            //var e = snapshotFileName;
+            //var e = snapshotFileName;
             //var filedBugReproSteps = await BugReporter.GetExistingBugDescriptionAsync(bugId).ConfigureAwait(false);
 
             //if (GuidsMatchInReproSteps(a11yBugId, filedBugReproSteps))
             //{
-            //    int? attachmentResponse = null;
-            //    const int maxAttempts = 2;
+            //int? attachmentResponse = null;
+            //const int maxAttempts = 2;
 
-            //    // Attempt to attach the results file twice
-            //    for (int attempts = 0; attempts < maxAttempts; attempts++)
+            //// Attempt to attach the results file twice
+            //for (int attempts = 0; attempts < maxAttempts; attempts++)
+            //{
+            //    try
             //    {
-            //        try
-            //        {
-            //            attachmentResponse = await BugReporter.AttachTestResultToBugAsync(snapshotFileName, bugId).ConfigureAwait(false);
-            //            break;
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            if (!ex.IsTransient()) throw;
-            //        }
+            //attachmentResponse = await BugReporter.AttachTestResultToBugAsync(snapshotFileName, bugId).ConfigureAwait(false);
+            //        break;
             //    }
-
-            //    // Save local screenshot for HTML preview in browser
-            //    GetScreenShotForBugDescription(ecId, rect)?.Save(imageFileName);
-
-            //    var htmlDescription = "";
-
-            //    if (imageFileName != null)
+            //    catch (Exception ex)
             //    {
-            //        var imgUrl = await BugReporter.AttachScreenshotToBugAsync(imageFileName, bugId).ConfigureAwait(false);
-            //        htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
+            //        if (!ex.IsTransient()) throw;
             //    }
+            //}
 
-            //    var scrubbedHTML = RemoveInternalHTML(filedBugReproSteps, a11yBugId) + htmlDescription;
-            //    await BugReporter.ReplaceBugDescriptionAsync(scrubbedHTML, bugId).ConfigureAwait(false);
-            //    File.Delete(snapshotFileName);
-            //    if (imageFileName != null)
-            //    {
-            //        File.Delete(imageFileName);
-            //    }
+            // Save local screenshot for HTML preview in browser
+            //issueInformation.Screenshot = GetScreenShotForBugDescription(ecId, rect);
+            //issueInformation.TestFileName = snapshotFileName;
+            //File.Delete(snapshotFileName);
 
-            //    // if the bug failed to attach, return false
+            //var imgUrl = await BugReporter.AttachScreenshotToBugAsync(imageFileName, bugId).ConfigureAwait(false);
+
+            //var scrubbedHTML = RemoveInternalHTML(filedBugReproSteps, a11yBugId) + htmlDescription;
+            //await BugReporter.ReplaceBugDescriptionAsync(scrubbedHTML, bugId).ConfigureAwait(false);
+
+            // if the bug failed to attach, return false
             //}
             //else
             //{
             //    return false;
             //}
-            return Task.FromResult(false);
-        }
+            //return Task.FromResult(false);
+        //}
 
         /// <summary>
         /// Returns the path to a newly created temporary directory

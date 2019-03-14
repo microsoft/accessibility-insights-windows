@@ -4,6 +4,7 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.HelpLinks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 
 namespace AccessibilityInsights.Core.Results
@@ -14,11 +15,6 @@ namespace AccessibilityInsights.Core.Results
     /// </summary>
     public class RuleResult
     {
-        /// <summary>
-        /// Returns the bug id, null if no bug id has been associated
-        /// </summary>
-        public int? BugId { get; set; }
-
 #pragma warning disable CA2227 // Collection properties should be read only
         /// <summary>
         /// Messages through Rule checking stages
@@ -55,6 +51,12 @@ namespace AccessibilityInsights.Core.Results
         /// </summary>
         public HelpUrl HelpUrl { get; set; }
 
+        /// <summary>
+        /// Returns the bug id, null if no bug id has been associated
+        /// </summary>
+        public string IssueDisplayText { get; set; }
+
+        public Uri IssueLink { get; set; }
         /// <summary>
         /// Constructor
         /// </summary>

@@ -1793,16 +1793,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please sign in to Azure DevOps &amp; specify both Azure DevOps organization name and project..
-        /// </summary>
-        public static string HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project {
-            get {
-                return ResourceManager.GetString("HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps" +
-                        "_organization_name_and_project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded..
         /// </summary>
         public static string HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded {
@@ -1810,6 +1800,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_" +
                         "occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_descript" +
                         "ion_Attachments_have_not_been_uploaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
+        /// </summary>
+        public static string HierarchyControl_FileIssue_Configure {
+            get {
+                return ResourceManager.GetString("HierarchyControl_FileIssue_Configure", resourceCulture);
             }
         }
         

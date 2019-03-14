@@ -119,10 +119,10 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
-                                                Content="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent1}'}"
+                                                Content="{Binding Path=IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent1}'}"
                                                 Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
                                                 AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
-                                                AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
+                                                AutomationProperties.Name="{Binding Path=IssueDisplayText, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
                                                 Visibility="{Binding Path=FileBugVisibility}"/>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>

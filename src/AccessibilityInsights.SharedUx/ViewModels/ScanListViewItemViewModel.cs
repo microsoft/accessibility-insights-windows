@@ -17,6 +17,7 @@ using System.Windows;
 using System.Windows.Input;
 using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -103,17 +104,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public A11yElement Element { get; private set; }
 
-        /// <summary>
-        /// BugId as string
-        /// </summary>
-        public string BugIdString
-        {
-            get
-            {
-                return RR.BugId.HasValue ? RR.BugId.ToString() : null;
-            }
-        }
-
         private System.Windows.Visibility loadingVisibility;
         /// <summary>
         /// Attachment loading
@@ -134,16 +124,32 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Bug id of this rule
         /// </summary>
-        public int? BugId
+        public string IssueDisplayText
         {
             get
             {
-                return RR.BugId;
+                return RR.IssueDisplayText;
             }
             set
             {
-                RR.BugId = value;
-                OnPropertyChanged(nameof(BugIdString));
+                RR.IssueDisplayText = value;
+                OnPropertyChanged(nameof(IssueDisplayText));
+            }
+        }
+
+        /// <summary>
+        /// Used to store the issue link.
+        /// </summary>
+        public Uri IssueLink
+        {
+            get
+            {
+                return RR.IssueLink;
+            }
+            set
+            {
+                RR.IssueLink = value;
+                OnPropertyChanged(nameof(IssueLink));
             }
         }
 
@@ -196,9 +202,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public BugInformation GetBugInformation()
+        public IssueInformation GetIssueInformation()
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: this.Element.Glimpse,
                 howToFixLink: this.SnippetLink.ToUri(),
                 helpUri: this.HelpUrl?.Url?.ToUri(),
@@ -211,7 +217,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 testMessages: string.Join("<br/>", this.RR.Messages),
                 internalGuid: Guid.NewGuid(),
-                bugType: BugType.SingleFailure
+                issueType: IssueType.SingleFailure
             );
         }
 

@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AccessibilityInsights.SharedUx.FileBug
 {
@@ -51,7 +52,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
                         configsDictionary.TryGetValue(issueReporter.StableIdentifier, out string serializedConfig);
                         if (!string.IsNullOrWhiteSpace(serializedConfig))
                         {
-                            issueReporter.RestoreConfigurationAsync(serializedConfig).Start();
+                            issueReporter.RestoreConfigurationAsync(serializedConfig);
                         }
                     }
                 }

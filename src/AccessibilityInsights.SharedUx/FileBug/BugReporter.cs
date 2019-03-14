@@ -43,10 +43,6 @@ namespace AccessibilityInsights.SharedUx.FileBug
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
         {
-            // This is the correct version. Uncomment and make sure it plays well
-            //if (IsEnabled && IssueFilingManager.SelectedIssueReporterGuid != null)
-            //    return IssueReporter.RestoreConfigurationAsync(serializedConfig);
-
             if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid != null)
                 return IssueReporter.RestoreConfigurationAsync(serializedConfig);
             return Task.CompletedTask;
@@ -88,7 +84,12 @@ namespace AccessibilityInsights.SharedUx.FileBug
         public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
             if (IsEnabled && IsConnected) {
-                return (IssueReporter.FileIssueAsync(issueInformation)).Result;
+                // Coding to the agreement that FileIssueAsync will return a kicked off task. 
+                // This will block the main thread. 
+                // It does seem like we currently block the main thread when we show the win form for azure devops
+                // so keeping it as is till we have a discussion. Check for blocking behavior at that link.
+                // https://github.com/Microsoft/accessibility-insights-windows/blob/master/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858
+                return IssueReporter.FileIssueAsync(issueInformation).Result;
             }
             return null;
         }

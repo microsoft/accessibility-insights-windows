@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         //e3ecd010-c9e1-44b1-a6da-24fe4e3f117c
         public Guid StableIdentifier => Guid.Parse("879798f2-fad8-486a-ab1c-3a748e0cef1e");
 
-        public bool IsConfigured => true;
+        public bool IsConfigured => false;
 
         public bool CanAttachFiles => true;
 

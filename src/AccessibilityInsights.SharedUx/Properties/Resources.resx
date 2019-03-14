@@ -850,8 +850,8 @@ Accessibility Insights Support Team
   <data name="HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
-  <data name="HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project" xml:space="preserve">
-    <value>Please sign in to Azure DevOps &amp; specify both Azure DevOps organization name and project.</value>
+  <data name="HierarchyControl_FileIssue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location.</value>
   </data>
   <data name="TextBlockTextDetails" xml:space="preserve">
     <value>DETAILS</value>

@@ -142,10 +142,10 @@
                                         <StackPanel Orientation="Horizontal" MinWidth="200">
                                             <Button Visibility="{Binding FileBugVisibility}" VerticalAlignment="Center" Tag="{Binding}"
                                                 Style="{StaticResource btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
-                                                Content="{Binding BugIdString, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
+                                                Content="{Binding IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
                                                 Focusable="True" IsTabStop="False" IsVisibleChanged="btnFileBug_IsVisibleChanged"
                                                 AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText}'}"
-                                                AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesNameTargetValue}'}">
+                                                AutomationProperties.Name="{Binding Path=IssueDisplayText, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesNameTargetValue}'}">
                                             </Button>
                                             <fabric:FabricIconControl x:Name="progressIcon"  GlyphName="ProgressRingDots" 
                                                                       Foreground="LightGray" RenderTransformOrigin="0.5, 0.5"
