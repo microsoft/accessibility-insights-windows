@@ -6,7 +6,6 @@ using AccessibilityInsights.SetupLibrary;
 using System;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
@@ -39,12 +38,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         // The Channel we use unless overridden by setting the ReleaseChannel property
         private const string DefaultReleaseChannel = "default";
 
-        // Delegate for test ctor -- can't use generics because of the out parameter
-        internal delegate bool ChannelInfoProvider(IGitHubWrapper gitHubWrapper, string releaseChannel, out ChannelInfo channelInfo);
-
-        private readonly ChannelInfoProvider _channelInfoProvider;
+        private readonly IChannelInfoProvider _channelInfoProvider;
         private readonly Func<string> _installedVersionProvider;
-        private readonly IGitHubWrapper _gitHubWrapper;
         private readonly Task<AutoUpdateOption> _initTask;
         private Version _installedVersion;
         private Version _currentChannelVersion;
@@ -178,50 +173,24 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Production ctor
         /// </summary>
-        public AutoUpdate(string releaseChannel = null) : this(releaseChannel, new GitHubWrapper(ExceptionReporter), MsiUtilities.GetInstalledProductVersion, TryGetChannelInfo)
+        public AutoUpdate(string releaseChannel = null) :
+            this(releaseChannel, MsiUtilities.GetInstalledProductVersion,
+                new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
 
         /// <summary>
-        /// Unit test ctor - allows dependency injection for testing
+        /// Unit testable ctor - allows dependency injection for testing
         /// </summary>
-        /// <param name="gitHubWrapper">Provides GitHub support</param>
-        /// <param name="installedVersionProvider">Where to get the installed version</param>
-        internal AutoUpdate(string releaseChannel, IGitHubWrapper gitHubWrapper, Func<string> installedVersionProvider, ChannelInfoProvider channelInfoProvider)
+        /// <param name="releaseChannel">The client's current release channel</param>
+        /// <param name="installedVersionProvider">Method that provides the installed version string</param>
+        /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
+        internal AutoUpdate(string releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
             ReleaseChannel = releaseChannel ?? DefaultReleaseChannel;
-            _gitHubWrapper = gitHubWrapper;
             _installedVersionProvider = installedVersionProvider;
             _channelInfoProvider = channelInfoProvider;
             _initTask = Task.Run(() => InitializeWithTimer());
-        }
-
-        /// <summary>
-        /// Production code to retrieve a ChannelInfo from the web-based config file
-        /// </summary>
-        /// <param name="gitHub">Wrapper to access GitHub mechanisms</param>
-        /// <param name="releaseChannel">The channel being requested</param>
-        /// <param name="channelInfo">Receives the data if found</param>
-        /// <returns>true if the data was located, otherwise false</returns>
-        private static bool TryGetChannelInfo(IGitHubWrapper gitHub, string releaseChannel, out ChannelInfo channelInfo)
-        {
-            try
-            {
-                using (Stream stream = new MemoryStream())
-                {
-                    gitHub.LoadChannelInfoIntoStream(releaseChannel, stream);
-                    channelInfo = ChannelInfo.GetChannelFromStream(releaseChannel, stream);
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                ExceptionReporter.ReportException(e);
-            }
-
-            // Default values
-            channelInfo = null;
-            return false;
         }
 
         private AutoUpdateOption InitializeWithTimer()
@@ -258,7 +227,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 if (Version.TryParse(_installedVersionProvider(), out _installedVersion))
                 {
-                    if (_channelInfoProvider(_gitHubWrapper, ReleaseChannel, out ChannelInfo channelInfo) && channelInfo.IsValid)
+                    if (_channelInfoProvider.TryGetChannelInfo(ReleaseChannel, out ChannelInfo channelInfo) &&
+                        channelInfo.IsValid)
                     {
                         _currentChannelVersion = channelInfo.CurrentVersion;
                         _minimumChannelVersion = channelInfo.MinimumVersion;

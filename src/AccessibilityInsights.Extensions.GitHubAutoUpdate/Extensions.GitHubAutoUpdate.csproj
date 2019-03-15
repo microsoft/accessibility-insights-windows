@@ -59,6 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExceptionReporter.cs" />
+    <Compile Include="IChannelInfoProvider.cs" />
+    <Compile Include="ProductionChannelInfoProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="MsiUtilities.cs" />
