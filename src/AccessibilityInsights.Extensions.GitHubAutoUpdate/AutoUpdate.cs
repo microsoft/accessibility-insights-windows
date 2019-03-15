@@ -196,29 +196,16 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private AutoUpdateOption InitializeWithTimer()
         {
             _initializationStopwatch.Restart();
-
-            try
-            {
-                return Initialize();
-            }
-            catch (Exception e)
-            {
-                e.ReportException();
-                Trace.WriteLine($"Unable to get update info from meta file at {e.Message}");
-            }
-            finally
-            {
-                _initializationStopwatch.Stop();
-            }
-
-            return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+            AutoUpdateOption updateOption = Initialize();
+            _initializationStopwatch.Stop();
+            return updateOption;
         }
 
         /// <summary>
         /// Do not call this function directly.
         /// Instead, call InitializeWithTimer.
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>This function MUST NOT leak any exceptions</remarks>
         private AutoUpdateOption Initialize()
         {
             // Do NOT use anything that calls WaitForInitializationToComplete in this
