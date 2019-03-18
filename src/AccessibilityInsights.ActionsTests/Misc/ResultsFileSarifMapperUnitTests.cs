@@ -1,20 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Fakes;
 using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.Actions.Misc.Fakes;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.HelpLinks;
 using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Results.Fakes;
 using AccessibilityInsights.Desktop.Utility;
 using Microsoft.CodeAnalysis.Sarif;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Actions.Fakes;
+using AccessibilityInsights.Actions.Misc.Fakes;
+using AccessibilityInsights.Core.Results.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.ActionsTests.Misc
 {
@@ -41,6 +43,8 @@ namespace AccessibilityInsights.ActionsTests.Misc
         private const string Source = "[4.1.2]";
         private const string TestHelpURL = "https://www.bing.com/";
         private const string TestGlimpse = "Testing";
+
+#if FAKES_SUPPORTED 
         static string ScreenshotTemplateValue = @"file:///C:/ScanOutput/{fileGUID}.png";
         static string ToolOutputTemplateValue = @"file:///C:/ScanOutput/{fileGUID}.a11ytest";
 
@@ -189,6 +193,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
                 Assert.AreEqual(ResultLevel.Open, elementResult.Item2.Level);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
@@ -256,6 +261,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
             Assert.AreEqual(0, elementResults.Count);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void GetScanResults_NoRuleResults_EmptyResult()
@@ -433,6 +439,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
                 Assert.AreEqual(Standard, standards[0]);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
@@ -468,6 +475,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
             Assert.AreEqual(ToolOutputKey, attachments[1].Description.Text);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void GenerateInvocationInfo_ReceivesValidParameters_GeneratesInvocationInfo()
@@ -482,6 +490,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
                 Assert.AreEqual(invocationOfInterest.StartTimeUtc.Ticks, expectedDate.Ticks);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
@@ -493,6 +502,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
             Assert.IsNotNull(toolInfo.Version);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void GenerateAndPersistSarifFile_ReceivesNormalParameters_WritesToFile()
@@ -561,6 +571,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
                 Assert.IsTrue(fileWriteInvoked);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
