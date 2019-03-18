@@ -25,7 +25,8 @@ namespace AccessibilityInsights.VersionSwitcher
 
             try
             {
-                InstallationEngine engine = new InstallationEngine(ProductName);
+                InstallationEngine engine = new InstallationEngine(ProductName,
+                    MsiUtilities.GetAppInstalledPath());
                 engine.PerformInstallation();
             }
             catch(Exception e)

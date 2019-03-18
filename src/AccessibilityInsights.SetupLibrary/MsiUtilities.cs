@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.Deployment.WindowsInstaller;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace AccessibilityInsights.SetupLibrary
     /// <summary>
     /// Methods to help with getting MSI information
     /// </summary>
-    internal static class MsiUtilities
+    public static class MsiUtilities
     {
         private const string UpdateGuid = "{0D760959-F713-46C4-9A3D-4E73619EE3B5}";
 
@@ -61,11 +62,30 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
+        /// Get the installed app path, based on the registry open file verb
+        /// 
+        /// This verb is a string in the following format:
+        /// "C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe" "%1"
+        ///
+        /// We want the following as our output:
+        /// C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe
+        /// </summary>
+        /// <returns>The installed app path</returns>
+        public static string GetAppInstalledPath()
+        {
+            RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
+            {
+                string command = ((string)commandKey.GetValue(""));
+                return command.Substring(0, command.Length - 5).Replace("\"", "");
+            }
+        }
+
+        /// <summary>
         /// Returns the product version of the file at the given path
         /// </summary>
-        /// <param name="pathToMSI"></param>
-        /// <returns></returns>
-        internal static string GetMSIProductVersion(string pathToMSI)
+        /// <param name="pathToMSI">The path to the MSI being queried</param>
+        /// <returns>The product version in string format</returns>
+            internal static string GetMSIProductVersion(string pathToMSI)
         {
             using (Database db = new Database(pathToMSI, DatabaseOpenMode.ReadOnly))
             {

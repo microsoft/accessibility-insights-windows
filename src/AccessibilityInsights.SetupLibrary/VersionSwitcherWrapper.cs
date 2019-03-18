@@ -130,24 +130,15 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Extract the path to the installed app by parsing the registered verb to open a file.
-        /// This verb is a string in the following format:
-        /// "C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe" "%1"
-        ///
-        /// We want the following as our output:
-        /// C:\Program Files (x86)\AccessibilityInsights\1.1\VersionSwitcher
+        /// Extract the path to the installed version switcher, based on the app path. The
+        /// VersionSwitcher is a sibling folder of the installed app folder
         /// </summary>
         private static string GetInstalledVersionSwitcherFolder()
         {
-            RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
-            {
-                string command = ((string)commandKey.GetValue(""));
-                string appPath = command.Substring(0, command.Length - 5).Replace("\"", "");
-                string root = Path.GetDirectoryName(appPath);
-                string versionSwitcherFolder = Path.Combine(root, "VersionSwitcher");
-                Console.WriteLine(versionSwitcherFolder);
-                return versionSwitcherFolder;
-            }
+            string appPath = MsiUtilities.GetAppInstalledPath();
+            string root = Path.GetDirectoryName(appPath);
+            string versionSwitcherFolder = Path.Combine(root, "VersionSwitcher");
+            return versionSwitcherFolder;
         }
 
         /// <summary>

@@ -18,14 +18,17 @@ namespace AccessibilityInsights.VersionSwitcher
     {
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly string _productName;
+        private readonly string _appToLaunchAfterInstall;
 
         /// <summary>
         /// ctor
         /// </summary>
         /// <param name="productName">The localized product name</param>
-        internal InstallationEngine(string productName)
+        /// <param name="appToLaunchAfterInstall">The path to the app to launch after install completes</param>
+        internal InstallationEngine(string productName, string appToLaunchAfterInstall)
         {
             _productName = productName;
+            _appToLaunchAfterInstall = appToLaunchAfterInstall;
         }
 
         /// <summary>
@@ -43,7 +46,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 }
             }
             UpdateConfigWithNewChannel(options.NewChannel);
-            LaunchInstalledApp();
+            LaunchPostInstallApp();
         }
 
         /// <summary>
@@ -157,15 +160,15 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <summary>
         /// Locate the MSI-installed app and launch it without elevated privileges
         /// </summary>
-        private static void LaunchInstalledApp()
+        private void LaunchPostInstallApp()
         {
-            // TODO - use the MSI path, not a hardcoded version
-            string programPath = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-            string appPath = Path.Combine(programPath, "AccessibilityInsights\\1.1\\AccessibilityInsights.exe");
-            ProcessStartInfo start = new ProcessStartInfo();
-            start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
-            start.Arguments = appPath;
-            Process.Start(start);
+            if (_appToLaunchAfterInstall != null)
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
+                start.Arguments = _appToLaunchAfterInstall;
+                Process.Start(start);
+            }
         }
 
         /// <summary>
