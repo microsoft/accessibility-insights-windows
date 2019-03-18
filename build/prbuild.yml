@@ -99,7 +99,7 @@ jobs:
       configuration: debug
       rerunFailedTests: true
 
-- job: build-without-fakes
+- job: build_without_fakes
   pool:
     vmImage: 'vs2017-win2016'
   steps:
