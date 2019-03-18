@@ -1,16 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Automation;
-using AccessibilityInsights.Automation.Fakes;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Automation.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.AutomationTests
 {
     [TestClass]
     public class StartCommandUnitTests
     {
+        #if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void Execute_NewInstanceSucceeds_ReturnsSuccessfulResult()
@@ -57,5 +60,6 @@ namespace AccessibilityInsights.AutomationTests
                 Assert.AreEqual(exceptionMessage, result.SummaryMessage);
             }
         }
+#endif
     }
 }
