@@ -797,7 +797,7 @@ Accessibility Insights Support Team
     <value>File issue</value>
   </data>
   <data name="MenuItemAutomationPropertiesName" xml:space="preserve">
-    <value>New issue</value>
+    <value>File issue</value>
   </data>
   <data name="SetterValueBug" xml:space="preserve">
     <value>Bug {0}</value>
