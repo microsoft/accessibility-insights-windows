@@ -76,9 +76,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CommandLineParameters.cs" />
+    <Compile Include="InstallationOptions.cs" />
     <Compile Include="ExceptionReporter.cs" />
-    <Compile Include="InstallHelper.cs" />
+    <Compile Include="InstallationEngine.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
