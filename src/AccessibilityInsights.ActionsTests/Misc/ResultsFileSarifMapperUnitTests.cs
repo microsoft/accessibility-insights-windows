@@ -44,7 +44,7 @@ namespace AccessibilityInsights.ActionsTests.Misc
         private const string TestHelpURL = "https://www.bing.com/";
         private const string TestGlimpse = "Testing";
 
-#if FAKES_SUPPORTED        
+#if FAKES_SUPPORTED 
         static string ScreenshotTemplateValue = @"file:///C:/ScanOutput/{fileGUID}.png";
         static string ToolOutputTemplateValue = @"file:///C:/ScanOutput/{fileGUID}.a11ytest";
 
