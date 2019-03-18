@@ -1,21 +1,21 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 #if FAKES_SUPPORTED
 using AccessibilityInsights.Actions.Contexts.Fakes;
+using AccessibilityInsights.Actions.Fakes;
 using AccessibilityInsights.Core.Bases.Fakes;
 using AccessibilityInsights.Desktop.UIAutomation.TreeWalkers.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
-using AccessibilityInsights.Actions.Fakes;
 #endif
 
 namespace AccessibilityInsights.ActionsTests.Actions
