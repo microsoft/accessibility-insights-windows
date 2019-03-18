@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:AccessibilityInsights.Extensions.GitHub"
     xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
+     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
     mc:Ignorable="d">
     <Canvas HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="360">
         <Grid>
@@ -15,8 +16,8 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="Enter desired GitHub repo link" TextWrapping="Wrap" Margin="0 8px" />
-            <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="Enter desired GitHub repo link"/>
+            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 8px" />
+            <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}"/>
         </Grid>
     </Canvas>
 </src:IssueConfigurationControl>

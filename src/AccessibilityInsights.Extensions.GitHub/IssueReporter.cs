@@ -28,14 +28,14 @@ namespace AccessibilityInsights.Extensions.GitHub
             return _instance;
         }
 
-        public string ServiceName => "GitHub";
+        public string ServiceName => Properties.Resources.extentionName;
 
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; } = false;
 
         public IEnumerable<byte> Logo => null;
 
-        public string LogoText => "GitHub";
+        public string LogoText => Properties.Resources.extentionName;
 
         public IssueConfigurationControl ConfigurationControl => _configurationControl;
 
@@ -46,7 +46,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             return new Task<IIssueResult>(()=> {
                 if (this.IsConfigured)
                 {
-                    string url = IssueFormatter.GetFormattedString(this._configurationControl.Config, issueInfo);
+                    string url = IssueFormatterFactory.GetNewIssueURL(this._configurationControl.Config, issueInfo);
                     System.Diagnostics.Process.Start(url);
                 }
 
