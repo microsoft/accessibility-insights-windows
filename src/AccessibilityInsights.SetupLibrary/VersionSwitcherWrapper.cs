@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -74,16 +73,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         private static void RemoveFolder(string folderToDelete)
         {
-            try
+            if (Directory.Exists(folderToDelete))
             {
-                if (Directory.Exists(folderToDelete))
-                {
-                    Directory.Delete(folderToDelete, true);
-                }
-            }
-            catch (Exception ex)
-            {
-                Trace.WriteLine("AccessibilityInsights - exception when removing folder: " + ex.ToString());
+                Directory.Delete(folderToDelete, true);
             }
         }
 

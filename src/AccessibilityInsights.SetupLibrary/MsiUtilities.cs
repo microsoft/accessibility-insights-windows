@@ -73,10 +73,17 @@ namespace AccessibilityInsights.SetupLibrary
         /// <returns>The installed app path</returns>
         public static string GetAppInstalledPath()
         {
-            RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
+            try
             {
-                string command = ((string)commandKey.GetValue(""));
-                return command.Substring(0, command.Length - 5).Replace("\"", "");
+                RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
+                {
+                    string command = (string)commandKey.GetValue("");
+                    return command.Substring(0, command.Length - 5).Replace("\"", "");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate Accessibility Insights for Windows", e);
             }
         }
 

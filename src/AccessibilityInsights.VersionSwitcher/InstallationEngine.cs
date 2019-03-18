@@ -36,17 +36,19 @@ namespace AccessibilityInsights.VersionSwitcher
         /// </summary>
         internal void PerformInstallation()
         {
+            EventLogger.WriteInformationalMessage("Beginning Installation");
             InstallationOptions options = GetInstallationOptions();
             DownloadFromUriToLocalFile(options);
             using (ValidateLocalFile(options.LocalInstallerFile))
             {
-                using (Transaction transaction = new Transaction("Accessibility Insights for Windows", TransactionAttributes.ChainEmbeddedUI))
+                using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
                 {
                     InstallWithinTransaction(options, transaction);
                 }
             }
             UpdateConfigWithNewChannel(options.NewChannel);
             LaunchPostInstallApp();
+            EventLogger.WriteInformationalMessage("Completed Installation");
         }
 
         /// <summary>
@@ -64,11 +66,14 @@ namespace AccessibilityInsights.VersionSwitcher
             if (args.Length > 1)
             {
                 msiPath = args[1];
+
                 if (args.Length > 2)
                 {
                     newChannel = args[2];
                 }
 
+                EventLogger.WriteInformationalMessage("Options:\nMSI Path = {0}\nNew Channel = {1}",
+                    msiPath, newChannel);
                 return new InstallationOptions(msiPath, newChannel);
             }
 
@@ -97,6 +102,9 @@ namespace AccessibilityInsights.VersionSwitcher
                     _installerDownloadStopwatch.Stop();
                 }
             } // using
+
+            EventLogger.WriteInformationalMessage("Successfully downloaded Installer from {0} to {1}",
+                options.MsiPath.ToString(), options.LocalInstallerFile);
         }
 
         /// <summary>
@@ -113,6 +121,8 @@ namespace AccessibilityInsights.VersionSwitcher
                 throw new ArgumentException("Untrusted file!", nameof(localFile));
             }
 
+            EventLogger.WriteInformationalMessage("Successfully validated local file: {0}", localFile);
+
             return verifier;
         }
 
@@ -127,7 +137,7 @@ namespace AccessibilityInsights.VersionSwitcher
             bool success = false;
             try
             {
-                DeleteOldVersion();
+                RemoveOldVersion();
                 InstallNewVersion(options.LocalInstallerFile);
                 success = true;
             }
@@ -139,9 +149,17 @@ namespace AccessibilityInsights.VersionSwitcher
                     transaction.Rollback();
 
                 stopwatch.Stop();
-                string message = string.Format(CultureInfo.InvariantCulture, "VersionSwitcher {0} in {1} ms",
-                    success ? "succeeded" : "failed", stopwatch.ElapsedMilliseconds);
-                Trace.WriteLine(message);
+
+                const string messageTemplate = "VersionSwitcher {0} in {1} ms";
+
+                if (success)
+                {
+                    EventLogger.WriteInformationalMessage(messageTemplate, "succeeded", stopwatch.ElapsedMilliseconds);
+                }
+                else
+                {
+                    EventLogger.WriteErrorMessage(messageTemplate, "failed", stopwatch.ElapsedMilliseconds);
+                }
             }
         }
 
@@ -162,12 +180,23 @@ namespace AccessibilityInsights.VersionSwitcher
         /// </summary>
         private void LaunchPostInstallApp()
         {
-            if (_appToLaunchAfterInstall != null)
+            if (_appToLaunchAfterInstall == null)
+            {
+                EventLogger.WriteWarningMessage("No application to launch");
+            }
+            else
             {
                 ProcessStartInfo start = new ProcessStartInfo();
                 start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
                 start.Arguments = _appToLaunchAfterInstall;
-                Process.Start(start);
+                if (Process.Start(start) != null)
+                {
+                    EventLogger.WriteInformationalMessage("Successfully started process: {0}", _appToLaunchAfterInstall);
+                }
+                else
+                {
+                    EventLogger.WriteWarningMessage("Unable to start process: {0}", _appToLaunchAfterInstall);
+                }
             }
         }
 
@@ -177,31 +206,44 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <param name="msiPath">full name to the MSI</param>
         internal static void InstallNewVersion(string msiPath)
         {
-            Trace.TraceInformation("Attempting to install from \"{0}\"", msiPath);
+            EventLogger.WriteInformationalMessage("Attempting to install from \"{0}\"", msiPath);
             Stopwatch stopwatch = Stopwatch.StartNew();
             Installer.SetInternalUI(InstallUIOptions.Silent);
             Installer.InstallProduct(msiPath, "");
             stopwatch.Stop();
-            Trace.TraceInformation("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
+            EventLogger.WriteInformationalMessage("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
         }
 
         /// <summary>
         /// Given the product name, find it in the product database and silently remove it
         /// </summary>
-        internal void DeleteOldVersion()
+        internal void RemoveOldVersion()
         {
-            Trace.TraceInformation("Attempting to find product: \"{0}\"", _productName);
+            Exception exception = null;
+            string productId = null;
+            EventLogger.WriteInformationalMessage("Attempting to find product: \"{0}\"", _productName);
+            try
+            {
+                productId = FindInstalledProductKey(_productName).ToString("B", CultureInfo.InvariantCulture);
+            }
+            catch (Exception e)
+            {
+                exception = e;
+            }
+
+            if (exception != null)
+            {
+                EventLogger.WriteWarningMessage("Unable to locate product {0}! Continuing without uninstall",
+                    _productName);
+                return;
+            }
+
             Stopwatch stopwatch = Stopwatch.StartNew();
-            string productId = FindInstalledProductKey(_productName).ToString("B", CultureInfo.InvariantCulture);
-            stopwatch.Stop();
-
-            Trace.TraceInformation("Found productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
-
-            stopwatch.Restart();
             Installer.SetInternalUI(InstallUIOptions.Silent);
             Installer.ConfigureProduct(productId, 0, InstallState.Absent, "");
-            stopwatch.Start();
-            Trace.TraceInformation("Deleted productId: {0} in {1} milliseconds", productId, stopwatch.ElapsedMilliseconds);
+            stopwatch.Stop();
+            EventLogger.WriteInformationalMessage("Removed productId: {0} in {1} milliseconds",
+                productId, stopwatch.ElapsedMilliseconds);
         }
 
         /// <summary>

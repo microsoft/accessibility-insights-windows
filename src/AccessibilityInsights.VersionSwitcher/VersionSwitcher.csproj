@@ -76,6 +76,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="EventLogger.cs" />
     <Compile Include="InstallationOptions.cs" />
     <Compile Include="ExceptionReporter.cs" />
     <Compile Include="InstallationEngine.cs" />

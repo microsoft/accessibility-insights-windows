@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using System;
-using System.Diagnostics;
 using System.Windows;
 
 namespace AccessibilityInsights.VersionSwitcher
@@ -25,12 +24,12 @@ namespace AccessibilityInsights.VersionSwitcher
 
             try
             {
-                InstallationEngine engine = new InstallationEngine(ProductName,
-                    MsiUtilities.GetAppInstalledPath());
+                InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
                 engine.PerformInstallation();
             }
             catch(Exception e)
             {
+                EventLogger.WriteErrorMessage(e.ToString());
                 ExceptionReporter.ReportException(e);
                 MessageBox.Show(e.Message, "An error occurred during install");
             }
@@ -38,5 +37,17 @@ namespace AccessibilityInsights.VersionSwitcher
             Close();
         }
 
+        private static string SafelyGetAppInstalledPath()
+        {
+            try
+            {
+                return MsiUtilities.GetAppInstalledPath();
+            }
+            catch (InvalidOperationException e)
+            {
+                ExceptionReporter.ReportException(e);
+                return null;
+            }
+        }
     }
 }
