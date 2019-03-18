@@ -1,9 +1,7 @@
 ## Contributing
 
 ### Code of Conduct
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+Please review the [Code of Conduct](./CODE_OF_CONDUCT.md) for this project.
 
 ### Contribution model 
 All contributions to this project should be through pull requests (PR) against the `master` branch.
