@@ -17,9 +17,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
     {
         public static IIssueReporting IssueReporter { get; set; }
 
-        //Uncomment and replace with the line below this.
         public static bool IsEnabled => (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
-        //public static bool IsEnabled => true;
 
         public static bool IsConnected => IsEnabled && (IssueReporter == null ? false : IssueReporter.IsConfigured);
 
@@ -28,14 +26,6 @@ namespace AccessibilityInsights.SharedUx.FileBug
 #pragma warning restore CA1819 // Properties should not return arrays
 
         public static string DisplayName => IsEnabled ? IssueReporter.ServiceName : null;
-
-        //public static Task ConnectAsync(Uri uri, bool prompt)
-        //{
-        //    if (IsEnabled)
-        //        return IssueReporter.ConnectAsync(uri, prompt);
-
-        //    return Task.CompletedTask;
-        //}
 
         public static Dictionary<Guid, IIssueReporting> GetIssueReporters() {
             return IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();

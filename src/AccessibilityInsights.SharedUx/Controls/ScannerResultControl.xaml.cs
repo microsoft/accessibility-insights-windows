@@ -318,7 +318,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.ScannerResultControl_btnFileBug_Click_File_Issue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         SwitchToServerLogin();

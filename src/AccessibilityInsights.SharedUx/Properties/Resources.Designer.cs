@@ -134,12 +134,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please sign into Azure DevOps &amp; ensure both account name and team project are selected..
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location...
         /// </summary>
-        public static string AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected {
+        public static string AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure {
             get {
-                return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both" +
-                        "_AzureDevOps_account_name_and_team_project_are_selected", resourceCulture);
+                return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
             }
         }
         
@@ -3323,12 +3322,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please log in to Azure DevOps &amp; ensure both Azure DevOps account name and team project are selected..
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
         /// </summary>
-        public static string ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected {
+        public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {
             get {
-                return ResourceManager.GetString("ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_Az" +
-                        "ureDevOps_account_name_and_team_project_are_selected", resourceCulture);
+                return ResourceManager.GetString("ScannerResultControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
             }
         }
         

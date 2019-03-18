@@ -1006,7 +1006,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         SwitchToServerLogin();

@@ -492,8 +492,8 @@
   <data name="AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
-  <data name="AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
-    <value>Please sign into Azure DevOps &amp; ensure both account name and team project are selected.</value>
+  <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location..</value>
   </data>
   <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
     <value>Hi,
@@ -952,8 +952,8 @@ Accessibility Insights Support Team
   <data name="ScannerResultControl_UpdateTree_Passed_and_Uncertain_tests" xml:space="preserve">
     <value>Passed and Uncertain tests</value>
   </data>
-  <data name="ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
-    <value>Please log in to Azure DevOps &amp; ensure both Azure DevOps account name and team project are selected.</value>
+  <data name="ScannerResultControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location.</value>
   </data>
   <data name="ScannerResultControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
