@@ -6,7 +6,6 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -97,35 +96,14 @@ namespace AccessibilityInsights.Modes
             }
         }
 
-        ///// <summary>
-        ///// Redirect to main window login 
-        ///// </summary>
-        ///// <param name="serverUrl"></param>
-        ///// <param name="prompt"></param>
-        ///// <param name="callback"></param>
-        //void HandleLoginRequest(Uri serverUrl = null, bool prompt = true, Action callback = null)
-        //{
-        //    MainWin.HandleLoginRequest(serverUrl, prompt, callback);
-        //}
-
-        ///// <summary>
-        ///// Redirect to main window logout
-        ///// </summary>
-        ///// <param name="callback"></param>
-        //void HandleLogoutRequest(Action callback = null)
-        //{
-        //    MainWin.HandleLogoutRequest(callback);
-        //}
-
         /// <summary>
         /// Check whether any configuration is changed. 
         /// </summary>
         /// <returns></returns>
         private bool IsConfigurationChanged()
         {
-            bool app = appSettingsCtrl.IsConfigurationChanged(Configuration);
-            bool connection = connectionCtrl.IsConfigurationChanged();
-            return app || connection;
+            return appSettingsCtrl.IsConfigurationChanged(Configuration) 
+                || connectionCtrl.IsConfigurationChanged();
         }
 
         /// <summary>
@@ -204,8 +182,6 @@ namespace AccessibilityInsights.Modes
             this.appSettingsCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.ShowSaveButton = ShowSaveButton;
-            //this.connectionCtrl.HandleLoginRequest = HandleLoginRequest;
-            //this.connectionCtrl.HandleLogoutRequest = HandleLogoutRequest;
 
             UpdateUIFromConfig();
             this.configSnapshot = (ConfigurationModel)Configuration.Clone();

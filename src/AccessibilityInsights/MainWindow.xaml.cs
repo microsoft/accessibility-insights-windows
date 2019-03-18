@@ -170,6 +170,7 @@ namespace AccessibilityInsights
             InitializeComponent();
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
+            
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
 
@@ -296,7 +297,6 @@ namespace AccessibilityInsights
         {
             if (BugReporter.IsEnabled)
             {
-                //ConnectToSavedServerConnection();
                 RestoreConfigurationAsync();
             }
             else
@@ -690,19 +690,6 @@ namespace AccessibilityInsights
             HandleConfigurationModeStart(true);
         }
 
-        ///// <summary>
-        ///// Initialize server integration and try logging in implicitly 
-        ///// to the saved connection in the configuration if it exists.
-        ///// </summary>
-        //private void ConnectToSavedServerConnection(Action callback = null)
-        //{
-        //    var oldConnection = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection;
-        //    if (oldConnection?.ServerUri != null)
-        //    {
-        //        HandleLoginRequest(oldConnection.ServerUri, false, callback);
-        //    }
-        //}
-
         /// <summary>
         /// Initialize server integration and try logging in implicitly 
         /// to the saved connection in the configuration if it exists.
@@ -711,18 +698,14 @@ namespace AccessibilityInsights
         {
             var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
             var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
-            if (selectedIssueReporterGuid != null)
+            if (selectedIssueReporterGuid != Guid.Empty)
             {
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
                 var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
                 Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
                 configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
                 BugReporter.RestoreConfigurationAsync(serializedConfig);
-                //HandleLoginRequest(null, false, null);
             }
-            //Dictionary<string, string> configs = new Dictionary<string, string>() { { "Ashwin", "hello world"} };
-            //string serializedConfig = JsonConvert.SerializeObject(configs);
-            //callback?.Invoke();
         }
 
         #endregion

@@ -52,11 +52,15 @@ namespace AccessibilityInsights.Core.Results
         public HelpUrl HelpUrl { get; set; }
 
         /// <summary>
-        /// Returns the bug id, null if no bug id has been associated
+        /// Returns the display text for the issue.
         /// </summary>
         public string IssueDisplayText { get; set; }
 
+        /// <summary>
+        /// The link to fetch / display the issue
+        /// </summary>
         public Uri IssueLink { get; set; }
+
         /// <summary>
         /// Constructor
         /// </summary>

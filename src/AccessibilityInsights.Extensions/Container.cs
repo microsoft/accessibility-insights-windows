@@ -1,7 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
@@ -23,7 +21,7 @@ namespace AccessibilityInsights.Extensions
         private CompositionContainer _container;
         private ResolveEventHandler _assemblyEventResolver;
         private readonly IEnumerable<string> _extensionPaths;
-        const string ExtensionSearchPattern = "*.extensions.*.dll *.exe";
+        const string ExtensionSearchPattern = "*.extensions.*.dll";
 
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
@@ -109,7 +107,7 @@ namespace AccessibilityInsights.Extensions
         public ITelemetry Telemetry { get; set; }
 
         [ImportMany(typeof(IIssueReporting))]
-        public List<IIssueReporting> IssueReporting { get; set; }
+        public IEnumerable<IIssueReporting> IssueReporting { get; set; }
 
         #endregion
 

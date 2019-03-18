@@ -9,7 +9,6 @@ using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -302,8 +301,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                     { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
                 });
 
-                // TODO: figuring out whether a team project has been chosen should not require
-                //  looking at the most recent connection, this should be broken out
                 if (BugReporter.IsConnected)
                 {
                     IssueInformation issueInformation = vm.GetIssueInformation();

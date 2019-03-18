@@ -6,7 +6,8 @@ using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.DesktopUI.Controls;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,9 +16,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -122,7 +121,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Bug id of this rule
+        /// Display text for this issue
         /// </summary>
         public string IssueDisplayText
         {

@@ -351,27 +351,6 @@
   <data name="btnNextAutomationPropertiesName" xml:space="preserve">
     <value>Next</value>
   </data>
-  <!--<data name="ButtonAutomationPropertiesName" xml:space="preserve">
-    <value>Disconnect</value>
-  </data>-->
-  <!--<data name="TextBlockTextSelectedteam" xml:space="preserve">
-    <value>Selected team</value>
-  </data>-->
-  <!--<data name="ButtonAutomationPropertiesNameChangeTeam" xml:space="preserve">
-    <value>Change team</value>
-  </data>-->
-  <!--<data name="TextBlockTextChange" xml:space="preserve">
-    <value>Change</value>
-  </data>-->
-  <!--<data name="ButtonAutomationPropertiesNameRefresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>-->
-  <!--<data name="tbTeamProjectSearchAutomationPropertiesName" xml:space="preserve">
-    <value>Search for team project</value>
-  </data>-->
-  <!--<data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
-    <value>Team project</value>
-  </data>-->
   <data name="LabelContentZero" xml:space="preserve">
     <value>0</value>
   </data>

@@ -6,8 +6,9 @@ using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.Desktop.UIAutomation;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
@@ -18,6 +19,7 @@ using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -26,10 +28,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using System.Threading.Tasks;
-using System.IO;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -859,7 +857,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                     FileBugAction.AttachIssueData(issueInformation, this.ElementContext.Id, this.SelectedElement.BoundingRectangle,
                                 this.SelectedElement.UniqueId);
                     IIssueResult issueResult = FileBugAction.FileIssueAsync(issueInformation);
-                    if (issueResult != null) {
+                    if (issueResult != null)
+                    {
                         vm.IssueDisplayText = issueResult.DisplayText;
                         vm.IssueLink = issueResult.IssueLink;
                     }

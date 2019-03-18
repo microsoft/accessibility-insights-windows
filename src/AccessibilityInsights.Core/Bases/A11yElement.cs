@@ -517,7 +517,7 @@ namespace AccessibilityInsights.Core.Bases
         public ScanResults ScanResults { get; set; }
 
         /// <summary>
-        /// Returns the bug id, null if no bug id has been associated
+        /// Returns the display text for the issue.
         /// </summary>
         public string IssueDisplayText { get; set; }
 

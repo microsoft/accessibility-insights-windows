@@ -115,11 +115,6 @@ namespace AccessibilityInsights
             // when AccessibilityInsights starts up. 
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
             
-            //AK - remove
-            ConfigurationManager.GetDefaultInstance().AppConfig.SelectedIssueReporter = Guid.Parse("27f21dff-2fb3-4833-be55-25787fce3e17");
-            Dictionary<Guid, string> configs = new Dictionary<Guid, string>() { { Guid.Parse("27f21dff-2fb3-4833-be55-25787fce3e17"), "hello world" } };
-            string serializedConfig = JsonConvert.SerializeObject(configs);
-            ConfigurationManager.GetDefaultInstance().AppConfig.IssueReporterSerializedConfigs = serializedConfig;
             // enable/disable telemetry
             Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
         }

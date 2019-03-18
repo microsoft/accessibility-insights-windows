@@ -97,7 +97,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Bug id of this element
+        /// Display text for the issue
         /// </summary>
         public string IssueDisplayText
         {
@@ -112,17 +112,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 OnPropertyChanged(nameof(BugVisibility));
             }
         }
-
-        ///// <summary>
-        ///// String for BugId
-        ///// </summary>
-        //public string BugIdString
-        //{
-        //    get
-        //    {
-        //        return IssueDisplayText.HasValue ? IssueDisplayText.ToString() : null;
-        //    }
-        //}
 
         /// <summary>
         /// Used to store the issue link.

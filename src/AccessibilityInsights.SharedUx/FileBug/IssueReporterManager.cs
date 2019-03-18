@@ -1,15 +1,18 @@
-﻿using AccessibilityInsights.Extensions;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.SettingsTabs;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-
+using System.Linq;
 namespace AccessibilityInsights.SharedUx.FileBug
 {
+    /// <summary>
+    /// Class that deals with maintaining the available / selected issue reporters.
+    /// </summary>
     public class IssueReporterManager
     {
         public static Guid SelectedIssueReporterGuid { get; set; }
@@ -39,7 +42,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
             var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
             Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReporting;
+            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReporting.ToList();
             foreach (IIssueReporting issueReporter in IssueReportingOptions)
             {
                 try
@@ -59,9 +62,11 @@ namespace AccessibilityInsights.SharedUx.FileBug
                 catch (ArgumentException ex)
                 {
                     // Fail silently in case of dups.
-                    Console.WriteLine("Found duplicate extensions" + ex.StackTrace);
+                    Console.WriteLine("Found duplicate extensions " + ex.StackTrace);
                 }
             }
+
+            // The following 4 lines will be removed after the integration is completed.
             TestIssueProvider TIP = new TestIssueProvider();
             IssueReportingOptionsDict.Add(TIP.StableIdentifier, TIP);
 
@@ -74,12 +79,18 @@ namespace AccessibilityInsights.SharedUx.FileBug
             return IssueReportingOptionsDict;
         }
 
+        /// <summary>
+        /// Sets the issue reporter guid in the issue reporter manager and makes sure that the bug reporter instance is updated.
+        /// </summary>
+        /// <param name="issueReporterGuid"> The StableId of the selected issue reporter</param>
         public void SetIssueReporter(Guid issueReporterGuid)
         {
-            SelectedIssueReporterGuid = issueReporterGuid;
-            IIssueReporting selectedIssueReporter;
-            IssueReportingOptionsDict.TryGetValue(issueReporterGuid, out selectedIssueReporter);
-            BugReporter.IssueReporter = selectedIssueReporter;
+            IssueReportingOptionsDict.TryGetValue(issueReporterGuid, out IIssueReporting selectedIssueReporter);
+            if (selectedIssueReporter != null)
+            {
+                SelectedIssueReporterGuid = issueReporterGuid;
+                BugReporter.IssueReporting = selectedIssueReporter;
+            }
         }
     }
 

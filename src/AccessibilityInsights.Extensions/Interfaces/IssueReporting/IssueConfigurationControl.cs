@@ -11,9 +11,8 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
     public abstract class IssueConfigurationControl : UserControl
     {
         /// <summary>
-        ///  To be called to enable the save button in AI-WIN. Will be  passed in.
+        ///  To be called to enable the save button in AI-WIN. Will be passed in.
         /// </summary>
-        /// AK TODO adjust when finished with testing
         public abstract Action UpdateSaveButton { get; set; }
 
         /// <summary>
