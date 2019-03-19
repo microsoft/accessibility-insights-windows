@@ -45,7 +45,7 @@ origin  https://github.com/adacat/accessibility-insights-windows (push)
 > git remote add upstream https://github.com/Microsoft/accessibility-insights-windows
 ```
 
--   Now running `git remote -v` should show the upstream repository also
+-   Now, running `git remote -v` should show the upstream repository also
 
 ```
 > git remote -v
