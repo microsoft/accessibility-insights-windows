@@ -2,13 +2,15 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
-using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 {
@@ -184,6 +186,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Assert.IsNull(bugFieldPairs[BugField.TestMessages]);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void CreateBugPreviewAsync_TeamNameIsNull_ChainsThroughCorrectly()
@@ -261,5 +264,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
                 Assert.AreEqual(expectedTeamName, actualTeamName);
             }
         }
+#endif
     }
 }
