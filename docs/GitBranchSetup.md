@@ -12,18 +12,16 @@ with Git and related tools. We are providing instructions specific to this proje
 ## Creating your own fork
 
 If you wish to contribute changes back to the [accessibility-insights-windows](https://github.com/Microsoft/accessibility-insights-windows)
-repository, start by creating your own [Fork](https://help.github.com/en/articles/fork-a-repo) of the repository. This will keep the
-number of branches on the main repository to a small
-count. In your own fork, you can create as many branches as you like.
+repository, start by creating your own [Fork](https://help.github.com/en/articles/fork-a-repo) of the repository. This will keep down the number of branches on the main repository. In your own fork, you can create as many branches as you like.
 
--   Navigate to [GitHub](https://github.com/) with a browser and log in to your GitHub account. For the sake of this document, let's assume your username is **adacat**.
+-   Navigate to [GitHub](https://github.com/) with a browser and log in to your GitHub account. For the sake of this document, let's assume your username is **ada-cat**.
 -   Navigate to the [accessibility-insights-windows](https://github.com/Microsoft/accessibility-insights-windows) repository in the same browser session.
 -   Click on the **Fork** button at the top right corner of the page.
 -   Create the fork under your account. Your GitHub profile should now show **accessibility-insights-windows** as one of your repositories.
--   Create a folder on your device and clone your fork of the **accessibility-insights-windows** repository. e.g. `https://github.com/adacat/accessibility-insights-windows`. Notice how your GitHub username is in the repository location.
+-   Create a folder on your device and clone your fork of the **accessibility-insights-windows** repository. e.g. `https://github.com/ada-cat/accessibility-insights-windows`. Notice how your GitHub username is in the repository location.
 
 ```
-> git clone https://github.com/adacat/accessibility-insights-windows
+> git clone https://github.com/ada-cat/accessibility-insights-windows
 ```
 
 ## Setting up the upstream repository
@@ -35,8 +33,8 @@ primary **accessibility-insights-windows** repository.
 
 ```
 > git remote -v
-origin  https://github.com/adacat/accessibility-insights-windows (fetch)
-origin  https://github.com/adacat/accessibility-insights-windows (push)
+origin  https://github.com/ada-cat/accessibility-insights-windows (fetch)
+origin  https://github.com/ada-cat/accessibility-insights-windows (push)
 ```
 
 -   Map the primary **accessibility-insights-windows** as the upstream remote
@@ -49,8 +47,8 @@ origin  https://github.com/adacat/accessibility-insights-windows (push)
 
 ```
 > git remote -v
-origin  https://github.com/adacat/accessibility-insights-windows (fetch)
-origin  https://github.com/adacat/accessibility-insights-windows (push)
+origin  https://github.com/ada-cat/accessibility-insights-windows (fetch)
+origin  https://github.com/ada-cat/accessibility-insights-windows (push)
 upstream        https://github.com/Microsoft/accessibility-insights-windows (fetch)
 upstream        https://github.com/Microsoft/accessibility-insights-windows (push)
 ```
