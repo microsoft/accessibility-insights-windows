@@ -1,19 +1,22 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
-using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Desktop.Telemetry.Fakes;
+using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.DesktopTests.Telemetry
 {
     [TestClass]
     public class LoggerUnitTests
     {
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void IsEnabled_ImplementationIsNull_ReturnsFalse()
@@ -61,6 +64,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                 Assert.IsFalse(Logger.IsEnabled);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
@@ -100,6 +104,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void PublishTelemetryEvent_SingleProperty_TelemetryIsNotEnabled_DoesNothing()
@@ -342,5 +347,6 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                 Assert.AreSame(expectedException, actualException);
             }
         }
+#endif
     }
 }

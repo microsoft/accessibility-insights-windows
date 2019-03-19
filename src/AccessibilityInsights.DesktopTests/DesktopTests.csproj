@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Core.Fakes.dll</HintPath>
@@ -85,7 +88,7 @@
     <Compile Include="Keyboard\HotkeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
-    <Compile Include="Telemetry\LoggerUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="Telemetry\LoggerUnitTests.cs" />
     <Compile Include="Utility\SupportedEventsTests.cs" />
   </ItemGroup>
   <ItemGroup>
