@@ -46,10 +46,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
-            return new Task<IIssueResult>(() => {
+            return Task.Run<IIssueResult>(() => {
 
                 Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-                (int? issueId, string newIssueId) = FileIssueAction.FileNewIssue(issueInfo, Configuration.SavedConnection,
+                (int? issueId, string newIssueId) = FileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
                     Application.Current.MainWindow.Topmost, Configuration.ZoomLevel, updateZoom);
 
                 // Check whether issue was filed once dialog closed & process accordingly
@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     try
                     {
-                        var success = FileIssueAction.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result;
+                        var success = FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result;
                         if (!success)
                         {
                             //MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
@@ -70,6 +70,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
                 return null;
             });
+        }
+
+        public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
+        {
+            ConfigurationControl.UpdateSaveButton = UpdateSaveButton;
+            return ConfigurationControl;
         }
     }
 }

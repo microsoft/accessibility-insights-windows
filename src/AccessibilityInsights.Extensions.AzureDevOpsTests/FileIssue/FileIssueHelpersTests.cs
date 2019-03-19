@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
 {
     [TestClass]
-    public class FileIssueActionTests
+    public class FileIssueHelpersTests
     {
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
 
@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => false;
                 var issueInfo = new IssueInformation();
                 var connInfo = new ConnectionInfo();
-                var output = FileIssueAction.FileNewIssue(issueInfo,
+                var output = FileIssueHelpers.FileNewIssue(issueInfo,
                     connInfo, false, 0, (_) => { });
 
                 Assert.IsNull(output.issueId);
@@ -45,7 +45,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             string original = $"<br><br><div><hr>{guid}<hr></div>";
             string expected = "\r\n<BODY><BR><BR>\r\n<DIV></DIV></BODY>";
 
-            Assert.AreEqual(expected, FileIssueAction.RemoveInternalHTML(original, guid));
+            Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
 
         [TestMethod]
@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             string original = "<br><br><div><hr>should not be removed<hr></div>";
             string expected = "\r\n<BODY><BR><BR>\r\n<DIV>\r\n<HR>\r\nshould not be removed\r\n<HR>\r\n</DIV></BODY>";
 
-            Assert.AreEqual(expected, FileIssueAction.RemoveInternalHTML(original, guid));
+            Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
 
         public static void SetUpShims()

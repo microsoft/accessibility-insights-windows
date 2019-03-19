@@ -96,7 +96,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}"
                            TextWrapping="Wrap" />
-                    <Button Click="disconnectButton_Click" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}" IsTabStop="True" Style="{StaticResource BtnStandard}">
+                    <Button Click="disconnectButton_Click" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
                         <Button.Template>
                             <ControlTemplate>
                                 <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesName}" TextWrapping="Wrap" Foreground="Blue"/>
@@ -115,7 +115,7 @@
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
                     <TextBlock Text="{x:Static Properties:Resources.TextBlockTextSelectedteam}" HorizontalAlignment="Left" Margin="0 4px"></TextBlock>
-                    <Button Click="changeButton_Click" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Right" Margin="0 4px" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameChangeTeam}" IsTabStop="True" Style="{StaticResource BtnStandard}">
+                    <Button Click="changeButton_Click" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Right" Margin="0 4px" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameChangeTeam}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
                         <Button.Template>
                             <ControlTemplate>
                                 <TextBlock Text="{x:Static Properties:Resources.TextBlockTextChange}" TextWrapping="Wrap" Foreground="Blue"/>
@@ -138,7 +138,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_selectTeam}" Margin="0 4px"
                            TextWrapping="Wrap" />
-                    <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{StaticResource BtnStandard}">
+                    <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{DynamicResource BtnStandard}">
                         <Button.Template>
                             <ControlTemplate>
                                 <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="Blue"/>

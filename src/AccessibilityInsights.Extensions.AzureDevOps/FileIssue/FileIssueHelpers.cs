@@ -18,7 +18,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// <summary>
     /// Class with static functions used for filing issues
     /// </summary>
-    public static class FileIssueAction
+    public static class FileIssueHelpers
     {
         private static AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
 
@@ -33,7 +33,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <returns></returns>
         public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
-        
             try
             {
                 // Create a A11y-specific Guid for this issue to verify that we are uploading

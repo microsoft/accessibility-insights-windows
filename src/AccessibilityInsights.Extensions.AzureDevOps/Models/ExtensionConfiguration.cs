@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 
         public ConnectionCache CachedConnections { get; set; }
 
-        public string SerializedConfig => JsonConvert.SerializeObject(this);
+        public string GetSerializedConfig() => JsonConvert.SerializeObject(this);
 
         public void LoadFromSerializedString(string serializedConfig)
         {

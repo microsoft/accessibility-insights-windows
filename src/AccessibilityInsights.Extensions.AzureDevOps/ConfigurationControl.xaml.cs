@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public override string OnSave()
         {
-            return AzureDevOps.Configuration.SerializedConfig;
+            return AzureDevOps.Configuration.GetSerializedConfig();
         }
 
         /// <summary>
@@ -55,10 +55,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         private bool InteractionAllowed { get; set; } = true;
 
-        /// <summary>
-        /// Delegates
-        /// </summary>
-        public Action UpdateSaveButton { get; set; }
 
         /// <summary>
         /// Avatar view model
@@ -79,6 +75,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// List of team projects
         /// </summary>
         public BindingList<TeamProjectViewModel> projects { get; private set; } = new BindingList<TeamProjectViewModel>();
+        public override Action UpdateSaveButton { get; set; }
 
         #region configuration updating code
         /// <summary>
@@ -150,7 +147,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {
-                        AzureDevOps.Configuration.SavedConnection = FileIssueAction.CreateConnectionInfo(serverUri, null, null);
+                        AzureDevOps.Configuration.SavedConnection = FileIssueHelpers.CreateConnectionInfo(serverUri, null, null);
                         ChangeStates(States.EditingServer);
                     }
                     else
@@ -189,6 +186,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             this.tbTeamProjectSearch.Clear();
             ChangeStates(States.EditingServer);
             canSave = true;
+            Dispatcher.Invoke(UpdateSaveButton);
         }
 
         /// <summary>
@@ -211,6 +209,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
 
             canSave = false;
+            Dispatcher.Invoke(UpdateSaveButton);
         }
 
         /// <summary>
@@ -236,48 +235,59 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="state"></param>
         private async void ChangeStates(States state)
         {
-            vmAvatar.ByteData = AzureDevOps.Avatar;
-            this.displayNameField.Text = AzureDevOps.DisplayName;
-            this.emailField.Text = AzureDevOps.Email;
+            Dispatcher.Invoke(() => { 
+                vmAvatar.ByteData = AzureDevOps.Avatar;
+                displayNameField.Text = AzureDevOps.DisplayName;
+                emailField.Text = AzureDevOps.Email;
+            });
             if (state == States.NoServer)
-            {
-                this.selectServerGrid.Visibility = Visibility.Visible;
-                this.editProjectGrid.Visibility = Visibility.Collapsed;
-                this.teamSelectedGrid.Visibility = Visibility.Collapsed;
-            }
-            else if (state == States.EditingServer)
-            {
-                this.editProjectGrid.Visibility = Visibility.Visible;
-                this.selectTeamGrid.Visibility = Visibility.Visible;
-                this.teamSelectedGrid.Visibility = Visibility.Collapsed;
-                this.selectServerGrid.Visibility = Visibility.Collapsed;
-
-                // Load the team project list, show progress animation
-                try
                 {
-                    ToggleLoading(true);
-                    projects.Clear();
-                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
-                    newProjectList.ForEach(p => projects.Add(p));
-                    ToggleLoading(false);
-                }
-                catch (Exception)
+                Dispatcher.Invoke(() =>
                 {
-                    //MessageDialog.Show("Error when retrieving team projects");
-                    ToggleLoading(false);
-                    disconnectButton_Click(null, null);
+                    selectServerGrid.Visibility = Visibility.Visible;
+                    editProjectGrid.Visibility = Visibility.Collapsed;
+                    teamSelectedGrid.Visibility = Visibility.Collapsed;
+                });
                 }
+                else if (state == States.EditingServer)
+                {
+                Dispatcher.Invoke(() =>
+                {
+                    editProjectGrid.Visibility = Visibility.Visible;
+                    selectTeamGrid.Visibility = Visibility.Visible;
+                    teamSelectedGrid.Visibility = Visibility.Collapsed;
+                    selectServerGrid.Visibility = Visibility.Collapsed;
+                });
+                    // Load the team project list, show progress animation
+                    try
+                    {
+                        ToggleLoading(true);
+                        projects.Clear();
+                        var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
+                        newProjectList.ForEach(p => projects.Add(p));
+                        ToggleLoading(false);
+                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
+                    }
+                    catch (Exception)
+                    {
+                        //MessageDialog.Show("Error when retrieving team projects");
+                        ToggleLoading(false);
+                        disconnectButton_Click(null, null);
+                    }
 
-                FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
-            }
-            else if (state == States.HasServer)
-            {
-                this.editProjectGrid.Visibility = Visibility.Visible;
-                this.teamSelectedGrid.Visibility = Visibility.Visible;
-                this.selectTeamGrid.Visibility = Visibility.Collapsed;
-                this.selectServerGrid.Visibility = Visibility.Collapsed;
-                this.selectedTeamText.Text = AzureDevOps.Configuration.SavedConnection.ToString();
-            }
+                    FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
+                }
+                else if (state == States.HasServer)
+                {
+                Dispatcher.Invoke(() =>
+                {
+                    editProjectGrid.Visibility = Visibility.Visible;
+                    teamSelectedGrid.Visibility = Visibility.Visible;
+                    selectTeamGrid.Visibility = Visibility.Collapsed;
+                    selectServerGrid.Visibility = Visibility.Collapsed;
+                    selectedTeamText.Text = AzureDevOps.Configuration.SavedConnection.ToString();
+                });
+                }
         }
 
         /// <summary>
@@ -357,7 +367,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 team = null;
             }
 
-            ConnectionInfo connection = FileIssueAction.CreateConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
+            ConnectionInfo connection = FileIssueHelpers.CreateConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
             connection.SetLastUsage(DateTime.Now);
             return connection;
         }
@@ -369,8 +379,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private void ToggleLoading(bool starting)
         {
             InteractionAllowed = !starting;
-         //   this.ctrlProgressRing.IsActive = starting;
-            this.IsEnabled = InteractionAllowed;
+            //   this.ctrlProgressRing.IsActive = starting;
+            Dispatcher.Invoke(() => this.IsEnabled = InteractionAllowed);
         }
 
         /// <summary>
@@ -384,7 +394,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 List<TeamProjectViewModel> result = new List<TeamProjectViewModel>();
                 try
                 {
-                    var projects = FileIssueAction.GetProjectsAsync().Result;
+                    var projects = FileIssueHelpers.GetProjectsAsync().Result;
                     foreach (var project in projects.OrderBy(project => project.Name))
                     {
                         var vm = new TeamProjectViewModel(project, new List<TeamProjectViewModel>());
@@ -450,7 +460,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             canSave = true;
 
             // update status
-            UpdateSaveButton();
+            Dispatcher.Invoke(UpdateSaveButton);
         }
 
         /// <summary>

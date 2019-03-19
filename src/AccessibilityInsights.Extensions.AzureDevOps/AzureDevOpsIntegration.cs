@@ -444,15 +444,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
             try
             {
-                if (Configuration.SavedConnection.ServerUri != null)
+                if (serverUri != null)
                 {
-                    await FileIssueAction.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
-                    await FileIssueAction.PopulateUserProfileAsync().ConfigureAwait(true);
+                    await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
+                    await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
                 }
             }
             catch (Exception)
             {
-                FileIssueAction.FlushToken(Configuration.SavedConnection.ServerUri);
+                FileIssueHelpers.FlushToken(serverUri);
             }
         }
 

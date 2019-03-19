@@ -25,8 +25,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringIsNull_ReturnsNull()
         {
             const string originalString = null;
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.IsNull(result);
         }
 
@@ -35,8 +35,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringIsWithinLimit_ReturnsOriginalString()
         {
             const string originalString = "abc";
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -45,8 +45,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void TruncateString_OriginalStringExceedsLimit_ReturnsTruncatedOriginalStringbWithSuffix()
         {
             const string originalString = "abcd";
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("TruncateString", originalString, 3, "!!!") as string;
             Assert.AreEqual("abc!!!", result);
         }
 
@@ -55,8 +55,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringIsNull_ReturnsNull()
         {
             const string originalString = null;
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.IsNull(result);
         }
 
@@ -65,8 +65,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasNoLeadingBracket_ReturnsOriginalString()
         {
             const string originalString = "abc]";
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -75,8 +75,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasNoTrailingBracket_ReturnsOriginalString()
         {
             const string originalString = "[abc";
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual(originalString, result);
         }
 
@@ -85,8 +85,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         public void RemoveSurroundingBrackets_OriginalStringHasLeadingAndTrailingBrackets_ReturnsSubstring()
         {
             const string originalString = "[abc]";
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            string result = privateFileIssueAction.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            string result = privateFileIssueHelpers.InvokeStatic("RemoveSurroundingBrackets", originalString) as string;
             Assert.AreEqual("abc", result);
         }
 
@@ -97,8 +97,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation();
 
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            privateFileIssueAction.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            privateFileIssueHelpers.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             Assert.IsNull(issueFieldPairs[IssueField.ProcessName]);
@@ -115,8 +115,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(processName: originalProcessName);
 
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            privateFileIssueAction.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            privateFileIssueHelpers.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedProcessName = issueFieldPairs[IssueField.ProcessName];
@@ -134,8 +134,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(glimpse: originalGlimpse);
 
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            privateFileIssueAction.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            privateFileIssueHelpers.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedGlimpse = issueFieldPairs[IssueField.Glimpse];
@@ -153,8 +153,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(testMessages: originalTestMessages);
 
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            privateFileIssueAction.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            privateFileIssueHelpers.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedTestMessages = issueFieldPairs[IssueField.TestMessages];
@@ -174,8 +174,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Dictionary<IssueField, string> issueFieldPairs = new Dictionary<IssueField, string>();
             IssueInformation issueInfo = new IssueInformation(ruleSource: originalRuleSource);
 
-            PrivateType privateFileIssueAction = new PrivateType(typeof(FileIssueAction));
-            privateFileIssueAction.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
+            PrivateType privateFileIssueHelpers = new PrivateType(typeof(FileIssueHelpers));
+            privateFileIssueHelpers.InvokeStatic("TruncateSelectedFields", issueInfo, issueFieldPairs);
 
             Assert.AreEqual(4, issueFieldPairs.Count);
             string modifiedRuleSource = issueFieldPairs[IssueField.RuleSource];
@@ -215,7 +215,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
                     new Team(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
-                Uri actualUri = FileIssueAction.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
+                Uri actualUri = FileIssueHelpers.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
 
                 Assert.AreEqual(expectedUri, actualUri);
                 Assert.AreEqual(expectedProjectName, actualProjectName);
@@ -253,7 +253,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
                     new Team(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
-                Uri actualUri = FileIssueAction.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
+                Uri actualUri = FileIssueHelpers.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
 
                 Assert.AreEqual(expectedUri, actualUri);
                 Assert.AreEqual(expectedProjectName, actualProjectName);

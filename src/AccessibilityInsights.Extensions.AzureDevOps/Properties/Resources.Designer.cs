@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.Extensions.AzureDevOps.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
         /// </summary>
-        internal static string accountPlaceholderText {
+        public static string accountPlaceholderText {
             get {
                 return ResourceManager.GetString("accountPlaceholderText", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Next.
         /// </summary>
-        internal static string btnNextAutomationPropertiesName {
+        public static string btnNextAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnNextAutomationPropertiesName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disconnect.
         /// </summary>
-        internal static string ButtonAutomationPropertiesName {
+        public static string ButtonAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesName", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Change team.
         /// </summary>
-        internal static string ButtonAutomationPropertiesNameChangeTeam {
+        public static string ButtonAutomationPropertiesNameChangeTeam {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameChangeTeam", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
-        internal static string ButtonAutomationPropertiesNameRefresh {
+        public static string ButtonAutomationPropertiesNameRefresh {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameRefresh", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Select your team.
         /// </summary>
-        internal static string ConnectionControl_selectTeam {
+        public static string ConnectionControl_selectTeam {
             get {
                 return ResourceManager.GetString("ConnectionControl_selectTeam", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Server URL.
         /// </summary>
-        internal static string ConnectionControl_serverURL {
+        public static string ConnectionControl_serverURL {
             get {
                 return ResourceManager.GetString("ConnectionControl_serverURL", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to To create bugs and save test results, you must first enter the Azure DevOps URL and click Next to sign in..
         /// </summary>
-        internal static string connectionInstrText {
+        public static string connectionInstrText {
             get {
                 return ResourceManager.GetString("connectionInstrText", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam.
         /// </summary>
-        internal static string ServerComboBoxAutomationPropertiesName {
+        public static string ServerComboBoxAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Team project.
         /// </summary>
-        internal static string serverTreeviewAutomationPropertiesName {
+        public static string serverTreeviewAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("serverTreeviewAutomationPropertiesName", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Search for team project.
         /// </summary>
-        internal static string tbTeamProjectSearchAutomationPropertiesName {
+        public static string tbTeamProjectSearchAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tbTeamProjectSearchAutomationPropertiesName", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
-        internal static string TextBlockTextChange {
+        public static string TextBlockTextChange {
             get {
                 return ResourceManager.GetString("TextBlockTextChange", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Selected team.
         /// </summary>
-        internal static string TextBlockTextSelectedteam {
+        public static string TextBlockTextSelectedteam {
             get {
                 return ResourceManager.GetString("TextBlockTextSelectedteam", resourceCulture);
             }
