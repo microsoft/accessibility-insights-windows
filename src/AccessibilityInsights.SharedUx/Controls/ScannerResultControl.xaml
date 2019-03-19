@@ -3,8 +3,9 @@
 <UserControl x:Class="AccessibilityInsights.SharedUx.Controls.ScannerResultControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
              xmlns:controls="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
@@ -118,12 +119,15 @@
                                         <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="Issue" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
-                                                Content="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent1}'}"
-                                                Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
-                                                AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
-                                                AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
-                                                Visibility="{Binding Path=FileBugVisibility}"/>
+                                                <StackPanel Orientation="Horizontal" MinWidth="200">
+                                                    <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=ButtonBlueBGBrush}" Margin="0,0,4,0"/>
+                                                    <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
+                                                    Content="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent1}'}"
+                                                    Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
+                                                    AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
+                                                    AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
+                                                    Visibility="{Binding Path=FileBugVisibility}"/>
+                                                </StackPanel>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
