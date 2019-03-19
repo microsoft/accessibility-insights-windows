@@ -12,7 +12,7 @@ namespace AccessibilityInsights.AutomationTests
     [TestClass]
     public class StopCommandUnitTests
     {
-        #if FAKES_SUPPORTED
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (1000)]
         public void Execute_ClearInstanceSucceeds_ReturnsSuccessfulResult()

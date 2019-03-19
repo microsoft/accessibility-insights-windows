@@ -91,7 +91,7 @@ namespace AccessibilityInsights.AutomationTests
             }
         }
 
-        #if FAKES_SUPPORTED
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (1000)]
         public void Ctor_OutputPathDoesNotExist_CreatesOutputPath()
@@ -200,7 +200,7 @@ namespace AccessibilityInsights.AutomationTests
             }
         }
 
-        #if FAKES_SUPPORTED
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (1000)]
         public void Ctor_NoOutputPathProvidedNullEnvValue_EnsureFetchesFallbackValue()

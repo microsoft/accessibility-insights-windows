@@ -94,7 +94,7 @@ namespace AccessibilityInsights.AutomationTests
             return element;
         }
 
-        #if FAKES_SUPPORTED
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void Execute_AutomationSessionInstanceThrowsAutomationException_ReturnsIncomplete_MessageMatchesException()
