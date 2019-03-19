@@ -201,12 +201,12 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Update Config UIs with config data
+        /// Update Config UIs with config data if necessary and initiates view
         /// </summary>
         private void UpdateUIFromConfig()
         {
             appSettingsCtrl.UpdateFromConfig(Configuration);
-            connectionCtrl.UpdateFromConfig();
+            connectionCtrl.InitializeView();
         }
 
         /// <summary>

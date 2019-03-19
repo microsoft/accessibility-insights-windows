@@ -107,7 +107,7 @@ namespace AccessibilityInsights.Extensions
         public ITelemetry Telemetry { get; set; }
 
         [ImportMany(typeof(IIssueReporting))]
-        public IEnumerable<IIssueReporting> IssueReporting { get; set; }
+        public IEnumerable<IIssueReporting> IssueReportingOptions { get; set; }
 
         #endregion
 
