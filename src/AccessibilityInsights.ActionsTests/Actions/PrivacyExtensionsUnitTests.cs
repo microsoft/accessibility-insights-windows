@@ -4,13 +4,15 @@ using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Results.Fakes;
 using AccessibilityInsights.Core.Types;
 using AccessibilityInsights.Desktop.UIAutomation;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Core.Results.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.ActionsTests.Actions
 {
@@ -44,6 +46,7 @@ namespace AccessibilityInsights.ActionsTests.Actions
             Assert.AreEqual(bugId, copy.BugId);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         public void CreateScrubbedCopyWithoutRelationships_InputHasScanResults_ResultHasSameScanResults()
         {
@@ -58,6 +61,7 @@ namespace AccessibilityInsights.ActionsTests.Actions
                 Assert.AreSame(input.ScanResults, copy.ScanResults);
             }
         }
+#endif
 
         [TestMethod]
         public void CreateScrubbedCopyWithoutRelationships_InputSetsTreeWalkerMode_ResultHasSameTreeWalkerMode()
