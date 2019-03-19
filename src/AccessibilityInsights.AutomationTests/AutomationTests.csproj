@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
@@ -80,10 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutomationSessionUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
-    <Compile Include="CommandParametersUnitTests.cs"  Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="CommandParametersUnitTests.cs" />
     <Compile Include="DummyDisposable.cs" />
     <Compile Include="ExecutionWrapperUnitTests.cs" />
-    <Compile Include="LocationHelperUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="LocationHelperUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartCommandUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
     <Compile Include="StopCommandUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
