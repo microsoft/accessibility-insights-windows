@@ -6,7 +6,6 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -98,26 +97,6 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Redirect to main window login 
-        /// </summary>
-        /// <param name="serverUrl"></param>
-        /// <param name="prompt"></param>
-        /// <param name="callback"></param>
-        void HandleLoginRequest(Uri serverUrl = null, bool prompt = true, Action callback = null)
-        {
-            MainWin.HandleLoginRequest(serverUrl, prompt, callback);
-        }
-
-        /// <summary>
-        /// Redirect to main window logout
-        /// </summary>
-        /// <param name="callback"></param>
-        void HandleLogoutRequest(Action callback = null)
-        {
-            MainWin.HandleLogoutRequest(callback);
-        }
-
-        /// <summary>
         /// Check whether any configuration is changed. 
         /// </summary>
         /// <returns></returns>
@@ -153,6 +132,7 @@ namespace AccessibilityInsights.Modes
             {
                 MainWin.HandleConfigurationChanged(diff);
             }
+            MainWin.TransitionToSelectActionMode();
         }
 
         /// <summary>
@@ -175,7 +155,7 @@ namespace AccessibilityInsights.Modes
         /// <param name="mode"></param>
         private void UpdateUIBasedOnSettingMode(SettingModes mode)
         {
-            if (mode == SettingModes.Application || mode == SettingModes.Test)
+            if (mode == SettingModes.Application || mode == SettingModes.Connection)
             {
                 btnOk.Visibility = Visibility.Visible;    
             }
@@ -202,8 +182,6 @@ namespace AccessibilityInsights.Modes
             this.appSettingsCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.UpdateSaveButton = UpdateSaveButtonState;
             this.connectionCtrl.ShowSaveButton = ShowSaveButton;
-            this.connectionCtrl.HandleLoginRequest = HandleLoginRequest;
-            this.connectionCtrl.HandleLogoutRequest = HandleLogoutRequest;
 
             UpdateUIFromConfig();
             this.configSnapshot = (ConfigurationModel)Configuration.Clone();
@@ -223,12 +201,12 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Update Config UIs with config data
+        /// Update Config UIs with config data if necessary and initiates view
         /// </summary>
         private void UpdateUIFromConfig()
         {
             appSettingsCtrl.UpdateFromConfig(Configuration);
-            connectionCtrl.UpdateFromConfig(Configuration);
+            connectionCtrl.InitializeView();
         }
 
         /// <summary>

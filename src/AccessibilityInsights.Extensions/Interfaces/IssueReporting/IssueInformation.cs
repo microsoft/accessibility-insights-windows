@@ -78,12 +78,12 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// <summary>
         /// Screenshot of element
         /// </summary>
-        public Bitmap Screenshot { get; }
+        public Bitmap Screenshot { get; set; }
 
         /// <summary>
         /// Path to saved test file
         /// </summary>
-        public string TestFileName { get; }
+        public string TestFileName { get; set; }
 
         public IssueInformation(string windowTitle = null, string glimpse = null, Uri howToFixLink = null,
             Uri helpUri = null, string ruleSource = null, string ruleDescription = null,

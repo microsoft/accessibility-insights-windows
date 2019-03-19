@@ -53,7 +53,7 @@
                                         <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="false">
                                             <Setter Property="MenuItem.Visibility" Value="Visible"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=BugIdString, Mode=OneWay}" Value="{x:Null}">
+                                        <DataTrigger Binding="{Binding Path=IssueDisplayText, Mode=OneWay}" Value="{x:Null}">
                                             <Setter Property="MenuItem.HeaderStringFormat" Value="{x:Null}"/>
                                             <Setter Property="Tag" Value="LadybugSolid"/>
                                         </DataTrigger>

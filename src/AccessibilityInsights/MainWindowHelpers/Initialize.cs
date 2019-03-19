@@ -14,6 +14,8 @@ using System.Windows.Interop;
 using System.Windows.Shell;
 using System.Globalization;
 using AccessibilityInsights.Desktop.Telemetry;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {
@@ -112,7 +114,7 @@ namespace AccessibilityInsights
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
-
+            
             // enable/disable telemetry
             Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
         }
