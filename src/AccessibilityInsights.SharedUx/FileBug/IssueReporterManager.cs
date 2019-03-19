@@ -42,7 +42,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
             var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
             Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReporting.ToList();
+            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions.ToList();
             foreach (IIssueReporting issueReporter in IssueReportingOptions)
             {
                 try
