@@ -340,37 +340,16 @@
     <value>The hotkey you assigned is duplicated with the existing one. please set a new hotkey.</value>
   </data>
   <data name="connectionInstrText" xml:space="preserve">
-    <value>To create bugs and save test results, you must first enter the Azure DevOps URL and click Next to sign in.</value>
+    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam auctor placerat. Nunc in nulla sed turpis luctus pretium auctor quis sem. Quisque sit amet eros rutrum, lobortis nunc sed, aliquam ex. Etiam metus purus, facilisis vel molestie ac, molestie vel erat. </value>
   </data>
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
     <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
   </data>
-  <data name="accountPlaceholderText" xml:space="preserve">
-    <value>https://dev.azure.com/fabrikam</value>
+  <data name="lblIssueFiling" xml:space="preserve">
+    <value>Issue Filing</value>
   </data>
   <data name="btnNextAutomationPropertiesName" xml:space="preserve">
     <value>Next</value>
-  </data>
-  <data name="ButtonAutomationPropertiesName" xml:space="preserve">
-    <value>Disconnect</value>
-  </data>
-  <data name="TextBlockTextSelectedteam" xml:space="preserve">
-    <value>Selected team</value>
-  </data>
-  <data name="ButtonAutomationPropertiesNameChangeTeam" xml:space="preserve">
-    <value>Change team</value>
-  </data>
-  <data name="TextBlockTextChange" xml:space="preserve">
-    <value>Change</value>
-  </data>
-  <data name="ButtonAutomationPropertiesNameRefresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="tbTeamProjectSearchAutomationPropertiesName" xml:space="preserve">
-    <value>Search for team project</value>
-  </data>
-  <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
-    <value>Team project</value>
   </data>
   <data name="LabelContentZero" xml:space="preserve">
     <value>0</value>
@@ -492,8 +471,8 @@
   <data name="AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
-  <data name="AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
-    <value>Please sign into Azure DevOps &amp; ensure both account name and team project are selected.</value>
+  <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location..</value>
   </data>
   <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
     <value>Hi,
@@ -850,8 +829,8 @@ Accessibility Insights Support Team
   <data name="HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
-  <data name="HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project" xml:space="preserve">
-    <value>Please sign in to Azure DevOps &amp; specify both Azure DevOps organization name and project.</value>
+  <data name="HierarchyControl_FileIssue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location.</value>
   </data>
   <data name="TextBlockTextDetails" xml:space="preserve">
     <value>DETAILS</value>
@@ -952,8 +931,8 @@ Accessibility Insights Support Team
   <data name="ScannerResultControl_UpdateTree_Passed_and_Uncertain_tests" xml:space="preserve">
     <value>Passed and Uncertain tests</value>
   </data>
-  <data name="ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected" xml:space="preserve">
-    <value>Please log in to Azure DevOps &amp; ensure both Azure DevOps account name and team project are selected.</value>
+  <data name="ScannerResultControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
+    <value>To file issues, select an issue tracker and specify the desired location.</value>
   </data>
   <data name="ScannerResultControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
@@ -1438,12 +1417,12 @@ Accessibility Insights Support Team
   <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
     <value>detected.</value>
   </data>
-  <data name="ConnectionControl_selectTeam" xml:space="preserve">
+  <!--<data name="ConnectionControl_selectTeam" xml:space="preserve">
     <value>Select your team</value>
-  </data>
-  <data name="ConnectionControl_serverURL" xml:space="preserve">
+  </data>-->
+  <!--<data name="ConnectionControl_serverURL" xml:space="preserve">
     <value>Server URL</value>
-  </data>
+  </data>-->
   <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
     <value>Search nodes in hierarchy.</value>
   </data>
@@ -1520,6 +1499,9 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="CCToggleToolTip" xml:space="preserve">
     <value>Hover over the element or set keyboard focus to auto detect color contrast ratio.</value>
+  </data>
+  <data name="ADO_URL_Fromat_Message" xml:space="preserve">
+    <value>URL format is not valid. Example URL: https://dev.azure.com/fabrikam</value>
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>

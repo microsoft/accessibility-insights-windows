@@ -186,7 +186,6 @@
     <Compile Include="MainWindowHelpers\TestMode.cs" />
     <Compile Include="MainWindowHelpers\TreeNavigator.cs" />
     <Compile Include="MainWindowHelpers\Misc.cs" />
-    <Compile Include="MainWindowHelpers\ServerSignIn.cs" />
     <Compile Include="Misc\FrameworkNavigator.cs" />
     <Compile Include="Misc\PageTracker.cs" />
     <Compile Include="Misc\UserControlWithPanes.cs" />
