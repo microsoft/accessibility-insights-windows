@@ -25,7 +25,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
 #pragma warning disable CS0414
         private readonly string _specialNameValue1;
         private readonly string _specialNameValue2;
-#pragma warning restore 414
+#pragma warning restore CS0414
         private const RuleId DefaultRule = RuleId.ItemTypeCorrect;
         private const ScanStatus DefaultScanStatus = ScanStatus.Fail;
         private const string DefaultRuleIdValue = "ItemTypeCorrect";
