@@ -182,7 +182,7 @@
                                 <Image x:Name="imgAvatar" Visibility="Collapsed" Source="{Binding Path=vmAvatar.ByteData, TargetNullValue={x:Null}}"/>
                                 <Grid x:Name="newAccountGrid" Visibility="Visible">
                                     <AccessText Text="_i" Opacity="0"/>
-                                    <fabric:FabricIconControl GlyphName="Contact" FontSize="24" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"  HorizontalAlignment="Center"/>
+                                    <fabric:FabricIconControl GlyphName="LadybugSolid" FontSize="24" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=LightIconBrush}"  HorizontalAlignment="Center"/>
                                 </Grid>
                             </Grid>
                         </Button>
