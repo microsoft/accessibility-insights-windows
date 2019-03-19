@@ -972,8 +972,16 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // Bug already filed, open it in a new window
                 try
                 {
-                    var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result.ToString();
-                    Process.Start(bugUrl);
+                    var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result?.ToString();
+
+                    if (bugUrl == null)
+                    {
+                        MessageDialog.Show("Please sign into Azure DevOps to view the bug information");
+                    }
+                    else
+                    {
+                        Process.Start(bugUrl);
+                    }
                 }
                 catch (Exception ex)
                 {
