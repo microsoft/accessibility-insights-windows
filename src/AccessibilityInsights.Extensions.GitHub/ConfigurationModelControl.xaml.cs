@@ -34,11 +34,37 @@ namespace AccessibilityInsights.Extensions.GitHub
             this.tbURL.Text = this.Config;
         }
 
+        public void TextChange_UpdateSaveButton(object sender, EventArgs e)
+        {
+            if (this.Config!= null && !this.Config.Equals(this.tbURL.Text))
+            {
+                canSave = true;
+            }
+            else
+            {
+                canSave = false;
+            }
+            Dispatcher.Invoke(UpdateSaveButton);
+        }
+
+        private bool canSave = false;
         /// <summary>
         /// Can the save button be clicked
         /// </summary>
-        public override bool CanSave => !this.Config.Equals(this.tbURL.Text);
+        public override bool CanSave => canSave;
 
-        public override Action UpdateSaveButton { get; set;}
+
+        private Action updateSaveButton;
+        public override Action UpdateSaveButton {
+            get
+            {
+                return updateSaveButton;
+            }
+            set
+            {
+                updateSaveButton = value;
+                this.tbURL.TextChanged += TextChange_UpdateSaveButton;
+            }
+        }
     }
 }

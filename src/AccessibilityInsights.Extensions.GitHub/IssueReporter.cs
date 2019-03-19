@@ -5,18 +5,19 @@ using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    [Export(typeof(IIssueReporting))]
     public class IssueReporter : IIssueReporting
     {
         private IssueReporter _instance;
-        private ConfigurationModel _configurationControl;
+        private ConfigurationModel _configurationControl = new ConfigurationModel();
 
         private IssueReporter()
         {
-            _configurationControl = new ConfigurationModel();
         }
 
         public IssueReporter getDeafualtInstance()
@@ -43,28 +44,33 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
-            return new Task<IIssueResult>(()=> {
-                if (this.IsConfigured)
-                {
-                    string url = IssueFormatterFactory.GetNewIssueURL(this._configurationControl.Config, issueInfo);
-                    System.Diagnostics.Process.Start(url);
-                }
+            return Task.Run<IIssueResult>(()=> FileIssueAsyncAction(issueInfo));
+        }
 
-                return null;
-            });
+        private IIssueResult FileIssueAsyncAction(IssueInformation issueInfo)
+        {
+            if (this.IsConfigured)
+            {
+                string url = IssueFormatterFactory.GetNewIssueURL(this._configurationControl.Config, issueInfo);
+                System.Diagnostics.Process.Start(url);
+            }
+
+            return null;
         }
 
         public Task RestoreConfigurationAsync(string serializedConfig)
         {
-            return new Task(()=>
+            return Task.Run(()=> RestoreConfigurationAsyncAction(serializedConfig));
+        }
+
+        private void RestoreConfigurationAsyncAction(string serializedConfig)
+        {
+            Configuration deserializedConfig = JsonConvert.DeserializeObject<Configuration>(serializedConfig); ;
+            if (string.IsNullOrEmpty(deserializedConfig.RepoLink))
             {
-                Configuration deserializedConfig = JsonConvert.DeserializeObject<Configuration>(serializedConfig); ;
-                if(string.IsNullOrEmpty(deserializedConfig.RepoLink))
-                {
-                    this._configurationControl.Config = deserializedConfig.RepoLink;
-                    this.IsConfigured = true;
-                }
-            });
+                this._configurationControl.Config = deserializedConfig.RepoLink;
+                this.IsConfigured = true;
+            }
         }
 
         public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
