@@ -694,7 +694,7 @@ namespace AccessibilityInsights
         /// Initialize server integration and try logging in implicitly 
         /// to the saved connection in the configuration if it exists.
         /// </summary>
-        private static void RestoreConfigurationAsync(/*Action callback = null*/)
+        private async void RestoreConfigurationAsync()
         {
             var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
             var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
@@ -704,8 +704,30 @@ namespace AccessibilityInsights
                 var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
                 Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
                 configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
-                BugReporter.RestoreConfigurationAsync(serializedConfig);
+                await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(false);
+                Dispatcher.Invoke(() =>
+                {
+                    UpdateMainWindowConnectionFields();
+                });
             }
+        }
+
+        /// <summary>
+        /// Update sign in logo and tooltip
+        /// </summary>
+        internal void UpdateMainWindowConnectionFields()
+        {
+            bool isConfigured = BugReporter.IssueReporting != null && BugReporter.IsConnected;
+            
+            // Main window UI changes
+            vmAvatar.ByteData = isConfigured ? BugReporter.Logo : null;
+            imgAvatar.Visibility = isConfigured ? Visibility.Visible : Visibility.Collapsed;
+            newAccountGrid.Visibility = isConfigured ? Visibility.Collapsed : Visibility.Visible;
+            string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
+
+            string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, BugReporter.DisplayName);
+            AutomationProperties.SetName(btnAccountConfig, tooltipText);
+            btnAccountConfig.ToolTip = tooltipText;
         }
 
         #endregion

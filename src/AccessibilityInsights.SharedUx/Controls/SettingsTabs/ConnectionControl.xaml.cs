@@ -84,7 +84,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// Adds the currently selected connection to the configuration so it is persisted
         /// </summary>
         /// <param name="configuration"></param>
-        public void UpdateConfigFromSelections(ConfigurationModel configuration)
+        public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
             if (issueConfigurationControl.CanSave)
             {
@@ -97,7 +97,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
                 issueConfigurationControl.OnDismiss();
+                return true;
             }
+            return false;
         }
 
         /// <summary>

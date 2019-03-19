@@ -124,7 +124,7 @@ namespace AccessibilityInsights.Modes
         /// <param name="e"></param>
         private void buttonOk_Click(object sender, RoutedEventArgs e)
         {
-            this.connectionCtrl.UpdateConfigFromSelections(Configuration);
+            bool issueReporterUpdated = this.connectionCtrl.UpdateConfigFromSelections(Configuration);
             this.appSettingsCtrl.UpdateConfigFromSelections(Configuration);
 
             IReadOnlyDictionary<string, object> diff = ConfigurationModel.Diff(this.configSnapshot, Configuration);
@@ -132,6 +132,12 @@ namespace AccessibilityInsights.Modes
             {
                 MainWin.HandleConfigurationChanged(diff);
             }
+
+            if (issueReporterUpdated)
+            {
+                MainWin.UpdateMainWindowConnectionFields();
+            }
+
             MainWin.TransitionToSelectActionMode();
         }
 
