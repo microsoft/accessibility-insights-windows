@@ -40,7 +40,11 @@ namespace AccessibilityInsights.SharedUx.FileBug
             // Get all serialized configs
             ConfigurationModel configs = ConfigurationManager.GetDefaultInstance().AppConfig;
             var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
-            Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+            Dictionary<Guid, string> configsDictionary = new Dictionary<Guid, string>();
+            if (serializedConfigsDict != null)
+            {
+                configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+            }
 
             List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions.ToList();
             foreach (IIssueReporting issueReporter in IssueReportingOptions)
