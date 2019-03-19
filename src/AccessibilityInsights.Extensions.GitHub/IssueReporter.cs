@@ -66,5 +66,11 @@ namespace AccessibilityInsights.Extensions.GitHub
                 }
             });
         }
+
+        public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
+        {
+            _configurationControl.UpdateSaveButton = UpdateSaveButton;
+            return _configurationControl;
+        }
     }
 }

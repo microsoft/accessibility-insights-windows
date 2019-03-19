@@ -97,32 +97,26 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Bug id of this element
+        /// Display text for the issue
         /// </summary>
-        public int? BugId
+        public string IssueDisplayText
         {
             get
             {
-                return Element.BugId;
+                return Element.IssueDisplayText;
             }
             set
             {
-                Element.BugId = value;
-                OnPropertyChanged(nameof(BugIdString));
+                Element.IssueDisplayText = value;
+                OnPropertyChanged(nameof(IssueDisplayText));
                 OnPropertyChanged(nameof(BugVisibility));
             }
         }
 
         /// <summary>
-        /// String for BugId
+        /// Used to store the issue link.
         /// </summary>
-        public string BugIdString
-        {
-            get
-            {
-                return BugId.HasValue ? BugId.ToString() : null;
-            }
-        }
+        public Uri IssueLink { get; set; }
 
         /// <summary>
         /// Visibility of bug icon when node selected
@@ -131,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             get
             {
-                return BugId.HasValue ? Visibility.Collapsed : Visibility.Visible;
+                return string.IsNullOrEmpty(IssueDisplayText) ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 

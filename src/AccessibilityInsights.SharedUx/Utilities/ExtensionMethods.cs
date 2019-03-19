@@ -22,6 +22,7 @@ using System.Windows.Controls.Primitives;
 using System.Windows.Media;
 using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
@@ -191,15 +192,15 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public static BugInformation GetBugInformation(this A11yElement element, BugType? bugType)
+        public static IssueInformation GetIssueInformation(this A11yElement element, IssueType issueType)
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: element.Glimpse,
                 processName: element.GetProcessName(),
                 windowTitle: element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 internalGuid: Guid.NewGuid(),
-                bugType: bugType);
+                issueType: issueType);
         }
 
         /// <summary>

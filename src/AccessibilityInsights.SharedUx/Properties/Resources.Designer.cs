@@ -61,15 +61,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
-        /// </summary>
-        public static string accountPlaceholderText {
-            get {
-                return ResourceManager.GetString("accountPlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to passed value is not supported type..
         /// </summary>
         public static string ActionViewModelConverter_Convert_passed_value_is_not_supported_type {
@@ -143,12 +134,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please sign into Azure DevOps &amp; ensure both account name and team project are selected..
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location...
         /// </summary>
-        public static string AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected {
+        public static string AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure {
             get {
-                return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both" +
-                        "_AzureDevOps_account_name_and_team_project_are_selected", resourceCulture);
+                return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
             }
         }
         
@@ -392,7 +382,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string btnFileIssueContent {
             get {
@@ -401,7 +391,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to + New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string btnFileIssueContent1 {
             get {
@@ -662,24 +652,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disconnect.
-        /// </summary>
-        public static string ButtonAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change team.
-        /// </summary>
-        public static string ButtonAutomationPropertiesNameChangeTeam {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesNameChangeTeam", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Close the notification toast.
         /// </summary>
         public static string ButtonAutomationPropertiesNameCloseToastNotification {
@@ -694,15 +666,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ButtonAutomationPropertiesNameInspectDetails {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameInspectDetails", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        public static string ButtonAutomationPropertiesNameRefresh {
-            get {
-                return ResourceManager.GetString("ButtonAutomationPropertiesNameRefresh", resourceCulture);
             }
         }
         
@@ -1186,25 +1149,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select your team.
-        /// </summary>
-        public static string ConnectionControl_selectTeam {
-            get {
-                return ResourceManager.GetString("ConnectionControl_selectTeam", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Server URL.
-        /// </summary>
-        public static string ConnectionControl_serverURL {
-            get {
-                return ResourceManager.GetString("ConnectionControl_serverURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To create bugs and save test results, you must first enter the Azure DevOps URL and click Next to sign in..
+        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam auctor placerat. Nunc in nulla sed turpis luctus pretium auctor quis sem. Quisque sit amet eros rutrum, lobortis nunc sed, aliquam ex. Etiam metus purus, facilisis vel molestie ac, molestie vel erat. .
         /// </summary>
         public static string connectionInstrText {
             get {
@@ -1847,16 +1792,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please sign in to Azure DevOps &amp; specify both Azure DevOps organization name and project..
-        /// </summary>
-        public static string HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project {
-            get {
-                return ResourceManager.GetString("HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps" +
-                        "_organization_name_and_project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded..
         /// </summary>
         public static string HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded {
@@ -1864,6 +1799,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_" +
                         "occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_descript" +
                         "ion_Attachments_have_not_been_uploaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
+        /// </summary>
+        public static string HierarchyControl_FileIssue_Configure {
+            get {
+                return ResourceManager.GetString("HierarchyControl_FileIssue_Configure", resourceCulture);
             }
         }
         
@@ -2339,6 +2283,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issue Filing.
+        /// </summary>
+        public static string lblIssueFiling {
+            get {
+                return ResourceManager.GetString("lblIssueFiling", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selection by _mouse hover.
         /// </summary>
         public static string lblMouseLabelContent {
@@ -2564,7 +2517,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string MenuItemAutomationPropertiesName {
             get {
@@ -2735,7 +2688,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to New issue.
+        ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string MenuItemHeaderNewIssue {
             get {
@@ -3369,12 +3322,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please log in to Azure DevOps &amp; ensure both Azure DevOps account name and team project are selected..
+        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
         /// </summary>
-        public static string ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected {
+        public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {
             get {
-                return ResourceManager.GetString("ScannerResultControl_btnFileBug_Click_Please_log_in_to_AzureDevOps_ensure_both_Az" +
-                        "ureDevOps_account_name_and_team_project_are_selected", resourceCulture);
+                return ResourceManager.GetString("ScannerResultControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
             }
         }
         
@@ -3458,15 +3410,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ServerComboBoxAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Team project.
-        /// </summary>
-        public static string serverTreeviewAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("serverTreeviewAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -3792,15 +3735,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for team project.
-        /// </summary>
-        public static string tbTeamProjectSearchAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("tbTeamProjectSearchAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Perf info.
         /// </summary>
         public static string tbTimeSpanAutomationPropertiesName {
@@ -3871,15 +3805,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockText {
             get {
                 return ResourceManager.GetString("TextBlockText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Change.
-        /// </summary>
-        public static string TextBlockTextChange {
-            get {
-                return ResourceManager.GetString("TextBlockTextChange", resourceCulture);
             }
         }
         
@@ -3961,15 +3886,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockTextSampleText {
             get {
                 return ResourceManager.GetString("TextBlockTextSampleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Selected team.
-        /// </summary>
-        public static string TextBlockTextSelectedteam {
-            get {
-                return ResourceManager.GetString("TextBlockTextSelectedteam", resourceCulture);
             }
         }
         

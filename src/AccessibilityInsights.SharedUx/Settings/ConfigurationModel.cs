@@ -26,10 +26,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private readonly SettingsDictionary _settings = new SettingsDictionary();
 
-        // These are just backing properties for things where auto-properties are insufficient
-        private IConnectionInfo _savedConnection;
-        private IConnectionCache _savedConnectionCache;
-
         #region Data Helpers
 
         /// <summary>
@@ -128,48 +124,16 @@ namespace AccessibilityInsights.SharedUx.Settings
             set => SetDataValue<string>(keyAppVersion, value);
         }
 
-        /// <summary>
-        /// Zoom level to set for embedded web browser as a percentage
-        /// the percentage is based on DPI, so it may start off at values other than 100%
-        /// </summary>
-        public int ZoomLevel
+        public Guid SelectedIssueReporter
         {
-            get => GetDataValue<int>(keyZoomLevel);
-            set => SetDataValue<int>(keyZoomLevel, value);
+            get => GetDataValue<Guid>(keyIssueReporting);
+            set => SetDataValue<Guid>(keyIssueReporting, value);
         }
 
-        /// <summary>
-        /// The connection to automatically connect to when AccessibilityInsights starts up
-        /// </summary>
-        public IConnectionInfo SavedConnection
+        public string IssueReporterSerializedConfigs
         {
-            get
-            {
-                return _savedConnection ??
-                    (_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
-            }
-            set
-            {
-                _savedConnection = value;
-                SetDataValue<string>(keySerializedSavedConnection, value?.ToConfigString());
-            }
-        }
-
-        /// <summary>
-        /// MRU connections
-        /// </summary>
-        public IConnectionCache CachedConnections
-        {
-            get
-            {
-                return _savedConnectionCache ??
-                    (_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
-            }
-            set
-            {
-                _savedConnectionCache = value;
-                SetDataValue<string>(keySerializedCachedConnections, value?.ToConfigString());
-            }
+            get => GetDataValue<string>(keyIssueReporterSerializedConfig);
+            set => SetDataValue<string>(keyIssueReporterSerializedConfig, value);
         }
 
         /// <summary>
@@ -670,7 +634,6 @@ namespace AccessibilityInsights.SharedUx.Settings
                 FontSize = FontSize.Standard,
                 HighlighterMode = HighlighterMode.HighlighterBeakerTooltip,
                 ShowAncestry = true,
-                ZoomLevel = 100,
                 EnableTelemetry = true,
                 ShowTelemetryDialog = true,
 

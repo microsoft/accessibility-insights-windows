@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,125 +13,41 @@ namespace AccessibilityInsights.SharedUx.FileBug
     /// </summary>
     static public class BugReporter
     {
-        private static IBugReporting BugReporting => Container.GetDefaultInstance().BugReporting;
+        public static IIssueReporting IssueReporting { get; set; }
 
-        public static bool IsEnabled => BugReporting != null;
+        public static bool IsEnabled => (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
 
-        public static bool IsConnected => IsEnabled && BugReporting.IsConnected;
+        public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
 
 #pragma warning disable CA1819 // Properties should not return arrays
-        public static byte[] Avatar => IsEnabled ? BugReporting.Avatar?.ToArray() : null;
+        public static byte[] Logo => IsEnabled ? IssueReporting.Logo?.ToArray() : null;
 #pragma warning restore CA1819 // Properties should not return arrays
 
-        public static string DisplayName => IsEnabled ? BugReporting.DisplayName : null;
+        public static string DisplayName => IsEnabled ? IssueReporting.ServiceName : null;
 
-        public static string Email => IsEnabled ? BugReporting.Email : null;
-
-        public static Task ConnectAsync(Uri uri, bool prompt)
+        public static Dictionary<Guid, IIssueReporting> GetIssueReporters()
         {
-            if (IsEnabled)
-                return BugReporting.ConnectAsync(uri, prompt);
+            return IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
+        }
 
+        public static Task RestoreConfigurationAsync(string serializedConfig)
+        {
+            if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid != null)
+                return IssueReporting.RestoreConfigurationAsync(serializedConfig);
             return Task.CompletedTask;
         }
 
-        public static void FlushToken(Uri uri)
+        public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
-            if (IsEnabled)
-                BugReporting.FlushToken(uri);
-        }
-
-        public static Task PopulateUserProfileAsync()
-        {
-            if (IsEnabled)
-                return BugReporting.PopulateUserProfileAsync();
-
-            return Task.CompletedTask;
-        }
-
-        public static void Disconnect()
-        {
-            if (IsEnabled)
-                BugReporting.Disconnect();
-        }
-
-        public static Task<IEnumerable<IProject>> GetProjectsAsync()
-        {
-            if (IsEnabled)
-                return BugReporting.GetProjectsAsync();
-
-            return Task.FromResult(Enumerable.Empty<IProject>());
-        }
-
-        public static Task<string> GetExistingBugDescriptionAsync(int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.GetExistingBugDescriptionAsync(bugId);
-
-            return Task.FromResult(string.Empty);
-        }
-
-        public static Task<int?> ReplaceBugDescriptionAsync(string description, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.ReplaceBugDescriptionAsync(description, bugId);
-
-            return Task.FromResult((int?)null);
-        }
-
-        public static Task<int?> AttachTestResultToBugAsync(string path, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.AttachTestResultToBugAsync(path, bugId);
-
-            return Task.FromResult((int?)null);
-        }
-
-        public static Task<string> AttachScreenshotToBugAsync(string path, int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.AttachScreenshotToBugAsync(path, bugId);
-
-            return Task.FromResult(string.Empty);
-        }
-
-        public static Task<Uri> GetExistingBugUriAsync(int bugId)
-        {
-            if (IsEnabled)
-                return BugReporting.GetExistingBugUriAsync(bugId);
-
-            return Task.FromResult((Uri)null);
-        }
-
-        public static Task<Uri> CreateBugPreviewAsync(IConnectionInfo connectionInfo, BugInformation bugInfo)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateBugPreviewAsync(connectionInfo, bugInfo);
-
-            return Task.FromResult((Uri)null);
-        }
-
-        public static IConnectionInfo CreateConnectionInfo(Uri serverUri, IProject project, ITeam team)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionInfo(serverUri, project, team);
-
-            return null;
-        }
-
-        public static IConnectionInfo CreateConnectionInfo(string configString)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionInfo(configString);
-
-            return null;
-        }
-
-        public static IConnectionCache CreateConnectionCache(string configString)
-        {
-            if (IsEnabled)
-                return BugReporting.CreateConnectionCache(configString);
-
+            if (IsEnabled && IsConnected)
+            {
+                // Coding to the agreement that FileIssueAsync will return a kicked off task. 
+                // This will block the main thread. 
+                // It does seem like we currently block the main thread when we show the win form for azure devops
+                // so keeping it as is till we have a discussion. Check for blocking behavior at that link.
+                // https://github.com/Microsoft/accessibility-insights-windows/blob/master/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858
+                return IssueReporting.FileIssueAsync(issueInformation).Result;
+            }
             return null;
         }
     }

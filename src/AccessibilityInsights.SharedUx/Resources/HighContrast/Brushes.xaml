@@ -6,6 +6,7 @@
     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TextBrushDark" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
