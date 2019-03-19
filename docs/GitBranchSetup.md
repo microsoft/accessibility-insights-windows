@@ -7,7 +7,7 @@ Licensed under the MIT License.
 
 This document describes how to set up your development environment and contribute changes to
 [accessibility-insights-windows](https://github.com/Microsoft/accessibility-insights-windows). This document assumes basic working knowledge
-with Git and related tools. We are providing instructions specific to this project.
+of Git and related tools. The instructions are specific to this project.
 
 ## Creating your own fork
 
