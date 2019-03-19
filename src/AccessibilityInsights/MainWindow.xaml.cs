@@ -704,11 +704,9 @@ namespace AccessibilityInsights
                 var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
                 Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
                 configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
-                await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(false);
-                Dispatcher.Invoke(() =>
-                {
-                    UpdateMainWindowConnectionFields();
-                });
+                await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
+                UpdateMainWindowConnectionFields();
+
             }
         }
 
