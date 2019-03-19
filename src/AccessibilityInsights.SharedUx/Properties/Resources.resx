@@ -421,7 +421,7 @@
     <value>Highlight all results</value>
   </data>
   <data name="btnFileIssueContent" xml:space="preserve">
-    <value>+ New issue</value>
+    <value>File issue</value>
   </data>
   <data name="runFailuresTextOneFailure" xml:space="preserve">
     <value>1 failure was</value>
@@ -773,10 +773,10 @@ Accessibility Insights Support Team
     <value>Test</value>
   </data>
   <data name="MenuItemHeaderNewIssue" xml:space="preserve">
-    <value>New issue</value>
+    <value>File issue</value>
   </data>
   <data name="MenuItemAutomationPropertiesName" xml:space="preserve">
-    <value>New issue</value>
+    <value>File issue</value>
   </data>
   <data name="SetterValueBug" xml:space="preserve">
     <value>Bug {0}</value>
@@ -911,7 +911,7 @@ Accessibility Insights Support Team
     <value>Test results</value>
   </data>
   <data name="btnFileIssueContent1" xml:space="preserve">
-    <value>+ New issue</value>
+    <value>File issue</value>
   </data>
   <data name="btnFileBugAutomationPropertiesHelpText1" xml:space="preserve">
     <value>Bug for {0}</value>
