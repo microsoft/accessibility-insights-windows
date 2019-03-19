@@ -6,23 +6,26 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Bases.Fakes;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Fingerprint;
-using AccessibilityInsights.Core.Fingerprint.Fakes;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Core.Types;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Core.Bases.Fakes;
+using AccessibilityInsights.Core.Fingerprint.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.CoreTests.Fingerprint
 {
     [TestClass]
     public class ScanResultFingerprintUnitTests
     {
+#pragma warning disable CS0414
         private readonly string _specialNameValue1;
         private readonly string _specialNameValue2;
-
+#pragma warning restore 414
         private const RuleId DefaultRule = RuleId.ItemTypeCorrect;
         private const ScanStatus DefaultScanStatus = ScanStatus.Fail;
         private const string DefaultRuleIdValue = "ItemTypeCorrect";
@@ -265,6 +268,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void Ctor_ElementHasName_FingerprintIncludesName()
@@ -547,6 +551,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 ValidateFingerprint(fingerprint, ruleIdValue: "IsKeyboardFocusableBasedOnPatterns", isKeyboardFocusableValue: "False");
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(2000)]
@@ -570,6 +575,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             Assert.AreEqual(fingerprint1.GetHashCode(), fingerprint2.GetHashCode());
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void GetHashCode_EquivalentComplexContributions_ReturnsSameHashCode()
@@ -595,6 +601,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 Assert.AreEqual(fingerprint1.GetHashCode(), fingerprint2.GetHashCode());
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(2000)]
@@ -614,6 +621,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             Assert.AreNotEqual(fingerprint1.GetHashCode(), fingerprint2.GetHashCode());
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void GetHashCode_DifferentComplexContributions_ReturnsSameHashCode()
@@ -639,6 +647,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 Assert.AreNotEqual(fingerprint1.GetHashCode(), fingerprint2.GetHashCode());
             }
         }
+#endif
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -658,6 +667,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [ExpectedException(typeof(InvalidOperationException))]
         [Timeout(2000)]
@@ -729,6 +739,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
 
         [TestMethod]
         [Timeout (2000)]
@@ -738,6 +749,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             Assert.IsFalse(fingerprint.Equals(null));
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (2000)]
         public void Equals_OtherIsDifferentImplementation_ReturnsFalse()
@@ -869,6 +881,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 Assert.AreEqual(2, value);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(2000)]
