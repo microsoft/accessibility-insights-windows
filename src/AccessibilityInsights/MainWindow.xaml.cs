@@ -3,6 +3,7 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
@@ -24,8 +25,7 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
-using AccessibilityInsights.Properties;
-using AccessibilityInsights.DesktopUI.Controls;
+
 
 namespace AccessibilityInsights
 {
