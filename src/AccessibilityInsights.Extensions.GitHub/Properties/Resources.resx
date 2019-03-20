@@ -120,6 +120,42 @@
   <data name="extensionName" xml:space="preserve">
     <value>GitHub</value>
   </data>
+  <data name="FormattedLink" xml:space="preserve">
+    <value>{0}/issues/new?title={1}&amp;body={2}</value>
+  </data>
+  <data name="NoFailureIssueBody" xml:space="preserve">
+    <value>The following accessibility issue needs investigation.
+
+**App:** {0}
+
+**Element path:** {1}
+
+**Issue Details:** []
+
+**How To Fix:** []</value>
+  </data>
+  <data name="NoFailureIssueTitle" xml:space="preserve">
+    <value>({0}/{1}) has an accessibility issue that needs investigation</value>
+  </data>
+  <data name="PlaceHolder" xml:space="preserve">
+    <value>https//github.com/owner/repo</value>
+  </data>
+  <data name="SingleFailureIssueBody" xml:space="preserve">
+    <value>The following accessibility issue needs investigation.
+
+**App:** {0}
+
+**Element path:** {1}
+
+**Issue Details:** {2} [{3}]({4})
+
+**How To Fix:** {5}
+
+This accessibility issue was found using Accessibility Insights for Windows, a tool that helps debug and find accessibility issues earlier. Get more information and download this tool at https://aka.ms/AccessibilityInsights.</value>
+  </data>
+  <data name="SingleFailureIssueTitle" xml:space="preserve">
+    <value>{0}: ({1}/{2}) {3}</value>
+  </data>
   <data name="tbURLPlaceHolder" xml:space="preserve">
     <value>Enter desired GitHub repo link</value>
   </data>

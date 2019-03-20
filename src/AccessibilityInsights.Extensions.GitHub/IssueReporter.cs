@@ -21,7 +21,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         private IssueReporter()
         {
             configurationControl = new ConfigurationModel();
-            configurationControl.Config = new Configuration(string.Empty);
+            configurationControl.Config = new ConnectionConfiguration(string.Empty);
         }
 
         public IssueReporter GetDefaultInstance()
@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             {
                 try
                 {
-                    string url = IssueFormatterFactory.GetNewIssueURL(this.configurationControl.Config.RepoLink, issueInfo);
+                    string url = IssueFormatterFactory.GetNewIssueLink(this.configurationControl.Config.RepoLink, issueInfo);
                     System.Diagnostics.Process.Start(url);
                 }
                 catch
@@ -77,7 +77,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private void RestoreConfigurationAsyncAction(string serializedConfig)
         {
-            this.configurationControl.Config = JsonConvert.DeserializeObject<Configuration>(serializedConfig);
+            this.configurationControl.Config = JsonConvert.DeserializeObject<ConnectionConfiguration>(serializedConfig);
             if (this.configurationControl.Config!=null && string.IsNullOrEmpty(this.configurationControl.Config.RepoLink))
             {
                 this.IsConfigured = true;

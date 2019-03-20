@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
+using System.Globalization;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
@@ -10,7 +11,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// </summary>
     public static class IssueFormatterFactory
     {
-        public static string GetNewIssueURL(string URL, IssueInformation issueInfo)
+        public static string GetNewIssueLink(string link, IssueInformation issueInfo)
         {
             IIssueFormatter formatter = null;
             switch (issueInfo.IssueType)
@@ -25,8 +26,8 @@ namespace AccessibilityInsights.Extensions.GitHub
                     return string.Empty;
             }
 
-            string FormattedURL = string.Format("{0}/issues/new?title={1}&body={2}",
-                URL,
+            string FormattedURL = string.Format(CultureInfo.InvariantCulture, Properties.Resources.FormattedLink,
+                link,
                 formatter.GetFormattedTitle(),
                 formatter.GetFormattedBody());
             string escapedURL = Uri.EscapeUriString(FormattedURL).Replace("#", "%23");

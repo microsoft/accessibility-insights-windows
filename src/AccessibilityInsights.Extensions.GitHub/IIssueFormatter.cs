@@ -11,6 +11,5 @@ namespace AccessibilityInsights.Extensions.GitHub
     {
         string GetFormattedTitle();
         string GetFormattedBody();
-
     }
 }

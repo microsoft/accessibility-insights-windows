@@ -7,15 +7,15 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// <summary>
     /// GitHub Configuration Connection Data
     /// </summary>
-    public class Configuration
+    public class ConnectionConfiguration
     {
         public string RepoLink { get; set; }
 
-        public Configuration(): this(String.Empty)
+        public ConnectionConfiguration(): this(String.Empty)
         {
         }
 
-        public Configuration(string repoLink)
+        public ConnectionConfiguration(string repoLink)
         {
             this.RepoLink = repoLink;
         }

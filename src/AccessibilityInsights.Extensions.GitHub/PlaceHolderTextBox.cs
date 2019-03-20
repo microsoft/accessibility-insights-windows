@@ -7,12 +7,9 @@ using System.Windows.Media;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
-    /// <summary>
-    /// Custom TextBox wih a Placehodler 
-    /// </summary>
     public class PlaceHolderTextBox : TextBox
     {
-        private readonly string PlaceHolder = "https//github.com/owner/repo";
+        private readonly string PlaceHolder = Properties.Resources.PlaceHolder;
         private readonly SolidColorBrush BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
         private readonly SolidColorBrush GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
 
@@ -27,7 +24,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public void RemoveText(object sender, EventArgs e)
         {
-            if (this.Text.Equals(this.PlaceHolder))
+            if (this.Text.Equals(this.PlaceHolder, StringComparison.InvariantCulture))
             {
                 this.Text = "";
                 this.Foreground = BlackBrush;

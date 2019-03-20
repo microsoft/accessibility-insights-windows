@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using System.Globalization;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
     /// <summary>
-    /// GitHub Issue No Issue Formatting
+    /// GitHub Issue Single Issue Formatting
     /// </summary>
     public class NoFailuresIssueFormatter : IIssueFormatter
     {
@@ -16,19 +17,15 @@ namespace AccessibilityInsights.Extensions.GitHub
         }
         public string GetFormattedBody()
         {
-            return string.Format(
-                "The following accessibility issue needs investigation.\n\n" +
-                "**App:** {0}\n\n" +
-                "**Element path:** {1}\n\n" +
-                "**Issue Details:** []\n\n" +
-                "**How To Fix:** []\n\n",
+            return string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.NoFailureIssueBody,
                 IssueFormatterFactory.GetStringValue(this.IssueInfo.ProcessName),
                 IssueFormatterFactory.GetStringValue(this.IssueInfo.Glimpse));
         }
 
         public string GetFormattedTitle()
         {
-            return string.Format("({0}/{1}) has an accessibility issue that needs investigation",
+            return string.Format(CultureInfo.InvariantCulture, Properties.Resources.NoFailureIssueTitle,
                 IssueFormatterFactory.GetStringValue(this.IssueInfo.ProcessName),
                 IssueFormatterFactory.GetStringValue(this.IssueInfo.Glimpse));
         }

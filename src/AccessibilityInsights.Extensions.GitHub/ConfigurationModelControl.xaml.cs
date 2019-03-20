@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// </summary>
     public partial class ConfigurationModel : IssueConfigurationControl
     {
-        public Configuration Config { get; set;}
+        public ConnectionConfiguration Config { get; set;}
         public ConfigurationModel()
         {
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             UpdateSaveButton();
         }
 
-        public void TextChange_UpdateSaveButton(object sender, EventArgs e)
+        public void TextChangeUpdateSaveButton(object sender, EventArgs e)
         {
             string curURL = this.tbURL.Text;
             if (!string.IsNullOrEmpty(curURL) && ((this.Config !=null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.Equals(curURL)))
@@ -69,7 +69,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             set
             {
                 updateSaveButton = value;
-                this.tbURL.TextChanged += TextChange_UpdateSaveButton;
+                this.tbURL.TextChanged += TextChangeUpdateSaveButton;
             }
         }
     }

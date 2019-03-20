@@ -91,6 +91,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Extensions.GitHub.dll" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

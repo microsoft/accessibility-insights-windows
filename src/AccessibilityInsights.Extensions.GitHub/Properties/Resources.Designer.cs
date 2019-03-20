@@ -70,6 +70,78 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}/issues/new?title={1}&amp;body={2}.
+        /// </summary>
+        public static string FormattedLink {
+            get {
+                return ResourceManager.GetString("FormattedLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following accessibility issue needs investigation.
+        ///
+        ///**App:** {0}
+        ///
+        ///**Element path:** {1}
+        ///
+        ///**Issue Details:** []
+        ///
+        ///**How To Fix:** [].
+        /// </summary>
+        public static string NoFailureIssueBody {
+            get {
+                return ResourceManager.GetString("NoFailureIssueBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ({0}/{1}) has an accessibility issue that needs investigation.
+        /// </summary>
+        public static string NoFailureIssueTitle {
+            get {
+                return ResourceManager.GetString("NoFailureIssueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https//github.com/owner/repo.
+        /// </summary>
+        public static string PlaceHolder {
+            get {
+                return ResourceManager.GetString("PlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The following accessibility issue needs investigation.
+        ///
+        ///**App:** {0}
+        ///
+        ///**Element path:** {1}
+        ///
+        ///**Issue Details:** {2} [{3}]({4})
+        ///
+        ///**How To Fix:** {5}
+        ///
+        ///This accessibility issue was found using Accessibility Insights for Windows, a tool that helps debug and find accessibility issues earlier. Get more information and download this tool at https://aka.ms/AccessibilityInsights..
+        /// </summary>
+        public static string SingleFailureIssueBody {
+            get {
+                return ResourceManager.GetString("SingleFailureIssueBody", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: ({1}/{2}) {3}.
+        /// </summary>
+        public static string SingleFailureIssueTitle {
+            get {
+                return ResourceManager.GetString("SingleFailureIssueTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter desired GitHub repo link.
         /// </summary>
         public static string tbURLPlaceHolder {
