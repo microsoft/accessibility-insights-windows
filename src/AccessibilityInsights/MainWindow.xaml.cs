@@ -25,6 +25,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
 using AccessibilityInsights.Properties;
+using AccessibilityInsights.DesktopUI.Controls;
 
 namespace AccessibilityInsights
 {
@@ -536,10 +537,12 @@ namespace AccessibilityInsights
             {
                 this.dockPanelMain.Margin = new Thickness(5);
                 ctrlCurMode?.UpdateConfigWithSize();
+                this.btnMaxFabric.GlyphName = FabricIcon.ChromeRestore;
             }
             else
             {
                 this.dockPanelMain.Margin = new Thickness(0);
+                this.btnMaxFabric.GlyphName = FabricIcon.Checkbox;
             }
         }
 
