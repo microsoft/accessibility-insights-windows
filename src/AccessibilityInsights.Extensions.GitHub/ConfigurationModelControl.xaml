@@ -10,14 +10,12 @@
     xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
      xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
     mc:Ignorable="d">
-    <Canvas HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="360">
-        <Grid>
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 8px" />
-            <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}"/>
-        </Grid>
-    </Canvas>
+            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="14px"/>
+            <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" Width="294px" Height="32px" VerticalContentAlignment="Center" FontSize="14px"/>
+    </Grid>
 </src:IssueConfigurationControl>

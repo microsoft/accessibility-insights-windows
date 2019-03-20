@@ -7,6 +7,9 @@ using System.Windows.Media;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// Custom TextBox wih a Placehodler 
+    /// </summary>
     public class PlaceHolderTextBox : TextBox
     {
         private readonly string PlaceHolder = "https//github.com/owner/repo";

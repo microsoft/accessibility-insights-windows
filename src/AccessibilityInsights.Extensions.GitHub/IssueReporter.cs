@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Issue Reprting
+    /// </summary>
     [Export(typeof(IIssueReporting))]
     public class IssueReporter : IIssueReporting
     {
@@ -21,7 +24,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             configurationControl.Config = new Configuration(string.Empty);
         }
 
-        public IssueReporter getDeafualtInstance()
+        public IssueReporter GetDefaultInstance()
         {
             if (_instance == null)
             {
@@ -30,14 +33,14 @@ namespace AccessibilityInsights.Extensions.GitHub
             return _instance;
         }
 
-        public string ServiceName => Properties.Resources.extentionName;
+        public string ServiceName => Properties.Resources.extensionName;
 
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; } = true;
 
         public IEnumerable<byte> Logo => null;
 
-        public string LogoText => Properties.Resources.extentionName;
+        public string LogoText => Properties.Resources.extensionName;
 
         public IssueConfigurationControl ConfigurationControl => configurationControl;
 
@@ -45,15 +48,23 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
-            return Task.Run<IIssueResult>(()=> FileIssueAsyncAction(issueInfo));
+            return Task.Run<IIssueResult>(() => FileIssueAsyncAction(issueInfo));
         }
 
         private IIssueResult FileIssueAsyncAction(IssueInformation issueInfo)
         {
             if (this.IsConfigured)
             {
-                string url = IssueFormatterFactory.GetNewIssueURL(this.configurationControl.Config.RepoLink, issueInfo);
-                System.Diagnostics.Process.Start(url);
+                try
+                {
+                    string url = IssueFormatterFactory.GetNewIssueURL(this.configurationControl.Config.RepoLink, issueInfo);
+                    System.Diagnostics.Process.Start(url);
+                }
+                catch
+                {
+                    // TODO
+                    // MessageDialog.Show("Invalid URL"); we can't use shared UX here for now, same issue for ADO extension
+                }
             }
 
             return null;
@@ -61,7 +72,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public Task RestoreConfigurationAsync(string serializedConfig)
         {
-            return Task.Run(()=> RestoreConfigurationAsyncAction(serializedConfig));
+            return Task.Run(() => RestoreConfigurationAsyncAction(serializedConfig));
         }
 
         private void RestoreConfigurationAsyncAction(string serializedConfig)

@@ -5,6 +5,9 @@ using System;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Issue Issue Formatting
+    /// </summary>
     public static class IssueFormatterFactory
     {
         public static string GetNewIssueURL(string URL, IssueInformation issueInfo)

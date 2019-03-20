@@ -4,6 +4,9 @@ using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Issue Formatting Interface
+    /// </summary>
     public interface IIssueFormatter
     {
         string GetFormattedTitle();

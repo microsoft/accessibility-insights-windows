@@ -4,6 +4,9 @@ using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Issue No Issue Formatting
+    /// </summary>
     public class NoFailuresIssueFormatter : IIssueFormatter
     {
         public IssueInformation IssueInfo { get; }
@@ -14,7 +17,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public string GetFormattedBody()
         {
             return string.Format(
-                "The following accessibility issue that needs investigation.\n\n" +
+                "The following accessibility issue needs investigation.\n\n" +
                 "**App:** {0}\n\n" +
                 "**Element path:** {1}\n\n" +
                 "**Issue Details:** []\n\n" +

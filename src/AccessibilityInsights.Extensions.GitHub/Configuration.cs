@@ -4,13 +4,15 @@ using System;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Configuration Connection Data
+    /// </summary>
     public class Configuration
     {
         public string RepoLink { get; set; }
 
-        public Configuration()
+        public Configuration(): this(String.Empty)
         {
-            this.RepoLink = String.Empty;
         }
 
         public Configuration(string repoLink)

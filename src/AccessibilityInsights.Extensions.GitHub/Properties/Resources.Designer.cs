@@ -63,9 +63,9 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to GitHub.
         /// </summary>
-        public static string extentionName {
+        public static string extensionName {
             get {
-                return ResourceManager.GetString("extentionName", resourceCulture);
+                return ResourceManager.GetString("extensionName", resourceCulture);
             }
         }
         
