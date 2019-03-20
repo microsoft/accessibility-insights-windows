@@ -89,7 +89,7 @@ If you want to add any unit tests which use Fakes into a project, make sure of t
 
 `<Compile Include="FileBug\FileBugActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>`
 
-These precautions make it possible for contributers who use versions of Visual Studio which do not support Fakes to still compile and run Accessibility Insights successfully. 
+These precautions make it possible for contributors who use versions of Visual Studio which do not support Fakes to still compile and run Accessibility Insights successfully. 
 
 **Note:** All official builds of Accessibility Insights include unit tests which use Fakes. So if you add or change such a test, please make sure it passes before submitting a pull request.
 
