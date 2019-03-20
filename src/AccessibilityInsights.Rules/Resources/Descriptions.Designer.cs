@@ -646,7 +646,7 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Name property of sibbling list items should be unique..
+        ///   Looks up a localized string similar to The Name property of sibling list items should be unique..
         /// </summary>
         internal static string ListItemSiblingsUnique {
             get {

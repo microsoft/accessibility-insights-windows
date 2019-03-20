@@ -418,6 +418,6 @@
     <value>The Name property must not be longer than 512 characters.</value>
   </data>
   <data name="ListItemSiblingsUnique" xml:space="preserve">
-    <value>The Name property of sibbling list items should be unique.</value>
+    <value>The Name property of sibling list items should be unique.</value>
   </data>
 </root>
