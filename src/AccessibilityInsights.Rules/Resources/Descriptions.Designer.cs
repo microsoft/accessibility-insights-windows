@@ -646,6 +646,15 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Name property of sibbling list items should be unique..
+        /// </summary>
+        internal static string ListItemSiblingsUnique {
+            get {
+                return ResourceManager.GetString("ListItemSiblingsUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The ControlType and LocalizedControlType must not both be set to &quot;custom.&quot;.
         /// </summary>
         internal static string LocalizedControlTypeNotCustom {

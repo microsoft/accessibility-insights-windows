@@ -537,4 +537,7 @@ If possible, use a predefined (non-custom) control type and the default localize
  · Concisely identifies the element, AND
  · Contains at most 512 characters.</value>
   </data>
+  <data name="ListItemSiblingsUnique" xml:space="preserve">
+    <value>Provide unique names for sibling list items.</value>
+  </data>
 </root>

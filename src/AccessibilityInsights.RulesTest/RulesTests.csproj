@@ -96,6 +96,7 @@
     <Compile Include="Library\SelectionItemPatternSingleSelection.cs" />
     <Compile Include="Library\SelectionPatternSelectionRequired.cs" />
     <Compile Include="Library\ParentChildShouldNotHaveSameNameAndLocalizedControlType.cs" />
+    <Compile Include="Library\ListItemSiblingUniqueTests.cs" />
     <Compile Include="Library\SplitButtonInvokeAndTogglePatterns.cs" />
     <Compile Include="Library\ControlShouldSupportExpandCollapsePattern.cs" />
     <Compile Include="Library\LocalizedControlTypeIsReasonable.cs" />
