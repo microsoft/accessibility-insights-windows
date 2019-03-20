@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
@@ -14,10 +13,12 @@ namespace AccessibilityInsights.Extensions.GitHub
     public class IssueReporter : IIssueReporting
     {
         private IssueReporter _instance;
-        private ConfigurationModel _configurationControl = new ConfigurationModel();
+        private ConfigurationModel configurationControl;
 
         private IssueReporter()
         {
+            configurationControl = new ConfigurationModel();
+            configurationControl.Config = new Configuration(string.Empty);
         }
 
         public IssueReporter getDeafualtInstance()
@@ -32,13 +33,13 @@ namespace AccessibilityInsights.Extensions.GitHub
         public string ServiceName => Properties.Resources.extentionName;
 
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
-        public bool IsConfigured { get; private set; } = false;
+        public bool IsConfigured { get; private set; } = true;
 
         public IEnumerable<byte> Logo => null;
 
         public string LogoText => Properties.Resources.extentionName;
 
-        public IssueConfigurationControl ConfigurationControl => _configurationControl;
+        public IssueConfigurationControl ConfigurationControl => configurationControl;
 
         public bool CanAttachFiles => false;
 
@@ -51,7 +52,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (this.IsConfigured)
             {
-                string url = IssueFormatterFactory.GetNewIssueURL(this._configurationControl.Config, issueInfo);
+                string url = IssueFormatterFactory.GetNewIssueURL(this.configurationControl.Config.RepoLink, issueInfo);
                 System.Diagnostics.Process.Start(url);
             }
 
@@ -65,18 +66,17 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private void RestoreConfigurationAsyncAction(string serializedConfig)
         {
-            Configuration deserializedConfig = JsonConvert.DeserializeObject<Configuration>(serializedConfig); ;
-            if (string.IsNullOrEmpty(deserializedConfig.RepoLink))
+            this.configurationControl.Config = JsonConvert.DeserializeObject<Configuration>(serializedConfig);
+            if (this.configurationControl.Config!=null && string.IsNullOrEmpty(this.configurationControl.Config.RepoLink))
             {
-                this._configurationControl.Config = deserializedConfig.RepoLink;
                 this.IsConfigured = true;
             }
         }
 
         public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
         {
-            _configurationControl.UpdateSaveButton = UpdateSaveButton;
-            return _configurationControl;
+            this.ConfigurationControl.UpdateSaveButton = UpdateSaveButton;
+            return ConfigurationControl;
         }
     }
 }

@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
@@ -10,7 +11,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// </summary>
     public partial class ConfigurationModel : IssueConfigurationControl
     {
-        public string Config { get; set;}
+        public Configuration Config { get; set;}
         public ConfigurationModel()
         {
             InitializeComponent();
@@ -22,8 +23,10 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// <returns>The extension’s new configuration, serialized</returns>
         public override string OnSave()
         {
-            this.Config = this.tbURL.Text;
-            return Config;
+            this.Config.RepoLink = this.tbURL.Text;
+            canSave = false;
+            UpdateSaveButton();
+            return JsonConvert.SerializeObject(this.Config);
         }
 
         /// <summary>
@@ -31,12 +34,15 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// </summary>
         public override void OnDismiss()
         {
-            this.tbURL.Text = this.Config;
+            this.tbURL.Text = this.Config.RepoLink;
+            canSave = false;
+            UpdateSaveButton();
         }
 
         public void TextChange_UpdateSaveButton(object sender, EventArgs e)
         {
-            if (this.Config!= null && !this.Config.Equals(this.tbURL.Text))
+            string curURL = this.tbURL.Text;
+            if (!string.IsNullOrEmpty(curURL) && ((this.Config !=null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.Equals(curURL)))
             {
                 canSave = true;
             }
@@ -44,7 +50,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             {
                 canSave = false;
             }
-            Dispatcher.Invoke(UpdateSaveButton);
+            UpdateSaveButton();
         }
 
         private bool canSave = false;

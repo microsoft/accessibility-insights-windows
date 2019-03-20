@@ -26,7 +26,8 @@ namespace AccessibilityInsights.Extensions.GitHub
                 URL,
                 formatter.GetFormattedTitle(),
                 formatter.GetFormattedBody());
-            string escapedURL = Uri.EscapeDataString(FormattedURL);
+            string escapedURL = Uri.EscapeUriString(FormattedURL).Replace("#", "%23");
+
             return escapedURL;
         }
 
@@ -34,7 +35,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (string.IsNullOrWhiteSpace(value))
             {
-                return null;
+                return String.Empty;
             }
             return value;
         }

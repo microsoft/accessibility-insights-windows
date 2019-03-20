@@ -90,7 +90,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
                 string seralizedConfigs = configuration.IssueReporterSerializedConfigs;
-                Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
+                Dictionary<Guid, string> configs = new Dictionary<Guid, string>();
+                if (!string.IsNullOrEmpty(seralizedConfigs))
+                {
+                    configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
+                }
 
                 string newConfigs = issueConfigurationControl.OnSave();
                 configs[selectedIssueReporter.StableIdentifier] = newConfigs;
@@ -125,7 +129,14 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     rb.IsChecked = true;
                     issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
                     Grid.SetRow(issueConfigurationControl, 3);
-                    selectServerGrid.Children.Add(issueConfigurationControl);
+                    try
+                    {
+                        selectServerGrid.Children.Add(issueConfigurationControl);
+                    }
+                    catch
+                    {
+
+                    }
                 }
                 availableIssueReporters.Children.Add(rb);
             }

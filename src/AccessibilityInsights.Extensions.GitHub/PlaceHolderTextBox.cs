@@ -13,8 +13,6 @@ namespace AccessibilityInsights.Extensions.GitHub
         private readonly SolidColorBrush BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
         private readonly SolidColorBrush GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
 
-        public Action UpdateSaveButton { get; set; }
-
         public PlaceHolderTextBox()
         {
             this.Text = this.PlaceHolder;
