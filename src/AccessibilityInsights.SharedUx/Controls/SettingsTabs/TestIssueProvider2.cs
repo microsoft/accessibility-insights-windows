@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         public bool CanAttachFiles => true;
 
-        public IEnumerable<byte> Logo => null;
+        public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 
         public string LogoText => null;
 

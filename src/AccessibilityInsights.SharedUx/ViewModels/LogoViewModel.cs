@@ -3,23 +3,23 @@
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
     /// <summary>
-    /// View model for a byte array, currently used for avatar image
+    /// View model for the issue reporter logo
     /// </summary>
-    public class ByteArrayViewModel : ViewModelBase
+    public class LogoViewModel : ViewModelBase
     {
-        private byte[] array;
+        private string _fabricIconLogoName;
 #pragma warning disable CA1819 // Properties should not return arrays
-        public byte[] ByteData
+        public string FabricIconLogoName
 #pragma warning restore CA1819 // Properties should not return arrays
         {
             get
             {
-                return array;
+                return _fabricIconLogoName;
             }
             set
             {
-                array = value;
-                OnPropertyChanged(nameof(this.ByteData));
+                _fabricIconLogoName = value;
+                OnPropertyChanged(nameof(this.FabricIconLogoName));
             }
         }
     }

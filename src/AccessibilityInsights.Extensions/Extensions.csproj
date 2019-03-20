@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\IssueReporting\IssueConfigurationControl.cs" />
     <Compile Include="Interfaces\IssueReporting\IssueInformation.cs" />
     <Compile Include="Interfaces\IssueReporting\IssueType.cs" />
+    <Compile Include="Interfaces\IssueReporting\ReporterFabricIcon.cs" />
     <Compile Include="Interfaces\Telemetry\Hint.cs" />
     <Compile Include="Interfaces\Telemetry\ITelemetry.cs" />
     <Compile Include="Interfaces\Upgrades\IAutoUpdate.cs" />

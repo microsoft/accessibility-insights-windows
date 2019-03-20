@@ -27,6 +27,7 @@ using static AccessibilityInsights.Misc.FrameworkNavigator;
 using AccessibilityInsights.Properties;
 using System.Web;
 using Newtonsoft.Json;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights
 {
@@ -46,7 +47,7 @@ namespace AccessibilityInsights
         public TwoStateButtonViewModel vmHilighter { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
         public TwoStateButtonViewModel vmLiveModePauseResume { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
 
-        public ByteArrayViewModel vmAvatar { get; private set; } = new ByteArrayViewModel();
+        public LogoViewModel vmReporterLogo { get; private set; } = new LogoViewModel();
 
         public bool IsEventRecording { get; private set; }
 
@@ -705,8 +706,9 @@ namespace AccessibilityInsights
                 Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
                 configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
                 await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
-                UpdateMainWindowConnectionFields();
-
+                Dispatcher.Invoke(() => {
+                    UpdateMainWindowConnectionFields();
+                });
             }
         }
 
@@ -716,13 +718,12 @@ namespace AccessibilityInsights
         internal void UpdateMainWindowConnectionFields()
         {
             bool isConfigured = BugReporter.IssueReporting != null && BugReporter.IsConnected;
-            
-            // Main window UI changes
-            vmAvatar.ByteData = isConfigured ? BugReporter.Logo : null;
-            imgAvatar.Visibility = isConfigured ? Visibility.Visible : Visibility.Collapsed;
-            newAccountGrid.Visibility = isConfigured ? Visibility.Collapsed : Visibility.Visible;
-            string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
+            string fabricIconName = BugReporter.Logo.ToString("g");
+            fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
 
+            // Main window UI changes
+            vmReporterLogo.FabricIconLogoName = isConfigured ? BugReporter.Logo.ToString("g") : null;
+            string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
             string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, BugReporter.DisplayName);
             AutomationProperties.SetName(btnAccountConfig, tooltipText);
             btnAccountConfig.ToolTip = tooltipText;

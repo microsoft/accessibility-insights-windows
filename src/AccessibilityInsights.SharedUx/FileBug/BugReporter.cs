@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace AccessibilityInsights.SharedUx.FileBug
 {
     /// <summary>
-    /// Adapter between the core app and the bug reporting extension
+    /// Adapter between the core app and the issue reporting extension
     /// </summary>
     static public class BugReporter
     {
@@ -19,9 +19,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
 
         public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
 
-#pragma warning disable CA1819 // Properties should not return arrays
-        public static byte[] Logo => IsEnabled ? IssueReporting.Logo?.ToArray() : null;
-#pragma warning restore CA1819 // Properties should not return arrays
+        public static ReporterFabricIcon Logo => IsEnabled ? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected;
 
         public static string DisplayName => IsEnabled ? IssueReporting.ServiceName : null;
 
