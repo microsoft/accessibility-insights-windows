@@ -303,7 +303,7 @@ namespace AccessibilityInsights
                 btnAccountConfig.SetValue(AutomationProperties.NameProperty, Properties.Resources.btnConfigAutomationPropertiesNameNoBugFiling);
             }
 
-            this.btnMaxFabric.GlyphName = (this.WindowState == WindowState.Maximized) ? FabricIcon.ChromeRestore : FabricIcon.Checkbox;
+            handleWindowStateChange();
 
             // update version string. 
             UpdateVersionString();
@@ -528,11 +528,9 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Saves user's non-maximized window data when window is maximized
+        /// Update related UI when switching between maximized and normal window mode
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void onStateChanged(object sender, EventArgs e)
+        private void handleWindowStateChange()
         {
             if (this.WindowState == WindowState.Maximized)
             {
@@ -545,6 +543,16 @@ namespace AccessibilityInsights
                 this.dockPanelMain.Margin = new Thickness(0);
                 this.btnMaxFabric.GlyphName = FabricIcon.Checkbox;
             }
+        }
+
+        /// <summary>
+        /// Saves user's non-maximized window data when window is maximized
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void onStateChanged(object sender, EventArgs e)
+        {
+            handleWindowStateChange();
         }
 
         /// <summary>
