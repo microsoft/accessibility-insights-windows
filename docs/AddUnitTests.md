@@ -70,7 +70,7 @@ If you have a version of Visual Studio which supports Fakes and you would like t
 
 If you want to add any unit tests which use Fakes into a project, make sure of the following:
 
-1. All Fakes references in the project are conditional on the FAKES_SUPPORTED environment variable. For example.<BR/>
+1. All Fakes references in the project are conditional on the `FAKES_SUPPORTED` environment variable. For example.<BR/>
 `<Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1"/>`
 2. The FAKES_SUPPORTED preprocessor symbol is defined for the project based on the environment variable. For example,<BR/>
     ```
