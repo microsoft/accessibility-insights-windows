@@ -45,7 +45,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.fAKES.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="AccessibilityInsights.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Desktop.Fakes.dll</HintPath>
