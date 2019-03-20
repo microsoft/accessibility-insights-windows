@@ -13,30 +13,28 @@
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Canvas HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="360">
-        <Grid>
-            <Grid x:Name="selectServerGrid" Width="336" Margin="20 0 0 0" Visibility="Visible">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Label x:Name="lblIssueFiling" Grid.Row="0" Grid.Column="0" Margin="-4 15 0 7" VerticalAlignment="Center" FontSize="{StaticResource ConstXLTextSize}"
-                    Content="{x:Static Properties:Resources.lblIssueFiling}" Focusable="True" IsTabStop="True"/>
-                <TextBlock x:Name="connectionInstr" Grid.Row="1" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static Properties:Resources.connectionInstrText}"
-                           TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Focusable="True"/>
-                <StackPanel Grid.Row="2" x:Name="availableIssueReporters">
-                </StackPanel>
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid x:Name="selectServerGrid" Width="336" Margin="20 0 0 0" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="lblIssueFiling" Grid.Row="0" Grid.Column="0" Margin="-4 15 0 7" VerticalAlignment="Center" FontSize="{StaticResource ConstXLTextSize}"
+                Content="{x:Static Properties:Resources.lblIssueFiling}" Focusable="True" IsTabStop="True"/>
+            <TextBlock x:Name="connectionInstr" Grid.Row="1" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static Properties:Resources.connectionInstrText}"
+                        TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Focusable="True"/>
+            <StackPanel Grid.Row="2" x:Name="availableIssueReporters">
+            </StackPanel>
                 
-            </Grid>
-            <!--AK TODO - Consider whether we need this after integration-->
-            <local:ProgressRingControl x:Name="ctrlProgressRing" 
-                                   Size="25"  
-                                   Visibility="Collapsed"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center">
-            </local:ProgressRingControl>
         </Grid>
-    </Canvas>
+        <!--AK TODO - Consider whether we need this after integration-->
+        <local:ProgressRingControl x:Name="ctrlProgressRing" 
+                                Size="25"  
+                                Visibility="Collapsed"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+        </local:ProgressRingControl>
+    </Grid>
 </UserControl>

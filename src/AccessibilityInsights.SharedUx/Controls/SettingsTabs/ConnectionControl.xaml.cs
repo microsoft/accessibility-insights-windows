@@ -89,8 +89,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             if (issueConfigurationControl.CanSave)
             {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
-                string seralizedConfigs = configuration.IssueReporterSerializedConfigs;
-                Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
+                string serializedConfigs = configuration.IssueReporterSerializedConfigs;
+                Dictionary<Guid, string> configs = new Dictionary<Guid, string>();
+
+                if (serializedConfigs != null)
+                {
+                    configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                }
 
                 string newConfigs = issueConfigurationControl.OnSave();
                 configs[selectedIssueReporter.StableIdentifier] = newConfigs;
