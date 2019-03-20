@@ -3,6 +3,7 @@
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Microsoft.VisualStudio.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -143,7 +144,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                     // block clicking "next" until login request is done
                     ToggleLoading(true);
-                    await AzureDevOps.HandleLoginAsync(true, serverUri).ConfigureAwait(false);
+                    await AzureDevOps.HandleLoginAsync(CredentialPromptType.PromptIfNeeded, serverUri).ConfigureAwait(false);
 
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {

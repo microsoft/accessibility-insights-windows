@@ -3,6 +3,7 @@
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Microsoft.VisualStudio.Services.Common;
 using mshtml;
 using System;
 using System.Collections.Generic;
@@ -277,7 +278,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return AzureDevOps.AttachTestResultToIssue(path, issueId);
         }
 
-        public static Task ConnectAsync(Uri uri, bool prompt)
+        public static Task ConnectAsync(Uri uri, CredentialPromptType prompt)
         {
             return AzureDevOps.ConnectToAzureDevOpsAccount(uri, prompt);
         }

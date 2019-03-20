@@ -96,7 +96,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="url">AzureDevOps URL to connect to</param>
         /// <param name="prompt">whether user should see any login prompts if needed</param>
         /// <returns></returns>
-        public Task ConnectToAzureDevOpsAccount(Uri url, bool prompt = true)
+        public Task ConnectToAzureDevOpsAccount(Uri url, CredentialPromptType prompt = CredentialPromptType.PromptIfNeeded)
         {
             lock (myLock)
             {
@@ -104,7 +104,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 Disconnect();
                 var credentials = new VssClientCredentials(false);
                 credentials.Storage = new VssClientCredentialStorage();
-                credentials.PromptType = prompt ? CredentialPromptType.PromptIfNeeded : CredentialPromptType.DoNotPrompt;
+                credentials.PromptType = prompt;
                 _baseServerConnection = new VssConnection(url, credentials);
                 return _baseServerConnection.ConnectAsync();
             }
@@ -436,7 +436,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
 
-        public async Task HandleLoginAsync(bool showDialog=false, Uri serverUri = null)
+        public async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
         {
             if (serverUri == null)
             {

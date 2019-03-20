@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
+using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
-using AccessibilityInsights.Extensions.AzureDevOps.Models;
-using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using System.Windows;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
@@ -14,7 +14,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     [Export(typeof(IIssueReporting))]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
-        private AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+        private AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
 
         private ExtensionConfiguration Configuration => AzureDevOps.Configuration;
 
@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public string ServiceName => "Azure Boards";
 
-        public Guid StableIdentifier => new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
+        public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
         public bool IsConfigured => false;
 
@@ -53,21 +53,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     Application.Current.MainWindow.Topmost, Configuration.ZoomLevel, updateZoom);
 
                 // Check whether issue was filed once dialog closed & process accordingly
-                if (issueId.HasValue)
+                if (!issueId.HasValue) return null;
+
+                try
                 {
-                    try
+                    if (!FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
                     {
-                        var success = FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result;
-                        if (!success)
-                        {
-                            //MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
-                        }
-                        return new IssueResult() { DisplayText = newIssueId, IssueLink = null };
+                        //MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                     }
-                    catch (Exception)
-                    {
-                    }
+                    return new IssueResult() { DisplayText = newIssueId, IssueLink = null };
                 }
+                catch (Exception)
+                {
+                }
+
                 return null;
             });
         }
