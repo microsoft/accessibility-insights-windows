@@ -126,8 +126,8 @@ namespace AccessibilityInsights.SharedUx.Settings
 
         public Guid SelectedIssueReporter
         {
-            get => GetDataValue<Guid>(keyIssueReporting);
-            set => SetDataValue<Guid>(keyIssueReporting, value);
+            get => Guid.Parse(GetDataValue<string>(keyIssueReporting));
+            set => SetDataValue<string>(keyIssueReporting, value.ToString());
         }
 
         public string IssueReporterSerializedConfigs
