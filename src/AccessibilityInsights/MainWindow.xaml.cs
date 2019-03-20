@@ -26,7 +26,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
 
-
 namespace AccessibilityInsights
 {
     /// <summary>
@@ -303,6 +302,8 @@ namespace AccessibilityInsights
                 btnAccountConfig.Visibility = Visibility.Collapsed;
                 btnAccountConfig.SetValue(AutomationProperties.NameProperty, Properties.Resources.btnConfigAutomationPropertiesNameNoBugFiling);
             }
+
+            this.btnMaxFabric.GlyphName = (this.WindowState == WindowState.Maximized) ? FabricIcon.ChromeRestore : FabricIcon.Checkbox;
 
             // update version string. 
             UpdateVersionString();
