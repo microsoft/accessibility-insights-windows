@@ -64,7 +64,7 @@ If you need to add a new `Fake` assembly, please follow the below steps:
 
 #### Important: Not all editions of Visual Studio support Fakes
 
-Some of the unit tests in Accessibility Insights For Windows use Microsoft Fakes to replace system calls which are otherwise difficult to mock using standard mocking frameworks. The problem is that certain versions of Visual Studio, like Enterprise, support Fakes. And some, like Community, do not. Because Accessibility Insights is open source, we cannot predict which versions of Visual Studio contributers will have access to. Therefore, we have disabled the use of Fakes by default.
+Some of the unit tests in Accessibility Insights For Windows use Microsoft Fakes to replace system calls which are otherwise difficult to mock using standard mocking frameworks. The problem is that certain versions of Visual Studio, like Enterprise, support Fakes. And some, like Community, do not. Because Accessibility Insights is open source, we cannot predict which versions of Visual Studio contributors will have access to. Therefore, we have disabled the use of Fakes by default.
 
 If you have a version of Visual Studio which supports Fakes and you would like to run the unit tests which require them, add an environment variable to your system named `FAKES_SUPPORTED` and set it equal to `1`. Then, restart Visual Studio.
 
