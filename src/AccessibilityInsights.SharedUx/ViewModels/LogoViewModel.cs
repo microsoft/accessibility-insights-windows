@@ -8,9 +8,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     public class LogoViewModel : ViewModelBase
     {
         private string _fabricIconLogoName;
-#pragma warning disable CA1819 // Properties should not return arrays
         public string FabricIconLogoName
-#pragma warning restore CA1819 // Properties should not return arrays
         {
             get
             {
