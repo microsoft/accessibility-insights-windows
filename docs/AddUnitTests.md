@@ -50,6 +50,8 @@ The output will now tell you that `IsTrue` failed, but also why. This is especia
 
 ### Working with Microsoft Fakes
 
+Please read both sections below before making any changes that involve Microsoft Fakes.
+
 #### Adding a test assembly that requires Fakes
 
 Due to the known issue (overwriting fakes assemblies from different unit tests when they have the same name), all `Fakes` assemblies are generated in a single project (`AccessibilityInsights.Fakes.Prebuild`). 
@@ -84,6 +86,13 @@ If you want to add any unit tests which use Fakes into a project, make sure of t
     // code using Fakes
     #endif
     ```
+
+**Note:** You will need to perform the edits to the project file in a text editor. You can do this in Visual Studio by doing the following:
+
+1. Right click the project in the solution view and select "Unload project".
+2. Right click the project in the solution view and select "Edit [Project name].vcsproj".
+3. Make changes to the project file as text.
+4. right click the project in the solution view and select "Reload project".
 
 **Note:** If every test in a single file uses Fakes, it is acceptable to compile the file conditionally rather than surrounding the code in a `#if FAKES_SUPPORTED` block. To include/exclude an entire file which uses Fakes, add a condition to the files `Compile` tag in the project file as follows:
 
