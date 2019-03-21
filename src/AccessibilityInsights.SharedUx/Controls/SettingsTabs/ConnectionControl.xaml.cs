@@ -84,7 +84,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// Adds the currently selected connection to the configuration so it is persisted
         /// </summary>
         /// <param name="configuration"></param>
-        public void UpdateConfigFromSelections(ConfigurationModel configuration)
+        public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
             if (issueConfigurationControl.CanSave)
             {
@@ -102,7 +102,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
                 issueConfigurationControl.OnDismiss();
+                return true;
             }
+            return false;
         }
 
         /// <summary>
@@ -130,13 +132,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     rb.IsChecked = true;
                     issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
                     Grid.SetRow(issueConfigurationControl, 3);
-                    try
+                    if (!selectServerGrid.Children.Contains(issueConfigurationControl))
                     {
                         selectServerGrid.Children.Add(issueConfigurationControl);
-                    }
-                    catch
-                    {
-
                     }
                 }
                 availableIssueReporters.Children.Add(rb);

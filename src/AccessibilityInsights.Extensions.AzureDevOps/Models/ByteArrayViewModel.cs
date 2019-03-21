@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace AccessibilityInsights.SharedUx.ViewModels
+namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 {
     /// <summary>
     /// View model for a byte array, currently used for avatar image

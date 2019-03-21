@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using Newtonsoft.Json;
 using System;
@@ -10,7 +9,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /*
     Encapsulates information about a single connection to an AzureDevOps team
     */
-    public class ConnectionInfo : IConnectionInfo
+    public class ConnectionInfo
     {
         // Concrete* fields exists for JSON serialization (don't serialize the public counterparts)
         public Uri ConcreteServerUri { get; set; }
@@ -21,9 +20,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         [JsonIgnore]
         public Uri ServerUri => ConcreteServerUri;
         [JsonIgnore]
-        public IProject Project => ConcreteProject;
+        public TeamProject Project => ConcreteProject;
         [JsonIgnore]
-        public ITeam Team => ConcreteTeam;
+        public Team Team => ConcreteTeam;
         [JsonIgnore]
         public DateTime LastUsage => ConcreteLastUsage;
 
@@ -51,7 +50,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="serverUrl">Uri of the server</param>
         /// <param name="project">Identifies the project--null is a valid value</param>
         /// <param name="team">Identifies the team--null is a valid value</param>
-        public ConnectionInfo(Uri serverUrl, IProject project, ITeam team)
+        public ConnectionInfo(Uri serverUrl, TeamProject project, Team team)
         {
             ConcreteServerUri = serverUrl;
             if (project != null)
@@ -87,7 +86,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Copy ctor - enforces correct types internally
         /// </summary>
         /// <param name="original">The original object being copied</param>
-        public ConnectionInfo(IConnectionInfo original)
+        public ConnectionInfo(ConnectionInfo original)
             : this(original.ServerUri, original.Project, original.Team)
         {
         }
@@ -128,7 +127,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ConcreteLastUsage = newTime;
         }
 
-        public bool Equals(IConnectionInfo other)
+        public bool Equals(ConnectionInfo other)
         {
             return DataEquals(other as ConnectionInfo);
         }

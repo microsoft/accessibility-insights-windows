@@ -3,7 +3,6 @@
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 
@@ -38,7 +37,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; } = true;
 
-        public IEnumerable<byte> Logo => null;
+        public ReporterFabricIcon Logo => ReporterFabricIcon.GitHubLogo;
 
         public string LogoText => Properties.Resources.extensionName;
 

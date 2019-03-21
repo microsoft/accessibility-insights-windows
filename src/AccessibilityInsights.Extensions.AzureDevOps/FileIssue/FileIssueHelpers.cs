@@ -1,0 +1,506 @@
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.AzureDevOps.Enums;
+using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Microsoft.VisualStudio.Services.Common;
+using mshtml;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Net;
+using System.Reflection;
+using System.Threading.Tasks;
+using static System.FormattableString;
+
+namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
+{
+    /// <summary>
+    /// Class with static functions used for filing issues
+    /// </summary>
+    public static class FileIssueHelpers
+    {
+        private static AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+
+        /// <summary>
+        /// Opens issue filing window with prepopulated data
+        /// </summary>
+        /// <p  aram name="issueInfo">Dictionary of issue info from with which to populate the issue</param>
+        /// <param name="connection">connection info</param>
+        /// <param name="onTop">Is window always on top</param>
+        /// <param name="zoomLevel">Zoom level for issue file window</param>
+        /// <param name="updateZoom">Callback to update configuration with zoom level</param>
+        /// <returns></returns>
+        public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        {
+            try
+            {
+                // Create a A11y-specific Guid for this issue to verify that we are uploading
+                //  attachment to the correct issue
+                var a11yIssueId = issueInfo.InternalGuid.HasValue
+                    ? issueInfo.InternalGuid.Value.ToString()
+                    : string.Empty;
+                Uri url = CreateIssuePreviewAsync(connection, issueInfo).Result;
+                var issueId = FileIssueWindow(url, onTop, zoomLevel, updateZoom);
+
+                return (issueId, a11yIssueId);
+            }
+            catch
+            {
+                return (null, string.Empty);
+            }
+        }
+
+        /// <summary>
+        /// Attaches screenshot and results file to existing issue
+        /// Default case - resulting test file will open in A11yFileMode.Inspect mode, 
+        ///     no additional loading parameters needed
+        /// </summary>
+        /// <param name="rect">Bounding rect of element for screenshot</param>
+        /// <param name="a11yIssueId">Issue's A11y-specific id</param>
+        /// <param name="issueId">Issue's server-side id</param>
+        /// <returns>Success or failure</returns>
+        public static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
+        {
+            return await AttachIssueDataInternal(issueInfo.TestFileName, issueInfo.Screenshot, a11yIssueId, issueId).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Attempt to determine if we expect an exception to be transient.
+        /// Will check children of an aggregate exception.
+        /// Based on https://docs.microsoft.com/en-us/azure/architecture/patterns/retry
+        /// </summary>
+        /// <param name="ex">The exception to check</param>
+        /// <returns></returns>
+        public static bool IsTransient(Exception ex)
+        {
+            switch (ex)
+            {
+                case null:
+                    return false;
+                case AggregateException agEx:
+                    foreach (var inner in agEx.InnerExceptions)
+                    {
+                        if (!IsTransient(inner)) return false;
+                    }
+                    return true;
+                case WebException webEx:
+                    return TransientWebExceptions.Contains(webEx.Status);
+                // This is what we saw happen to issue attachments in our telemetry
+                case TimeoutException tEx:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        // If a web exception contains one of the following status values, it might be transient.
+        private readonly static HashSet<WebExceptionStatus> TransientWebExceptions = new HashSet<WebExceptionStatus>()
+        {
+            WebExceptionStatus.ConnectionClosed,
+            WebExceptionStatus.Timeout,
+            WebExceptionStatus.RequestCanceled,
+            WebExceptionStatus.NameResolutionFailure
+        };
+
+
+        /// <summary>
+        /// Saves screenshot, attaches screenshot and already saved results file to existing issue
+        /// </summary>
+        /// <param name="rect">Bounding rect of element for screenshot</param>
+        /// <param name="a11yIssueId">Issue's A11y-specific id</param>
+        /// <param name="issueId">Issue's server-side id</param>
+        /// <param name="snapshotFileName">saved snapshot file name</param>
+        /// <returns>Success or failure</returns>
+        private static async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
+        {
+            var imageFileName = GetTempFileName(".png");
+            var filedIssueReproSteps = await GetExistingIssueDescriptionAsync(issueId).ConfigureAwait(false);
+
+            if (GuidsMatchInReproSteps(a11yIssueId, filedIssueReproSteps))
+            {
+                int? attachmentResponse = null;
+                const int maxAttempts = 2;
+
+                // Attempt to attach the results file twice
+                for (int attempts = 0; attempts < maxAttempts; attempts++)
+                {
+                    try
+                    {
+                        attachmentResponse = await AttachTestResultToIssueAsync(snapshotFileName, issueId).ConfigureAwait(false);
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        if (!IsTransient(ex)) throw;
+                    }
+                }
+
+                // Save local screenshot for HTML preview in browser
+                bitmap?.Save(imageFileName);
+
+                var htmlDescription = "";
+
+                if (imageFileName != null)
+                {
+                    var imgUrl = await AttachScreenshotToIssueAsync(imageFileName, issueId).ConfigureAwait(false);
+                    htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
+                }
+
+                var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId) + htmlDescription;
+                await ReplaceIssueDescriptionAsync(scrubbedHTML, issueId).ConfigureAwait(false);
+                File.Delete(snapshotFileName);
+                if (imageFileName != null)
+                {
+                    File.Delete(imageFileName);
+                }
+
+                // if the issue failed to attach, return false
+                return attachmentResponse != null;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Returns the path to a newly created temporary directory
+        /// </summary>
+        /// <returns></returns>
+        private static string GetTempDir()
+        {
+            string tempDir = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Directory.CreateDirectory(tempDir);
+            return tempDir;
+        }
+
+        /// <summary>
+        /// Remove internal text from repro step. 
+        /// since the internal text is wrapped in a "div", find a div with matching key text and remove the child nodes of div. 
+        /// generally, keyText is guid value. 
+        /// </summary>
+        /// <param name="inputHTML"></param>
+        /// <param name="keyText"></param>
+        /// <returns></returns>
+        public static string RemoveInternalHTML(string inputHTML, string keyText)
+        {
+            object[] htmlText = { inputHTML };
+            HTMLDocument doc = new HTMLDocument();
+            IHTMLDocument2 doc2 = doc as IHTMLDocument2;
+            doc2.write(htmlText);
+            IHTMLDOMNode node = null;
+
+            // search div with matching issueguid. 
+            // remove any of it if there is matched one. 
+            var divnodes = doc.getElementsByTagName("div");
+
+            if (divnodes != null)
+            {
+                foreach (IHTMLDOMNode divnode in divnodes)
+                {
+                    foreach (IHTMLDOMNode child in divnode.childNodes)
+                    {
+                        string nodevalue = child.nodeValue?.ToString();
+                        if (nodevalue != null && nodevalue.Contains(keyText) == true)
+                        {
+                            node = divnode;
+                            break;
+                        }
+                    }
+
+                    if (node != null) break;
+                }
+            }
+
+            if (node != null)
+            {
+                foreach (var n in node.childNodes)
+                {
+                    node.removeChild(n);
+                }
+            }
+
+            return doc.body.outerHTML;
+        }
+
+        /// <summary>
+        /// Returns true if the target guid is found in the given reprosteps string
+        /// </summary>
+        /// <param name="targetGuid"></param>
+        /// <param name="reproSteps"></param>
+        /// <returns></returns>
+        private static bool GuidsMatchInReproSteps(string targetGuid, string reproSteps)
+        {
+            int filedIssueIdIndex = reproSteps.IndexOf(targetGuid, StringComparison.Ordinal);
+            return filedIssueIdIndex >= 0;
+        }
+
+        /// <summary>
+        /// Load the issue filing web browser in a blocking window and return the issue number (null or id)
+        /// Change the configuration zoom level for the embedded browser
+        /// </summary>
+        /// <param name="url"></param>
+        private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
+        {
+            System.Diagnostics.Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
+            // To force latest IE to show up
+            var appName = System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe";
+            using (var Key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
+                Key.SetValue(appName, 99999, Microsoft.Win32.RegistryValueKind.DWord);
+
+            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom);
+            dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
+
+            dlg.ShowDialog();
+
+            return dlg.IssueId;
+        }
+
+        /// <summary>
+        /// Creates a temp file with the given extension and returns its path
+        /// </summary>
+        /// <param name="extension"></param>
+        /// <returns></returns>
+        private static string GetTempFileName(string extension)
+        {
+            return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
+        }
+
+        public static Task<string> AttachScreenshotToIssueAsync(string path, int issueId)
+        {
+            return AzureDevOps.AttachScreenshotToIssue(path, issueId);
+        }
+
+        public static Task<int?> AttachTestResultToIssueAsync(string path, int issueId)
+        {
+            return AzureDevOps.AttachTestResultToIssue(path, issueId);
+        }
+
+        public static Task ConnectAsync(Uri uri, CredentialPromptType prompt)
+        {
+            return AzureDevOps.ConnectToAzureDevOpsAccount(uri, prompt);
+        }
+
+        public static ConnectionCache CreateConnectionCache(string configString)
+        {
+            return new ConnectionCache(configString);
+        }
+
+        public static ConnectionInfo CreateConnectionInfo(Uri serverUri, TeamProject project, Team team)
+        {
+            return new ConnectionInfo(serverUri, project, team);
+        }
+
+        public static ConnectionInfo CreateConnectionInfo(string configString)
+        {
+            try
+            {
+                return new ConnectionInfo(configString);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public static void Disconnect()
+        {
+            AzureDevOps.Disconnect();
+        }
+
+        public static void FlushToken(Uri uri)
+        {
+            AzureDevOps.FlushToken(uri);
+        }
+
+        public static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
+        {
+            string templateName = GetTemplateName(issueInfo);
+            Dictionary<IssueField, string> issueFieldPairs = issueInfo.ToAzureDevOpsIssueFields();
+            TruncateSelectedFields(issueInfo, issueFieldPairs);
+
+            Dictionary<AzureDevOpsField, string> fieldPairs = GenerateIssueTemplate(issueFieldPairs, templateName);
+            AddAreaAndIterationPathFields(connectionInfo, fieldPairs);
+
+            return Task<Uri>.Run(() => AzureDevOps.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
+        }
+
+        public static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
+        {
+            return Task<string>.Run(() => AzureDevOps.GetAreaPath(connectionInfo));
+        }
+
+        public static Task<string> GetExistingIssueDescriptionAsync(int issueId)
+        {
+            return AzureDevOps.GetExistingIssueDescription(issueId);
+        }
+
+        public static Task<Uri> GetExistingIssueUriAsync(int issueId)
+        {
+            return Task<Uri>.Run(() => AzureDevOps.GetExistingIssueUrl(issueId));
+        }
+
+        public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
+        {
+            return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
+        }
+
+        public static Task<IEnumerable<TeamProject>> GetProjectsAsync()
+        {
+            return Task<IEnumerable<TeamProject>>.Run(() => AzureDevOps.GetTeamProjects());
+        }
+
+        public static Task PopulateUserProfileAsync()
+        {
+            return AzureDevOps.PopulateUserProfile();
+        }
+
+        public static Task<int?> ReplaceIssueDescriptionAsync(string description, int issueId)
+        {
+            return AzureDevOps.ReplaceIssueDescription(description, issueId);
+        }
+
+        /// <summary>
+        /// Extract the template name from a IssueInformation object
+        /// </summary>
+        /// <param name="issueInfo"></param>
+        /// <returns>The name of the template</returns>
+        private static string GetTemplateName(IssueInformation issueInfo)
+        {
+            if (issueInfo.IssueType.HasValue)
+            {
+                switch (issueInfo.IssueType.Value)
+                {
+                    case IssueType.SingleFailure: return "IssueSingleFailure";
+                }
+            }
+            return "IssueNoFailures";
+        }
+
+        /// <summary>
+        /// Extract the area and path fields from the IConnectionInfo and incorporate them into AzureDevOpsFieldPairs
+        /// </summary>
+        /// <param name="connectionInfo">The source of the data to extract</param>
+        /// <param name="fieldPairs">The destination of the extracted data</param>
+        private static void AddAreaAndIterationPathFields(ConnectionInfo connectionInfo, IDictionary<AzureDevOpsField, string> fieldPairs)
+        {
+            var areaPathTask = GetAreaPathAsync(connectionInfo);
+            var iterationPathTask = GetIterationPathAsync(connectionInfo);
+
+            Task[] tasks = new Task[] { areaPathTask, iterationPathTask };
+            Task.WaitAll(tasks);
+
+            if (areaPathTask.Result != null)
+            {
+                fieldPairs.Add(AzureDevOpsField.AreaPath, areaPathTask.Result);
+            }
+            if (iterationPathTask.Result != null)
+            {
+                fieldPairs.Add(AzureDevOpsField.IterationPath, iterationPathTask.Result);
+            }
+        }
+
+        /// <summary>
+        /// Generates a dictionary of AzureDevOpsField/string pairs for creating a issue in AzureDevOps
+        /// </summary>
+        /// <param name="issueFieldPairs">The collection of IssueField/string pairs that describe this issue</param>
+        /// <returns>The dictionary of known pairs</returns>
+        private static Dictionary<AzureDevOpsField, string> GenerateIssueTemplate(Dictionary<IssueField, string> issueFieldPairs, string templateName)
+        {
+            Dictionary<AzureDevOpsField, string> templatedAzureDevOpsFieldPairs = GetIssueFieldMappings(issueFieldPairs, templateName);
+
+            // Template & add description field
+            string issueDescTemplate = string.Concat(File.ReadAllLines(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), $"IssueTemplates\\{templateName}.html")));
+            templatedAzureDevOpsFieldPairs.Add(AzureDevOpsField.ReproSteps, PopulateIssueTemplateString(issueDescTemplate, issueFieldPairs));
+
+            return templatedAzureDevOpsFieldPairs;
+        }
+
+        /// <summary>
+        /// Returns a dictionary that maps from IssueField names to string values that should be used
+        /// to file a issue. Substitutions can be defined in a separate json file.
+        /// </summary>
+        /// <param name="issueFieldPairs">The collection of IssueField/string pairs to apply to the template</param>
+        /// <param name="templateName">The name of the template to use</param>
+        /// <returns></returns>
+        private static Dictionary<AzureDevOpsField, string> GetIssueFieldMappings(Dictionary<IssueField, string> issueFieldPairs, string templateName)
+        {
+            string json = File.ReadAllText(Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), $"IssueTemplates\\{templateName}.json"));
+            var templateDictionary = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string, string>>(json);
+
+            Dictionary<AzureDevOpsField, string> fieldPairs = new Dictionary<AzureDevOpsField, string>();
+
+            foreach (var pair in templateDictionary)
+            {
+                if (Enum.TryParse(pair.Key, out AzureDevOpsField field))
+                {
+                    fieldPairs[field] = PopulateIssueTemplateString(pair.Value, issueFieldPairs);
+                }
+            }
+
+            return fieldPairs;
+        }
+
+        /// <summary>
+        /// If any key from the dictionary exists in inputTemplate surrounded by [], then
+        ///     the string [key] will be replaced with its value from the dictionary
+        /// If the value is null, the formatted output string will read "unknown"
+        /// </summary>
+        /// <param name="inputTemplate">The string to modify, will contain [key], where key can take on values from
+        ///                             the IssueFields enum</param>
+        /// <param name="issueFieldPairs">The collection of IssueField/string pairs to apply to the template</param>
+        /// <returns></returns>
+        private static string PopulateIssueTemplateString(string inputTemplate, Dictionary<IssueField, string> issueFieldPairs)
+        {
+            foreach (var pair in issueFieldPairs)
+            {
+                var name = Enum.GetName(typeof(IssueField), pair.Key);
+                var value = pair.Value ?? "[unknown]";
+                inputTemplate = inputTemplate.Replace($"@[{name}]@", value);
+            }
+            return inputTemplate;
+        }
+
+        /// <summary>
+        /// Truncate key fields from the input IssueInformation and return a revised object
+        ///     certain values are truncated to {length} characters long,
+        ///     certain values are formatted to be more readable
+        /// </summary>
+        /// <param name="issueInfo">Non-truncated information from caller</param>
+        /// <param name="issueFieldPairs">The collection of IssueField/string pairs to truncate</param>
+        /// <returns></returns>
+        private static void TruncateSelectedFields(IssueInformation issueInfo, IDictionary<IssueField, string> issueFieldPairs)
+        {
+            issueFieldPairs[IssueField.ProcessName] = TruncateString(issueInfo.ProcessName, 50, ".exe");
+            issueFieldPairs[IssueField.Glimpse] = TruncateString(issueInfo.Glimpse, 50);
+            issueFieldPairs[IssueField.TestMessages] = TruncateString(issueInfo.TestMessages, 150, "...open attached A11y test file for full details.");
+            issueFieldPairs[IssueField.RuleSource] = RemoveSurroundingBrackets(issueInfo.RuleSource);
+        }
+
+        private static string RemoveSurroundingBrackets(string originalString)
+        {
+            if (string.IsNullOrWhiteSpace(originalString))
+                return null;
+
+            if (originalString.StartsWith("[", StringComparison.Ordinal) && originalString.EndsWith("]", StringComparison.Ordinal))
+            {
+                return originalString.Substring(1, originalString.Length - 2);
+            }
+
+            return originalString;
+        }
+
+        private static string TruncateString(string originalString, int limit, string suffix = "...")
+        {
+            if (string.IsNullOrWhiteSpace(originalString))
+                return null;
+
+            if (originalString.Length > limit)
+                return originalString.Substring(0, limit) + suffix;
+
+            return originalString;
+        }
+    }
+}
