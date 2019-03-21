@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -57,7 +56,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         {
             ConnectionCache cache = new ConnectionCache();
 
-            // set to some big number
+            // set to some issue number
             int highNumber = ConnectionCache.CAPACITY + 100;
 
             // fill up with sequential high last-usage values
@@ -108,14 +107,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             List<Uri> connections = cache.GetCachedConnections().ToList();
             Assert.AreEqual(2, connections.Count);
 
-            IConnectionInfo info1 = GetConnectionInfo(1, true);
-            IConnectionInfo info2 = GetConnectionInfo(2, true);
+            ConnectionInfo info1 = GetConnectionInfo(1, true);
+            ConnectionInfo info2 = GetConnectionInfo(2, true);
 
             CompareConnectionInfos(info1, cache.GetMostRecentConnection(info1.ServerUri));
             CompareConnectionInfos(info2, cache.GetMostRecentConnection(info2.ServerUri));
         }
 
-        private void CompareConnectionInfos(IConnectionInfo expected, IConnectionInfo actual)
+        private void CompareConnectionInfos(ConnectionInfo expected, ConnectionInfo actual)
         {
             Assert.AreEqual(expected.ServerUri, actual.ServerUri);
             Assert.AreEqual(expected.Project.Name, actual.Project.Name);
@@ -136,7 +135,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Assert.AreEqual(KnownConfigString, configString);
         }
 
-        private IProject GetProject(int i)
+        private TeamProject GetProject(int i)
         {
             if (i < 0 || i > 9)
                 throw new ArgumentException("out of range", nameof(i));
@@ -151,10 +150,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private IConnectionInfo GetConnectionInfo(int i, bool hasProject = false)
+        private ConnectionInfo GetConnectionInfo(int i, bool hasProject = false)
         {
-            IProject project = hasProject ? GetProject(i) : null;
-            IConnectionInfo info = new ConnectionInfo(new Uri($"http://fake.fake/{i}"), project, null);
+            TeamProject project = hasProject ? GetProject(i) : null;
+            ConnectionInfo info = new ConnectionInfo(new Uri($"http://fake.fake/{i}"), project, null);
             info.SetLastUsage(BaseDateTime.AddTicks(i));
             return info;
         }

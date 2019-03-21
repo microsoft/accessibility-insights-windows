@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -23,7 +23,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_Uri_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, null, null);
+            ConnectionInfo info = new ConnectionInfo(TestUri, null, null);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.IsNull(info.Project);
             Assert.IsNull(info.Team);
@@ -33,7 +33,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_UriAndProject_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, TestProject, null);
+            ConnectionInfo info = new ConnectionInfo(TestUri, TestProject, null);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.AreEqual(TestProject, info.Project);
             Assert.IsNull(info.Team);
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_UriAndTeam_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, null, TestTeam);
+            ConnectionInfo info = new ConnectionInfo(TestUri, null, TestTeam);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.IsNull(info.Project);
             Assert.AreEqual(TestTeam, info.Team);
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_KnownConfigString_MatchesExpectations()
         {
-            IConnectionInfo info = new ConnectionInfo(KnownConfigString);
+            ConnectionInfo info = new ConnectionInfo(KnownConfigString);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.AreEqual(TestProject.Name, info.Project.Name);
             Assert.AreEqual(TestProject.Id, info.Project.Id);
