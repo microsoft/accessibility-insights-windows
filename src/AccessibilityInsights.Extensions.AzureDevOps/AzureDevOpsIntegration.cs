@@ -49,7 +49,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         internal bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
 
-        internal ExtensionConfiguration Configuration { get; private set; } = new ExtensionConfiguration();
+        internal ExtensionConfiguration Configuration { get; } = new ExtensionConfiguration();
 
         /// <summary>
         /// Base uri of the AzureDevOps connection

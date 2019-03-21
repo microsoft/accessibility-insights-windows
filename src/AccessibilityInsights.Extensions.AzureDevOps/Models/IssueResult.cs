@@ -5,10 +5,19 @@ using System;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 {
+    /// <summary>
+    /// Contains data to be displayed in AI-Win after an issue is filed
+    /// </summary>
     public class IssueResult : IIssueResult
     {
+        /// <summary>
+        /// Text to be displayed in ui
+        /// </summary>
         public string DisplayText { get; set; }
 
+        /// <summary>
+        /// Link to filed issue
+        /// </summary>
         public Uri IssueLink { get; set; }
     }
 }

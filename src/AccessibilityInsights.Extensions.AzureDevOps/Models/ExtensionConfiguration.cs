@@ -17,11 +17,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 
         public void LoadFromSerializedString(string serializedConfig)
         {
-            var config = JsonConvert.DeserializeObject<ExtensionConfiguration>(serializedConfig);
+            try
+            {
+                var config = JsonConvert.DeserializeObject<ExtensionConfiguration>(serializedConfig);
 
-            ZoomLevel = config.ZoomLevel;
-            SavedConnection = config.SavedConnection;
-            CachedConnections = config.CachedConnections;
+                ZoomLevel = config.ZoomLevel;
+                SavedConnection = config.SavedConnection;
+                CachedConnections = config.CachedConnections;
+            } catch
+            {
+                // don't use serialized data if it can't be parsed
+            }
         }
     }
 }
