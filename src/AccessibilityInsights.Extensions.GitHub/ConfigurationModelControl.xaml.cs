@@ -23,9 +23,16 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// <returns>The extension’s new configuration, serialized</returns>
         public override string OnSave()
         {
-            this.Config.RepoLink = this.tbURL.Text;
-            canSave = false;
-            UpdateSaveButton();
+            if (LinkValidator.IsValidGitHubRepoLink(this.tbURL.Text))
+            {
+                this.Config.RepoLink = this.tbURL.Text;
+                canSave = false;
+                UpdateSaveButton();
+            }
+            else
+            {
+                //TODO error message dialog
+            }
             return JsonConvert.SerializeObject(this.Config);
         }
 
