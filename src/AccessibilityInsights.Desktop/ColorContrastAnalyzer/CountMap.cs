@@ -4,18 +4,15 @@ using System.Collections.Generic;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
+    /**
+    * Fundamental to the color contrast analysis process is collecting counts
+    * of occurences by a complex key and fetching those values. 
+    */
     internal class CountMap<T> : Dictionary<T, int>
     {        
         public void Increment(T item)
         {
-            if (!ContainsKey(item))
-            {
-                this[item] = 1;
-            }
-            else
-            {
-                this[item] = GetValue(item) + 1;
-            }
+            Increment(item, 1);
         }
 
         public void Increment(T item, int value)
