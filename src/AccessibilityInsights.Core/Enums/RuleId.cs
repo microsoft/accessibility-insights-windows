@@ -243,5 +243,7 @@ namespace AccessibilityInsights.Core.Enums
         SelectionPatternSelectionRequired,
         SelectionPatternSingleSelection,
         SelectionItemPatternSingleSelection,
+
+        ListItemSiblingsUnique,
     }
 }
