@@ -37,6 +37,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public override string OnSave()
         {
+            UpdateConfigFromSelections(AzureDevOps.Configuration);
             return AzureDevOps.Configuration.GetSerializedConfig();
         }
 
@@ -516,6 +517,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         (inputVM.Project != null && inputVM.Project.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant()) ||
                         (inputVM.Team != null && inputVM.Team.Name.ToUpperInvariant().Contains(searchText.ToUpperInvariant())));
                 });
+            }
+        }
+
+        #pragma warning disable CA1801 // unused parameter
+        private void IssueConfigurationControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        #pragma warning restore CA1801 // unused parameter
+        {
+            if ((bool)e.NewValue)
+            {
+                UpdateFromConfig(AzureDevOps.Configuration);
             }
         }
     }

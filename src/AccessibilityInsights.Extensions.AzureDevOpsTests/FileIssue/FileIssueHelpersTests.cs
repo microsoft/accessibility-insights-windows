@@ -63,7 +63,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         public static void SetUpShims()
         {
             ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => true;
-            
         }
     }
 }

@@ -14,17 +14,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     [Export(typeof(IIssueReporting))]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
-        private AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
+        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
 
-        private ExtensionConfiguration Configuration => AzureDevOps.Configuration;
+        private static ExtensionConfiguration Configuration => AzureDevOps.Configuration;
 
-        public bool IsConnected => AzureDevOps.ConnectedToAzureDevOps;
+        public static bool IsConnected => AzureDevOps.ConnectedToAzureDevOps;
 
-        public string ServiceName => "Azure Boards";
+        public string ServiceName { get; } = "Azure Boards";
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
-        public bool IsConfigured => false;
+        public bool IsConfigured => AzureDevOps.ConnectedToAzureDevOps;
 
         public IEnumerable<byte> Logo => AzureDevOps.Avatar;
 
@@ -46,12 +46,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
         {
+            bool topMost = false;
+            Application.Current.Dispatcher.Invoke(() => topMost = Application.Current.MainWindow.Topmost);
+
+            Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
+            (int? issueId, string newIssueId) = FileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
+                topMost, Configuration.ZoomLevel, updateZoom);
+
             return Task.Run<IIssueResult>(() => {
-
-                Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-                (int? issueId, string newIssueId) = FileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
-                    Application.Current.MainWindow.Topmost, Configuration.ZoomLevel, updateZoom);
-
                 // Check whether issue was filed once dialog closed & process accordingly
                 if (!issueId.HasValue) return null;
 

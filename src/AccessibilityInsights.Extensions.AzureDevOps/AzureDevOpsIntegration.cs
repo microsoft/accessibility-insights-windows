@@ -29,7 +29,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// <summary>
     /// Methods for integrating with AzureDevOps
     /// </summary>
-    public partial class AzureDevOpsIntegration
+    internal partial class AzureDevOpsIntegration
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         /// <summary>
@@ -47,24 +47,24 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Returns true if user has authenticated with VS server URL
         /// </summary>
-        public bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
+        internal bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
 
-        public ExtensionConfiguration Configuration { get; private set; } = new ExtensionConfiguration();
+        internal ExtensionConfiguration Configuration { get; private set; } = new ExtensionConfiguration();
 
         /// <summary>
         /// Base uri of the AzureDevOps connection
         /// </summary>
-        public Uri ConnectedUri => _baseServerConnection?.Uri;
+        internal Uri ConnectedUri => _baseServerConnection?.Uri;
 
         /// <summary>
         /// AzureDevOps profile fields
         /// </summary>
-        public Profile UserProfile { get; private set; }
-        public string DisplayName => UserProfile?.DisplayName;
+        internal Profile UserProfile { get; private set; }
+        internal string DisplayName => UserProfile?.DisplayName;
 #pragma warning disable CA1819 // Properties should not return arrays
-        public byte[] Avatar => UserProfile?.Avatar.Value;
+        internal byte[] Avatar => UserProfile?.Avatar.Value;
 #pragma warning restore CA1819 // Properties should not return arrays
-        public string Email => UserProfile?.EmailAddress;
+        internal string Email => UserProfile?.EmailAddress;
 
         private static AzureDevOpsIntegration _instance;
 
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Get default instance
         /// </summary>
         /// <returns></returns>
-        public static AzureDevOpsIntegration GetCurrentInstance()
+        internal static AzureDevOpsIntegration GetCurrentInstance()
         {
             if (_instance == null)
             {
@@ -96,7 +96,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="url">AzureDevOps URL to connect to</param>
         /// <param name="prompt">whether user should see any login prompts if needed</param>
         /// <returns></returns>
-        public Task ConnectToAzureDevOpsAccount(Uri url, CredentialPromptType prompt = CredentialPromptType.PromptIfNeeded)
+        internal Task ConnectToAzureDevOpsAccount(Uri url, CredentialPromptType prompt = CredentialPromptType.PromptIfNeeded)
         {
             lock (myLock)
             {
@@ -114,7 +114,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Removes the stored token associated with the given URL if it exists
         /// </summary>
         /// <param name="url">URL such as https://myaccount.visualstudio.com</param>
-        public void FlushToken(Uri url)
+        internal void FlushToken(Uri url)
         {
             var token = _baseServerConnection?.Credentials.Storage.RetrieveToken(url, VssCredentialsType.Federated);
             if (token != null)
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Refreshes profile of current user 
         /// </summary>
-        public Task PopulateUserProfile()
+        internal Task PopulateUserProfile()
         {
             lock (myLock)
             {
@@ -148,7 +148,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Disconnects from AzureDevOps, resets AzureDevOps instance
         /// </summary>
         /// <returns></returns>
-        public void Disconnect()
+        internal void Disconnect()
         {
             lock (myLock)
             {
@@ -166,7 +166,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// with the currently connected account
         /// </summary>
         /// <returns>Team projects associated with current account or null if disconnected</returns>
-        public IEnumerable<Models.TeamProject> GetTeamProjects()
+        internal IEnumerable<Models.TeamProject> GetTeamProjects()
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -194,7 +194,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="teamProjectId">AzureDevOps team project ID for which to retrieve teams</param>
         /// <returns>teams associated with the given team project, or null if disconnected</returns>
-        public IEnumerable<Models.Team> GetTeamsFromProject(Models.TeamProject project)
+        internal IEnumerable<Models.Team> GetTeamsFromProject(Models.TeamProject project)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -228,7 +228,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="issueId">The AzureDevOps issue id in the currently connected account to query</param>
         /// <returns>repro steps for the given issueId or null if the operation fails / if the user is not connected to AzureDevOps</returns>
-        public async Task<string> GetExistingIssueDescription(int issueId)
+        internal async Task<string> GetExistingIssueDescription(int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -249,7 +249,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="description">new description</param>
         /// <param name="issueId">issue id whose description should be replaced</param>
         /// <returns>Task with completed issue ID or null if user is not connected to AzureDevOps</returns>
-        public async Task<int?> ReplaceIssueDescription(string description, int issueId)
+        internal async Task<int?> ReplaceIssueDescription(string description, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -278,7 +278,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="path">path to file that should be attached</param>
         /// <param name="issueId">issue id to attach file to</param>
         /// <returns>Task with completed issue ID or null if user is not connected to AzureDevOps</returns>
-        public async Task<int?> AttachTestResultToIssue(string path, int issueId)
+        internal async Task<int?> AttachTestResultToIssue(string path, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -326,7 +326,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="path">path of screenshot to upload</param>
         /// <returns>Task with URL of the screenshot attachment reference, null if not connected</returns>
-        public async Task<string> AttachScreenshotToIssue(string path, int issueId)
+        internal async Task<string> AttachScreenshotToIssue(string path, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -361,7 +361,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="issueId">id of issue to get url of</param>
         /// <returns>URL to filed issue, or null if not connected to AzureDevOps</returns>
-        public Uri GetExistingIssueUrl(int issueId)
+        internal Uri GetExistingIssueUrl(int issueId)
 #pragma warning restore CA1055 // Uri return values should not be strings
         {
             if (!ConnectedToAzureDevOps)
@@ -379,7 +379,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="conn">connection information to query area-path of</param>
         /// <returns>default area path, or null if operation fails or user is not connected to AzureDevOps</returns>
-        public string GetAreaPath(ConnectionInfo conn)
+        internal string GetAreaPath(ConnectionInfo conn)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -400,7 +400,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="conn">connection information to query iteration of</param>
         /// <returns>current iteration, or null if operation fails or user is not connected to AzureDevOps</returns>
-        public string GetIteration(ConnectionInfo conn)
+        internal string GetIteration(ConnectionInfo conn)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -422,7 +422,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="projectName">AzureDevOps project name</param>
         /// <param name="teamName">AzureDevOps team project name</param>
         /// <returns>encoded url to team project (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
-        public Uri GetTeamProjectUrl(string projectName, string teamName)
+        internal Uri GetTeamProjectUrl(string projectName, string teamName)
         {
             if (string.IsNullOrEmpty(projectName) || !ConnectedToAzureDevOps)
             {
@@ -436,7 +436,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
 
-        public async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
+        internal async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
         {
             if (serverUri == null)
             {
@@ -463,7 +463,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="teamName">AzureDevOps team project name</param>
         /// <param name="AzureDevOpsFieldPairs">Key/Value pairs to use when creating the preview</param>
         /// <returns>encoded uri to issue preview (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
-        public Uri CreateIssuePreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs)
+        internal Uri CreateIssuePreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs)
         {
             var escaped = from pair in AzureDevOpsFieldPairs
                           select Uri.EscapeDataString($"[{pair.Key.ToApiString()}]") + "=" + Uri.EscapeDataString(pair.Value);
