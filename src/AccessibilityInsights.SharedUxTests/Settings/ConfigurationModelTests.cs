@@ -156,6 +156,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
             Assert.AreNotEqual("1.1.700.1", config.AppVersion);
+
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());

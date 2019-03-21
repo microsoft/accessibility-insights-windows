@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public bool IsConfigured => AzureDevOps.ConnectedToAzureDevOps;
 
-        public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;        
+        public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 
         public string LogoText => "Azure Boards";
 
