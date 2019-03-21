@@ -1406,7 +1406,7 @@ Accessibility Insights Support Team
     <value>Search</value>
   </data>
   <data name="HierarchyControl_treeviewHierarchyAutomationName" xml:space="preserve">
-    <value>UI Automation tree</value>
+    <value>UI Automation Hierarchy</value>
   </data>
   <data name="AutomatedChecksControlAutomationName" xml:space="preserve">
     <value>Automated checks</value>

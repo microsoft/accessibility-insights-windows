@@ -1877,7 +1877,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UI Automation tree.
+        ///   Looks up a localized string similar to UI Automation Hierarchy.
         /// </summary>
         public static string HierarchyControl_treeviewHierarchyAutomationName {
             get {
