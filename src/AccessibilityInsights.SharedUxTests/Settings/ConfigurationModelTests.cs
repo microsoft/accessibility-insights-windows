@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -180,7 +181,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
             Assert.AreEqual("[]", config.IssueReporterSerializedConfigs);
-            Assert.AreEqual("", config.SelectedIssueReporter);
+            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsFalse(config.ShowTelemetryDialog);

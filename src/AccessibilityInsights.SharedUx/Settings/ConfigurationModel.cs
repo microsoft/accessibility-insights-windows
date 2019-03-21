@@ -124,10 +124,17 @@ namespace AccessibilityInsights.SharedUx.Settings
             set => SetDataValue<string>(keyAppVersion, value);
         }
 
-        public string SelectedIssueReporter
+        public Guid SelectedIssueReporter
         {
-            get => GetDataValue<string>(keyIssueReporting);
-            set => SetDataValue<string>(keyIssueReporting, value);
+            get
+            {
+                if (Guid.TryParse(GetDataValue<string>(keyIssueReporting), out Guid result))
+                {
+                    return result;
+                }
+                return Guid.Empty;
+            }
+            set => SetDataValue<string>(keyIssueReporting, value.ToString());
         }
 
         public string IssueReporterSerializedConfigs
