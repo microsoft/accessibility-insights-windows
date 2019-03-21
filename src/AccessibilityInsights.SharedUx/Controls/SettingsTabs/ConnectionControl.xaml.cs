@@ -130,7 +130,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     rb.IsChecked = true;
                     issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
                     Grid.SetRow(issueConfigurationControl, 3);
-                    selectServerGrid.Children.Add(issueConfigurationControl);
+                    if (!selectServerGrid.Children.Contains(issueConfigurationControl))
+                    {
+                        selectServerGrid.Children.Add(issueConfigurationControl);
+                    }
                 }
                 availableIssueReporters.Children.Add(rb);
             }

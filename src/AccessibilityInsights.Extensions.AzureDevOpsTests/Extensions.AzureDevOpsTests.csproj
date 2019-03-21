@@ -69,7 +69,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <Fakes Include="Fakes\AccessibilityInsights.Core.fakes" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />

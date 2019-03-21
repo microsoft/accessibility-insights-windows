@@ -126,7 +126,14 @@ namespace AccessibilityInsights.SharedUx.Settings
 
         public Guid SelectedIssueReporter
         {
-            get => Guid.Parse(GetDataValue<string>(keyIssueReporting));
+            get
+            {
+                if (Guid.TryParse(GetDataValue<string>(keyIssueReporting), out Guid result))
+                {
+                    return result;
+                }
+                return Guid.Empty;
+            }
             set => SetDataValue<string>(keyIssueReporting, value.ToString());
         }
 

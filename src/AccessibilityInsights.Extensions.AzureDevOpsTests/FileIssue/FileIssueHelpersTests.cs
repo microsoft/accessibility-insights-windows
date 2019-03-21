@@ -35,7 +35,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             }
         }
 
-
         [TestMethod]
         [Timeout(10000)]
         public void RemoveInternalFromIssueText_MatchingTextExists()
