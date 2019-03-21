@@ -32,7 +32,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// <summary>
         /// The logo to display for the extension
         /// </summary>
-        IEnumerable<byte> Logo { get; }
+        ReporterFabricIcon Logo { get; }
 
         /// <summary>
         /// Tooltip/accessible text for logo
