@@ -144,24 +144,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Serialized form of SavedConnection
-        /// </summary>
-        public string SerializedSavedConnection
-        {
-            get => GetDataValue<string>(keySerializedSavedConnection);
-            set => SetDataValue<string>(keySerializedSavedConnection, value);
-        }
-
-        /// <summary>
-        /// Serialized form of CachedConnections
-        /// </summary>
-        public string SerializedCachedConnections
-        {
-            get => GetDataValue<string>(keySerializedCachedConnections);
-            set => SetDataValue<string>(keySerializedCachedConnections, value);
-        }
-
-        /// <summary>
         /// Test Report Path
         /// </summary>
         public string TestReportPath

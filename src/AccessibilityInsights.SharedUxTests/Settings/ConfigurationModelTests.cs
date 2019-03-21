@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -89,7 +90,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
             Assert.IsTrue(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
-            //Assert.IsNull(config.serCachedConnections);
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());
@@ -112,11 +112,10 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
-            //Assert.IsNull(config.SavedConnection);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.IsNull(config.SerializedCachedConnections);
-            Assert.IsNull(config.SerializedSavedConnection);
+            Assert.IsNull(config.SelectedIssueReporter);
+            Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsTrue(config.ShowTelemetryDialog);
@@ -127,7 +126,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual("1.1.10", config.Version);
-            //Assert.AreEqual(100, config.ZoomLevel);
 
             Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
@@ -158,7 +156,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
             Assert.AreNotEqual("1.1.700.1", config.AppVersion);
-            //Assert.IsNull(config.CachedConnections);
+
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());
@@ -181,11 +179,10 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
-            //Assert.IsNull(config.SavedConnection);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual("[]", config.SerializedCachedConnections);
-            Assert.AreEqual("", config.SerializedSavedConnection);
+            Assert.AreEqual("[]", config.IssueReporterSerializedConfigs);
+            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsFalse(config.ShowTelemetryDialog);
@@ -196,7 +193,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(@"C:\blah\AccessibilityInsightsTestFiles", config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Content, config.TreeViewMode);
             Assert.AreEqual("1.1.10", config.Version);
-            //Assert.AreEqual(350, config.ZoomLevel);
         }
 
         private static void ConfirmEnumerablesMatchExpectations(int[] expected, int[] actual)

@@ -114,7 +114,7 @@ namespace AccessibilityInsights
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
-            
+
             // enable/disable telemetry
             Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
         }

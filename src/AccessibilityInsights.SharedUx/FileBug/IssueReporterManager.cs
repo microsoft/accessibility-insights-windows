@@ -46,8 +46,8 @@ namespace AccessibilityInsights.SharedUx.FileBug
                 configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
             }
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions.ToList();
-            foreach (IIssueReporting issueReporter in IssueReportingOptions)
+            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions?.ToList();
+            foreach (IIssueReporting issueReporter in IssueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
             {
                 try
                 {
@@ -69,15 +69,6 @@ namespace AccessibilityInsights.SharedUx.FileBug
                     Console.WriteLine("Found duplicate extensions " + ex.StackTrace);
                 }
             }
-
-            // The following 4 lines will be removed after the integration is completed.
-            //TestIssueProvider TIP = new TestIssueProvider();
-            //IssueReportingOptionsDict.Add(TIP.StableIdentifier, TIP);
-
-            //TestIssueProvider2 TIP2 = new TestIssueProvider2();
-            //IssueReportingOptionsDict.Add(TIP2.StableIdentifier, TIP2);
-
-            SetIssueReporter(configs.SelectedIssueReporter);
         }
 
         public Dictionary<Guid, IIssueReporting> GetIssueFilingOptionsDict()

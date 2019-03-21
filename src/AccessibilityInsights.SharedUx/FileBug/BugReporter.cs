@@ -31,7 +31,9 @@ namespace AccessibilityInsights.SharedUx.FileBug
         public static Task RestoreConfigurationAsync(string serializedConfig)
         {
             if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid != null)
+            {
                 return IssueReporting.RestoreConfigurationAsync(serializedConfig);
+            }
             return Task.CompletedTask;
         }
 
