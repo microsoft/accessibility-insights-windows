@@ -76,6 +76,8 @@ namespace AccessibilityInsights.SharedUx.FileBug
 
             TestIssueProvider2 TIP2 = new TestIssueProvider2();
             IssueReportingOptionsDict.Add(TIP2.StableIdentifier, TIP2);
+
+            //SetIssueReporter(Guid.Parse(configs.SelectedIssueReporter));
         }
 
         public Dictionary<Guid, IIssueReporting> GetIssueFilingOptionsDict()

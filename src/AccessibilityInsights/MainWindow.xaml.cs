@@ -695,7 +695,8 @@ namespace AccessibilityInsights
         private async void RestoreConfigurationAsync()
         {
             var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
-            var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
+            bool isValid = !string.IsNullOrWhiteSpace(appConfig.SelectedIssueReporter);
+            var selectedIssueReporterGuid = isValid ? Guid.Parse(appConfig.SelectedIssueReporter) : Guid.Empty;
             if (selectedIssueReporterGuid != Guid.Empty)
             {
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
