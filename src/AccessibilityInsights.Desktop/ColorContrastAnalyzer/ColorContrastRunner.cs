@@ -6,6 +6,10 @@ using System.Linq;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
+    /**
+    * Manages running of the color contrast calculation. Collects transition and
+    * color counts and attempts to come to conclusions based on these values.
+    */
     internal class ColorContrastRunner
     {
         private Dictionary<Color, ColorContrastTransition> openTransitions = new Dictionary<Color, ColorContrastTransition>();
@@ -28,10 +32,8 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                 {
                     newlyClosedTransitions.Add(transition);
 
-                    Debug.WriteLine("Closing: " + transition.ToString());
                     if (transition.IsPotentialForegroundBackgroundPair())
                     {
-                        Debug.WriteLine("Is Potential Text Combo: " + transition.ToString());
                         countExactPairs.Increment(new ColorPair(
                             transition.StartingColor,
                             transition.MostContrastingColor
@@ -40,14 +42,10 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
                 }
             }
 
-            Debug.WriteLine("Before: " + openTransitions.Count());
-
             foreach (ColorContrastTransition transition in newlyClosedTransitions)
             {
                 openTransitions.Remove(transition.StartingColor);
             }
-
-            Debug.WriteLine("After: " + openTransitions.Count());
 
             if (previousColor != null && !color.Equals(previousColor))
             {
