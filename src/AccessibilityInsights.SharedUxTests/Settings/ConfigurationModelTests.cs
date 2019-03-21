@@ -114,7 +114,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.PlayScanningSound);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.IsNull(config.SelectedIssueReporter);
+            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
@@ -127,7 +127,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual("1.1.10", config.Version);
 
-            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(36, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -181,7 +181,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.PlayScanningSound);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual("[]", config.IssueReporterSerializedConfigs);
+            Assert.AreEqual(null, config.IssueReporterSerializedConfigs);
             Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);

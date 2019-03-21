@@ -4,15 +4,14 @@ using AccessibilityInsights.Actions.Fakes;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.Telemetry.Fakes;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting.Fakes;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.FileBug.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace AccessibilityInsights.SharedUxTests.FileBug
 {
@@ -22,19 +21,16 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
 
         [TestMethod]
-        public void FileNewBug_IsNotEnabled_ReturnsPlaceholder()
+        [Timeout(1000)]
+        public void FileNewBug_IsNotEnabled_ReturnsNull()
         {
             using (ShimsContext.Create())
             {
                 ShimBugReporter.IsEnabledGet = () => false;
-                var bugInfo = new BugInformation();
-                var connInfo = new StubIConnectionInfo();
-                var output = FileBugAction.FileNewBug(bugInfo,
-                    connInfo, false, 0, (_) => { });
+                var issueInfo = new IssueInformation();
+                var output = FileBugAction.FileIssueAsync(issueInfo);
 
-                Assert.IsNull(output.bugId);
-                Assert.IsNotNull(output.newBugId);
-                Assert.IsTrue(string.IsNullOrEmpty(output.newBugId));
+                Assert.IsNull(output);
             }
         }
 
@@ -42,6 +38,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
         /// Tests the shape of the telemetry we send when we file a bug with no rule
         /// </summary>
         [TestMethod]
+        [Timeout(1000)]
         public void TestBugFilingTelemetryNoRule()
         {
             using (ShimsContext.Create())
@@ -55,13 +52,8 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                     telemetryLog.Add(new Tuple<TelemetryAction, TelemetryProperty, string>(action, property, value));
                 };
 
-                var bugInfo = new BugInformation();
-                var connInfo = new StubIConnectionInfo
-                {
-                    ServerUriGet = () => FAKE_SERVER_URL,
-                };
-                (int? bugId, string newBugId) = FileBugAction.FileNewBug(bugInfo,
-                    connInfo, false, 0, (_) => { } );
+                var issueInfo = new IssueInformation();
+                var result = FileBugAction.FileIssueAsync(issueInfo);
 
                 Assert.AreEqual(0, telemetryLog.Count);
             }
@@ -71,11 +63,20 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
         /// Tests the shape of the telemetry we send when there is a specific rule failure
         /// </summary>
         [TestMethod]
+        [Timeout(1000)]
         public void TestBugFilingTelemetrySpecificRule()
         {
             using (ShimsContext.Create())
             {
                 SetUpShims();
+
+                ShimBugReporter.FileIssueAsyncIssueInformation = (_) =>
+                {
+                    var mockIssueResult = new Mock<IIssueResult>();
+                    mockIssueResult.Setup(p => p.DisplayText).Returns("Issue Display text");
+                    mockIssueResult.Setup(p => p.IssueLink).Returns(new Uri("https://www.google.com"));
+                    return mockIssueResult.Object;
+                };
 
                 // Save telemetry locally
                 List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>> telemetryLog = new List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>>();
@@ -84,42 +85,13 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                     telemetryLog.Add(new Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>(action, dict));
                 };
 
-                var bugInfo = new BugInformation(ruleForTelemetry: RuleId.BoundingRectangleContainedInParent.ToString());
-                var connInfo = new StubIConnectionInfo
-                {
-                    ServerUriGet = () => FAKE_SERVER_URL,
-                };
-                (int? bugId, string newBugId) = FileBugAction.FileNewBug(bugInfo,
-                    connInfo, false, 0, (_) => { } );
+                var issueInfo = new IssueInformation(ruleForTelemetry: RuleId.BoundingRectangleContainedInParent.ToString());
+                var result = FileBugAction.FileIssueAsync(issueInfo);
 
                 Assert.AreEqual(RuleId.BoundingRectangleContainedInParent.ToString(), telemetryLog[0].Item2[TelemetryProperty.RuleId]);
                 Assert.AreEqual("", telemetryLog[0].Item2[TelemetryProperty.UIFramework]);
                 Assert.AreEqual(2, telemetryLog[0].Item2.Count);
             }
-        }
-
-        [TestMethod]
-        [Timeout(10000)]
-        public void RemoveInternalFromBugText_MatchingTextExists()
-        {
-            var guid = Guid.NewGuid().ToString();
-            // Internal id doesn't exist if the text is modified by user in edit pane. this scenario simulate the case. 
-            string original = $"<br><br><div><hr>{guid}<hr></div>";
-            string expected = "\r\n<BODY><BR><BR>\r\n<DIV></DIV></BODY>";
-
-            Assert.AreEqual(expected, FileBugAction.RemoveInternalHTML(original, guid));
-        }
-
-        [TestMethod]
-        [Timeout(10000)]
-        public void RemoveInternalFromBugText_NoMatchingText()
-        {
-            var guid = Guid.NewGuid().ToString();
-
-            string original = "<br><br><div><hr>should not be removed<hr></div>";
-            string expected = "\r\n<BODY><BR><BR>\r\n<DIV>\r\n<HR>\r\nshould not be removed\r\n<HR>\r\n</DIV></BODY>";
-
-            Assert.AreEqual(expected, FileBugAction.RemoveInternalHTML(original, guid));
         }
 
         public static void SetUpShims()
@@ -129,15 +101,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 return null;
             };
             ShimBugReporter.IsEnabledGet = () => true;
-            ShimBugReporter.CreateBugPreviewAsyncIConnectionInfoBugInformation =  (_, __) =>
-            {
-                return Task.FromResult(FAKE_SERVER_URL);
-            };
-            ShimFileBugAction.FileBugWindowUriBooleanInt32ActionOfInt32 = (_, __, ___, ____) =>
-            {
-                int? retBugId = 5;
-                return retBugId;
-            };
+
         }
     }
 }

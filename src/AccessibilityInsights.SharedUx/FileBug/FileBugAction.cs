@@ -28,11 +28,6 @@ namespace AccessibilityInsights.SharedUx.FileBug
 
             try
             {
-                // Create a A11y-specific Guid for this bug if absent
-                var a11yBugId = issueInformation.InternalGuid.HasValue
-                    ? issueInformation.InternalGuid.Value.ToString()
-                    : string.Empty;
-
                 IIssueResult issueResult = BugReporter.FileIssueAsync(issueInformation);
 
                 if (issueResult.IssueLink != null)

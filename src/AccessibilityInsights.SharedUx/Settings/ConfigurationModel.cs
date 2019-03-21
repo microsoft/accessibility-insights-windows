@@ -627,7 +627,9 @@ namespace AccessibilityInsights.SharedUx.Settings
                 ShowTelemetryDialog = true,
 
                 TestConfig = SuiteConfigurationType.Default,
-                IsUnderElementScope = true
+                IsUnderElementScope = true,
+                IssueReporterSerializedConfigs = null,
+                SelectedIssueReporter = Guid.Empty,
             };
 
             return config;
