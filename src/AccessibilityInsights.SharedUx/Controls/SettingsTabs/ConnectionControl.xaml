@@ -5,8 +5,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
@@ -15,7 +13,7 @@
     </UserControl.Resources>
     <Canvas HorizontalAlignment="Left" Height="396" VerticalAlignment="Top" Width="360">
         <Grid>
-            <Grid x:Name="selectServerGrid" Width="336" Margin="20 0 0 0" Visibility="Visible">
+            <Grid x:Name="issueFilingGrid" Width="336" Margin="20 0 0 0" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -28,15 +26,7 @@
                            TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Focusable="True"/>
                 <StackPanel Grid.Row="2" x:Name="availableIssueReporters">
                 </StackPanel>
-                
             </Grid>
-            <!--AK TODO - Consider whether we need this after integration-->
-            <local:ProgressRingControl x:Name="ctrlProgressRing" 
-                                   Size="25"  
-                                   Visibility="Collapsed"
-                                   HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center">
-            </local:ProgressRingControl>
         </Grid>
     </Canvas>
 </UserControl>

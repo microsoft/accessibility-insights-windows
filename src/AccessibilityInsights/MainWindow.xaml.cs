@@ -4,6 +4,7 @@ using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
@@ -13,6 +14,7 @@ using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using AccessibilityInsights.Win32;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -24,10 +26,6 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
-using AccessibilityInsights.Properties;
-using System.Web;
-using Newtonsoft.Json;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights
 {
@@ -692,8 +690,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Initialize server integration and try logging in implicitly 
-        /// to the saved connection in the configuration if it exists.
+        /// Set saved issue reporter and try restoring configuration if it exists.
         /// </summary>
         private async void RestoreConfigurationAsync()
         {
@@ -703,12 +700,16 @@ namespace AccessibilityInsights
             {
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
                 var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
-                Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
-                configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
-                await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
-                Dispatcher.Invoke(() => {
-                    UpdateMainWindowConnectionFields();
-                });
+                if (serializedConfigsDict != null)
+                {
+                    Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+                    if (configsDictionary != null)
+                    {
+                        configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
+                        await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
+                        Dispatcher.Invoke(UpdateMainWindowConnectionFields);
+                    }
+                }
             }
         }
 
@@ -722,7 +723,7 @@ namespace AccessibilityInsights
             fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
 
             // Main window UI changes
-            vmReporterLogo.FabricIconLogoName = isConfigured ? BugReporter.Logo.ToString("g") : null;
+            vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
             string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
             string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, BugReporter.DisplayName);
             AutomationProperties.SetName(btnAccountConfig, tooltipText);

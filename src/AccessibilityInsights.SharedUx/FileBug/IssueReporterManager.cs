@@ -46,8 +46,8 @@ namespace AccessibilityInsights.SharedUx.FileBug
                 configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
             }
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions.ToList();
-            foreach (IIssueReporting issueReporter in IssueReportingOptions)
+            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions?.ToList();
+            foreach (IIssueReporting issueReporter in IssueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
             {
                 try
                 {

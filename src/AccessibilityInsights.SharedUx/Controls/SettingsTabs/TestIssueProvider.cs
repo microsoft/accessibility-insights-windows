@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
@@ -30,11 +31,16 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         public Task RestoreConfigurationAsync(string serializedConfig)
         {
-            return Task.Run(() => { return null; });
+            return Task.Run(() => {
+                Thread.Sleep(5000);
+                return Task.CompletedTask;
+            });
+
         }
 
         public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
         {
+            //Thread.Sleep(5000);
             return new TestIssueConfigurationControl(UpdateSaveButton);
         }
     }

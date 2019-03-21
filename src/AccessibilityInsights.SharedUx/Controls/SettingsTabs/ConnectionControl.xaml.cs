@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             RadioButton issueReportingOption = new RadioButton();
             issueReportingOption.Content = reporter.ServiceName;
-            issueReportingOption.Tag =reporter.StableIdentifier;
+            issueReportingOption.Tag = reporter.StableIdentifier;
             issueReportingOption.Margin = new Thickness(2, 2, 2, 2);
             issueReportingOption.Checked += IssueReporterOnChecked;
             issueReportingOption.FontSize = 14;
@@ -67,17 +67,21 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         private void IssueReporterOnChecked(object sender, RoutedEventArgs e)
         {
-            if (issueConfigurationControl != null) {
-                selectServerGrid.Children.Remove(issueConfigurationControl);
+            if (issueConfigurationControl != null)
+            {
+                issueFilingGrid.Children.Remove(issueConfigurationControl);
                 issueConfigurationControl = null;
                 UpdateSaveButton();
             }
 
-            Guid clickedButton  = (Guid)((RadioButton)sender).Tag;
-            IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().TryGetValue(clickedButton, out selectedIssueReporter);
-            issueConfigurationControl = selectedIssueReporter.RetrieveConfigurationControl(this.UpdateSaveButton);
-            Grid.SetRow(issueConfigurationControl, 3);
-            selectServerGrid.Children.Add(issueConfigurationControl);
+            Guid clickedOptionTag = (Guid)((RadioButton)sender).Tag;
+            if (clickedOptionTag != Guid.Empty)
+            {
+                IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().TryGetValue(clickedOptionTag, out selectedIssueReporter);
+                issueConfigurationControl = selectedIssueReporter?.RetrieveConfigurationControl(this.UpdateSaveButton);
+                Grid.SetRow(issueConfigurationControl, 3);
+                issueFilingGrid.Children.Add(issueConfigurationControl);
+            }
         }
 
         /// <summary>
@@ -86,12 +90,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            if (issueConfigurationControl.CanSave)
+            if (issueConfigurationControl != null && issueConfigurationControl.CanSave)
             {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
                 string seralizedConfigs = configuration.IssueReporterSerializedConfigs;
                 Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(seralizedConfigs);
-
+                configs = configs ?? new Dictionary<Guid, string>();
                 string newConfigs = issueConfigurationControl.OnSave();
                 configs[selectedIssueReporter.StableIdentifier] = newConfigs;
                 configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
@@ -121,18 +125,22 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             Guid selectedGUID = BugReporter.IssueReporting != null ? BugReporter.IssueReporting.StableIdentifier : default(Guid);
             foreach (var reporter in options)
             {
+                if (reporter.Key == null || reporter.Value == null) {
+                    continue;
+                }
+
                 RadioButton rb = CreateRadioButton(reporter.Value);
-                if (reporter.Key.Equals(selectedGUID))
+                if (selectedGUID.Equals(reporter.Key))
                 {
                     rb.IsChecked = true;
                     issueConfigurationControl = reporter.Value.RetrieveConfigurationControl(this.UpdateSaveButton);
                     Grid.SetRow(issueConfigurationControl, 3);
-                    selectServerGrid.Children.Add(issueConfigurationControl);
+                    issueFilingGrid.Children.Add(issueConfigurationControl);
                 }
                 availableIssueReporters.Children.Add(rb);
             }
 
-            this.selectServerGrid.Visibility = Visibility.Visible;
+            this.issueFilingGrid.Visibility = Visibility.Visible;
         }
     }
 }
