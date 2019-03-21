@@ -71,11 +71,11 @@ namespace AccessibilityInsights.SharedUx.FileBug
             }
 
             // The following 4 lines will be removed after the integration is completed.
-            TestIssueProvider TIP = new TestIssueProvider();
-            IssueReportingOptionsDict.Add(TIP.StableIdentifier, TIP);
+            //TestIssueProvider TIP = new TestIssueProvider();
+            //IssueReportingOptionsDict.Add(TIP.StableIdentifier, TIP);
 
-            TestIssueProvider2 TIP2 = new TestIssueProvider2();
-            IssueReportingOptionsDict.Add(TIP2.StableIdentifier, TIP2);
+            //TestIssueProvider2 TIP2 = new TestIssueProvider2();
+            //IssueReportingOptionsDict.Add(TIP2.StableIdentifier, TIP2);
 
             SetIssueReporter(configs.SelectedIssueReporter);
         }
