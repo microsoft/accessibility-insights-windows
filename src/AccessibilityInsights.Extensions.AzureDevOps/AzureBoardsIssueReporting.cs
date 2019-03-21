@@ -26,9 +26,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public bool IsConfigured => AzureDevOps.ConnectedToAzureDevOps;
 
-        public IEnumerable<byte> Logo => AzureDevOps.Avatar;
+        public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;        
 
-        public string LogoText => null;
+        public string LogoText => "Azure Boards";
 
         public IssueConfigurationControl ConfigurationControl { get; } = new ConfigurationControl();
 
