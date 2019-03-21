@@ -59,8 +59,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyPlayScanningSound = "PlayScanningSound";
         private const string keySelectionByFocus = "SelectionByFocus";
         private const string keySelectionByMouse = "SelectionByMouse";
-        private const string keySerializedSavedConnection = "SerializedSavedConnection";
-        private const string keySerializedCachedConnections = "SerializedCachedConnections";
         private const string keyShowAllProperties = "ShowAllProperties";
         private const string keyShowAncestry = "ShowAncestry";
         private const string keyShowTelemetryDialog = "ShowTelemetryDialog";

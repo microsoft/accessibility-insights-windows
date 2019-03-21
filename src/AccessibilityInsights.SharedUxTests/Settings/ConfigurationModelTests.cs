@@ -113,8 +113,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.PlayScanningSound);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.IsNull(config.SerializedCachedConnections);
-            Assert.IsNull(config.SerializedSavedConnection);
+            Assert.IsNull(config.SelectedIssueReporter);
+            Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsTrue(config.ShowTelemetryDialog);
@@ -179,8 +179,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.PlayScanningSound);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual("[]", config.SerializedCachedConnections);
-            Assert.AreEqual("", config.SerializedSavedConnection);
+            Assert.AreEqual("[]", config.IssueReporterSerializedConfigs);
+            Assert.AreEqual("", config.SelectedIssueReporter);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsFalse(config.ShowTelemetryDialog);
