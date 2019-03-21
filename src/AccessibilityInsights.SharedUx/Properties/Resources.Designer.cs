@@ -2384,7 +2384,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Previous sibling element in UI Automation tree..
+        ///   Looks up a localized string similar to Inspect the Previous sibling element in the UI Automation tree..
         /// </summary>
         public static string lblToBeforeContent {
             get {
@@ -2393,7 +2393,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the First child element in UI Automation tree..
+        ///   Looks up a localized string similar to Inspect the First child element in the UI Automation tree..
         /// </summary>
         public static string lblToFirstChildContent {
             get {
@@ -2402,7 +2402,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Last child element in UI Automation tree..
+        ///   Looks up a localized string similar to Inspect the Last child element in the UI Automation tree..
         /// </summary>
         public static string lblToLastChildContent {
             get {
@@ -2411,7 +2411,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Next sibling element in UI Automation tree..
+        ///   Looks up a localized string similar to Inspect the Next sibling element in the UI Automation tree..
         /// </summary>
         public static string lblToNextContent {
             get {
@@ -2420,7 +2420,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Parent element in UI Automation tree..
+        ///   Looks up a localized string similar to Inspect the Parent element in the UI Automation tree..
         /// </summary>
         public static string lblToParentContent {
             get {
@@ -3810,7 +3810,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View results in UI Automation tree.
+        ///   Looks up a localized string similar to View results in the UI Automation tree.
         /// </summary>
         public static string tbViewResultsText {
             get {

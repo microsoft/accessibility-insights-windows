@@ -274,19 +274,19 @@
     <value>Pause or resume updates to the UI Automation tree when focus changes via mouse or keyboard navigation.</value>
   </data>
   <data name="lblToParentContent" xml:space="preserve">
-    <value>Inspect the Parent element in UI Automation tree.</value>
+    <value>Inspect the Parent element in the UI Automation tree.</value>
   </data>
   <data name="lblToBeforeContent" xml:space="preserve">
-    <value>Inspect the Previous sibling element in UI Automation tree.</value>
+    <value>Inspect the Previous sibling element in the UI Automation tree.</value>
   </data>
   <data name="lblToNextContent" xml:space="preserve">
-    <value>Inspect the Next sibling element in UI Automation tree.</value>
+    <value>Inspect the Next sibling element in the UI Automation tree.</value>
   </data>
   <data name="lblToFirstChildContent" xml:space="preserve">
-    <value>Inspect the First child element in UI Automation tree.</value>
+    <value>Inspect the First child element in the UI Automation tree.</value>
   </data>
   <data name="lblToLastChildContent" xml:space="preserve">
-    <value>Inspect the Last child element in UI Automation tree.</value>
+    <value>Inspect the Last child element in the UI Automation tree.</value>
   </data>
   <data name="lblFocusLabelContent" xml:space="preserve">
     <value>Selection by _focus</value>
@@ -436,7 +436,7 @@
     <value>Inspect details about {0}</value>
   </data>
   <data name="tbViewResultsText" xml:space="preserve">
-    <value>View results in UI Automation tree</value>
+    <value>View results in the UI Automation tree</value>
   </data>
   <data name="chbxSelectAllAutomationPropertiesName" xml:space="preserve">
     <value>Highlight all results</value>
