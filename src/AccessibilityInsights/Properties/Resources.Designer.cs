@@ -322,7 +322,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resume UIA Tree.
+        ///   Looks up a localized string similar to Resume UI Automation Tree.
         /// </summary>
         public static string btnPauseAutomationPropertiesNameOff {
             get {
@@ -331,7 +331,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause UIA Tree.
+        ///   Looks up a localized string similar to Pause UI Automation Tree.
         /// </summary>
         public static string btnPauseAutomationPropertiesNameOn {
             get {
@@ -773,7 +773,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To begin inspecting a UIA element, hover over the element within the target application or set keyboard focus on the element. To inspect its properties, bring focus back to Accessibility Insights for Windows by pressing.
+        ///   Looks up a localized string similar to To begin inspecting a UI Automation element, hover over the element within the target application or set keyboard focus on the element. To inspect its properties, bring focus back to Accessibility Insights for Windows by pressing.
         /// </summary>
         public static string LiveModeControl_HoverOverElement {
             get {
@@ -980,7 +980,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Results in UIA Tree.
+        ///   Looks up a localized string similar to Results in UI Automation Tree.
         /// </summary>
         public static string resultsInUIATree {
             get {
