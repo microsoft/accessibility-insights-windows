@@ -467,7 +467,7 @@
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
     <Compile Include="ViewModels\BaseActionViewModel.cs" />
-    <Compile Include="ViewModels\ByteArrayViewModel.cs" />
+    <Compile Include="ViewModels\LogoViewModel.cs" />
     <Compile Include="ViewModels\ColorContrastViewModel.cs" />
     <Compile Include="ViewModels\ApplicationSettingsViewModel.cs" />
     <Compile Include="ViewModels\GeneralActionViewModel.cs" />

@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         public bool CanAttachFiles => true;
 
-        public IEnumerable<byte> Logo => null;
+        public ReporterFabricIcon Logo => ReporterFabricIcon.GitHubLogo;
 
         public string LogoText => null;
 
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         public Task RestoreConfigurationAsync(string serializedConfig)
         {
-            return new Task<IIssueReporting>(() => { return null; });
+            return Task.Run(() => { return null; });
         }
 
         public IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton)
