@@ -2,7 +2,7 @@
 When working with color contrast bugs it can be difficult for various environments
 to replicate functionality identically. There are too many factors at play in how
 various screens render different elements. The only way to reliably replicate behaviors
-is to capture the actual input used in the algorithm, convert it to a PNG, and add it
+is to capture the actual input used in the algorithm, convert it to a BMP, and add it
 to the test images.
 
 ### Steps
