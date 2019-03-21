@@ -6,6 +6,9 @@ using System.Text.RegularExpressions;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
+    /// <summary>
+    /// GitHub Repo Link Format Validator
+    /// </summary>
     public static class LinkValidator
     {
         private static readonly string GitHubLink = Properties.Resources.GitHubLink;
@@ -30,7 +33,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
             string userName = parts[0];
             string repoName = parts[1];
-            if (!CheckUserNameMaxLength(userName) || !CheckRepoNameMaxLength(repoName) || !CheckRepoNameSpecialCases(repoName))
+            if (!CheckUserNameLength(userName) || !CheckRepoNameLength(repoName) || !CheckRepoNameSpecialCases(repoName))
             {
                 return false;
             }
@@ -38,12 +41,12 @@ namespace AccessibilityInsights.Extensions.GitHub
             return true;
         }
 
-        private static bool CheckUserNameMaxLength(string userName)
+        private static bool CheckUserNameLength(string userName)
         {
             return (userName.Length <= 39 && userName.Length >= 1);
         }
 
-        private static bool CheckRepoNameMaxLength(string repoName)
+        private static bool CheckRepoNameLength(string repoName)
         {
             return (repoName.Length <= 100 && repoName.Length >= 1);
         }
