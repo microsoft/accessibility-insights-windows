@@ -159,4 +159,22 @@ This accessibility issue was found using Accessibility Insights for Windows, a t
   <data name="tbURLPlaceHolder" xml:space="preserve">
     <value>Enter desired GitHub repo link</value>
   </data>
+  <data name="AlphaNumricPattern" xml:space="preserve">
+    <value>[a-zA-Z0-9]</value>
+  </data>
+  <data name="GitHubLink" xml:space="preserve">
+    <value>(https:/*github.com/*|https:/*www.github.com/*|www.github.com/*)</value>
+  </data>
+  <data name="LinkPatttern" xml:space="preserve">
+    <value>^{0}/+{1}/+{2}</value>
+  </data>
+  <data name="RepoNamePattern" xml:space="preserve">
+    <value>({0}?[_]?[-]?[.]?)+</value>
+  </data>
+  <data name="RepoNameSpecialCasesDoubleDot" xml:space="preserve">
+    <value>..</value>
+  </data>
+  <data name="UserNamePattern" xml:space="preserve">
+    <value>{0}+([-]{0}+)*</value>
+  </data>
 </root>

@@ -61,6 +61,15 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [a-zA-Z0-9].
+        /// </summary>
+        public static string AlphaNumricPattern {
+            get {
+                return ResourceManager.GetString("AlphaNumricPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GitHub.
         /// </summary>
         public static string extensionName {
@@ -75,6 +84,24 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         public static string FormattedLink {
             get {
                 return ResourceManager.GetString("FormattedLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (https:/*github.com/*|https:/*www.github.com/*|www.github.com/*).
+        /// </summary>
+        public static string GitHubLink {
+            get {
+                return ResourceManager.GetString("GitHubLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ^{0}/+{1}/+{2}.
+        /// </summary>
+        public static string LinkPatttern {
+            get {
+                return ResourceManager.GetString("LinkPatttern", resourceCulture);
             }
         }
         
@@ -114,6 +141,24 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ({0}?[_]?[-]?[.]?)+.
+        /// </summary>
+        public static string RepoNamePattern {
+            get {
+                return ResourceManager.GetString("RepoNamePattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ...
+        /// </summary>
+        public static string RepoNameSpecialCasesDoubleDot {
+            get {
+                return ResourceManager.GetString("RepoNameSpecialCasesDoubleDot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The following accessibility issue needs investigation.
         ///
         ///**App:** {0}
@@ -147,6 +192,15 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         public static string tbURLPlaceHolder {
             get {
                 return ResourceManager.GetString("tbURLPlaceHolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}+([-]{0}+)*.
+        /// </summary>
+        public static string UserNamePattern {
+            get {
+                return ResourceManager.GetString("UserNamePattern", resourceCulture);
             }
         }
     }
