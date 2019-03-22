@@ -22,18 +22,12 @@ namespace AccessibilityInsights.SharedUx.FileBug
             // FeatureControl settings are per-process
             var fileName = System.IO.Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName);
 
-            // make sure the control is not running inside Visual Studio Designer
-            if (string.Compare(fileName, "devenv.exe", true, System.Globalization.CultureInfo.InvariantCulture) == 0 || string.Compare(fileName, "XDesProc.exe", true, System.Globalization.CultureInfo.InvariantCulture) == 0)
-            {
-                return;
-            }
-
             try
             {
                 SetBrowserFeatureControlKey("FEATURE_BROWSER_EMULATION", fileName, GetBrowserEmulationMode());
                 SetBrowserFeatureControlKey("FEATURE_AJAX_CONNECTIONEVENTS", fileName, 1);
                 SetBrowserFeatureControlKey("FEATURE_GPU_RENDERING", fileName, 1);
-            } 
+            }
             catch (Exception)
             {
                 // silently ignore
@@ -64,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
                     return 7000;
                 }
             }
-            
+
             switch (browserVersion)
             {
                 case 7: return 7000; // Webpages containing standards-based !DOCTYPE directives are displayed in IE7 Standards mode. Default value for applications hosting the WebBrowser Control.
