@@ -20,72 +20,61 @@ namespace AccessibilityInsights.SharedUx.FileBug
             // http://msdn.microsoft.com/en-us/library/ee330720(v=vs.85).aspx
 
             // FeatureControl settings are per-process
-            dynamic fileName = System.IO.Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName);
+            var fileName = System.IO.Path.GetFileName(Process.GetCurrentProcess().MainModule.FileName);
 
-            // make the control is not running inside Visual Studio Designer
-            if (String.Compare(fileName, "devenv.exe", true) == 0 || String.Compare(fileName, "XDesProc.exe", true) == 0)
+            // make sure the control is not running inside Visual Studio Designer
+            if (string.Compare(fileName, "devenv.exe", true, System.Globalization.CultureInfo.InvariantCulture) == 0 || string.Compare(fileName, "XDesProc.exe", true, System.Globalization.CultureInfo.InvariantCulture) == 0)
             {
                 return;
             }
 
-            SetBrowserFeatureControlKey("FEATURE_BROWSER_EMULATION", fileName, GetBrowserEmulationMode());
-            // Webpages containing standards-based !DOCTYPE directives are displayed in IE10 Standards mode.
-            SetBrowserFeatureControlKey("FEATURE_AJAX_CONNECTIONEVENTS", fileName, 1);
-            SetBrowserFeatureControlKey("FEATURE_GPU_RENDERING", fileName, 1);
+            try
+            {
+                SetBrowserFeatureControlKey("FEATURE_BROWSER_EMULATION", fileName, GetBrowserEmulationMode());
+                SetBrowserFeatureControlKey("FEATURE_AJAX_CONNECTIONEVENTS", fileName, 1);
+                SetBrowserFeatureControlKey("FEATURE_GPU_RENDERING", fileName, 1);
+            } 
+            catch (Exception)
+            {
+                // silently ignore
+            }
         }
 
         private static void SetBrowserFeatureControlKey(string feature, string appName, uint value)
         {
-            using (var key = Registry.CurrentUser.CreateSubKey(String.Concat("Software\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\", feature), RegistryKeyPermissionCheck.ReadWriteSubTree))
+            using (var key = Registry.CurrentUser.CreateSubKey(String.Concat(@"Software\Microsoft\Internet Explorer\Main\FeatureControl\", feature), RegistryKeyPermissionCheck.ReadWriteSubTree))
             {
-                key.SetValue(appName, (UInt32)value, RegistryValueKind.DWord);
+                key.SetValue(appName, value, RegistryValueKind.DWord);
             }
         }
 
-        private static UInt32 GetBrowserEmulationMode()
+        /// <summary>
+        /// Get the browser emulation mode most appropriate for the installed version of IE,
+        /// or the default mode for applications hosting the WebBrowser control
+        /// </summary>
+        /// <returns></returns>
+        private static uint GetBrowserEmulationMode()
         {
             int browserVersion = 7;
-            using (var Key = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Internet Explorer", RegistryKeyPermissionCheck.ReadSubTree, System.Security.AccessControl.RegistryRights.QueryValues))
+            using (var Key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer", RegistryKeyPermissionCheck.ReadSubTree, System.Security.AccessControl.RegistryRights.QueryValues))
             {
-                dynamic version = Key.GetValue("svcVersion");
-                if (null == version)
+                var version = Key.GetValue("svcVersion") ?? Key.GetValue("Version");
+                if (version == null || int.TryParse(version.ToString().Split('.')[0], out browserVersion) == false)
                 {
-                    version = Key.GetValue("Version");
-                    if (null == version)
-                    {
-                        throw new ApplicationException("Microsoft Internet Explorer is required!");
-                    }
+                    return 7000;
                 }
-                int.TryParse(version.ToString().Split('.')[0], out browserVersion);
             }
-
-            UInt32 mode = 10000;
-            // Internet Explorer 10. Webpages containing standards-based !DOCTYPE directives are displayed in IE10 Standards mode. Default value for Internet Explorer 10.
+            
             switch (browserVersion)
             {
-                case 7:
-                    mode = 7000;
-                    // Webpages containing standards-based !DOCTYPE directives are displayed in IE7 Standards mode. Default value for applications hosting the WebBrowser Control.
-                    break;
-                case 8:
-                    mode = 8000;
-                    // Webpages containing standards-based !DOCTYPE directives are displayed in IE8 mode. Default value for Internet Explorer 8
-                    break;
-                case 9:
-                    mode = 9000;
-                    // Internet Explorer 9. Webpages containing standards-based !DOCTYPE directives are displayed in IE9 mode. Default value for Internet Explorer 9.
-                    break;
-                case 10:
-                    mode = 10000;
-                    // Internet Explorer 10. Webpages containing standards-based !DOCTYPE directives are displayed in IE9 mode. Default value for Internet Explorer 9.
-                    break;
-                case 11:
-                    mode = 11001;
-                    // Internet Explorer 11. Webpages containing standards-based !DOCTYPE directives are displayed in IE9 mode. Default value for Internet Explorer 9.
-                    break;
+                case 7: return 7000; // Webpages containing standards-based !DOCTYPE directives are displayed in IE7 Standards mode. Default value for applications hosting the WebBrowser Control.
+                case 8: return 8000; // Webpages containing standards-based !DOCTYPE directives are displayed in IE8 mode. Default value for Internet Explorer 8
+                case 9: return 9000; // Internet Explorer 9. Webpages containing standards-based !DOCTYPE directives are displayed in IE9 mode. Default value for Internet Explorer 9.
+                case 11: return 11001; // Internet Explorer 11. Webpages containing standards-based !DOCTYPE directives are displayed in IE11 mode. Default value for Internet Explorer 11.
+                case 10: 
+                default:
+                    return 10000; // Internet Explorer 10. Webpages containing standards-based !DOCTYPE directives are displayed in IE10 mode. Default value for Internet Explorer 10.
             }
-
-            return mode;
         }
     }
 }
