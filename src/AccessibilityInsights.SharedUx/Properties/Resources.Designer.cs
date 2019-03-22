@@ -905,11 +905,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Background color.
+        ///   Looks up a localized string similar to Color 1.
         /// </summary>
-        public static string ColorContrast_Background {
+        public static string ColorContrast_Color1 {
             get {
-                return ResourceManager.GetString("ColorContrast_Background", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_Color1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Color 2.
+        /// </summary>
+        public static string ColorContrast_Color2 {
+            get {
+                return ResourceManager.GetString("ColorContrast_Color2", resourceCulture);
             }
         }
         
@@ -928,15 +937,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_FontSizes {
             get {
                 return ResourceManager.GetString("ColorContrast_FontSizes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Foreground color.
-        /// </summary>
-        public static string ColorContrast_Foreground {
-            get {
-                return ResourceManager.GetString("ColorContrast_Foreground", resourceCulture);
             }
         }
         
