@@ -18,7 +18,7 @@
             Width="10"
             Height="10"
             Name="canv" >
-            <Ellipse Style="{StaticResource elpsBlue}"
+            <Ellipse Style="{DynamicResource elpsBlue}"
             x:Name="ell1"
                 Height="4"
                 Width="4"                          
@@ -53,7 +53,7 @@
                     </EventTrigger>
                 </Ellipse.Triggers>
             </Ellipse>
-            <Ellipse Style="{StaticResource elpsBlue}"
+            <Ellipse Style="{DynamicResource elpsBlue}"
                 x:Name="ell2"
                 Height="4"
                 Width="4"
@@ -89,7 +89,7 @@
                     </EventTrigger>
                 </Ellipse.Triggers>
             </Ellipse>
-            <Ellipse Style="{StaticResource elpsBlue}"
+            <Ellipse Style="{DynamicResource elpsBlue}"
                 x:Name="ell3"
                 Height="4"
                 Width="4"
@@ -125,7 +125,7 @@
                     </EventTrigger>
                 </Ellipse.Triggers>
             </Ellipse>
-            <Ellipse Style="{StaticResource elpsBlue}"
+            <Ellipse Style="{DynamicResource elpsBlue}"
                 x:Name="ell4"
                 Height="4"
                 Width="4"                          
@@ -161,7 +161,7 @@
                     </EventTrigger>
                 </Ellipse.Triggers>
             </Ellipse>
-            <Ellipse Style="{StaticResource elpsBlue}"
+            <Ellipse Style="{DynamicResource elpsBlue}"
                 x:Name="ell5"
                 Height="4"
                 Width="4"
@@ -198,7 +198,7 @@
                 </Ellipse.Triggers>
             </Ellipse>
         </Canvas>
-        <Label Content="{x:Static Properties:Resources.LabelContentLoading}" Style="{StaticResource lblBlue}"
+        <Label Content="{x:Static Properties:Resources.LabelContentLoading}" Style="{DynamicResource lblBlue}"
                HorizontalContentAlignment="Center" 
                HorizontalAlignment="Center"
                VerticalAlignment="Center" 

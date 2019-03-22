@@ -9,14 +9,10 @@
         xmlns:Properties="clr-namespace:AccessibilityInsights.CommonUxComponents.Properties"
         SizeToContent="Height" 
         mc:Ignorable="d"
-        Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico"
         Title="{x:Static Properties:Resources.MessageDialogWindowTitle}" Height="200" Width="400" 
         WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Loaded="Window_Loaded"
         AutomationProperties.LabeledBy="{Binding ElementName=tbMessage}" KeyUp="Window_KeyUp"
         ShowInTaskbar="False" Topmost="True">
-    <Window.Resources>
-        <ResourceDictionary Source="..\Resources\Styles.xaml"/>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -31,6 +27,6 @@
                 Content="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 AutomationProperties.Name="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 Margin="270,10,30,10" Click="btnClose_Click"
-                IsDefault="True" Style="{StaticResource BtnBlue}"/>
+                IsDefault="True" Style="{DynamicResource BtnBlue}"/>
     </Grid>
 </Window>
