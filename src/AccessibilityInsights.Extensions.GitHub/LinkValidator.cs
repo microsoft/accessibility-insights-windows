@@ -16,6 +16,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public static bool IsValidGitHubRepoLink(string Link)
         {
+            Link = Link.Replace(@"\", "/").Trim(' ').TrimEnd('/');
             string UserNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumricPattern);
             string RepoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumricPattern);
             string LinkPatttern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, UserNamePattern, RepoNamePattern);
@@ -25,7 +26,8 @@ namespace AccessibilityInsights.Extensions.GitHub
                 return false;
             }
 
-            string[] parts = Regex.Replace(Link, GitHubLink, "").Split('/');
+            Link = Regex.Replace(Link, GitHubLink, "");
+            string[] parts = Regex.Split(Link, @"/+");
             if (parts.Length != 2)
             {
                 return false;
