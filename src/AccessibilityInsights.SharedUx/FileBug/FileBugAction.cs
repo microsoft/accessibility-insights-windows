@@ -292,10 +292,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
         private static int? FileBugWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
             System.Diagnostics.Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
-            // To force latest IE to show up
-            var appName = System.Diagnostics.Process.GetCurrentProcess().ProcessName + ".exe";
-            using (var Key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_BROWSER_EMULATION", true))
-                Key.SetValue(appName, 99999, Microsoft.Win32.RegistryValueKind.DWord);
+            BrowserEmulation.SetBrowserFeatureControl();
 
             var dlg = new BugFileForm(url, onTop, zoomLevel, updateZoom);
             dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
