@@ -1,17 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System.Windows.Controls;
-using System.Windows;
-using System.Windows.Media.Animation;
-using System.Windows.Automation.Peers;
-using System.Media;
-using System.IO;
+using AccessibilityInsights.Win32;
 using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Media;
 using System.Reflection;
 using System.Timers;
-using System;
-using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.Win32;
+using System.Windows;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace AccessibilityInsights.CommonUxComponents.Controls
 {

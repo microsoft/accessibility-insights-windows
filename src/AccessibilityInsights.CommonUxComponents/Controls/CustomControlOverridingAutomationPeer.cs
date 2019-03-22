@@ -20,7 +20,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// Value for custom IsContentElem
         /// </summary>
         private bool IsContentElem;
-        
+
         /// <summary>
         /// String for custom LocalizedControlType
         /// </summary>

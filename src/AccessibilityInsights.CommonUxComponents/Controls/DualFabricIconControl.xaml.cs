@@ -145,9 +145,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
             if (sender != null)
             {
-
                 sender.fabicnBack.FontSize = sender.IconSizeBack;
-
             }
         }
 
@@ -174,7 +172,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             DualFabricIconControl sender = o as DualFabricIconControl;
 
             if (sender != null)
-
             {
                 sender.fabicnBack.Foreground = sender.Background;
             }

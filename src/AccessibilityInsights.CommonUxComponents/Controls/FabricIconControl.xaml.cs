@@ -156,7 +156,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         protected override AutomationPeer OnCreateAutomationPeer()
         { 
             return new CustomControlOverridingAutomationPeer(this, "icon", false);
-        }        
+        }
     }
 
     #region Icon Values

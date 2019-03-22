@@ -21,7 +21,7 @@
             <Ellipse Style="{DynamicResource elpsBlue}"
             x:Name="ell1"
                 Height="4"
-                Width="4"                          
+                Width="4"
                 RenderTransformOrigin="0.5, -3.5">
                 <Ellipse.RenderTransform>
                     <RotateTransform x:Name="circ1"/>
@@ -128,7 +128,7 @@
             <Ellipse Style="{DynamicResource elpsBlue}"
                 x:Name="ell4"
                 Height="4"
-                Width="4"                          
+                Width="4"
                 RenderTransformOrigin="0.5, -3.5">
                 <Ellipse.RenderTransform>
                     <RotateTransform x:Name="circ4"/>
