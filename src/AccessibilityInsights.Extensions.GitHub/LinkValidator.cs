@@ -19,13 +19,13 @@ namespace AccessibilityInsights.Extensions.GitHub
             string UserNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumricPattern);
             string RepoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumricPattern);
             string LinkPatttern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, UserNamePattern, RepoNamePattern);
-            Regex gitHubRepoLinRegex = new Regex(LinkPatttern, RegexOptions.IgnoreCase);
-            if (!gitHubRepoLinRegex.IsMatch(Link))
+            Regex gitHubRepoLinkRegex = new Regex(LinkPatttern, RegexOptions.IgnoreCase);
+            if (!gitHubRepoLinkRegex.IsMatch(Link))
             {
                 return false;
             }
 
-            string[] parts = Link.Replace(GitHubLink, "").Split('/');
+            string[] parts = Regex.Replace(Link, GitHubLink, "").Split('/');
             if (parts.Length != 2)
             {
                 return false;

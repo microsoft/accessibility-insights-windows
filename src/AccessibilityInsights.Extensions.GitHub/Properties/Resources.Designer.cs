@@ -88,7 +88,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://github.com/.
+        ///   Looks up a localized string similar to (https://github.com/|https://www.github.com/|www.github.com/).
         /// </summary>
         public static string GitHubLink {
             get {
