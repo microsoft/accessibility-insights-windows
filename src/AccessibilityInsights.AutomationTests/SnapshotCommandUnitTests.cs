@@ -1,17 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Contexts.Fakes;
-using AccessibilityInsights.Actions.Fakes;
 using AccessibilityInsights.Automation;
-using AccessibilityInsights.Automation.Fakes;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Actions.Contexts.Fakes;
+using AccessibilityInsights.Actions.Fakes;
+using AccessibilityInsights.Automation.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.AutomationTests
 {
@@ -92,6 +94,7 @@ namespace AccessibilityInsights.AutomationTests
             return element;
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void Execute_AutomationSessionInstanceThrowsAutomationException_ReturnsIncomplete_MessageMatchesException()
@@ -587,5 +590,6 @@ namespace AccessibilityInsights.AutomationTests
 
             ShimGetDataAction.GetElementDataContextGuid = (_) => dc;
         }
+#endif
     }
 }

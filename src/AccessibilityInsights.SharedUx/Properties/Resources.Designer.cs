@@ -626,7 +626,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UIA Tree Settings.
+        ///   Looks up a localized string similar to UI Automation Tree Settings.
         /// </summary>
         public static string btnSettingToolTip1 {
             get {
@@ -635,7 +635,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UIA Tree Properties Settings.
+        ///   Looks up a localized string similar to UI Automation Tree Properties Settings.
         /// </summary>
         public static string btnSettingToolTip2 {
             get {
@@ -1877,7 +1877,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UIA Hierarchy.
+        ///   Looks up a localized string similar to UI Automation Hierarchy.
         /// </summary>
         public static string HierarchyControl_treeviewHierarchyAutomationName {
             get {
@@ -1886,7 +1886,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagnose UIElement Hierarchy.
+        ///   Looks up a localized string similar to Diagnose UI Automation Hierarchy tree.
         /// </summary>
         public static string HierarchyControlAutomationPropertiesName {
             get {
@@ -2303,7 +2303,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Pause or resume updates to the UIA tree view when focus changes via mouse or keyboard navigation..
+        ///   Looks up a localized string similar to Pause or resume updates to the UI Automation tree when focus changes via mouse or keyboard navigation..
         /// </summary>
         public static string lblHkPauseContent {
             get {
@@ -2384,7 +2384,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Previous sibling element in UIAutomation tree..
+        ///   Looks up a localized string similar to Inspect the Previous sibling element in the UI Automation tree..
         /// </summary>
         public static string lblToBeforeContent {
             get {
@@ -2393,7 +2393,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the First child element in UIAutomation tree..
+        ///   Looks up a localized string similar to Inspect the First child element in the UI Automation tree..
         /// </summary>
         public static string lblToFirstChildContent {
             get {
@@ -2402,7 +2402,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Last child element in UIAutomation tree..
+        ///   Looks up a localized string similar to Inspect the Last child element in the UI Automation tree..
         /// </summary>
         public static string lblToLastChildContent {
             get {
@@ -2411,7 +2411,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Next sibling element in UIAutomation tree..
+        ///   Looks up a localized string similar to Inspect the Next sibling element in the UI Automation tree..
         /// </summary>
         public static string lblToNextContent {
             get {
@@ -2420,7 +2420,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the Parent element in UIAutomation tree..
+        ///   Looks up a localized string similar to Inspect the Parent element in the UI Automation tree..
         /// </summary>
         public static string lblToParentContent {
             get {
@@ -3241,7 +3241,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the live UIA tree using Inspect mode..
+        ///   Looks up a localized string similar to Inspect the live UI Automation tree using Inspect mode..
         /// </summary>
         public static string RunTextInspectLiveUIATree {
             get {
@@ -3250,7 +3250,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verify an element has the expected UIA properties:.
+        ///   Looks up a localized string similar to Verify an element has the expected UI Automation properties:.
         /// </summary>
         public static string RunTextInspectMode {
             get {
@@ -3259,7 +3259,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to link from the UIA tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  .
+        ///   Looks up a localized string similar to link from the UI Automation tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  .
         /// </summary>
         public static string RunTextLinkFromUIATree {
             get {
@@ -3810,7 +3810,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View results in UIA tree.
+        ///   Looks up a localized string similar to View results in the UI Automation tree.
         /// </summary>
         public static string tbViewResultsText {
             get {

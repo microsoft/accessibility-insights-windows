@@ -1,18 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Fakes;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting.Fakes;
 using AccessibilityInsights.SharedUx.FileBug;
-using AccessibilityInsights.SharedUx.FileBug.Fakes;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Actions.Fakes;
+using AccessibilityInsights.Desktop.Telemetry.Fakes;
+using AccessibilityInsights.Extensions.Interfaces.BugReporting.Fakes;
+using AccessibilityInsights.SharedUx.FileBug.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
+
 
 namespace AccessibilityInsights.SharedUxTests.FileBug
 {
@@ -21,6 +24,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
     {
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
 
+#if FAKES_SUPPORTED
         [TestMethod]
         public void FileNewBug_IsNotEnabled_ReturnsPlaceholder()
         {
@@ -97,6 +101,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 Assert.AreEqual(2, telemetryLog[0].Item2.Count);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(10000)]
@@ -122,6 +127,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
             Assert.AreEqual(expected, FileBugAction.RemoveInternalHTML(original, guid));
         }
 
+#if FAKES_SUPPORTED
         public static void SetUpShims()
         {
             ShimGetDataAction.GetElementDataContextGuid = (_) =>
@@ -139,5 +145,6 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 return retBugId;
             };
         }
+#endif
     }
 }

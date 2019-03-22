@@ -1,17 +1,20 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Utilities;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+#if FAKES_SUPPORTED
+using Microsoft.QualityTools.Testing.Fakes;
 using System.Fakes;
 using System.IO.Fakes;
-using AccessibilityInsights.SharedUx.Utilities;
-using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+#endif
 
 namespace AccessibilityInsights.SharedUxTests.Settings
 {
     [TestClass]
     public class InstallationInfoTests
     {
+#if FAKES_SUPPORTED
         /// <summary>
         /// Checks whether the guid resets when the month changes
         /// </summary>
@@ -51,5 +54,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
                 Assert.AreEqual(janInfo2.LastReset, januaryYearTwo);
             }
         }
+#endif
     }
 }

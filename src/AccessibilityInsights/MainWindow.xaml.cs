@@ -3,6 +3,7 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
@@ -24,7 +25,6 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
-using AccessibilityInsights.Properties;
 
 namespace AccessibilityInsights
 {
@@ -303,6 +303,8 @@ namespace AccessibilityInsights
                 btnAccountConfig.SetValue(AutomationProperties.NameProperty, Properties.Resources.btnConfigAutomationPropertiesNameNoBugFiling);
             }
 
+            handleWindowStateChange();
+
             // update version string. 
             UpdateVersionString();
 
@@ -526,21 +528,31 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
+        /// Update related UI when switching between maximized and normal window mode
+        /// </summary>
+        private void handleWindowStateChange()
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                this.dockPanelMain.Margin = new Thickness(5);
+                ctrlCurMode?.UpdateConfigWithSize();
+                this.btnMaxFabric.GlyphName = FabricIcon.ChromeRestore;
+            }
+            else
+            {
+                this.dockPanelMain.Margin = new Thickness(0);
+                this.btnMaxFabric.GlyphName = FabricIcon.Checkbox;
+            }
+        }
+
+        /// <summary>
         /// Saves user's non-maximized window data when window is maximized
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void onStateChanged(object sender, EventArgs e)
         {
-            if (this.WindowState == WindowState.Maximized)
-            {
-                this.dockPanelMain.Margin = new Thickness(5);
-                ctrlCurMode?.UpdateConfigWithSize();
-            }
-            else
-            {
-                this.dockPanelMain.Margin = new Thickness(0);
-            }
+            handleWindowStateChange();
         }
 
         /// <summary>

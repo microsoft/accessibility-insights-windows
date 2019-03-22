@@ -689,6 +689,15 @@ namespace AccessibilityInsights.Rules.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provide unique names for sibling list items..
+        /// </summary>
+        internal static string ListItemSiblingsUnique {
+            get {
+                return ResourceManager.GetString("ListItemSiblingsUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sufficient:
         ///Provide a string for the LocalizedControlType property that concisely describes the control&apos;s function or purpose.
         ///
