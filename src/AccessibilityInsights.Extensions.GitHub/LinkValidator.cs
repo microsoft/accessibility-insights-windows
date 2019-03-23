@@ -35,12 +35,25 @@ namespace AccessibilityInsights.Extensions.GitHub
 
             string userName = parts[0];
             string repoName = parts[1];
-            if (!CheckUserNameLength(userName) || !CheckRepoNameLength(repoName) || !CheckRepoNameSpecialCases(repoName))
+            if (!CheckUserNameLength(userName) || !CheckUserNameAtLeastOneChar(userName) || !CheckRepoNameLength(repoName) || !CheckRepoNameSpecialCases(repoName))
             {
                 return false;
             }
 
             return true;
+        }
+
+        private static bool CheckUserNameAtLeastOneChar(string userName)
+        {
+            foreach (char c in userName)
+            {
+                if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private static bool CheckUserNameLength(string userName)
