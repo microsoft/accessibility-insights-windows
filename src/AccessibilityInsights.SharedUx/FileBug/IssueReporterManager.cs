@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Controls.SettingsTabs;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
@@ -35,19 +34,21 @@ namespace AccessibilityInsights.SharedUx.FileBug
             return _defaultInstance;
         }
 
+        // Production constructor
         private IssueReporterManager()
+            : this(ConfigurationManager.GetDefaultInstance().AppConfig, Container.GetDefaultInstance().IssueReportingOptions?.ToList())
         {
-            // Get all serialized configs
-            ConfigurationModel configs = ConfigurationManager.GetDefaultInstance().AppConfig;
-            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
-            Dictionary<Guid, string> configsDictionary = new Dictionary<Guid, string>();
-            if (serializedConfigsDict != null)
-            {
-                configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
-            }
+        }
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions?.ToList();
-            foreach (IIssueReporting issueReporter in IssueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
+        // Unit testing constructor
+        internal IssueReporterManager(ConfigurationModel configs, List<IIssueReporting> issueReportingOptions)
+        {
+            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
+            Dictionary<Guid, string> configsDictionary = !string.IsNullOrWhiteSpace(serializedConfigsDict) ?
+                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict)
+                : new Dictionary<Guid, string>();
+
+            foreach (IIssueReporting issueReporter in issueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
             {
                 try
                 {
@@ -66,7 +67,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
                 catch (ArgumentException ex)
                 {
                     // Fail silently in case of dups.
-                    Console.WriteLine("Found duplicate extensions " + ex.StackTrace);
+                    Console.WriteLine("Found duplicate extensions / Extension failed to restore " + ex.StackTrace);
                 }
             }
         }
@@ -90,5 +91,4 @@ namespace AccessibilityInsights.SharedUx.FileBug
             }
         }
     }
-
 }
