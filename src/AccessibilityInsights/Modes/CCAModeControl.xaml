@@ -10,5 +10,5 @@
              mc:Ignorable="d" 
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              AutomationProperties.Name="{x:Static properties:Resources.CCAModeControlAutomationPropertiesName}">
-    <TestTabViews:ColorContrast Margin="0,20,0,0" x:Name="ctrlContrast" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+    <TestTabViews:ColorContrast Margin="0,30,0,0" x:Name="ctrlContrast" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
 </UserControl>
