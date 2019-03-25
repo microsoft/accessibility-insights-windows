@@ -5,18 +5,18 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.FileBug;
-using AccessibilityInsights.SharedUx.FileBug.Fakes;
+using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.FileIssue.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.SharedUxTests.FileBug
+namespace AccessibilityInsights.SharedUxTests.FileIssue
 {
     [TestClass]
-    public class FileBugActionTests
+    public class FileIssueActionTests
     {
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
 
@@ -26,9 +26,9 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
         {
             using (ShimsContext.Create())
             {
-                ShimBugReporter.IsEnabledGet = () => false;
+                ShimIssueReporter.IsEnabledGet = () => false;
                 var issueInfo = new IssueInformation();
-                var output = FileBugAction.FileIssueAsync(issueInfo);
+                var output = FileIssueAction.FileIssueAsync(issueInfo);
 
                 Assert.IsNull(output);
             }
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 };
 
                 var issueInfo = new IssueInformation();
-                var result = FileBugAction.FileIssueAsync(issueInfo);
+                var result = FileIssueAction.FileIssueAsync(issueInfo);
 
                 Assert.AreEqual(0, telemetryLog.Count);
             }
@@ -70,7 +70,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
             {
                 SetUpShims();
 
-                ShimBugReporter.FileIssueAsyncIssueInformation = (_) =>
+                ShimIssueReporter.FileIssueAsyncIssueInformation = (_) =>
                 {
                     var mockIssueResult = new Mock<IIssueResult>();
                     mockIssueResult.Setup(p => p.DisplayText).Returns("Issue Display text");
@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
                 };
 
                 var issueInfo = new IssueInformation(ruleForTelemetry: RuleId.BoundingRectangleContainedInParent.ToString());
-                var result = FileBugAction.FileIssueAsync(issueInfo);
+                var result = FileIssueAction.FileIssueAsync(issueInfo);
 
                 Assert.AreEqual(RuleId.BoundingRectangleContainedInParent.ToString(), telemetryLog[0].Item2[TelemetryProperty.RuleId]);
                 Assert.AreEqual("", telemetryLog[0].Item2[TelemetryProperty.UIFramework]);
@@ -100,7 +100,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
             {
                 return null;
             };
-            ShimBugReporter.IsEnabledGet = () => true;
+            ShimIssueReporter.IsEnabledGet = () => true;
 
         }
     }

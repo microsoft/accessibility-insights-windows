@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
@@ -24,21 +24,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Represents different states for whether user has connected to server yet
-        /// </summary>
-        private enum States
-        {
-            NoServer,       // First screen with "next"
-            EditingServer,  // Second screen with treeview
-            HasServer       // Third screen with selected team
-        };
-
-        /// <summary>
         /// Delegates
         /// </summary>
         public Action UpdateSaveButton { get; set; }
-        public Action<Uri, bool, Action> HandleLoginRequest { get; set; }
-        public Action<Action> HandleLogoutRequest { get; set; }
         public Action<bool> ShowSaveButton { get; set; }
 
         IssueConfigurationControl issueConfigurationControl = null;
@@ -142,7 +130,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             IReadOnlyDictionary<Guid, IIssueReporting> options = IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
             availableIssueReporters.Children.Clear();
-            Guid selectedGUID = BugReporter.IssueReporting != null ? BugReporter.IssueReporting.StableIdentifier : default(Guid);
+            Guid selectedGUID = IssueReporter.IssueReporting != null ? IssueReporter.IssueReporting.StableIdentifier : default(Guid);
             foreach (var reporter in options)
             {
                 if (reporter.Key == null || reporter.Value == null) {

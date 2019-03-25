@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace AccessibilityInsights.SharedUx.FileBug
+namespace AccessibilityInsights.SharedUx.FileIssue
 {
     /// <summary>
     /// Class that deals with maintaining the available / selected issue reporters.
@@ -87,7 +87,7 @@ namespace AccessibilityInsights.SharedUx.FileBug
             if (selectedIssueReporter != null)
             {
                 SelectedIssueReporterGuid = issueReporterGuid;
-                BugReporter.IssueReporting = selectedIssueReporter;
+                IssueReporter.IssueReporting = selectedIssueReporter;
             }
         }
     }

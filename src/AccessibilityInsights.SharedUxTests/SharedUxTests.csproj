@@ -97,8 +97,8 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Converters\BoolToVisibilityConverterTests.cs" />
-    <Compile Include="FileBug\FileBugActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="FileBug\IssueReporterManagerTests.cs" />
+    <Compile Include="FileIssue\FileIssueActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="FileIssue\IssueReporterManagerTests.cs" />
     <Compile Include="Settings\ConfigurationModelTests.cs" />
     <Compile Include="Settings\LayoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -988,15 +988,15 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // File a new bug
                 Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
                     { TelemetryProperty.By, FileBugRequestSource.AutomatedChecks.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
+                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
                 });
 
-                if (BugReporter.IsConnected)
+                if (IssueReporter.IsConnected)
                 {
                     IssueInformation issueInformation = vm.GetIssueInformation();
-                    FileBugAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
+                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
 
-                    IIssueResult issueResult = FileBugAction.FileIssueAsync(issueInformation);
+                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
                     if (issueResult != null)
                     {
                         vm.IssueDisplayText = issueResult.DisplayText;

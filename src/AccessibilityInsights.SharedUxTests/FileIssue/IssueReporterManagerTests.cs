@@ -1,5 +1,5 @@
 ﻿using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AccessibilityInsights.SharedUxTests.FileBug
+namespace AccessibilityInsights.SharedUxTests.FileIssue
 {
     [TestClass]
     public class IssueReporterManagerTests
@@ -122,7 +122,7 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
 
             repManager.SetIssueReporter(TestGuid);
 
-            Assert.AreEqual(TestGuid, BugReporter.IssueReporting.StableIdentifier);
+            Assert.AreEqual(TestGuid, IssueReporter.IssueReporting.StableIdentifier);
         }
 
         [TestMethod]
@@ -130,14 +130,14 @@ namespace AccessibilityInsights.SharedUxTests.FileBug
         public void SetIssueReporter_ReporterNonExistent_ReporterUnset()
         {
             ConfigurationModel configs = GetConfigurationModel(null);
-            BugReporter.IssueReporting = null;
+            IssueReporter.IssueReporting = null;
             var issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
 
             repManager.SetIssueReporter(Guid.Parse(RandomTestGuid));
 
-            Assert.IsNull(BugReporter.IssueReporting);
+            Assert.IsNull(IssueReporter.IssueReporting);
         }
 
         private Mock<IIssueReporting> GetIssueReporterMock()
