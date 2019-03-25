@@ -173,17 +173,17 @@
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition MinHeight="20px"/>
-                        <RowDefinition MinHeight="56px"/>
-                        <RowDefinition MinHeight="56px"/>
+                        <RowDefinition MinHeight="40px"/>
+                        <RowDefinition MinHeight="30px"/>
                         <RowDefinition MinHeight="56px"/>
                         <RowDefinition MinHeight="56px"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
-                BorderThickness="0,0,0,1" Background="{x:Null}" />
+                        BorderThickness="0,0,0,1" Background="{x:Null}" />
                     <TextBlock Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="0"/>
                     <TextBlock Text="{x:Static Properties:Resources.TextBlockTextTextSize}" Grid.Row="0" Grid.Column="1"/>
                     <Border Grid.Row="1" Grid.ColumnSpan="3" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
-                BorderThickness="0,0,0,1" Background="{x:Null}" />
+                        BorderThickness="0,0,0,1" Background="{x:Null}" />
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="0" Margin="4,4">
                         <fabric:FabricIconControl x:Name="smallTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
                             <fabric:FabricIconControl.Style>
@@ -265,34 +265,26 @@
                         <TextBlock Text="{x:Static Properties:Resources.ColorContrast_FontSizes}" Margin="0"/>
                         <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Requires}" Margin="0 0 0 8"/>
                     </StackPanel>
-                    <Grid Grid.Row="4" Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="4" Grid.Column="1">
                         <TextBlock x:Name="smallSampleBold" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="0" FontSize="{DynamicResource ConstStandardTextSize}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                           FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}"/>
+                           FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}" HorizontalAlignment="Left"/>
                         <TextBlock x:Name="largeSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" FontSize="18" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                           AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}"/>
-                    </Grid>
-                    <Grid Grid.Row="4" Grid.Column="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                           AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="4" Grid.Column="2">
                         <TextBlock x:Name="smallSampleBoldInverted" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="0" FontSize="{DynamicResource ConstStandardTextSize}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                           FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}"/>
+                           FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}" HorizontalAlignment="Left"/>
                         <TextBlock x:Name="largeSampleInverted" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" FontSize="18" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                           AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}"/>
-                    </Grid>
+                           AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}" HorizontalAlignment="Left"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
