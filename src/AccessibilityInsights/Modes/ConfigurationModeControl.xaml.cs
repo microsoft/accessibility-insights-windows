@@ -103,7 +103,7 @@ namespace AccessibilityInsights.Modes
         private bool IsConfigurationChanged()
         {
             return appSettingsCtrl.IsConfigurationChanged(Configuration) 
-                || connectionCtrl.IsConfigurationChanged();
+                || connectionCtrl.IsConfigurationChanged(Configuration);
         }
 
         /// <summary>

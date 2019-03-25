@@ -82,6 +82,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 Grid.SetRow(issueConfigurationControl, 3);
                 issueFilingGrid.Children.Add(issueConfigurationControl);
             }
+            UpdateSaveButton();
         }
 
         /// <summary>
@@ -90,21 +91,25 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            if (issueConfigurationControl != null && issueConfigurationControl.CanSave)
+            // For first time / valid reconfigurations canSave will be enabled and hence config will be saved. Else only set the reporter.
+            if (issueConfigurationControl != null && (issueConfigurationControl.CanSave || selectedIssueReporter.IsConfigured))
             {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
-                string serializedConfigs = configuration.IssueReporterSerializedConfigs;
-                Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
-                configs = configs ?? new Dictionary<Guid, string>();
 
-                if (serializedConfigs != null)
+                if (issueConfigurationControl.CanSave)
                 {
-                    configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
-                }
+                    string serializedConfigs = configuration.IssueReporterSerializedConfigs;
+                    Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                    configs = configs ?? new Dictionary<Guid, string>();
 
-                string newConfigs = issueConfigurationControl.OnSave();
-                configs[selectedIssueReporter.StableIdentifier] = newConfigs;
-                configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+                    if (serializedConfigs != null)
+                    {
+                        configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                    }
+                    string newConfigs = issueConfigurationControl.OnSave();
+                    configs[selectedIssueReporter.StableIdentifier] = newConfigs;
+                    configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+                }
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
                 issueConfigurationControl.OnDismiss();
                 return true;
@@ -115,9 +120,18 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <summary>
         /// For this control we want SaveAndClose to be enabled if the extension control indicates that something can be saved.
         /// </summary>
-        public bool IsConfigurationChanged()
+        public bool IsConfigurationChanged(ConfigurationModel configuration)
         {
-            return issueConfigurationControl != null ? issueConfigurationControl.CanSave : false;
+            if (issueConfigurationControl != null)
+            {
+                bool hasReporterChanged = configuration.SelectedIssueReporter != selectedIssueReporter.StableIdentifier;
+                if (hasReporterChanged)
+                {
+                    return issueConfigurationControl.CanSave || selectedIssueReporter.IsConfigured;
+                }
+                return issueConfigurationControl.CanSave;
+            }
+            return false;
         }
         #endregion
 
