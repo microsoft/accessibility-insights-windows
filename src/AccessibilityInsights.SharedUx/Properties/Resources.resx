@@ -773,7 +773,7 @@ Accessibility Insights Support Team
     <value>Select the events to listen to in the Configuration tab, and select Record</value>
   </data>
   <data name="tbIntroTextStartRecording" xml:space="preserve">
-    <value>to start recording. You can also press Shift + F7.</value>
+    <value>to start recording. You can also press</value>
   </data>
   <data name="mniContentAutomationPropertiesName" xml:space="preserve">
     <value>Descendants only</value>

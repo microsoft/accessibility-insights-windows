@@ -94,6 +94,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             InitializeComponent();
 
             InitCommandBindings();
+
+            this.runHkRecord.Text = Configuration.HotKeyForRecord;
         }
 
         void InitCommandBindings()
@@ -144,6 +146,17 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
+        /// App configation
+        /// </summary>
+        public static ConfigurationModel Configuration
+        {
+            get
+            {
+                return ConfigurationManager.GetDefaultInstance()?.AppConfig;
+            }
+        }
+
+        /// <summary>
         /// Load saved Event Records
         /// </summary>
         /// <param name="el"></param>
@@ -155,7 +168,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             this.dgEvents.ItemsSource = el;
 
-            // set focus on grid. 
+            // set focus on grid.
             this.dgEvents.Focus();
         }
 

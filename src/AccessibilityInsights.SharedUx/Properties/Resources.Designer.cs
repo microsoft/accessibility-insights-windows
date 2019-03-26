@@ -3747,7 +3747,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to to start recording. You can also press Shift + F7..
+        ///   Looks up a localized string similar to to start recording. You can also press.
         /// </summary>
         public static string tbIntroTextStartRecording {
             get {
