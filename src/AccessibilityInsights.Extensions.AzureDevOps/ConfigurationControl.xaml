@@ -65,7 +65,7 @@
                     AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
                     IsTabStop="True" Style="{DynamicResource BtnGreySquared}" Visibility="{Binding BtnDisconnectVisibility}" />
         </Grid>
-        <Grid Grid.Row="3" Margin="0,20" Visibility="{Binding BtnDisconnectVisibility}">
+        <Grid Grid.Row="3" Margin="0,20">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
@@ -102,7 +102,16 @@
             </Grid>
             <TextBlock x:Name="selectedTeamText" Grid.Row="1" FontStyle="Italic" HorizontalAlignment="Left" FontSize="{DynamicResource StandardTextSize}"></TextBlock>
         </Grid>
-        <Grid x:Name="selectTeamGrid" Visibility="{Binding SelectTeamGridVisibility}" Grid.Row="4" Margin="0px 0px 24px 12px">
+        <Grid x:Name="selectTeamGrid" Visibility="{Binding SelectTeamGridVisibility}" IsEnabled="{Binding IsSelectTeamGridEnabled}" Grid.Row="4" Margin="0px 0px 24px 12px">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value=".3"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>

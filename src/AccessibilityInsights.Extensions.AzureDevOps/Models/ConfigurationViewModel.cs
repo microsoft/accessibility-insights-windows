@@ -62,6 +62,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 OnPropertyChanged(nameof(TeamSelectedGridVisibility));
                 OnPropertyChanged(nameof(BtnConnectVisibility));
                 OnPropertyChanged(nameof(BtnDisconnectVisibility));
+                OnPropertyChanged(nameof(IsSelectTeamGridEnabled));
                 OnPropertyChanged(nameof(SelectTeamGridVisibility));
             }
         }
@@ -94,7 +95,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         {
             get
             {
-                return State == ControlState.EditingServer ? Visibility.Visible : Visibility.Collapsed;
+                return State == ControlState.HasServer ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public bool IsSelectTeamGridEnabled
+        {
+            get
+            {
+                return State == ControlState.EditingServer;
             }
         }
     }
