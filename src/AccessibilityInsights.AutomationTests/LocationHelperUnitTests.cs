@@ -2,10 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Fakes;
 using AccessibilityInsights.Automation;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
+using Microsoft.QualityTools.Testing.Fakes;
+using System.IO.Fakes;
+#endif
 
 namespace AccessibilityInsights.AutomationTests
 {
@@ -89,6 +91,7 @@ namespace AccessibilityInsights.AutomationTests
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (1000)]
         public void Ctor_OutputPathDoesNotExist_CreatesOutputPath()
@@ -161,6 +164,7 @@ namespace AccessibilityInsights.AutomationTests
                 Assert.AreEqual(Core.Enums.FileFilters.TestExtension.Substring(1), helper.OutputFileFormat, true);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout (1000)]
@@ -196,6 +200,7 @@ namespace AccessibilityInsights.AutomationTests
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (1000)]
         public void Ctor_NoOutputPathProvidedNullEnvValue_EnsureFetchesFallbackValue()
@@ -268,5 +273,6 @@ namespace AccessibilityInsights.AutomationTests
                 Assert.AreEqual(Core.Enums.FileFilters.TestExtension.Substring(1), helper.OutputFileFormat, true);
             }
         }
+#endif
     }
 }

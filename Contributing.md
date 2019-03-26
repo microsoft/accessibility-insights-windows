@@ -6,6 +6,8 @@ Please review the [Code of Conduct](./CODE_OF_CONDUCT.md) for this project.
 ### Contribution model 
 All contributions to this project should be through pull requests (PR) against the `master` branch.
 
+Before you start, make sure you have read the [Git branch setup instructions](./docs/GitBranchSetup.md).
+
 ### Creating a pull request 
 If you are new to Git, read more about [creating a pull request](https://help.github.com/articles/creating-a-pull-request/).
 

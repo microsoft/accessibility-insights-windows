@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Extensions.AzureDevOps.Fakes">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Extensions.AzureDevOps.Fakes.dll</HintPath>
@@ -62,7 +65,7 @@
     <Compile Include="ConnectionCacheTests.cs" />
     <Compile Include="ConnectionInfoTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AzureDevOpsBugReportingUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="AzureDevOpsBugReportingUnitTests.cs"/>
     <Compile Include="AzureDevOpsIntegrationTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
   </ItemGroup>
   <ItemGroup>

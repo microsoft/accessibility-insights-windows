@@ -33,7 +33,7 @@ Do the following when adding a new project:
       [assembly: AssemblyFileVersion("1.0.0.0")]
       ```
 4. Verify that Visual Studio can successfully load and build the entire solution in both Debug and Release.
-5. If your new assembly is to be shipped in the MSI, use your text editor to add the following to the `Products.wxs` file in the `MSI` project:
+5. If your new assembly is to be shipped in the MSI, use your text editor to add the following to the `Product.wxs` file in the `MSI` project:
    1. If your project does not implement an extension interface, add the following with the other main assemblies:<br>
    `<File Source="..\AccessibilityInsights\bin\Release\<AssemblyName>.dll" />`
    2. If your project implements an extension interface, repeat the following pattern for your assembly and each of its dependencies in the `ExtensionsComp` component:<br>
