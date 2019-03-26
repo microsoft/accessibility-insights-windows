@@ -124,7 +124,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To create bugs and save test results, you must first enter the Azure DevOps URL and click Next to sign in..
+        ///   Looks up a localized string similar to To create issues and save test results, you must first enter the Azure DevOps URL and click Next to sign in..
         /// </summary>
         public static string connectionInstrText {
             get {
@@ -174,6 +174,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         public static string TextBlockTextSelectedteam {
             get {
                 return ResourceManager.GetString("TextBlockTextSelectedteam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was an error identifying the created issue. This may occur if the ID used to create the issue is removed from its Azure DevOps description. Attachments have not been uploaded..
+        /// </summary>
+        public static string There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded {
+            get {
+                return ResourceManager.GetString("There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to" +
+                        "_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_" +
+                        "not_been_uploaded", resourceCulture);
             }
         }
     }
