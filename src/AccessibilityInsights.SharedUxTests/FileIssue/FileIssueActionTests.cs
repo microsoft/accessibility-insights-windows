@@ -101,7 +101,6 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
                 return null;
             };
             ShimIssueReporter.IsEnabledGet = () => true;
-
         }
     }
 }

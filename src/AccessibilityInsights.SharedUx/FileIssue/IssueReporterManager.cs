@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Settings;
@@ -36,12 +37,12 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         // Production constructor
         private IssueReporterManager()
-            : this(ConfigurationManager.GetDefaultInstance().AppConfig, Container.GetDefaultInstance().IssueReportingOptions?.ToList())
+            : this(ConfigurationManager.GetDefaultInstance().AppConfig, Container.GetDefaultInstance().IssueReportingOptions)
         {
         }
 
         // Unit testing constructor
-        internal IssueReporterManager(ConfigurationModel configs, List<IIssueReporting> issueReportingOptions)
+        internal IssueReporterManager(ConfigurationModel configs, IEnumerable<IIssueReporting> issueReportingOptions)
         {
             var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
             Dictionary<Guid, string> configsDictionary = !string.IsNullOrWhiteSpace(serializedConfigsDict) ?
@@ -64,10 +65,11 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                         }
                     }
                 }
-                catch (ArgumentException ex)
+                catch (Exception ex)
                 {
                     // Fail silently in case of dups.
                     Console.WriteLine("Found duplicate extensions / Extension failed to restore " + ex.StackTrace);
+                    Logger.ReportException(ex);
                 }
             }
         }
