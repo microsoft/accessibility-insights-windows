@@ -54,14 +54,6 @@
   <ItemGroup>
     <Compile Include="Container.cs" />
     <Compile Include="Helpers\ExceptionExtensions.cs" />
-    <Compile Include="Interfaces\BugReporting\BugInformation.cs" />
-    <Compile Include="Interfaces\BugReporting\BugType.cs" />
-    <Compile Include="Interfaces\BugReporting\IBugReporting.cs" />
-    <Compile Include="Interfaces\BugReporting\IConnectionCache.cs" />
-    <Compile Include="Interfaces\BugReporting\IConnectionInfo.cs" />
-    <Compile Include="Interfaces\BugReporting\IEntity.cs" />
-    <Compile Include="Interfaces\BugReporting\IProject.cs" />
-    <Compile Include="Interfaces\BugReporting\ITeam.cs" />
     <Compile Include="Interfaces\IssueReporting\IIssueReporting.cs" />
     <Compile Include="Interfaces\IssueReporting\IIssueResult.cs" />
     <Compile Include="Interfaces\IssueReporting\IssueConfigurationControl.cs" />

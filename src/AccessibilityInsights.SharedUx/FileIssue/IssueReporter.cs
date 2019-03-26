@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace AccessibilityInsights.SharedUx.FileBug
+namespace AccessibilityInsights.SharedUx.FileIssue
 {
     /// <summary>
     /// Adapter between the core app and the issue reporting extension
     /// </summary>
-    static public class BugReporter
+    static public class IssueReporter
     {
         public static IIssueReporting IssueReporting { get; set; }
 

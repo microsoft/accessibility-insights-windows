@@ -282,16 +282,9 @@
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
-    <Compile Include="FileBug\BugFileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FileBug\BugFileForm.Designer.cs">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FileBug\BugReporter.cs" />
-    <Compile Include="FileBug\FileBugAction.cs" />
-    <Compile Include="FileBug\IssueReporterManager.cs" />
-    <Compile Include="FileBug\ScriptInterface.cs" />
+    <Compile Include="FileIssue\IssueReporter.cs" />
+    <Compile Include="FileIssue\FileIssueAction.cs" />
+    <Compile Include="FileIssue\IssueReporterManager.cs" />
     <Compile Include="Controls\ColorPicker\ColorPickerControl.xaml.cs">
       <DependentUpon>ColorPickerControl.xaml</DependentUpon>
     </Compile>
@@ -466,15 +459,11 @@
     <Compile Include="ViewModels\ScanListViewItemViewModel.cs" />
     <Compile Include="ViewModels\TabStopItemViewModel.cs" />
     <Compile Include="ViewModels\TargetActionViewAttribute.cs" />
-    <Compile Include="ViewModels\TeamProjectViewModel.cs" />
     <Compile Include="ViewModels\TextAttributeViewModel.cs" />
     <Compile Include="ViewModels\TextRangeActionViewModel.cs" />
     <Compile Include="ViewModels\TextRangeViewModel.cs" />
     <Compile Include="ViewModels\TwoStateButtonViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <EmbeddedResource Include="FileBug\BugFileForm.resx">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

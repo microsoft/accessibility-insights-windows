@@ -6,8 +6,8 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,9 +20,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
