@@ -9,12 +9,12 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 
-namespace AccessibilityInsights.SharedUx.FileBug
+namespace AccessibilityInsights.SharedUx.FileIssue
 {
     /// <summary>
     /// Class with static functions used for filing bugs
     /// </summary>
-    public static class FileBugAction
+    public static class FileIssueAction
     {
         /// <summary>
         /// File an issue. Telemetry wrapper.
@@ -23,17 +23,12 @@ namespace AccessibilityInsights.SharedUx.FileBug
         /// <returns></returns>
         public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
-            if (!BugReporter.IsEnabled)
+            if (!IssueReporter.IsEnabled)
                 return null;
 
             try
             {
-                // Create a A11y-specific Guid for this bug if absent
-                var a11yBugId = issueInformation.InternalGuid.HasValue
-                    ? issueInformation.InternalGuid.Value.ToString()
-                    : string.Empty;
-
-                IIssueResult issueResult = BugReporter.FileIssueAsync(issueInformation);
+                IIssueResult issueResult = IssueReporter.FileIssueAsync(issueInformation);
 
                 if (issueResult.IssueLink != null)
                 {

@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Controls.SettingsTabs;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-namespace AccessibilityInsights.SharedUx.FileBug
+namespace AccessibilityInsights.SharedUx.FileIssue
 {
     /// <summary>
     /// Class that deals with maintaining the available / selected issue reporters.
@@ -35,19 +35,21 @@ namespace AccessibilityInsights.SharedUx.FileBug
             return _defaultInstance;
         }
 
+        // Production constructor
         private IssueReporterManager()
+            : this(ConfigurationManager.GetDefaultInstance().AppConfig, Container.GetDefaultInstance().IssueReportingOptions)
         {
-            // Get all serialized configs
-            ConfigurationModel configs = ConfigurationManager.GetDefaultInstance().AppConfig;
-            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
-            Dictionary<Guid, string> configsDictionary = new Dictionary<Guid, string>();
-            if (serializedConfigsDict != null)
-            {
-                configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
-            }
+        }
 
-            List<IIssueReporting> IssueReportingOptions = Container.GetDefaultInstance().IssueReportingOptions?.ToList();
-            foreach (IIssueReporting issueReporter in IssueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
+        // Unit testing constructor
+        internal IssueReporterManager(ConfigurationModel configs, IEnumerable<IIssueReporting> issueReportingOptions)
+        {
+            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
+            Dictionary<Guid, string> configsDictionary = !string.IsNullOrWhiteSpace(serializedConfigsDict) ?
+                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict)
+                : new Dictionary<Guid, string>();
+
+            foreach (IIssueReporting issueReporter in issueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
             {
                 try
                 {
@@ -63,10 +65,11 @@ namespace AccessibilityInsights.SharedUx.FileBug
                         }
                     }
                 }
-                catch (ArgumentException ex)
+                catch (Exception ex)
                 {
                     // Fail silently in case of dups.
-                    Console.WriteLine("Found duplicate extensions " + ex.StackTrace);
+                    Console.WriteLine("Found duplicate extensions / Extension failed to restore " + ex.StackTrace);
+                    Logger.ReportException(ex);
                 }
             }
         }
@@ -86,9 +89,8 @@ namespace AccessibilityInsights.SharedUx.FileBug
             if (selectedIssueReporter != null)
             {
                 SelectedIssueReporterGuid = issueReporterGuid;
-                BugReporter.IssueReporting = selectedIssueReporter;
+                IssueReporter.IssueReporting = selectedIssueReporter;
             }
         }
     }
-
 }

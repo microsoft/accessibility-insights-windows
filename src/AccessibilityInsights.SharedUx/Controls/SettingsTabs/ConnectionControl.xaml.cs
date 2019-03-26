@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
@@ -24,21 +24,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Represents different states for whether user has connected to server yet
-        /// </summary>
-        private enum States
-        {
-            NoServer,       // First screen with "next"
-            EditingServer,  // Second screen with treeview
-            HasServer       // Third screen with selected team
-        };
-
-        /// <summary>
         /// Delegates
         /// </summary>
         public Action UpdateSaveButton { get; set; }
-        public Action<Uri, bool, Action> HandleLoginRequest { get; set; }
-        public Action<Action> HandleLogoutRequest { get; set; }
         public Action<bool> ShowSaveButton { get; set; }
 
         IssueConfigurationControl issueConfigurationControl = null;
@@ -82,6 +70,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 Grid.SetRow(issueConfigurationControl, 3);
                 issueFilingGrid.Children.Add(issueConfigurationControl);
             }
+            UpdateSaveButton();
         }
 
         /// <summary>
@@ -90,21 +79,25 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
-            if (issueConfigurationControl != null && issueConfigurationControl.CanSave)
+            // For first time / valid reconfigurations canSave will be enabled and hence config will be saved. Else only set the reporter.
+            if (issueConfigurationControl != null && (issueConfigurationControl.CanSave || selectedIssueReporter.IsConfigured))
             {
                 configuration.SelectedIssueReporter = selectedIssueReporter.StableIdentifier;
-                string serializedConfigs = configuration.IssueReporterSerializedConfigs;
-                Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
-                configs = configs ?? new Dictionary<Guid, string>();
 
-                if (serializedConfigs != null)
+                if (issueConfigurationControl.CanSave)
                 {
-                    configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
-                }
+                    string serializedConfigs = configuration.IssueReporterSerializedConfigs;
+                    Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                    configs = configs ?? new Dictionary<Guid, string>();
 
-                string newConfigs = issueConfigurationControl.OnSave();
-                configs[selectedIssueReporter.StableIdentifier] = newConfigs;
-                configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+                    if (serializedConfigs != null)
+                    {
+                        configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                    }
+                    string newConfigs = issueConfigurationControl.OnSave();
+                    configs[selectedIssueReporter.StableIdentifier] = newConfigs;
+                    configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
+                }
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
                 issueConfigurationControl.OnDismiss();
                 return true;
@@ -115,9 +108,18 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <summary>
         /// For this control we want SaveAndClose to be enabled if the extension control indicates that something can be saved.
         /// </summary>
-        public bool IsConfigurationChanged()
+        public bool IsConfigurationChanged(ConfigurationModel configuration)
         {
-            return issueConfigurationControl != null ? issueConfigurationControl.CanSave : false;
+            if (issueConfigurationControl != null)
+            {
+                bool hasReporterChanged = configuration.SelectedIssueReporter != selectedIssueReporter.StableIdentifier;
+                if (hasReporterChanged)
+                {
+                    return issueConfigurationControl.CanSave || selectedIssueReporter.IsConfigured;
+                }
+                return issueConfigurationControl.CanSave;
+            }
+            return false;
         }
         #endregion
 
@@ -128,7 +130,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             IReadOnlyDictionary<Guid, IIssueReporting> options = IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
             availableIssueReporters.Children.Clear();
-            Guid selectedGUID = BugReporter.IssueReporting != null ? BugReporter.IssueReporting.StableIdentifier : default(Guid);
+            Guid selectedGUID = IssueReporter.IssueReporting != null ? IssueReporter.IssueReporting.StableIdentifier : default(Guid);
             foreach (var reporter in options)
             {
                 if (reporter.Key == null || reporter.Value == null) {
