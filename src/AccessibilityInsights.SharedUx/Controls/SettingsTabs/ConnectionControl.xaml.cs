@@ -87,8 +87,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 if (issueConfigurationControl.CanSave)
                 {
                     string serializedConfigs = configuration.IssueReporterSerializedConfigs;
-                    Dictionary<Guid, string> configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
-                    configs = configs ?? new Dictionary<Guid, string>();
+                    Dictionary<Guid, string> configs = string.IsNullOrEmpty(serializedConfigs) ? new Dictionary<Guid, string>()
+                        : JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
 
                     if (serializedConfigs != null)
                     {
