@@ -28,6 +28,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public ConfigurationControl()
         {
             InitializeComponent();
+            DataContext = vmConfig;
         }
 
         private bool canSave = false;
@@ -45,7 +46,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Represents different states for whether user has connected to server yet
         /// </summary>
-        private enum States
+        public enum ControlState
         {
             NoServer,       // First screen with "next"
             EditingServer,  // Second screen with treeview
@@ -62,18 +63,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Avatar view model
         /// </summary>
-        public ByteArrayViewModel vmAvatar { get; private set; } = new ByteArrayViewModel();
+        public ConfigurationlViewModel vmConfig { get; private set; } = new ConfigurationlViewModel();
 
-        /// <summary>
-        /// Current user display name
-        /// </summary>
-        public static string DisplayName => AzureDevOps.DisplayName;
-
-        /// <summary>
-        /// Current user email
-        /// </summary>
-        public static string Email => AzureDevOps.Email;
-
+        #pragma warning restore CA1822
         /// <summary>
         /// List of team projects
         /// </summary>
@@ -151,17 +143,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {
                         AzureDevOps.Configuration.SavedConnection = FileIssueHelpers.CreateConnectionInfo(serverUri, null, null);
-                        ChangeStates(States.EditingServer);
+                        ChangeStates(ControlState.EditingServer);
                     }
                     else
                     {
                         ToggleLoading(false);
-                        ServerComboBox.Focus();
+                        Dispatcher.Invoke(ServerComboBox.Focus);
                     }
                 }
                 else
                 {
-                    MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com");
+                    Dispatcher.Invoke(() => MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com"));
                 }
             }
         }
@@ -187,7 +179,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private void changeButton_Click(object sender, RoutedEventArgs e)
         {
             this.tbTeamProjectSearch.Clear();
-            ChangeStates(States.EditingServer);
+            ChangeStates(ControlState.EditingServer);
             canSave = true;
             Dispatcher.Invoke(UpdateSaveButton);
         }
@@ -207,7 +199,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 AzureDevOps.Disconnect();
 
                 ClearTreeviewSelection();
-                ChangeStates(States.NoServer);
+                ChangeStates(ControlState.NoServer);
                 AzureDevOps.Configuration.SavedConnection = null;
             }
 
@@ -227,7 +219,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 this.tbTeamProjectSearch.Clear();
                 ClearTreeviewSelection();
-                ChangeStates(States.EditingServer);
+                ChangeStates(ControlState.EditingServer);
             }
         }
         #endregion
@@ -236,61 +228,38 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Switch screens in this connection config view
         /// </summary>
         /// <param name="state"></param>
-        private async void ChangeStates(States state)
+        private async void ChangeStates(ControlState state)
         {
-            Dispatcher.Invoke(() => { 
-                vmAvatar.ByteData = AzureDevOps.Avatar;
-                displayNameField.Text = AzureDevOps.DisplayName;
-                emailField.Text = AzureDevOps.Email;
-            });
-            if (state == States.NoServer)
-                {
-                Dispatcher.Invoke(() =>
-                {
-                    selectServerGrid.Visibility = Visibility.Visible;
-                    editProjectGrid.Visibility = Visibility.Collapsed;
-                    teamSelectedGrid.Visibility = Visibility.Collapsed;
-                });
-                }
-                else if (state == States.EditingServer)
-                {
-                Dispatcher.Invoke(() =>
-                {
-                    editProjectGrid.Visibility = Visibility.Visible;
-                    selectTeamGrid.Visibility = Visibility.Visible;
-                    teamSelectedGrid.Visibility = Visibility.Collapsed;
-                    selectServerGrid.Visibility = Visibility.Collapsed;
-                });
-                    // Load the team project list, show progress animation
-                    try
-                    {
-                        ToggleLoading(true);
-                        projects.Clear();
-                        var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
-                        newProjectList.ForEach(p => projects.Add(p));
-                        ToggleLoading(false);
-                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
-                    }
-                    catch (Exception)
-                    {
-                        MessageDialog.Show("Error when retrieving team projects");
-                        ToggleLoading(false);
-                        disconnectButton_Click(null, null);
-                    }
+            vmConfig.ByteData = AzureDevOps.Avatar;
+            vmConfig.DisplayName = AzureDevOps.DisplayName;
+            vmConfig.Email = AzureDevOps.Email;
+            vmConfig.State = state;
 
-                    FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
-                }
-                else if (state == States.HasServer)
+            if (state == ControlState.EditingServer)
+            {
+                // Load the team project list, show progress animation
+                try
                 {
-                Dispatcher.Invoke(() =>
-                {
-                    editProjectGrid.Visibility = Visibility.Visible;
-                    teamSelectedGrid.Visibility = Visibility.Visible;
-                    selectTeamGrid.Visibility = Visibility.Collapsed;
-                    selectServerGrid.Visibility = Visibility.Collapsed;
-                    selectedTeamText.Text = AzureDevOps.Configuration.SavedConnection.ToString();
-                });
+                    ToggleLoading(true);
+                    Dispatcher.Invoke(projects.Clear);
+                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
+                    newProjectList.ForEach(p => projects.Add(p));
+                    ToggleLoading(false);
+                Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
+                catch (Exception)
+                {
+                    Dispatcher.Invoke(() => MessageDialog.Show("Error when retrieving team projects"));
+                    ToggleLoading(false);
+                    disconnectButton_Click(null, null);
+                }
+
+                FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
+            }
+            else if (state == ControlState.HasServer)
+            {
+                Dispatcher.Invoke(() => selectedTeamText.Text = AzureDevOps.Configuration.SavedConnection.ToString());
+            }
         }
 
         /// <summary>
@@ -303,15 +272,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             var connection = AzureDevOps.Configuration.SavedConnection;
             if (!AzureDevOps.ConnectedToAzureDevOps)
             {
-                ChangeStates(States.NoServer);
+                ChangeStates(ControlState.NoServer);
             }
             else if (connection?.IsPopulated == true)
             {
-                ChangeStates(States.HasServer);
+                ChangeStates(ControlState.HasServer);
             }
             else
             {
-                ChangeStates(States.EditingServer);
+                ChangeStates(ControlState.EditingServer);
             }
         }
 
@@ -382,8 +351,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private void ToggleLoading(bool starting)
         {
             InteractionAllowed = !starting;
-            //   this.ctrlProgressRing.IsActive = starting;
-            Dispatcher.Invoke(() => this.IsEnabled = InteractionAllowed);
+            Dispatcher.Invoke(() => {
+                this.ctrlProgressRing.IsActive = starting;
+                this.IsEnabled = InteractionAllowed;
+            });
         }
 
         /// <summary>
