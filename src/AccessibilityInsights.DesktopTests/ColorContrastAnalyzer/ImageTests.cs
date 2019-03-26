@@ -71,7 +71,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
 
             var result = image.RunColorContrastCalculation();
 
-            Assert.AreEqual(new ColorPair(new CCColor(153, 171, 206), new CCColor(255, 255, 255)),
+            Assert.AreEqual(new ColorPair(new CCColor(171, 153, 153), new CCColor(255, 255, 255)),
                 result.GetMostLikelyColorPair());
 
             Assert.AreEqual(Confidence.High, result.ConfidenceValue());
@@ -84,10 +84,10 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
 
             var result = image.RunColorContrastCalculation();
 
-            Assert.AreEqual(new ColorPair(new CCColor(0, 0, 0), new CCColor(255, 255, 219)),
+            Assert.AreEqual(new ColorPair(new CCColor(0, 0, 0), new CCColor(255, 255, 255)),
                 result.GetMostLikelyColorPair());
 
-            Assert.AreEqual(Confidence.High, result.ConfidenceValue());
+            Assert.AreEqual(Confidence.Low, result.ConfidenceValue());
         }
 
         [TestMethod, Timeout(2000)]
@@ -97,7 +97,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
 
             var result = image.RunColorContrastCalculation();
 
-            Assert.AreEqual(new ColorPair(new CCColor(0, 0, 58), new CCColor(255, 255, 255)),
+            Assert.AreEqual(new ColorPair(new CCColor(0, 0, 0), new CCColor(255, 255, 255)),
                 result.GetMostLikelyColorPair());
 
             Assert.AreEqual(Confidence.High, result.ConfidenceValue());
