@@ -769,8 +769,11 @@ Accessibility Insights Support Team
   <data name="radiobuttonScopeDescendentsContent" xml:space="preserve">
     <value>Descendants only</value>
   </data>
-  <data name="tbIntroText" xml:space="preserve">
-    <value>Select the Events you want to listen to in the Configure Events tab and press record to start recording.</value>
+  <data name="tbIntroTextSelectEventRecord" xml:space="preserve">
+    <value>Select the events to listen to in the Configuration tab, and select Record</value>
+  </data>
+  <data name="tbIntroTextStartRecording" xml:space="preserve">
+    <value>to start recording. You can also press Shift + F7.</value>
   </data>
   <data name="mniContentAutomationPropertiesName" xml:space="preserve">
     <value>Descendants only</value>

@@ -3738,11 +3738,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the Events you want to listen to in the Configure Events tab and press record to start recording..
+        ///   Looks up a localized string similar to Select the events to listen to in the Configuration tab, and select Record.
         /// </summary>
-        public static string tbIntroText {
+        public static string tbIntroTextSelectEventRecord {
             get {
-                return ResourceManager.GetString("tbIntroText", resourceCulture);
+                return ResourceManager.GetString("tbIntroTextSelectEventRecord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to to start recording. You can also press Shift + F7..
+        /// </summary>
+        public static string tbIntroTextStartRecording {
+            get {
+                return ResourceManager.GetString("tbIntroTextStartRecording", resourceCulture);
             }
         }
         
