@@ -97,6 +97,15 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid GitHub Link Format!.
+        /// </summary>
+        public static string InvalidLink {
+            get {
+                return ResourceManager.GetString("InvalidLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ^{0}/+{1}/+{2}.
         /// </summary>
         public static string LinkPatttern {

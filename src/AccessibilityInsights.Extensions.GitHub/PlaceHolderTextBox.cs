@@ -9,14 +9,10 @@ namespace AccessibilityInsights.Extensions.GitHub
 {
     public class PlaceHolderTextBox : TextBox
     {
-        private readonly string PlaceHolder = Properties.Resources.PlaceHolder;
-        private readonly SolidColorBrush BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
-        private readonly SolidColorBrush GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
-
         public PlaceHolderTextBox()
         {
-            this.Text = this.PlaceHolder;
-            this.Foreground = GrayBrush;
+            this.Text = UIResources.PlaceHolder;
+            this.Foreground = UIResources.GrayBrush;
 
             this.GotFocus += RemoveText;
             this.LostFocus += AddText;
@@ -24,10 +20,10 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public void RemoveText(object sender, EventArgs e)
         {
-            if (this.Text.Equals(this.PlaceHolder, StringComparison.InvariantCulture))
+            if (this.Text.Equals(UIResources.PlaceHolder, StringComparison.InvariantCulture))
             {
                 this.Text = "";
-                this.Foreground = BlackBrush;
+                this.Foreground = UIResources.BlackBrush;
             }
         }
 
@@ -35,8 +31,12 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (string.IsNullOrWhiteSpace(this.Text))
             {
-                this.Text = this.PlaceHolder;
-                this.Foreground = GrayBrush;
+                this.Text = UIResources.PlaceHolder;
+                this.Foreground = UIResources.GrayBrush;
+            }
+            else
+            {
+                this.Foreground = UIResources.BlackBrush;
             }
          }
     }

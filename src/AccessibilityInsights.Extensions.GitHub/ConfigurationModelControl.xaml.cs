@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 
@@ -11,7 +12,10 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// </summary>
     public partial class ConfigurationModel : IssueConfigurationControl
     {
-        public ConnectionConfiguration Config { get; set;}
+        public ConnectionConfiguration Config { get; set; }
+
+        public Action<bool> IsConfigured { get; set; }
+
         public ConfigurationModel()
         {
             InitializeComponent();
@@ -28,10 +32,11 @@ namespace AccessibilityInsights.Extensions.GitHub
                 this.Config.RepoLink = this.tbURL.Text;
                 canSave = false;
                 UpdateSaveButton();
+                IsConfigured(true);
             }
             else
             {
-                //TODO error message dialog
+                MessageDialog.Show(Properties.Resources.InvalidLink);
             }
             return JsonConvert.SerializeObject(this.Config);
         }
@@ -49,7 +54,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public void TextChangeUpdateSaveButton(object sender, EventArgs e)
         {
             string curURL = this.tbURL.Text;
-            if (!string.IsNullOrEmpty(curURL) && ((this.Config !=null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.Equals(curURL)))
+            if (!string.IsNullOrEmpty(curURL) && ((this.Config != null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.Equals(curURL)))
             {
                 canSave = true;
             }
@@ -68,7 +73,8 @@ namespace AccessibilityInsights.Extensions.GitHub
 
 
         private Action updateSaveButton;
-        public override Action UpdateSaveButton {
+        public override Action UpdateSaveButton
+        {
             get
             {
                 return updateSaveButton;
@@ -77,6 +83,23 @@ namespace AccessibilityInsights.Extensions.GitHub
             {
                 updateSaveButton = value;
                 this.tbURL.TextChanged += TextChangeUpdateSaveButton;
+            }
+        }
+
+        private void IssueConfigurationControl_IsVisibleChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue)
+            {
+                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(UIResources.PlaceHolder, StringComparison.InvariantCulture))
+                {
+                    tbURL.Text = Config.RepoLink;
+                    tbURL.Foreground = UIResources.BlackBrush;
+                    IsConfigured(true);
+                }
+                else
+                {
+                }
+
             }
         }
     }

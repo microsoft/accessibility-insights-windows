@@ -8,8 +8,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:AccessibilityInsights.Extensions.GitHub"
     xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
-     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
-    mc:Ignorable="d">
+    xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
+    mc:Ignorable="d"
+    IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>

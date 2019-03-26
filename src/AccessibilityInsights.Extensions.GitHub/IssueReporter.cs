@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
@@ -20,7 +21,13 @@ namespace AccessibilityInsights.Extensions.GitHub
         private IssueReporter()
         {
             configurationControl = new ConfigurationModel();
+            configurationControl.IsConfigured = SetIsConfigured;
             configurationControl.Config = new ConnectionConfiguration(string.Empty);
+        }
+
+        private void SetIsConfigured(bool isConfigured)
+        {
+            this.IsConfigured = isConfigured;
         }
 
         public IssueReporter GetDefaultInstance()
@@ -35,7 +42,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public string ServiceName => Properties.Resources.extensionName;
 
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
-        public bool IsConfigured { get; private set; } = true;
+        public bool IsConfigured { get; private set; } = false;
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.GitHubLogo;
 
@@ -61,8 +68,7 @@ namespace AccessibilityInsights.Extensions.GitHub
                 }
                 catch
                 {
-                    // TODO
-                    // MessageDialog.Show("Invalid URL"); we can't use shared UX here for now, same issue for ADO extension
+                    MessageDialog.Show(Properties.Resources.InvalidLink);
                 }
             }
 
@@ -76,10 +82,17 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private void RestoreConfigurationAsyncAction(string serializedConfig)
         {
-            this.configurationControl.Config = JsonConvert.DeserializeObject<ConnectionConfiguration>(serializedConfig);
-            if (this.configurationControl.Config!=null && string.IsNullOrEmpty(this.configurationControl.Config.RepoLink))
+            ConnectionConfiguration config = JsonConvert.DeserializeObject<ConnectionConfiguration>(serializedConfig);
+            if (config!=null && !string.IsNullOrEmpty(config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(config.RepoLink))
             {
+                this.configurationControl.Config = config;
                 this.IsConfigured = true;
+            }
+            else
+            {
+                this.configurationControl.Config = new ConnectionConfiguration(string.Empty);
+                this.IsConfigured = false;
+                MessageDialog.Show(Properties.Resources.InvalidLink);
             }
         }
 
