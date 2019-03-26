@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Avatar view model
         /// </summary>
-        public ConfigurationlViewModel vmConfig { get; private set; } = new ConfigurationlViewModel();
+        public ConfigurationViewModel vmConfig { get; private set; } = new ConfigurationViewModel();
 
         #pragma warning restore CA1822
         /// <summary>
@@ -230,7 +230,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="state"></param>
         private async void ChangeStates(ControlState state)
         {
-            vmConfig.ByteData = AzureDevOps.Avatar;
+            vmConfig.Avatar = AzureDevOps.Avatar;
             vmConfig.DisplayName = AzureDevOps.DisplayName;
             vmConfig.Email = AzureDevOps.Email;
             vmConfig.State = state;

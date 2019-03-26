@@ -6,23 +6,23 @@ using static AccessibilityInsights.Extensions.AzureDevOps.ConfigurationControl;
 namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 {
     /// <summary>
-    /// View model for a byte array, currently used for avatar image
+    /// View model for the ConfigurationControl
     /// </summary>
-    public class ConfigurationlViewModel : ViewModelBase
+    public class ConfigurationViewModel : ViewModelBase
     {
-        private byte[] array;
+        private byte[] avatar;
 #pragma warning disable CA1819 // Properties should not return arrays
-        public byte[] ByteData
+        public byte[] Avatar
 #pragma warning restore CA1819 // Properties should not return arrays
         {
             get
             {
-                return array;
+                return avatar;
             }
             set
             {
-                array = value;
-                OnPropertyChanged(nameof(this.ByteData));
+                avatar = value;
+                OnPropertyChanged(nameof(Avatar));
             }
         }
 
@@ -65,6 +65,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 OnPropertyChanged(nameof(SelectTeamGridVisibility));
             }
         }
+
         public Visibility TeamSelectedGridVisibility
         {
             get

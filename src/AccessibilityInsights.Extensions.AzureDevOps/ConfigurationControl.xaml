@@ -22,19 +22,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.connectionInstrText}"
-                           TextWrapping="Wrap" Margin="0,20,0,8"/>
+                           TextWrapping="Wrap" Margin="0,20,0,8" FontSize="{DynamicResource StandardTextSize}"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="294"/>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="225"/>
                 <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0 0 0 12px" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}" FontSize="{DynamicResource StandardTextSize}"/>
-            <Grid>
+            <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0 0 0 12px" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}" FontSize="{DynamicResource StandardTextSize}" Grid.ColumnSpan="2"/>
+            <Grid Grid.ColumnSpan="2">
                 <ComboBox x:Name ="ServerComboBox" Grid.Row="1" IsEditable="True" Height="30" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
                               AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">
                 </ComboBox>
@@ -55,12 +56,12 @@
                     </TextBlock.Style>
                 </TextBlock>
             </Grid>
-            <Button Grid.Column="2" x:Name="btnNext" Padding="8,0" HorizontalAlignment="Left" 
+            <Button Grid.Column="3" x:Name="btnNext" Padding="8,0" HorizontalAlignment="Left" 
                     Content="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" Click="NextButton_Click"
                     AutomationProperties.Name="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" IsTabStop="True"
                     Style="{DynamicResource BtnBlueSquared}" Visibility="{Binding BtnConnectVisibility}" />
             <Button Name="btnDisconnect" Content="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
-                    Click="disconnectButton_Click" Cursor="Hand" Grid.Column="2" HorizontalAlignment="Right" Padding="8,0"
+                    Click="disconnectButton_Click" Cursor="Hand" Grid.Column="3" HorizontalAlignment="Right" Padding="8,0"
                     AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
                     IsTabStop="True" Style="{DynamicResource BtnGreySquared}" Visibility="{Binding BtnDisconnectVisibility}" />
         </Grid>
@@ -70,7 +71,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" x:Name="imgAvatar" Width="40" Height="40"
-                       Source="{Binding Path=ByteData, TargetNullValue={x:Null}, Mode=OneWay}">
+                       Source="{Binding Path=Avatar, TargetNullValue={x:Null}, Mode=OneWay}">
                 <Image.Clip>
                     <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20" />
                 </Image.Clip>
