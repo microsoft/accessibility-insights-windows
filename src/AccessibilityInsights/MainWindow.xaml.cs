@@ -7,7 +7,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -294,7 +294,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void onLoaded(object sender, RoutedEventArgs e)
         {
-            if (BugReporter.IsEnabled)
+            if (IssueReporter.IsEnabled)
             {
                 RestoreConfigurationAsync();
             }
@@ -706,7 +706,7 @@ namespace AccessibilityInsights
                     if (configsDictionary != null)
                     {
                         configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
-                        await BugReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
+                        await IssueReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
                         Dispatcher.Invoke(UpdateMainWindowConnectionFields);
                     }
                 }
@@ -718,14 +718,14 @@ namespace AccessibilityInsights
         /// </summary>
         internal void UpdateMainWindowConnectionFields()
         {
-            bool isConfigured = BugReporter.IssueReporting != null && BugReporter.IsConnected;
-            string fabricIconName = BugReporter.Logo.ToString("g");
+            bool isConfigured = IssueReporter.IssueReporting != null && IssueReporter.IsConnected;
+            string fabricIconName = IssueReporter.Logo.ToString("g");
             fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
 
             // Main window UI changes
             vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
             string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
-            string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, BugReporter.DisplayName);
+            string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, IssueReporter.DisplayName);
             AutomationProperties.SetName(btnAccountConfig, tooltipText);
             btnAccountConfig.ToolTip = tooltipText;
         }

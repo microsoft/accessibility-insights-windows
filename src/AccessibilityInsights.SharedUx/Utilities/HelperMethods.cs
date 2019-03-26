@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using System;
 using System.Windows;
 
@@ -45,7 +45,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         {
             get
             {
-                return BugReporter.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
+                return IssueReporter.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
             }
         }
     }
