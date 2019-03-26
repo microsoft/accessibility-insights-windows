@@ -176,6 +176,37 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
+        /// Add horizontal scroll bars when necessary
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void scrollview_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var view = sender as ScrollViewer;
+            if (e.NewSize.Width <= this.gridTabText.MinWidth)
+            {
+                view.HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
+                this.gridTabText.Width = this.gridTabText.MinWidth;
+            }
+            else
+            {
+                view.HorizontalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                this.gridTabText.Width = Double.NaN;
+            }
+
+            if (e.NewSize.Height <= this.gridTabText.MinHeight)
+            {
+                view.VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
+                this.gridTabText.Height = this.gridTabText.MinHeight;
+            }
+            else
+            {
+                view.VerticalScrollBarVisibility = ScrollBarVisibility.Disabled;
+                this.gridTabText.Height = Double.NaN;
+            }
+        }
+
+        /// <summary>
         /// Overriding LocalizedControlType
         /// </summary>
         /// <returns></returns>

@@ -4,14 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Bases.Fakes;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Fingerprint;
-using AccessibilityInsights.Core.Fingerprint.Fakes;
 using AccessibilityInsights.Core.Results;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Core.Bases.Fakes;
+using AccessibilityInsights.Core.Fingerprint.Fakes;
 using AccessibilityInsights.Core.Results.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+#endif
 
 namespace AccessibilityInsights.CoreTests.Fingerprint
 {
@@ -107,6 +109,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void AddIssue_IssueIsNotNull_ReturnsNotSupported()
@@ -119,6 +122,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(2000)]
@@ -130,6 +134,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void AddIssue_IssuesExist_ReturnsCorrectSet()
@@ -159,6 +164,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -179,6 +185,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void TryFindIssue_IssueIsNotInStore_ReturnsFalseWithNullIssue()
@@ -232,6 +239,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(2000)]
@@ -244,6 +252,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             Assert.IsFalse(store.Any());
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void ExtractIssues_ElementsContainNoScanResults_LeavesStoreUnchanged()
@@ -801,5 +810,6 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 Assert.AreEqual(expectedRuleId, actualRuleIds[1]);
             }
         }
+#endif
     }
 }

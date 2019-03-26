@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AccessibilityInsights.Core.Fingerprint;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
 using AccessibilityInsights.Core.Fingerprint.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+#endif
 
 namespace AccessibilityInsights.CoreTests.Fingerprint
 {
@@ -62,6 +64,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout (2000)]
         public void AddIssue_IssueIsNotInList_AddsIssueAndReturnsCorrectResult()
@@ -120,6 +123,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -140,6 +144,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(2000)]
         public void TryFindIssue_FingerprintDoesNotMatch_ReturnsFalse()
@@ -186,5 +191,6 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 }
             }
         }
+#endif
     }
 }
