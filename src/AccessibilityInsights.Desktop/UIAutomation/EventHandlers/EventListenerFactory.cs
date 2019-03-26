@@ -191,14 +191,14 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
                 if (listener != null)
                 {
                     var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                    m.Properties = new List<KeyValuePair<string, dynamic>>() { new KeyValuePair<string, dynamic>("Message", "Succeeded to unregister all event listeners.") };
+                    m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Succeeded to unregister all event listeners."));
                     listener(m);
                 }
             }
             catch (Exception e)
             {
-                var m  = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                m.Properties = new List<KeyValuePair<string, dynamic>>() { new KeyValuePair<string, dynamic>("Message", $"Failed to unregister all listeners: {e.Message}") };
+                var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Message", $"Failed to unregister all listeners: {e.Message}"));
                 listener(m);
             }
         }
@@ -284,23 +284,19 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
                 if (listener != null)
                 {
                     var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                    m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                        new KeyValuePair<string, dynamic>("Message", "Succeeded to unregister a event listeners"),
-                        new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                        new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                    };
+                    m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Succeeded to unregister an event listeners"));
+                    m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                    m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
                     listener(m);
                 }
             }
             catch (Exception e)
             {
                 var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                        new KeyValuePair<string, dynamic>("Message", "Failed to unregister a event listeners"),
-                        new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                        new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                        new KeyValuePair<string, dynamic>("Error", e.Message)
-                    };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Failed to unregister an event listeners"));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Error", e.Message));
 
                 listener(m);
                 /// it is very unexpected situation. 
@@ -361,12 +357,10 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
                         else
                         {
                             m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                            m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                                new KeyValuePair<string, dynamic>("Message", "Event listener registration is rejected."),
-                                new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                                new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                                new KeyValuePair<string, dynamic>("Reason", "Not supported platform"),
-                            };
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Event listener registration is rejected."));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Reason", "Not supported platform"));
                             msgData.Listener(m);
                         }
                         break;
@@ -381,12 +375,10 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
                         else
                         {
                             m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                            m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                                new KeyValuePair<string, dynamic>("Message", "Event listener registration is rejected."),
-                                new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                                new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                                new KeyValuePair<string, dynamic>("Reason", "Not supported platform"),
-                            };
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Event listener registration is rejected."));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
+                            m.Properties.Add(new KeyValuePair<string, dynamic>("Reason", "Not supported platform"));
                             msgData.Listener(m);
                         }
                         break;
@@ -399,11 +391,9 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
                 }
 
                 m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                        new KeyValuePair<string, dynamic>("Message", "Succeeded to register an event listener"),
-                        new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                        new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                    };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Succeeded to register an event listener"));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
                 msgData.Listener(m);
                 if(msgData.EventId == EventType.UIA_AutomationFocusChangedEventId)
                 {
@@ -413,12 +403,10 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
             catch (Exception e)
             {
                 var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
-                m.Properties = new List<KeyValuePair<string, dynamic>>() {
-                        new KeyValuePair<string, dynamic>("Message", "Failed to register an event listener"),
-                        new KeyValuePair<string, dynamic>("Event Id", msgData.EventId),
-                        new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)),
-                        new KeyValuePair<string, dynamic>("Error", e.Message)
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Message", "Failed to register an event listener"));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Id", msgData.EventId));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Event Name", EventType.GetInstance().GetNameById(msgData.EventId)));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Error", e.Message));
                 msgData.Listener(m);
             }
         }

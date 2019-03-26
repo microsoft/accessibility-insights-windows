@@ -36,13 +36,10 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
 
             if (m != null)
             {
-                m.Properties = new List<KeyValuePair<string, dynamic>>
-                {
-                    new KeyValuePair<string, dynamic>("NotificationKind", kind.ToString()),
-                    new KeyValuePair<string, dynamic>("NotificationProcessing", process.ToString()),
-                    new KeyValuePair<string, dynamic>("Display", displayString),
-                    new KeyValuePair<string, dynamic>("ActivityId", activityId),
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("NotificationKind", kind.ToString()));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("NotificationProcessing", process.ToString()));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Display", displayString));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("ActivityId", activityId));
                 this.ListenEventMessage(m);
             }
         }

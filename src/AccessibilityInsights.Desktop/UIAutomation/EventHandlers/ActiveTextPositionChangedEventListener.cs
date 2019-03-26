@@ -37,13 +37,10 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
             if (m != null)
             {
                 const int maxTextLengthToInclude = 100;
-                m.Properties = new List<KeyValuePair<string, dynamic>>
-                {
-                    new KeyValuePair<string, dynamic>("Type", range.GetType()),
-                    new KeyValuePair<string, dynamic>("Text", range.GetText(maxTextLengthToInclude))
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Type", range.GetType()));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Text", range.GetText(maxTextLengthToInclude)));
 
-                this.ListenEventMessage(m);
+               this.ListenEventMessage(m);
             }
         }
 

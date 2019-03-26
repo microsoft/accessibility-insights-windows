@@ -60,7 +60,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     dg.CurrentCell = new DataGridCellInfo(dg.Items[dg.SelectedIndex], dg.Columns[0]);
                 }
-            }            
+            }
         }
     }
 }

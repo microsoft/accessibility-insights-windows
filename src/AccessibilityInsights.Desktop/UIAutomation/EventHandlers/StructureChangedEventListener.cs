@@ -33,11 +33,8 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
             var m = EventMessage.GetInstance(EventType.UIA_StructureChangedEventId, sender);
             if (m != null)
             {
-                m.Properties = new List<KeyValuePair<string, dynamic>>
-                {
-                    new KeyValuePair<string, dynamic>("StructureChangeType", changeType),
-                    new KeyValuePair<string, dynamic>("Runtime Id", runtimeId.ConvertInt32ArrayToString()),
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("StructureChangeType", changeType));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Runtime Id", runtimeId.ConvertInt32ArrayToString()));
                 this.ListenEventMessage(m);
             }
         }

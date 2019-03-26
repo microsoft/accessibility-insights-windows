@@ -36,11 +36,9 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
 
             if (m != null)
             {
-                m.Properties = new List<KeyValuePair<string, dynamic>>
-                {
-                   new KeyValuePair<string, dynamic>("Property Id", propertyId),
-                   new KeyValuePair<string, dynamic>("Property Name", PropertyType.GetInstance().GetNameById(propertyId)),
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Property Id", propertyId));
+                m.Properties.Add(new KeyValuePair<string, dynamic>("Property Name", PropertyType.GetInstance().GetNameById(propertyId)));
+
                 if (newValue != null)
                 {
                     m.Properties.Add(new KeyValuePair<string, dynamic>(newValue.GetType().Name, newValue));

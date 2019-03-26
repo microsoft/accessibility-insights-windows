@@ -12,7 +12,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
     /// <summary>
     /// Event Message Class for passing event information to UI or other handler
     /// </summary>
-    public class EventMessage:IA11yEventMessage, IDisposable
+    public class EventMessage : IA11yEventMessage, IDisposable
     {
         public int EventId { get; set; }
 
@@ -20,8 +20,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
         /// Time stamp with millisecond accuracy
         /// </summary>
         public string TimeStamp { get; set; }
-
-        public List<KeyValuePair<string,dynamic>> Properties { get; internal set; }
+        public List<KeyValuePair<string, dynamic>> Properties { get; } = new List<KeyValuePair<string, dynamic>>();
 
         public A11yElement Element { get; set; }
 
@@ -78,7 +77,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
         {
             if (sender == null || !DesktopElement.IsFromCurrentProcess(sender))
             {
-                    return new EventMessage(id, sender);
+                return new EventMessage(id, sender);
             }
 
             return null;

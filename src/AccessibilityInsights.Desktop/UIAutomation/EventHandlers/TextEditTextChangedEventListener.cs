@@ -41,10 +41,8 @@ namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
 
             if (m != null)
             {
-                m.Properties = new List<KeyValuePair<string, dynamic>>
-                {
-                    new KeyValuePair<string, dynamic>("TextEditChangeType", type.ToString()),
-                };
+                m.Properties.Add(new KeyValuePair<string, dynamic>("TextEditChangeType", type.ToString()));
+
                 for (int i = 0; i < array.Length; i++)
                 {
                     m.Properties.Add(new KeyValuePair<string, dynamic>(Invariant($"[{i}]"), array.GetValue(i)));
