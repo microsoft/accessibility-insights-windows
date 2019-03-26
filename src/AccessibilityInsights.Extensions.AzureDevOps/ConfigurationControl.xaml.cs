@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -160,7 +161,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
                 else
                 {
-                    //MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com");
+                    MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com");
                 }
             }
         }
@@ -272,7 +273,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     }
                     catch (Exception)
                     {
-                        //MessageDialog.Show("Error when retrieving team projects");
+                        MessageDialog.Show("Error when retrieving team projects");
                         ToggleLoading(false);
                         disconnectButton_Click(null, null);
                     }

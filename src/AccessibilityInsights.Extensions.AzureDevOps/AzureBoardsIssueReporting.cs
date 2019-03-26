@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -61,7 +62,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     if (!FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
                     {
-                        //MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
+                        MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                     }
                     return new IssueResult() { DisplayText = newIssueId, IssueLink = null };
                 }
