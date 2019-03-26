@@ -5,6 +5,7 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Interfaces;
@@ -24,7 +25,6 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
-using AccessibilityInsights.Properties;
 
 namespace AccessibilityInsights
 {
@@ -193,6 +193,7 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, AccessibilityInsights.Core.Misc.Utility.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
+            Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
             Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup, null);
         }
 

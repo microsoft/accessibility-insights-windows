@@ -166,12 +166,16 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <summary>
         /// Update the config file to reflect the new channel setting
         /// </summary>
-        /// <param name="newRing"></param>
-        private static void UpdateConfigWithNewChannel(string newRing)
+        /// <param name="newChannel">The new channel to use</param>
+        private static void UpdateConfigWithNewChannel(string newChannel)
         {
-            if (newRing != null)
+            if (newChannel != null)
             {
-                // TODO : Update local config file
+                var configFile = Path.Combine(DirectoryManagement.sConfigurationFolderPath, Constants.AppConfigFileName);
+
+                SettingsDictionary settings = FileHelpers.LoadDataFromJSON<SettingsDictionary>(configFile);
+                settings[Constants.ReleaseChannelKey] = newChannel;
+                FileHelpers.SerializeDataToJSON(settings, configFile);
             }
         }
 

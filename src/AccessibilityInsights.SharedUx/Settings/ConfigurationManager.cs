@@ -2,9 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Desktop.Settings;
 using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Desktop.Utility;
 using AccessibilityInsights.RuleSelection;
-using AccessibilityInsights.SharedUx.Utilities;
+using AccessibilityInsights.SetupLibrary;
 using System;
 using System.IO;
 using System.Windows;
@@ -60,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, LayoutFileName);
                 this.AppLayout.SerializeInJSON(fp);
 
-                fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, AppConfigFileName);
+                fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
                 this.AppConfig.SerializeInJSON(fp);
             }
             catch
@@ -108,7 +107,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private void PopulateMainConfiguration()
         {
-            var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, AppConfigFileName);
+            var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
 
             // Main configuration 
             try
@@ -187,9 +186,8 @@ namespace AccessibilityInsights.SharedUx.Settings
         const string LayoutFileName = "Layout.Json";
 
         /// <summary>
-        /// App config file name
+        /// Event config file name
         /// </summary>
-        const string AppConfigFileName = "Configuration.json";
         const string EventConfigFileName = "EventConfig.Json";
         #endregion
     }

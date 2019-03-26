@@ -9,10 +9,10 @@ using AccessibilityInsights.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileBug;
-using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FileHelpers = AccessibilityInsights.SetupLibrary.FileHelpers;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {

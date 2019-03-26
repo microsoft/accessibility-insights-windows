@@ -1,19 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Enums;
-using AccessibilityInsights.Misc;
 using AccessibilityInsights.Actions;
+using AccessibilityInsights.Enums;
 using AccessibilityInsights.Desktop.Keyboard;
+using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.Misc;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
 using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
-using System.Globalization;
-using AccessibilityInsights.Desktop.Telemetry;
 
 namespace AccessibilityInsights
 {

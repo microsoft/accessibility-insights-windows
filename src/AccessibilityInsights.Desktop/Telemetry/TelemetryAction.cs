@@ -143,6 +143,8 @@ namespace AccessibilityInsights.Desktop.Telemetry
         ColorContrast_Click_Dropdown,
         ColorContrast_FileBug_OutsideGivenScope, // users can file a bug outside of the glimpse tested
         ColorContrast_Click_HexChange,
+
+        ReleaseChannel_ChangeConsidered,
 #pragma warning restore CA1707 // Identifiers should not contain underscores
     }
 }

@@ -54,5 +54,8 @@ namespace AccessibilityInsights.Desktop.Telemetry
         UpdateOption,
         UpdateInstallerUpdateTime,
         UpdateResult,
+        ReleaseChannel,
+        ReleaseChannelConsidered,
+        ReleaseChannelChangeResult,  // Value from the ReleaseChannelChangeResult enum
     }
 }
