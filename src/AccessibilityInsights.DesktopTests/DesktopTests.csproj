@@ -134,15 +134,12 @@
     <EmbeddedResource Include="TestImages\weird_text_arrangement.bmp" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <EmbeddedResource Include="TestImages\simple_black_and_white_title.bmp" />
     <EmbeddedResource Include="TestImages\simple_blue_and_white_text.bmp" />
     <EmbeddedResource Include="TestImages\simple_grey_and_white_title.bmp" />
     <EmbeddedResource Include="TestImages\simple_purple_and_white_button.bmp" />
     <EmbeddedResource Include="TestImages\simple_white_and_black_text.bmp" />
-=======
     <EmbeddedResource Include="TestImages\visual_studio_tab.bmp" />
->>>>>>> d356d7b197b7115ecaafab43757e7e63a33d63d1
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
