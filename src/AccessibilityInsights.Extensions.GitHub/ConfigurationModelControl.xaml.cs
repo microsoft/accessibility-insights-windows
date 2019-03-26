@@ -53,8 +53,13 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public void TextChangeUpdateSaveButton(object sender, EventArgs e)
         {
+            TextChangeUpdateSaveButtonHelper();
+        }
+
+        public void TextChangeUpdateSaveButtonHelper()
+        {
             string curURL = this.tbURL.Text;
-            if (!string.IsNullOrEmpty(curURL) && ((this.Config != null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.Equals(curURL)))
+            if (!string.IsNullOrEmpty(curURL) && ((this.Config != null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.RepoLink.Equals(curURL, StringComparison.InvariantCulture)))
             {
                 canSave = true;
             }
@@ -88,18 +93,15 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private void IssueConfigurationControl_IsVisibleChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
         {
-            if ((bool)e.NewValue)
+            if (sender!=null && (bool)e.NewValue)
             {
-                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(UIResources.PlaceHolder, StringComparison.InvariantCulture))
+                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(PlaceHolderTextBox.PlaceHolder, StringComparison.InvariantCulture))
                 {
                     tbURL.Text = Config.RepoLink;
-                    tbURL.Foreground = UIResources.BlackBrush;
+                    tbURL.Foreground = PlaceHolderTextBox.BlackBrush;
                     IsConfigured(true);
+                    TextChangeUpdateSaveButtonHelper();
                 }
-                else
-                {
-                }
-
             }
         }
     }
