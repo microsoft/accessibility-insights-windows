@@ -25,7 +25,7 @@ namespace AccessibilityInsights.Rules.Library
             if (e == null) throw new ArgumentNullException(nameof(e));
 
             var condition = DescendantCount(Landmarks.Main) == 1;
-            return condition.Matches(e) ? EvaluationCode.Pass : EvaluationCode.Error;
+            return condition.Matches(e) ? EvaluationCode.Pass : EvaluationCode.Warning;
         }
 
         protected override Condition CreateCondition()

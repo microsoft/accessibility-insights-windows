@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Core.Fakes.dll</HintPath>
@@ -82,12 +85,12 @@
     <Compile Include="Bases\A11yPatternPropertyTests.cs" />
     <Compile Include="Bases\A11yPatternTests.cs" />
     <Compile Include="Bases\A11yPropertyTests.cs" />
-    <Compile Include="Fingerprint\ScanResultFingerprintUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="Fingerprint\ScanResultFingerprintUnitTests.cs" />
     <Compile Include="Fingerprint\FingerprintContributionUnitTests.cs" />
-    <Compile Include="Fingerprint\IssueUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="Fingerprint\InMemoryIssueStoreUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="Fingerprint\OutputFileLocationUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="Fingerprint\OutputFileIssueStoreUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="Fingerprint\IssueUnitTests.cs" />
+    <Compile Include="Fingerprint\InMemoryIssueStoreUnitTests.cs" />
+    <Compile Include="Fingerprint\OutputFileLocationUnitTests.cs" />
+    <Compile Include="Fingerprint\OutputFileIssueStoreUnitTests.cs" />
     <Compile Include="Fingerprint\IssueStoreExtensionsUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
     <Compile Include="Misc\MiscTests.cs" />
     <Compile Include="Misc\PreconditionsUnitTests.cs" />

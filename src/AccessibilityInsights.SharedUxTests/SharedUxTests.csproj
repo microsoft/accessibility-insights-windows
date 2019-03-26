@@ -40,20 +40,23 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+      <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AccessibilityInsights.Actions.Fakes">
+    <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Desktop.Fakes">
+    <Reference Include="AccessibilityInsights.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Desktop.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Extensions.Fakes">
+    <Reference Include="AccessibilityInsights.Extensions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Extensions.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.SharedUx.Fakes">
+    <Reference Include="AccessibilityInsights.SharedUx.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.SharedUx.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="$(FAKES_SUPPORTED) == 1">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -62,7 +65,7 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.3.2\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="mscorlib.4.0.0.0.Fakes">
+    <Reference Include="mscorlib.4.0.0.0.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -83,12 +86,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Converters\BoolToVisibilityConverterTests.cs" />
-    <Compile Include="FileBug\FileBugActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="FileBug\FileBugActionTests.cs"/>
     <Compile Include="Settings\ConfigurationModelTests.cs" />
     <Compile Include="Settings\LayoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AppLayoutTests.cs" />
-    <Compile Include="Settings\InstallationInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="Settings\InstallationInfoTests.cs"/>
     <Compile Include="Settings\SettingsDictionaryUnitTests.cs" />
     <Compile Include="ViewModels\ColorContrastViewModelTests.cs" />
     <Compile Include="ViewModels\ViewModelTests.cs" />

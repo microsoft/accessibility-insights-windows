@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Core.Fakes.dll</HintPath>
@@ -84,8 +87,8 @@
     <Compile Include="ColorContrastAnalyzer\ImageTests.cs" />
     <Compile Include="Keyboard\HotkeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="Telemetry\LoggerUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
+    <Compile Include="Telemetry\LoggerUnitTests.cs" />
     <Compile Include="Utility\SupportedEventsTests.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +134,15 @@
     <EmbeddedResource Include="TestImages\weird_text_arrangement.bmp" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <EmbeddedResource Include="TestImages\simple_black_and_white_title.bmp" />
     <EmbeddedResource Include="TestImages\simple_blue_and_white_text.bmp" />
     <EmbeddedResource Include="TestImages\simple_grey_and_white_title.bmp" />
     <EmbeddedResource Include="TestImages\simple_purple_and_white_button.bmp" />
     <EmbeddedResource Include="TestImages\simple_white_and_black_text.bmp" />
+=======
+    <EmbeddedResource Include="TestImages\visual_studio_tab.bmp" />
+>>>>>>> d356d7b197b7115ecaafab43757e7e63a33d63d1
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
