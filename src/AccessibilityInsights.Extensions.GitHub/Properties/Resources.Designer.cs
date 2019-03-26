@@ -97,7 +97,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^{0}/+{1}/+{2}.
+        ///   Looks up a localized string similar to ^{0}/+{1}/+{2}$.
         /// </summary>
         public static string LinkPatttern {
             get {
