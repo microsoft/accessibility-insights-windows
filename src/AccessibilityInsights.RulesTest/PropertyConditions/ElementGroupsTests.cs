@@ -61,5 +61,110 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
 
             Assert.IsTrue(ElementGroups.AllowSameNameAndControlType.Matches(e));
         }
+
+        [TestMethod]
+        public void WPFScrollbarPageUpButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollbarPageDownButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageDown";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollbarPageUpOrPageDownButtons_NotWPF_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                // e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollbarPageUpOrPageDownButtons_NotButton_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                // e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollbarPageUpOrPageDownButtons_ParentNotScrollbar_False()
+        {
+            // This test essentially also covers the possibility of no parent.
+
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                // parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollbarPageUpOrPageDownButtons_NotPageUpOrPageDown_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                // e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageUpOrPageDownButtons.Matches(e));
+            } // using
+        }
     } // class
 } // namespace
