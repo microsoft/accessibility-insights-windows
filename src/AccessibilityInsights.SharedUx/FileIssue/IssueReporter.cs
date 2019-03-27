@@ -19,9 +19,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
 
-        public static ReporterFabricIcon Logo => IsEnabled ? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected;
+        public static ReporterFabricIcon Logo => (IsEnabled && IssueReporting != null )? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected ;
 
-        public static string DisplayName => IsEnabled ? IssueReporting.ServiceName : null;
+        public static string DisplayName => (IsEnabled && IssueReporting != null) ? IssueReporting.ServiceName : null;
 
         public static Dictionary<Guid, IIssueReporting> GetIssueReporters()
         {
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
         {
-            if (IsEnabled && IssueReporterManager.SelectedIssueReporterGuid != null)
+            if (IsEnabled && IssueReporting != null && IssueReporterManager.SelectedIssueReporterGuid != null)
             {
                 return IssueReporting.RestoreConfigurationAsync(serializedConfig);
             }
