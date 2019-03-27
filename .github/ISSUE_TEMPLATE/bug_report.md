@@ -29,7 +29,7 @@ If applicable, add screenshots to help explain your problem.
 **Desktop (please complete the following information):**
  - OS: [e.g. Windows 10 1809] (Get the version by running `winver` from the command line)
  - Accessibility Insights for Windows Version:
- - Target Application: [e.g. chrome, safari]
+ - Target Application: [e.g. Chrome, Wildlife Manager]
  - Target Application Version: [e.g. 22]
 
 

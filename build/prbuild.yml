@@ -6,12 +6,13 @@ variables:
   MAICreateNuget: 'true'
   PublicRelease: 'false'
   SignAppForRelease: 'false'
-  FAKES_SUPPORTED: 1
 
 jobs:
 - job: Release
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    FAKES_SUPPORTED: 1
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
@@ -60,6 +61,8 @@ jobs:
 - job: Debug
   pool:
     vmImage: 'vs2017-win2016'
+  variables:
+    FAKES_SUPPORTED: 1
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
@@ -95,3 +98,20 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
+
+- job: build_without_fakes
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 15.0
+      platform: '$(BuildPlatform)'
+      configuration: debug

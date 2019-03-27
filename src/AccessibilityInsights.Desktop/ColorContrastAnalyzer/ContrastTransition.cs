@@ -6,21 +6,13 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
     internal class ColorContrastTransition
     {
-        readonly Color startingColor;
 
-        private double priorColorContrast = 1;
+        internal Boolean IsClosed { get; private set; } = false;
+        internal Boolean IsConnecting { get; private set; } = false;
 
-        private Color mostContrastingColor;
+        internal readonly Color StartingColor;
 
-        /**
-         * We can no longer add colors to this transition.
-         */
-        private Boolean isClosed = false;
-
-        /**
-         * This Transition has returned back to its starting color.
-         */
-        private Boolean isComplete = false;
+        internal Color MostContrastingColor { get; private set; }
 
         /**
          * A text transition will increase in contrast from its original color
@@ -39,44 +31,40 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         internal ColorContrastTransition(Color color)
         {
-            startingColor = color;
-            mostContrastingColor = color;
+            StartingColor = color;
+            MostContrastingColor = color;
         }
 
         internal void AddColor(Color color)
         {
-
-            if (startingColor.Equals(color))
-            {
-                if (size > 1)
-                {
-                    isClosed = true;
-                    isComplete = true;
-                }
-            }
-
-            if (isClosed) return;
-
             size++;
 
-            double contrast = color.Contrast(startingColor);
-
-            if (contrast > priorColorContrast)
+            if (size > ColorContrastConfig.MaxTextThickness || (size > 1 && StartingColor.Equals(color)))
             {
-                mostContrastingColor = color;
+
+                if (StartingColor.Equals(color))
+                {
+                    IsConnecting = true;
+                }
+
+                IsClosed = true;
+
+                return;
+            }
+
+            if (MostContrastingColor.Contrast(StartingColor) < color.Contrast(StartingColor))
+            {
+                MostContrastingColor = color;
 
                 if (!isIncreasingInContrast)
                 {
-                    isClosed = true;
                     isMountainShaped = false;
                 }
             }
-            else if (contrast < priorColorContrast)
+            else
             {
                 isIncreasingInContrast = false;
             }
-
-            priorColorContrast = contrast;
         }
 
         /**
@@ -84,7 +72,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean IsPotentialForegroundBackgroundPair()
         {
-            return size > 2 && isMountainShaped && isComplete && !ToColorPair().AreVisuallySimilarColors();
+            return IsConsequential() && !ToColorPair().AreVisuallySimilarColors();
         }
 
         /**
@@ -92,15 +80,12 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public ColorPair ToColorPair()
         {
-            return new ColorPair(startingColor, mostContrastingColor);
+            return new ColorPair(StartingColor, MostContrastingColor);
         }
 
-        /**
-         * True when the Transition closed because it ended with a color identical to the starting color.
-         */
-        internal Boolean IsStartingAndEndingColorSame()
+        internal Boolean IsConsequential()
         {
-            return isComplete;
+            return IsConnecting && size > 2 && isMountainShaped;
         }
 
         public override string ToString()

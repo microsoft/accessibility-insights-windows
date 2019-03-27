@@ -6,20 +6,37 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 {
     public class ColorPair
     {
-        readonly Color lighterColor;
-        readonly Color darkerColor;
+        readonly internal Color backgroundColor;
+        readonly internal Color foregroundColor;
 
-        public Color DarkerColor => darkerColor;
-        public Color LighterColor => lighterColor;
-
-        public ColorPair(Color color1, Color color2)
+        public ColorPair(Color potentialBackgroundColor, Color potoentialForegroundColor)
         {
-            double contrast1 = Color.WHITE.Contrast(color1);
-            double contrast2 = Color.WHITE.Contrast(color2);
-
-            lighterColor = contrast1 < contrast2 ? color1 : color2;
-            darkerColor = contrast1 < contrast2 ? color2 : color1;
+            backgroundColor = potentialBackgroundColor;
+            foregroundColor = potoentialForegroundColor;
         }
+
+        public Color DarkerColor
+        {
+            get
+            {
+                double contrast1 = Color.WHITE.Contrast(backgroundColor);
+                double contrast2 = Color.WHITE.Contrast(foregroundColor);
+
+                return contrast1 < contrast2 ? foregroundColor : backgroundColor;
+            }
+        }
+
+        public Color LighterColor
+        {
+            get
+            {
+                double contrast1 = Color.WHITE.Contrast(backgroundColor);
+                double contrast2 = Color.WHITE.Contrast(foregroundColor);
+
+                return contrast1 < contrast2 ? backgroundColor : foregroundColor;
+            }
+        }
+
 
         public override bool Equals(Object obj)
         {
@@ -40,7 +57,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean AreVisuallySimilarColors()
         {
-            return LighterColor.IsSimilarColor(darkerColor);
+            return LighterColor.IsSimilarColor(DarkerColor);
         }
 
         /**
@@ -48,8 +65,8 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public Boolean IsVisiblySimilarTo(ColorPair otherPair)
         {
-            return lighterColor.IsSimilarColor(otherPair.lighterColor) &&
-                darkerColor.IsSimilarColor(otherPair.darkerColor);
+            return LighterColor.IsSimilarColor(otherPair.LighterColor) &&
+                DarkerColor.IsSimilarColor(otherPair.DarkerColor);
         }
 
         /**
@@ -57,7 +74,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          */
         public double ColorContrast()
         {
-            return Math.Round(lighterColor.Contrast(darkerColor), 2);
+            return Math.Round(LighterColor.Contrast(DarkerColor), 2);
         }
 
         public override int GetHashCode()
@@ -67,7 +84,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
 
         public override string ToString()
         {
-            return lighterColor.ToString() + " --" + ColorContrast() + "-> " + darkerColor.ToString();
+            return LighterColor.ToString() + " --" + ColorContrast() + "-> " + DarkerColor.ToString();
         }
     }
 }

@@ -1,26 +1,29 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
+using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Core.Bases;
+using AccessibilityInsights.Core.Enums;
+using AccessibilityInsights.Core.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Contexts;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
 using AccessibilityInsights.Actions.Contexts.Fakes;
-using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Actions.Fakes;
-using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Bases.Fakes;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Desktop.UIAutomation.TreeWalkers.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+#endif
 
 namespace AccessibilityInsights.ActionsTests.Actions
 {
     [TestClass]
     public class CaptureActionUnitTests
     {
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void SetTestModeDataContext_OldContextIsNull_CreatesElementDataContext_ChainsToPopulateData_CorrectParameters()
@@ -143,6 +146,7 @@ namespace AccessibilityInsights.ActionsTests.Actions
                 Assert.AreSame(dataContext.Elements, actualDictionary);
             }
         }
+#endif
 
         [TestMethod]
         [Timeout(1000)]
@@ -158,6 +162,7 @@ namespace AccessibilityInsights.ActionsTests.Actions
             Assert.AreEqual(3, counter.Attempts);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void AddElementAndChildrenIntoList_GeneralCase_BuildsCorrectDictionary()
@@ -193,5 +198,6 @@ namespace AccessibilityInsights.ActionsTests.Actions
                 }
             }
         }
+#endif
     }
 }

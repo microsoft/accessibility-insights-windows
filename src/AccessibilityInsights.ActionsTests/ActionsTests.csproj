@@ -40,6 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
     <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">

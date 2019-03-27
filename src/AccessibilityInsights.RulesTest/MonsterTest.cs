@@ -1,11 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.CoreTests.Bases;
+using AccessibilityInsights.UnitTestSharedLibrary;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
 
 namespace AccessibilityInsights.RulesTest
@@ -16,7 +18,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterButtonTest()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterButton.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterButton.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -160,7 +162,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterListView()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterListView.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterListView.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -304,7 +306,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterDataGrid()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterDataGrid.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterDataGrid.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -448,7 +450,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterDataGridHeader()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterDataGrid.snapshot").Children.First<A11yElement>();
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterDataGrid.snapshot").Children.First<A11yElement>();
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.Pass, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -592,7 +594,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterEdit()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterEdit.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterEdit.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -736,7 +738,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterMenu()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterMenu.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterMenu.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);
@@ -880,7 +882,7 @@ namespace AccessibilityInsights.RulesTest
         [TestMethod()]
         public void MonsterUserControl()
         {
-            A11yElement e = A11yElementTests.FromJson("Resources/MonsterUserControl.snapshot");
+            A11yElement e = Utility.LoadA11yElementsFromJSON("Snapshots/MonsterUserControl.snapshot");
             var results = GetTestResultsAsDictionary(e);
 
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.BoundingRectangleCompletelyObscuresContainer]);

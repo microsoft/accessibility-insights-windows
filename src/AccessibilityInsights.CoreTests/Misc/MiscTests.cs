@@ -1,11 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.CoreTests.Bases;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Core.Misc;
+using AccessibilityInsights.UnitTestSharedLibrary;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using Utility = AccessibilityInsights.UnitTestSharedLibrary.Utility;
 
 namespace AccessibilityInsights.CoreTests.Misc
 {
@@ -22,7 +23,7 @@ namespace AccessibilityInsights.CoreTests.Misc
         [TestMethod()]
         public void GetStatusCounts()
         {
-            A11yElement ke = A11yElementTests.FromJson("Resources/Taskbar.snapshot");
+            A11yElement ke = UnitTestSharedLibrary.Utility.LoadA11yElementsFromJSON("Snapshots/Taskbar.snapshot");
             ke.ScanResults.Items.ForEach(item => {
                 item.Items = new System.Collections.Generic.List<RuleResult>();
                 RuleResult r = new RuleResult();
@@ -30,7 +31,7 @@ namespace AccessibilityInsights.CoreTests.Misc
                 item.Items.Add(r);
             });
             ke.Children.ForEach(c => {
-                PopulateChildrenTests(c);
+                Utility.PopulateChildrenTests(c);
             });
             var statuses = (from child in ke.Children
                            select child.TestStatus);
@@ -39,26 +40,6 @@ namespace AccessibilityInsights.CoreTests.Misc
             Assert.AreEqual(2, statusCounts[(int) ScanStatus.Pass]);
             Assert.AreEqual(0, statusCounts[(int) ScanStatus.Uncertain]);
             Assert.AreEqual(0, statusCounts[(int) ScanStatus.NoResult]);
-        }
-
-        /// <summary>
-        /// Populates all descendents with test results and sets them to 
-        ///     pass if the control is a button (any predicate would work)
-        ///     and returns number that should pass
-        /// </summary>
-        /// <param name="ke"></param>
-        /// <returns></returns>
-        public static void PopulateChildrenTests(A11yElement ke)
-        {
-            ke.ScanResults.Items.ForEach(item => {
-                item.Items = new System.Collections.Generic.List<RuleResult>();
-                RuleResult r = new RuleResult();
-                r.Status = ke.ControlTypeId == AccessibilityInsights.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
-                item.Items.Add(r);
-            });
-            ke.Children.ForEach(c => {
-                PopulateChildrenTests(c);
-            });
         }
     }
 }

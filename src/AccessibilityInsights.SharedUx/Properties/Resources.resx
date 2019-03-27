@@ -271,22 +271,22 @@
     <value>Start or stop event recording for the selected element.</value>
   </data>
   <data name="lblHkPauseContent" xml:space="preserve">
-    <value>Pause or resume updates to the UIA tree view when focus changes via mouse or keyboard navigation.</value>
+    <value>Pause or resume updates to the UI Automation tree when focus changes via mouse or keyboard navigation.</value>
   </data>
   <data name="lblToParentContent" xml:space="preserve">
-    <value>Inspect the Parent element in UIAutomation tree.</value>
+    <value>Inspect the Parent element in the UI Automation tree.</value>
   </data>
   <data name="lblToBeforeContent" xml:space="preserve">
-    <value>Inspect the Previous sibling element in UIAutomation tree.</value>
+    <value>Inspect the Previous sibling element in the UI Automation tree.</value>
   </data>
   <data name="lblToNextContent" xml:space="preserve">
-    <value>Inspect the Next sibling element in UIAutomation tree.</value>
+    <value>Inspect the Next sibling element in the UI Automation tree.</value>
   </data>
   <data name="lblToFirstChildContent" xml:space="preserve">
-    <value>Inspect the First child element in UIAutomation tree.</value>
+    <value>Inspect the First child element in the UI Automation tree.</value>
   </data>
   <data name="lblToLastChildContent" xml:space="preserve">
-    <value>Inspect the Last child element in UIAutomation tree.</value>
+    <value>Inspect the Last child element in the UI Automation tree.</value>
   </data>
   <data name="lblFocusLabelContent" xml:space="preserve">
     <value>Selection by _focus</value>
@@ -415,7 +415,7 @@
     <value>Inspect details about {0}</value>
   </data>
   <data name="tbViewResultsText" xml:space="preserve">
-    <value>View results in UIA tree</value>
+    <value>View results in the UI Automation tree</value>
   </data>
   <data name="chbxSelectAllAutomationPropertiesName" xml:space="preserve">
     <value>Highlight all results</value>
@@ -587,10 +587,10 @@ Accessibility Insights Support Team
     <value>set the default startup mode to Inspect or Test in the application settings:</value>
   </data>
   <data name="RunTextInspectLiveUIATree" xml:space="preserve">
-    <value>Inspect the live UIA tree using Inspect mode.</value>
+    <value>Inspect the live UI Automation tree using Inspect mode.</value>
   </data>
   <data name="RunTextInspectMode" xml:space="preserve">
-    <value>Verify an element has the expected UIA properties:</value>
+    <value>Verify an element has the expected UI Automation properties:</value>
   </data>
   <data name="tbFastPassInfoText" xml:space="preserve">
     <value>FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes.</value>
@@ -620,7 +620,7 @@ Accessibility Insights Support Team
     <value>Check color contrast:</value>
   </data>
   <data name="RunTextManualColorTest" xml:space="preserve">
-    <value>Investigate color contrast using Color Contrast.</value>
+    <value>Identify accessibility issues caused by low color contrast.</value>
   </data>
   <data name="CCALink" xml:space="preserve">
     <value>Learn more about checking color contrast.</value>
@@ -629,7 +629,7 @@ Accessibility Insights Support Team
     <value>use the</value>
   </data>
   <data name="RunTextLinkFromUIATree" xml:space="preserve">
-    <value>link from the UIA tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  </value>
+    <value>link from the UI Automation tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  </value>
   </data>
   <data name="RunTextSemiBold" xml:space="preserve">
     <value>SemiBold</value>
@@ -767,7 +767,7 @@ Accessibility Insights Support Team
     <value>No element is selected yet. please select first!!</value>
   </data>
   <data name="HierarchyControlAutomationPropertiesName" xml:space="preserve">
-    <value>Diagnose UIElement Hierarchy</value>
+    <value>Diagnose UI Automation Hierarchy tree</value>
   </data>
   <data name="SetterValueTest" xml:space="preserve">
     <value>Test</value>
@@ -791,7 +791,7 @@ Accessibility Insights Support Team
     <value>Settings</value>
   </data>
   <data name="btnSettingToolTip1" xml:space="preserve">
-    <value>UIA Tree Settings</value>
+    <value>UI Automation Tree Settings</value>
   </data>
   <data name="mniRawAutomationPropertiesName1" xml:space="preserve">
     <value>Walk tree in Raw view</value>
@@ -980,7 +980,7 @@ Accessibility Insights Support Team
     <value>Text pattern text settings</value>
   </data>
   <data name="btnSettingToolTip2" xml:space="preserve">
-    <value>UIA Tree Properties Settings</value>
+    <value>UI Automation Tree Properties Settings</value>
   </data>
   <data name="MenuItemHeaderListenToEvents" xml:space="preserve">
     <value>Listen to Events</value>
@@ -1385,7 +1385,7 @@ Accessibility Insights Support Team
     <value>Search</value>
   </data>
   <data name="HierarchyControl_treeviewHierarchyAutomationName" xml:space="preserve">
-    <value>UIA Hierarchy</value>
+    <value>UI Automation Hierarchy</value>
   </data>
   <data name="AutomatedChecksControlAutomationName" xml:space="preserve">
     <value>Automated checks</value>
@@ -1423,14 +1423,14 @@ Accessibility Insights Support Team
   <data name="ScannerResultControl_noFailures" xml:space="preserve">
     <value>There were no failures.</value>
   </data>
-  <data name="ColorContrast_Background" xml:space="preserve">
-    <value>Background color</value>
+  <data name="ColorContrast_Color2" xml:space="preserve">
+    <value>Color 2</value>
   </data>
   <data name="ColorContrast_FontSizes" xml:space="preserve">
     <value>(14 pt. bold or 18 pt. regular)</value>
   </data>
-  <data name="ColorContrast_Foreground" xml:space="preserve">
-    <value>Foreground color</value>
+  <data name="ColorContrast_Color1" xml:space="preserve">
+    <value>Color 1</value>
   </data>
   <data name="ColorContrast_Large" xml:space="preserve">
     <value>Large</value>

@@ -1,4 +1,4 @@
-# Test Scenarios
+## Test Scenarios
 To make sure that a PR doesn't introduce a major regression, please run through the following scenarios locally before a PR is created.
 
 - Inspect in Live

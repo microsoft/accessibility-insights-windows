@@ -4,9 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AccessibilityInsights.Core.Fingerprint;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+#if FAKES_SUPPORTED
 using AccessibilityInsights.Core.Fingerprint.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+#endif
 
 namespace AccessibilityInsights.CoreTests.Fingerprint
 {
@@ -31,6 +33,7 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
             }
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         [Timeout(2000)]
@@ -138,5 +141,6 @@ namespace AccessibilityInsights.CoreTests.Fingerprint
                 Assert.AreSame(location, actualLocation);
             }
         }
+#endif
     }
 }

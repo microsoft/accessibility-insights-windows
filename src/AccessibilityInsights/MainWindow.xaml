@@ -248,7 +248,7 @@
                             <Button Name="btnMax" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMax_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnMaxAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMax}">
-                                    <fabric:FabricIconControl GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl Name="btnMaxFabric" GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnClose" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnClose_Click"
