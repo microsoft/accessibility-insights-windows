@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileIssue;
@@ -84,8 +85,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     {
                         configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
                     }
-                    catch
+                    catch (Exception e)
                     {
+                        e.ReportException();
                         MessageDialog.Show(Properties.Resources.InvalidConfiguration);
                     }
 

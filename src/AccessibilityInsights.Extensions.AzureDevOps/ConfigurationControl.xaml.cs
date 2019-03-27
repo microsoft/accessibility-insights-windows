@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public ConfigurationControl()
         {
             InitializeComponent();
-            DataContext = vmConfig;
+            DataContext = VMConfig;
         }
 
         private bool canSave = false;
@@ -63,9 +63,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Avatar view model
         /// </summary>
-        public ConfigurationViewModel vmConfig { get; private set; } = new ConfigurationViewModel();
+        public ConfigurationViewModel VMConfig { get; private set; } = new ConfigurationViewModel();
 
-        #pragma warning restore CA1822
         /// <summary>
         /// List of team projects
         /// </summary>
@@ -153,7 +152,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
                 else
                 {
-                    Dispatcher.Invoke(() => MessageDialog.Show("URL format is not valid. Example URL: https://accountname.visualstudio.com"));
+                    Dispatcher.Invoke(() => MessageDialog.Show(Properties.Resources.ADO_URL_Fromat_Message));
                 }
             }
         }
@@ -230,10 +229,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="state"></param>
         private async void ChangeStates(ControlState state)
         {
-            vmConfig.Avatar = AzureDevOps.Avatar;
-            vmConfig.DisplayName = AzureDevOps.DisplayName;
-            vmConfig.Email = AzureDevOps.Email;
-            vmConfig.State = state;
+            VMConfig.Avatar = AzureDevOps.Avatar;
+            VMConfig.DisplayName = AzureDevOps.DisplayName;
+            VMConfig.Email = AzureDevOps.Email;
+            VMConfig.State = state;
 
             if (state == ControlState.EditingServer)
             {
@@ -245,7 +244,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
                     newProjectList.ForEach(p => projects.Add(p));
                     ToggleLoading(false);
-                Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
+                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
                 catch (Exception)
                 {
@@ -351,7 +350,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private void ToggleLoading(bool starting)
         {
             InteractionAllowed = !starting;
-            Dispatcher.Invoke(() => {
+            Dispatcher.Invoke(() =>
+            {
                 this.ctrlProgressRing.IsActive = starting;
                 this.IsEnabled = InteractionAllowed;
             });
@@ -492,9 +492,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
         }
 
-        #pragma warning disable CA1801 // unused parameter
+#pragma warning disable CA1801 // unused parameter
         private void IssueConfigurationControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        #pragma warning restore CA1801 // unused parameter
+#pragma warning restore CA1801 // unused parameter
         {
             if ((bool)e.NewValue)
             {
