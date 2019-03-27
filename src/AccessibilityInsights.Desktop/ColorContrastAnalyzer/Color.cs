@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using System.Drawing;
 using System.Globalization;
 
 namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
@@ -16,7 +15,7 @@ namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
          * The luminance difference that will determine whether two colors are the same.
          * This helps deal with Anti-Aliasing in determining transitions for detecting text.
          */
-        const double SAME_COLOR_THRESHOLD = 1.1;
+        const double SAME_COLOR_THRESHOLD = 1.2;
 
         /**
          * Some commonly used colors.
