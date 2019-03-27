@@ -38,8 +38,8 @@
                             </MenuItem.Style>
                         </MenuItem>
                         <MenuItem IsCheckable="False" Click="mniFileBug_Click" 
-                                  Header="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemHeaderNewIssue}'}" 
-                                  AutomationProperties.Name="{Binding StringFormat='{}Bug {0}',Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemAutomationPropertiesName}'}"
+                                  Header="{Binding Path=IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.MenuItemHeaderNewIssue}'}" 
+                                  AutomationProperties.Name="{Binding StringFormat='{}Bug {0}',Path=IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.MenuItemAutomationPropertiesName}'}"
                                   Visibility="{Binding FileBugVisibility}"
                                   Tag="LadybugSolid">
                             <MenuItem.Style>
