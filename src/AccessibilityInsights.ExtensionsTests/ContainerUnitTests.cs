@@ -5,7 +5,9 @@ using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.IO;
+#if FAKES_SUPPORTED
 using System.IO.Fakes;
+#endif
 using System.Linq;
 
 namespace AccessibilityInsights.ExtensionsTests
