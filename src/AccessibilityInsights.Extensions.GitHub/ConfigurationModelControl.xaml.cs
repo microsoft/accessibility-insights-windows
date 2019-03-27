@@ -95,10 +95,10 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (sender!=null && (bool)e.NewValue)
             {
-                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(PlaceHolderTextBox.PlaceHolder, StringComparison.InvariantCulture))
+                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(this.tbURL.PlaceHolder, StringComparison.InvariantCulture))
                 {
                     tbURL.Text = Config.RepoLink;
-                    tbURL.Foreground = PlaceHolderTextBox.BlackBrush;
+                    tbURL.Foreground = this.tbURL.BlackBrush;
                     IsConfigured(true);
                     TextChangeUpdateSaveButtonHelper();
                 }

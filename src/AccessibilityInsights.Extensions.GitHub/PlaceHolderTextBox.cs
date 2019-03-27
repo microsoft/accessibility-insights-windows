@@ -9,12 +9,15 @@ namespace AccessibilityInsights.Extensions.GitHub
 {
     public class PlaceHolderTextBox : TextBox
     {
-        public static string PlaceHolder { get; } = Properties.Resources.PlaceHolder;
-        public static SolidColorBrush BlackBrush { get; } = Application.Current.Resources["TextBrush"] as SolidColorBrush;
-        public static SolidColorBrush GrayBrush { get; } = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
+        public string PlaceHolder { get; }
+        public SolidColorBrush BlackBrush { get; }
+        public SolidColorBrush GrayBrush { get; }
 
         public PlaceHolderTextBox()
         {
+            PlaceHolder = Properties.Resources.PlaceHolder;
+            BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
+            GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
             this.Text = PlaceHolder;
             this.Foreground = GrayBrush;
 
