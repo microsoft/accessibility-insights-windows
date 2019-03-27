@@ -9,13 +9,16 @@ namespace AccessibilityInsights.Extensions.GitHub
 {
     public class PlaceHolderTextBox : TextBox
     {
-        private readonly string PlaceHolder = Properties.Resources.PlaceHolder;
-        private readonly SolidColorBrush BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
-        private readonly SolidColorBrush GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
+        public string PlaceHolder { get; }
+        public SolidColorBrush BlackBrush { get; }
+        public SolidColorBrush GrayBrush { get; }
 
         public PlaceHolderTextBox()
         {
-            this.Text = this.PlaceHolder;
+            PlaceHolder = Properties.Resources.PlaceHolder;
+            BlackBrush = Application.Current.Resources["TextBrush"] as SolidColorBrush;
+            GrayBrush = Application.Current.Resources["TextBrushGray"] as SolidColorBrush;
+            this.Text = PlaceHolder;
             this.Foreground = GrayBrush;
 
             this.GotFocus += RemoveText;
@@ -24,7 +27,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public void RemoveText(object sender, EventArgs e)
         {
-            if (this.Text.Equals(this.PlaceHolder, StringComparison.InvariantCulture))
+            if (this.Text.Equals(PlaceHolder, StringComparison.InvariantCulture))
             {
                 this.Text = "";
                 this.Foreground = BlackBrush;
@@ -35,8 +38,12 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (string.IsNullOrWhiteSpace(this.Text))
             {
-                this.Text = this.PlaceHolder;
+                this.Text = PlaceHolder;
                 this.Foreground = GrayBrush;
+            }
+            else
+            {
+                this.Foreground = BlackBrush;
             }
          }
     }

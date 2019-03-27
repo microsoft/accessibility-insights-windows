@@ -177,4 +177,7 @@ This accessibility issue was found using Accessibility Insights for Windows, a t
   <data name="UserNamePattern" xml:space="preserve">
     <value>{0}+([-]{0}+)*</value>
   </data>
+  <data name="InvalidLink" xml:space="preserve">
+    <value>Invalid GitHub Link Format!</value>
+  </data>
 </root>
