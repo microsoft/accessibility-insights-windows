@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Newtonsoft.Json;
 using System;
@@ -66,8 +67,9 @@ namespace AccessibilityInsights.Extensions.GitHub
                     string url = IssueFormatterFactory.GetNewIssueLink(this.configurationControl.Config.RepoLink, issueInfo);
                     System.Diagnostics.Process.Start(url);
                 }
-                catch
+                catch (Exception e)
                 {
+                    e.ReportException();
                     MessageDialog.Show(Properties.Resources.InvalidLink);
                 }
             }

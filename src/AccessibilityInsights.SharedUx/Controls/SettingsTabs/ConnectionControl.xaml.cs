@@ -90,7 +90,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     catch (Exception e)
                     {
                         e.ReportException();
-                        MessageDialog.Show(Properties.Resources.InvalidConfiguration);
                     }
 
                     string newConfigs = issueConfigurationControl.OnSave();
