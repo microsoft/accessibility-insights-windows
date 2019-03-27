@@ -94,8 +94,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             InitializeComponent();
 
             InitCommandBindings();
-
-            this.runHkRecord.Text = Configuration.HotKeyForRecord;
         }
 
         void InitCommandBindings()
@@ -208,6 +206,11 @@ namespace AccessibilityInsights.SharedUx.Controls
         public void SetElement(ElementContext ec)
         {
             this.ElementContext = ec;
+        }
+
+        public void ShowControl()
+        {
+            this.runHkRecord.Text = Configuration.HotKeyForRecord;
         }
 
         /// <summary>

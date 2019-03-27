@@ -260,7 +260,7 @@ namespace AccessibilityInsights.Modes
         /// <param name="e"></param>
         private void UpdateElementInfoUI(A11yElement e)
         {
-            this.ctrlTabs.SetElement(e, e != null && e.PlatformObject != null);           
+            this.ctrlTabs.SetElement(e, e != null && e.PlatformObject != null);
         }
 
         /// <summary>
