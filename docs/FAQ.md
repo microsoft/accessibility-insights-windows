@@ -49,7 +49,7 @@ Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so
 Visit [Adding a new project](NewProject.md) for instructions.
 
 #### Q. On my PR the "license/cla" check does not complete. What should I do?
-Please close and reopen the PR. Make sure that you have signed our [CLA agreement](../Contributing.md) before closing and reopening the PR.
+Make sure that you have signed our [CLA agreement](../Contributing.md). If you haven't, please sign the agreement, then close and reopen the PR. This will trigger a new build with the CLA agreement in place.
 
 #### Q. How do I get in contact?
 Please file a [Github Issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new/choose). We actively monitor PRs and issues.
