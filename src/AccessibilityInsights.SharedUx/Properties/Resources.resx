@@ -1417,12 +1417,6 @@ Accessibility Insights Support Team
   <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
     <value>detected.</value>
   </data>
-  <!--<data name="ConnectionControl_selectTeam" xml:space="preserve">
-    <value>Select your team</value>
-  </data>-->
-  <!--<data name="ConnectionControl_serverURL" xml:space="preserve">
-    <value>Server URL</value>
-  </data>-->
   <data name="PropertyInfoControl_textboxSearch" xml:space="preserve">
     <value>Search nodes in hierarchy.</value>
   </data>
@@ -1505,5 +1499,8 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>
+  </data>
+  <data name="InvalidConfiguration" xml:space="preserve">
+    <value>Invalid Configuration Format!</value>
   </data>
 </root>

@@ -70,7 +70,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next.
+        ///   Looks up a localized string similar to URL format is not valid. Example URL: https://dev.azure.com/fabrikam.
+        /// </summary>
+        public static string ADO_URL_Fromat_Message {
+            get {
+                return ResourceManager.GetString("ADO_URL_Fromat_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connect Azure Boards account.
         /// </summary>
         public static string btnNextAutomationPropertiesName {
             get {
@@ -79,7 +88,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disconnect.
+        ///   Looks up a localized string similar to Disconnect Azure Boards account.
         /// </summary>
         public static string ButtonAutomationPropertiesName {
             get {
@@ -106,7 +115,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select your team.
+        ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string ConnectionControl_selectTeam {
             get {
@@ -124,7 +133,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To create issues and save test results, you must first enter the Azure DevOps URL and click Next to sign in..
+        ///   Looks up a localized string similar to Enter desired Azure Boards link.
         /// </summary>
         public static string connectionInstrText {
             get {
@@ -151,7 +160,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search for team project.
+        ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string tbTeamProjectSearchAutomationPropertiesName {
             get {

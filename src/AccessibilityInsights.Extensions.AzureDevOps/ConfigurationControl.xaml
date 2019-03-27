@@ -7,170 +7,164 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:AccessibilityInsights.Extensions.AzureDevOps"
     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.AzureDevOps.Properties"
+    xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d" IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged"
     d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid x:Name="selectServerGrid" Width="336" Margin="24 0 0 0" Visibility="Visible">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.connectionInstrText}"
+                           TextWrapping="Wrap" Margin="0,20,0,8" FontSize="{DynamicResource StandardTextSize}"/>
+        <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.connectionInstrText}"
-                           TextWrapping="Wrap" Margin="0 24 24 24px" />
-            <Grid Grid.Row="1" Margin="0px 0px 24px 12px">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="225"/>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0 0 0 12px" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}" FontSize="{DynamicResource StandardTextSize}" Grid.ColumnSpan="2"/>
+            <Grid Grid.ColumnSpan="2">
+                <ComboBox x:Name ="ServerComboBox" Grid.Row="1" IsEditable="True" Height="30" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
+                              AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">
+                </ComboBox>
+                <TextBlock x:Name="accountPlaceholder" Text="{x:Static Properties:Resources.accountPlaceholderText}" IsHitTestVisible="False">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Setter Property="VerticalAlignment" Value="Center"/>
+                            <Setter Property="Margin" Value="6 0 0 6"/>
+                            <Setter Property="Foreground" Value="SlateGray"/>
+                            <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=ServerComboBox, Path=Text.Length}" Value="0">
+                                    <Setter Property="Visibility" Value="Visible"></Setter>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </Grid>
+            <Button Grid.Column="3" x:Name="btnNext" Padding="8,0" HorizontalAlignment="Left" 
+                    Content="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" Click="NextButton_Click"
+                    AutomationProperties.Name="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" IsTabStop="True"
+                    Style="{DynamicResource BtnBlueSquared}" Visibility="{Binding BtnConnectVisibility}" />
+            <Button Name="btnDisconnect" Content="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
+                    Click="disconnectButton_Click" Cursor="Hand" Grid.Column="3" HorizontalAlignment="Right" Padding="8,0"
+                    AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
+                    IsTabStop="True" Style="{DynamicResource BtnGreySquared}" Visibility="{Binding BtnDisconnectVisibility}" />
+        </Grid>
+        <Grid Grid.Row="3" Margin="0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" x:Name="imgAvatar" Width="40" Height="40"
+                       Source="{Binding Path=Avatar, TargetNullValue={x:Null}, Mode=OneWay}">
+                <Image.Clip>
+                    <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20" />
+                </Image.Clip>
+            </Image>
+            <Grid Grid.Column="1" Margin="12px 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0 0 0 12px" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}"/>
-                <Grid>
-                    <ComboBox x:Name ="ServerComboBox" Grid.Row="1" IsEditable="True"
-                              AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">
-                    </ComboBox>
-                    <TextBlock x:Name="accountPlaceholder" Text="{x:Static Properties:Resources.accountPlaceholderText}" IsHitTestVisible="False">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                                <Setter Property="VerticalAlignment" Value="Center"/>
-                                <Setter Property="Margin" Value="6 0 0 6"/>
-                                <Setter Property="Foreground" Value="SlateGray"/>
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding ElementName=ServerComboBox, Path=Text.Length}" Value="0">
-                                        <Setter Property="Visibility" Value="Visible"></Setter>
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </Grid>
+                <TextBlock x:Name="displayNameField" Grid.Row="0" Text="{Binding Path=DisplayName}" FontSize="{DynamicResource StandardTextSize}"/>
+                <TextBlock x:Name="emailField" Grid.Row="1" Text="{Binding Path=Email}" FontSize="{DynamicResource StandardTextSize}"/>
             </Grid>
-            <Button Grid.Row="2" x:Name="btnNext" Margin="0 24 24 24px" Width="48px" HorizontalAlignment="Left" 
-                        Content="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" Click="NextButton_Click" AutomationProperties.Name="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" IsTabStop="True">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding ElementName=accountPlaceholder, Path=Visibility}" Value="Visible">
-                                <Setter Property="IsEnabled" Value="False"></Setter>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding ElementName=accountPlaceholder, Path=Visibility}" Value="Collapsed">
-                                <Setter Property="IsEnabled" Value="True"></Setter>
-                            </DataTrigger>
-                        </Style.Triggers>
-                        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-                    </Style>
-                </Button.Style>
-            </Button>
         </Grid>
-        <Grid x:Name="editProjectGrid" Width="336" Visibility="Collapsed" Margin="20 0 0 0">
+        <Grid x:Name="teamSelectedGrid" Visibility="{Binding TeamSelectedGridVisibility}" Grid.Row="4" Margin="0px 0px 24px 12px">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <TextBlock Text="{x:Static Properties:Resources.TextBlockTextSelectedteam}" HorizontalAlignment="Left" Margin="0 4px" FontSize="{DynamicResource StandardTextSize}"></TextBlock>
+                <Button Click="changeButton_Click" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Right" Margin="0 4px" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameChangeTeam}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <TextBlock Text="{x:Static Properties:Resources.TextBlockTextChange}" TextWrapping="Wrap" Foreground="Blue"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+            </Grid>
+            <TextBlock x:Name="selectedTeamText" Grid.Row="1" FontStyle="Italic" HorizontalAlignment="Left" FontSize="{DynamicResource StandardTextSize}"></TextBlock>
+        </Grid>
+        <Grid x:Name="selectTeamGrid" Visibility="{Binding SelectTeamGridVisibility}" IsEnabled="{Binding IsSelectTeamGridEnabled}" Grid.Row="4" Margin="0px 0px 24px 12px">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value=".3"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Margin="0 24 24 24px">
+            <Grid Grid.Row="0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Image Grid.Column="0" x:Name="imgAvatar" Width="32px" Height="32px" Source="{Binding Path=vmAvatar.ByteData, TargetNullValue={x:Null}}"/>
-                <Grid Grid.Column="1" Margin="12px 0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <TextBlock x:Name="displayNameField" Grid.Row="0" Text="{Binding Path=DisplayName}"/>
-                    <TextBlock x:Name="emailField" Grid.Row="1" Text="{Binding Path=Email}"/>
-                </Grid>
+                <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_selectTeam}" Margin="0 4px"
+                           TextWrapping="Wrap" FontSize="{DynamicResource StandardTextSize}"/>
+                <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{DynamicResource BtnStandard}">
+                    <Button.Template>
+                        <ControlTemplate>
+                            <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="Blue"/>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
             </Grid>
-            <Grid Grid.Row="1" Margin="0px 0px 24px 12px">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Margin="0 4px">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}"
-                           TextWrapping="Wrap" />
-                    <Button Click="disconnectButton_Click" Cursor="Hand" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesName}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesName}" TextWrapping="Wrap" Foreground="Blue"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
-                <TextBlock Grid.Row="1" Text="{Binding ElementName=ServerComboBox, Path=Text}"
-                               Padding="4px" Background="{DynamicResource ResourceKey=LightGreyBrush}"></TextBlock>
+            <Grid Grid.Row="1">
+                <TextBox Height="30" VerticalContentAlignment="Center" x:Name="tbTeamProjectSearch" TextChanged="TextBox_TextChanged"
+                         AutomationProperties.Name="{x:Static Properties:Resources.tbTeamProjectSearchAutomationPropertiesName}"
+                         FontSize="{DynamicResource StandardTextSize}"/>
+                <controls:FabricIconControl HorizontalAlignment="Right" Margin="5,0,5,0" 
+                                                  GlyphName="Search" GlyphSize="Custom" FontSize="11" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Grid>
-
-            <Grid x:Name="teamSelectedGrid" Grid.Row="2" Margin="0px 0px 24px 12px">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <TextBlock Text="{x:Static Properties:Resources.TextBlockTextSelectedteam}" HorizontalAlignment="Left" Margin="0 4px"></TextBlock>
-                    <Button Click="changeButton_Click" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Right" Margin="0 4px" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameChangeTeam}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <TextBlock Text="{x:Static Properties:Resources.TextBlockTextChange}" TextWrapping="Wrap" Foreground="Blue"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
-                <TextBlock x:Name="selectedTeamText" Grid.Row="1" FontStyle="Italic" HorizontalAlignment="Left"></TextBlock>
-            </Grid>
-            <Grid x:Name="selectTeamGrid" Grid.Row="2" Margin="0px 0px 24px 12px">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_selectTeam}" Margin="0 4px"
-                           TextWrapping="Wrap" />
-                    <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{DynamicResource BtnStandard}">
-                        <Button.Template>
-                            <ControlTemplate>
-                                <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="Blue"/>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-                </Grid>
-                <Grid Grid.Row="1">
-                    <TextBox x:Name="tbTeamProjectSearch" TextChanged="TextBox_TextChanged" AutomationProperties.Name="{x:Static Properties:Resources.tbTeamProjectSearchAutomationPropertiesName}"/>
-                    <!--fabric:FabricIconControl HorizontalAlignment="Right" Margin="5,0,5,0" 
-                                                  GlyphName="Search" GlyphSize="Custom" FontSize="11" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/-->
-                </Grid>
-                <Grid Grid.Row="2" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
-                    <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=projects}" 
+            <Grid Grid.Row="2" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
+                <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=projects}" 
                                   SelectedItemChanged="serverTreeview_SelectedItemChanged" AutomationProperties.Name="{x:Static Properties:Resources.serverTreeviewAutomationPropertiesName}"
                                   VirtualizingStackPanel.IsVirtualizing="False">
-                        <TreeView.ItemContainerStyle>
-                            <Style TargetType="TreeViewItem">
-                                <Setter Property="Visibility" Value="{Binding Path=Visibility}"/>
-                                <Setter Property="IsSelected" Value="{Binding Path=Selected}"/>
-                                <Setter Property="IsExpanded" Value="{Binding Path=Expanded}"/>
-                                <Setter Property="AutomationProperties.Name" Value="{Binding Path=Name}"/>
-                            </Style>
-                        </TreeView.ItemContainerStyle>
-                        <TreeView.ItemTemplate>
-                            <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
-                                <TextBlock Text="{Binding Path=Name}"/>
-                            </HierarchicalDataTemplate>
-                        </TreeView.ItemTemplate>
-                    </TreeView>
-                </Grid>
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="TreeViewItem">
+                            <Setter Property="Visibility" Value="{Binding Path=Visibility}"/>
+                            <Setter Property="IsSelected" Value="{Binding Path=Selected}"/>
+                            <Setter Property="IsExpanded" Value="{Binding Path=Expanded}"/>
+                            <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+                            <Setter Property="AutomationProperties.Name" Value="{Binding Path=Name}"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                    <TreeView.ItemTemplate>
+                        <HierarchicalDataTemplate ItemsSource="{Binding Path=Children}">
+                            <TextBlock Text="{Binding Path=Name}"/>
+                        </HierarchicalDataTemplate>
+                    </TreeView.ItemTemplate>
+                </TreeView>
             </Grid>
         </Grid>
+        <controls:ProgressRingControl x:Name="ctrlProgressRing" 
+                                   Size="25"  
+                                   Visibility="Collapsed"
+                                   HorizontalAlignment="Center" 
+                                   VerticalAlignment="Center" Grid.RowSpan="5">
+        </controls:ProgressRingControl>
     </Grid>
 </issuereporting:IssueConfigurationControl>

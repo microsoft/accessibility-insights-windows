@@ -1941,6 +1941,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid Configuration Format!.
+        /// </summary>
+        public static string InvalidConfiguration {
+            get {
+                return ResourceManager.GetString("InvalidConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid link {0}.
         /// </summary>
         public static string InvalidLink {
