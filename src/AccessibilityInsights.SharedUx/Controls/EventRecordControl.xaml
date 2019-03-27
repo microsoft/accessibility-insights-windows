@@ -142,7 +142,7 @@
                 </Button>
             </ItemsControl>
         </Grid>
-        <TextBlock Name="tbIntro" Grid.Row="1" Padding="4" TextWrapping="Wrap" Style="{DynamicResource VarStandardTextBlock}">
+        <TextBlock Name="tbIntro" Grid.Row="1" Padding="4" TextWrapping="Wrap" Style="{StaticResource TbFocusable}">
             <Run Text="{x:Static Properties:Resources.tbIntroTextSelectEventRecord}"/>
             <fabric:FabricIconControl GlyphName="CircleFill" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="#A80000" FontStyle="Normal"/>
             <Run Text="{x:Static Properties:Resources.tbIntroTextStartRecording}"/>
