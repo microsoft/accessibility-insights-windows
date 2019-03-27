@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
@@ -8,8 +9,6 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using AccessibilityInsights.SharedUx.Properties;
-
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 {
@@ -33,14 +32,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         IIssueReporting selectedIssueReporter = null;
 
         #region configuration updating code
-        /// <summary>
-        /// Initializes the view.
-        /// </summary>
-        /// <param name="configuration"></param>
-        public void UpdateFromConfig()
-        {
-                InitializeView();
-        }
 
         private RadioButton CreateRadioButton(IIssueReporting reporter)
         {
@@ -87,13 +78,17 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 if (issueConfigurationControl.CanSave)
                 {
                     string serializedConfigs = configuration.IssueReporterSerializedConfigs;
-                    Dictionary<Guid, string> configs = string.IsNullOrEmpty(serializedConfigs) ? new Dictionary<Guid, string>()
-                        : JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
 
-                    if (serializedConfigs != null)
+                    Dictionary<Guid, string> configs = new Dictionary<Guid, string>();
+                    try
                     {
                         configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
                     }
+                    catch
+                    {
+                        MessageDialog.Show(Properties.Resources.InvalidConfiguration);
+                    }
+
                     string newConfigs = issueConfigurationControl.OnSave();
                     configs[selectedIssueReporter.StableIdentifier] = newConfigs;
                     configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
