@@ -8,6 +8,7 @@ using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Globalization;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {

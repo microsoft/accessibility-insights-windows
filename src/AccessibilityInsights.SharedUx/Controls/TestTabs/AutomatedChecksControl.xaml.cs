@@ -8,6 +8,7 @@ using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;

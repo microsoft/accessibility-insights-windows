@@ -23,6 +23,7 @@ using AccessibilityInsights.Core.Enums;
 using System.Windows.Controls.Primitives;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using System.Globalization;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

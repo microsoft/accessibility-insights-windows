@@ -8,6 +8,7 @@ using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Rules;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using System;

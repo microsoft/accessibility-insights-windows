@@ -26,6 +26,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Diagnostics;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {

@@ -19,6 +19,7 @@ using System.Windows.Input;
 using System.Globalization;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.Modes
 {

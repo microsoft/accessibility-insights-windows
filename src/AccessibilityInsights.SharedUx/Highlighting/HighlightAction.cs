@@ -1,22 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.DesktopUI.Highlighters;
+using AccessibilityInsights.SharedUx.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Class HighlightAction
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
     public class HighlightAction:IDisposable
     {
         readonly Highlighter Highlighter = null;
@@ -34,7 +33,7 @@ namespace AccessibilityInsights.Actions
         /// <param name="eId"></param>
         public void SetElement(Guid ecId, int eId)
         {
-            SetElementInternal(DataManager.GetDefaultInstance().GetA11yElement(ecId, eId));
+            SetElementInternal(GetDataAction.GetA11yElementInDataContext(ecId, eId));
         }
 
         /// <summary>

@@ -100,8 +100,6 @@
     <Compile Include="Actions\PrivacyExtensions.cs" />
     <Compile Include="Actions\SetDataAction.cs" />
     <Compile Include="Actions\CaptureAction.cs" />
-    <Compile Include="Actions\HighlightImageAction.cs" />
-    <Compile Include="Actions\HighlightOverlayAction.cs" />
     <Compile Include="Actions\ListenAction.cs" />
     <Compile Include="Actions\LoadAction.cs" />
     <Compile Include="Actions\LoadActionParts.cs" />
@@ -110,7 +108,6 @@
     <Compile Include="Attributes\InteractionLevelAttribute.cs" />
     <Compile Include="Contexts\ElementDataContext.cs" />
     <Compile Include="Enums\Enums.cs" />
-    <Compile Include="Actions\HighlightAction.cs" />
     <Compile Include="Enums\CompletenessMode.cs" />
     <Compile Include="Misc\ExtensionMethods.cs" />
     <Compile Include="Misc\ResultsFileSarifMapper.cs" />
@@ -139,10 +136,6 @@
     <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
-      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
-      <Name>DesktopUI</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>

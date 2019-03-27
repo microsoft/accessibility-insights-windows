@@ -5,22 +5,20 @@ using AccessibilityInsights.DesktopUI.Highlighters;
 using System.Windows.Input;
 using System.Windows.Media;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using UIAutomationClient;
 using System.Windows.Controls;
 using AccessibilityInsights.Win32;
+using AccessibilityInsights.Actions;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Action to get an OverlayHighlighter
     /// Since OverlayHighlighter is used for Tabstop which doesn't record data into Any context. 
     /// it is using element to set highlighting information. 
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
     public class HighlightOverlayAction:IDisposable
     {
         /// <summary>

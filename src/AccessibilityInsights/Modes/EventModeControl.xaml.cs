@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.Modes
 {

@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
+using AccessibilityInsights.SharedUx.Highlighting;
 using System;
 using System.Timers;
 using System.Windows;

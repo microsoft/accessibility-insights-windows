@@ -1,17 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.DesktopUI.Highlighters;
 using System;
 using System.Windows.Input;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Attributes;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Action to get an ImageHighlighter
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
     public class HighlightImageAction:IDisposable
     {
         /// <summary>
@@ -63,7 +61,7 @@ namespace AccessibilityInsights.Actions
         /// <param name="txt">text to show in top right corner</param>
         public void SetSingleElement(Guid ecId, int eId, string txt = null)
         {
-            var e = DataManager.GetDefaultInstance().GetA11yElement(ecId, eId);
+            var e = GetDataAction.GetA11yElementInDataContext(ecId, eId);
 
             Highlighter.SetSingleElement(e, txt);
         }

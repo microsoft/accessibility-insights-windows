@@ -19,6 +19,7 @@ using System.Reflection;
 using System.Windows;
 using System.Windows.Automation;
 using AccessibilityInsights.Actions.Sarif;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {
@@ -138,7 +139,7 @@ namespace AccessibilityInsights
             }
 
             // clear selected element highliter
-            HighlightAction.GetInstance(AccessibilityInsights.Actions.Enums.HighlighterType.Selected).Clear();
+            HighlightAction.GetInstance(AccessibilityInsights.SharedUx.Enums.HighlighterType.Selected).Clear();
             HighlightImageAction.ClearDefaultInstance();
 
             // this can be disabled if previous action was loading old data format. 
@@ -459,7 +460,7 @@ namespace AccessibilityInsights
         internal void HandleBackToLiveFromEventPage()
         {
             StartInspectMode(InspectView.Live);
-            HighlightAction.GetInstance(AccessibilityInsights.Actions.Enums.HighlighterType.Selected).Clear();
+            HighlightAction.GetInstance(AccessibilityInsights.SharedUx.Enums.HighlighterType.Selected).Clear();
             HighlightAction.GetDefaultInstance().IsEnabled = ConfigurationManager.GetDefaultInstance().AppConfig.IsHighlighterOn;
 
             UpdateMainWindowUI();

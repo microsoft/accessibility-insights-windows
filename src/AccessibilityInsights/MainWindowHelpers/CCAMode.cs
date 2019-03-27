@@ -5,6 +5,7 @@ using AccessibilityInsights.Misc;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {
