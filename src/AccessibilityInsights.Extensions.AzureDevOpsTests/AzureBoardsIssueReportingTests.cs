@@ -10,6 +10,10 @@ using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+#if FAKES_SUPPORTED	
+using AccessibilityInsights.Extensions.AzureDevOps.Fakes;	
+using Microsoft.QualityTools.Testing.Fakes;	
+#endif
 
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 {
@@ -185,6 +189,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Assert.IsNull(issueFieldPairs[IssueField.TestMessages]);
         }
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void CreateIssuePreviewAsync_TeamNameIsNull_ChainsThroughCorrectly()
@@ -260,5 +265,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
                 Assert.AreEqual(expectedTeamName, actualTeamName);
             }
         }
+ #endif
     }
 }

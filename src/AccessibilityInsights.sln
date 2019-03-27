@@ -148,8 +148,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubUnitTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUxComponents", "AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj", "{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSharedLibrary", "AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj", "{01DC8363-73BC-47FA-BD23-12AC45618E1D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -627,7 +625,6 @@ Global
 		{BE9F7E62-D9D6-4FC7-B449-820899498621} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{8CCBEC10-F28B-4330-A351-0B4B900F1169} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D} = {809F77B0-82E0-4990-A9A4-4806157385E9}
-		{01DC8363-73BC-47FA-BD23-12AC45618E1D} = {7514A72C-6BC5-431A-920F-55B62413EAC8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25101A75-9178-4066-B360-E932959B9758}

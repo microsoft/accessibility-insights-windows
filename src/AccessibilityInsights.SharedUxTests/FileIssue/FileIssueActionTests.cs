@@ -20,6 +20,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
     {
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
 
+#if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
         public void FileNewBug_IsNotEnabled_ReturnsNull()
@@ -102,5 +103,6 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             };
             ShimIssueReporter.IsEnabledGet = () => true;
         }
+#endif
     }
 }
