@@ -260,6 +260,14 @@
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj">
+      <Project>{58dbf9fe-0029-408f-a8a4-23ae500e938d}</Project>
+      <Name>Extensions.AzureDevOps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj">
+      <Project>{f421aafd-d85f-49b8-b95e-ca17718c38dd}</Project>
+      <Name>Extensions.GitHub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>

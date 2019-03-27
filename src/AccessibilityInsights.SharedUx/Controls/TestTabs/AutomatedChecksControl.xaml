@@ -140,7 +140,7 @@
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal" MinWidth="200">
-                                            <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=ButtonBlueBGBrush}" Margin="0,0,4,0"/>
+                                            <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=ButtonBlueBGBrush}" Margin="0,0,4,0" Visibility="{Binding Path=FileBugVisibility}"/>
                                             <Button Visibility="{Binding FileBugVisibility}" VerticalAlignment="Center" Tag="{Binding}"
                                                 Style="{StaticResource btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
                                                 Content="{Binding IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
