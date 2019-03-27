@@ -340,7 +340,7 @@
     <value>The hotkey you assigned is duplicated with the existing one. please set a new hotkey.</value>
   </data>
   <data name="connectionInstrText" xml:space="preserve">
-    <value>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam auctor placerat. Nunc in nulla sed turpis luctus pretium auctor quis sem. Quisque sit amet eros rutrum, lobortis nunc sed, aliquam ex. Etiam metus purus, facilisis vel molestie ac, molestie vel erat. </value>
+    <value>To start filing issues, select where you want to file your issues.</value>
   </data>
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
     <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
@@ -472,7 +472,7 @@
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
   <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
-    <value>To file issues, select an issue tracker and specify the desired location..</value>
+    <value>To file issues, select where you want to file issues.</value>
   </data>
   <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
     <value>Hi,
@@ -830,7 +830,7 @@ Accessibility Insights Support Team
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
   <data name="HierarchyControl_FileIssue_Configure" xml:space="preserve">
-    <value>To file issues, select an issue tracker and specify the desired location.</value>
+    <value>To file issues, select where you want to file issues.</value>
   </data>
   <data name="TextBlockTextDetails" xml:space="preserve">
     <value>DETAILS</value>
@@ -932,7 +932,7 @@ Accessibility Insights Support Team
     <value>Passed and Uncertain tests</value>
   </data>
   <data name="ScannerResultControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
-    <value>To file issues, select an issue tracker and specify the desired location.</value>
+    <value>o file issues, select where you want to file issues.</value>
   </data>
   <data name="ScannerResultControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
@@ -1502,5 +1502,8 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="InvalidConfiguration" xml:space="preserve">
     <value>Invalid Configuration Format!</value>
+  </data>
+  <data name="issueFilingLink" xml:space="preserve">
+    <value>Learn more about issue filing</value>
   </data>
 </root>

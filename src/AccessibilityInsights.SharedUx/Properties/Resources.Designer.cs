@@ -134,7 +134,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location...
+        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
         /// </summary>
         public static string AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure {
             get {
@@ -1149,7 +1149,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam auctor placerat. Nunc in nulla sed turpis luctus pretium auctor quis sem. Quisque sit amet eros rutrum, lobortis nunc sed, aliquam ex. Etiam metus purus, facilisis vel molestie ac, molestie vel erat. .
+        ///   Looks up a localized string similar to To start filing issues, select where you want to file your issues..
         /// </summary>
         public static string connectionInstrText {
             get {
@@ -1803,7 +1803,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
+        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
         /// </summary>
         public static string HierarchyControl_FileIssue_Configure {
             get {
@@ -1955,6 +1955,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string InvalidLink {
             get {
                 return ResourceManager.GetString("InvalidLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about issue filing.
+        /// </summary>
+        public static string issueFilingLink {
+            get {
+                return ResourceManager.GetString("issueFilingLink", resourceCulture);
             }
         }
         
@@ -3331,7 +3340,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To file issues, select an issue tracker and specify the desired location..
+        ///   Looks up a localized string similar to o file issues, select where you want to file issues..
         /// </summary>
         public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {
             get {

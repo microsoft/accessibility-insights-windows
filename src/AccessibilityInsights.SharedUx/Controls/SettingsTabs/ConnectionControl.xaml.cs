@@ -8,8 +8,10 @@ using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 {
@@ -149,6 +151,22 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
 
             this.issueFilingGrid.Visibility = Visibility.Visible;
+        }
+
+        /// <summary>
+        /// Go to link
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void hlLink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+            catch
+            {
+            }
         }
     }
 }
