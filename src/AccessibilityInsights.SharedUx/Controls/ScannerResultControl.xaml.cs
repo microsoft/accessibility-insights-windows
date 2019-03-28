@@ -303,15 +303,30 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 if (IssueReporter.IsConnected)
                 {
-                    IssueInformation issueInformation = vm.GetIssueInformation();
-                    FileIssueAction.AttachIssueData(issueInformation, this.EcId, vm.Element.BoundingRectangle, vm.Element.UniqueId);
-                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-                    if (issueResult != null)
+                    IssueInformation issueInformation = null ;
+                    try
                     {
-                        vm.IssueDisplayText = issueResult.DisplayText;
-                        vm.IssueLink = issueResult.IssueLink;
+                        issueInformation = vm.GetIssueInformation();
+                        FileIssueAction.AttachIssueData(issueInformation, this.EcId, vm.Element.BoundingRectangle, vm.Element.UniqueId);
+                        IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
+                        if (issueResult != null)
+                        {
+                            vm.IssueDisplayText = issueResult.DisplayText;
+                            vm.IssueLink = issueResult.IssueLink;
+                        }
                     }
-                    File.Delete(issueInformation.TestFileName);
+                    catch (Exception ex)
+                    {
+                        ex.ReportException();
+                    }
+                    finally
+                    {
+                        if(issueInformation != null)
+                        {
+                            File.Delete(issueInformation.TestFileName);
+                        }
+                    }
+
                 }
                 else
                 {
