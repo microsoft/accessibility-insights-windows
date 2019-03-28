@@ -1,15 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
 using AccessibilityInsights.Extensions.AzureDevOps;
-using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+#if FAKES_SUPPORTED
+using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
+using Microsoft.QualityTools.Testing.Fakes;
+#endif
 
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
 {
@@ -17,23 +16,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
     public class FileIssueHelpersTests
     {
         static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
-
-        [TestMethod]
-        public void FileNewIssue_IsNotEnabled_ReturnsPlaceholder()
-        {
-            using (ShimsContext.Create())
-            {
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => false;
-                var issueInfo = new IssueInformation();
-                var connInfo = new ConnectionInfo();
-                var output = FileIssueHelpers.FileNewIssue(issueInfo,
-                    connInfo, false, 0, (_) => { });
-
-                Assert.IsNull(output.issueId);
-                Assert.IsNotNull(output.newIssueId);
-                Assert.IsTrue(string.IsNullOrEmpty(output.newIssueId));
-            }
-        }
 
         [TestMethod]
         [Timeout(10000)]
@@ -59,9 +41,28 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
 
+#if FAKES_SUPPORTED
+        [TestMethod]
+        public void FileNewIssue_IsNotEnabled_ReturnsPlaceholder()
+        {
+            using (ShimsContext.Create())
+            {
+                ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => false;
+                var issueInfo = new IssueInformation();
+                var connInfo = new ConnectionInfo();
+                var output = FileIssueHelpers.FileNewIssue(issueInfo,
+                    connInfo, false, 0, (_) => { });
+
+                Assert.IsNull(output.issueId);
+                Assert.IsNotNull(output.newIssueId);
+                Assert.IsTrue(string.IsNullOrEmpty(output.newIssueId));
+            }
+        }
+
         public static void SetUpShims()
         {
             ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => true;
         }
+#endif
     }
 }
