@@ -403,7 +403,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         /// <summary>
-        /// Generates a dictionary of AzureDevOpsField/string pairs for creating a issue in AzureDevOps
+        /// Generates a dictionary of AzureDevOpsField/string pairs for creating an issue in AzureDevOps
         /// </summary>
         /// <param name="issueFieldPairs">The collection of IssueField/string pairs that describe this issue</param>
         /// <returns>The dictionary of known pairs</returns>
