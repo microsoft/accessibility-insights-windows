@@ -707,22 +707,29 @@ namespace AccessibilityInsights
         /// </summary>
         private async void RestoreConfigurationAsync()
         {
-            var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
-            var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
-            if (selectedIssueReporterGuid != Guid.Empty)
+            try
             {
-                IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
-                var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
-                if (serializedConfigsDict != null)
+                var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
+                var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
+                if (selectedIssueReporterGuid != Guid.Empty)
                 {
-                    Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
-                    if (configsDictionary != null)
+                    IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
+                    var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
+                    if (serializedConfigsDict != null)
                     {
-                        configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
-                        await IssueReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
-                        Dispatcher.Invoke(UpdateMainWindowConnectionFields);
+                        Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+                        if (configsDictionary != null)
+                        {
+                            configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
+                            await IssueReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
+                            Dispatcher.Invoke(UpdateMainWindowConnectionFields);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                ex.ReportException();
             }
         }
 
