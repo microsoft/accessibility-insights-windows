@@ -363,7 +363,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         /// <summary>
-        /// Extract the template name from a IssueInformation object
+        /// Extract the template name from an IssueInformation object
         /// </summary>
         /// <param name="issueInfo"></param>
         /// <returns>The name of the template</returns>
