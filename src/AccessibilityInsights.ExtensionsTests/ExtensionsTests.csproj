@@ -41,6 +41,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <Import Project="..\..\build\delaysign.targets" />
+  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
+    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="$(FAKES_SUPPORTED) == 1"/>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
