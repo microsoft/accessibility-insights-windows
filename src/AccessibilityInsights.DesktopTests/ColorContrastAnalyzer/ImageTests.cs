@@ -38,31 +38,8 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(Confidence.High, result.ConfidenceValue());
         }
 
-        [TestMethod, Timeout(2000)]
-        public void SimplePurpleAndWhiteButton()
-        {
-            var image = LoadFromResources("simple_purple_and_white_button.bmp");
-
-            var result = image.RunColorContrastCalculation();
-
-            Assert.AreEqual(new ColorPair(new CCColor(55, 0, 110), new CCColor(255, 255, 255)),
-                result.GetMostLikelyColorPair());
-
-            Assert.AreEqual(Confidence.Low, result.ConfidenceValue());
-        }
-
-        [TestMethod, Timeout(2000)]
-        public void SimpleBlueAndWhiteText()
-        {
-            var image = LoadFromResources("simple_blue_and_white_text.bmp");
-
-            var result = image.RunColorContrastCalculation();
-
-            Assert.AreEqual(new ColorPair(new CCColor(27, 12, 170), new CCColor(255, 255, 255)),
-                result.GetMostLikelyColorPair());
-
-            Assert.AreEqual(Confidence.Low, result.ConfidenceValue());
-        }
+        // TODO  Future_SimplePurpleAndWhiteButton() for getting contrasting pair colors from simple_purple_and_white_button.bmp
+        // TODO  Future_SimpleBlueAndWhiteText() for geting contrasting pair colors.from simple_blue_and_white_text.bmp
 
         [TestMethod, Timeout(2000)]
         public void SimpleGreyAndWhiteTitle()
