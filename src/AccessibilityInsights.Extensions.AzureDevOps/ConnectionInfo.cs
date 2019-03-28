@@ -11,20 +11,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     */
     public class ConnectionInfo
     {
-        // Concrete* fields exists for JSON serialization (don't serialize the public counterparts)
-        public Uri ConcreteServerUri { get; set; }
-        public TeamProject ConcreteProject { get; set; }
-        public Team ConcreteTeam { get; set; }
-        public DateTime ConcreteLastUsage { get; set; }
-
-        [JsonIgnore]
-        public Uri ServerUri => ConcreteServerUri;
-        [JsonIgnore]
-        public TeamProject Project => ConcreteProject;
-        [JsonIgnore]
-        public Team Team => ConcreteTeam;
-        [JsonIgnore]
-        public DateTime LastUsage => ConcreteLastUsage;
+        // * fields exists for JSON serialization (don't serialize the public counterparts)
+        public Uri ServerUri { get; set; }
+        public TeamProject Project { get; set; }
+        public Team Team { get; set; }
+        public DateTime LastUsage { get; set; }
 
         // This is the time we'll use if no other time is specified. We use this instead of
         // default(DateTime) because we use UTC times internally and default(DateTime) has
@@ -52,16 +43,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="team">Identifies the team--null is a valid value</param>
         public ConnectionInfo(Uri serverUrl, TeamProject project, Team team)
         {
-            ConcreteServerUri = serverUrl;
+            ServerUri = serverUrl;
             if (project != null)
             {
                 TeamProject typedProject = project as TeamProject;
-                ConcreteProject = typedProject ?? new TeamProject(project);
+                Project = typedProject ?? new TeamProject(project);
             }
             if (team != null)
             {
                 Team typedTeam = team as Team;
-                ConcreteTeam = typedTeam ?? new Team(team);
+                Team = typedTeam ?? new Team(team);
             }
         }
 
@@ -76,10 +67,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             // If this throws, we'll catch it upstream
             ConnectionInfo savedConnectionInfo = JsonConvert.DeserializeObject<ConnectionInfo>(configString);
-            ConcreteServerUri = savedConnectionInfo.ConcreteServerUri;
-            ConcreteProject = savedConnectionInfo.ConcreteProject;
-            ConcreteTeam = savedConnectionInfo.ConcreteTeam;
-            ConcreteLastUsage = savedConnectionInfo.ConcreteLastUsage;
+            ServerUri = savedConnectionInfo.ServerUri;
+            Project = savedConnectionInfo.Project;
+            Team = savedConnectionInfo.Team;
+            LastUsage = savedConnectionInfo.LastUsage;
         }
 
         /// <summary>
@@ -124,7 +115,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public void SetLastUsage(DateTime? updateTime = null)
         {
             DateTime newTime = updateTime.HasValue ? updateTime.Value.ToUniversalTime() : DefaultTime;
-            ConcreteLastUsage = newTime;
+            LastUsage = newTime;
         }
 
         public bool Equals(ConnectionInfo other)
