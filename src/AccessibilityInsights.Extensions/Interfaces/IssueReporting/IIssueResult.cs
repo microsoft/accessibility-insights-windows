@@ -9,8 +9,14 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
     /// </summary>
     public interface IIssueResult
     {
+        /// <summary>
+        /// The Display text for the filed issue
+        /// </summary>
         string DisplayText { get; }
 
+        /// <summary>
+        /// The link for the filed issue
+        /// </summary>
         Uri IssueLink { get; }
     }
 }
