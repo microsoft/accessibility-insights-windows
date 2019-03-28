@@ -17,7 +17,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         private bool IsControlElem;
 
         /// <summary>
-        /// Value for custom IsContentElem
+        /// Value for custom IsContentElement
         /// </summary>
         private bool IsContentElem;
 
