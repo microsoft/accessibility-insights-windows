@@ -420,7 +420,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
         /// <summary>
         /// Returns a dictionary that maps from IssueField names to string values that should be used
-        /// to file a issue. Substitutions can be defined in a separate json file.
+        /// to file an issue. Substitutions can be defined in a separate json file.
         /// </summary>
         /// <param name="issueFieldPairs">The collection of IssueField/string pairs to apply to the template</param>
         /// <param name="templateName">The name of the template to use</param>
