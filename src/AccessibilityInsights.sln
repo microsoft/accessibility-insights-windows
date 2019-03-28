@@ -143,6 +143,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHub", "AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj", "{F421AAFD-D85F-49B8-B95E-CA17718C38DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsTests", "AccessibilityInsights.ExtensionsTests\ExtensionsTests.csproj", "{BE9F7E62-D9D6-4FC7-B449-820899498621}"
+	ProjectSection(ProjectDependencies) = postProject
+		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubUnitTests", "AccessibilityInsights.Extensions.GitHubUnitTests\Extensions.GitHubUnitTests.csproj", "{8CCBEC10-F28B-4330-A351-0B4B900F1169}"
 EndProject
