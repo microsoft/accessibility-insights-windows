@@ -89,7 +89,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             DualFabricIconControl sender = o as DualFabricIconControl;
 
             if (sender != null)
-
             {
                 sender.fabicnFront.Foreground = sender.Foreground;
             }
