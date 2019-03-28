@@ -61,9 +61,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
             if (sender != null)
             {
-                
                 sender.fabicnFront.FontSize = sender.IconSizeFront;
-                
             }
         }
 
