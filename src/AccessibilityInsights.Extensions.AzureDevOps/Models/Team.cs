@@ -10,11 +10,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
     /// </summary>
     public class Team : AzureDevOpsEntity
     {
-        // Concrete* fields exists for JSON serialization (don't serialize the public counterparts)
-        public TeamProject ConcreteParentProject { get; set; }
-
-        [JsonIgnore]
-        public TeamProject ParentProject => ConcreteParentProject;
+        public TeamProject ParentProject { get; set; }
 
         /// <summary>
         /// Default ctor -- used exclusively for JSON serialization
@@ -26,7 +22,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             if (parent != null)
             {
                 TeamProject typedParent = parent as TeamProject;
-                ConcreteParentProject = typedParent ?? new TeamProject(parent);
+                ParentProject = typedParent ?? new TeamProject(parent);
             }
         }
 

@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
     [TestClass]
     public class ConnectionCacheTests
     {
-        private const string KnownConfigString = @"[{""ConcreteServerUri"":""http://fake.fake/1"",""ConcreteProject"":{""Name"":""Team1"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d1""},""ConcreteTeam"":null,""ConcreteLastUsage"":""2000-01-02T03:04:05.0060001Z""},{""ConcreteServerUri"":""http://fake.fake/2"",""ConcreteProject"":{""Name"":""Team2"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d2""},""ConcreteTeam"":null,""ConcreteLastUsage"":""2000-01-02T03:04:05.0060002Z""}]";
+        private const string KnownConfigString = @"[{""ServerUri"":""http://fake.fake/1"",""Project"":{""Name"":""Team1"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d1""},""Team"":null,""LastUsage"":""2000-01-02T03:04:05.0060001Z""},{""ServerUri"":""http://fake.fake/2"",""Project"":{""Name"":""Team2"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d2""},""Team"":null,""LastUsage"":""2000-01-02T03:04:05.0060002Z""}]";
 
         private static readonly DateTime BaseDateTime = new DateTime(2000, 1, 2, 3, 4, 5, 6, DateTimeKind.Utc);
 
