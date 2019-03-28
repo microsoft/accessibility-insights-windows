@@ -62,7 +62,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.RuleSelection.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
