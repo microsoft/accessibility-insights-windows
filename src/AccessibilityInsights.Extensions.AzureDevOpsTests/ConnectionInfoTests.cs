@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
     [TestClass]
     public class ConnectionInfoTests
     {
-        private const string KnownConfigString = @"{""ConcreteServerUri"":""https://www.bing.com"",""ConcreteProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""ConcreteTeam"":{""ConcreteParentProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Name"":""My Team"",""Id"":""4a56a1a0-b99f-49ca-986d-9c6d7fa6137d""},""ConcreteLastUsage"":""2018-12-23T16:19:30Z""}";
+        private const string KnownConfigString = @"{""ServerUri"":""https://www.bing.com"",""Project"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Team"":{""ParentProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Name"":""My Team"",""Id"":""4a56a1a0-b99f-49ca-986d-9c6d7fa6137d""},""LastUsage"":""2018-12-23T16:19:30Z""}";
         private static readonly Guid TeamGuid = new Guid("{4A56A1A0-B99F-49CA-986D-9C6D7FA6137D}");
         private static readonly Guid ProjectGuid = new Guid("{71B41AF3-4C55-44EB-A1D4-3B0973C07EA3}");
         private static readonly TeamProject TestProject = new TeamProject("My Project", ProjectGuid);
