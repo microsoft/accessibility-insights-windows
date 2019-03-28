@@ -38,7 +38,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(Confidence.High, result.ConfidenceValue());
         }
 
-        // TODO: we will revisit this test case after issue#231 has been fixed
+        // [TestMethod] TODO: we will revisit this test case after issue#231 has been fixed
         [Timeout(2000)]
         public void FutureSimplePurpleAndWhiteButton()
         {
@@ -52,7 +52,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
             Assert.AreEqual(Confidence.Low, result.ConfidenceValue());
         }
 
-        // TODO: we will revisit this test case after issue#231 has been fixed
+        // [TestMethod] TODO: we will revisit this test case after issue#231 has been fixed
         [Timeout(2000)]
         public void FutureSimpleBlueAndWhiteText()
         {
