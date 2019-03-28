@@ -151,6 +151,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubUnitTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUxComponents", "AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj", "{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestSharedLibrary", "AccessibilityInsights.UnitTestSharedLibrary\UnitTestSharedLibrary.csproj", "{01DC8363-73BC-47FA-BD23-12AC45618E1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
