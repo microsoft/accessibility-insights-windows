@@ -73,7 +73,8 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             beakerIconCollection = new Dictionary<double, Bitmap>();
             hoveredBeakerIconCollection = new Dictionary<double, Bitmap>();
 
-            RegisterWindowClass();
+            var res = RegisterWindowClass();
+            
             this.hWnd = CreateWindow(this.HiLighterRect);
             this.IsVisible = true;
             Holder.Add(this.hWnd, this);
@@ -190,7 +191,6 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             wcex.cbWndExtra = 0;
 
             wcex.hIconSm = IntPtr.Zero;
-
             return NativeMethods.RegisterClassEx(ref wcex);
         }
 
@@ -207,13 +207,15 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         public void SetLocation(Rectangle rc)
         {
             this.HiLighterRect = rc;
-            NativeMethods.SetWindowPos(hWnd,
+            var res = NativeMethods.SetWindowPos(hWnd,
                 (IntPtr)Win32Constants.HWND_TOPMOST,
                 rc.Right - Width - BorderMargin,
                 rc.Top - BorderMargin,
                 Width,
                 Height,
                 Win32Constants.SWP_NOACTIVATE);
+
+            System.Diagnostics.Debug.WriteLine(NativeMethods.GetLastError());
         }
 
         void UnRegisterWindowClass()
