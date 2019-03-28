@@ -37,10 +37,10 @@ namespace AccessibilityInsights.Rules.Library
             //
             // 2 exceptions related with Menubar "System" and Menu item "System". 
             // These two are excluded since Windows 10 sets the bounding rectangles of these as null by default.
-            // WPF Scrollbar page up and page down buttons may sometimes
-            // legitimately be null or all zeros when the thumb control is at the very top or very bottom.
+            // WPF Scrollbar page buttons may sometimes
+            // legitimately be null or all zeros when the thumb control is at the maximum or minimum value.
             return IsNotOffScreen
-                & ~WPFScrollBarPageUpOrPageDownButtons
+                & ~WPFScrollBarPageButtons
                 & ~sysmenubar
                 & ~sysmenuitem;
         }

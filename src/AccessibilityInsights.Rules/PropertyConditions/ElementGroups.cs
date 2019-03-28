@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Rules.PropertyConditions
         public static Condition EmptyContainer = CreateEmptyContainerCondition();
         public static Condition ExpectedToBeFocusable = CreateExpectedToBeFocusableCondition();
         public static Condition ParentWPFDataItem = CreateParentWPFDataItemCondition();
-        public static Condition WPFScrollBarPageUpOrPageDownButtons = CreateWPFScrollBarPageUpOrPageDownButtons();
+        public static Condition WPFScrollBarPageButtons = CreateWPFScrollBarPageButtons();
         public static Condition NameRequired = CreateNameRequiredCondition();
         public static Condition NameOptional = CreateNameOptionalCondition();
         public static Condition IsControlElementTrueRequired = CreateIsControlRequiredCondition();
@@ -145,13 +145,15 @@ namespace AccessibilityInsights.Rules.PropertyConditions
             return Condition.Create(IsParentWPFDataItem);
         }
 
-        private static Condition CreateWPFScrollBarPageUpOrPageDownButtons()
+        private static Condition CreateWPFScrollBarPageButtons()
         {
             return Button
                 & Parent(ScrollBar)
                 & Framework.Is(AccessibilityInsights.Core.Enums.Framework.WPF)
                 & (AutomationID.Is("PageUp")
-                | AutomationID.Is("PageDown"));
+                | AutomationID.Is("PageDown")
+                | AutomationID.Is("PageLeft")
+                | AutomationID.Is("PageRight"));
         }
 
         private static bool IsParentWPFDataItem(IA11yElement e)
