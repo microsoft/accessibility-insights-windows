@@ -21,7 +21,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// </summary>
     public static class FileIssueHelpers
     {
-        private static AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
 
         /// <summary>
         /// Opens issue filing window with prepopulated data
