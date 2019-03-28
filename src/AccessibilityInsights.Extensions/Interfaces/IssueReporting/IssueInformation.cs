@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
     public class IssueInformation
     {
         /// <summary>
-        /// The title of the window where a Issue is located
+        /// The title of the window where an Issue is located
         /// </summary>
         public string WindowTitle { get; }
 
