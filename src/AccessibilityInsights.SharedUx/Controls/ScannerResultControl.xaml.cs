@@ -321,7 +321,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                     }
                     finally
                     {
-                        if(issueInformation != null)
+                        if(issueInformation != null && File.Exists(issueInformation.TestFileName))
                         {
                             File.Delete(issueInformation.TestFileName);
                         }

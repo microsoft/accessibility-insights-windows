@@ -12,15 +12,15 @@ namespace AccessibilityInsights.Extensions.GitHub
     public static class LinkValidator
     {
         private static readonly string GitHubLink = Properties.Resources.GitHubLink;
-        private static readonly string AlphaNumricPattern = Properties.Resources.AlphaNumricPattern;
+        private static readonly string AlphaNumericPattern = Properties.Resources.AlphaNumricPattern;
 
         public static bool IsValidGitHubRepoLink(string Link)
         {
             Link = Link.Replace(@"\", "/").Trim(' ').TrimEnd('/');
-            string UserNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumricPattern);
-            string RepoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumricPattern);
-            string LinkPatttern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, UserNamePattern, RepoNamePattern);
-            Regex gitHubRepoLinkRegex = new Regex(LinkPatttern, RegexOptions.IgnoreCase);
+            string UserNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumericPattern);
+            string RepoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumericPattern);
+            string LinkPattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, UserNamePattern, RepoNamePattern);
+            Regex gitHubRepoLinkRegex = new Regex(LinkPattern, RegexOptions.IgnoreCase);
             if (!gitHubRepoLinkRegex.IsMatch(Link))
             {
                 return false;
