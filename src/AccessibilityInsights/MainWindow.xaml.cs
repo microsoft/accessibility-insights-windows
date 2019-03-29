@@ -8,6 +8,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
@@ -426,8 +427,8 @@ namespace AccessibilityInsights
                 HandleExitMode();
                 // remove SelectAction
                 SelectAction.ClearDefaultInstance();
-                HighlightAction.ClearAllHighlighters();
-                HighlightImageAction.ClearDefaultInstance();
+                HollowHighlightDriver.ClearAllHighlighters();
+                ImageOverlayDriver.ClearDefaultInstance();
             }
             catch (Exception ex)
             {
@@ -831,7 +832,7 @@ namespace AccessibilityInsights
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
                 Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
             }
         }
 

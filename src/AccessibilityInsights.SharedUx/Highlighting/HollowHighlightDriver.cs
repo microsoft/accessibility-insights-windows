@@ -1,23 +1,24 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.DesktopUI.Highlighters;
+using AccessibilityInsights.SharedUx.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Class HighlightAction
+    /// Wraps and provides access to highlight capabilities that are 'hollow', e.g.
+    /// hovering over the resulting rectangle still allows clicking through to the 
+    /// underlying element
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
-    public class HighlightAction:IDisposable
+    public class HollowHighlightDriver:IDisposable
     {
         readonly Highlighter Highlighter = null;
 
@@ -34,7 +35,7 @@ namespace AccessibilityInsights.Actions
         /// <param name="eId"></param>
         public void SetElement(Guid ecId, int eId)
         {
-            SetElementInternal(DataManager.GetDefaultInstance().GetA11yElement(ecId, eId));
+            SetElementInternal(GetDataAction.GetA11yElementInDataContext(ecId, eId));
         }
 
         /// <summary>
@@ -143,7 +144,7 @@ namespace AccessibilityInsights.Actions
         /// private constructor
         /// </summary>
         /// <param name="hasSnapshotButton"></param>
-        private HighlightAction(bool hasSnapshot)
+        private HollowHighlightDriver(bool hasSnapshot)
         {
             this.Highlighter = new Highlighter(HighlighterColor.DefaultBrush, hasSnapshot);
         }
@@ -166,13 +167,13 @@ namespace AccessibilityInsights.Actions
         #endregion
 
         #region static methods
-        static Dictionary<string, HighlightAction> sHighlightActions = new Dictionary<string, HighlightAction>();
+        static Dictionary<string, HollowHighlightDriver> sHighlightActions = new Dictionary<string, HollowHighlightDriver>();
 
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
         /// <returns></returns>
-        public static HighlightAction GetDefaultInstance()
+        public static HollowHighlightDriver GetDefaultInstance()
         {
             return GetInstance(HighlighterType.Default);
         }
@@ -182,7 +183,7 @@ namespace AccessibilityInsights.Actions
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static HighlightAction GetInstance(HighlighterType type)
+        public static HollowHighlightDriver GetInstance(HighlighterType type)
         {
             return GetInstance(type.ToString());
         }
@@ -192,9 +193,9 @@ namespace AccessibilityInsights.Actions
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static HighlightAction GetInstance(string name)
+        public static HollowHighlightDriver GetInstance(string name)
         {
-            HighlightAction ha = null;
+            HollowHighlightDriver ha = null;
 
             if(sHighlightActions.ContainsKey(name))
             {
@@ -202,7 +203,7 @@ namespace AccessibilityInsights.Actions
             }
             else
             {
-                ha = new HighlightAction(name == HighlighterType.Default.ToString())
+                ha = new HollowHighlightDriver(name == HighlighterType.Default.ToString())
                 {
                     HighlighterMode = HighlighterMode.Highlighter,
                 };

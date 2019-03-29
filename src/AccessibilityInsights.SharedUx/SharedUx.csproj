@@ -282,6 +282,7 @@
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
+    <Compile Include="Enums\HighlighterType.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
     <Compile Include="FileIssue\FileIssueAction.cs" />
     <Compile Include="FileIssue\IssueReporterManager.cs" />
@@ -305,6 +306,9 @@
     <Compile Include="Enums\ContrastAnalysisType.cs" />
     <Compile Include="Enums\InspectTabType.cs" />
     <Compile Include="Enums\InspectTabMode.cs" />
+    <Compile Include="Highlighting\HollowHighlightDriver.cs" />
+    <Compile Include="Highlighting\ImageOverlayDriver.cs" />
+    <Compile Include="Highlighting\ClearOverlayDriver.cs" />
     <Compile Include="Interfaces\IHierarchyAction.cs" />
     <Compile Include="Controls\ColorChooser.xaml.cs">
       <DependentUpon>ColorChooser.xaml</DependentUpon>

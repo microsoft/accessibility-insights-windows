@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.Win32;
 using System;
@@ -285,7 +286,7 @@ namespace AccessibilityInsights
             {
                 this.CurrentView = CCAView.Manual;
                 DisableElementSelector();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
             }
         }

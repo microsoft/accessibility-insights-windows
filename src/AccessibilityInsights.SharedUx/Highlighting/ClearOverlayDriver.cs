@@ -1,27 +1,24 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using AccessibilityInsights.DesktopUI.Highlighters;
-using System.Windows.Input;
-using System.Windows.Media;
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.DesktopUI.Highlighters;
+using AccessibilityInsights.Win32;
+using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using UIAutomationClient;
 using System.Windows.Controls;
-using AccessibilityInsights.Win32;
+using System.Windows.Input;
+using System.Windows.Media;
+using UIAutomationClient;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Action to get an OverlayHighlighter
     /// Since OverlayHighlighter is used for Tabstop which doesn't record data into Any context. 
     /// it is using element to set highlighting information. 
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
-    public class HighlightOverlayAction:IDisposable
+    public class ClearOverlayDriver:IDisposable
     {
         /// <summary>
         /// OverlayHighlighter to use
@@ -31,7 +28,7 @@ namespace AccessibilityInsights.Actions
         /// <summary>
         /// Constructor
         /// </summary>
-        private HighlightOverlayAction()
+        private ClearOverlayDriver()
         {
             Highlighter = new OverlayHighlighter();
         }
@@ -168,17 +165,17 @@ namespace AccessibilityInsights.Actions
         }
 
         #region static members
-        private static HighlightOverlayAction defaultHighlightOverlayAction;
+        private static ClearOverlayDriver defaultHighlightOverlayAction;
 
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
         /// <returns></returns>
-        public static HighlightOverlayAction GetDefaultInstance()
+        public static ClearOverlayDriver GetDefaultInstance()
         {
             if (defaultHighlightOverlayAction == null)
             {
-                defaultHighlightOverlayAction = new HighlightOverlayAction();
+                defaultHighlightOverlayAction = new ClearOverlayDriver();
             }
 
             return defaultHighlightOverlayAction;

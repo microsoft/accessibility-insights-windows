@@ -22,15 +22,6 @@ namespace AccessibilityInsights.Actions.Enums
     }
 
     /// <summary>
-    /// Types to indicate highlighters
-    /// </summary>
-    public enum HighlighterType
-    {
-        Default,
-        Selected
-    }
-
-    /// <summary>
     /// Indicate the scope of selection
     /// </summary>
     public enum SelectionScope

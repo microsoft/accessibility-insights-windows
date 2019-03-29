@@ -5,6 +5,7 @@ using AccessibilityInsights.Misc;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {
@@ -45,7 +46,7 @@ namespace AccessibilityInsights
                 PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
 
                 // make sure that highlighter is cleared for new selection. 
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
 
                 SetWindowForAutomaticMode();
             }

@@ -1,24 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
-using AccessibilityInsights.Enums;
+using AccessibilityInsights.Actions.Sarif;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Settings;
 using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.Desktop.Utility;
+using AccessibilityInsights.Enums;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 using System.Windows;
 using System.Windows.Automation;
-using AccessibilityInsights.Actions.Sarif;
 
 namespace AccessibilityInsights
 {
@@ -138,8 +136,8 @@ namespace AccessibilityInsights
             }
 
             // clear selected element highliter
-            HighlightAction.GetInstance(AccessibilityInsights.Actions.Enums.HighlighterType.Selected).Clear();
-            HighlightImageAction.ClearDefaultInstance();
+            HollowHighlightDriver.GetInstance(HighlighterType.Selected).Clear();
+            ImageOverlayDriver.ClearDefaultInstance();
 
             // this can be disabled if previous action was loading old data format. 
             // bring it back to enabled state. 
@@ -150,10 +148,10 @@ namespace AccessibilityInsights
 
             // turn highlighter on once you get back to selection mode. 
             SetHighlightBtnState(true);
-            var ha = HighlightAction.GetDefaultInstance();
-            ha.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
-            ha.IsEnabled = true;
-            ha.SetElement(null);
+            var highlightDriver = HollowHighlightDriver.GetDefaultInstance();
+            highlightDriver.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
+            highlightDriver.IsEnabled = true;
+            highlightDriver.SetElement(null);
 
             /// make sure that all Mode UIs are clean since new selection will be done. 
             CleanUpAllModeUIs();
@@ -248,7 +246,7 @@ namespace AccessibilityInsights
                     { TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString() }
                 });
             }
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
             UpdateMainWindowUI();
         }
 
@@ -459,8 +457,8 @@ namespace AccessibilityInsights
         internal void HandleBackToLiveFromEventPage()
         {
             StartInspectMode(InspectView.Live);
-            HighlightAction.GetInstance(AccessibilityInsights.Actions.Enums.HighlighterType.Selected).Clear();
-            HighlightAction.GetDefaultInstance().IsEnabled = ConfigurationManager.GetDefaultInstance().AppConfig.IsHighlighterOn;
+            HollowHighlightDriver.GetInstance(HighlighterType.Selected).Clear();
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = ConfigurationManager.GetDefaultInstance().AppConfig.IsHighlighterOn;
 
             UpdateMainWindowUI();
         }
@@ -570,7 +568,7 @@ namespace AccessibilityInsights
             this.Topmost = configManager.AppConfig.AlwaysOnTop;
             this.ctrlTestMode.ctrlTabStop.SetHotkeyText(configManager.AppConfig.HotKeyForRecord);
 
-            HighlightAction.GetDefaultInstance().HighlighterMode = configManager.AppConfig.HighlighterMode;
+            HollowHighlightDriver.GetDefaultInstance().HighlighterMode = configManager.AppConfig.HighlighterMode;
 
             configManager.TestConfig = TestSetting.GenerateSuiteConfiguration(RuleSelection.SuiteConfigurationType.Default);
 

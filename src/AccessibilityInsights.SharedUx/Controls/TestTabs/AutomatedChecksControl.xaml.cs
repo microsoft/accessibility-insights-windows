@@ -8,6 +8,7 @@ using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -111,7 +112,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 Configuration.IsHighlighterOn = value;
 
-                var ha = HighlightImageAction.GetDefaultInstance();
+                var ha = ImageOverlayDriver.GetDefaultInstance();
 
                 if (value)
                 {
@@ -183,13 +184,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         public static void Hide()
         {
-            HighlightImageAction.GetDefaultInstance().ClearElements();
+            ImageOverlayDriver.GetDefaultInstance().ClearElements();
         }
 
         /// Automated Checks mode is shown
         public void Show()
         {
-            var ha = HighlightImageAction.GetDefaultInstance();
+            var ha = ImageOverlayDriver.GetDefaultInstance();
             // set handler here. it will make sure that highliter button is shown and working. 
             ha.SetHighlighterButtonClickHandler(TBElem_Click);
 
@@ -301,7 +302,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             try
             {
                 // set handler here. it will make sure that highliter button is shown and working. 
-                HighlightImageAction.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
+                ImageOverlayDriver.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
@@ -335,7 +336,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.chbxSelectAll.IsChecked = false;
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
             {
@@ -345,7 +346,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (list != null)
                 {
-                    var ha = HighlightImageAction.GetDefaultInstance();
+                    var ha = ImageOverlayDriver.GetDefaultInstance();
                     ha.SetImageElement(ElementContext.Id);
                     if (HighlightVisibility)
                     {
@@ -365,7 +366,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         public void ClearUI()
         {
-            HighlightImageAction.ClearDefaultInstance();
+            ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
             this.lvResults.ItemsSource = null;
             this.tbGlimpse.Text = "Target:";
@@ -657,13 +658,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (check && !SelectedItems.Contains(itm))
                 {
                     SelectedItems.Add(itm);
-                    HighlightImageAction.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
 
                 else if (!check && SelectedItems.Contains(itm))
                 {
                     SelectedItems.Remove(itm);
-                    HighlightImageAction.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
                 var lvi = lvResults.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
                 if (lvi != null)
@@ -709,7 +710,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             // ElementContext can be null when app is closed.
             if (this.ElementContext != null)
             {
-                HighlightImageAction.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
+                ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
             }
 
             SelectedItems.Remove(srvm);
@@ -801,7 +802,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     SelectedItems.Add(itm);
                     UpdateSelectAll();
-                    HighlightImageAction.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
                 var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
                 var dc = cb.DataContext as CollectionViewGroup;

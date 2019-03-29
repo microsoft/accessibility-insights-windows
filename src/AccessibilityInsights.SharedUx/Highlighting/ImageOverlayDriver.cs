@@ -1,18 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Actions;
 using AccessibilityInsights.DesktopUI.Highlighters;
 using System;
 using System.Windows.Input;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Attributes;
 
-namespace AccessibilityInsights.Actions
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Action to get an ImageHighlighter
+    /// Wraps and provides access to highlight capabilities for
+    /// elements over an image
     /// </summary>
-    [InteractionLevel(UxInteractionLevel.OptionalUxInteraction)]
-    public class HighlightImageAction:IDisposable
+    public class ImageOverlayDriver:IDisposable
     {
         /// <summary>
         /// imageHighlighter to use
@@ -22,7 +21,7 @@ namespace AccessibilityInsights.Actions
         /// <summary>
         /// Constructor
         /// </summary>
-        private HighlightImageAction()
+        private ImageOverlayDriver()
         {
             Highlighter = new ImageHighlighter(SetHighlightBtnState);
         }
@@ -63,7 +62,7 @@ namespace AccessibilityInsights.Actions
         /// <param name="txt">text to show in top right corner</param>
         public void SetSingleElement(Guid ecId, int eId, string txt = null)
         {
-            var e = DataManager.GetDefaultInstance().GetA11yElement(ecId, eId);
+            var e = GetDataAction.GetA11yElementInDataContext(ecId, eId);
 
             Highlighter.SetSingleElement(e, txt);
         }
@@ -136,17 +135,17 @@ namespace AccessibilityInsights.Actions
         /// </summary>
         public static Action<bool> SetHighlightBtnState { get; set; }
 
-        static HighlightImageAction defaultHighlightImageAction;
+        static ImageOverlayDriver defaultHighlightImageAction;
 
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
         /// <returns></returns>
-        public static HighlightImageAction GetDefaultInstance()
+        public static ImageOverlayDriver GetDefaultInstance()
         {
             if (defaultHighlightImageAction == null)
             {
-                defaultHighlightImageAction = new HighlightImageAction();
+                defaultHighlightImageAction = new ImageOverlayDriver();
             }
 
             return defaultHighlightImageAction;

@@ -18,6 +18,7 @@ using System.Windows.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.Modes
 {
@@ -187,7 +188,7 @@ namespace AccessibilityInsights.Modes
         private void UpdateUI(A11yElement element)
         {
             this.ctrlTabs.SetElement(element, false);
-            HighlightAction.GetDefaultInstance().SetElement(element);
+            HollowHighlightDriver.GetDefaultInstance().SetElement(element);
         }
 
 
@@ -287,8 +288,8 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         public bool ToggleHighlighter()
         {
-            var enabled = !HighlightAction.GetDefaultInstance().IsEnabled;
-            HighlightAction.GetDefaultInstance().IsEnabled = enabled;
+            var enabled = !HollowHighlightDriver.GetDefaultInstance().IsEnabled;
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = enabled;
             return enabled;
         }
 

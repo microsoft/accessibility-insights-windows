@@ -19,6 +19,7 @@ using System.Windows.Input;
 using System.Globalization;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.Modes
 {
@@ -126,7 +127,7 @@ namespace AccessibilityInsights.Modes
                 if (this.SelectedInHierarchyElement != null && MainWin.CurrentPage == AppPage.Inspect && (InspectView)MainWin.CurrentView == InspectView.Live)
                 {
                     var e = GetDataAction.GetA11yElementWithLiveData(this.SelectedInHierarchyElement.Item1, this.SelectedInHierarchyElement.Item2);
-                    HighlightAction.GetDefaultInstance().SetElement(this.SelectedInHierarchyElement.Item1, this.SelectedInHierarchyElement.Item2);
+                    HollowHighlightDriver.GetDefaultInstance().SetElement(this.SelectedInHierarchyElement.Item1, this.SelectedInHierarchyElement.Item2);
                     UpdateElementInfoUI(e);
                 }
             }
@@ -152,7 +153,7 @@ namespace AccessibilityInsights.Modes
         {
             Clear();
             SelectAction.GetDefaultInstance().ClearSelectedContext();
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
         /// <summary>
@@ -411,8 +412,8 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         public bool ToggleHighlighter()
         {
-            var enabled = !HighlightAction.GetDefaultInstance().IsEnabled;
-            HighlightAction.GetDefaultInstance().IsEnabled = enabled;
+            var enabled = !HollowHighlightDriver.GetDefaultInstance().IsEnabled;
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = enabled;
             return enabled;
         }
 
