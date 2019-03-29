@@ -168,7 +168,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void onbuttonEventRecorderClicked(object sender, RoutedEventArgs e)
         {
             ToggleRecording();
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
         /// <summary>
@@ -282,7 +282,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                         if (message.Element != null)
                         {
-                            HighlightAction.GetDefaultInstance().SetElement(message.Element);
+                            HollowHighlightDriver.GetDefaultInstance().SetElement(message.Element);
                         }
 
                         FireAsyncContentLoadedEventAtNewRecordAdded();

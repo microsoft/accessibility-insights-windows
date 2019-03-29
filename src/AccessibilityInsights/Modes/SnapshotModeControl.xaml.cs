@@ -162,7 +162,7 @@ namespace AccessibilityInsights.Modes
                         {
                             Application.Current.MainWindow.WindowStyle = WindowStyle.ToolWindow;
                             Application.Current.MainWindow.Visibility = Visibility.Hidden;
-                            HighlightAction.GetDefaultInstance().IsEnabled = false;
+                            HollowHighlightDriver.GetDefaultInstance().IsEnabled = false;
 
                             this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                             {
@@ -171,7 +171,7 @@ namespace AccessibilityInsights.Modes
                                 Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                             })).Wait();
                         }
-                        var ha = HighlightImageAction.GetDefaultInstance();
+                        var ha = ImageOverlayDriver.GetDefaultInstance();
 
                         ha.SetImageElement(ecId);
                         //disable button on highlighter. 
@@ -282,7 +282,7 @@ namespace AccessibilityInsights.Modes
         {
             this.ctrlTabs.SetElement(e, false, this.ElementContext.Id);
             
-            HighlightImageAction.GetDefaultInstance().SetSingleElement(this.ElementContext.Id, e.UniqueId);
+            ImageOverlayDriver.GetDefaultInstance().SetSingleElement(this.ElementContext.Id, e.UniqueId);
         }
 
         /// <summary>
@@ -291,7 +291,7 @@ namespace AccessibilityInsights.Modes
         public void HideControl()
         {
             UpdateConfigWithSize();
-            HighlightImageAction.GetDefaultInstance().ClearElements();
+            ImageOverlayDriver.GetDefaultInstance().ClearElements();
             this.Visibility = Visibility.Collapsed;
         }
 
@@ -303,7 +303,7 @@ namespace AccessibilityInsights.Modes
             AdjustMainWindowSize();
             if (Configuration.IsHighlighterOn)
             {
-                HighlightImageAction.GetDefaultInstance().Show();
+                ImageOverlayDriver.GetDefaultInstance().Show();
             }
             this.Visibility = Visibility.Visible;
             Dispatcher.InvokeAsync(() =>
@@ -337,7 +337,7 @@ namespace AccessibilityInsights.Modes
         public void Clear()
         {
             this.ElementContext = null;
-            HighlightImageAction.GetDefaultInstance().Clear();
+            ImageOverlayDriver.GetDefaultInstance().Clear();
             this.ctrlHierarchy.Clear();
             this.ctrlTabs.Clear();
         }
@@ -446,7 +446,7 @@ namespace AccessibilityInsights.Modes
 
             if (newData)
             {
-                HighlightImageAction.ClearDefaultInstance();
+                ImageOverlayDriver.ClearDefaultInstance();
                 var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId().Value;
                 SetDataAction.ReleaseDataContext(ecId);
 #pragma warning disable CS4014
@@ -500,15 +500,15 @@ namespace AccessibilityInsights.Modes
         /// <returns>Updated highlighter visibility</returns>
         public bool ToggleHighlighter()
         {
-            var visible = !HighlightImageAction.GetDefaultInstance().IsVisible();
+            var visible = !ImageOverlayDriver.GetDefaultInstance().IsVisible();
             if (visible)
             {
-                HighlightImageAction.GetDefaultInstance().Show();
-                HighlightImageAction.GetDefaultInstance().SetSingleElement(this.ElementContext.Id, this.ctrlHierarchy.SelectedInHierarchyElement.UniqueId);
+                ImageOverlayDriver.GetDefaultInstance().Show();
+                ImageOverlayDriver.GetDefaultInstance().SetSingleElement(this.ElementContext.Id, this.ctrlHierarchy.SelectedInHierarchyElement.UniqueId);
             }
             else
             {
-                HighlightImageAction.GetDefaultInstance().Hide();
+                ImageOverlayDriver.GetDefaultInstance().Hide();
             }
             return visible;
         }

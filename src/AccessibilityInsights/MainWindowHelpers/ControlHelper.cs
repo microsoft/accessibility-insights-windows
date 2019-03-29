@@ -286,7 +286,7 @@ namespace AccessibilityInsights
             {
                 this.CurrentView = CCAView.Manual;
                 DisableElementSelector();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
             }
         }

@@ -27,7 +27,7 @@ namespace AccessibilityInsights
             {
                 if (SelectAction.GetDefaultInstance().IsPaused)
                 {
-                    HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
+                    ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                 }
                 HandlePauseButtonToggle(true);
             }

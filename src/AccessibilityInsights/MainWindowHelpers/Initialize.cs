@@ -41,8 +41,8 @@ namespace AccessibilityInsights
 
             this.hWnd = new WindowInteropHelper(this).Handle;
 
-            HighlightImageAction.SetHighlightBtnState = SetHighlightBtnState;
-            HighlightAction.GetDefaultInstance().HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
+            ImageOverlayDriver.SetHighlightBtnState = SetHighlightBtnState;
+            HollowHighlightDriver.GetDefaultInstance().HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
 
             InitHotKeys();
             InitSelectActionMode();
@@ -124,7 +124,7 @@ namespace AccessibilityInsights
         private void InitHighlighter()
         {
             // set the beaker callback.
-            HighlightAction.GetDefaultInstance().SetCallBackForSnapshot(new Action(() =>
+            HollowHighlightDriver.GetDefaultInstance().SetCallBackForSnapshot(new Action(() =>
             {
                 HandleSnapshotRequest(TestRequestSources.Beaker);
             }));

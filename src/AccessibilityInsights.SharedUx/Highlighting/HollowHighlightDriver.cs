@@ -14,9 +14,11 @@ using System.Text;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Class HighlightAction
+    /// Wraps and provides access to highlight capabilities that are 'hollow', e.g.
+    /// hovering over the resulting rectangle still allows clicking through to the 
+    /// underlying element
     /// </summary>
-    public class HighlightAction:IDisposable
+    public class HollowHighlightDriver:IDisposable
     {
         readonly Highlighter Highlighter = null;
 
@@ -142,7 +144,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// private constructor
         /// </summary>
         /// <param name="hasSnapshotButton"></param>
-        private HighlightAction(bool hasSnapshot)
+        private HollowHighlightDriver(bool hasSnapshot)
         {
             this.Highlighter = new Highlighter(HighlighterColor.DefaultBrush, hasSnapshot);
         }
@@ -165,13 +167,13 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         #endregion
 
         #region static methods
-        static Dictionary<string, HighlightAction> sHighlightActions = new Dictionary<string, HighlightAction>();
+        static Dictionary<string, HollowHighlightDriver> sHighlightActions = new Dictionary<string, HollowHighlightDriver>();
 
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
         /// <returns></returns>
-        public static HighlightAction GetDefaultInstance()
+        public static HollowHighlightDriver GetDefaultInstance()
         {
             return GetInstance(HighlighterType.Default);
         }
@@ -181,7 +183,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static HighlightAction GetInstance(HighlighterType type)
+        public static HollowHighlightDriver GetInstance(HighlighterType type)
         {
             return GetInstance(type.ToString());
         }
@@ -191,9 +193,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
-        public static HighlightAction GetInstance(string name)
+        public static HollowHighlightDriver GetInstance(string name)
         {
-            HighlightAction ha = null;
+            HollowHighlightDriver ha = null;
 
             if(sHighlightActions.ContainsKey(name))
             {
@@ -201,7 +203,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
             else
             {
-                ha = new HighlightAction(name == HighlighterType.Default.ToString())
+                ha = new HollowHighlightDriver(name == HighlighterType.Default.ToString())
                 {
                     HighlighterMode = HighlighterMode.Highlighter,
                 };

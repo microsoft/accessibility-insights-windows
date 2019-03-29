@@ -57,15 +57,15 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
             set
             {
-                var ha = HighlightOverlayAction.GetDefaultInstance();
-                var sha = HighlightAction.GetDefaultInstance();
+                var ha = ClearOverlayDriver.GetDefaultInstance();
+                var sha = HollowHighlightDriver.GetDefaultInstance();
 
                 if (value)
                 {
                     if(sha.IsEnabled)
                     {
                         ha.Show();
-                        HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
+                        ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                         sha.HighlighterMode = HighlighterMode.Highlighter;
                     }
                     Application.Current.MainWindow.Activate();
@@ -102,10 +102,10 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             lock (this)
             {
-                if (HighlightAction.GetDefaultInstance().IsEnabled)
+                if (HollowHighlightDriver.GetDefaultInstance().IsEnabled)
                 {
-                    var ha = HighlightOverlayAction.GetDefaultInstance();
-                    HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
+                    var ha = ClearOverlayDriver.GetDefaultInstance();
+                    ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                     ha.MarkElement(ele);
                 }
             }
@@ -123,7 +123,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
                 ElementContext ec = GetDataAction.GetElementContext(ecId.Value);
                 this.ElementContext = ec;
                 var brush = Application.Current.Resources["HLTextBrush"] as SolidColorBrush;
-                var ha = HighlightOverlayAction.GetDefaultInstance();
+                var ha = ClearOverlayDriver.GetDefaultInstance();
                 ha.SetElement(ElementContext.Element, brush, null, 0);
                 if (this.IsVisible && HighlightVisibility)
                 {

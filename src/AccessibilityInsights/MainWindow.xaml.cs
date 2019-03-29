@@ -425,8 +425,8 @@ namespace AccessibilityInsights
                 HandleExitMode();
                 // remove SelectAction
                 SelectAction.ClearDefaultInstance();
-                HighlightAction.ClearAllHighlighters();
-                HighlightImageAction.ClearDefaultInstance();
+                HollowHighlightDriver.ClearAllHighlighters();
+                ImageOverlayDriver.ClearDefaultInstance();
             }
             catch (Exception ex)
             {
@@ -795,7 +795,7 @@ namespace AccessibilityInsights
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
                 Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
             }
         }
 

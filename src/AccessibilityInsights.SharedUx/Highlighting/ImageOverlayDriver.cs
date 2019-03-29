@@ -8,9 +8,10 @@ using System.Windows.Input;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Action to get an ImageHighlighter
+    /// Wraps and provides access to highlight capabilities for
+    /// elements over an image
     /// </summary>
-    public class HighlightImageAction:IDisposable
+    public class ImageOverlayDriver:IDisposable
     {
         /// <summary>
         /// imageHighlighter to use
@@ -20,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Constructor
         /// </summary>
-        private HighlightImageAction()
+        private ImageOverlayDriver()
         {
             Highlighter = new ImageHighlighter(SetHighlightBtnState);
         }
@@ -134,17 +135,17 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         public static Action<bool> SetHighlightBtnState { get; set; }
 
-        static HighlightImageAction defaultHighlightImageAction;
+        static ImageOverlayDriver defaultHighlightImageAction;
 
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
         /// <returns></returns>
-        public static HighlightImageAction GetDefaultInstance()
+        public static ImageOverlayDriver GetDefaultInstance()
         {
             if (defaultHighlightImageAction == null)
             {
-                defaultHighlightImageAction = new HighlightImageAction();
+                defaultHighlightImageAction = new ImageOverlayDriver();
             }
 
             return defaultHighlightImageAction;

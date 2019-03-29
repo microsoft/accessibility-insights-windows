@@ -117,9 +117,9 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void HideControl()
         {
-            HighlightAction.GetDefaultInstance().HighlighterMode = prevMode;
+            HollowHighlightDriver.GetDefaultInstance().HighlighterMode = prevMode;
             MainWin.SetHighlightBtnState(prevHighlighterState);
-            HighlightAction.GetDefaultInstance().IsEnabled = prevHighlighterState;
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = prevHighlighterState;
             UpdateConfigWithSize();
             this.Visibility = Visibility.Collapsed;
         }
@@ -130,12 +130,12 @@ namespace AccessibilityInsights.Modes
         public void ShowControl()
         {
             this.Visibility = Visibility.Visible;
-            this.prevHighlighterState = HighlightAction.GetDefaultInstance().IsEnabled;
-            this.prevMode = HighlightAction.GetDefaultInstance().HighlighterMode;
-            HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
+            this.prevHighlighterState = HollowHighlightDriver.GetDefaultInstance().IsEnabled;
+            this.prevMode = HollowHighlightDriver.GetDefaultInstance().HighlighterMode;
+            HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
             MainWin.SetHighlightBtnState(true);
-            HighlightAction.GetDefaultInstance().IsEnabled = true;
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = true;
+            HollowHighlightDriver.GetDefaultInstance().Clear();
 
             SelectAction.GetDefaultInstance().ClearSelectedContext();
 
@@ -158,9 +158,9 @@ namespace AccessibilityInsights.Modes
             {
                 try
                 {
-                    HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
+                    HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
 
-                    HighlightAction.GetDefaultInstance().SetElement(ecId, 0);
+                    HollowHighlightDriver.GetDefaultInstance().SetElement(ecId, 0);
 
                     this.ctrlContrast.ActivateProgressRing();
 
@@ -208,10 +208,10 @@ namespace AccessibilityInsights.Modes
 
                         MainWin.CurrentView = CCAView.Automatic;
 
-                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+                        HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
 
-                        HighlightAction.GetDefaultInstance().SetText(toolTipText);
+                        HollowHighlightDriver.GetDefaultInstance().SetText(toolTipText);
 
                         // enable element selector
                         MainWin.EnableElementSelector();
@@ -225,10 +225,10 @@ namespace AccessibilityInsights.Modes
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         MainWin.CurrentView = CCAView.Automatic;
-                        HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
+                        HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
 
-                        HighlightAction.GetDefaultInstance().SetText("Unable to detect colors!");
+                        HollowHighlightDriver.GetDefaultInstance().SetText("Unable to detect colors!");
                         // enable element selector
                         MainWin.EnableElementSelector();
 
@@ -292,8 +292,8 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         public bool ToggleHighlighter()
         {
-            var enabled = !HighlightAction.GetDefaultInstance().IsEnabled;
-            HighlightAction.GetDefaultInstance().IsEnabled = enabled;
+            var enabled = !HollowHighlightDriver.GetDefaultInstance().IsEnabled;
+            HollowHighlightDriver.GetDefaultInstance().IsEnabled = enabled;
             return enabled;
         }
 

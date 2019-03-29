@@ -41,7 +41,7 @@ namespace AccessibilityInsights
                 PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
 
                 // make sure that highlighter is cleared for new selection. 
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
 
                 SetWindowForLiveMode();
             }
