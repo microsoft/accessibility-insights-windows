@@ -148,10 +148,10 @@ namespace AccessibilityInsights
 
             // turn highlighter on once you get back to selection mode. 
             SetHighlightBtnState(true);
-            var ha = HollowHighlightDriver.GetDefaultInstance();
-            ha.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
-            ha.IsEnabled = true;
-            ha.SetElement(null);
+            var highlightDriver = HollowHighlightDriver.GetDefaultInstance();
+            highlightDriver.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
+            highlightDriver.IsEnabled = true;
+            highlightDriver.SetElement(null);
 
             /// make sure that all Mode UIs are clean since new selection will be done. 
             CleanUpAllModeUIs();
