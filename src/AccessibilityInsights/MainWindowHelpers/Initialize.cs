@@ -14,6 +14,8 @@ using System.Windows.Interop;
 using System.Windows.Shell;
 using System.Globalization;
 using AccessibilityInsights.Desktop.Telemetry;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {

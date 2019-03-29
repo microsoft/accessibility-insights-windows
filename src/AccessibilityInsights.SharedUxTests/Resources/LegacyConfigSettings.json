@@ -1,7 +1,7 @@
 {
   "ZoomLevel": 350,
-  "SerializedSavedConnection": "",
-  "SerializedCachedConnections": "[]",
+  "SelectedIssueReporter": "",
+  "IssueReporterSerializedConfigs": "{\"27f21dff-2fb3-4833-be55-25787fce3e17\":\"hello world\"}",
   "TestReportPath": "C:\\blah\\AccessibilityInsightsTestFiles",
   "EventRecordPath": "C:\\blah\\AccessibilityInsightsEventFiles",
   "TestConfig": 1,

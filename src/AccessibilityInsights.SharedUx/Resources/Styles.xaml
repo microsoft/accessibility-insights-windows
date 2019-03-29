@@ -905,6 +905,54 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnBlueSquared">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="2">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnGreySquared">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=GreyBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+        <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
+        <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="4">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonGreyBGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnDisabled">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
         <Setter Property="BorderThickness" Value="0"/>

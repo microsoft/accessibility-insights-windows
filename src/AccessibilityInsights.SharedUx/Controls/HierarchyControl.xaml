@@ -38,9 +38,10 @@
                             </MenuItem.Style>
                         </MenuItem>
                         <MenuItem IsCheckable="False" Click="mniFileBug_Click" 
-                                  Header="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemHeaderNewBug}'}" 
-                                  AutomationProperties.Name="{Binding StringFormat='{}Bug {0}',Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.MenuItemAutomationPropertiesName}'}"
-                                  Visibility="{Binding FileBugVisibility}">
+                                  Header="{Binding Path=IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.MenuItemHeaderNewIssue}'}" 
+                                  AutomationProperties.Name="{Binding StringFormat='{}Bug {0}',Path=IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.MenuItemAutomationPropertiesName}'}"
+                                  Visibility="{Binding FileBugVisibility}"
+                                  Tag="LadybugSolid">
                             <MenuItem.Style>
                                 <Style TargetType="MenuItem" BasedOn="{StaticResource miFabIcon}">
                                     <Setter Property="MenuItem.HeaderStringFormat" Value="{x:Static Properties:Resources.SetterValueBug}"/>
@@ -52,9 +53,9 @@
                                         <DataTrigger Binding="{Binding Path=NeedSnapshot, Mode=OneWay}" Value="false">
                                             <Setter Property="MenuItem.Visibility" Value="Visible"/>
                                         </DataTrigger>
-                                        <DataTrigger Binding="{Binding Path=BugIdString, Mode=OneWay}" Value="{x:Null}">
+                                        <DataTrigger Binding="{Binding Path=IssueDisplayText, Mode=OneWay}" Value="{x:Null}">
                                             <Setter Property="MenuItem.HeaderStringFormat" Value="{x:Null}"/>
-                                            <Setter Property="Tag" Value="Add"/>
+                                            <Setter Property="Tag" Value="LadybugSolid"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -63,7 +64,7 @@
                     </ContextMenu>
                     <ContextMenu x:Key="cmLive" FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                         <MenuItem Tag="LightningBolt" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderListenToEvents}" Click="mniEvents_Click" Style="{StaticResource miFabIcon}"/>
-                        <MenuItem Tag="Add" Visibility ="{Binding FileBugVisibility}" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderNewBug}" Click="mniFileBugLive_Click" Style="{StaticResource miFabIcon}"/>
+                        <MenuItem Tag="LadybugSolid" Visibility ="{Binding FileBugVisibility}" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderNewIssue}" Click="mniFileBugLive_Click" Style="{StaticResource miFabIcon}"/>
                     </ContextMenu>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>

@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
     [TestClass]
     public class ConnectionCacheTests
     {
-        private const string KnownConfigString = @"[{""ConcreteServerUri"":""http://fake.fake/1"",""ConcreteProject"":{""Name"":""Team1"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d1""},""ConcreteTeam"":null,""ConcreteLastUsage"":""2000-01-02T03:04:05.0060001Z""},{""ConcreteServerUri"":""http://fake.fake/2"",""ConcreteProject"":{""Name"":""Team2"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d2""},""ConcreteTeam"":null,""ConcreteLastUsage"":""2000-01-02T03:04:05.0060002Z""}]";
+        private const string KnownConfigString = @"[{""ServerUri"":""http://fake.fake/1"",""Project"":{""Name"":""Team1"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d1""},""Team"":null,""LastUsage"":""2000-01-02T03:04:05.0060001Z""},{""ServerUri"":""http://fake.fake/2"",""Project"":{""Name"":""Team2"",""Id"":""3f574102-ea99-46e7-a945-864d3ebb57d2""},""Team"":null,""LastUsage"":""2000-01-02T03:04:05.0060002Z""}]";
 
         private static readonly DateTime BaseDateTime = new DateTime(2000, 1, 2, 3, 4, 5, 6, DateTimeKind.Utc);
 
@@ -57,7 +56,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         {
             ConnectionCache cache = new ConnectionCache();
 
-            // set to some big number
+            // set to some issue number
             int highNumber = ConnectionCache.CAPACITY + 100;
 
             // fill up with sequential high last-usage values
@@ -108,14 +107,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             List<Uri> connections = cache.GetCachedConnections().ToList();
             Assert.AreEqual(2, connections.Count);
 
-            IConnectionInfo info1 = GetConnectionInfo(1, true);
-            IConnectionInfo info2 = GetConnectionInfo(2, true);
+            ConnectionInfo info1 = GetConnectionInfo(1, true);
+            ConnectionInfo info2 = GetConnectionInfo(2, true);
 
             CompareConnectionInfos(info1, cache.GetMostRecentConnection(info1.ServerUri));
             CompareConnectionInfos(info2, cache.GetMostRecentConnection(info2.ServerUri));
         }
 
-        private void CompareConnectionInfos(IConnectionInfo expected, IConnectionInfo actual)
+        private void CompareConnectionInfos(ConnectionInfo expected, ConnectionInfo actual)
         {
             Assert.AreEqual(expected.ServerUri, actual.ServerUri);
             Assert.AreEqual(expected.Project.Name, actual.Project.Name);
@@ -136,7 +135,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Assert.AreEqual(KnownConfigString, configString);
         }
 
-        private IProject GetProject(int i)
+        private TeamProject GetProject(int i)
         {
             if (i < 0 || i > 9)
                 throw new ArgumentException("out of range", nameof(i));
@@ -151,10 +150,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
-        private IConnectionInfo GetConnectionInfo(int i, bool hasProject = false)
+        private ConnectionInfo GetConnectionInfo(int i, bool hasProject = false)
         {
-            IProject project = hasProject ? GetProject(i) : null;
-            IConnectionInfo info = new ConnectionInfo(new Uri($"http://fake.fake/{i}"), project, null);
+            TeamProject project = hasProject ? GetProject(i) : null;
+            ConnectionInfo info = new ConnectionInfo(new Uri($"http://fake.fake/{i}"), project, null);
             info.SetLastUsage(BaseDateTime.AddTicks(i));
             return info;
         }
