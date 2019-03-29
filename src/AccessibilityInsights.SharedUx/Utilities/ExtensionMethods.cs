@@ -6,8 +6,8 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,7 +20,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.Utilities
@@ -191,15 +190,15 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public static BugInformation GetBugInformation(this A11yElement element, BugType? bugType)
+        public static IssueInformation GetIssueInformation(this A11yElement element, IssueType issueType)
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: element.Glimpse,
                 processName: element.GetProcessName(),
                 windowTitle: element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 internalGuid: Guid.NewGuid(),
-                bugType: bugType);
+                issueType: issueType);
         }
 
         /// <summary>

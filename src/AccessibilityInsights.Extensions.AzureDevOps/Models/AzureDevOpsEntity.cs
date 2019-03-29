@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using System;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps.Models
@@ -8,7 +7,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
     /// <summary>
     /// Represents an entity with a name and id
     /// </summary>
-    public class AzureDevOpsEntity : IEntity
+    public class AzureDevOpsEntity
     {
         public string Name { get; set; }
         public Guid Id { get; set; }

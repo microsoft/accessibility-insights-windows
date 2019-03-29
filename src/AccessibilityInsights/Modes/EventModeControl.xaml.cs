@@ -209,7 +209,7 @@ namespace AccessibilityInsights.Modes
         {
             AdjustMainWindowSize();
             this.Visibility = Visibility.Visible;
-
+            this.ctrlEvents.ShowControl();
             // set focus on default element. 
             Dispatcher.InvokeAsync(() =>
             {

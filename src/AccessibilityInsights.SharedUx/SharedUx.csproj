@@ -53,6 +53,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -282,15 +283,9 @@
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
-    <Compile Include="FileBug\BugFileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FileBug\BugFileForm.Designer.cs">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FileBug\BugReporter.cs" />
-    <Compile Include="FileBug\FileBugAction.cs" />
-    <Compile Include="FileBug\ScriptInterface.cs" />
+    <Compile Include="FileIssue\IssueReporter.cs" />
+    <Compile Include="FileIssue\FileIssueAction.cs" />
+    <Compile Include="FileIssue\IssueReporterManager.cs" />
     <Compile Include="Controls\ColorPicker\ColorPickerControl.xaml.cs">
       <DependentUpon>ColorPickerControl.xaml</DependentUpon>
     </Compile>
@@ -366,6 +361,11 @@
     <Compile Include="Enums\EventConfigNodeType.cs" />
     <Compile Include="Interfaces\ICCAMode.cs" />
     <Compile Include="Misc\ListViewSelectionLock.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />
     <Compile Include="Controls\TestTabs\AutomatedChecksControl.xaml.cs">
@@ -434,11 +434,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -453,7 +448,7 @@
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
     <Compile Include="ViewModels\BaseActionViewModel.cs" />
-    <Compile Include="ViewModels\ByteArrayViewModel.cs" />
+    <Compile Include="ViewModels\LogoViewModel.cs" />
     <Compile Include="ViewModels\ColorContrastViewModel.cs" />
     <Compile Include="ViewModels\ApplicationSettingsViewModel.cs" />
     <Compile Include="ViewModels\GeneralActionViewModel.cs" />
@@ -468,19 +463,15 @@
     <Compile Include="ViewModels\ScanListViewItemViewModel.cs" />
     <Compile Include="ViewModels\TabStopItemViewModel.cs" />
     <Compile Include="ViewModels\TargetActionViewAttribute.cs" />
-    <Compile Include="ViewModels\TeamProjectViewModel.cs" />
     <Compile Include="ViewModels\TextAttributeViewModel.cs" />
     <Compile Include="ViewModels\TextRangeActionViewModel.cs" />
     <Compile Include="ViewModels\TextRangeViewModel.cs" />
     <Compile Include="ViewModels\TwoStateButtonViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <EmbeddedResource Include="FileBug\BugFileForm.resx">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />

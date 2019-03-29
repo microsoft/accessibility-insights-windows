@@ -572,15 +572,16 @@ namespace AccessibilityInsights
 
             configManager.TestConfig = TestSetting.GenerateSuiteConfiguration(RuleSelection.SuiteConfigurationType.Default);
 
-            InitSelectActionMode();
-
-            HideConfigurationMode();
-
             if (changes != null && changes.ContainsKey(ConfigurationModel.keyFontSize))
             {
                 SetFontSize();
             }
+        }
 
+        internal void TransitionToSelectActionMode()
+        {
+            InitSelectActionMode();
+            HideConfigurationMode();
             UpdateMainWindowUI();
             this.btnConfig.Focus();
         }

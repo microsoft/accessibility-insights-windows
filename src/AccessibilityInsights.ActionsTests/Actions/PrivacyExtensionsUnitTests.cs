@@ -25,7 +25,7 @@ namespace AccessibilityInsights.ActionsTests.Actions
             A11yElement input = new A11yElement();
             A11yElement copy = input.CreateScrubbedCopyWithoutRelationships();
             Assert.AreNotSame(input, copy);
-            Assert.IsNull(copy.BugId);
+            Assert.IsNull(copy.IssueDisplayText);
             Assert.IsNull(copy.ScanResults);
             Assert.AreEqual(input.TreeWalkerMode, copy.TreeWalkerMode);
             Assert.AreEqual(input.UniqueId, copy.UniqueId);
@@ -37,13 +37,13 @@ namespace AccessibilityInsights.ActionsTests.Actions
         [TestMethod]
         public void CreateScrubbedCopyWithoutRelationships_InputHasBugId_ResultHasSameBugId()
         {
-            const int bugId = 12345;
+            const string issueDisplayText = "12345";
             A11yElement input = new A11yElement
             {
-                BugId = bugId,
+                IssueDisplayText = issueDisplayText,
             };
             A11yElement copy = input.CreateScrubbedCopyWithoutRelationships();
-            Assert.AreEqual(bugId, copy.BugId);
+            Assert.AreEqual(issueDisplayText, copy.IssueDisplayText);
         }
 
 #if FAKES_SUPPORTED

@@ -29,7 +29,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <Feature Id="ProductFeature" Title="Accessibility Insights for Windows" Level="1">
       <ComponentRef Id="ProductComponent" />
       <ComponentRef Id="ExtensionsComp"/>
-      <ComponentRef Id="BugTemplateComp" />
+      <ComponentRef Id="IssueTemplateComp" />
       <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 
@@ -61,6 +61,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.RuleSelection.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
@@ -89,6 +90,10 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                <Directory Id="ExtensionsMSIGuid" Name="20FB3078-CDFD-4EDA-B541-10EA52B34552">
                  <Component Id="ExtensionsComp" Guid="20FB3078-CDFD-4EDA-B541-10EA52B34552">
                    <!-- HINT: please use the shorest suffix which can distingusish itself for the naming convention of the extension assembly Ids: -->
+
+                   <!-- GitHub Extension Assemblies -->
+                   <File Source="..\AccessibilityInsights.Extensions.GitHub\bin\Release\AccessibilityInsights.Extensions.GitHub.dll" Id="github_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.GitHub\bin\Release\AccessibilityInsights.Extensions.GitHub.dll.config"/>
 
                    <!-- AutoUpdate Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" Id="autoupdate_extension"/>
@@ -140,14 +145,14 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Xml.XPath.XDocument.dll" Id="xdocument_extension"/>
                  </Component>
 
-                 <Directory Id="BugTemplates" Name="BugTemplates">
-                   <Component Id="BugTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugNoFailures.html"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugSingleFailure.html"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.json"/>
-                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\BugTemplates\BugColorContrast.html"/>
+                 <Directory Id="IssueTemplates" Name="IssueTemplates">
+                   <Component Id="IssueTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueNoFailures.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueNoFailures.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueSingleFailure.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueSingleFailure.html"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueColorContrast.json"/>
+                     <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\IssueTemplates\IssueColorContrast.html"/>
                    </Component>
                  </Directory>
                </Directory>

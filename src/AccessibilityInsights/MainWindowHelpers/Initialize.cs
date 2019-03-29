@@ -15,6 +15,8 @@ using System.Windows.Shell;
 using System.Globalization;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.SharedUx.Highlighting;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {

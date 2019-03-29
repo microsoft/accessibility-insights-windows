@@ -4,10 +4,8 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.RuleSelection;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
@@ -25,10 +23,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// The SettingsDictionary contains all of the persisted data
         /// </summary>
         private readonly SettingsDictionary _settings = new SettingsDictionary();
-
-        // These are just backing properties for things where auto-properties are insufficient
-        private IConnectionInfo _savedConnection;
-        private IConnectionCache _savedConnectionCache;
 
         #region Data Helpers
 
@@ -128,66 +122,23 @@ namespace AccessibilityInsights.SharedUx.Settings
             set => SetDataValue<string>(keyAppVersion, value);
         }
 
-        /// <summary>
-        /// Zoom level to set for embedded web browser as a percentage
-        /// the percentage is based on DPI, so it may start off at values other than 100%
-        /// </summary>
-        public int ZoomLevel
-        {
-            get => GetDataValue<int>(keyZoomLevel);
-            set => SetDataValue<int>(keyZoomLevel, value);
-        }
-
-        /// <summary>
-        /// The connection to automatically connect to when AccessibilityInsights starts up
-        /// </summary>
-        public IConnectionInfo SavedConnection
+        public Guid SelectedIssueReporter
         {
             get
             {
-                return _savedConnection ??
-                    (_savedConnection = BugReporter.CreateConnectionInfo(SerializedSavedConnection));
+                if (Guid.TryParse(GetDataValue<string>(keyIssueReporting), out Guid result))
+                {
+                    return result;
+                }
+                return Guid.Empty;
             }
-            set
-            {
-                _savedConnection = value;
-                SetDataValue<string>(keySerializedSavedConnection, value?.ToConfigString());
-            }
+            set => SetDataValue<string>(keyIssueReporting, value.ToString());
         }
 
-        /// <summary>
-        /// MRU connections
-        /// </summary>
-        public IConnectionCache CachedConnections
+        public string IssueReporterSerializedConfigs
         {
-            get
-            {
-                return _savedConnectionCache ??
-                    (_savedConnectionCache = BugReporter.CreateConnectionCache(SerializedCachedConnections));
-            }
-            set
-            {
-                _savedConnectionCache = value;
-                SetDataValue<string>(keySerializedCachedConnections, value?.ToConfigString());
-            }
-        }
-
-        /// <summary>
-        /// Serialized form of SavedConnection
-        /// </summary>
-        public string SerializedSavedConnection
-        {
-            get => GetDataValue<string>(keySerializedSavedConnection);
-            set => SetDataValue<string>(keySerializedSavedConnection, value);
-        }
-
-        /// <summary>
-        /// Serialized form of CachedConnections
-        /// </summary>
-        public string SerializedCachedConnections
-        {
-            get => GetDataValue<string>(keySerializedCachedConnections);
-            set => SetDataValue<string>(keySerializedCachedConnections, value);
+            get => GetDataValue<string>(keyIssueReporterSerializedConfig);
+            set => SetDataValue<string>(keyIssueReporterSerializedConfig, value);
         }
 
         /// <summary>
@@ -670,12 +621,13 @@ namespace AccessibilityInsights.SharedUx.Settings
                 FontSize = FontSize.Standard,
                 HighlighterMode = HighlighterMode.HighlighterBeakerTooltip,
                 ShowAncestry = true,
-                ZoomLevel = 100,
                 EnableTelemetry = true,
                 ShowTelemetryDialog = true,
 
                 TestConfig = SuiteConfigurationType.Default,
-                IsUnderElementScope = true
+                IsUnderElementScope = true,
+                IssueReporterSerializedConfigs = null,
+                SelectedIssueReporter = Guid.Empty,
             };
 
             return config;

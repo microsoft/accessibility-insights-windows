@@ -5,10 +5,11 @@ using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -16,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -968,19 +970,18 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
-            if (vm.BugId.HasValue)
+            if (vm.IssueLink != null)
             {
                 // Bug already filed, open it in a new window
                 try
                 {
-                    var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result.ToString();
-                    Process.Start(bugUrl);
+                    Process.Start(vm.IssueLink.OriginalString);
                 }
                 catch (Exception ex)
                 {
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
-                    vm.BugId = null;
+                    vm.IssueDisplayText = null;
                 }
             }
             else
@@ -988,53 +989,25 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // File a new bug
                 Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
                     { TelemetryProperty.By, FileBugRequestSource.AutomatedChecks.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
+                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
                 });
 
-                // TODO: figuring out whether a team project has been chosen should not require
-                //  looking at the most recent connection, this should be broken out
-                if (BugReporter.IsConnected && Configuration.SavedConnection?.IsPopulated == true)
+                if (IssueReporter.IsConnected)
                 {
-                    Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
+                    IssueInformation issueInformation = vm.GetIssueInformation();
+                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
 
-                    (int? bugId, string newBugId) = FileBugAction.FileNewBug(vm.GetBugInformation(), Configuration.SavedConnection, 
-                        Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
-
-                    vm.BugId = bugId;
-
-                    // Check whether bug was filed once dialog closed & process accordingly
-                    if (vm.BugId.HasValue)
+                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
+                    if (issueResult != null)
                     {
-                        try
-                        {
-                            var sc = DispatcherSynchronizationContext.Current;
-                            vm.LoadingVisibility = Visibility.Visible;
-                            var task = FileBugAction.AttachBugData(this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId, newBugId, vm.BugId.Value);
-
-#pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-                            task.ContinueWith(delegate
-                            {
-                                sc.Post(delegate {
-                                    vm.LoadingVisibility = Visibility.Collapsed;
-
-                                    if (!task.Result)
-                                    {
-                                        MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded);
-                                        vm.BugId = null;
-                                    }
-                                },null);
-                            });
-#pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
-                        }
-                        catch (Exception)
-                        {
-                            vm.LoadingVisibility = Visibility.Collapsed;
-                        }
+                        vm.IssueDisplayText = issueResult.DisplayText;
+                        vm.IssueLink = issueResult.IssueLink;
                     }
+                    File.Delete(issueInformation.TestFileName);
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         SwitchToServerLogin();
