@@ -100,7 +100,7 @@ namespace AccessibilityInsights
             {
                 return string.Format(CultureInfo.InvariantCulture, Properties.Resources.MainWindow_AutomationPropertiesName_0_1_2, Properties.Resources.btnInspectAutomationPropertiesName, this.CurrentPage.ToString(), Properties.Resources.ModeIsEnabled);
             }
-        
+        }
 
         /// <summary>
         /// AutomationProperties name for Test tab button
