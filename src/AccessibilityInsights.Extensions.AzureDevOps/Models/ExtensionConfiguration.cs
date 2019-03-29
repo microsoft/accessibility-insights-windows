@@ -7,7 +7,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 {
     public class ExtensionConfiguration
     {
-        public int ZoomLevel { get; set; }
+        public int ZoomLevel { get; set; } = 100;
 
         public ConnectionInfo SavedConnection { get; set; }
 

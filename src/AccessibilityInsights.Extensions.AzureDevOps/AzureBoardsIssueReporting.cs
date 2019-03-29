@@ -64,7 +64,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     {
                         MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                     }
-                    return new IssueResult() { DisplayText = newIssueId, IssueLink = null };
+
+                    return new IssueResult()
+                    {
+                        DisplayText = issueId.ToString(),
+                        IssueLink = AzureDevOps.GetExistingIssueUrl(issueId.Value)
+                    };
                 }
                 catch (Exception)
                 {

@@ -438,17 +438,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         internal async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
         {
-            if (serverUri == null)
-            {
-                serverUri = Configuration.SavedConnection.ServerUri;
-            }
+            serverUri = serverUri ?? Configuration.SavedConnection.ServerUri;
+
+            if (serverUri == null) return;
+
             try
             {
-                if (serverUri != null)
-                {
-                    await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
-                    await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
-                }
+                await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
+                await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
             }
             catch (Exception)
             {
@@ -472,7 +469,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             //  of the issue description, which will be interpreted as a space in the browser. This saves us characters, so we
             //  replace all the %20 with "+"
 
-            var finalUrl = GetTeamProjectUrl(projectName, teamName) + "/_workItems/create/Issue?" + String.Join("&", escaped).Replace("%20", "+");
+            var finalUrl = GetTeamProjectUrl(projectName, teamName) + "/_workItems/create/Bug?" + String.Join("&", escaped).Replace("%20", "+");
             Uri.TryCreate(finalUrl, UriKind.Absolute, out Uri result);
             return result;
         }
