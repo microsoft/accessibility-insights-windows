@@ -171,15 +171,15 @@ namespace AccessibilityInsights.Modes
                                 Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
                             })).Wait();
                         }
-                        var ha = ImageOverlayDriver.GetDefaultInstance();
+                        var imageOverlay = ImageOverlayDriver.GetDefaultInstance();
 
-                        ha.SetImageElement(ecId);
+                        imageOverlay.SetImageElement(ecId);
                         //disable button on highlighter. 
-                        ha.SetHighlighterButtonClickHandler(null);
+                        imageOverlay.SetHighlighterButtonClickHandler(null);
 
                         if (Configuration.IsHighlighterOn)
                         {
-                            ha.Show();
+                            imageOverlay.Show();
                         }
                     }
 

@@ -57,23 +57,23 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
             set
             {
-                var ha = ClearOverlayDriver.GetDefaultInstance();
-                var sha = HollowHighlightDriver.GetDefaultInstance();
+                var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
+                var hollowDriver = HollowHighlightDriver.GetDefaultInstance();
 
                 if (value)
                 {
-                    if(sha.IsEnabled)
+                    if(hollowDriver.IsEnabled)
                     {
-                        ha.Show();
+                        overlayDriver.Show();
                         ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
-                        sha.HighlighterMode = HighlighterMode.Highlighter;
+                        hollowDriver.HighlighterMode = HighlighterMode.Highlighter;
                     }
                     Application.Current.MainWindow.Activate();
                 }
                 else
                 {
-                    sha.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
-                    ha.Hide();
+                    hollowDriver.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
+                    overlayDriver.Hide();
                 }
 
             }
@@ -104,9 +104,9 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             {
                 if (HollowHighlightDriver.GetDefaultInstance().IsEnabled)
                 {
-                    var ha = ClearOverlayDriver.GetDefaultInstance();
+                    var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
                     ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
-                    ha.MarkElement(ele);
+                    overlayDriver.MarkElement(ele);
                 }
             }
         }
@@ -123,11 +123,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
                 ElementContext ec = GetDataAction.GetElementContext(ecId.Value);
                 this.ElementContext = ec;
                 var brush = Application.Current.Resources["HLTextBrush"] as SolidColorBrush;
-                var ha = ClearOverlayDriver.GetDefaultInstance();
-                ha.SetElement(ElementContext.Element, brush, null, 0);
+                var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
+                overlayDriver.SetElement(ElementContext.Element, brush, null, 0);
                 if (this.IsVisible && HighlightVisibility)
                 {
-                    ha.Show();
+                    overlayDriver.Show();
                 }
             }
         }
