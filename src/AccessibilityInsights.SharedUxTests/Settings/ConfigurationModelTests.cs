@@ -109,13 +109,13 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("Shift + F7", config.HotKeyForRecord);
             Assert.AreEqual("Shift + F8", config.HotKeyForSnap);
             Assert.IsTrue(config.IsHighlighterOn);
+            Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
-            Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsTrue(config.ShowTelemetryDialog);
@@ -143,7 +143,9 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config);
+            ConfirmSharedOverrideConfigMatchesExpectation(config,
+                selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
+                issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}");
         }
 
         private static ConfigurationModel GetDefaultConfig()
@@ -151,7 +153,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             return ConfigurationModel.LoadFromJSON(@"..\..\Resources\ThisFileDoesNotExist.json");
         }
 
-        private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config)
+        private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config,
+            Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -176,13 +179,13 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("Alt + F1", config.HotKeyForRecord);
             Assert.AreEqual("Alt + F3", config.HotKeyForSnap);
             Assert.IsTrue(config.IsHighlighterOn);
+            Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual(null, config.IssueReporterSerializedConfigs);
-            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsFalse(config.ShowTelemetryDialog);
