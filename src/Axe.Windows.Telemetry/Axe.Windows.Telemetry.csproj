@@ -55,7 +55,6 @@
     <Compile Include="IAxeWindowsTelemetry.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportExceptionBuffer.cs" />
     <Compile Include="TelemetryAction.cs" />
     <Compile Include="TelemetryProperty.cs" />
   </ItemGroup>

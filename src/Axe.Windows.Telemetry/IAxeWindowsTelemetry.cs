@@ -12,12 +12,18 @@ namespace Axe.Windows.Telemetry
         /// </summary>
         /// <param name="eventName">The name of the event. Will be ignored if trivial</param>
         /// <param name="properties">The properties to include with the event. Will be ignored if trivial</param>
-        void PublishEvent(string eventName, IReadOnlyDictionary<string, string> properties);
+        void PublishEvent(TelemetryAction action, IReadOnlyDictionary<TelemetryProperty, string> properties);
 
         /// <summary>
         /// Report an Exception into the pipeline
         /// </summary>
         /// <param name="e">The Exception to report</param>
         void ReportException(Exception e);
+
+        /// <summary>
+        /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
+        /// work to short-circuit their processing when telemetry is disabled
+        /// </summary>
+        bool IsEnabled { get;  }
     } // interface
 } // namespace

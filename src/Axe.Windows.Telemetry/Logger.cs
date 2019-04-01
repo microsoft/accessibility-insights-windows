@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Axe.Windows.Telemetry
 {
@@ -11,37 +10,13 @@ namespace Axe.Windows.Telemetry
     /// </summary>
     public static class Logger
     {
-        // Use this within the class to get the IAxeWindowsTelemetry interface
-        private static IAxeWindowsTelemetry Telemetry => null;
-
-        /// <summary>
-        /// Whether or not the extension is available
-        /// </summary>
-        private static bool IsTelemetryAvailable => Telemetry != null;
-
-        // Fields used for ReportException plumbing
-        private static bool IsTelemetryAllowedBackingValue = false;
-        // private readonly static object LockObject = new object();
-        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(ReportException);
-
-        /// <summary>
-        /// Whether or not telemetry toggle button is enabled in the settings.
-        /// </summary>
-        public static bool IsTelemetryAllowed
-        {
-            get => IsTelemetryAllowedBackingValue;
-            set
-            {
-                IsTelemetryAllowedBackingValue = value;
-                ReportExceptionBuffer.EnableForwarding();
-            }
-        }
+        private static IAxeWindowsTelemetry _telemetry = null;
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
-        public static bool IsEnabled => IsTelemetryAvailable && IsTelemetryAllowed;
+        public static bool IsEnabled => _telemetry != null && _telemetry.IsEnabled;
 
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
@@ -51,19 +26,10 @@ namespace Axe.Windows.Telemetry
         /// <param name="value"></param>
         public static void PublishTelemetryEvent(TelemetryAction action, TelemetryProperty property, string value)
         {
-            if (IsEnabled)
-            {
-                try
-                {
-                    Telemetry.PublishEvent(action.ToString(), new Dictionary<string, string>
+            PublishTelemetryEvent(action, new Dictionary<TelemetryProperty, string>
                     {
-                        { property.ToString(), value }
+                        { property, value }
                     });
-                }
-#pragma warning disable CA1031
-                catch { }
-#pragma warning restore CA1020
-            }
         }
 
         /// <summary>
@@ -73,16 +39,13 @@ namespace Axe.Windows.Telemetry
         /// <param name="propertyBag">Associated property bag--this may be null</param>
         public static void PublishTelemetryEvent(TelemetryAction action, IReadOnlyDictionary<TelemetryProperty, string> propertyBag = null)
         {
-            if (IsEnabled)
+            try
             {
-                try
-                {
-                    Telemetry.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
-                }
-#pragma warning disable CA1031
-                catch { }
-#pragma warning restore CA1031
+                _telemetry?.PublishEvent(action, propertyBag);
             }
+#pragma warning disable CA1031
+            catch { }
+#pragma warning restore CA1031
         }
 
         /// <summary>
@@ -91,26 +54,9 @@ namespace Axe.Windows.Telemetry
         /// <param name="e">The Exception to report</param>
         public static void ReportException(this Exception e)
         {
-            if (IsEnabled && e != null)
-            {
-                Telemetry.ReportException(e);
-            }
+            if (e == null) return;
+
+            _telemetry?.ReportException(e);
         }
-
-        internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
-        {
-            if (properties == null || !properties.Any())
-                return null;
-
-            Dictionary<string, string> output = new Dictionary<string, string>();
-
-            foreach (KeyValuePair<TelemetryProperty, string> pair in properties)
-            {
-                output.Add(pair.Key.ToString(), pair.Value);
-            }
-
-            return output;
-        }
-
     } // class
 } // namespace
