@@ -32,7 +32,7 @@ namespace AccessibilityInsights.VersionSwitcher
         }
 
         /// <summary>
-        /// Triggers the installation & launches the installed app upon completion
+        /// Triggers the installation and launches the installed app upon completion
         /// </summary>
         internal void PerformInstallation()
         {

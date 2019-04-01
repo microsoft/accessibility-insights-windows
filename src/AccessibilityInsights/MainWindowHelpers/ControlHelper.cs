@@ -263,7 +263,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set version text
-        /// [(UpgradeRing) - ]Version - UIAccess state
+        /// [(ReleaseChannel) - ]Version - UIAccess state
         /// </summary>
         private void UpdateVersionString()
         {
