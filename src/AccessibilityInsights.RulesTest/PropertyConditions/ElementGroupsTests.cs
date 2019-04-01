@@ -61,5 +61,144 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
 
             Assert.IsTrue(ElementGroups.AllowSameNameAndControlType.Matches(e));
         }
+
+        [TestMethod]
+        public void WPFScrollBarPageUpButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageDownButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageDown";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageLeftButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageLeft";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageRightButton_True()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageRight";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsTrue(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageButtons_NotWPF_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                // e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageButtons_NotButton_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                // e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageButtons_ParentNotScrollBar_False()
+        {
+            // This test essentially also covers the possibility of no parent.
+
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                // parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void WPFScrollBarPageButtons_NotPageUpOrPageDown_False()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                // e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(ElementGroups.WPFScrollBarPageButtons.Matches(e));
+            } // using
+        }
     } // class
 } // namespace
