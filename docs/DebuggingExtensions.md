@@ -12,7 +12,8 @@ Add the following projects via the UI by opening the AccessibilityInsights proje
 Extension | Project
 --- | ---
 AutoUpdate | Extensions.GitHubAutoUpdate
-Bug Filing | Extensions.AzureDevOps
+Azure Boards Issue Filing | Extensions.AzureDevOps
+GitHub Issue Filing | Extensions.GitHub
 Telemetry | Extensions.Telemetry
 
 #### Editing manually
@@ -26,11 +27,19 @@ For those who prefer to edit files directly, here are the blurbs to add to Acces
     </ProjectReference>
 ```
 
-##### Bug Filing (AzureDevOps)
+##### Issue Filing (AzureDevOps)
 ```
     <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj">
       <Project>{58dbf9fe-0029-408f-a8a4-23ae500e938d}</Project>
       <Name>Extensions.AzureDevOps</Name>
+    </ProjectReference>
+```
+
+##### Issue Filing (GitHub)
+```
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj">
+      <Project>{f421aafd-d85f-49b8-b95e-ca17718c38dd}</Project>
+      <Name>Extensions.GitHub</Name>
     </ProjectReference>
 ```
 
