@@ -114,7 +114,6 @@ jobs:
                       src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Automation\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;"
@@ -134,7 +133,6 @@ jobs:
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
@@ -223,7 +221,6 @@ jobs:
                       src\\AccessibilityInsights\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Automation\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;"
@@ -353,7 +350,6 @@ jobs:
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
