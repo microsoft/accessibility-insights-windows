@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
     [TestClass]
     public class ConnectionInfoTests
     {
-        private const string KnownConfigString = @"{""ConcreteServerUri"":""https://www.bing.com"",""ConcreteProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""ConcreteTeam"":{""ConcreteParentProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Name"":""My Team"",""Id"":""4a56a1a0-b99f-49ca-986d-9c6d7fa6137d""},""ConcreteLastUsage"":""2018-12-23T16:19:30Z""}";
+        private const string KnownConfigString = @"{""ServerUri"":""https://www.bing.com"",""Project"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Team"":{""ParentProject"":{""Name"":""My Project"",""Id"":""71b41af3-4c55-44eb-a1d4-3b0973c07ea3""},""Name"":""My Team"",""Id"":""4a56a1a0-b99f-49ca-986d-9c6d7fa6137d""},""LastUsage"":""2018-12-23T16:19:30Z""}";
         private static readonly Guid TeamGuid = new Guid("{4A56A1A0-B99F-49CA-986D-9C6D7FA6137D}");
         private static readonly Guid ProjectGuid = new Guid("{71B41AF3-4C55-44EB-A1D4-3B0973C07EA3}");
         private static readonly TeamProject TestProject = new TeamProject("My Project", ProjectGuid);
@@ -23,7 +23,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_Uri_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, null, null);
+            ConnectionInfo info = new ConnectionInfo(TestUri, null, null);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.IsNull(info.Project);
             Assert.IsNull(info.Team);
@@ -33,7 +33,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_UriAndProject_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, TestProject, null);
+            ConnectionInfo info = new ConnectionInfo(TestUri, TestProject, null);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.AreEqual(TestProject, info.Project);
             Assert.IsNull(info.Team);
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_UriAndTeam_FieldsAreCorrect()
         {
-            IConnectionInfo info = new ConnectionInfo(TestUri, null, TestTeam);
+            ConnectionInfo info = new ConnectionInfo(TestUri, null, TestTeam);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.IsNull(info.Project);
             Assert.AreEqual(TestTeam, info.Team);
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void Ctor_KnownConfigString_MatchesExpectations()
         {
-            IConnectionInfo info = new ConnectionInfo(KnownConfigString);
+            ConnectionInfo info = new ConnectionInfo(KnownConfigString);
             Assert.AreEqual(TestUri, info.ServerUri);
             Assert.AreEqual(TestProject.Name, info.Project.Name);
             Assert.AreEqual(TestProject.Id, info.Project.Id);

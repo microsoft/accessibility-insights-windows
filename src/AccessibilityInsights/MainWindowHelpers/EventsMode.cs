@@ -9,6 +9,7 @@ using AccessibilityInsights.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {
@@ -39,7 +40,7 @@ namespace AccessibilityInsights
             else
             {
                 // we need to explicitly set the highlighter mode despite of the highlighter button status
-                HighlightAction.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
+                HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.Highlighter;
 
                 this.ctrlEventMode.Clear();
 

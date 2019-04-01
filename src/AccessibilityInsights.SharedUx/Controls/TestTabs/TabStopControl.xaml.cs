@@ -26,6 +26,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Diagnostics;
+using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -121,7 +122,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             set
             {
                 Configuration.IsHighlighterOn = value;
-                var ha = HighlightOverlayAction.GetDefaultInstance();
+                var ha = ClearOverlayDriver.GetDefaultInstance();
 
                 if (value)
                 {
@@ -179,7 +180,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.EventHandler?.Dispose();
             this.EventHandler = new EventListenerFactory(ec.Element);
             var brush = Application.Current.Resources["HLbrushPurple"] as SolidColorBrush;
-            var ha = HighlightOverlayAction.GetDefaultInstance();
+            var ha = ClearOverlayDriver.GetDefaultInstance();
             ha.SetElement(ElementContext.Element, brush, null, 6);
             if (this.IsVisible && this.HighlightVisibility)
             {
@@ -237,8 +238,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                         // turn highlighter on when recording is starting
                         TurnOnHighlighter();
                         StartRecordingEvent();
-                        var ha = HighlightOverlayAction.GetDefaultInstance();
-                        HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
+                        var ha = ClearOverlayDriver.GetDefaultInstance();
+                        ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                         ha.MarkSelectedElement();
                         this.Toast = new ToastNotification();
                         ha.ShowToast(Toast);
@@ -309,7 +310,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="e"></param>
         private void lvElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var ha = HighlightOverlayAction.GetDefaultInstance();
+            var ha = ClearOverlayDriver.GetDefaultInstance();
 
             foreach (TabStopItemViewModel mes in e.RemovedItems)
             {
@@ -476,13 +477,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             this.IsTabOpen = false;
             this.StopRecordEvents();
-            HighlightOverlayAction.GetDefaultInstance().Hide();
+            ClearOverlayDriver.GetDefaultInstance().Hide();
         }
 
         /// Automated Checks mode is shown
         internal async void Show()
         {
-            HighlightImageAction.GetDefaultInstance().Hide();
+            ImageOverlayDriver.GetDefaultInstance().Hide();
             this.IsTabOpen = true;
             if (HighlightVisibility)
             {
@@ -506,7 +507,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.EventHandler = null;
             this.ElementContext = null;
             this.lvElements.Items.Clear();
-            HighlightOverlayAction.ClearDefaultInstance();
+            ClearOverlayDriver.ClearDefaultInstance();
         }
 
         /// <summary>

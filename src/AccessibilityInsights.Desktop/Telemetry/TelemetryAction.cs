@@ -86,7 +86,8 @@ namespace AccessibilityInsights.Desktop.Telemetry
         Scan_Save_File, // save a file from Automated check view.
         Scan_Statistics,
 
-        Bug_Save,
+        Issue_Save,
+        Issue_File_Attempt,
         Bug_Cancel,
 
         Mainwindow_Open_Configuration, 

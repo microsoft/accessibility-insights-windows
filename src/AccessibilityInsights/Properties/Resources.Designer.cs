@@ -1541,7 +1541,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Signed in as {0}.
+        ///   Looks up a localized string similar to Signed into {0}.
         /// </summary>
         public static string UpdateMainWindowLoginFieldsSignedInAs {
             get {

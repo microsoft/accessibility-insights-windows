@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
+using AccessibilityInsights.SharedUx.Highlighting;
 using System;
 using System.Timers;
 using System.Windows;
@@ -56,23 +57,23 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
             set
             {
-                var ha = HighlightOverlayAction.GetDefaultInstance();
-                var sha = HighlightAction.GetDefaultInstance();
+                var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
+                var hollowDriver = HollowHighlightDriver.GetDefaultInstance();
 
                 if (value)
                 {
-                    if(sha.IsEnabled)
+                    if(hollowDriver.IsEnabled)
                     {
-                        ha.Show();
-                        HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
-                        sha.HighlighterMode = HighlighterMode.Highlighter;
+                        overlayDriver.Show();
+                        ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
+                        hollowDriver.HighlighterMode = HighlighterMode.Highlighter;
                     }
                     Application.Current.MainWindow.Activate();
                 }
                 else
                 {
-                    sha.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
-                    ha.Hide();
+                    hollowDriver.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
+                    overlayDriver.Hide();
                 }
 
             }
@@ -101,11 +102,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             lock (this)
             {
-                if (HighlightAction.GetDefaultInstance().IsEnabled)
+                if (HollowHighlightDriver.GetDefaultInstance().IsEnabled)
                 {
-                    var ha = HighlightOverlayAction.GetDefaultInstance();
-                    HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
-                    ha.MarkElement(ele);
+                    var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
+                    ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
+                    overlayDriver.MarkElement(ele);
                 }
             }
         }
@@ -122,11 +123,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
                 ElementContext ec = GetDataAction.GetElementContext(ecId.Value);
                 this.ElementContext = ec;
                 var brush = Application.Current.Resources["HLTextBrush"] as SolidColorBrush;
-                var ha = HighlightOverlayAction.GetDefaultInstance();
-                ha.SetElement(ElementContext.Element, brush, null, 0);
+                var overlayDriver = ClearOverlayDriver.GetDefaultInstance();
+                overlayDriver.SetElement(ElementContext.Element, brush, null, 0);
                 if (this.IsVisible && HighlightVisibility)
                 {
-                    ha.Show();
+                    overlayDriver.Show();
                 }
             }
         }

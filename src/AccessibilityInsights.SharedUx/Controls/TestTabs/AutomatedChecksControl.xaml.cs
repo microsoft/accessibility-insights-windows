@@ -5,9 +5,11 @@ using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -15,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -109,7 +112,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 Configuration.IsHighlighterOn = value;
 
-                var ha = HighlightImageAction.GetDefaultInstance();
+                var ha = ImageOverlayDriver.GetDefaultInstance();
 
                 if (value)
                 {
@@ -181,13 +184,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         public static void Hide()
         {
-            HighlightImageAction.GetDefaultInstance().ClearElements();
+            ImageOverlayDriver.GetDefaultInstance().ClearElements();
         }
 
         /// Automated Checks mode is shown
         public void Show()
         {
-            var ha = HighlightImageAction.GetDefaultInstance();
+            var ha = ImageOverlayDriver.GetDefaultInstance();
             // set handler here. it will make sure that highliter button is shown and working. 
             ha.SetHighlighterButtonClickHandler(TBElem_Click);
 
@@ -299,7 +302,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             try
             {
                 // set handler here. it will make sure that highliter button is shown and working. 
-                HighlightImageAction.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
+                ImageOverlayDriver.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
@@ -333,7 +336,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.chbxSelectAll.IsChecked = false;
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
             {
@@ -343,7 +346,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (list != null)
                 {
-                    var ha = HighlightImageAction.GetDefaultInstance();
+                    var ha = ImageOverlayDriver.GetDefaultInstance();
                     ha.SetImageElement(ElementContext.Id);
                     if (HighlightVisibility)
                     {
@@ -363,7 +366,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         public void ClearUI()
         {
-            HighlightImageAction.ClearDefaultInstance();
+            ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
             this.lvResults.ItemsSource = null;
             this.tbGlimpse.Text = "Target:";
@@ -655,13 +658,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (check && !SelectedItems.Contains(itm))
                 {
                     SelectedItems.Add(itm);
-                    HighlightImageAction.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
 
                 else if (!check && SelectedItems.Contains(itm))
                 {
                     SelectedItems.Remove(itm);
-                    HighlightImageAction.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
                 var lvi = lvResults.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
                 if (lvi != null)
@@ -707,7 +710,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             // ElementContext can be null when app is closed.
             if (this.ElementContext != null)
             {
-                HighlightImageAction.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
+                ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
             }
 
             SelectedItems.Remove(srvm);
@@ -799,7 +802,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     SelectedItems.Add(itm);
                     UpdateSelectAll();
-                    HighlightImageAction.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
                 }
                 var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
                 var dc = cb.DataContext as CollectionViewGroup;
@@ -967,19 +970,18 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
-            if (vm.BugId.HasValue)
+            if (vm.IssueLink != null)
             {
                 // Bug already filed, open it in a new window
                 try
                 {
-                    var bugUrl = BugReporter.GetExistingBugUriAsync(vm.BugId.Value).Result.ToString();
-                    Process.Start(bugUrl);
+                    Process.Start(vm.IssueLink.OriginalString);
                 }
                 catch (Exception ex)
                 {
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
-                    vm.BugId = null;
+                    vm.IssueDisplayText = null;
                 }
             }
             else
@@ -987,53 +989,25 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // File a new bug
                 Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
                     { TelemetryProperty.By, FileBugRequestSource.AutomatedChecks.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
+                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
                 });
 
-                // TODO: figuring out whether a team project has been chosen should not require
-                //  looking at the most recent connection, this should be broken out
-                if (BugReporter.IsConnected && Configuration.SavedConnection?.IsPopulated == true)
+                if (IssueReporter.IsConnected)
                 {
-                    Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
+                    IssueInformation issueInformation = vm.GetIssueInformation();
+                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
 
-                    (int? bugId, string newBugId) = FileBugAction.FileNewBug(vm.GetBugInformation(), Configuration.SavedConnection, 
-                        Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
-
-                    vm.BugId = bugId;
-
-                    // Check whether bug was filed once dialog closed & process accordingly
-                    if (vm.BugId.HasValue)
+                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
+                    if (issueResult != null)
                     {
-                        try
-                        {
-                            var sc = DispatcherSynchronizationContext.Current;
-                            vm.LoadingVisibility = Visibility.Visible;
-                            var task = FileBugAction.AttachBugData(this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId, newBugId, vm.BugId.Value);
-
-#pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-                            task.ContinueWith(delegate
-                            {
-                                sc.Post(delegate {
-                                    vm.LoadingVisibility = Visibility.Collapsed;
-
-                                    if (!task.Result)
-                                    {
-                                        MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded);
-                                        vm.BugId = null;
-                                    }
-                                },null);
-                            });
-#pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
-                        }
-                        catch (Exception)
-                        {
-                            vm.LoadingVisibility = Visibility.Collapsed;
-                        }
+                        vm.IssueDisplayText = issueResult.DisplayText;
+                        vm.IssueLink = issueResult.IssueLink;
                     }
+                    File.Delete(issueInformation.TestFileName);
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_Please_sign_into_Azure_DevOps_ensure_both_AzureDevOps_account_name_and_team_project_are_selected);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         SwitchToServerLogin();

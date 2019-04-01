@@ -1,0 +1,22 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<src:IssueConfigurationControl
+    x:Class="AccessibilityInsights.Extensions.GitHub.ConfigurationModel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:AccessibilityInsights.Extensions.GitHub"
+    xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
+    xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
+    mc:Ignorable="d"
+    IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" />
+        <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" Width="294px" Height="32px" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}" />
+    </Grid>
+</src:IssueConfigurationControl>

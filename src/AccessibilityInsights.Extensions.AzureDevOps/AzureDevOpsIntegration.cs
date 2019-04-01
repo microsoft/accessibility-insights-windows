@@ -1,7 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
+using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.Core.WebApi.Types;
 using Microsoft.TeamFoundation.Work.WebApi;
@@ -28,7 +29,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// <summary>
     /// Methods for integrating with AzureDevOps
     /// </summary>
-    public partial class AzureDevOpsIntegration
+    internal partial class AzureDevOpsIntegration
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         /// <summary>
@@ -46,22 +47,24 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Returns true if user has authenticated with VS server URL
         /// </summary>
-        public bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
+        internal bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
+
+        internal ExtensionConfiguration Configuration { get; } = new ExtensionConfiguration();
 
         /// <summary>
         /// Base uri of the AzureDevOps connection
         /// </summary>
-        public Uri ConnectedUri => _baseServerConnection?.Uri;
+        internal Uri ConnectedUri => _baseServerConnection?.Uri;
 
         /// <summary>
         /// AzureDevOps profile fields
         /// </summary>
-        public Profile UserProfile { get; private set; }
-        public string DisplayName => UserProfile?.DisplayName;
+        internal Profile UserProfile { get; private set; }
+        internal string DisplayName => UserProfile?.DisplayName;
 #pragma warning disable CA1819 // Properties should not return arrays
-        public byte[] Avatar => UserProfile?.Avatar.Value;
+        internal byte[] Avatar => UserProfile?.Avatar.Value;
 #pragma warning restore CA1819 // Properties should not return arrays
-        public string Email => UserProfile?.EmailAddress;
+        internal string Email => UserProfile?.EmailAddress;
 
         private static AzureDevOpsIntegration _instance;
 
@@ -69,7 +72,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Get default instance
         /// </summary>
         /// <returns></returns>
-        public static AzureDevOpsIntegration GetCurrentInstance()
+        internal static AzureDevOpsIntegration GetCurrentInstance()
         {
             if (_instance == null)
             {
@@ -85,7 +88,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             return _instance;
         }
 
-        #region BugFiling
+        #region IssueFiling
         /// <summary>
         /// Connects to the AzureDevOps server at the given url (e.g. https://myaccount.visualstudio.com)
         ///     If prompt is true, then we may prompt if needed - otherwise, we turn prompting off on credentials
@@ -93,7 +96,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="url">AzureDevOps URL to connect to</param>
         /// <param name="prompt">whether user should see any login prompts if needed</param>
         /// <returns></returns>
-        public Task ConnectToAzureDevOpsAccount(Uri url, bool prompt = true)
+        internal Task ConnectToAzureDevOpsAccount(Uri url, CredentialPromptType prompt = CredentialPromptType.PromptIfNeeded)
         {
             lock (myLock)
             {
@@ -101,7 +104,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 Disconnect();
                 var credentials = new VssClientCredentials(false);
                 credentials.Storage = new VssClientCredentialStorage();
-                credentials.PromptType = prompt ? CredentialPromptType.PromptIfNeeded : CredentialPromptType.DoNotPrompt;
+                credentials.PromptType = prompt;
                 _baseServerConnection = new VssConnection(url, credentials);
                 return _baseServerConnection.ConnectAsync();
             }
@@ -111,7 +114,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Removes the stored token associated with the given URL if it exists
         /// </summary>
         /// <param name="url">URL such as https://myaccount.visualstudio.com</param>
-        public void FlushToken(Uri url)
+        internal void FlushToken(Uri url)
         {
             var token = _baseServerConnection?.Credentials.Storage.RetrieveToken(url, VssCredentialsType.Federated);
             if (token != null)
@@ -123,7 +126,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Refreshes profile of current user 
         /// </summary>
-        public Task PopulateUserProfile()
+        internal Task PopulateUserProfile()
         {
             lock (myLock)
             {
@@ -145,7 +148,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Disconnects from AzureDevOps, resets AzureDevOps instance
         /// </summary>
         /// <returns></returns>
-        public void Disconnect()
+        internal void Disconnect()
         {
             lock (myLock)
             {
@@ -163,7 +166,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// with the currently connected account
         /// </summary>
         /// <returns>Team projects associated with current account or null if disconnected</returns>
-        public IEnumerable<IProject> GetTeamProjects()
+        internal IEnumerable<Models.TeamProject> GetTeamProjects()
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -191,7 +194,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="teamProjectId">AzureDevOps team project ID for which to retrieve teams</param>
         /// <returns>teams associated with the given team project, or null if disconnected</returns>
-        public IEnumerable<ITeam> GetTeamsFromProject(IProject project)
+        internal IEnumerable<Models.Team> GetTeamsFromProject(Models.TeamProject project)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -221,11 +224,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         #endregion
 
         /// <summary>
-        /// Returns the existing bug description for the given bug ID in the currently connected account
+        /// Returns the existing issue description for the given issue ID in the currently connected account
         /// </summary>
-        /// <param name="bugId">The AzureDevOps bug id in the currently connected account to query</param>
-        /// <returns>repro steps for the given bugId or null if the operation fails / if the user is not connected to AzureDevOps</returns>
-        public async Task<string> GetExistingBugDescription(int bugId)
+        /// <param name="issueId">The AzureDevOps issue id in the currently connected account to query</param>
+        /// <returns>repro steps for the given issueId or null if the operation fails / if the user is not connected to AzureDevOps</returns>
+        internal async Task<string> GetExistingIssueDescription(int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -234,19 +237,19 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-            return await wit.GetWorkItemAsync(bugId, new List<string>() { AzureDevOpsField.ReproSteps.ToApiString() })
+            return await wit.GetWorkItemAsync(issueId, new List<string>() { AzureDevOpsField.ReproSteps.ToApiString() })
                 .ContinueWith(t => t.IsFaulted ? null : t.Result.Fields[AzureDevOpsField.ReproSteps.ToApiString()].ToString());
 #pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
 #pragma warning restore CA2007 // Do not directly await a Task
         }
 
         /// <summary>
-        /// Replaces the existing repro steps on the bug with the given description (should be HTML)
+        /// Replaces the existing repro steps on the issue with the given description (should be HTML)
         /// </summary>
         /// <param name="description">new description</param>
-        /// <param name="bugId">bug id whose description should be replaced</param>
-        /// <returns>Task with completed bug ID or null if user is not connected to AzureDevOps</returns>
-        public async Task<int?> ReplaceBugDescription(string description, int bugId)
+        /// <param name="issueId">issue id whose description should be replaced</param>
+        /// <returns>Task with completed issue ID or null if user is not connected to AzureDevOps</returns>
+        internal async Task<int?> ReplaceIssueDescription(string description, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -262,27 +265,27 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             });
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-            return await wit.UpdateWorkItemAsync(patchDoc, bugId).ContinueWith(t => t.Result.Id);
+            return await wit.UpdateWorkItemAsync(patchDoc, issueId).ContinueWith(t => t.Result.Id);
 #pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
 #pragma warning restore CA2007 // Do not directly await a Task
         }
 
         /// <summary>
-        /// Upload attachment of file at the given path to the bug with given bug id
+        /// Upload attachment of file at the given path to the issue with given issue id
         ///     from "AzureDevOps-dotnet-samples" repo
         /// Also adds comment about snapshot to work item
         /// </summary>
         /// <param name="path">path to file that should be attached</param>
-        /// <param name="bugId">bug id to attach file to</param>
-        /// <returns>Task with completed bug ID or null if user is not connected to AzureDevOps</returns>
-        public async Task<int?> AttachTestResultToBug(string path, int bugId)
+        /// <param name="issueId">issue id to attach file to</param>
+        /// <returns>Task with completed issue ID or null if user is not connected to AzureDevOps</returns>
+        internal async Task<int?> AttachTestResultToIssue(string path, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
                 return null;
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
-            AttachmentReference attachment = await wit.CreateAttachmentAsync(new FileStream(path, FileMode.Open), Invariant($"{bugId}.a11ytest")).ConfigureAwait(false);
+            AttachmentReference attachment = await wit.CreateAttachmentAsync(new FileStream(path, FileMode.Open), Invariant($"{issueId}.a11ytest")).ConfigureAwait(false);
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
             {
@@ -313,24 +316,24 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-            return await wit.UpdateWorkItemAsync(patchDoc, bugId).ContinueWith(t => t.Result.Id);
+            return await wit.UpdateWorkItemAsync(patchDoc, issueId).ContinueWith(t => t.Result.Id);
 #pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
 #pragma warning restore CA2007 // Do not directly await a Task
         }
 
         /// <summary>
-        /// Uploads the screenshot at the given path to the work item with the given bug id
+        /// Uploads the screenshot at the given path to the work item with the given issue id
         /// </summary>
         /// <param name="path">path of screenshot to upload</param>
         /// <returns>Task with URL of the screenshot attachment reference, null if not connected</returns>
-        public async Task<string> AttachScreenshotToBug(string path, int bugId)
+        internal async Task<string> AttachScreenshotToIssue(string path, int issueId)
         {
             if (!ConnectedToAzureDevOps)
             {
                 return null;
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
-            AttachmentReference attachment = await wit.CreateAttachmentAsync(new FileStream(path, FileMode.Open), Invariant($"{bugId}-pic.png")).ConfigureAwait(false);
+            AttachmentReference attachment = await wit.CreateAttachmentAsync(new FileStream(path, FileMode.Open), Invariant($"{issueId}-pic.png")).ConfigureAwait(false);
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
             {
@@ -347,18 +350,18 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             // Return attachment URL once this work item is updated
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
-            return await wit.UpdateWorkItemAsync(patchDoc, bugId).ContinueWith(t => attachment.Url);
+            return await wit.UpdateWorkItemAsync(patchDoc, issueId).ContinueWith(t => attachment.Url);
 #pragma warning restore CA2008 // Do not create tasks without passing a TaskScheduler
 #pragma warning restore CA2007 // Do not directly await a Task
         }
 
 #pragma warning disable CA1055 // Uri return values should not be strings
         /// <summary>
-        /// Returns a link to the already filed bug
+        /// Returns a link to the already filed issue
         /// </summary>
-        /// <param name="bugId">id of bug to get url of</param>
-        /// <returns>URL to filed bug, or null if not connected to AzureDevOps</returns>
-        public Uri GetExistingBugUrl(int bugId)
+        /// <param name="issueId">id of issue to get url of</param>
+        /// <returns>URL to filed issue, or null if not connected to AzureDevOps</returns>
+        internal Uri GetExistingIssueUrl(int issueId)
 #pragma warning restore CA1055 // Uri return values should not be strings
         {
             if (!ConnectedToAzureDevOps)
@@ -366,7 +369,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 return null;
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
-            Task<WorkItem> item = wit.GetWorkItemAsync(bugId, expand: WorkItemExpand.Links);
+            Task<WorkItem> item = wit.GetWorkItemAsync(issueId, expand: WorkItemExpand.Links);
             var val = item.Result.Links.Links.GetValueOrDefault("html");
             return new Uri((val as ReferenceLink).Href);
         }
@@ -376,7 +379,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="conn">connection information to query area-path of</param>
         /// <returns>default area path, or null if operation fails or user is not connected to AzureDevOps</returns>
-        public string GetAreaPath(IConnectionInfo conn)
+        internal string GetAreaPath(ConnectionInfo conn)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -397,7 +400,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="conn">connection information to query iteration of</param>
         /// <returns>current iteration, or null if operation fails or user is not connected to AzureDevOps</returns>
-        public string GetIteration(IConnectionInfo conn)
+        internal string GetIteration(ConnectionInfo conn)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -419,7 +422,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="projectName">AzureDevOps project name</param>
         /// <param name="teamName">AzureDevOps team project name</param>
         /// <returns>encoded url to team project (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
-        public Uri GetTeamProjectUrl(string projectName, string teamName)
+        internal Uri GetTeamProjectUrl(string projectName, string teamName)
         {
             if (string.IsNullOrEmpty(projectName) || !ConnectedToAzureDevOps)
             {
@@ -432,26 +435,44 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             return builder.Uri;
         }
 
+
+        internal async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
+        {
+            serverUri = serverUri ?? Configuration.SavedConnection.ServerUri;
+
+            if (serverUri == null) return;
+
+            try
+            {
+                await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
+                await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
+            }
+            catch (Exception)
+            {
+                FileIssueHelpers.FlushToken(serverUri);
+            }
+        }
+
         /// <summary>
-        /// Returns a template Uri to a bug template with the given project name and reference field mappings
+        /// Returns a template Uri to a issue template with the given project name and reference field mappings
         /// </summary>
         /// <param name="projectName">AzureDevOps project name</param>
         /// <param name="teamName">AzureDevOps team project name</param>
         /// <param name="AzureDevOpsFieldPairs">Key/Value pairs to use when creating the preview</param>
-        /// <returns>encoded uri to bug preview (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
-        public Uri CreateBugPreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs)
+        /// <returns>encoded uri to issue preview (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
+        internal Uri CreateIssuePreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs)
         {
             var escaped = from pair in AzureDevOpsFieldPairs
                           select Uri.EscapeDataString($"[{pair.Key.ToApiString()}]") + "=" + Uri.EscapeDataString(pair.Value);
 
             // Uri.EscapeDataString converts space to %20, but it seems safe for us to instead use a "+" for the contents
-            //  of the bug description, which will be interpreted as a space in the browser. This saves us characters, so we
+            //  of the issue description, which will be interpreted as a space in the browser. This saves us characters, so we
             //  replace all the %20 with "+"
 
             var finalUrl = GetTeamProjectUrl(projectName, teamName) + "/_workItems/create/Bug?" + String.Join("&", escaped).Replace("%20", "+");
             Uri.TryCreate(finalUrl, UriKind.Absolute, out Uri result);
             return result;
         }
-#endregion // BugFiling
+#endregion // IssueFiling
     }
 }

@@ -28,12 +28,14 @@
     "HotKeyForPause": "Alt + F2",
     "HotKeyForRecord": "Alt + F1",
     "HotKeyForSnap": "Alt + F3",
+    "IssueReporterSerializedConfigs": "{\"27f21dff-2fb3-4833-be55-25787fce3e17\":\"hello world\"}",
     "IsUnderElementScope": true,
     "MouseSelectionDelayMilliSeconds": 200,
     "PlayScanningSound": false,
     "ReleaseChannel": "Canary",
     "SelectionByFocus": true,
     "SelectionByMouse": true,
+    "SelectedIssueReporter": "{27f21dff-2fb3-4833-be55-25787fce3e17}",
     "SerializedCachedConnections": "[]",
     "SerializedSavedConnection": "",
     "ShowAllProperties": false,
@@ -46,6 +48,5 @@
     "TestConfigPath": null,
     "TestReportPath": "C:\\blah\\AccessibilityInsightsTestFiles",
     "TreeViewMode": "Content",
-    "Version": "1.1.10",
-    "ZoomLevel": 350
+    "Version": "1.1.10"
 }

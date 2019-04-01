@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         internal const int MinimumSelectionDelayMilliseconds = 50;
 
         /// <summary>
-        /// Strings to be used as key names in the dictionary--alpha sorted for convenience
+        /// Strings to be used as key names in the dictionary--PLEASE RETAIN ALPHABETIC SORTING
         /// </summary>
         private const string keyAlwaysOnTop = "AlwaysOnTop";
         private const string keyAppVersion = "AppVersion";
@@ -53,14 +53,14 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyHotKeyForSnap = "HotKeyForSnap";
         private const string keyHotKeyLegacyForMoveToNextSibling = "HotKeyForMoveToNextSibbling";
         private const string keyHotKeyLegacyForMoveToPreviousSibling = "HotKeyForMoveToPreviousSibbling";
+        private const string keyIssueReporterSerializedConfigs = "IssueReporterSerializedConfigs";
         private const string keyIsUnderElementScope = "IsUnderElementScope";
         private const string keyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
         private const string keyPlayScanningSound = "PlayScanningSound";
         private const string keyReleaseChannel = SetupLibrary.Constants.ReleaseChannelKey;
+        private const string keySelectedIssueReporter = "SelectedIssueReporter";
         private const string keySelectionByFocus = "SelectionByFocus";
         private const string keySelectionByMouse = "SelectionByMouse";
-        private const string keySerializedSavedConnection = "SerializedSavedConnection";
-        private const string keySerializedCachedConnections = "SerializedCachedConnections";
         private const string keyShowAllProperties = "ShowAllProperties";
         private const string keyShowAncestry = "ShowAncestry";
         private const string keyShowTelemetryDialog = "ShowTelemetryDialog";
@@ -71,6 +71,5 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyTestReportPath = "TestReportPath";
         private const string keyTreeViewMode = "TreeViewMode";
         private const string keyVersion = "Version";
-        private const string keyZoomLevel = "ZoomLevel";
     }
 }

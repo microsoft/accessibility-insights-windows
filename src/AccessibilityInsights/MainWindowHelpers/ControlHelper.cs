@@ -3,6 +3,7 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.Win32;
@@ -296,7 +297,7 @@ namespace AccessibilityInsights
             {
                 this.CurrentView = CCAView.Manual;
                 DisableElementSelector();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
             }
         }

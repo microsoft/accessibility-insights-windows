@@ -29,5 +29,77 @@ namespace AccessibilityInsights.RulesTest.Library
                 Assert.AreNotEqual(Rule.Evaluate(e), EvaluationCode.Pass);
             } // using
         }
+
+        [TestMethod]
+        public void BoundingRectangleNotNull_WPFScrollbarPageUpButton_NotApplicable()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageUp";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(Rule.Condition.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void BoundingRectangleNotNull_WPFScrollbarPageDownButton_NotApplicable()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageDown";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(Rule.Condition.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void BoundingRectangleNotNull_WPFScrollbarPageLeftButton_NotApplicable()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageLeft";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(Rule.Condition.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void BoundingRectangleNotNull_WPFScrollbarPageRightButton_NotApplicable()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                parent.ControlTypeId = ControlType.ScrollBar;
+                e.IsOffScreen = false;
+                e.ControlTypeId = ControlType.Button;
+                e.Framework = "WPF";
+                e.AutomationId = "PageRight";
+                parent.Children.Add(e);
+                e.Parent = parent;
+
+                Assert.IsFalse(Rule.Condition.Matches(e));
+            } // using
+        }
     } // class
 } // namespace
