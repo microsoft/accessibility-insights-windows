@@ -126,19 +126,19 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get
             {
-                if (Guid.TryParse(GetDataValue<string>(keyIssueReporting), out Guid result))
+                if (Guid.TryParse(GetDataValue<string>(keySelectedIssueReporter), out Guid result))
                 {
                     return result;
                 }
                 return Guid.Empty;
             }
-            set => SetDataValue<string>(keyIssueReporting, value.ToString());
+            set => SetDataValue<string>(keySelectedIssueReporter, value.ToString());
         }
 
         public string IssueReporterSerializedConfigs
         {
-            get => GetDataValue<string>(keyIssueReporterSerializedConfig);
-            set => SetDataValue<string>(keyIssueReporterSerializedConfig, value);
+            get => GetDataValue<string>(keyIssueReporterSerializedConfigs);
+            set => SetDataValue<string>(keyIssueReporterSerializedConfigs, value);
         }
 
         /// <summary>
