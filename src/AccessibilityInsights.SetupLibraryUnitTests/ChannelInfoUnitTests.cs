@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 
-namespace SetupLibraryUnitTests
+namespace AccessibilityInsights.SetupLibraryUnitTests
 {
     [TestClass]
     public class ChannelInfoUnitTests

@@ -8,8 +8,8 @@
     <ProjectGuid>{F9F353A9-CC0B-4FA4-990E-4390D6A6D825}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SetupLibraryUnitTests</RootNamespace>
-    <AssemblyName>SetupLibraryUnitTests</AssemblyName>
+    <RootNamespace>AccessibilityInsights.SetupLibraryUnitTests</RootNamespace>
+    <AssemblyName>AccessibilityInsights.SetupLibraryUnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
