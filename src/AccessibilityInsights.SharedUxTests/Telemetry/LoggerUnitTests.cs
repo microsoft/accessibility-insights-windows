@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
+using AccessibilityInsights.SharedUx.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.DesktopTests.Telemetry
+namespace AccessibilityInsights.SharedUXTests.Telemetry
 {
     [TestClass]
     public class LoggerUnitTests

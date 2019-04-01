@@ -3,7 +3,7 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Rules;

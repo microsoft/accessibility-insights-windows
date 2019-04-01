@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 using AccessibilityInsights.SharedUx.FileBug;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 #if FAKES_SUPPORTED
 using AccessibilityInsights.Actions.Fakes;
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
+using AccessibilityInsights.SharedUx.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.BugReporting.Fakes;
 using AccessibilityInsights.SharedUx.FileBug.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;

@@ -13,7 +13,7 @@ using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
 using System.Globalization;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights
 {

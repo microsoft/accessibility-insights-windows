@@ -3,7 +3,7 @@
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System.Globalization;
 using System.Timers;
 using System.Windows;

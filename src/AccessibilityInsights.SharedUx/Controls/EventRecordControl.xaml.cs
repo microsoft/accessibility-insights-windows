@@ -14,7 +14,7 @@ using AccessibilityInsights.SharedUx.Settings;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System.Windows.Threading;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Actions;

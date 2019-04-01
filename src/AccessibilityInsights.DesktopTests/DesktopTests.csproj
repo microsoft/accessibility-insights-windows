@@ -87,8 +87,7 @@
     <Compile Include="ColorContrastAnalyzer\ImageTests.cs" />
     <Compile Include="Keyboard\HotkeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>
-    <Compile Include="Telemetry\LoggerUnitTests.cs" />
+    <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
     <Compile Include="Utility\SupportedEventsTests.cs" />
   </ItemGroup>
   <ItemGroup>

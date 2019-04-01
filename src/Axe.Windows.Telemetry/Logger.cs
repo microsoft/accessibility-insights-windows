@@ -1,20 +1,18 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions;
-using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AccessibilityInsights.Desktop.Telemetry
+namespace Axe.Windows.Telemetry
 {
     /// <summary>
-    /// Shim to make the telemetry extension loosely coupled
+    /// Used for logging telemetry events
     /// </summary>
     public static class Logger
     {
-        // Use this within the class to get the ITelemetry interface
-        private static ITelemetry Telemetry => Container.GetDefaultInstance()?.Telemetry;
+        // Use this within the class to get the IAxeWindowsTelemetry interface
+        private static IAxeWindowsTelemetry Telemetry => null;
 
         /// <summary>
         /// Whether or not the extension is available
@@ -23,8 +21,7 @@ namespace AccessibilityInsights.Desktop.Telemetry
 
         // Fields used for ReportException plumbing
         private static bool IsTelemetryAllowedBackingValue = false;
-        private static bool IsReportExceptionHandlerAttached = false;
-        private readonly static object LockObject = new object();
+        // private readonly static object LockObject = new object();
         private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(ReportException);
 
         /// <summary>
@@ -36,7 +33,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
             set
             {
                 IsTelemetryAllowedBackingValue = value;
-                AttachReportExceptionHandler();
                 ReportExceptionBuffer.EnableForwarding();
             }
         }
@@ -64,7 +60,9 @@ namespace AccessibilityInsights.Desktop.Telemetry
                         { property.ToString(), value }
                     });
                 }
-                catch (Exception) { }
+#pragma warning disable CA1031
+                catch { }
+#pragma warning restore CA1020
             }
         }
 
@@ -81,20 +79,9 @@ namespace AccessibilityInsights.Desktop.Telemetry
                 {
                     Telemetry.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
                 }
-                catch (Exception) { }
-            }
-        }
-
-        /// <summary>
-        /// Explicitly updates context properties to be appended to future calls to the current telemetry pipeline
-        /// </summary>
-        /// <param name="property"></param>
-        /// <param name="value"></param>
-        public static void AddOrUpdateContextProperty(TelemetryProperty property, string value)
-        {
-            if (IsEnabled)
-            {
-                Telemetry.AddOrUpdateContextProperty(property.ToString(), value);
+#pragma warning disable CA1031
+                catch { }
+#pragma warning restore CA1031
             }
         }
 
@@ -125,30 +112,5 @@ namespace AccessibilityInsights.Desktop.Telemetry
             return output;
         }
 
-        /// <summary>
-        /// Forward exceptions from the event handler to the logger
-        /// </summary>
-        private static void OnReportedException(object sender, ReportExceptionEventArgs args)
-        {
-            ReportExceptionBuffer.ReportException(args.ReportedException);
-        }
-
-        /// <summary>
-        /// Attach the handler only once, no matter how many times this method gets called
-        /// </summary>
-        public static void AttachReportExceptionHandler()
-        {
-            if (!IsReportExceptionHandlerAttached)
-            {
-                lock (LockObject)
-                {
-                    if (!IsReportExceptionHandlerAttached)
-                    {
-                        Container.ReportedExceptionEvent += OnReportedException;
-                        IsReportExceptionHandlerAttached = true;
-                    }
-                }
-            }
-        }
-    }
-}
+    } // class
+} // namespace

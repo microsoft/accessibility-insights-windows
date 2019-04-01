@@ -5,7 +5,7 @@ using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.Telemetry;
+using Axe.Windows.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;

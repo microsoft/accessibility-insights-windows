@@ -3,7 +3,7 @@
 using System.Diagnostics;
 using System.Text;
 
-namespace AccessibilityInsights.Desktop.Telemetry
+namespace AccessibilityInsights.SharedUx.Telemetry
 {
     /// <summary>
     /// Windows Event Logger

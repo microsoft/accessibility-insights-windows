@@ -91,14 +91,9 @@
     <Compile Include="Styles\FontWeight.cs" />
     <Compile Include="Styles\CapStyle.cs" />
     <Compile Include="Styles\BulletStyle.cs" />
-    <Compile Include="Telemetry\ReportExceptionBuffer.cs" />
-    <Compile Include="Telemetry\TelemetryAction.cs" />
-    <Compile Include="Telemetry\TelemetryProperty.cs" />
-    <Compile Include="Telemetry\WindowsEventLogger.cs" />
     <Compile Include="Types\AnnotationType.cs" />
     <Compile Include="Styles\AnimationStyle.cs" />
     <Compile Include="Types\TextAttributeType.cs" />
-    <Compile Include="Telemetry\Logger.cs" />
     <Compile Include="Utility\StandardLinksHelper.cs" />
     <Compile Include="Utility\SupportedEvents.cs" />
     <Compile Include="UIAutomation\TreeWalkers\DesktopElementAncestry.cs" />
@@ -179,6 +174,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
       <Name>Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axe.Windows.Telemetry\Axe.Windows.Telemetry.csproj">
+      <Project>{5c394271-6d27-4a48-8a32-f8080025431c}</Project>
+      <Name>Axe.Windows.Telemetry</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

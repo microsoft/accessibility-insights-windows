@@ -3,7 +3,7 @@
 using AccessibilityInsights.Actions.Enums;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileBug;
