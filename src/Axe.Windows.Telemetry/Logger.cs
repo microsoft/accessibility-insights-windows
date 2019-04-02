@@ -40,6 +40,9 @@ namespace Axe.Windows.Telemetry
         /// <param name="value"></param>
         public static void PublishTelemetryEvent(TelemetryAction action, TelemetryProperty property, string value)
         {
+            // Check IsEnabled because ToString on enums is expensive
+            if (!IsEnabled) return;
+
             PublishTelemetryEvent(action, new Dictionary<TelemetryProperty, string>
                     {
                         { property, value }
@@ -53,6 +56,9 @@ namespace Axe.Windows.Telemetry
         /// <param name="propertyBag">Associated property bag--this may be null</param>
         public static void PublishTelemetryEvent(TelemetryAction action, IReadOnlyDictionary<TelemetryProperty, string> propertyBag = null)
         {
+            // Check IsEnabled because ToString on enums is expensive
+            if (!IsEnabled) return;
+
             try
             {
                 lock (_lockObject)
