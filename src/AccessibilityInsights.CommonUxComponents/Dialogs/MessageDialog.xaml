@@ -26,33 +26,6 @@
                 Content="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 AutomationProperties.Name="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 Margin="270,10,30,10" Click="btnClose_Click"
-                IsDefault="True">
-            <Button.Style>
-                <Style TargetType="{x:Type Button}">
-                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
-                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-                    <Setter Property="FontSize" Value="12"/>
-                    <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
-                    <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
-                                        Background="{TemplateBinding Background}"
-                                        CornerRadius="4">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Button.Style>
-        </Button>
+                IsDefault="True" Style="{DynamicResource BtnBlue}"/>
     </Grid>
 </Window>
