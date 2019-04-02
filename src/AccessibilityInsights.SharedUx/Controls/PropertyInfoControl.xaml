@@ -8,7 +8,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              xmlns:customcontrols="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
              mc:Ignorable="d"

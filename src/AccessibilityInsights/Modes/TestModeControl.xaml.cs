@@ -25,6 +25,7 @@ using System.Windows.Threading;
 using static System.FormattableString;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {

@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
+using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;

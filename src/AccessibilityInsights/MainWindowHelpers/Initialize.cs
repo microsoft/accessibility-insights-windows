@@ -17,6 +17,7 @@ using System.Windows.Shell;
 using AccessibilityInsights.SharedUx.Highlighting;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {
