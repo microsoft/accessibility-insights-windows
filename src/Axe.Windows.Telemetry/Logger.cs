@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Axe.Windows.Telemetry
 {
@@ -56,7 +57,7 @@ namespace Axe.Windows.Telemetry
             {
                 lock (_lockObject)
                 {
-                    _telemetry?.PublishEvent(action, propertyBag);
+                    _telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
                 }
             }
 #pragma warning disable CA1031
@@ -82,6 +83,21 @@ namespace Axe.Windows.Telemetry
 #pragma warning disable CA1031
             catch { }
 #pragma warning restore CA1031
+        }
+
+        internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
+        {
+            if (properties == null || !properties.Any())
+                return null;
+
+            Dictionary<string, string> output = new Dictionary<string, string>();
+
+            foreach (KeyValuePair<TelemetryProperty, string> pair in properties)
+            {
+                output.Add(pair.Key.ToString(), pair.Value);
+            }
+
+            return output;
         }
     } // class
 } // namespace
