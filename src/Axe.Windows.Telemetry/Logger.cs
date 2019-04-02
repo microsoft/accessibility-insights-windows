@@ -6,17 +6,30 @@ using System.Collections.Generic;
 namespace Axe.Windows.Telemetry
 {
     /// <summary>
-    /// Used for logging telemetry events
+    /// Wraps telemetry logging and sends it to 
+    /// a supplied IAxeWindowsTelemetry implementation
     /// </summary>
     public static class Logger
     {
         private static IAxeWindowsTelemetry _telemetry = null;
+        private static readonly Object _lockObject = new Object();
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
         public static bool IsEnabled => _telemetry != null && _telemetry.IsEnabled;
+
+        /// <summary>
+        /// Sets the telemetry sink for Axe.Windows.
+        /// <param name="telemetry">Telemetry from Axe.Windows will be forwarded to this object</param>
+        public static void SetTelemetrySink(IAxeWindowsTelemetry telemetry)
+        {
+            lock (_lockObject)
+            {
+                _telemetry = telemetry;
+            }
+        }
 
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
@@ -41,7 +54,10 @@ namespace Axe.Windows.Telemetry
         {
             try
             {
-                _telemetry?.PublishEvent(action, propertyBag);
+                lock (_lockObject)
+                {
+                    _telemetry?.PublishEvent(action, propertyBag);
+                }
             }
 #pragma warning disable CA1031
             catch { }
@@ -56,7 +72,16 @@ namespace Axe.Windows.Telemetry
         {
             if (e == null) return;
 
-            _telemetry?.ReportException(e);
+            try
+            {
+                lock (_lockObject)
+                {
+                    _telemetry?.ReportException(e);
+                }
+            }
+#pragma warning disable CA1031
+            catch { }
+#pragma warning restore CA1031
         }
     } // class
 } // namespace
