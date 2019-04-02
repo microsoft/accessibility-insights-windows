@@ -3,7 +3,7 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-                    xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+                    xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
                     xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls;assembly=AccessibilityInsights.SharedUx"
                     xmlns:animations="clr-namespace:AccessibilityInsights.SharedUx.Animations;assembly=AccessibilityInsights.SharedUx"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"

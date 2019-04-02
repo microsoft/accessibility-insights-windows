@@ -31,7 +31,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// Name of icon to be drawn
         /// </summary>
         #region GlyphName (Dependency Property)
-    
+
         public static readonly DependencyProperty GlyphNameProperty =
             DependencyProperty.Register("GlyphName", typeof(FabricIcon?), typeof(FabricIconControl), new PropertyMetadata(default(FabricIcon?), OnGlyphNameChanged));
 
@@ -154,7 +154,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
-        { 
+        {
             return new CustomControlOverridingAutomationPeer(this, "icon", false);
         }
     }
@@ -430,6 +430,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             {FabricIcon.FullCircleMask, "\uE91F"},
             {FabricIcon.LocationFill, "\uE920"},
             {FabricIcon.ChromeMinimize, "\uE921"},
+            {FabricIcon.ChromeRestore, "\uE923"},
             {FabricIcon.Annotation, "\uE924"},
             {FabricIcon.Fingerprint, "\uE928"},
             {FabricIcon.Handwriting, "\uE929"},
@@ -1960,6 +1961,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         FullCircleMask,
         LocationFill,
         ChromeMinimize,
+        ChromeRestore,
         Annotation,
         Fingerprint,
         Handwriting,
@@ -3261,7 +3263,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     }
 
     #endregion GlyphSize Lookup
-    
+
     /// <summary>
     /// Size presets
     /// </summary>
@@ -3273,6 +3275,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         Large,
         Larger
     }
-    
+
     #endregion GlyphSize
 }

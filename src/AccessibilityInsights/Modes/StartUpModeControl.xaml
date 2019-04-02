@@ -7,7 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:AccessibilityInsights.Modes"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              DataContext="{Binding RelativeSource={RelativeSource Self}}" 
              mc:Ignorable="d"
              xmlns:whatsNew="clr-namespace:AccessibilityInsights.SharedUx.Controls.WhatsNew;assembly=AccessibilityInsights.SharedUx"

@@ -8,7 +8,7 @@
              xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
              xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" Background="{DynamicResource ResourceKey=UnselectedInspectTabBrush}" BorderThickness="0"

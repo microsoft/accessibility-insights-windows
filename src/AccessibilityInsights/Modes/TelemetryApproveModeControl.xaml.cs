@@ -1,15 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Desktop.Telemetry;
-using AccessibilityInsights.DesktopUI.Controls;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
-using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;

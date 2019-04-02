@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:controls="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              xmlns:sharedControls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              mc:Ignorable="d"
