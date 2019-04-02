@@ -3,6 +3,7 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;

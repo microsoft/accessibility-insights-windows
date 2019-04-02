@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs;assembly=AccessibilityInsights.SharedUx"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:local="clr-namespace:AccessibilityInsights.Modes"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
              mc:Ignorable="d" AutomationProperties.Name="{x:Static properties:Resources.ConfigurationModeControlAutomationPropertiesName}"

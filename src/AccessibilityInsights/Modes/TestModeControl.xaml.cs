@@ -25,6 +25,7 @@ using System.Windows.Threading;
 using static System.FormattableString;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -190,6 +191,10 @@ namespace AccessibilityInsights.Modes
                                     {
                                         ScreenShotAction.CaptureScreenShot(ecId);
                                         Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+
+                                        // This needs to happen before the call to ctrlAutomatedChecks.SetElement. Otherwise,
+                                        // ctrlAutomatedChecks's checkboxes become out of sync with the highlighter
+                                        Application.Current.MainWindow.Visibility = Visibility.Visible; 
                                     })).Wait();
                                 }
                             }

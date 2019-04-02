@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;

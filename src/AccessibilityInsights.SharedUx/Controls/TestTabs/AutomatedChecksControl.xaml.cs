@@ -1,15 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -333,7 +332,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.AllExpanded = false;
-            fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidRight;
+            fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.chbxSelectAll.IsChecked = false;
             HollowHighlightDriver.GetDefaultInstance().Clear();
@@ -384,12 +383,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.AllExpanded = !this.AllExpanded;
             if (this.AllExpanded)
             {
-                fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidDown;
+                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
 
             }
             else
             {
-                fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidRight;
+                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
             }
             ExpandAllExpanders(lvResults);
         }
@@ -436,7 +435,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
             this.AllExpanded = false;
-            fabicnExpandAll.GlyphName = DesktopUI.Controls.FabricIcon.CaretSolidRight;
+            fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
         }
 
         /// <summary>

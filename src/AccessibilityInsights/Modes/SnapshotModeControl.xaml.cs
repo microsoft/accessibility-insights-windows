@@ -28,6 +28,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {

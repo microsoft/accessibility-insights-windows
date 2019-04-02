@@ -3,8 +3,10 @@
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.SharedUx.ViewModels;
-using AccessibilityInsights.UnitTestSharedLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.IO;
 
 namespace AccessibilityInsights.SharedUxTests.ViewModels
 {
@@ -17,10 +19,66 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
         [TestMethod()]
         public void GetDescendentStatusCounts()
         {
-            A11yElement ke = Utility.LoadA11yElementsFromJSON("Snapshots/Taskbar.snapshot");
-            Utility.PopulateChildrenTests(ke);
-            HierarchyNodeViewModel model = new HierarchyNodeViewModel(ke, true, false);
+            A11yElement e = LoadA11yElementsFromJSON("Snapshots/Taskbar.snapshot");
+            PopulateChildrenTests(e);
+            HierarchyNodeViewModel model = new HierarchyNodeViewModel(e, true, false);
             Assert.AreEqual(23, model.AggregateStatusCounts[(int)ScanStatus.Pass]);
+        }
+
+        /// <summary>
+        /// Load the UI Automation elements hierarchy tree from JSON file. 
+        /// it returns the root UI Automation element from the tree.
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        private static A11yElement LoadA11yElementsFromJSON(string path)
+        {
+            A11yElement element = null;
+            if (File.Exists(path))
+            {
+                var json = File.ReadAllText(path);
+                element = JsonConvert.DeserializeObject<A11yElement>(json);
+                if (element == null)
+                {
+                    return null;
+                }
+                // Set parents
+                Queue<A11yElement> elements = new Queue<A11yElement>();
+                elements.Enqueue(element);
+                while (elements.Count > 0)
+                {
+                    var next = elements.Dequeue();
+                    if (next.Children != null)
+                    {
+                        next.Children.ForEach(c => {
+                            c.Parent = next;
+                            elements.Enqueue(c);
+                        });
+                    }
+                }
+            }
+
+            return element;
+        }
+
+        /// <summary>
+        /// Populates all descendents with test results and sets them to 
+        ///     pass if the control is a button (any predicate would work)
+        ///     and returns number that should pass
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        private static void PopulateChildrenTests(A11yElement e)
+        {
+            e.ScanResults.Items.ForEach(item => {
+                item.Items = new List<RuleResult>();
+                RuleResult r = new RuleResult();
+                r.Status = e.ControlTypeId == Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
+                item.Items.Add(r);
+            });
+            e.Children.ForEach(c => {
+                PopulateChildrenTests(c);
+            });
         }
     }
 }
