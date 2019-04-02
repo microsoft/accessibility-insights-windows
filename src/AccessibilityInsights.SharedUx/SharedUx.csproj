@@ -211,10 +211,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\MessageDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialogs\MoveTextRangeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -415,9 +411,6 @@
     <Compile Include="Dialogs\HotkeyGrabDialog.xaml.cs">
       <DependentUpon>HotkeyGrabDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\MessageDialog.xaml.cs">
-      <DependentUpon>MessageDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\MoveTextRangeDialog.xaml.cs">
       <DependentUpon>MoveTextRangeDialog.xaml</DependentUpon>
     </Compile>
@@ -488,6 +481,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj">
+      <Project>{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}</Project>
+      <Name>CommonUxComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>

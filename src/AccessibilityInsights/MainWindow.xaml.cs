@@ -28,6 +28,7 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {

@@ -10,6 +10,7 @@ using AccessibilityInsights.Desktop.UIAutomation.Support;
 using AccessibilityInsights.DesktopUI.Highlighters;
 using AccessibilityInsights.Core.Enums;
 using System.Globalization;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {

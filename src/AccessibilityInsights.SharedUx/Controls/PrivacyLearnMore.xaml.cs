@@ -5,6 +5,7 @@ using System.Windows.Navigation;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System.Globalization;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

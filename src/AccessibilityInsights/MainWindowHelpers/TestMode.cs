@@ -9,6 +9,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Globalization;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {

@@ -10,6 +10,7 @@ using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {

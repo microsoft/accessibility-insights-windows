@@ -5,7 +5,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AccessibilityInsights.CommonUxComponents.Dialogs"
         xmlns:Properties="clr-namespace:AccessibilityInsights.CommonUxComponents.Properties"
         SizeToContent="Height" 
         mc:Ignorable="d"
@@ -27,6 +26,33 @@
                 Content="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 AutomationProperties.Name="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 Margin="270,10,30,10" Click="btnClose_Click"
-                IsDefault="True" Style="{DynamicResource BtnBlue}"/>
+                IsDefault="True">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+                    <Setter Property="FontSize" Value="12"/>
+                    <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="4">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
