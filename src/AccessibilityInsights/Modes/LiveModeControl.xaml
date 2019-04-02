@@ -9,7 +9,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
-             xmlns:controls1="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:controls1="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              mc:Ignorable="d"
              AutomationProperties.Name="{x:Static properties:Resources.LiveModeControlAutomationPropertiesName}" Height="600" Width="600">
     <UserControl.Resources>

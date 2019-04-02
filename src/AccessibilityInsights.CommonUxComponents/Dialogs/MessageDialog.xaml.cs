@@ -25,6 +25,7 @@ namespace AccessibilityInsights.CommonUxComponents.Dialogs
         {
             var dlg = new MessageDialog() { Message = message };
             dlg.Owner = Application.Current.MainWindow;
+            dlg.Resources = Application.Current.MainWindow.Resources;
 
             return dlg.ShowDialog();
         }

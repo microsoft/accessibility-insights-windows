@@ -13,6 +13,7 @@ using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using System.Globalization;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {

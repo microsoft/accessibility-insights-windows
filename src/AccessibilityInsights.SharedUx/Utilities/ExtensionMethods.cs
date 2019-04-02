@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
@@ -108,9 +109,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
             catch (Exception ex)
             {
-                Dialogs.MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
+                MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
             }
-        }        
+        }
 
         /// <summary>
         /// Get Root Node Hierarchy ViewModel based on currently populated data. 
