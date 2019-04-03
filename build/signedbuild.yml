@@ -51,9 +51,10 @@ jobs:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-      ArtifactName: 'Compliance'
+    displayName: 'Publish Artifact: Compliance'
     condition: succeededOrFailed()
+    inputs:
+      ArtifactName: 'Compliance'
 
   - task: PowerShell@2
     displayName: 'Check Automation'
@@ -105,9 +106,10 @@ jobs:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-      ArtifactName: 'Compliance'
+    displayName: 'Publish Artifact: Compliance'
     condition: succeededOrFailed()
+    inputs:
+      ArtifactName: 'Compliance'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim '
