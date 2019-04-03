@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("AccessibilityInsights.SetupLibraryUnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("AccessibilityInsights.SetupLibraryUnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]

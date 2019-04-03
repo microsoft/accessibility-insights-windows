@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// The name of the application's config file
         /// </summary>
-        public const string AppConfigFileName = "Configuration.json";
+        public const string AppConfigFileName = @"Configuration.json";
 
         /// <summary>
         /// The name of the key that writes the release channel
