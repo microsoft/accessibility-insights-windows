@@ -27,7 +27,6 @@ namespace AccessibilityInsights.Automation
             try
             {
                 _assemblyResolver = assemblyResolver;
-                var ts = TestSetting.GenerateSuiteConfiguration(SuiteConfigurationType.Default);
                 this.dataManager = DataManager.GetDefaultInstance();
                 this.selectAction = SelectAction.GetDefaultInstance();
                 this.SessionParameters = parameters;

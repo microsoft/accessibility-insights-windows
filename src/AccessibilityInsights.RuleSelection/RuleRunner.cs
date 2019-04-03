@@ -103,6 +103,11 @@ namespace AccessibilityInsights.RuleSelection
             return ScanStatus.Pass;
         }
 
+        public static string GetRuleVersion()
+        {
+            return RuleVersions.Version;
+        }
+
         private static Exception Error(string message)
         {
 #if DEBUG

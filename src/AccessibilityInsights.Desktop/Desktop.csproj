@@ -79,7 +79,6 @@
     <Compile Include="Settings\RecordEntitySetting.cs" />
     <Compile Include="Settings\RecorderSetting.cs" />
     <Compile Include="Settings\SnapshotMetaInfo.cs" />
-    <Compile Include="Settings\TestSetting.cs" />
     <Compile Include="Styles\SayAsInterpretAs.cs" />
     <Compile Include="Styles\CaretBidiMode.cs" />
     <Compile Include="Styles\CaretPosition.cs" />

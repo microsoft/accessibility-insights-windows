@@ -161,15 +161,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Test Config type (default, standard, etc.)
-        /// </summary>
-        public SuiteConfigurationType TestConfig
-        {
-            get => GetEnumDataValue<SuiteConfigurationType>(keyTestConfig);
-            set => SetEnumDataValue<SuiteConfigurationType>(keyTestConfig, value);
-        }
-
-        /// <summary>
         /// Hot key for snap mode
         /// Shift + F7 is default value
         /// </summary>
@@ -566,7 +557,6 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.RemapSetting(keyHotKeyLegacyForMoveToPreviousSibling, keyHotKeyForMoveToPreviousSibling);
 
                 // Convert legacy values that are stored as numbers instead of enum names
-                config.RemapIntToEnumName<SuiteConfigurationType>(keyTestConfig);
                 config.RemapIntToEnumName<TreeViewMode>(keyTreeViewMode);
                 config.RemapIntToEnumName<HighlighterMode>(keyHighlighterMode);
                 config.RemapIntToEnumName<FontSize>(keyFontSize);
@@ -634,7 +624,6 @@ namespace AccessibilityInsights.SharedUx.Settings
                 EnableTelemetry = true,
                 ShowTelemetryDialog = true,
 
-                TestConfig = SuiteConfigurationType.Default,
                 IsUnderElementScope = true,
                 IssueReporterSerializedConfigs = null,
                 SelectedIssueReporter = Guid.Empty,

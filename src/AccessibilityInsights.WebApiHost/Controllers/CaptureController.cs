@@ -22,7 +22,6 @@ namespace AccessibilityInsights.WebApiHost.Controllers
         /// </summary>
         static CaptureController()
         {
-            var ts = TestSetting.GenerateSuiteConfiguration(SuiteConfigurationType.Default);
         }
 
         [HttpPut]

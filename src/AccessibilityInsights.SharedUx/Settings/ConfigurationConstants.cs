@@ -67,7 +67,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyShowUncertain = "ShowUncertain";
         private const string keyShowWelcomeScreenOnLaunch = "ShowWelcomeScreenOnLaunch";
         private const string keyShowWhitespaceInTextPatternViewer = "ShowWhitespaceInTextPatternViewer";
-        private const string keyTestConfig = "TestConfig";
         private const string keyTestReportPath = "TestReportPath";
         private const string keyTreeViewMode = "TreeViewMode";
         private const string keyVersion = "Version";
