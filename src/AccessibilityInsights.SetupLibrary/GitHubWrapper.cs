@@ -42,14 +42,6 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Implements <see cref="IGitHubWrapper.LoadUriContentsIntoStream(Uri, Stream)"/>
-        /// </summary>
-        public void LoadUriContentsIntoStream(Uri uri, Stream stream)
-        {
-            GitHubClient.LoadUriContentsIntoStream(uri, stream, _timeout);
-        }
-
-        /// <summary>
         /// Implements <see cref="IGitHubWrapper.LoadUriContentsIntoStream(Uri, Stream)(Uri, Stream)"/>
         /// </summary>
         public void LoadChannelInfoIntoStream(string releaseChannel, Stream stream)

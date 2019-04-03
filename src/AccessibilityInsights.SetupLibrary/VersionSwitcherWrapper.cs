@@ -44,8 +44,8 @@ namespace AccessibilityInsights.SetupLibrary
             List<FileStream> fileLocks = new List<FileStream>();
             try
             {
-                string temporaryFolder = GetTemporaryVersionSwitcherFolder();
                 string installedFolder = GetInstalledVersionSwitcherFolder();
+                string temporaryFolder = GetTemporaryVersionSwitcherFolder();
                 RemoveFolder(temporaryFolder);
                 if (TryRecursiveCopy(installedFolder, temporaryFolder, fileLocks))
                 {
