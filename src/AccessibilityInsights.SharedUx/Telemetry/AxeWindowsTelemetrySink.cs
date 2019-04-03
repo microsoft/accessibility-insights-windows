@@ -15,20 +15,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// </summary>
     class AxeWindowsTelemetrySink : IAxeWindowsTelemetry
     {
-#pragma warning disable CA1810
-        private static readonly ITelemetry _telemetry;
-
         static AxeWindowsTelemetrySink()
         {
-            _telemetry = Container.GetDefaultInstance()?.Telemetry;
-            if (_telemetry == null) return;
-
-            if (!Logger.IsEnabled)
-                return;
-
             Axe.Windows.Telemetry.Logger.SetTelemetrySink(new AxeWindowsTelemetrySink());
         }
-#pragma warning restore CA1810
 
         /// <summary>
         /// Private constructor so the class cannot be instantiated by any other class
@@ -38,20 +28,14 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
         public void PublishEvent(string action, IReadOnlyDictionary<string, string> propertyBag)
         {
-            if (!Logger.IsEnabled) return;
-
-            try
-            {
-                _telemetry?.PublishEvent(action, propertyBag);
-            }
-            catch (Exception) { }
+            TelemetrySink.PublishTelemetryEvent(action, propertyBag);
         }
 
         public void ReportException(Exception e)
         {
-            Logger.ReportException(e);
+            TelemetrySink.ReportException(e);
         }
 
-        public bool IsEnabled => Logger.IsEnabled;
+        public bool IsEnabled => TelemetrySink.IsEnabled;
     } // class
 } // namespace

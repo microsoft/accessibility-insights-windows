@@ -114,7 +114,8 @@ namespace AccessibilityInsights
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
 
             // enable/disable telemetry
-            Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
+            if (ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
+                TelemetryController.EnableTelemetry();
         }
 
         /// <summary>

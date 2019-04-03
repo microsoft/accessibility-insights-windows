@@ -445,10 +445,13 @@
     <Compile Include="Settings\ConfigurationModel.cs" />
     <Compile Include="Settings\SettingsDictionary.cs" />
     <Compile Include="Telemetry\AxeWindowsTelemetrySink.cs" />
+    <Compile Include="Telemetry\EventTelemetrySink.cs" />
     <Compile Include="Telemetry\Logger.cs" />
     <Compile Include="Telemetry\ReportExceptionBuffer.cs" />
     <Compile Include="Telemetry\TelemetryAction.cs" />
+    <Compile Include="Telemetry\TelemetryController.cs" />
     <Compile Include="Telemetry\TelemetryProperty.cs" />
+    <Compile Include="Telemetry\TelemetrySink.cs" />
     <Compile Include="Telemetry\WindowsEventLogger.cs" />
     <Compile Include="Utilities\DirectoryManagement.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
