@@ -1,36 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.Deployment.WindowsInstaller;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
-namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
-    /// Methods to help with updates
+    /// Methods to help with getting MSI information
     /// </summary>
-    internal static class UpdateMethods
+    public static class MsiUtilities
     {
         private const string UpdateGuid = "{0D760959-F713-46C4-9A3D-4E73619EE3B5}";
-
-        /// <summary>
-        /// Starts a process to install the MSI file at the specified location
-        ///     Method returns before installation is complete
-        /// </summary>
-        /// <param name="location"></param>
-        /// <returns></returns>
-        internal static void BeginMSIInstall(string location)
-        {
-            Process p = new Process();
-            p.StartInfo.FileName = "cmd.exe";
-            p.StartInfo.UseShellExecute = false;
-            p.StartInfo.CreateNoWindow = true;
-            p.StartInfo.Arguments = "/K timeout /t 5 & msiexec /i " + location + " /qb-";
-            p.Start();
-        }
 
         /// <summary>
         /// Returns the product version of the currently installed
@@ -40,7 +23,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         ///     - could occur if Windows Installer's cached MSI file is corrupted or deleted
         /// </summary>
         /// <returns></returns>
-        internal static string GetInstalledProductVersion()
+        public static string GetInstalledProductVersion(IExceptionReporter exceptionReporter)
         {
             string targetUpgradeCode = UpdateGuid.ToUpperInvariant();
 
@@ -49,11 +32,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             bool existingApp;
             try
             {
-                existingApp = installations.Any<ProductInstallation>();
+                existingApp = installations.Any();
             }
             catch (ArgumentException e)
             {
-                e.ReportException();
+                exceptionReporter.ReportException(e);
                 // occurs when the upgrade code is formatted incorrectly
                 // exception text: "Parameter is incorrect"
                 return null;
@@ -79,11 +62,37 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
+        /// Get the installed app path, based on the registry open file verb
+        /// 
+        /// This verb is a string in the following format:
+        /// "C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe" "%1"
+        ///
+        /// We want the following as our output:
+        /// C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe
+        /// </summary>
+        /// <returns>The installed app path</returns>
+        public static string GetAppInstalledPath()
+        {
+            try
+            {
+                RegistryKey commandKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Classes\A11y.Test\shell\open\command");
+                {
+                    string command = (string)commandKey.GetValue("");
+                    return command.Substring(0, command.Length - 5).Replace("\"", "");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException("Unable to locate Accessibility Insights for Windows", e);
+            }
+        }
+
+        /// <summary>
         /// Returns the product version of the file at the given path
         /// </summary>
-        /// <param name="pathToMSI"></param>
-        /// <returns></returns>
-        internal static string GetMSIProductVersion(string pathToMSI)
+        /// <param name="pathToMSI">The path to the MSI being queried</param>
+        /// <returns>The product version in string format</returns>
+            internal static string GetMSIProductVersion(string pathToMSI)
         {
             using (Database db = new Database(pathToMSI, DatabaseOpenMode.ReadOnly))
             {

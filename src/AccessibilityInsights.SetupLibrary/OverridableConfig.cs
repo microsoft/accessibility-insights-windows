@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace AccessibilityInsights.Extensions.AutoUpdate
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
     /// Class to provide an option to override config values via an external JSON file. This class
@@ -20,7 +19,8 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
         /// ctor
         /// </summary>
         /// <param name="configFile">The name of the file that contains the config data</param>
-        internal OverridableConfig(string configFile)
+        /// <param name="exceptionReporter">The sink for exceptions</param>
+        internal OverridableConfig(string configFile, IExceptionReporter exceptionReporter)
         {
             string fullPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), configFile);
             if (File.Exists(fullPath))
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Extensions.AutoUpdate
                 }
                 catch (Exception e)
                 {
-                    e.ReportException();
+                    exceptionReporter.ReportException(e);
                 }
             }
 

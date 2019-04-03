@@ -32,6 +32,7 @@
     "IsUnderElementScope": true,
     "MouseSelectionDelayMilliSeconds": 200,
     "PlayScanningSound": false,
+    "ReleaseChannel": "Canary",
     "SelectionByFocus": true,
     "SelectionByMouse": true,
     "SelectedIssueReporter": "{27f21dff-2fb3-4833-be55-25787fce3e17}",

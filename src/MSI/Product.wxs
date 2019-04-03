@@ -30,6 +30,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
       <ComponentRef Id="ProductComponent" />
       <ComponentRef Id="ExtensionsComp"/>
       <ComponentRef Id="IssueTemplateComp" />
+      <ComponentRef Id="VersionSwitcherComp" />
       <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 
@@ -51,6 +52,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               </File>
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Desktop.dll" />
@@ -61,7 +63,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.RuleSelection.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
@@ -89,7 +91,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             <Directory Id="extensions" Name="Extensions">
                <Directory Id="ExtensionsMSIGuid" Name="20FB3078-CDFD-4EDA-B541-10EA52B34552">
                  <Component Id="ExtensionsComp" Guid="20FB3078-CDFD-4EDA-B541-10EA52B34552">
-                   <!-- HINT: please use the shorest suffix which can distingusish itself for the naming convention of the extension assembly Ids: -->
+                   <!-- HINT: please use the shortest suffix which can distingusish itself for the naming convention of the extension assembly Ids: -->
 
                    <!-- GitHub Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.GitHub\bin\Release\AccessibilityInsights.Extensions.GitHub.dll" Id="github_extension"/>
@@ -157,6 +159,18 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                  </Directory>
                </Directory>
             </Directory>
+
+            <Directory Id="VersionSwitcher" Name="VersionSwitcher">
+              <Component Id="VersionSwitcherComp" Guid="1AAD6099-09E1-4E8F-A28B-57806F4A29DF">
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoftt"/>
+              </Component>
+            </Directory>
+
           </Directory>
         </Directory>
       </Directory>

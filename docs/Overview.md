@@ -55,11 +55,16 @@ The following extensions exist:
 
 Assembly | Responsibility
 --- | ---
-AccessibilityInsights.Extensions.AutoUpdate | Implement a file-based update mechanism. Can only be used when all users are guaranteed to have access to the file share.
 AccessibilityInsights.Extensions.GitHubAutoUpdate | Implement a web-based update mechanism. Requires that the files be publicly accessible via a Uri.
 AccessibilityInsights.Extensions.AzureDevOps | Implement issue filing support using Azure Boards.
 AccessibilityInsights.Extensions.Github | Implement issue filing support using GitHub issues.
 AccessibilityInsights.Extensions.Telemetry | Implement simple telemetry built upon [Microsoft ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights).
+
+#### Version Handling assemblies
+Assembly | Responsibility
+--- | ---
+AccessibilityInsights.VersionSwitcher.exe | Provides an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
+AccessibilityInsights.SetupLibrary | Provides setup-related classes that are used by both AccessibiltyInsights.exe and AccessibilityInsights.VersionSwitcher.exe
 
 #### Packaging
 The packaging projects exist to gather assemblies into their shipping vehicles:
@@ -83,6 +88,7 @@ Unit tests are built using a combination of Moq and Microsoft Fakes. The folllow
 - AccessibilityInsights.Fakes.Prebuild
 - AccessibilityInsights.RuleSelectionTests
 - AccessibilityInsights.RulesTest
+- AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
 - AccessibilityInsights.WebApiHostTests
 - AccessibilityInsights.Win32Tests 

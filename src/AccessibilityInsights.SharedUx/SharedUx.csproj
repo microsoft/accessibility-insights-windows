@@ -279,6 +279,7 @@
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
+    <Compile Include="Enums\ReleaseChannel.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
     <Compile Include="FileIssue\FileIssueAction.cs" />
     <Compile Include="FileIssue\IssueReporterManager.cs" />
@@ -435,8 +436,6 @@
     <Compile Include="Settings\AppLayout.cs" />
     <Compile Include="Settings\ConfigurationConstants.cs" />
     <Compile Include="Settings\ConfigurationModel.cs" />
-    <Compile Include="Settings\SettingsDictionary.cs" />
-    <Compile Include="Utilities\DirectoryManagement.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
@@ -505,6 +504,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
       <Name>Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>

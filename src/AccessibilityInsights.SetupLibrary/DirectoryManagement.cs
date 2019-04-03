@@ -3,10 +3,10 @@
 using System;
 using System.IO;
 
-namespace AccessibilityInsights.SharedUx.Utilities
+namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
-    /// Encapsulates file paths used for user data & configuration
+    /// Encapsulates file paths used for user data and configuration
     /// Creates initial folders required to store AccessibilityInsights-related config files
     /// </summary>
     public static class DirectoryManagement

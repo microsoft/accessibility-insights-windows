@@ -4,9 +4,9 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.RuleSelection;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Globalization;
@@ -113,6 +113,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
@@ -124,9 +125,9 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
+            Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
-
-            Assert.AreEqual(35, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(36, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -134,7 +135,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config); 
+            ConfirmOverrideConfigMatchesExpectation(config);
         }
 
         [TestMethod]
@@ -142,18 +143,21 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config,
+            ConfirmOverrideConfigMatchesExpectation(config,
+                issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
-                issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}");
+                releaseChannel: ReleaseChannel.Canary
+                );
         }
 
         private static ConfigurationModel GetDefaultConfig()
         {
-            return ConfigurationModel.LoadFromJSON(@"..\..\Resources\ThisFileDoesNotExist.json");
+            return ConfigurationModel.LoadFromJSON(null);
         }
 
-        private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config,
-            Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null)
+        private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
+            Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
+            ReleaseChannel? releaseChannel = null)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -182,6 +186,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);

@@ -127,8 +127,7 @@ namespace AccessibilityInsights
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_DoInstallation, new Dictionary<TelemetryProperty, string>
                     {
-                        { TelemetryProperty.UpdateInstallerDownloadTime, GetTimeSpanTelemetryString(autoUpdate.GetInstallerDownloadTime())},
-                        { TelemetryProperty.UpdateInstallerVerificationTime, GetTimeSpanTelemetryString(autoUpdate.GetInstallerVerificationTime())},
+                        { TelemetryProperty.UpdateInstallerUpdateTime, GetTimeSpanTelemetryString(autoUpdate.GetUpdateTime())},
                         { TelemetryProperty.UpdateResult, updateOption.ToString()},
                     });
                 if (result == UpdateResult.Success)
@@ -143,7 +142,7 @@ namespace AccessibilityInsights
             Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
 
             string message = updateOption == AutoUpdateOption.RequiredUpgrade
-                ? GetMessageForRequiredUpdateFailure(result) : GetMessageForOptionalUpdateFailure(result);
+                ? GetMessageForRequiredUpdateFailure() : GetMessageForOptionalUpdateFailure();
 
             MessageBox.Show(message);
 
@@ -193,32 +192,14 @@ namespace AccessibilityInsights
             return timeSpan.HasValue ? timeSpan.Value.ToString() : "unknown";
         }
 
-        private static string GetMessageForOptionalUpdateFailure(UpdateResult updateResult)
+        private static string GetMessageForOptionalUpdateFailure()
         {
-            switch (updateResult)
-            {
-                case UpdateResult.DownloadFailed:
-                    return Messages.OptionalUpdateFailedOnDownload;
-                case UpdateResult.VerificationFailed:
-                    return Messages.OptionalUpdateFailedVerification;
-                case UpdateResult.Unknown:
-                default:
-                    return Messages.OptionalUpdateFailedUnknown;
-            } // switch
+            return Messages.OptionalUpdateFailedUnknown;
         }
 
-        private static string GetMessageForRequiredUpdateFailure(UpdateResult updateResult)
+        private static string GetMessageForRequiredUpdateFailure()
         {
-            switch (updateResult)
-            {
-                case UpdateResult.DownloadFailed:
-                    return Messages.RequiredUpdateFailedOnDownload;
-                case UpdateResult.VerificationFailed:
-                    return Messages.RequiredUpdateFailedVerification;
-                case UpdateResult.Unknown:
-                default:
-                    return Messages.RequiredUpdateFailedUnknown;
-            } // switch
+            return Messages.RequiredUpdateFailedUnknown;
         }
 
         /// <summary>

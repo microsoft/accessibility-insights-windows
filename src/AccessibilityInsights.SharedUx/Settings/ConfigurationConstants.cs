@@ -57,6 +57,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyIsUnderElementScope = "IsUnderElementScope";
         private const string keyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
         private const string keyPlayScanningSound = "PlayScanningSound";
+        private const string keyReleaseChannel = SetupLibrary.Constants.ReleaseChannelKey;
         private const string keySelectedIssueReporter = "SelectedIssueReporter";
         private const string keySelectionByFocus = "SelectionByFocus";
         private const string keySelectionByMouse = "SelectionByMouse";

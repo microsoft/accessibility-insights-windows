@@ -107,7 +107,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AppLayoutTests.cs" />
     <Compile Include="Settings\InstallationInfoTests.cs" />
-    <Compile Include="Settings\SettingsDictionaryUnitTests.cs" />
     <Compile Include="ViewModels\ColorContrastViewModelTests.cs" />
     <Compile Include="ViewModels\ViewModelTests.cs" />
   </ItemGroup>
@@ -144,6 +143,10 @@
     <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
       <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
       <Name>RuleSelection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
