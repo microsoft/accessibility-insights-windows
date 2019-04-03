@@ -2,7 +2,7 @@
 
 Rules are the automated accessibility tests run by Accessibility Insights For Windows. Each rule is independent of any other and contains all information about itself.
 
-For an overview of the Rules projects, please see the "Accessibility Rules" section in [Overview of Accessibility Insights for Windows](./overview.md)
+For an overview of the Rules projects, please see the "Accessibility Rules" section in [Overview of Accessibility Insights for Windows](./Overview.md)
 
 ### Anatomy of a rule
 
