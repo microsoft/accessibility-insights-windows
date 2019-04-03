@@ -6,4 +6,4 @@ Welcome to the April 2019 release of Accessibility Insights for Windows. Key hig
 
 ### GitHub issue filing
 
-GitHub users can now file issues directly from inside Accessibiltiy Insights for Windows. (Need Copy here)
+GitHub users can now file issues directly from inside Accessibility Insights for Windows. (Need Copy here)
