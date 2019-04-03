@@ -26,9 +26,9 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         Version InstalledVersion { get; }
 
         /// <summary>
-        /// The Release cadence to use when fetching upgrade information
+        /// The Release channel that was used when fetching upgrade information
         /// </summary>
-        string ReleaseCadence { get; set; }
+        string ReleaseChannel { get; }
 
         /// <summary>
         /// Trigger an update. Async as it may go off-box
@@ -43,13 +43,8 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         TimeSpan? GetInitializationTime();
 
         /// <summary>
-        /// Gets the time taken to download the installer
+        /// Gets the time taken to run the Update operation
         /// </summary>
-        TimeSpan? GetInstallerDownloadTime();
-
-        /// <summary>
-        /// Gets the time taken to verify that the installer is properly signed and has not been tampered with
-        /// </summary>
-        TimeSpan? GetInstallerVerificationTime();
+        TimeSpan? GetUpdateTime();
     }
 }

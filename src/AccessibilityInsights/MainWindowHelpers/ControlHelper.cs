@@ -2,8 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
@@ -261,11 +263,20 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set version text
-        /// Release Type - Version - UIAccess state
+        /// [(ReleaseChannel) - ]Version - UIAccess state
         /// </summary>
         private void UpdateVersionString()
         {
-            StringBuilder sb = new StringBuilder(string.Format(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, AccessibilityInsights.Core.Misc.Utility.GetAppVersion()));
+            StringBuilder sb = new StringBuilder();
+
+            ReleaseChannel? channel = ConfigurationManager.GetDefaultInstance()?.AppConfig?.ReleaseChannel;
+
+            if (channel.HasValue && channel.Value != ReleaseChannel.Production)
+            {
+                sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
+            }
+
+            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, Core.Misc.Utility.GetAppVersion());
 
             if (NativeMethods.IsRunningWithUIAccess())
             {

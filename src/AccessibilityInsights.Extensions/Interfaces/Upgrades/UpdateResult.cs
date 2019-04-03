@@ -7,7 +7,6 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
     {
         Unknown,
         Success,
-        DownloadFailed,
-        VerificationFailed,
+        NoUpdateAvailable,
     } // class
 } // namespace

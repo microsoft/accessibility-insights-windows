@@ -5,11 +5,12 @@ using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.RuleSelection;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FileHelpers = AccessibilityInsights.SetupLibrary.FileHelpers;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {
@@ -411,6 +412,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get => GetDataValue<bool>(keyIsUnderElementScope);
             set => SetDataValue<bool>(keyIsUnderElementScope, value);
+        }
+
+        /// <summary>
+        /// The release channel configured for this client
+        /// </summary>
+        public ReleaseChannel ReleaseChannel
+        {
+            get => GetEnumDataValue<ReleaseChannel>(keyReleaseChannel);
+            set => SetEnumDataValue<ReleaseChannel>(keyReleaseChannel, value);
         }
 
         /// <summary>

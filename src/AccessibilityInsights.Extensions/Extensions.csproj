@@ -67,7 +67,6 @@
     <Compile Include="Interfaces\Upgrades\UpgradeOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
-    <Compile Include="Helpers\TrustVerifier.cs" />
     <Compile Include="ReportExceptionEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
