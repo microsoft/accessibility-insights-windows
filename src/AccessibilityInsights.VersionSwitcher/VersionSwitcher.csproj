@@ -116,7 +116,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.VersionSwitcher.dll" />
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.VersionSwitcher.exe" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
