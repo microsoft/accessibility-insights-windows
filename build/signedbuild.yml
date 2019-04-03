@@ -52,6 +52,8 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
+      ArtifactName: 'Compliance'
+    condition: succeededOrFailed()
 
   - task: PowerShell@2
     displayName: 'Check Automation'
@@ -104,6 +106,8 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
+      ArtifactName: 'Compliance'
+    condition: succeededOrFailed()
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim '
@@ -207,6 +211,7 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
+    condition: succeededOrFailed()
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: msi'
@@ -335,6 +340,7 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
+    condition: succeededOrFailed()
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-autoapplicability.AutoApplicability@1
     displayName: 'Run AutoApplicability'
