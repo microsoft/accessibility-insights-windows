@@ -52,7 +52,6 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Compliance'
-    condition: succeededOrFailed()
     inputs:
       ArtifactName: 'Compliance'
 
@@ -107,7 +106,6 @@ jobs:
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Compliance'
-    condition: succeededOrFailed()
     inputs:
       ArtifactName: 'Compliance'
 
@@ -207,13 +205,19 @@ jobs:
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    condition: succeededOrFailed()
     inputs:
       Contents: '**\bin\release\**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
+    condition: failed()
+    displayName: 'Publish Artifact: failureDrop'
+    inputs:
+      ArtifactName: 'failureDrop'
+
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
-    condition: succeededOrFailed()
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: msi'
@@ -335,14 +339,20 @@ jobs:
       configuration: debug
 
   - task: CopyFiles@2
+    condition: succeededOrFailed()
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
       Contents: '**\bin\debug\**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
+    condition: failed()
+    displayName: 'Publish Artifact: failureDrop'
+    inputs:
+      ArtifactName: 'failureDrop'
+
+  - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
-    condition: succeededOrFailed()
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-autoapplicability.AutoApplicability@1
     displayName: 'Run AutoApplicability'
