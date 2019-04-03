@@ -144,9 +144,13 @@ namespace AccessibilityInsights.VersionSwitcher
             finally
             {
                 if (success)
+                {
                     transaction.Commit();
+                }
                 else
+                {
                     transaction.Rollback();
+                }
 
                 stopwatch.Stop();
 
