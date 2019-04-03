@@ -139,6 +139,11 @@ namespace AccessibilityInsights.Modes
                 MainWin.UpdateMainWindowConnectionFields();
             }
 
+            if (appSettingsCtrl.HasChannelChanged(Configuration))
+            {
+
+            }
+
             MainWin.TransitionToSelectActionMode();
         }
 

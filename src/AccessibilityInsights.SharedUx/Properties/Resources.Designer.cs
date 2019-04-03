@@ -796,6 +796,42 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Canary is fly..
+        /// </summary>
+        public static string ChannelConfigControl_CanaryDescription {
+            get {
+                return ResourceManager.GetString("ChannelConfigControl_CanaryDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insider is hip..
+        /// </summary>
+        public static string ChannelConfigControl_InsiderDescription {
+            get {
+                return ResourceManager.GetString("ChannelConfigControl_InsiderDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Production is rock solid..
+        /// </summary>
+        public static string ChannelConfigControl_ProductionDescription {
+            get {
+                return ResourceManager.GetString("ChannelConfigControl_ProductionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Channel.
+        /// </summary>
+        public static string ChannelConfigControl_Title {
+            get {
+                return ResourceManager.GetString("ChannelConfigControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore case.
         /// </summary>
         public static string chbIgnoreCaseAutomationPropertiesName {

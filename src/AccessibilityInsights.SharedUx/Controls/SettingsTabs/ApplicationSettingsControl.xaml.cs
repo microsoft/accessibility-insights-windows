@@ -40,6 +40,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             set
             {
                 DataContextVM.UpdateSaveButton = value;
+                ctrlChannelConfig.SetUpdateSaveButton(value);
             }
         }
 
@@ -199,6 +200,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 return true;
             }
 
+            if (ctrlChannelConfig.GetConfigChanged(config))
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -218,6 +224,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             this.btnTHotkeyoLastChild.Content = config.HotKeyForMoveToLastChild;
             this.tbMouseDelay.Text = config.MouseSelectionDelayMilliSeconds.ToString(CultureInfo.InvariantCulture);
             (this.DataContext as ApplicationSettingsViewModel).UpdateFromConfig(config);
+            ctrlChannelConfig.UpdateFromConfig(config);
         }
 
 
@@ -321,6 +328,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
+        public bool HasChannelChanged(ConfigurationModel config) => ctrlChannelConfig.GetConfigChanged(config);
     }
 }
 
