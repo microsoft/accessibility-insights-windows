@@ -174,7 +174,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// Production ctor
         /// </summary>
         public AutoUpdate(string releaseChannel = null) :
-            this(releaseChannel, MsiUtilities.GetInstalledProductVersion,
+            this(releaseChannel, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
