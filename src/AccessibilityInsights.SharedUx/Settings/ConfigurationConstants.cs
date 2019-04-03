@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {
@@ -67,7 +66,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyShowUncertain = "ShowUncertain";
         private const string keyShowWelcomeScreenOnLaunch = "ShowWelcomeScreenOnLaunch";
         private const string keyShowWhitespaceInTextPatternViewer = "ShowWhitespaceInTextPatternViewer";
-        private const string keyTestConfig = "TestConfig";
         private const string keyTestReportPath = "TestReportPath";
         private const string keyTreeViewMode = "TreeViewMode";
         private const string keyVersion = "Version";

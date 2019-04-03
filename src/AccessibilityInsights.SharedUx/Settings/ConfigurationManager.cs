@@ -23,11 +23,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         public ConfigurationModel AppConfig { get; private set; }
 
         /// <summary>
-        /// TestConfiguration
-        /// </summary>
-        public TestSetting TestConfig { get; set; }
-
-        /// <summary>
         /// Application layout
         /// </summary>
         public AppLayout AppLayout { get; private set; }
@@ -43,7 +38,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private ConfigurationManager()
         {
             PopulateMainConfiguration();
-            PopulateTestConfiguration();
             PopulateEventConfiguration();
             PopulateLayout();
         }
@@ -68,17 +62,6 @@ namespace AccessibilityInsights.SharedUx.Settings
                 // fail silently since it is called at the end of the app life cycle. 
             }
         }
-
-        /// <summary>
-        /// Populate Test Configuration
-        /// </summary>
-        private void PopulateTestConfiguration()
-        {
-            // Test configuration
-            SuiteConfigurationType configType = this.AppConfig.TestConfig;
-            this.TestConfig = TestSetting.GenerateSuiteConfiguration(configType);
-        }
-
 
         /// <summary>
         /// Populate Layout info

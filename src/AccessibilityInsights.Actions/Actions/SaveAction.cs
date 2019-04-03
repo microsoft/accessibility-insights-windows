@@ -86,7 +86,7 @@ namespace AccessibilityInsights.Actions
                 }
             }
 
-            var meta = new SnapshotMetaInfo(mode, SuiteFactory.GetRuleVersion(), focusedElementId, ec.DataContext.ScreenshotElementId, otherProperties);
+            var meta = new SnapshotMetaInfo(mode, RuleRunner.GetRuleVersion(), focusedElementId, ec.DataContext.ScreenshotElementId, otherProperties);
             var jsonMeta = JsonConvert.SerializeObject(meta, Formatting.Indented);
             using (MemoryStream mStrm = new MemoryStream(Encoding.UTF8.GetBytes(jsonMeta)))
             {

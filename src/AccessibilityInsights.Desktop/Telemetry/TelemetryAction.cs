@@ -128,7 +128,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
         Upgrade_DoInstallation,
 
         SharedData_Load_MainConfiguration,
-        SharedData_Load_TestConfiguration,
         SharedData_Load_RecordConfiguration,
 
         TabStop_Record_On, // indicate whether TabStop Recording was on
