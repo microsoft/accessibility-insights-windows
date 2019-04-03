@@ -42,7 +42,7 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Implements <see cref="IGitHubWrapper.LoadUriContentsIntoStream(Uri, Stream)(Uri, Stream)"/>
+        /// Implements <see cref="IGitHubWrapper.LoadChannelInfoIntoStream(string, Stream)(Uri, Stream)"/>
         /// </summary>
         public void LoadChannelInfoIntoStream(string releaseChannel, Stream stream)
         {
