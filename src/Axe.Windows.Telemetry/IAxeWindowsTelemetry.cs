@@ -12,7 +12,7 @@ namespace Axe.Windows.Telemetry
         /// </summary>
         /// <param name="eventName">The name of the event. Will be ignored if trivial</param>
         /// <param name="properties">The properties to include with the event. Will be ignored if trivial</param>
-        void PublishEvent(string action, IReadOnlyDictionary<string, string> properties);
+        void PublishEvent(string eventName, IReadOnlyDictionary<string, string> properties);
 
         /// <summary>
         /// Report an Exception into the pipeline
