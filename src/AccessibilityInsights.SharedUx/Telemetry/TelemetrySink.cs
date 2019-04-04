@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// </summary>
     internal static class TelemetrySink
     {
-        private static ITelemetry _telemetry => Container.GetDefaultInstance()?.Telemetry;
+        private static ITelemetry Telemetry => Container.GetDefaultInstance()?.Telemetry;
 
         /// <summary>
         /// Whether or not telemetry toggle button is enabled in the settings.
@@ -27,7 +27,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
-        public static bool IsEnabled => IsTelemetryAllowed && _telemetry != null;
+        public static bool IsEnabled => IsTelemetryAllowed && Telemetry != null;
 
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
@@ -54,7 +54,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
             try
             {
-                _telemetry.PublishEvent(eventName, propertyBag);
+                Telemetry.PublishEvent(eventName, propertyBag);
             }
             catch (Exception) { }
         }
@@ -70,7 +70,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
             try
             {
-                _telemetry.AddOrUpdateContextProperty(property, value);
+                Telemetry.AddOrUpdateContextProperty(property, value);
             }
             catch (Exception) { }
         }
@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
             try
             {
-                _telemetry.ReportException(e);
+                Telemetry.ReportException(e);
             }
             catch (Exception) { }
         }

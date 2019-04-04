@@ -11,9 +11,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// </summary>
     internal static class EventTelemetrySink
     {
-        private static bool _isReportExceptionHandlerAttached = false;
-        private readonly static object _lockObject = new object();
-        private readonly static ReportExceptionBuffer _reportExceptionBuffer = new ReportExceptionBuffer(TelemetrySink.ReportException);
+        private static bool IsReportExceptionHandlerAttached = false;
+        private readonly static object LockObject = new object();
+        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(TelemetrySink.ReportException);
 
         static EventTelemetrySink()
         {
@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public static void Enable()
         {
             // Report any exceptions which may have been caught before telemetry was enabled.
-            _reportExceptionBuffer.EnableForwarding();
+            ReportExceptionBuffer.EnableForwarding();
 
             // we report this problem after the buffer is flushed
             // because the above call also opens future exceptions to be passed through
@@ -38,7 +38,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         private static void OnReportedException(object sender, ReportExceptionEventArgs args)
         {
-            _reportExceptionBuffer.ReportException(args.ReportedException);
+            ReportExceptionBuffer.ReportException(args.ReportedException);
         }
 
         /// <summary>
@@ -46,14 +46,14 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         private static void AttachReportExceptionHandler()
         {
-            if (_isReportExceptionHandlerAttached) return;
+            if (IsReportExceptionHandlerAttached) return;
 
-            lock (_lockObject)
+            lock (LockObject)
             {
-                if (_isReportExceptionHandlerAttached) return;
+                if (IsReportExceptionHandlerAttached) return;
 
                 Container.ReportedExceptionEvent += OnReportedException;
-                _isReportExceptionHandlerAttached = true;
+                IsReportExceptionHandlerAttached = true;
             }
         }
     } // class
