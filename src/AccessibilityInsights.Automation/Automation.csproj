@@ -50,10 +50,6 @@
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
-      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
-      <Name>DesktopUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
       <Name>Desktop</Name>
