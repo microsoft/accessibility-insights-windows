@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 {
     /// <summary>
     /// Use this class to send telemetry from anywhere within
-    /// the Accesseibility Insights code. This does not include extensions,
+    /// the Accessibility Insights code. This does not include extensions,
     /// which should use the EventTelemetrySink mechanism.
     /// </summary>
     public static class Logger
