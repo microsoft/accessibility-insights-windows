@@ -3,10 +3,11 @@
 <UserControl x:Class="AccessibilityInsights.SharedUx.Controls.ScannerResultControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
-             xmlns:controls="clr-namespace:AccessibilityInsights.DesktopUI.Controls;assembly=AccessibilityInsights.DesktopUI"
+             xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
@@ -82,11 +83,11 @@
                                     <GridViewColumn>
                                         <GridViewColumnHeader Content="Rule" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
                                         <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
                                                     <controls:FabricIconControl GlyphName="{Binding Path=Icon}" Margin="15,0,4,0" GlyphSize="Default" FontSize="{DynamicResource StandardTextSize}" VerticalAlignment="Center">
-                                                            <controls:FabricIconControl.Style>
-                                                                <Style TargetType="controls:FabricIconControl">
+                                                        <controls:FabricIconControl.Style>
+                                                            <Style TargetType="controls:FabricIconControl">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="GlyphName" Value="AlertSolid">
                                                                         <Setter Property="Foreground" Value="#CC0000"/>
@@ -98,7 +99,7 @@
                                                                         <Setter Property="Foreground" Value="#FF8C00"/>
                                                                     </Trigger>
                                                                     <Trigger Property="GlyphName" Value="CompletedSolid">
-                                                                            <Setter Property="Foreground" Value="#107C10"/>
+                                                                        <Setter Property="Foreground" Value="#107C10"/>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
@@ -115,15 +116,19 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Width="{Binding BugColumnWidth}">
-                                        <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="Bug" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
+                                        <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="Issue" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
-                                                <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
-                                                Content="{Binding Path=BugIdString, TargetNullValue='{x:Static Properties:Resources.btnFileBugContent1}'}"
-                                                Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
-                                                AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
-                                                AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
-                                                Visibility="{Binding Path=FileBugVisibility}"/>
+                                                <StackPanel Orientation="Horizontal" MinWidth="200">
+                                                    <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=ButtonBlueBGBrush}"
+                                                                              Margin="0,0,4,0"  Visibility="{Binding Path=FileBugVisibility}"/>
+                                                    <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
+                                                    Content="{Binding IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
+                                                    Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
+                                                    AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
+                                                    AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName1}'}"
+                                                    Visibility="{Binding Path=FileBugVisibility}"/>
+                                                </StackPanel>
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>

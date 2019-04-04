@@ -24,6 +24,8 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using static System.FormattableString;
 using System.Diagnostics;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -183,12 +185,16 @@ namespace AccessibilityInsights.Modes
                                     Application.Current.MainWindow.WindowStyle = WindowStyle.ToolWindow;
                                     Application.Current.MainWindow.Visibility = Visibility.Hidden;
 
-                                    HighlightAction.GetDefaultInstance().IsEnabled = false;
+                                    HollowHighlightDriver.GetDefaultInstance().IsEnabled = false;
 
                                     this.Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                                     {
                                         ScreenShotAction.CaptureScreenShot(ecId);
                                         Application.Current.MainWindow.WindowStyle = WindowStyle.SingleBorderWindow;
+
+                                        // This needs to happen before the call to ctrlAutomatedChecks.SetElement. Otherwise,
+                                        // ctrlAutomatedChecks's checkboxes become out of sync with the highlighter
+                                        Application.Current.MainWindow.Visibility = Visibility.Visible; 
                                     })).Wait();
                                 }
                             }
@@ -272,7 +278,7 @@ namespace AccessibilityInsights.Modes
             this.tabControl.IsEnabled = false;
             this.ctrlAutomatedChecks.Visibility = Visibility.Collapsed;
             this.tbSelectElement.Visibility = Visibility.Visible;
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
         /// <summary>
@@ -345,7 +351,7 @@ namespace AccessibilityInsights.Modes
             // data will be asked to be captured again. so set the CurrentView right.
             MainWin.SetCurrentViewAndUpdateUI(TestView.CapturingData);
 
-            HighlightImageAction.ClearDefaultInstance();
+            ImageOverlayDriver.ClearDefaultInstance();
 
             var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId().Value;
             SetDataAction.ReleaseDataContext(ecId);

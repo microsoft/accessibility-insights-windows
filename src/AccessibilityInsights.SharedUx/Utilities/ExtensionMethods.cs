@@ -1,13 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions.Contexts;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
-using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Media;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.Utilities
@@ -109,9 +109,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
             catch (Exception ex)
             {
-                Dialogs.MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
+                MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
             }
-        }        
+        }
 
         /// <summary>
         /// Get Root Node Hierarchy ViewModel based on currently populated data. 
@@ -191,15 +191,15 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public static BugInformation GetBugInformation(this A11yElement element, BugType? bugType)
+        public static IssueInformation GetIssueInformation(this A11yElement element, IssueType issueType)
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: element.Glimpse,
                 processName: element.GetProcessName(),
                 windowTitle: element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 internalGuid: Guid.NewGuid(),
-                bugType: bugType);
+                issueType: issueType);
         }
 
         /// <summary>

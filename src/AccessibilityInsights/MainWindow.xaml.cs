@@ -1,19 +1,23 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
+using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using AccessibilityInsights.Win32;
 using Microsoft.Win32;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -44,7 +48,7 @@ namespace AccessibilityInsights
         public TwoStateButtonViewModel vmHilighter { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
         public TwoStateButtonViewModel vmLiveModePauseResume { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
 
-        public ByteArrayViewModel vmAvatar { get; private set; } = new ByteArrayViewModel();
+        public LogoViewModel vmReporterLogo { get; private set; } = new LogoViewModel();
 
         public bool IsEventRecording { get; private set; }
 
@@ -167,7 +171,7 @@ namespace AccessibilityInsights
             InitializeComponent();
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
-
+            
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
 
@@ -192,6 +196,7 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, AccessibilityInsights.Core.Misc.Utility.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
+            Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
             Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup, null);
         }
 
@@ -292,9 +297,9 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void onLoaded(object sender, RoutedEventArgs e)
         {
-            if (BugReporter.IsEnabled)
+            if (IssueReporter.IsEnabled)
             {
-                ConnectToSavedServerConnection();
+                RestoreConfigurationAsync();
             }
             else
             {
@@ -423,8 +428,8 @@ namespace AccessibilityInsights
                 HandleExitMode();
                 // remove SelectAction
                 SelectAction.ClearDefaultInstance();
-                HighlightAction.ClearAllHighlighters();
-                HighlightImageAction.ClearDefaultInstance();
+                HollowHighlightDriver.ClearAllHighlighters();
+                ImageOverlayDriver.ClearDefaultInstance();
             }
             catch (Exception ex)
             {
@@ -700,16 +705,51 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Initialize server integration and try logging in implicitly 
-        /// to the saved connection in the configuration if it exists.
+        /// Set saved issue reporter and try restoring configuration if it exists.
         /// </summary>
-        private void ConnectToSavedServerConnection(Action callback = null)
+        private async void RestoreConfigurationAsync()
         {
-            var oldConnection = ConfigurationManager.GetDefaultInstance().AppConfig.SavedConnection;
-            if (oldConnection?.ServerUri != null)
+            try
             {
-                HandleLoginRequest(oldConnection.ServerUri, false, callback);
+                var appConfig = ConfigurationManager.GetDefaultInstance().AppConfig;
+                var selectedIssueReporterGuid = appConfig.SelectedIssueReporter;
+                if (selectedIssueReporterGuid != Guid.Empty)
+                {
+                    IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
+                    var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
+                    if (serializedConfigsDict != null)
+                    {
+                        Dictionary<Guid, string> configsDictionary = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict);
+                        if (configsDictionary != null)
+                        {
+                            configsDictionary.TryGetValue(selectedIssueReporterGuid, out string serializedConfig);
+                            await IssueReporter.RestoreConfigurationAsync(serializedConfig).ConfigureAwait(true);
+                            Dispatcher.Invoke(UpdateMainWindowConnectionFields);
+                        }
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                ex.ReportException();
+            }
+        }
+
+        /// <summary>
+        /// Update sign in logo and tooltip
+        /// </summary>
+        internal void UpdateMainWindowConnectionFields()
+        {
+            bool isConfigured = IssueReporter.IssueReporting != null && IssueReporter.IsConnected;
+            string fabricIconName = IssueReporter.Logo.ToString("g");
+            fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
+
+            // Main window UI changes
+            vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
+            string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
+            string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, IssueReporter.DisplayName);
+            AutomationProperties.SetName(btnAccountConfig, tooltipText);
+            btnAccountConfig.ToolTip = tooltipText;
         }
 
         #endregion
@@ -793,7 +833,7 @@ namespace AccessibilityInsights
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
                 Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
-                HighlightAction.GetDefaultInstance().Clear();
+                HollowHighlightDriver.GetDefaultInstance().Clear();
             }
         }
 

@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.HelpLinks;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.DesktopUI.Controls;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,6 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
@@ -103,17 +103,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public A11yElement Element { get; private set; }
 
-        /// <summary>
-        /// BugId as string
-        /// </summary>
-        public string BugIdString
-        {
-            get
-            {
-                return RR.BugId.HasValue ? RR.BugId.ToString() : null;
-            }
-        }
-
         private System.Windows.Visibility loadingVisibility;
         /// <summary>
         /// Attachment loading
@@ -132,18 +121,34 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Bug id of this rule
+        /// Display text for this issue
         /// </summary>
-        public int? BugId
+        public string IssueDisplayText
         {
             get
             {
-                return RR.BugId;
+                return RR.IssueDisplayText;
             }
             set
             {
-                RR.BugId = value;
-                OnPropertyChanged(nameof(BugIdString));
+                RR.IssueDisplayText = value;
+                OnPropertyChanged(nameof(IssueDisplayText));
+            }
+        }
+
+        /// <summary>
+        /// Used to store the issue link.
+        /// </summary>
+        public Uri IssueLink
+        {
+            get
+            {
+                return RR.IssueLink;
+            }
+            set
+            {
+                RR.IssueLink = value;
+                OnPropertyChanged(nameof(IssueLink));
             }
         }
 
@@ -196,9 +201,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public BugInformation GetBugInformation()
+        public IssueInformation GetIssueInformation()
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: this.Element.Glimpse,
                 howToFixLink: this.SnippetLink.ToUri(),
                 helpUri: this.HelpUrl?.Url?.ToUri(),
@@ -211,7 +216,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 testMessages: string.Join("<br/>", this.RR.Messages),
                 internalGuid: Guid.NewGuid(),
-                bugType: BugType.SingleFailure
+                issueType: IssueType.SingleFailure
             );
         }
 

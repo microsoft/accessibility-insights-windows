@@ -86,7 +86,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         Scan_Save_File, // save a file from Automated check view.
         Scan_Statistics,
 
-        Bug_Save,
+        Issue_Save,
+        Issue_File_Attempt,
         Bug_Cancel,
 
         Mainwindow_Open_Configuration, 
@@ -127,7 +128,6 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         Upgrade_DoInstallation,
 
         SharedData_Load_MainConfiguration,
-        SharedData_Load_TestConfiguration,
         SharedData_Load_RecordConfiguration,
 
         TabStop_Record_On, // indicate whether TabStop Recording was on
@@ -143,6 +143,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ColorContrast_Click_Dropdown,
         ColorContrast_FileBug_OutsideGivenScope, // users can file a bug outside of the glimpse tested
         ColorContrast_Click_HexChange,
+
+        ReleaseChannel_ChangeConsidered,
 #pragma warning restore CA1707 // Identifiers should not contain underscores
     }
 }

@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Desktop.Utility;
-using AccessibilityInsights.DesktopUI.Controls;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Globalization;
@@ -56,27 +56,32 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Bug id of this element
         /// </summary>
-        public int? BugId
+        public string IssueDisplayText
         {
             get
             {
-                return RuleResult.BugId;
+                return RuleResult.IssueDisplayText;
             }
             set
             {
-                RuleResult.BugId = value;
-                OnPropertyChanged(nameof(BugIdString));
+                RuleResult.IssueDisplayText = value;
+                OnPropertyChanged(nameof(IssueDisplayText));
             }
         }
 
-        // TODO: Binding to the nullable above wasn't working, this
-        //  property is a workaround to expose a string to XAML,
-        //  need to fix
-        public string BugIdString
+        /// <summary>
+        /// Used to store the issue link.
+        /// </summary>
+        public Uri IssueLink
         {
             get
             {
-                return BugId.HasValue ? BugId.ToString() : null;
+                return RuleResult.IssueLink;
+            }
+            set
+            {
+                RuleResult.IssueLink = value;
+                OnPropertyChanged(nameof(IssueLink));
             }
         }
 
@@ -165,9 +170,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         /// <param name="this"></param>
         /// <returns></returns>
-        public BugInformation GetBugInformation()
+        public IssueInformation GetIssueInformation()
         {
-            return new BugInformation(
+            return new IssueInformation(
                 glimpse: this.Element.Glimpse,
                 howToFixLink: this.SnippetLink.ToUri(),
                 helpUri: this.URL.ToUri(),
@@ -180,7 +185,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 testMessages: string.Join("<br/>", this.RuleResult.Messages),
                 internalGuid: Guid.NewGuid(),
-                bugType: BugType.SingleFailure
+                issueType: IssueType.SingleFailure
             );
         }
     }

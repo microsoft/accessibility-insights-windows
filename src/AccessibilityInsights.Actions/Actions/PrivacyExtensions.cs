@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Actions
         {
             A11yElement clone = new A11yElement
             {
-                BugId = element.BugId,
+                IssueDisplayText = element.IssueDisplayText,
                 ScanResults = element.ScanResults,
                 TreeWalkerMode = element.TreeWalkerMode,
                 UniqueId = element.UniqueId,

@@ -3,21 +3,23 @@
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Contexts;
 using AccessibilityInsights.Actions.Enums;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.FileBug;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -26,7 +28,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -817,7 +818,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.treeviewHierarchy.Focus();
         }
 
-        public async void FileBug(HierarchyNodeViewModel vm = null)
+        public void FileBug(HierarchyNodeViewModel vm = null)
         {
             vm = vm ?? this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel;
 
@@ -827,20 +828,18 @@ namespace AccessibilityInsights.SharedUx.Controls
                 return;
             }
 
-            if (vm.BugId.HasValue)
+            if (vm.IssueLink != null)
             {
                 // Bug already filed, open it in a new window
                 try
                 {
-                    Uri uri = await BugReporter.GetExistingBugUriAsync(vm.BugId.Value).ConfigureAwait(true);
-                    var bugUrl = uri.ToString();
-                    System.Diagnostics.Process.Start(bugUrl);
+                    System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
                 }
                 catch (Exception ex)
                 {
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
-                    vm.BugId = null;
+                    vm.IssueDisplayText = null;
                 }
             }
             else
@@ -849,37 +848,25 @@ namespace AccessibilityInsights.SharedUx.Controls
                 Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>
                 {
                     { TelemetryProperty.By, FileBugRequestSource.Hierarchy.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, BugReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
                 });
 
-                if (BugReporter.IsConnected && Configuration.SavedConnection?.IsPopulated == true)
+                if (IssueReporter.IsConnected)
                 {
-                    Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-                    (int? bugId, string newBugId) = FileBugAction.FileNewBug(this.SelectedElement.GetBugInformation(BugType.NoFailure), Configuration.SavedConnection, Configuration.AlwaysOnTop, Configuration.ZoomLevel, updateZoom);
-
-                    vm.BugId = bugId;
-
-                    // Check whether bug was filed once dialog closed & process accordingly
-                    if (vm.BugId.HasValue)
+                    IssueInformation issueInformation = this.SelectedElement.GetIssueInformation(IssueType.NoFailure);
+                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, this.SelectedElement.BoundingRectangle,
+                                this.SelectedElement.UniqueId);
+                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
+                    if (issueResult != null)
                     {
-                        try
-                        {
-                            var success = await FileBugAction.AttachBugData(this.ElementContext.Id, this.SelectedElement.BoundingRectangle, 
-                                this.SelectedElement.UniqueId, newBugId, vm.BugId.Value).ConfigureAwait(false);
-                            if (!success)
-                            {
-                                MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
-                                vm.BugId = null;
-                            }
-                        }
-                        catch (Exception)
-                        {
-                        }
+                        vm.IssueDisplayText = issueResult.DisplayText;
+                        vm.IssueLink = issueResult.IssueLink;
                     }
+                    File.Delete(issueInformation.TestFileName);
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.HierarchyControl_FileBug_Please_sign_in_to_Azure_DevOps_specify_both_Azure_DevOps_organization_name_and_project);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
                         this.HierarchyActions.SwitchToServerLogin();

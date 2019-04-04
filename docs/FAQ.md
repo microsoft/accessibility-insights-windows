@@ -34,9 +34,6 @@ Excellent question. Please visit the [High Contrast Support](HighContrastSupport
 #### Q. Where can I find out more about a specific rule?
 Explanations for all rules can be found at [Rules explained].
 
-#### Q. How do I create a new automated scan rule?
-Visit the [Add new automated scan rule] page for details.
-
 #### Q. What scenarios must I test before creating a PR? 
 All PRs need to be tested against the scenarios that are documented at [Test Scenarios](Scenarios.md). 
 
@@ -50,6 +47,9 @@ Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so
 
 #### Q. How do I add a project to the solution?
 Visit [Adding a new project](NewProject.md) for instructions.
+
+#### Q. On my PR the "license/cla" check does not complete. What should I do?
+Make sure that you have signed our [CLA agreement](../Contributing.md). If you haven't, please sign the agreement, then close and reopen the PR. This will trigger a new build with the CLA agreement in place.
 
 #### Q. How do I get in contact?
 Please file a [Github Issue](https://github.com/Microsoft/accessibility-insights-windows/issues/new/choose). We actively monitor PRs and issues.

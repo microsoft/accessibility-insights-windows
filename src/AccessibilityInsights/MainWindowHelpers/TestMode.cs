@@ -8,6 +8,8 @@ using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Globalization;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {
@@ -26,7 +28,7 @@ namespace AccessibilityInsights
             {
                 if (SelectAction.GetDefaultInstance().IsPaused)
                 {
-                    HighlightOverlayAction.BringMainWindowOfPOIElementToFront();
+                    ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                 }
                 HandlePauseButtonToggle(true);
             }

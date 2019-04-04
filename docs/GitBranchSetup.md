@@ -21,7 +21,7 @@ repository, start by creating your own [Fork](https://help.github.com/en/article
 -   Create a folder on your device and clone your fork of the **accessibility-insights-windows** repository. e.g. `https://github.com/ada-cat/accessibility-insights-windows`. Notice how your GitHub username is in the repository location.
 
 ```
-> git clone https://github.com/ada-cat/accessibility-insights-windows
+git clone https://github.com/ada-cat/accessibility-insights-windows
 ```
 
 ## Setting up the upstream repository
@@ -32,7 +32,7 @@ primary **accessibility-insights-windows** repository.
 -   When you run git remote -v, you should see only your fork in the output list
 
 ```
-> git remote -v
+git remote -v
 origin  https://github.com/ada-cat/accessibility-insights-windows (fetch)
 origin  https://github.com/ada-cat/accessibility-insights-windows (push)
 ```
@@ -40,13 +40,13 @@ origin  https://github.com/ada-cat/accessibility-insights-windows (push)
 -   Map the primary **accessibility-insights-windows** as the upstream remote
 
 ```
-> git remote add upstream https://github.com/Microsoft/accessibility-insights-windows
+git remote add upstream https://github.com/Microsoft/accessibility-insights-windows
 ```
 
 -   Now, running `git remote -v` should show the upstream repository also
 
 ```
-> git remote -v
+git remote -v
 origin  https://github.com/ada-cat/accessibility-insights-windows (fetch)
 origin  https://github.com/ada-cat/accessibility-insights-windows (push)
 upstream        https://github.com/Microsoft/accessibility-insights-windows (fetch)
@@ -64,10 +64,10 @@ Create a branch from your fork and start making the code changes. Once you are h
 From time to time, your fork will get out of sync with the upstream remote. Use the following commands to get the master branch of your fork up to date.
 
 ```
-> git fetch upstream
-> git checkout master
-> git pull upstream master
-> git push
+git fetch upstream
+git checkout master
+git pull upstream master
+git push
 ```
 
 ## Merging upstream master into your current branch
@@ -75,7 +75,7 @@ From time to time, your fork will get out of sync with the upstream remote. Use 
 Use these commands instead if you would like to update your current branch in your fork from the upstream remote.
 
 ```
-> git fetch upstream
-> git pull upstream master
-> git push
+git fetch upstream
+git pull upstream master
+git push
 ```

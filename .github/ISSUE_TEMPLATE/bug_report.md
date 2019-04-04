@@ -6,6 +6,7 @@ labels: ''
 assignees: ''
 
 ---
+Please check whether the bug has [already been filed](https://github.com/Microsoft/accessibility-insights-windows/issues).
 
 **Describe the bug**
 A clear and concise description of what the bug is.

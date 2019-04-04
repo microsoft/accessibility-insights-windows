@@ -23,6 +23,8 @@ using AccessibilityInsights.Core.Enums;
 using System.Windows.Controls.Primitives;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using System.Globalization;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -178,7 +180,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void onbuttonEventRecorderClicked(object sender, RoutedEventArgs e)
         {
             ToggleRecording();
-            HighlightAction.GetDefaultInstance().Clear();
+            HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
         /// <summary>
@@ -297,7 +299,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                         if (message.Element != null)
                         {
-                            HighlightAction.GetDefaultInstance().SetElement(message.Element);
+                            HollowHighlightDriver.GetDefaultInstance().SetElement(message.Element);
                         }
 
                         FireAsyncContentLoadedEventAtNewRecordAdded();

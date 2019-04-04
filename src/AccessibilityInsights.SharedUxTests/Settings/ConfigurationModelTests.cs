@@ -4,10 +4,11 @@ using AccessibilityInsights.Core.Enums;
 using AccessibilityInsights.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.RuleSelection;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -89,7 +90,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
             Assert.IsTrue(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
-            Assert.IsNull(config.CachedConnections);
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());
@@ -109,27 +109,25 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("Shift + F7", config.HotKeyForRecord);
             Assert.AreEqual("Shift + F8", config.HotKeyForSnap);
             Assert.IsTrue(config.IsHighlighterOn);
+            Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
-            Assert.IsNull(config.SavedConnection);
+            Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
+            Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.IsNull(config.SerializedCachedConnections);
-            Assert.IsNull(config.SerializedSavedConnection);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsTrue(config.ShowTelemetryDialog);
             Assert.IsFalse(config.ShowUncertain);
             Assert.IsTrue(config.ShowWelcomeScreenOnLaunch);
             Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
-            Assert.AreEqual(SuiteConfigurationType.Default, config.TestConfig);
             Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
+            Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
-            Assert.AreEqual(100, config.ZoomLevel);
-
-            Assert.AreEqual(39, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(36, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -137,7 +135,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config); 
+            ConfirmOverrideConfigMatchesExpectation(config);
         }
 
         [TestMethod]
@@ -145,20 +143,26 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
 
-            ConfirmSharedOverrideConfigMatchesExpectation(config);
+            ConfirmOverrideConfigMatchesExpectation(config,
+                issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
+                selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
+                releaseChannel: ReleaseChannel.Canary
+                );
         }
 
         private static ConfigurationModel GetDefaultConfig()
         {
-            return ConfigurationModel.LoadFromJSON(@"..\..\Resources\ThisFileDoesNotExist.json");
+            return ConfigurationModel.LoadFromJSON(null);
         }
 
-        private static void ConfirmSharedOverrideConfigMatchesExpectation(ConfigurationModel config)
+        private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
+            Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
+            ReleaseChannel? releaseChannel = null)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
             Assert.AreNotEqual("1.1.700.1", config.AppVersion);
-            Assert.IsNull(config.CachedConnections);
+
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
                 config.CoreProperties.ToArray());
@@ -178,25 +182,23 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual("Alt + F1", config.HotKeyForRecord);
             Assert.AreEqual("Alt + F3", config.HotKeyForSnap);
             Assert.IsTrue(config.IsHighlighterOn);
+            Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
             Assert.IsFalse(config.PlayScanningSound);
-            Assert.IsNull(config.SavedConnection);
+            Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
+            Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
-            Assert.AreEqual("[]", config.SerializedCachedConnections);
-            Assert.AreEqual("", config.SerializedSavedConnection);
             Assert.IsFalse(config.ShowAllProperties);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsFalse(config.ShowTelemetryDialog);
             Assert.IsFalse(config.ShowUncertain);
             Assert.IsTrue(config.ShowWelcomeScreenOnLaunch);
             Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
-            Assert.AreEqual(SuiteConfigurationType.MicrosoftStandard, config.TestConfig);
             Assert.AreEqual(@"C:\blah\AccessibilityInsightsTestFiles", config.TestReportPath);
             Assert.AreEqual(TreeViewMode.Content, config.TreeViewMode);
             Assert.AreEqual("1.1.10", config.Version);
-            Assert.AreEqual(350, config.ZoomLevel);
         }
 
         private static void ConfirmEnumerablesMatchExpectations(int[] expected, int[] actual)

@@ -52,8 +52,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         UpdateInitializationTime,
         UpdateOptionWaitTime,
         UpdateOption,
-        UpdateInstallerDownloadTime,
-        UpdateInstallerVerificationTime,
+        UpdateInstallerUpdateTime,
         UpdateResult,
+        ReleaseChannel,
+        ReleaseChannelConsidered,
+        ReleaseChannelChangeResult,  // Value from the ReleaseChannelChangeResult enum
     }
 }

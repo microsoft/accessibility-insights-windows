@@ -13,6 +13,7 @@ using System.Windows.Input;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Enums;
 using System.Globalization;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {

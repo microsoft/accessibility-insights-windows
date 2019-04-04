@@ -39,6 +39,7 @@ These assemblies allow user interaction with the Runtime components and the Acce
 Assembly | Responsibility
 --- | ---
 AccessibilityInsights | Provide the UI for most users. This application is built using WPF.
+AccessibilityInsights.CommonUxComponents | Provide non-specialized visual elements used by the main app and extensions. This allows the main app and extensions to share ux components that are unrelated to the runtime.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
 AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
 AccessibilityInsights.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
@@ -48,16 +49,22 @@ Extensions are intended to allow loose coupling of non-core code. They build upo
 
 - Telemetry : Send information about product usage. **Limited** diagnostic data is also sent to help identify trends in user issues.
 - Updates : Provide a centralized control mechanism to notify users of updated releases.
-- Bug Filing : Enable users to file accessibility bugs directly from within the product.
+- Issue Filing : Enable users to file accessibility issues directly from within the product.
 
 The following extensions exist:
 
 Assembly | Responsibility
 --- | ---
-AccessibilityInsights.Extensions.AutoUpdate | Implement a file-based update mechanism. Can only be used when all users are guaranteed to have access to the file share.
 AccessibilityInsights.Extensions.GitHubAutoUpdate | Implement a web-based update mechanism. Requires that the files be publicly accessible via a Uri.
-AccessibilityInsights.Extensions.AzureDevOps | Implement bug filing support using AzureDevOps.
+AccessibilityInsights.Extensions.AzureDevOps | Implement issue filing support using Azure Boards.
+AccessibilityInsights.Extensions.Github | Implement issue filing support using GitHub issues.
 AccessibilityInsights.Extensions.Telemetry | Implement simple telemetry built upon [Microsoft ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights).
+
+#### Version Handling assemblies
+Assembly | Responsibility
+--- | ---
+AccessibilityInsights.VersionSwitcher.exe | Provides an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
+AccessibilityInsights.SetupLibrary | Provides setup-related classes that are used by both AccessibiltyInsights.exe and AccessibilityInsights.VersionSwitcher.exe
 
 #### Packaging
 The packaging projects exist to gather assemblies into their shipping vehicles:
@@ -74,12 +81,14 @@ Unit tests are built using a combination of Moq and Microsoft Fakes. The folllow
 - AccessibilityInsights.CoreTests
 - AccessibilityInsights.DesktopTests
 - AccessibilityInsights.Extensions.AzureDevOpsTests
+- AccessibilityInsights.Extensions.GitHubUnitTests
 - AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests
 - AccessibilityInsights.Extensions.TelemetryTests
 - AccessibilityInsights.ExtensionsTests
 - AccessibilityInsights.Fakes.Prebuild
 - AccessibilityInsights.RuleSelectionTests
 - AccessibilityInsights.RulesTest
+- AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
 - AccessibilityInsights.WebApiHostTests
 - AccessibilityInsights.Win32Tests 

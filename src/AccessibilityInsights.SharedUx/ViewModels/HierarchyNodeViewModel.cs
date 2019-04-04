@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Misc;
 using AccessibilityInsights.Core.Results;
 using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.DesktopUI.Controls;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
@@ -97,32 +97,26 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Bug id of this element
+        /// Display text for the issue
         /// </summary>
-        public int? BugId
+        public string IssueDisplayText
         {
             get
             {
-                return Element.BugId;
+                return Element.IssueDisplayText;
             }
             set
             {
-                Element.BugId = value;
-                OnPropertyChanged(nameof(BugIdString));
+                Element.IssueDisplayText = value;
+                OnPropertyChanged(nameof(IssueDisplayText));
                 OnPropertyChanged(nameof(BugVisibility));
             }
         }
 
         /// <summary>
-        /// String for BugId
+        /// Used to store the issue link.
         /// </summary>
-        public string BugIdString
-        {
-            get
-            {
-                return BugId.HasValue ? BugId.ToString() : null;
-            }
-        }
+        public Uri IssueLink { get; set; }
 
         /// <summary>
         /// Visibility of bug icon when node selected
@@ -131,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             get
             {
-                return BugId.HasValue ? Visibility.Collapsed : Visibility.Visible;
+                return string.IsNullOrEmpty(IssueDisplayText) ? Visibility.Visible : Visibility.Collapsed;
             }
         }
 

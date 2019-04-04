@@ -53,6 +53,7 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -210,10 +211,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Dialogs\MessageDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialogs\MoveTextRangeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -281,15 +278,11 @@
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
-    <Compile Include="FileBug\BugFileForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FileBug\BugFileForm.Designer.cs">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FileBug\BugReporter.cs" />
-    <Compile Include="FileBug\FileBugAction.cs" />
-    <Compile Include="FileBug\ScriptInterface.cs" />
+    <Compile Include="Enums\HighlighterType.cs" />
+    <Compile Include="Enums\ReleaseChannel.cs" />
+    <Compile Include="FileIssue\IssueReporter.cs" />
+    <Compile Include="FileIssue\FileIssueAction.cs" />
+    <Compile Include="FileIssue\IssueReporterManager.cs" />
     <Compile Include="Controls\ColorPicker\ColorPickerControl.xaml.cs">
       <DependentUpon>ColorPickerControl.xaml</DependentUpon>
     </Compile>
@@ -310,6 +303,9 @@
     <Compile Include="Enums\ContrastAnalysisType.cs" />
     <Compile Include="Enums\InspectTabType.cs" />
     <Compile Include="Enums\InspectTabMode.cs" />
+    <Compile Include="Highlighting\HollowHighlightDriver.cs" />
+    <Compile Include="Highlighting\ImageOverlayDriver.cs" />
+    <Compile Include="Highlighting\ClearOverlayDriver.cs" />
     <Compile Include="Interfaces\IHierarchyAction.cs" />
     <Compile Include="Controls\ColorChooser.xaml.cs">
       <DependentUpon>ColorChooser.xaml</DependentUpon>
@@ -362,6 +358,11 @@
     <Compile Include="Enums\EventConfigNodeType.cs" />
     <Compile Include="Interfaces\ICCAMode.cs" />
     <Compile Include="Misc\ListViewSelectionLock.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />
     <Compile Include="Controls\TestTabs\AutomatedChecksControl.xaml.cs">
@@ -411,9 +412,6 @@
     <Compile Include="Dialogs\HotkeyGrabDialog.xaml.cs">
       <DependentUpon>HotkeyGrabDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\MessageDialog.xaml.cs">
-      <DependentUpon>MessageDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Dialogs\MoveTextRangeDialog.xaml.cs">
       <DependentUpon>MoveTextRangeDialog.xaml</DependentUpon>
     </Compile>
@@ -430,11 +428,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -443,7 +436,6 @@
     <Compile Include="Settings\AppLayout.cs" />
     <Compile Include="Settings\ConfigurationConstants.cs" />
     <Compile Include="Settings\ConfigurationModel.cs" />
-    <Compile Include="Settings\SettingsDictionary.cs" />
     <Compile Include="Telemetry\AxeWindowsTelemetrySink.cs" />
     <Compile Include="Telemetry\EventTelemetrySink.cs" />
     <Compile Include="Telemetry\Logger.cs" />
@@ -453,12 +445,11 @@
     <Compile Include="Telemetry\TelemetryProperty.cs" />
     <Compile Include="Telemetry\TelemetrySink.cs" />
     <Compile Include="Telemetry\WindowsEventLogger.cs" />
-    <Compile Include="Utilities\DirectoryManagement.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
     <Compile Include="ViewModels\BaseActionViewModel.cs" />
-    <Compile Include="ViewModels\ByteArrayViewModel.cs" />
+    <Compile Include="ViewModels\LogoViewModel.cs" />
     <Compile Include="ViewModels\ColorContrastViewModel.cs" />
     <Compile Include="ViewModels\ApplicationSettingsViewModel.cs" />
     <Compile Include="ViewModels\GeneralActionViewModel.cs" />
@@ -473,19 +464,15 @@
     <Compile Include="ViewModels\ScanListViewItemViewModel.cs" />
     <Compile Include="ViewModels\TabStopItemViewModel.cs" />
     <Compile Include="ViewModels\TargetActionViewAttribute.cs" />
-    <Compile Include="ViewModels\TeamProjectViewModel.cs" />
     <Compile Include="ViewModels\TextAttributeViewModel.cs" />
     <Compile Include="ViewModels\TextRangeActionViewModel.cs" />
     <Compile Include="ViewModels\TextRangeViewModel.cs" />
     <Compile Include="ViewModels\TwoStateButtonViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
-    <EmbeddedResource Include="FileBug\BugFileForm.resx">
-      <DependentUpon>BugFileForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
@@ -502,6 +489,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj">
+      <Project>{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}</Project>
+      <Name>CommonUxComponents</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
@@ -522,6 +513,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
       <Name>Desktop</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>

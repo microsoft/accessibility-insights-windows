@@ -61,15 +61,6 @@ namespace AccessibilityInsights.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The process was unable to access remote files. Please check your internet connection and try again..
-        /// </summary>
-        internal static string OptionalUpdateFailedOnDownload {
-            get {
-                return ResourceManager.GetString("OptionalUpdateFailedOnDownload", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There was a problem updating the application. Please check your internet connection and try again..
         /// </summary>
         internal static string OptionalUpdateFailedUnknown {
@@ -79,38 +70,11 @@ namespace AccessibilityInsights.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to We were unable to verify the certificate for the installer. Please try to update again later..
-        /// </summary>
-        internal static string OptionalUpdateFailedVerification {
-            get {
-                return ResourceManager.GetString("OptionalUpdateFailedVerification", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The process was unable to access remote files. Because this is a required update, the app will be shut down. Please check your internet connection and try again..
-        /// </summary>
-        internal static string RequiredUpdateFailedOnDownload {
-            get {
-                return ResourceManager.GetString("RequiredUpdateFailedOnDownload", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to There was a problem updating the application. Because this is a required update, the app will be shut down. Please check your internet connection and try again..
         /// </summary>
         internal static string RequiredUpdateFailedUnknown {
             get {
                 return ResourceManager.GetString("RequiredUpdateFailedUnknown", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We were unable to verify the certificate for the installer. Because this is a required update, the app will be shut down. Please try to update again later..
-        /// </summary>
-        internal static string RequiredUpdateFailedVerification {
-            get {
-                return ResourceManager.GetString("RequiredUpdateFailedVerification", resourceCulture);
             }
         }
     }

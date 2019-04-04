@@ -186,7 +186,6 @@
     <Compile Include="MainWindowHelpers\TestMode.cs" />
     <Compile Include="MainWindowHelpers\TreeNavigator.cs" />
     <Compile Include="MainWindowHelpers\Misc.cs" />
-    <Compile Include="MainWindowHelpers\ServerSignIn.cs" />
     <Compile Include="Misc\FrameworkNavigator.cs" />
     <Compile Include="Misc\PageTracker.cs" />
     <Compile Include="Misc\UserControlWithPanes.cs" />
@@ -258,6 +257,10 @@
       <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
       <Name>Actions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj">
+      <Project>{eee9cd52-ca10-41ae-ac6e-98ae4bbdfa2d}</Project>
+      <Name>CommonUxComponents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
@@ -277,6 +280,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Rules\Rules.csproj">
       <Project>{7fe58829-560e-4142-bf81-291a66d3844b}</Project>
       <Name>Rules</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>

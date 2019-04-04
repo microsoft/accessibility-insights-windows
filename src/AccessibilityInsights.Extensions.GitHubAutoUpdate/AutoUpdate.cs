@@ -2,14 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
-using Newtonsoft.Json;
+using AccessibilityInsights.SetupLibrary;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
@@ -24,9 +20,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     /// 4) If requested, use the cached information to download the installer, which will
     ///    be stored locally and validate before is it launched.
     ///
-    /// To allow multiple Release Cadences, the JSON file can report back more than one
-    /// set of information (each CadenceInfo object holds the data for one cadence). The
-    /// code defaults to the "stable" cadence, but this can be overridden by the caller.
+    /// To allow multiple Release Channels, the JSON file can report back more than one
+    /// set of information (each ChannelInfo object holds the data for one channel). The
+    /// code defaults to the "deafult" channel, but this can be overridden by the caller.
     ///
     /// A note about timing: Due to the way that extensions get loaded, our ctor may get
     /// called some time before the app requests the upgrade status. Since we need to make
@@ -39,25 +35,26 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     [Export(typeof(IAutoUpdate))]
     public class AutoUpdate : IAutoUpdate
     {
-        // The release cadence we use unless overridden by setting the ReleaseCadence property
-        private const string DefaultReleaseCadence = "default";
+        // The Channel we use unless overridden by setting the ReleaseChannel property
+        private const string DefaultReleaseChannel = "default";
 
+        private readonly IChannelInfoProvider _channelInfoProvider;
         private readonly Func<string> _installedVersionProvider;
-        private readonly IGitHubWrapper _gitHub;
         private readonly Task<AutoUpdateOption> _initTask;
         private Version _installedVersion;
-        private Version _latestVersion;
-        private Version _minimumVersion;
+        private Version _currentChannelVersion;
+        private Version _minimumChannelVersion;
         private Uri _releaseNotesUri;
         private Uri _installerUri;
         private readonly Stopwatch _initializationStopwatch = new Stopwatch();
-        private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
-        private readonly Stopwatch _installerVerificationStopwatch = new Stopwatch();
+        private readonly Stopwatch _updateStopwatch = new Stopwatch();
+
+        private static readonly IExceptionReporter ExceptionReporter = new ExceptionReporter();
 
         /// <summary>
-        /// Implements <see cref="IAutoUpdate.ReleaseCadence"/>
+        /// Implements <see cref="IAutoUpdate.ReleaseChannel"/>
         /// </summary>
-        public string ReleaseCadence { get; set; } = DefaultReleaseCadence;
+        public string ReleaseChannel { get; set; } = DefaultReleaseChannel;
 
         /// <summary>
         /// Implements <see cref="IAutoUpdate.InstalledVersion"/>
@@ -72,26 +69,26 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Reports the latest version being considered
+        /// Reports the current channel version
         /// </summary>
-        public Version LatestVersion
+        public Version CurrentChannelVersion
         {
             get
             {
                 WaitForInitializationToComplete();
-                return _latestVersion;
+                return _currentChannelVersion;
             }
         }
 
         /// <summary>
-        /// Reports the minimum required version
+        /// Reports the minimum required channel version
         /// </summary>
-        public Version MinimumVersion
+        public Version MinimumChannelVersion
         {
             get
             {
                 WaitForInitializationToComplete();
-                return _minimumVersion;
+                return _minimumChannelVersion;
             }
         }
 
@@ -116,47 +113,37 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Synchronously update (gets wrapped into a tag)
+        /// Synchronously update
         /// </summary>
         /// <returns>The result of the upgrade operation</returns>
         private UpdateResult Update()
         {
-            string tempFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
-
             // Reset here; in case anything goes wrong in the Interim, the value will reflect that.
-            _installerVerificationStopwatch.Reset();
+            _updateStopwatch.Restart();
 
             try
             {
                 WaitForInitializationToComplete();
 
-                if (!TryDownloadInstaller(tempFile))
-                    return UpdateResult.DownloadFailed;
-
-                // The verification wraps the beginning of the installation to preserve
-                // the integrity of the file by holding an open handle.
-                _installerVerificationStopwatch.Start();
-                using (var trustVerifier = new TrustVerifier(tempFile))
+                // Short-circuit updates that don't make sense
+                if (UpdateOptionAsync.Result != AutoUpdateOption.OptionalUpgrade &&
+                    UpdateOptionAsync.Result != AutoUpdateOption.RequiredUpgrade)
                 {
-                    if (!trustVerifier.IsVerified)
-                        return UpdateResult.VerificationFailed;
+                    return UpdateResult.NoUpdateAvailable;
+                }
 
-                    _installerVerificationStopwatch.Stop();
-
-                    UpdateMethods.BeginMSIInstall(tempFile);
-
+                if (VersionSwitcherWrapper.InstallUpgrade(_installerUri))
+                {
                     return UpdateResult.Success;
                 }
             }
             catch (Exception e)
             {
                 e.ReportException();
-                if (File.Exists(tempFile))
-                    File.Delete(tempFile);
             }
             finally
             {
-                _installerVerificationStopwatch.Stop();
+                _updateStopwatch.Stop();
             }
 
             return UpdateResult.Unknown;
@@ -176,202 +163,93 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Implements <see cref="IAutoUpdate.GetInstallerDownloadTime"/>
+        /// Implements <see cref="IAutoUpdate.GetUpdateTime"/>
         /// </summary>
-        public TimeSpan? GetInstallerDownloadTime()
+        public TimeSpan? GetUpdateTime()
         {
-            return _installerDownloadStopwatch.Elapsed;
-        }
-
-        /// <summary>
-        /// Implements <see cref="IAutoUpdate.GetInstallerVerificationTime"/>
-        /// </summary>
-        public TimeSpan? GetInstallerVerificationTime()
-        {
-            return _installerVerificationStopwatch.Elapsed;
+            return _updateStopwatch.Elapsed;
         }
 
         /// <summary>
         /// Production ctor
         /// </summary>
-        public AutoUpdate() : this(new GitHubWrapper(), UpdateMethods.GetInstalledProductVersion)
+        public AutoUpdate(string releaseChannel = null) :
+            this(releaseChannel, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
+                new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
 
         /// <summary>
-        /// Unit test ctor - allows dependency injection for testing
+        /// Unit testable ctor - allows dependency injection for testing
         /// </summary>
-        /// <param name="wrapper">Provides GitHub support</param>
-        /// <param name="installedVersionProvider">Where to get the installed version</param>
-        internal AutoUpdate(IGitHubWrapper wrapper, Func<string> installedVersionProvider)
+        /// <param name="releaseChannel">The client's current release channel</param>
+        /// <param name="installedVersionProvider">Method that provides the installed version string</param>
+        /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
+        internal AutoUpdate(string releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
-            _gitHub = wrapper;
+            ReleaseChannel = releaseChannel ?? DefaultReleaseChannel;
             _installedVersionProvider = installedVersionProvider;
+            _channelInfoProvider = channelInfoProvider;
             _initTask = Task.Run(() => InitializeWithTimer());
-        }
-
-        private static bool TryGetCadencesFromStream(Stream stream, out Dictionary<string, CadenceInfo> cadences)
-        {
-            cadences = new Dictionary<string, CadenceInfo>();
-            stream.Position = 0;
-            StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-            string configInfo = reader.ReadToEnd();
-            Dictionary<string, CadenceInfo> rawResults = JsonConvert.DeserializeObject<Dictionary<string, CadenceInfo>>(configInfo);
-
-            foreach (KeyValuePair<string, CadenceInfo> pair in rawResults)
-            {
-                if (pair.Value.IsValid)
-                {
-                    cadences.Add(pair.Key, pair.Value);
-                }
-            }
-
-            return cadences.Any();
-        }
-
-        private bool TryParseConfigInfo(Stream stream, string cadence)
-        {
-            if (_gitHub.TryGetConfigInfo(stream))
-            {
-                if (cadence != null)
-                {
-                    try
-                    {
-                        if (TryGetCadencesFromStream(stream, out Dictionary<string, CadenceInfo> cadences))
-                        {
-                            if (cadences.TryGetValue(cadence, out CadenceInfo cadenceInfo))
-                            {
-                                _latestVersion = cadenceInfo.CurrentVersion;
-                                _minimumVersion = cadenceInfo.MinimumVersion;
-                                _releaseNotesUri = new Uri(cadenceInfo.ReleaseNotesAsset, UriKind.Absolute);
-                                _installerUri = new Uri(cadenceInfo.InstallAsset, UriKind.Absolute);
-                                return true;
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        e.ReportException();
-                        Trace.WriteLine("AccessibilityInsights upgrade - exception when converting the config data: "
-                            + e.ToString());
-                    }
-                }
-            }
-
-            // Default values
-            _latestVersion = null;
-            _minimumVersion = null;
-            _releaseNotesUri = null;
-            _installerUri = null;
-            return false;
         }
 
         private AutoUpdateOption InitializeWithTimer()
         {
-            _initializationStopwatch.Reset();
-
-            try
-            {
-                _initializationStopwatch.Start(); // stopped in the finally block
-                return Initialize();
-            }
-            catch (Exception e)
-            {
-                e.ReportException();
-                Trace.WriteLine($"Unable to get update info from meta file at {e.Message}");
-            }
-            finally
-            {
-                _initializationStopwatch.Stop();
-            }
-
-            return AutoUpdateOption.Unknown;  // Our fallback value if we can't prove a better option
+            _initializationStopwatch.Restart();
+            AutoUpdateOption updateOption = Initialize();
+            _initializationStopwatch.Stop();
+            return updateOption;
         }
 
         /// <summary>
         /// Do not call this function directly.
         /// Instead, call InitializeWithTimer.
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>This function MUST NOT leak any exceptions</remarks>
         private AutoUpdateOption Initialize()
         {
             // Do NOT use anything that calls WaitForInitializationToComplete in this
             // method, or you may create a deadlock condition
-            if (Version.TryParse(_installedVersionProvider(), out _installedVersion))
+            try
             {
-                using (Stream configStream = new MemoryStream())
+                if (Version.TryParse(_installedVersionProvider(), out _installedVersion))
                 {
-                    if (TryParseConfigInfo(configStream, ReleaseCadence))
+                    if (_channelInfoProvider.TryGetChannelInfo(ReleaseChannel, out ChannelInfo channelInfo) &&
+                        channelInfo.IsValid)
                     {
-                        if (_installedVersion != null && _latestVersion != null && _minimumVersion != null)
+                        _currentChannelVersion = channelInfo.CurrentVersion;
+                        _minimumChannelVersion = channelInfo.MinimumVersion;
+                        _releaseNotesUri = new Uri(channelInfo.ReleaseNotesAsset, UriKind.Absolute);
+                        _installerUri = new Uri(channelInfo.InstallAsset, UriKind.Absolute);
+
+                        if (_installedVersion < _minimumChannelVersion)
                         {
-                            if (_latestVersion < _minimumVersion)
-                            {
-                                return AutoUpdateOption.Unknown;
-                            }
-                            if (_installedVersion < _minimumVersion)
-                            {
-                                return AutoUpdateOption.RequiredUpgrade;
-                            }
-                            else if (_installedVersion < _latestVersion)
-                            {
-                                return AutoUpdateOption.OptionalUpgrade;
-                            }
-                            return AutoUpdateOption.Current;
+                            return AutoUpdateOption.RequiredUpgrade;
                         }
+                        else if (_installedVersion < _currentChannelVersion)
+                        {
+                            return AutoUpdateOption.OptionalUpgrade;
+                        }
+                        return AutoUpdateOption.Current;
                     }
-                } // using
+                }
+            }
+            catch (Exception e)
+            {
+                e.ReportException();
             }
 
+            // Default values
+            _currentChannelVersion = null;
+            _minimumChannelVersion = null;
+            _releaseNotesUri = null;
+            _installerUri = null;
             return AutoUpdateOption.Unknown;
         }
 
         private void WaitForInitializationToComplete()
         {
             _initTask.Wait();
-        }
-
-        private bool TryDownloadInstaller(string targetFilePath)
-        {
-            _installerDownloadStopwatch.Reset();
-
-            using (Stream stream = new FileStream(targetFilePath, FileMode.CreateNew))
-            {
-                _installerDownloadStopwatch.Start();
-
-                try
-                {
-                    return TryGetTargetAsset(_installerUri.ToString(), stream);
-                }
-                catch (Exception e)
-                {
-                    e.ReportException();
-                    Debug.WriteLine(e.ToString());
-                }
-                finally
-                {
-                    _installerDownloadStopwatch.Stop();
-                }
-            } // using
-
-            return false;
-        }
-
-        private bool TryGetTargetAsset(string assetName, Stream stream)
-        {
-            if (assetName == null)
-                return false;
-
-            if (_gitHub.TryGetSpecificAsset(new Uri(assetName), stream))
-            {
-                stream.Flush();
-                stream.Seek(0, SeekOrigin.Begin);
-
-                StreamReader reader = new StreamReader(stream);
-                return true;
-            }
-
-            return false;
         }
     }
 }

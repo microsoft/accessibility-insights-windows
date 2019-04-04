@@ -51,7 +51,9 @@ jobs:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
+    displayName: 'Publish Artifact: Compliance'
+    inputs:
+      ArtifactName: 'Compliance'
 
   - task: PowerShell@2
     displayName: 'Check Automation'
@@ -103,7 +105,9 @@ jobs:
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
+    displayName: 'Publish Artifact: Compliance'
+    inputs:
+      ArtifactName: 'Compliance'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim '
@@ -114,10 +118,10 @@ jobs:
                       src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Automation\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;"
+                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
@@ -134,10 +138,10 @@ jobs:
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
+                src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
+                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
@@ -208,6 +212,12 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: msi'
+    inputs:
+      PathtoPublish: 'src\MSI\bin\Release\msi'
+      ArtifactName: 'msi'
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim '
     inputs:
@@ -217,10 +227,10 @@ jobs:
                       src\\AccessibilityInsights\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Automation\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;\
+                      src\\AccessibilityInsights.Extensions.GitHub\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;"
+                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
@@ -347,10 +357,10 @@ jobs:
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
+                src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll"
+                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'

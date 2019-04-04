@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.Extensions.Interfaces.BugReporting;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using System;
@@ -107,8 +106,8 @@ namespace AccessibilityInsights.Extensions
         [Import(typeof(ITelemetry), AllowDefault = true)]
         public ITelemetry Telemetry { get; set; }
 
-        [Import(typeof(IBugReporting), AllowDefault = true)]
-        public IBugReporting BugReporting { get; set; }
+        [ImportMany(typeof(IIssueReporting))]
+        public IEnumerable<IIssueReporting> IssueReportingOptions { get; set; }
 
         #endregion
 
