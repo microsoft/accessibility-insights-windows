@@ -72,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 _telemetry.AddOrUpdateContextProperty(property, value);
             }
-            catch {}
+            catch (Exception) { }
         }
 
         /// <summary>
