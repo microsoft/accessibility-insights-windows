@@ -13,7 +13,6 @@ namespace Axe.Windows.Telemetry
     public static class Logger
     {
         private static IAxeWindowsTelemetry Telemetry = null;
-        private static readonly Object LockObject = new Object();
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
@@ -26,10 +25,7 @@ namespace Axe.Windows.Telemetry
         /// <param name="telemetry">Telemetry from Axe.Windows will be forwarded to this object</param>
         public static void SetTelemetrySink(IAxeWindowsTelemetry telemetry)
         {
-            lock (LockObject)
-            {
-                Telemetry = telemetry;
-            }
+            Telemetry = telemetry;
         }
 
         /// <summary>
@@ -59,18 +55,13 @@ namespace Axe.Windows.Telemetry
             // Check IsEnabled because ToString on enums is expensive
             if (!IsEnabled) return;
 
-            lock (LockObject)
+            try
             {
-                if (!IsEnabled) return;
-
-                try
-                {
-                    Telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
-                }
+                Telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
+            }
 #pragma warning disable CA1031
-                catch { }
+            catch { }
 #pragma warning restore CA1031
-            } // lock
         }
 
         /// <summary>
@@ -81,16 +72,13 @@ namespace Axe.Windows.Telemetry
         {
             if (e == null) return;
 
-            lock (LockObject)
+            try
             {
-                try
-                {
-                    Telemetry?.ReportException(e);
-                }
+                Telemetry?.ReportException(e);
+            }
 #pragma warning disable CA1031
-                catch { }
+            catch { }
 #pragma warning restore CA1031
-            } // lock
         }
 
         internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
