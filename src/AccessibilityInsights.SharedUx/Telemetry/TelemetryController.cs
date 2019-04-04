@@ -18,5 +18,11 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
             AxeWindowsTelemetrySink.Enable();
         }
+
+        public static void DisableTelemetry()
+        {
+            // Close the telemetry sink
+            TelemetrySink.IsTelemetryAllowed = false;
+        }
     } // class
 } // namespace

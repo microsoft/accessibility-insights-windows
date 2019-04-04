@@ -61,8 +61,12 @@ namespace AccessibilityInsights.Modes
         {
             ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog = false;
             ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry = ckbxAgreeToHelp.IsChecked.Value;
-            if (ckbxAgreeToHelp.IsChecked.Value)
+
+            if (ckbxAgreeToHelp.IsChecked ?? false)
                 TelemetryController.EnableTelemetry();
+            else
+                TelemetryController.DisableTelemetry();
+
             HideControl();
         }
 
