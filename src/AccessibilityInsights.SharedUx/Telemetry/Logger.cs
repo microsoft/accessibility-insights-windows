@@ -75,14 +75,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (properties == null || !properties.Any())
                 return null;
 
-            Dictionary<string, string> output = new Dictionary<string, string>();
-
-            foreach (KeyValuePair<TelemetryProperty, string> pair in properties)
-            {
-                output.Add(pair.Key.ToString(), pair.Value);
-            }
-
-            return output;
+            return properties.ToDictionary(kvp => kvp.Key.ToString(), kvp => kvp.Value);
         }
     } // class
 } // namespace
