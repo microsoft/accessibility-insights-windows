@@ -15,6 +15,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             // This must be done after the low-level sink is opened above
             // So that queued events get flushed to an open telemetry sink
             EventTelemetrySink.Enable();
+
+            AxeWindowsTelemetrySink.Enable();
         }
     } // class
 } // namespace

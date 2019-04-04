@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// </summary>
     class AxeWindowsTelemetrySink : IAxeWindowsTelemetry
     {
-        static AxeWindowsTelemetrySink()
+        public static void Enable()
         {
             Axe.Windows.Telemetry.Logger.SetTelemetrySink(new AxeWindowsTelemetrySink());
         }
