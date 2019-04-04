@@ -44,9 +44,9 @@ namespace Axe.Windows.Telemetry
             if (!IsEnabled) return;
 
             PublishTelemetryEvent(action, new Dictionary<TelemetryProperty, string>
-                    {
-                        { property, value }
-                    });
+                {
+                    { property, value }
+                });
         }
 
         /// <summary>
