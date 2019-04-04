@@ -36,7 +36,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
             using (ShimsContext.Create())
             {
                 ShimTelemetrySink._telemetryGet = () => new StubITelemetry();
-                ShimTelemetrySink.IsTelemetryAllowedGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
 
                 Assert.IsTrue(Logger.IsEnabled);
             }
@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
             using (ShimsContext.Create())
             {
                 ShimTelemetrySink._telemetryGet = () => new StubITelemetry();
-                ShimTelemetrySink.IsTelemetryAllowedGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 Assert.IsFalse(Logger.IsEnabled);
             }
@@ -101,7 +101,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 // TelemetryAction used here is arbitrary
                 Logger.PublishTelemetryEvent(TelemetryAction.Bug_Cancel,
@@ -129,7 +129,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                         actualTelemetryPropertyBag = telemetryPropertyBag;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Logger.PublishTelemetryEvent(action, property, value);
@@ -146,7 +146,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 // TelemetryAction used here is arbitrary
                 Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, null);
@@ -174,7 +174,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                         actualTelemetryPropertyBag = telemetryPropertyBag;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Dictionary<string, string> expectedConverterOutput = new Dictionary<string, string>
@@ -207,7 +207,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
             }
         }
 
@@ -230,7 +230,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                         actualValue = value;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Logger.AddOrUpdateContextProperty(expectedProperty, expectedValue);
@@ -256,7 +256,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
@@ -280,7 +280,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
@@ -305,7 +305,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
@@ -330,7 +330,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
+                TelemetrySink.IsTelemetryAllowed = true;
                 ShimTelemetrySink._telemetryGet = () => telemetry;
 
                 expectedException.ReportException();
