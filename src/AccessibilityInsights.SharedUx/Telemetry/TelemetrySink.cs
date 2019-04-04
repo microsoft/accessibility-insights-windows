@@ -32,12 +32,12 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
         /// </summary>
-        /// <param name="action"></param>
+        /// <param name="eventName"></param>
         /// <param name="property"></param>
         /// <param name="value"></param>
-        public static void PublishTelemetryEvent(string action, string property, string value)
+        public static void PublishTelemetryEvent(string eventName, string property, string value)
         {
-            PublishTelemetryEvent(action, new Dictionary<string, string>
+            PublishTelemetryEvent(eventName, new Dictionary<string, string>
                 {
                     { property, value }
                 });
@@ -46,15 +46,15 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Publishes event to the current telemetry pipeline
         /// </summary>
-        /// <param name="action">The action being recorded</param>
+        /// <param name="eventName">The event being recorded</param>
         /// <param name="propertyBag">Associated property bag--this may be null</param>
-        public static void PublishTelemetryEvent(string action, IReadOnlyDictionary<string, string> propertyBag = null)
+        public static void PublishTelemetryEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag = null)
         {
             if (!IsEnabled) return;
 
             try
             {
-                _telemetry.PublishEvent(action, propertyBag);
+                _telemetry.PublishEvent(eventName, propertyBag);
             }
             catch (Exception) { }
         }
