@@ -12,23 +12,23 @@ namespace Axe.Windows.Telemetry
     /// </summary>
     public static class Logger
     {
-        private static IAxeWindowsTelemetry _telemetry = null;
-        private static readonly Object _lockObject = new Object();
+        private static IAxeWindowsTelemetry Telemetry = null;
+        private static readonly Object LockObject = new Object();
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
-        public static bool IsEnabled => _telemetry != null && _telemetry.IsEnabled;
+        public static bool IsEnabled => Telemetry != null && Telemetry.IsEnabled;
 
         /// <summary>
         /// Sets the telemetry sink for Axe.Windows.
         /// <param name="telemetry">Telemetry from Axe.Windows will be forwarded to this object</param>
         public static void SetTelemetrySink(IAxeWindowsTelemetry telemetry)
         {
-            lock (_lockObject)
+            lock (LockObject)
             {
-                _telemetry = telemetry;
+                Telemetry = telemetry;
             }
         }
 
@@ -59,13 +59,13 @@ namespace Axe.Windows.Telemetry
             // Check IsEnabled because ToString on enums is expensive
             if (!IsEnabled) return;
 
-            lock (_lockObject)
+            lock (LockObject)
             {
                 if (!IsEnabled) return;
 
                 try
                 {
-                    _telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
+                    Telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
                 }
 #pragma warning disable CA1031
                 catch { }
@@ -81,11 +81,11 @@ namespace Axe.Windows.Telemetry
         {
             if (e == null) return;
 
-            lock (_lockObject)
+            lock (LockObject)
             {
                 try
                 {
-                    _telemetry?.ReportException(e);
+                    Telemetry?.ReportException(e);
                 }
 #pragma warning disable CA1031
                 catch { }
