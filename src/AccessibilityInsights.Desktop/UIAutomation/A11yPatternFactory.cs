@@ -110,7 +110,7 @@ namespace AccessibilityInsights.Desktop.UIAutomation
             }
             catch(Exception ex)
             {
-                Logger.ReportException(ex);
+                ex.ReportException();
 
                 return null;
             }
