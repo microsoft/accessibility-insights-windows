@@ -38,9 +38,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public static void PublishTelemetryEvent(string action, string property, string value)
         {
             PublishTelemetryEvent(action, new Dictionary<string, string>
-            {
-                        { property, value }
-                    });
+                {
+                    { property, value }
+                });
         }
 
         /// <summary>
