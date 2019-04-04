@@ -59,16 +59,18 @@ namespace Axe.Windows.Telemetry
             // Check IsEnabled because ToString on enums is expensive
             if (!IsEnabled) return;
 
-            try
+            lock (_lockObject)
             {
-                lock (_lockObject)
+                if (!IsEnabled) return;
+
+                try
                 {
                     _telemetry?.PublishEvent(action.ToString(), ConvertFromProperties(propertyBag));
                 }
-            }
 #pragma warning disable CA1031
-            catch { }
+                catch { }
 #pragma warning restore CA1031
+            } // lock
         }
 
         /// <summary>
@@ -79,16 +81,16 @@ namespace Axe.Windows.Telemetry
         {
             if (e == null) return;
 
-            try
+            lock (_lockObject)
             {
-                lock (_lockObject)
+                try
                 {
                     _telemetry?.ReportException(e);
                 }
-            }
 #pragma warning disable CA1031
-            catch { }
+                catch { }
 #pragma warning restore CA1031
+            } // lock
         }
 
         internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
