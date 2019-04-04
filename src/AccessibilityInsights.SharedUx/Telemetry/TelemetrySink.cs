@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 _telemetry.ReportException(e);
             }
-            catch {}
+            catch (Exception) { }
         }
     } // class
 } // namespace
