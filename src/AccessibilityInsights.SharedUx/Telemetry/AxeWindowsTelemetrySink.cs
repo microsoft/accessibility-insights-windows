@@ -26,9 +26,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         private AxeWindowsTelemetrySink()
         { }
 
-        public void PublishEvent(string action, IReadOnlyDictionary<string, string> propertyBag)
+        public void PublishEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag)
         {
-            TelemetrySink.PublishTelemetryEvent(action, propertyBag);
+            TelemetrySink.PublishTelemetryEvent(eventName, propertyBag);
         }
 
         public void ReportException(Exception e)
