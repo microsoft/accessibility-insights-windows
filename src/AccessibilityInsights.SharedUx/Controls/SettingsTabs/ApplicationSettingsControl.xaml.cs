@@ -28,6 +28,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         HotkeyGrabDialog HkDialog;
 
+        public ReleaseChannel SelectedReleaseChannel => ctrlChannelConfig.VM.CurrentChannel;
+
         /// <summary>
         /// Updates save button state based on data changes
         /// </summary>
@@ -327,8 +329,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 e.Handled = true;
             }
         }
-
-        public bool HasChannelChanged(ConfigurationModel config) => ctrlChannelConfig.GetConfigChanged(config);
     }
 }
 

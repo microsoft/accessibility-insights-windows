@@ -1,12 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -139,12 +140,34 @@ namespace AccessibilityInsights.Modes
                 MainWin.UpdateMainWindowConnectionFields();
             }
 
-            if (appSettingsCtrl.HasChannelChanged(Configuration))
+            if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel &&
+                TryGetChannelInfo("default", out ChannelInfo channelInfo))
+            {
+                Uri uri = new Uri(channelInfo.InstallAsset, UriKind.Absolute);
+                VersionSwitcherWrapper.ChangeChannel(uri, appSettingsCtrl.SelectedReleaseChannel.ToString());
+            }
+
+            MainWin.TransitionToSelectActionMode();
+        }
+        public static bool TryGetChannelInfo(string releaseChannel, out ChannelInfo channelInfo)
+        {
+            try
+            {
+                using (Stream stream = new MemoryStream())
+                {
+                    new GitHubWrapper(null).LoadChannelInfoIntoStream(releaseChannel, stream);
+                    channelInfo = ChannelInfo.GetChannelFromStream(releaseChannel, stream);
+                    return true;
+                }
+            }
+            catch (Exception)
             {
 
             }
 
-            MainWin.TransitionToSelectActionMode();
+            // Default values
+            channelInfo = null;
+            return false;
         }
 
         /// <summary>
