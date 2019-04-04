@@ -1513,13 +1513,12 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Channel</value>
   </data>
   <data name="ChannelConfigControl_ProductionDescription" xml:space="preserve">
-    <value>Production is rock solid.</value>
+    <value>Updated every month, the Production channel releases stable builds that have been tested and verified by the Accessibility Insights team.</value>
   </data>
   <data name="ChannelConfigControl_InsiderDescription" xml:space="preserve">
-    <value>Insider is hip.</value>
+    <value>Updated every 1 - 2 weeks, the Insiders channel allows users to try out new features under development. While this channel releases builds that have been tested, there may be some bugs and performance issues.</value>
   </data>
   <data name="ChannelConfigControl_CanaryDescription" xml:space="preserve">
-    <value>Canary is fly.</value>
+    <value>Updated every few days, the Canary channel releases the latest builds. It has not been tested or used.</value>
   </data>
-
 </root>

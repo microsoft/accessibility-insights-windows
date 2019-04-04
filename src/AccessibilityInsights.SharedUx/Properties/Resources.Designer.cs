@@ -796,7 +796,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Canary is fly..
+        ///   Looks up a localized string similar to Updated every few days, the Canary channel releases the latest builds. It has not been tested or used..
         /// </summary>
         public static string ChannelConfigControl_CanaryDescription {
             get {
@@ -805,7 +805,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Insider is hip..
+        ///   Looks up a localized string similar to Updated every 1 - 2 weeks, the Insiders channel allows users to try out new features under development. While this channel releases builds that have been tested, there may be some bugs and performance issues..
         /// </summary>
         public static string ChannelConfigControl_InsiderDescription {
             get {
@@ -814,7 +814,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Production is rock solid..
+        ///   Looks up a localized string similar to Updated every month, the Production channel releases stable builds that have been tested and verified by the Accessibility Insights team..
         /// </summary>
         public static string ChannelConfigControl_ProductionDescription {
             get {
