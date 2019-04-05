@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Actions.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Desktop.Settings;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     /// Class to take a snapshot (via ShapshotCommand.Execute). Can only be successfully called after
@@ -131,19 +131,19 @@ namespace AccessibilityInsights.Automation
                 // This intentionally ignores NoResult values
                 switch (scanResult.Status)
                 {
-                    case Core.Results.ScanStatus.Fail:
+                    case Axe.Windows.Core.Results.ScanStatus.Fail:
                         accumulator.AddFail();
                         break;
 
-                    case Core.Results.ScanStatus.Pass:
+                    case Axe.Windows.Core.Results.ScanStatus.Pass:
                         accumulator.AddPass();
                         break;
 
-                    case Core.Results.ScanStatus.Uncertain:
+                    case Axe.Windows.Core.Results.ScanStatus.Uncertain:
                         accumulator.AddInconclusive();
                         break;
 
-                    case Core.Results.ScanStatus.ScanNotSupported:
+                    case Axe.Windows.Core.Results.ScanStatus.ScanNotSupported:
                         accumulator.AddUnsupported();
                         break;
                 }

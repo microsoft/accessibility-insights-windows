@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Misc;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// In-memory implementation of IIssueStore

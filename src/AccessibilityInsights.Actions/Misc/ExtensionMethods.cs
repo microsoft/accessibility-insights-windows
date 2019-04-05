@@ -1,17 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
 using Axe.Windows.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Globalization;
 
-namespace AccessibilityInsights.Actions.Misc
+namespace Axe.Windows.Actions.Misc
 {
     /// <summary>
     /// Class for Extension methods

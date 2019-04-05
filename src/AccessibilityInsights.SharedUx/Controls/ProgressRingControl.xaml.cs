@@ -12,7 +12,7 @@ using System.Reflection;
 using System.Timers;
 using System;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

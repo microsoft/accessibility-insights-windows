@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Enums;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
 

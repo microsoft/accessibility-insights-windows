@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace AccessibilityInsights.Core.Results
+namespace Axe.Windows.Core.Results
 {
     /// <summary>
     /// Test status enum

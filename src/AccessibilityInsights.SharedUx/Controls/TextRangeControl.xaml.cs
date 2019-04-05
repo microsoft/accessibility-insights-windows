@@ -10,7 +10,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using AccessibilityInsights.DesktopUI.Highlighters;
 using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.Desktop.Types;
+using Axe.Windows.Desktop.Types;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 

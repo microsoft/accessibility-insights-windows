@@ -3,10 +3,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
-    /// Class to start AccessibilityInsights (via StartCommand.Execute)
+    /// Class to start AxeWindows (via StartCommand.Execute)
     /// </summary>
     public static class StartCommand
     {

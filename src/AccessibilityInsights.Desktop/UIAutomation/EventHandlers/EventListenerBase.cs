@@ -3,7 +3,7 @@
 using System;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
+namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {
     /// <summary>
     /// Indicate the message from Event

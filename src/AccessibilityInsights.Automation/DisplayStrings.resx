@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ErrorAlreadyStarted" xml:space="preserve">
-    <value>ERROR Automation009: AccessibilityInsights has already been started</value>
+    <value>ERROR Automation009: AxeWindows has already been started</value>
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorCantFindSecondaryConfigFileFormat" xml:space="preserve">
@@ -149,11 +149,11 @@
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorNotStarted_Clear" xml:space="preserve">
-    <value>ERROR Automation011: AccessibilityInsights has not yet been started, or has already been stopped</value>
+    <value>ERROR Automation011: AxeWindows has not yet been started, or has already been stopped</value>
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorNotStarted_Instance" xml:space="preserve">
-    <value>ERROR Automation010: AccessibilityInsights has not yet been started, or has already been stopped</value>
+    <value>ERROR Automation010: AxeWindows has not yet been started, or has already been stopped</value>
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorOutputFileFormatIsTrivial" xml:space="preserve">
@@ -173,7 +173,7 @@
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorStartAlreadyStarted" xml:space="preserve">
-    <value>ERROR Automation009: AccessibilityInsights has already been started</value>
+    <value>ERROR Automation009: AxeWindows has already been started</value>
     <comment>Don't change error code!</comment>
   </data>
   <data name="ErrorTooManyElementsToSetDataContext" xml:space="preserve">
@@ -200,9 +200,9 @@
     <comment>{0} is the #of violations. {1} is the #of inconclusive results. {2} is the output file</comment>
   </data>
   <data name="SuccessStart" xml:space="preserve">
-    <value>AccessibilityInsights successfully started</value>
+    <value>AxeWindows successfully started</value>
   </data>
   <data name="SuccessStop" xml:space="preserve">
-    <value>AccessibilityInsights successfully stopped</value>
+    <value>AxeWindows successfully stopped</value>
   </data>
 </root>

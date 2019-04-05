@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Types;
+using Axe.Windows.Desktop.Types;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using AccessibilityInsights.Desktop.UIAutomation.Support;
+using Axe.Windows.Desktop.UIAutomation.Support;
 using AccessibilityInsights.DesktopUI.Highlighters;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 using System.Globalization;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 
@@ -157,7 +157,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             //turn off hilighter
             this.Hilighter.HilightBoundingRectangles(false);
 
-            AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange range = null;
+            Axe.Windows.Desktop.UIAutomation.Patterns.TextRange range = null;
 
             try
             {

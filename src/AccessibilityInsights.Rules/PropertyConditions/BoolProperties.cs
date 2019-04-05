@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.General;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.General;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     static class BoolProperties
     {

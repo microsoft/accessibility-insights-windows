@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Enums;
+using Axe.Windows.Actions.Enums;
 using System;
 
-namespace AccessibilityInsights.Actions.Attributes
+namespace Axe.Windows.Actions.Attributes
 {
     /// <summary>
     /// Describes the amount of user interaction an Action offers

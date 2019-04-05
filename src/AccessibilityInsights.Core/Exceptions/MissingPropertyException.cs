@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace AccessibilityInsights.Core.Exceptions
+namespace Axe.Windows.Core.Exceptions
 {
     /// <summary>
     /// MissingPropertyException

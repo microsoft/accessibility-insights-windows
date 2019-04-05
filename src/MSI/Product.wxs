@@ -50,23 +50,23 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
                           Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
               </File>
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Actions.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Actions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Actions.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Core.dll.config" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Desktop.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Desktop.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Core.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Core.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Desktop.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Desktop.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Rules.dll.config" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.RuleSelection.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Rules.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Rules.dll.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.RuleSelection.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />
@@ -166,7 +166,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Axe.Windows.Win32.dll" Id ="version_switcher_win32"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoftt"/>
               </Component>

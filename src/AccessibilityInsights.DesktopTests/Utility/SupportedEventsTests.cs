@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Types;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Types;
 using System.Linq;
 
-namespace AccessibilityInsights.Desktop.Utility.Tests
+namespace Axe.Windows.Desktop.Utility.Tests
 {
     [TestClass()]
     public class SupportedEventsTests

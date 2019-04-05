@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using AccessibilityInsights.Core.Types;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class ButtonPatterns
     {
-        private AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ButtonShouldHavePatterns();
+        private Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ButtonShouldHavePatterns();
 
         /// <summary>
         /// Error
@@ -20,7 +20,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
 
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_ExpandCollapsePatternId));
 
@@ -37,7 +37,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
 
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_InvokePatternId));
 
@@ -54,7 +54,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
 
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_TogglePatternId));
 
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
 
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_TogglePatternId));
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_InvokePatternId));

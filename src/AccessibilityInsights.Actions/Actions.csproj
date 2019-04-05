@@ -12,8 +12,8 @@
     <ProjectGuid>{B2FA5150-470A-4864-A191-7BCAE39DF35A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.Actions</RootNamespace>
-    <AssemblyName>AccessibilityInsights.Actions</AssemblyName>
+    <RootNamespace>Axe.Windows.Actions</RootNamespace>
+    <AssemblyName>Axe.Windows.Actions</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -151,7 +151,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Actions.dll" />
+    <DropSignedFile Include="$(OutDir)\Axe.Windows.Actions.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Rules.Extensions;
-using static AccessibilityInsights.Rules.PropertyConditions.General;
+using Axe.Windows.Rules.Extensions;
+using static Axe.Windows.Rules.PropertyConditions.General;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     class IntProperty : ValueCondition<int>
     {

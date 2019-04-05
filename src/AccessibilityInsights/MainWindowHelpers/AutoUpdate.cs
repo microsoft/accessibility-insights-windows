@@ -204,7 +204,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Checks for new updates and shows update control if appropriate
-        ///   finds path to signed folder via *.drop file, see AccessibilityInsights.Core.Installer.UpgradeHelper for more info
+        ///   finds path to signed folder via *.drop file, see Axe.Windows.Core.Installer.UpgradeHelper for more info
         /// </summary>
         private void CheckForUpdates()
         {

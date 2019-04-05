@@ -1,20 +1,20 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.UIAutomation;
+using Axe.Windows.Actions;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.UIAutomation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Core.Results.Fakes;
+using Axe.Windows.Core.Results.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.ActionsTests.Actions
+namespace Axe.Windows.ActionsTests.Actions
 {
     [TestClass]
     public class PrivacyExtensionsUnitTests

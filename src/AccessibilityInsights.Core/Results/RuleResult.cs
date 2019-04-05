@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.HelpLinks;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.HelpLinks;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.Core.Results
+namespace Axe.Windows.Core.Results
 {
     /// <summary>
     /// Class RuleResult

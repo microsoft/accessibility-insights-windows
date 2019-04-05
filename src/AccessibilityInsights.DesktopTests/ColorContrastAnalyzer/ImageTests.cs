@@ -1,16 +1,16 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Desktop.ColorContrastAnalyzer;
+using Axe.Windows.Desktop.ColorContrastAnalyzer;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.IO;
 using System.Drawing;
-using static AccessibilityInsights.Desktop.ColorContrastAnalyzer.ColorContrastResult;
-using CCColor = AccessibilityInsights.Desktop.ColorContrastAnalyzer.Color;
+using static Axe.Windows.Desktop.ColorContrastAnalyzer.ColorContrastResult;
+using CCColor = Axe.Windows.Desktop.ColorContrastAnalyzer.Color;
 
-namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
+namespace Axe.Windows.DesktopTests.ColorContrastAnalyzer
 {
     [TestClass()]
     public class ImageTests
@@ -20,7 +20,7 @@ namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
         public static BitmapCollection LoadFromResources(string name)
         {
             Assembly myAssembly = Assembly.GetExecutingAssembly();
-            Stream myStream = myAssembly.GetManifestResourceStream("AccessibilityInsights.DesktopTests.TestImages." + name);
+            Stream myStream = myAssembly.GetManifestResourceStream("Axe.Windows.DesktopTests.TestImages." + name);
             Bitmap bmp = new Bitmap(myStream);
             return new BitmapCollection(bmp);
         }

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.UIAutomation.EventHandlers;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using System;
 
-namespace AccessibilityInsights.Actions.Trackers
+namespace Axe.Windows.Actions.Trackers
 {
     /// <summary>
     /// Class FocusSelector

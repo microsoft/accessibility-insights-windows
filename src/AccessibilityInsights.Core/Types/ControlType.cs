@@ -4,7 +4,7 @@ using System.Text;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Types
+namespace Axe.Windows.Core.Types
 {
     /// <summary>
     /// Class for Control Types

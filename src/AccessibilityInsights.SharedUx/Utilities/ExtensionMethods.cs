@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
+using Axe.Windows.Actions.Contexts;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -196,7 +196,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
             return new IssueInformation(
                 glimpse: element.Glimpse,
                 processName: element.GetProcessName(),
-                windowTitle: element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
+                windowTitle: element.GetOriginAncestor(Axe.Windows.Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 internalGuid: Guid.NewGuid(),
                 issueType: issueType);

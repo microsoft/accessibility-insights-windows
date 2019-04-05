@@ -2,12 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules;
-using AccessibilityInsights.Rules.PropertyConditions;
-using static AccessibilityInsights.Rules.PropertyConditions.Relationships;
-using static AccessibilityInsights.RulesTest.ControlType;
+using Axe.Windows.Rules;
+using Axe.Windows.Rules.PropertyConditions;
+using static Axe.Windows.Rules.PropertyConditions.Relationships;
+using static Axe.Windows.RulesTest.ControlType;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class RelationshipsTest
@@ -133,7 +133,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 e.Parent = parent;
                 parent.ControlTypeId = Button;
 
-                var condition = Parent(AccessibilityInsights.Rules.PropertyConditions.ControlType.Button);
+                var condition = Parent(Axe.Windows.Rules.PropertyConditions.ControlType.Button);
 
                 Assert.IsTrue(condition.Matches(e));
             } // using
@@ -148,7 +148,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 e.Parent = parent;
                 parent.ControlTypeId = Button;
 
-                var condition = Parent(AccessibilityInsights.Rules.PropertyConditions.ControlType.CheckBox);
+                var condition = Parent(Axe.Windows.Rules.PropertyConditions.ControlType.CheckBox);
 
                 Assert.IsFalse(condition.Matches(e));
             } // using
@@ -270,7 +270,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.Parent = grandparent;
                 grandparent.ControlTypeId = ControlType.Tree;
 
-                var condition = AnyAncestor(AccessibilityInsights.Rules.PropertyConditions.ControlType.Tree);
+                var condition = AnyAncestor(Axe.Windows.Rules.PropertyConditions.ControlType.Tree);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -286,7 +286,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.Parent = grandparent;
                 grandparent.ControlTypeId = Pane;
 
-                var condition = AnyAncestor(AccessibilityInsights.Rules.PropertyConditions.ControlType.Tree);
+                var condition = AnyAncestor(Axe.Windows.Rules.PropertyConditions.ControlType.Tree);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -296,7 +296,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
         {
             using (var e = new MockA11yElement())
             {
-                var condition = AnyAncestor(AccessibilityInsights.Rules.Condition.True);
+                var condition = AnyAncestor(Axe.Windows.Rules.Condition.True);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -308,7 +308,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
             var parent = new MockA11yElement();
             e.Parent = parent;
 
-            var condition = AnyAncestor(AccessibilityInsights.Rules.Condition.True, AccessibilityInsights.Rules.Condition.True);
+            var condition = AnyAncestor(Axe.Windows.Rules.Condition.True, Axe.Windows.Rules.Condition.True);
             Assert.IsFalse(condition.Matches(e));
         }
 
@@ -320,7 +320,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
             e.Parent = parent;
 
             // as long as the parent exists, the first condition below should evaluate to true
-            var condition = AnyAncestor(AccessibilityInsights.Rules.Condition.True, AccessibilityInsights.Rules.Condition.False);
+            var condition = AnyAncestor(Axe.Windows.Rules.Condition.True, Axe.Windows.Rules.Condition.False);
             Assert.IsTrue(condition.Matches(e));
         }
 
@@ -335,7 +335,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.Parent = grandparent;
                 grandparent.ControlTypeId = Pane;
 
-                var condition = NoAncestor(AccessibilityInsights.Rules.PropertyConditions.ControlType.Tree);
+                var condition = NoAncestor(Axe.Windows.Rules.PropertyConditions.ControlType.Tree);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -351,7 +351,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.Parent = grandparent;
                 grandparent.ControlTypeId = ControlType.Tree;
 
-                var condition = NoAncestor(AccessibilityInsights.Rules.PropertyConditions.ControlType.Tree);
+                var condition = NoAncestor(Axe.Windows.Rules.PropertyConditions.ControlType.Tree);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -361,7 +361,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
         {
             using (var e = new MockA11yElement())
             {
-                var condition = NoAncestor(AccessibilityInsights.Rules.Condition.False);
+                var condition = NoAncestor(Axe.Windows.Rules.Condition.False);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -379,7 +379,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.ControlTypeId = TreeItem;
                 grandparent.ControlTypeId = TreeItem;
 
-                var condition = AllAncestors(AccessibilityInsights.Rules.PropertyConditions.ControlType.TreeItem);
+                var condition = AllAncestors(Axe.Windows.Rules.PropertyConditions.ControlType.TreeItem);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -397,7 +397,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 parent.ControlTypeId = TreeItem;
                 grandparent.ControlTypeId = Pane;
 
-                var condition = AllAncestors(AccessibilityInsights.Rules.PropertyConditions.ControlType.TreeItem);
+                var condition = AllAncestors(Axe.Windows.Rules.PropertyConditions.ControlType.TreeItem);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -413,7 +413,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 var child = e.Children[3] as MockA11yElement;
                 child.ControlTypeId = ComboBox;
 
-                var condition = AnyChild(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AnyChild(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -426,7 +426,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 for (var i = 0; i < 5; ++i)
                     e.Children.Add(new MockA11yElement());
 
-                var condition = AnyChild(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AnyChild(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -453,7 +453,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     e.Children.Add(child);
                 }
 
-                var condition = NoChild(AccessibilityInsights.Rules.PropertyConditions.ControlType.Button);
+                var condition = NoChild(Axe.Windows.Rules.PropertyConditions.ControlType.Button);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -473,7 +473,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 var c4 = e.Children[3] as MockA11yElement;
                 c4.ControlTypeId = DataGrid;
 
-                var condition = NoChild(AccessibilityInsights.Rules.PropertyConditions.ControlType.DataGrid);
+                var condition = NoChild(Axe.Windows.Rules.PropertyConditions.ControlType.DataGrid);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -490,7 +490,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     e.Children.Add(child);
                 }
 
-                var condition = AllChildren(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AllChildren(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -510,7 +510,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 var c4 = e.Children[3] as MockA11yElement;
                 c4.ControlTypeId = DataGrid;
 
-                var condition = AllChildren(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AllChildren(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -579,7 +579,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     e.Children.Add(child);
                 }
 
-                var condition = ChildCount(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox) == 5;
+                var condition = ChildCount(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox) == 5;
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -596,7 +596,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     e.Children.Add(child);
                 }
 
-                var condition = ChildCount(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox) == 4;
+                var condition = ChildCount(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox) == 4;
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -613,7 +613,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     e.Children.Add(child);
                 }
 
-                var condition = ChildCount(AccessibilityInsights.Rules.PropertyConditions.ControlType.RadioButton) == 5;
+                var condition = ChildCount(Axe.Windows.Rules.PropertyConditions.ControlType.RadioButton) == 5;
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -757,7 +757,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 child.Children.Add(grandchild);
                 grandchild.ControlTypeId = ComboBox;
 
-                var condition = AnyDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AnyDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -772,7 +772,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 e.Children.Add(child);
                 child.Children.Add(grandchild);
 
-                var condition = AnyDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AnyDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -782,7 +782,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
         {
             using (var e = new MockA11yElement())
             {
-                var condition = AnyDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AnyDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -797,7 +797,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 e.Children.Add(child);
                 child.Children.Add(grandchild);
 
-                var condition = NoDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = NoDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -813,7 +813,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 child.Children.Add(grandchild);
                 grandchild.ControlTypeId = ComboBox;
 
-                var condition = NoDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = NoDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -823,7 +823,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
         {
             using (var e = new MockA11yElement())
             {
-                var condition = NoDescendant(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = NoDescendant(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -840,7 +840,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 child.ControlTypeId = ComboBox;
                 grandchild.ControlTypeId = ComboBox;
 
-                var condition = AllDescendants(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AllDescendants(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -856,7 +856,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                 child.Children.Add(grandchild);
                 child.ControlTypeId = ComboBox;
 
-                var condition = AllDescendants(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AllDescendants(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -866,7 +866,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
         {
             using (var e = new MockA11yElement())
             {
-                var condition = AllDescendants(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox);
+                var condition = AllDescendants(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox);
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
@@ -890,7 +890,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     }
                 }
 
-                var condition = DescendantCount(AccessibilityInsights.Rules.PropertyConditions.ControlType.ComboBox) == 15;
+                var condition = DescendantCount(Axe.Windows.Rules.PropertyConditions.ControlType.ComboBox) == 15;
                 Assert.IsTrue(condition.Matches(e));
             } // using
         }
@@ -936,7 +936,7 @@ namespace AccessibilityInsights.RulesTest.PropertyConditions
                     }
                 }
 
-                var condition = DescendantCount(AccessibilityInsights.Rules.PropertyConditions.ControlType.RadioButton) == 15;
+                var condition = DescendantCount(Axe.Windows.Rules.PropertyConditions.ControlType.RadioButton) == 15;
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }

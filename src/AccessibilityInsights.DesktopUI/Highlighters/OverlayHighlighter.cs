@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.Utility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
-using AccessibilityInsights.Core.Bases;
 using System.Windows.Input;
-using AccessibilityInsights.Desktop.Utility;
-using System;
 
 
 namespace AccessibilityInsights.DesktopUI.Highlighters
@@ -80,7 +80,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                 WindowStartupLocation = WindowStartupLocation.Manual
             };
 
-            var xyDpi = Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
+            var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
             this.HighlightWindow.Top = Dimensions.Top / xyDpi;
             this.HighlightWindow.Left = Dimensions.Left / xyDpi;
 
@@ -195,7 +195,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
         {
             try
             {
-                var xyDpi = Desktop.Utility.ExtensionMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
+                var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
                 var l = (Dimensions.Width / xyDpi- toast.Width) - (GapWidth * 2) ;
                 var t = (Dimensions.Height / xyDpi - toast.Height) - (GapWidth * 2);
                 canvas.Children.Add(toast);

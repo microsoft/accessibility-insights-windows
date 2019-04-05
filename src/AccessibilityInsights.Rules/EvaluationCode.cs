@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace AccessibilityInsights.Rules
+namespace Axe.Windows.Rules
 {
     /// <summary>
     /// Enumeration representing the results of a rule evaluation

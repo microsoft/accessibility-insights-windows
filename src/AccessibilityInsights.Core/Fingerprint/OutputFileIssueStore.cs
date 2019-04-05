@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
 using System;
 using System.Collections.Generic;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// Implementation of IIssueStore to manage issues found within a results file

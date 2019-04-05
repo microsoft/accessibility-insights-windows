@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.Settings;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;

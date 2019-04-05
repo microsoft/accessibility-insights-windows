@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.PropertyConditions;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.PropertyConditions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class EnumPropertyUnitTests

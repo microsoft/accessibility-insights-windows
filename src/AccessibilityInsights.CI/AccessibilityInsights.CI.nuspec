@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <metadata>
-    <id>AccessibilityInsights.Automation.Windows</id>
+    <id>AxeWindows</id>
     <version>$buildnumber$</version>
     <title>AccessibiiltyInsights for Windows Automation Library</title>
-    <summary>Core functionality from AccessibilityInsights from Windows automation library</summary>
-    <description>This package exposes core functionality from AccessibilityInsights for Windows automation library. This functionality can be accessed either via a .NET app, or from PowerShell via "Install-Module AccessibilityInsights.Automation.dll", followed by "Start-AccessibiiltyInsights", "Invoke-Snapshot" and "Stop-AccessibiiltyInsights"</description>
-    <authors>AccessibilityInsights team</authors>
+    <summary>AxeWindows automation library</summary>
+    <description>This package provides the AxeWindows core library. This library can be accessed either via a .NET app, or from PowerShell via "Install-Module Axe.Windows.Automation.dll", followed by "Start-AxeWindows", "Invoke-Snapshot" and "Stop-AxeWindows"</description>
+    <authors>AxeWindows team</authors>
     <owners></owners>
     <copyright>© 2018. All rights reserved.</copyright>
-    <tags>AccessibilityInsights Accessibility Automation</tags>
+    <tags>AxeWindows Accessibility Automation</tags>
   </metadata>
   <files>
     <file src="bin\$configuration$\*.dll" target="lib\net471" />
-    <file src="bin\$configuration$\AccessibilityInsights.Automation.xml" target="lib\net471" />
+    <file src="bin\$configuration$\AxeWindows.Automation.xml" target="lib\net471" />
   </files> 
 </package>

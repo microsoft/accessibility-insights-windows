@@ -7,7 +7,7 @@ using System.Text;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Misc
+namespace Axe.Windows.Core.Misc
 {
     /// <summary>
     /// File serialization and deserialization utilities

@@ -3,10 +3,10 @@
 using System;
 using System.Globalization;
 using System.Linq;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Rules.Resources;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Rules.Resources;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
     /// Contains commonly used conditions for testing the relationships between IA11yElement objects.

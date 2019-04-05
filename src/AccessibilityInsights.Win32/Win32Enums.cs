@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace AccessibilityInsights.Win32
+namespace Axe.Windows.Win32
 {
     // Some of these definitions originated from https://pinvoke.net/namespace
 
@@ -557,12 +557,12 @@ namespace AccessibilityInsights.Win32
         RevocationCheckEndCert = 0x00000020,
         RevocationCheckChain = 0x00000040,
         RevocationCheckChainExcludeRoot = 0x00000080,
-        SaferFlag = 0x00000100,                 // Used by software restriction policies. Should not be used.
+        SaferFlag = 0x00000100,                 // Used by software restriction policies. Should not be used.
         HashOnlyFlag = 0x00000200,
         UseDefaultOsverCheck = 0x00000400,
         LifetimeSigningFlag = 0x00000800,
-        CacheOnlyUrlRetrieval = 0x00001000,     // affects CRL retrieval and AIA retrieval
-        DisableMD2andMD4 = 0x00002000           // Win7 SP1+: Disallows use of MD2 or MD4 in the chain except for the root 
+        CacheOnlyUrlRetrieval = 0x00001000,     // affects CRL retrieval and AIA retrieval
+        DisableMD2andMD4 = 0x00002000           // Win7 SP1+: Disallows use of MD2 or MD4 in the chain except for the root 
     }
 
     internal enum WinTrustDataUIContext : uint

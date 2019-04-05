@@ -1,21 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class IsKeyboardFocusableOnEmptyContainer
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.IsKeyboardFocusableOnEmptyContainer();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.IsKeyboardFocusableOnEmptyContainer();
 
         [TestMethod]
         public void ConditionMatch_ListControl_ReturnTrue()
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
@@ -29,7 +29,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_DataGridControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_DataGridControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TableControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TableControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
@@ -57,7 +57,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
@@ -86,12 +86,12 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var ec = new MockA11yElement();
             
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;
             e.BoundingRectangle = new System.Drawing.Rectangle(0, 0, 100, 100);
-            ec.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            ec.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
 
             e.Children.Add(ec);
 
@@ -103,7 +103,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsKeyboardFocusable = false;

@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using AccessibilityInsights.Automation;
+using Axe.Windows.Automation;
 
-namespace AccessibilityInsights.CI
+namespace Axe.Windows.CI
 {
     class Program
     {

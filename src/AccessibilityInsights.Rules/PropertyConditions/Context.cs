@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
     /// Used to push and pop context items such as elements from the per-thread context stack.

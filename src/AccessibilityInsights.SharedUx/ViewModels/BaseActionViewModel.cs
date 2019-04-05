@@ -1,17 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Desktop.UIAutomation.Patterns;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.Desktop.UIAutomation.Patterns;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Actions;
+using Axe.Windows.Core.Enums;
 using System.Globalization;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 

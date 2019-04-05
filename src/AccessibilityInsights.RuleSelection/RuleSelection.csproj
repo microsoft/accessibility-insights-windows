@@ -12,8 +12,8 @@
     <ProjectGuid>{AB7195E3-A01D-4708-87AF-08E9418AE33F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.RuleSelection</RootNamespace>
-    <AssemblyName>AccessibilityInsights.RuleSelection</AssemblyName>
+    <RootNamespace>Axe.Windows.RuleSelection</RootNamespace>
+    <AssemblyName>Axe.Windows.RuleSelection</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
@@ -82,7 +82,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.RuleSelection.dll" />
+    <DropSignedFile Include="$(OutDir)\Axe.Windows.RuleSelection.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>

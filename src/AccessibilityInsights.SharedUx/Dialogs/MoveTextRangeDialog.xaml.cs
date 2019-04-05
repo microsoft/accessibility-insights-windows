@@ -48,7 +48,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             // Set title with proper name based on mode. 
             this.Title = mode.ToString();
 
-            this.dgParams.ItemsSource = this.Parameters.Where(p => p.ParamType != typeof(AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange));
+            this.dgParams.ItemsSource = this.Parameters.Where(p => p.ParamType != typeof(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange));
             // set the list and enforce to select the first item by default. 
             this.lbxTargetRanges.ItemsSource = customList;
             this.lbxTargetRanges.SelectedIndex = 0;
@@ -135,7 +135,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private object GetConvertedValue(Parameter p)
         {
-            if(p.ParamType == typeof(AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange))
+            if(p.ParamType == typeof(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange))
             {
                 return ((TextRangeViewModel)this.lbxTargetRanges.SelectedItem).TextRange;
             }

@@ -2,22 +2,22 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using AccessibilityInsights.Core.Bases;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     public class LandmarkIsTopLevel
     {
-        private readonly AccessibilityInsights.Rules.IRule Rule = null;
+        private readonly Axe.Windows.Rules.IRule Rule = null;
         private readonly  int LandmarkType = 0;
         private readonly string LocalizedLandmarkType = null;
 
         protected LandmarkIsTopLevel(object rule, int landmarkType, string localizedLandmarkType)
         {
             // we must pass in an object because the IRule type is not exposed publicly and it causes a compiler error
-            this.Rule = (AccessibilityInsights.Rules.IRule)rule;
+            this.Rule = (Axe.Windows.Rules.IRule)rule;
             this.LandmarkType = landmarkType;
             this.LocalizedLandmarkType = localizedLandmarkType;
         }
@@ -88,7 +88,7 @@ namespace AccessibilityInsights.RulesTest.Library
     public class LandmarkMainIsTopLevel : LandmarkIsTopLevel
     {
         public LandmarkMainIsTopLevel()
-            : base(new AccessibilityInsights.Rules.Library.LandmarkMainIsTopLevel(), LandmarkType.UIA_MainLandmarkTypeId, null)
+            : base(new Axe.Windows.Rules.Library.LandmarkMainIsTopLevel(), LandmarkType.UIA_MainLandmarkTypeId, null)
         {}
     } // class
 
@@ -96,7 +96,7 @@ namespace AccessibilityInsights.RulesTest.Library
     public class LandmarkBannerIsTopLevel : LandmarkIsTopLevel
     {
         public LandmarkBannerIsTopLevel()
-            : base(new AccessibilityInsights.Rules.Library.LandmarkBannerIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "banner")
+            : base(new Axe.Windows.Rules.Library.LandmarkBannerIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "banner")
         { }
     } // class
 
@@ -104,7 +104,7 @@ namespace AccessibilityInsights.RulesTest.Library
     public class LandmarkContentInfoIsTopLevel : LandmarkIsTopLevel
     {
         public LandmarkContentInfoIsTopLevel()
-            : base(new AccessibilityInsights.Rules.Library.LandmarkContentInfoIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "contentinfo")
+            : base(new Axe.Windows.Rules.Library.LandmarkContentInfoIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "contentinfo")
         { }
     } // class
 
@@ -112,7 +112,7 @@ namespace AccessibilityInsights.RulesTest.Library
     public class LandmarkComplementaryIsTopLevel : LandmarkIsTopLevel
     {
         public LandmarkComplementaryIsTopLevel()
-            : base(new AccessibilityInsights.Rules.Library.LandmarkComplementaryIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "complementary")
+            : base(new Axe.Windows.Rules.Library.LandmarkComplementaryIsTopLevel(), LandmarkType.UIA_CustomLandmarkTypeId, "complementary")
         { }
     } // class
 } // namespace

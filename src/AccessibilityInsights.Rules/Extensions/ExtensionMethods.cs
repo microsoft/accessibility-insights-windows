@@ -3,15 +3,15 @@
 using System;
 using System.Diagnostics;
 using System.Drawing;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.PropertyConditions;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.PropertyConditions;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Rules.Extensions
+namespace Axe.Windows.Rules.Extensions
 {
     static class ExtensionMethods
     {
@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Rules.Extensions
         {
             if (e == null) return false;
 
-            if (e.ControlTypeId != Core.Types.ControlType.UIA_TabItemControlTypeId)
+            if (e.ControlTypeId != Axe.Windows.Core.Types.ControlType.UIA_TabItemControlTypeId)
                 return false;
 
             var framework = e.GetUIFramework();
@@ -95,10 +95,10 @@ namespace AccessibilityInsights.Rules.Extensions
         {
             switch (controlType)
             {
-                case Core.Types.ControlType.UIA_TabItemControlTypeId:
-                    return Core.Types.ControlType.UIA_TabControlTypeId;
-                case Core.Types.ControlType.UIA_TreeItemControlTypeId:
-                    return Core.Types.ControlType.UIA_TreeControlTypeId;
+                case Axe.Windows.Core.Types.ControlType.UIA_TabItemControlTypeId:
+                    return Axe.Windows.Core.Types.ControlType.UIA_TabControlTypeId;
+                case Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId:
+                    return Axe.Windows.Core.Types.ControlType.UIA_TreeControlTypeId;
             }
 
             return 0;

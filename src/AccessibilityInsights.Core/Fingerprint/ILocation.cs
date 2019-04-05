@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// Abstraction for the information needed to open a specific issue location.

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
+namespace Axe.Windows.Desktop.ColorContrastAnalyzer
 {
     /**
     * Manages running of the color contrast calculation. Collects transition and

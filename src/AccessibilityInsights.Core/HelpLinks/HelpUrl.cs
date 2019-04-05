@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 
-namespace AccessibilityInsights.Core.HelpLinks
+namespace Axe.Windows.Core.HelpLinks
 {
     /// <summary>
     /// HelpUrl class

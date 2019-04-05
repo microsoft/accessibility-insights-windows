@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Actions;
+using Axe.Windows.Core.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
@@ -73,7 +73,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
             
             // when the file is open, it will be open in Inspect view, not Test view.
-            SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, Desktop.Settings.A11yFileMode.Inspect);
+            SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, Axe.Windows.Desktop.Settings.A11yFileMode.Inspect);
             issueInformation.Screenshot = GetScreenShotForIssueDescription(ecId, rect);
             issueInformation.TestFileName = snapshotFileName;
         }

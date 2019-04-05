@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.HelpLinks;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.HelpLinks;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -184,7 +184,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private string GetAutomationHelpText()
         {
-            return this.HelpUrl != null ? (this.HelpUrl.Type == AccessibilityInsights.Core.Enums.UrlType.Info ? Resources.ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_the_information_link_button : Resources.ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_fix_snippet_link_button) : null;
+            return this.HelpUrl != null ? (this.HelpUrl.Type == Axe.Windows.Core.Enums.UrlType.Info ? Resources.ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_the_information_link_button : Resources.ScanListViewItemViewModel_GetAutomationHelpText_This_result_has_fix_snippet_link_button) : null;
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 processName: this.Element.GetProcessName(),
                 ruleForTelemetry: this.RR.Rule.ToString(),
                 uiFramework: this.Element.GetUIFramework(),
-                windowTitle: this.Element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
+                windowTitle: this.Element.GetOriginAncestor(Axe.Windows.Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 testMessages: string.Join("<br/>", this.RR.Messages),
                 internalGuid: Guid.NewGuid(),

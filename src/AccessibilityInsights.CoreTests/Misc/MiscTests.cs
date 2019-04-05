@@ -1,17 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.UnitTestSharedLibrary;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.UnitTestSharedLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using Utility = AccessibilityInsights.UnitTestSharedLibrary.Utility;
+using Utility = Axe.Windows.UnitTestSharedLibrary.Utility;
 
-namespace AccessibilityInsights.CoreTests.Misc
+namespace Axe.Windows.CoreTests.Misc
 {
     /// <summary>
-    /// Tests for the misc folder in AccessibilityInsights.Core
+    /// Tests for the misc folder in Axe.Windows.Core
     /// </summary>
     [TestClass()]
     public class MiscTests

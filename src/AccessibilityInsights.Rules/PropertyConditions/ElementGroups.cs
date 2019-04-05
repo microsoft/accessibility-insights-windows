@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using static AccessibilityInsights.Rules.PropertyConditions.BoolProperties;
-using static AccessibilityInsights.Rules.PropertyConditions.ControlType;
-using static AccessibilityInsights.Rules.PropertyConditions.Relationships;
-using static AccessibilityInsights.Rules.PropertyConditions.StringProperties;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using static Axe.Windows.Rules.PropertyConditions.BoolProperties;
+using static Axe.Windows.Rules.PropertyConditions.ControlType;
+using static Axe.Windows.Rules.PropertyConditions.Relationships;
+using static Axe.Windows.Rules.PropertyConditions.StringProperties;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
     /// A collection of conditions representing elements grouped for miscellaneous  rules.
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.Rules.PropertyConditions
         {
             return Button
                 & Parent(ScrollBar)
-                & Framework.Is(AccessibilityInsights.Core.Enums.Framework.WPF)
+                & Framework.Is(Axe.Windows.Core.Enums.Framework.WPF)
                 & (AutomationID.Is("PageUp")
                 | AutomationID.Is("PageDown")
                 | AutomationID.Is("PageLeft")
@@ -160,7 +160,7 @@ namespace AccessibilityInsights.Rules.PropertyConditions
         {
             return e.GetUIFramework() == Core.Enums.Framework.WPF
                 && e.Parent != null
-                && e.Parent.ControlTypeId == Core.Types.ControlType.UIA_DataItemControlTypeId;
+                && e.Parent.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_DataItemControlTypeId;
         }
 
         private static bool HasAllowedPlatformPropertiesForText(IA11yElement e)

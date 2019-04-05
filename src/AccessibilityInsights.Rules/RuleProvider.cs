@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 
-namespace AccessibilityInsights.Rules
+namespace Axe.Windows.Rules
 {
     /// <summary>
     /// Supplies rules, ensuring that each rule is created only once, and only when requested.
@@ -38,7 +38,7 @@ namespace AccessibilityInsights.Rules
                 if (AreAllRulesInitialized) return;
 
                 // Calling GetRule ensures that the rule is created.
-                foreach (var k in AccessibilityInsights.Rules.RuleFactory.RuleIds)
+                foreach (var k in Axe.Windows.Rules.RuleFactory.RuleIds)
                     GetRule(k);
 
                 AreAllRulesInitialized = true;

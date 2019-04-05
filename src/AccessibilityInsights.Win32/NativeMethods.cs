@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace AccessibilityInsights.Win32
+namespace Axe.Windows.Win32
 {
     /// <summary>
     /// Class NativeMethods for Win32 Apis pInvoke and Win32 specific code.

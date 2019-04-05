@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Sarif;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Fingerprint;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Actions.Sarif;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Fingerprint;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Desktop.Utility;
 using Microsoft.CodeAnalysis.Sarif;
 using Microsoft.CodeAnalysis.Sarif.Writers;
 using System;
@@ -14,7 +14,7 @@ using System.Globalization;
 using System.IO;
 using System.Text;
 
-namespace AccessibilityInsights.Actions.Misc
+namespace Axe.Windows.Actions.Misc
 {
     public static class ResultsFileSarifMapper
     {

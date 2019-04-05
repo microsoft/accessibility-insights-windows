@@ -1,18 +1,18 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.HelpLinks;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.HelpLinks;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Rules;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.RuleSelection
+namespace Axe.Windows.RuleSelection
 {
     /// <summary>
-    /// Runs rules from AccessibilityInsights.Rules and adapts the results to the RuleResults format
+    /// Runs rules from Axe.Windows.Rules and adapts the results to the RuleResults format
     /// </summary>
     public static class RuleRunner
     {
@@ -44,7 +44,7 @@ namespace AccessibilityInsights.RuleSelection
 
         private static void Run(ScanResults results, A11yElement e)
         {
-            var runResults = AccessibilityInsights.Rules.Rules.RunAll(e);
+            var runResults = Axe.Windows.Rules.Rules.RunAll(e);
             foreach (var r in runResults)
             {
                 if (r.EvaluationCode == EvaluationCode.NotApplicable) continue;

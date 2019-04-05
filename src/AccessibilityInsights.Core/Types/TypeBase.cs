@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Types
+namespace Axe.Windows.Core.Types
 {
     /// <summary>
     /// Base class for all Types(ControlPattern, Event, Property...)

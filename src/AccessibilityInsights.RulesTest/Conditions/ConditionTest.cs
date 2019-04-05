@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Rules;
 
-namespace AccessibilityInsights.RulesTest.Conditions
+namespace Axe.Windows.RulesTest.Conditions
 {
     [TestClass]
     public class ConditionTest

@@ -2,10 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules;
-using AccessibilityInsights.RuleSelection;
+using Axe.Windows.Rules;
+using Axe.Windows.RuleSelection;
 
-namespace AccessibilityInsights.ReferenceLinksTests
+namespace Axe.Windows.RuleSelectionTests
 {
     [TestClass]
     public class DefaultReferenceLinksTests

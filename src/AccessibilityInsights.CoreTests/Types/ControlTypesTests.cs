@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.Core.Types.Tests
+namespace Axe.Windows.Core.Types.Tests
 {
     [TestClass()]
     public class ControlTypesTest

@@ -3,7 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
+namespace Axe.Windows.Desktop.ColorContrastAnalyzer
 {
     public abstract class ImageCollection : IEnumerable<Pixel>
     {

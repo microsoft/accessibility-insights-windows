@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Types;
 using System.Text;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Desktop.Styles
+namespace Axe.Windows.Desktop.Styles
 {
     /// <summary>
     /// Cap Style

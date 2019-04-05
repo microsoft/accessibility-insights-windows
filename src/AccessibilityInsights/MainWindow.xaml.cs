@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
+using Axe.Windows.Actions;
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -15,7 +15,7 @@ using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
@@ -193,7 +193,7 @@ namespace AccessibilityInsights
             // Initialize user info from file if it exists, reset if needed, and re-serialize
             var installInfo = InstallationInfo.LoadFromPath(DirectoryManagement.sConfigurationFolderPath);
             Logger.AddOrUpdateContextProperty(TelemetryProperty.InstallationID, installInfo.InstallationGuid.ToString());
-            Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, AccessibilityInsights.Core.Misc.Utility.GetAppVersion());
+            Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, Axe.Windows.Core.Misc.Utility.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
@@ -828,9 +828,9 @@ namespace AccessibilityInsights
             /// ignore this step if the combobox is being initialized
             if (e.RemovedItems.Count != 0)
             {
-                var scope = this.cbiEntireApp.IsSelected ? AccessibilityInsights.Actions.Enums.SelectionScope.App : AccessibilityInsights.Actions.Enums.SelectionScope.Element;
+                var scope = this.cbiEntireApp.IsSelected ? Axe.Windows.Actions.Enums.SelectionScope.App : Axe.Windows.Actions.Enums.SelectionScope.Element;
                 SelectAction.GetDefaultInstance().Scope = scope;
-                ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element);
+                ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == Axe.Windows.Actions.Enums.SelectionScope.Element);
                 Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
                 HollowHighlightDriver.GetDefaultInstance().Clear();

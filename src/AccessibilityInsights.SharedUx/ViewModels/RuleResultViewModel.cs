@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
@@ -181,7 +181,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 ruleForTelemetry: this.RuleResult.Rule.ToString(),
                 uiFramework: this.RuleResult.MetaInfo.UIFramework,
                 processName: this.Element.GetProcessName(),
-                windowTitle: this.Element.GetOriginAncestor(Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
+                windowTitle: this.Element.GetOriginAncestor(Axe.Windows.Core.Types.ControlType.UIA_WindowControlTypeId).Glimpse,
                 elementPath: string.Join("<br/>", this.Element.GetPathFromOriginAncestor().Select(el => el.Glimpse)),
                 testMessages: string.Join("<br/>", this.RuleResult.Messages),
                 internalGuid: Guid.NewGuid(),

@@ -5,7 +5,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.ReferenceLinks
 {
     /// <summary>
     /// Provides links to reference documentation
-    /// which the AccessibilityInsights rules are meant to validate.
+    /// which the Axe.Windows rules are meant to validate.
     /// </summary>
     public interface IReferenceLinks
     {

@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Types;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using Axe.Windows.Core.Types;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class LocalizedLandmarkTypeNotCustomTests
     {
-        private AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.LocalizedLandmarkTypeNotCustom();
+        private Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.LocalizedLandmarkTypeNotCustom();
 
         [TestMethod]
         public void LocalizedLandmarkTypeNotCustom_Pass()

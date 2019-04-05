@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     static class IntProperties
     {

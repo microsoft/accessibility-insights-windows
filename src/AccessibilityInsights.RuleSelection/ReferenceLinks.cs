@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.ReferenceLinks;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Rules;
 
-namespace AccessibilityInsights.RuleSelection
+namespace Axe.Windows.RuleSelection
 {
     /// <summary>
     /// Provides simplified access to links to Reference source material.

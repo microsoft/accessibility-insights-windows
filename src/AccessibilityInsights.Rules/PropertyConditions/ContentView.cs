@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.BoolProperties;
-using static AccessibilityInsights.Rules.PropertyConditions.ControlType;
-using static AccessibilityInsights.Rules.PropertyConditions.Relationships;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.BoolProperties;
+using static Axe.Windows.Rules.PropertyConditions.ControlType;
+using static Axe.Windows.Rules.PropertyConditions.Relationships;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
     /// Contains conditions used to validate element hierarchy structure

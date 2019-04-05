@@ -2,17 +2,17 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
-    [TestCategory("AccessibilityInsights.Rules")]
+    [TestCategory("Axe.Windows.Rules")]
     public class ComboBoxShouldNotSupportScrollPatternTests
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ComboBoxShouldNotSupportScrollPattern();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ComboBoxShouldNotSupportScrollPattern();
 
         private static readonly int[] ExpectedControlTypes = { ControlType.ComboBox };
         private static readonly IEnumerable<int> UnexpectedControlTypes = ControlType.All.Difference(ExpectedControlTypes);

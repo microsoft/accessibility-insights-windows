@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// Abstraction for a fingerprint

@@ -7,8 +7,8 @@
     <ProjectGuid>{1E26E004-331B-49DF-88C0-D8780B7566AD}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.ActionsTests</RootNamespace>
-    <AssemblyName>AccessibilityInsights.ActionsTests</AssemblyName>
+    <RootNamespace>Axe.Windows.ActionsTests</RootNamespace>
+    <AssemblyName>Axe.Windows.ActionsTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -45,14 +45,14 @@
   </PropertyGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Actions.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Core.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Core.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Desktop.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Desktop.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" Condition="$(FAKES_SUPPORTED) == 1">
       <SpecificVersion>False</SpecificVersion>

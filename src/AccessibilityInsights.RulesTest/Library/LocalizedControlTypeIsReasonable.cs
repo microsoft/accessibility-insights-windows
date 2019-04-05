@@ -1,21 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static AccessibilityInsights.RulesTest.ControlType;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using static Axe.Windows.RulesTest.ControlType;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class LocalizedControlTypeIsReasonable
     {
-        private AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.LocalizedControlTypeIsReasonable();
+        private Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.LocalizedControlTypeIsReasonable();
 
         [TestMethod]
         public void TestControlTypeIdIsAppBarAndLocalizedControlTypeIsAppBar()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_AppBarControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_AppBarControlTypeId;
             e.LocalizedControlType = "app bar";
 
             Assert.AreEqual(EvaluationCode.Pass, this.Rule.Evaluate(e));
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlTypeIdIsAppBarAndLocalizedControlTypeIsNotAppBar()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_AppBarControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_AppBarControlTypeId;
             e.LocalizedControlType = "custom";
 
             Assert.AreEqual(EvaluationCode.Warning, this.Rule.Evaluate(e));
@@ -35,7 +35,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlTypeIdIsCustomControl()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_CustomControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_CustomControlTypeId;
             Assert.IsFalse(this.Rule.Condition.Matches(e));
         }
 

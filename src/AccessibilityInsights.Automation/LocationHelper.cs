@@ -3,7 +3,7 @@
 using System;
 using System.IO;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     /// Class to collect common location functionality into a single place

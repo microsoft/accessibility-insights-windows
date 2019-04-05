@@ -3,10 +3,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules.PropertyConditions;
-using static AccessibilityInsights.RulesTest.ControlType;
+using Axe.Windows.Rules.PropertyConditions;
+using static Axe.Windows.RulesTest.ControlType;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class ElementGroupsTests

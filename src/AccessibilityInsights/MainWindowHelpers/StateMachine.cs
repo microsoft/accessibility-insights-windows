@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Sarif;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Sarif;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Interfaces;
@@ -162,8 +162,8 @@ namespace AccessibilityInsights
                 || (this.CurrentPage == AppPage.Events)
                 || (this.CurrentPage == AppPage.Inspect && SelectAction.GetDefaultInstance().IsPaused))
             {
-                SelectAction.GetDefaultInstance().Scope = ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope ? AccessibilityInsights.Actions.Enums.SelectionScope.Element : AccessibilityInsights.Actions.Enums.SelectionScope.App;
-                cbSelectionScope.SelectedIndex = (SelectAction.GetDefaultInstance().Scope == AccessibilityInsights.Actions.Enums.SelectionScope.Element) ? 0 : 1;
+                SelectAction.GetDefaultInstance().Scope = ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope ? Axe.Windows.Actions.Enums.SelectionScope.Element : Axe.Windows.Actions.Enums.SelectionScope.App;
+                cbSelectionScope.SelectedIndex = (SelectAction.GetDefaultInstance().Scope == Axe.Windows.Actions.Enums.SelectionScope.Element) ? 0 : 1;
                 StartInspectMode(InspectView.Live); // clean up data when we get back to selection mode.
                 this.CurrentPage = AppPage.Inspect;
                 this.CurrentView = InspectView.Live;

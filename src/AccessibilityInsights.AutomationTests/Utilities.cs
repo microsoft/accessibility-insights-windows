@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.AutomationTests
+namespace Axe.Windows.AutomationTests
 {
     internal static class Utilities
     {

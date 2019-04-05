@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Types;
+using Axe.Windows.Desktop.Types;
 using System.Collections.Generic;
 using UIAutomationClient;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
+namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {
     /// <summary>
     /// Class TextEditTextChanged Event handler

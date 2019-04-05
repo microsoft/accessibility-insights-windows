@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
+namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {
     /// <summary>
     /// Generic UIAutomation event handler wrapper

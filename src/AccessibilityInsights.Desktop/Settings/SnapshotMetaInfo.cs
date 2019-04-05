@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AccessibilityInsights.Desktop.Settings
+namespace Axe.Windows.Desktop.Settings
 {
     /// <summary>
     /// Contains metadata for a snapshot file. Created when saving snapshot,
@@ -41,7 +41,7 @@ namespace AccessibilityInsights.Desktop.Settings
         public string RuleVersion { get; set; }
 
         /// <summary>
-        /// Version of AccessibilityInsights.Core assembly
+        /// Version of Axe.Windows.Core assembly
         /// </summary>
         public string Version { get; set; }
 
@@ -62,7 +62,7 @@ namespace AccessibilityInsights.Desktop.Settings
         {
             this.Mode = mode;
             this.RuleVersion = ruleVersion;
-            this.Version = AccessibilityInsights.Core.Misc.Utility.GetAppVersion();
+            this.Version = Axe.Windows.Core.Misc.Utility.GetAppVersion();
 
             if (selected.HasValue)
             {

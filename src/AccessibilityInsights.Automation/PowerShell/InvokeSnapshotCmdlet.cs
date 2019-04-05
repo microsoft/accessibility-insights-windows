@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace AccessibilityInsights.Automation.PowerShell
+namespace Axe.Windows.Automation.PowerShell
 {
     /// <summary>
     /// PowerShell Cmdlet to run a single scan (aka snapshot)

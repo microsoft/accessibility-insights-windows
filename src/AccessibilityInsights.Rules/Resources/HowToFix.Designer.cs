@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccessibilityInsights.Rules.Resources {
+namespace Axe.Windows.Rules.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Rules.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.Rules.Resources.HowToFix", typeof(HowToFix).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Axe.Windows.Rules.Resources.HowToFix", typeof(HowToFix).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.PropertyConditions;
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.BoolProperties;
-using static AccessibilityInsights.Rules.PropertyConditions.ControlType;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.PropertyConditions;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.BoolProperties;
+using static Axe.Windows.Rules.PropertyConditions.ControlType;
 
-namespace AccessibilityInsights.Rules.Library
+namespace Axe.Windows.Rules.Library
 {
     [RuleInfo(
         ID = RuleId.NameNullButElementNotKeyboardFocusable)]

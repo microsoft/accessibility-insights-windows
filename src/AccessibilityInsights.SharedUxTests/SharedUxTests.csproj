@@ -44,11 +44,11 @@
     <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AccessibilityInsights.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Actions.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Actions.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Desktop.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Desktop.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="AccessibilityInsights.Extensions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Extensions.Fakes.dll</HintPath>

@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Contexts;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Desktop.UIAutomation.EventHandlers;
-using AccessibilityInsights.Desktop.UIAutomation.TreeWalkers;
-using AccessibilityInsights.Desktop.UIAutomation.Patterns;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.Desktop.UIAutomation.EventHandlers;
+using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
+using Axe.Windows.Desktop.UIAutomation.Patterns;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
@@ -402,7 +402,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (message.EventId == EventType.UIA_AutomationFocusChangedEventId)
             {
                 // exclude tooltip since it is transient UI. 
-                if (message.Element.ControlTypeId != Core.Types.ControlType.UIA_ToolTipControlTypeId && !message.Element.IsSameUIElement(CurrentElement))
+                if (message.Element.ControlTypeId != Axe.Windows.Core.Types.ControlType.UIA_ToolTipControlTypeId && !message.Element.IsSameUIElement(CurrentElement))
                 {
                     // ancestry variable is not used directly. however, it populates ancestry of message.Element and the ancestry is used in IsChildOf(...) method. 
                     // Don't remove it. 

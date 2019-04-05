@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccessibilityInsights.RuleSelection.Resources {
+namespace Axe.Windows.RuleSelection.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.RuleSelection.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.RuleSelection.Resources.DefaultGuidelineUrls", typeof(DefaultGuidelineUrls).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Axe.Windows.RuleSelection.Resources.DefaultGuidelineUrls", typeof(DefaultGuidelineUrls).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

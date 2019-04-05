@@ -1,24 +1,24 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.HelpLinks;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.HelpLinks;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Desktop.Utility;
 using Microsoft.CodeAnalysis.Sarif;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Actions.Fakes;
-using AccessibilityInsights.Actions.Misc.Fakes;
-using AccessibilityInsights.Core.Results.Fakes;
+using Axe.Windows.Actions.Fakes;
+using Axe.Windows.Actions.Misc.Fakes;
+using Axe.Windows.Core.Results.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.ActionsTests.Misc
+namespace Axe.Windows.ActionsTests.Misc
 {
 
     [TestClass]

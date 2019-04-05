@@ -1,21 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Automation;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Automation;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Actions.Contexts.Fakes;
-using AccessibilityInsights.Actions.Fakes;
-using AccessibilityInsights.Automation.Fakes;
+using Axe.Windows.Actions.Contexts.Fakes;
+using Axe.Windows.Actions.Fakes;
+using Axe.Windows.Automation.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.AutomationTests
+namespace Axe.Windows.AutomationTests
 {
     [TestClass]
     public class SnapshotCommandUnitTests

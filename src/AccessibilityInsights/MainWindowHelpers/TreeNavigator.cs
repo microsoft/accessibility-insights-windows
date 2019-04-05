@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Trackers;
-using AccessibilityInsights.Core.Exceptions;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Trackers;
+using Axe.Windows.Core.Exceptions;
 using System;
 using System.Media;
 

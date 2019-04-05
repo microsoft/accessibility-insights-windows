@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
-    [TestCategory("AccessibilityInsights.Rules")]
+    [TestCategory("Axe.Windows.Rules")]
     public class LocalizedControlTypeIsNotEmpty
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.LocalizedControlTypeIsNotEmpty();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.LocalizedControlTypeIsNotEmpty();
 
         [TestMethod]
         public void ConditionMismatch_IsKeyboardFocusableFalse_ReturnFalse()

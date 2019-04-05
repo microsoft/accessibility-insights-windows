@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.EventHandlers
+namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {
     /// <summary>
     /// Event Message Class for passing event information to UI or other handler

@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using AccessibilityInsights.Core.Types;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class ControlShouldSupportExpandCollapsePattern
     {
-        private AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ControlShouldSupportExpandCollapsePattern();
+        private Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ControlShouldSupportExpandCollapsePattern();
 
         /// <summary>
         /// Condition should not match since TreeItem doesn't have any childTreeItem
@@ -20,8 +20,8 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var ec = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
-            ec.ControlTypeId = Core.Types.ControlType.UIA_TitleBarControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            ec.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TitleBarControlTypeId;
 
             e.Children.Add(ec);
 
@@ -38,8 +38,8 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var ec = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
-            ec.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            ec.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
 
             e.Children.Add(ec);
 
@@ -57,8 +57,8 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var ec = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
-            ec.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            ec.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
 
             e.Children.Add(ec);
             e.Patterns.Add(new Core.Bases.A11yPattern(e, PatternType.UIA_ExpandCollapsePatternId));

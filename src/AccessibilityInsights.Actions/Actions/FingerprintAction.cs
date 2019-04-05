@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Fingerprint;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Fingerprint;
+using Axe.Windows.Desktop.Settings;
 using System;
 
-namespace AccessibilityInsights.Actions.Actions
+namespace Axe.Windows.Actions.Actions
 {
     /// <summary>
     /// FingerprintAction class

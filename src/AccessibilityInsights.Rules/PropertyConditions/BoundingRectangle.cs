@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.Extensions;
-using AccessibilityInsights.Rules.Resources;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.Extensions;
+using Axe.Windows.Rules.Resources;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
     /// Contains commonly used conditions for testing against the BoundingRectangle property of an IA11yElement.

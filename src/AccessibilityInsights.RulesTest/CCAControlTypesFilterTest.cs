@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Rules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.RulesTest
+namespace Axe.Windows.RulesTest
 {
     [TestClass]
     public class CCAControlTypesFilterTest

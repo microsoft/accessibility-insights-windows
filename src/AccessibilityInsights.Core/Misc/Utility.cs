@@ -3,12 +3,12 @@
 using System;
 using System.Diagnostics;
 
-namespace AccessibilityInsights.Core.Misc
+namespace Axe.Windows.Core.Misc
 {
     public static class Utility
     {
         /// <summary>
-        /// Get version from AccessibilityInsights.Core Assembly
+        /// Get version from Axe.Windows.Core Assembly
         /// </summary>
         /// <returns></returns>
         public static string GetAppVersion()

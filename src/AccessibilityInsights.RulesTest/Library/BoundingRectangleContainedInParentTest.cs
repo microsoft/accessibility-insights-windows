@@ -4,19 +4,19 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Rules.PropertyConditions;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using static AccessibilityInsights.RulesTest.ControlType;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules.PropertyConditions;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using static Axe.Windows.RulesTest.ControlType;
 
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class BoundingRectangleContainedInParentTest
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.BoundingRectangleContainedInParent();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.BoundingRectangleContainedInParent();
         const int Margin = BoundingRectangle.OverlapMargin;
 
         [TestMethod]

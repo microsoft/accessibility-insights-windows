@@ -2,14 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 using System.IO;
-using AccessibilityInsights.Automation;
+using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 #if FAKES_SUPPORTED
 using Microsoft.QualityTools.Testing.Fakes;
 using System.IO.Fakes;
 #endif
 
-namespace AccessibilityInsights.AutomationTests
+namespace Axe.Windows.AutomationTests
 {
     [TestClass]
     public class LocationHelperUnitTests

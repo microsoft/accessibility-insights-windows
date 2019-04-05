@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     /// Extension class for CommandParameters, so that CommandParameters can remain agnostic

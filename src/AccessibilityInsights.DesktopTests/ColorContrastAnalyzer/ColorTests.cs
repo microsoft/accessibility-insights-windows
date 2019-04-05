@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using AccessibilityInsights.Desktop.ColorContrastAnalyzer;
+using Axe.Windows.Desktop.ColorContrastAnalyzer;
 
-namespace AccessibilityInsights.DesktopTests.ColorContrastAnalyzer
+namespace Axe.Windows.DesktopTests.ColorContrastAnalyzer
 {
     [TestClass()]
     public class ColorTests

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Core.Bases;
 using UIAutomationClient;
-using AccessibilityInsights.Core.Attributes;
+using Axe.Windows.Core.Attributes;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
+namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
     /// <summary>
     /// Control pattern wrapper for MultipleView Control Pattern

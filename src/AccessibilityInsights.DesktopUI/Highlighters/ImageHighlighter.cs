@@ -6,9 +6,9 @@ using System.Windows;
 using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Media;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using System.Windows.Input;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Desktop.Utility;
 using System;
 using System.Windows.Media.Animation;
 
@@ -100,7 +100,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             // if so make sure that dimension is correct to be visible.
             if(el.PlatformObject == null)
             {
-                var dpi = AccessibilityInsights.Desktop.Utility.ExtensionMethods.GetDPI((int)Application.Current.MainWindow.Top, (int)Application.Current.MainWindow.Left);
+                var dpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI((int)Application.Current.MainWindow.Top, (int)Application.Current.MainWindow.Left);
                 this.WinRect = new Rect()
                 {
                     Y = (int)Application.Current.MainWindow.Top,
@@ -229,7 +229,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
 
             if (WinRect.IsEmpty)
             {
-                var xyDpi = Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
+                var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
                 this.HighlightWindow.Top = Dimensions.Top / xyDpi;
                 this.HighlightWindow.Left = Dimensions.Left / xyDpi;
 

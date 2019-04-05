@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Styles;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Styles;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace AccessibilityInsights.Desktop.Types
+namespace Axe.Windows.Desktop.Types
 {
     /// <summary>
     /// TextAttributeTypes

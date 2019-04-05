@@ -1,22 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
-    [TestCategory("AccessibilityInsights.Rules")]
+    [TestCategory("Axe.Windows.Rules")]
     public class ParentChildShouldNotHaveSameNameAndLocalizedControlType
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ParentChildShouldNotHaveSameNameAndLocalizedControlType();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ParentChildShouldNotHaveSameNameAndLocalizedControlType();
 
         [TestMethod]
         public void ElementIsNotKeyboardFocusable_RuleNotApplicable()
         {
             var e = new MockA11yElement();
             e.BoundingRectangle = new System.Drawing.Rectangle(10, 10, 20, 30);
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.IsKeyboardFocusable = false;
 
             Assert.IsFalse(Rule.Condition.Matches(e));
@@ -27,7 +27,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
             e.BoundingRectangle = new System.Drawing.Rectangle(10, 10, 20, 30);
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.IsKeyboardFocusable = true;
 
             Assert.IsTrue(Rule.Condition.Matches(e));

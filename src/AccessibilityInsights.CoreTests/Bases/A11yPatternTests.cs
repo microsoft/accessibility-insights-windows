@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.UnitTestSharedLibrary;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.UnitTestSharedLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.CoreTests.Bases
+namespace Axe.Windows.CoreTests.Bases
 {
     /// <summary>
     /// Tests A11yPattern class

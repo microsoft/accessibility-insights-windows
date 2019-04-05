@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.RuleSelection;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Actions.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.RuleSelection;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ using System.IO;
 using System.IO.Packaging;
 using System.Text;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// Action for saving snapshot data

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -10,7 +10,7 @@ using System.IO;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// Implementation of ILocation to identify an element in an output file

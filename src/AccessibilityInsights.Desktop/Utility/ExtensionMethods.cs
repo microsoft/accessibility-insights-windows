@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.Win32;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -17,7 +17,7 @@ using System.Windows;
 using System;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.Utility
+namespace Axe.Windows.Desktop.Utility
 {
     public static class ExtensionMethods
     {

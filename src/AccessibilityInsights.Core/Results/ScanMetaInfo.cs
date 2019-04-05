@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
 using System;
 
-namespace AccessibilityInsights.Core.Results
+namespace Axe.Windows.Core.Results
 {
     /// <summary>
     /// ScanMetaInfo class

@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Win32.Fakes;
 
-namespace AccessibilityInsights.Win32Tests
+namespace Axe.Windows.Win32Tests
 {
     [TestClass]
     public class Win32ApisUnitTests

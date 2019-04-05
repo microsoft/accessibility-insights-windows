@@ -7,7 +7,7 @@ using System.Collections.ObjectModel;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Results
+namespace Axe.Windows.Core.Results
 {
     public static class ScanStatusExtensions
     {
@@ -23,9 +23,9 @@ namespace AccessibilityInsights.Core.Results
             );
 
         /// <summary>
-        ///  Maps ScanStatus (AccessibilityInsights) result levels to ResultLevel (Sarif) standard result levels. Throws an exception if a mapping does not exist.
+        ///  Maps ScanStatus (Axe.Windows) result levels to ResultLevel (Sarif) standard result levels. Throws an exception if a mapping does not exist.
         /// </summary>
-        /// <param name="status"> AccessibilityInsights scan status </param>
+        /// <param name="status"> Axe.Windows scan status </param>
         /// <returns> Returns corresponding ResultLevel </returns>
         public static ResultLevel ToResultLevel(this ScanStatus status)
         {
@@ -38,9 +38,9 @@ namespace AccessibilityInsights.Core.Results
         }
 
         /// <summary>
-        ///  Maps ScanStatus (AccessibilityInsights) result levels to ResultLevel (Sarif) standard result levels in the string format. Throws an exception if a mapping does not exist.
+        ///  Maps ScanStatus (Axe.Windows) result levels to ResultLevel (Sarif) standard result levels in the string format. Throws an exception if a mapping does not exist.
         /// </summary>
-        /// <param name="status"> AccessibilityInsights scan status </param>
+        /// <param name="status"> Axe.Windows scan status </param>
         /// <returns> Returns corresponding ResultLevel </returns>
         public static string ToResultLevelString(this ScanStatus status)
         {

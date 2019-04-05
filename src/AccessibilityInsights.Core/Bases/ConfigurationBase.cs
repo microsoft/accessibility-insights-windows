@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Misc;
 using Newtonsoft.Json;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Base class for configuration files. Subclasses for individual configuration files 

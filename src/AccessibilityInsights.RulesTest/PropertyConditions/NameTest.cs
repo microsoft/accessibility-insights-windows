@@ -2,13 +2,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
-using static AccessibilityInsights.RulesTest.ControlType;
-using Misc = AccessibilityInsights.Rules.PropertyConditions.ElementGroups;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
+using static Axe.Windows.RulesTest.ControlType;
+using Misc = Axe.Windows.Rules.PropertyConditions.ElementGroups;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class NameTest
