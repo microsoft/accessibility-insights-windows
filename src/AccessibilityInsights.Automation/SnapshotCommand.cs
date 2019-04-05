@@ -131,19 +131,19 @@ namespace Axe.Windows.Automation
                 // This intentionally ignores NoResult values
                 switch (scanResult.Status)
                 {
-                    case Axe.Windows.Core.Results.ScanStatus.Fail:
+                    case Core.Results.ScanStatus.Fail:
                         accumulator.AddFail();
                         break;
 
-                    case Axe.Windows.Core.Results.ScanStatus.Pass:
+                    case Core.Results.ScanStatus.Pass:
                         accumulator.AddPass();
                         break;
 
-                    case Axe.Windows.Core.Results.ScanStatus.Uncertain:
+                    case Core.Results.ScanStatus.Uncertain:
                         accumulator.AddInconclusive();
                         break;
 
-                    case Axe.Windows.Core.Results.ScanStatus.ScanNotSupported:
+                    case Core.Results.ScanStatus.ScanNotSupported:
                         accumulator.AddUnsupported();
                         break;
                 }
