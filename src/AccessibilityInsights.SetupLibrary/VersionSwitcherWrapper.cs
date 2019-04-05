@@ -103,15 +103,10 @@ namespace AccessibilityInsights.SetupLibrary
                 // copy files, keeping a FileStream to each (to prevent someone from changing them on us)
                 foreach (string file in Directory.GetFiles(source))
                 {
-                    try
-                    {
-                        FileInfo fileInfo = new FileInfo(file);
-                        fileInfo.CopyTo(Path.Combine(dest, fileInfo.Name), true);
-                        fileLocks.Add(File.OpenRead(dest));
-                    } catch (Exception)
-                    {
-
-                    }
+                    FileInfo fileInfo = new FileInfo(file);
+                    string destFile = Path.Combine(dest, fileInfo.Name);
+                    fileInfo.CopyTo(destFile, true);
+                    fileLocks.Add(File.OpenRead(destFile));
                 }
 
                 // copy folders
