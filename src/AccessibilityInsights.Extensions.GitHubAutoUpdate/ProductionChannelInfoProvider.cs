@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
-using System;
-using System.IO;
 
 namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
 {
@@ -28,25 +26,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Implements <see cref="IChannelInfoProvider.TryGetChannelInfo(string, out ChannelInfo)"/>
         /// </summary>
-        public bool TryGetChannelInfo(string releaseChannel, out ChannelInfo channelInfo)
+        public bool TryGetChannelInfo(ReleaseChannel releaseChannel, out ChannelInfo channelInfo)
         {
-            try
-            {
-                using (Stream stream = new MemoryStream())
-                {
-                    _gitHubWrapper.LoadChannelInfoIntoStream(releaseChannel, stream);
-                    channelInfo = ChannelInfo.GetChannelFromStream(releaseChannel, stream);
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                _exceptionReporter.ReportException(e);
-            }
-
-            // Default values
-            channelInfo = null;
-            return false;
+            return ChannelInfoUtilities.TryGetChannelInfo(releaseChannel, out channelInfo, _gitHubWrapper, null, _exceptionReporter);
         }
     }
 }

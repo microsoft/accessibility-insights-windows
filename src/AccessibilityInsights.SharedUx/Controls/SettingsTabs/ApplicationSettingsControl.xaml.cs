@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SetupLibrary;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

@@ -15,7 +15,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     {
         private const string TestInstalledVersion = "1.1.1234";
         private const string UplevelVersion = "1.1.1260";
-        private const string DefaultReleaseChannel = "default";
+        private const ReleaseChannel DefaultReleaseChannel = ReleaseChannel.Production;
 
         private static readonly IChannelInfoProvider InertChannelInfoProvider =
             BuildChannelInfoProvider().Object;
@@ -54,22 +54,22 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             return "https://www.mywebsite.com/" + version + "/release_notes.md";
         }
 
-        private static Mock<IChannelInfoProvider> BuildChannelInfoProvider(string expectedChannel = null,
+        private static Mock<IChannelInfoProvider> BuildChannelInfoProvider(ReleaseChannel? expectedChannel = null,
             ChannelInfo channelInfo = null)
         {
             Mock<IChannelInfoProvider> providerMock =
                 new Mock<IChannelInfoProvider>(MockBehavior.Strict);
 
-            if (expectedChannel != null)
+            if (expectedChannel.HasValue)
             {
-                providerMock.Setup(x => x.TryGetChannelInfo(expectedChannel, out channelInfo)).Returns(channelInfo != null);
+                providerMock.Setup(x => x.TryGetChannelInfo(expectedChannel.Value, out channelInfo)).Returns(channelInfo != null);
             }
 
             return providerMock;
         }
 
         // Wrap the ctor to give us a single place for adding dependency injection parameters
-        private static AutoUpdate BuildAutoUpdate(string releaseChannel = null, string testInstalledVersion = null, IChannelInfoProvider channelProvider = null)
+        private static AutoUpdate BuildAutoUpdate(ReleaseChannel? releaseChannel = null, string testInstalledVersion = null, IChannelInfoProvider channelProvider = null)
         {
             return new AutoUpdate(releaseChannel, () => testInstalledVersion ?? TestInstalledVersion, channelProvider ?? InertChannelInfoProvider);
         }
@@ -79,16 +79,16 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         public void ReleaseChannel_DefaultsToExpectedValue()
         {
             IAutoUpdate update = BuildAutoUpdate();
-            Assert.AreEqual(DefaultReleaseChannel, update.ReleaseChannel);
+            Assert.AreEqual(DefaultReleaseChannel.ToString(), update.ReleaseChannel);
         }
 
         [TestMethod]
         [Timeout(2000)]
         public void ReleaseChannel_CanBeOverriddenInConstructor()
         {
-            const string testReleaseChannel = "abc";
+            const ReleaseChannel testReleaseChannel = ReleaseChannel.Insider;
             IAutoUpdate update = BuildAutoUpdate(releaseChannel: testReleaseChannel);
-            Assert.AreEqual(testReleaseChannel, update.ReleaseChannel);
+            Assert.AreEqual(testReleaseChannel.ToString(), update.ReleaseChannel);
         }
 
         [TestMethod]
@@ -181,7 +181,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         [Timeout(2000)]
         public void UpdateOptionAsync_ReleaseChannelIsOverridden_UsesCorrectChannel()
         {
-            const string testReleaseChannel = "This is a test";
+            const ReleaseChannel testReleaseChannel = ReleaseChannel.Canary;
             Mock<IChannelInfoProvider> providerMock = BuildChannelInfoProvider(testReleaseChannel, OptionalUpgradeChannelInfo);
             AutoUpdate update = BuildAutoUpdate(releaseChannel: testReleaseChannel, channelProvider: providerMock.Object);
             Assert.AreEqual(AutoUpdateOption.OptionalUpgrade, update.UpdateOptionAsync.Result);

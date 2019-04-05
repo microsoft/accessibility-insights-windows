@@ -140,34 +140,12 @@ namespace AccessibilityInsights.Modes
                 MainWin.UpdateMainWindowConnectionFields();
             }
 
-            if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel &&
-                TryGetChannelInfo("default", out ChannelInfo channelInfo))
+            if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel)
             {
-                Uri uri = new Uri(channelInfo.InstallAsset, UriKind.Absolute);
-                VersionSwitcherWrapper.ChangeChannel(uri, appSettingsCtrl.SelectedReleaseChannel.ToString());
+                VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
             }
 
             MainWin.TransitionToSelectActionMode();
-        }
-        public static bool TryGetChannelInfo(string releaseChannel, out ChannelInfo channelInfo)
-        {
-            try
-            {
-                using (Stream stream = new MemoryStream())
-                {
-                    new GitHubWrapper(null).LoadChannelInfoIntoStream(releaseChannel, stream);
-                    channelInfo = ChannelInfo.GetChannelFromStream(releaseChannel, stream);
-                    return true;
-                }
-            }
-            catch (Exception)
-            {
-
-            }
-
-            // Default values
-            channelInfo = null;
-            return false;
         }
 
         /// <summary>

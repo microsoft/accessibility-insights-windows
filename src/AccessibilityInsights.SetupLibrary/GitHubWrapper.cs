@@ -44,7 +44,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// Implements <see cref="IGitHubWrapper.LoadChannelInfoIntoStream(string, Stream)(Uri, Stream)"/>
         /// </summary>
-        public void LoadChannelInfoIntoStream(string releaseChannel, Stream stream)
+        public void LoadChannelInfoIntoStream(ReleaseChannel releaseChannel, Stream stream)
         {
             GitHubClient.LoadUriContentsIntoStream(GetChannelSpecificUri(releaseChannel), stream, _timeout);
         }
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// Gets the configured Uri for a given configurable setting
         /// </summary>
         /// <param name="config">The OverridableConfig object that contains the settings</param>
-        /// <param name="key">The name of the key</param>
+        /// <param name="key">The key to seek</param>
         /// <param name="defaultValue">The default Uri (represented as a string)</param>
         /// <returns>A valid Uri if possible, null if not</returns>
         private static Uri GetConfiguredUri(OverridableConfig config, string key, string defaultValue)
@@ -66,13 +66,13 @@ namespace AccessibilityInsights.SetupLibrary
             return uri;
         }
 
-        private Uri GetChannelSpecificUri(string releaseChannel)
+        private Uri GetChannelSpecificUri(ReleaseChannel releaseChannel)
         {
             // Check for special cases, otherwise use production value
             switch (releaseChannel)
             {
-                case "Insider": return _insiderConfigFileUri;
-                case "Canary": return _canaryConfigFileUri;
+                case ReleaseChannel.Insider: return _insiderConfigFileUri;
+                case ReleaseChannel.Canary: return _canaryConfigFileUri;
             }
 
             return _productionConfigFileUri;
