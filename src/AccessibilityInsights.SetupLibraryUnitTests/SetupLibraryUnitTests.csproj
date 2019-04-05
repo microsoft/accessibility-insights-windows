@@ -57,6 +57,7 @@
     <Compile Include="ChannelInfoUnitTests.cs" />
     <Compile Include="SettingsDictionaryUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChannelInfoUtilitiesUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

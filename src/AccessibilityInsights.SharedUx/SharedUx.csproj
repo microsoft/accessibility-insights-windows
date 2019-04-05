@@ -286,7 +286,6 @@
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
-    <Compile Include="Enums\ReleaseChannel.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
     <Compile Include="FileIssue\FileIssueAction.cs" />
     <Compile Include="FileIssue\IssueReporterManager.cs" />

@@ -15,6 +15,6 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="releaseChannel">The channel being requested</param>
         /// <param name="channelInfo">The ChannelInfo</param>
         /// <returns>true if a ChannelInfo was found</returns>
-        bool TryGetChannelInfo(string releaseChannel, out ChannelInfo channelInfo);
+        bool TryGetChannelInfo(ReleaseChannel releaseChannel, out ChannelInfo channelInfo);
     }
 }

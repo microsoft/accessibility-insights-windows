@@ -16,6 +16,6 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="releaseChannel">The channel being requested</param>
         /// <param name="stream">The stream to populate</param>
-        void LoadChannelInfoIntoStream(string releaseChannel, Stream stream);
+        void LoadChannelInfoIntoStream(ReleaseChannel releaseChannel, Stream stream);
     }
 }

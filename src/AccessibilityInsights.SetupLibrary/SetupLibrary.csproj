@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="ChannelInfo.cs" />
+    <Compile Include="ChannelInfoUtilities.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="DirectoryManagement.cs" />
     <Compile Include="ExceptionReporter.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="GitHubWrapper.cs" />
     <Compile Include="IGitHubWrapper.cs" />
     <Compile Include="MsiUtilities.cs" />
+    <Compile Include="ReleaseChannel.cs" />
     <Compile Include="ReleaseChannelChangeResult.cs" />
     <Compile Include="VersionSwitcherWrapper.cs" />
     <Compile Include="OverridableConfig.cs" />

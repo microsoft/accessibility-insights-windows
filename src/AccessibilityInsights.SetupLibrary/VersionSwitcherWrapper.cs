@@ -25,12 +25,17 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// Installs a different version in response to a channel change
         /// </summary>
-        /// <param name="installerUri">The uri to the web-hosted installer</param>
         /// <param name="newChannel">The new channel to use</param>
         /// <returns>true if the Version Switcher process started successfully, false if not</returns>
-        public static bool ChangeChannel(Uri installerUri, string newChannel)
+        public static bool ChangeChannel(ReleaseChannel newChannel)
         {
-            return DownloadAndInstall(installerUri, newChannel);
+            if (ChannelInfoUtilities.TryGetChannelInfo(newChannel, out ChannelInfo channelInfo, null)
+                && channelInfo.IsValid)
+            {
+                return DownloadAndInstall(new Uri(channelInfo.InstallAsset), newChannel);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -39,7 +44,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <param name="installerUrl">The uri to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
         /// <returns>true if the Version Switcher process started successfully, false if not</returns>
-        private static bool DownloadAndInstall(Uri installerUri, string newChannel)
+        private static bool DownloadAndInstall(Uri installerUri, ReleaseChannel? newChannel)
         {
             List<FileStream> fileLocks = new List<FileStream>();
             try
@@ -101,7 +106,7 @@ namespace AccessibilityInsights.SetupLibrary
                     try
                     {
                         FileInfo fileInfo = new FileInfo(file);
-                        fileInfo.CopyTo(Path.Combine(dest, file), true);
+                        fileInfo.CopyTo(Path.Combine(dest, fileInfo.Name), true);
                         fileLocks.Add(File.OpenRead(dest));
                     } catch (Exception)
                     {
@@ -153,13 +158,13 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="installerUri">The uri to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
-        private static string GetVersionSwitcherArguments(Uri installerUri, string newChannel)
+        private static string GetVersionSwitcherArguments(Uri installerUri, ReleaseChannel? newChannel)
         {
             string arguments = installerUri.ToString();
 
             if (newChannel != null)
             {
-                arguments += " " + newChannel;
+                arguments += " " + newChannel.ToString();
             }
 
             return arguments;

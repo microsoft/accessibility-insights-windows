@@ -35,9 +35,6 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     [Export(typeof(IAutoUpdate))]
     public class AutoUpdate : IAutoUpdate
     {
-        // The Channel we use unless overridden by setting the ReleaseChannel property
-        private const string DefaultReleaseChannel = "default";
-
         private readonly IChannelInfoProvider _channelInfoProvider;
         private readonly Func<string> _installedVersionProvider;
         private readonly Task<AutoUpdateOption> _initTask;
@@ -48,13 +45,14 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private Uri _installerUri;
         private readonly Stopwatch _initializationStopwatch = new Stopwatch();
         private readonly Stopwatch _updateStopwatch = new Stopwatch();
+        private readonly ReleaseChannel _strongReleaseChannel;
 
         private static readonly IExceptionReporter ExceptionReporter = new ExceptionReporter();
 
         /// <summary>
         /// Implements <see cref="IAutoUpdate.ReleaseChannel"/>
         /// </summary>
-        public string ReleaseChannel { get; set; } = DefaultReleaseChannel;
+        public string ReleaseChannel { get; }
 
         /// <summary>
         /// Implements <see cref="IAutoUpdate.InstalledVersion"/>
@@ -173,7 +171,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Production ctor
         /// </summary>
-        public AutoUpdate(string releaseChannel = null) :
+        public AutoUpdate(ReleaseChannel? releaseChannel = null) :
             this(releaseChannel, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
@@ -185,11 +183,12 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="releaseChannel">The client's current release channel</param>
         /// <param name="installedVersionProvider">Method that provides the installed version string</param>
         /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
-        internal AutoUpdate(string releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
+        internal AutoUpdate(ReleaseChannel? releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
-            ReleaseChannel = releaseChannel ?? DefaultReleaseChannel;
+            _strongReleaseChannel = releaseChannel.HasValue ? releaseChannel.Value : SetupLibrary.ReleaseChannel.Production;
             _installedVersionProvider = installedVersionProvider;
             _channelInfoProvider = channelInfoProvider;
+            ReleaseChannel = _strongReleaseChannel.ToString();
             _initTask = Task.Run(() => InitializeWithTimer());
         }
 
@@ -214,7 +213,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             {
                 if (Version.TryParse(_installedVersionProvider(), out _installedVersion))
                 {
-                    if (_channelInfoProvider.TryGetChannelInfo(ReleaseChannel, out ChannelInfo channelInfo) &&
+                    if (_channelInfoProvider.TryGetChannelInfo(_strongReleaseChannel, out ChannelInfo channelInfo) &&
                         channelInfo.IsValid)
                     {
                         _currentChannelVersion = channelInfo.CurrentVersion;
