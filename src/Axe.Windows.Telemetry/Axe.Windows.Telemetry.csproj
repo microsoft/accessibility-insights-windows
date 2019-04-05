@@ -59,7 +59,7 @@
     <Compile Include="TelemetryProperty.cs" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\[your project name].dll" />
+    <DropSignedFile Include="$(OutDir)\$(TargetFileName)" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>
