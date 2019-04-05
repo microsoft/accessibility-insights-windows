@@ -99,7 +99,7 @@ namespace AccessibilityInsights.SetupLibrary
                 foreach (string file in Directory.GetFiles(source))
                 {
                     FileInfo fileInfo = new FileInfo(file);
-                    fileInfo.CopyTo(Path.Combine(dest, file), true);
+                    fileInfo.CopyTo(Path.Combine(dest, fileInfo.Name), true);
                     fileLocks.Add(File.OpenRead(dest));
                 }
 
