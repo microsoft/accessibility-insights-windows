@@ -99,8 +99,9 @@ namespace AccessibilityInsights.SetupLibrary
                 foreach (string file in Directory.GetFiles(source))
                 {
                     FileInfo fileInfo = new FileInfo(file);
-                    fileInfo.CopyTo(Path.Combine(dest, fileInfo.Name), true);
-                    fileLocks.Add(File.OpenRead(dest));
+                    string destFile = Path.Combine(dest, fileInfo.Name);
+                    fileInfo.CopyTo(destFile, true);
+                    fileLocks.Add(File.OpenRead(destFile));
                 }
 
                 // copy folders
