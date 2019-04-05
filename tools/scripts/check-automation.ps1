@@ -18,25 +18,25 @@ $appPath='..\..\..\..\tools\WildlifeManager\WildlifeManager.exe'
 $rootPath=Join-Path '..\..\src\AccessibilityInsights.CI\bin\' $flavor
 $outputPath=Join-Path $rootPath 'AutomationCheck'
 
-if (-Not (Test-Path (Join-Path $rootPath AccessibilityInsights.CI.exe)))
+if (-Not (Test-Path (Join-Path $rootPath Axe.Windows.CI.exe)))
 {
-  Write-Host 'Please build the' $flavor 'version of AccessibilityInsights.CI before running this script'
+  Write-Host 'Please build the' $flavor 'version of Axe.Windows.CI before running this script'
   exit 1
 }
 
 Remove-Item $outputPath -Recurse -Force -ErrorAction Ignore | Out-Null
 New-Item $outputPath -ItemType Directory | Out-Null
 
-Write-Verbose "Register & start AccessibilityInsights"
+Write-Verbose "Register & start AxeWindows"
 Push-Location
 Set-Location $rootPath
 Write-Verbose '------------------------'
 Write-Verbose 'Importing module'
-Import-Module .\AccessibilityInsights.Automation.dll
+Import-Module .\Axe.Windows.Automation.dll
 
 Write-Verbose '------------------------'
-Write-Verbose 'Starting AccessibilityInsights'
-Start-AccessibilityInsights -OutputPath $($outputPath)
+Write-Verbose 'Starting AxeWindows'
+Start-AxeWindows -OutputPath $($outputPath)
 
 Write-Verbose '------------------------'
 Write-Verbose 'Launching WildlifeManager'
@@ -52,8 +52,8 @@ Write-Verbose $($result)
 Stop-Process -Id $procId
 
 Write-Verbose '------------------------'
-Write-Verbose 'Stopping AccessibilityInsights'
-Stop-AccessibilityInsights
+Write-Verbose 'Stopping AxeWindows'
+Stop-AxeWindows
 Pop-Location
 
 if ($result.Completed -eq $false)
