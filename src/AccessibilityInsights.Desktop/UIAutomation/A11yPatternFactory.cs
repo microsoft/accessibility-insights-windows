@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Core.Bases;
 using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Desktop.UIAutomation.Patterns;
+using Axe.Windows.Telemetry;
 using System;
 using UIAutomationClient;
 

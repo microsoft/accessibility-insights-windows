@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Concurrent;
 
-namespace AccessibilityInsights.Desktop.Telemetry
+namespace AccessibilityInsights.SharedUx.Telemetry
 {
     /// <summary>
     /// Class to handle all of the queuing of data associated with extension calls to

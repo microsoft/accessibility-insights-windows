@@ -4,7 +4,7 @@ using AccessibilityInsights.Actions;
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
@@ -158,7 +158,6 @@ namespace AccessibilityInsights
         public MainWindow()
         {
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
-            Logger.AttachReportExceptionHandler();
 
             SetHighContrastTheme();
 

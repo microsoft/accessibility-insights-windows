@@ -1,17 +1,17 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Desktop.Telemetry.Fakes;
+using AccessibilityInsights.SharedUx.Telemetry.Fakes;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.DesktopTests.Telemetry
+namespace AccessibilityInsights.SharedUXTests.Telemetry
 {
     [TestClass]
     public class LoggerUnitTests
@@ -23,19 +23,9 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.TelemetryGet = () => null;
+                ShimTelemetrySink.TelemetryGet = () => null;
 
                 Assert.IsFalse(Logger.IsEnabled);
-            }
-        }
-
-        [TestMethod]
-        [Timeout(1000)]
-        public void IsTelemetryAllowed_ImplementationIsNull_ReturnsFalse()
-        {
-            using (ShimsContext.Create())
-            {
-                Assert.IsFalse(Logger.IsTelemetryAllowed);
             }
         }
 
@@ -45,8 +35,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.TelemetryGet = () => new StubITelemetry();
-                ShimLogger.IsTelemetryAllowedGet = () => true;
+                ShimTelemetrySink.TelemetryGet = () => new StubITelemetry();
+                TelemetrySink.IsTelemetryAllowed = true;
 
                 Assert.IsTrue(Logger.IsEnabled);
             }
@@ -58,8 +48,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.TelemetryGet = () => new StubITelemetry();
-                ShimLogger.IsTelemetryAllowedGet = () => false;
+                ShimTelemetrySink.TelemetryGet = () => new StubITelemetry();
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 Assert.IsFalse(Logger.IsEnabled);
             }
@@ -111,7 +101,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 // TelemetryAction used here is arbitrary
                 Logger.PublishTelemetryEvent(TelemetryAction.Bug_Cancel,
@@ -139,8 +129,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                         actualTelemetryPropertyBag = telemetryPropertyBag;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Logger.PublishTelemetryEvent(action, property, value);
 
@@ -156,7 +146,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
 
                 // TelemetryAction used here is arbitrary
                 Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, null);
@@ -184,8 +174,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                         actualTelemetryPropertyBag = telemetryPropertyBag;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Dictionary<string, string> expectedConverterOutput = new Dictionary<string, string>
                 {
@@ -217,7 +207,7 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                ShimLogger.IsEnabledGet = () => false;
+                TelemetrySink.IsTelemetryAllowed = false;
             }
         }
 
@@ -240,8 +230,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                         actualValue = value;
                     }
                 };
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Logger.AddOrUpdateContextProperty(expectedProperty, expectedValue);
 
@@ -266,8 +256,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => false;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = false;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
             }
@@ -290,8 +280,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
                 Assert.IsNull(actualException);
@@ -315,8 +305,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 Logger.ReportException(expectedException);
                 Assert.AreSame(expectedException, actualException);
@@ -340,8 +330,8 @@ namespace AccessibilityInsights.DesktopTests.Telemetry
                     }
                 };
 
-                ShimLogger.IsEnabledGet = () => true;
-                ShimLogger.TelemetryGet = () => telemetry;
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
 
                 expectedException.ReportException();
                 Assert.AreSame(expectedException, actualException);

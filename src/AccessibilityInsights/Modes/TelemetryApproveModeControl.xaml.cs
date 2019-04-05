@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
@@ -58,7 +58,12 @@ namespace AccessibilityInsights.Modes
         {
             ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog = false;
             ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry = ckbxAgreeToHelp.IsChecked.Value;
-            Logger.IsTelemetryAllowed = ckbxAgreeToHelp.IsChecked.Value;
+
+            if (ckbxAgreeToHelp.IsChecked ?? false)
+                TelemetryController.EnableTelemetry();
+            else
+                TelemetryController.DisableTelemetry();
+
             HideControl();
         }
 

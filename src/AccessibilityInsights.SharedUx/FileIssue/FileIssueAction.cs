@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
