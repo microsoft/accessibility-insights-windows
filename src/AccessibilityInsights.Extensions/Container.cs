@@ -145,6 +145,16 @@ namespace AccessibilityInsights.Extensions
 
             return _defaultInstance;
         }
+
+        /// <summary>
+        /// Set the ReleaseChannel for update
+        /// </summary>
+        /// <param name="releaseChannel">The value to use in the AutoUpdate code</param>
+        public static void SetAutoUpdateReleaseChannel(string releaseChannel)
+        {
+            ReleaseChannelProvider.ReleaseChannel = releaseChannel;
+        }
+
         #endregion
 
         #region IDisposable Support

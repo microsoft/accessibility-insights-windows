@@ -1,14 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using Axe.Windows.Desktop.Keyboard;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
+using Axe.Windows.Actions;
+using Axe.Windows.Desktop.Keyboard;
 using Axe.Windows.Win32;
 using System;
 using System.Globalization;
@@ -113,6 +114,9 @@ namespace AccessibilityInsights
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
+
+            // Configure the correct ReleaseChannel for autoupdate
+            Container.SetAutoUpdateReleaseChannel(ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
 
             // enable/disable telemetry
             if (ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
