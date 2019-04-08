@@ -277,7 +277,7 @@
                     <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnEnableTelemetry" AutomationProperties.LabeledBy="{Binding ElementName=lblEnableTelemetryLabel}" IsChecked="{Binding EnableTelemetry}"/>
                 </Grid>
             </Grid>
-            <sharedControls:ChannelConfigControl x:Name="ctrlChannelConfig" Grid.Row="8" Margin="2,20,0,0"/>
+            <sharedControls:ChannelConfigControl x:Name="ctrlChannelConfig" Grid.Row="8" HorizontalAlignment="Left"  Margin="2,20,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

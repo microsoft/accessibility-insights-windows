@@ -7,11 +7,12 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" DataContext="{Binding RelativeSource={RelativeSource Self}, Path=VM}"
-             d:DesignHeight="200" d:DesignWidth="350">
+             d:DesignHeight="200" d:DesignWidth="350"
+             AutomationProperties.Name="{x:Static Properties:Resources.ChannelConfigControl_Title}">
     <UserControl.Resources>
         <ResourceDictionary Source="..\Resources\Styles.xaml"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid MaxWidth="320">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -22,7 +23,8 @@
                Style="{StaticResource LblH4}" Name="lblChannel"/>
         <ComboBox Grid.Row="1" Margin="0,8,0,12" ItemsSource="{Binding Path=Channels}"
                   MaxWidth="154" MinWidth="154" HorizontalAlignment="Left"
-                  SelectedItem="{Binding CurrentChannel}" AutomationProperties.LabeledBy="{Binding lblChannel}"/>
-        <TextBlock Focusable="True" Grid.Row="2" Style="{StaticResource TxtTelemetrySettingInfo}" TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding ChannelDescription}"/>
+                  SelectedItem="{Binding CurrentChannel}" AutomationProperties.LabeledBy="{Binding ElementName=lblChannel}"/>
+        <TextBlock Focusable="True" Grid.Row="2" Style="{StaticResource TxtTelemetrySettingInfo}"
+                   TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding ChannelDescription}"/>
     </Grid>
 </UserControl>

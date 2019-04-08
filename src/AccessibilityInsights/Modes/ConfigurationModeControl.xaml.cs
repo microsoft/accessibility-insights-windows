@@ -142,7 +142,11 @@ namespace AccessibilityInsights.Modes
 
             if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel)
             {
+                // will probably need to add exception handling here
                 VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
+
+                MainWin.Close();
+                return;
             }
 
             MainWin.TransitionToSelectActionMode();
