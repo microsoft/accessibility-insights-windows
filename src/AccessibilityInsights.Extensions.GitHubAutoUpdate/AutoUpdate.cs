@@ -170,7 +170,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// Production ctor - MUST be a default ctor or extensions will break
         /// </summary>
         public AutoUpdate() :
-            this(SetupLibrary.ReleaseChannel.Production, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
+            this(ProductionReleaseChannelProvider, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
@@ -178,16 +178,27 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Unit testable ctor - allows dependency injection for testing
         /// </summary>
-        /// <param name="releaseChannel">The client's current release channel</param>
+        /// <param name="releaseChannelProvider">Provides the client's current release channel</param>
         /// <param name="installedVersionProvider">Method that provides the installed version string</param>
         /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
-        internal AutoUpdate(ReleaseChannel releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
+        internal AutoUpdate(Func<ReleaseChannel> releaseChannelProvider, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
-            _strongReleaseChannel = releaseChannel;
+            _strongReleaseChannel = releaseChannelProvider();
             _installedVersionProvider = installedVersionProvider;
             _channelInfoProvider = channelInfoProvider;
             ReleaseChannel = _strongReleaseChannel.ToString();
             _initTask = Task.Run(() => InitializeWithTimer());
+        }
+
+        private static ReleaseChannel ProductionReleaseChannelProvider()
+        {
+            if (Enum.TryParse<ReleaseChannel>(ReleaseChannelProvider.ReleaseChannel, out ReleaseChannel releaseChannel))
+            {
+                return releaseChannel;
+            }
+
+            // Default value
+            return SetupLibrary.ReleaseChannel.Production;
         }
 
         private AutoUpdateOption InitializeWithTimer()

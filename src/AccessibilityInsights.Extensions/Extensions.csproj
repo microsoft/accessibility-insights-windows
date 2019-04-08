@@ -63,6 +63,7 @@
     <Compile Include="Interfaces\Telemetry\Hint.cs" />
     <Compile Include="Interfaces\Telemetry\ITelemetry.cs" />
     <Compile Include="Interfaces\Upgrades\IAutoUpdate.cs" />
+    <Compile Include="Interfaces\Upgrades\ReleaseChannelProvider.cs" />
     <Compile Include="Interfaces\Upgrades\UpdateResult.cs" />
     <Compile Include="Interfaces\Upgrades\UpgradeOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// </summary>
         public bool TryGetChannelInfo(ReleaseChannel releaseChannel, out ChannelInfo channelInfo)
         {
-            return ChannelInfoUtilities.TryGetChannelInfo(releaseChannel, out channelInfo, _gitHubWrapper, null, _exceptionReporter);
+            return ChannelInfoUtilities.TryGetChannelInfo(releaseChannel, out channelInfo, _gitHubWrapper, exceptionReporter: _exceptionReporter);
         }
     }
 }
