@@ -87,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\ChannelConfigControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\ColorChooser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -273,13 +277,15 @@
     <Compile Include="Behaviors\ColumnResizeHotkeyBehavior.cs" />
     <Compile Include="Behaviors\PropagateBindingsBehavior.cs" />
     <Compile Include="Behaviors\KeyboardToolTipButtonBehavior.cs" />
+    <Compile Include="Controls\ChannelConfigControl.xaml.cs">
+      <DependentUpon>ChannelConfigControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CustomControls\CustomDataGrid.cs" />
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
-    <Compile Include="Enums\ReleaseChannel.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
     <Compile Include="FileIssue\FileIssueAction.cs" />
     <Compile Include="FileIssue\IssueReporterManager.cs" />
@@ -467,6 +473,7 @@
     <Compile Include="ViewModels\TextAttributeViewModel.cs" />
     <Compile Include="ViewModels\TextRangeActionViewModel.cs" />
     <Compile Include="ViewModels\TextRangeViewModel.cs" />
+    <Compile Include="ViewModels\ChannelConfigViewModel.cs" />
     <Compile Include="ViewModels\TwoStateButtonViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

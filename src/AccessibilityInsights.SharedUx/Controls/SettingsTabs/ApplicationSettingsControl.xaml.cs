@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SetupLibrary;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,6 +29,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         HotkeyGrabDialog HkDialog;
 
+        public ReleaseChannel SelectedReleaseChannel => ctrlChannelConfig.VM.CurrentChannel;
+
         /// <summary>
         /// Updates save button state based on data changes
         /// </summary>
@@ -40,6 +43,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             set
             {
                 DataContextVM.UpdateSaveButton = value;
+                ctrlChannelConfig.SetUpdateSaveButton(value);
             }
         }
 
@@ -199,6 +203,11 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 return true;
             }
 
+            if (ctrlChannelConfig.GetConfigChanged(config))
+            {
+                return true;
+            }
+
             return false;
         }
 
@@ -218,6 +227,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             this.btnTHotkeyoLastChild.Content = config.HotKeyForMoveToLastChild;
             this.tbMouseDelay.Text = config.MouseSelectionDelayMilliSeconds.ToString(CultureInfo.InvariantCulture);
             (this.DataContext as ApplicationSettingsViewModel).UpdateFromConfig(config);
+            ctrlChannelConfig.UpdateFromConfig(config);
         }
 
 
@@ -320,7 +330,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 e.Handled = true;
             }
         }
-
     }
 }
 

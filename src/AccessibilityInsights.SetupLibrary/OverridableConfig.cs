@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// ctor
         /// </summary>
         /// <param name="configFile">The name of the file that contains the config data</param>
-        /// <param name="exceptionReporter">The sink for exceptions</param>
+        /// <param name="exceptionReporter">The optional sink for exceptions</param>
         internal OverridableConfig(string configFile, IExceptionReporter exceptionReporter)
         {
             string fullPath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), configFile);
@@ -36,7 +36,10 @@ namespace AccessibilityInsights.SetupLibrary
                 }
                 catch (Exception e)
                 {
-                    exceptionReporter.ReportException(e);
+                    if (exceptionReporter != null)
+                    {
+                        exceptionReporter.ReportException(e);
+                    }
                 }
             }
 

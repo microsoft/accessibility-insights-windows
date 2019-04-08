@@ -16,21 +16,25 @@ namespace AccessibilityInsights.SetupLibrary
         /// Installs a more recent version in response to an upgrade (retain the same channel)
         /// </summary>
         /// <param name="installerUri">The uri to the web-hosted installer</param>
-        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
-        public static bool InstallUpgrade(Uri installerUri)
+        public static void InstallUpgrade(Uri installerUri)
         {
-            return DownloadAndInstall(installerUri, null);
+            DownloadAndInstall(installerUri, null);
         }
 
         /// <summary>
         /// Installs a different version in response to a channel change
         /// </summary>
-        /// <param name="installerUri">The uri to the web-hosted installer</param>
         /// <param name="newChannel">The new channel to use</param>
-        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
-        public static bool ChangeChannel(Uri installerUri, string newChannel)
+        public static void ChangeChannel(ReleaseChannel newChannel)
         {
-            return DownloadAndInstall(installerUri, newChannel);
+            if (ChannelInfoUtilities.TryGetChannelInfo(newChannel, out ChannelInfo channelInfo, null)
+                && channelInfo.IsValid)
+            {
+                DownloadAndInstall(new Uri(channelInfo.InstallAsset), newChannel);
+                return;
+            }
+
+            throw new ArgumentException("Unable to get channel information", nameof(newChannel));
         }
 
         /// <summary>
@@ -38,8 +42,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="installerUrl">The uri to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
-        /// <returns>true if the Version Switcher process started successfully, false if not</returns>
-        private static bool DownloadAndInstall(Uri installerUri, string newChannel)
+        private static void DownloadAndInstall(Uri installerUri, ReleaseChannel? newChannel)
         {
             List<FileStream> fileLocks = new List<FileStream>();
             try
@@ -47,16 +50,13 @@ namespace AccessibilityInsights.SetupLibrary
                 string installedFolder = GetInstalledVersionSwitcherFolder();
                 string temporaryFolder = GetTemporaryVersionSwitcherFolder();
                 RemoveFolder(temporaryFolder);
-                if (TryRecursiveCopy(installedFolder, temporaryFolder, fileLocks))
+                RecursiveTreeCopy(installedFolder, temporaryFolder, fileLocks);
+                ProcessStartInfo start = new ProcessStartInfo
                 {
-                    ProcessStartInfo start = new ProcessStartInfo
-                    {
-                        FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
-                        Arguments = GetVersionSwitcherArguments(installerUri, newChannel)
-                    };
-                    return Process.Start(start).Id != 0;
-                }
-                return false;
+                    FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
+                    Arguments = GetVersionSwitcherArguments(installerUri, newChannel)
+                };
+                Process.Start(start);
             }
             finally
             {
@@ -80,45 +80,40 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Core function for xcopy. Keeps a lock on each file that gets copied to prevent tampering
+        /// TreeCopy source to dest, keeping a lock on each copied file to prevent tampering
         /// </summary>
-        /// <returns>true if the copy succeeded</returns>
-        private static bool TryRecursiveCopy(string source, string dest, List<FileStream> fileLocks)
+        private static void TreeCopy(string source, string dest, List<FileStream> fileLocks)
         {
-            try
+            if (!Directory.Exists(source))
+                throw new ArgumentException("No Source folder found", nameof(source));
+
+            RecursiveTreeCopy(source, dest, fileLocks);
+        }
+
+        /// <summary>
+        /// Core function for TreeCopy. Keeps a lock on each file that gets copied to prevent tampering
+        /// </summary>
+        private static void RecursiveTreeCopy(string source, string dest, List<FileStream> fileLocks)
+        {
+            if (!Directory.Exists(dest))
             {
-                if (!Directory.Exists(source))
-                    return false;
-
-                if (!Directory.Exists(dest))
-                {
-                    Directory.CreateDirectory(dest);
-                }
-
-                // copy files, keeping a FileStream to each (to prevent someone from changing them on us)
-                foreach (string file in Directory.GetFiles(source))
-                {
-                    FileInfo fileInfo = new FileInfo(file);
-                    string destFile = Path.Combine(dest, fileInfo.Name);
-                    fileInfo.CopyTo(destFile, true);
-                    fileLocks.Add(File.OpenRead(destFile));
-                }
-
-                // copy folders
-                foreach (string dir in Directory.GetDirectories(source))
-                {
-                    DirectoryInfo directoryInfo = new DirectoryInfo(dir);
-                    if (!TryRecursiveCopy(dir, Path.Combine(dest, directoryInfo.Name), fileLocks))
-                    {
-                        return false;
-                    }
-                }
-                return true;
+                Directory.CreateDirectory(dest);
             }
-            catch (Exception ex)
+
+            // copy folders
+            foreach (string dir in Directory.GetDirectories(source))
             {
-                Trace.WriteLine("AccessibilityInsights - exception when copying tree: " + ex.ToString());
-                return false;
+                DirectoryInfo directoryInfo = new DirectoryInfo(dir);
+                RecursiveTreeCopy(dir, Path.Combine(dest, directoryInfo.Name), fileLocks);
+            }
+
+            // copy files, keeping a FileStream to each (to prevent someone from changing them on us)
+            foreach (string file in Directory.GetFiles(source))
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                string destFile = Path.Combine(dest, fileInfo.Name);
+                fileInfo.CopyTo(destFile, true);
+                fileLocks.Add(File.OpenRead(destFile));
             }
         }
 
@@ -148,13 +143,13 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="installerUri">The uri to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
-        private static string GetVersionSwitcherArguments(Uri installerUri, string newChannel)
+        private static string GetVersionSwitcherArguments(Uri installerUri, ReleaseChannel? newChannel)
         {
             string arguments = installerUri.ToString();
 
-            if (newChannel != null)
+            if (newChannel.HasValue)
             {
-                arguments += " " + newChannel;
+                arguments += " " + newChannel.Value.ToString();
             }
 
             return arguments;

@@ -1,12 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -137,6 +139,21 @@ namespace AccessibilityInsights.Modes
             if (issueReporterUpdated)
             {
                 MainWin.UpdateMainWindowConnectionFields();
+            }
+
+            if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel)
+            {
+                try
+                {
+                    VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
+                    MainWin.Close();
+                    return;
+                }
+                catch (Exception ex)
+                {
+                    ex.ReportException();
+                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException, ex.Message));
+                }
             }
 
             MainWin.TransitionToSelectActionMode();

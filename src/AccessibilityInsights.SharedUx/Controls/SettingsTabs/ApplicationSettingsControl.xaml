@@ -193,6 +193,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="{x:Static Properties:Resources.LabelContentOtherOptions}" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="0" Style="{StaticResource LblH4}"/>
             <Grid Grid.Row="2" Margin="1,5,0,0">
@@ -276,6 +277,7 @@
                     <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnEnableTelemetry" AutomationProperties.LabeledBy="{Binding ElementName=lblEnableTelemetryLabel}" IsChecked="{Binding EnableTelemetry}"/>
                 </Grid>
             </Grid>
+            <sharedControls:ChannelConfigControl x:Name="ctrlChannelConfig" Grid.Row="8" HorizontalAlignment="Left"  Margin="2,20,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

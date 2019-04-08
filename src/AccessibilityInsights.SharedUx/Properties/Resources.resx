@@ -1509,4 +1509,16 @@ We collect anonymized data to identify the top accessibility issues found by use
   <data name="issueFilingLink" xml:space="preserve">
     <value>Learn more about issue filing</value>
   </data>
+  <data name="ChannelConfigControl_Title" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="ChannelConfigControl_ProductionDescription" xml:space="preserve">
+    <value>Updated every month, the Production channel releases stable builds that have been tested and verified by the Accessibility Insights team.</value>
+  </data>
+  <data name="ChannelConfigControl_InsiderDescription" xml:space="preserve">
+    <value>Updated every 1 - 2 weeks, the Insiders channel allows users to try out new features under development. While this channel releases builds that have been tested, there may be some bugs and performance issues.</value>
+  </data>
+  <data name="ChannelConfigControl_CanaryDescription" xml:space="preserve">
+    <value>Updated every few days, the Canary channel releases the latest builds. It has not been tested or used.</value>
+  </data>
 </root>
