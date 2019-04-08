@@ -16,7 +16,7 @@ namespace Axe.Windows.AutomationTests
     {
         private const string TestOutputPath = "C:\\Output\\Path";
         private const string TestOutputFileWithoutExtension = "MyOutputFile";
-        private const string TestOutputFileWithExtension = TestOutputFileWithoutExtension + LocationHelper.TestExtension;
+        private const string TestOutputFileWithExtension = TestOutputFileWithoutExtension + "." + LocationHelper.TestExtension;
         private const string TestOutputFileFormat = "Sarif";
         private const string InvalidTestOutputFormat = "testing";
         private const string EnvOutputPath = "C:\\Env\\Output\\Path";
@@ -145,7 +145,7 @@ namespace Axe.Windows.AutomationTests
                 LocationHelper helper = new LocationHelper(parameters);
                 Assert.AreEqual(TestOutputPath, helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.SarifExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.SarifExtension, helper.OutputFileFormat, true);
             }
         }
 
@@ -161,7 +161,7 @@ namespace Axe.Windows.AutomationTests
                 LocationHelper helper = new LocationHelper(parameters);
                 Assert.AreEqual(TestOutputPath, helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.TestExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.TestExtension, helper.OutputFileFormat, true);
             }
         }
 #endif
@@ -215,7 +215,7 @@ namespace Axe.Windows.AutomationTests
 
                 Assert.AreEqual(Path.Combine(CWDOutputPath, FallbackResultsFolder), helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.TestExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.TestExtension, helper.OutputFileFormat, true);
             }
         }
 
@@ -233,7 +233,7 @@ namespace Axe.Windows.AutomationTests
 
                 Assert.AreEqual(Path.Combine(CWDOutputPath, FallbackResultsFolder), helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.TestExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.TestExtension, helper.OutputFileFormat, true);
             }
         }
 
@@ -250,7 +250,7 @@ namespace Axe.Windows.AutomationTests
 
                 Assert.AreEqual(EnvOutputPath, helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.TestExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.TestExtension, helper.OutputFileFormat, true);
             }
         }
 
@@ -270,7 +270,7 @@ namespace Axe.Windows.AutomationTests
 
                 Assert.AreEqual(TestOutputPath, helper.OutputPath);
                 Assert.AreEqual(TestOutputFileWithoutExtension, helper.OutputFile);
-                Assert.AreEqual(LocationHelper.TestExtension.Substring(1), helper.OutputFileFormat, true);
+                Assert.AreEqual(LocationHelper.TestExtension, helper.OutputFileFormat, true);
             }
         }
 #endif
