@@ -64,7 +64,6 @@
     <Compile Include="Bases\IA11yElement.cs" />
     <Compile Include="Bases\IA11yPattern.cs" />
     <Compile Include="Bases\A11yElementData.cs" />
-    <Compile Include="Enums\FileFilters.cs" />
     <Compile Include="Enums\OrientationType.cs" />
     <Compile Include="Enums\RuleId.cs" />
     <Compile Include="Enums\HighlighterColor.cs" />

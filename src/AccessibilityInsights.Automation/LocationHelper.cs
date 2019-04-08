@@ -12,6 +12,8 @@ namespace Axe.Windows.Automation
     {
         private const string OutputPathEnvironmentVariableName = "A11YSCANRESULTSFOLDER";
         private const string FallbackResultsFolder = "ScanResults";
+        public const string SarifExtension = ".sarif";
+        public const string TestExtension = ".a11ytest";
 
         internal string OutputPath { get; }
         internal string OutputFile { get; }
@@ -59,7 +61,7 @@ namespace Axe.Windows.Automation
                 else
                 {
                     // If file format absent set default value
-                    outputFileFormat = ValidateExtension(Core.Enums.FileFilters.SarifExtension);
+                    outputFileFormat = ValidateExtension(SarifExtension);
                 }
             }
             else
