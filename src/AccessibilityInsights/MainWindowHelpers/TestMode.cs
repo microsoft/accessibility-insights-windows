@@ -4,7 +4,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.Actions;
 using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Globalization;

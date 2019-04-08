@@ -442,6 +442,15 @@
     <Compile Include="Settings\AppLayout.cs" />
     <Compile Include="Settings\ConfigurationConstants.cs" />
     <Compile Include="Settings\ConfigurationModel.cs" />
+    <Compile Include="Telemetry\AxeWindowsTelemetrySink.cs" />
+    <Compile Include="Telemetry\EventTelemetrySink.cs" />
+    <Compile Include="Telemetry\Logger.cs" />
+    <Compile Include="Telemetry\ReportExceptionBuffer.cs" />
+    <Compile Include="Telemetry\TelemetryAction.cs" />
+    <Compile Include="Telemetry\TelemetryController.cs" />
+    <Compile Include="Telemetry\TelemetryProperty.cs" />
+    <Compile Include="Telemetry\TelemetrySink.cs" />
+    <Compile Include="Telemetry\WindowsEventLogger.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
@@ -519,6 +528,10 @@
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
       <Name>Win32</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Axe.Windows.Telemetry\Axe.Windows.Telemetry.csproj">
+      <Project>{5c394271-6d27-4a48-8a32-f8080025431c}</Project>
+      <Name>Axe.Windows.Telemetry</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

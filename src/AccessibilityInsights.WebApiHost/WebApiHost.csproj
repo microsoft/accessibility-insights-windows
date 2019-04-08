@@ -117,10 +117,6 @@
       <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
       <Name>Desktop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj">
-      <Project>{d17e1749-28fe-44b9-a9f6-af8985124fe4}</Project>
-      <Name>Extensions.Telemetry</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\BrandIconDesktop.ico" />

@@ -1,23 +1,20 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Actions;
-using AccessibilityInsights.Enums;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Desktop.Keyboard;
-using AccessibilityInsights.Desktop.Telemetry;
+using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
-using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Win32;
 using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
-using AccessibilityInsights.SharedUx.Highlighting;
-using System.Collections.Generic;
-using Newtonsoft.Json;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {
@@ -118,7 +115,8 @@ namespace AccessibilityInsights
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
 
             // enable/disable telemetry
-            Logger.IsTelemetryAllowed = ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry;
+            if (ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
+                TelemetryController.EnableTelemetry();
         }
 
         /// <summary>

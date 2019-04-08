@@ -87,7 +87,8 @@ namespace AccessibilityInsights.Desktop.UIAutomation.TreeWalkers
             // run tests
             list.AsParallel().ForAll(e =>
             {
-                SuiteFactory.RunRules(e);
+                e.ScanResults?.Items.Clear();
+                RuleRunner.Run(e);
             });
         }
 

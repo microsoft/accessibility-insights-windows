@@ -145,6 +145,10 @@
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
       <Name>Win32</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Axe.Windows.Telemetry\Axe.Windows.Telemetry.csproj">
+      <Project>{5c394271-6d27-4a48-8a32-f8080025431c}</Project>
+      <Name>Axe.Windows.Telemetry</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Actions.dll" />

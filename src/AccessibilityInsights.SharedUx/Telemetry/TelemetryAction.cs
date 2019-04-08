@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace AccessibilityInsights.Desktop.Telemetry
+namespace AccessibilityInsights.SharedUx.Telemetry
 {
     /// <summary>
     /// Telemetry Actions, following the pattern of Scope_Verb_Result
@@ -128,7 +128,6 @@ namespace AccessibilityInsights.Desktop.Telemetry
         Upgrade_DoInstallation,
 
         SharedData_Load_MainConfiguration,
-        SharedData_Load_TestConfiguration,
         SharedData_Load_RecordConfiguration,
 
         TabStop_Record_On, // indicate whether TabStop Recording was on

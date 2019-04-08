@@ -4,14 +4,12 @@ using AccessibilityInsights.Actions;
 using AccessibilityInsights.Actions.Sarif;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Telemetry;
 using AccessibilityInsights.Enums;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -570,8 +568,6 @@ namespace AccessibilityInsights
             this.ctrlTestMode.ctrlTabStop.SetHotkeyText(configManager.AppConfig.HotKeyForRecord);
 
             HollowHighlightDriver.GetDefaultInstance().HighlighterMode = configManager.AppConfig.HighlighterMode;
-
-            configManager.TestConfig = TestSetting.GenerateSuiteConfiguration(RuleSelection.SuiteConfigurationType.Default);
 
             if (changes != null && changes.ContainsKey(ConfigurationModel.keyFontSize))
             {
