@@ -130,10 +130,8 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                     return UpdateResult.NoUpdateAvailable;
                 }
 
-                if (VersionSwitcherWrapper.InstallUpgrade(_installerUri))
-                {
-                    return UpdateResult.Success;
-                }
+                VersionSwitcherWrapper.InstallUpgrade(_installerUri);
+                return UpdateResult.Success;
             }
             catch (Exception e)
             {
