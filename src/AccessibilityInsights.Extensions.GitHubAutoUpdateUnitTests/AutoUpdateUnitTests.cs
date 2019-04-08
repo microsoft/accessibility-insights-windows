@@ -69,7 +69,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         }
 
         // Wrap the ctor to give us a single place for adding dependency injection parameters
-        private static AutoUpdate BuildAutoUpdate(ReleaseChannel? releaseChannel = null, string testInstalledVersion = null, IChannelInfoProvider channelProvider = null)
+        private static AutoUpdate BuildAutoUpdate(ReleaseChannel releaseChannel = ReleaseChannel.Production, string testInstalledVersion = null, IChannelInfoProvider channelProvider = null)
         {
             return new AutoUpdate(releaseChannel, () => testInstalledVersion ?? TestInstalledVersion, channelProvider ?? InertChannelInfoProvider);
         }

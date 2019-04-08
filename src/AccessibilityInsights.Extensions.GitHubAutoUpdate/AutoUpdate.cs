@@ -167,10 +167,10 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Production ctor
+        /// Production ctor - MUST be a default ctor or extensions will break
         /// </summary>
-        public AutoUpdate(ReleaseChannel? releaseChannel = null) :
-            this(releaseChannel, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
+        public AutoUpdate() :
+            this(SetupLibrary.ReleaseChannel.Production, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
@@ -181,9 +181,9 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="releaseChannel">The client's current release channel</param>
         /// <param name="installedVersionProvider">Method that provides the installed version string</param>
         /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
-        internal AutoUpdate(ReleaseChannel? releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
+        internal AutoUpdate(ReleaseChannel releaseChannel, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
-            _strongReleaseChannel = releaseChannel.HasValue ? releaseChannel.Value : SetupLibrary.ReleaseChannel.Production;
+            _strongReleaseChannel = releaseChannel;
             _installedVersionProvider = installedVersionProvider;
             _channelInfoProvider = channelInfoProvider;
             ReleaseChannel = _strongReleaseChannel.ToString();
