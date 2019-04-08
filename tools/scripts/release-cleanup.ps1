@@ -77,20 +77,20 @@ $canaryCount = 0;
 
 foreach($releaseKV in $releaseMap){
     $release = $releaseKV.Value
-    if ($release.Name -match "Insider"){
+    if ($release.Name -like "Insider*"){
         if($insiderCount -lt 2){
             $insiderCount++
             continue
         }
         $deleteList += $release
-    } elseif ($release.Name -match "Production"){
+    } elseif ($release.Name -like "Production*"){
         if($prodCount -lt 2){
             $prodCount++
             continue
         }
         $deleteList += $release
-    } elseif ($release.Name -match "Canary"){
-        if(($insiderCount -gt 0 -or $prodCount - gt 0) -and $canaryCount -ge 2){
+    } elseif ($release.Name -like "Canary*"){
+        if(($insiderCount -gt 0 -or $prodCount -gt 0) -and $canaryCount -ge 2){
             $deleteList += $release
             continue
         }
