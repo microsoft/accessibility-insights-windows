@@ -284,6 +284,7 @@
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Enums\FileFilters.cs" />
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />

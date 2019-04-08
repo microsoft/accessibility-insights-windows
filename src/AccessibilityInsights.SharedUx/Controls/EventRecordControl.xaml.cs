@@ -1,30 +1,28 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Axe.Windows.Desktop.UIAutomation.EventHandlers;
-using AccessibilityInsights.SharedUx.Dialogs;
-using Microsoft.Win32;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation;
-using Axe.Windows.Desktop.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
-using System.Windows.Threading;
 using AccessibilityInsights.SharedUx.Utilities;
+using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Core.Enums;
-using System.Windows.Controls.Primitives;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.UIAutomation.EventHandlers;
+using System;
+using System.Collections.Generic;
 using System.Globalization;
-using AccessibilityInsights.SharedUx.Highlighting;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
+using System.Windows.Input;
+using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

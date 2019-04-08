@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
-using Axe.Windows.Core.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
+using Axe.Windows.Actions;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
