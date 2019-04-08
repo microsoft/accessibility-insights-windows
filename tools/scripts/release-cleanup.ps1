@@ -90,7 +90,7 @@ foreach($releaseKV in $releaseMap){
         }
         $deleteList += $release
     } elseif ($release.Name -match "Canary"){
-        if($insiderCount -gt 0 -and $canaryCount -ge 2){
+        if(($insiderCount -gt 0 -or $prodCount - gt 0) -and $canaryCount -ge 2){
             $deleteList += $release
             continue
         }
