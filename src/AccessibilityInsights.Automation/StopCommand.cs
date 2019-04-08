@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
-    /// Class to stop AccessibilityInsights (via StopCommand.Execute). Can only be successfully called after
+    /// Class to stop AxeWindows (via StopCommand.Execute). Can only be successfully called after
     /// a successful call to StartCommand.Execute
     /// </summary>
     public static class StopCommand

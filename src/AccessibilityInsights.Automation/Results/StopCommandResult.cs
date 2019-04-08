@@ -2,15 +2,15 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Globalization;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
-    /// Result from a Stop-AccessibilityInsights command
+    /// Result from a Stop-AxeWindows command
     /// </summary>
     public class StopCommandResult : SharedCommandResult
     {
         /// <summary>
-        /// If true, AccessibilityInsights stopped successfully and has been cleaned up
+        /// If true, AxeWindows stopped successfully and has been cleaned up
         /// </summary>
         public bool Succeeded { get; set; }
 

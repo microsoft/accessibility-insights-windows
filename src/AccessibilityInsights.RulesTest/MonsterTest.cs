@@ -1,16 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.UnitTestSharedLibrary;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.UnitTestSharedLibrary;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest
+namespace Axe.Windows.RulesTest
 {
     [TestClass]
     public class MonsterTest
@@ -1025,7 +1025,7 @@ namespace AccessibilityInsights.RulesTest
 
         private static Dictionary<RuleId, EvaluationCode> GetTestResultsAsDictionary(A11yElement e)
         {
-            var results = AccessibilityInsights.Rules.Rules.RunAll(e);
+            var results = Axe.Windows.Rules.Rules.RunAll(e);
             return results.ToDictionary(r => r.RuleInfo.ID, r => r.EvaluationCode);
         }
 

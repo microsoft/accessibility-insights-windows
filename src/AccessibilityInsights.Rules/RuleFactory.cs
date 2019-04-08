@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 
-namespace AccessibilityInsights.Rules
+namespace Axe.Windows.Rules
 {
     class RuleFactory : IRuleFactory
     {

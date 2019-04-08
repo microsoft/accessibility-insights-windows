@@ -2,15 +2,15 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Drawing;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using static AccessibilityInsights.RulesTest.ControlType;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using static Axe.Windows.RulesTest.ControlType;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class NameIsEmptyButElementIsNotKeyboardFocusableTest
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.NameIsEmptyButElementIsNotKeyboardFocusable();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.NameIsEmptyButElementIsNotKeyboardFocusable();
 
         [TestMethod]
         public void TestNameIsEmptyButElementIsNotKeyboardFocusablePass()

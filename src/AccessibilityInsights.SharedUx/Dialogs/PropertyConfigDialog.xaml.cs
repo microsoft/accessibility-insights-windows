@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.UIAutomation;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.UIAutomation;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;

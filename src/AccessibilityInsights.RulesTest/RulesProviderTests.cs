@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 
-namespace AccessibilityInsights.RulesTest
+namespace Axe.Windows.RulesTest
 {
     [TestClass]
     public class RulesProviderTests

@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     ///  This class encapsulates our custom assembly resolution code. It's needed because we lose the
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.Automation
         internal static Assembly EventHandler(object sender, ResolveEventArgs args)
         {
             // Always expect our files to be correct (less spam that way)
-            if (args.Name.StartsWith("AccessibilityInsights.", StringComparison.Ordinal))
+            if (args.Name.StartsWith("Axe.Windows.", StringComparison.Ordinal))
                 return null;
 
             if (BindingOverrides.TryGetValue(args.Name, out string overrideName))

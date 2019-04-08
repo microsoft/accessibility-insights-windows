@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Types;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,11 +14,11 @@ using System.Text;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Define IUIElement for abstract UIElement for all platform
-    /// This is the base class for elements implemented in AccessibilityInsights
+    /// This is the base class for elements implemented in Axe.Windows
     /// </summary>
     public class A11yElement : IA11yElement, IDisposable
     {

@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace AccessibilityInsights.Core.Misc
+namespace Axe.Windows.Core.Misc
 {
     /// <summary>
     /// Class to provide an upper bound on some operation. Not thread-safe.

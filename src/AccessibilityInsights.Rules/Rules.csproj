@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7FE58829-560E-4142-BF81-291A66D3844B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AccessibilityInsights.Rules</RootNamespace>
-    <AssemblyName>AccessibilityInsights.Rules</AssemblyName>
+    <RootNamespace>Axe.Windows.Rules</RootNamespace>
+    <AssemblyName>Axe.Windows.Rules</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -289,7 +289,7 @@
     <None Include="ReadME.MD" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Rules.dll" />
+    <DropSignedFile Include="$(OutDir)\Axe.Windows.Rules.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>

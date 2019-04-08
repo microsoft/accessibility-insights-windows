@@ -3,9 +3,9 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Light weight abstraction of A11y elements

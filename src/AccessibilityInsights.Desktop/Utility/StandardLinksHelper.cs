@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Types;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace AccessibilityInsights.Desktop.Utility
+namespace Axe.Windows.Desktop.Utility
 {
     /// <summary>
     /// Class to access stored link information

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Core.Bases;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
+namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
     /// <summary>
     /// Control pattern wrapper for Unkonwn Control Pattern

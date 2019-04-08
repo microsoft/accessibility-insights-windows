@@ -2,8 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Actions;
+using Axe.Windows.Desktop.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System;

@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Automation;
+using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 #if FAKES_SUPPORTED
-using AccessibilityInsights.Automation.Fakes;
+using Axe.Windows.Automation.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.AutomationTests
+namespace Axe.Windows.AutomationTests
 {
     [TestClass]
     public class StopCommandUnitTests

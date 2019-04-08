@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.HelpLinks;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.HelpLinks;
+using Axe.Windows.Core.Misc;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AccessibilityInsights.Core.Results
+namespace Axe.Windows.Core.Results
 {
     /// <summary>
     /// Class for an individual scan result

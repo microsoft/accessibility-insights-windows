@@ -26,7 +26,7 @@ namespace AccessibilityInsights.Extensions
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
         /// <summary>
-        /// Get all the extension sub folder names under ...\AccessibilityInsights\Extensions directory
+        /// Get all the extension sub folder names under .\Extensions directory
         /// </summary>
         internal static IEnumerable<string> GetExtensionPaths()
         {
@@ -79,7 +79,7 @@ namespace AccessibilityInsights.Extensions
             _assemblyEventResolver = new ResolveEventHandler(CurrentDomain_AssemblyResolve);
             AppDomain.CurrentDomain.AssemblyResolve += _assemblyEventResolver;
 
-            // Adds all the parts found in ...\AccessibilityInsights\Extensions directory
+            // Adds all the parts found in .\Extensions directory
             foreach (string path in _extensionPaths)
             {
                 catalog.Catalogs.Add(new DirectoryCatalog(path, ExtensionSearchPattern));

@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
 using System.Linq;
 using System.Reflection;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// ControlAction class

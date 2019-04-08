@@ -3,14 +3,14 @@
 using System;
 using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class NameIsReasonableLength
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.NameIsReasonableLength();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.NameIsReasonableLength();
 
         [TestMethod]
         public void TestNameIsReasonableLengthTrue()

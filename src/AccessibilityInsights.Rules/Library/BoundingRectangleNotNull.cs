@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Rules.PropertyConditions;
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.BoolProperties;
-using static AccessibilityInsights.Rules.PropertyConditions.ElementGroups;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules.PropertyConditions;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.BoolProperties;
+using static Axe.Windows.Rules.PropertyConditions.ElementGroups;
 
-namespace AccessibilityInsights.Rules.Library
+namespace Axe.Windows.Rules.Library
 {
     [RuleInfo(ID = RuleId.BoundingRectangleNotNull)]
     class BoundingRectangleNotNull : Rule
@@ -15,7 +15,7 @@ namespace AccessibilityInsights.Rules.Library
         public BoundingRectangleNotNull()
         {
             this.Info.Standard = A11yCriteriaId.ObjectInformation;
-            this.Info.PropertyID = Core.Types.PropertyType.UIA_BoundingRectanglePropertyId;
+            this.Info.PropertyID = Axe.Windows.Core.Types.PropertyType.UIA_BoundingRectanglePropertyId;
             this.Info.Description = Descriptions.BoundingRectangleNotNull;
             this.Info.HowToFix = HowToFix.BoundingRectangleNotNull;
         }

@@ -5,14 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.SharedUx.Enums;
 using System.Windows.Input;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             RootNodes = new List<EventConfigNodeViewModel>();
             trviewConfigEvents.ItemsSource = RootNodes;
             var ids = SupportedEvents.GetEventsForControl(el.ControlTypeId, el.Patterns);
-            SuggestedNode = new EventConfigNodeViewModel(string.Format(CultureInfo.InvariantCulture, Properties.Resources.EventConfigTabControl_SetElement_Expected_Events_based_on_the_0_control_type, Core.Types.ControlType.GetInstance().GetNameById(el.ControlTypeId))) { IsExpanded = true };
+            SuggestedNode = new EventConfigNodeViewModel(string.Format(CultureInfo.InvariantCulture, Properties.Resources.EventConfigTabControl_SetElement_Expected_Events_based_on_the_0_control_type, Axe.Windows.Core.Types.ControlType.GetInstance().GetNameById(el.ControlTypeId))) { IsExpanded = true };
 
             if (ids.Any())
             {

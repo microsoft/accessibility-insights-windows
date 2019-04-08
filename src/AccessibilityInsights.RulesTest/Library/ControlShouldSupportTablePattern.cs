@@ -2,17 +2,17 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class ControlShouldSupportTablePattern
     {
-        private AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ControlShouldSupportTablePattern();
+        private Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ControlShouldSupportTablePattern();
 
         [TestMethod]
         public void HasTablePattern_Pass()

@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// Manager for actions
@@ -135,7 +135,7 @@ namespace AccessibilityInsights.Actions
         /// <summary>
         /// default instance name constant
         /// </summary>
-        const string DefaultInstanceName = "AccessibilityInsightsDefault";
+        const string DefaultInstanceName = "Axe.WindowsDefault";
         #endregion
 
         #region static members

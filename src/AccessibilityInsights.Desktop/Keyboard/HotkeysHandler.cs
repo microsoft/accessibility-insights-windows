@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Interop;
 
-namespace AccessibilityInsights.Desktop.Keyboard
+namespace Axe.Windows.Desktop.Keyboard
 {
     /// <summary>
     /// Hotkey handler 

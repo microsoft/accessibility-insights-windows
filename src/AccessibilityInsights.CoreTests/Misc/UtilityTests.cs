@@ -3,9 +3,9 @@
 using System;
 using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Misc;
 
-namespace AccessibilityInsights.CoreTests.Misc
+namespace Axe.Windows.CoreTests.Misc
 {
     [TestClass]
     public class UtilityTests

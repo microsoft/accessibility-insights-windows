@@ -3,12 +3,12 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace AccessibilityInsights.Automation.PowerShell
+namespace Axe.Windows.Automation.PowerShell
 {
     /// <summary>
-    /// PowerShell Cmdlet to initialize the AccessibilityInsights scan engine
+    /// PowerShell Cmdlet to initialize the AxeWindows scan engine
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AccessibilityInsights")]
+    [Cmdlet(VerbsLifecycle.Start, "AxeWindows")]
     public class StartCmdlet : Cmdlet
     {
         /// <summary>

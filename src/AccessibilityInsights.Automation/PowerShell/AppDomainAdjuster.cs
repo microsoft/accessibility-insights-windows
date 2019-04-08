@@ -6,7 +6,7 @@ using System.Security;
 using System.Security.Policy;
 using System.Threading;
 
-namespace AccessibilityInsights.Automation.PowerShell
+namespace Axe.Windows.Automation.PowerShell
 {
     /// <summary>
     /// Simple class to adjust and restore the AppDomain around each call via PowerShell

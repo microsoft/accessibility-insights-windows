@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.UIAutomation;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Globalization;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     /// Wraps up the logic of selecting a target element basd on the command parameters

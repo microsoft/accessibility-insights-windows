@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.RuleSelection;
+using Axe.Windows.Actions;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.RuleSelection;
 using System;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     /// <summary>
     /// This class holds various items that persist for the entire lifetime of an

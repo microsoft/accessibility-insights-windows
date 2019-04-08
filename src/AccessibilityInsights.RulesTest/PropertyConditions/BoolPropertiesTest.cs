@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
-using static AccessibilityInsights.Rules.PropertyConditions.BoolProperties;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
+using static Axe.Windows.Rules.PropertyConditions.BoolProperties;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class BoolPropertiesTest

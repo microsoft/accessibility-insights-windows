@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.UIAutomation;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Drawing;
 
-namespace AccessibilityInsights.Actions.Trackers
+namespace Axe.Windows.Actions.Trackers
 {
     /// <summary>
     /// base class for Tracker

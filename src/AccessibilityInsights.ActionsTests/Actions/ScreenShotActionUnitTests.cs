@@ -1,18 +1,18 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Contexts.Fakes;
-using AccessibilityInsights.Actions.Fakes;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Bases.Fakes;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Contexts.Fakes;
+using Axe.Windows.Actions.Fakes;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Bases.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Drawing;
 using System.Drawing.Fakes;
 
-namespace AccessibilityInsights.ActionsTests.Actions
+namespace Axe.Windows.ActionsTests.Actions
 {
     [TestClass]
     public class ScreenShotActionUnitTests

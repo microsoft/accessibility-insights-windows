@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.RuleSelection;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
 using System;
 using System.IO;

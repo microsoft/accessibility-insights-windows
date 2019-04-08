@@ -2,14 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Linq;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.ControlType;
-using static AccessibilityInsights.Rules.PropertyConditions.StringProperties;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.ControlType;
+using static Axe.Windows.Rules.PropertyConditions.StringProperties;
 
-namespace AccessibilityInsights.Rules.Library
+namespace Axe.Windows.Rules.Library
 {
     [RuleInfo(ID = RuleId.LocalizedControlTypeReasonable)]
     class LocalizedControlTypeIsReasonable : Rule
@@ -44,124 +44,124 @@ namespace AccessibilityInsights.Rules.Library
 
             switch(controlTypeId)
             {
-                case Core.Types.ControlType.UIA_AppBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_AppBarControlTypeId:
                     names = LocalizedControlTypeNames.AppBar;
                     break;
-                case Core.Types.ControlType.UIA_ButtonControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId:
                     names = LocalizedControlTypeNames.Button;
                     break;
-                case Core.Types.ControlType.UIA_CalendarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_CalendarControlTypeId:
                     names = LocalizedControlTypeNames.Calendar;
                     break;
-                case Core.Types.ControlType.UIA_CheckBoxControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_CheckBoxControlTypeId:
                     names = LocalizedControlTypeNames.CheckBox;
                     break;
-                case Core.Types.ControlType.UIA_ComboBoxControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ComboBoxControlTypeId:
                     names = LocalizedControlTypeNames.ComboBox;
                     break;
-                case Core.Types.ControlType.UIA_EditControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_EditControlTypeId:
                     names = LocalizedControlTypeNames.Edit;
                     break;
-                case Core.Types.ControlType.UIA_HyperlinkControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_HyperlinkControlTypeId:
                     names = LocalizedControlTypeNames.Hyperlink;
                     break;
-                case Core.Types.ControlType.UIA_ImageControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ImageControlTypeId:
                     names = LocalizedControlTypeNames.Image;
                     break;
-                case Core.Types.ControlType.UIA_ListItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId:
                     names = LocalizedControlTypeNames.ListItem;
                     break;
-                case Core.Types.ControlType.UIA_ListControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ListControlTypeId:
                     names = LocalizedControlTypeNames.List;
                     break;
-                case Core.Types.ControlType.UIA_MenuControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_MenuControlTypeId:
                     names = LocalizedControlTypeNames.Menu;
                     break;
-                case Core.Types.ControlType.UIA_MenuBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_MenuBarControlTypeId:
                     names = LocalizedControlTypeNames.MenuBar;
                     break;
-                case Core.Types.ControlType.UIA_MenuItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_MenuItemControlTypeId:
                     names = LocalizedControlTypeNames.MenuItem;
                     break;
-                case Core.Types.ControlType.UIA_ProgressBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ProgressBarControlTypeId:
                     names = LocalizedControlTypeNames.ProgressBar;
                     break;
-                case Core.Types.ControlType.UIA_RadioButtonControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_RadioButtonControlTypeId:
                     names = LocalizedControlTypeNames.RadioButton;
                     break;
-                case Core.Types.ControlType.UIA_ScrollBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ScrollBarControlTypeId:
                     names = LocalizedControlTypeNames.ScrollBar;
                     break;
-                case Core.Types.ControlType.UIA_SliderControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_SliderControlTypeId:
                     names = LocalizedControlTypeNames.Slider;
                     break;
-                case Core.Types.ControlType.UIA_SpinnerControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_SpinnerControlTypeId:
                     names = LocalizedControlTypeNames.Spinner;
                     break;
-                case Core.Types.ControlType.UIA_StatusBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_StatusBarControlTypeId:
                     names = LocalizedControlTypeNames.StatusBar;
                     break;
-                case Core.Types.ControlType.UIA_TabControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TabControlTypeId:
                     names = LocalizedControlTypeNames.Tab;
                     break;
-                case Core.Types.ControlType.UIA_TabItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TabItemControlTypeId:
                     names = LocalizedControlTypeNames.TabItem;
                     break;
-                case Core.Types.ControlType.UIA_TextControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TextControlTypeId:
                     names = LocalizedControlTypeNames.Text;
                     break;
-                case Core.Types.ControlType.UIA_ToolBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ToolBarControlTypeId:
                     names = LocalizedControlTypeNames.ToolBar;
                     break;
-                case Core.Types.ControlType.UIA_ToolTipControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ToolTipControlTypeId:
                     names = LocalizedControlTypeNames.ToolTip;
                     break;
-                case Core.Types.ControlType.UIA_TreeControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TreeControlTypeId:
                     names = LocalizedControlTypeNames.Tree;
                     break;
-                case Core.Types.ControlType.UIA_TreeItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId:
                     names = LocalizedControlTypeNames.TreeItem;
                     break;
-                case Core.Types.ControlType.UIA_GroupControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_GroupControlTypeId:
                     names = LocalizedControlTypeNames.Group;
                     break;
-                case Core.Types.ControlType.UIA_ThumbControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_ThumbControlTypeId:
                     names = LocalizedControlTypeNames.Thumb;
                     break;
-                case Core.Types.ControlType.UIA_DataGridControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_DataGridControlTypeId:
                     names = LocalizedControlTypeNames.DataGrid;
                     break;
-                case Core.Types.ControlType.UIA_DataItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_DataItemControlTypeId:
                     names = LocalizedControlTypeNames.DataItem;
                     break;
-                case Core.Types.ControlType.UIA_DocumentControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_DocumentControlTypeId:
                     names = LocalizedControlTypeNames.Document;
                     break;
-                case Core.Types.ControlType.UIA_SplitButtonControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId:
                     names = LocalizedControlTypeNames.SplitButton;
                     break;
-                case Core.Types.ControlType.UIA_WindowControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_WindowControlTypeId:
                     names = LocalizedControlTypeNames.Window;
                     break;
-                case Core.Types.ControlType.UIA_PaneControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_PaneControlTypeId:
                     names = LocalizedControlTypeNames.Pane;
                     break;
-                case Core.Types.ControlType.UIA_HeaderControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_HeaderControlTypeId:
                     names = LocalizedControlTypeNames.Header;
                     break;
-                case Core.Types.ControlType.UIA_HeaderItemControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_HeaderItemControlTypeId:
                     names = LocalizedControlTypeNames.HeaderItem;
                     break;
-                case Core.Types.ControlType.UIA_TableControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TableControlTypeId:
                     names = LocalizedControlTypeNames.Table;
                     break;
-                case Core.Types.ControlType.UIA_TitleBarControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_TitleBarControlTypeId:
                     names = LocalizedControlTypeNames.TitleBar;
                     break;
-                case Core.Types.ControlType.UIA_SeparatorControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_SeparatorControlTypeId:
                     names = LocalizedControlTypeNames.Separator;
                     break;
-                case Core.Types.ControlType.UIA_SemanticZoomControlTypeId:
+                case Axe.Windows.Core.Types.ControlType.UIA_SemanticZoomControlTypeId:
                     names = LocalizedControlTypeNames.SemanticZoom;
                     break;
                 default:

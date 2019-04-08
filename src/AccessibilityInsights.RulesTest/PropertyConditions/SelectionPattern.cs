@@ -3,11 +3,11 @@
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.PropertyConditions;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.PropertyConditions;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class SelectionPatternTests

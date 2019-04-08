@@ -4,7 +4,7 @@
 using System;
 using AccessibilityInsights.Extensions.Interfaces.ReferenceLinks;
 
-namespace AccessibilityInsights.RuleSelection
+namespace Axe.Windows.RuleSelection
 {
     class ReferenceLink : IReferenceLink
     {

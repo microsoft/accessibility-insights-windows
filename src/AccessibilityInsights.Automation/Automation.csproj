@@ -8,8 +8,8 @@
     <ProjectGuid>{AE5EC69F-158A-41C8-AD2B-EC7B84D820EF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.Automation</RootNamespace>
-    <AssemblyName>AccessibilityInsights.Automation</AssemblyName>
+    <RootNamespace>Axe.Windows.Automation</RootNamespace>
+    <AssemblyName>Axe.Windows.Automation</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -25,7 +25,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Debug\AccessibilityInsights.Automation.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\Axe.Windows.Automation.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -35,7 +35,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <DocumentationFile>bin\Release\AccessibilityInsights.Automation.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\Axe.Windows.Automation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
@@ -95,7 +95,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Automation.dll" />
+    <DropSignedFile Include="$(OutDir)\Axe.Windows.Automation.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>

@@ -1,22 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Rules;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
-    [TestCategory("AccessibilityInsights.Rules")]
+    [TestCategory("Axe.Windows.Rules")]
     public class ControlShouldSupportSetInfoTest
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.ControlShouldSupportSetInfo();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.ControlShouldSupportSetInfo();
 
         [TestMethod]
         public void TestControlShouldSupportSetInfoNoPositionInSetPropertyForListItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId;
             e.SizeOfSet = 1;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoNoSizeOfSetPropertyForListItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId;
             e.PositionInSet = 1;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
@@ -34,7 +34,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoBothNonExistForListItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
 
@@ -42,7 +42,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoBothExistForListItemPass()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId;
             e.PositionInSet = 1;
             e.SizeOfSet = 1;
             Assert.AreEqual(EvaluationCode.Pass, Rule.Evaluate(e));
@@ -52,7 +52,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoNoPositionInSetPropertyForTreeItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
             e.SizeOfSet = 1;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
@@ -61,7 +61,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoNoSizeOfSetPropertyForTreeItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
             e.PositionInSet = 1;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
@@ -70,7 +70,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoBothNonExistForTreeItemFail()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
             Assert.AreEqual(EvaluationCode.Error, Rule.Evaluate(e));
         }
 
@@ -78,7 +78,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TestControlShouldSupportSetInfoBothExistForTreeItemPass()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
             e.PositionInSet = 1;
             e.SizeOfSet = 1;
             Assert.AreEqual(EvaluationCode.Pass, Rule.Evaluate(e));
@@ -89,7 +89,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             using (var e = new MockA11yElement())
             {
-                e.ControlTypeId = Core.Types.ControlType.UIA_ListItemControlTypeId;
+                e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListItemControlTypeId;
                 e.PositionInSet = 1;
                 e.SizeOfSet = 1;
                 e.Framework = Framework.Win32;
@@ -102,7 +102,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             using (var e = new MockA11yElement())
             {
-                e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+                e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
                 e.PositionInSet = 1;
                 e.SizeOfSet = 1;
                 e.Framework = Framework.WPF;
@@ -115,7 +115,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             using (var e = new MockA11yElement())
             {
-                e.ControlTypeId = Core.Types.ControlType.UIA_TreeItemControlTypeId;
+                e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TreeItemControlTypeId;
                 e.PositionInSet = 1;
                 e.SizeOfSet = 1;
                 e.Framework = Framework.XAML;
@@ -128,7 +128,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             using (var e = new MockA11yElement())
             {
-                e.ControlTypeId = Core.Types.ControlType.UIA_ImageControlTypeId;
+                e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ImageControlTypeId;
                 e.PositionInSet = 1;
                 e.SizeOfSet = 1;
                 e.Framework = Framework.WPF;

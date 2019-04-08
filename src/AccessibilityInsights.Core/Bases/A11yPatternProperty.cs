@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Pattern Property class 

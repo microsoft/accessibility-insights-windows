@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Results;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Results;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 
-namespace AccessibilityInsights.UnitTestSharedLibrary
+namespace Axe.Windows.UnitTestSharedLibrary
 {
     /// <summary>
     /// Class to contain shared utility methods for Unit tests
@@ -61,7 +61,7 @@ namespace AccessibilityInsights.UnitTestSharedLibrary
             ke.ScanResults.Items.ForEach(item => {
                 item.Items = new List<RuleResult>();
                 RuleResult r = new RuleResult();
-                r.Status = ke.ControlTypeId == AccessibilityInsights.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
+                r.Status = ke.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
                 item.Items.Add(r);
             });
             ke.Children.ForEach(c => {

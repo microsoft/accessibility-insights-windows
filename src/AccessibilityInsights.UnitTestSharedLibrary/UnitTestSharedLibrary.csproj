@@ -11,8 +11,8 @@
     <ProjectGuid>{01DC8363-73BC-47FA-BD23-12AC45618E1D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.UnitTestSharedLibrary</RootNamespace>
-    <AssemblyName>AccessibilityInsights.UnitTestSharedLibrary</AssemblyName>
+    <RootNamespace>Axe.Windows.UnitTestSharedLibrary</RootNamespace>
+    <AssemblyName>Axe.Windows.UnitTestSharedLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

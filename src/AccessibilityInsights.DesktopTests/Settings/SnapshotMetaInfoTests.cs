@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.IO;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Desktop.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.QualityTools.Testing.Fakes;
 using System.IO.Fakes;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.DesktopTests.Settings
+namespace Axe.Windows.DesktopTests.Settings
 {
     /// <summary>
     /// Tests whether various values in the OtherProperties dictionary

@@ -9842,7 +9842,7 @@
       ]
     },
     {
-      "Name": "ConfigurationBase.GetSubfolderUnderAccessibilityInsightsMainFolder",
+      "Name": "ConfigurationBase.GetSubfolderUnderAxeWindowsMainFolder",
       "ControlTypeId": 50026,
       "LocalizedControlType": "group",
       "RuntimeId": "[7,436C,6E6B30]",
@@ -9852,7 +9852,7 @@
       "IsContent": true,
       "IsControl": true,
       "TestStatus": 1,
-      "Header": "group \"ConfigurationBase.GetSubfolderUnderAccessibilityInsightsMainFolder\"",
+      "Header": "group \"ConfigurationBase.GetSubfolderUnderAxeWindowsMainFolder\"",
       "Bitmap": null,
       "Properties": {
         "30000": {
@@ -9902,9 +9902,9 @@
         "30005": {
           "Id": 30005,
           "Name": "Name",
-          "Value": "ConfigurationBase.GetSubfolderUnderAccessibilityInsightsMainFolder",
+          "Value": "ConfigurationBase.GetSubfolderUnderAxeWindowsMainFolder",
           "LabeledBy": null,
-          "TextValue": "ConfigurationBase.GetSubfolderUnderAccessibilityInsightsMainFolder"
+          "TextValue": "ConfigurationBase.GetSubfolderUnderAxeWindowsMainFolder"
         },
         "30008": {
           "Id": 30008,
@@ -23766,7 +23766,7 @@
             "group \"ConfigurationBase.RemoveConfiguration\" child is not contained.",
             "the bounding rectangle of group \"ConfigurationBase.BuildPathBasedOnDefaultConfigPath\" child is [l=814,t=1288,r=1345,b=1308]",
             "group \"ConfigurationBase.BuildPathBasedOnDefaultConfigPath\" child is not contained.",
-            "the bounding rectangle of group \"ConfigurationBase.GetSubfolderUnderAccessibilityInsightsMainFolder\" child is [l=814,t=860,r=1343,b=880]",
+            "the bounding rectangle of group \"ConfigurationBase.GetSubfolderUnderAxeWindowsMainFolder\" child is [l=814,t=860,r=1343,b=880]",
             "the bounding rectangle of group \"ConfigurationBase.AppVersion\" child is [l=814,t=356,r=1222,b=376]",
             "the bounding rectangle of group \"ConfigurationBase.Version\" child is [l=814,t=209,r=1336,b=229]",
             "the bounding rectangle of custom \"Squiggle Adornment\" child is [l=1079,t=1379,r=1202,b=1382]",

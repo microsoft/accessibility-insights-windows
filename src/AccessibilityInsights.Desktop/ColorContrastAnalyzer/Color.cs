@@ -3,7 +3,7 @@
 using System;
 using System.Globalization;
 
-namespace AccessibilityInsights.Desktop.ColorContrastAnalyzer
+namespace Axe.Windows.Desktop.ColorContrastAnalyzer
 {
     /**
      * Provides utilities for working with Colors without an Alpha component.

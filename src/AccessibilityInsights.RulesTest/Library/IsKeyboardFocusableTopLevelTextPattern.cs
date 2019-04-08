@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class IsKeyboardFocusableTopLevelTextPattern
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.IsKeyboardFocusableTopLevelTextPattern();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.IsKeyboardFocusableTopLevelTextPattern();
 
         [TestMethod]
         public void ConditionMismatch_XAMLTextControlWithTextPattern_ReturnFalse()
@@ -17,7 +17,7 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var p = new A11yPattern(e, PatternType.UIA_TextPatternId);
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TextControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TextControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsContentElement = true;
@@ -37,7 +37,7 @@ namespace AccessibilityInsights.RulesTest.Library
             var e = new MockA11yElement();
             var p = new A11yPattern(e, PatternType.UIA_TextPatternId);
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_TextControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TextControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsContentElement = true;

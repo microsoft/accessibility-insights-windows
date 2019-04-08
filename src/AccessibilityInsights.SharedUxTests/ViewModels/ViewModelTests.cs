@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Results;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Results;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
@@ -73,7 +73,7 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
             e.ScanResults.Items.ForEach(item => {
                 item.Items = new List<RuleResult>();
                 RuleResult r = new RuleResult();
-                r.Status = e.ControlTypeId == Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
+                r.Status = e.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
                 item.Items.Add(r);
             });
             e.Children.ForEach(c => {

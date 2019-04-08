@@ -2,14 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Runtime.InteropServices;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Exceptions;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Desktop.UIAutomation;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Exceptions;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Desktop.UIAutomation;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Actions.Trackers
+namespace Axe.Windows.Actions.Trackers
 {
     /// <summary>
     /// Implements UIA tree navigation logic. Currently used by the SelectAction class.

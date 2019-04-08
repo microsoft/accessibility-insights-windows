@@ -76,7 +76,7 @@ namespace AccessibilityInsights.Modes
 
         public StartUpModeControl()
         {
-            this.VersionString = AccessibilityInsights.Core.Misc.Utility.GetAppVersion();
+            this.VersionString = Axe.Windows.Core.Misc.Utility.GetAppVersion();
             InitializeComponent();
         }
 

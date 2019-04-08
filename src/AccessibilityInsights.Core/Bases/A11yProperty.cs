@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Types;
 using System;
-using AccessibilityInsights.Core.Misc;
+using Axe.Windows.Core.Misc;
 using Newtonsoft.Json;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Wrapper class for UIAutomationElement Property

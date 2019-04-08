@@ -5,17 +5,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Fingerprint;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Fingerprint;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 #if FAKES_SUPPORTED
 using System.IO.Fakes;
-using AccessibilityInsights.Core.Bases.Fakes;
-using AccessibilityInsights.Core.Fingerprint.Fakes;
+using Axe.Windows.Core.Bases.Fakes;
+using Axe.Windows.Core.Fingerprint.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 #endif
 
-namespace AccessibilityInsights.CoreTests.Fingerprint
+namespace Axe.Windows.CoreTests.Fingerprint
 {
     [TestClass]
     public class OutputFileLocationUnitTests

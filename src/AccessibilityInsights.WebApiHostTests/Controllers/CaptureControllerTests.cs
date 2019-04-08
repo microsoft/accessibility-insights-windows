@@ -18,7 +18,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             {
                 var controller = new CaptureController();
 
-                Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => true;
+                Axe.Windows.Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => true;
 
                 var result = controller.Test(Guid.NewGuid());
                 Assert.IsTrue(result is OkResult);
@@ -32,7 +32,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             {
                 var controller = new CaptureController();
 
-                Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => false;
+                Axe.Windows.Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => false;
 
                 var result = controller.Test(Guid.NewGuid()) as StatusCodeResult;
 
@@ -47,7 +47,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             {
                 var controller = new CaptureController();
 
-                Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => throw new Exception();
+                Axe.Windows.Actions.Fakes.ShimCaptureAction.SetTestModeDataContextGuidDataContextModeTreeViewModeBoolean = (g, da, tv, f) => throw new Exception();
 
                 var result = controller.Test(Guid.NewGuid());
                 Assert.IsTrue(result is BadRequestErrorMessageResult);

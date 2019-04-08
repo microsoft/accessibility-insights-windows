@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 
-namespace AccessibilityInsights.Rules
+namespace Axe.Windows.Rules
 {
     /// <summary>
     /// Contains state data that is accessible to all conditions while running rules

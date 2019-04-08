@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.CodeAnalysis.Sarif;
 
-namespace AccessibilityInsights.Actions.Sarif
+namespace Axe.Windows.Actions.Sarif
 {
     class A11yCriteria
     {

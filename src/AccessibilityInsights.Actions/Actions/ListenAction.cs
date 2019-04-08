@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.Settings;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.UIAutomation.EventHandlers;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,7 +14,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// Class LstenAction

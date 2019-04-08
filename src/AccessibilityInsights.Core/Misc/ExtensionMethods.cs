@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Attributes;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Attributes;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +15,7 @@ using System.Text;
 
 using static System.FormattableString;
 
-namespace AccessibilityInsights.Core.Misc
+namespace Axe.Windows.Core.Misc
 {
     /// <summary>
     /// Extension method class

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
-using AccessibilityInsights.Actions.Enums;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.FileIssue;
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 this.lblNoFail.Visibility = Visibility.Collapsed;
                 this.gdFailures.Visibility = Visibility.Visible;
                 this.gdFailures.Focus();
-                var count = results.Where(r => r.RuleResult.Status == Core.Results.ScanStatus.Fail).Count();
+                var count = results.Where(r => r.RuleResult.Status == Axe.Windows.Core.Results.ScanStatus.Fail).Count();
 
                 switch(count)
                 {

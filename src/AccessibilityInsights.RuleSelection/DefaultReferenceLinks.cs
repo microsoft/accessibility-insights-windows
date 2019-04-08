@@ -3,9 +3,9 @@
 
 using System.Globalization;
 using AccessibilityInsights.Extensions.Interfaces.ReferenceLinks;
-using AccessibilityInsights.RuleSelection.Resources;
+using Axe.Windows.RuleSelection.Resources;
 
-namespace AccessibilityInsights.RuleSelection
+namespace Axe.Windows.RuleSelection
 {
     /// <summary>
     /// Provides a guaranteed valid IReferenceLink object.

@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using Microsoft.QualityTools.Testing.Fakes;
 using System.Web.Http.Results;
-using AccessibilityInsights.Actions.Contexts;
+using Axe.Windows.Actions.Contexts;
 
 namespace AccessibilityInsights.WebApiHost.Controllers.Tests
 {
@@ -18,14 +18,14 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             {
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
-                var element = new AccessibilityInsights.Core.Bases.Fakes.ShimA11yElement();
-                var context = new AccessibilityInsights.Actions.Contexts.Fakes.ShimElementContext();
+                var element = new Axe.Windows.Core.Bases.Fakes.ShimA11yElement();
+                var context = new Axe.Windows.Actions.Contexts.Fakes.ShimElementContext();
 
                 context.ElementGet = () => element;
                 context.IdGet = () => guid;
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => true;
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.GetElementContextGuid = g => context;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => true;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.GetElementContextGuid = g => context;
 
                 var result = controller.ElementContext(guid) as OkNegotiatedContentResult<ElementContext>;
                 Assert.IsNotNull(result);
@@ -41,7 +41,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => false;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => false;
 
                 var result = controller.ElementContext(guid);
                 Assert.IsTrue(result is NotFoundResult);
@@ -56,7 +56,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => throw new Exception();
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => throw new Exception();
 
                 var result = controller.ElementContext(guid);
                 Assert.IsTrue(result is BadRequestErrorMessageResult);
@@ -70,11 +70,11 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             {
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
-                var element = new AccessibilityInsights.Core.Bases.Fakes.ShimA11yElement();
-                var data = new AccessibilityInsights.Actions.Contexts.Fakes.ShimElementDataContext();
+                var element = new Axe.Windows.Core.Bases.Fakes.ShimA11yElement();
+                var data = new Axe.Windows.Actions.Contexts.Fakes.ShimElementDataContext();
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => true;
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.GetElementDataContextGuid = g => data;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => true;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.GetElementDataContextGuid = g => data;
 
                 var result = controller.DataContext(guid) as OkNegotiatedContentResult<ElementDataContext>;
                 Assert.IsNotNull(result);
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => false;
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => false;
 
                 var result = controller.DataContext(guid);
                 Assert.IsTrue(result is NotFoundResult);
@@ -105,7 +105,7 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
                 var guid = Guid.NewGuid();
                 var controller = new DataController();
 
-                AccessibilityInsights.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => throw new Exception();
+                Axe.Windows.Actions.Fakes.ShimGetDataAction.ExistElementContextGuid = g => throw new Exception();
 
                 var result = controller.DataContext(guid);
                 Assert.IsTrue(result is BadRequestErrorMessageResult);

@@ -3,12 +3,12 @@
 using System;
 using System.Collections.Generic;
 using UIAutomationClient;
-using AccessibilityInsights.Core.Attributes;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Core.Attributes;
+using Axe.Windows.Desktop.Utility;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
+namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
     /// <summary>
     /// Wrapper for IUIAutomationTextRange

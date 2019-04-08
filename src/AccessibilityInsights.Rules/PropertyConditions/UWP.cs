@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using static AccessibilityInsights.Rules.PropertyConditions.Relationships;
-using static AccessibilityInsights.Rules.PropertyConditions.StringProperties;
+using static Axe.Windows.Rules.PropertyConditions.Relationships;
+using static Axe.Windows.Rules.PropertyConditions.StringProperties;
 
-namespace AccessibilityInsights.Rules.PropertyConditions
+namespace Axe.Windows.Rules.PropertyConditions
 {
     static class UWP
     {

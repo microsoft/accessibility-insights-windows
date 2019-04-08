@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Globalization;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 
-namespace AccessibilityInsights.Rules
+namespace Axe.Windows.Rules
 {
     /// <summary>
     /// This condition is used to change the output of the ToString function for a given condition.

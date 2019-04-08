@@ -2,10 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Desktop.UIAutomation.EventHandlers;
+using Axe.Windows.Actions;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;

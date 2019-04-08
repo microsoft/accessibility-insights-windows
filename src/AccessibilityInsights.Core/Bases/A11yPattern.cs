@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Attributes;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Attributes;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace AccessibilityInsights.Core.Bases
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Control pattern class

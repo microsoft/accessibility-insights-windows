@@ -2,14 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class IsKeyboardFocusableShouldBeTrue
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.IsKeyboardFocusableShouldBeTrue();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.IsKeyboardFocusableShouldBeTrue();
 
         [TestMethod]
         public void TestIsKeyboardFocusableShouldBeTruePass()
@@ -41,7 +41,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void ConditionMismatch_ExcludingCustomControl_ReturnFalse()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_CustomControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_CustomControlTypeId;
             e.IsEnabled = true;
             e.IsOffScreen = false;
             e.IsContentElement = true;
@@ -54,7 +54,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void ConditionMismatch_ExcludingUIExpandoButtonDirectUIControl_ReturnFalse()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.Framework = "DirectUI";
             e.ClassName = "UIExpandoButton";
             e.IsEnabled = true;
@@ -70,8 +70,8 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
             var ep = new MockA11yElement();
-            ep.ControlTypeId = Core.Types.ControlType.UIA_SplitButtonControlTypeId;
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            ep.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.Parent = ep;
 
             e.Framework = "DirectUI";
@@ -89,8 +89,8 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
             var ep = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_SplitButtonControlTypeId;
-            ep.ControlTypeId = Core.Types.ControlType.UIA_GroupControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId;
+            ep.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_GroupControlTypeId;
             e.Parent = ep;
 
             e.IsEnabled = true;
@@ -111,9 +111,9 @@ namespace AccessibilityInsights.RulesTest.Library
             var efs = new MockA11yElement();
             efs.UniqueId = 1;
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_SplitButtonControlTypeId;
-            ep.ControlTypeId = Core.Types.ControlType.UIA_GroupControlTypeId;
-            efs.ControlTypeId = Core.Types.ControlType.UIA_SplitButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId;
+            ep.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_GroupControlTypeId;
+            efs.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId;
             e.Parent = ep;
             e.Children.Add(efs);
             e.Children.Add(e);
@@ -136,9 +136,9 @@ namespace AccessibilityInsights.RulesTest.Library
             var efs = new MockA11yElement();
             efs.UniqueId = 1;
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_SplitButtonControlTypeId;
-            ep.ControlTypeId = Core.Types.ControlType.UIA_GroupControlTypeId;
-            efs.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_SplitButtonControlTypeId;
+            ep.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_GroupControlTypeId;
+            efs.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.Parent = ep;
             e.Children.Add(efs);
             e.Children.Add(e);
@@ -156,7 +156,7 @@ namespace AccessibilityInsights.RulesTest.Library
         {
             var e = new MockA11yElement();
 
-            e.ControlTypeId = Core.Types.ControlType.UIA_ListControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ListControlTypeId;
 
             e.IsEnabled = true;
             e.IsOffScreen = false;
@@ -170,7 +170,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void ConditionMismatch_ExcludingNetUIAppFrameHelperButton_False()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.ClassName = "NetUIAppFrameHelper";
             e.IsEnabled = true;
             e.IsOffScreen = false;
@@ -184,7 +184,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void ConditionMismatch_ExcludingNetUIFolderBarRootButton_False()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.ClassName = "NetUIFolderBarRoot";
             e.IsEnabled = true;
             e.IsOffScreen = false;
@@ -198,7 +198,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void ConditionMismatch_ExcludingNetUIStickyButton_False()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_ButtonControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId;
             e.ClassName = "NetUIStickyButton";
             e.IsEnabled = true;
             e.IsOffScreen = false;

@@ -7,8 +7,8 @@
     <ProjectGuid>{AB9E59B6-54CE-4F5D-8055-8AD6745F3B84}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.DesktopTests</RootNamespace>
-    <AssemblyName>AccessibilityInsights.DesktopTests</AssemblyName>
+    <RootNamespace>Axe.Windows.DesktopTests</RootNamespace>
+    <AssemblyName>Axe.Windows.DesktopTests</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -44,11 +44,11 @@
     <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AccessibilityInsights.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Core.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Core.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="AccessibilityInsights.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Desktop.Fakes.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
+      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Desktop.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="AccessibilityInsights.Extensions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Extensions.Fakes.dll</HintPath>

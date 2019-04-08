@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Attributes;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Attributes;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
 using System;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.Patterns
+namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
     /// <summary>
     /// Control pattern wrapper for Value Control Pattern

@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Actions.Misc;
-using AccessibilityInsights.RuleSelection;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Actions.Misc;
+using Axe.Windows.RuleSelection;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Desktop.Settings;
 using System;
 using System.Net;
 using System.Web.Http;

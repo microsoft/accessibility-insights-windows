@@ -8999,7 +8999,7 @@
                   }
                 },
                 {
-                  "Name": "AccessibilityInsights - 1 running window",
+                  "Name": "Axe.Windows - 1 running window",
                   "ControlTypeId": 50000,
                   "LocalizedControlType": "button",
                   "RuntimeId": "[2A,100FE,3,80000001,100FE,FFFFFFFC,1B]",
@@ -9009,7 +9009,7 @@
                   "IsContent": true,
                   "IsControl": true,
                   "TestStatus": 3,
-                  "Glimpse": "button \"AccessibilityInsights - 1 running window\"",
+                  "Glimpse": "button \"Axe.Windows - 1 running window\"",
                   "Properties": {
                     "30000": {
                       "Value": [
@@ -9055,10 +9055,10 @@
                       "TextValue": "button"
                     },
                     "30005": {
-                      "Value": "AccessibilityInsights - 1 running window",
+                      "Value": "Axe.Windows - 1 running window",
                       "Id": 30005,
                       "Name": "Name",
-                      "TextValue": "AccessibilityInsights - 1 running window"
+                      "TextValue": "Axe.Windows - 1 running window"
                     },
                     "30008": {
                       "Value": false,
@@ -9079,10 +9079,10 @@
                       "TextValue": "True"
                     },
                     "30011": {
-                      "Value": "AccessibilityInsights.exe",
+                      "Value": "Axe.Windows.exe",
                       "Id": 30011,
                       "Name": "AutomationId",
-                      "TextValue": "AccessibilityInsights.exe"
+                      "TextValue": "Axe.Windows.exe"
                     },
                     "30015": {
                       "Value": 0,
@@ -9238,8 +9238,8 @@
                         },
                         {
                           "Name": "Name",
-                          "Value": "AccessibilityInsights - 1 running window",
-                          "NodeValue": "Name = \"AccessibilityInsights - 1 running window\""
+                          "Value": "Axe.Windows - 1 running window",
+                          "NodeValue": "Name = \"Axe.Windows - 1 running window\""
                         },
                         {
                           "Name": "Role",
@@ -9451,7 +9451,7 @@
                       "The BoundingRectangle of button \"Settings - 1 running window\" child is [l=1414,t=2100,r=1489,b=2160]",
                       "The BoundingRectangle of menu item \"Windows Command Processor - 3 running windows\" child is [l=1489,t=2100,r=1564,b=2160]",
                       "The BoundingRectangle of button \"OneNote 2016 - 1 running window\" child is [l=1564,t=2100,r=1639,b=2160]",
-                      "The BoundingRectangle of button \"AccessibilityInsights - 1 running window\" child is [l=1639,t=2100,r=1714,b=2160]"
+                      "The BoundingRectangle of button \"Axe.Windows - 1 running window\" child is [l=1639,t=2100,r=1714,b=2160]"
                     ],
                     "Status": 1,
                     "Description": "[4.2.1] BoundingRectangle: All child elements must be contained within BoundingRectangle.",

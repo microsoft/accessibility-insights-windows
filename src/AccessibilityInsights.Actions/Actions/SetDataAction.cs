@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Enums;
 using System;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// SetDataAction class

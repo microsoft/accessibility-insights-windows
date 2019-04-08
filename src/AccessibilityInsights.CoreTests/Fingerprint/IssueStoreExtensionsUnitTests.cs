@@ -3,12 +3,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using AccessibilityInsights.Core.Fingerprint;
-using AccessibilityInsights.Core.Fingerprint.Fakes;
+using Axe.Windows.Core.Fingerprint;
+using Axe.Windows.Core.Fingerprint.Fakes;
 using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace AccessibilityInsights.CoreTests.Fingerprint
+namespace Axe.Windows.CoreTests.Fingerprint
 {
     [TestClass]
     public class IssueStoreExtensionsUnitTests

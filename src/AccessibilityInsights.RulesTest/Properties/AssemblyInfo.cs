@@ -3,12 +3,12 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("AccessibilityInsights.RulesTest")]
+[assembly: AssemblyTitle("Axe.Windows.RulesTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("AccessibilityInsights.RulesTest")]
-[assembly: AssemblyCopyright("Copyright Â©  2018")]
+[assembly: AssemblyProduct("Axe.Windows.RulesTest")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

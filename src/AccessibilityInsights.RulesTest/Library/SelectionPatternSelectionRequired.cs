@@ -1,23 +1,23 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Types;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
-    [TestCategory("AccessibilityInsights.Rules")]
+    [TestCategory("Axe.Windows.Rules")]
     public class SelectionPatternSelectionRequired
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.SelectionPatternSelectionRequired();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.SelectionPatternSelectionRequired();
 
         [TestMethod]
         public void TabControlWithSelectionPatternButNotEdgeFramework_Applicable()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TabControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TabControlTypeId;
             e.Patterns.Add(new A11yPattern(e, PatternType.UIA_SelectionPatternId));
             e.Framework = Framework.Win32;
 
@@ -28,7 +28,7 @@ namespace AccessibilityInsights.RulesTest.Library
         public void TabControlWithSelectionPatternEdgeFramework_NotApplicable()
         {
             var e = new MockA11yElement();
-            e.ControlTypeId = Core.Types.ControlType.UIA_TabControlTypeId;
+            e.ControlTypeId = Axe.Windows.Core.Types.ControlType.UIA_TabControlTypeId;
             e.Patterns.Add(new A11yPattern(e, PatternType.UIA_SelectionPatternId));
             e.Framework = Framework.Edge;
 

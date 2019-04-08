@@ -2,13 +2,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
-using AccessibilityInsights.Core.Bases;
+using Axe.Windows.Core.Bases;
 using UIAutomationClient;
 using System.Linq;
-using AccessibilityInsights.Core.Enums;
+using Axe.Windows.Core.Enums;
 using System.Runtime.InteropServices;
 
-namespace AccessibilityInsights.Desktop.UIAutomation.TreeWalkers
+namespace Axe.Windows.Desktop.UIAutomation.TreeWalkers
 {
     /// <summary>
     /// Wrapper for UIAutomation Tree Walker for Live mode. 

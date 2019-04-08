@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Results;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Results;
+using Axe.Windows.Core.Types;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;

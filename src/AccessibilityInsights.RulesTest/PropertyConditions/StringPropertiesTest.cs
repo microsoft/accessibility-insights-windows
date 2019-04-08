@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules.PropertyConditions;
-using static AccessibilityInsights.Rules.PropertyConditions.StringProperties;
+using Axe.Windows.Rules.PropertyConditions;
+using static Axe.Windows.Rules.PropertyConditions.StringProperties;
 
-namespace AccessibilityInsights.RulesTest.PropertyConditions
+namespace Axe.Windows.RulesTest.PropertyConditions
 {
     [TestClass]
     public class StringPropertiesTest

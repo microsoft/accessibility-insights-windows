@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.Styles;
-using AccessibilityInsights.Desktop.Types;
-using AccessibilityInsights.Desktop.UIAutomation;
-using AccessibilityInsights.Desktop.UIAutomation.Patterns;
+using Axe.Windows.Desktop.Styles;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.UIAutomation;
+using Axe.Windows.Desktop.UIAutomation.Patterns;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -222,13 +222,13 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 case TextAttributeType.UIA_FontWeightAttributeId:
                     if (value is int)
                     {
-                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, AccessibilityInsights.Desktop.Styles.FontWeight.GetInstance().GetNameById(value)));
+                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, Axe.Windows.Desktop.Styles.FontWeight.GetInstance().GetNameById(value)));
                     }
                     break;
                 case TextAttributeType.UIA_HorizontalTextAlignmentAttributeId:
                     if (value is int)
                     {
-                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, AccessibilityInsights.Desktop.Styles.FontWeight.GetInstance().GetNameById(value)));
+                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, Axe.Windows.Desktop.Styles.FontWeight.GetInstance().GetNameById(value)));
                     }
                     break;
                 case TextAttributeType.UIA_IsHiddenAttributeId: 
@@ -267,7 +267,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 case TextAttributeType.UIA_TextFlowDirectionsAttributeId:
                     if (value is int)
                     {
-                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, Desktop.Styles.FlowDirection.GetInstance().GetNameById(value)));
+                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, Axe.Windows.Desktop.Styles.FlowDirection.GetInstance().GetNameById(value)));
                     }
                     break;
                 case TextAttributeType.UIA_AnnotationTypesAttributeId:

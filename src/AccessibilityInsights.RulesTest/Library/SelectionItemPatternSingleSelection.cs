@@ -2,18 +2,18 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Rules.PropertyConditions;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
-using static AccessibilityInsights.RulesTest.ControlType;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Rules.PropertyConditions;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
+using static Axe.Windows.RulesTest.ControlType;
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class SelectionItemPatternSingleSelectionTests
     {
-        private readonly AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.SelectionItemPatternSingleSelection();
+        private readonly Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.SelectionItemPatternSingleSelection();
 
         private static Mock<IA11yElement> CreateMockElement(IA11yElement parent, int controlType, bool isSelected)
         {

@@ -15,8 +15,8 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
         {
             using (ShimsContext.Create())
             {
-                var sa = new AccessibilityInsights.Actions.Fakes.ShimSelectAction();
-                AccessibilityInsights.Actions.Fakes.ShimSelectAction.GetDefaultInstance = () => sa;
+                var sa = new Axe.Windows.Actions.Fakes.ShimSelectAction();
+                Axe.Windows.Actions.Fakes.ShimSelectAction.GetDefaultInstance = () => sa;
                 sa.GetSelectedElementContextId = () => null;
 
                 var controller = new SelectController();
@@ -33,8 +33,8 @@ namespace AccessibilityInsights.WebApiHost.Controllers.Tests
             using (ShimsContext.Create())
             {
                 var guid = Guid.NewGuid();
-                var sa = new AccessibilityInsights.Actions.Fakes.ShimSelectAction();
-                AccessibilityInsights.Actions.Fakes.ShimSelectAction.GetDefaultInstance = () => sa;
+                var sa = new Axe.Windows.Actions.Fakes.ShimSelectAction();
+                Axe.Windows.Actions.Fakes.ShimSelectAction.GetDefaultInstance = () => sa;
                 sa.GetSelectedElementContextId = () => guid;
 
                 var controller = new SelectController();

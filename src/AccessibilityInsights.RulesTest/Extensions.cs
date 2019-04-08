@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace AccessibilityInsights.RulesTest
+namespace Axe.Windows.RulesTest
 {
     static class Extensions
     {

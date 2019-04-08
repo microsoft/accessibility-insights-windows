@@ -2,16 +2,16 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Drawing;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AccessibilityInsights.Rules.PropertyConditions;
-using EvaluationCode = AccessibilityInsights.Rules.EvaluationCode;
+using Axe.Windows.Rules.PropertyConditions;
+using EvaluationCode = Axe.Windows.Rules.EvaluationCode;
 
 
-namespace AccessibilityInsights.RulesTest.Library
+namespace Axe.Windows.RulesTest.Library
 {
     [TestClass]
     public class BoundingRectangleCompletelyObscuresContainerTest
     {
-        private static AccessibilityInsights.Rules.IRule Rule = new AccessibilityInsights.Rules.Library.BoundingRectangleCompletelyObscuresContainer();
+        private static Axe.Windows.Rules.IRule Rule = new Axe.Windows.Rules.Library.BoundingRectangleCompletelyObscuresContainer();
         private static Rectangle TestRect = new Rectangle(300, 300, 400, 400);
         private static Rectangle ValidRect = new Rectangle(TestRect.Left - BoundingRectangle.OverlapMargin,
             TestRect.Top - BoundingRectangle.OverlapMargin,

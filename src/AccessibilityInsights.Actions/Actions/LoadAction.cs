@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Attributes;
-using AccessibilityInsights.Actions.Enums;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Desktop.Settings;
+using Axe.Windows.Actions.Attributes;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.Settings;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
@@ -11,7 +11,7 @@ using System.IO;
 using System.IO.Packaging;
 using System.Linq;
 
-namespace AccessibilityInsights.Actions
+namespace Axe.Windows.Actions
 {
     /// <summary>
     /// Action to load snapshot file

@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace AccessibilityInsights.Core.Enums
+namespace Axe.Windows.Core.Enums
 {
     /// <summary>
     /// Strong rule ids. Previously rules were only identifiable through
@@ -23,7 +23,7 @@ namespace AccessibilityInsights.Core.Enums
         // scans
         BoundingRectangleExists,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         BoundingRectangleNotAllZeros,
         BoundingRectangleNotNull,
         BoundingRectangleNotValidButOffScreen,
@@ -35,7 +35,7 @@ namespace AccessibilityInsights.Core.Enums
         BoundingRectangleOnWPFTextParent,
         BoundingRectangleSizeReasonable,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         SplitButtonInvokeAndTogglePatterns,
         ButtonShouldHavePatterns, // check whether button has at least one of three patterns(Invoke,Toggle,ExpandCollapse)
         ButtonInvokeAndTogglePatterns, // Button should not have Invoke and Toggle patterns together. 
@@ -47,16 +47,16 @@ namespace AccessibilityInsights.Core.Enums
         // scans
         ChildUniqueNameOrType,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ChildUniqueNameOrTypeAndFocusable, // deprecated
         ChildUniqueNameOrTypeAndNotFocusable, // deprecated
         SiblingUniqueAndFocusable,
         SiblingUniqueAndNotFocusable,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ChildrenNotAllowedInContentView,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ContentViewButtonStructure,
         ContentViewCalendarStructure,
         ContentViewCheckBoxStructure,
@@ -103,7 +103,7 @@ namespace AccessibilityInsights.Core.Enums
         ControlViewTreeStructure,
         ControlViewTreeItemStructure,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ComboBoxShouldNotSupportScrollPattern,
         ControlShouldNotSupportInvokePattern,
         ControlShouldNotSupportScrollPattern,
@@ -126,12 +126,12 @@ namespace AccessibilityInsights.Core.Enums
         ControlShouldSupportTransformPattern,
         ControlShouldSupportTextPattern,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         EditSupportsIncorrectRangeValuePattern,
         EditSupportsOnlyValuePattern,
         HeadingLevelDescendsWhenNested,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         LandmarkBannerIsTopLevel,
         LandmarkComplementaryIsTopLevel,
         LandmarkContentInfoIsTopLevel,
@@ -155,12 +155,12 @@ namespace AccessibilityInsights.Core.Enums
 
         HelpTextExists,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         HelpTextNotEqualToName,
         IsControlElementPropertyExists,
         IsControlElementPropertyCorrect,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         IsContentElementPropertyExists,
         IsContentElementFalseOptional,
         IsContentElementTrueOptional,
@@ -171,7 +171,7 @@ namespace AccessibilityInsights.Core.Enums
         IsKeyboardFocusable,
         IsKeyboardFocusableBasedOnPatterns,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         IsKeyboardFocusableShouldBeTrue,
         IsKeyboardFocusableFalseButDisabled,
         IsKeyboardFocusableForListItemShouldBeTrue,
@@ -184,17 +184,17 @@ namespace AccessibilityInsights.Core.Enums
 
         ItemTypeCorrect,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ItemTypeRecommended,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         LocalizedControlTypeExists,
         LocalizedControlTypeReasonable,
 
         // scans
         NameNonEmpty,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         NameNotEmpty,
         NameExcludesControlType,
         NameExcludesLocalizedControlType,
@@ -214,7 +214,7 @@ namespace AccessibilityInsights.Core.Enums
         IsContentElementPropertyCorrect,
         ItemStatusPropertyCorrect,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         ItemStatusExists,
 
         // given by ExtensionMethods.GetTreeStructureRule(TreeViewModes)
@@ -239,7 +239,7 @@ namespace AccessibilityInsights.Core.Enums
 
         ParentChildShouldNotHaveSameNameAndLocalizedControlType,
 
-        // AccessibilityInsights.Rules
+        // Axe.Windows.Rules
         SelectionPatternSelectionRequired,
         SelectionPatternSingleSelection,
         SelectionItemPatternSingleSelection,

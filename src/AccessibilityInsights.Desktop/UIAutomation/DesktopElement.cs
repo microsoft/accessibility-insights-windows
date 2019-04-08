@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
 using System.Collections.Generic;
 using UIAutomationClient;
 using System.Runtime.InteropServices;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 
-namespace AccessibilityInsights.Desktop.UIAutomation
+namespace Axe.Windows.Desktop.UIAutomation
 {
     /// <summary>
     /// Wrapper for DesktopElement

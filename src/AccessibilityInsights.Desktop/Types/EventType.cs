@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Core.Types;
+using Axe.Windows.Core.Types;
 using System.Text;
 
-namespace AccessibilityInsights.Desktop.Types
+namespace Axe.Windows.Desktop.Types
 {
     public class EventType : TypeBase
     {

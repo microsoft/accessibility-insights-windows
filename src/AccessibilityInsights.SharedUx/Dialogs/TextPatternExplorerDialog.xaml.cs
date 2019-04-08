@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Desktop.UIAutomation.Patterns;
+using Axe.Windows.Desktop.UIAutomation.Patterns;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -105,12 +105,12 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
         }
 
-        private void UpdateTextRanges(AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange textRange)
+        private void UpdateTextRanges(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange textRange)
         {
-            UpdateTextRanges(new List<AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange>() { textRange });
+            UpdateTextRanges(new List<Axe.Windows.Desktop.UIAutomation.Patterns.TextRange>() { textRange });
         }
 
-        private void UpdateTextRanges(List<AccessibilityInsights.Desktop.UIAutomation.Patterns.TextRange> list)
+        private void UpdateTextRanges(List<Axe.Windows.Desktop.UIAutomation.Patterns.TextRange> list)
         {
             var prefix = this.CurrentSourceType.ToString();
             List<TextRangeViewModel> trvms = new List<TextRangeViewModel>();

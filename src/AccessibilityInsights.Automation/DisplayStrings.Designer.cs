@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AccessibilityInsights.Automation {
+namespace Axe.Windows.Automation {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Automation {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.Automation.DisplayStrings", typeof(DisplayStrings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Axe.Windows.Automation.DisplayStrings", typeof(DisplayStrings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ERROR Automation009: AccessibilityInsights has already been started.
+        ///   Looks up a localized string similar to ERROR Automation009: AxeWindows has already been started.
         /// </summary>
         internal static string ErrorAlreadyStarted {
             get {
@@ -133,7 +133,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ERROR Automation011: AccessibilityInsights has not yet been started, or has already been stopped.
+        ///   Looks up a localized string similar to ERROR Automation011: AxeWindows has not yet been started, or has already been stopped.
         /// </summary>
         internal static string ErrorNotStarted_Clear {
             get {
@@ -142,7 +142,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ERROR Automation010: AccessibilityInsights has not yet been started, or has already been stopped.
+        ///   Looks up a localized string similar to ERROR Automation010: AxeWindows has not yet been started, or has already been stopped.
         /// </summary>
         internal static string ErrorNotStarted_Instance {
             get {
@@ -187,7 +187,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ERROR Automation009: AccessibilityInsights has already been started.
+        ///   Looks up a localized string similar to ERROR Automation009: AxeWindows has already been started.
         /// </summary>
         internal static string ErrorStartAlreadyStarted {
             get {
@@ -250,7 +250,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccessibilityInsights successfully started.
+        ///   Looks up a localized string similar to AxeWindows successfully started.
         /// </summary>
         internal static string SuccessStart {
             get {
@@ -259,7 +259,7 @@ namespace AccessibilityInsights.Automation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AccessibilityInsights successfully stopped.
+        ///   Looks up a localized string similar to AxeWindows successfully stopped.
         /// </summary>
         internal static string SuccessStop {
             get {

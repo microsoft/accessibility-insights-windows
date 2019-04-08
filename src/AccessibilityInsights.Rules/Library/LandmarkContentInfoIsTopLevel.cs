@@ -1,14 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Rules.PropertyConditions;
-using AccessibilityInsights.Rules.Resources;
-using static AccessibilityInsights.Rules.PropertyConditions.EdgeConditions;
-using static AccessibilityInsights.Rules.PropertyConditions.Relationships;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Rules.PropertyConditions;
+using Axe.Windows.Rules.Resources;
+using static Axe.Windows.Rules.PropertyConditions.EdgeConditions;
+using static Axe.Windows.Rules.PropertyConditions.Relationships;
 
-namespace AccessibilityInsights.Rules.Library
+namespace Axe.Windows.Rules.Library
 {
     [RuleInfo(ID = RuleId.LandmarkContentInfoIsTopLevel)]
     class LandmarkContentInfoIsTopLevel : Rule

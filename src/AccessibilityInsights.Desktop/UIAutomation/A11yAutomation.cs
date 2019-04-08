@@ -4,14 +4,14 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
-using AccessibilityInsights.Core.Bases;
-using AccessibilityInsights.Core.Enums;
-using AccessibilityInsights.Core.Misc;
-using AccessibilityInsights.Core.Types;
-using AccessibilityInsights.Desktop.UIAutomation.TreeWalkers;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using UIAutomationClient;
 
-namespace AccessibilityInsights.Desktop.UIAutomation
+namespace Axe.Windows.Desktop.UIAutomation
 {
     /// <summary>
     /// Wrapper for CUIAutomation COM object

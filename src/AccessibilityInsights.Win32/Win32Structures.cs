@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace AccessibilityInsights.Win32
+namespace Axe.Windows.Win32
 {
     // Some of these definitions originated from https://pinvoke.net/
 
@@ -71,9 +71,9 @@ namespace AccessibilityInsights.Win32
     internal class WinTrustFileInfo : IDisposable
     {
         UInt32 StructSize = (UInt32)Marshal.SizeOf(typeof(WinTrustFileInfo));
-        IntPtr pszFilePath;                     // required, file name to be verified
-        IntPtr hFile = IntPtr.Zero;             // optional, open handle to FilePath
-        IntPtr pgKnownSubject = IntPtr.Zero;    // optional, subject type if it is known
+        IntPtr pszFilePath;                     // required, file name to be verified
+        IntPtr hFile = IntPtr.Zero;             // optional, open handle to FilePath
+        IntPtr pgKnownSubject = IntPtr.Zero;    // optional, subject type if it is known
 
         public WinTrustFileInfo(String filePath)
         {

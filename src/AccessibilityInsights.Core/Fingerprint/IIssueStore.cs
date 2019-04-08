@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.Core.Fingerprint
+namespace Axe.Windows.Core.Fingerprint
 {
     /// <summary>
     /// Abstraction around an issue store. The actual store could take a variety of different

@@ -7,8 +7,8 @@
     <ProjectGuid>{EB28AA55-C07A-4EE4-AAAE-49338F3590A6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AccessibilityInsights.RulesTest</RootNamespace>
-    <AssemblyName>AccessibilityInsights.RulesTest</AssemblyName>
+    <RootNamespace>Axe.Windows.RulesTest</RootNamespace>
+    <AssemblyName>Axe.Windows.RulesTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>

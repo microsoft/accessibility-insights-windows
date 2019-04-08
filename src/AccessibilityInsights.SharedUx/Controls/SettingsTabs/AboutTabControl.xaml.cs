@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public AboutTabControl()
         {
             InitializeComponent();
-            lbVersion.Content = AccessibilityInsights.Core.Misc.Utility.GetAppVersion();
+            lbVersion.Content = Axe.Windows.Core.Misc.Utility.GetAppVersion();
         }
 
         /// <summary>

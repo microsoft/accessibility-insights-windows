@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions.Contexts;
+using Axe.Windows.Actions.Contexts;
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Desktop.ColorContrastAnalyzer;
-using AccessibilityInsights.Desktop.Utility;
+using Axe.Windows.Desktop.ColorContrastAnalyzer;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;

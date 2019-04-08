@@ -3,7 +3,7 @@
 using System;
 using System.Globalization;
 
-namespace AccessibilityInsights.Automation
+namespace Axe.Windows.Automation
 {
     internal static class ExecutionWrapper
     {

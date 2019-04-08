@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
+using Axe.Windows.Actions;
 using System;
 using System.Web.Http;
 
 namespace AccessibilityInsights.WebApiHost.Controllers
 {
     /// <summary>
-    /// Controller class for AccessibilityInsights.Actions.SelectAction
+    /// Controller class for Axe.Windows.Actions.SelectAction
     /// it will let external proces select a process or an element
     /// </summary>
     public class SelectController : ApiController

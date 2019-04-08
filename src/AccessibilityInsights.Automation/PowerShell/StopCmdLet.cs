@@ -2,12 +2,12 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Management.Automation;
 
-namespace AccessibilityInsights.Automation.PowerShell
+namespace Axe.Windows.Automation.PowerShell
 {
     /// <summary>
-    /// PowerShell Cmdlet to uninitialize the AccessibilityInsights scan engine
+    /// PowerShell Cmdlet to uninitialize the AxeWindows scan engine
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Stop, "AccessibilityInsights")]
+    [Cmdlet(VerbsLifecycle.Stop, "AxeWindows")]
     public class StopCmdLet : Cmdlet
     {
         /// <summary>

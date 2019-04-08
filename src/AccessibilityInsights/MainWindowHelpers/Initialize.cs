@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Actions;
+using Axe.Windows.Actions;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Desktop.Keyboard;
+using Axe.Windows.Desktop.Keyboard;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.Win32;
+using Axe.Windows.Win32;
 using System;
 using System.Globalization;
 using System.Windows;

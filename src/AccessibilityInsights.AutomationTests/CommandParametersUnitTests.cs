@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Automation;
+using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.IO;
@@ -10,7 +10,7 @@ using Microsoft.QualityTools.Testing.Fakes;
 using System.IO.Fakes;
 #endif
 
-namespace AccessibilityInsights.AutomationTests
+namespace Axe.Windows.AutomationTests
 {
     [TestClass]
     public class CommandParametersUnitTests

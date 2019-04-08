@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace AccessibilityInsights.Core.Exceptions
+namespace Axe.Windows.Core.Exceptions
 {
     /// <summary>
     /// Expect this exception when attempting to navigate the UIA hierarchy, or  another accessibility hierarchy, and the attempted navigation is unsuccessful.
