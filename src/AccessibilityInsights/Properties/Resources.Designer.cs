@@ -521,6 +521,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to switch channels: {0}.
+        /// </summary>
+        public static string ConfigurationModeControl_VersionSwitcherException {
+            get {
+                return ResourceManager.GetString("ConfigurationModeControl_VersionSwitcherException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings page.
         /// </summary>
         public static string ConfigurationModeControlAutomationPropertiesName {
