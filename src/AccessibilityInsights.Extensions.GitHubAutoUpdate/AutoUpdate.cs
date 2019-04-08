@@ -170,7 +170,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// Production ctor - MUST be a default ctor or extensions will break
         /// </summary>
         public AutoUpdate() :
-            this(ProductionReleaseChannelProvider, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
+            this(ConfiguredReleaseChannelProvider, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
@@ -190,7 +190,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             _initTask = Task.Run(() => InitializeWithTimer());
         }
 
-        private static ReleaseChannel ProductionReleaseChannelProvider()
+        private static ReleaseChannel ConfiguredReleaseChannelProvider()
         {
             if (Enum.TryParse<ReleaseChannel>(ReleaseChannelProvider.ReleaseChannel, out ReleaseChannel releaseChannel))
             {
