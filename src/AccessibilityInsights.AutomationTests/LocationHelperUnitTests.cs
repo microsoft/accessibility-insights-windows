@@ -16,7 +16,7 @@ namespace Axe.Windows.AutomationTests
     {
         private const string TestOutputPath = "C:\\Output\\Path";
         private const string TestOutputFileWithoutExtension = "MyOutputFile";
-        private const string TestOutputFileWithExtension = TestOutputFileWithoutExtension + ".a11ytest";
+        private const string TestOutputFileWithExtension = TestOutputFileWithoutExtension + Core.Enums.FileFilters.TestExtension;
         private const string TestOutputFileFormat = "Sarif";
         private const string InvalidTestOutputFormat = "testing";
         private const string EnvOutputPath = "C:\\Env\\Output\\Path";
