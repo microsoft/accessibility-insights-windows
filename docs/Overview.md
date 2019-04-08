@@ -18,20 +18,19 @@ These assemblies provide the interaction with UIA, as well as layers that allow 
 
 Assembly | Responsibility
 --- | ---
-AccessibilityInsights.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
-AccessibilityInsights.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
-AccessibilityInsights.DesktopUI | Provide platform-specific (Windows) implementations of platform-agnostic UI abstractions. This includes things like element highlighters.
-AccessibilityInsights.Actions | Provide a high-level set of Actions that are the primary interface into the Runtime components.
-AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
-AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
+Axe.Windows.Actions | Provide a high-level set of Actions that are the primary interface into the Runtime components.
+Axe.Windows.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
+Axe.Windows.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
+Axe.Windows.Telemetry | Provides an interface which any caller can provide to capture telemetry from Axe.Windows
+Axe.Windows.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
 #### Accessibility Rules
 These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
 
 Assembly | Responsibility
 --- | ---
-AccessibilityInsights.Rules | Provide a library of rules, each of which scans the platform-agnostic information for issues that are likely to be problematic. For example, a button without an accessible label will be flagged as an error.
-AccessibilityInsights.RulesSelection | Select the appropriate set of rules to run on a specific application, then coordinate their execution in a consistent and reproducible way.
+Axe.Windows.Rules | Provide a library of rules, each of which scans the platform-agnostic information for issues that are likely to be problematic. For example, a button without an accessible label will be flagged as an error.
+Axe.Windows.RulesSelection | Coordinate rule execution in a consistent and reproducible way.
 
 #### Application Entry Points
 These assemblies allow user interaction with the Runtime components and the Accessibility Rules.
@@ -40,9 +39,11 @@ Assembly | Responsibility
 --- | ---
 AccessibilityInsights | Provide the UI for most users. This application is built using WPF.
 AccessibilityInsights.CommonUxComponents | Provide non-specialized visual elements used by the main app and extensions. This allows the main app and extensions to share ux components that are unrelated to the runtime.
+AccessibilityInsights.DesktopUI | Provide platform-specific (Windows) implementations of platform-agnostic UI abstractions. This includes things like element highlighters.
+AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
 AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
-AccessibilityInsights.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
+Axe.Windows.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
 
 #### Extensions
 Extensions are intended to allow loose coupling of non-core code. They build upon the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
@@ -72,23 +73,24 @@ The packaging projects exist to gather assemblies into their shipping vehicles:
 Project | Responsibility
 --- | ---
 MSI | Builds the MSI file used by most users.
-ApplicationInsights-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
+AxeWindows-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
 
 #### Tests
 Unit tests are built using a combination of Moq and Microsoft Fakes. The folllowing assemblies exist for testing purposes:
-- AccessibilityInsights.ActionsTests
-- AccessibilityInsights.AutomationTests
-- AccessibilityInsights.CoreTests
-- AccessibilityInsights.DesktopTests
 - AccessibilityInsights.Extensions.AzureDevOpsTests
-- AccessibilityInsights.Extensions.GitHubUnitTests
 - AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests
+- AccessibilityInsights.Extensions.GitHubUnitTests
 - AccessibilityInsights.Extensions.TelemetryTests
 - AccessibilityInsights.ExtensionsTests
 - AccessibilityInsights.Fakes.Prebuild
-- AccessibilityInsights.RuleSelectionTests
-- AccessibilityInsights.RulesTest
 - AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
 - AccessibilityInsights.WebApiHostTests
-- AccessibilityInsights.Win32Tests 
+- Axe.Windows.ActionsTests
+- Axe.Windows.AutomationTests
+- Axe.Windows.CoreTests
+- Axe.Windows.DesktopTests
+- Axe.Windows.RuleSelectionTests
+- Axe.Windows.RulesTest
+- Axe.Windows.UnitTestSharedLibrary
+- Axe.Windows.Win32Tests 
