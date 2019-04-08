@@ -300,6 +300,9 @@
   <data name="ConfigurationModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Settings page</value>
   </data>
+  <data name="ConfigurationModeControl_VersionSwitcherException" xml:space="preserve">
+    <value>Failed to switch channels: {0}</value>
+  </data>
   <data name="ctrlTabsAutomationPropertiesName" xml:space="preserve">
     <value>Event information</value>
   </data>
