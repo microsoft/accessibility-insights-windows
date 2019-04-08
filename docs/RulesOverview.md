@@ -19,7 +19,7 @@ Rules have three basic components
 
 ### Inheritence
 
-All rules must inherit from the `AccessibilityInsights.Rules.Rule` base class. Rules are discovered through reflection; when your class inherits from `Rule`,  it is added to the set of rules tested by Accessibility Insights. 
+All rules must inherit from the `Axe.Windows.Rules.Rule` base class. Rules are discovered through reflection; when your class inherits from `Rule`,  it is added to the set of rules tested by Accessibility Insights. 
 
 ### Conventions
 
@@ -49,7 +49,7 @@ Using conditions (described below) makes it possible to represent the evaluation
 
 ### Conditions
 
-Conditions are classses used to represent the properties, patterns, and values of an element in a grammatical form that is reusable, self-describing, and easy to read. All conditions must inherit from the `AccessibilityInsights.Rules.Condition` base class. Conditions have the following features:
+Conditions are classses used to represent the properties, patterns, and values of an element in a grammatical form that is reusable, self-describing, and easy to read. All conditions must inherit from the `Axe.Windows.Rules.Condition` base class. Conditions have the following features:
 
 - A condition evaluates to true or false via its `Matches` method.
 - A condition has an associated text description. Descriptions can be assigned via the index operator, e.g., `Button["Button"]` 
@@ -65,7 +65,7 @@ operator | description | example
 
 When conditions are combined using operators, so too are there associated descriptions, e.g., `(Button & IsKeyboardFocusable)` = "Button and IsKeyboardFocusable". Using this mechanism, all conditions can be written as text strings and used as documentation for the rules.
 
-There are many ready-made conditions you can use from the `AccessibilityInsights.Rules.PropertyConditions` namespace.
+There are many ready-made conditions you can use from the `Axe.Windows.Rules.PropertyConditions` namespace.
 
 ### Future development
 
