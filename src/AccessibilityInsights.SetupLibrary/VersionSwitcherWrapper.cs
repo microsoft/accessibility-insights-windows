@@ -147,9 +147,9 @@ namespace AccessibilityInsights.SetupLibrary
         {
             string arguments = installerUri.ToString();
 
-            if (newChannel != null)
+            if (newChannel.HasValue)
             {
-                arguments += " " + newChannel.ToString();
+                arguments += " " + newChannel.Value.ToString();
             }
 
             return arguments;
