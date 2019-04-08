@@ -59,7 +59,7 @@ namespace Axe.Windows.Automation
                 else
                 {
                     // If file format absent set default value
-                    outputFileFormat = ValidateExtension(Core.Enums.FileFilters.SarifExtension);
+                    outputFileFormat = ValidateExtension(".sarif");
                 }
             }
             else

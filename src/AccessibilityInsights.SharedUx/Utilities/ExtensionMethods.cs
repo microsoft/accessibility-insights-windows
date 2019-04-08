@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions.Contexts;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Results;
 using Axe.Windows.Desktop.Utility;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Properties;
-using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
