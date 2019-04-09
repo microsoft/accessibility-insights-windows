@@ -3,7 +3,6 @@
     "current_version": "1.1.0828.01",
     "minimum_version": "1.1.0828.01",
     "installer_url": "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0828.01/AccessibilityInsights.msi",
-    "release_notes_url": "https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0828.01",
-    "extra": "ignored"
+    "release_notes_url": "https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0828.01"
   }
 }
