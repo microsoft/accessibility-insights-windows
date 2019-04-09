@@ -57,5 +57,13 @@ namespace Axe.Windows.RulesTest.PropertyConditions
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
+
+        [TestMethod]
+        public void ToString_AsExpected()
+        {
+            var p = new IntProperty(PropertyType.UIA_HeadingLevelPropertyId, "heading");
+            var c = p == 12;
+            Assert.AreEqual("heading == 12", c.ToString());
+        }
     } // class
 } // namespace

@@ -62,13 +62,13 @@ namespace Axe.Windows.Rules
             if (!(value is ValueType))
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-            return new DelegateCondition(e => value.Equals(c.GetValue(e)))[Invariant($" == {value}")];
+            return new DelegateCondition(e => value.Equals(c.GetValue(e)))[Invariant($"{c.Description} == {value}")];
         }
 
         public static Condition operator !=(ValueCondition<T> c, T value)
         {
             var condition = ~(c == value);
-            return condition[Invariant($" != {value}")];
+            return condition[Invariant($"{c.Description} != {value}")];
         }
 
         public static Condition operator >(ValueCondition<T> c, T value)
@@ -78,7 +78,7 @@ namespace Axe.Windows.Rules
             if (!(value is ValueType))
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) > 0)[Invariant($" > {value}")];
+            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) > 0)[Invariant($"{c.Description} > {value}")];
         }
 
         public static Condition operator <(ValueCondition<T> c, T value)
@@ -88,7 +88,7 @@ namespace Axe.Windows.Rules
             if (!(value is ValueType))
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) < 0)[Invariant($" < {value}")];
+            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) < 0)[Invariant($"{c.Description} < {value}")];
         }
 
         public static Condition operator >=(ValueCondition<T> c, T value)
@@ -98,7 +98,7 @@ namespace Axe.Windows.Rules
             if (!(value is ValueType))
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) >= 0)[Invariant($" >= {value}")];
+            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) >= 0)[Invariant($"{c.Description} >= {value}")];
         }
 
         public static Condition operator <=(ValueCondition<T> c, T value)
@@ -108,7 +108,7 @@ namespace Axe.Windows.Rules
             if (!(value is ValueType))
                 if (value == null) throw new ArgumentNullException(nameof(value));
 
-            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) <= 0)[Invariant($" <= {value}")];
+            return new DelegateCondition(e => c.GetValue(e).CompareTo(value) <= 0)[Invariant($"{c.Description} <= {value}")];
         }
     } // class
 } // namespace
