@@ -1,8 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Threading;
 
@@ -24,18 +26,27 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         protected abstract void SetFocusOnDefaultControl();
 
+        /// <summary>
+        /// Overriding LocalizedControlType
+        /// </summary>
+        /// <returns></returns>
+        protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new CustomControlOverridingAutomationPeer(this, "dialog");
+        }
+
         public Task<bool> ShowDialog(Action hideDialog)
         {
             HideDialog = hideDialog;
-            Dispatcher.Invoke(SetFocusOnDefaultControl, DispatcherPriority.Input);
+            Dispatcher.InvokeAsync(SetFocusOnDefaultControl, DispatcherPriority.Input);
 
-            return Task.Run<bool>((Func<bool>)WaitAndHide);
+            return Task.Run((Func<bool>)WaitAndHide);
         }
 
         /// <summary>
-        /// Return DialogResult and hides dialog once ready
+        /// Waits for user input and hides dialog once ready
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Current value of DialogResult</returns>
         private bool WaitAndHide()
         {
             WaitHandle.WaitOne();

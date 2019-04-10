@@ -25,7 +25,7 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new CustomControlOverridingAutomationPeer(this, "dialog");
+            return new CustomControlOverridingAutomationPeer(this, "page");
         }
 
         public void HideControl() => Dispatcher.Invoke(() =>

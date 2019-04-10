@@ -8,8 +8,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
-    mc:Ignorable="d" 
-             AutomationProperties.Name="{x:Static properties:Resources.AutomationNameTelemetryMode}">
+             mc:Ignorable="d"
+             AutomationProperties.Name="{x:Static properties:Resources.ChangeChannelContainedDialog_Title}">
     <dialogs:ContainedDialog.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
