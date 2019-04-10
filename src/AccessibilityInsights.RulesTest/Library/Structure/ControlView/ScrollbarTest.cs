@@ -98,15 +98,24 @@ namespace Axe.Windows.RulesTest.Library
         /// <returns>sequence of elements with given control type counts</returns>
         private IEnumerable<IA11yElement> GenerateElementsWithControlTypes(Dictionary<int, int> controlTypeCounts)
         {
-            return controlTypeCounts.Keys.SelectMany(controlType =>
+            return controlTypeCounts.SelectMany(controlTypeToCount => 
+                GenerateElementsWithControlType(controlTypeToCount.Key, controlTypeToCount.Value));
+        }
+
+        /// <summary>
+        /// Returns a sequence of {count} elements with the {controlType} control type
+        /// </summary>
+        /// <param name="controlType"></param>
+        /// <param name="count"></param>
+        /// <returns></returns>
+        private IEnumerable<IA11yElement> GenerateElementsWithControlType(int controlType, int count)
+        {
+            for (int i = 0; i < count; i++)
             {
-                return Enumerable.Range(0, controlTypeCounts[controlType]).Select(_ =>
-                {
-                    var m = new Mock<IA11yElement>();
-                    m.Setup(e => e.ControlTypeId).Returns(controlType);
-                    return m.Object;
-                });
-            });
+                var m = new Mock<IA11yElement>();
+                m.Setup(e => e.ControlTypeId).Returns(controlType);
+                yield return m.Object;
+            }
         }
     } // class
 } // namespace
