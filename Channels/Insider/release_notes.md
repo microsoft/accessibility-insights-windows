@@ -14,7 +14,7 @@ GitHub users can now file issues directly from inside Accessibility Insights for
 
 ### Multiple Release Channels
 
-You can now choose how frequently their client updates:
+You can now choose how frequently your client updates:
 - The **Production** channel updates every 2-4 weeks
 - The **Insider** channel updates every 1-2 weeks
 - The **Canary** channel updates multiple times per week
