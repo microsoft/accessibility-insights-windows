@@ -28,7 +28,7 @@ namespace Axe.Windows.Rules.PropertyConditions
         public static Condition ProgressBarStructure = ProgressBar & NoChildren;
         public static Condition RadioButtonStructure = RadioButton & NoChildren;
         public static Condition SliderStructure = Slider & (NoChildren | Children(ListItem))[ConditionDescriptions.Parentheses];
-        public static Condition SpinnerStructure = Spinner & NoChildren;
+        public static Condition SpinnerStructure = Spinner & (NoChildren | Children(ListItem))[ConditionDescriptions.Parentheses];
         public static Condition SplitButtonStructure = CreateSplitButtonStructureCondition();
         public static Condition StatusBarStructure = StatusBar & (NoChildren | Children(Button | Edit | Image | ProgressBar))[ConditionDescriptions.Parentheses];
         public static Condition TabStructure = Tab & (RequiresChildren & Children(Group | TabItem));
