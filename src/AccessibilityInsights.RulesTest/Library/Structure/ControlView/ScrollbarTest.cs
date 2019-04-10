@@ -19,7 +19,7 @@ namespace Axe.Windows.RulesTest.Library
         public void ScrollbarNoChildren_Pass()
         {
             var m = new Mock<IA11yElement>();
-            m.Setup(e => e.ControlTypeId).Returns(Core.Types.ControlType.UIA_ScrollBarControlTypeId);
+            m.Setup(e => e.ControlTypeId).Returns(ControlType.ScrollBar);
             
             Assert.AreEqual(EvaluationCode.Pass, Rule.Evaluate(m.Object));
         }
