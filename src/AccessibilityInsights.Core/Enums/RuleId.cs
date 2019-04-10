@@ -91,6 +91,7 @@ namespace Axe.Windows.Core.Enums
         ControlViewMenuStructure,
         ControlViewProgressBarStructure,
         ControlViewRadioButtonStructure,
+        ControlViewScrollbarStructure,
         ControlViewSemanticZoomStructure,
         ControlViewSeparatorStructure,
         ControlViewSliderStructure,

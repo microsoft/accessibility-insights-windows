@@ -114,6 +114,7 @@
     <Compile Include="Library\SiblingUniqueAndNotFocusableTest.cs" />
     <Compile Include="Library\HeadingLevelDescendsWhenNestedTest.cs" />
     <Compile Include="Library\LocalizedLandmarkTypeNotCustomTests.cs" />
+    <Compile Include="Library\Structure\ControlView\ScrollbarTest.cs" />
     <Compile Include="Library\UWPTest.cs" />
     <Compile Include="PatternIDs.cs" />
     <Compile Include="PropertyConditions\BoolPropertiesTest.cs" />
