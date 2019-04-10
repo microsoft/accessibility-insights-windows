@@ -75,6 +75,7 @@
     <Compile Include="Library\ParentChildShouldNotHaveSameNameAndLocalizedControlType.cs" />
     <Compile Include="Library\SelectionItemPatternSingleSelection.cs" />
     <Compile Include="Library\ListItemSiblingsUnique.cs" />
+    <Compile Include="Library\Structure\ControlView\Scrollbar.cs" />
     <Compile Include="Misc\ControlTypeStrings.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

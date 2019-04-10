@@ -30,6 +30,7 @@ namespace Axe.Windows.Rules.PropertyConditions
         public static Condition MenuStructure = Menu & (RequiresChildren & Children(MenuItem));
         public static Condition ProgressBarStructure = ProgressBar & NoChildren;
         public static Condition RadioButtonStructure = RadioButton & NoChildren;
+        public static Condition ScrollbarStructure = CreateScrollbarStructureCondition();
         public static Condition SemanticZoomStructure = SemanticZoom & (NoChildren | Children(List | ListItem))[ConditionDescriptions.Parentheses];
         public static Condition SeparatorStructure = Separator & NoChildren;
         public static Condition SliderStructure = CreateSliderStructureCondition();
@@ -98,6 +99,21 @@ namespace Axe.Windows.Rules.PropertyConditions
             var allChildren = (NoChildren | Children(Header | DataItem))[P];
 
             return DataGrid & headers & allChildren;
+        }
+
+        private static Condition CreateScrollbarStructureCondition()
+        {
+            // from https://docs.microsoft.com/en-us/windows/desktop/winauto/uiauto-supportscrollbarcontroltype
+
+            var P = ConditionDescriptions.Parentheses;
+
+            var buttons = (ChildCount(Button) == 0
+                | ChildCount(Button) == 2
+                | ChildCount(Button) == 4)[P];
+
+            var thumb = ChildCount(Thumb) == 0 | ChildCount(Thumb) == 1;
+
+            return ScrollBar & buttons & thumb;
         }
 
         private static Condition CreateSliderStructureCondition()
