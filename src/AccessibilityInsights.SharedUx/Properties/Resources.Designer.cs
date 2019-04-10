@@ -814,6 +814,44 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do not change channel.
+        /// </summary>
+        public static string ChangeChannelContainedDialog_BtnExit {
+            get {
+                return ResourceManager.GetString("ChangeChannelContainedDialog_BtnExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change channel.
+        /// </summary>
+        public static string ChangeChannelContainedDialog_BtnOk {
+            get {
+                return ResourceManager.GetString("ChangeChannelContainedDialog_BtnOk", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selecting “Change channel” will kick-off an uninstall and reinstall of Accessibility Insights to {0} channel.
+        ///
+        ///Do you want to change the channel? .
+        /// </summary>
+        public static string ChangeChannelContainedDialog_Text {
+            get {
+                return ResourceManager.GetString("ChangeChannelContainedDialog_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Change channel.
+        /// </summary>
+        public static string ChangeChannelContainedDialog_Title {
+            get {
+                return ResourceManager.GetString("ChangeChannelContainedDialog_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Updated every few days, the Canary channel releases the latest builds. It has not been tested or used..
         /// </summary>
         public static string ChannelConfigControl_CanaryDescription {

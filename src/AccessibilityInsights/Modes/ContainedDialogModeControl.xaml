@@ -6,8 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" KeyboardNavigation.TabNavigation="Cycle"
-             xmlns:dialogs="clr-namespace:AccessibilityInsights.SharedUx.Dialogs;assembly=AccessibilityInsights.SharedUx"
-             KeyboardNavigation.DirectionalNavigation="Cycle">
+        KeyboardNavigation.DirectionalNavigation="Cycle">
     <UserControl.Background>
         <SolidColorBrush Opacity="0.25" Color="Black"/>
     </UserControl.Background>
@@ -18,6 +17,5 @@
         <Border.Effect>
             <DropShadowEffect Opacity="0.5" BlurRadius="120"></DropShadowEffect>
         </Border.Effect>
-        <dialogs:TelemetryApproveContainedDialog/>
     </Border>
 </UserControl>

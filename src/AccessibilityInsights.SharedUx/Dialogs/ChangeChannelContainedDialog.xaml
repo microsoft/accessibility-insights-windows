@@ -8,44 +8,42 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
-             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
-             mc:Ignorable="d" 
-             AutomationProperties.Name="{x:Static properties:Resources.AutomationNameTelemetryMode}"
-             d:DesignHeight="450" d:DesignWidth="800">
+    mc:Ignorable="d" 
+             AutomationProperties.Name="{x:Static properties:Resources.AutomationNameTelemetryMode}">
     <dialogs:ContainedDialog.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
-    <Grid Height="380" Width="370"  HorizontalAlignment="Center" VerticalAlignment="Center"
+    <Grid Height="235" Width="502"  HorizontalAlignment="Center" VerticalAlignment="Center"
               Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="19"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="18,24,0,0">
-            <Label HorizontalAlignment="Left" Content="{x:Static properties:Resources.LabelContentTelemetryDialogLabel}" Style="{StaticResource TxtTelemetryDialogLabel}"/>
-        </Grid>
-        <Grid Grid.Row="1" Margin="24,5,0,0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="320"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Style="{StaticResource TxtTelemetryDialogText}" TextWrapping="Wrap" >
-                    <Run Text="{x:Static properties:Resources.RunTextHelpCommunity1}"/>
-                    <Hyperlink x:Name="hlHelpCommunity" AutomationProperties.Name="{x:Static properties:Resources.RunTextHelpCommunity2}" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077765" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None"><Run Text="{x:Static properties:Resources.RunTextHelpCommunity2}" /></Hyperlink>
-                    <Run Text="{x:Static properties:Resources.RunTextHelpCommunity3}" />
-            </TextBlock>
-        </Grid>
-        
-        <Grid Grid.Row="4" Margin="1,24,24,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="24"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="24"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left"
+               Content="{x:Static properties:Resources.ChangeChannelContainedDialog_Title}"
+               Style="{StaticResource TxtTelemetryDialogLabel}"/>
+        <TextBlock Margin="0,12,0,0" Style="{StaticResource TxtTelemetryDialogText}" TextWrapping="Wrap"
+                   Grid.Row="2" Grid.Column="1">
+            <Run Name="runChannelChange" Text="{x:Static properties:Resources.ChangeChannelContainedDialog_Text}"/>
+        </TextBlock>
+        <Grid Grid.Row="3" Grid.Column="1" Margin="0,24,0,0">
             <Button x:Name="btnExit" UseLayoutRounding="True"
-                        Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="btnExit_Click" Content="{x:Static properties:Resources.btnExitContentTelemetryOK}" Style="{StaticResource BtnBlue}"/>
+                    Width="225" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                    Click="btnExit_Click" Content="{x:Static properties:Resources.ChangeChannelContainedDialog_BtnExit}"
+                    Style="{StaticResource BtnBlueSquared}"/>
             <Button x:Name="btnOk" UseLayoutRounding="True"
-                        Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="BtnOk_Click" Content="{x:Static properties:Resources.btnExitContentTelemetryOK}" Style="{StaticResource BtnBlue}"/>
+                    Width="225" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="BtnOk_Click"
+                    Content="{x:Static properties:Resources.ChangeChannelContainedDialog_BtnOk}"
+                    Style="{StaticResource BtnBlueSquared}"/>
         </Grid>
     </Grid>
 </dialogs:ContainedDialog>

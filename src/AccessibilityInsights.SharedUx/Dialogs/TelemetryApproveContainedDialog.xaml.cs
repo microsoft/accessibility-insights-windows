@@ -57,5 +57,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             WaitHandle.Set();
         }
+
+        protected override void SetFocusOnDefaultControl()
+        {
+            btnExit.Focus();
+        }
     }
 }

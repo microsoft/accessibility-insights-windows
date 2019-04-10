@@ -1,46 +1,28 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using System.Diagnostics;
+using AccessibilityInsights.SetupLibrary;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Navigation;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
-    /// <summary>
-    /// Interaction logic for TelemetryApproveContainedDialog.xaml
+    /// <summary
+    /// Interaction logic for ChangeChannelContainedDialog.xaml
     /// </summary>
     public partial class ChangeChannelContainedDialog : ContainedDialog
     {
-        public ChangeChannelContainedDialog()
+        public ChangeChannelContainedDialog(ReleaseChannel channel)
         {
             InitializeComponent();
+            runChannelChange.Text = string.Format(CultureInfo.InvariantCulture, Properties.Resources.ChangeChannelContainedDialog_Text, channel);
             WaitHandle.Reset();
         }
 
-        /// <summary>
-        /// Go to link
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        protected override void SetFocusOnDefaultControl()
         {
-            try
-            {
-                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
-            }
-            catch
-            {
-                MessageDialog.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link, e.Uri.AbsoluteUri));
-            }
+            btnOk.Focus();
         }
 
-        /// <summary>
-        /// Updates telemetry settings based on user input
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;
