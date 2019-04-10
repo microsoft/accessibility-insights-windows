@@ -1,35 +1,24 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace AccessibilityInsights.Modes
+namespace AccessibilityInsights.SharedUx.Dialogs
 {
     /// <summary>
-    /// Interaction logic for TelemetryApproveModeControl.xaml
+    /// Interaction logic for TelemetryApproveContainedDialog.xaml
     /// </summary>
-    public partial class TelemetryApproveModeControl : UserControl
+    public partial class TelemetryApproveContainedDialog : ContainedDialog
     {
-        public TelemetryApproveModeControl()
+        public TelemetryApproveContainedDialog()
         {
             InitializeComponent();
-        }
-
-        /// <summary>
-        /// Override LocalizedControlType
-        /// </summary>
-        /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(this, "page");
+            WaitHandle.Reset();
         }
 
         /// <summary>
@@ -59,33 +48,14 @@ namespace AccessibilityInsights.Modes
             ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog = false;
             ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry = ckbxAgreeToHelp.IsChecked.Value;
 
-            if (ckbxAgreeToHelp.IsChecked ?? false)
+            DialogResult = ckbxAgreeToHelp.IsChecked ?? false;
+
+            if (DialogResult)
                 TelemetryController.EnableTelemetry();
             else
                 TelemetryController.DisableTelemetry();
 
-            HideControl();
-        }
-
-        public void HideControl()
-        {
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        public void ShowControl()
-        {
-            this.Visibility = Visibility.Visible;
-
-            Dispatcher.InvokeAsync(() =>
-            {
-                this.SetFocusOnDefaultControl();
-            }
-           , System.Windows.Threading.DispatcherPriority.Input);
-        }
-
-        public void SetFocusOnDefaultControl()
-        {
-            this.ckbxAgreeToHelp.Focus();
+            WaitHandle.Set();
         }
     }
 }

@@ -61,15 +61,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help us improve.
-        /// </summary>
-        public static string AutomationNameTelemetryMode {
-            get {
-                return ResourceManager.GetString("AutomationNameTelemetryMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Navigation Bar.
         /// </summary>
         public static string bdLeftNavAutomationPropertiesName {
@@ -192,15 +183,6 @@ namespace AccessibilityInsights.Properties {
         public static string btnConfigToolTip {
             get {
                 return ResourceManager.GetString("btnConfigToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to OK.
-        /// </summary>
-        public static string btnExitContentTelemetryOK {
-            get {
-                return ResourceManager.GetString("btnExitContentTelemetryOK", resourceCulture);
             }
         }
         
@@ -494,15 +476,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I agree to enable telemetry.
-        /// </summary>
-        public static string ckbxAgreeToHelp {
-            get {
-                return ResourceManager.GetString("ckbxAgreeToHelp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to  Don&apos;t show this again.
         /// </summary>
         public static string ckbxDontShowContent {
@@ -733,15 +706,6 @@ namespace AccessibilityInsights.Properties {
         public static string imageVideoAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("imageVideoAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to We need your help.
-        /// </summary>
-        public static string LabelContentTelemetryDialogLabel {
-            get {
-                return ResourceManager.GetString("LabelContentTelemetryDialogLabel", resourceCulture);
             }
         }
         
@@ -1003,44 +967,6 @@ namespace AccessibilityInsights.Properties {
         public static string runSelectedTestText {
             get {
                 return ResourceManager.GetString("runSelectedTestText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to By opting into telemetry, you.
-        /// </summary>
-        public static string RunTextHelpCommunity1 {
-            get {
-                return ResourceManager.GetString("RunTextHelpCommunity1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to help the community.
-        /// </summary>
-        public static string RunTextHelpCommunity2 {
-            get {
-                return ResourceManager.GetString("RunTextHelpCommunity2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to develop inclusive software.
-        ///
-        ///We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features..
-        /// </summary>
-        public static string RunTextHelpCommunity3 {
-            get {
-                return ResourceManager.GetString("RunTextHelpCommunity3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can change this choice anytime under Settings..
-        /// </summary>
-        public static string RunTextPrivacyStatement {
-            get {
-                return ResourceManager.GetString("RunTextPrivacyStatement", resourceCulture);
             }
         }
         
@@ -1348,15 +1274,6 @@ namespace AccessibilityInsights.Properties {
         public static string tcTabsWhatsNewHeader {
             get {
                 return ResourceManager.GetString("tcTabsWhatsNewHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Invalid Link {0}.
-        /// </summary>
-        public static string TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link {
-            get {
-                return ResourceManager.GetString("TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link", resourceCulture);
             }
         }
         

@@ -256,6 +256,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help us improve.
+        /// </summary>
+        public static string AutomationNameTelemetryMode {
+            get {
+                return ResourceManager.GetString("AutomationNameTelemetryMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Run action with the value.
         /// </summary>
         public static string btnActionAutomationPropertiesName {
@@ -324,6 +333,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string btnConfigAutomationPropertiesHelpText {
             get {
                 return ResourceManager.GetString("btnConfigAutomationPropertiesHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string btnExitContentTelemetryOK {
+            get {
+                return ResourceManager.GetString("btnExitContentTelemetryOK", resourceCulture);
             }
         }
         
@@ -891,6 +909,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string CheckStateConverter_Convert_Currently_unchecked {
             get {
                 return ResourceManager.GetString("CheckStateConverter_Convert_Currently_unchecked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to I agree to enable telemetry.
+        /// </summary>
+        public static string ckbxAgreeToHelp {
+            get {
+                return ResourceManager.GetString("ckbxAgreeToHelp", resourceCulture);
             }
         }
         
@@ -2121,6 +2148,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to We need your help.
+        /// </summary>
+        public static string LabelContentTelemetryDialogLabel {
+            get {
+                return ResourceManager.GetString("LabelContentTelemetryDialogLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 10.
         /// </summary>
         public static string LabelContentTen {
@@ -3239,6 +3275,35 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to By opting into telemetry, you.
+        /// </summary>
+        public static string RunTextHelpCommunity1 {
+            get {
+                return ResourceManager.GetString("RunTextHelpCommunity1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to help the community.
+        /// </summary>
+        public static string RunTextHelpCommunity2 {
+            get {
+                return ResourceManager.GetString("RunTextHelpCommunity2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to develop inclusive software.
+        ///
+        ///We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features..
+        /// </summary>
+        public static string RunTextHelpCommunity3 {
+            get {
+                return ResourceManager.GetString("RunTextHelpCommunity3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  will help you find about 25% of accessibility issues..
         /// </summary>
         public static string RunTextHelpFindIssues {
@@ -3298,6 +3363,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextManualColorTest {
             get {
                 return ResourceManager.GetString("RunTextManualColorTest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can change this choice anytime under Settings..
+        /// </summary>
+        public static string RunTextPrivacyStatement {
+            get {
+                return ResourceManager.GetString("RunTextPrivacyStatement", resourceCulture);
             }
         }
         
@@ -3821,6 +3895,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tbViewResultsText {
             get {
                 return ResourceManager.GetString("tbViewResultsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Link {0}.
+        /// </summary>
+        public static string TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link {
+            get {
+                return ResourceManager.GetString("TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link", resourceCulture);
             }
         }
         

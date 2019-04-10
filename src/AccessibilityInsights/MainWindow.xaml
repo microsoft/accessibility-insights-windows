@@ -495,7 +495,7 @@
                 </Grid>
             </Grid>
             <modecontrols:StartUpModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlStartUpMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="30,0,0,0" />
-            <modecontrols:TelemetryApproveModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlTelemetryDialog" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="0" />
+            <modecontrols:ContainedDialogModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlTelemetryDialog" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="0" />
             <controls:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"
                             x:Name="ctrlProgressRing"
                             Panel.ZIndex="3"
