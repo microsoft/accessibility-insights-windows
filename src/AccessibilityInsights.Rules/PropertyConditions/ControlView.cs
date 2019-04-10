@@ -139,7 +139,7 @@ namespace Axe.Windows.Rules.PropertyConditions
             var buttons = ChildCount(Button) == 2;
             var edit = ChildCount(Edit) <= 1;
 
-            var allChildren = Children(Button | Edit);
+            var allChildren = Children(Button | Edit | ListItem);
 
             return Spinner & buttons & edit & allChildren;
         }

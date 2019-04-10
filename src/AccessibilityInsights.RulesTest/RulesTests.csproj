@@ -115,6 +115,8 @@
     <Compile Include="Library\HeadingLevelDescendsWhenNestedTest.cs" />
     <Compile Include="Library\LocalizedLandmarkTypeNotCustomTests.cs" />
     <Compile Include="Library\Structure\ControlView\ScrollbarTest.cs" />
+    <Compile Include="Library\Structure\ContentView\SpinnerTests.cs" />
+    <Compile Include="Library\Structure\ControlView\SpinnerTests.cs" />
     <Compile Include="Library\UWPTest.cs" />
     <Compile Include="PatternIDs.cs" />
     <Compile Include="PropertyConditions\BoolPropertiesTest.cs" />
