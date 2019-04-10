@@ -1,4 +1,6 @@
-﻿using Axe.Windows.Core.Bases;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +10,7 @@ using System.Threading.Tasks;
 namespace Axe.Windows.Rules.PropertyConditions
 {
     /// <summary>
-    /// Contains commonly used conditions for testing against the Value pattern of an IA11yElement.
+    /// Exposes the value property to enable condition matching against the Value pattern of an IA11yElement.
     /// </summary>
     static class ValuePattern
     {
