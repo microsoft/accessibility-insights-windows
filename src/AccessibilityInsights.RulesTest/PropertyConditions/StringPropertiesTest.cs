@@ -277,7 +277,7 @@ namespace Axe.Windows.RulesTest.PropertyConditions
         }
 
         [TestMethod]
-        public void StringProperty_MatchesRegEx_False()
+        public void MatchesRegEx_CaseDoesNotMatch_False()
         {
             using (var e = new MockA11yElement())
             {
