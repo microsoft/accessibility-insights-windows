@@ -922,7 +922,7 @@ namespace Axe.Windows.RulesTest
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldNotSupportScrollPattern]);
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldNotSupportTablePattern]);
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldNotSupportTogglePattern]);
-            Assert.AreEqual(EvaluationCode.Pass, results[RuleId.ControlShouldNotSupportValuePattern]);
+            Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldNotSupportValuePattern]);
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldNotSupportWindowPattern]);
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldSupportExpandCollapsePattern]);
             Assert.AreEqual(EvaluationCode.NotApplicable, results[RuleId.ControlShouldSupportGridItemPattern]);

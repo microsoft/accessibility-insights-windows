@@ -244,6 +244,7 @@
     <Compile Include="Library\NameWithValidBoundingRectangle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyConditions\UWP.cs" />
+    <Compile Include="PropertyConditions\ValuePattern.cs" />
     <Compile Include="Resources\ConditionDescriptions.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

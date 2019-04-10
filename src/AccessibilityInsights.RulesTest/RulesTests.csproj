@@ -87,6 +87,7 @@
     <Compile Include="Library\ComboBoxShouldNotSupportScrollPatternTests.cs" />
     <Compile Include="Library\ControlShouldNotSupportInvokePattern.cs" />
     <Compile Include="Library\ControlShouldNotSupportScrollPatternTests.cs" />
+    <Compile Include="Library\ControlShouldNotSupportValuePatternTests.cs" />
     <Compile Include="Library\ControlShouldSupportSetInfoTest.cs" />
     <Compile Include="Library\ControlShouldSupportTablePattern.cs" />
     <Compile Include="Library\IsKeyboardFocusableTopLevelTextPattern.cs" />
@@ -151,6 +152,7 @@
     <Compile Include="PropertyConditions\EnumPropertyUnitTests.cs" />
     <Compile Include="PropertyConditions\ElementGroupsTests.cs" />
     <Compile Include="PropertyConditions\ValueConditionUnitTests.cs" />
+    <Compile Include="PropertyConditions\ValuePatternTests.cs" />
     <Compile Include="RulesProviderTests.cs" />
     <Compile Include="CCAControlTypesFilterTest.cs" />
   </ItemGroup>
