@@ -64,12 +64,12 @@ function ValidateChannelInfo($channel)
 }
 
 # Load the octokit dll
-Add-Type -Path ((Get-Location).Path + "\Octokit.0.32.0\lib\net45\Octokit.dll")
+Add-Type -Path ((Get-Location).Path + '\Octokit.0.32.0\lib\net45\Octokit.dll')
 
 # Get a new client with an appropriate product header value
 $productHeader = [Octokit.ProductHeaderValue]::new("AIWindows-ReleaseInfoValidation")
 $client = [Octokit.GitHubClient]::new($productHeader)
-$client.Credentials = [Octokit.Credentials]::new("$(gitPATX)")
+$client.Credentials = [Octokit.Credentials]::new($($env:gitPATX))
 
 # Get tag names for existing releases
 $knownTags = @()
