@@ -1,0 +1,15 @@
+name: $(date:yyyy-MM-dd)$(rev:.rr)
+trigger: none
+pr: none
+
+jobs:
+- job: ValidateReleaseInfo
+  pool:
+    vmImage: 'vs2017-win2016'
+  steps:
+  - task: PowerShell@2
+    displayName: 'Validate release_info.json Files'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\ValidateReleaseInfo.ps1
+      arguments: '$(Build.Repository.LocalPath)'
