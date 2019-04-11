@@ -791,6 +791,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to page.
+        /// </summary>
+        public static string LocalizedControlType_Page {
+            get {
+                return ResourceManager.GetString("LocalizedControlType_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} {1} {2}.
         /// </summary>
         public static string MainWindow_AutomationPropertiesName_0_1_2 {

@@ -154,7 +154,7 @@ namespace AccessibilityInsights.Modes
             var channelDialog = new ChangeChannelContainedDialog(appSettingsCtrl.SelectedReleaseChannel);
 
             if (appSettingsCtrl.SelectedReleaseChannel == Configuration.ReleaseChannel ||
-                !await MainWin.ctrlTelemetryDialog.ShowControl(channelDialog).ConfigureAwait(false))
+                !await MainWin.ctrlDialogContainer.ShowControl(channelDialog).ConfigureAwait(false))
             {
                 return false;
             }

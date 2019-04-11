@@ -608,4 +608,7 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="shortcutsDescription" xml:space="preserve">
     <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
   </data>
+  <data name="LocalizedControlType_Page" xml:space="preserve">
+    <value>page</value>
+  </data>
 </root>

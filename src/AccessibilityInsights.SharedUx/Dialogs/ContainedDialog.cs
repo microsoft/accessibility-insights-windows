@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
@@ -23,6 +24,20 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// Used to hide the ContainedDialog's container
         /// </summary>
         protected Action HideDialog { get; set; }
+
+        public ContainedDialog()
+        {
+            KeyDown += ContainedDialog_KeyUp;
+        }
+
+        private void ContainedDialog_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.Key != Key.Escape) return;
+
+            e.Handled = true;
+            DialogResult = false;
+            WaitHandle.Set();
+        }
 
         protected abstract void SetFocusOnDefaultControl();
 

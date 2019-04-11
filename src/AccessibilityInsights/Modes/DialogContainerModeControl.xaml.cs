@@ -10,11 +10,11 @@ using System.Windows.Controls;
 namespace AccessibilityInsights.Modes
 {
     /// <summary>
-    /// Interaction logic for ContainedDialogModeControl.xaml
+    /// Interaction logic for DialogContainerModeControl.xaml
     /// </summary>
-    public partial class ContainedDialogModeControl : UserControl
+    public partial class DialogContainerModeControl : UserControl
     {
-        public ContainedDialogModeControl()
+        public DialogContainerModeControl()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new CustomControlOverridingAutomationPeer(this, "page");
+            return new CustomControlOverridingAutomationPeer(this, Properties.Resources.LocalizedControlType_Page);
         }
 
         public void HideControl() => Dispatcher.Invoke(() =>
