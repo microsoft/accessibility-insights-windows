@@ -494,7 +494,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to switch channels: {0}.
+        ///   Looks up a localized string similar to Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later..
         /// </summary>
         public static string ConfigurationModeControl_VersionSwitcherException {
             get {

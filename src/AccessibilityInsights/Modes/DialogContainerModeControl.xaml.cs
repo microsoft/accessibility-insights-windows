@@ -28,16 +28,26 @@ namespace AccessibilityInsights.Modes
             return new CustomControlOverridingAutomationPeer(this, Properties.Resources.LocalizedControlType_Page);
         }
 
-        public void HideControl() => Dispatcher.Invoke(() =>
+        private void HideControl() => Dispatcher.Invoke(() =>
         {
             this.Visibility = Visibility.Collapsed;
             brdrContainer.Child = null;
         });
 
-        public async Task<bool> ShowControl(ContainedDialog containedDialog)
+        private void ShowControl(ContainedDialog containedDialog) => Dispatcher.InvokeAsync(() =>
         {
+            this.Visibility = Visibility.Visible;
             brdrContainer.Child = containedDialog;
-            Visibility = Visibility.Visible;
+        });
+
+        public async Task<bool> ShowDialog(ContainedDialog containedDialog)
+        {
+            if (brdrContainer.Child is ContainedDialog oldDlg)
+            {
+                oldDlg.DismissDialog();
+            }
+
+            ShowControl(containedDialog);
 
             return await containedDialog.ShowDialog(HideControl).ConfigureAwait(false);
         }

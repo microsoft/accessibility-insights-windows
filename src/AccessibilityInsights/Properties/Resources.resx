@@ -301,7 +301,7 @@
     <value>Settings page</value>
   </data>
   <data name="ConfigurationModeControl_VersionSwitcherException" xml:space="preserve">
-    <value>Failed to switch channels: {0}</value>
+    <value>Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later.</value>
   </data>
   <data name="ctrlTabsAutomationPropertiesName" xml:space="preserve">
     <value>Event information</value>

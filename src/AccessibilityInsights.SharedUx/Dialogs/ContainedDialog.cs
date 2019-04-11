@@ -35,6 +35,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             if (e.Key != Key.Escape) return;
 
             e.Handled = true;
+            DismissDialog();
+        }
+
+        public void DismissDialog()
+        {
             DialogResult = false;
             WaitHandle.Set();
         }

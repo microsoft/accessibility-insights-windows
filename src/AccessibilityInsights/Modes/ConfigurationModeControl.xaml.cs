@@ -154,7 +154,7 @@ namespace AccessibilityInsights.Modes
             var channelDialog = new ChangeChannelContainedDialog(appSettingsCtrl.SelectedReleaseChannel);
 
             if (appSettingsCtrl.SelectedReleaseChannel == Configuration.ReleaseChannel ||
-                !await MainWin.ctrlDialogContainer.ShowControl(channelDialog).ConfigureAwait(false))
+                !await MainWin.ctrlDialogContainer.ShowDialog(channelDialog).ConfigureAwait(false))
             {
                 return false;
             }
@@ -170,7 +170,7 @@ namespace AccessibilityInsights.Modes
                 ex.ReportException();
 
                 Dispatcher.Invoke(() =>
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException, ex.Message))
+                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException))
                 );
             }
 

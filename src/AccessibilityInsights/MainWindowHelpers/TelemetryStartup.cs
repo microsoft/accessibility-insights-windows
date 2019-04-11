@@ -19,12 +19,8 @@ namespace AccessibilityInsights
             if (ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog)
             {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-                ctrlDialogContainer.ShowControl(new TelemetryApproveContainedDialog());
+                ctrlDialogContainer.ShowDialog(new TelemetryApproveContainedDialog());
 #pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
-            }
-            else
-            {
-                ctrlDialogContainer.HideControl();
             }
         }
     }
