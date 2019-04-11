@@ -208,12 +208,20 @@
                                             <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValuePass}"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
+                                    <Setter Property="AutomationProperties.Name">
+                                        <Setter.Value>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding RelativeSource="{RelativeSource Self}" Path="Text"></Binding>
+                                                <Binding ElementName="regularText" Path="Text"></Binding>
+                                            </MultiBinding>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Margin="4 0">
-                        <TextBlock Text="{x:Static Properties:Resources.TextBlockTextRegular}" FontSize="{DynamicResource ConstStandardTextSize}" Margin="0 8 0 0"/>
+                        <TextBlock x:Name="regularText" Text="{x:Static Properties:Resources.TextBlockTextRegular}" FontSize="{DynamicResource ConstStandardTextSize}" Margin="0 8 0 0"/>
                         <TextBlock Text="{x:Static Properties:Resources.TextBlockTextRequiresRatio}" Margin="0 0 0 8"/>
                     </StackPanel>
                     <TextBlock x:Name="smallSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="2" Grid.Column="1" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
@@ -253,12 +261,20 @@
                                             <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValuePass}"></Setter>
                                         </DataTrigger>
                                     </Style.Triggers>
+                                    <Setter Property="AutomationProperties.Name">
+                                        <Setter.Value>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding RelativeSource="{RelativeSource Self}" Path="Text"></Binding>
+                                                <Binding ElementName="largeText" Path="Text"></Binding>
+                                            </MultiBinding>
+                                        </Setter.Value>
+                                    </Setter>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" Margin="4 0">
-                        <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Large}" FontSize="{DynamicResource ConstStandardTextSize}"/>
+                        <TextBlock x:Name="largeText" Text="{x:Static Properties:Resources.ColorContrast_Large}" FontSize="{DynamicResource ConstStandardTextSize}"/>
                         <TextBlock Text="{x:Static Properties:Resources.ColorContrast_FontSizes}" Margin="0"/>
                         <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Requires}" Margin="0 0 0 8"/>
                     </StackPanel>
