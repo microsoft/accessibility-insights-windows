@@ -4,11 +4,13 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -125,7 +127,7 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void buttonOk_Click(object sender, RoutedEventArgs e)
+        private async void buttonOk_Click(object sender, RoutedEventArgs e)
         {
             bool issueReporterUpdated = this.connectionCtrl.UpdateConfigFromSelections(Configuration);
             this.appSettingsCtrl.UpdateConfigFromSelections(Configuration);
@@ -141,22 +143,38 @@ namespace AccessibilityInsights.Modes
                 MainWin.UpdateMainWindowConnectionFields();
             }
 
-            if (appSettingsCtrl.SelectedReleaseChannel != Configuration.ReleaseChannel)
+            if (await HandleReleaseSwitch().ConfigureAwait(false))
+                return;
+
+            Dispatcher.Invoke(() => MainWin.TransitionToSelectActionMode());
+        }
+
+        private async Task<bool> HandleReleaseSwitch()
+        {
+            var channelDialog = new ChangeChannelContainedDialog(appSettingsCtrl.SelectedReleaseChannel);
+
+            if (appSettingsCtrl.SelectedReleaseChannel == Configuration.ReleaseChannel ||
+                !await MainWin.ctrlDialogContainer.ShowDialog(channelDialog).ConfigureAwait(false))
             {
-                try
-                {
-                    VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
-                    MainWin.Close();
-                    return;
-                }
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException, ex.Message));
-                }
+                return false;
             }
 
-            MainWin.TransitionToSelectActionMode();
+            try
+            {
+                VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
+                Dispatcher.Invoke(() => MainWin.Close());
+                return true;
+            }
+            catch (Exception ex)
+            {
+                ex.ReportException();
+
+                Dispatcher.Invoke(() =>
+                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException))
+                );
+            }
+
+            return false;
         }
 
         /// <summary>

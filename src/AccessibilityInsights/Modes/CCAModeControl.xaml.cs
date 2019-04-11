@@ -90,7 +90,7 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new CustomControlOverridingAutomationPeer(this, "page");
+            return new CustomControlOverridingAutomationPeer(this, Properties.Resources.LocalizedControlType_Page);
         }
 
         public CCAModeControl()

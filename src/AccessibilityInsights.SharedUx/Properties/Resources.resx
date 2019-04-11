@@ -1521,4 +1521,47 @@ We collect anonymized data to identify the top accessibility issues found by use
   <data name="ChannelConfigControl_CanaryDescription" xml:space="preserve">
     <value>Updated every few days, the Canary channel releases the latest builds. It has not been tested or used.</value>
   </data>
+  <data name="RunTextHelpCommunity3" xml:space="preserve">
+    <value>develop inclusive software.
+
+We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features.</value>
+  </data>
+  <data name="RunTextHelpCommunity1" xml:space="preserve">
+    <value>By opting into telemetry, you</value>
+  </data>
+  <data name="RunTextHelpCommunity2" xml:space="preserve">
+    <value>help the community</value>
+  </data>
+  <data name="ckbxAgreeToHelp" xml:space="preserve">
+    <value>I agree to enable telemetry</value>
+  </data>
+  <data name="RunTextPrivacyStatement" xml:space="preserve">
+    <value>You can change this choice anytime under Settings.</value>
+  </data>
+  <data name="btnExitContentTelemetryOK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link" xml:space="preserve">
+    <value>Invalid Link {0}</value>
+  </data>
+  <data name="LabelContentTelemetryDialogLabel" xml:space="preserve">
+    <value>We need your help</value>
+  </data>
+  <data name="AutomationNameTelemetryMode" xml:space="preserve">
+    <value>Help us improve</value>
+  </data>
+  <data name="ChangeChannelContainedDialog_Title" xml:space="preserve">
+    <value>Change channel</value>
+  </data>
+  <data name="ChangeChannelContainedDialog_Text" xml:space="preserve">
+    <value>Selecting “Change channel” will kick-off an uninstall and reinstall of Accessibility Insights to {0} channel.
+
+Do you want to change the channel? </value>
+  </data>
+  <data name="ChangeChannelContainedDialog_BtnExit" xml:space="preserve">
+    <value>Do not change channel</value>
+  </data>
+<data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
+    <value>Change channel</value>
+  </data>
 </root>
