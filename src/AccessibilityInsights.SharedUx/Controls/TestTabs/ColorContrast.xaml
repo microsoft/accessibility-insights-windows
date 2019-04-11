@@ -70,7 +70,6 @@
                          Margin="0 4 115 10" Grid.ColumnSpan="2" Style="{StaticResource TbFocusable}">
                         <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTestManualPre}"/>
                         <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=TextBrushGray}" FontSize="{DynamicResource StandardTextSize}"/>
-                        <Run Text=". "/>
                         <Run Text="{x:Static Properties:Resources.ColorContrast_HowToTestManualPost}"/>
                 </TextBlock>
                 <Label Grid.Row="5"  Margin="0,6,0,5" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource lblXLHeader}" Content="{x:Static Properties:Resources.ColorContrast_Analyzer}"></Label>
