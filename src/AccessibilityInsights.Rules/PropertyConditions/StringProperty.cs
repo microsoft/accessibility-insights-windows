@@ -3,6 +3,7 @@
 using System;
 using System.Text.RegularExpressions;
 using Axe.Windows.Core.Bases;
+using Axe.Windows.Rules.Resources;
 
 namespace Axe.Windows.Rules.PropertyConditions
 {
@@ -21,16 +22,37 @@ namespace Axe.Windows.Rules.PropertyConditions
         public ValueCondition<int> Length;
         private Func<IA11yElement, string> GetStringPropertyValue;
 
+        /// <summary>
+        /// Represents a string property of an element such as "Name", "LocalizedControlType", etc.
+        /// This may also apply to patterns, so please include the pattern name where applicable.
+        /// This information may be visible to users.
+        /// </summary>
+        private readonly string PropertyDescription = ConditionDescriptions.StringPropertyNotSet;
+
         // special character RegEx
         private static string SpecialCharacters = "\\s*[\u0387\u16EB\u2022\u2024\u2027\u2219\u22C5\u2E31\u2E33\u30FB\uA78F\uE946]+\\s*";
         private static Regex SpecialCharacterRegEx = new Regex(SpecialCharacters, RegexOptions.IgnoreCase);
 
         public StringProperty(Func<IA11yElement, string> valueGetter)
+            : this(valueGetter, ConditionDescriptions.StringPropertyNotSet)
+        { }
+
+        /// <summary>
+        /// StringProperty constructor with property description
+        /// </summary>
+        /// <param name="valueGetter"></param>
+        /// <param name="propertyDescription">
+        /// Represents a string property of an element such as "Name", "LocalizedControlType", etc.
+        /// This may also apply to patterns, so please include the pattern name where applicable.
+        /// This information may be visible to users.
+        /// </param>
+        public StringProperty(Func<IA11yElement, string> valueGetter, string propertyDescription)
         {
             GetStringPropertyValue = valueGetter;
+            PropertyDescription = propertyDescription;
             this.Null = CreateNullCondition();
-            this.NotNull = ~Null;
             this.Empty = CreateEmptyCondition();
+            this.NotNull = ~Null;
             this.NotEmpty = ~Empty;
             this.NullOrEmpty = Null | Empty;
             this.NotNullOrEmpty = NotNull & NotEmpty;
@@ -117,6 +139,26 @@ namespace Axe.Windows.Rules.PropertyConditions
             if (String.IsNullOrWhiteSpace(s2)) return false;
 
             return string.Equals(s1, s2, StringComparison.OrdinalIgnoreCase);
+        }
+
+        public Condition MatchesRegEx(string s)
+        {
+            return Condition.Create(e =>
+            {
+                Regex r = new Regex(s);
+                return r.IsMatch(GetStringPropertyValue(e));
+            },
+            String.Format(ConditionDescriptions.MatchesRegEx, PropertyDescription, s));
+        }
+
+        public Condition MatchesRegEx(string s, RegexOptions options)
+        {
+            return Condition.Create(e =>
+            {
+                Regex r = new Regex(s, options);
+                return r.IsMatch(GetStringPropertyValue(e));
+                },
+                String.Format(ConditionDescriptions.MatchesRegExWithOptions, PropertyDescription, s, options.ToString()));
         }
     } // class
 } // namespace

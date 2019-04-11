@@ -297,5 +297,19 @@ namespace Axe.Windows.RulesTest
                 SetProperty(PropertyType.UIA_SizeOfSetPropertyId, value);
             }
         }
+
+        public int NativeWindowHandle
+        {
+            get
+            {
+                TryGetPropertyValue(PropertyType.UIA_NativeWindowHandlePropertyId, out int value);
+                return value;
+            }
+
+            set
+            {
+                SetProperty(PropertyType.UIA_NativeWindowHandlePropertyId, value);
+            }
+        }
     } // class
 } // namespace

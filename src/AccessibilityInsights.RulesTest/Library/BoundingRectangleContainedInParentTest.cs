@@ -294,5 +294,27 @@ namespace Axe.Windows.RulesTest.Library
 
             Assert.AreEqual(Rule.Evaluate(e), EvaluationCode.Pass);
         }
+
+        [TestMethod]
+        public void BoundingRectangleContainedInParent_ChromeWindow_NotApplicable()
+        {
+            using (var e = new MockA11yElement())
+            using (var parent = new MockA11yElement())
+            {
+                e.BoundingRectangle = new Rectangle(300, 300, 500, 500);
+                parent.BoundingRectangle = new Rectangle(300, 300, 500, 500);
+
+                e.Parent = parent;
+                e.IsOffScreen = false;
+
+                Assert.IsTrue(Rule.Condition.Matches(e));
+
+                e.ControlTypeId = Pane;
+                e.ClassName = "Chrome_WidgetWin_2";
+                e.NativeWindowHandle = 100; // anything but 0
+
+                Assert.IsFalse(Rule.Condition.Matches(e));
+            } // using
+        }
     } // class
 } // namespace

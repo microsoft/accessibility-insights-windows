@@ -205,4 +205,21 @@
   <data name="Any" xml:space="preserve">
     <value>AnyOf({0})</value>
   </data>
+  <data name="IntPropertyNotSet" xml:space="preserve">
+    <value>[IntProperty not set]</value>
+  </data>
+  <data name="MatchesRegEx" xml:space="preserve">
+    <value>{0} matches regular expression "{1}"</value>
+    <comment>{0} = string property, {1} = regular expression</comment>
+  </data>
+  <data name="MatchesRegExWithOptions" xml:space="preserve">
+    <value>{0} matches regular expression "{1}" with options {2}</value>
+    <comment>{0} = string property, {1} = regular expression, {2} = options</comment>
+  </data>
+  <data name="NativeWindowHandle" xml:space="preserve">
+    <value>NativeWindowHandle</value>
+  </data>
+  <data name="StringPropertyNotSet" xml:space="preserve">
+    <value>[StringProperty not set]</value>
+  </data>
 </root>
