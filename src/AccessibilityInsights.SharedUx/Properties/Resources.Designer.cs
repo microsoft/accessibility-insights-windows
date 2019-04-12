@@ -1024,7 +1024,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To auto detect an element&apos;s contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the contrast ratio, and the confidence level..
+        ///   Looks up a localized string similar to Auto-detect an element’s color contrast ratio by hovering over, or keyboard focusing on an element in your target application..
         /// </summary>
         public static string ColorContrast_HowToTestAuto {
             get {
@@ -1033,7 +1033,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You can also select a color using the Color Picker box or enter its hex code..
+        ///   Looks up a localized string similar to button, choosing a color from the drop-down color picker, or entering a hex code value..
         /// </summary>
         public static string ColorContrast_HowToTestManualPost {
             get {
@@ -1042,7 +1042,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To manually select two colors to test the contrast ratio, select each color using the Eyedropper.
+        ///   Looks up a localized string similar to You can manually test the color contrast ratio by selecting colors with the eyedropper.
         /// </summary>
         public static string ColorContrast_HowToTestManualPre {
             get {

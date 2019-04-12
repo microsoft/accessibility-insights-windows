@@ -501,16 +501,16 @@ Accessibility Insights Support Team
     <value>Instructions</value>
   </data>
   <data name="ColorContrast_HowToTestAuto" xml:space="preserve">
-    <value>To auto detect an element's contrast ratio, hover over the element within a target application or set keyboard focus on the element. The analyzer will update with the auto detected colors, the contrast ratio, and the confidence level.</value>
+    <value>Auto-detect an element’s color contrast ratio by hovering over or keyboard focusing on an element in your target application.</value>
   </data>
   <data name="ColorContrast_Analyzer" xml:space="preserve">
     <value>Analyzer</value>
   </data>
   <data name="ColorContrast_HowToTestManualPre" xml:space="preserve">
-    <value>To manually select two colors to test the contrast ratio, select each color using the Eyedropper</value>
+    <value>You can manually test the color contrast ratio by selecting colors with the eyedropper</value>
   </data>
   <data name="ColorContrast_HowToTestManualPost" xml:space="preserve">
-    <value>You can also select a color using the Color Picker box or enter its hex code.</value>
+    <value>button, choosing a color from the drop-down color picker, or entering a hex code value.</value>
   </data>
   <data name="noElementSelected" xml:space="preserve">
     <value>no element selected</value>
