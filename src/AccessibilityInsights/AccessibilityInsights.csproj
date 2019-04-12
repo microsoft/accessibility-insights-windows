@@ -93,8 +93,8 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Enums\CCAView.cs" />
-    <Compile Include="Modes\TelemetryApproveModeControl.xaml.cs">
-      <DependentUpon>TelemetryApproveModeControl.xaml</DependentUpon>
+    <Compile Include="Modes\DialogContainerModeControl.xaml.cs">
+      <DependentUpon>DialogContainerModeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\Messages.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -109,7 +109,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Modes\TelemetryApproveModeControl.xaml">
+    <Page Include="Modes\DialogContainerModeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

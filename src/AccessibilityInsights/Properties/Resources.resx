@@ -301,7 +301,7 @@
     <value>Settings page</value>
   </data>
   <data name="ConfigurationModeControl_VersionSwitcherException" xml:space="preserve">
-    <value>Failed to switch channels: {0}</value>
+    <value>Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later.</value>
   </data>
   <data name="ctrlTabsAutomationPropertiesName" xml:space="preserve">
     <value>Event information</value>
@@ -605,36 +605,10 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="StartUpModeControl_btnExit" xml:space="preserve">
     <value>Get Started</value>
   </data>
-  <data name="RunTextHelpCommunity3" xml:space="preserve">
-    <value>develop inclusive software.
-
-We collect anonymized data to identify the top accessibility issues found by users. This will help focus the accessibility tools and standards community to improve guidelines, rules engines, and features.</value>
-  </data>
-  <data name="RunTextHelpCommunity1" xml:space="preserve">
-    <value>By opting into telemetry, you</value>
-  </data>
-  <data name="RunTextHelpCommunity2" xml:space="preserve">
-    <value>help the community</value>
-  </data>
-  <data name="ckbxAgreeToHelp" xml:space="preserve">
-    <value>I agree to enable telemetry</value>
-  </data>
-  <data name="RunTextPrivacyStatement" xml:space="preserve">
-    <value>You can change this choice anytime under Settings.</value>
-  </data>
-  <data name="btnExitContentTelemetryOK" xml:space="preserve">
-    <value>OK</value>
-  </data>
-  <data name="TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link" xml:space="preserve">
-    <value>Invalid Link {0}</value>
-  </data>
-  <data name="LabelContentTelemetryDialogLabel" xml:space="preserve">
-    <value>We need your help</value>
-  </data>
-  <data name="AutomationNameTelemetryMode" xml:space="preserve">
-    <value>Help us improve</value>
-  </data>
   <data name="shortcutsDescription" xml:space="preserve">
     <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
+  </data>
+  <data name="LocalizedControlType_Page" xml:space="preserve">
+    <value>page</value>
   </data>
 </root>

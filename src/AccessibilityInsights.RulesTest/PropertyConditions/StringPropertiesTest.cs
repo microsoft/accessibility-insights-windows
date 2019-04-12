@@ -264,5 +264,38 @@ namespace Axe.Windows.RulesTest.PropertyConditions
                 Assert.IsFalse(condition.Matches(e));
             } // using
         }
+
+        [TestMethod]
+        public void MatchesRegEx_CaseMatches_True()
+        {
+            using (var e = new MockA11yElement())
+            {
+                e.Name = "Eat your food";
+                var condition = Name.MatchesRegEx(@"fo+");
+                Assert.IsTrue(condition.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void MatchesRegEx_CaseDoesNotMatch_False()
+        {
+            using (var e = new MockA11yElement())
+            {
+                e.Name = "food";
+                var condition = Name.MatchesRegEx(@"Fo+");
+                Assert.IsFalse(condition.Matches(e));
+            } // using
+        }
+
+        [TestMethod]
+        public void MatchesRegExNoCase_CaseDoesNotMatch_True()
+        {
+            using (var e = new MockA11yElement())
+            {
+                e.Name = "Eat your Food";
+                var condition = Name.MatchesRegEx(@"foo", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                Assert.IsTrue(condition.Matches(e));
+            } // using
+        }
     } // class
 } // namespace
