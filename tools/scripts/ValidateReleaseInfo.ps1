@@ -38,6 +38,8 @@ function ValidateReleaseExists($version)
 
 function ValidateVersionRelationship($currentVersion, $minimumVersion)
 {
+	Write-Host 'CurrentVersion: ' $currentVersion
+	Write-Host 'MinumimVersion: ' $minimumVersion
 	$parsedCurrentVersion = [System.Version]::new($($currentVersion))
 	$parsedMinimumVersion = [System.Version]::new($($minimumVersion))
 
