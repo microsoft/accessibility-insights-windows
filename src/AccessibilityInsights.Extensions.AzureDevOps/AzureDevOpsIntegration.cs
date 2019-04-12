@@ -21,6 +21,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
@@ -442,6 +443,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             if (serverUri == null) return;
 
+            // If the main window is always on top, then an error occurs where
+            //  the login dialog is not a child of the main window, so we temporarily
+            //  turn topmost off and turn it back on after logging in
+            bool oldTopmost = false;
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                oldTopmost = Application.Current.MainWindow.Topmost;
+                Application.Current.MainWindow.Topmost = false;
+            });
+
             try
             {
                 await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
@@ -451,6 +462,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 FileIssueHelpers.FlushToken(serverUri);
             }
+
+            Application.Current.Dispatcher.Invoke(() => Application.Current.MainWindow.Topmost = oldTopmost);
         }
 
         /// <summary>
