@@ -1,6 +1,6 @@
-## April 2019 Insider Release ([v1.1.0828.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0828.01))
+## April 2019 Insider Release ([v1.1.0831.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0831.02))
 
-Welcome to the April 12th, 2019 release of Accessibility Insights for Windows.
+Welcome to the April 15th, 2019 release of Accessibility Insights for Windows.
 
 ### Highlights
 
