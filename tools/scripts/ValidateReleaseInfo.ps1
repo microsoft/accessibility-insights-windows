@@ -32,19 +32,17 @@ function ValidateReleaseExists($version)
 	$tagName = 'v' + $version
 	$parsedVersion = [System.Version]::new($($version))
 	$valid = $knownTags.Contains($tagName) -and ($parsedVersion.Revision -gt 0)
-	Write-Host $(GetStatus($valid)) 'Does release' $tagName 'exist?'
+	Write-Host $(GetStatus $valid) 'Does release' $tagName 'exist?'
 	return $valid
 }
 
 function ValidateVersionRelationship($currentVersion, $minimumVersion)
 {
-	Write-Host 'CurrentVersion: ' $currentVersion
-	Write-Host 'MinumimVersion: ' $minimumVersion
 	$parsedCurrentVersion = [System.Version]::new($($currentVersion))
 	$parsedMinimumVersion = [System.Version]::new($($minimumVersion))
 
 	$valid = $parsedCurrentVersion -ge $parsedMinimumVersion
-	Write-Host $(GetStatus($valid)) 'Is current_version >= minimum_version?'
+	Write-Host $(GetStatus $valid) 'Is current_version >= minimum_version?'
 	return $valid
 }
 
@@ -54,7 +52,7 @@ function ValidateWebResourceExists($webResource)
 	$data = $client.DownloadString($webResource)
 	
 	$valid = $data.Length -gt 0
-	Write-Host $(GetStatus($valid)) 'Does web resource' $webResource 'exist?'
+	Write-Host $(GetStatus $valid) 'Does web resource' $webResource 'exist?'
 	If ($valid -ne $true)
 	{
 		Write-Host 'StatusCode:', $statusCode
@@ -66,12 +64,12 @@ function ValidateWebResourceExists($webResource)
 function ValidateChannelInfo($channel)
 {
 	Write-Host 'Checking Info for' $channel
-	$channelInfo = ExtractChannelInfo($channel)
-	$isCurrentVersionValid = ValidateReleaseExists($channelInfo.current_version)
-	$isMinimumVersionValid = ValidateReleaseExists($channelInfo.minimum_version)
-	$isVersionRelationshipValid = ValidateVersionRelationship($channelInfo.current_version, $channelInfo.minimum_version)
-	$isInstallerUrlValid = ValidateWebResourceExists($channelInfo.installer_url)
-	$isReleaseNotesUrlValid = ValidateWebResourceExists($channelInfo.release_notes_url)
+	$channelInfo = ExtractChannelInfo $channel
+	$isCurrentVersionValid = ValidateReleaseExists $channelInfo.current_version
+	$isMinimumVersionValid = ValidateReleaseExists $channelInfo.minimum_version
+	$isVersionRelationshipValid = ValidateVersionRelationship $channelInfo.current_version $channelInfo.minimum_version
+	$isInstallerUrlValid = ValidateWebResourceExists $channelInfo.installer_url
+	$isReleaseNotesUrlValid = ValidateWebResourceExists $channelInfo.release_notes_url
 	WriteDivider
 	return $isCurrentVersionValid -and $isMinimumVersionValid -and $isVersionRelationshipValid -and $isInstallerUrlValid -and $isReleaseNotesUrlValid
 }
@@ -96,8 +94,8 @@ $knownTags
 #$releases | Select-Object -Property Name, TagName, PreRelease, Id | Format-Table
 WriteDivider
 
-$isProductionValid = ValidateChannelInfo('Production')
-$isInsiderValid = ValidateChannelInfo('Insider')
+$isProductionValid = ValidateChannelInfo 'Production'
+$isInsiderValid = ValidateChannelInfo 'Insider'
 
 $isValidOverall = $isProductionValid -and $isInsiderValid
 
