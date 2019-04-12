@@ -36,6 +36,16 @@ function ValidateReleaseExists($version)
 	return $valid
 }
 
+function ValidateVersionRelationship($currentVersion, $minimumVersion)
+{
+	$parsedCurrentVersion = [System.Version]::new($($currentVersion))
+	$parsedMinimumVersion = [System.Version]::new($($minimumVersion))
+
+	$valid = $parsedCurrentVersion -ge $parsedMinimumVersion
+	Write-Host $(GetStatus($valid)) 'Is current_version >= minimum_version?'
+	return $valid
+}
+
 function ValidateWebResourceExists($webResource)
 {
 	$client = New-Object System.Net.WebClient
@@ -57,10 +67,11 @@ function ValidateChannelInfo($channel)
 	$channelInfo = ExtractChannelInfo($channel)
 	$isCurrentVersionValid = ValidateReleaseExists($channelInfo.current_version)
 	$isMinimumVersionValid = ValidateReleaseExists($channelInfo.minimum_version)
+	$isVersionRelationshipValid = ValidateVersionRelationship($channelInfo.current_version, $channelInfo.minimum_version)
 	$isInstallerUrlValid = ValidateWebResourceExists($channelInfo.installer_url)
 	$isReleaseNotesUrlValid = ValidateWebResourceExists($channelInfo.release_notes_url)
 	WriteDivider
-	return $isCurrentVersionValid -and $isMinimumVersionValid -and $isInstallerUrlValid -and $isReleaseNotesUrlValid
+	return $isCurrentVersionValid -and $isMinimumVersionValid -and $isVersionRelationshipValid -and $isInstallerUrlValid -and $isReleaseNotesUrlValid
 }
 
 # Load the octokit dll
