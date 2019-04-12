@@ -12,9 +12,12 @@ using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -332,7 +335,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (this.EventRecorderId != null)
             {
                 var la = ListenAction.GetInstance(this.EventRecorderId.Value);
-                if (la.HasRecordedEvents())
+                if (HasRecordedEvents())
                 {
                     var dlg = new System.Windows.Forms.SaveFileDialog
                     {
@@ -349,7 +352,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                         try
                         {
-                            la.SaveInJson(dlg.FileName);
+                            SaveInJson(dlg.FileName);
                         }
                         catch (Exception ex)
                         {
@@ -362,6 +365,26 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
 
             MessageDialog.Show("There is no event to save.");
+        }
+
+        /// <summary>
+        /// Check whether there is any event recorded
+        /// </summary>
+        /// <returns></returns>
+        private bool HasRecordedEvents()
+        {
+            return this.dgEvents.Items != null && this.dgEvents.Items.Count != 0;
+        }
+
+        /// <summary>
+        /// Save Event Messages in Json format
+        /// </summary>
+        /// <param name="path"></param>
+        private void SaveInJson(string path)
+        {
+            var json = JsonConvert.SerializeObject(this.dgEvents.Items, Formatting.Indented);
+
+            File.WriteAllText(path, json, Encoding.UTF8);
         }
 
         private void OnMoveFocusToEventsGrid(object sender, RoutedEventArgs e)

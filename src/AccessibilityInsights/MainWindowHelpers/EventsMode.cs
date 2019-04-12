@@ -11,6 +11,8 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {
@@ -74,7 +76,7 @@ namespace AccessibilityInsights
         {
             DisableElementSelector();
 
-            List<EventMessage> el = ListenAction.LoadEventMessages(path);
+            List<EventMessage> el = LoadEventMessages(path);
 
             this.ctrlCurMode.HideControl();
             this.ctrlCurMode = this.ctrlEventMode;
@@ -88,6 +90,24 @@ namespace AccessibilityInsights
             this.CurrentView = EventsView.Load;
 
             PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
+        }
+
+        /// <summary>
+        /// Deserialize EventMessages from JSON file. 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static List<EventMessage> LoadEventMessages(string path)
+        {
+            List<EventMessage> list = null;
+
+            if (File.Exists(path))
+            {
+                var json = File.ReadAllText(path);
+                list = JsonConvert.DeserializeObject<List<EventMessage>>(json);
+            }
+
+            return list;
         }
     }
 }

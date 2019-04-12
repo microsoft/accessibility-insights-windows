@@ -7,12 +7,9 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Axe.Windows.Actions
 {
@@ -26,7 +23,6 @@ namespace Axe.Windows.Actions
         RecorderSetting Config { get; set; }
         ElementContext ElementContext { get; set; }
         EventListenerFactory EventListener { get; set; }
-        List<IA11yEventMessage> EventRecords { get; set; }
         /// <summary>
         /// External event listener. it should be called if it is not null.
         /// </summary>
@@ -48,7 +44,6 @@ namespace Axe.Windows.Actions
             this.Config = config;
             this.ElementContext = ec;
             this.EventListener = new EventListenerFactory(ec.Element, config.ListenScope);
-            this.EventRecords = new List<IA11yEventMessage>();
             this.ExternalListener = listener;
         }
 
@@ -57,7 +52,6 @@ namespace Axe.Windows.Actions
         /// </summary>
         public void Start()
         {
-            this.EventRecords.Clear();
             this.IsRunning = true;
             InitFocusChangedEventListener();
             InitIndividualEventListeners();
@@ -130,53 +124,9 @@ namespace Axe.Windows.Actions
         {
             if (IsRunning)
             {
-                lock (this)
-                {
-                    this.EventRecords.Add(message);
-                }
                 this.ExternalListener?.Invoke(message);
             }
         }
-
-        /// <summary>
-        /// Check whether there is any event recorded
-        /// </summary>
-        /// <returns></returns>
-        public bool HasRecordedEvents()
-        {
-            return this.EventRecords != null && this.EventRecords.Count != 0;
-        }
-
-        #region serialization code
-        /// <summary>
-        /// Deserialize EventMessages from JSON file. 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static List<EventMessage> LoadEventMessages(string path)
-        {
-            List<EventMessage> list = null;
-
-            if (File.Exists(path))
-            {
-                var json = File.ReadAllText(path);
-                list = JsonConvert.DeserializeObject<List<EventMessage>>(json);
-            }
-
-            return list;
-        }
-
-        /// <summary>
-        /// Save Event Messages in Json format
-        /// </summary>
-        /// <param name="path"></param>
-        public void SaveInJson(string path)
-        {
-            var json = JsonConvert.SerializeObject(this.EventRecords, Formatting.Indented);
-
-            File.WriteAllText(path, json, Encoding.UTF8);
-        }
-        #endregion
 
         #region static members
         /// <summary>
@@ -243,9 +193,6 @@ namespace Axe.Windows.Actions
                 {
                     this.EventListener.Dispose();
                     this.EventListener = null;
-                    this.EventRecords?.ForEach(r => r.Element?.Dispose());
-                    this.EventRecords.Clear();
-                    this.EventRecords = null;
                 }
 
                 disposedValue = true;
