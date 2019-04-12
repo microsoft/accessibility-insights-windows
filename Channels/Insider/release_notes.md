@@ -15,22 +15,22 @@ GitHub users can now file issues directly from inside Accessibility Insights for
 #### New Rules
 
 We have added the following accessibility rule based on community feedback:
-- Generate a warning if items in a listbox have duplicated names [#133](https://github.com/Microsoft/accessibility-insights-windows/issues/133)
+- Generate a warning if items in a listbox have duplicated names. [#133](https://github.com/Microsoft/accessibility-insights-windows/issues/133)
 
 #### Multiple Release Channels
 
 You can now choose how frequently your client updates:
-- The **Production** channel updates every 2-4 weeks
-- The **Insider** channel updates every 1-2 weeks
-- The **Canary** channel updates multiple times per week
+- The **Production** channel updates every 2-4 weeks.
+- The **Insider** channel updates every 1-2 weeks.
+- The **Canary** channel updates multiple times per week.
 
-You'll be in the **Production** channel by default, but you can change your channel at any time via the **Settings** page
+You'll be in the **Production** channel by default, but you can change your channel at any time via the **Settings** page.
 
 ### Bug Fixes
 
-- Improved Automatic color contrast detection in High Contrast White theme [#144](https://github.com/Microsoft/accessibility-insights-windows/issues/144)
+- Improved automatic detection of color contrast in High Contrast White theme [#144](https://github.com/Microsoft/accessibility-insights-windows/issues/144)
 - Properly display event details when loading an event details file [#161](https://github.com/Microsoft/accessibility-insights-windows/issues/161)
 - Fixed the appearance of the restore button when the app was maximized [#199](https://github.com/Microsoft/accessibility-insights-windows/issues/199)
 - Clarified the color descriptions in the Color Contrast Analyzer [#210](https://github.com/Microsoft/accessibility-insights-windows/issues/210)
 - ListItems within a Spinner control or a ControlViewSpinner control are no longer treated as errors [#268](https://github.com/Microsoft/accessibility-insights-windows/issues/268), [#272](https://github.com/Microsoft/accessibility-insights-windows/issues/272)
-- Modified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
+- Clarified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
