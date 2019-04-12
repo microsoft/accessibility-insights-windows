@@ -46,46 +46,5 @@ namespace Axe.Windows.Desktop.Settings
         public RecorderSetting()
         {
         }
-
-        /// <summary>
-        /// Set the checked state based on id and type
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="type"></param>
-        /// <param name="val"></param>
-        public void SetChecked(int id, RecordEntityType type, bool val, string name = null)
-        {
-            int change = val ? 1 : -1;
-            if (type == RecordEntityType.Event)
-            {
-                if (id == EventType.UIA_AutomationFocusChangedEventId)
-                {
-                    this.IsListeningFocusChangedEvent = val;
-                }
-                else
-                {
-                    this.Events.Where(e => e.Id == id).First().CheckedCount += change;                    
-                }
-            }
-            else
-            {
-                if (this.Properties.Where(e => e.Id == id).Count() > 0)
-                {
-                    this.Properties.Where(e => e.Id == id).First().CheckedCount += change;
-                }
-                else
-                {
-                    this.Properties.Add(new RecordEntitySetting()
-                    {
-                        Type = RecordEntityType.Property,
-                        Id = id,
-                        Name = name,
-                        IsCustom = true,
-                        IsRecorded = false,
-                        CheckedCount = 1
-                    });
-                }
-            }
-        }
     }
 }
