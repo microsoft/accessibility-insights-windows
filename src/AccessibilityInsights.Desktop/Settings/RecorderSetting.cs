@@ -48,18 +48,6 @@ namespace Axe.Windows.Desktop.Settings
         }
 
         /// <summary>
-        /// Get the list of EventConfigs
-        /// </summary>
-        /// <param name="isRecorded">select the target mode for recording</param>
-        /// <returns></returns>
-        public List<RecordEntitySetting> GetEventsConfigs(bool isRecorded)
-        {
-            return (from e in this.Events
-                    where e.IsRecorded == isRecorded
-                    select e).ToList();
-        }
-
-        /// <summary>
         /// Set the checked state based on id and type
         /// </summary>
         /// <param name="id"></param>

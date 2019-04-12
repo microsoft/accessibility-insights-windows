@@ -53,7 +53,7 @@ namespace Axe.Windows.Actions
         }
 
         /// <summary>
-        /// Start recoding events
+        /// Start recording events
         /// </summary>
         public void Start()
         {
