@@ -501,7 +501,7 @@ Accessibility Insights Support Team
     <value>Instructions</value>
   </data>
   <data name="ColorContrast_HowToTestAuto" xml:space="preserve">
-    <value>Auto-detect an element’s color contrast ratio by hovering over, or keyboard focusing on an element in your target application.</value>
+    <value>Auto-detect an element’s color contrast ratio by hovering over or keyboard focusing on an element in your target application.</value>
   </data>
   <data name="ColorContrast_Analyzer" xml:space="preserve">
     <value>Analyzer</value>
