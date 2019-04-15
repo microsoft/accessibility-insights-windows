@@ -1,18 +1,21 @@
-## April 2019 Insider Release ([v1.1.0828.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0828.01))
+## April 2019 Insider Release ([v1.1.0831.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0831.02))
 
-***Note: This is a preliminary version that needs more detailed copy***
-
-Welcome to the April 2019 release of Accessibility Insights for Windows.
+Welcome to the April 15th, 2019 release of Accessibility Insights for Windows.
 
 ### Highlights
 
   - [GitHub Issue Filing](#github-issue-filing)
+  - [New Rules](#new-rules)
   - [Multiple Release Channels](#multiple-release-channels)
-  - [Rule Updates](#rule-updates)
-
+  
 #### GitHub Issue Filing
 
 GitHub users can now file issues directly from inside Accessibility Insights for Windows. Bug filing from Azure DevOps is still supported, and you can freely switch between the two.
+
+#### New Rules
+
+We have added the following accessibility rule based on community feedback:
+- Generate a warning if items in a listbox have duplicated names [#133](https://github.com/Microsoft/accessibility-insights-windows/issues/133)
 
 #### Multiple Release Channels
 
@@ -23,6 +26,11 @@ You can now choose how frequently your client updates:
 
 You'll be in the **Production** channel by default, but you can change your channel at any time via the **Settings** page
 
-#### Rule Updates
+### Bug Fixes
 
-We have updated several of our accessibility rules based on community feedback.
+- Improved Automatic color contrast detection in High Contrast White theme [#144](https://github.com/Microsoft/accessibility-insights-windows/issues/144)
+- Properly display event details when loading an event details file [#161](https://github.com/Microsoft/accessibility-insights-windows/issues/161)
+- Fixed the appearance of the restore button when the app was maximized [#199](https://github.com/Microsoft/accessibility-insights-windows/issues/199)
+- Clarified the color descriptions in the Color Contrast Analyzer [#210](https://github.com/Microsoft/accessibility-insights-windows/issues/210)
+- ListItems within a Spinner control or a ControlViewSpinner control are no longer treated as errors [#268](https://github.com/Microsoft/accessibility-insights-windows/issues/268), [#272](https://github.com/Microsoft/accessibility-insights-windows/issues/272)
+- Modified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
