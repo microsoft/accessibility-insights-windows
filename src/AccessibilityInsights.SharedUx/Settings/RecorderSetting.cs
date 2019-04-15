@@ -44,6 +44,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
         }
 
+        #region Static methods to get instance
         public static RecorderSetting LoadConfiguration(string path)
         {
             // Get Recorder configuration from local location. but if it is not available, get it from default location. 
@@ -132,5 +133,6 @@ namespace AccessibilityInsights.SharedUx.Settings
 
             return config;
         }
+        #endregion
     }
 }
