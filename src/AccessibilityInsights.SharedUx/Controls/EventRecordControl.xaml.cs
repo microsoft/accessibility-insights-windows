@@ -260,7 +260,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        private IEnumerable<int> GenerateEventIds(RecorderSetting config)
+        private static IEnumerable<int> GenerateEventIds(RecorderSetting config)
         {
             var eventIds = from c in config.Events
                            where config.IsListeningAllEvents || c.CheckedCount > 0
@@ -277,7 +277,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         /// <param name="config"></param>
         /// <returns></returns>
-        private IEnumerable<int> GeneratePropertyIds(RecorderSetting config)
+        private static IEnumerable<int> GeneratePropertyIds(RecorderSetting config)
         {
             return from c in config.Properties
                 where config.IsListeningAllEvents || c.CheckedCount > 0

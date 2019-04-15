@@ -385,6 +385,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Settings\ConfigurationBase.cs" />
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />
     <Compile Include="Controls\TestTabs\AutomatedChecksControl.xaml.cs">
