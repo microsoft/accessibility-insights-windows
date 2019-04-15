@@ -4,6 +4,7 @@ using Microsoft.Deployment.WindowsInstaller;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace AccessibilityInsights.SetupLibrary
@@ -88,11 +89,29 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
+        /// Get the Uri to the release notes, based on the installed version
+        /// </summary>
+        /// <param name="exceptionReporter">Allows exceptions to get tracked</param>
+        /// <returns>The Uri if available, null if not</returns>
+        public static Uri GetReleaseNotesUri(IExceptionReporter exceptionReporter)
+        {
+            string version = GetInstalledProductVersion(exceptionReporter);
+            if (!string.IsNullOrEmpty(version))
+            {
+                return new Uri(string.Format(CultureInfo.InvariantCulture,
+                    "https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v{0}",
+                    version));
+            }
+
+            return null;
+        }
+
+        /// <summary>
         /// Returns the product version of the file at the given path
         /// </summary>
         /// <param name="pathToMSI">The path to the MSI being queried</param>
         /// <returns>The product version in string format</returns>
-            internal static string GetMSIProductVersion(string pathToMSI)
+        internal static string GetMSIProductVersion(string pathToMSI)
         {
             using (Database db = new Database(pathToMSI, DatabaseOpenMode.ReadOnly))
             {
