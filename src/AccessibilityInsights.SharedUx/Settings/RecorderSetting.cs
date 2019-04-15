@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UIAutomationClient;
 
-namespace Axe.Windows.Desktop.Settings
+namespace AccessibilityInsights.SharedUx.Settings
 {
     /// <summary>
     /// Event Record Configuration class
