@@ -241,27 +241,48 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.NotifyRecordingChange(true);
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Event_Start_Record);
-                var config = ConfigurationManager.GetDefaultInstance().EventConfig;
-                this.EventRecorderId = ListenAction.CreateInstance(config.ListenScope, this.ElementContext.Id, onRecordEvent);
                 this.dgEvents.Items.Clear();
                 this.vmEventRecorder.State = ButtonState.On;
 
-                var propIds = from c in config.Properties
-                           where config.IsListeningAllEvents || c.CheckedCount > 0
-                           select c.Id;
-                var eventIds = from c in config.Events
-                           where config.IsListeningAllEvents || c.CheckedCount > 0
-                           select c.Id;
-                if (config.IsListeningFocusChangedEvent)
-                {
-                    eventIds = eventIds.Append(EventType.UIA_AutomationFocusChangedEventId);
-                }
+                var config = ConfigurationManager.GetDefaultInstance().EventConfig;
+                this.EventRecorderId = ListenAction.CreateInstance(config.ListenScope, this.ElementContext.Id, onRecordEvent);
+                var propIds = GeneratePropertyIds(config);
+                var eventIds = GenerateEventIds(config);
                 ListenAction.GetInstance(this.EventRecorderId.Value).Start(eventIds, propIds);
             }
             else
             {
                 MessageDialog.Show(Properties.Resources.EventRecordControl_StartRecordingEvent_No_element_is_selected_yet__please_select_first);
             }
+        }
+
+        /// <summary>
+        /// Generate list of event ids to listen to from recorder setting
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        private IEnumerable<int> GenerateEventIds(RecorderSetting config)
+        {
+            var eventIds = from c in config.Events
+                           where config.IsListeningAllEvents || c.CheckedCount > 0
+                           select c.Id;
+            if (config.IsListeningFocusChangedEvent)
+            {
+                eventIds = eventIds.Append(EventType.UIA_AutomationFocusChangedEventId);
+            }
+            return eventIds;
+        }
+
+        /// <summary>
+        /// Generate list of property ids to listen to from recorder setting
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        private IEnumerable<int> GeneratePropertyIds(RecorderSetting config)
+        {
+            return from c in config.Properties
+                where config.IsListeningAllEvents || c.CheckedCount > 0
+                select c.Id;
         }
 
         /// <summary>
