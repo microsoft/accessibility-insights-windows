@@ -10,7 +10,6 @@ using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using Newtonsoft.Json;
