@@ -3,13 +3,10 @@
 using Axe.Windows.Actions.Attributes;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Actions.Enums;
-using Axe.Windows.Core.Bases;
-using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
 using UIAutomationClient;
 
@@ -39,22 +36,22 @@ namespace Axe.Windows.Actions
         /// <param name="config"></param>
         /// <param name="ec"></param>
         /// <param name="listener"></param>
-        private ListenAction(TreeScope ListenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
+        private ListenAction(TreeScope listenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
         {
             this.Id = Guid.NewGuid();
             this.ElementContext = ec;
-            this.EventListener = new EventListenerFactory(ec.Element, ListenScope);
+            this.EventListener = new EventListenerFactory(ec.Element, listenScope);
             this.ExternalListener = listener;
         }
 
         /// <summary>
         /// Start recording events
         /// </summary>
-        public void Start(IEnumerable<int> EventIDs, IEnumerable<int> PropertyIDs)
+        public void Start(IEnumerable<int> eventIDs, IEnumerable<int> propertyIDs)
         {
             this.IsRunning = true;
-            InitIndividualEventListeners(EventIDs);
-            InitPropertyChangeListener(PropertyIDs);
+            InitIndividualEventListeners(eventIDs);
+            InitPropertyChangeListener(propertyIDs);
         }
 
         /// <summary>
@@ -114,10 +111,10 @@ namespace Axe.Windows.Actions
         /// <param name="ecId"></param>
         /// <param name="listener"></param>
         /// <returns></returns>
-        public static Guid CreateInstance(TreeScope ListenScope, Guid ecId, HandleUIAutomationEventMessage listener)
+        public static Guid CreateInstance(TreeScope listenScope, Guid ecId, HandleUIAutomationEventMessage listener)
         {
             var ec = DataManager.GetDefaultInstance().GetElementContext(ecId);
-            var la = new ListenAction(ListenScope, ec, listener);
+            var la = new ListenAction(listenScope, ec, listener);
 
             sListenActions.Add(la.Id, la);
 
