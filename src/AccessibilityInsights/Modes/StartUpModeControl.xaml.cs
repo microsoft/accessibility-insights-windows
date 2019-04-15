@@ -11,10 +11,10 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using System.Windows.Automation.Peers;
 
 namespace AccessibilityInsights.Modes
 {
