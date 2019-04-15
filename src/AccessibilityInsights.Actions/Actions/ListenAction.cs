@@ -9,7 +9,9 @@ using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using UIAutomationClient;
 
 namespace Axe.Windows.Actions
 {
@@ -20,7 +22,6 @@ namespace Axe.Windows.Actions
     [InteractionLevel(UxInteractionLevel.NoUxInteraction)]
     public class ListenAction:IDisposable
     {
-        RecorderSetting Config { get; set; }
         ElementContext ElementContext { get; set; }
         EventListenerFactory EventListener { get; set; }
         /// <summary>
@@ -38,71 +39,43 @@ namespace Axe.Windows.Actions
         /// <param name="config"></param>
         /// <param name="ec"></param>
         /// <param name="listener"></param>
-        private ListenAction(RecorderSetting config, ElementContext ec, HandleUIAutomationEventMessage listener)
+        private ListenAction(TreeScope ListenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
         {
             this.Id = Guid.NewGuid();
-            this.Config = config;
             this.ElementContext = ec;
-            this.EventListener = new EventListenerFactory(ec.Element, config.ListenScope);
+            this.EventListener = new EventListenerFactory(ec.Element, ListenScope);
             this.ExternalListener = listener;
         }
 
         /// <summary>
         /// Start recording events
         /// </summary>
-        public void Start()
+        public void Start(IEnumerable<int> EventIDs, IEnumerable<int> PropertyIDs)
         {
             this.IsRunning = true;
-            InitFocusChangedEventListener();
-            InitIndividualEventListeners();
-            InitPropertyChangeListener();
+            InitIndividualEventListeners(EventIDs);
+            InitPropertyChangeListener(PropertyIDs);
         }
 
         /// <summary>
         /// Start Property change Event listener
         /// </summary>
-        private void InitPropertyChangeListener()
+        private void InitPropertyChangeListener(IEnumerable<int> propertyIds)
         {
-            var list = from c in this.Config.Properties
-                       where this.Config.IsListeningAllEvents || c.CheckedCount > 0
-                       select c.Id;
-
-            if (list.Count() != 0)
+            if (propertyIds.Any())
             {
-                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationPropertyChangedEventId, this.onEventFired, list.ToArray());
+                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationPropertyChangedEventId, this.onEventFired, propertyIds.ToArray());
             }
         }
 
         /// <summary>
         /// Start Individual Event Listener
         /// </summary>
-        private void InitIndividualEventListeners()
+        private void InitIndividualEventListeners(IEnumerable<int> eventIds)
         {
-            var list = from c in this.Config.Events
-                       where this.Config.IsListeningAllEvents || c.CheckedCount > 0
-                       select c;
-
-            foreach (var l in list)
+            foreach (var id in eventIds)
             {
-                if (l.Id == EventType.UIA_StructureChangedEventId)
-                {
-                    this.EventListener.RegisterAutomationEventListener(EventType.UIA_StructureChangedEventId,this.onEventFired);
-                }
-                else
-                {
-                    this.EventListener.RegisterAutomationEventListener(l.Id, this.onEventFired);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Start Listening FocusChange events
-        /// </summary>
-        private void InitFocusChangedEventListener()
-        {
-            if(this.Config.IsListeningFocusChangedEvent)
-            {
-                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId,this.onEventFired);
+                this.EventListener.RegisterAutomationEventListener(id, this.onEventFired);
             }
         }
 
@@ -141,10 +114,10 @@ namespace Axe.Windows.Actions
         /// <param name="ecId"></param>
         /// <param name="listener"></param>
         /// <returns></returns>
-        public static Guid CreateInstance(RecorderSetting config, Guid ecId, HandleUIAutomationEventMessage listener)
+        public static Guid CreateInstance(TreeScope ListenScope, Guid ecId, HandleUIAutomationEventMessage listener)
         {
             var ec = DataManager.GetDefaultInstance().GetElementContext(ecId);
-            var la = new ListenAction(config, ec, listener);
+            var la = new ListenAction(ListenScope, ec, listener);
 
             sListenActions.Add(la.Id, la);
 

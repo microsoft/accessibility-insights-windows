@@ -11,12 +11,14 @@ using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -239,11 +241,22 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.NotifyRecordingChange(true);
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Event_Start_Record);
-
-                this.EventRecorderId = ListenAction.CreateInstance(ConfigurationManager.GetDefaultInstance().EventConfig, this.ElementContext.Id, onRecordEvent);
+                var config = ConfigurationManager.GetDefaultInstance().EventConfig;
+                this.EventRecorderId = ListenAction.CreateInstance(config.ListenScope, this.ElementContext.Id, onRecordEvent);
                 this.dgEvents.Items.Clear();
                 this.vmEventRecorder.State = ButtonState.On;
-                ListenAction.GetInstance(this.EventRecorderId.Value).Start();
+
+                var propIds = from c in config.Properties
+                           where config.IsListeningAllEvents || c.CheckedCount > 0
+                           select c.Id;
+                var eventIds = from c in config.Events
+                           where config.IsListeningAllEvents || c.CheckedCount > 0
+                           select c.Id;
+                if (config.IsListeningFocusChangedEvent)
+                {
+                    eventIds = eventIds.Append(EventType.UIA_AutomationFocusChangedEventId);
+                }
+                ListenAction.GetInstance(this.EventRecorderId.Value).Start(eventIds, propIds);
             }
             else
             {
