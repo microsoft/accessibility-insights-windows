@@ -34,4 +34,4 @@ You'll be in the **Production** channel by default, but you can change your chan
 - Clarified the color descriptions in the Color Contrast Analyzer [#210](https://github.com/Microsoft/accessibility-insights-windows/issues/210)
 - ListItems within a Spinner control or a ControlViewSpinner control are no longer treated as errors [#268](https://github.com/Microsoft/accessibility-insights-windows/issues/268), [#272](https://github.com/Microsoft/accessibility-insights-windows/issues/272)
 - Modified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
-- Added a splash screen to the startup sequence [#202](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
+- Added a splash screen to the startup sequence [#202](https://github.com/Microsoft/accessibility-insights-windows/issues/202)
