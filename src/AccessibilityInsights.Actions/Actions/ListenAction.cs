@@ -8,8 +8,6 @@ using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using UIAutomationClient;
-using TreeScope = Axe.Windows.Desktop.Types.TreeScope;
 
 namespace Axe.Windows.Actions
 {
@@ -37,7 +35,7 @@ namespace Axe.Windows.Actions
         /// <param name="config"></param>
         /// <param name="ec"></param>
         /// <param name="listener"></param>
-        private ListenAction(TreeScope listenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
+        private ListenAction(ListenScope listenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
         {
             this.Id = Guid.NewGuid();
             this.ElementContext = ec;
@@ -45,16 +43,16 @@ namespace Axe.Windows.Actions
             this.ExternalListener = listener;
         }
 
-        private static UIAutomationClient.TreeScope GetUIAScope(TreeScope listenScope)
+        private static UIAutomationClient.TreeScope GetUIAScope(ListenScope listenScope)
         {
             switch (listenScope)
             {
-                case TreeScope.Subtree:
+                case ListenScope.Subtree:
                     return UIAutomationClient.TreeScope.TreeScope_Subtree;
-                case TreeScope.Element:
+                case ListenScope.Element:
                     return UIAutomationClient.TreeScope.TreeScope_Element;
                 default:
-                case TreeScope.Descendants:
+                case ListenScope.Descendants:
                     return UIAutomationClient.TreeScope.TreeScope_Descendants;
             }
         }
@@ -126,7 +124,7 @@ namespace Axe.Windows.Actions
         /// <param name="ecId"></param>
         /// <param name="listener"></param>
         /// <returns></returns>
-        public static Guid CreateInstance(TreeScope listenScope, Guid ecId, HandleUIAutomationEventMessage listener)
+        public static Guid CreateInstance(ListenScope listenScope, Guid ecId, HandleUIAutomationEventMessage listener)
         {
             var ec = DataManager.GetDefaultInstance().GetElementContext(ecId);
             var la = new ListenAction(listenScope, ec, listener);

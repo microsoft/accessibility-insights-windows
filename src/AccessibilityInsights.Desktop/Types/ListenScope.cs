@@ -5,7 +5,7 @@ namespace Axe.Windows.Desktop.Types
     /// <summary>
     /// Defines values that specify the scope of elements within the automation tree
     /// </summary>
-    public enum TreeScope
+    public enum ListenScope
     {
         None,
         Element,

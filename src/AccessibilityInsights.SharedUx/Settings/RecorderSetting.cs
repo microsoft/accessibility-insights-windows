@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public bool IsListeningAllEvents { get; set; } = false;
 
-        public TreeScope ListenScope { get; set; }
+        public ListenScope ListenScope { get; set; }
         #endregion
 
         public RecorderSetting()
@@ -128,7 +128,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 IsListeningFocusChangedEvent = true,
 
                 // Individual Event Scope
-                ListenScope = TreeScope.Subtree,
+                ListenScope = ListenScope.Subtree,
             };
 
             return config;

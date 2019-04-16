@@ -27,7 +27,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Threading;
-using TreeScope = Axe.Windows.Desktop.Types.TreeScope;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -472,14 +471,14 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             switch (RecorderSetting.ListenScope)
             {
-                case TreeScope.Element:
+                case ListenScope.Element:
                     this.radiobuttonScopeSelf.IsChecked = true;
                     break;
-                case TreeScope.Descendants:
+                case ListenScope.Descendants:
                     this.radiobuttonScopeDescendents.IsChecked = true;
                     break;
                 default:
-                case TreeScope.Subtree:
+                case ListenScope.Subtree:
                     this.radiobuttonScopeSubtree.IsChecked = true;
                     break;
             }
@@ -494,15 +493,15 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (this.radiobuttonScopeSelf.IsChecked == true)
             {
-                RecorderSetting.ListenScope = TreeScope.Element;
+                RecorderSetting.ListenScope = ListenScope.Element;
             }
             else if (this.radiobuttonScopeSubtree.IsChecked == true)
             {
-                RecorderSetting.ListenScope = TreeScope.Subtree;
+                RecorderSetting.ListenScope = ListenScope.Subtree;
             }
             else if (this.radiobuttonScopeDescendents.IsChecked == true)
             {
-                RecorderSetting.ListenScope = TreeScope.Descendants;
+                RecorderSetting.ListenScope = ListenScope.Descendants;
             }
 
             UpdateGlobalFocusEventCheckbox?.Invoke();

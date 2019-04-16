@@ -91,7 +91,7 @@
     <Compile Include="Types\AnnotationType.cs" />
     <Compile Include="Styles\AnimationStyle.cs" />
     <Compile Include="Types\TextAttributeType.cs" />
-    <Compile Include="Types\TreeScope.cs" />
+    <Compile Include="Types\ListenScope.cs" />
     <Compile Include="Utility\StandardLinksHelper.cs" />
     <Compile Include="Utility\SupportedEvents.cs" />
     <Compile Include="UIAutomation\TreeWalkers\DesktopElementAncestry.cs" />

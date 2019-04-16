@@ -3,7 +3,6 @@
 using Axe.Windows.Desktop.Types;
 using System.Collections.Generic;
 using UIAutomationClient;
-using TreeScope = UIAutomationClient.TreeScope;
 
 namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {
