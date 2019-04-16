@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UIAutomationClient;
 
 using static System.FormattableString;
+using TreeScope = UIAutomationClient.TreeScope;
 
 namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using UIAutomationClient;
+using TreeScope = UIAutomationClient.TreeScope;
 
 namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
 {

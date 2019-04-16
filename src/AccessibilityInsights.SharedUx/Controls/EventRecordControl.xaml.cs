@@ -27,6 +27,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Threading;
+using TreeScope = Axe.Windows.Desktop.Types.TreeScope;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -471,14 +472,15 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             switch (RecorderSetting.ListenScope)
             {
-                case UIAutomationClient.TreeScope.TreeScope_Element:
+                case TreeScope.Element:
                     this.radiobuttonScopeSelf.IsChecked = true;
                     break;
-                case UIAutomationClient.TreeScope.TreeScope_Subtree:
-                    this.radiobuttonScopeSubtree.IsChecked = true;
-                    break;
-                case UIAutomationClient.TreeScope.TreeScope_Descendants:
+                case TreeScope.Descendants:
                     this.radiobuttonScopeDescendents.IsChecked = true;
+                    break;
+                default:
+                case TreeScope.Subtree:
+                    this.radiobuttonScopeSubtree.IsChecked = true;
                     break;
             }
         }
@@ -492,15 +494,15 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (this.radiobuttonScopeSelf.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Element;
+                RecorderSetting.ListenScope = TreeScope.Element;
             }
             else if (this.radiobuttonScopeSubtree.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Subtree;
+                RecorderSetting.ListenScope = TreeScope.Subtree;
             }
             else if (this.radiobuttonScopeDescendents.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Descendants;
+                RecorderSetting.ListenScope = TreeScope.Descendants;
             }
 
             UpdateGlobalFocusEventCheckbox?.Invoke();

@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UIAutomationClient;
+using TreeScope = Axe.Windows.Desktop.Types.TreeScope;
 
 namespace Axe.Windows.Actions
 {
@@ -40,8 +41,22 @@ namespace Axe.Windows.Actions
         {
             this.Id = Guid.NewGuid();
             this.ElementContext = ec;
-            this.EventListener = new EventListenerFactory(ec.Element, listenScope);
+            this.EventListener = new EventListenerFactory(ec.Element, GetUIAScope(listenScope));
             this.ExternalListener = listener;
+        }
+
+        private static UIAutomationClient.TreeScope GetUIAScope(TreeScope listenScope)
+        {
+            switch (listenScope)
+            {
+                case TreeScope.Subtree:
+                    return UIAutomationClient.TreeScope.TreeScope_Subtree;
+                case TreeScope.Element:
+                    return UIAutomationClient.TreeScope.TreeScope_Element;
+                default:
+                case TreeScope.Descendants:
+                    return UIAutomationClient.TreeScope.TreeScope_Descendants;
+            }
         }
 
         /// <summary>

@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Desktop.Types;
 using System.Collections.Generic;
 using System.Linq;
-using UIAutomationClient;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {
@@ -128,7 +128,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 IsListeningFocusChangedEvent = true,
 
                 // Individual Event Scope
-                ListenScope = UIAutomationClient.TreeScope.TreeScope_Subtree
+                ListenScope = TreeScope.Subtree,
             };
 
             return config;
