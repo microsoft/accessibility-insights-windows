@@ -5,8 +5,6 @@ using AccessibilityInsights.SetupLibrary;
 using System;
 using System.IO;
 using System.Windows;
-using System.Linq;
-using System.Collections.Generic;
 
 namespace AccessibilityInsights.SharedUx.Settings
 {

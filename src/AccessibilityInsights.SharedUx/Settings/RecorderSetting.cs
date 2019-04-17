@@ -59,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             else
             {
                 // check whether there is any new events to be added into configuration. 
-                var events = Axe.Windows.Desktop.Types.EventType.GetInstance();
+                var events = EventType.GetInstance();
                 var ms = from e in events.GetKeyValuePairList()
                          where IsNotInList(e.Key, config.Events)
                          select e;

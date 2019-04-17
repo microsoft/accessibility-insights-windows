@@ -469,7 +469,7 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
             //Start worker thread
             StartWorkerThread();
         }
-        
+
         private static TreeScope GetUIAScope(ListenScope listenScope)
         {
             switch (listenScope)
@@ -479,7 +479,6 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
                 case ListenScope.Descendants:
                     return TreeScope.TreeScope_Descendants;
                 default:
-                case ListenScope.Subtree:
                     return TreeScope.TreeScope_Subtree;
             }
         }

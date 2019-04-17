@@ -7,7 +7,6 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.DesktopUI.Enums;
-using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -76,7 +75,7 @@ namespace AccessibilityInsights
         {
             DisableElementSelector();
 
-            List<EventMessage> el = LoadEventMessages(path);
+            List<EventMessage> el = SetupLibrary.FileHelpers.LoadDataFromJSON<List<EventMessage>>(path);
 
             this.ctrlCurMode.HideControl();
             this.ctrlCurMode = this.ctrlEventMode;
@@ -90,24 +89,6 @@ namespace AccessibilityInsights
             this.CurrentView = EventsView.Load;
 
             PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
-        }
-
-        /// <summary>
-        /// Deserialize EventMessages from JSON file. 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static List<EventMessage> LoadEventMessages(string path)
-        {
-            List<EventMessage> list = null;
-
-            if (File.Exists(path))
-            {
-                var json = File.ReadAllText(path);
-                list = JsonConvert.DeserializeObject<List<EventMessage>>(json);
-            }
-
-            return list;
         }
     }
 }

@@ -385,7 +385,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                         try
                         {
-                            SaveInJson(dlg.FileName);
+                            SetupLibrary.FileHelpers.SerializeDataToJSON(this.dgEvents.Items, dlg.FileName);
                         }
                         catch (Exception ex)
                         {
@@ -407,17 +407,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         private bool HasRecordedEvents()
         {
             return this.dgEvents.Items != null && this.dgEvents.Items.Count != 0;
-        }
-
-        /// <summary>
-        /// Save Event Messages in Json format
-        /// </summary>
-        /// <param name="path"></param>
-        private void SaveInJson(string path)
-        {
-            var json = JsonConvert.SerializeObject(this.dgEvents.Items, Formatting.Indented);
-
-            File.WriteAllText(path, json, Encoding.UTF8);
         }
 
         private void OnMoveFocusToEventsGrid(object sender, RoutedEventArgs e)
@@ -478,7 +467,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                     this.radiobuttonScopeDescendents.IsChecked = true;
                     break;
                 default:
-                case ListenScope.Subtree:
                     this.radiobuttonScopeSubtree.IsChecked = true;
                     break;
             }
