@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using static System.FormattableString;
@@ -476,7 +477,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         internal Uri CreateIssuePreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs)
         {
             var escaped = from pair in AzureDevOpsFieldPairs
-                          select Uri.EscapeDataString($"[{pair.Key.ToApiString()}]") + "=" + Uri.EscapeDataString(pair.Value);
+                          select EscapeForUrl($"[{pair.Key.ToApiString()}]") + "=" + EscapeForUrl(pair.Value);
 
             // Uri.EscapeDataString converts space to %20, but it seems safe for us to instead use a "+" for the contents
             //  of the issue description, which will be interpreted as a space in the browser. This saves us characters, so we
@@ -485,6 +486,29 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             var finalUrl = GetTeamProjectUrl(projectName, teamName) + "/_workItems/create/Bug?" + String.Join("&", escaped).Replace("%20", "+");
             Uri.TryCreate(finalUrl, UriKind.Absolute, out Uri result);
             return result;
+        }
+
+        /// <summary>
+        /// Retains characters within ascii range 1-127 and returns
+        /// an escaped representation of the string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        internal static string EscapeForUrl(string str)
+        {
+            var sb = new StringBuilder();
+            foreach (var c in str)
+            {
+                // Extended ascii characters such as the middle dot can 
+                // cause issues during navigation redirects, so we only include
+                // a basic set of characters when building the URL
+                if (c >= 1 && c <= 127)
+                {
+                    sb.Append(c);
+                }
+            }
+
+            return Uri.EscapeDataString(sb.ToString());
         }
 #endregion // IssueFiling
     }
