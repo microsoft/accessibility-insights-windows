@@ -39,22 +39,8 @@ namespace Axe.Windows.Actions
         {
             this.Id = Guid.NewGuid();
             this.ElementContext = ec;
-            this.EventListener = new EventListenerFactory(ec.Element, GetUIAScope(listenScope));
+            this.EventListener = new EventListenerFactory(ec.Element, listenScope);
             this.ExternalListener = listener;
-        }
-
-        private static UIAutomationClient.TreeScope GetUIAScope(ListenScope listenScope)
-        {
-            switch (listenScope)
-            {
-                case ListenScope.Subtree:
-                    return UIAutomationClient.TreeScope.TreeScope_Subtree;
-                case ListenScope.Element:
-                    return UIAutomationClient.TreeScope.TreeScope_Element;
-                default:
-                case ListenScope.Descendants:
-                    return UIAutomationClient.TreeScope.TreeScope_Descendants;
-            }
         }
 
         /// <summary>
