@@ -10,6 +10,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -193,7 +194,7 @@ namespace AccessibilityInsights
             // Initialize user info from file if it exists, reset if needed, and re-serialize
             var installInfo = InstallationInfo.LoadFromPath(DirectoryManagement.sConfigurationFolderPath);
             Logger.AddOrUpdateContextProperty(TelemetryProperty.InstallationID, installInfo.InstallationGuid.ToString());
-            Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, ConfigurationModel.GetAppVersionFromAssembly());
+            Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, Utility.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());

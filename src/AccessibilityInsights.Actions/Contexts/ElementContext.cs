@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Actions.Enums;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using System;
 
 namespace Axe.Windows.Actions.Contexts

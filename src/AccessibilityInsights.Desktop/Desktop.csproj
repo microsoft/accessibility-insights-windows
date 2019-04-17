@@ -93,8 +93,8 @@
     <Compile Include="Types\AnnotationType.cs" />
     <Compile Include="Styles\AnimationStyle.cs" />
     <Compile Include="Types\TextAttributeType.cs" />
-    <Compile Include="Utility\StandardLinksHelper.cs" />
-    <Compile Include="Utility\SupportedEvents.cs" />
+    <Compile Include="Misc\StandardLinksHelper.cs" />
+    <Compile Include="Misc\SupportedEvents.cs" />
     <Compile Include="UIAutomation\TreeWalkers\DesktopElementAncestry.cs" />
     <Compile Include="UIAutomation\DesktopElementHelper.cs" />
     <Compile Include="UIAutomation\EventHandlers\TextEditTextChangedEventListener.cs" />
@@ -154,8 +154,8 @@
     <Compile Include="UIAutomation\Patterns\WindowPattern.cs" />
     <Compile Include="UIAutomation\A11yPatternFactory.cs" />
     <Compile Include="UIAutomation\Support\TextRangeFinder.cs" />
-    <Compile Include="Utility\ExtensionMethods.cs" />
-    <Compile Include="Utility\ProcessItem.cs" />
+    <Compile Include="Misc\ExtensionMethods.cs" />
+    <Compile Include="Misc\ProcessItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">

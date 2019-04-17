@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 
-namespace AccessibilityInsights.DesktopUI.Utility
+namespace AccessibilityInsights.DesktopUI.Misc
 {
     /// <summary>
     /// Wrapper to store the hwind as key and (BorderLine, TextTip or Win32SnapShotButton) as Value

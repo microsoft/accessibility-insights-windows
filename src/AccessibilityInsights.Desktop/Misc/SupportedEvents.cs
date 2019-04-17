@@ -6,7 +6,7 @@ using Axe.Windows.Desktop.Types;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Axe.Windows.Desktop.Utility
+namespace Axe.Windows.Desktop.Misc
 {
     /// <summary>
     /// list of tuples that represent the mappings from control types to events

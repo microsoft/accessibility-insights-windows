@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.DesktopUI.Utility;
+using AccessibilityInsights.DesktopUI.Misc;
 using Axe.Windows.Win32;
 using System;
 using System.Collections.Concurrent;

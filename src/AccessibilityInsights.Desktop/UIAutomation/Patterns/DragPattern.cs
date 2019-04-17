@@ -7,7 +7,7 @@ using System.Text;
 using Axe.Windows.Core.Bases;
 using UIAutomationClient;
 using Axe.Windows.Core.Attributes;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using Axe.Windows.Desktop.Types;
 using System.Runtime.InteropServices;
 

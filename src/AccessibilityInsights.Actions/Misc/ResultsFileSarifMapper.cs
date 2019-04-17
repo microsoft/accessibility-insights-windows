@@ -4,7 +4,7 @@ using Axe.Windows.Actions.Sarif;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Fingerprint;
 using Axe.Windows.Core.Results;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using Microsoft.CodeAnalysis.Sarif;
 using Microsoft.CodeAnalysis.Sarif.Writers;
 using System;

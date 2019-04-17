@@ -4,7 +4,7 @@ using Axe.Windows.Actions.Contexts;
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using Axe.Windows.Desktop.ColorContrastAnalyzer;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;

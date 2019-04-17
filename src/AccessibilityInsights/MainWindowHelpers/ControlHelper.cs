@@ -4,6 +4,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
 using Axe.Windows.Win32;
@@ -276,7 +277,7 @@ namespace AccessibilityInsights
                 sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
             }
 
-            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, ConfigurationModel.GetAppVersionFromAssembly());
+            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, Utility.GetAppVersion());
 
             if (NativeMethods.IsRunningWithUIAccess())
             {

@@ -88,7 +88,7 @@
     <Compile Include="Keyboard\HotkeyTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SnapshotMetaInfoTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
-    <Compile Include="Utility\SupportedEventsTests.cs" />
+    <Compile Include="Misc\SupportedEventsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

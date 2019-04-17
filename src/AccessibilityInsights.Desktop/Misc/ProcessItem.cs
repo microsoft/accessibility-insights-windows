@@ -5,7 +5,7 @@ using System.Diagnostics;
 
 using static System.FormattableString;
 
-namespace Axe.Windows.Desktop.Utility
+namespace Axe.Windows.Desktop.Misc
 {
     public class ProcessItem
     {

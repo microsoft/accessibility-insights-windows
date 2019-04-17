@@ -4,7 +4,7 @@ using AccessibilityInsights.CommonUxComponents.Controls;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Results;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
