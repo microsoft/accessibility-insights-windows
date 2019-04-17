@@ -111,7 +111,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
             {
                 try
                 {
-                    TClient.TrackException(e);
+                    TClient.TrackException(e, ContextProperties);
                 }
                 catch { } // Don't try to report this Exception
             }
