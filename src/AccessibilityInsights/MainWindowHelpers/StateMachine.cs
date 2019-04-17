@@ -383,8 +383,9 @@ namespace AccessibilityInsights
                 File.WriteAllBytes(tempPath, Convert.FromBase64String(allyFileData));
                 HandleLoadingSnapshotData(tempPath, selectedElementId);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 File.Delete(tempPath);
             }
         }
@@ -405,7 +406,10 @@ namespace AccessibilityInsights
                     fileHandler(fileName, selectedElementId);
                     return true;
                 }
-                catch { }
+                catch (Exception e)
+                {
+                    e.ReportException();
+                }
             }
 
             return false;
@@ -510,6 +514,7 @@ namespace AccessibilityInsights
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 System.Windows.MessageBox.Show(ex.Message);
                 return false;
             }

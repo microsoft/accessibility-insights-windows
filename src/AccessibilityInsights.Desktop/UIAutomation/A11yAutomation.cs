@@ -9,6 +9,7 @@ using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
+using Axe.Windows.Telemetry;
 using UIAutomationClient;
 
 namespace Axe.Windows.Desktop.UIAutomation
@@ -54,8 +55,8 @@ namespace Axe.Windows.Desktop.UIAutomation
             }
             catch (Exception ex)
             {
-                //silent and let it return null
-                Debug.WriteLine(ex);
+                // report and let it return null
+                ex.ReportException();
             }
             finally
             {
@@ -82,8 +83,9 @@ namespace Axe.Windows.Desktop.UIAutomation
             {
                 return ElementFromUIAElement(UIAutomation.ElementFromHandle(hWnd));
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
             }
 
             return null;
@@ -126,8 +128,9 @@ namespace Axe.Windows.Desktop.UIAutomation
             {
                 return UIAutomation.ElementFromHandle(hWnd);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return null;
             }
         }
@@ -151,8 +154,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                     Marshal.ReleaseComObject(uia);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
             }
 
             return null;
@@ -244,8 +248,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                     Marshal.ReleaseComObject(uia);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
             }
 
             return null;

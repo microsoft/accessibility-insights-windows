@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Desktop.UIAutomation.Patterns;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -101,6 +102,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch(Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextPatternExplorerDialog_GetRanges_Failed_to_retrieve_range_s____0, ex.Message));
             }
         }
@@ -251,6 +253,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -266,6 +269,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -278,6 +282,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -290,6 +295,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -302,6 +308,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -315,6 +322,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -328,6 +336,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -358,6 +367,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }
@@ -407,6 +417,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception e)
             {
+                e.ReportException();
                 MessageDialog.Show(GetExceptionString(e));
             }
         }
@@ -479,6 +490,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
         }

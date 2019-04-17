@@ -2,8 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using System;
 using System.Diagnostics;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System.Globalization;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 
@@ -30,8 +32,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.InvalidLink, e.Uri.AbsoluteUri));
             }
         }

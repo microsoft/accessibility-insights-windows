@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.SharedUx.Converters
 {
@@ -24,8 +25,9 @@ namespace AccessibilityInsights.SharedUx.Converters
                 return (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString((string)value);
 
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 return System.Windows.Media.Colors.White;
             }
         }

@@ -85,6 +85,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             }
             catch
             {
+                // TODO : Report this?
                 // fail silently and we might end up not playing sound
                 return false;
             }
@@ -251,6 +252,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             }
             catch
             {
+                // TODO : Report this Exception?
                 player = new SoundPlayer();
             }
         }

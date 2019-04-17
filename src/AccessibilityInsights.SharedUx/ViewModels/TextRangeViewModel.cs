@@ -352,8 +352,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     //    IUIAutomationTextRange lnk = Marshal.GetObjectForIUnknown(value) as IUIAutomationTextRange;
                     //    list.Add(new TextAttributeViewModel(kv.Value, new TextRangeViewModel(new TextRange(lnk))));
                     //}
-                    //catch
+                    //catch (Exception e)
                     //{
+                    //    e.ReportException();
                     //}
                     break;
                 default:

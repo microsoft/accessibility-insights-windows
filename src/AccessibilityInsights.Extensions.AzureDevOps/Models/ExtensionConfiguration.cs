@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using AccessibilityInsights.Extensions.Helpers;
 using Newtonsoft.Json;
+using System;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 {
@@ -24,8 +26,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 ZoomLevel = config.ZoomLevel;
                 SavedConnection = config.SavedConnection;
                 CachedConnections = config.CachedConnections;
-            } catch
+            }
+            catch (Exception e)
             {
+                e.ReportException();
                 // don't use serialized data if it can't be parsed
             }
         }

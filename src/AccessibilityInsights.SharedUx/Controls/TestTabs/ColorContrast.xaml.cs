@@ -8,6 +8,7 @@ using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
@@ -225,8 +226,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 Process.Start(new ProcessStartInfo(HelpURL));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_hlHowToTest_Click, HelpURL));
             }
         }

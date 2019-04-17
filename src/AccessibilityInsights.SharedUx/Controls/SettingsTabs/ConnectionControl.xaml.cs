@@ -163,8 +163,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
             }
         }
     }

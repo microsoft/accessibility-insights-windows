@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Telemetry;
 using Microsoft.CodeAnalysis.Sarif;
 using Newtonsoft.Json;
 using System;
@@ -25,8 +26,9 @@ namespace Axe.Windows.Actions.Sarif
             {
                 baselineLogs.AddRange(JsonConvert.DeserializeObject<List<SarifLog>>(sarifData));
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 baselineLogs.Add(JsonConvert.DeserializeObject<SarifLog>(sarifData));
             }
 

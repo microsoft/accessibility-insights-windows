@@ -3,6 +3,7 @@
 using Axe.Windows.Actions.Attributes;
 using Axe.Windows.Actions.Enums;
 using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Telemetry;
 using System;
 using System.Drawing;
 
@@ -41,8 +42,9 @@ namespace Axe.Windows.Actions
                 ec.DataContext.Screenshot = bmp;
                 ec.DataContext.ScreenshotElementId = el.UniqueId;
             }
-            catch(TypeInitializationException)
+            catch(TypeInitializationException e)
             {
+                e.ReportException();
                 // silently ignore. since it happens only on WCOS.
                 // in this case, the results file will be loaded with yellow box.
             }

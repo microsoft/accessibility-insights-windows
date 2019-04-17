@@ -38,9 +38,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public static void PublishTelemetryEvent(string eventName, string property, string value)
         {
             PublishTelemetryEvent(eventName, new Dictionary<string, string>
-                {
-                    { property, value }
-                });
+            {
+                { property, value }
+            });
         }
 
         /// <summary>
@@ -56,7 +56,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.PublishEvent(eventName, propertyBag);
             }
-            catch (Exception) { }
+            catch (Exception e)
+            {
+                ReportException(e);
+            }
         }
 
         /// <summary>
@@ -72,7 +75,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.AddOrUpdateContextProperty(property, value);
             }
-            catch (Exception) { }
+            catch (Exception e)
+            {
+                ReportException(e);
+            }
         }
 
         /// <summary>
@@ -88,7 +94,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.ReportException(e);
             }
-            catch (Exception) { }
+            catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)
         }
     } // class
 } // namespace

@@ -5,6 +5,7 @@ using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Win32;
+using Axe.Windows.Telemetry;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -34,8 +35,9 @@ namespace Axe.Windows.Desktop.Utility
 
                 return prc.ProcessName;
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 return null;
             }
         }
@@ -53,8 +55,9 @@ namespace Axe.Windows.Desktop.Utility
 
                 return prc.MainModule;
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 return null;
             }
         }

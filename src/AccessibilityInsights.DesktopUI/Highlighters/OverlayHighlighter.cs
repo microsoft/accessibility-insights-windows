@@ -139,9 +139,11 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
             catch (InvalidOperationException)
             {
+                // TODO : Report this?
             }
             catch (NullReferenceException)
             {
+                // TODO : Report this?
             }
         }
 
@@ -180,11 +182,11 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
             catch (InvalidOperationException)
             {
-
+                // TODO : Report this?
             }
             catch (NullReferenceException)
             {
-
+                // TODO : Report this?
             }
         }
 
@@ -204,7 +206,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             }
             catch (InvalidOperationException)
             {
-
+                // TODO : Report this?
             }
         }
         

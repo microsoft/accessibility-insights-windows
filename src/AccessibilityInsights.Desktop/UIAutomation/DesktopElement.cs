@@ -2,6 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Telemetry;
+using System;
 using System.Collections.Generic;
 using UIAutomationClient;
 using System.Runtime.InteropServices;
@@ -108,8 +110,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                     value = GetHeaderOfLabelBy(value);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 value = null;
             }
 
@@ -138,8 +141,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                 }
                 base.Dispose(disposing);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 if (System.Diagnostics.Debugger.IsAttached)
                 {
                     System.Diagnostics.Debugger.Break();

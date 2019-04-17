@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Misc;
+using Axe.Windows.Telemetry;
 using Newtonsoft.Json;
+using System;
 
 namespace Axe.Windows.Core.Bases
 {
@@ -92,8 +94,9 @@ namespace Axe.Windows.Core.Bases
             {
                 config = JsonConvert.DeserializeObject<T>(text);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 // ignore silently
             }
 

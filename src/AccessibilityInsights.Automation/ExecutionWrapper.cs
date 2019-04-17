@@ -25,6 +25,7 @@ namespace Axe.Windows.Automation
                 }
                 catch (Exception ex)
                 {
+                    // No need to report this Exception, since telemetry is disabled in automation
                     string errorDetail;
 
                     A11yAutomationException automationException = ex as A11yAutomationException;

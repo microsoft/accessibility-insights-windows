@@ -52,9 +52,9 @@ namespace AccessibilityInsights.Extensions
                     {
                         return Assembly.LoadFrom(filePath);
                     }
-                    catch (Exception)
+                    catch (Exception e)
                     {
-                        continue;
+                        Telemetry?.ReportException(e);
                     }
                 }
             }
@@ -96,6 +96,7 @@ namespace AccessibilityInsights.Extensions
             catch
             {
                 // Fail silently, since the code is designed to run without extensions
+                // and our Telemetry extension will always be null at this point
             }
         }
 

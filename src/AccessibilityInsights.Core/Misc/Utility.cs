@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Telemetry;
 using System;
 using System.Diagnostics;
 
@@ -34,8 +35,9 @@ namespace Axe.Windows.Core.Misc
             {
                 process = Process.GetProcessById(processId);
             }
-            catch (ArgumentException /*ex*/)
+            catch (ArgumentException e)
             {
+                e.ReportException();
                 // occurs when an invalid process id is passed to GetProcessById
                 return false;
             }

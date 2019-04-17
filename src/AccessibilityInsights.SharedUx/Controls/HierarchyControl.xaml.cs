@@ -338,8 +338,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                     ((List<HierarchyNodeViewModel>)this.treeviewHierarchy.ItemsSource)[0]?.Clear();
                     this.treeviewHierarchy.ItemsSource = null;
                 }
-                catch
+                catch (Exception e)
                 {
+                    e.ReportException();
                     // silently ignore. 
                 }
             }
@@ -702,9 +703,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                         btnMenu.Height = TreeButtonHeight;
                         btnMenu.Margin = new Thickness(0, p.Y, btnMenu.Margin.Right, 0);
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        // ignore without tracking it. 
+                        ex.ReportException();
                     }
                 }));
             }
@@ -837,6 +838,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;

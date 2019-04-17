@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
+using Axe.Windows.Telemetry;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -82,6 +83,8 @@ namespace Axe.Windows.Core.Fingerprint
                 {
                     throw;
                 }
+
+                e.ReportException();
             }
 
             return false;

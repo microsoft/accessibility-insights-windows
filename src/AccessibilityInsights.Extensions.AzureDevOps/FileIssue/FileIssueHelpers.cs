@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.Services.Common;
 using mshtml;
@@ -46,8 +47,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 return (issueId, a11yIssueId);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return (null, string.Empty);
             }
         }
@@ -295,8 +297,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             {
                 return new ConnectionInfo(configString);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 return null;
             }
         }

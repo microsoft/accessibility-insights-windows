@@ -3,6 +3,7 @@
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
 using System.Collections.Generic;
@@ -71,8 +72,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         IssueLink = AzureDevOps.GetExistingIssueUrl(issueId.Value)
                     };
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                 }
 
                 return null;

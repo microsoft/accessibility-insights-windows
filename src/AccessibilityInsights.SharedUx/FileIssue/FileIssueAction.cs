@@ -51,8 +51,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 }
                 return issueResult;
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return null;
             }
         }

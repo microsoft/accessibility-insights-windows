@@ -105,6 +105,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                 }
                 catch (Exception ex)
                 {
+                    // TODO : Report this?
                     System.Diagnostics.Trace.WriteLine("Font stream exception: " + ex);
                 }
                 finally

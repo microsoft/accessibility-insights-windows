@@ -20,6 +20,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.Modes
 {
@@ -173,8 +174,9 @@ namespace AccessibilityInsights.Modes
                     UpdateUI(e);
                     this.ctrlTabs.CtrlEventConfig.SetElement(e);
                 }
-                catch
+                catch (Exception e)
                 {
+                    e.ReportException();
                     MessageDialog.Show(Properties.Resources.SetElementException);
                     this.Clear();
                 }

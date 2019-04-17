@@ -328,8 +328,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                             {
                                 sip.ScrollIntoView();
                             }
-                            catch
+                            catch (Exception ex)
                             {
+                                ex.ReportException();
                                 /// object dismissed
                             }
                         }

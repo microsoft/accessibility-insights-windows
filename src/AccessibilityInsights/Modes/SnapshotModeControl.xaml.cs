@@ -201,8 +201,9 @@ namespace AccessibilityInsights.Modes
                     ec.DataContext.FocusedElementUniqueId = null;
                 });
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     Application.Current.MainWindow.Visibility = Visibility.Visible;
@@ -487,6 +488,7 @@ namespace AccessibilityInsights.Modes
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException, ex.Message));
                 }
             }

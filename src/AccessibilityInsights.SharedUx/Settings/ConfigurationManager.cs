@@ -4,6 +4,7 @@ using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.IO;
 using System.Windows;
@@ -77,8 +78,9 @@ namespace AccessibilityInsights.SharedUx.Settings
 
                 this.AppLayout.LoadLayoutIfPrevVersion(window.Top, window.Left);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 AppLayout.RemoveConfiguration(fp);
                 this.AppLayout = new AppLayout(window.Top, window.Left);
                 this.AppLayout.SerializeInJSON(fp);
@@ -97,8 +99,9 @@ namespace AccessibilityInsights.SharedUx.Settings
             {
                 this.AppConfig = ConfigurationModel.LoadFromJSON(fp);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 ConfigurationModel.RemoveConfiguration(fp);
                 this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel();
                 this.AppConfig.SerializeInJSON(fp);
@@ -119,8 +122,9 @@ namespace AccessibilityInsights.SharedUx.Settings
                 this.EventConfig = rcfg;
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
                 RecorderSetting.RemoveConfiguration(configpath);
                 this.EventConfig = RecorderSetting.LoadConfiguration(configpath);
             }

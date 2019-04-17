@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -132,8 +133,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT, ZoomValue, IntPtr.Zero);
                 this.zoomLabel.Text = Invariant($"{ZoomValue}%");
             }
-            catch (System.Runtime.InteropServices.COMException)
+            catch (System.Runtime.InteropServices.COMException e)
             {
+                e.ReportException();
             }
         }
 

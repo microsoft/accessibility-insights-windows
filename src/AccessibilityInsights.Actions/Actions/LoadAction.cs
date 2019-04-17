@@ -4,6 +4,7 @@ using Axe.Windows.Actions.Attributes;
 using Axe.Windows.Actions.Enums;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Telemetry;
 using Newtonsoft.Json;
 using System;
 using System.Drawing;
@@ -42,8 +43,9 @@ namespace Axe.Windows.Actions
                     bmp = LoadBmp(bmpPart);
                     bmpPart.Close();
                 }
-                catch (InvalidOperationException)  // Gets thrown if screenshot doesn't exist in file
+                catch (InvalidOperationException e)  // Gets thrown if screenshot doesn't exist in file
                 {
+                    e.ReportException();
                     bmp = null;
                 }
 

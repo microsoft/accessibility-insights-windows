@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -40,8 +41,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     System.Diagnostics.Process.Start(path);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 // silently ignore. 
             }
         }
@@ -59,8 +61,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 Process.Start(uri.AbsoluteUri);
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 // silently ignore. 
             }
         }

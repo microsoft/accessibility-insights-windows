@@ -6,7 +6,7 @@ using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.HelpLinks;
 using Axe.Windows.Core.Results;
 using Axe.Windows.Rules;
-
+using Axe.Windows.Telemetry;
 using static System.FormattableString;
 
 namespace Axe.Windows.RuleSelection
@@ -24,6 +24,7 @@ namespace Axe.Windows.RuleSelection
             }
             catch (System.Exception ex)
             {
+                ex.ReportException();
                 if (System.Diagnostics.Debugger.IsAttached)
                 {
                     System.Diagnostics.Debug.WriteLine(ex.ToString());

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using Axe.Windows.RuleSelection;
+using Axe.Windows.Telemetry;
 using Axe.Windows.Core.Bases;
 using UIAutomationClient;
 using System.Linq;
@@ -121,6 +122,7 @@ namespace Axe.Windows.Desktop.UIAutomation.TreeWalkers
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     child = null;
                     System.Diagnostics.Trace.WriteLine("Tree walker exception: " + ex);
                 }
@@ -140,6 +142,7 @@ namespace Axe.Windows.Desktop.UIAutomation.TreeWalkers
                     }
                     catch (Exception ex)
                     {
+                        ex.ReportException();
                         child = null;
                         System.Diagnostics.Trace.WriteLine("Tree walker exception: " + ex);
                     }

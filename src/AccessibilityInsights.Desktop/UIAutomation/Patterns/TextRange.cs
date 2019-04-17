@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UIAutomationClient;
 using Axe.Windows.Core.Attributes;
 using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Telemetry;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
@@ -137,8 +138,9 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
             {
                 return this.UIATextRange.GetAttributeValue(attr);
             }
-            catch(Exception)
+            catch(Exception e)
             {
+                e.ReportException();
             }
 
             return null;

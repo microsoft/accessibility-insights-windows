@@ -5,6 +5,7 @@ using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Actions.Enums;
 using Axe.Windows.Core.Fingerprint;
 using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Telemetry;
 using System;
 
 namespace Axe.Windows.Actions.Actions
@@ -33,8 +34,9 @@ namespace Axe.Windows.Actions.Actions
 
                 changeCount = SessionIssueStore.GetInstance().MergeIssuesFromStore(storeToMerge);
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
             }
             finally
             {

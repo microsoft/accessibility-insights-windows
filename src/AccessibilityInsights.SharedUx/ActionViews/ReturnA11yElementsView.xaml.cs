@@ -6,6 +6,7 @@ using Axe.Windows.Core.Bases;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -361,8 +362,9 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             {
                 MarkElement(((A11yElement)this.cbElements.SelectedItem));
             }
-            catch(NullReferenceException)
+            catch(NullReferenceException ex)
             {
+                ex.ReportException();
             }
         }
 

@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -219,8 +220,9 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(VideoUrl));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
                     Properties.Resources.btnVideo_ClickException, VideoUrl));
             }
@@ -250,8 +252,9 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }
