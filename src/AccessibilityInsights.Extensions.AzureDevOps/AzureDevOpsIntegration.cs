@@ -499,8 +499,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             var sb = new StringBuilder();
             foreach (var c in str)
             {
-                // Extended ascii characters such as the middle dot can 
-                // cause issues during navigation redirects, so we only include
+                // characters such as the middle dot (ascii 183) can 
+                // cause issues during navigation, so we only include
                 // a basic set of characters when building the URL
                 if (c >= 1 && c <= 127)
                 {
