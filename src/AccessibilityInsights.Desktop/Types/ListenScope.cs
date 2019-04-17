@@ -4,6 +4,7 @@ namespace Axe.Windows.Desktop.Types
 {
     /// <summary>
     /// Defines values that specify the scope of elements within the automation tree
+    /// that should be listened to for events
     /// </summary>
     public enum ListenScope
     {

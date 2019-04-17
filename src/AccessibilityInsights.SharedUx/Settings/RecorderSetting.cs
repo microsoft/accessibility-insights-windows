@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Desktop.Types;
+using Axe.Windows.Core.Types;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -105,7 +106,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             RecorderSetting config = new RecorderSetting
             {
                 // Set Individual Event
-                Events = (from e in Axe.Windows.Desktop.Types.EventType.GetInstance().GetKeyValuePairList()
+                Events = (from e in EventType.GetInstance().GetKeyValuePairList()
                           select new RecordEntitySetting()
                           {
                               Type = RecordEntityType.Event,
@@ -115,7 +116,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                           }).ToList(),
 
                 // Set properties
-                Properties = (from e in Axe.Windows.Core.Types.PropertyType.GetInstance().GetKeyValuePairList()
+                Properties = (from e in PropertyType.GetInstance().GetKeyValuePairList()
                               select new RecordEntitySetting()
                               {
                                   Type = RecordEntityType.Property,
