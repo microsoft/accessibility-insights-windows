@@ -5,7 +5,7 @@ using Axe.Windows.Actions.Misc;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.HelpLinks;
 using Axe.Windows.Core.Results;
-using Axe.Windows.Desktop.Utility;
+using Axe.Windows.Desktop.Misc;
 using Microsoft.CodeAnalysis.Sarif;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
