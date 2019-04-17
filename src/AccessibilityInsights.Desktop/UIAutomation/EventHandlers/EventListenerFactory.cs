@@ -474,13 +474,13 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
         {
             switch (listenScope)
             {
-                case ListenScope.Subtree:
-                    return TreeScope.TreeScope_Subtree;
                 case ListenScope.Element:
                     return TreeScope.TreeScope_Element;
-                default:
                 case ListenScope.Descendants:
                     return TreeScope.TreeScope_Descendants;
+                default:
+                case ListenScope.Subtree:
+                    return TreeScope.TreeScope_Subtree;
             }
         }
 
