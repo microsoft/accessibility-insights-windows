@@ -489,7 +489,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Retains characters within ascii range 1-127 and returns
+        /// Retains characters within ascii range below 127 and returns
         /// an escaped representation of the string
         /// </summary>
         /// <param name="str"></param>
@@ -502,7 +502,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 // characters such as the middle dot (ascii 183) can 
                 // cause issues during navigation, so we only include
                 // a basic set of characters when building the URL
-                if (c >= 1 && c <= 127)
+                if (c <= 127)
                 {
                     sb.Append(c);
                 }
