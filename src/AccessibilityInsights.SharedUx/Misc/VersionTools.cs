@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.Misc
         /// <summary>
         /// Get version from AccessibilityInsights.SharedUx Assembly
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The file version string (as formatted in the file resources)</returns>
         public static string GetAppVersion()
         {
             string fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
