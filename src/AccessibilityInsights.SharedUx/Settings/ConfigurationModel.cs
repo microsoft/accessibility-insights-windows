@@ -4,7 +4,6 @@ using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
-using Axe.Windows.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using System;

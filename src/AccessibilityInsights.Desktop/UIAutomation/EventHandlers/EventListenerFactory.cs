@@ -453,7 +453,7 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
         }
         #endregion
 
-        public EventListenerFactory(A11yElement rootElement) : this(rootElement, TreeScope.TreeScope_Subtree) { }
+        public EventListenerFactory(A11yElement rootElement) : this(rootElement, ListenScope.Subtree) { }
 
         /// <summary>
         /// Cosntructor. 
@@ -461,13 +461,26 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
         /// <param name="peDelegate"></param>
         /// <param name="rootElement">can be null but it is only for global events like focusChanged</param>
         /// <param name="scope"></param>
-        public EventListenerFactory(A11yElement rootElement, TreeScope scope)
+        public EventListenerFactory(A11yElement rootElement, ListenScope scope)
         {
             this.RootElement = rootElement;
-            this.Scope = scope;
+            this.Scope = GetUIAScope(scope);
             this.EventListeners = new Dictionary<int, EventListener>();
             //Start worker thread
             StartWorkerThread();
+        }
+
+        private static TreeScope GetUIAScope(ListenScope listenScope)
+        {
+            switch (listenScope)
+            {
+                case ListenScope.Element:
+                    return TreeScope.TreeScope_Element;
+                case ListenScope.Descendants:
+                    return TreeScope.TreeScope_Descendants;
+                default:
+                    return TreeScope.TreeScope_Subtree;
+            }
         }
 
         /// <summary>

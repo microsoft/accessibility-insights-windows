@@ -3,16 +3,11 @@
 using Axe.Windows.Actions.Attributes;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Actions.Enums;
-using Axe.Windows.Core.Bases;
-using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 
 namespace Axe.Windows.Actions
 {
@@ -23,10 +18,8 @@ namespace Axe.Windows.Actions
     [InteractionLevel(UxInteractionLevel.NoUxInteraction)]
     public class ListenAction:IDisposable
     {
-        RecorderSetting Config { get; set; }
         ElementContext ElementContext { get; set; }
         EventListenerFactory EventListener { get; set; }
-        List<IA11yEventMessage> EventRecords { get; set; }
         /// <summary>
         /// External event listener. it should be called if it is not null.
         /// </summary>
@@ -42,73 +35,43 @@ namespace Axe.Windows.Actions
         /// <param name="config"></param>
         /// <param name="ec"></param>
         /// <param name="listener"></param>
-        private ListenAction(RecorderSetting config, ElementContext ec, HandleUIAutomationEventMessage listener)
+        private ListenAction(ListenScope listenScope, ElementContext ec, HandleUIAutomationEventMessage listener)
         {
             this.Id = Guid.NewGuid();
-            this.Config = config;
             this.ElementContext = ec;
-            this.EventListener = new EventListenerFactory(ec.Element, config.ListenScope);
-            this.EventRecords = new List<IA11yEventMessage>();
+            this.EventListener = new EventListenerFactory(ec.Element, listenScope);
             this.ExternalListener = listener;
         }
 
         /// <summary>
-        /// Start recoding events
+        /// Start recording events
         /// </summary>
-        public void Start()
+        public void Start(IEnumerable<int> eventIDs, IEnumerable<int> propertyIDs)
         {
-            this.EventRecords.Clear();
             this.IsRunning = true;
-            InitFocusChangedEventListener();
-            InitIndividualEventListeners();
-            InitPropertyChangeListener();
+            InitIndividualEventListeners(eventIDs);
+            InitPropertyChangeListener(propertyIDs);
         }
 
         /// <summary>
         /// Start Property change Event listener
         /// </summary>
-        private void InitPropertyChangeListener()
+        private void InitPropertyChangeListener(IEnumerable<int> propertyIds)
         {
-            var list = from c in this.Config.Properties
-                       where this.Config.IsListeningAllEvents || c.CheckedCount > 0
-                       select c.Id;
-
-            if (list.Count() != 0)
+            if (propertyIds.Any())
             {
-                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationPropertyChangedEventId, this.onEventFired, list.ToArray());
+                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationPropertyChangedEventId, this.onEventFired, propertyIds.ToArray());
             }
         }
 
         /// <summary>
         /// Start Individual Event Listener
         /// </summary>
-        private void InitIndividualEventListeners()
+        private void InitIndividualEventListeners(IEnumerable<int> eventIds)
         {
-            var list = from c in this.Config.Events
-                       where this.Config.IsListeningAllEvents || c.CheckedCount > 0
-                       select c;
-
-            foreach (var l in list)
+            foreach (var id in eventIds)
             {
-                if (l.Id == EventType.UIA_StructureChangedEventId)
-                {
-                    this.EventListener.RegisterAutomationEventListener(EventType.UIA_StructureChangedEventId,this.onEventFired);
-                }
-                else
-                {
-                    this.EventListener.RegisterAutomationEventListener(l.Id, this.onEventFired);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Start Listening FocusChange events
-        /// </summary>
-        private void InitFocusChangedEventListener()
-        {
-            if(this.Config.IsListeningFocusChangedEvent)
-            {
-                this.EventListener.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId,this.onEventFired);
+                this.EventListener.RegisterAutomationEventListener(id, this.onEventFired);
             }
         }
 
@@ -130,53 +93,9 @@ namespace Axe.Windows.Actions
         {
             if (IsRunning)
             {
-                lock (this)
-                {
-                    this.EventRecords.Add(message);
-                }
                 this.ExternalListener?.Invoke(message);
             }
         }
-
-        /// <summary>
-        /// Check whether there is any event recorded
-        /// </summary>
-        /// <returns></returns>
-        public bool HasRecordedEvents()
-        {
-            return this.EventRecords != null && this.EventRecords.Count != 0;
-        }
-
-        #region serialization code
-        /// <summary>
-        /// Deserialize EventMessages from JSON file. 
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static List<EventMessage> LoadEventMessages(string path)
-        {
-            List<EventMessage> list = null;
-
-            if (File.Exists(path))
-            {
-                var json = File.ReadAllText(path);
-                list = JsonConvert.DeserializeObject<List<EventMessage>>(json);
-            }
-
-            return list;
-        }
-
-        /// <summary>
-        /// Save Event Messages in Json format
-        /// </summary>
-        /// <param name="path"></param>
-        public void SaveInJson(string path)
-        {
-            var json = JsonConvert.SerializeObject(this.EventRecords, Formatting.Indented);
-
-            File.WriteAllText(path, json, Encoding.UTF8);
-        }
-        #endregion
 
         #region static members
         /// <summary>
@@ -191,10 +110,10 @@ namespace Axe.Windows.Actions
         /// <param name="ecId"></param>
         /// <param name="listener"></param>
         /// <returns></returns>
-        public static Guid CreateInstance(RecorderSetting config, Guid ecId, HandleUIAutomationEventMessage listener)
+        public static Guid CreateInstance(ListenScope listenScope, Guid ecId, HandleUIAutomationEventMessage listener)
         {
             var ec = DataManager.GetDefaultInstance().GetElementContext(ecId);
-            var la = new ListenAction(config, ec, listener);
+            var la = new ListenAction(listenScope, ec, listener);
 
             sListenActions.Add(la.Id, la);
 
@@ -243,9 +162,6 @@ namespace Axe.Windows.Actions
                 {
                     this.EventListener.Dispose();
                     this.EventListener = null;
-                    this.EventRecords?.ForEach(r => r.Element?.Dispose());
-                    this.EventRecords.Clear();
-                    this.EventRecords = null;
                 }
 
                 disposedValue = true;
