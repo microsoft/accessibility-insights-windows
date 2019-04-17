@@ -7,6 +7,7 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 
 namespace Axe.Windows.Actions
@@ -109,7 +110,7 @@ namespace Axe.Windows.Actions
         /// <param name="ecId">ElementContext Id</param>
         /// <param name="eId">Element Id</param>
         /// <returns></returns>
-        internal A11yElement GetA11yElement(Guid ecId, int eId)
+        public A11yElement GetA11yElement(Guid ecId, int eId)
         {
             if (this.ElementContexts.ContainsKey(ecId)) 
             {
@@ -130,6 +131,35 @@ namespace Axe.Windows.Actions
 
             return null;
         }
+
+        /// <summary>
+        /// Gets the element on which the screenshot was taken.
+        /// </summary>
+        /// <param name="ecId"></param>
+        /// <returns></returns>
+        public A11yElement GetScreenshotElement(Guid ecId)
+        {
+            var elementContext = GetElementContext(ecId);
+            if (elementContext == null) return null;
+            if (elementContext.DataContext == null) return null;
+
+            return GetA11yElement(ecId, elementContext.DataContext.ScreenshotElementId);
+        }
+
+        /// <summary>
+        /// Gets the most recent screenshot
+        /// </summary>
+        /// <param name="ecId"></param>
+        /// <returns></returns>
+        public Bitmap GetScreenshot(Guid ecId)
+        {
+            var elementContext = GetElementContext(ecId);
+            if (elementContext == null) return null;
+            if (elementContext.DataContext == null) return null;
+
+            return elementContext.DataContext.Screenshot;
+        }
+
 
         #region constants
         /// <summary>

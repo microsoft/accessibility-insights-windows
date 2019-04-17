@@ -10,11 +10,15 @@ using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Desktop.Settings;
+using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -236,16 +240,48 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.NotifyRecordingChange(true);
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Event_Start_Record);
-
-                this.EventRecorderId = ListenAction.CreateInstance(ConfigurationManager.GetDefaultInstance().EventConfig, this.ElementContext.Id, onRecordEvent);
                 this.dgEvents.Items.Clear();
                 this.vmEventRecorder.State = ButtonState.On;
-                ListenAction.GetInstance(this.EventRecorderId.Value).Start();
+
+                var config = ConfigurationManager.GetDefaultInstance().EventConfig;
+                this.EventRecorderId = ListenAction.CreateInstance(config.ListenScope, this.ElementContext.Id, onRecordEvent);
+                var propIds = GeneratePropertyIds(config);
+                var eventIds = GenerateEventIds(config);
+                ListenAction.GetInstance(this.EventRecorderId.Value).Start(eventIds, propIds);
             }
             else
             {
                 MessageDialog.Show(Properties.Resources.EventRecordControl_StartRecordingEvent_No_element_is_selected_yet__please_select_first);
             }
+        }
+
+        /// <summary>
+        /// Generate list of event ids to listen to from recorder setting
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        private static IEnumerable<int> GenerateEventIds(RecorderSetting config)
+        {
+            var eventIds = from c in config.Events
+                           where config.IsListeningAllEvents || c.CheckedCount > 0
+                           select c.Id;
+            if (config.IsListeningFocusChangedEvent)
+            {
+                eventIds = eventIds.Append(EventType.UIA_AutomationFocusChangedEventId);
+            }
+            return eventIds;
+        }
+
+        /// <summary>
+        /// Generate list of property ids to listen to from recorder setting
+        /// </summary>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        private static IEnumerable<int> GeneratePropertyIds(RecorderSetting config)
+        {
+            return from c in config.Properties
+                where config.IsListeningAllEvents || c.CheckedCount > 0
+                select c.Id;
         }
 
         /// <summary>
@@ -332,7 +368,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (this.EventRecorderId != null)
             {
                 var la = ListenAction.GetInstance(this.EventRecorderId.Value);
-                if (la.HasRecordedEvents())
+                if (HasRecordedEvents())
                 {
                     var dlg = new System.Windows.Forms.SaveFileDialog
                     {
@@ -349,7 +385,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                         try
                         {
-                            la.SaveInJson(dlg.FileName);
+                            SetupLibrary.FileHelpers.SerializeDataToJSON(this.dgEvents.Items, dlg.FileName);
                         }
                         catch (Exception ex)
                         {
@@ -362,6 +398,15 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
 
             MessageDialog.Show("There is no event to save.");
+        }
+
+        /// <summary>
+        /// Check whether there is any event recorded
+        /// </summary>
+        /// <returns></returns>
+        private bool HasRecordedEvents()
+        {
+            return this.dgEvents.Items != null && this.dgEvents.Items.Count != 0;
         }
 
         private void OnMoveFocusToEventsGrid(object sender, RoutedEventArgs e)
@@ -415,14 +460,14 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             switch (RecorderSetting.ListenScope)
             {
-                case UIAutomationClient.TreeScope.TreeScope_Element:
+                case ListenScope.Element:
                     this.radiobuttonScopeSelf.IsChecked = true;
                     break;
-                case UIAutomationClient.TreeScope.TreeScope_Subtree:
-                    this.radiobuttonScopeSubtree.IsChecked = true;
-                    break;
-                case UIAutomationClient.TreeScope.TreeScope_Descendants:
+                case ListenScope.Descendants:
                     this.radiobuttonScopeDescendents.IsChecked = true;
+                    break;
+                default:
+                    this.radiobuttonScopeSubtree.IsChecked = true;
                     break;
             }
         }
@@ -436,15 +481,15 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (this.radiobuttonScopeSelf.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Element;
+                RecorderSetting.ListenScope = ListenScope.Element;
             }
             else if (this.radiobuttonScopeSubtree.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Subtree;
+                RecorderSetting.ListenScope = ListenScope.Subtree;
             }
             else if (this.radiobuttonScopeDescendents.IsChecked == true)
             {
-                RecorderSetting.ListenScope = UIAutomationClient.TreeScope.TreeScope_Descendants;
+                RecorderSetting.ListenScope = ListenScope.Descendants;
             }
 
             UpdateGlobalFocusEventCheckbox?.Invoke();

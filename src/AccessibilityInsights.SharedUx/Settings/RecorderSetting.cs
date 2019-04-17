@@ -1,13 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.Types;
+using Axe.Windows.Core.Types;
 using System.Collections.Generic;
 using System.Linq;
-using UIAutomationClient;
 
-namespace Axe.Windows.Desktop.Settings
+namespace AccessibilityInsights.SharedUx.Settings
 {
     /// <summary>
     /// Event Record Configuration class
@@ -40,65 +38,11 @@ namespace Axe.Windows.Desktop.Settings
         /// </summary>
         public bool IsListeningAllEvents { get; set; } = false;
 
-        public TreeScope ListenScope { get; set; }
+        public ListenScope ListenScope { get; set; }
         #endregion
 
         public RecorderSetting()
         {
-        }
-
-        /// <summary>
-        /// Get the list of EventConfigs
-        /// </summary>
-        /// <param name="isRecorded">select the target mode for recording</param>
-        /// <returns></returns>
-        public List<RecordEntitySetting> GetEventsConfigs(bool isRecorded)
-        {
-            return (from e in this.Events
-                    where e.IsRecorded == isRecorded
-                    select e).ToList();
-        }
-
-        /// <summary>
-        /// Set the checked state based on id and type
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="type"></param>
-        /// <param name="val"></param>
-        public void SetChecked(int id, RecordEntityType type, bool val, string name = null)
-        {
-            int change = val ? 1 : -1;
-            if (type == RecordEntityType.Event)
-            {
-                if (id == EventType.UIA_AutomationFocusChangedEventId)
-                {
-                    this.IsListeningFocusChangedEvent = val;
-                }
-                else
-                {
-                    this.Events.Where(e => e.Id == id).First().CheckedCount += change;                    
-                }
-            }
-            else
-            {
-                if (this.Properties.Where(e => e.Id == id).Count() > 0)
-                {
-                    this.Properties.Where(e => e.Id == id).First().CheckedCount += change;
-                }
-                else
-                {
-                    this.Properties.Add(new RecordEntitySetting()
-                    {
-                        Type = RecordEntityType.Property,
-                        Id = id,
-                        Name = name,
-                        IsCustom = true,
-                        IsRecorded = false,
-                        CheckedCount = 1
-                    });
-                }
-
-            }
         }
 
         #region Static methods to get instance
@@ -109,7 +53,7 @@ namespace Axe.Windows.Desktop.Settings
             config = RecorderSetting.LoadFromJSON<RecorderSetting>(path);
             if (config == null)
             {
-                config = RecorderSetting.GetDefaultRecordingConfig();
+                config = GetDefaultRecordingConfig();
                 config.SerializeInJSON(path);
             }
             else
@@ -120,9 +64,9 @@ namespace Axe.Windows.Desktop.Settings
                          where IsNotInList(e.Key, config.Events)
                          select e;
 
-                if(ms.Count() != 0)
+                if (ms.Count() != 0)
                 {
-                    foreach(var m in ms)
+                    foreach (var m in ms)
                     {
                         config.Events.Add(new RecordEntitySetting()
                         {
@@ -185,12 +129,11 @@ namespace Axe.Windows.Desktop.Settings
                 IsListeningFocusChangedEvent = true,
 
                 // Individual Event Scope
-                ListenScope = TreeScope.TreeScope_Subtree
+                ListenScope = ListenScope.Subtree,
             };
 
             return config;
         }
         #endregion
-
     }
 }
