@@ -1,11 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Enums;
-using Axe.Windows.Core.Misc;
-using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Misc;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -439,9 +440,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (ShowWelcomeScreenOnLaunch == false)
             {
-                if (this.AppVersion != Axe.Windows.Core.Misc.Utility.GetAppVersion())
+                if (this.AppVersion !=VersionTools.GetAppVersion())
                 {
-                    this.AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+                    this.AppVersion = VersionTools.GetAppVersion();
                     this.ShowWelcomeScreenOnLaunch = true;
                     return true;
                 }
@@ -459,7 +460,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public ConfigurationModel()
         {
-            AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            AppVersion = VersionTools.GetAppVersion();
             Version = CurrentVersion;
         }
 
@@ -469,7 +470,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private ConfigurationModel(SettingsDictionary source)
         {
             _settings = new SettingsDictionary(source);
-            AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            AppVersion = VersionTools.GetAppVersion();
             Version = CurrentVersion;
         }
 
@@ -588,7 +589,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             ConfigurationModel config = new ConfigurationModel
             {
-                AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion(),
+                AppVersion =VersionTools.GetAppVersion(),
                 Version = CurrentVersion,
 
                 TestReportPath = DirectoryManagement.sUserDataFolderPath,
