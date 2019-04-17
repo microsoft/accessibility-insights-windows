@@ -1,12 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Enums;
-using Axe.Windows.Core.Misc;
-using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.DesktopUI.Enums;
-using Axe.Windows.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Misc;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -440,9 +439,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (ShowWelcomeScreenOnLaunch == false)
             {
-                if (this.AppVersion != GetAppVersionFromAssembly())
+                if (this.AppVersion != Utility.GetAppVersion())
                 {
-                    this.AppVersion = GetAppVersionFromAssembly();
+                    this.AppVersion = Utility.GetAppVersion();
                     this.ShowWelcomeScreenOnLaunch = true;
                     return true;
                 }
@@ -460,7 +459,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public ConfigurationModel()
         {
-            AppVersion = GetAppVersionFromAssembly();
+            AppVersion = Utility.GetAppVersion();
             Version = CurrentVersion;
         }
 
@@ -470,7 +469,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private ConfigurationModel(SettingsDictionary source)
         {
             _settings = new SettingsDictionary(source);
-            AppVersion = GetAppVersionFromAssembly();
+            AppVersion = Utility.GetAppVersion();
             Version = CurrentVersion;
         }
 
@@ -589,7 +588,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             ConfigurationModel config = new ConfigurationModel
             {
-                AppVersion = GetAppVersionFromAssembly(),
+                AppVersion = Utility.GetAppVersion(),
                 Version = CurrentVersion,
 
                 TestReportPath = DirectoryManagement.sUserDataFolderPath,
@@ -652,15 +651,5 @@ namespace AccessibilityInsights.SharedUx.Settings
             return new ConfigurationModel(this);
         }
         #endregion
-
-        /// <summary>
-        /// Get version from AccessibilityInsights.SharedUx Assembly
-        /// </summary>
-        /// <returns></returns>
-        public static string GetAppVersionFromAssembly()
-        {
-            string fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
-            return fileVersion;
-        }
     }
 }
