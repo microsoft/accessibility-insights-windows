@@ -7,10 +7,11 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.DesktopUI.Enums;
-using AccessibilityInsights.SharedUx.Dialogs;
 using System.Collections.Generic;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace AccessibilityInsights
 {
@@ -74,7 +75,7 @@ namespace AccessibilityInsights
         {
             DisableElementSelector();
 
-            List<EventMessage> el = ListenAction.LoadEventMessages(path);
+            List<EventMessage> el = SetupLibrary.FileHelpers.LoadDataFromJSON<List<EventMessage>>(path);
 
             this.ctrlCurMode.HideControl();
             this.ctrlCurMode = this.ctrlEventMode;

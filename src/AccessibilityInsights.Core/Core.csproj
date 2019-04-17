@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="Attributes\PatternMethodAttribute.cs" />
     <Compile Include="Attributes\PatternEventAttribute.cs" />
-    <Compile Include="Bases\ConfigurationBase.cs" />
     <Compile Include="Bases\IA11yElement.cs" />
     <Compile Include="Bases\IA11yPattern.cs" />
     <Compile Include="Bases\A11yElementData.cs" />

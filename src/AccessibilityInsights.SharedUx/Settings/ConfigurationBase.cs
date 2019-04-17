@@ -5,7 +5,7 @@ using Axe.Windows.Telemetry;
 using Newtonsoft.Json;
 using System;
 
-namespace Axe.Windows.Core.Bases
+namespace AccessibilityInsights.SharedUx.Settings
 {
     /// <summary>
     /// Base class for configuration files. Subclasses for individual configuration files 
