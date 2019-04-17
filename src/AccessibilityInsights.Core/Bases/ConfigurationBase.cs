@@ -3,7 +3,7 @@
 using Axe.Windows.Core.Misc;
 using Newtonsoft.Json;
 
-namespace AccessibilityInsights.SharedUx.Settings
+namespace Axe.Windows.Core.Bases
 {
     /// <summary>
     /// Base class for configuration files. Subclasses for individual configuration files 

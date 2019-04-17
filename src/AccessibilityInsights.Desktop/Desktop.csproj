@@ -76,6 +76,8 @@
     <Compile Include="Keyboard\HotKey.cs" />
     <Compile Include="Keyboard\HotkeysHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\RecordEntitySetting.cs" />
+    <Compile Include="Settings\RecorderSetting.cs" />
     <Compile Include="Settings\SnapshotMetaInfo.cs" />
     <Compile Include="Styles\SayAsInterpretAs.cs" />
     <Compile Include="Styles\CaretBidiMode.cs" />
@@ -91,7 +93,6 @@
     <Compile Include="Types\AnnotationType.cs" />
     <Compile Include="Styles\AnimationStyle.cs" />
     <Compile Include="Types\TextAttributeType.cs" />
-    <Compile Include="Types\ListenScope.cs" />
     <Compile Include="Misc\StandardLinksHelper.cs" />
     <Compile Include="Misc\SupportedEvents.cs" />
     <Compile Include="UIAutomation\TreeWalkers\DesktopElementAncestry.cs" />

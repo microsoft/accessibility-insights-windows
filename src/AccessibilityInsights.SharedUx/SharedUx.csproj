@@ -387,7 +387,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Settings\ConfigurationBase.cs" />
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />
     <Compile Include="Controls\TestTabs\AutomatedChecksControl.xaml.cs">
@@ -461,8 +460,6 @@
     <Compile Include="Settings\AppLayout.cs" />
     <Compile Include="Settings\ConfigurationConstants.cs" />
     <Compile Include="Settings\ConfigurationModel.cs" />
-    <Compile Include="Settings\RecordEntitySetting.cs" />
-    <Compile Include="Settings\RecorderSetting.cs" />
     <Compile Include="Telemetry\AxeWindowsTelemetrySink.cs" />
     <Compile Include="Telemetry\EventTelemetrySink.cs" />
     <Compile Include="Telemetry\Logger.cs" />

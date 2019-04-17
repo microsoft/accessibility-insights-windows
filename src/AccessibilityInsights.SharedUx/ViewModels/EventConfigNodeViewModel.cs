@@ -49,10 +49,10 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     switch (this.Type)
                     {
                         case EventConfigNodeType.Event:
-                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Event, value);
+                            ConfigurationManager.GetDefaultInstance().EventConfig.SetChecked(this.Id, RecordEntityType.Event, value);
                             break;
                         case EventConfigNodeType.Property:
-                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Property, value, this.Header);
+                            ConfigurationManager.GetDefaultInstance().EventConfig.SetChecked(this.Id, RecordEntityType.Property, value, this.Header);
                             break;
                         case EventConfigNodeType.Group:
                             this.Children?.ToList().ForEach(c => c.IsChecked = value);
@@ -321,48 +321,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             else
             {
                 return this.ButtonText + " node";
-            }
-        }
-
-
-        /// <summary>
-        /// Set the checked state based on id and type
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="type"></param>
-        /// <param name="val"></param>
-        private void SetChecked(RecorderSetting setting, int id, RecordEntityType type, bool val, string name = null)
-        {
-            int change = val ? 1 : -1;
-            if (type == RecordEntityType.Event)
-            {
-                if (id == EventType.UIA_AutomationFocusChangedEventId)
-                {
-                    setting.IsListeningFocusChangedEvent = val;
-                }
-                else
-                {
-                    setting.Events.Where(e => e.Id == id).First().CheckedCount += change;
-                }
-            }
-            else
-            {
-                if (setting.Properties.Where(e => e.Id == id).Count() > 0)
-                {
-                    setting.Properties.Where(e => e.Id == id).First().CheckedCount += change;
-                }
-                else
-                {
-                    setting.Properties.Add(new RecordEntitySetting()
-                    {
-                        Type = RecordEntityType.Property,
-                        Id = id,
-                        Name = name,
-                        IsCustom = true,
-                        IsRecorded = false,
-                        CheckedCount = 1
-                    });
-                }
             }
         }
     }

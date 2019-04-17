@@ -84,10 +84,11 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="onClick"></param>
         public void SetImageElement(Guid ecId)
         {
-            var e = DataManager.GetDefaultInstance().GetScreenshotElement(ecId);
+            var dc = DataManager.GetDefaultInstance().GetElementContext(ecId).DataContext;
+            var e = DataManager.GetDefaultInstance().GetA11yElement(ecId, dc.ScreenshotElementId);
 
             Highlighter.SetElement(e);
-            Highlighter.SetBackground(DataManager.GetDefaultInstance().GetScreenshot(ecId));
+            Highlighter.SetBackground(dc.Screenshot);
         }
 
         /// <summary>

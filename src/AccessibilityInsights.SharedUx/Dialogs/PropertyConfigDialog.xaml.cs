@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.UIAutomation;
 using System.Collections.Generic;
 using System.Collections.Specialized;
