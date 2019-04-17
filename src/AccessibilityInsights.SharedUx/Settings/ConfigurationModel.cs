@@ -440,9 +440,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (ShowWelcomeScreenOnLaunch == false)
             {
-                if (this.AppVersion != Axe.Windows.Core.Misc.Utility.GetAppVersion())
+                if (this.AppVersion != GetAppVersionFromAssembly())
                 {
-                    this.AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+                    this.AppVersion = GetAppVersionFromAssembly();
                     this.ShowWelcomeScreenOnLaunch = true;
                     return true;
                 }
@@ -460,7 +460,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public ConfigurationModel()
         {
-            AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            AppVersion = GetAppVersionFromAssembly();
             Version = CurrentVersion;
         }
 
@@ -470,7 +470,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private ConfigurationModel(SettingsDictionary source)
         {
             _settings = new SettingsDictionary(source);
-            AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            AppVersion = GetAppVersionFromAssembly();
             Version = CurrentVersion;
         }
 
@@ -589,7 +589,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             ConfigurationModel config = new ConfigurationModel
             {
-                AppVersion = Axe.Windows.Core.Misc.Utility.GetAppVersion(),
+                AppVersion = GetAppVersionFromAssembly(),
                 Version = CurrentVersion,
 
                 TestReportPath = DirectoryManagement.sUserDataFolderPath,
@@ -652,5 +652,15 @@ namespace AccessibilityInsights.SharedUx.Settings
             return new ConfigurationModel(this);
         }
         #endregion
+
+        /// <summary>
+        /// Get version from AccessibilityInsights.SharedUx Assembly
+        /// </summary>
+        /// <returns></returns>
+        public static string GetAppVersionFromAssembly()
+        {
+            string fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+            return fileVersion;
+        }
     }
 }

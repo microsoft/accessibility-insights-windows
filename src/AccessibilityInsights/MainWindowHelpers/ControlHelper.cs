@@ -276,7 +276,7 @@ namespace AccessibilityInsights
                 sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
             }
 
-            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, Axe.Windows.Core.Misc.Utility.GetAppVersion());
+            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, ConfigurationModel.GetAppVersionFromAssembly());
 
             if (NativeMethods.IsRunningWithUIAccess())
             {

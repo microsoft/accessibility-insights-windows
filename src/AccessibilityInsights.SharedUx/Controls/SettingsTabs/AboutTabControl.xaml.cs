@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Settings;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -19,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public AboutTabControl()
         {
             InitializeComponent();
-            lbVersion.Content = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            lbVersion.Content = ConfigurationModel.GetAppVersionFromAssembly();
         }
 
         /// <summary>
