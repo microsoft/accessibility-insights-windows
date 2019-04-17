@@ -5,7 +5,7 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.HelpLinks;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Results;
-using Axe.Windows.Desktop.Misc;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;

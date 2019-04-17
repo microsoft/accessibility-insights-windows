@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
-namespace Axe.Windows.Desktop.Misc
+namespace Axe.Windows.Desktop.Utility
 {
     /// <summary>
     /// Class to access stored link information

@@ -5,7 +5,7 @@ using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.Types;
 using System.Linq;
 
-namespace Axe.Windows.Desktop.Misc.Tests
+namespace Axe.Windows.Desktop.Utility.Tests
 {
     [TestClass()]
     public class SupportedEventsTests

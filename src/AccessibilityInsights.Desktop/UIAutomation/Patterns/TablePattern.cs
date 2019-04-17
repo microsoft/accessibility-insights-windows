@@ -4,7 +4,7 @@ using Axe.Windows.Core.Types;
 using System.Collections.Generic;
 using Axe.Windows.Core.Bases;
 using UIAutomationClient;
-using Axe.Windows.Desktop.Misc;
+using Axe.Windows.Desktop.Utility;
 using Axe.Windows.Core.Attributes;
 
 namespace Axe.Windows.Desktop.UIAutomation.Patterns

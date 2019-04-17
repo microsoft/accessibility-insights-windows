@@ -12,7 +12,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Automation;
 using Axe.Windows.Desktop.Settings;
 using Axe.Windows.Desktop.Types;
-using Axe.Windows.Desktop.Misc;
+using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.SharedUx.Enums;
 using System.Windows.Input;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;

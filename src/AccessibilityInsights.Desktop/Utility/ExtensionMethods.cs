@@ -17,7 +17,7 @@ using System.Windows;
 using System;
 using UIAutomationClient;
 
-namespace Axe.Windows.Desktop.Misc
+namespace Axe.Windows.Desktop.Utility
 {
     public static class ExtensionMethods
     {

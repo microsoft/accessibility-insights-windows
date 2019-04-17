@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Actions.Attributes;
 using Axe.Windows.Actions.Enums;
-using Axe.Windows.Desktop.Misc;
+using Axe.Windows.Desktop.Utility;
 using System;
 using System.Drawing;
 
