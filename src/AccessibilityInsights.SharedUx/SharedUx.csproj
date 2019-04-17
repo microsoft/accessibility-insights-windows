@@ -380,6 +380,7 @@
     <Compile Include="Enums\EventConfigNodeType.cs" />
     <Compile Include="Interfaces\ICCAMode.cs" />
     <Compile Include="Misc\ListViewSelectionLock.cs" />
+    <Compile Include="Misc\SetupExceptionReporter.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

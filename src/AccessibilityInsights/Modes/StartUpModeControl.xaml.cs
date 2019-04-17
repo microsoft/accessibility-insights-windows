@@ -1,19 +1,20 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Misc;
+using AccessibilityInsights.SharedUx.Settings;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
-using AccessibilityInsights.SharedUx.Settings;
-using System.Windows.Automation.Peers;
-using System.Diagnostics;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using System.Globalization;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {
@@ -78,6 +79,12 @@ namespace AccessibilityInsights.Modes
         {
             this.VersionString = Axe.Windows.Core.Misc.Utility.GetAppVersion();
             InitializeComponent();
+            // If possible, point to build-specific release notes
+            Uri releaseNotesUri = MsiUtilities.GetReleaseNotesUri(new SetupExceptionReporter());
+            if (releaseNotesUri != null)
+            {
+                hlLink.NavigateUri = releaseNotesUri;
+            }
         }
 
         /// <summary>
