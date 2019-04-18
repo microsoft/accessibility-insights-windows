@@ -22,6 +22,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />
+    <WixVariable Id="WixUIBannerBmp" Value="Resources\WixDialogBanner.png" />
     <WixVariable Id="WixUILicenseRtf" Value="..\AccessibilityInsights\bin\Release\eula.rtf" />
 
     <MediaTemplate EmbedCab="yes" />
