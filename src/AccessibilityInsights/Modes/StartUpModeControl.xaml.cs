@@ -77,7 +77,7 @@ namespace AccessibilityInsights.Modes
 
         public StartUpModeControl()
         {
-            this.VersionString = Axe.Windows.Core.Misc.Utility.GetAppVersion();
+            this.VersionString = VersionTools.GetAppVersion();
             InitializeComponent();
             // If possible, point to build-specific release notes
             Uri releaseNotesUri = MsiUtilities.GetReleaseNotesUri(new SetupExceptionReporter());

@@ -1,11 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
+using Axe.Windows.Actions;
 using Axe.Windows.Win32;
 using System;
 using System.Collections.Generic;
@@ -276,7 +277,7 @@ namespace AccessibilityInsights
                 sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
             }
 
-            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, Axe.Windows.Core.Misc.Utility.GetAppVersion());
+            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, VersionTools.GetAppVersion());
 
             if (NativeMethods.IsRunningWithUIAccess())
             {
