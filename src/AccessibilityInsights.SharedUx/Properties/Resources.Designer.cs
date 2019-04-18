@@ -1024,7 +1024,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto-detect an element’s color contrast ratio by hovering over, or keyboard focusing on an element in your target application..
+        ///   Looks up a localized string similar to Auto-detect an element’s color contrast ratio by hovering over or keyboard focusing on an element in your target application..
         /// </summary>
         public static string ColorContrast_HowToTestAuto {
             get {
@@ -3488,7 +3488,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to o file issues, select where you want to file issues..
+        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
         /// </summary>
         public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {
             get {
