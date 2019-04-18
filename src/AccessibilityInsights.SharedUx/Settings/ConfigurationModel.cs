@@ -433,7 +433,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Check whether we need to show Splash window or not
+        /// Check whether we need to show Welcome window or not
         /// </summary>
         /// <returns></returns>
         public bool NeedToShowWelcomeScreen()
