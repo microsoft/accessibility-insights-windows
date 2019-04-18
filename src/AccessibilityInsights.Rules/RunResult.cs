@@ -12,7 +12,7 @@ namespace Axe.Windows.Rules
         /// <summary>
         /// Metadata about the rule that was run.
         /// </summary>
-        public RuleInfo RuleInfo{ get; set; }
+        public RuleInfo RuleInfo { get; set; }
 
         /// <summary>
         /// The element on which the rule was run.
