@@ -67,6 +67,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />
@@ -100,8 +101,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
 
                    <!-- AutoUpdate Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" Id="autoupdate_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id="windowsinstaller_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\bin\Release\Newtonsoft.Json.dll" Id="newtonsoft_json_extension"/>
 
                    <!-- Telemetry Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll" Id="telemetry_extension"/>
