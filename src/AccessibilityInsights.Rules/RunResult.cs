@@ -27,6 +27,7 @@ namespace Axe.Windows.Rules
         /// <summary>
         /// If <see cref="EvaluationCode"/> contains the value <see cref="EvaluationCode.RuleExecutionError"/>,
         /// this property may contain a description of the error.
+        /// Otherwise, it should be null.
         /// </summary>
         public string ErrorMessage{ get; set; }
     } // class
