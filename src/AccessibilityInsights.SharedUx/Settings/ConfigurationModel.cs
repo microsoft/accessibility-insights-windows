@@ -589,7 +589,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             ConfigurationModel config = new ConfigurationModel
             {
-                AppVersion =VersionTools.GetAppVersion(),
+                AppVersion = VersionTools.GetAppVersion(),
                 Version = CurrentVersion,
 
                 TestReportPath = DirectoryManagement.sUserDataFolderPath,
