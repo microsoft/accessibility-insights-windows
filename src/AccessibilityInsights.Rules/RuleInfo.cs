@@ -50,7 +50,6 @@ namespace Axe.Windows.Rules
         /// <summary>
         /// Provides a string summary of the information contained in the RuleInfo object.
         /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             return Invariant($@"ID:   {this.ID}
