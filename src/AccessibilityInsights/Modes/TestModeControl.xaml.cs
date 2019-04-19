@@ -133,7 +133,7 @@ namespace AccessibilityInsights.Modes
             {
                 EnableMenuButtons(this.DataContextMode != DataContextMode.Load);
                 this.ctrlAutomatedChecks.Visibility = Visibility.Visible;
-                this.tbSelectElement.Visibility = Visibility.Collapsed;
+                this.instructionsAutomatedChecks.Visibility = Visibility.Collapsed;
                 this.tabControl.IsEnabled = true;
 
                 try
@@ -277,7 +277,7 @@ namespace AccessibilityInsights.Modes
             this.tbiTabStop.Visibility = Visibility.Visible;
             this.tabControl.IsEnabled = false;
             this.ctrlAutomatedChecks.Visibility = Visibility.Collapsed;
-            this.tbSelectElement.Visibility = Visibility.Visible;
+            this.instructionsAutomatedChecks.Visibility = Visibility.Visible;
             HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
