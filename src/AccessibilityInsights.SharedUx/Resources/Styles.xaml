@@ -980,6 +980,11 @@
     <Style TargetType="{x:Type TextBlock}" x:Key="TbHeaderFocusable" BasedOn="{StaticResource TbFocusable}">
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=LargeTextBlockSize}"/>
     </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusableCenter" BasedOn="{StaticResource TbFocusable}">
+        <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblKey">
         <Setter Property="IsTabStop" Value="True"/>
         <Setter Property="Focusable" Value="True"/>

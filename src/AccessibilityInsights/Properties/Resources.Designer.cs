@@ -61,6 +61,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Did you know? Automated checks can detect some common accessibility problems, such as missing or invalid properties. However, most accessibility problems can be identified only through manual testing..
+        /// </summary>
+        public static string AutomatedChecksRole {
+            get {
+                return ResourceManager.GetString("AutomatedChecksRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Navigation Bar.
         /// </summary>
         public static string bdLeftNavAutomationPropertiesName {

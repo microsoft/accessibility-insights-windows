@@ -51,20 +51,28 @@
                                    Visibility="Collapsed"
                                    WithSound="True"
                                    Grid.Row="1" Grid.Column="1"/>
-        <TextBlock Grid.Row="1" x:Name="tbSelectElement" Visibility="Visible"  FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}"  MinWidth="40" HorizontalAlignment="Center" TextAlignment="Center" Margin="230,50,40,0" VerticalAlignment="Top">
-            <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
-            <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
-            <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
-            <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
-            <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
-            <Run Name="runHotkey"/><Run Text="."/>
-            <TextBlock>
+        <Grid Grid.Row="1" x:Name="instructionsAutomatedChecks" Margin="230,50,40,0" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="32"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" x:Name="tbSelectElement" Style="{StaticResource TbFocusableCenter}" MinWidth="40">
+                <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
+                <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
+                <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
+                <Run Name="runHotkey"/><Run Text="."/>
                 <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate"
-                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                            FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}"/>
                 </Hyperlink>
-            </TextBlock><Run Text="."/>
-        </TextBlock>
+                <Run Text="."/>
+            </TextBlock>
+            <TextBlock Grid.Row="2" Text="{x:Static properties:Resources.AutomatedChecksRole}" Style="{StaticResource TbFocusableCenter}" MinWidth="40"/>
+        </Grid>
+        
     </Grid>
 </UserControl>
 
