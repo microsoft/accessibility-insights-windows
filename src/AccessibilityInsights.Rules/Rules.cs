@@ -9,13 +9,19 @@ using static System.FormattableString;
 
 namespace Axe.Windows.Rules
 {
+    /// <summary>
+    /// Use this class to run rules and get information about any rule in the Rules assembly.
+    /// </summary>
     public static class Rules
     {
         private static readonly RuleProvider Provider = new RuleProvider(new RuleFactory());
 
-        // the following is rarely used because it only provides information about the rules
-        // because its purpose is just to get info about the rules
+        // the following is rarely used because its purpose is just to contain metadata about the rules
         private static readonly Lazy<IReadOnlyDictionary<RuleId, RuleInfo>> AllInfo = new Lazy<IReadOnlyDictionary<RuleId, RuleInfo>>(CreateRuleInfo);
+
+        /// <summary>
+        /// A dictionary containing metadata for all the rules in the Rules assembly.
+        /// </summary>
         public static IReadOnlyDictionary<RuleId, RuleInfo> All => AllInfo.Value;
 
         private static IReadOnlyDictionary<RuleId, RuleInfo> CreateRuleInfo()
@@ -27,6 +33,12 @@ namespace Axe.Windows.Rules
             return dictionary;
         }
 
+        /// <summary>
+        /// Run a single rule based on the given RuleID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public static RunResult RunRuleByID(RuleId id, IA11yElement element)
         {
             var rule = Provider.GetRule(id);
@@ -44,6 +56,11 @@ namespace Axe.Windows.Rules
             return retVal;
         }
 
+        /// <summary>
+        /// Run all the rules in the Rules assembly.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public static IEnumerable<RunResult> RunAll(IA11yElement element)
         {
             var results = new List<RunResult>();

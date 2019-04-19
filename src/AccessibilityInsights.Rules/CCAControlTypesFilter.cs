@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Axe.Windows.Rules
 {
+    /// <summary>
+    /// Remove this class from Rules assembly
+    /// </summary>
     public class CCAControlTypesFilter
     {
         private static CCAControlTypesFilter DefaultInstance;
@@ -26,7 +29,8 @@ namespace Axe.Windows.Rules
             return DefaultInstance;
         }
 
-        private void Filter() {
+        private void Filter()
+        {
             var type = typeof(ControlType);
             var fields = type.GetFields(BindingFlags.GetField | BindingFlags.Public | BindingFlags.Static);
 
@@ -36,11 +40,14 @@ namespace Axe.Windows.Rules
             }
         }
 
+        /// <summary>
+        /// Remove this class from Rules assembly
+        /// </summary>
+        /// <param name="typeId"></param>
+        /// <returns></returns>
         public bool Contains(int typeId)
         {
             return MainTypes.Contains(typeId);
         }
-}
-
-
+    }
 }

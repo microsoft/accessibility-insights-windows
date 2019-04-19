@@ -8,7 +8,7 @@ using static System.FormattableString;
 namespace Axe.Windows.Rules
 {
     /// <summary>
-    /// This class enables comparisons such as ==, !=, >, and < in conditions.
+    /// This class enables comparisons such as ==, !=, &gt;, and &lt; in conditions.
     /// It takes types such as integers and strings.
     /// It is primarily used (at the moment) for the function Relationships.ChildCount.
     /// </summary>

@@ -78,8 +78,8 @@ namespace Axe.Windows.Rules.PropertyConditions
 
         private static Condition CreateExpectedNotToBeFocusableCondition()
         {
-            /// originally, menu was the part of this list. 
-            /// however based on feedback from Guru(Trust tester) and MSDN, menu is now counted as keyboard focusable element. 
+            // originally, menu was part of this list. 
+            // however, based on feedback from a Trusted tester and MSDN, menu is now considered a keyboard focusable element. 
             return (Button & ~FocusableButton) | Header | ScrollBar | SemanticZoom;
         }
 
