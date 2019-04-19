@@ -76,7 +76,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
 
             foreach (var pair in props)
             {
-                aiEvent.Properties.Add(pair);
+                aiEvent.Properties[pair.Key] = pair.Value;
             }
         }
 
