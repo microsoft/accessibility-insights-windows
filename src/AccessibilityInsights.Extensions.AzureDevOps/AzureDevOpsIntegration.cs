@@ -491,27 +491,43 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Retains characters within ascii range below 127 and returns
-        /// an escaped representation of the string
+        /// Substitutions for characters when creating the bug URL
+        /// </summary>
+        internal static IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
+        {
+            { '·', '-' }, // middle dot (183) to dash (45)
+        };
+
+        /// <summary>
+        /// replaces characters if substitution defined and
+        /// returns an escaped representation of the string
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
         internal static string EscapeForUrl(string str)
         {
+            // characters such as the middle dot (ascii 183) can 
+            // cause issues during navigation, so we only allow
+            // a basic set of characters when building the URL
             var sb = new StringBuilder();
             foreach (var c in str)
             {
-                // characters such as the middle dot (ascii 183) can 
-                // cause issues during navigation, so we only include
-                // a basic set of characters when building the URL
-                if (c <= 127)
+                if (CharacterSubstitutions.TryGetValue(c, out char replaced))
+                {
+                    sb.Append(replaced);
+                }
+                else if (c <= 127)
                 {
                     sb.Append(c);
+                }
+                else
+                {
+                    sb.Append('?');
                 }
             }
 
             return Uri.EscapeDataString(sb.ToString());
         }
-#endregion // IssueFiling
+        #endregion // IssueFiling
     }
 }
