@@ -41,6 +41,7 @@ namespace AccessibilityInsights
                 }
                 catch (Exception e)
                 {
+                    e.ReportException();
                     System.Diagnostics.Trace.WriteLine($"Unable to send telemetry at {e.Message}");
                 }
             });
@@ -72,8 +73,9 @@ namespace AccessibilityInsights
                 updateOptionStopwatch.Stop();
                 updateOption = t.Result;
             }
-            catch (AggregateException)
+            catch (AggregateException e)
             {
+                e.ReportException();
                 updateOption = AutoUpdateOption.Unknown;
             }
             finally
@@ -136,7 +138,10 @@ namespace AccessibilityInsights
                     return;
                 }
             }
-            catch (Exception) { };
+            catch (Exception e)
+            {
+                e.ReportException();
+            };
 
             ctrlProgressRing.Deactivate();
             Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
@@ -174,7 +179,10 @@ namespace AccessibilityInsights
                 {
                     DownLoadInstaller(autoUpdate, updateOption);
                 }
-                catch (Exception) {}
+                catch (Exception e)
+                {
+                    e.ReportException();
+                }
             }
             else
             {

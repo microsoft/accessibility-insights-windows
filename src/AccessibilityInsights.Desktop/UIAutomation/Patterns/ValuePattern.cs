@@ -3,6 +3,7 @@
 using Axe.Windows.Core.Attributes;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Telemetry;
 using System;
 using UIAutomationClient;
 
@@ -29,8 +30,9 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
             {
                 this.Properties.Add(new A11yPatternProperty() { Name = "Value", Value = this.Pattern.CurrentValue });
             }
-            catch(InvalidOperationException)
+            catch(InvalidOperationException e)
             {
+                e.ReportException();
                 // there is a known case that CurrentValue is not ready. 
                 // to avoid catastrophic failure downstream, handle it here. 
             }

@@ -11,6 +11,7 @@ using AccessibilityInsights.DesktopUI.Highlighters;
 using Axe.Windows.Core.Enums;
 using System.Globalization;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
@@ -173,8 +174,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     MessageDialog.Show(Properties.Resources.TextRangeFindDialog_FindTextRange_No_matched_range_is_found);
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Properties.Resources.TextRangeFindDialog_FindTextRange_Please_check_value__it_may_not_be_matched_with_expected);
             }
         }

@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Telemetry;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -91,8 +92,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 {
                     info = JsonConvert.DeserializeObject<InstallationInfo>(text);
                 }
-                catch (JsonException)
+                catch (JsonException e)
                 {
+                    e.ReportException();
                     // ignore silently
                 }
             }

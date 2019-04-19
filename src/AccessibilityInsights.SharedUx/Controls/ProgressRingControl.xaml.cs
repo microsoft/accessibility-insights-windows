@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Telemetry;
 using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Media.Animation;
@@ -85,8 +86,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                     return key?.GetValue("narrator")?.ToString().Equals("1", StringComparison.Ordinal) == true;
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 // fail silently and we might end up not playing sound
                 return false;
             }
@@ -253,8 +255,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 Stream stream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.scanner_sound.wav");
                 player = new SoundPlayer(stream);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 player = new SoundPlayer();
             }
         }

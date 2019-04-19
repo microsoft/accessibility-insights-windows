@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -51,8 +52,9 @@ namespace AccessibilityInsights
                         where m.Item1 == CurrentPage && m.Item2 == CurrentView
                         select m).First().Item3;
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return "";
             }
         }
@@ -73,9 +75,9 @@ namespace AccessibilityInsights
                 ext = fi.Extension.ToLowerInvariant();
 #pragma warning restore CA1308 // Normalize strings to uppercase
             }
-            catch
+            catch (Exception e)
             {
-                // be silent and ignore. 
+                e.ReportException();
             }
 
             return ext;

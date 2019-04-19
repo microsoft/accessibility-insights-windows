@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Trackers;
 using Axe.Windows.Core.Exceptions;
@@ -102,8 +103,9 @@ namespace AccessibilityInsights
                     moveTo(selectAction?.TreeTracker);
                     this.SelectionChanged?.Invoke();
                 }
-                catch (TreeNavigationFailedException)
+                catch (TreeNavigationFailedException e)
                 {
+                    e.ReportException();
                     HandleTreeNavigationFailure();
                 }
             } // lock

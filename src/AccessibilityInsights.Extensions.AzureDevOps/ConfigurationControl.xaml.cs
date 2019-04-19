@@ -3,6 +3,7 @@
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.Services.Common;
 using System;
@@ -246,8 +247,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                     Dispatcher.Invoke(() => MessageDialog.Show("Error when retrieving team projects"));
                     ToggleLoading(false);
                     disconnectButton_Click(null, null);
@@ -377,8 +379,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     PopulateTreeviewWithTeams(result);
                     return result;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                     return null;
                 }
             });

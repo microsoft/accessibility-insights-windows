@@ -288,6 +288,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;

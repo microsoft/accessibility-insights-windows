@@ -7,6 +7,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
@@ -223,8 +224,9 @@ namespace AccessibilityInsights.Modes
                         }
                     });
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                     Application.Current.Dispatcher.Invoke(() =>
                     {
                         Application.Current.MainWindow.Visibility = Visibility.Visible;
@@ -453,8 +455,9 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }

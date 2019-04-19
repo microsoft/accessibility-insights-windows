@@ -3,6 +3,7 @@
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
+using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
@@ -32,8 +33,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link, e.Uri.AbsoluteUri));
             }
         }

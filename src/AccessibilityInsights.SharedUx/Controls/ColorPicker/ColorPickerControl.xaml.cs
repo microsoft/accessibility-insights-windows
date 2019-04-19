@@ -262,6 +262,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
             catch (FormatException)
             {
+                // Don't report this Exception, since it's an effect of invalid user input
                 SetValue(HexadecimalStringProperty, oldValue);
             }
         }

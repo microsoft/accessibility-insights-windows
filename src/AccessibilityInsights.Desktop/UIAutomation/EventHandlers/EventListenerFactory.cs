@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
+using Axe.Windows.Telemetry;
 using Axe.Windows.Win32;
 using System;
 using System.Collections.Generic;
@@ -197,6 +198,7 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
             }
             catch (Exception e)
             {
+                e.ReportException();
                 var m  = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
                 m.Properties = new List<KeyValuePair<string, dynamic>>() { new KeyValuePair<string, dynamic>("Message", $"Failed to unregister all listeners: {e.Message}") };
                 listener(m);
@@ -294,6 +296,7 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
             }
             catch (Exception e)
             {
+                e.ReportException();
                 var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
                 m.Properties = new List<KeyValuePair<string, dynamic>>() {
                         new KeyValuePair<string, dynamic>("Message", "Failed to unregister a event listeners"),
@@ -412,6 +415,7 @@ namespace Axe.Windows.Desktop.UIAutomation.EventHandlers
             }
             catch (Exception e)
             {
+                e.ReportException();
                 var m = EventMessage.GetInstance(EventType.UIA_EventRecorderNotificationEventId, null);
                 m.Properties = new List<KeyValuePair<string, dynamic>>() {
                         new KeyValuePair<string, dynamic>("Message", "Failed to register an event listener"),

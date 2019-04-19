@@ -3,6 +3,7 @@
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.TeamFoundation.Core.WebApi;
 using Microsoft.TeamFoundation.Core.WebApi.Types;
 using Microsoft.TeamFoundation.Work.WebApi;
@@ -459,8 +460,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
                 await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ex.ReportException();
                 FileIssueHelpers.FlushToken(serverUri);
             }
 

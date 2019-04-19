@@ -4,6 +4,7 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
@@ -109,6 +110,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
             }
         }

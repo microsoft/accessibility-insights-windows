@@ -11,6 +11,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using UIAutomationClient;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
@@ -63,17 +64,19 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 NativeMethods.FocusWindow(handle);
                 ((IUIAutomationElement)SelectAction.GetDefaultInstance().POIElementContext.Element.PlatformObject).SetFocus();
             }
-            catch (ArgumentException)
+            catch (Exception e)
             {
-            }
-            catch(COMException)
-            {
-            }
-            catch (NullReferenceException)
-            {
-            } 
-            catch (InvalidOperationException)
-            {
+                if (e is ArgumentException ||
+                    e is COMException ||
+                    e is NullReferenceException ||
+                    e is InvalidOperationException)
+                {
+                    e.ReportException();
+                }
+                else
+                {
+                    throw;
+                }
             }
         }
 

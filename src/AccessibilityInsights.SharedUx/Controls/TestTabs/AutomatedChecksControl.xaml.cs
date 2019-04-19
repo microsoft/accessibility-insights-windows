@@ -316,10 +316,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     UpdateUI();
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                e.ReportException();
             }
-
         }
 
         /// <summary>
@@ -513,8 +513,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     return GetParentElem<T>(par);
                 }
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return null;
             }
         }
@@ -978,6 +979,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 catch (Exception ex)
                 {
+                    ex.ReportException();
                     // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;

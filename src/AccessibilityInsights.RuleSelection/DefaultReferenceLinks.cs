@@ -1,9 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
 using System.Globalization;
 using AccessibilityInsights.Extensions.Interfaces.ReferenceLinks;
 using Axe.Windows.RuleSelection.Resources;
+using Axe.Windows.Telemetry;
 
 namespace Axe.Windows.RuleSelection
 {
@@ -20,8 +22,9 @@ namespace Axe.Windows.RuleSelection
                 var shortDescription = DefaultGuidelineShortDescriptions.ResourceManager.GetString(lookupToken, CultureInfo.CurrentCulture);
                 return new ReferenceLink(shortDescription, url);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 return new ReferenceLink(DefaultGuidelineShortDescriptions.None);
             }
         }

@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Windows;
 
@@ -57,8 +58,9 @@ namespace AccessibilityInsights.Dialogs
                     MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString);
             }
         }

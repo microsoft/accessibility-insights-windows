@@ -3,6 +3,7 @@
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -137,8 +138,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                     return ne;
                 }
             }
-            catch (COMException)
+            catch (COMException ex)
             {
+                ex.ReportException();
             }
 
             return null;
@@ -192,8 +194,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                 }
 
             }
-            catch(Exception)
+            catch(Exception e)
             {
+                e.ReportException();
             }
         }
 
@@ -292,8 +295,9 @@ namespace Axe.Windows.Desktop.UIAutomation
                 ppl?.Clear();
                 ptl?.Clear();
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
             }
         }
 
@@ -314,10 +318,11 @@ namespace Axe.Windows.Desktop.UIAutomation
                     ret = true;
                     pid = null;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     // at this point, UIAElement is invalid. but don't remove. 
                     // element.PlatformObject = null;
+                    e.ReportException();
                 }
             }
 
@@ -341,8 +346,9 @@ namespace Axe.Windows.Desktop.UIAutomation
 
                 value = ConvertVariantAsNeeded(temp);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 value = null;
             }
 
@@ -366,8 +372,9 @@ namespace Axe.Windows.Desktop.UIAutomation
 
                 value = ConvertVariantAsNeeded(temp);
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 value = null;
             }
 

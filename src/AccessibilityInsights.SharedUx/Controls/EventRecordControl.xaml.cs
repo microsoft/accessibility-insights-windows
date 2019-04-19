@@ -389,6 +389,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                         }
                         catch (Exception ex)
                         {
+                            ex.ReportException();
                             MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Couldn't save the event record file: {0}", ex.Message));
                         }
                     }

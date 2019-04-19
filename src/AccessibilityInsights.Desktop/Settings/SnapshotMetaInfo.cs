@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Telemetry;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -108,8 +109,9 @@ namespace Axe.Windows.Desktop.Settings
                 {
                     properties[property] = System.Windows.Media.ColorConverter.ConvertFromString((string)strVal);
                 }
-                catch (NotSupportedException)
+                catch (NotSupportedException e)
                 {
+                    e.ReportException();
                     properties[property] = null;
                 }
             }
@@ -132,8 +134,9 @@ namespace Axe.Windows.Desktop.Settings
                 {
                     properties[property] = converter.ConvertFromString((string)strVal);
                 }
-                catch (NotSupportedException)
+                catch (NotSupportedException e)
                 {
+                    e.ReportException();
                     properties[property] = null;
                 }
             }

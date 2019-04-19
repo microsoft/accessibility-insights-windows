@@ -8,6 +8,7 @@ using Axe.Windows.Core.Bases;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Text;
@@ -197,8 +198,9 @@ namespace AccessibilityInsights.Modes
                         AutomationProperties.SetName(this, string.Format(CultureInfo.InvariantCulture, "Live inspect with {0}", ec.Element.Glimpse));
                     });
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    e.ReportException();
                     // if there was any exception, make sure that we enable selector later. 
                     EnableSelectorWhenPOISelectedInHierarchy = false;
                 }
@@ -490,8 +492,9 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
-            catch
+            catch (Exception ex)
             {
+                ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
         }

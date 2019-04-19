@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Enums;
-
+using Axe.Windows.Telemetry;
 using static System.FormattableString;
 
 namespace Axe.Windows.Rules
@@ -65,6 +65,7 @@ namespace Axe.Windows.Rules
             }
             catch (Exception ex)
             {
+                ex.ReportException();
                 if (System.Diagnostics.Debugger.IsLogging())
                     System.Diagnostics.Debug.WriteLine(ex.ToString());
 

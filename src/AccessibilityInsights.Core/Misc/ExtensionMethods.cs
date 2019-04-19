@@ -5,6 +5,7 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Results;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Telemetry;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -341,8 +342,9 @@ namespace Axe.Windows.Core.Misc
             {
                 txt = getString();
             }
-            catch
+            catch (Exception e)
             {
+                e.ReportException();
                 txt = "";
             }
 
