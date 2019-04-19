@@ -49,7 +49,5 @@ namespace Axe.Windows.Rules
         {
             return MainTypes.Contains(typeId);
         }
-}
-
-
+    }
 }
