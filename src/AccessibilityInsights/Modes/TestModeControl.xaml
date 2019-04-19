@@ -57,20 +57,11 @@
                 <RowDefinition Height="32"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.Resources>
-                <Style TargetType="TextBlock" BasedOn="{StaticResource TbFocusable}">
-                    <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
-                    <Setter Property="MinWidth" Value="40"/>
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                    <Setter Property="TextAlignment" Value="Center"/>
-                    <Setter Property="HorizontalAlignment" Value="Center"/>
-                </Style>
-            </Grid.Resources>
-            <TextBlock Grid.Row="0" x:Name="tbSelectElement">
+            <TextBlock Grid.Row="0" x:Name="tbSelectElement" Style="{StaticResource TbFocusableCenter}" MinWidth="40">
                 <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
-                <fabric:FabricIconControl Focusable="False" GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
                 <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
-                <fabric:FabricIconControl Focusable="False" GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
                 <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
                 <Run Name="runHotkey"/><Run Text="."/>
                 <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate"
@@ -79,7 +70,7 @@
                 </Hyperlink>
                 <Run Text="."/>
             </TextBlock>
-            <TextBlock Grid.Row="2" Text="{x:Static properties:Resources.AutomatedChecksRole}"/>
+            <TextBlock Grid.Row="2" Text="{x:Static properties:Resources.AutomatedChecksRole}" Style="{StaticResource TbFocusableCenter}" MinWidth="40"/>
         </Grid>
         
     </Grid>
