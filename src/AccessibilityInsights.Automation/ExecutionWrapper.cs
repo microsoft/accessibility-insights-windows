@@ -25,7 +25,7 @@ namespace Axe.Windows.Automation
                 }
                 catch (Exception ex)
                 {
-                    // No need to report this Exception, since telemetry not available in automation
+                    // No need to report this Exception, since telemetry is not available in automation
                     string errorDetail;
 
                     A11yAutomationException automationException = ex as A11yAutomationException;
