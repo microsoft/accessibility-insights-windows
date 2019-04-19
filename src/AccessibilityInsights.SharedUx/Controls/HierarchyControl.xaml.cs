@@ -851,6 +851,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     { TelemetryProperty.By, FileBugRequestSource.Hierarchy.ToString() },
                     { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
                 });
 
                 if (IssueReporter.IsConnected)

@@ -7,6 +7,7 @@ using Axe.Windows.Actions;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 
 namespace AccessibilityInsights.SharedUx.FileIssue
@@ -38,16 +39,23 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                         {
                             { TelemetryProperty.RuleId, issueInformation.RuleForTelemetry },
                             { TelemetryProperty.UIFramework, issueInformation.UIFramework ?? string.Empty },
+                            { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
                         });
                     }
                     else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
                     {
-                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save);
+                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
+                        {
+                            { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
+                        });
                     }
                 }
                 else
                 {
-                    Logger.PublishTelemetryEvent(TelemetryAction.Issue_File_Attempt);
+                    Logger.PublishTelemetryEvent(TelemetryAction.Issue_File_Attempt, new Dictionary<TelemetryProperty, string>
+                    {
+                        { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
+                    });
                 }
                 return issueResult;
             }

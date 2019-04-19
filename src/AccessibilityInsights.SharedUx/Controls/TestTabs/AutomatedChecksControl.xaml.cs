@@ -990,7 +990,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 // File a new bug
                 Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
                     { TelemetryProperty.By, FileBugRequestSource.AutomatedChecks.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
+                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
                 });
 
                 if (IssueReporter.IsConnected)
