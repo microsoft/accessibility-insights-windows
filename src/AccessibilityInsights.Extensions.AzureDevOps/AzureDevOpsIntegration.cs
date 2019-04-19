@@ -495,7 +495,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         internal static IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
         {
-            { '·', '-' }, // middle dot (183) to dash (45)
+            { '\u00b7', '-' }, // middle dot (183) to dash (45)
         };
 
         /// <summary>
