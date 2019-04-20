@@ -469,6 +469,7 @@
     <Compile Include="Telemetry\ReportExceptionBuffer.cs" />
     <Compile Include="Telemetry\TelemetryAction.cs" />
     <Compile Include="Telemetry\TelemetryController.cs" />
+    <Compile Include="Telemetry\TelemetryEventCreator.cs" />
     <Compile Include="Telemetry\TelemetryProperty.cs" />
     <Compile Include="Telemetry\TelemetrySink.cs" />
     <Compile Include="Telemetry\WindowsEventLogger.cs" />

@@ -847,12 +847,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             else
             {
                 // File a new bug
-                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>
-                {
-                    { TelemetryProperty.By, FileBugRequestSource.Hierarchy.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
-                    { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
-                });
+                var telemetryEvent = TelemetryEventCreator.ForIssueFilingRequest(FileBugRequestSource.Hierarchy);
+                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, telemetryEvent);
 
                 if (IssueReporter.IsConnected)
                 {

@@ -988,11 +988,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             else
             {
                 // File a new bug
-                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
-                    { TelemetryProperty.By, FileBugRequestSource.AutomatedChecks.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
-                    { TelemetryProperty.IssueReporter, IssueReporter.DisplayName.ToString(CultureInfo.InvariantCulture) },
-                });
+                var telemetryEvent = TelemetryEventCreator.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
+                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, telemetryEvent);
 
                 if (IssueReporter.IsConnected)
                 {
