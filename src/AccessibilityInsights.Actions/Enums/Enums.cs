@@ -62,17 +62,6 @@ namespace Axe.Windows.Actions.Enums
     }
 
     /// <summary>
-    /// Modes that bug could be filed in
-    /// </summary>
-    public enum FileBugRequestSource
-    {
-        AutomatedChecks,
-        Hierarchy,
-        HowtoFix,
-        ColorContrast
-    }
-
-    /// <summary>
     /// UIA Tree states
     /// </summary>
     public enum UIATreeState

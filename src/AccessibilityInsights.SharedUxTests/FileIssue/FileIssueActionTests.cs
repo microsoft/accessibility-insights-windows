@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         /// Tests the shape of the telemetry we send when we file a bug with no rule
         /// </summary>
         [TestMethod]
-        //[Timeout(1000)]
+        [Timeout(1000)]
         public void TestBugFilingTelemetryNoRule()
         {
             using (ShimsContext.Create())
@@ -65,7 +65,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         /// Tests the shape of the telemetry we send when there is a specific rule failure
         /// </summary>
         [TestMethod]
-        //[Timeout(1000)]
+        [Timeout(1000)]
         public void TestBugFilingTelemetrySpecificRule()
         {
             using (ShimsContext.Create())

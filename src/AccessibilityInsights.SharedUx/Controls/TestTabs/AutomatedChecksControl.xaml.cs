@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using Axe.Windows.Core.Bases;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -28,6 +27,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
+using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {

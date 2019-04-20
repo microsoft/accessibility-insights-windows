@@ -302,6 +302,7 @@
     <Compile Include="Enums\FileFilters.cs" />
     <Compile Include="Enums\FontSize.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
+    <Compile Include="Enums\FileBugRequestSource.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
     <Compile Include="FileIssue\FileIssueAction.cs" />
     <Compile Include="FileIssue\IssueReporterManager.cs" />
