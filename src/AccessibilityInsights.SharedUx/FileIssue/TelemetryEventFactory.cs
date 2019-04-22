@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     /// <summary>
     /// Responsible for creating payloads for telemetry from user actions in the application
     /// </summary>
-    public static class TelemetryEventCreator
+    public static class TelemetryEventFactory
     {
         public static TelemetryEvent ForIssueFilingRequest(FileBugRequestSource source)
         {

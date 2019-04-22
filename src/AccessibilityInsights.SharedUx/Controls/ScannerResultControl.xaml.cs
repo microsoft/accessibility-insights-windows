@@ -297,7 +297,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             else
             {
                 // File a new bug
-                var telemetryEvent = TelemetryEventCreator.ForIssueFilingRequest(FileBugRequestSource.HowtoFix);
+                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.HowtoFix);
                 Logger.PublishTelemetryEvent(telemetryEvent);
 
                 if (IssueReporter.IsConnected)

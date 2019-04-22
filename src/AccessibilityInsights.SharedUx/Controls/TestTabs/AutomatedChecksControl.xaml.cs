@@ -988,7 +988,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             else
             {
                 // File a new bug
-                var telemetryEvent = TelemetryEventCreator.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
+                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
                 Logger.PublishTelemetryEvent(telemetryEvent);
 
                 if (IssueReporter.IsConnected)
