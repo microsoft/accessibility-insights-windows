@@ -153,7 +153,6 @@
     <Compile Include="PropertyConditions\ElementGroupsTests.cs" />
     <Compile Include="PropertyConditions\ValueConditionUnitTests.cs" />
     <Compile Include="RulesProviderTests.cs" />
-    <Compile Include="CCAControlTypesFilterTest.cs" />
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>

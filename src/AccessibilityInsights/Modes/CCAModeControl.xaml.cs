@@ -6,18 +6,19 @@ using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Enums;
-using Axe.Windows.Rules;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using ControlType = Axe.Windows.Core.Types.ControlType;
 
 namespace AccessibilityInsights.Modes
 {
@@ -191,7 +192,7 @@ namespace AccessibilityInsights.Modes
                         }
                         else
                         {
-                            if (CCAControlTypesFilter.GetDefaultInstance().Contains(ec.Element.ControlTypeId))
+                            if (ControlType.GetInstance().Values.Contains(ec.Element.ControlTypeId))
                             {
                                 Dispatcher.BeginInvoke(DispatcherPriority.Loaded, new Action(() =>
                                 {
