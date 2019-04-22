@@ -115,5 +115,10 @@ namespace Axe.Windows.Core.Types
         {
             return this.Dic.ContainsKey(id);
         }
+
+        /// <summary>
+        /// the types contained in the inheriting class
+        /// </summary>
+        public IEnumerable<int> Values => Dic.Keys;
     }
 }
