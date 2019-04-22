@@ -31,7 +31,10 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
 
         private void PopulateProperties()
         {
-            this.Properties.Add(new A11yPatternProperty() { Name = "SupportedTextSelection", Value = this.Pattern.SupportedTextSelection });
+            ExcludeExceptionsFromTelemetry(() =>
+            {
+                this.Properties.Add(new A11yPatternProperty() { Name = "SupportedTextSelection", Value = this.Pattern.SupportedTextSelection });
+            });
         }
 
         [PatternMethod]

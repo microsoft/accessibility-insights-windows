@@ -27,7 +27,10 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
 
         private void PopulateProperties()
         {
-            this.Properties.Add(new A11yPatternProperty() { Name = "ExpandCollapseState", Value = this.Pattern.CurrentExpandCollapseState });
+            ExcludeExceptionsFromTelemetry(() =>
+            {
+                this.Properties.Add(new A11yPatternProperty() { Name = "ExpandCollapseState", Value = this.Pattern.CurrentExpandCollapseState });
+            });
         }
 
         [PatternMethod(IsUIAction = true)]

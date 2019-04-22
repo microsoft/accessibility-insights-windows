@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Attributes;
+using Axe.Windows.Core.Exceptions;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Types;
 using Newtonsoft.Json;
@@ -144,6 +145,24 @@ namespace Axe.Windows.Core.Bases
         public override string ToString()
         {
             return string.Format("{0}: {1}", this.Name, this.Properties.FirstOrDefault()?.Value);
+        }
+
+        /// <summary>
+        /// Execute a block of code within a try/catch block. If it throws, catch the Exception
+        /// and wrap it in a TelemetryExcludedException, which should be excluded from any
+        /// upstream telemetry pipelines.
+        /// </summary>
+        /// <param name="action">The code that might generate an Exception</param>
+        public static void ExcludeExceptionsFromTelemetry(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception e)
+            {
+                throw new TelemetryExcludedException("Excluded Exception", e);
+            }
         }
 
         #region IDisposable Support
