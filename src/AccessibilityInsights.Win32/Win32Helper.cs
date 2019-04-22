@@ -185,6 +185,15 @@ namespace Axe.Windows.Win32
         }
 
         /// <summary>
+        /// Check whether current OS is Win10 RS5 or later
+        /// </summary>
+        /// <returns>True iff the OS is at least Win10 RS5</returns>
+        internal static bool IsWindowsRS5OrLater()
+        {
+            return IsAtLeastWin10WithSpecificBuild(17713); // Build 17713 is confirmed in the RS5 range
+        }
+
+        /// <summary>
         /// Get the current Windows version (intended to be used for telemetry). If trying to 
         /// determine a minimum build for features, please use the IsWindowsXXXOrLater methods
         /// (or create a new one if you can't find an appropriate one).
@@ -204,15 +213,6 @@ namespace Axe.Windows.Win32
                 return currentVersion;
 
             return currentVersion + "." + currentBuild;
-        }
-
-        /// <summary>
-        /// Check whether current OS is Win10 RS5 or later
-        /// </summary>
-        /// <returns>True iff the OS is at least Win10 RS5</returns>
-        internal static bool IsWindowsRS5OrLater()
-        {
-            return IsAtLeastWin10WithSpecificBuild(17713); // Build 17713 is confirmed in the RS5 range
         }
 
         /// <summary>
