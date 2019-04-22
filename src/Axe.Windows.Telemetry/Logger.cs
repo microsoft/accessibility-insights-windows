@@ -40,9 +40,9 @@ namespace Axe.Windows.Telemetry
             if (!IsEnabled) return;
 
             PublishTelemetryEvent(action, new Dictionary<TelemetryProperty, string>
-                {
-                    { property, value }
-                });
+            {
+                { property, value }
+            });
         }
 
         /// <summary>
@@ -71,6 +71,7 @@ namespace Axe.Windows.Telemetry
         public static void ReportException(this Exception e)
         {
             if (e == null) return;
+            if (e is ExcludedException) return;
 
             try
             {

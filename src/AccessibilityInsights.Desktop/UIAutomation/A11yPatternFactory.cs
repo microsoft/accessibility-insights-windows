@@ -111,7 +111,7 @@ namespace Axe.Windows.Desktop.UIAutomation
             }
             catch(Exception ex)
             {
-                if (!(ex is TelemetryExcludedException))
+                if (!(ex is ExcludedException))
                 {
                     ex.ReportException();
                 }

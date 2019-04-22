@@ -2,10 +2,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Types;
 using Axe.Windows.Core.Bases;
-using UIAutomationClient;
 using Axe.Windows.Core.Attributes;
 using Axe.Windows.Desktop.Types;
+using Axe.Windows.Telemetry;
 using System.Runtime.InteropServices;
+using UIAutomationClient;
 
 namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
@@ -27,7 +28,7 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
 
         private void PopulateProperties()
         {
-            ExcludeExceptionsFromTelemetry(() =>
+            ExceptionExcluder.ExcludeThrownExceptions(() =>
             {
                 this.Properties.Add(new A11yPatternProperty() { Name = "ExpandCollapseState", Value = this.Pattern.CurrentExpandCollapseState });
             });

@@ -67,7 +67,6 @@
     <Compile Include="Enums\RuleId.cs" />
     <Compile Include="Enums\HighlighterColor.cs" />
     <Compile Include="Enums\UrlType.cs" />
-    <Compile Include="Exceptions\TelemetryExcludedException.cs" />
     <Compile Include="Exceptions\TreeNavigationFailedException.cs" />
     <Compile Include="Fingerprint\AddResult.cs" />
     <Compile Include="Fingerprint\IssueStoreExtensions.cs" />

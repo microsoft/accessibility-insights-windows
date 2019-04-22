@@ -2,19 +2,19 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 
-namespace Axe.Windows.Core.Exceptions
+namespace Axe.Windows.Telemetry
 {
     /// <summary>
     /// Class to wrap Exceptions that should be excluded from the Telemetry pipeline
     /// </summary>
     [Serializable]
-    public class TelemetryExcludedException : Exception
+    public class ExcludedException : Exception
     {
         /// <summary>
         /// ctor <see cref="Exception"/>
         /// </summary>
         /// <param name="message">The message that describes the error</param>
-        public TelemetryExcludedException(string message)
+        public ExcludedException(string message)
             : base(message)
         {
         }
@@ -24,7 +24,7 @@ namespace Axe.Windows.Core.Exceptions
         /// </summary>
         /// <param name="message">The message that describes the error</param>
         /// <param name="innerException">The exception that is the cause of the current Exception</param>
-        public TelemetryExcludedException(string message, Exception innerException)
+        public ExcludedException(string message, Exception innerException)
             : base(message, innerException)
         {
         }
@@ -32,7 +32,7 @@ namespace Axe.Windows.Core.Exceptions
         /// <summary>
         /// default ctor <see cref="Exception"/>
         /// </summary>
-        public TelemetryExcludedException()
+        public ExcludedException()
         {
         }
 
@@ -41,7 +41,7 @@ namespace Axe.Windows.Core.Exceptions
         /// </summary>
         /// <param name="serializationInfo">The SerializationInfo that holds the serialized object data about the exception being thrown</param>
         /// <param name="streamingContext">The StreamingContext that contains contextual information about the source or destination</param>
-        protected TelemetryExcludedException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
+        protected ExcludedException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
             : base (serializationInfo, streamingContext)
         {
         }
