@@ -53,7 +53,7 @@ namespace Axe.Windows.Actions
                 SnapshotMetaInfo meta = SnapshotMetaInfo.DeserializeFromStream(metadataPart);
                 metadataPart.Close();   
 
-                var selectedElement = element.FindDescendent(k => k.UniqueId == meta.ScreenshotElementId);
+                var selectedElement = element.FindDescendant(k => k.UniqueId == meta.ScreenshotElementId);
 
                 return new LoadActionParts(element, bmp, selectedElement.SynthesizeBitmapFromElements(), meta);
             }

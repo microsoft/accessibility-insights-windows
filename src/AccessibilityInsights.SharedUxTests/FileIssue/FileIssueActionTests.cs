@@ -18,9 +18,9 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
     [TestClass]
     public class FileIssueActionTests
     {
-        static readonly Uri FAKE_SERVER_URL = new Uri("https://myaccount.visualstudio.com/");
-
 #if FAKES_SUPPORTED
+        const string DISPLAY_NAME = "GitHub";
+
         [TestMethod]
         [Timeout(1000)]
         public void FileNewBug_IsNotEnabled_ReturnsNull()
@@ -47,16 +47,17 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
                 SetUpShims();
 
                 // Save telemetry locally
-                List<Tuple<TelemetryAction, TelemetryProperty, string>> telemetryLog = new List<Tuple<TelemetryAction, TelemetryProperty, string>>();
-                ShimLogger.PublishTelemetryEventTelemetryActionTelemetryPropertyString = (action, property, value) =>
+                List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>> telemetryLog = new List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>>();
+                ShimLogger.PublishTelemetryEventTelemetryActionIReadOnlyDictionaryOfTelemetryPropertyString = (action, dict) =>
                 {
-                    telemetryLog.Add(new Tuple<TelemetryAction, TelemetryProperty, string>(action, property, value));
+                    telemetryLog.Add(new Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>(action, dict));
                 };
 
                 var issueInfo = new IssueInformation();
                 var result = FileIssueAction.FileIssueAsync(issueInfo);
 
-                Assert.AreEqual(0, telemetryLog.Count);
+                Assert.AreEqual(1, telemetryLog.Count);
+                Assert.AreEqual(DISPLAY_NAME, telemetryLog[0].Item2[TelemetryProperty.IssueReporter]);
             }
         }
 
@@ -71,14 +72,6 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             {
                 SetUpShims();
 
-                ShimIssueReporter.FileIssueAsyncIssueInformation = (_) =>
-                {
-                    var mockIssueResult = new Mock<IIssueResult>();
-                    mockIssueResult.Setup(p => p.DisplayText).Returns("Issue Display text");
-                    mockIssueResult.Setup(p => p.IssueLink).Returns(new Uri("https://www.google.com"));
-                    return mockIssueResult.Object;
-                };
-
                 // Save telemetry locally
                 List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>> telemetryLog = new List<Tuple<TelemetryAction, IReadOnlyDictionary<TelemetryProperty, string>>>();
                 ShimLogger.PublishTelemetryEventTelemetryActionIReadOnlyDictionaryOfTelemetryPropertyString = (action, dict) =>
@@ -89,9 +82,10 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
                 var issueInfo = new IssueInformation(ruleForTelemetry: RuleId.BoundingRectangleContainedInParent.ToString());
                 var result = FileIssueAction.FileIssueAsync(issueInfo);
 
+                Assert.AreEqual(3, telemetryLog[0].Item2.Count);
                 Assert.AreEqual(RuleId.BoundingRectangleContainedInParent.ToString(), telemetryLog[0].Item2[TelemetryProperty.RuleId]);
                 Assert.AreEqual("", telemetryLog[0].Item2[TelemetryProperty.UIFramework]);
-                Assert.AreEqual(2, telemetryLog[0].Item2.Count);
+                Assert.AreEqual(DISPLAY_NAME, telemetryLog[0].Item2[TelemetryProperty.IssueReporter]);
             }
         }
 
@@ -102,6 +96,14 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
                 return null;
             };
             ShimIssueReporter.IsEnabledGet = () => true;
+            ShimIssueReporter.DisplayNameGet = () => DISPLAY_NAME;
+            ShimIssueReporter.FileIssueAsyncIssueInformation = (_) =>
+            {
+                var mockIssueResult = new Mock<IIssueResult>();
+                mockIssueResult.Setup(p => p.DisplayText).Returns("Issue Display text");
+                mockIssueResult.Setup(p => p.IssueLink).Returns(new Uri("https://www.google.com"));
+                return mockIssueResult.Object;
+            };
         }
 #endif
     }

@@ -19,8 +19,18 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         public static bool IsEnabled => TelemetrySink.IsEnabled;
 
+
         /// <summary>
-        /// Publishes event with single property/value pair to the current telemetry pipeline
+        /// Publishes an event to the current telemetry pipeline
+        /// </summary>
+        /// <param name="ev">the event being recorded</param>
+        public static void PublishTelemetryEvent(TelemetryEvent ev)
+        {
+            PublishTelemetryEvent(ev.Action, ev.Properties);
+        }
+
+        /// <summary>
+        /// Publishes an event with single property/value pair to the current telemetry pipeline
         /// </summary>
         /// <param name="action"></param>
         /// <param name="property"></param>
@@ -34,7 +44,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Publishes event to the current telemetry pipeline
+        /// Publishes an event to the current telemetry pipeline
         /// </summary>
         /// <param name="action">The action being recorded</param>
         /// <param name="propertyBag">Associated property bag--this may be null</param>
