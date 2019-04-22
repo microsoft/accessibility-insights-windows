@@ -1,6 +1,6 @@
-## April 16th, 2019 Insider Release ([v1.1.0835.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0835.01))
+## April 18th, 2019 Insider Release ([v1.1.0837.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0837.02))
 
-Welcome to the April 16th, 2019 release of Accessibility Insights for Windows.
+Welcome to the April 18th, 2019 release of Accessibility Insights for Windows.
 
 ### Highlights
 
@@ -35,3 +35,7 @@ You'll be in the **Production** channel by default, but you can change your chan
 - ListItems within a Spinner control or a ControlViewSpinner control are no longer treated as errors [#268](https://github.com/Microsoft/accessibility-insights-windows/issues/268), [#272](https://github.com/Microsoft/accessibility-insights-windows/issues/272)
 - Modified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
 - Added a splash screen to the startup sequence [#202](https://github.com/Microsoft/accessibility-insights-windows/issues/202)
+- Fix a typo in the message to configure for Issue filing [#306](https://github.com/Microsoft/accessibility-insights-windows/issues/306)
+- Include telemetry context when reporting Exceptions [PR #312](https://github.com/Microsoft/accessibility-insights-windows/pull/312)
+- Filter out extended characters when filing issues in AzureDevOps [PR #314](https://github.com/Microsoft/accessibility-insights-windows/pull/314)
+- Fix an error that was causing the app to hang on some machines [#317](https://github.com/Microsoft/accessibility-insights-windows/issues/317)
