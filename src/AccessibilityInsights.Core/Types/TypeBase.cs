@@ -117,7 +117,7 @@ namespace Axe.Windows.Core.Types
         }
 
         /// <summary>
-        /// the values of the types contained in the inheriting class
+        /// the types contained in the inheriting class
         /// </summary>
         public IEnumerable<int> Values => Dic.Keys;
     }
