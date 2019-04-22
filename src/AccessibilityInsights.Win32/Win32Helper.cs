@@ -190,7 +190,7 @@ namespace Axe.Windows.Win32
         /// (or create a new one if you can't find an appropriate one).
         /// </summary>
         /// <returns>A string in the format X.Y[.Z] where X.Y is the registry-based CurrentVersion
-        /// and Z is the registry-based CurrentBuildNumber</returns>
+        /// and Z is the registry-based CurrentBuild</returns>
         internal static string GetCurrentWindowsVersionForTelemetry()
         {
             string currentVersion = GetCurrentWindowsVersion();
