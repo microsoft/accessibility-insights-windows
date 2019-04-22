@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Exceptions;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
 using Axe.Windows.Telemetry;
@@ -111,11 +110,7 @@ namespace Axe.Windows.Desktop.UIAutomation
             }
             catch(Exception ex)
             {
-                if (!(ex is ExcludedException))
-                {
-                    ex.ReportException();
-                }
-
+                ex.ReportException();
                 return null;
             }
         }
