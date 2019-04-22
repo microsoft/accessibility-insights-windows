@@ -111,6 +111,7 @@ namespace Axe.Windows.Desktop.UIAutomation
             catch(Exception ex)
             {
                 ex.ReportException();
+
                 return null;
             }
         }
