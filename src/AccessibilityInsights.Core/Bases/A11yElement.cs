@@ -452,7 +452,7 @@ namespace Axe.Windows.Core.Bases
         }
 
         /// <summary>
-        /// whether the element is resizeable
+        /// whether the element is resizable
         /// </summary>
         [JsonIgnore]
         public bool TransformPatternCanResize
