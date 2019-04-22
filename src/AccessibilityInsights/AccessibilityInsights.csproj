@@ -262,10 +262,6 @@
       <Project>{eee9cd52-ca10-41ae-ac6e-98ae4bbdfa2d}</Project>
       <Name>CommonUxComponents</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj">
-      <Project>{d17e1749-28fe-44b9-a9f6-af8985124fe4}</Project>
-      <Name>Extensions.Telemetry</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
