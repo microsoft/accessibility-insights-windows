@@ -57,5 +57,6 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ReleaseChannel,
         ReleaseChannelConsidered,
         ReleaseChannelChangeResult,  // Value from the ReleaseChannelChangeResult enum
+        WindowsVersion, // String representation of the Windows OS version
     }
 }

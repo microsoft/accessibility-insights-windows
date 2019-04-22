@@ -197,7 +197,13 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, VersionTools.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
-            Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
+            Logger.AddOrUpdateContextProperty(TelemetryProperty.WindowsVersion, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
+
+            string windowsVersion = NativeMethods.GetCurrentWindowsVersionForTelemetry();
+            if (!string.IsNullOrEmpty(windowsVersion))
+            {
+                Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, windowsVersion);
+            }
             Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup, null);
         }
 

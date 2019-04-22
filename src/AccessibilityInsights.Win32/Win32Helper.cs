@@ -185,6 +185,28 @@ namespace Axe.Windows.Win32
         }
 
         /// <summary>
+        /// Get the current Windows version (intended to be used for telemetry). If trying to 
+        /// determine a minimum build for features, please use the IsWindowsXXXOrLater methods
+        /// (or create a new one if you can't find an appropriate one).
+        /// </summary>
+        /// <returns>A string in the format X.Y[.Z] where X.Y is the registry-based CurrentVersion
+        /// and Z is the registry-based CurrentBuildNumber</returns>
+        internal static string GetCurrentWindowsVersionForTelemetry()
+        {
+            string currentVersion = GetCurrentWindowsVersion();
+
+            if (string.IsNullOrWhiteSpace(currentVersion))
+                return null;
+
+            string currentBuild = GetCurrentWindowsBuild();
+
+            if (string.IsNullOrWhiteSpace(currentBuild))
+                return currentVersion;
+
+            return currentVersion + "." + currentBuild;
+        }
+
+        /// <summary>
         /// Check whether current OS is Win10 RS5 or later
         /// </summary>
         /// <returns>True iff the OS is at least Win10 RS5</returns>
