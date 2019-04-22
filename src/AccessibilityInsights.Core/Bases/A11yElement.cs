@@ -86,7 +86,7 @@ namespace Axe.Windows.Core.Bases
         }
 
         /// <summary>
-        /// a text description of a keystroke which activates the element; usually a single key; only  valid within  a limited scope such as menus
+        /// a text description of a keystroke which activates the element; usually a single key; only valid within a limited scope such as menus
         /// </summary>
         [JsonIgnore]
         public string AccessKey
