@@ -497,7 +497,7 @@ namespace Axe.Windows.Core.Bases
         }
 
         /// <summary>
-        /// Finds the first decendent element matching the given condition.
+        /// Finds the first descendant element matching the given condition.
         /// </summary>
         /// <param name="condition">a function that returns true if the given descendant element meets a set of criteria</param>
         /// <returns>an <see cref="IA11yElement"/> object representing the matching descendant if one exists; otherwise, false</returns>
