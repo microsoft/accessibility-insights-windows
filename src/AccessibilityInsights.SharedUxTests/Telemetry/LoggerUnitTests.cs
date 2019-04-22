@@ -142,6 +142,39 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
 
         [TestMethod]
         [Timeout(1000)]
+        public void PublishTelemetryEventContainer_TelemetryIsEnabled_EnablesAndChainsThrough()
+        {
+            using (ShimsContext.Create())
+            {
+                var fakeId = "id";
+                var fakeEvent = new TelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.AppSessionID, fakeId },
+                });
+
+                string actualName = null;
+                IReadOnlyDictionary<string, string> actualTelemetryPropertyBag = null;
+                ITelemetry telemetry = new StubITelemetry
+                {
+                    PublishEventStringIReadOnlyDictionaryOfStringString = (name, telemetryPropertyBag) =>
+                    {
+                        actualName = name;
+                        actualTelemetryPropertyBag = telemetryPropertyBag;
+                    }
+                };
+                TelemetrySink.IsTelemetryAllowed = true;
+                ShimTelemetrySink.TelemetryGet = () => telemetry;
+
+                Logger.PublishTelemetryEvent(fakeEvent);
+
+                Assert.AreEqual(fakeEvent.Action.ToString(), actualName);
+                Assert.AreEqual(1, actualTelemetryPropertyBag.Count);
+                Assert.AreEqual(fakeId, actualTelemetryPropertyBag[TelemetryProperty.AppSessionID.ToString()]);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
         public void PublishTelemetryEvent_MultiProperty_TelemteryIsNotEnabled_DoesNothing()
         {
             using (ShimsContext.Create())

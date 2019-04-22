@@ -989,7 +989,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 // File a new bug
                 var telemetryEvent = TelemetryEventCreator.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
-                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, telemetryEvent);
+                Logger.PublishTelemetryEvent(telemetryEvent);
 
                 if (IssueReporter.IsConnected)
                 {

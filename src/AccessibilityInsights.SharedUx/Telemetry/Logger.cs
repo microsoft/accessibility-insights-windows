@@ -19,6 +19,16 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         public static bool IsEnabled => TelemetrySink.IsEnabled;
 
+
+        /// <summary>
+        /// Publishes event to the current telemetry pipeline
+        /// </summary>
+        /// <param name="ev">the event being recorded</param>
+        public static void PublishTelemetryEvent(TelemetryEvent ev)
+        {
+            PublishTelemetryEvent(ev.Action, ev.Properties);
+        }
+
         /// <summary>
         /// Publishes event with single property/value pair to the current telemetry pipeline
         /// </summary>
