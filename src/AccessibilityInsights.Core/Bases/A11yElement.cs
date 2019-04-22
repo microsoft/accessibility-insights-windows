@@ -110,7 +110,7 @@ namespace Axe.Windows.Core.Bases
         }
 
         /// <summary>
-        /// a permanent unique identifier for the specific element, or sometimes the type of element
+        /// a permanent unique identifier among siblings for the specific element, or sometimes the type of element
         /// </summary>
         [JsonIgnore]
         public string AutomationId
