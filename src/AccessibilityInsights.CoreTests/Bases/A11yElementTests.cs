@@ -27,7 +27,7 @@ namespace Axe.Windows.CoreTests.Bases
             {
                 Children = new List<A11yElement>() { child }
             };
-            var result = parent.FindDescendent(ke => ke.UniqueId == 0);
+            var result = parent.FindDescendant(ke => ke.UniqueId == 0);
             Assert.AreEqual(result, child);
         }
 
@@ -43,7 +43,7 @@ namespace Axe.Windows.CoreTests.Bases
             {
                 Children = new List<A11yElement>() { child },
             };
-            var result = parent.FindDescendent(ke => ke.UniqueId == 0);
+            var result = parent.FindDescendant(ke => ke.UniqueId == 0);
             Assert.IsNull(result);
         }
 
@@ -66,7 +66,7 @@ namespace Axe.Windows.CoreTests.Bases
                     }
                 }
             };
-            var result = parent.FindDescendent(ke => ke.UniqueId == 0);
+            var result = parent.FindDescendant(ke => ke.UniqueId == 0);
             Assert.AreEqual(result, grandChild);
         }
 
@@ -89,7 +89,7 @@ namespace Axe.Windows.CoreTests.Bases
             {
                 Children = new List<A11yElement>() { child }
             };
-            var result = parent.FindDescendent(ke => ke.UniqueId == 0);
+            var result = parent.FindDescendant(ke => ke.UniqueId == 0);
             Assert.IsNull(result);
         }
 
