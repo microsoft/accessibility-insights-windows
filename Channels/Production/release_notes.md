@@ -1,54 +1,41 @@
-## March 2019 Release ([v1.1.0794.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0794.01))
+## April 24th, 2019 Insider Release ([v1.1.0837.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0837.02))
 
-<a href="https://aka.ms/accessibilityinsights-windows/download" target="_blank">Download for Windows</a>
+Welcome to the April 24th, 2019 release of Accessibility Insights for Windows.
 
-Welcome to the March 2019 release of Accessibility Insights for Windows. Key highlights include:
+### Highlights
 
-- [**Verify an element has the expected UI Automation properties**](#verify-an-element-has-the-expected-ui-automation-properties): Inspect the live UI Automation tree using Live Inspect.
-- [**Quickly find accessibility issues with FastPass**](#quickly-find-accessibility-issues-with-fastpass): FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes.
-- [**File bugs**](#file-bugs): Can't fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file.
-- [**Check color contrast**](#check-color-contrast): Identify accessibility issues caused by low color contrast using the Color Contrast Analyzer.
+  - [GitHub Issue Filing](#github-issue-filing)
+  - [New Rules](#new-rules)
+  - [Multiple Release Channels](#multiple-release-channels)
+  
+#### GitHub Issue Filing
 
-In the following samples, we are testing an app called "Wildlife Manager". 
+GitHub users can now file issues directly from inside Accessibility Insights for Windows. Bug filing from Azure DevOps is still supported, and you can freely switch between the two.
 
-### Verify an element has the expected UI Automation properties
+#### New Rules
 
-Inspect enables you to easily verify that a UI element in a Windows app:
+We've added the following accessibility rule based on community feedback:
+- Generate a warning if items in a listbox have duplicated names [#133](https://github.com/Microsoft/accessibility-insights-windows/issues/133)
 
-- Has the expected UI Automation properties
-- Supports the expected control patterns
-- Responds as expected to user input
-- Generates the expected events
+#### Multiple Release Channels
 
-![Inspect Wildlife Manager app's UI Automation properties using Live Inspect](inspect.png)
+You can now choose how frequently your client updates:
+- The **Production** channel updates every 2-4 weeks.
+- The **Insider** channel updates every 1-2 weeks.
+- The **Canary** channel updates multiple times per week.
 
-[Learn more about Inspect](https://go.microsoft.com/fwlink/?linkid=2075123).
+You'll be in the **Production** channel by default, but you can change your channel at any time via the **Settings** page
 
-### Quickly find accessibility issues with FastPass
+### Bug Fixes
 
-FastPass is a lightweight, _two-step_ process that helps developers identify common, high-impact accessibility issues in less than five minutes.
-
-1. **Automated checks** - the tool automatically checks for compliance with dozens of accessibility rules.
-1. **Manual test for tab stops** - the tool provides clear instructions and a visual helper that makes it easy to identify critical accessibility issues related to keyboard access, such as missing tab stops, keyboard traps, and incorrect tab order.
-
-We recommend developers run a FastPass before every check-in of UI code.
-
-![FastPass's automated checks results against the Wildlife Manager app in Accessibility Insights for Windows](fastpass.png)
-
-[Learn more about FastPass](https://go.microsoft.com/fwlink/?linkid=2075125).
-
-### File bugs
-
-Can't fix a bug right now? File the bug in Azure Boards, complete with a snapshot file. You and your collaborators can load the snapshot file in Accessibility Insights for Windows to review the issue at a later time.
-
-![File a bug in Azure Boards against the Wildlife Manager app from Accessibility Insights for Windows](bugfiling.png)
-
-[Learn more about Bug filing](https://go.microsoft.com/fwlink/?linkid=2075269).
-
-### Check color contrast
-
-The Color Contrast Analyzer helps developers investigate contrast ratios. You can either automatically detect the contrast ratio, or manually select the foreground and background colors to test the contrast ratio.
-
-![Auto detect color contrast ratio in the Wildlife Manager app](colorcontrast.png)
-
-[Learn more about Color contrast](https://go.microsoft.com/fwlink/?linkid=2075365).
+- Improved Automatic color contrast detection in High Contrast White theme [#144](https://github.com/Microsoft/accessibility-insights-windows/issues/144)
+- Properly display event details when loading an event details file [#161](https://github.com/Microsoft/accessibility-insights-windows/issues/161)
+- Fixed the appearance of the restore button when the app was maximized [#199](https://github.com/Microsoft/accessibility-insights-windows/issues/199)
+- Clarified the color descriptions in the Color Contrast Analyzer [#210](https://github.com/Microsoft/accessibility-insights-windows/issues/210)
+- ListItems within a Spinner control or a ControlViewSpinner control are no longer treated as errors [#268](https://github.com/Microsoft/accessibility-insights-windows/issues/268), [#272](https://github.com/Microsoft/accessibility-insights-windows/issues/272)
+- Modified the description shown when a SplitButton control has a MenuItem child [#269](https://github.com/Microsoft/accessibility-insights-windows/issues/269)
+- Added a splash screen to the startup sequence [#202](https://github.com/Microsoft/accessibility-insights-windows/issues/202)
+- Fix a typo in the message to configure for Issue filing [#306](https://github.com/Microsoft/accessibility-insights-windows/issues/306)
+- Include telemetry context when reporting Exceptions [PR #312](https://github.com/Microsoft/accessibility-insights-windows/pull/312)
+- Filter out extended characters when filing issues in AzureDevOps [PR #314](https://github.com/Microsoft/accessibility-insights-windows/pull/314)
+- Fix an error that was causing the app to hang on some machines [#317](https://github.com/Microsoft/accessibility-insights-windows/issues/317)
