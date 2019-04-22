@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
 
         /// <summary>
-        /// Publishes event to the current telemetry pipeline
+        /// Publishes an event to the current telemetry pipeline
         /// </summary>
         /// <param name="ev">the event being recorded</param>
         public static void PublishTelemetryEvent(TelemetryEvent ev)
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Publishes event with single property/value pair to the current telemetry pipeline
+        /// Publishes an event with single property/value pair to the current telemetry pipeline
         /// </summary>
         /// <param name="action"></param>
         /// <param name="property"></param>
@@ -44,7 +44,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Publishes event to the current telemetry pipeline
+        /// Publishes an event to the current telemetry pipeline
         /// </summary>
         /// <param name="action">The action being recorded</param>
         /// <param name="propertyBag">Associated property bag--this may be null</param>

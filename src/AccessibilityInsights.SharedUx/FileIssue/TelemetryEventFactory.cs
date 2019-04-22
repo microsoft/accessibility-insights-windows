@@ -17,40 +17,31 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         {
             return new TelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>()
             {
-                    { TelemetryProperty.By, source.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
-                    { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
+                { TelemetryProperty.By, source.ToString() },
+                { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) },
+                { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
             });
         }
 
         public static TelemetryEvent ForIssueFilingCompleted(IIssueResult issueResult, IssueInformation issueInformation)
         {
-            if (issueResult.IssueLink != null)
+            if (issueResult?.IssueLink != null && issueInformation?.RuleForTelemetry != null)
             {
-                if (issueInformation.RuleForTelemetry != null)
+                return new TelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
                 {
-                    return new TelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.RuleId, issueInformation.RuleForTelemetry },
-                        { TelemetryProperty.UIFramework, issueInformation.UIFramework ?? string.Empty },
-                        { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
-                    });
-                }
-                else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
-                {
-                    return new TelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
-                    });
-                }
-            }
-            else
-            {
-                return new TelemetryEvent(TelemetryAction.Issue_File_Attempt, new Dictionary<TelemetryProperty, string>
-                {
+                    { TelemetryProperty.RuleId, issueInformation.RuleForTelemetry },
+                    { TelemetryProperty.UIFramework, issueInformation.UIFramework ?? string.Empty },
                     { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
                 });
             }
+
+            // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
+            var action = issueResult?.IssueLink == null ?
+                TelemetryAction.Issue_File_Attempt : TelemetryAction.Issue_Save;
+            return new TelemetryEvent(action, new Dictionary<TelemetryProperty, string>
+            {
+                { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
+            });
         }
     }
 }
