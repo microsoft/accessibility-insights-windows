@@ -30,33 +30,8 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             try
             {
                 IIssueResult issueResult = IssueReporter.FileIssueAsync(issueInformation);
-
-                if (issueResult.IssueLink != null)
-                {
-                    if (issueInformation.RuleForTelemetry != null)
-                    {
-                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
-                        {
-                            { TelemetryProperty.RuleId, issueInformation.RuleForTelemetry },
-                            { TelemetryProperty.UIFramework, issueInformation.UIFramework ?? string.Empty },
-                            { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
-                        });
-                    }
-                    else // if the bug is coming from the hierarchy tree, it will not have ruleID or UIFramework
-                    {
-                        Logger.PublishTelemetryEvent(TelemetryAction.Issue_Save, new Dictionary<TelemetryProperty, string>
-                        {
-                            { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
-                        });
-                    }
-                }
-                else
-                {
-                    Logger.PublishTelemetryEvent(TelemetryAction.Issue_File_Attempt, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
-                    });
-                }
+                var telemetryEvent = TelemetryEventFactory.ForIssueFilingCompleted(issueResult, issueInformation);
+                Logger.PublishTelemetryEvent(telemetryEvent);
                 return issueResult;
             }
             catch (Exception e)
