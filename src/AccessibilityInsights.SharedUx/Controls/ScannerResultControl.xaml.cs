@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Results;
@@ -21,6 +20,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
+using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -297,10 +297,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             else
             {
                 // File a new bug
-                Logger.PublishTelemetryEvent(TelemetryAction.Scan_File_Bug, new Dictionary<TelemetryProperty, string>() {
-                    { TelemetryProperty.By, FileBugRequestSource.HowtoFix.ToString() },
-                    { TelemetryProperty.IsAlreadyLoggedIn, IssueReporter.IsConnected.ToString(CultureInfo.InvariantCulture) }
-                });
+                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.HowtoFix);
+                Logger.PublishTelemetryEvent(telemetryEvent);
 
                 if (IssueReporter.IsConnected)
                 {
