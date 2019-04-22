@@ -501,7 +501,7 @@ namespace Axe.Windows.Core.Bases
         /// </summary>
         /// <param name="condition">a function that returns true if the given descendant element meets a set of criteria</param>
         /// <returns>an <see cref="IA11yElement"/> object representing the matching descendant if one exists; otherwise, false</returns>
-        public A11yElement FindDescendent(Func<A11yElement, Boolean> condition)
+        public A11yElement FindDescendant(Func<A11yElement, Boolean> condition)
         {
             Queue<A11yElement> children = new Queue<A11yElement>(this.Children);
             while (children.Count > 0)
