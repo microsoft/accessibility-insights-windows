@@ -130,10 +130,6 @@
       <Project>{01dc8363-73bc-47fa-bd23-12ac45618e1d}</Project>
       <Name>UnitTestSharedLibrary</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Axe.Windows.Telemetry\Axe.Windows.Telemetry.csproj">
-      <Project>{5c394271-6d27-4a48-8a32-f8080025431c}</Project>
-      <Name>Axe.Windows.Telemetry</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Choose>
