@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
     public class FileIssueActionTests
     {
 #if FAKES_SUPPORTED
-        static readonly string DISPLAY_NAME = "GitHub";
+        const string DISPLAY_NAME = "GitHub";
 
         [TestMethod]
         [Timeout(1000)]
