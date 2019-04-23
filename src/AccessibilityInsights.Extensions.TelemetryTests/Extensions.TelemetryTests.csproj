@@ -68,7 +68,7 @@
   <ItemGroup>
     <Compile Include="AITelemetryTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OSHelpersUnitTests.cs" />
+    <Compile Include="OSHelpersUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
