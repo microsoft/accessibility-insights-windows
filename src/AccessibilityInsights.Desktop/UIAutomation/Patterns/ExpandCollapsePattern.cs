@@ -1,11 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Types;
-using Axe.Windows.Core.Bases;
-using UIAutomationClient;
 using Axe.Windows.Core.Attributes;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.Types;
+using Axe.Windows.Telemetry;
 using System.Runtime.InteropServices;
+using UIAutomationClient;
 
 namespace Axe.Windows.Desktop.UIAutomation.Patterns
 {
@@ -20,9 +21,14 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
 
         public ExpandCollapsePattern(A11yElement e, IUIAutomationExpandCollapsePattern p) : base(e, PatternType.UIA_ExpandCollapsePatternId)
         {
-            Pattern = p;
+            // UIA sometimes throws a COMException. If it does, exclude it
+            // from telemetry
+            ExcludingExceptionWrapper.ExecuteWithExcludedExceptionConversion(typeof(COMException), () =>
+            {
+                Pattern = p;
 
-            PopulateProperties();
+                PopulateProperties();
+            });
         }
 
         private void PopulateProperties()
