@@ -263,47 +263,5 @@ namespace Axe.Windows.Win32Tests
                 Assert.AreEqual(2, index);
             }
         }
-
-        [TestMethod]
-        public void GetCurrentWindowsVersionForTelemetry_CurrentVersionDoesNotExist_ReturnsNull()
-        {
-            using (ShimsContext.Create())
-            {
-                List<string> returnValues = new List<string> { "" };
-                int index = 0;
-                ShimRegistry.GetValueStringStringObject = (_, __, def) => (++index > returnValues.Count ? def : returnValues[index - 1]);
-
-                Assert.IsNull(NativeMethods.GetCurrentWindowsVersionForTelemetry());
-                Assert.AreEqual(1, index);
-            }
-        }
-
-        [TestMethod]
-        public void GetCurrentWindowsVersionForTelemetry_CurrentBuildDoesNotExist_ReturnsCurrentVersion()
-        {
-            using (ShimsContext.Create())
-            {
-                List<string> returnValues = new List<string> { "99.88", "" };
-                int index = 0;
-                ShimRegistry.GetValueStringStringObject = (_, __, def) => (++index > returnValues.Count ? def : returnValues[index - 1]);
-
-                Assert.AreEqual("99.88", NativeMethods.GetCurrentWindowsVersionForTelemetry());
-                Assert.AreEqual(2, index);
-            }
-        }
-
-        [TestMethod]
-        public void GetCurrentWindowsVersionForTelemetry_AllDataExists_ReturnsCurrentVersionDotCurrentBuild()
-        {
-            using (ShimsContext.Create())
-            {
-                List<string> returnValues = new List<string> { "99.88", "77" };
-                int index = 0;
-                ShimRegistry.GetValueStringStringObject = (_, __, def) => (++index > returnValues.Count ? def : returnValues[index - 1]);
-
-                Assert.AreEqual("99.88.77", NativeMethods.GetCurrentWindowsVersionForTelemetry());
-                Assert.AreEqual(2, index);
-            }
-        }
     }
 }

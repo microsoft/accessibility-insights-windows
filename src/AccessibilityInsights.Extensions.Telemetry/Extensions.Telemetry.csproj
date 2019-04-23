@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="OSHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="AITelemetry.cs" />
