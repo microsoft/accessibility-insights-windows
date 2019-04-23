@@ -5,6 +5,7 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Telemetry;
+using System;
 using System.Collections.Generic;
 using UIAutomationClient;
 
@@ -21,21 +22,23 @@ namespace Axe.Windows.Desktop.UIAutomation.Patterns
 
         public TextPattern(A11yElement e, IUIAutomationTextPattern p) : base(e, PatternType.UIA_TextPatternId)
         {
-            Pattern = p;
+            // UIA sometimes throws a NotImplementedException. If it does, exclude it
+            // from telemetry
+            ExcludingExceptionWrapper.ExecuteWithExcludedExceptionConversion(typeof(NotImplementedException), () =>
+            {
+                Pattern = p;
 
-            PopulateProperties();
+                PopulateProperties();
 
-            // if textPattern is supported , it means that user would do select text in the control. 
-            // so it should be marked as UI actionable
-            IsUIActionable = true;
+                // if textPattern is supported , it means that user would do select text in the control. 
+                // so it should be marked as UI actionable
+                IsUIActionable = true;
+            });
         }
 
         private void PopulateProperties()
         {
-            ExceptionExcluder.ExcludeThrownExceptions(() =>
-            {
-                this.Properties.Add(new A11yPatternProperty() { Name = "SupportedTextSelection", Value = this.Pattern.SupportedTextSelection });
-            });
+            this.Properties.Add(new A11yPatternProperty() { Name = "SupportedTextSelection", Value = this.Pattern.SupportedTextSelection });
         }
 
         [PatternMethod]

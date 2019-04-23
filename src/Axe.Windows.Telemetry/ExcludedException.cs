@@ -4,45 +4,23 @@ using System;
 
 namespace Axe.Windows.Telemetry
 {
+#pragma warning disable CA2237 // Mark ISerializable types with serializable
+#pragma warning disable CA1032 // Implement standard exception constructors
     /// <summary>
-    /// Class to wrap Exceptions that should be excluded from the Telemetry pipeline
+    /// Class to wrap Exceptions that should be excluded from the Telemetry pipeline.
+    /// These Exceptions are still Exceptions for control flow.
     /// </summary>
-    [Serializable]
     public class ExcludedException : Exception
+#pragma warning restore CA1032 // Implement standard exception constructors
+#pragma warning restore CA2237 // Mark ISerializable types with serializable
     {
         /// <summary>
-        /// ctor <see cref="Exception"/>
+        /// The type of the Exception that was excluded
         /// </summary>
-        /// <param name="message">The message that describes the error</param>
-        public ExcludedException(string message)
-            : base(message)
-        {
-        }
+        public Type ExcludedType => InnerException.GetType();
 
-        /// <summary>
-        /// ctor <see cref="Exception"/>
-        /// </summary>
-        /// <param name="message">The message that describes the error</param>
-        /// <param name="innerException">The exception that is the cause of the current Exception</param>
-        public ExcludedException(string message, Exception innerException)
-            : base(message, innerException)
-        {
-        }
-
-        /// <summary>
-        /// default ctor <see cref="Exception"/>
-        /// </summary>
-        public ExcludedException()
-        {
-        }
-
-        /// <summary>
-        /// Serialization ctor <see cref="Exception"/>
-        /// </summary>
-        /// <param name="serializationInfo">The SerializationInfo that holds the serialized object data about the exception being thrown</param>
-        /// <param name="streamingContext">The StreamingContext that contains contextual information about the source or destination</param>
-        protected ExcludedException(System.Runtime.Serialization.SerializationInfo serializationInfo, System.Runtime.Serialization.StreamingContext streamingContext)
-            : base (serializationInfo, streamingContext)
+        public ExcludedException(Exception innerException)
+            : base (innerException.Message, innerException)
         {
         }
     }
