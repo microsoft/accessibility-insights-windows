@@ -1,2 +1,22 @@
 # default owners for everything in the repository.
 *   @Microsoft/accessibility-insights-windows-code-owners
+
+# files that will be removed once new repo is set up - in the interim, changes should be limited
+/src/AccessibilityInsights.Actions/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.ActionsTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Automation/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.AutomationTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Core/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.CoreTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Desktop/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.DesktopTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.RuleSelection/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.RuleSelectionTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Rules/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.RulesTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.UnitTestSharedLibrary/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Win32/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/AccessibilityInsights.Win32Tests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/Axe.Windows.Telemetry/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/Axe.Windows.TelemetryTests/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
+/src/UIAAssemblies/ @AhmedAbdoOrtiga @RobGallo @karanbirsingh
