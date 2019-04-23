@@ -42,7 +42,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         {
             var tc = new TelemetryClient();
             tc.InstrumentationKey = InstrumentationKey;
-            tc.Context.Device.OperatingSystem = Environment.OSVersion.ToString();
+            tc.Context.Device.OperatingSystem = OSHelpers.GetVersion();
             tc.Context.Cloud.RoleInstance = "undefined";
             this.TClient = tc;
         }
