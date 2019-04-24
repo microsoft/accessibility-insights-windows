@@ -183,9 +183,9 @@ namespace AccessibilityInsights.Modes
                     MainWin.Topmost = oldTopMost;
                     MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException));
                 });
-            }
 
-            return false;
+                return false;
+            }
         }
 
         /// <summary>
