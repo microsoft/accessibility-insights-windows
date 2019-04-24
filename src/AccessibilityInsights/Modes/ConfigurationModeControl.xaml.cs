@@ -159,8 +159,17 @@ namespace AccessibilityInsights.Modes
                 return false;
             }
 
+            // The UAC prompt from the version switcher will appear behind the main window
+            // if it is topmost, so we store, change, and restore the value in this method.
+            bool oldTopMost = Configuration.AlwaysOnTop;
+
             try
             {
+                Dispatcher.Invoke(() =>
+                {
+                    oldTopMost = MainWin.Topmost;
+                    MainWin.Topmost = false;
+                });
                 VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
                 Dispatcher.Invoke(() => MainWin.Close());
                 return true;
@@ -170,8 +179,10 @@ namespace AccessibilityInsights.Modes
                 ex.ReportException();
 
                 Dispatcher.Invoke(() =>
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException))
-                );
+                {
+                    MainWin.Topmost = oldTopMost;
+                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException));
+                });
             }
 
             return false;

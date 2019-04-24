@@ -1,10 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Dialogs;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.Resources;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
@@ -122,9 +123,15 @@ namespace AccessibilityInsights
         private async void DownLoadInstaller(IAutoUpdate autoUpdate, AutoUpdateOption updateOption)
         {
             UpdateResult result = UpdateResult.Unknown;
+
+            // The UAC prompt from the version switcher will appear behind the main window
+            // if it is topmost, so we store, change, and restore the value in this method.
+            bool oldTopMost = Topmost;
+
             try
             {
                 ctrlProgressRing.Activate();
+                Topmost = false;
                 result = await autoUpdate.UpdateAsync().ConfigureAwait(true);
 
                 Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_DoInstallation, new Dictionary<TelemetryProperty, string>
@@ -143,13 +150,14 @@ namespace AccessibilityInsights
                 e.ReportException();
             };
 
+            Topmost = oldTopMost;
             ctrlProgressRing.Deactivate();
             Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
 
             string message = updateOption == AutoUpdateOption.RequiredUpgrade
                 ? GetMessageForRequiredUpdateFailure() : GetMessageForOptionalUpdateFailure();
 
-            MessageBox.Show(message);
+            MessageDialog.Show(message);
 
             if (updateOption == AutoUpdateOption.RequiredUpgrade)
             {
