@@ -160,7 +160,7 @@ namespace AccessibilityInsights.Modes
             }
 
             // The UAC prompt from the version switcher will appear behind the main window
-            // if it is topmost, so we store, change, and restore the value in this method.
+            // if it is topmost, we store, change, and restore the value in this method.
             bool oldTopMost = Configuration.AlwaysOnTop;
 
             try
