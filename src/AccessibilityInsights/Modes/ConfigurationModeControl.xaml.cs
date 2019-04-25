@@ -9,7 +9,6 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -159,8 +158,9 @@ namespace AccessibilityInsights.Modes
                 return false;
             }
 
-            // The UAC prompt from the version switcher will appear behind the main window.
-            // If the window is topmost, we store, change, and restore the value in this method.
+            // If the window is topmost, the UAC prompt from the version switcher will appear behind the main window.
+            // To prevent this, save the previous topmost state, ensure that the main window is not topmost when the
+            // UAC prompt will display, then restore the previous topmost state.
             bool previousTopmostSetting = Configuration.AlwaysOnTop;
 
             try
