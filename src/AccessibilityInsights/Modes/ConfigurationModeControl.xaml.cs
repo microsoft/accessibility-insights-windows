@@ -9,7 +9,6 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -159,8 +158,18 @@ namespace AccessibilityInsights.Modes
                 return false;
             }
 
+            // If the window is topmost, the UAC prompt from the version switcher will appear behind the main window.
+            // To prevent this, save the previous topmost state, ensure that the main window is not topmost when the
+            // UAC prompt will display, then restore the previous topmost state.
+            bool previousTopmostSetting = Configuration.AlwaysOnTop;
+
             try
             {
+                Dispatcher.Invoke(() =>
+                {
+                    previousTopmostSetting = MainWin.Topmost;
+                    MainWin.Topmost = false;
+                });
                 VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
                 Dispatcher.Invoke(() => MainWin.Close());
                 return true;
@@ -170,11 +179,13 @@ namespace AccessibilityInsights.Modes
                 ex.ReportException();
 
                 Dispatcher.Invoke(() =>
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException))
-                );
-            }
+                {
+                    MainWin.Topmost = previousTopmostSetting;
+                    MessageDialog.Show(Properties.Resources.ConfigurationModeControl_VersionSwitcherException);
+                });
 
-            return false;
+                return false;
+            }
         }
 
         /// <summary>
