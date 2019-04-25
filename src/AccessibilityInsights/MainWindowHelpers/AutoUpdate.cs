@@ -124,9 +124,9 @@ namespace AccessibilityInsights
         {
             UpdateResult result = UpdateResult.Unknown;
 
-            // The UAC prompt from the version switcher will appear behind the main window
-            // if it is topmost, we store, change, and restore the value in this method.
-            bool oldTopMost = Topmost;
+            // The UAC prompt from the version switcher will appear behind the main window.
+            // If the window is topmost, we store, change, and restore the value in this method.
+            bool previousTopmostSetting = Topmost;
 
             try
             {
@@ -150,7 +150,7 @@ namespace AccessibilityInsights
                 e.ReportException();
             };
 
-            Topmost = oldTopMost;
+            Topmost = previousTopmostSetting;
             ctrlProgressRing.Deactivate();
             Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
 

@@ -159,15 +159,15 @@ namespace AccessibilityInsights.Modes
                 return false;
             }
 
-            // The UAC prompt from the version switcher will appear behind the main window
-            // if it is topmost, we store, change, and restore the value in this method.
-            bool oldTopMost = Configuration.AlwaysOnTop;
+            // The UAC prompt from the version switcher will appear behind the main window.
+            // If the window is topmost, we store, change, and restore the value in this method.
+            bool previousTopmostSetting = Configuration.AlwaysOnTop;
 
             try
             {
                 Dispatcher.Invoke(() =>
                 {
-                    oldTopMost = MainWin.Topmost;
+                    previousTopmostSetting = MainWin.Topmost;
                     MainWin.Topmost = false;
                 });
                 VersionSwitcherWrapper.ChangeChannel(appSettingsCtrl.SelectedReleaseChannel);
@@ -180,8 +180,8 @@ namespace AccessibilityInsights.Modes
 
                 Dispatcher.Invoke(() =>
                 {
-                    MainWin.Topmost = oldTopMost;
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ConfigurationModeControl_VersionSwitcherException));
+                    MainWin.Topmost = previousTopmostSetting;
+                    MessageDialog.Show(Properties.Resources.ConfigurationModeControl_VersionSwitcherException);
                 });
 
                 return false;
