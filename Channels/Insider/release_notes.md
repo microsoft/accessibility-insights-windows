@@ -2,6 +2,10 @@
 
 Welcome to the April 18th, 2019 release of Accessibility Insights for Windows.
 
+Installation Link: [https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0837.02/AccessibilityInsights.msi](https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0837.02/AccessibilityInsights.msi)
+
+Documentation Link: [https://accessibilityinsights.io/docs/en/windows/overview](https://accessibilityinsights.io/docs/en/windows/overview)
+
 ### Highlights
 
   - [GitHub Issue Filing](#github-issue-filing)
