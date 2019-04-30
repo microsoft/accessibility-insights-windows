@@ -30,7 +30,7 @@ namespace WildlifeManager
         {
         }
 
-        ToggleState IToggleProvider.ToggleState => throw new NotImplementedException();
+        ToggleState IToggleProvider.ToggleState => ToggleState.Indeterminate;
 
         public override object GetPattern(PatternInterface patternInterface)
         {
