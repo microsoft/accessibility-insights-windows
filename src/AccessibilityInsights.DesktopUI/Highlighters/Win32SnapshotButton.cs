@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Desktop.Utility;
+using AccessibilityInsights.CommonUxComponents.Utilities;
 using AccessibilityInsights.DesktopUI.Utility;
+using Axe.Windows.Desktop.Utility;
 using Axe.Windows.Win32;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
@@ -93,7 +93,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             PrivateFontCollection fonts = new PrivateFontCollection();
             Assembly assembly = Assembly.GetExecutingAssembly();
 
-            using (Stream fontStream = Application.GetResourceStream(new Uri(@"pack://application:,,,/AccessibilityInsights.CommonUxComponents;component/Resources/FabMDL2.ttf")).Stream)
+            using (Stream fontStream = SharedResources.FabricIconFontResource.Stream)
             {
                 IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 try
