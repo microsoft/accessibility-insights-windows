@@ -93,7 +93,7 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
             PrivateFontCollection fonts = new PrivateFontCollection();
             Assembly assembly = Assembly.GetExecutingAssembly();
 
-            using (Stream fontStream = Application.GetResourceStream(new Uri(@"pack://application:,,,/AccessibilityInsights.DesktopUI;component/Resources/FabMDL2.ttf")).Stream)
+            using (Stream fontStream = Application.GetResourceStream(new Uri(@"pack://application:,,,/AccessibilityInsights.CommonUxComponents;component/Resources/FabMDL2.ttf")).Stream)
             {
                 IntPtr data = Marshal.AllocCoTaskMem((int)fontStream.Length);
                 try
