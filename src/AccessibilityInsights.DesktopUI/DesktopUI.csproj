@@ -55,13 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
-    <Compile Include="Controls\CustomControlOverridingAutomationPeer.cs" />
-    <Compile Include="Controls\FabricIconControl.xaml.cs">
-      <DependentUpon>FabricIconControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\DualFabricIconControl.xaml.cs">
-      <DependentUpon>DualFabricIconControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Enums\HighlighterMode.cs" />
     <Compile Include="Highlighters\ImageHighlighter.cs" />
     <Compile Include="Highlighters\OverlayHighlighter.cs" />
@@ -96,23 +89,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\FabMDL2.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Controls\FabricIconControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Controls\DualFabricIconControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <DropSignedFile Include="$(OutDir)\AccessibilityInsights.DesktopUI.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj">
+      <Project>{eee9cd52-ca10-41ae-ac6e-98ae4bbdfa2d}</Project>
+      <Name>CommonUxComponents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
       <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
       <Name>Core</Name>

@@ -74,6 +74,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Utilities\SharedResources.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Controls\DualFabricIconControl.xaml">
