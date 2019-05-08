@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.IO;
-using static Axe.Windows.Win32.NativeMethods;
+using static AccessibilityInsights.Win32.NativeMethods;
 
 namespace AccessibilityInsights.SetupLibrary
 {

@@ -4,7 +4,7 @@ using Axe.Windows.Core.Types;
 using System;
 using Axe.Windows.Core.Misc;
 using Newtonsoft.Json;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 
 namespace Axe.Windows.Core.Bases
 {

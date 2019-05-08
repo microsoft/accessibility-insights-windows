@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Axe.Windows.Win32
+namespace AccessibilityInsights.Win32
 {
     // Some of these definitions originated from https://pinvoke.net/namespace
 

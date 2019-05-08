@@ -67,7 +67,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
-              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
@@ -166,7 +166,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Axe.Windows.Win32.dll" Id ="version_switcher_win32"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoftt"/>
               </Component>

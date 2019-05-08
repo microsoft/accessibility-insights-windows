@@ -16,7 +16,7 @@ using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;

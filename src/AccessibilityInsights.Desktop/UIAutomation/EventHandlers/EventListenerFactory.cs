@@ -3,7 +3,7 @@
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Telemetry;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Threading;

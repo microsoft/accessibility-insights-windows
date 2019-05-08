@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using UIAutomationClient;
 using System.Runtime.InteropServices;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System.Text.RegularExpressions;
 
 namespace Axe.Windows.Desktop.UIAutomation
@@ -205,7 +205,7 @@ namespace Axe.Windows.Desktop.UIAutomation
         /// </summary>
         private static void AddWindowsExtendedStyleIntoPlatformProperties(this A11yElement element,IntPtr handle)
         {
-            var val = Win32.NativeMethods.GetWindowLong(handle, Win32.Win32Constants.GWL_EXSTYLE);
+            var val = NativeMethods.GetWindowLong(handle, Win32Constants.GWL_EXSTYLE);
             if (val != 0)
             {
                 element.PlatformProperties.Add(PlatformPropertyType.Platform_WindowsExtendedStylePropertyId, new A11yProperty(PlatformPropertyType.Platform_WindowsExtendedStylePropertyId, val));
@@ -217,7 +217,7 @@ namespace Axe.Windows.Desktop.UIAutomation
         /// </summary>
         private static void AddWindowsStyleIntoPlatformProperties(this A11yElement element, IntPtr handle)
         {
-            var val = Win32.NativeMethods.GetWindowLong(handle, Win32.Win32Constants.GWL_STYLE);
+            var val = NativeMethods.GetWindowLong(handle, Win32Constants.GWL_STYLE);
             if (val != 0)
             {
                 element.PlatformProperties.Add(PlatformPropertyType.Platform_WindowsStylePropertyId, new A11yProperty(PlatformPropertyType.Platform_WindowsStylePropertyId, val));

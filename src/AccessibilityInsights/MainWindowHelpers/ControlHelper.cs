@@ -7,7 +7,7 @@ using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

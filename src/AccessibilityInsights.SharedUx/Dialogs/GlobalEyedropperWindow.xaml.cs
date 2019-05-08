@@ -3,7 +3,7 @@
 using Axe.Windows.Desktop.Utility;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.Drawing;
 using System.Windows;

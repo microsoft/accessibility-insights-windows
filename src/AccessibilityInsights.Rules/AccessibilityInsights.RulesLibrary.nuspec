@@ -13,7 +13,7 @@
   </metadata>
   <files>
     <file src="bin\$configuration$\Axe.Windows.Core.dll" target="lib\net471" />
-    <file src="bin\$configuration$\Axe.Windows.Win32.dll" target="lib\net471" />
+    <file src="bin\$configuration$\AccessibilityInsights.Win32.dll" target="lib\net471" />
     <file src="bin\$configuration$\Axe.Windows.Rules.dll" target="lib\net471" />
     <file src="bin\$configuration$\Newtonsoft.Json.dll" target="lib\net471" />
   </files> 

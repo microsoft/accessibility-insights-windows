@@ -4,7 +4,7 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using Axe.Windows.Telemetry;
 using System.Collections.Generic;
 using System.Diagnostics;

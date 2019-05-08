@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using UIAutomationClient;
 using System.Runtime.InteropServices;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 
 namespace Axe.Windows.Desktop.UIAutomation
 {
