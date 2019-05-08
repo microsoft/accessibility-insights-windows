@@ -38,28 +38,6 @@
     <DocumentationFile>bin\Release\Axe.Windows.Automation.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
-      <Name>RuleSelection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
-      <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
-      <Name>Desktop</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Rules\Rules.csproj">
-      <Project>{7FE58829-560E-4142-BF81-291A66D3844B}</Project>
-      <Name>Rules</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="CustomAssemblyResolver.cs" />
     <Compile Include="AutomationSession.cs" />

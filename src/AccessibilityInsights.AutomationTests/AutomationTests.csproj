@@ -96,25 +96,9 @@
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{B2FA5150-470A-4864-A191-7BCAE39DF35A}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Automation\Automation.csproj">
       <Project>{ae5ec69f-158a-41c8-ad2b-ec7b84d820ef}</Project>
       <Name>Automation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
-      <Name>RuleSelection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2DA36FA6-4FF8-4DB4-AA7E-2F1CACAE6E35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
-      <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
-      <Name>Desktop</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

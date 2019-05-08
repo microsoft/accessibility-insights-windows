@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         protected ConfigurationBase(string version)
         {
             Version = version;
-            AppVersion = Utility.GetAppVersion();
+            AppVersion = Misc.VersionTools.GetAppVersion();
         }
 
         /// <summary>

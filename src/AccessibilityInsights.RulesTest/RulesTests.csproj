@@ -156,10 +156,6 @@
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Rules\Rules.csproj">
       <Project>{7fe58829-560e-4142-bf81-291a66d3844b}</Project>
       <Name>Rules</Name>
