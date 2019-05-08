@@ -39,11 +39,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Axe.Windows.Actions, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
+    </Reference>
     <Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Actions.Fakes.dll</HintPath>
     </Reference>
+    <Reference Include="Axe.Windows.Automation, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Core, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Axe.Windows.Core.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Core.Fakes.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Desktop, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Rules, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.RuleSelection, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Axe.Windows.Telemetry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Win32, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
@@ -64,6 +89,9 @@
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <Choose>
@@ -84,22 +112,18 @@
   </ItemGroup>
   <ItemGroup>
     <Fakes Include="Fakes\Microsoft.Owin.fakes" />
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
       <Project>{AB7195E3-A01D-4708-87AF-08E9418AE33F}</Project>
       <Name>RuleSelection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2DA36FA6-4FF8-4DB4-AA7E-2F1CACAE6E35}</Project>
-      <Name>Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.WebApiHost\WebApiHost.csproj">
       <Project>{69E8527F-F58F-49DB-B483-4261854C73F9}</Project>
