@@ -79,8 +79,7 @@
       <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sarif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=21a5e83f6f5bb844, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Sarif.dll</HintPath>
