@@ -129,10 +129,6 @@
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{AB7195E3-A01D-4708-87AF-08E9418AE33F}</Project>
-      <Name>RuleSelection</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.WebApiHost\WebApiHost.csproj">
       <Project>{69E8527F-F58F-49DB-B483-4261854C73F9}</Project>
       <Name>WebApiHost</Name>

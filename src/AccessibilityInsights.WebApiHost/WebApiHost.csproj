@@ -134,24 +134,6 @@
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
-      <Name>RuleSelection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
-      <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
-      <Name>Desktop</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\BrandIconDesktop.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
