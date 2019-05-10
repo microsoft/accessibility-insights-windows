@@ -52,22 +52,19 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                           Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
               </File>
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Actions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Actions.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Core.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Core.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Desktop.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Desktop.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Rules.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Rules.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.RuleSelection.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
@@ -77,7 +74,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
-              <File Source="..\Axe.Windows.Telemetry\bin\Release\Axe.Windows.Telemetry.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Telemetry.dll" />
 
               <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
                 <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
