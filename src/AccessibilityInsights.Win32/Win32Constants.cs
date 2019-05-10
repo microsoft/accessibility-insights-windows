@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-namespace Axe.Windows.Win32
+namespace AccessibilityInsights.Win32
 {
     /// <summary>
     /// Win32-related constants. Some of these definitions originated from https://pinvoke.net/

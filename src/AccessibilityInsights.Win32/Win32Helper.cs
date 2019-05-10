@@ -5,7 +5,7 @@ using System;
 using System.Drawing;
 using System.Threading;
 
-namespace Axe.Windows.Win32
+namespace AccessibilityInsights.Win32
 {
     /// <summary>
     /// NativeMethods partial class to hold all Win32 related helper methods.  

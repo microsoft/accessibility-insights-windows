@@ -22,7 +22,7 @@ Axe.Windows.Actions | Provide a high-level set of Actions that are the primary i
 Axe.Windows.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
 Axe.Windows.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
 Axe.Windows.Telemetry | Provides an interface which any caller can provide to capture telemetry from Axe.Windows
-Axe.Windows.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
+AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
 #### Accessibility Rules
 These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.

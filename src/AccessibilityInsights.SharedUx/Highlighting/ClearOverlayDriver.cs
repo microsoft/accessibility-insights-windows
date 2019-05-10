@@ -3,7 +3,7 @@
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
 using AccessibilityInsights.DesktopUI.Highlighters;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;

@@ -10,7 +10,7 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Desktop.Keyboard;
-using Axe.Windows.Win32;
+using AccessibilityInsights.Win32;
 using System;
 using System.Globalization;
 using System.Windows;

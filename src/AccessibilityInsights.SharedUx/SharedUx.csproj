@@ -41,6 +41,30 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Axe.Windows.Actions, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Automation, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Core, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Desktop, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Rules, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.RuleSelection, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Telemetry, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Axe.Windows.Win32, Version=0.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
+    </Reference>
     <Reference Include="Interop.UIAutomationClient, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -55,6 +79,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.0-prerelease\lib\net471\System.Management.Automation.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
@@ -517,10 +544,6 @@
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj">
       <Project>{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}</Project>
       <Name>CommonUxComponents</Name>
@@ -529,21 +552,9 @@
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
-      <Name>RuleSelection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
       <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
       <Name>DesktopUI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Desktop\Desktop.csproj">
-      <Project>{0b9855fd-7b04-415c-a813-da9697693fda}</Project>
-      <Name>Desktop</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
       <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
@@ -552,10 +563,6 @@
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
       <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
       <Name>Win32</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Axe.Windows.Telemetry\Axe.Windows.Telemetry.csproj">
-      <Project>{5c394271-6d27-4a48-8a32-f8080025431c}</Project>
-      <Name>Axe.Windows.Telemetry</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

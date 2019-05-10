@@ -84,18 +84,6 @@
     <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="mscorlib.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Actions\Actions.csproj">
-      <Project>{b2fa5150-470a-4864-a191-7bcae39df35a}</Project>
-      <Name>Actions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Automation\Automation.csproj">
-      <Project>{ae5ec69f-158a-41c8-ad2b-ec7b84d820ef}</Project>
-      <Name>Automation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.Core\Core.csproj">
-      <Project>{2da36fa6-4ff8-4db4-aa7e-2f1cacae6e35}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj">
       <Project>{58dbf9fe-0029-408f-a8a4-23ae500e938d}</Project>
       <Name>Extensions.AzureDevOps</Name>
@@ -103,10 +91,6 @@
     <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj">
       <Project>{d17e1749-28fe-44b9-a9f6-af8985124fe4}</Project>
       <Name>Extensions.Telemetry</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.RuleSelection\RuleSelection.csproj">
-      <Project>{ab7195e3-a01d-4708-87af-08e9418ae33f}</Project>
-      <Name>RuleSelection</Name>
     </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>

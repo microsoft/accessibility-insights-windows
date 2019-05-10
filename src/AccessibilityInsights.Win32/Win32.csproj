@@ -12,8 +12,8 @@
     <ProjectGuid>{608E7EF9-C670-4152-A056-46448E2F1E18}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Axe.Windows.Win32</RootNamespace>
-    <AssemblyName>Axe.Windows.Win32</AssemblyName>
+    <RootNamespace>AccessibilityInsights.Win32</RootNamespace>
+    <AssemblyName>AccessibilityInsights.Win32</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -70,7 +70,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\Axe.Windows.Win32.dll" />
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.Win32.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <ItemGroup>
