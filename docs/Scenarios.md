@@ -31,12 +31,6 @@ To make sure that a PR doesn't introduce a major regression, please run through 
   - Save events to disk using the "Save" button.
   - Go to live inspect mode.
   - Load events file using the "File Open" button -- it should match what you just saved.
-- Automation
-  - Build the debug configuration of the solution.
-  - Run the following commands from a command prompt at the root of your repo:
-    - `cd tools\scripts`
-    - `powershell -f check-automation.ps1`
-      - If the final message from the script says `*** AUTOMATION SUCCEEDED ***` in green text, then the script succeeded. Any other message (or any red text) indicates that the script failed and that a fix is required.
 
 ### Additional checks for UI related changes
 - Run the production version of Accessibility Insights for Windows against an instance of Accessibility Insights for Windows with the new changes.
