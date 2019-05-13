@@ -105,6 +105,7 @@ jobs:
     displayName: 'Run BinSkim '
     inputs:
       InputType: Basic
+      continueOnError: true
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                       src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
@@ -118,12 +119,14 @@ jobs:
     displayName: 'Run CredScan'
     inputs:
       verboseOutput: true
+      continueOnError: true
       debugMode: false
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-fxcop.FxCop@2
     displayName: 'Run FxCop'
     inputs:
       inputType: Basic
+      continueOnError: true
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
@@ -164,6 +167,29 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+    displayName: 'TSA upload to Codebase: accessibility-insights-windows_master Version: TsaV2'
+    inputs:
+      tsaVersion: TsaV2
+      codebase: NewOrUpdate
+      codeBaseName: 'accessibility-insights-windows_master'
+      notificationAlias: 'a11y-insights-eng@microsoft.com'
+      codeBaseAdmins: 'REDMOND\mreay;REDMOND\ahmohame'
+      instanceUrlForTsaV2: MSENG
+      projectNameMSENG: AzureDevOps
+      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
+      iterationPath: 'AzureDevOps\OneVS'
+      uploadFxCop: true
+      uploadBinSkim: true
+      uploadCredScan: true
+      uploadAPIScan: false
+      uploadFortifySCA: false
+      uploadModernCop: false
+      uploadPoliCheck: false
+      uploadPREfast: false
+      uploadRoslyn: false
+      uploadTSLint: false
 
 - job: SignedRelease
   dependsOn: 
@@ -212,6 +238,7 @@ jobs:
     displayName: 'Run BinSkim '
     inputs:
       InputType: Basic
+      continueOnError: true
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\*.exe;\
                       src\\AccessibilityInsights\\bin\\Release\\*.dll;\
@@ -279,6 +306,29 @@ jobs:
     displayName: 'Perform Cleanup Tasks'
     condition: succeededOrFailed()
 
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+    displayName: 'TSA upload to Codebase: accessibility-insights-windows_master Version: TsaV2'
+    inputs:
+      tsaVersion: TsaV2
+      codebase: NewOrUpdate
+      codeBaseName: 'accessibility-insights-windows_master'
+      notificationAlias: 'a11y-insights-eng@microsoft.com'
+      codeBaseAdmins: 'REDMOND\mreay;REDMOND\ahmohame'
+      instanceUrlForTsaV2: MSENG
+      projectNameMSENG: AzureDevOps
+      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
+      iterationPath: 'AzureDevOps\OneVS'
+      uploadFxCop: true
+      uploadBinSkim: true
+      uploadCredScan: true
+      uploadAPIScan: false
+      uploadFortifySCA: false
+      uploadModernCop: false
+      uploadPoliCheck: false
+      uploadPREfast: false
+      uploadRoslyn: false
+      uploadTSLint: false
+
 - job: SignedDebug
   dependsOn: 
   - ComplianceRelease
@@ -317,12 +367,14 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
     inputs:
+      continueOnError: true
       debugMode: false
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-fxcop.FxCop@2
     displayName: 'Run FxCop'
     inputs:
       inputType: Basic
+      continueOnError: true
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
@@ -363,3 +415,26 @@ jobs:
   - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
     displayName: 'Perform Cleanup Tasks'
     condition: succeededOrFailed()
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+    displayName: 'TSA upload to Codebase: accessibility-insights-windows_master Version: TsaV2'
+    inputs:
+      tsaVersion: TsaV2
+      codebase: NewOrUpdate
+      codeBaseName: 'accessibility-insights-windows_master'
+      notificationAlias: 'a11y-insights-eng@microsoft.com'
+      codeBaseAdmins: 'REDMOND\mreay;REDMOND\ahmohame'
+      instanceUrlForTsaV2: MSENG
+      projectNameMSENG: AzureDevOps
+      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
+      iterationPath: 'AzureDevOps\OneVS'
+      uploadFxCop: true
+      uploadBinSkim: true
+      uploadCredScan: true
+      uploadAPIScan: false
+      uploadFortifySCA: false
+      uploadModernCop: false
+      uploadPoliCheck: false
+      uploadPREfast: false
+      uploadRoslyn: false
+      uploadTSLint: false
