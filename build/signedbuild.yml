@@ -108,7 +108,6 @@ jobs:
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                       src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Automation\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\*.dll;\
@@ -128,7 +127,6 @@ jobs:
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
                 src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
@@ -217,7 +215,6 @@ jobs:
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\*.exe;\
                       src\\AccessibilityInsights\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Automation\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;\
                       src\\AccessibilityInsights.Extensions.GitHub\\bin\\Release\\*.dll;\
@@ -265,24 +262,6 @@ jobs:
       ArtifactName: '$(DropFolder)'
       publishLocation: FilePath
       TargetPath: '$(DropRoot)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact (NuGet): AccessibilityInsights.Automation.Windows'
-    inputs:
-      PathtoPublish: 'src\AccessibilityInsights.CI\bin\Release\NuGet'
-      ArtifactName: '$(DropFolder)'
-      publishLocation: FilePath
-      TargetPath: '$(DropRoot)'
-    continueOnError: true
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: (NuGet): AccessibilityInsights.RulesLibrary'
-    inputs:
-      PathtoPublish: 'src\AccessibilityInsights.Rules\bin\Release\NuGet'
-      ArtifactName: '$(DropFolder)'
-      publishLocation: FilePath
-      TargetPath: '$(DropRoot)'
-    continueOnError: true
 
   - task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
     displayName: 'Publish Symbols'
@@ -347,7 +326,6 @@ jobs:
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Automation\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
                 src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
