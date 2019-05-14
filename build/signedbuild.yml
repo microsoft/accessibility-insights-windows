@@ -137,10 +137,18 @@ jobs:
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
+  steps:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
     displayName: 'Run PoliCheck'
     inputs:
-      targetType: F
+      targetType: FL
+      targetArgument: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
+                       src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                       src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                       src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
+                       src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                       src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
+                       src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       continueOnError: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
