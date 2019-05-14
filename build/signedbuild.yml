@@ -137,19 +137,12 @@ jobs:
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
-    displayName: 'Run PoliCheck'
-    inputs:
-      targetType: F
-      continueOnError: true
-
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
     inputs:
       BinSkim: true
       CredScan: true
       FxCop: true
-      PoliCheck: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
     displayName: 'Publish Security Analysis Logs'
@@ -160,13 +153,12 @@ jobs:
       BinSkim: true
       CredScan: true
       FxCop: true
-      PoliCheck: true
       FxCopBreakOn: CriticalError
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
-      testAssemblyVer2:
+      testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
@@ -194,7 +186,7 @@ jobs:
       uploadAPIScan: false
       uploadFortifySCA: false
       uploadModernCop: false
-      uploadPoliCheck: true
+      uploadPoliCheck: false
       uploadPREfast: false
       uploadRoslyn: false
       uploadTSLint: false
@@ -288,7 +280,7 @@ jobs:
     displayName: 'Index Sources'
     inputs:
       SearchPattern: '**\bin\**\*.pdb'
-      continueOnError: true
+    continueOnError: true
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: $(DropFolder)'
@@ -309,6 +301,10 @@ jobs:
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
+      
+  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
+    displayName: 'Perform Cleanup Tasks'
+    condition: succeededOrFailed()
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload to Codebase: accessibility-insights-windows_master Version: TsaV2'
@@ -332,10 +328,6 @@ jobs:
       uploadPREfast: false
       uploadRoslyn: false
       uploadTSLint: false
-
-  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
-    displayName: 'Perform Cleanup Tasks'
-    condition: succeededOrFailed()
 
 - job: SignedDebug
   dependsOn: 
@@ -419,6 +411,10 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
+      
+  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
+    displayName: 'Perform Cleanup Tasks'
+    condition: succeededOrFailed()
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload to Codebase: accessibility-insights-windows_master Version: TsaV2'
@@ -442,7 +438,3 @@ jobs:
       uploadPREfast: false
       uploadRoslyn: false
       uploadTSLint: false
-
-  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
-    displayName: 'Perform Cleanup Tasks'
-    condition: succeededOrFailed()
