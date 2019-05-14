@@ -141,7 +141,7 @@ jobs:
     displayName: 'Run PoliCheck'
     inputs:
       targetType: F
-    continueOnError: true
+      continueOnError: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
