@@ -137,6 +137,12 @@ jobs:
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
+    displayName: 'Run PoliCheck'
+    inputs:
+      targetType: F
+      continueOnError: true
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
     inputs:
@@ -144,12 +150,6 @@ jobs:
       CredScan: true
       FxCop: true
       PoliCheck: true
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
-    displayName: 'Run PoliCheck'
-    inputs:
-      targetType: F
-      continueOnError: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
     displayName: 'Publish Security Analysis Logs'
