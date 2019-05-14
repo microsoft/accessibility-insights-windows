@@ -194,7 +194,7 @@ jobs:
       uploadAPIScan: false
       uploadFortifySCA: false
       uploadModernCop: false
-      uploadPoliCheck: false
+      uploadPoliCheck: true
       uploadPREfast: false
       uploadRoslyn: false
       uploadTSLint: false
