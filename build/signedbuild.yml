@@ -137,6 +137,12 @@ jobs:
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
+    displayName: 'Run PoliCheck'
+    inputs:
+      targetType: F
+      continueOnError: true
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report'
     inputs:
@@ -282,7 +288,7 @@ jobs:
     displayName: 'Index Sources'
     inputs:
       SearchPattern: '**\bin\**\*.pdb'
-    continueOnError: true
+      continueOnError: true
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: $(DropFolder)'
