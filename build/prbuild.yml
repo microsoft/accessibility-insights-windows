@@ -86,6 +86,9 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Start - WinAppDriver'
+
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
@@ -98,6 +101,11 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
+
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Stop - WinAppDriver'
+    inputs:
+      OperationType: Stop
 
 - job: build_without_fakes
   pool:
