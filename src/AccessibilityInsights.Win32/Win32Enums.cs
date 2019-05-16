@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 namespace AccessibilityInsights.Win32
 {
     // Some of these definitions originated from https://pinvoke.net/namespace
+#pragma warning disable CA1712 // Do not prefix enum values with type name
 
     /// <summary>
     /// Device Cap
@@ -585,4 +586,6 @@ namespace AccessibilityInsights.Win32
         SubjectCertificateRevoked = 0x800B010C,     // CERT_E_REVOKED Subject's certificate was revoked
         UntrustedRoot = 0x800B0109                  // CERT_E_UNTRUSTEDROOT - A certification chain processed correctly but terminated in a root certificate that is not trusted by the trust provider.
     }
+
+#pragma warning restore CA1712 // Do not prefix enum values with type name
 }

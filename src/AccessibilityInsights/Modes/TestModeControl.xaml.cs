@@ -224,6 +224,7 @@ namespace AccessibilityInsights.Modes
                         }
                     });
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
@@ -236,6 +237,7 @@ namespace AccessibilityInsights.Modes
                         this.ElementContext = null;
                     });
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
                 finally
                 {
                     Application.Current.Dispatcher.Invoke(() => {
@@ -382,10 +384,12 @@ namespace AccessibilityInsights.Modes
                 {
                     SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, null, A11yFileMode.Test);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException + " " + ex.Message));
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
 
@@ -455,11 +459,13 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

@@ -52,10 +52,12 @@ namespace AccessibilityInsights.Extensions
                     {
                         return Assembly.LoadFrom(filePath);
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception e)
                     {
                         Telemetry?.ReportException(e);
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
                 }
             }
             return null;
@@ -93,11 +95,13 @@ namespace AccessibilityInsights.Extensions
             {
                 _container.ComposeParts(this);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 // Fail silently, since the code is designed to run without extensions
                 // and our Telemetry extension will always be null at this point
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         #region extensions

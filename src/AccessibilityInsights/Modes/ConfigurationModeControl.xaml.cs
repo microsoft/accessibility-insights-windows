@@ -174,6 +174,7 @@ namespace AccessibilityInsights.Modes
                 Dispatcher.Invoke(() => MainWin.Close());
                 return true;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
@@ -186,6 +187,7 @@ namespace AccessibilityInsights.Modes
 
                 return false;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

@@ -72,10 +72,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         IssueLink = AzureDevOps.GetExistingIssueUrl(issueId.Value)
                     };
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
 
                 return null;
             });

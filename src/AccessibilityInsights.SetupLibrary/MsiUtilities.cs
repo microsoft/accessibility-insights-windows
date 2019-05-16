@@ -82,10 +82,12 @@ namespace AccessibilityInsights.SetupLibrary
                     return command.Substring(0, command.Length - 5).Replace("\"", "");
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 throw new InvalidOperationException("Unable to locate Accessibility Insights for Windows", e);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

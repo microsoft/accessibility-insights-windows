@@ -387,11 +387,13 @@ namespace AccessibilityInsights.SharedUx.Controls
                         {
                             SetupLibrary.FileHelpers.SerializeDataToJSON(this.dgEvents.Items, dlg.FileName);
                         }
+#pragma warning disable CA1031 // Do not catch general exception types
                         catch (Exception ex)
                         {
                             ex.ReportException();
                             MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Couldn't save the event record file: {0}", ex.Message));
                         }
+#pragma warning restore CA1031 // Do not catch general exception types
                     }
 
                     return;

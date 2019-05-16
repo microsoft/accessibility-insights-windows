@@ -106,6 +106,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 /// add a log
                 Logger.PublishTelemetryEvent(TelemetryAction.Pattern_Invoke_Action, TelemetryProperty.PatternMethod, val);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
@@ -114,6 +115,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 this.ReturnValue = e.InnerException?.HResult;
                 this.ReturnType = typeof(void);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

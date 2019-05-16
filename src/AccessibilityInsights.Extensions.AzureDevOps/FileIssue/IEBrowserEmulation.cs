@@ -24,10 +24,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 SetFeatureControlKey("FEATURE_AJAX_CONNECTIONEVENTS", 1);
                 SetFeatureControlKey("FEATURE_GPU_RENDERING", 1);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static void SetFeatureControlKey(string feature, uint value)

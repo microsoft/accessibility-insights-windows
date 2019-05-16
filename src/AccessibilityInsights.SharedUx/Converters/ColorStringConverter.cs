@@ -25,11 +25,13 @@ namespace AccessibilityInsights.SharedUx.Converters
                 return (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString((string)value);
 
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 return System.Windows.Media.Colors.White;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

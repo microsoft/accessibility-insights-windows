@@ -87,10 +87,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     {
                         configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception e)
                     {
                         e.ReportException();
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
 
                     string newConfigs = issueConfigurationControl.OnSave();
                     configs[selectedIssueReporter.StableIdentifier] = newConfigs;
@@ -163,10 +165,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

@@ -198,12 +198,14 @@ namespace AccessibilityInsights.Modes
                         AutomationProperties.SetName(this, string.Format(CultureInfo.InvariantCulture, "Live inspect with {0}", ec.Element.Glimpse));
                     });
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     // if there was any exception, make sure that we enable selector later. 
                     EnableSelectorWhenPOISelectedInHierarchy = false;
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
                 finally
                 {
                     this.ctrlProgressRing.Deactivate();
@@ -492,11 +494,13 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

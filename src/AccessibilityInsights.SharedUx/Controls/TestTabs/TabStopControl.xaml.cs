@@ -328,11 +328,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                             {
                                 sip.ScrollIntoView();
                             }
+#pragma warning disable CA1031 // Do not catch general exception types
                             catch (Exception ex)
                             {
                                 ex.ReportException();
                                 /// object dismissed
                             }
+#pragma warning restore CA1031 // Do not catch general exception types
                         }
                     }
                 mes.Element.PopulateAllPropertiesWithLiveData();

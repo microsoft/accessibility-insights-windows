@@ -108,11 +108,13 @@ namespace AccessibilityInsights.SharedUx.Utilities
             {
                 Clipboard.SetText(sb.ToString());
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Resources.ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard + ex.Message);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

@@ -103,11 +103,13 @@ namespace AccessibilityInsights.DesktopUI.Highlighters
                     Marshal.Copy(fontdata, 0, data, (int)fontStream.Length);
                     fonts.AddMemoryFont(data, (int)fontStream.Length);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     // TODO : Report this?
                     System.Diagnostics.Trace.WriteLine("Font stream exception: " + ex);
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
                 finally
                 {
                     Marshal.FreeCoTaskMem(data);

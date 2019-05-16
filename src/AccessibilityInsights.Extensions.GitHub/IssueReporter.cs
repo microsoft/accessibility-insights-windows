@@ -67,11 +67,13 @@ namespace AccessibilityInsights.Extensions.GitHub
                     string url = IssueFormatterFactory.GetNewIssueLink(this.configurationControl.Config.RepoLink, issueInfo);
                     System.Diagnostics.Process.Start(url);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     MessageDialog.Show(Properties.Resources.InvalidLink);
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             return null;

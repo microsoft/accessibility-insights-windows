@@ -34,6 +34,7 @@ namespace AccessibilityInsights.SetupLibrary
                         return;
                     }
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     if (exceptionReporter != null)
@@ -41,6 +42,7 @@ namespace AccessibilityInsights.SetupLibrary
                         exceptionReporter.ReportException(e);
                     }
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             // This is our typical path

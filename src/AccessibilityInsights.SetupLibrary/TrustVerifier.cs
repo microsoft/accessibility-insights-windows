@@ -21,10 +21,12 @@ namespace AccessibilityInsights.SetupLibrary
             {
                 IsVerified = IsFileTrusted(filePath);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private bool IsFileTrusted(string filePath)

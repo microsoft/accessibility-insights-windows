@@ -33,11 +33,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.TelemetryDialog_Hyperlink_RequestNavigate_Invalid_Link, e.Uri.AbsoluteUri));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

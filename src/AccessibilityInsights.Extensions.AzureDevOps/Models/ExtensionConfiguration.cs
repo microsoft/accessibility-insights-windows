@@ -27,11 +27,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 SavedConnection = config.SavedConnection;
                 CachedConnections = config.CachedConnections;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 // don't use serialized data if it can't be parsed
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

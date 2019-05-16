@@ -56,10 +56,12 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.PublishEvent(eventName, propertyBag);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 ReportException(e);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -75,10 +77,12 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.AddOrUpdateContextProperty(property, value);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 ReportException(e);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -94,7 +98,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             {
                 Telemetry.ReportException(e);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     } // class
 } // namespace

@@ -133,10 +133,12 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                 VersionSwitcherWrapper.InstallUpgrade(_installerUri);
                 return UpdateResult.Success;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 _updateStopwatch.Stop();
@@ -242,10 +244,12 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                     }
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             // Default values
             _currentChannelVersion = null;

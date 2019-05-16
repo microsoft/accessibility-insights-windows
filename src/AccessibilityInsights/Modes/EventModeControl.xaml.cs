@@ -174,12 +174,14 @@ namespace AccessibilityInsights.Modes
                     UpdateUI(e);
                     this.ctrlTabs.CtrlEventConfig.SetElement(e);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     MessageDialog.Show(Properties.Resources.SetElementException);
                     this.Clear();
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
 #pragma warning restore CS1998

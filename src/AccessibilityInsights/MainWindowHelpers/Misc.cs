@@ -52,11 +52,13 @@ namespace AccessibilityInsights
                         where m.Item1 == CurrentPage && m.Item2 == CurrentView
                         select m).First().Item3;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 return "";
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -75,10 +77,12 @@ namespace AccessibilityInsights
                 ext = fi.Extension.ToLowerInvariant();
 #pragma warning restore CA1308 // Normalize strings to uppercase
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return ext;
         }

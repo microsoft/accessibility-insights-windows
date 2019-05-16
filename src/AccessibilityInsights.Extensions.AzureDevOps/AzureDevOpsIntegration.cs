@@ -460,11 +460,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
                 await FileIssueHelpers.PopulateUserProfileAsync().ConfigureAwait(true);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 FileIssueHelpers.FlushToken(serverUri);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             Application.Current.Dispatcher.Invoke(() => Application.Current.MainWindow.Topmost = oldTopmost);
         }

@@ -316,10 +316,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     UpdateUI();
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -513,11 +515,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     return GetParentElem<T>(par);
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -977,6 +981,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     Process.Start(vm.IssueLink.OriginalString);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     ex.ReportException();
@@ -984,6 +989,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
             else
             {

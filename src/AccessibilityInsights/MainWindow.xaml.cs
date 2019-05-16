@@ -376,12 +376,14 @@ namespace AccessibilityInsights
 
                     PageTracker.TrackPage(this.CurrentPage, null);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch
                 {
                     Debug.WriteLine(Properties.Resources.onClosedDebugMessage);
 
                     // close silently since it is the end of process. 
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
                 finally
                 {
                     Debug.WriteLine(Properties.Resources.onClosedDebugMessage);
@@ -432,10 +434,12 @@ namespace AccessibilityInsights
                 HollowHighlightDriver.ClearAllHighlighters();
                 ImageOverlayDriver.ClearDefaultInstance();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 WindowsEventLogger.WriteLogEntry(EventLogEntryType.Warning, Properties.Resources.Window_ClosingException, ex.ToString());
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 Debug.WriteLine(Properties.Resources.Window_ClosingDebugMessage);
@@ -730,10 +734,12 @@ namespace AccessibilityInsights
                     }
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

@@ -42,11 +42,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     System.Diagnostics.Process.Start(path);
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 // silently ignore. 
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -62,11 +64,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 Process.Start(uri.AbsoluteUri);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 // silently ignore. 
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }
