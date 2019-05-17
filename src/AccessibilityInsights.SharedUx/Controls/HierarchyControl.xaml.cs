@@ -339,11 +339,13 @@ namespace AccessibilityInsights.SharedUx.Controls
                     ((List<HierarchyNodeViewModel>)this.treeviewHierarchy.ItemsSource)[0]?.Clear();
                     this.treeviewHierarchy.ItemsSource = null;
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     // silently ignore. 
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
 
@@ -704,10 +706,12 @@ namespace AccessibilityInsights.SharedUx.Controls
                         btnMenu.Height = TreeButtonHeight;
                         btnMenu.Margin = new Thickness(0, p.Y, btnMenu.Margin.Right, 0);
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
                     {
                         ex.ReportException();
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
                 }));
             }
 
@@ -837,6 +841,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     ex.ReportException();
@@ -844,6 +849,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
             else
             {

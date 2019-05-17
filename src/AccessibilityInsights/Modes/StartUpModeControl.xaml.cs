@@ -220,12 +220,14 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(VideoUrl));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
                     Properties.Resources.btnVideo_ClickException, VideoUrl));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -252,11 +254,13 @@ namespace AccessibilityInsights.Modes
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

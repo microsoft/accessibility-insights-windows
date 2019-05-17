@@ -27,12 +27,14 @@ namespace AccessibilityInsights.VersionSwitcher
                 InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
                 engine.PerformInstallation();
             }
-            catch(Exception e)
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
             {
                 EventLogger.WriteErrorMessage(e.ToString());
                 ExceptionReporter.ReportException(e);
                 MessageBox.Show(e.Message, "An error occurred during install");
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             Close();
         }

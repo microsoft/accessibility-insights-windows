@@ -55,10 +55,12 @@ namespace AccessibilityInsights.SharedUx.Settings
                 fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
                 this.AppConfig.SerializeInJSON(fp);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 // fail silently since it is called at the end of the app life cycle. 
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -76,6 +78,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 
                 this.AppLayout.LoadLayoutIfPrevVersion(window.Top, window.Left);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
@@ -83,6 +86,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 this.AppLayout = new AppLayout(window.Top, window.Left);
                 this.AppLayout.SerializeInJSON(fp);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -97,6 +101,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             {
                 this.AppConfig = ConfigurationModel.LoadFromJSON(fp);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
@@ -104,6 +109,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel();
                 this.AppConfig.SerializeInJSON(fp);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             DesktopElementHelper.SetCorePropertiesList(this.AppConfig.CoreProperties);
         }
@@ -120,12 +126,14 @@ namespace AccessibilityInsights.SharedUx.Settings
                 this.EventConfig = rcfg;
 
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 RecorderSetting.RemoveConfiguration(configpath);
                 this.EventConfig = RecorderSetting.LoadConfiguration(configpath);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -156,10 +164,12 @@ namespace AccessibilityInsights.SharedUx.Settings
                 {
                     sDefaultInstance = new ConfigurationManager();
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch
                 {
                     // be silent. since it will be ok later once Main window is up.
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             return sDefaultInstance;

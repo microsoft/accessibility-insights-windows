@@ -247,6 +247,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
@@ -254,6 +255,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     ToggleLoading(false);
                     disconnectButton_Click(null, null);
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
 
                 FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
             }
@@ -379,11 +381,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     PopulateTreeviewWithTeams(result);
                     return result;
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     return null;
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             });
 
             return t;
@@ -412,6 +416,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         vm.Children = newVMList;
                     }
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     lock (lockObject)
@@ -419,6 +424,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         caughtExceptions.Add(e);
                     }
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             });
 
             if (caughtExceptions.Any())

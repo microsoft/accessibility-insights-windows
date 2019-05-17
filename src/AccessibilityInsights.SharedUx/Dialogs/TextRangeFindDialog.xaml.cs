@@ -174,11 +174,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     MessageDialog.Show(Properties.Resources.TextRangeFindDialog_FindTextRange_No_matched_range_is_found);
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Properties.Resources.TextRangeFindDialog_FindTextRange_Please_check_value__it_may_not_be_matched_with_expected);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

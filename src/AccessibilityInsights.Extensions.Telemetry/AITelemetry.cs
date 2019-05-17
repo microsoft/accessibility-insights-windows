@@ -113,7 +113,9 @@ namespace AccessibilityInsights.Extensions.Telemetry
                 {
                     TClient.TrackException(e, ContextProperties);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch { } // Don't try to report this Exception
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
     }

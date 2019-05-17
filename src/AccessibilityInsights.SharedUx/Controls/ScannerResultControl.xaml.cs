@@ -286,6 +286,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     ex.ReportException();
@@ -293,6 +294,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                     MessageDialog.Show(ex.InnerException?.Message);
                     vm.IssueDisplayText = null;
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
             else
             {
@@ -314,10 +316,12 @@ namespace AccessibilityInsights.SharedUx.Controls
                             vm.IssueLink = issueResult.IssueLink;
                         }
                     }
+#pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
                     {
                         ex.ReportException();
                     }
+#pragma warning restore CA1031 // Do not catch general exception types
                     finally
                     {
                         if(issueInformation != null && File.Exists(issueInformation.TestFileName))

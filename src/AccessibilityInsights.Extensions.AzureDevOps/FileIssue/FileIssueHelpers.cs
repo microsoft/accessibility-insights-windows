@@ -47,11 +47,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 return (issueId, a11yIssueId);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 return (null, string.Empty);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -297,11 +299,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             {
                 return new ConnectionInfo(configString);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         public static void Disconnect()

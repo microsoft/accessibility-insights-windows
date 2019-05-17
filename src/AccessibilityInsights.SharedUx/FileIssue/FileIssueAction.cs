@@ -34,11 +34,13 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 Logger.PublishTelemetryEvent(telemetryEvent);
                 return issueResult;
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

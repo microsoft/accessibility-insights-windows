@@ -58,11 +58,13 @@ namespace AccessibilityInsights.Dialogs
                     MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString);
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

@@ -220,6 +220,7 @@ namespace AccessibilityInsights.Modes
 
                     this.ctrlContrast.DeactivateProgressRing();
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     ex.ReportException();
@@ -236,6 +237,7 @@ namespace AccessibilityInsights.Modes
                         this.ctrlContrast.DeactivateProgressRing();
                     });
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             }
 

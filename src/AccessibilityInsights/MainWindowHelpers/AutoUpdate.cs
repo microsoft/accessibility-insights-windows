@@ -40,11 +40,13 @@ namespace AccessibilityInsights
                         { TelemetryProperty.UpdateTimedOut, timeOutOccurred.ToString(CultureInfo.InvariantCulture)}
                     });
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                     System.Diagnostics.Trace.WriteLine($"Unable to send telemetry at {e.Message}");
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             });
         }
 
@@ -146,10 +148,12 @@ namespace AccessibilityInsights
                     return;
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
             };
+#pragma warning restore CA1031 // Do not catch general exception types
 
             Topmost = previousTopmostSetting;
             ctrlProgressRing.Deactivate();
@@ -188,10 +192,12 @@ namespace AccessibilityInsights
                 {
                     DownLoadInstaller(autoUpdate, updateOption);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
             else
             {
@@ -231,10 +237,12 @@ namespace AccessibilityInsights
                 {
                     this.ShowUpgradeDialog();
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade exception: " + ex.ToString());
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
     }

@@ -226,11 +226,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 Process.Start(new ProcessStartInfo(HelpURL));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_hlHowToTest_Click, HelpURL));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void TgbtnAutoDetect_Click(object sender, RoutedEventArgs e)

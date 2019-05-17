@@ -32,11 +32,13 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.CurrentCulture, Properties.Resources.InvalidLink, e.Uri.AbsoluteUri));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

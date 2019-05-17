@@ -94,11 +94,13 @@ namespace AccessibilityInsights.SharedUx.Settings
             {
                 config = JsonConvert.DeserializeObject<T>(text);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 // ignore silently
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return config;
         }

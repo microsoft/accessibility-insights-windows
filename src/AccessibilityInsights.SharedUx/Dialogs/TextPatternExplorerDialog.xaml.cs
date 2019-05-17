@@ -100,11 +100,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                         break;
                 }
             }
-            catch(Exception ex)
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextPatternExplorerDialog_GetRanges_Failed_to_retrieve_range_s____0, ex.Message));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void UpdateTextRanges(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange textRange)
@@ -251,11 +253,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     MessageDialog.Show("No child Element from the selected TextRange.");
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniElementEnclosure_Click(object sender, RoutedEventArgs e)
@@ -267,11 +271,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 dlg.Owner = Application.Current.MainWindow;
                 dlg.ShowDialog();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniRemoveFromSelection_Click(object sender, RoutedEventArgs e)
@@ -280,11 +286,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 GetSelectedTextRangeViewModel().TextRange.RemoveFromSelection();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniAddToSelection_Click(object sender, RoutedEventArgs e)
@@ -293,11 +301,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 GetSelectedTextRangeViewModel().TextRange.AddToSelection();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniSelect_Click(object sender, RoutedEventArgs e)
@@ -306,11 +316,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 GetSelectedTextRangeViewModel().TextRange.Select();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniScrollIntoBottom_Click(object sender, RoutedEventArgs e)
@@ -320,11 +332,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 GetSelectedTextRangeViewModel().TextRange.ScrollIntoView(false);
                 UpdateSelectedTextRangeInfo();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniScrollIntoTop_Click(object sender, RoutedEventArgs e)
@@ -334,11 +348,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 GetSelectedTextRangeViewModel().TextRange.ScrollIntoView(true);
                 UpdateSelectedTextRangeInfo();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -365,11 +381,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                         break;
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -415,11 +433,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 GetSelectedTextRangeViewModel().TextRange.ExpandToEnclosingUnit(tu);
                 UpdateSelectedTextRangeInfo();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 MessageDialog.Show(GetExceptionString(e));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void mniExpandByCharacter_Click(object sender, RoutedEventArgs e)
@@ -488,11 +508,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 var trvm = new TextRangeViewModel(svm.TextRange.Clone(), string.Format(CultureInfo.InvariantCulture, "{0} - cloned", svm.Header));
                 AddTextRangeViewModelToCustomList(trvm);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 MessageDialog.Show(GetExceptionString(ex));
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private void AddTextRangeViewModelToCustomList(TextRangeViewModel trvm)

@@ -113,11 +113,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     UpdateHighlighter();
                 }
             }
-            catch(Exception ex)
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
             {
                 ex.ReportException();
                 this.tbResult.Text = GetExceptionString(ex);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static string GetExceptionString(Exception e)

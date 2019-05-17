@@ -331,7 +331,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="id"></param>
         /// <param name="type"></param>
         /// <param name="val"></param>
-        private void SetChecked(RecorderSetting setting, int id, RecordEntityType type, bool val, string name = null)
+        private static void SetChecked(RecorderSetting setting, int id, RecordEntityType type, bool val, string name = null)
         {
             int change = val ? 1 : -1;
             if (type == RecordEntityType.Event)

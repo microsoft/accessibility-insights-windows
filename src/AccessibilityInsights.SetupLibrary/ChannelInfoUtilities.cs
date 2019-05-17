@@ -56,6 +56,7 @@ namespace AccessibilityInsights.SetupLibrary
                     return true;
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 if (exceptionReporter != null)
@@ -63,6 +64,7 @@ namespace AccessibilityInsights.SetupLibrary
                     exceptionReporter.ReportException(e);
                 }
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             // Default values
             channelInfo = null;

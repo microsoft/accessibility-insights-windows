@@ -383,11 +383,13 @@ namespace AccessibilityInsights
                 File.WriteAllBytes(tempPath, Convert.FromBase64String(allyFileData));
                 HandleLoadingSnapshotData(tempPath, selectedElementId);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 File.Delete(tempPath);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -406,10 +408,12 @@ namespace AccessibilityInsights
                     fileHandler(fileName, selectedElementId);
                     return true;
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
                 {
                     e.ReportException();
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             return false;
@@ -512,12 +516,14 @@ namespace AccessibilityInsights
                     return false;
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 System.Windows.MessageBox.Show(ex.Message);
                 return false;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

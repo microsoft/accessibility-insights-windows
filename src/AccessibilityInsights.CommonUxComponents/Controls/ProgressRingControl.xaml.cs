@@ -83,12 +83,14 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
                     return key?.GetValue("narrator")?.ToString().Equals("1", StringComparison.Ordinal) == true;
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 // TODO : Report this?
                 // fail silently and we might end up not playing sound
                 return false;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -250,11 +252,13 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
                 Stream stream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.scanner_sound.wav");
                 player = new SoundPlayer(stream);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 // TODO : Report this Exception?
                 player = new SoundPlayer();
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>

@@ -1,0 +1,13 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003"> 
+
+  <!--
+  Settings file which is indirectly imported by all of the projects in the repo.
+  -->
+
+  <!--
+  Explicitly enable the flow-analysis feature
+  -->
+  <PropertyGroup>
+    <Features>$(Features);flow-analysis</Features> 
+  </PropertyGroup>  
+</Project>

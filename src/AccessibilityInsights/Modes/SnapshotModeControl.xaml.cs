@@ -201,6 +201,7 @@ namespace AccessibilityInsights.Modes
                     ec.DataContext.FocusedElementUniqueId = null;
                 });
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
@@ -212,6 +213,7 @@ namespace AccessibilityInsights.Modes
                     selectionFailure = true;
                 });
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 Application.Current.Dispatcher.Invoke(() =>
@@ -486,11 +488,13 @@ namespace AccessibilityInsights.Modes
                 {
                     SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, this.ctrlHierarchy.GetSelectedElement().UniqueId, A11yFileMode.Inspect);
                 }
+#pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
                     ex.ReportException();
                     MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException, ex.Message));
                 }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
         }
 

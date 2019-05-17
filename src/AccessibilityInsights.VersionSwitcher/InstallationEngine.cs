@@ -234,10 +234,12 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 productId = FindInstalledProductKey(_productName).ToString("B", CultureInfo.InvariantCulture);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 exception = e;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             if (exception != null)
             {
