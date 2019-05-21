@@ -57,6 +57,18 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
+    continueOnError: true
+
+  - task: CopyFiles@2
+    displayName: 'Copy a11ytest files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\*.a11ytest'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)\accessibility'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: '$(Build.ArtifactStagingDirectory)\accessibility'
+      artifactName: a11ytest
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
