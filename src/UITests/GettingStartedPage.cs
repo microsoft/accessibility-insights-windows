@@ -21,8 +21,9 @@ namespace UITests
             var result = SnapshotCommand.Execute(new Dictionary<string, string>
             {
                 { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
+                { CommandConstStrings.OutputFile, "TestOutput" },
             });
-            Assert.AreEqual(0, result.ScanResultsPassedCount);
+            Assert.AreEqual(0, result.ScanResultsFailedCount);
         }
 
         [ClassInitialize]
