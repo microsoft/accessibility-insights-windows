@@ -29,8 +29,6 @@ namespace UITests
                 { CommandConstStrings.OutputFile, "GettingStartedPage" },
                 { CommandConstStrings.OutputFileFormat, "a11ytest" }
             });
-            var resultPath = Directory.GetCurrentDirectory() + "GettingStartedPage.a11ytest";
-            TestContext.AddResultFile(resultPath);
             Assert.AreEqual(0, result.ScanResultsFailedCount);
         }
 
