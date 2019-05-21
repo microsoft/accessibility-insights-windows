@@ -15,3 +15,6 @@ To build the MSI project, you need to install Wix tools
 
 2. Install Wix Toolset Visual Studio 2017 extension
    - The extension is available in the Visual Studio marketplace and can be found [here](http://wixtoolset.org/releases/).
+
+### Install WinAppDriver
+1. To run the UI tests, install WinAppDriver from [here](https://github.com/Microsoft/WinAppDriver/releases)

@@ -60,7 +60,9 @@
     <Compile Include="ChannelInfoUtilitiesUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
