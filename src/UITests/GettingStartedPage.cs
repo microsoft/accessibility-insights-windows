@@ -30,7 +30,17 @@ namespace UITests
         }
 
         [ClassInitialize]
-        public static void ClassInitialize(TestContext context) => Setup(context);
+        public static void ClassInitialize(TestContext context)
+        {
+            Setup(context);
+
+            // Close telemetry dialog if open
+            var elements = session.FindElementsByXPath("//Button[@Name=\"OK\"]");
+            if (elements.Count > 0)
+            {
+                elements[0].Click();
+            }
+        }
 
         [ClassCleanup]
         public static void ClassCleanup() => TearDown();
