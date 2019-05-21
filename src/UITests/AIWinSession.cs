@@ -15,6 +15,7 @@ namespace UITests
     public class AIWinSession
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
+        private const string DriverExePath = @"C:\Program Files(x86)\Windows Application Driver\WinAppDriver.exe";
 
         protected static WindowsDriver<WindowsElement> session;
         protected static int testAppProcessId;
@@ -87,8 +88,7 @@ namespace UITests
 
         private static void StartWinAppDriver()
         {
-            var driverExePath = @"C:\Program Files (x86)\Windows Application Driver\WinAppDriver.exe";
-            ProcessStartInfo info = new ProcessStartInfo(driverExePath)
+            ProcessStartInfo info = new ProcessStartInfo(DriverExePath)
             {
                 CreateNoWindow = true,
                 UseShellExecute = false,
