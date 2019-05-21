@@ -158,7 +158,7 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-        testFiltercriteria: 'TestCategory!=RequiresNetwork'
+      testFiltercriteria: 'TestCategory!=RequiresNetwork'
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'

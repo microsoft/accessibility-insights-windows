@@ -3,7 +3,6 @@
 using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.IO;
 
 namespace UITests
 {
