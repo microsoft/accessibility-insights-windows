@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -40,7 +41,7 @@ namespace UITests
             // Set implicit timeout to 1.5 seconds to ensure element search retries every 500 ms for at most three times
             session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
 
-            var result = StartCommand.Execute(new System.Collections.Generic.Dictionary<string, string>(), string.Empty);
+            var result = StartCommand.Execute(new Dictionary<string, string>(), string.Empty);
             if (!result.Succeeded)
             {
                 Assert.Inconclusive("Start command for AxeWindows failed");
