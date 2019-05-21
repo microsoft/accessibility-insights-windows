@@ -565,10 +565,6 @@
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
-      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
-      <Name>DesktopUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
       <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
       <Name>SetupLibrary</Name>

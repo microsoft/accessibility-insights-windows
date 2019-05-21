@@ -53,8 +53,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               </File>
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.CommonUxComponents.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.DesktopUI.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
