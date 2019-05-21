@@ -12,7 +12,7 @@ namespace UITests
         [TestMethod]
         public void VerifyGettingStartedTitle()
         {
-            Assert.AreEqual(session.Title, "Accessibility Insights for Windows - ");
+            Assert.AreEqual("Accessibility Insights for Windows - ", session.Title);
         }
 
         [TestMethod]
@@ -22,7 +22,7 @@ namespace UITests
             {
                 { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
             });
-            Assert.AreEqual(result.ScanResultsPassedCount, 0);
+            Assert.AreEqual(0, result.ScanResultsPassedCount);
         }
 
         [ClassInitialize]

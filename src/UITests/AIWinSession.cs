@@ -8,6 +8,7 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 namespace UITests
 {
@@ -15,11 +16,9 @@ namespace UITests
     public class AIWinSession
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private const string DriverExePath = @"C:\Program Files(x86)\Windows Application Driver\WinAppDriver.exe";
 
         protected static WindowsDriver<WindowsElement> session;
         protected static int testAppProcessId;
-        protected static int driverProcessId;
 
         public static void Setup(TestContext context)
         {
@@ -30,7 +29,7 @@ namespace UITests
 
             if (!IsWinAppDriverRunning())
             {
-                StartWinAppDriver();
+                Assert.Inconclusive("WinAppDriver.exe is not running");
             }
 
             LaunchApplicationAndAttach();
@@ -55,6 +54,11 @@ namespace UITests
                 process.WaitForInputIdle();
                 testAppProcessId = process.Id;
 
+                // small buffer between splash screen disappearing 
+                // and main window initializing; otherwise in rare
+                // cases splash screen can be picked up as main window
+                Thread.Sleep(2000);
+
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
@@ -71,12 +75,6 @@ namespace UITests
             session.Quit();
             session = null;
 
-            try
-            {
-                Process.GetProcessById(driverProcessId).Close();
-            }
-            catch { }
-
             StopCommand.Execute();
         }
 
@@ -84,20 +82,6 @@ namespace UITests
         {
             var processes = Process.GetProcessesByName("WinAppDriver");
             return processes.Length > 0;
-        }
-
-        private static void StartWinAppDriver()
-        {
-            ProcessStartInfo info = new ProcessStartInfo(DriverExePath)
-            {
-                CreateNoWindow = true,
-                UseShellExecute = false,
-            };
-
-            using (Process process = Process.Start(info))
-            {
-                driverProcessId = process.Id;
-            }
         }
     }
 }
