@@ -10,18 +10,21 @@ namespace UITests
     public class GettingStartedPage : AIWinSession
     {
         [TestMethod]
+        [TestCategory("NoStrongName")]
         public void VerifyGettingStartedTitle()
         {
             Assert.AreEqual("Accessibility Insights for Windows - ", session.Title);
         }
 
         [TestMethod]
+        [TestCategory("NoStrongName")]
         public void VerifyAccessibility()
         {
             var result = SnapshotCommand.Execute(new Dictionary<string, string>
             {
                 { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
                 { CommandConstStrings.OutputFile, "TestOutput" },
+                { CommandConstStrings.OutputFileFormat, "a11ytest" }
             });
             Assert.AreEqual(0, result.ScanResultsFailedCount);
         }
