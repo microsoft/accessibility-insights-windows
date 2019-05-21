@@ -9,8 +9,6 @@ namespace UITests
     [TestClass]
     public class GettingStartedPage : AIWinSession
     {
-        public TestContext TestContext { get; set; }
-
         [TestMethod]
         [TestCategory("NoStrongName")]
         public void VerifyGettingStartedTitle()
