@@ -248,6 +248,7 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
+      testFiltercriteria: 'TestCategory!=NoStrongName'
 
   - task: PublishSymbols@1
     displayName: 'Index Sources'
