@@ -20,7 +20,7 @@ namespace UITests
         {
             var result = SnapshotCommand.Execute(new Dictionary<string, string>
             {
-                { CommandConstStrings.TargetProcessId, processId.ToString() },
+                { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
             });
             Assert.AreEqual(result.ScanResultsPassedCount, 0);
         }
