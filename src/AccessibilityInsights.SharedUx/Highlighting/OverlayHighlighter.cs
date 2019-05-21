@@ -4,15 +4,14 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Windows;
-using System.Drawing;
 using System.Windows.Controls;
-using System.Windows.Media;
 using System.Windows.Input;
+using System.Windows.Media;
 
-
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Highlighter with transparent background

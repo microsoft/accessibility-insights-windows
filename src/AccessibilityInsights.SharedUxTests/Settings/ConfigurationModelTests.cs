@@ -1,12 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Enums;
-using Axe.Windows.Desktop.UIAutomation;
-using AccessibilityInsights.DesktopUI.Enums;
-using Axe.Windows.RuleSelection;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Desktop.UIAutomation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Globalization;

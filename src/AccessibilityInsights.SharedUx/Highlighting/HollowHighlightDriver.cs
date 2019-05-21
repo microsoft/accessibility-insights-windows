@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Enums;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Enums;
-using AccessibilityInsights.DesktopUI.Enums;
-using AccessibilityInsights.DesktopUI.Highlighters;
-using AccessibilityInsights.SharedUx.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

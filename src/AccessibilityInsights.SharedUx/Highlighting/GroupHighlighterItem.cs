@@ -3,7 +3,7 @@
 using System.Windows;
 using System.Windows.Controls;
 
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Item containing elements for group highlighter

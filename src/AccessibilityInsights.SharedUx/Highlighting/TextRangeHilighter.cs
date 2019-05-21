@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// class TextRangeHilighter

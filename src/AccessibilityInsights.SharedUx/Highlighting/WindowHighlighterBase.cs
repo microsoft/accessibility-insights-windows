@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Base functionality and data for window-based highlighers

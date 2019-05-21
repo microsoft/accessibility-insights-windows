@@ -1,6 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Desktop.Types;
 using System;
 using System.Linq;
 using System.Text;
@@ -8,11 +13,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using AccessibilityInsights.DesktopUI.Highlighters;
-using AccessibilityInsights.SharedUx.Dialogs;
-using Axe.Windows.Desktop.Types;
-using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

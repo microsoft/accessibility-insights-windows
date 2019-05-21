@@ -330,6 +330,7 @@
     </Compile>
     <Compile Include="Enums\FileFilters.cs" />
     <Compile Include="Enums\FontSize.cs" />
+    <Compile Include="Enums\HighlighterMode.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
     <Compile Include="Enums\FileBugRequestSource.cs" />
     <Compile Include="FileIssue\IssueReporter.cs" />
@@ -355,9 +356,18 @@
     <Compile Include="Enums\ContrastAnalysisType.cs" />
     <Compile Include="Enums\InspectTabType.cs" />
     <Compile Include="Enums\InspectTabMode.cs" />
+    <Compile Include="Highlighting\GroupHighlighterItem.cs" />
+    <Compile Include="Highlighting\Highlighter.cs" />
     <Compile Include="Highlighting\HollowHighlightDriver.cs" />
+    <Compile Include="Highlighting\ImageHighlighter.cs" />
     <Compile Include="Highlighting\ImageOverlayDriver.cs" />
     <Compile Include="Highlighting\ClearOverlayDriver.cs" />
+    <Compile Include="Highlighting\LineBorder.cs" />
+    <Compile Include="Highlighting\OverlayHighlighter.cs" />
+    <Compile Include="Highlighting\TextRangeHilighter.cs" />
+    <Compile Include="Highlighting\TextTip.cs" />
+    <Compile Include="Highlighting\Win32SnapshotButton.cs" />
+    <Compile Include="Highlighting\WindowHighlighterBase.cs" />
     <Compile Include="Interfaces\IHierarchyAction.cs" />
     <Compile Include="Controls\ColorChooser.xaml.cs">
       <DependentUpon>ColorChooser.xaml</DependentUpon>
@@ -507,6 +517,7 @@
     <Compile Include="Utilities\ExtensionMethods.cs" />
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
+    <Compile Include="Utilities\ReferenceHolder.cs" />
     <Compile Include="ViewModels\BaseActionViewModel.cs" />
     <Compile Include="ViewModels\LogoViewModel.cs" />
     <Compile Include="ViewModels\ColorContrastViewModel.cs" />

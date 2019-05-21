@@ -1564,4 +1564,8 @@ Do you want to change the channel? </value>
 <data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
     <value>Change channel</value>
   </data>
+  <data name="ScreenshotWindowTitle" xml:space="preserve">
+    <value>Accessibility Insights for Windows - Screenshot</value>
+    <comment>Title for window containing screenshot</comment>
+  </data>
 </root>

@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Utilities;
-using AccessibilityInsights.DesktopUI.Utility;
-using Axe.Windows.Desktop.Utility;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
+using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +14,7 @@ using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
 
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     public class Win32SnapshotButton : IDisposable
     {
