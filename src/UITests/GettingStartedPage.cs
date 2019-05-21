@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using Axe.Windows.Automation;
+using System.IO;
 
 namespace UITests
 {
@@ -25,10 +26,11 @@ namespace UITests
             var result = SnapshotCommand.Execute(new Dictionary<string, string>
             {
                 { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
-                { CommandConstStrings.OutputFile, "TestOutput" },
+                { CommandConstStrings.OutputFile, "GettingStartedPage" },
                 { CommandConstStrings.OutputFileFormat, "a11ytest" }
             });
-            TestContext.AddResultFile("GettingStartedPage.a11ytest");
+            var resultPath = Directory.GetCurrentDirectory() + "GettingStartedPage.a11ytest";
+            TestContext.AddResultFile(resultPath);
             Assert.AreEqual(0, result.ScanResultsFailedCount);
         }
 
