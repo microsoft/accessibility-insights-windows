@@ -9,6 +9,8 @@ namespace UITests
     [TestClass]
     public class GettingStartedPage : AIWinSession
     {
+        public TestContext TestContext { get; set; }
+
         [TestMethod]
         [TestCategory("NoStrongName")]
         public void VerifyGettingStartedTitle()
@@ -26,6 +28,7 @@ namespace UITests
                 { CommandConstStrings.OutputFile, "TestOutput" },
                 { CommandConstStrings.OutputFileFormat, "a11ytest" }
             });
+            TestContext.AddResultFile("GettingStartedPage.a11ytest");
             Assert.AreEqual(0, result.ScanResultsFailedCount);
         }
 

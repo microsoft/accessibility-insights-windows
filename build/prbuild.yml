@@ -59,21 +59,29 @@ jobs:
       rerunFailedTests: true
     continueOnError: true
 
-  - task: CopyFiles@2
-    displayName: 'Copy a11ytest files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\*.a11ytest'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)\accessibility'
-
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: '$(Build.ArtifactStagingDirectory)\accessibility'
-      artifactName: a11ytest
-
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
     inputs:
       OperationType: Stop
+
+  # Publish Test Results to Azure Pipelines/TFS
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+      testResultsFiles: '**/TEST-*.xml' 
+      failTaskOnFailedTests: true # Optional
+      publishRunAttachments: true # Optional
+
+#  - task: CopyFiles@2
+#    displayName: 'Copy a11ytest files to: $(Build.ArtifactStagingDirectory)'
+#    inputs:
+#      Contents: '**\*.a11ytest'
+#      TargetFolder: '$(Build.ArtifactStagingDirectory)\accessibility'
+
+#  - task: PublishBuildArtifacts@1
+#    inputs:
+#      pathtoPublish: '$(Build.ArtifactStagingDirectory)\accessibility'
+#      artifactName: a11ytest
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
