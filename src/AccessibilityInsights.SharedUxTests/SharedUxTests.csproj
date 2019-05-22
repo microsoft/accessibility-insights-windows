@@ -155,10 +155,6 @@
   </ItemGroup>
   <Import Project="..\..\build\delaysign.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.DesktopUI\DesktopUI.csproj">
-      <Project>{31c471c1-2ef1-4fe1-90dc-16d007b87648}</Project>
-      <Name>DesktopUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>

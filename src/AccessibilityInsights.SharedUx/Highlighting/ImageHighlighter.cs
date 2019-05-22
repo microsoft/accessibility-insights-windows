@@ -1,18 +1,18 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Drawing;
-using System.Windows.Controls;
-using System.Windows.Media;
 using Axe.Windows.Core.Bases;
-using System.Windows.Input;
 using Axe.Windows.Desktop.Utility;
 using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-namespace AccessibilityInsights.DesktopUI.Highlighters
+namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Highlighter with screenshot

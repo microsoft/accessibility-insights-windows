@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
-using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Actions.Enums;
-using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.DesktopUI.Enums;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
 using System;
 using System.Globalization;
 using System.Linq;

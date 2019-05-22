@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
-using AccessibilityInsights.DesktopUI.Highlighters;
-using AccessibilityInsights.Win32;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -11,7 +11,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using UIAutomationClient;
-using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.SharedUx.Highlighting
 {

@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.DesktopUI.Enums;
-using AccessibilityInsights.SharedUx.ViewModels;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -15,7 +15,6 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 {
