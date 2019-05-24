@@ -12,7 +12,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>
     <SolidColorBrush po:Freeze="True" x:Key="DarkGreyTextBrush" Color="#333333"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
-    <SolidColorBrush po:Freeze="True" x:Key="DarkButtonHoverBrush" Color="DodgerBlue"/>
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#EFF6FC"/>
@@ -35,14 +34,16 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D6"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#FF0067B5"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#FF005A9E"/>
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonGreyBGBrush" Color="#CCCCCC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueHoverBrush" Color="#005A9E"/>
     <SolidColorBrush po:Freeze="True" x:Key="LightBackgroundBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>

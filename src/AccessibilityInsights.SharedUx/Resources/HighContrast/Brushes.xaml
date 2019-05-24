@@ -9,9 +9,9 @@
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushDark" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DarkButtonHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DarkGreyTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
@@ -23,6 +23,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
@@ -41,7 +42,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>

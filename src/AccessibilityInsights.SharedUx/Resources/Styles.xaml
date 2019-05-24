@@ -108,7 +108,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueHoverBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
@@ -578,7 +578,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
                 <Setter Property="BorderBrush" Value="White"/>
@@ -905,7 +905,7 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type Button}" x:Key="BtnBlueSquared">
+    <Style TargetType="{x:Type Button}" x:Key="BtnBlueBase">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
@@ -917,17 +917,34 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
                                         Background="{TemplateBinding Background}"
-                                        CornerRadius="2">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="{TemplateBinding Padding}"/>
+                                        CornerRadius="{TemplateBinding Border.CornerRadius}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextBlock.Foreground="{TemplateBinding Foreground}"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextHoverBrush}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushActive}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnBlueRounded" BasedOn="{StaticResource BtnBlueBase}">
+        <Setter Property="Border.CornerRadius" Value="4"/>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnBlueSquared" BasedOn="{StaticResource BtnBlueBase}">
+        <Setter Property="Border.CornerRadius" Value="2"/>
+    </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnBlueSharpSquared" BasedOn="{StaticResource BtnBlueBase}">
+        <Setter Property="Border.CornerRadius" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnGreySquared">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=GreyBackgroundBrush}"/>
@@ -998,30 +1015,6 @@
         <Setter Property="Background" Value="{DynamicResource ResourceKey=KeyBGBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=LeftNavBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
-    </Style>
-    <Style TargetType="{x:Type Button}" x:Key="BtnBlue">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type Button}">
-                    <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}"
-                                        Background="{TemplateBinding Background}"
-                                        CornerRadius="4">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkButtonHoverBrush}"/>
-            </Trigger>
-        </Style.Triggers>
     </Style>
     <Style TargetType="{x:Type CheckBox}" x:Key="CkbxLeftSide">
         <Style.Resources>
