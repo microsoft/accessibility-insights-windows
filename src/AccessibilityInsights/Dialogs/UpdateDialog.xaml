@@ -27,12 +27,12 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="#F4F4F4">
+            <Grid Grid.Column="0" Background="{DynamicResource ResourceKey=LightGreyBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <fabric:FabricIconControl Grid.Column="0" VerticalAlignment="Center" Margin="8px 4px 4px 0" GlyphName="Info" GlyphSize="Small" Foreground="#333333"></fabric:FabricIconControl>
+                <fabric:FabricIconControl Grid.Column="0" VerticalAlignment="Center" Margin="8px 4px 4px 0" GlyphName="Info" GlyphSize="Small" Foreground="{DynamicResource ResourceKey=IconBrush}"></fabric:FabricIconControl>
                 <TextBlock x:Name="txtUpdateNotice" Grid.Column="1" Margin="0 0 24px 0" LineHeight="15px" FontSize="11px" VerticalAlignment="Center"></TextBlock>
             </Grid>
             <Button x:Name="btnUpdateNow" Click="UpdateNow_Click" Grid.Column="1" Style="{StaticResource BtnBlueSharpSquared}">
