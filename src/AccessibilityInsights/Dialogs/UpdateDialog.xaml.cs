@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Windows;
@@ -23,6 +22,7 @@ namespace AccessibilityInsights.Dialogs
         {
             InitializeComponent();
             this.ReleaseNotesUri = releaseNotesUri;
+            Topmost = App.Current.MainWindow.Topmost;
         }
 
         private void UpdateNow_Click(object sender, RoutedEventArgs e)

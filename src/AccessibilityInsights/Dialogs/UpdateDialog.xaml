@@ -11,7 +11,7 @@
         Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico" Background="Transparent" AllowsTransparency="True"
         FocusManager.FocusedElement="{Binding ElementName=btnUpdateNow}" 
         xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
-        ShowInTaskbar="False" Topmost="True" WindowStyle="None" Width="400" Height="48">
+        ShowInTaskbar="False" WindowStyle="None" Width="400" Height="48">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </Window.Resources>
