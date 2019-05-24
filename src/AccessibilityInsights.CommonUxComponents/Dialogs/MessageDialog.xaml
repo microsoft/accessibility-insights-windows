@@ -26,6 +26,6 @@
                 Content="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 AutomationProperties.Name="{x:Static Properties:Resources.btnCloseAutomationPropertiesName1}"
                 Margin="270,10,30,10" Click="btnClose_Click"
-                IsDefault="True" Style="{DynamicResource BtnBlue}"/>
+                IsDefault="True" Style="{DynamicResource BtnBlueRounded}"/>
     </Grid>
 </Window>
