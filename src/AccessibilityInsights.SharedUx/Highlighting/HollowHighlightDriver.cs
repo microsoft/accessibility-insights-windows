@@ -3,7 +3,6 @@
 using AccessibilityInsights.SharedUx.Enums;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

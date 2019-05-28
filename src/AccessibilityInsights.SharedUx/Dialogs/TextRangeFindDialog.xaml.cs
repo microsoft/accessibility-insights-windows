@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
-using Axe.Windows.Core.Enums;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.Support;
 using System;

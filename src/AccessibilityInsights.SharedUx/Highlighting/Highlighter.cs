@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.Win32;
-using Axe.Windows.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

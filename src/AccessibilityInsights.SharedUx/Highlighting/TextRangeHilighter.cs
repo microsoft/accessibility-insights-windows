@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Enums;
+using AccessibilityInsights.SharedUx.Enums;
 using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private HighlighterColor Color;
 
         private List<Highlighter> Hilighters;
-
 
         /// <summary>
         /// constructor
