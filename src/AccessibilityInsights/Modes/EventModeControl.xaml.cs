@@ -31,6 +31,8 @@ namespace AccessibilityInsights.Modes
     {
         private ElementContext ElementContext;
 
+        private bool _showHighlighter = true;
+
         /// <summary>
         /// MainWindow to access shared methods
         /// </summary>
@@ -123,7 +125,9 @@ namespace AccessibilityInsights.Modes
                     this.ctrlTabs.IsRecordingChanged(isStarted);
                 }
             });
-        }        
+
+            _showHighlighter = true;
+        }
 
         /// <summary>
         /// Handles selection change in events list
@@ -193,7 +197,10 @@ namespace AccessibilityInsights.Modes
         private void UpdateUI(A11yElement element)
         {
             this.ctrlTabs.SetElement(element, false);
-            HollowHighlightDriver.GetDefaultInstance().SetElement(element);
+            if (_showHighlighter)
+            {
+                HollowHighlightDriver.GetDefaultInstance().SetElement(element);
+            }
         }
 
 
@@ -246,6 +253,7 @@ namespace AccessibilityInsights.Modes
             this.ctrlTabs.CurrentMode = InspectTabMode.LoadedEvents;
 
             this.ctrlEvents.LoadEventRecords(el);
+            _showHighlighter = false;
         }
 
         // <summary>
