@@ -244,9 +244,11 @@ namespace AccessibilityInsights.Modes
             this.ctrlTabs.CurrentMode = InspectTabMode.LoadedEvents;
 
             this.ctrlEvents.LoadEventRecords(el);
-            if (HollowHighlightDriver.GetDefaultInstance().IsEnabled)
+            HollowHighlightDriver highlightDriver = HollowHighlightDriver.GetDefaultInstance();
+            if (highlightDriver.IsEnabled)
             {
-                HollowHighlightDriver.GetDefaultInstance().IsEnabled = false;
+                highlightDriver.IsEnabled = false;
+                highlightDriver.HighlighterMode = HighlighterMode.Highlighter;
                 MainWin.SetHighlightBtnState(false);
             }
         }
