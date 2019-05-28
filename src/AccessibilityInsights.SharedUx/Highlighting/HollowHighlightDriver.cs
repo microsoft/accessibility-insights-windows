@@ -3,7 +3,6 @@
 using AccessibilityInsights.SharedUx.Enums;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -144,7 +143,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="hasSnapshotButton"></param>
         private HollowHighlightDriver(bool hasSnapshot)
         {
-            this.Highlighter = new Highlighter(HighlighterColor.DefaultBrush, hasSnapshot);
+            this.Highlighter = new Highlighter(HighlighterColorTemp.DefaultBrush, hasSnapshot);
         }
 
         /// <summary>

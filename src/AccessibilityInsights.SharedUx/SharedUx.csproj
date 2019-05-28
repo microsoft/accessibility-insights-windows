@@ -330,6 +330,7 @@
     </Compile>
     <Compile Include="Enums\FileFilters.cs" />
     <Compile Include="Enums\FontSize.cs" />
+    <Compile Include="Enums\HighlighterColor.cs" />
     <Compile Include="Enums\HighlighterMode.cs" />
     <Compile Include="Enums\HighlighterType.cs" />
     <Compile Include="Enums\FileBugRequestSource.cs" />

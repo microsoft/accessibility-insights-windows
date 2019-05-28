@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.Win32;
-using Axe.Windows.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -30,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// Hilighter constructor
         /// </summary>
         /// <param name="color">RGB in int value</param>
-        public Highlighter(HighlighterColor color = HighlighterColor.DefaultBrush, bool hasSnapshot = false)
+        public Highlighter(HighlighterColorTemp color = HighlighterColorTemp.DefaultBrush, bool hasSnapshot = false)
         {
             var brush = GetBrush(color);
             this.WndClassNameBase = Guid.NewGuid().ToString();
@@ -206,7 +205,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         /// <param name="colorKey"></param>
         /// <returns></returns>
-        private static SolidColorBrush GetBrush(HighlighterColor color)
+        private static SolidColorBrush GetBrush(HighlighterColorTemp color)
         {
             return Application.Current.Resources[$"HL{color.ToString()}"] as SolidColorBrush;
         }
