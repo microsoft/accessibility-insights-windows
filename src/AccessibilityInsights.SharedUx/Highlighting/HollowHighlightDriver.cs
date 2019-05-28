@@ -143,7 +143,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="hasSnapshotButton"></param>
         private HollowHighlightDriver(bool hasSnapshot)
         {
-            this.Highlighter = new Highlighter(HighlighterColorTemp.DefaultBrush, hasSnapshot);
+            this.Highlighter = new Highlighter(HighlighterColor.DefaultBrush, hasSnapshot);
         }
 
         /// <summary>

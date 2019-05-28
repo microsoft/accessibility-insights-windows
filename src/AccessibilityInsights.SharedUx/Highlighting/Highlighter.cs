@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// Hilighter constructor
         /// </summary>
         /// <param name="color">RGB in int value</param>
-        public Highlighter(HighlighterColorTemp color = HighlighterColorTemp.DefaultBrush, bool hasSnapshot = false)
+        public Highlighter(HighlighterColor color = HighlighterColor.DefaultBrush, bool hasSnapshot = false)
         {
             var brush = GetBrush(color);
             this.WndClassNameBase = Guid.NewGuid().ToString();
@@ -205,7 +205,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         /// <param name="colorKey"></param>
         /// <returns></returns>
-        private static SolidColorBrush GetBrush(HighlighterColorTemp color)
+        private static SolidColorBrush GetBrush(HighlighterColor color)
         {
             return Application.Current.Resources[$"HL{color.ToString()}"] as SolidColorBrush;
         }

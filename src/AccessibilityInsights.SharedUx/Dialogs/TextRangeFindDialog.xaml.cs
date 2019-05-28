@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             this.ViewModel = trvm;
             InitializeComponent();
             this.cbAttributes.ItemsSource = TextAttributeType.GetInstance().GetTemplate();
-            this.Hilighter = new TextRangeHilighter(HighlighterColorTemp.GreenTextBrush); // green color
+            this.Hilighter = new TextRangeHilighter(HighlighterColor.GreenTextBrush); // green color
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)

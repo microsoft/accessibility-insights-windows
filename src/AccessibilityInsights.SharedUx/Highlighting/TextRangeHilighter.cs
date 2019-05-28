@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Hilighter color
         /// </summary>
-        private HighlighterColorTemp Color;
+        private HighlighterColor Color;
 
         private List<Highlighter> Hilighters;
 
@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// constructor
         /// </summary>
         /// <param name="color"></param>
-        public TextRangeHilighter(HighlighterColorTemp color = HighlighterColorTemp.TextBrush)
+        public TextRangeHilighter(HighlighterColor color = HighlighterColor.TextBrush)
         {
             this.Color = color;
             this.Hilighters = new List<Highlighter>();
