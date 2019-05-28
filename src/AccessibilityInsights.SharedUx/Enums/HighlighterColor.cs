@@ -4,12 +4,11 @@ namespace AccessibilityInsights.SharedUx.Enums
 {
     /// <summary>
     /// These values (as strings) correspond to keys of SolidColorBrushes 
-    /// found in the HighlightStyle.xaml resource dictionary
+    /// found in the Brushes.xaml resource dictionary
     /// </summary>
     public enum HighlighterColor
     {
         DefaultBrush, // This is the default highlighter color
-        SnapshotRootBrush,
         TextBrush,
         GreenTextBrush
     }
