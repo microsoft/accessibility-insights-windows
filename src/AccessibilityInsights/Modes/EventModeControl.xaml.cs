@@ -8,7 +8,6 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
@@ -30,8 +29,6 @@ namespace AccessibilityInsights.Modes
     public partial class EventModeControl : UserControlWithPanes, IModeControl
     {
         private ElementContext ElementContext;
-
-        private bool _showHighlighter = true;
 
         /// <summary>
         /// MainWindow to access shared methods
@@ -125,8 +122,6 @@ namespace AccessibilityInsights.Modes
                     this.ctrlTabs.IsRecordingChanged(isStarted);
                 }
             });
-
-            _showHighlighter = true;
         }
 
         /// <summary>
@@ -197,12 +192,8 @@ namespace AccessibilityInsights.Modes
         private void UpdateUI(A11yElement element)
         {
             this.ctrlTabs.SetElement(element, false);
-            if (_showHighlighter)
-            {
-                HollowHighlightDriver.GetDefaultInstance().SetElement(element);
-            }
+            HollowHighlightDriver.GetDefaultInstance().SetElement(element);
         }
-
 
         /// <summary>
         /// Hide control and hilighter
@@ -253,7 +244,11 @@ namespace AccessibilityInsights.Modes
             this.ctrlTabs.CurrentMode = InspectTabMode.LoadedEvents;
 
             this.ctrlEvents.LoadEventRecords(el);
-            _showHighlighter = false;
+            if (HollowHighlightDriver.GetDefaultInstance().IsEnabled)
+            {
+                HollowHighlightDriver.GetDefaultInstance().IsEnabled = false;
+                MainWin.SetHighlightBtnState(false);
+            }
         }
 
         // <summary>
@@ -263,7 +258,6 @@ namespace AccessibilityInsights.Modes
         {
             CurrentLayout.LayoutEvent.ColumnSnapWidth = this.columnSnap.Width.Value;
         }
-
 
         // <summary>
         // Updates Window size with stored data and adjusts layout for event Mode
