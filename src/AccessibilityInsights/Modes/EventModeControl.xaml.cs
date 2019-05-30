@@ -8,7 +8,6 @@ using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
@@ -123,7 +122,7 @@ namespace AccessibilityInsights.Modes
                     this.ctrlTabs.IsRecordingChanged(isStarted);
                 }
             });
-        }        
+        }
 
         /// <summary>
         /// Handles selection change in events list
@@ -142,7 +141,7 @@ namespace AccessibilityInsights.Modes
                 {
                     UpdateUI(null);
                 }
-                
+
                 this.ctrlTabs.CtrlEventMessage.SetEventMessage(msg);
             }
             else
@@ -196,7 +195,6 @@ namespace AccessibilityInsights.Modes
             HollowHighlightDriver.GetDefaultInstance().SetElement(element);
         }
 
-
         /// <summary>
         /// Hide control and hilighter
         /// </summary>
@@ -221,7 +219,7 @@ namespace AccessibilityInsights.Modes
                 this.SetFocusOnDefaultControl();
             }
             , System.Windows.Threading.DispatcherPriority.Input);
-            
+
             // Inspect tab control current mode to Events. 
             this.ctrlTabs.CurrentMode = InspectTabMode.Events;
         }
@@ -246,6 +244,13 @@ namespace AccessibilityInsights.Modes
             this.ctrlTabs.CurrentMode = InspectTabMode.LoadedEvents;
 
             this.ctrlEvents.LoadEventRecords(el);
+            HollowHighlightDriver highlightDriver = HollowHighlightDriver.GetDefaultInstance();
+            if (highlightDriver.IsEnabled)
+            {
+                highlightDriver.IsEnabled = false;
+                highlightDriver.HighlighterMode = HighlighterMode.Highlighter;
+                MainWin.SetHighlightBtnState(false);
+            }
         }
 
         // <summary>
@@ -255,7 +260,6 @@ namespace AccessibilityInsights.Modes
         {
             CurrentLayout.LayoutEvent.ColumnSnapWidth = this.columnSnap.Width.Value;
         }
-
 
         // <summary>
         // Updates Window size with stored data and adjusts layout for event Mode
@@ -273,7 +277,7 @@ namespace AccessibilityInsights.Modes
         {
             return;
         }
-        
+
         /// <summary>
         /// Handle Refresh request
         /// </summary>
@@ -303,7 +307,7 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-#pragma warning disable CA1801 
+#pragma warning disable CA1801
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801
         {
@@ -324,4 +328,3 @@ namespace AccessibilityInsights.Modes
         }
     }
 }
-
