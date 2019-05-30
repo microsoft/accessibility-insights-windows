@@ -420,6 +420,8 @@
     </Compile>
     <Compile Include="Enums\EventConfigNodeType.cs" />
     <Compile Include="Interfaces\ICCAMode.cs" />
+    <Compile Include="KeyboardHelpers\HotKey.cs" />
+    <Compile Include="KeyboardHelpers\HotKeyHandler.cs" />
     <Compile Include="Misc\ListViewSelectionLock.cs" />
     <Compile Include="Misc\SetupExceptionReporter.cs" />
     <Compile Include="Misc\VersionTools.cs" />

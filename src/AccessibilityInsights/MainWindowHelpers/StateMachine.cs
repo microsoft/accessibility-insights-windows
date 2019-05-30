@@ -569,7 +569,7 @@ namespace AccessibilityInsights
         /// <param name="testconfig"></param>
         internal void HandleConfigurationChanged(IReadOnlyDictionary<string, object> changes)
         {
-            HotkeyHandler?.Dispose();
+            HotkeyHandler?.ClearHotkeys();
             InitHotKeys();
 
             var configManager = ConfigurationManager.GetDefaultInstance();

@@ -6,11 +6,11 @@ using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.KeyboardHelpers;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
-using Axe.Windows.Actions;
-using Axe.Windows.Desktop.Keyboard;
 using AccessibilityInsights.Win32;
+using Axe.Windows.Actions;
 using System;
 using System.Globalization;
 using System.Windows;
@@ -24,7 +24,7 @@ namespace AccessibilityInsights
     /// </summary>
     public partial class MainWindow
     {
-        public HotkeysHandler HotkeyHandler { get; private set; }
+        public HotKeyHandler HotkeyHandler { get; private set; }
         readonly TreeNavigator TreeNavigator = null;
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace AccessibilityInsights
         /// </summary>
         private void InitHotKeys()
         {
-            this.HotkeyHandler = HotkeysHandler.GetHotkeyHandler(new WindowInteropHelper(this).Handle);
+            this.HotkeyHandler = HotKeyHandler.GetHotkeyHandler(new WindowInteropHelper(this).Handle);
 
             SetHotKeyForModeSwitch();
             SetHotKeyForToggleRecord();
@@ -179,7 +179,7 @@ namespace AccessibilityInsights
         /// <param name="errmsg"></param>
         private void SetHotKey(string hkcombo, Action action, string errmsg)
         {
-            var hk = Hotkey.GetInstance(hkcombo);
+            var hk = HotKey.GetInstance(hkcombo);
 
             if (hk != null)
             {

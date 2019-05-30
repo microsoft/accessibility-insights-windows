@@ -118,6 +118,7 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
   </ItemGroup>
   <Choose>
@@ -132,6 +133,7 @@
     <Compile Include="Converters\BoolToVisibilityConverterTests.cs" />
     <Compile Include="FileIssue\FileIssueActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
     <Compile Include="FileIssue\IssueReporterManagerTests.cs" />
+    <Compile Include="KeyboardHelpers\HotKeyUnitTests.cs" />
     <Compile Include="Settings\ConfigurationModelTests.cs" />
     <Compile Include="Settings\LayoutTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -166,6 +168,10 @@
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
       <Name>SharedUx</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
+      <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
+      <Name>Win32</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
