@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         readonly IntPtr hWnd;
         private HwndSource source;
         int idCount = 0;
-        readonly List<Hotkey> HotKeyList = new List<Hotkey>();
+        readonly List<HotKey> HotKeyList = new List<HotKey>();
 
         private HotKeyHandler(IntPtr hWnd)
         {
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
             source = HwndSource.FromHwnd(hWnd);
         }
 
-        public void RegisterHotKey(Hotkey hk)
+        public void RegisterHotKey(HotKey hk)
         {
             if (Find(hk) == null)
             {
@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// </summary>
         /// <param name="hk"></param>
         /// <returns></returns>
-        private Hotkey Find(Hotkey hk)
+        private HotKey Find(HotKey hk)
         {
             return (from k in this.HotKeyList
                     where k.Key == hk.Key && k.Modifier == hk.Modifier
@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// </summary>
         /// <param name="hk"></param>
         /// <returns></returns>
-        public bool Exist(Hotkey hk)
+        public bool Exist(HotKey hk)
         {
             return Find(hk) != null;
         }
@@ -85,7 +85,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        private Hotkey Find(int id)
+        private HotKey Find(int id)
         {
             return (from k in this.HotKeyList
                     where k.Id == id

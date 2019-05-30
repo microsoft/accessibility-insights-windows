@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
     /// <summary>
     /// Class for hot key
     /// </summary>
-    public class Hotkey
+    public class HotKey
     {
         /// <summary>
         /// this value will be set by Hotkey Handler
@@ -63,11 +63,11 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// </summary>
         /// <param name="txt"></param>
         /// <returns></returns>
-        public static Hotkey GetInstance(string txt)
+        public static HotKey GetInstance(string txt)
         {
             var atoms = from a in txt.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries)
                         select a.Trim();
-            var hk = new Hotkey();
+            var hk = new HotKey();
 
             try
             {

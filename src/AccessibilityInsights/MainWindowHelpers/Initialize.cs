@@ -179,7 +179,7 @@ namespace AccessibilityInsights
         /// <param name="errmsg"></param>
         private void SetHotKey(string hkcombo, Action action, string errmsg)
         {
-            var hk = Hotkey.GetInstance(hkcombo);
+            var hk = HotKey.GetInstance(hkcombo);
 
             if (hk != null)
             {
