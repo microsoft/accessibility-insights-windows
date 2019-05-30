@@ -25,6 +25,11 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
             source = HwndSource.FromHwnd(hWnd);
         }
 
+        ~HotKeyHandler()
+        {
+            ClearHotkeys();
+        }
+
         public void RegisterHotKey(HotKey hk)
         {
             if (Find(hk) == null)
