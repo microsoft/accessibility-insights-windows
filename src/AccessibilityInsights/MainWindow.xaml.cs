@@ -407,7 +407,7 @@ namespace AccessibilityInsights
                 DisableElementSelector();
                 this.timerAutoSnap.Dispose();
                 this.timerSelector.Dispose();
-                this.HotkeyHandler.Dispose(); // no more hot key handling. 
+                this.HotkeyHandler.ClearHotkeys(); // no more hot key handling.
 
                 var layout = ConfigurationManager.GetDefaultInstance().AppLayout;
 
