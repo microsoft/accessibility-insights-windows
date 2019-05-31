@@ -73,7 +73,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
             {
                 if (atoms.Count() == 2)
                 {
-                    hk.Modifier = GetMofidifier(atoms.ElementAt(0));
+                    hk.Modifier = GetModifier(atoms.ElementAt(0));
 
                     hk.Key = GetKey(atoms.ElementAt(1));
                 }
@@ -103,10 +103,10 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// </summary>
         /// <param name="mods">modifiers. comma separated</param>
         /// <returns></returns>
-        private static HotkeyModifier GetMofidifier(string mods)
+        private static HotkeyModifier GetModifier(string mods)
         {
             var fms = from m in mods.Split(',')
-                     select $"MOD_{m.ToUpperInvariant()}";
+                     select $"MOD_{m.Trim().ToUpperInvariant()}";
 
             HotkeyModifier result = HotkeyModifier.MOD_NoModifier;
 
