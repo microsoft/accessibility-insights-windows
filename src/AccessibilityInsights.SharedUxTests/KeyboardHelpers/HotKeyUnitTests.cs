@@ -12,7 +12,7 @@ namespace AccessibilityInsights.SharedUxTests.KeyboardHelpers
     {
         [TestMethod]
         [Timeout(1000)]
-        public void GetInstance_ShiftF10_HasCorrectCharacteristics()
+        public void GetInstance_ShiftF10_PropertiesAreCorrect()
         {
             HotKey hotkey = HotKey.GetInstance("shift+F10");
             Assert.AreEqual(Keys.F10, hotkey.Key);
@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUxTests.KeyboardHelpers
 
         [TestMethod]
         [Timeout(1000)]
-        public void GetInstance_ControlShiftF9_HasCorrectCharacteristics()
+        public void GetInstance_ControlShiftF9_PropertiesAreCorrect()
         {
             HotKey hotkey = HotKey.GetInstance("control,shift+F9");
             Assert.AreEqual(Keys.F9, hotkey.Key);
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUxTests.KeyboardHelpers
 
         [TestMethod]
         [Timeout(1000)]
-        public void GetInstance_ControlShiftF9WithSpaces_HasCorrectCharacteristics()
+        public void GetInstance_ControlShiftF9WithSpaces_PropertiesAreCorrect()
         {
             HotKey hotkey = HotKey.GetInstance(" control , shift + F9 ");
             Assert.AreEqual(Keys.F9, hotkey.Key);
