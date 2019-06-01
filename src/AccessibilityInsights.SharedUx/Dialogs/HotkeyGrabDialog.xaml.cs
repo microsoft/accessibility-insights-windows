@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     /// Interaction logic for HotkeyGrabDialog.xaml
     /// </summary>
     public partial class HotkeyGrabDialog : Window
-    {        
+    {
         /// <summary>
         /// Modifier key
         /// </summary>
