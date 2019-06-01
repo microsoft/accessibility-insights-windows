@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     /// Interaction logic for HotkeyGrabDialog.xaml
     /// </summary>
     public partial class HotkeyGrabDialog : Window
-    {        
+    {
         /// <summary>
         /// Modifier key
         /// </summary>
@@ -74,7 +74,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             if (ModKey != ModifierKeys.None)
             {
-                this.lbModifiers.Content = ModKey.ToString();
+                this.lbModifiers.Content = GetCleanModifierString();
             }
 
             if (SelectedKey != Key.None)
@@ -84,11 +84,23 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             if(ModKey != ModifierKeys.None && SelectedKey != Key.None)
             {
-                ButtonParent.Content = string.Format(CultureInfo.InvariantCulture, "{0} + {1}", ModKey.ToString(), GetCleanKeyString());
+                ButtonParent.Content = string.Format(CultureInfo.InvariantCulture, "{0} + {1}", GetCleanModifierString(), GetCleanKeyString());
                 this.Close();
             }
         }
 
+        /// <summary>
+        /// Get the string to represent ModKeys. This string removes any spaces that get
+        /// injected by .NET (for compatibility with existing settings)
+        /// </summary>
+        /// <returns></returns>
+        private string GetCleanModifierString()
+        {
+            if (ModKey == ModifierKeys.None)
+                return string.Empty;
+
+            return ModKey.ToString().Replace(" ", "");
+        }
         /// <summary>
         /// Get clean key string for display
         /// </summary>
