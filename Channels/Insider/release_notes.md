@@ -18,7 +18,7 @@ The core scanning code from Accessibility Insights for Windows has been moved in
 
 ### Telemetry Improvements
 
-We identified a few points in the code where we had no telemetry about failures that users were experiencing. We added these data points to help us make the product better. No additional customer data is exposed.
+We identified a few points in the code where we had no telemetry about failures that users might be experiencing. We added these data points to help us make the product better. No additional customer data is exposed.
 
 #### New Rules
 
