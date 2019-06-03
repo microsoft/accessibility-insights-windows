@@ -16,7 +16,7 @@ Documentation Link: [https://accessibilityinsights.io/docs/en/windows/overview](
 
 The core scanning code from Accessibility Insights for Windows has been moved into a separate GitHub repo (https://github.com/microsoft/axe-windows). Accessibility Insights now gets its core scanning code from that location. This code will be handled separately to make this functionality more broadly available to the accessibility community.
 
-### Telemetry Improvements
+#### Telemetry Improvements
 
 We identified a few points in the code where we had no telemetry about failures that users might be experiencing. We added these data points to help us make the product better. No additional customer data is exposed.
 
