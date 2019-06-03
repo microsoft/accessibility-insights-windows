@@ -22,7 +22,7 @@ We identified a few points in the code where we had no telemetry about failures 
 
 #### New Rules
 
-No new rules have been added to this release
+No new rules have been added to this release.
 
 ### Bug Fixes
 
