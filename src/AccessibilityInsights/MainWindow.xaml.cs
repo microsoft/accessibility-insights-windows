@@ -840,6 +840,7 @@ namespace AccessibilityInsights
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == Axe.Windows.Actions.Enums.SelectionScope.Element);
                 Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
+                ctrlLiveMode.Clear();
                 HollowHighlightDriver.GetDefaultInstance().Clear();
             }
         }

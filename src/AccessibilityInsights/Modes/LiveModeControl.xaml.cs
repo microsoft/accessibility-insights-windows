@@ -307,6 +307,7 @@ namespace AccessibilityInsights.Modes
             ctrlHierarchy.Visibility = Visibility.Collapsed;
             spInstructions.Visibility = Visibility.Visible;
 
+            this.SelectedInHierarchyElement = null;
             this.ElementContext = null;
             this.ctrlHierarchy.Clear();
             this.ctrlTabs.Clear();
