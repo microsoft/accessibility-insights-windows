@@ -838,8 +838,9 @@ namespace AccessibilityInsights
                 var scope = this.cbiEntireApp.IsSelected ? Axe.Windows.Actions.Enums.SelectionScope.App : Axe.Windows.Actions.Enums.SelectionScope.Element;
                 SelectAction.GetDefaultInstance().Scope = scope;
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == Axe.Windows.Actions.Enums.SelectionScope.Element);
-                Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
+                Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());                
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
+                ctrlLiveMode.Clear();
                 HollowHighlightDriver.GetDefaultInstance().Clear();
             }
         }
