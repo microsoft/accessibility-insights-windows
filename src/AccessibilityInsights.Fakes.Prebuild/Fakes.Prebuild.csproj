@@ -54,18 +54,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Actions.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Axe.Windows.Actions.fakes">
       <SubType>Designer</SubType>
     </Fakes>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Automation.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Axe.Windows.Automation.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Core.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Axe.Windows.Core.fakes" />
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Desktop.fakes">
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Axe.Windows.Desktop.fakes">
       <SubType>Designer</SubType>
     </Fakes>
   </ItemGroup>
@@ -78,7 +78,7 @@
     </Fakes>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.RuleSelection.fakes" />
+    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Axe.Windows.RuleSelection.fakes" />
   </ItemGroup>
   <ItemGroup>
     <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="mscorlib.fakes" />

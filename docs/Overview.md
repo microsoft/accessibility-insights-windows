@@ -13,25 +13,6 @@ Accessibility Insights takes the data provided by UIA and compares it to a set o
 ### Code Organization
 The code is organized into the following general areas:
 
-#### Runtime components
-These assemblies provide the interaction with UIA, as well as layers that allow the application to interact with that information in a more structured manner:
-
-Assembly | Responsibility
---- | ---
-Axe.Windows.Actions | Provide a high-level set of Actions that are the primary interface into the Runtime components.
-Axe.Windows.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
-Axe.Windows.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
-Axe.Windows.Telemetry | Provides an interface which any caller can provide to capture telemetry from Axe.Windows
-AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
-
-#### Accessibility Rules
-These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
-
-Assembly | Responsibility
---- | ---
-Axe.Windows.Rules | Provide a library of rules, each of which scans the platform-agnostic information for issues that are likely to be problematic. For example, a button without an accessible label will be flagged as an error.
-Axe.Windows.RulesSelection | Coordinate rule execution in a consistent and reproducible way.
-
 #### Application Entry Points
 These assemblies allow user interaction with the Runtime components and the Accessibility Rules.
 
@@ -42,7 +23,6 @@ AccessibilityInsights.CommonUxComponents | Provide non-specialized visual elemen
 AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
 AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
-Axe.Windows.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
 
 #### Extensions
 Extensions are intended to allow loose coupling of non-core code. They build upon the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
@@ -85,11 +65,3 @@ Unit tests are built using a combination of Moq and Microsoft Fakes. The folllow
 - AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
 - AccessibilityInsights.WebApiHostTests
-- Axe.Windows.ActionsTests
-- Axe.Windows.AutomationTests
-- Axe.Windows.CoreTests
-- Axe.Windows.DesktopTests
-- Axe.Windows.RuleSelectionTests
-- Axe.Windows.RulesTest
-- Axe.Windows.UnitTestSharedLibrary
-- Axe.Windows.Win32Tests 

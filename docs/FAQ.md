@@ -14,7 +14,7 @@ Once you are ready to make a contribution visit the [Contributions](../Contribut
 You can download and install the application from https://accessibilityinsights.io.
 
 #### Q. How can I add or change an automated accessibility test?
-Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
+Accessibility Insights uses rules from https://github.com/microsoft/axe-windows. Please refer to the docs folder there about contributing additional rules.
 
 #### Q. How do I go about adding unit tests?
 Please follow the guidelines outline in the [Adding Unit Tests](AddUnitTests.md) page.
@@ -32,7 +32,7 @@ Please visit [Accessing Internals](AccessingInternals.md).
 Excellent question. Please visit the [High Contrast Support](HighContrastSupport.md) page for more information.
 
 #### Q. Where can I find out more about a specific rule?
-Explanations for all rules can be found at [Rules explained].
+Accessibility Insights uses rules from https://github.com/microsoft/axe-windows. Please refer to the docs folder there for an explanation of rules.
 
 #### Q. What scenarios must I test before creating a PR? 
 All PRs need to be tested against the scenarios that are documented at [Test Scenarios](Scenarios.md). 
