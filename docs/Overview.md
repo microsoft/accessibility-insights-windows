@@ -47,12 +47,11 @@ AccessibilityInsights.VersionSwitcher.exe | Provides an out-of-process tool to s
 AccessibilityInsights.SetupLibrary | Provides setup-related classes that are used by both AccessibiltyInsights.exe and AccessibilityInsights.VersionSwitcher.exe
 
 #### Packaging
-The packaging projects exist to gather assemblies into their shipping vehicles:
+The packaging project exists to gather assemblies into their shipping vehicle:
 
 Project | Responsibility
 --- | ---
-MSI | Builds the MSI file used by most users.
-AxeWindows-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
+MSI | Builds the MSI file that installs the application.
 
 #### Tests
 Unit tests are built using a combination of Moq and Microsoft Fakes. The folllowing assemblies exist for testing purposes:
