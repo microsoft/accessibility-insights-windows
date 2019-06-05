@@ -41,7 +41,6 @@ AccessibilityInsights | Provide the UI for most users. This application is built
 AccessibilityInsights.CommonUxComponents | Provide non-specialized visual elements used by the main app and extensions. This allows the main app and extensions to share ux components that are unrelated to the runtime.
 AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
-AccessibilityInsights.WebApiHost | Provide a local service that exposes scanning functionality on locally running applications.
 Axe.Windows.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
 
 #### Extensions
@@ -84,7 +83,6 @@ Unit tests are built using a combination of Moq and Microsoft Fakes. The folllow
 - AccessibilityInsights.Fakes.Prebuild
 - AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
-- AccessibilityInsights.WebApiHostTests
 - Axe.Windows.ActionsTests
 - Axe.Windows.AutomationTests
 - Axe.Windows.CoreTests

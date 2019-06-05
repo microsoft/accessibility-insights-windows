@@ -4,7 +4,5 @@ using System;
 
 namespace AccessibilityInsights.Win32
 {
-    public delegate int HookProc(int nCode, IntPtr wParam, IntPtr lParam);
-
     public delegate IntPtr WndProc(IntPtr hWnd, uint msg, IntPtr wParam, IntPtr lParam);
 }

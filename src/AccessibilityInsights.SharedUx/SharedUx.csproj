@@ -530,7 +530,6 @@
     <Compile Include="ViewModels\HierarchyNodeViewModel.cs" />
     <Compile Include="ViewModels\NotSupportedActionViewModel.cs" />
     <Compile Include="ViewModels\PatternViewModel.cs" />
-    <Compile Include="ViewModels\FingerprintListViewItemModel.cs" />
     <Compile Include="ViewModels\PropertyListViewItemModel.cs" />
     <Compile Include="ViewModels\ReturnA11yElementsViewModel.cs" />
     <Compile Include="ViewModels\RuleResultViewModel.cs" />

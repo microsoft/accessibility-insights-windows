@@ -52,21 +52,6 @@ namespace AccessibilityInsights.Win32
         public UInt32 dwHoverTime;
     }
 
-    [StructLayout(LayoutKind.Sequential)]
-
-    public struct WndMsg
-    {
-        IntPtr hwnd;
-        uint message;
-        UIntPtr wParam;
-        IntPtr lParam;
-        int time;
-        POINT pt;
-#if _MAC
-        int lPrivate;
-#endif
-    }
-
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal class WinTrustFileInfo : IDisposable
     {
