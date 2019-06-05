@@ -9,96 +9,6 @@ namespace AccessibilityInsights.Win32
 #pragma warning disable CA1712 // Do not prefix enum values with type name
 
     /// <summary>
-    /// Device Cap
-    /// https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-getdevicecaps
-    /// </summary>
-    public enum DeviceCap
-    {
-        /// <summary>
-        /// Logical pixels inch in X
-        /// </summary>
-        LOGPIXELSX = 88,
-        /// <summary>
-        /// Logical pixels inch in Y
-        /// </summary>
-        LOGPIXELSY = 90
-    }
-
-    /// <summary>
-    /// https://msdn.microsoft.com/en-us/library/windows/desktop/dn280511(v=vs.85).aspx
-    /// </summary>
-    public enum DpiType
-    {
-        Effective = 0,
-        Angular = 1,
-        Raw = 2,
-    }
-
-    /// <summary>
-    /// https://docs.microsoft.com/en-us/windows/desktop/api/objbase/ne-objbase-tagcoinit
-    /// </summary>
-    public enum COINIT 
-    {
-        COINIT_MULTITHREADED = 0x0, //Initializes the thread for multi-threaded object concurrency.
-        COINIT_APARTMENTTHREADED = 0x2, //Initializes the thread for apartment-threaded object concurrency
-        COINIT_DISABLE_OLE1DDE = 0x4, //Disables DDE for OLE1 support
-        COINIT_SPEED_OVER_MEMORY = 0x8, //Trade memory for speed
-    }
-
-    /// <summary>
-    /// ComboBox Styles
-    /// </summary>
-    public enum ComboBoxStyle : int
-    {
-        CBS_SIMPLE = 1,
-        CBS_DROPDOWN = 2,
-        CBS_DROPDOWNLIST = 3
-    }
-
-    /// <summary>
-    /// https://docs.microsoft.com/en-us/windows/desktop/api/wtypesbase/ne-wtypesbase-tagclsctx
-    /// </summary>
-    [Flags]
-    public enum CLSCTX 
-    {
-        CLSCTX_INPROC_SERVER = 0x1,
-        CLSCTX_INPROC_HANDLER = 0x2,
-        CLSCTX_LOCAL_SERVER = 0x4,
-        CLSCTX_INPROC_SERVER16 = 0x8,
-        CLSCTX_REMOTE_SERVER = 0x10,
-        CLSCTX_INPROC_HANDLER16 = 0x20,
-        CLSCTX_RESERVED1 = 0x40,
-        CLSCTX_RESERVED2 = 0x80,
-        CLSCTX_RESERVED3 = 0x100,
-        CLSCTX_RESERVED4 = 0x200,
-        CLSCTX_NO_CODE_DOWNLOAD = 0x400,
-        CLSCTX_RESERVED5 = 0x800,
-        CLSCTX_NO_CUSTOM_MARSHAL = 0x1000,
-        CLSCTX_ENABLE_CODE_DOWNLOAD = 0x2000,
-        CLSCTX_NO_FAILURE_LOG = 0x4000,
-        CLSCTX_DISABLE_AAA = 0x8000,
-        CLSCTX_ENABLE_AAA = 0x10000,
-        CLSCTX_FROM_DEFAULT_CONTEXT = 0x20000,
-        CLSCTX_ACTIVATE_32_BIT_SERVER = 0x40000,
-        CLSCTX_ACTIVATE_64_BIT_SERVER = 0x80000,
-        CLSCTX_INPROC = CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER,
-        CLSCTX_SERVER = CLSCTX_INPROC_SERVER | CLSCTX_LOCAL_SERVER | CLSCTX_REMOTE_SERVER,
-        CLSCTX_ALL = CLSCTX_SERVER | CLSCTX_INPROC_HANDLER
-    }
-
-    [StructLayout(LayoutKind.Sequential)]
-#pragma warning disable CA1815 // Override equals and operator equals on value types
-    public struct MULTI_QI
-#pragma warning restore CA1815 // Override equals and operator equals on value types
-    {
-#pragma warning disable CA1051 // Do not declare visible instance fields
-        [MarshalAs(UnmanagedType.LPStruct)] public Guid pIID;
-        [MarshalAs(UnmanagedType.Interface)] public object pItf;
-        public int hr;
-#pragma warning restore CA1051 // Do not declare visible instance fields
-    }
-
-    /// <summary>
     /// https://msdn.microsoft.com/en-us/library/windows/desktop/ms646309(v=vs.85).aspx
     /// </summary>
     public enum HotkeyModifier : int
@@ -109,24 +19,6 @@ namespace AccessibilityInsights.Win32
         MOD_SHIFT = 0x0004,
         MOD_WIN = 0x0008,
         MOD_NoModifier = -1,
-    }
-
-    [Flags]
-    public enum ProcessAccessFlags : int
-    {
-        All = 0x001F0FFF,
-        Terminate = 0x00000001,
-        CreateThread = 0x00000002,
-        VirtualMemoryOperation = 0x00000008,
-        VirtualMemoryRead = 0x00000010,
-        VirtualMemoryWrite = 0x00000020,
-        DuplicateHandle = 0x00000040,
-        CreateProcess = 0x000000080,
-        SetQuota = 0x00000100,
-        SetInformation = 0x00000200,
-        QueryInformation = 0x00000400,
-        QueryLimitedInformation = 0x00001000,
-        Synchronize = 0x00100000
     }
 
     public enum TOKEN_INFORMATION_CLASS
@@ -165,7 +57,7 @@ namespace AccessibilityInsights.Win32
     /// <summary>
     /// Windows Style Extended
     /// </summary>
-    public enum WindowStylesEx 
+    public enum WindowStylesEx
     {
         WS_EX_ACCEPTFILES = 0x00000010,
         WS_EX_APPWINDOW = 0x00040000,
@@ -195,14 +87,7 @@ namespace AccessibilityInsights.Win32
         WS_EX_WINDOWEDGE = 0x00000100
     }
 
-    public enum PROCESS_DPI_AWARENESS: int
-    {
-        PROCESS_DPI_UNAWARE = 0,
-        PROCESS_SYSTEM_DPI_AWARE = 1,
-        PROCESS_PER_MONITOR_DPI_AWARE = 2
-    }
-
-    public enum TernaryRasterOperations 
+    public enum TernaryRasterOperations
     {
         SRCCOPY = 0x00CC0020,
         SRCPAINT = 0x00EE0086,
@@ -286,6 +171,7 @@ namespace AccessibilityInsights.Win32
         CLIP_DFA_DISABLE = (4 << 4),
         CLIP_EMBEDDED = (8 << 4),
     }
+
     public enum FontQuality : UInt32
     {
         DEFAULT_QUALITY = 0,
@@ -407,7 +293,6 @@ namespace AccessibilityInsights.Win32
         SM_SHUTTINGDOWN = 0x2000, // 0x2000
         SM_REMOTECONTROL = 0x2001, // 0x2001
 
-
         SM_CONVERTABLESLATEMODE = 0x2003,
         SM_SYSTEMDOCKED = 0x2004,
     }
@@ -488,32 +373,6 @@ namespace AccessibilityInsights.Win32
         RGN_COPY = 5,
         RGN_MIN = RGN_AND,
         RGN_MAX = RGN_COPY
-    }
-
-    public enum WindowsLongs: int
-    {
-        GWL_STYLE = -16
-    }
-
-    /// <summary>
-    /// Flag used when in OS comparison methods
-    /// </summary>
-    internal enum OsComparisonResult
-    {
-        /// <summary>
-        /// OS is older than comparison point
-        /// </summary>
-        Older,
-
-        /// <summary>
-        /// OS is equal to comparison point
-        /// </summary>
-        Equal,
-
-        /// <summary>
-        /// OS is newer than comparison point
-        /// </summary>
-        Newer
     }
 
     internal enum WinTrustDataUIChoice : uint
