@@ -13,25 +13,6 @@ Accessibility Insights takes the data provided by UIA and compares it to a set o
 ### Code Organization
 The code is organized into the following general areas:
 
-#### Runtime components
-These assemblies provide the interaction with UIA, as well as layers that allow the application to interact with that information in a more structured manner:
-
-Assembly | Responsibility
---- | ---
-Axe.Windows.Actions | Provide a high-level set of Actions that are the primary interface into the Runtime components.
-Axe.Windows.Core | Provide data abstractions which represent accessibility data in a platform-agnostic way.
-Axe.Windows.Desktop | Provide platform-specific (Windows) implementations of the platform-agnostic data abstractions. The low-level interactions with UIA occur in this assembly.
-Axe.Windows.Telemetry | Provides an interface which any caller can provide to capture telemetry from Axe.Windows
-AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
-
-#### Accessibility Rules
-These assemblies evaluate the accessibility of an application based upon the data exposed via the platform-agnostic abstractions. Please visit the [Rules Overview](./RulesOverview.md) for a detailed description of the automated accessibility tests.
-
-Assembly | Responsibility
---- | ---
-Axe.Windows.Rules | Provide a library of rules, each of which scans the platform-agnostic information for issues that are likely to be problematic. For example, a button without an accessible label will be flagged as an error.
-Axe.Windows.RulesSelection | Coordinate rule execution in a consistent and reproducible way.
-
 #### Application Entry Points
 These assemblies allow user interaction with the Runtime components and the Accessibility Rules.
 
@@ -41,7 +22,7 @@ AccessibilityInsights | Provide the UI for most users. This application is built
 AccessibilityInsights.CommonUxComponents | Provide non-specialized visual elements used by the main app and extensions. This allows the main app and extensions to share ux components that are unrelated to the runtime.
 AccessibilityInsights.Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 AccessibilityInsights.SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
-Axe.Windows.Automation | Provide a layer that wraps key actions behind a simplified interface. This layer can then be used either from a .NET application or from PowerShell scripts.
+AccessibilityInsights.Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
 #### Extensions
 Extensions are intended to allow loose coupling of non-core code. They build upon the [Managed Extensibility Framework](https://docs.microsoft.com/en-us/dotnet/framework/mef/). At the moment, extensions provide the following capabilities:
@@ -66,12 +47,11 @@ AccessibilityInsights.VersionSwitcher.exe | Provides an out-of-process tool to s
 AccessibilityInsights.SetupLibrary | Provides setup-related classes that are used by both AccessibiltyInsights.exe and AccessibilityInsights.VersionSwitcher.exe
 
 #### Packaging
-The packaging projects exist to gather assemblies into their shipping vehicles:
+The packaging project exists to gather assemblies into their shipping vehicle:
 
 Project | Responsibility
 --- | ---
-MSI | Builds the MSI file used by most users.
-AxeWindows-CI | Builds the NuGet package that will be used by users who wish to scan via automation.
+MSI | Builds the MSI file that installs the application.
 
 #### Tests
 Unit tests are built using a combination of Moq and Microsoft Fakes. The folllowing assemblies exist for testing purposes:
@@ -83,11 +63,3 @@ Unit tests are built using a combination of Moq and Microsoft Fakes. The folllow
 - AccessibilityInsights.Fakes.Prebuild
 - AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
-- Axe.Windows.ActionsTests
-- Axe.Windows.AutomationTests
-- Axe.Windows.CoreTests
-- Axe.Windows.DesktopTests
-- Axe.Windows.RuleSelectionTests
-- Axe.Windows.RulesTest
-- Axe.Windows.UnitTestSharedLibrary
-- Axe.Windows.Win32Tests 
