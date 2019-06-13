@@ -184,9 +184,9 @@ jobs:
       codeBaseName: 'accessibility-insights-windows_master'
       notificationAlias: 'N/A'
       instanceUrlForTsaV2: MSENG
-      projectNameMSENG: AzureDevOps
-      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
-      iterationPath: 'AzureDevOps\OneVS'
+      projectNameMSENG: 1ES
+      areaPath: '1ES\Mark - Team'
+      iterationPath: '1ES'
       uploadFxCop: true
       uploadBinSkim: true
       uploadCredScan: true
@@ -316,11 +316,11 @@ jobs:
       codebase: NewOrUpdate
       codeBaseName: 'accessibility-insights-windows_master'
       notificationAlias: 'a11y-insights-eng@microsoft.com'
-      codeBaseAdmins: 'REDMOND\mreay;REDMOND\ahmohame'
+      codeBaseAdmins: 'REDMOND\mreay;REDMOND\dtryon'
       instanceUrlForTsaV2: MSENG
-      projectNameMSENG: AzureDevOps
-      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
-      iterationPath: 'AzureDevOps\OneVS'
+      projectNameMSENG: 1ES
+      areaPath: '1ES\Mark - Team'
+      iterationPath: '1ES'
       uploadFxCop: true
       uploadBinSkim: true
       uploadCredScan: true
@@ -426,11 +426,11 @@ jobs:
       codebase: NewOrUpdate
       codeBaseName: 'accessibility-insights-windows_master'
       notificationAlias: 'a11y-insights-eng@microsoft.com'
-      codeBaseAdmins: 'REDMOND\mreay;REDMOND\ahmohame'
+      codeBaseAdmins: 'REDMOND\mreay;REDMOND\dtryon'
       instanceUrlForTsaV2: MSENG
-      projectNameMSENG: AzureDevOps
-      areaPath: 'AzureDevOps\VSTS\enSPIRe\Keros\Desktop'
-      iterationPath: 'AzureDevOps\OneVS'
+      projectNameMSENG: 1ES
+      areaPath: '1ES\Mark - Team'
+      iterationPath: '1ES'
       uploadFxCop: true
       uploadBinSkim: true
       uploadCredScan: true
