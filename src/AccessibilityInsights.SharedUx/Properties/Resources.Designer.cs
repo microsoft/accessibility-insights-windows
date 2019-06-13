@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2236,6 +2236,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string labelEventsContent {
             get {
                 return ResourceManager.GetString("labelEventsContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UIAccess: Available.
+        /// </summary>
+        public static string LabelUIAccessAvailable {
+            get {
+                return ResourceManager.GetString("LabelUIAccessAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UIAccess: Not Available.
+        /// </summary>
+        public static string LabelUIAccessNotAvailable {
+            get {
+                return ResourceManager.GetString("LabelUIAccessNotAvailable", resourceCulture);
             }
         }
         

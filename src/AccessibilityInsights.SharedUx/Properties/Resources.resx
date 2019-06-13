@@ -1561,11 +1561,17 @@ Do you want to change the channel? </value>
   <data name="ChangeChannelContainedDialog_BtnExit" xml:space="preserve">
     <value>Do not change channel</value>
   </data>
-<data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
+  <data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
     <value>Change channel</value>
   </data>
   <data name="ScreenshotWindowTitle" xml:space="preserve">
     <value>Accessibility Insights for Windows - Screenshot</value>
     <comment>Title for window containing screenshot</comment>
+  </data>
+  <data name="LabelUIAccessAvailable" xml:space="preserve">
+    <value>UIAccess: Available</value>
+  </data>
+  <data name="LabelUIAccessNotAvailable" xml:space="preserve">
+    <value>UIAccess: Not Available</value>
   </data>
 </root>

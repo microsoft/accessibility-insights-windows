@@ -550,11 +550,9 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="CultureInfoErrorMessage" xml:space="preserve">
     <value>"{0}" is not proper hotkey combination. Hotkey should be [Shift|Ctrl|Alt|Window]+[a single key including function key]</value>
   </data>
-  <data name="UpdateVersionStringVer" xml:space="preserve">
-    <value>ver {0}</value>
-  </data>
-  <data name="UpdateVersionStringUIAccess" xml:space="preserve">
-    <value> - UIAccess</value>
+  <data name="VersionBarPreReleaseVersion" xml:space="preserve">
+    <value>Prerelease Build ({0})</value>
+    <comment>{0} receives the build version</comment>
   </data>
   <data name="UpdateDialogWindowTitle" xml:space="preserve">
     <value>There is an update available</value>

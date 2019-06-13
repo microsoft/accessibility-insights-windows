@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.Win32;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -22,6 +23,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             InitializeComponent();
             lbVersion.Content = VersionTools.GetAppVersion();
+            if (!NativeMethods.IsRunningWithUIAccess())
+            {
+                lbUIAccess.Content = Properties.Resources.LabelUIAccessAvailable;
+            }
         }
 
         /// <summary>
