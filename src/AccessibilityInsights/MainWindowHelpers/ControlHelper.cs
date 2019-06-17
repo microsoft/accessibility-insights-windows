@@ -8,11 +8,9 @@ using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
-using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -272,7 +270,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Set version text, per https://github.com/microsoft/accessibility-insights-windows/issues/347
+        /// Compute version text, per https://github.com/microsoft/accessibility-insights-windows/issues/347
         /// </summary>
         private string ComputeVersionBarString()
         {
