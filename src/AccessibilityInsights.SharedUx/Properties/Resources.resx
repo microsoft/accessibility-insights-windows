@@ -246,9 +246,6 @@
   <data name="LabelContentByMicrosoftCorporation" xml:space="preserve">
     <value>by Microsoft Corporation</value>
   </data>
-  <data name="LabelContentVersion" xml:space="preserve">
-    <value>Version:</value>
-  </data>
   <data name="hlTermsName" xml:space="preserve">
     <value>License terms</value>
   </data>
@@ -1569,9 +1566,24 @@ Do you want to change the channel? </value>
     <comment>Title for window containing screenshot</comment>
   </data>
   <data name="LabelUIAccessAvailable" xml:space="preserve">
-    <value>UIAccess: Available</value>
+    <value>UIAccess is available</value>
   </data>
   <data name="LabelUIAccessNotAvailable" xml:space="preserve">
-    <value>UIAccess: Not Available</value>
+    <value>UIAccess is not available</value>
+  </data>
+  <data name="hlVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Placeholder" xml:space="preserve">
+    <value>*** placeholder ***</value>
+    <comment>Gets replaced at runtime</comment>
+  </data>
+  <data name="VersionLinkContentFormat" xml:space="preserve">
+    <value>Version {0}</value>
+    <comment>{0} is the placeholder for the app version string</comment>
+  </data>
+  <data name="VersionLinkFormat" xml:space="preserve">
+    <value>https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}</value>
+    <comment>(0) is the placeholder for the app version string</comment>
   </data>
 </root>

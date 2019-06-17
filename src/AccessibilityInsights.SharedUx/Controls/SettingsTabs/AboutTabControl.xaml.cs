@@ -5,6 +5,7 @@ using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Win32;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -22,11 +23,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public AboutTabControl()
         {
             InitializeComponent();
-            lbVersion.Content = VersionTools.GetAppVersion();
-            if (!NativeMethods.IsRunningWithUIAccess())
-            {
-                lbUIAccess.Content = Properties.Resources.LabelUIAccessAvailable;
-            }
+            InitializeVersionInformationLink();
+            InitializeUIAccessLabel();
         }
 
         /// <summary>
@@ -76,6 +74,23 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 // silently ignore. 
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        private void InitializeVersionInformationLink()
+        {
+            string version = VersionTools.GetAppVersion();
+            hlVersion.NavigateUri = new Uri(string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.VersionLinkFormat, version), UriKind.Absolute);
+            hlVersion.Inlines.Clear();
+            hlVersion.Inlines.Add(string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.VersionLinkContentFormat, version));
+        }
+
+        private void InitializeUIAccessLabel()
+        {
+            lbUIAccess.Content = NativeMethods.IsRunningWithUIAccess() ?
+                Properties.Resources.LabelUIAccessAvailable :
+                Properties.Resources.LabelUIAccessNotAvailable;
         }
     }
 }

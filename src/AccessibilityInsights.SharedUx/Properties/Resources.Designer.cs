@@ -2015,6 +2015,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string hlVersion {
+            get {
+                return ResourceManager.GetString("hlVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type a keyboard shortcut.
         /// </summary>
         public static string HotkeyGrabDialogWindowTitle {
@@ -2213,15 +2222,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version:.
-        /// </summary>
-        public static string LabelContentVersion {
-            get {
-                return ResourceManager.GetString("LabelContentVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 0.
         /// </summary>
         public static string LabelContentZero {
@@ -2240,7 +2240,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UIAccess: Available.
+        ///   Looks up a localized string similar to UIAccess is available.
         /// </summary>
         public static string LabelUIAccessAvailable {
             get {
@@ -2249,7 +2249,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to UIAccess: Not Available.
+        ///   Looks up a localized string similar to UIAccess is not available.
         /// </summary>
         public static string LabelUIAccessNotAvailable {
             get {
@@ -3091,6 +3091,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string PatternViewModel_GetActionButtonText_Explore {
             get {
                 return ResourceManager.GetString("PatternViewModel_GetActionButtonText_Explore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *** placeholder ***.
+        /// </summary>
+        public static string Placeholder {
+            get {
+                return ResourceManager.GetString("Placeholder", resourceCulture);
             }
         }
         
@@ -4360,6 +4369,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TTAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("TTAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0}.
+        /// </summary>
+        public static string VersionLinkContentFormat {
+            get {
+                return ResourceManager.GetString("VersionLinkContentFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.
+        /// </summary>
+        public static string VersionLinkFormat {
+            get {
+                return ResourceManager.GetString("VersionLinkFormat", resourceCulture);
             }
         }
         
