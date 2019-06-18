@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Automation;
+using AccessibilityInsights.Misc;
 
 namespace AccessibilityInsights
 {
@@ -239,11 +240,8 @@ namespace AccessibilityInsights
                 // Based on Ux model feedback from PM team, we decided to go to AutomatedTestResults as default page view for snapshot.
                 StartTestMode(TestView.AutomatedTestResults);
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Test_Requested, new Dictionary<TelemetryProperty, string>
-                {
-                    { TelemetryProperty.By, method.ToString() },
-                    { TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString() }
-                });
+                Logger.PublishTelemetryEvent(TelemetryEventFactory.ForTestRequested(
+                    method.ToString(), SelectAction.GetDefaultInstance().Scope.ToString()));
             }
             HollowHighlightDriver.GetDefaultInstance().Clear();
             UpdateMainWindowUI();

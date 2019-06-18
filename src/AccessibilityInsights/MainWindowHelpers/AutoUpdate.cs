@@ -4,13 +4,12 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Dialogs;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+using AccessibilityInsights.Misc;
 using AccessibilityInsights.Resources;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -35,13 +34,8 @@ namespace AccessibilityInsights
                     {
                         updateOptionStopwatch.Stop();
                     }
-                    Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_GetUpgradeOption, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.UpdateInitializationTime, GetTimeSpanTelemetryString(autoUpdate.GetInitializationTime())},
-                        { TelemetryProperty.UpdateOptionWaitTime, GetTimeSpanTelemetryString(updateOptionStopwatch.Elapsed)},
-                        { TelemetryProperty.UpdateOption, updateOption.ToString()},
-                        { TelemetryProperty.UpdateTimedOut, timeOutOccurred.ToString(CultureInfo.InvariantCulture)}
-                    });
+                    Logger.PublishTelemetryEvent(TelemetryEventFactory.ForGetUpgradeOption(autoUpdate.GetInitializationTime(),
+                        updateOptionStopwatch.Elapsed, updateOption.ToString(), timeOutOccurred));
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
@@ -140,11 +134,8 @@ namespace AccessibilityInsights
                 Topmost = false;
                 result = await autoUpdate.UpdateAsync().ConfigureAwait(true);
 
-                Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_DoInstallation, new Dictionary<TelemetryProperty, string>
-                    {
-                        { TelemetryProperty.UpdateInstallerUpdateTime, GetTimeSpanTelemetryString(autoUpdate.GetUpdateTime())},
-                        { TelemetryProperty.UpdateResult, _updateOption.ToString()},
-                    });
+                Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeDoInstallation(
+                    autoUpdate.GetUpdateTime(), _updateOption.ToString()));
                 if (result == UpdateResult.Success)
                 {
                     this.Close();
@@ -160,7 +151,7 @@ namespace AccessibilityInsights
 
             Topmost = previousTopmostSetting;
             ctrlProgressRing.Deactivate();
-            Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeInstallationError(result.ToString()));
 
             string message = _updateOption == AutoUpdateOption.RequiredUpgrade
                 ? GetMessageForRequiredUpdateFailure() : GetMessageForOptionalUpdateFailure();
@@ -204,17 +195,11 @@ namespace AccessibilityInsights
             else
             {
                 // user clicked later (false)
-                Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_Update_Dismiss, TelemetryProperty.MSIVersion, autoUpdate.InstalledVersion.ToString());
+                Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeDismissed(autoUpdate.InstalledVersion));
             }
 
             this.modeGrid.Opacity = 1;
             this.AllowFurtherAction = true;
-        }
-
-        private static string GetTimeSpanTelemetryString(TimeSpan? timeSpan)
-        {
-            // Because return values are used for telemetry, they do not need to be localized
-            return timeSpan.HasValue ? timeSpan.Value.ToString() : "unknown";
         }
 
         private static string GetMessageForOptionalUpdateFailure()
@@ -242,7 +227,7 @@ namespace AccessibilityInsights
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Trace.WriteLine("AccessibilityInsights upgrade exception: " + ex.ToString());
+                    ex.ReportException();
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
             }

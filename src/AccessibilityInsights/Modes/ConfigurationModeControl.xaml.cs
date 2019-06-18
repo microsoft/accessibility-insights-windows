@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
@@ -154,12 +155,8 @@ namespace AccessibilityInsights.Modes
             if (appSettingsCtrl.SelectedReleaseChannel == Configuration.ReleaseChannel)
                 return false;
 
-            Logger.PublishTelemetryEvent(TelemetryAction.ReleaseChannel_ChangeConsidered,
-                new Dictionary<TelemetryProperty, string>
-                {
-                    { TelemetryProperty.ReleaseChannel, Configuration.ReleaseChannel.ToString() },
-                    { TelemetryProperty.ReleaseChannelConsidered, appSettingsCtrl.SelectedReleaseChannel.ToString() },
-                });
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForReleaseChannelChangeConsidered(
+                Configuration.ReleaseChannel, appSettingsCtrl.SelectedReleaseChannel));
 
             var channelDialog = new ChangeChannelContainedDialog(appSettingsCtrl.SelectedReleaseChannel);
 

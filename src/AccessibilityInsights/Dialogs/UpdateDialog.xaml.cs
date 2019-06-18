@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Windows;
@@ -68,7 +69,7 @@ namespace AccessibilityInsights.Dialogs
                 MessageDialog.Show(error);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
-            Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_Update_ReleaseNote, TelemetryProperty.Error, error);
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForReleaseNotesClick(error));
         }
     }
 }
