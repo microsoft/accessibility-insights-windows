@@ -15,10 +15,16 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     {
 #pragma warning disable CA1822
 
+        /// <summary>
+        /// Provides the text for the UIAccess label
+        /// </summary>
         public string UIAccessStatus => NativeMethods.IsRunningWithUIAccess() ?
             Properties.Resources.LabelUIAccessAvailable :
             Properties.Resources.LabelUIAccessNotAvailable;
 
+        /// <summary>
+        /// Provides a Uri to the release notes for this version
+        /// </summary>
         public Uri VersionInfoUri
         {
             get
@@ -44,7 +50,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
-
+        /// <summary>
+        /// Provides the version-specific label
+        /// </summary>
         public string VersionInfoLabel => string.Format(CultureInfo.InvariantCulture,
             Properties.Resources.VersionLinkContentFormat, VersionTools.GetAppVersion());
 
