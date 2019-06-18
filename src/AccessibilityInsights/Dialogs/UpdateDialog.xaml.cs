@@ -44,6 +44,7 @@ namespace AccessibilityInsights.Dialogs
         /// <param name="e"></param>
         private void ReleaseNotes_Click(object sender, RoutedEventArgs e)
         {
+            string error = string.Empty;
             string releaseNotesString = string.Empty;
             try
             {
@@ -55,16 +56,19 @@ namespace AccessibilityInsights.Dialogs
                 }
                 else
                 {
-                    MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString);
+                    error = Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString;
+                    MessageDialog.Show(error);
                 }
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
-                MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString);
+                error = Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString;
+                MessageDialog.Show(error);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+            Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_Update_ReleaseNote, TelemetryProperty.Error, error);
         }
     }
 }
