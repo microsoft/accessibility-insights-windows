@@ -3095,15 +3095,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to *** placeholder ***.
-        /// </summary>
-        public static string Placeholder {
-            get {
-                return ResourceManager.GetString("Placeholder", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Read our.
         /// </summary>
         public static string PrivacyLearnMore1 {
@@ -4382,7 +4373,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.
+        ///   Looks up a localized string similar to https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.{1}.{2:0000}.{3:00}.
         /// </summary>
         public static string VersionLinkFormat {
             get {
