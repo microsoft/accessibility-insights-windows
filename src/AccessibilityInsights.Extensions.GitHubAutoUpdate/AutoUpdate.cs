@@ -236,9 +236,13 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
                         {
                             return AutoUpdateOption.RequiredUpgrade;
                         }
-                        else if (_installedVersion < _currentChannelVersion)
+                        if (_installedVersion < _currentChannelVersion)
                         {
                             return AutoUpdateOption.OptionalUpgrade;
+                        }
+                        if (_installedVersion > _currentChannelVersion)
+                        {
+                            return AutoUpdateOption.NewerThanCurrent;
                         }
                         return AutoUpdateOption.Current;
                     }

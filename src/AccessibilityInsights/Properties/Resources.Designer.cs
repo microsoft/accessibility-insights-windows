@@ -1503,20 +1503,11 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  - UIAccess.
+        ///   Looks up a localized string similar to Prerelease Build ({0}).
         /// </summary>
-        public static string UpdateVersionStringUIAccess {
+        public static string VersionBarPreReleaseVersion {
             get {
-                return ResourceManager.GetString("UpdateVersionStringUIAccess", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ver {0}.
-        /// </summary>
-        public static string UpdateVersionStringVer {
-            get {
-                return ResourceManager.GetString("UpdateVersionStringVer", resourceCulture);
+                return ResourceManager.GetString("VersionBarPreReleaseVersion", resourceCulture);
             }
         }
         

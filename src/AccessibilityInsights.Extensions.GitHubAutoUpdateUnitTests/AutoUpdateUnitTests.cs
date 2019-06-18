@@ -15,6 +15,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
     {
         private const string TestInstalledVersion = "1.1.1234";
         private const string UplevelVersion = "1.1.1260";
+        private const string DownlevelVersion = "1.1.1200";
         private const ReleaseChannel DefaultReleaseChannel = ReleaseChannel.Production;
 
         private static readonly IChannelInfoProvider InertChannelInfoProvider =
@@ -42,6 +43,14 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             MinimumVersion = new Version(UplevelVersion),
             InstallAsset = GetInstallerPath(UplevelVersion),
             ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion)
+        };
+
+        private static readonly ChannelInfo PreReleaseChannelInfo = new ChannelInfo
+        {
+            CurrentVersion = new Version(DownlevelVersion),
+            MinimumVersion = new Version(DownlevelVersion),
+            InstallAsset = GetInstallerPath(DownlevelVersion),
+            ReleaseNotesAsset = GetReleaseNotesPath(DownlevelVersion)
         };
 
         private static string GetInstallerPath(string version)
@@ -174,6 +183,20 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(RequiredUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(RequiredUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(RequiredUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            providerMock.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        public void UpdateOptionAsync_ConfigShowsPrereleaseBuild_ReturnsNewerThanCurrent()
+        {
+            Mock<IChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel, PreReleaseChannelInfo);
+            AutoUpdate update = BuildAutoUpdate(channelProvider: providerMock.Object);
+            Assert.AreEqual(AutoUpdateOption.NewerThanCurrent, update.UpdateOptionAsync.Result);
+            Assert.AreEqual(TestInstalledVersion, update.InstalledVersion.ToString());
+            Assert.AreEqual(PreReleaseChannelInfo.CurrentVersion, update.CurrentChannelVersion);
+            Assert.AreEqual(PreReleaseChannelInfo.MinimumVersion, update.MinimumChannelVersion);
+            Assert.AreEqual(PreReleaseChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
             providerMock.VerifyAll();
         }
 

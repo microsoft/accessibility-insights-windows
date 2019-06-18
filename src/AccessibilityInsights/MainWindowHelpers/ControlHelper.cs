@@ -1,17 +1,16 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
-using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
@@ -263,28 +262,28 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Set version text
-        /// [(ReleaseChannel) - ]Version - UIAccess state
+        /// Set version text, per https://github.com/microsoft/accessibility-insights-windows/issues/347
         /// </summary>
         private void UpdateVersionString()
         {
-            StringBuilder sb = new StringBuilder();
+            this.lblVersion.Content = ComputeVersionBarString();
+        }
 
+        /// <summary>
+        /// Compute version text, per https://github.com/microsoft/accessibility-insights-windows/issues/347
+        /// </summary>
+        private string ComputeVersionBarString()
+        {
             ReleaseChannel? channel = ConfigurationManager.GetDefaultInstance()?.AppConfig?.ReleaseChannel;
-
-            if (channel.HasValue && channel.Value != ReleaseChannel.Production)
+            if ((channel.HasValue && channel.Value != ReleaseChannel.Production)
+                || _updateOption != AutoUpdateOption.NewerThanCurrent)
             {
-                sb.AppendFormat(CultureInfo.InvariantCulture, "({0}) - ", channel.Value);
+                return string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resources.VersionBarPreReleaseVersion,
+                    VersionTools.GetAppVersion());
             }
 
-            sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.UpdateVersionStringVer, VersionTools.GetAppVersion());
-
-            if (NativeMethods.IsRunningWithUIAccess())
-            {
-                sb.Append(Properties.Resources.UpdateVersionStringUIAccess);
-            }
-
-            this.lblVersion.Content = sb.ToString();
+            return string.Empty;
         }
 
         public void HandleToggleStatusChanged(bool isEnabled)

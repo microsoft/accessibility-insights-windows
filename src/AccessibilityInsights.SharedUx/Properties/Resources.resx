@@ -246,9 +246,6 @@
   <data name="LabelContentByMicrosoftCorporation" xml:space="preserve">
     <value>by Microsoft Corporation</value>
   </data>
-  <data name="LabelContentVersion" xml:space="preserve">
-    <value>Version:</value>
-  </data>
   <data name="hlTermsName" xml:space="preserve">
     <value>License terms</value>
   </data>
@@ -1561,11 +1558,28 @@ Do you want to change the channel? </value>
   <data name="ChangeChannelContainedDialog_BtnExit" xml:space="preserve">
     <value>Do not change channel</value>
   </data>
-<data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
+  <data name="ChangeChannelContainedDialog_BtnOk" xml:space="preserve">
     <value>Change channel</value>
   </data>
   <data name="ScreenshotWindowTitle" xml:space="preserve">
     <value>Accessibility Insights for Windows - Screenshot</value>
     <comment>Title for window containing screenshot</comment>
+  </data>
+  <data name="LabelUIAccessAvailable" xml:space="preserve">
+    <value>UIAccess is available</value>
+  </data>
+  <data name="LabelUIAccessNotAvailable" xml:space="preserve">
+    <value>UIAccess is not available</value>
+  </data>
+  <data name="hlVersion" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="VersionLinkContentFormat" xml:space="preserve">
+    <value>Version {0}</value>
+    <comment>{0} is the placeholder for the app version string</comment>
+  </data>
+  <data name="VersionLinkFormat" xml:space="preserve">
+    <value>https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.{1}.{2:0000}.{3:00}</value>
+    <comment>{0} - {3} are placeholders for the 4 fields of a Version object</comment>
   </data>
 </root>

@@ -1,9 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -15,13 +16,15 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
     /// </summary>
     public partial class AboutTabControl : UserControl
     {
+        // ViewModel computes dialog values at run time
+        public AboutTabViewModel ViewModel { get; } = new AboutTabViewModel();
+
         /// <summary>
         /// Constructor
         /// </summary>
         public AboutTabControl()
         {
             InitializeComponent();
-            lbVersion.Content = VersionTools.GetAppVersion();
         }
 
         /// <summary>
@@ -33,13 +36,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             var uri = ((Hyperlink)sender).NavigateUri;
 
-            var path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, uri.OriginalString);
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, uri.OriginalString);
 
             try
             {
-                if (System.IO.File.Exists(path))
+                if (File.Exists(path))
                 {
-                    System.Diagnostics.Process.Start(path);
+                    Process.Start(path);
                 }
             }
 #pragma warning disable CA1031 // Do not catch general exception types

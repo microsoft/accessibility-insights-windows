@@ -13,6 +13,11 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         Unknown,
 
         /// <summary>
+        /// Current installation is ahead of the current version
+        /// </summary>
+        NewerThanCurrent,
+
+        /// <summary>
         /// No upgrade exists
         /// </summary>
         Current,

@@ -527,6 +527,7 @@
     <Compile Include="Utilities\HelperMethods.cs" />
     <Compile Include="Utilities\InstallationInfo.cs" />
     <Compile Include="Utilities\ReferenceHolder.cs" />
+    <Compile Include="ViewModels\AboutTabViewModel.cs" />
     <Compile Include="ViewModels\BaseActionViewModel.cs" />
     <Compile Include="ViewModels\LogoViewModel.cs" />
     <Compile Include="ViewModels\ColorContrastViewModel.cs" />

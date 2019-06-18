@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -2015,6 +2015,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        public static string hlVersion {
+            get {
+                return ResourceManager.GetString("hlVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Type a keyboard shortcut.
         /// </summary>
         public static string HotkeyGrabDialogWindowTitle {
@@ -2213,15 +2222,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version:.
-        /// </summary>
-        public static string LabelContentVersion {
-            get {
-                return ResourceManager.GetString("LabelContentVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to 0.
         /// </summary>
         public static string LabelContentZero {
@@ -2236,6 +2236,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string labelEventsContent {
             get {
                 return ResourceManager.GetString("labelEventsContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UIAccess is available.
+        /// </summary>
+        public static string LabelUIAccessAvailable {
+            get {
+                return ResourceManager.GetString("LabelUIAccessAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UIAccess is not available.
+        /// </summary>
+        public static string LabelUIAccessNotAvailable {
+            get {
+                return ResourceManager.GetString("LabelUIAccessNotAvailable", resourceCulture);
             }
         }
         
@@ -4342,6 +4360,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TTAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("TTAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version {0}.
+        /// </summary>
+        public static string VersionLinkContentFormat {
+            get {
+                return ResourceManager.GetString("VersionLinkContentFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.{1}.{2:0000}.{3:00}.
+        /// </summary>
+        public static string VersionLinkFormat {
+            get {
+                return ResourceManager.GetString("VersionLinkFormat", resourceCulture);
             }
         }
         

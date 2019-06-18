@@ -21,6 +21,9 @@ namespace AccessibilityInsights
     /// </summary>
     public partial class MainWindow
     {
+        // Remember our update option that we determined on boot
+        private AutoUpdateOption _updateOption = AutoUpdateOption.Unknown;
+
         private static void PublishTelemetryEventAsync(IAutoUpdate autoUpdate, Stopwatch updateOptionStopwatch, bool timeOutOccurred)
         {
             Task.Run(() =>
@@ -122,7 +125,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// Download the upgrade installer and close the app depending on if it is successful or not
         /// </summary>
-        private async void DownLoadInstaller(IAutoUpdate autoUpdate, AutoUpdateOption updateOption)
+        private async void DownLoadInstaller(IAutoUpdate autoUpdate)
         {
             UpdateResult result = UpdateResult.Unknown;
 
@@ -140,7 +143,7 @@ namespace AccessibilityInsights
                 Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_DoInstallation, new Dictionary<TelemetryProperty, string>
                     {
                         { TelemetryProperty.UpdateInstallerUpdateTime, GetTimeSpanTelemetryString(autoUpdate.GetUpdateTime())},
-                        { TelemetryProperty.UpdateResult, updateOption.ToString()},
+                        { TelemetryProperty.UpdateResult, _updateOption.ToString()},
                     });
                 if (result == UpdateResult.Success)
                 {
@@ -159,12 +162,12 @@ namespace AccessibilityInsights
             ctrlProgressRing.Deactivate();
             Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_InstallationError, TelemetryProperty.Error, result.ToString());
 
-            string message = updateOption == AutoUpdateOption.RequiredUpgrade
+            string message = _updateOption == AutoUpdateOption.RequiredUpgrade
                 ? GetMessageForRequiredUpdateFailure() : GetMessageForOptionalUpdateFailure();
 
             MessageDialog.Show(message);
 
-            if (updateOption == AutoUpdateOption.RequiredUpgrade)
+            if (_updateOption == AutoUpdateOption.RequiredUpgrade)
             {
                 this.Close();
                 return;
@@ -175,14 +178,13 @@ namespace AccessibilityInsights
         {
             // Make the upgrade decision
             var autoUpdate = Container.GetDefaultInstance().AutoUpdate;
-            AutoUpdateOption updateOption;
-            if (!ShouldUserUpgrade(autoUpdate, out updateOption))
+            if (!ShouldUserUpgrade(autoUpdate, out _updateOption))
             {
                 return;
             }
 
             // Create the upgrade dialog
-            UpdateDialog dialog = CreateUpgradeDialog(autoUpdate.ReleaseNotesUri, updateOption);
+            UpdateDialog dialog = CreateUpgradeDialog(autoUpdate.ReleaseNotesUri, _updateOption);
 
             bool? dialogResult = dialog.ShowDialog();
             // user clicked update now (true)
@@ -190,7 +192,7 @@ namespace AccessibilityInsights
             {
                 try
                 {
-                    DownLoadInstaller(autoUpdate, updateOption);
+                    DownLoadInstaller(autoUpdate);
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
