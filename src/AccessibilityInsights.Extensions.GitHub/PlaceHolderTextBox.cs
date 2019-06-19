@@ -27,7 +27,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public void RemoveText(object sender, EventArgs e)
         {
-            if (this.Text.Equals(PlaceHolder, StringComparison.InvariantCulture))
+            if (this.Text.Equals(PlaceHolder, StringComparison.Ordinal))
             {
                 this.Text = "";
                 this.Foreground = BlackBrush;
