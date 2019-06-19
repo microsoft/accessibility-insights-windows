@@ -3,7 +3,7 @@
 Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10). This is one of the tools from a suite of tools that help diagnose accessibility issues. 
 
 #### Q. Why should I contribute to Accessibility Insights for Windows?
-By contributing you will help ensure that differently abled people have full access to applications. Make the world a better place!
+By contributing you will help ensure that people with disabilities have full access to applications. Make the world a better place!
 
 #### Q. How do I get started?
 Visit the [Readme](../README.md) and the [Overview](Overview.md) page.
