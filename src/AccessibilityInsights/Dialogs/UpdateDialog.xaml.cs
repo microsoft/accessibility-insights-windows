@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Windows;
@@ -44,6 +45,7 @@ namespace AccessibilityInsights.Dialogs
         /// <param name="e"></param>
         private void ReleaseNotes_Click(object sender, RoutedEventArgs e)
         {
+            string error = string.Empty;
             string releaseNotesString = string.Empty;
             try
             {
@@ -55,16 +57,19 @@ namespace AccessibilityInsights.Dialogs
                 }
                 else
                 {
-                    MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString);
+                    error = Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString;
+                    MessageDialog.Show(error);
                 }
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
-                MessageDialog.Show(Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString);
+                error = Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString;
+                MessageDialog.Show(error);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForReleaseNotesClick(error));
         }
     }
 }

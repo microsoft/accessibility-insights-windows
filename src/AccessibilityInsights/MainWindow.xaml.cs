@@ -198,7 +198,7 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
-            Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup, null);
+            Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup);
         }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace AccessibilityInsights
                 var scope = this.cbiEntireApp.IsSelected ? Axe.Windows.Actions.Enums.SelectionScope.App : Axe.Windows.Actions.Enums.SelectionScope.Element;
                 SelectAction.GetDefaultInstance().Scope = scope;
                 ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = (scope == Axe.Windows.Actions.Enums.SelectionScope.Element);
-                Logger.PublishTelemetryEvent(TelemetryAction.TestSelection_Set_Scope, TelemetryProperty.Scope, scope.ToString());
+                Logger.PublishTelemetryEvent(Misc.TelemetryEventFactory.ForSetScope(scope.ToString()));
                 SelectAction.GetDefaultInstance().ClearSelectedContext();
                 ctrlLiveMode.Clear();
                 HollowHighlightDriver.GetDefaultInstance().Clear();

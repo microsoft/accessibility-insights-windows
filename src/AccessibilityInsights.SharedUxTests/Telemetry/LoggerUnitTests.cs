@@ -78,11 +78,12 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
             const string value2 = "February";
             const string value3 = "March";
 
+            // Specific values of TelemetryProperty are unimportant for this test
             Dictionary<TelemetryProperty, string> input = new Dictionary<TelemetryProperty, string>
             {
-                { TelemetryProperty.AppSessionID, value1 },
-                { TelemetryProperty.HandledException, value2 },
-                { TelemetryProperty.SessionType, value3 },
+                { (TelemetryProperty)1, value1 },
+                { (TelemetryProperty)2, value2 },
+                { (TelemetryProperty)3, value3 },
             };
 
             IReadOnlyDictionary<string, string> output = Logger.ConvertFromProperties(input);
@@ -103,9 +104,8 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
             {
                 TelemetrySink.IsTelemetryAllowed = false;
 
-                // TelemetryAction used here is arbitrary
-                Logger.PublishTelemetryEvent(TelemetryAction.Bug_Cancel,
-                    TelemetryProperty.By, "abc");
+                // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
+                Logger.PublishTelemetryEvent((TelemetryAction)0, (TelemetryProperty)0, "abc");
             }
         }
 
@@ -115,9 +115,9 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                // TelemetryAction used here is arbitrary
-                const TelemetryAction action = TelemetryAction.ColorContrast_Click_Eyedropper;
-                const TelemetryProperty property = TelemetryProperty.Comment;
+                // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
+                const TelemetryAction action = (TelemetryAction)4;
+                const TelemetryProperty property = (TelemetryProperty)5;
                 const string value = "Friday";
                 string actualName = null;
                 IReadOnlyDictionary<string, string> actualTelemetryPropertyBag = null;
@@ -146,10 +146,13 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
+                // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
+                TelemetryAction action = (TelemetryAction)6;
+                TelemetryProperty property = (TelemetryProperty)7;
                 var fakeId = "id";
-                var fakeEvent = new TelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, new Dictionary<TelemetryProperty, string>
+                var fakeEvent = new TelemetryEvent(action, new Dictionary<TelemetryProperty, string>
                 {
-                    { TelemetryProperty.AppSessionID, fakeId },
+                    { property, fakeId },
                 });
 
                 string actualName = null;
@@ -169,7 +172,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
 
                 Assert.AreEqual(fakeEvent.Action.ToString(), actualName);
                 Assert.AreEqual(1, actualTelemetryPropertyBag.Count);
-                Assert.AreEqual(fakeId, actualTelemetryPropertyBag[TelemetryProperty.AppSessionID.ToString()]);
+                Assert.AreEqual(fakeId, actualTelemetryPropertyBag[property.ToString()]);
             }
         }
 
@@ -181,8 +184,8 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
             {
                 TelemetrySink.IsTelemetryAllowed = false;
 
-                // TelemetryAction used here is arbitrary
-                Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown, null);
+                // Specific value of TelemetryAction is unimportant for this test
+                Logger.PublishTelemetryEvent((TelemetryAction)7, null);
             }
         }
 
@@ -192,9 +195,9 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                // TelemetryAction used here is arbitrary
-                const TelemetryAction action = TelemetryAction.ColorContrast_Click_Eyedropper;
-                const TelemetryProperty property = TelemetryProperty.Error;
+                // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
+                const TelemetryAction action = (TelemetryAction)8;
+                const TelemetryProperty property = (TelemetryProperty)9;
                 const string value = "Saturday";
                 string actualName = null;
                 IReadOnlyDictionary<TelemetryProperty, string> actualConverterInput = null;
@@ -250,7 +253,8 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         {
             using (ShimsContext.Create())
             {
-                const TelemetryProperty expectedProperty = TelemetryProperty.Comment;
+                // Specific value of TelemetryProperty is unimportant for this test
+                const TelemetryProperty expectedProperty = (TelemetryProperty)9;
                 const string expectedValue = "carrot";
 
                 string actualProperty = null;
