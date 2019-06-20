@@ -9,6 +9,7 @@ using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
+using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Actions.Enums;
@@ -193,7 +194,7 @@ namespace AccessibilityInsights.Modes
 
                                         // This needs to happen before the call to ctrlAutomatedChecks.SetElement. Otherwise,
                                         // ctrlAutomatedChecks's checkboxes become out of sync with the highlighter
-                                        Application.Current.MainWindow.Visibility = Visibility.Visible; 
+                                        Application.Current.MainWindow.Visibility = Visibility.Visible;
                                     })).Wait();
                                 }
                             }
@@ -261,8 +262,13 @@ namespace AccessibilityInsights.Modes
                 // Improves the reliability of the rendering but does not solve across the board issues seen with all WPF apps.
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Send, new Action(() =>
                 {
-                    Application.Current.MainWindow.InvalidateVisual();
-                    Application.Current.MainWindow.Visibility = Visibility.Visible;
+                    // This is a workaround for a repaint issue caused by an interaction between Jaws and WPF
+                    if (NativeMethods.IsExternalScreenReaderActive())
+                    {
+                        Application.Current.MainWindow.Visibility = Visibility.Hidden;
+                        Application.Current.MainWindow.InvalidateVisual();
+                        Application.Current.MainWindow.Visibility = Visibility.Visible;
+                    }
                     this.tbiAutomatedChecks.Focus();
                 })).Wait();
             });

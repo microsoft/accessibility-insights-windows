@@ -94,22 +94,11 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         /// <summary>
-        /// Check if any 3rd party Screen Reader such as Jaws is running
-        /// </summary>
-        public static bool IsExternalScreenReaderActive()
-        {
-            const int SPI_GETSCREENREADER = 0x0046;  // 0x0046 is for SPI_GETSCREENREADER
-            bool active = false;
-            bool success = NativeMethods.SystemParametersInfo(SPI_GETSCREENREADER, 0, out active, 0);
-            return success && active;
-        }
-
-        /// <summary>
         /// Check if any Screen Reader is running
         /// </summary>
         public static bool IsScreenReaderActive()
         {
-            return (IsInternalScreenReaderActive() || IsExternalScreenReaderActive()) && AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged);
+            return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive()) && AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged);
         }
 
         /// <summary>
