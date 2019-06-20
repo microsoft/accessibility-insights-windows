@@ -59,7 +59,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public void TextChangeUpdateSaveButtonHelper()
         {
             string curURL = this.tbURL.Text;
-            if (!string.IsNullOrEmpty(curURL) && ((this.Config != null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.RepoLink.Equals(curURL, StringComparison.InvariantCulture)))
+            if (!string.IsNullOrEmpty(curURL) && ((this.Config != null && string.IsNullOrEmpty(this.Config.RepoLink)) || !this.Config.RepoLink.Equals(curURL, StringComparison.Ordinal)))
             {
                 canSave = true;
             }
@@ -95,7 +95,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             if (sender!=null && (bool)e.NewValue)
             {
-                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(this.tbURL.PlaceHolder, StringComparison.InvariantCulture))
+                if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(this.tbURL.PlaceHolder, StringComparison.Ordinal))
                 {
                     tbURL.Text = Config.RepoLink;
                     tbURL.Foreground = this.tbURL.BlackBrush;

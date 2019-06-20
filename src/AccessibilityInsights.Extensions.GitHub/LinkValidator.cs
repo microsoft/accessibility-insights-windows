@@ -68,7 +68,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private static bool CheckRepoNameSpecialCases(string repoName)
         {
-            if (repoName.Equals(Properties.Resources.RepoNameSpecialCasesDoubleDot, StringComparison.InvariantCulture))
+            if (repoName.Equals(Properties.Resources.RepoNameSpecialCasesDoubleDot, StringComparison.Ordinal))
             {
                 return false;
             }
