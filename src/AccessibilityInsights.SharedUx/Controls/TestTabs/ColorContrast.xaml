@@ -301,7 +301,7 @@
                 </Grid>
             </Grid>
             <Grid Grid.Row="1">
-                <controls:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center"
+                <fabric:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                             x:Name="ctrlProgressRing"
                             Panel.ZIndex="1"
                             Visibility="Collapsed"/>

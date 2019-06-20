@@ -178,13 +178,13 @@
                 </DataGrid.Columns>
             </customcontrols:CustomDataGrid>
         </ScrollViewer>
-        <local:ProgressRingControl x:Name="ctrlProgressRing" 
+        <fabric:ProgressRingControl x:Name="ctrlProgressRing" 
                                    Size="30" 
                                    Grid.Row="1" 
                                    Visibility="Collapsed"
                                    WithSound="True"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center">
-        </local:ProgressRingControl>
+        </fabric:ProgressRingControl>
     </Grid>
 </UserControl>

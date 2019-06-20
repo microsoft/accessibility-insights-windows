@@ -6,7 +6,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+        xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
         Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico"
         WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
         Title="" SizeToContent="Height" Width="200" Topmost="True" Loaded="Window_Loaded"
@@ -14,7 +14,7 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock x:Name="MessageText" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center"  TextWrapping="Wrap"  Height="29" Width="192" />
-            <controls:ProgressRingControl Size="40" HorizontalAlignment="Center"
+            <fabric:ProgressRingControl Size="40" HorizontalAlignment="Center"
                             x:Name="ctrlProgressRing"
                             WithSound="True"
                             Visibility="Collapsed"/>

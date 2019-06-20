@@ -218,10 +218,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ProgressRingControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\PropertyInfoControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -452,9 +448,6 @@
     <Compile Include="Controls\NPISlider.cs" />
     <Compile Include="Controls\PatternInfoControl.xaml.cs">
       <DependentUpon>PatternInfoControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ProgressRingControl.xaml.cs">
-      <DependentUpon>ProgressRingControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PropertyInfoControl.xaml.cs">
       <DependentUpon>PropertyInfoControl.xaml</DependentUpon>
