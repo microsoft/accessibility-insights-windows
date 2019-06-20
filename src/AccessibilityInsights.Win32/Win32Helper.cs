@@ -84,5 +84,15 @@ namespace AccessibilityInsights.Win32
         {
             return r | g << 8 | b << 16;
         }
+
+        /// <summary>
+        /// Check if a 3rd party Screen Reader such as Jaws is running
+        /// </summary>
+        public static bool IsExternalScreenReaderActive()
+        {
+            const int SPI_GETSCREENREADER = 0x0046;  // Defined in winuser.h
+            bool success = NativeMethods.SystemParametersInfo(SPI_GETSCREENREADER, 0, out bool active, 0);
+            return success && active;
+        }
     }
 }
