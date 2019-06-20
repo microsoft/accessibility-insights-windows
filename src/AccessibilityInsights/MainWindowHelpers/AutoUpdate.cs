@@ -84,11 +84,9 @@ namespace AccessibilityInsights
             }
 
             autoUpdateOption = updateOption;
-            if (autoUpdateOption == AutoUpdateOption.Current || autoUpdateOption == AutoUpdateOption.Unknown)
-            {
-                return false;
-            }
-            return true;
+
+            return autoUpdateOption == AutoUpdateOption.OptionalUpgrade
+                || autoUpdateOption == AutoUpdateOption.RequiredUpgrade;
         }
 
         /// <summary>
