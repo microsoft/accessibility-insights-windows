@@ -128,6 +128,9 @@
   <ItemGroup>
     <DropSignedFile Include="$(OutDir)\AccessibilityInsights.CommonUxComponents.dll" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
+  </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

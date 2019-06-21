@@ -580,7 +580,6 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\BrandIcon.ico" />
     <Resource Include="Resources\Icons\BrandIcon_white.ico" />
-    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\BrandIconDesktop.ico" />
