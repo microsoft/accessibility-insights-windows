@@ -119,7 +119,7 @@ namespace AccessibilityInsights
         /// </summary>
         private async void DownLoadInstaller(IAutoUpdate autoUpdate)
         {
-            UpdateResult result = UpdateResult.Unknown;
+            UpdateResult updateResult = UpdateResult.Unknown;
 
             // If the window is topmost, the UAC prompt from the version switcher will appear behind the main window.
             // To prevent this, save the previous topmost state, ensure that the main window is not topmost when the
@@ -130,11 +130,11 @@ namespace AccessibilityInsights
             {
                 ctrlProgressRing.Activate();
                 Topmost = false;
-                result = await autoUpdate.UpdateAsync().ConfigureAwait(true);
+                updateResult = await autoUpdate.UpdateAsync().ConfigureAwait(true);
 
                 Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeDoInstallation(
-                    autoUpdate.GetUpdateTime(), _updateOption.ToString()));
-                if (result == UpdateResult.Success)
+                    autoUpdate.GetUpdateTime(), updateResult.ToString()));
+                if (updateResult == UpdateResult.Success)
                 {
                     this.Close();
                     return;
@@ -149,7 +149,7 @@ namespace AccessibilityInsights
 
             Topmost = previousTopmostSetting;
             ctrlProgressRing.Deactivate();
-            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeInstallationError(result.ToString()));
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForUpgradeInstallationError(updateResult.ToString()));
 
             string message = _updateOption == AutoUpdateOption.RequiredUpgrade
                 ? GetMessageForRequiredUpdateFailure() : GetMessageForOptionalUpdateFailure();
