@@ -106,10 +106,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         ///    1. "play sound while scanning" option in settings pannel is on
         ///    2. At least one AT tool is running
         /// </summary>
-        public static bool ShouldPlayScannerSound()
-        {
-            return false;
-        }
+        public bool ShouldPlayScannerSound() => WithSound && IsScreenReaderActive();
 
         /// <summary>
         /// Overriding LocalizedControlType
@@ -147,6 +144,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         {
             get
             {
+                // Because we don't expect to be notified when this binding's source has updated,
+                // we need to initiate the update here
+                GetBindingExpression(WithSoundProperty)?.UpdateTarget();
+
                 return withSound;
             }
             set
@@ -175,7 +176,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
                     sb3.Begin();
                     sb4.Begin();
                     sb5.Begin();
-                    if (withSound && ShouldPlayScannerSound())
+                    if (ShouldPlayScannerSound())
                     {
                         PlayScannerSound(3000);
                     }

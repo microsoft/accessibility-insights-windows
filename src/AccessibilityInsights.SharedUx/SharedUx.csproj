@@ -218,10 +218,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Controls\ProgressRingControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\PropertyInfoControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -253,10 +249,6 @@
     <Page Include="Dialogs\HotkeyGrabDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Dialogs\LoadingBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\MoveTextRangeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -357,9 +349,6 @@
     <Compile Include="Dialogs\GlobalEyedropperWindow.xaml.cs">
       <DependentUpon>GlobalEyedropperWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\LoadingBox.xaml.cs">
-      <DependentUpon>LoadingBox.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Enums\ContrastAnalysisType.cs" />
     <Compile Include="Enums\InspectTabType.cs" />
     <Compile Include="Enums\InspectTabMode.cs" />
@@ -452,9 +441,6 @@
     <Compile Include="Controls\NPISlider.cs" />
     <Compile Include="Controls\PatternInfoControl.xaml.cs">
       <DependentUpon>PatternInfoControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\ProgressRingControl.xaml.cs">
-      <DependentUpon>ProgressRingControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\PropertyInfoControl.xaml.cs">
       <DependentUpon>PropertyInfoControl.xaml</DependentUpon>
@@ -587,7 +573,6 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\BrandIcon.ico" />
     <Resource Include="Resources\Icons\BrandIcon_white.ico" />
-    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\BrandIconDesktop.ico" />

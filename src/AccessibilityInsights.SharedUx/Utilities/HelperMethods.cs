@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
-using AccessibilityInsights.SharedUx.FileIssue;
 using System;
 using System.Windows;
 
@@ -48,5 +49,10 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 return IssueReporter.IsEnabled ? Visibility.Visible : Visibility.Collapsed;
             }
         }
+
+        /// <summary>
+        /// Provides bindable property for ProgressRingControls
+        /// </summary>
+        public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
     }
 }

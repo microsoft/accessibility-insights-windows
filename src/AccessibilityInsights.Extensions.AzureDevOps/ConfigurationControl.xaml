@@ -7,9 +7,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     xmlns:local="clr-namespace:AccessibilityInsights.Extensions.AzureDevOps"
     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.AzureDevOps.Properties"
-    xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d" IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged"
     d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -136,7 +136,7 @@
                 <TextBox Height="30" VerticalContentAlignment="Center" x:Name="tbTeamProjectSearch" TextChanged="TextBox_TextChanged"
                          AutomationProperties.Name="{x:Static Properties:Resources.tbTeamProjectSearchAutomationPropertiesName}"
                          FontSize="{DynamicResource StandardTextSize}"/>
-                <controls:FabricIconControl HorizontalAlignment="Right" Margin="5,0,5,0" 
+                <fabric:FabricIconControl HorizontalAlignment="Right" Margin="5,0,5,0" 
                                                   GlyphName="Search" GlyphSize="Custom" FontSize="11" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Grid>
             <Grid Grid.Row="2" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
@@ -160,11 +160,11 @@
                 </TreeView>
             </Grid>
         </Grid>
-        <controls:ProgressRingControl x:Name="ctrlProgressRing" 
+        <fabric:ProgressRingControl x:Name="ctrlProgressRing" 
                                    Size="25"  
                                    Visibility="Collapsed"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" Grid.RowSpan="5">
-        </controls:ProgressRingControl>
+        </fabric:ProgressRingControl>
     </Grid>
 </issuereporting:IssueConfigurationControl>
