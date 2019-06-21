@@ -97,5 +97,14 @@ namespace AccessibilityInsights.Misc
                     { TelemetryProperty.Scope, scope },
                 });
         }
+
+        public static TelemetryEvent ForLoadDataFile(string mode)
+        {
+            return new TelemetryEvent(TelemetryAction.Hierarchy_Load_NewFormat,
+                new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.FileMode, mode },
+                });
+        }
     }
 }

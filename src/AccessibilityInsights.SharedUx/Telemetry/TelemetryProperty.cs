@@ -17,7 +17,6 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         Comment,
         IsAlreadyLoggedIn,
         FileMode,
-        ProtocolMode,
         Error,
         Scope, // to indicate the scope of selection
         TabStopLooped,

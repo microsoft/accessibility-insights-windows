@@ -196,8 +196,7 @@ namespace AccessibilityInsights
 
             var v = SelectAction.GetDefaultInstance().SelectLoadedData(path, selectedElementId);
 
-            TelemetryProperty mode = selectedElementId.HasValue ? TelemetryProperty.ProtocolMode : TelemetryProperty.FileMode;
-            Logger.PublishTelemetryEvent(TelemetryAction.Hierarchy_Load_NewFormat, mode, v.Item2.Mode.ToString());
+            Logger.PublishTelemetryEvent(TelemetryEventFactory.ForLoadDataFile(v.Item2.Mode.ToString()));
 
             if (v.Item2.Mode == A11yFileMode.Test && !selectedElementId.HasValue)
             {
