@@ -250,10 +250,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Dialogs\LoadingBox.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Dialogs\MoveTextRangeDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -352,9 +348,6 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Dialogs\GlobalEyedropperWindow.xaml.cs">
       <DependentUpon>GlobalEyedropperWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Dialogs\LoadingBox.xaml.cs">
-      <DependentUpon>LoadingBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="Enums\ContrastAnalysisType.cs" />
     <Compile Include="Enums\InspectTabType.cs" />
