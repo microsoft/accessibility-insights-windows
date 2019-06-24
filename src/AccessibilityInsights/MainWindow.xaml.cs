@@ -684,19 +684,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void onbtnConfigClicked(object sender, RoutedEventArgs e)
         {
-            if (this.gridlayerConfig.Visibility == Visibility.Visible)
-            {
-                HideConfigurationMode();
-                UpdateMainWindowUI();
-                if (this.CurrentPage == AppPage.Inspect)
-                {
-                    HandleBackToSelectingState();
-                }
-            }
-            else
-            {
-                HandleConfigurationModeStart(false);
-            }
+            HandleConfigurationModeStart(false);
         }
 
         /// <summary>
