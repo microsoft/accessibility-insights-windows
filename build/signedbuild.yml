@@ -131,17 +131,17 @@ jobs:
     continueOnError: true
     
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
-    displayName: 'Create Security Analysis Report'
+    displayName: 'Create Security Analysis Report (CredScan, FxCop, and PoliCheck)'
     inputs:
       CredScan: true
       FxCop: true
       PoliCheck: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-    displayName: 'Publish Security Analysis Logs'
+    displayName: 'Publish Security Analysis Logs (CredScan, FxCop, and PoliCheck)'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-    displayName: 'Post Analysis'
+    displayName: 'Post Analysis (CredScan, FxCop, and PoliCheck)'
     inputs:
       CredScan: true
       FxCop: true
