@@ -101,18 +101,8 @@ jobs:
     inputs:
       ArtifactName: 'Compliance'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
-    displayName: 'Run BinSkim '
-    inputs:
-      InputType: Basic
-      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
-                      src\\AccessibilityInsights\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\*.dll;"
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-autoapplicability.AutoApplicability@1
+    displayName: 'Run AutoApplicability'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
@@ -128,30 +118,56 @@ jobs:
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
-    displayName: 'Create Security Analysis Report'
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
+    displayName: 'Run PoliCheck'
     inputs:
-      BinSkim: true
+      targetType: F
+    continueOnError: true
+    
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
+    displayName: 'Create Security Analysis Report (CredScan, FxCop, and PoliCheck)'
+    inputs:
       CredScan: true
       FxCop: true
+      PoliCheck: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-    displayName: 'Publish Security Analysis Logs'
+    displayName: 'Publish Security Analysis Logs (CredScan, FxCop, and PoliCheck)'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-    displayName: 'Post Analysis'
+    displayName: 'Post Analysis (CredScan, FxCop, and PoliCheck)'
     inputs:
-      BinSkim: true
       CredScan: true
       FxCop: true
       FxCopBreakOn: CriticalError
+      PoliCheck: true
 
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+    displayName: 'TSA upload (CredScan, FxCop, and PoliCheck)'
+    inputs:
+      tsaVersion: TsaV2
+      codebase: NewOrUpdate
+      codeBaseName: $(TSACodeBaseName)
+      notificationAlias: $(TSANotificationAlias)
+      codeBaseAdmins: $(TSACodeBaseAdmins)
+      instanceUrlForTsaV2: $(TSAInstance)
+      projectNameMSENG: $(TSAProjectName)
+      areaPath: $(TSAAreaPath)
+      iterationPath: $(TSAIterationPath)
+      uploadAPIScan: false
+      uploadBinSkim: false
+      uploadFortifySCA: false
+      uploadModernCop: false
+      uploadPREfast: false
+      uploadRoslyn: false
+      uploadTSLint: false
+      
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
@@ -209,7 +225,7 @@ jobs:
       ArtifactName: 'msi'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
-    displayName: 'Run BinSkim '
+    displayName: 'Run BinSkim'
     inputs:
       InputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
@@ -222,20 +238,17 @@ jobs:
                       src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
-    displayName: 'Create Security Analysis Report'
+    displayName: 'Create Security Analysis Report (BinSkim)'
     inputs:
-      CredScan: true
-      FxCop: true
+      BinSkim: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-    displayName: 'Publish Security Analysis Logs'
+    displayName: 'Publish Security Analysis Logs (BinSkim)'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-    displayName: 'Post Analysis'
+    displayName: 'Post Analysis (BinSkim)'
     inputs:
-      CredScan: true
-      FxCop: true
-      FxCopBreakOn: CriticalError
+      BinSkim: true
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
@@ -275,92 +288,29 @@ jobs:
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
-      
-  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
-    displayName: 'Perform Cleanup Tasks'
-    condition: succeededOrFailed()
 
-- job: SignedDebug
-  dependsOn: 
-  - ComplianceRelease
-  - ComplianceDebug
-  condition: and(succeeded(), succeeded())
-  pool: VSEng-MicroBuildVS2017
-  steps:
-  - task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@1
-    displayName: 'Install Localization Plugin'
-
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+    displayName: 'TSA upload (BinSkim)'
     inputs:
-      vsVersion: 15.0
-      platform: '$(BuildPlatform)'
-      configuration: debug
+      tsaVersion: TsaV2
+      codebase: NewOrUpdate
+      codeBaseName: $(TSACodeBaseName)
+      notificationAlias: $(TSANotificationAlias)
+      codeBaseAdmins: $(TSACodeBaseAdmins)
+      instanceUrlForTsaV2: $(TSAInstance)
+      projectNameMSENG: $(TSAProjectName)
+      areaPath: $(TSAAreaPath)
+      iterationPath: $(TSAIterationPath)
+      uploadAPIScan: false
+      uploadCredScan: false
+      uploadFortifySCA: false
+      uploadFxCop: false
+      uploadModernCop: false
+      uploadPoliCheck: false
+      uploadPREfast: false
+      uploadRoslyn: false
+      uploadTSLint: false
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\debug\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-autoapplicability.AutoApplicability@1
-    displayName: 'Run AutoApplicability'
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
-    displayName: 'Run CredScan'
-    inputs:
-      debugMode: false
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-fxcop.FxCop@2
-    displayName: 'Run FxCop'
-    inputs:
-      inputType: Basic
-      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
-                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
-                src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
-    displayName: 'Create Security Analysis Report'
-    inputs:
-      CredScan: true
-      FxCop: true
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-    displayName: 'Publish Security Analysis Logs'
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-    displayName: 'Post Analysis'
-    inputs:
-      CredScan: true
-      FxCop: true
-      FxCopBreakOn: CriticalError
-
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\** copy'
-    inputs:
-      testAssemblyVer2: |  
-        **\*test*.dll
-        !**\obj\**
-      vsTestVersion: 15.0
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: debug
-      rerunFailedTests: true
-      
   - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
     displayName: 'Perform Cleanup Tasks'
     condition: succeededOrFailed()
