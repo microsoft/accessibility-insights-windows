@@ -240,7 +240,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                         TurnOnHighlighter();
                         StartRecordingEvent();
                         var ha = ClearOverlayDriver.GetDefaultInstance();
-                        ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                         ha.MarkSelectedElement();
                         this.Toast = new ToastNotification();
                         ha.ShowToast(Toast);
@@ -256,7 +255,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         }
 
-
         /// <summary>
         /// Collapse the toast notification 
         /// </summary>
@@ -269,9 +267,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     this.Toast.Visibility = Visibility.Collapsed;
                 });
-
             });
-
         }
 
         /// <summary>
@@ -363,9 +359,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 TabStopCount = 0;
                 IsTabStopLooped = false;
 
-                this.EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.OnFocusChanged);
-
-                this.lvElements.Items.Clear();
+                CurrentElement = null;
+                EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageReceived);
+                lvElements.Items.Clear();
                 IsRecordingActive = true;
                 Logger.PublishTelemetryEvent(TelemetryAction.TabStop_Record_On,
                     TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString());
@@ -395,59 +391,86 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             return false;
         }
 
-        /// <summary>
-        /// Handle Focus Change event; filters out unwanted events
-        /// </summary>
-        /// <param name="message"></param>
-        private void OnFocusChanged(EventMessage message)
+        private void EventMessageReceived(EventMessage message)
         {
-            // only when focus is chosen
-            if (message.EventId == EventType.UIA_AutomationFocusChangedEventId)
+            switch (message.EventId)
             {
-                // exclude tooltip since it is transient UI. 
-                if (message.Element.ControlTypeId != Axe.Windows.Core.Types.ControlType.UIA_ToolTipControlTypeId && !message.Element.IsSameUIElement(CurrentElement))
-                {
-                    // ancestry variable is not used directly. however, it populates ancestry of message.Element and the ancestry is used in IsChildOf(...) method. 
-                    // Don't remove it. 
-                    var ancestry = new DesktopElementAncestry(TreeViewMode.Control, message.Element, true);
+                case EventType.UIA_EventRecorderNotificationEventId:
+                    // this is an message about the event listener, not an actual event
+                    ProcessEventRecorderNotification(message);
+                    break;
+                case EventType.UIA_AutomationFocusChangedEventId:
+                    ProcessFocusedChangedEvent(message);
+                    break;
+                default:
+                    // we don't care about other events here
+                    break;
+            }
+        }
 
-                    /// Don't do anything if focused element isn't in target scope
-                    if (!IsChildOf(this.ElementContext.Element, message.Element))
+        private static void ProcessEventRecorderNotification(EventMessage message)
+        {
+            if (!IsListenerRegisteredNotification(message)) return;
+
+            ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
+        }
+
+        private void ProcessFocusedChangedEvent(EventMessage message)
+        {
+            // exclude tooltip since it is transient UI. 
+            if (message.Element.ControlTypeId != Axe.Windows.Core.Types.ControlType.UIA_ToolTipControlTypeId && !message.Element.IsSameUIElement(CurrentElement))
+            {
+                // ancestry variable is not used directly. however, it populates ancestry of message.Element and the ancestry is used in IsChildOf(...) method. 
+                // Don't remove it. 
+                var ancestry = new DesktopElementAncestry(TreeViewMode.Control, message.Element, true);
+
+                /// Don't do anything if focused element isn't in target scope
+                if (!IsChildOf(this.ElementContext.Element, message.Element))
+                {
+                    //StopRecordEvents();
+                    return;
+                }
+                this.CurrentElement = message.Element;
+
+                /// if element has already been added to list, just select it
+                foreach (TabStopItemViewModel ev in this.lvElements.Items)
+                {
+                    if (ev.Element != null && ev.Element.IsSameUIElement(message.Element))
                     {
-                        //StopRecordEvents();
+                        Dispatcher.Invoke(() =>
+                        {
+                            this.lvElements.ScrollIntoView(ev);
+                        });
+
+                        IsTabStopLooped = true; // tab stop is looped!!
                         return;
                     }
-                    this.CurrentElement = message.Element;
-
-                    /// if element has already been added to list, just select it
-                    foreach (TabStopItemViewModel ev in this.lvElements.Items)
-                    {
-                        if (ev.Element != null && ev.Element.IsSameUIElement(message.Element))
-                        {
-                            Dispatcher.Invoke(() =>
-                            {
-                                this.lvElements.ScrollIntoView(ev);
-                            });
-
-                            IsTabStopLooped = true; // tab stop is looped!!
-                            return;
-                        }
-                    }
-
-                    Dispatcher.Invoke(() =>
-                    {
-                        var count = TabStopCount;
-                        var item = new TabStopItemViewModel(message.Element, count);
-                        this.lvElements.Items.Add(item);
-                        this.lvElements.ScrollIntoView(item);
-                        this.lvElements.SelectedItems.Add(item);
-                    });
                 }
-                else
+
+                Dispatcher.Invoke(() =>
                 {
-                    message.Dispose();
-                }
+                    var count = TabStopCount;
+                    var item = new TabStopItemViewModel(message.Element, count);
+                    this.lvElements.Items.Add(item);
+                    this.lvElements.ScrollIntoView(item);
+                    this.lvElements.SelectedItems.Add(item);
+                });
             }
+            else
+            {
+                message.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Determines if a message is a notification that event listening has begun
+        /// </summary>
+        /// <param name="message">The message to evaluate</param>
+        /// <returns>Is the message is a notification that event listening has begun</returns>
+        private static bool IsListenerRegisteredNotification(EventMessage message)
+        {
+            // sadly, these strings are hardcoded into axe-windows at the moment they are populated...
+            return message.Properties.Any(p => p.Key == "Message" && p.Value == "Succeeded to register an event listener");
         }
 
         /// <summary>
