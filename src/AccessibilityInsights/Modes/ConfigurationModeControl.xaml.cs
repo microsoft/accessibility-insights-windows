@@ -250,15 +250,9 @@ namespace AccessibilityInsights.Modes
 
             this.btnOk.IsEnabled = false;
 
-            if (HelperMethods.GeneralFileBugVisibility == Visibility.Collapsed)
-            {
-                tbiConnection.Visibility = Visibility.Collapsed;
-            }
-            else if (connection)
-            {
-                tbiConnection.IsSelected = true;
-            }
-
+            tbiConnection.Visibility = HelperMethods.GeneralFileBugVisibility;
+            var tabToSelect = connection ? tbiConnection : tbiApplication;
+            tabToSelect.IsSelected = true;
             await Dispatcher.InvokeAsync(() => (this.tcTabs.SelectedItem as UIElement).Focus(), System.Windows.Threading.DispatcherPriority.ApplicationIdle);
         }
 
