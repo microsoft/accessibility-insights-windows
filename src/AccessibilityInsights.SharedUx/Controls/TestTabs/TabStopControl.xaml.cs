@@ -360,7 +360,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 IsTabStopLooped = false;
 
                 CurrentElement = null;
-                EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageRecieved);
+                EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageReceived);
                 lvElements.Items.Clear();
                 IsRecordingActive = true;
                 Logger.PublishTelemetryEvent(TelemetryAction.TabStop_Record_On,
@@ -391,7 +391,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             return false;
         }
 
-        private void EventMessageRecieved(EventMessage message)
+        private void EventMessageReceived(EventMessage message)
         {
             switch (message.EventId)
             {
