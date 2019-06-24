@@ -118,7 +118,7 @@ jobs:
       targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
                 src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll\
+                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
                 src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
@@ -225,7 +225,7 @@ jobs:
       ArtifactName: 'msi'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
-    displayName: 'Run BinSkim '
+    displayName: 'Run BinSkim'
     inputs:
       InputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
@@ -238,15 +238,15 @@ jobs:
                       src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
-    displayName: 'Create Security Analysis Report'
+    displayName: 'Create Security Analysis Report (BinSkim)'
     inputs:
       BinSkim: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@2
-    displayName: 'Publish Security Analysis Logs'
+    displayName: 'Publish Security Analysis Logs (BinSkim)'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@1
-    displayName: 'Post Analysis'
+    displayName: 'Post Analysis (BinSkim)'
     inputs:
       BinSkim: true
 
@@ -304,6 +304,7 @@ jobs:
       uploadAPIScan: false
       uploadCredScan: false
       uploadFortifySCA: false
+      uploadFxCop: false
       uploadModernCop: false
       uploadPoliCheck: false
       uploadPREfast: false
