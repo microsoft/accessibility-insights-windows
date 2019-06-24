@@ -240,7 +240,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                         TurnOnHighlighter();
                         StartRecordingEvent();
                         var ha = ClearOverlayDriver.GetDefaultInstance();
-                        ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
                         ha.MarkSelectedElement();
                         this.Toast = new ToastNotification();
                         ha.ShowToast(Toast);
@@ -256,7 +255,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         }
 
-
         /// <summary>
         /// Collapse the toast notification 
         /// </summary>
@@ -269,9 +267,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     this.Toast.Visibility = Visibility.Collapsed;
                 });
-
             });
-
         }
 
         /// <summary>
@@ -363,9 +359,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 TabStopCount = 0;
                 IsTabStopLooped = false;
 
-                this.EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.OnFocusChanged);
-
-                this.lvElements.Items.Clear();
+                CurrentElement = null;
+                EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.OnFocusChanged);
+                lvElements.Items.Clear();
                 IsRecordingActive = true;
                 Logger.PublishTelemetryEvent(TelemetryAction.TabStop_Record_On,
                     TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString());
@@ -400,7 +396,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         /// <param name="message"></param>
         private void OnFocusChanged(EventMessage message)
-        {
+    {
             // only when focus is chosen
             if (message.EventId == EventType.UIA_AutomationFocusChangedEventId)
             {
@@ -448,6 +444,17 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     message.Dispose();
                 }
             }
+            else if (IsMessageRegisterSuccess(message))
+            {
+                ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
+            }
+        }
+
+        private static bool IsMessageRegisterSuccess(EventMessage message)
+        {
+            // sadly, these strings are hardcoded into axe-windows at the moment they are populated...
+            return message.EventId == EventType.UIA_EventRecorderNotificationEventId
+                && message.Properties.Any(p => p.Key == "Message" && p.Value == "Succeeded to register an event listener");
         }
 
         /// <summary>
