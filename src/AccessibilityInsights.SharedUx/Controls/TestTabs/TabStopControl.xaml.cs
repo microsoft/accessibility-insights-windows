@@ -396,7 +396,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         /// <param name="message"></param>
         private void OnFocusChanged(EventMessage message)
-    {
+        {
             // only when focus is chosen
             if (message.EventId == EventType.UIA_AutomationFocusChangedEventId)
             {
