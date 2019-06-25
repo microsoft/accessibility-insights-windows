@@ -3,7 +3,6 @@ trigger: none
 pr: none
 variables:
   BuildPlatform: 'x86'
-  DropFolder: 'signed'
   MAICreateNuget: 'true'
   PublicRelease: 'true'
   SignAppForRelease: 'true'
@@ -268,14 +267,6 @@ jobs:
     inputs:
       SearchPattern: '**\bin\**\*.pdb'
     continueOnError: true
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: $(DropFolder)'
-    inputs:
-      PathtoPublish: 'src\MSI\bin\Release\msi'
-      ArtifactName: '$(DropFolder)'
-      publishLocation: FilePath
-      TargetPath: '$(DropRoot)'
 
   - task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
     displayName: 'Publish Symbols'
