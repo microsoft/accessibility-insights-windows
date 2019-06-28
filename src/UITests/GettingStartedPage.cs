@@ -20,13 +20,12 @@ namespace UITests
         [TestCategory("NoStrongName")]
         public void VerifyAccessibility()
         {
-            var result = SnapshotCommand.Execute(new Dictionary<string, string>
-            {
-                { CommandConstStrings.TargetProcessId, testAppProcessId.ToString() },
-                { CommandConstStrings.OutputFile, "GettingStartedPage" },
-                { CommandConstStrings.OutputFileFormat, "a11ytest" }
-            });
-            Assert.AreEqual(0, result.ScanResultsFailedCount);
+            var config = Config.Builder.ForProcessId(testAppProcessId).Build();
+            var scanner = ScannerFactory.CreateScanner(config);
+
+            var result = scanner.Scan();
+
+            Assert.AreEqual(0, result.ErrorCount);
         }
 
         [ClassInitialize]
