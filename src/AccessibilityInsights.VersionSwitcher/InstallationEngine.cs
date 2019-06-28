@@ -175,7 +175,8 @@ namespace AccessibilityInsights.VersionSwitcher
         {
             if (newChannel != null)
             {
-                var configFile = Path.Combine(DirectoryManagement.sConfigurationFolderPath, Constants.AppConfigFileName);
+                var defaultConfigPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+                var configFile = Path.Combine(defaultConfigPaths.ConfigurationFolderPath, Constants.AppConfigFileName);
 
                 SettingsDictionary settings = FileHelpers.LoadDataFromJSON<SettingsDictionary>(configFile);
                 settings[Constants.ReleaseChannelKey] = newChannel;

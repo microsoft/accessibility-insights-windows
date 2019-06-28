@@ -29,12 +29,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// Event recorder settings
         /// </summary>
         public RecorderSetting EventConfig { get; private set; }
+        
+        public FixedConfigSettingsProvider PathProvider { get; }
 
         /// <summary>
         /// private constructor
         /// </summary>
-        private ConfigurationManager()
+        private ConfigurationManager(FixedConfigSettingsProvider provider)
         {
+            this.PathProvider = provider;
             PopulateMainConfiguration();
             PopulateEventConfiguration();
             PopulateLayout();
@@ -49,10 +52,10 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             try
             {
-                var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, LayoutFileName);
+                var fp = Path.Combine(PathProvider.UserDataFolderPath, LayoutFileName);
                 this.AppLayout.SerializeInJSON(fp);
 
-                fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
+                fp = Path.Combine(PathProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
                 this.AppConfig.SerializeInJSON(fp);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -68,7 +71,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private void PopulateLayout()
         {
-            var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, LayoutFileName);
+            var fp = Path.Combine(PathProvider.ConfigurationFolderPath, LayoutFileName);
             var window = Application.Current.MainWindow;
 
             // Layout
@@ -94,19 +97,19 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private void PopulateMainConfiguration()
         {
-            var fp = Path.Combine(DirectoryManagement.sConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
+            var fp = Path.Combine(PathProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
 
             // Main configuration 
             try
             {
-                this.AppConfig = ConfigurationModel.LoadFromJSON(fp);
+                this.AppConfig = ConfigurationModel.LoadFromJSON(fp, PathProvider);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 ConfigurationModel.RemoveConfiguration(fp);
-                this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel();
+                this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel(PathProvider);
                 this.AppConfig.SerializeInJSON(fp);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
@@ -119,7 +122,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void PopulateEventConfiguration()
         {
-            var configpath = Path.Combine(DirectoryManagement.sUserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(PathProvider.UserDataFolderPath, EventConfigFileName);
             try
             {
                 var rcfg = RecorderSetting.LoadConfiguration(configpath);
@@ -141,7 +144,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void SaveEventsConfiguration()
         {
-            var configpath = Path.Combine(DirectoryManagement.sUserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(PathProvider.UserDataFolderPath, EventConfigFileName);
 
             this.EventConfig.SerializeInJSON(configpath);
         }
@@ -156,13 +159,13 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// Get the default instance of ConfigurationManager
         /// </summary>
         /// <returns></returns>
-        public static ConfigurationManager GetDefaultInstance()
+        public static ConfigurationManager GetDefaultInstance(FixedConfigSettingsProvider provider = null)
         {
             if(sDefaultInstance == null)
             {
                 try
                 {
-                    sDefaultInstance = new ConfigurationManager();
+                    sDefaultInstance = new ConfigurationManager(provider);
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch

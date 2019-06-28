@@ -11,8 +11,10 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
+using CommandLine;
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
@@ -105,11 +107,21 @@ namespace AccessibilityInsights
         /// </summary>
         private static void PopulateConfigurations()
         {
-            // make sure that necessary folders are created. 
-            DirectoryManagement.CreateFolders();
+            var defaultPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+            var args = Environment.GetCommandLineArgs();
+            var configPathProvider = Parser.Default.ParseArguments<CommandOptions>(args.Skip(1)).MapResult(
+                    parsed => new FixedConfigSettingsProvider(
+                        parsed.ConfigFolder ?? defaultPaths.ConfigurationFolderPath, 
+                        parsed.UserDataFolder ?? defaultPaths.UserDataFolderPath
+                    ), 
+                    notParsed => defaultPaths
+            );
+
+            DirectoryManagement.CreateFolder(configPathProvider.UserDataFolderPath);
+            DirectoryManagement.CreateFolder(configPathProvider.ConfigurationFolderPath);
 
             // Populate the App Config and Test Config
-            ConfigurationManager.GetDefaultInstance();
+            ConfigurationManager.GetDefaultInstance(configPathProvider);
 
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 

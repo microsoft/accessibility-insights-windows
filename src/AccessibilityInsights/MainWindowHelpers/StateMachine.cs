@@ -17,6 +17,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Automation;
 using AccessibilityInsights.Misc;
+using CommandLine;
+using System.Linq;
 
 namespace AccessibilityInsights
 {
@@ -548,15 +550,9 @@ namespace AccessibilityInsights
         /// <returns></returns>
         private static string GetFilePathForOpenAction()
         {
-            string path = null;
-
             var args = Environment.GetCommandLineArgs();
-
-            if (args.Length > 1)
-            {
-                path = args[1];
-            }
-            return path;
+            return Parser.Default.ParseArguments<CommandOptions>(args.Skip(1))
+                .MapResult(parsed => parsed.FileToOpen, notParsed => null);
         }
 
         /// <summary>
