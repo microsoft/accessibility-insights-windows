@@ -65,7 +65,6 @@
     <Compile Include="ChannelInfoUtilities.cs" />
     <Compile Include="FixedConfigSettingsProvider.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DirectoryManagement.cs" />
     <Compile Include="ExceptionReporter.cs" />
     <Compile Include="FileHelpers.cs" />
     <Compile Include="GitHubWrapper.cs" />

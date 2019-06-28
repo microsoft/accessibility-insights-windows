@@ -117,8 +117,8 @@ namespace AccessibilityInsights
                     notParsed => defaultPaths
             );
 
-            DirectoryManagement.CreateFolder(configPathProvider.UserDataFolderPath);
-            DirectoryManagement.CreateFolder(configPathProvider.ConfigurationFolderPath);
+            FileHelpers.CreateFolder(configPathProvider.UserDataFolderPath);
+            FileHelpers.CreateFolder(configPathProvider.ConfigurationFolderPath);
 
             // Populate the App Config and Test Config
             ConfigurationManager.GetDefaultInstance(configPathProvider);

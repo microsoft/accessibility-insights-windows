@@ -59,5 +59,17 @@ namespace AccessibilityInsights.SetupLibrary
 
             return false;
         }
+
+        /// <summary>
+        /// Create folder if it doesn't exist. 
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateFolder(string path)
+        {
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+        }
     }
 }
