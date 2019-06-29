@@ -40,12 +40,6 @@ namespace UITests
 
             // Set implicit timeout to 1.5 seconds to ensure element search retries every 500 ms for at most three times
             session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
-
-            var result = StartCommand.Execute(new Dictionary<string, string>(), string.Empty);
-            if (!result.Succeeded)
-            {
-                Assert.Inconclusive("Start command for AxeWindows failed");
-            }
         }
 
         private static void LaunchApplicationAndAttach()
@@ -79,8 +73,6 @@ namespace UITests
             session.Close();
             session.Quit();
             session = null;
-
-            StopCommand.Execute();
         }
 
         private static bool IsWinAppDriverRunning()
