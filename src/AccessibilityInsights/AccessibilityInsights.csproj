@@ -125,6 +125,7 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Enums\CCAView.cs" />
+    <Compile Include="Misc\CommandLineSettings.cs" />
     <Compile Include="Misc\CommandOptions.cs" />
     <Compile Include="Misc\TelemetryEventFactory.cs" />
     <Compile Include="Modes\DialogContainerModeControl.xaml.cs">

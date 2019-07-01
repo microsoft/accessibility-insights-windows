@@ -29,15 +29,18 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// Event recorder settings
         /// </summary>
         public RecorderSetting EventConfig { get; private set; }
-        
-        public FixedConfigSettingsProvider PathProvider { get; }
+
+        /// <summary>
+        /// Provider for fixed configuration settings such as path to user config folder
+        /// </summary>
+        public FixedConfigSettingsProvider SettingsProvider { get; }
 
         /// <summary>
         /// private constructor
         /// </summary>
         private ConfigurationManager(FixedConfigSettingsProvider provider)
         {
-            this.PathProvider = provider;
+            this.SettingsProvider = provider;
             PopulateMainConfiguration();
             PopulateEventConfiguration();
             PopulateLayout();
@@ -52,10 +55,10 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             try
             {
-                var fp = Path.Combine(PathProvider.UserDataFolderPath, LayoutFileName);
+                var fp = Path.Combine(SettingsProvider.UserDataFolderPath, LayoutFileName);
                 this.AppLayout.SerializeInJSON(fp);
 
-                fp = Path.Combine(PathProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
+                fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
                 this.AppConfig.SerializeInJSON(fp);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -71,7 +74,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private void PopulateLayout()
         {
-            var fp = Path.Combine(PathProvider.ConfigurationFolderPath, LayoutFileName);
+            var fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, LayoutFileName);
             var window = Application.Current.MainWindow;
 
             // Layout
@@ -97,19 +100,19 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private void PopulateMainConfiguration()
         {
-            var fp = Path.Combine(PathProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
+            var fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
 
             // Main configuration 
             try
             {
-                this.AppConfig = ConfigurationModel.LoadFromJSON(fp, PathProvider);
+                this.AppConfig = ConfigurationModel.LoadFromJSON(fp, SettingsProvider);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 e.ReportException();
                 ConfigurationModel.RemoveConfiguration(fp);
-                this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel(PathProvider);
+                this.AppConfig = ConfigurationModel.GetDefaultConfigurationModel(SettingsProvider);
                 this.AppConfig.SerializeInJSON(fp);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
@@ -122,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void PopulateEventConfiguration()
         {
-            var configpath = Path.Combine(PathProvider.UserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
             try
             {
                 var rcfg = RecorderSetting.LoadConfiguration(configpath);
@@ -144,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void SaveEventsConfiguration()
         {
-            var configpath = Path.Combine(PathProvider.UserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
 
             this.EventConfig.SerializeInJSON(configpath);
         }

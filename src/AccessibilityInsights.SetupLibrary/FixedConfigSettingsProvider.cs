@@ -19,9 +19,9 @@ namespace AccessibilityInsights.SetupLibrary
 
         public static FixedConfigSettingsProvider CreateDefaultSettingsProvider()
         {
-            var sUserDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "AccessibilityInsights");
-            var sConfigurationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"AccessibilityInsights\V1\Configurations");
-            return new FixedConfigSettingsProvider(sConfigurationFolderPath, sUserDataFolderPath);
+            var userDataFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDoc‌​uments), "AccessibilityInsights");
+            var configurationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), @"AccessibilityInsights\V1\Configurations");
+            return new FixedConfigSettingsProvider(configurationFolderPath, userDataFolderPath);
         }
     }
 }

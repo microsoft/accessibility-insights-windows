@@ -4,18 +4,26 @@ using CommandLine;
 
 namespace AccessibilityInsights.Misc
 {
+    /// <summary>
+    /// command line options for Accessibility Insights for Windows
+    /// 
+    /// with the exception of FileToOpen, all commands are intended for internal testing only
+    /// </summary>
     public class CommandOptions
     {
-        [Value(0, HelpText = "File to open in Accessibility Insights", Required = false)]
+        /// <summary>
+        /// Saved test/events file that Accessibility Insights for Windows should open
+        /// </summary>
+        [Value(0, Required = false)]
         public string FileToOpen { get; set; }
 
-        [Option('c', HelpText = "Path to app configuration folder", Required = false)]
+        [Option('c', Required = false)]
         public string ConfigFolder { get; set; }
 
-        [Option('u', HelpText = "Path to user data configuration folder", Required = false)]
+        [Option('u', Required = false)]
         public string UserDataFolder { get; set; }
 
-        [Option(HelpText = "Pause application startup to allow for attaching to debugger", Default = false)]
+        [Option('a', "AttachToDebugger", Required = false)]
         public bool AttachToDebugger { get; set; }
     }
 }

@@ -11,10 +11,8 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
-using CommandLine;
 using System;
 using System.Globalization;
-using System.Linq;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
@@ -108,13 +106,9 @@ namespace AccessibilityInsights
         private static void PopulateConfigurations()
         {
             var defaultPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
-            var args = Environment.GetCommandLineArgs();
-            var configPathProvider = Parser.Default.ParseArguments<CommandOptions>(args.Skip(1)).MapResult(
-                    parsed => new FixedConfigSettingsProvider(
-                        parsed.ConfigFolder ?? defaultPaths.ConfigurationFolderPath, 
-                        parsed.UserDataFolder ?? defaultPaths.UserDataFolderPath
-                    ), 
-                    notParsed => defaultPaths
+            var configPathProvider = new FixedConfigSettingsProvider(
+                CommandLineSettings.ConfigFolder ?? defaultPaths.ConfigurationFolderPath,
+                CommandLineSettings.UserDataFolder ?? defaultPaths.UserDataFolderPath
             );
 
             FileHelpers.CreateFolder(configPathProvider.UserDataFolderPath);

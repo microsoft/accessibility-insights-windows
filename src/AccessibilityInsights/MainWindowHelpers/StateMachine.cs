@@ -506,7 +506,7 @@ namespace AccessibilityInsights
         {
             try
             {
-                var path = GetFilePathForOpenAction();
+                var path = CommandLineSettings.FileToOpen;
                 if (path != null)
                 {
                     return HandleFileDiskOpen(path, null);
@@ -542,17 +542,6 @@ namespace AccessibilityInsights
             }
 
             return false;
-        }
-
-        /// <summary>
-        /// Return the file path
-        /// </summary>
-        /// <returns></returns>
-        private static string GetFilePathForOpenAction()
-        {
-            var args = Environment.GetCommandLineArgs();
-            return Parser.Default.ParseArguments<CommandOptions>(args.Skip(1))
-                .MapResult(parsed => parsed.FileToOpen, notParsed => null);
         }
 
         /// <summary>

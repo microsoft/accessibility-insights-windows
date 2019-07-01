@@ -191,7 +191,7 @@ namespace AccessibilityInsights
         /// </summary>
         private static void InitTelemetry()
         {
-            var configFolder = ConfigurationManager.GetDefaultInstance().PathProvider.ConfigurationFolderPath;
+            var configFolder = ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath;
             // Initialize user info from file if it exists, reset if needed, and re-serialize
             var installInfo = InstallationInfo.LoadFromPath(configFolder);
             Logger.AddOrUpdateContextProperty(TelemetryProperty.InstallationID, installInfo.InstallationGuid.ToString());
@@ -263,18 +263,12 @@ namespace AccessibilityInsights
         /// </summary>
         private static void SupportDebugging()
         {
-            var args = Environment.GetCommandLineArgs();
-            Parser.Default.ParseArguments<CommandOptions>(args.Skip(1))
-                .WithParsed(options =>
-                {
-                    if (options.AttachToDebugger)
-                    {
-                        var dlg = new MessageDialog();
-                        dlg.Message = Properties.Resources.SupportDebuggingDialogMessage;
-                        dlg.ShowDialog();
-                    }
-                }
-            );
+            if (CommandLineSettings.AttachToDebugger)
+            {
+                var dlg = new MessageDialog();
+                dlg.Message = Properties.Resources.SupportDebuggingDialogMessage;
+                dlg.ShowDialog();
+            }
         }
 
         /// <summary>

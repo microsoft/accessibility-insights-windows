@@ -19,20 +19,22 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     [TestClass()]
     public class ConfigurationModelTests
     {
-        public static readonly FixedConfigSettingsProvider testProvider = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
-
-        public static string folderPath = Path.Combine(testProvider.UserDataFolderPath, "ConfigurationTests");
+        private static FixedConfigSettingsProvider testProvider;
 
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            Directory.CreateDirectory(folderPath);
+            var configDir = Path.Combine(context.TestRunDirectory, "config");
+            var userDir = Path.Combine(context.TestRunDirectory, "user");
+            testProvider = new FixedConfigSettingsProvider(configDir, userDir);
+            Directory.CreateDirectory(testProvider.ConfigurationFolderPath);
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            Directory.Delete(folderPath);
+            Directory.Delete(testProvider.ConfigurationFolderPath);
+            Directory.Delete(testProvider.UserDataFolderPath);
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod()]
         public void ConfigurationModelTest()
         {
-            string path = Path.Combine(testProvider.UserDataFolderPath,"config.test");
+            string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test");
 
             var coreProps = DesktopElementHelper.GetDefaultCoreProperties();
 
@@ -64,7 +66,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             const string expectedHotKeyForRecord = "Recording HotKey";
             const string expectedMainWindowActivation = "Main Window Activation HotKey";
-            string path = Path.Combine(testProvider.UserDataFolderPath, "config.test2");
+            string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test2");
 
             ConfigurationModel config = new ConfigurationModel
             {
@@ -96,7 +98,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfirmEnumerablesMatchExpectations(new int[] { }, config.CoreTPAttributes.ToArray());
             Assert.IsFalse(config.DisableTestsInSnapMode);
             Assert.IsTrue(config.EnableTelemetry);
-            Assert.IsTrue(config.EventRecordPath.EndsWith(@"\AccessibilityInsights"), config.EventRecordPath);
+            Assert.IsTrue(config.EventRecordPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(FontSize.Standard, config.FontSize);
             Assert.AreEqual(HighlighterMode.HighlighterBeakerTooltip, config.HighlighterMode);
             Assert.AreEqual("Shift + F9", config.HotKeyForActivatingMainWindow);
@@ -123,7 +125,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.ShowUncertain);
             Assert.IsTrue(config.ShowWelcomeScreenOnLaunch);
             Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
-            Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
+            Assert.IsTrue(config.TestReportPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
