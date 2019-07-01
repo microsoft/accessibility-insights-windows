@@ -97,25 +97,25 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         public void RemoveConfigurationTest()
         {
             string path = Path.Combine(provider.UserDataFolderPath, TestLayoutFile);
-            foreach (string file in System.IO.Directory.EnumerateFiles(provider.UserDataFolderPath))
+            foreach (string file in Directory.EnumerateFiles(provider.UserDataFolderPath))
             {
                 if (file.IndexOf(path) == 0 && file.Contains(".bak"))
                 {
-                    System.IO.File.Delete(file);
+                    File.Delete(file);
                 }
             }
             AppLayout al = new AppLayout(10, 11);
 
             al.SerializeInJSON(path);
-            AppLayout.RemoveConfiguration(path);
-            Assert.IsFalse(System.IO.File.Exists(path));
+            ConfigurationBase.RemoveConfiguration(path);
+            Assert.IsFalse(File.Exists(path));
             bool bakExists = false;
-            foreach (string file in System.IO.Directory.EnumerateFiles(provider.UserDataFolderPath))
+            foreach (string file in Directory.EnumerateFiles(provider.UserDataFolderPath))
             {
                 if (file.IndexOf(path) == 0 && file.Contains(".bak"))
                 {
                     bakExists = true;
-                    System.IO.File.Delete(file);
+                    File.Delete(file);
                     break;
                 }
             }
