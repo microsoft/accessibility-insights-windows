@@ -1,24 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
-using Axe.Windows.Actions.Sarif;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using Axe.Windows.Core.Bases;
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.Misc;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Sarif;
+using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Automation;
-using AccessibilityInsights.Misc;
-using CommandLine;
-using System.Linq;
 
 namespace AccessibilityInsights
 {
