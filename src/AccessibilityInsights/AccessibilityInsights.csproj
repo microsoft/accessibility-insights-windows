@@ -56,29 +56,29 @@
     <ApplicationIcon>..\AccessibilityInsights.SharedUx\Resources\Icons\BrandIconDesktop.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Axe.Windows.Actions, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
+    <Reference Include="Axe.Windows.Actions, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Automation, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
+    <Reference Include="Axe.Windows.Automation, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Core, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
+    <Reference Include="Axe.Windows.Core, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Desktop, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Rules, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
+    <Reference Include="Axe.Windows.Rules, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.RuleSelection, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
+    <Reference Include="Axe.Windows.RuleSelection, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Telemetry, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
+    <Reference Include="Axe.Windows.Telemetry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Win32, Version=0.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
+    <Reference Include="Axe.Windows.Win32, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
     </Reference>
     <Reference Include="CommandLine, Version=2.5.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
       <HintPath>..\packages\CommandLineParser.2.5.0\lib\net461\CommandLine.dll</HintPath>
@@ -87,18 +87,15 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Sarif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=21a5e83f6f5bb844, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\Sarif.dll</HintPath>
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Sarif.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\System.Collections.Immutable.dll</HintPath>
+      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Axe.Windows.0.1.1-prerelease\lib\net471\System.Management.Automation.dll</HintPath>
-    </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
