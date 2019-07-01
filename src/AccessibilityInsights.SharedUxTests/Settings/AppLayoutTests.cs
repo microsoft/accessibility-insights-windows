@@ -12,8 +12,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     public class AppLayoutTests
     {
         const string TestLayoutFile = "LayoutTest.Json";
-
-        public static string folderPath = Path.Combine(DirectoryManagement.sUserDataFolderPath, "AppLayoutTests");
+        private static FixedConfigSettingsProvider provider = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+        public static string folderPath = Path.Combine(provider.UserDataFolderPath, "AppLayoutTests");
 
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
@@ -35,7 +35,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod()]
         public void LoadDefaultAppLayoutTest()
         {
-            string path = Path.Combine(DirectoryManagement.sUserDataFolderPath, TestLayoutFile);
+            string path = Path.Combine(provider.UserDataFolderPath, TestLayoutFile);
             AppLayout al = new AppLayout(10, 11);
             al.LayoutLive.Height = 800;
             al.LayoutSnapshot.RowPropertiesHeight = 500;
@@ -96,26 +96,26 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod()]
         public void RemoveConfigurationTest()
         {
-            string path = Path.Combine(DirectoryManagement.sUserDataFolderPath, TestLayoutFile);
-            foreach (string file in System.IO.Directory.EnumerateFiles(DirectoryManagement.sUserDataFolderPath))
+            string path = Path.Combine(provider.UserDataFolderPath, TestLayoutFile);
+            foreach (string file in Directory.EnumerateFiles(provider.UserDataFolderPath))
             {
                 if (file.IndexOf(path) == 0 && file.Contains(".bak"))
                 {
-                    System.IO.File.Delete(file);
+                    File.Delete(file);
                 }
             }
             AppLayout al = new AppLayout(10, 11);
 
             al.SerializeInJSON(path);
-            AppLayout.RemoveConfiguration(path);
-            Assert.IsFalse(System.IO.File.Exists(path));
+            ConfigurationBase.RemoveConfiguration(path);
+            Assert.IsFalse(File.Exists(path));
             bool bakExists = false;
-            foreach (string file in System.IO.Directory.EnumerateFiles(DirectoryManagement.sUserDataFolderPath))
+            foreach (string file in Directory.EnumerateFiles(provider.UserDataFolderPath))
             {
                 if (file.IndexOf(path) == 0 && file.Contains(".bak"))
                 {
                     bakExists = true;
-                    System.IO.File.Delete(file);
+                    File.Delete(file);
                     break;
                 }
             }

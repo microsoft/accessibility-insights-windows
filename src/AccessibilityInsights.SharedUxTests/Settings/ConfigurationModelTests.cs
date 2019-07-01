@@ -19,18 +19,22 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     [TestClass()]
     public class ConfigurationModelTests
     {
-        public static string folderPath = Path.Combine(DirectoryManagement.sUserDataFolderPath, "ConfigurationTests");
+        private static FixedConfigSettingsProvider testProvider;
 
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            Directory.CreateDirectory(folderPath);
+            var configDir = Path.Combine(context.TestRunDirectory, "config");
+            var userDir = Path.Combine(context.TestRunDirectory, "user");
+            testProvider = new FixedConfigSettingsProvider(configDir, userDir);
+            Directory.CreateDirectory(testProvider.ConfigurationFolderPath);
         }
 
         [ClassCleanup()]
         public static void ClassCleanup()
         {
-            Directory.Delete(folderPath);
+            Directory.Delete(testProvider.ConfigurationFolderPath);
+            Directory.Delete(testProvider.UserDataFolderPath);
         }
 
         /// <summary>
@@ -39,7 +43,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod()]
         public void ConfigurationModelTest()
         {
-            string path = Path.Combine(DirectoryManagement.sUserDataFolderPath,"config.test");
+            string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test");
 
             var coreProps = DesktopElementHelper.GetDefaultCoreProperties();
 
@@ -51,7 +55,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
             config.SerializeInJSON(path);
 
-            var newConfig = ConfigurationModel.LoadFromJSON(path);
+            var newConfig = ConfigurationModel.LoadFromJSON(path, testProvider);
             File.Delete(path);
 
             Assert.IsTrue(coreProps.SequenceEqual(newConfig.CoreProperties));
@@ -62,7 +66,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             const string expectedHotKeyForRecord = "Recording HotKey";
             const string expectedMainWindowActivation = "Main Window Activation HotKey";
-            string path = Path.Combine(DirectoryManagement.sUserDataFolderPath, "config.test2");
+            string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test2");
 
             ConfigurationModel config = new ConfigurationModel
             {
@@ -73,7 +77,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
             config.SerializeInJSON(path);
 
-            var nc = ConfigurationModel.LoadFromJSON(path);
+            var nc = ConfigurationModel.LoadFromJSON(path, testProvider);
             File.Delete(path);
 
             Assert.AreEqual(ConfigurationModel.CurrentVersion, nc.Version);
@@ -94,7 +98,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfirmEnumerablesMatchExpectations(new int[] { }, config.CoreTPAttributes.ToArray());
             Assert.IsFalse(config.DisableTestsInSnapMode);
             Assert.IsTrue(config.EnableTelemetry);
-            Assert.IsTrue(config.EventRecordPath.EndsWith(@"\AccessibilityInsights"), config.EventRecordPath);
+            Assert.IsTrue(config.EventRecordPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(FontSize.Standard, config.FontSize);
             Assert.AreEqual(HighlighterMode.HighlighterBeakerTooltip, config.HighlighterMode);
             Assert.AreEqual("Shift + F9", config.HotKeyForActivatingMainWindow);
@@ -121,7 +125,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.ShowUncertain);
             Assert.IsTrue(config.ShowWelcomeScreenOnLaunch);
             Assert.IsFalse(config.ShowWhitespaceInTextPatternViewer);
-            Assert.IsTrue(config.TestReportPath.EndsWith(@"\AccessibilityInsights"), config.TestReportPath);
+            Assert.IsTrue(config.TestReportPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
@@ -131,7 +135,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod]
         public void LoadFronJSON_LegacyFormat_DataIsCorrect()
         {
-            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json");
+            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json", testProvider);
 
             ConfirmOverrideConfigMatchesExpectation(config);
         }
@@ -139,7 +143,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod]
         public void LoadFronJSON_CurrentFormat_DataIsCorrect()
         {
-            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json");
+            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json", testProvider);
 
             ConfirmOverrideConfigMatchesExpectation(config,
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
@@ -150,7 +154,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static ConfigurationModel GetDefaultConfig()
         {
-            return ConfigurationModel.LoadFromJSON(null);
+            return ConfigurationModel.LoadFromJSON(null, testProvider);
         }
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,

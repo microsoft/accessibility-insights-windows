@@ -63,8 +63,8 @@
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="ChannelInfo.cs" />
     <Compile Include="ChannelInfoUtilities.cs" />
+    <Compile Include="FixedConfigSettingsProvider.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="DirectoryManagement.cs" />
     <Compile Include="ExceptionReporter.cs" />
     <Compile Include="FileHelpers.cs" />
     <Compile Include="GitHubWrapper.cs" />

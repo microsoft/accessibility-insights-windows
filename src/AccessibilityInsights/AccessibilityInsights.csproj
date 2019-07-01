@@ -80,6 +80,9 @@
     <Reference Include="Axe.Windows.Win32, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
     </Reference>
+    <Reference Include="CommandLine, Version=2.5.0.0, Culture=neutral, PublicKeyToken=5a870481e358d379, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.5.0\lib\net461\CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -119,6 +122,8 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Compile Include="Enums\CCAView.cs" />
+    <Compile Include="Misc\CommandLineSettings.cs" />
+    <Compile Include="Misc\CommandOptions.cs" />
     <Compile Include="Misc\TelemetryEventFactory.cs" />
     <Compile Include="Modes\DialogContainerModeControl.xaml.cs">
       <DependentUpon>DialogContainerModeControl.xaml</DependentUpon>

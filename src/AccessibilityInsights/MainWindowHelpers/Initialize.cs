@@ -105,11 +105,17 @@ namespace AccessibilityInsights
         /// </summary>
         private static void PopulateConfigurations()
         {
-            // make sure that necessary folders are created. 
-            DirectoryManagement.CreateFolders();
+            var defaultPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+            var configPathProvider = new FixedConfigSettingsProvider(
+                CommandLineSettings.ConfigFolder ?? defaultPaths.ConfigurationFolderPath,
+                CommandLineSettings.UserDataFolder ?? defaultPaths.UserDataFolderPath
+            );
+
+            FileHelpers.CreateFolder(configPathProvider.UserDataFolderPath);
+            FileHelpers.CreateFolder(configPathProvider.ConfigurationFolderPath);
 
             // Populate the App Config and Test Config
-            ConfigurationManager.GetDefaultInstance();
+            ConfigurationManager.GetDefaultInstance(configPathProvider);
 
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up. 

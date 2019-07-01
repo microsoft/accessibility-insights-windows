@@ -5,7 +5,6 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -15,15 +14,14 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
-using Axe.Windows.Actions;
 using AccessibilityInsights.Win32;
+using Axe.Windows.Actions;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Automation;
@@ -41,7 +39,6 @@ namespace AccessibilityInsights
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
-        const string ArgAttach = "AttachAccessibilityInsights";
 
         IntPtr hWnd;
         private bool isClosed = false;
@@ -191,8 +188,9 @@ namespace AccessibilityInsights
         /// </summary>
         private static void InitTelemetry()
         {
+            var configFolder = ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath;
             // Initialize user info from file if it exists, reset if needed, and re-serialize
-            var installInfo = InstallationInfo.LoadFromPath(DirectoryManagement.sConfigurationFolderPath);
+            var installInfo = InstallationInfo.LoadFromPath(configFolder);
             Logger.AddOrUpdateContextProperty(TelemetryProperty.InstallationID, installInfo.InstallationGuid.ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, VersionTools.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
@@ -262,9 +260,7 @@ namespace AccessibilityInsights
         /// </summary>
         private static void SupportDebugging()
         {
-            var args = Environment.GetCommandLineArgs();
-
-            if (args.Contains(ArgAttach))
+            if (CommandLineSettings.AttachToDebugger)
             {
                 var dlg = new MessageDialog();
                 dlg.Message = Properties.Resources.SupportDebuggingDialogMessage;

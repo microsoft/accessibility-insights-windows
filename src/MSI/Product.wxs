@@ -65,6 +65,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.RuleSelection.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Telemetry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\CommandLine.dll"/>
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />

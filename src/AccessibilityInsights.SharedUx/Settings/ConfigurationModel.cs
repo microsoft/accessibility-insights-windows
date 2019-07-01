@@ -511,9 +511,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         /// <param name="path">The path to the client's data file</param>
         /// <returns>The ConfigurationModel to use</returns>
-        public static ConfigurationModel LoadFromJSON(string path)
+        public static ConfigurationModel LoadFromJSON(string path, FixedConfigSettingsProvider provider)
         {
-            ConfigurationModel config = LoadDataFromJSON(path) ?? GetDefaultConfigurationModel();
+            ConfigurationModel config = LoadDataFromJSON(path) ?? GetDefaultConfigurationModel(provider);
 
             if (ContainsNull(config))
             {
@@ -524,7 +524,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 
                 string hkactivate = config.HotKeyForActivatingMainWindow;
 
-                config = GetDefaultConfigurationModel();
+                config = GetDefaultConfigurationModel(provider);
 
                 config.HotKeyForRecord = hkrecord != null ? hkrecord : config.HotKeyForRecord;
                 config.HotKeyForPause = hkpause != null ? hkpause : config.HotKeyForPause;
@@ -584,15 +584,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// GetDefaultConfiguration Model
         /// </summary>
         /// <returns></returns>
-        public static ConfigurationModel GetDefaultConfigurationModel()
+        public static ConfigurationModel GetDefaultConfigurationModel(FixedConfigSettingsProvider provider)
         {
             ConfigurationModel config = new ConfigurationModel
             {
                 AppVersion = VersionTools.GetAppVersion(),
                 Version = CurrentVersion,
 
-                TestReportPath = DirectoryManagement.sUserDataFolderPath,
-                EventRecordPath = DirectoryManagement.sUserDataFolderPath,
+                TestReportPath = provider.UserDataFolderPath,
+                EventRecordPath = provider.UserDataFolderPath,
 
                 HotKeyForRecord = ConfigurationModel.DefaultHotKeyRecord,
                 HotKeyForPause = ConfigurationModel.DefaultHotKeyPause,
