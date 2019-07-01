@@ -1,15 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using UITests.UILibrary;
 
 namespace UITests
 {
@@ -18,7 +17,8 @@ namespace UITests
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 
-        protected static WindowsDriver<WindowsElement> session;
+        private static WindowsDriver<WindowsElement> session;
+        protected static AIWinDriver driver;
         protected static int testAppProcessId;
 
         public static void Setup(TestContext context)
@@ -52,7 +52,6 @@ namespace UITests
             {
                 process.WaitForInputIdle();
                 testAppProcessId = process.Id;
-
                 // small buffer between splash screen disappearing 
                 // and main window initializing; otherwise in rare
                 // cases splash screen can be picked up as main window
@@ -61,6 +60,8 @@ namespace UITests
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
                 appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
                 session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+
+                driver = new AIWinDriver(session, process.Id);
             }
         }
 
