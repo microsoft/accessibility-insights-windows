@@ -109,7 +109,7 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
-      runSettingsFile: $(Build.ArtifactStagingDirectory)/UITests.runsettings
+      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
