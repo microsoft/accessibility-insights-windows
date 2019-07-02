@@ -18,7 +18,7 @@ namespace UITests
         [TestCategory("NoStrongName")]
         public void VerifyAccessibility()
         {
-            var result = driver.ScanAIWin();
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
             Assert.AreEqual(0, result.errors);
         }
 

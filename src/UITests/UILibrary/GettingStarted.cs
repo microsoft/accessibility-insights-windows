@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium.Appium.Windows;
+using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -12,7 +14,8 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
-        public bool DismissTelemetry() => false;
-        public bool DismissPage() => false;
+
+        public bool DismissTelemetry() => Session.FindAndClickByAutomationID(AutomationIDs.TelemetryDialogExitButton);
+        public bool DismissStartupPage() => Session.FindAndClickByAutomationID(AutomationIDs.StartUpModeExitButton);
     }
 }

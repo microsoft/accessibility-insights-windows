@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Reflection;
 
 namespace UITests
 {
@@ -10,22 +12,27 @@ namespace UITests
     [TestClass]
     public class LoadTestFile : AIWinSession
     {
+        static readonly string TestFileName = "WildlifeManagerTest.a11ytest";
+        static readonly string TestFilePath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\TestFiles";
+
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void VerifyResultsInUIATreePage()
+        public void ScanResultsInUIATreePage()
         {
-            driver.TestMode.AutomatedChecks.ViewInUIATree();
-            // do appropriate testing
-            driver.TestMode.UIATree.BackToAutomatedChecks();
+            Assert.IsTrue(driver.TestMode.AutomatedChecks.ViewInUIATree());
+
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+
+            Assert.AreEqual(1, result.errors);
+            Assert.IsTrue(driver.TestMode.ResultsInUIATree.BackToAutomatedChecks());
         }
 
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void VerifyGridContents()
+        public void ScanAutomatedChecks()
         {
-            driver.TestMode.AutomatedChecks.ToggleAllExpanders();
-            // do appropriate testing
-            driver.TestMode.AutomatedChecks.ToggleAllExpanders();
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+            Assert.AreEqual(0, result.errors);
         }
 
         [ClassInitialize]
@@ -34,8 +41,9 @@ namespace UITests
             Setup(context);
 
             driver.GettingStarted.DismissTelemetry();
-            driver.GettingStarted.DismissPage();
-            driver.LiveMode.OpenFile("folder", "file");
+            Assert.IsTrue(driver.GettingStarted.DismissStartupPage());
+            Assert.IsTrue(driver.ToggleHighlighter());
+            Assert.IsTrue(driver.LiveMode.OpenFile(TestFilePath, TestFileName));
         }
 
         [ClassCleanup]

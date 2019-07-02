@@ -21,6 +21,7 @@ namespace UITests
         private static WindowsDriver<WindowsElement> session;
         protected static AIWinDriver driver;
         protected static int testAppProcessId;
+        public TestContext TestContext { get; set; }
 
         protected static IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
 

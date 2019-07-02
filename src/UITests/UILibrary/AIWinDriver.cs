@@ -1,7 +1,9 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
 using Axe.Windows.Automation;
 using OpenQA.Selenium.Appium.Windows;
+using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -27,10 +29,14 @@ namespace UITests.UILibrary
             PID = pid;
         }
 
-        public (int errors, string file) ScanAIWin()
+        public (int errors, string file) ScanAIWin(string outputDir)
         {
 
-            var config = Config.Builder.ForProcessId(PID).Build();
+            var config = Config.Builder.ForProcessId(PID)
+                .WithOutputFileFormat(OutputFileFormat.A11yTest)
+                .WithOutputDirectory(outputDir)
+                .Build();
+
             var scanner = ScannerFactory.CreateScanner(config);
 
             var result = scanner.Scan();
@@ -41,5 +47,7 @@ namespace UITests.UILibrary
         public WindowsElement FindElementByAccessibilityId(string accessibilityId) => Session.FindElementByAccessibilityId(accessibilityId);
 
         public string Title => Session.Title;
+
+        public bool ToggleHighlighter() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinHighlightButton);
     }
 }
