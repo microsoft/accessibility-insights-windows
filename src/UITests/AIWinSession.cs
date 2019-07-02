@@ -4,6 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -21,6 +22,8 @@ namespace UITests
         protected static AIWinDriver driver;
         protected static int testAppProcessId;
 
+        protected static IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
+
         public static void Setup(TestContext context)
         {
             if (session != null)
@@ -33,6 +36,8 @@ namespace UITests
                 Assert.Inconclusive("WinAppDriver.exe is not running");
             }
 
+            SetupEventListening();
+
             LaunchApplicationAndAttach();
 
             Assert.IsNotNull(session);
@@ -40,6 +45,16 @@ namespace UITests
 
             // Set implicit timeout to 1.5 seconds to ensure element search retries every 500 ms for at most three times
             session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
+        }
+
+        /// <summary>
+        /// Save events written to Windows Event Log during this test
+        /// </summary>
+        private static void SetupEventListening()
+        {
+            var log = new EventLog("Application");
+            log.EntryWritten += new EntryWrittenEventHandler((_, args) => Events.Add(args.Entry));
+            log.EnableRaisingEvents = true;
         }
 
         private static void LaunchApplicationAndAttach()
@@ -74,6 +89,7 @@ namespace UITests
             session.Close();
             session.Quit();
             session = null;
+            Events.Clear();
         }
 
         private static bool IsWinAppDriverRunning()
