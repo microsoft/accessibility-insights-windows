@@ -62,7 +62,7 @@
             <controls:PrivacyLearnMore Style="{StaticResource TxtTelemetryDialogPrivacyStatement}" Grid.Row="1"/>
         </Grid>
         <Grid Grid.Row="4" Margin="1,24,24,0">
-            <Button x:Name="btnExit" UseLayoutRounding="True"
+            <Button x:Name="btnExit" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static properties:AutomationIDs.TelemetryDialogExitButton}"
                         Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnExit_Click" Content="{x:Static properties:Resources.btnExitContentTelemetryOK}" Style="{StaticResource BtnBlueRounded}"/>
         </Grid>
     </Grid>
