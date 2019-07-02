@@ -57,6 +57,7 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
+      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
