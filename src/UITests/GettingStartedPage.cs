@@ -9,29 +9,33 @@ namespace UITests
     {
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void VerifyGettingStartedTitle()
+        public void GettingStartedPageTests()
+        {
+            VerifyGettingStartedTitle();
+            VerifyAccessibility();
+        }
+
+        private void VerifyGettingStartedTitle()
         {
             Assert.AreEqual("Accessibility Insights for Windows - ", driver.Title);
         }
 
-        [TestMethod]
-        [TestCategory("NoStrongName")]
-        public void VerifyAccessibility()
+        private void VerifyAccessibility()
         {
             var result = driver.ScanAIWin(TestContext.ResultsDirectory);
             Assert.AreEqual(0, result.errors);
         }
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext context)
+        [TestInitialize]
+        public void TestInitialize()
         {
-            Setup(context);
+            Setup();
 
             // Close telemetry dialog if open
             driver.GettingStarted.DismissTelemetry();
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup() => TearDown();
+        [TestCleanup]
+        public void TestCleanup() => TearDown();
     }
 }

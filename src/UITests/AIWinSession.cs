@@ -18,14 +18,14 @@ namespace UITests
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
 
-        private static WindowsDriver<WindowsElement> session;
-        protected static AIWinDriver driver;
-        protected static int testAppProcessId;
+        private WindowsDriver<WindowsElement> session;
+        protected AIWinDriver driver;
+        protected int testAppProcessId;
         public TestContext TestContext { get; set; }
 
         protected static IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
 
-        public static void Setup(TestContext context)
+        public void Setup()
         {
             if (session != null)
             {
@@ -51,14 +51,14 @@ namespace UITests
         /// <summary>
         /// Save events written to Windows Event Log during this test
         /// </summary>
-        private static void SetupEventListening()
+        private void SetupEventListening()
         {
             var log = new EventLog("Application");
             log.EntryWritten += new EntryWrittenEventHandler((_, args) => Events.Add(args.Entry));
             log.EnableRaisingEvents = true;
         }
 
-        private static void LaunchApplicationAndAttach()
+        private void LaunchApplicationAndAttach()
         {
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -81,7 +81,7 @@ namespace UITests
             }
         }
 
-        public static void TearDown()
+        public void TearDown()
         {
             if (session == null)
             {
@@ -93,7 +93,7 @@ namespace UITests
             Events.Clear();
         }
 
-        private static bool IsWinAppDriverRunning()
+        private bool IsWinAppDriverRunning()
         {
             var processes = Process.GetProcessesByName("WinAppDriver");
             return processes.Length > 0;

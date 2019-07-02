@@ -17,28 +17,32 @@ namespace UITests
 
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void ScanResultsInUIATreePage()
+        public void LoadTestFileTests()
+        {
+            ScanResultsInUIATreePage();
+            ScanAutomatedChecks();
+        }
+
+        private void ScanResultsInUIATreePage()
         {
             Assert.IsTrue(driver.TestMode.AutomatedChecks.ViewInUIATree());
 
             var result = driver.ScanAIWin(TestContext.ResultsDirectory);
 
-            Assert.AreEqual(1, result.errors);
+            Assert.AreEqual(0, result.errors);
             Assert.IsTrue(driver.TestMode.ResultsInUIATree.BackToAutomatedChecks());
         }
 
-        [TestMethod]
-        [TestCategory("NoStrongName")]
-        public void ScanAutomatedChecks()
+        private void ScanAutomatedChecks()
         {
             var result = driver.ScanAIWin(TestContext.ResultsDirectory);
             Assert.AreEqual(0, result.errors);
         }
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext context)
+        [TestInitialize]
+        public void TestInitialize()
         {
-            Setup(context);
+            Setup();
 
             driver.GettingStarted.DismissTelemetry();
             Assert.IsTrue(driver.GettingStarted.DismissStartupPage());
@@ -46,7 +50,7 @@ namespace UITests
             Assert.IsTrue(driver.LiveMode.OpenFile(TestFilePath, TestFileName));
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup() => TearDown();
+        [TestCleanup]
+        public void ClassCleanup() => TearDown();
     }
 }
