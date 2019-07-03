@@ -63,8 +63,9 @@ namespace UITests
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
+            var configPathArgument = $"--c \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            using (Process process = Process.Start(exePath))
+            using (Process process = Process.Start(exePath, configPathArgument))
             {
                 process.WaitForInputIdle();
                 testAppProcessId = process.Id;
