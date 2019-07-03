@@ -26,11 +26,6 @@ namespace UITests
 
         public void Setup()
         {
-            if (session != null)
-            {
-                return;
-            }
-
             if (!IsWinAppDriverRunning())
             {
                 Assert.Inconclusive("WinAppDriver.exe is not running");
@@ -81,20 +76,13 @@ namespace UITests
 
         public void TearDown()
         {
-            TestContext.AddResultFile(SerializeRecordedEvents());
-            Events.Clear();
+            AttachEvents();
 
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
-            process.Kill();
+            process?.Kill();
 
-            if (session == null)
-            {
-                return;
-            }
-
-            session.Quit();
-            session = null;
+            session?.Quit();
         }
 
         private bool IsWinAppDriverRunning()
@@ -103,17 +91,35 @@ namespace UITests
             return processes.Length > 0;
         }
 
+        /// <summary>
+        /// Serialize recorded events and attach them to the test context
+        /// </summary>
+        private void AttachEvents()
+        {
+            var eventLog = SerializeRecordedEvents();
+            if (eventLog != null)
+            {
+                TestContext.AddResultFile(eventLog);
+            }
+            Events.Clear();
+        }
+
         private string SerializeRecordedEvents()
         {
-            var path = Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName, "events.txt");
-            using (StreamWriter w = File.AppendText(path))
+            var testDir = Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName);
+            if (!Directory.Exists(testDir))
+            {
+                return null;
+            }
+            var logPath = Path.Combine(testDir, "events.txt");
+            using (StreamWriter w = File.AppendText(logPath))
             {
                 foreach (var e in Events)
                 {
                     w.WriteLine($"{e.TimeGenerated},{e.Source},{e.Message}");
                 }
             }
-            return path;
+            return logPath;
         }
     }
 }
