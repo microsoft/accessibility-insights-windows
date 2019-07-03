@@ -81,6 +81,8 @@ namespace UITests
 
         public void TearDown()
         {
+            TestContext.AddResultFile(SerializeRecordedEvents());
+
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
             process.Kill();
@@ -99,6 +101,19 @@ namespace UITests
         {
             var processes = Process.GetProcessesByName("WinAppDriver");
             return processes.Length > 0;
+        }
+
+        private string SerializeRecordedEvents()
+        {
+            var path = Path.Combine(TestContext.TestResultsDirectory + "events.txt");
+            using (StreamWriter w = File.AppendText(path))
+            {
+                foreach (var e in Events)
+                {
+                    w.WriteLine($"{e.TimeGenerated},{e.Source},{e.Message}");
+                }
+            }
+            return path;
         }
     }
 }

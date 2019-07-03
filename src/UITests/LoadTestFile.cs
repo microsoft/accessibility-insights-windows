@@ -55,6 +55,6 @@ namespace UITests
         }
 
         [TestCleanup]
-        public void ClassCleanup() => TearDown();
+        public void TestCleanup() => TearDown();
     }
 }
