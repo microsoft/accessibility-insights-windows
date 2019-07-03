@@ -115,6 +115,9 @@
     <None Include="TestFiles\WildlifeManagerTest.a11ytest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="UITests.runsettings">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
