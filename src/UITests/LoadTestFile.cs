@@ -15,6 +15,10 @@ namespace UITests
         static readonly string TestFileName = "WildlifeManagerTest.a11ytest";
         static readonly string TestFilePath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\TestFiles";
 
+        /// <summary>
+        /// The entry point for this test scenario. Every TestMethod  will restart ai-win, so
+        /// we want to use them sparingly.
+        /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
         public void LoadTestFileTests()
@@ -25,12 +29,12 @@ namespace UITests
 
         private void ScanResultsInUIATreePage()
         {
-            Assert.IsTrue(driver.TestMode.AutomatedChecks.ViewInUIATree());
+            driver.TestMode.AutomatedChecks.ViewInUIATree();
 
             var result = driver.ScanAIWin(TestContext.ResultsDirectory);
 
             Assert.AreEqual(0, result.errors);
-            Assert.IsTrue(driver.TestMode.ResultsInUIATree.BackToAutomatedChecks());
+            driver.TestMode.ResultsInUIATree.BackToAutomatedChecks();
         }
 
         private void ScanAutomatedChecks()
@@ -45,9 +49,9 @@ namespace UITests
             Setup();
 
             driver.GettingStarted.DismissTelemetry();
-            Assert.IsTrue(driver.GettingStarted.DismissStartupPage());
-            Assert.IsTrue(driver.ToggleHighlighter());
-            Assert.IsTrue(driver.LiveMode.OpenFile(TestFilePath, TestFileName));
+            driver.GettingStarted.DismissStartupPage();
+            driver.ToggleHighlighter();
+            driver.LiveMode.OpenFile(TestFilePath, TestFileName);
         }
 
         [TestCleanup]

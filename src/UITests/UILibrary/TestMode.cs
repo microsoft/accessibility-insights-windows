@@ -25,9 +25,8 @@ namespace UITests.UILibrary
         public AutomatedChecks(WindowsDriver<WindowsElement> session)
         {
             Session = session;
-            
         }
-        public bool ViewInUIATree() => Session.FindAndClickByAutomationID(AutomationIDs.AutomatedChecksUIATreeButton);
+        public void ViewInUIATree() => Session.FindAndClickByAutomationID(AutomationIDs.AutomatedChecksUIATreeButton);
     }
 
     public class ResultsInUIATree
@@ -37,6 +36,6 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
-        public bool BackToAutomatedChecks() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinBreadCrumbTwoButton);
+        public void BackToAutomatedChecks() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinBreadCrumbTwoButton);
     }
 }

@@ -10,6 +10,9 @@ namespace UITests.UILibrary
     {
         WindowsDriver<WindowsElement> Session;
 
+        // These AutomationIDs came from inspecting the open file dialog with ai-win.
+        // The assumption is that they are the same accross machines--if they aren't,
+        // we'll need a more robust way to navigate the dialog.
         const string OpenFileToolBarAutomationID = "1001";
         const string OpenFileFolderTextBoxAutomationID = "41477";
         const string OpenFileFileTextBoxAutomationID = "1148";
@@ -19,28 +22,18 @@ namespace UITests.UILibrary
             Session = session;
         }
 
-        public bool OpenFile(string folder, string fileName)
+        public void OpenFile(string folder, string fileName)
         {
-            if (!Session.FindAndClickByAutomationID(AutomationIDs.MainWinLoadButton)) return false;
+            Session.FindAndClickByAutomationID(AutomationIDs.MainWinLoadButton);
+            Session.FindAndClickByAutomationID(OpenFileToolBarAutomationID);
 
-            if (!Session.FindAndClickByAutomationID(OpenFileToolBarAutomationID)) return false;
+            var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
+            folderTextbox.SendKeys(folder);
+            folderTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
 
-            try
-            {
-                var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
-                folderTextbox.SendKeys(folder);
-                folderTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
-
-                var fileTextbox = Session.FindElementByAccessibilityId(OpenFileFileTextBoxAutomationID);
-                fileTextbox.SendKeys(fileName);
-                fileTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            var fileTextbox = Session.FindElementByAccessibilityId(OpenFileFileTextBoxAutomationID);
+            fileTextbox.SendKeys(fileName);
+            fileTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
         }
     }
 }

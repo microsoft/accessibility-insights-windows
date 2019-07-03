@@ -23,7 +23,7 @@ namespace UITests
         protected int testAppProcessId;
         public TestContext TestContext { get; set; }
 
-        protected static IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
+        protected IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
 
         public void Setup()
         {

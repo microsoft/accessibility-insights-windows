@@ -15,7 +15,7 @@ namespace UITests.UILibrary
             Session = session;
         }
 
-        public bool DismissTelemetry() => Session.FindAndClickByAutomationID(AutomationIDs.TelemetryDialogExitButton);
-        public bool DismissStartupPage() => Session.FindAndClickByAutomationID(AutomationIDs.StartUpModeExitButton);
+        public void DismissTelemetry() => Session.FindAndClickByAutomationID(AutomationIDs.TelemetryDialogExitButton);
+        public void DismissStartupPage() => Session.FindAndClickByAutomationID(AutomationIDs.StartUpModeExitButton);
     }
 }

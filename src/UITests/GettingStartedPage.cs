@@ -7,6 +7,10 @@ namespace UITests
     [TestClass]
     public class GettingStartedPage : AIWinSession
     {
+        /// <summary>
+        /// The entry point for this test scenario. Every TestMethod  will restart ai-win, so
+        /// we want to use them sparingly.
+        /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
         public void GettingStartedPageTests()

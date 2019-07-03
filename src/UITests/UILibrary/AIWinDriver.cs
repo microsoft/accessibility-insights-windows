@@ -48,6 +48,6 @@ namespace UITests.UILibrary
 
         public string Title => Session.Title;
 
-        public bool ToggleHighlighter() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinHighlightButton);
+        public void ToggleHighlighter() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinHighlightButton);
     }
 }
