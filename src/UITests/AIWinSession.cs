@@ -70,7 +70,7 @@ namespace UITests
             // small buffer between splash screen disappearing 
             // and main window initializing; otherwise in rare
             // cases splash screen can be picked up as main window
-            Thread.Sleep(2000);
+            Thread.Sleep(30000);
 
             DesiredCapabilities appCapabilities = new DesiredCapabilities();
             appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
@@ -81,14 +81,15 @@ namespace UITests
 
         public void TearDown()
         {
+            // closing ai-win like this stops it from saving the config. Will have to change this
+            // if we ever want to use the saved config.
+            process.Kill();
+
             if (session == null)
             {
                 return;
             }
 
-            // closing ai-win like this stops it from saving the config. Will have to change this
-            // if we ever want to use the saved config.
-            process.Kill();
             session.Quit();
             session = null;
             Events.Clear();
