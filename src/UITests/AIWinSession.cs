@@ -82,6 +82,7 @@ namespace UITests
         public void TearDown()
         {
             TestContext.AddResultFile(SerializeRecordedEvents());
+            Events.Clear();
 
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
@@ -94,7 +95,6 @@ namespace UITests
 
             session.Quit();
             session = null;
-            Events.Clear();
         }
 
         private bool IsWinAppDriverRunning()
@@ -105,7 +105,7 @@ namespace UITests
 
         private string SerializeRecordedEvents()
         {
-            var path = Path.Combine(TestContext.TestResultsDirectory + "events.txt");
+            var path = Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName, "events.txt");
             using (StreamWriter w = File.AppendText(path))
             {
                 foreach (var e in Events)
