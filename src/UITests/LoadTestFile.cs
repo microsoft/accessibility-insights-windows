@@ -31,16 +31,16 @@ namespace UITests
         {
             driver.TestMode.AutomatedChecks.ViewInUIATree();
 
-            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+            var issueCount = driver.ScanAIWin(TestContext);
 
-            Assert.AreEqual(0, result.errors);
+            Assert.AreEqual(0, issueCount);
             driver.TestMode.ResultsInUIATree.BackToAutomatedChecks();
         }
 
         private void ScanAutomatedChecks()
         {
-            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
-            Assert.AreEqual(0, result.errors);
+            var issueCount = driver.ScanAIWin(TestContext);
+            Assert.AreEqual(0, issueCount);
         }
 
         [TestInitialize]
