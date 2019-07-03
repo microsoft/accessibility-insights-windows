@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UITests
 {
     [TestClass]
-    public class GettingStartedPage : AIWinSession
+    public class TelemetryDialog : AIWinSession
     {
         /// <summary>
         /// The entry point for this test scenario. Every TestMethod  will restart ai-win, so
@@ -13,29 +13,23 @@ namespace UITests
         /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void GettingStartedPageTests()
+        public void TelemetryDialogTests()
         {
-            VerifyGettingStartedTitle();
-            VerifyAccessibility();
+            VerifyTelemetryDialog();
         }
 
-        private void VerifyGettingStartedTitle()
-        {
-            Assert.AreEqual("Accessibility Insights for Windows - ", driver.Title);
-        }
-
-        private void VerifyAccessibility()
+        private void VerifyTelemetryDialog()
         {
             var result = driver.ScanAIWin(TestContext.ResultsDirectory);
             Assert.AreEqual(0, result.errors);
+
+            driver.GettingStarted.DismissTelemetry();
         }
 
         [TestInitialize]
         public void TestInitialize()
         {
             Setup();
-
-            driver.GettingStarted.DismissTelemetry();
         }
 
         [TestCleanup]
