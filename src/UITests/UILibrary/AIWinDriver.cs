@@ -3,7 +3,6 @@
 using AccessibilityInsights.SharedUx.Properties;
 using Axe.Windows.Automation;
 using OpenQA.Selenium.Appium.Windows;
-using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -48,6 +47,6 @@ namespace UITests.UILibrary
 
         public string Title => Session.Title;
 
-        public void ToggleHighlighter() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinHighlightButton);
+        public void ToggleHighlighter() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinHighlightButton).Click();
     }
 }

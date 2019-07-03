@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium.Appium.Windows;
-using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -24,8 +23,8 @@ namespace UITests.UILibrary
 
         public void OpenFile(string folder, string fileName)
         {
-            Session.FindAndClickByAutomationID(AutomationIDs.MainWinLoadButton);
-            Session.FindAndClickByAutomationID(OpenFileToolBarAutomationID);
+            Session.FindElementByAccessibilityId(AutomationIDs.MainWinLoadButton).Click();
+            Session.FindElementByAccessibilityId(OpenFileToolBarAutomationID).SendKeys(OpenQA.Selenium.Keys.Enter);
 
             var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
             folderTextbox.SendKeys(folder);

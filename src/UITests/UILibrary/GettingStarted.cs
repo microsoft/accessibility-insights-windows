@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium.Appium.Windows;
-using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -15,7 +14,7 @@ namespace UITests.UILibrary
             Session = session;
         }
 
-        public void DismissTelemetry() => Session.FindAndClickByAutomationID(AutomationIDs.TelemetryDialogExitButton);
-        public void DismissStartupPage() => Session.FindAndClickByAutomationID(AutomationIDs.StartUpModeExitButton);
+        public void DismissTelemetry() => Session.FindElementByAccessibilityId(AutomationIDs.TelemetryDialogExitButton).Click();
+        public void DismissStartupPage() => Session.FindElementByAccessibilityId(AutomationIDs.StartUpModeExitButton).Click();
     }
 }

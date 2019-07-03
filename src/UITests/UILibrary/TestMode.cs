@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium.Appium.Windows;
-using UITests.Utilities;
 
 namespace UITests.UILibrary
 {
@@ -26,7 +25,7 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
-        public void ViewInUIATree() => Session.FindAndClickByAutomationID(AutomationIDs.AutomatedChecksUIATreeButton);
+        public void ViewInUIATree() => Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksUIATreeButton).Click();
     }
 
     public class ResultsInUIATree
@@ -36,6 +35,6 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
-        public void BackToAutomatedChecks() => Session.FindAndClickByAutomationID(AutomationIDs.MainWinBreadCrumbTwoButton);
+        public void BackToAutomatedChecks() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinBreadCrumbTwoButton).Click();
     }
 }
