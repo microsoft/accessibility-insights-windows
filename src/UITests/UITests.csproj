@@ -107,7 +107,7 @@
     <Compile Include="GettingStartedPage.cs" />
     <Compile Include="UILibrary\Settings.cs" />
     <Compile Include="UILibrary\TestMode.cs" />
-    <Compile Include="Utilities\ExtenstionMethods.cs" />
+    <Compile Include="Utilities\ExtensionMethods.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
