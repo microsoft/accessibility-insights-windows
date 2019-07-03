@@ -26,8 +26,8 @@ namespace UITests
 
         private void VerifyAccessibility()
         {
-            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
-            Assert.AreEqual(0, result.errors);
+            var issueCount = driver.ScanAIWin(TestContext);
+            Assert.AreEqual(0, issueCount);
         }
 
         [TestInitialize]
