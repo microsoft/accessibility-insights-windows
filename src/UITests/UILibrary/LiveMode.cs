@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Appium.Windows;
 
 namespace UITests.UILibrary
@@ -15,6 +16,7 @@ namespace UITests.UILibrary
         const string OpenFileToolBarAutomationID = "1001";
         const string OpenFileFolderTextBoxAutomationID = "41477";
         const string OpenFileFileTextBoxAutomationID = "1148";
+        const string OpenFileSearchBoxAutomationID = "SearchEditBox";
 
         public LiveMode(WindowsDriver<WindowsElement> session)
         {
@@ -24,7 +26,11 @@ namespace UITests.UILibrary
         public void OpenFile(string folder, string fileName)
         {
             Session.FindElementByAccessibilityId(AutomationIDs.MainWinLoadButton).Click();
-            Session.FindElementByAccessibilityId(OpenFileToolBarAutomationID).SendKeys(OpenQA.Selenium.Keys.Enter);
+
+            // this puts focus on the toolbar, which we need for the next command to work
+            Session.FindElementByAccessibilityId(OpenFileSearchBoxAutomationID).SendKeys(Keys.Shift + Keys.Tab);
+            // this turns the toolbar into a text box
+            Session.FindElementByAccessibilityId(OpenFileToolBarAutomationID).SendKeys(Keys.Enter);
 
             var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
             folderTextbox.SendKeys(folder);
