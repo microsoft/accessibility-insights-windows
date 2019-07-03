@@ -2,7 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using Axe.Windows.Automation;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
+using System.IO;
 
 namespace UITests.UILibrary
 {
@@ -28,19 +30,30 @@ namespace UITests.UILibrary
             PID = pid;
         }
 
-        public (int errors, string file) ScanAIWin(string outputDir)
+        /// <summary>
+        /// Run an accessibility scan on Accessibility Insights for Windows
+        /// and add an a11ytest file to the given context's test results 
+        /// if there are any errors
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns>number of accessibility issues</returns>
+        public int ScanAIWin(TestContext context)
         {
-
+            var outputPath = Path.Combine(context.TestResultsDirectory, context.TestName);
             var config = Config.Builder.ForProcessId(PID)
                 .WithOutputFileFormat(OutputFileFormat.A11yTest)
-                .WithOutputDirectory(outputDir)
+                .WithOutputDirectory(outputPath)
                 .Build();
 
             var scanner = ScannerFactory.CreateScanner(config);
 
             var result = scanner.Scan();
+            if (result.ErrorCount > 0)
+            {
+                context.AddResultFile(result.OutputFile.A11yTest);
+            }
 
-            return (result.ErrorCount, result.OutputFile.A11yTest);
+            return result.ErrorCount;
         }
 
         public WindowsElement FindElementByAccessibilityId(string accessibilityId) => Session.FindElementByAccessibilityId(accessibilityId);
