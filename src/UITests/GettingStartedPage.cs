@@ -13,6 +13,7 @@ namespace UITests
         /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
+        [TestCategory("UITest")]
         public void GettingStartedPageTests()
         {
             VerifyGettingStartedTitle();
