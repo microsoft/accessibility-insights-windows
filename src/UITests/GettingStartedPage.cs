@@ -15,8 +15,17 @@ namespace UITests
         [TestCategory("NoStrongName")]
         public void GettingStartedPageTests()
         {
+            VerifyTelemetryDialog();
             VerifyGettingStartedTitle();
             VerifyAccessibility();
+        }
+
+        private void VerifyTelemetryDialog()
+        {
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+            Assert.AreEqual(0, result.errors);
+
+            driver.GettingStarted.DismissTelemetry();
         }
 
         private void VerifyGettingStartedTitle()
@@ -34,9 +43,6 @@ namespace UITests
         public void TestInitialize()
         {
             Setup();
-
-            // Close telemetry dialog if open
-            driver.GettingStarted.DismissTelemetry();
         }
 
         [TestCleanup]
