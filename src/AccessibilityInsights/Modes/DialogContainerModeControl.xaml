@@ -13,7 +13,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Border BorderBrush="Black" BorderThickness="0" CornerRadius="0" Margin="0,0,0,-52" Name="brdrContainer">
+    <Border BorderBrush="Black" BorderThickness="0" CornerRadius="0" Margin="0" Name="brdrContainer">
         <Border.Effect>
             <DropShadowEffect Opacity="0.5" BlurRadius="120"></DropShadowEffect>
         </Border.Effect>
