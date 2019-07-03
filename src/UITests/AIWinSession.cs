@@ -17,10 +17,9 @@ namespace UITests
     public class AIWinSession
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-
+        private Process process;
         private WindowsDriver<WindowsElement> session;
         protected AIWinDriver driver;
-        protected int testAppProcessId;
         public TestContext TestContext { get; set; }
 
         protected IList<EventLogEntry> Events { get; } = new List<EventLogEntry>();
@@ -65,21 +64,19 @@ namespace UITests
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
             var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            using (Process process = Process.Start(exePath, configPathArgument))
-            {
-                process.WaitForInputIdle();
-                testAppProcessId = process.Id;
-                // small buffer between splash screen disappearing 
-                // and main window initializing; otherwise in rare
-                // cases splash screen can be picked up as main window
-                Thread.Sleep(2000);
+            process = Process.Start(exePath, configPathArgument);
+            process.WaitForInputIdle();
 
-                DesiredCapabilities appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
-                session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+            // small buffer between splash screen disappearing 
+            // and main window initializing; otherwise in rare
+            // cases splash screen can be picked up as main window
+            Thread.Sleep(2000);
 
-                driver = new AIWinDriver(session, process.Id);
-            }
+            DesiredCapabilities appCapabilities = new DesiredCapabilities();
+            appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
+            session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+
+            driver = new AIWinDriver(session, process.Id);
         }
 
         public void TearDown()
@@ -91,7 +88,7 @@ namespace UITests
 
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
-            session.Close();
+            process.Kill();
             session.Quit();
             session = null;
             Events.Clear();
