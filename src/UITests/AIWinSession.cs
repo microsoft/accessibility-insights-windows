@@ -63,7 +63,7 @@ namespace UITests
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
-            var configPathArgument = $"--c \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
+            var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
             using (Process process = Process.Start(exePath, configPathArgument))
             {
@@ -88,6 +88,9 @@ namespace UITests
             {
                 return;
             }
+
+            // closing ai-win like this stops it from saving the config. Will have to change this
+            // if we ever want to use the saved config.
             session.Close();
             session.Quit();
             session = null;

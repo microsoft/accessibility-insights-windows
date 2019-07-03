@@ -17,13 +17,13 @@ namespace AccessibilityInsights.Misc
         [Value(0, Required = false)]
         public string FileToOpen { get; set; }
 
-        [Option('c', Required = false)]
+        [Option('c', nameof(ConfigFolder), Required = false)]
         public string ConfigFolder { get; set; }
 
-        [Option('u', Required = false)]
+        [Option('u', nameof(UserDataFolder), Required = false)]
         public string UserDataFolder { get; set; }
 
-        [Option('a', "AttachToDebugger", Required = false)]
+        [Option('a', nameof(AttachToDebugger), Required = false)]
         public bool AttachToDebugger { get; set; }
     }
 }
