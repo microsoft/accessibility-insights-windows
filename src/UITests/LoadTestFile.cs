@@ -21,6 +21,7 @@ namespace UITests
         /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
+        [TestCategory("UITest")]
         public void LoadTestFileTests()
         {
             ScanResultsInUIATreePage();
