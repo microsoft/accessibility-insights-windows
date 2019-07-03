@@ -156,7 +156,7 @@
             <CheckBox Grid.Column="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" 
                       FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center"
                       FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-            <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.Name="Button" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.StartUpModeExitButton}"
+            <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.StartUpModeExitButton}"
                     Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlueRounded}"/>
         </Grid>
     </Grid>
