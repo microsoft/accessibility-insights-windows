@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium.Appium.Windows;
 
 namespace UITests.UILibrary
@@ -8,17 +9,12 @@ namespace UITests.UILibrary
     {
         WindowsDriver<WindowsElement> Session;
         public AutomatedChecks AutomatedChecks { get; }
-        public UIATree UIATree { get; }
-        public TabStops TabStops { get; }
-        public NoElementSelected NoElementSelected { get; }
-
+        public ResultsInUIATree ResultsInUIATree { get; }
         public TestMode(WindowsDriver<WindowsElement> session)
         {
             Session = session;
             AutomatedChecks = new AutomatedChecks(session);
-            UIATree = new UIATree(session);
-            TabStops = new TabStops(session);
-            NoElementSelected = new NoElementSelected(session);
+            ResultsInUIATree = new ResultsInUIATree(session);
         }
     }
 
@@ -29,38 +25,16 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
-        public bool ToggleAllExpanders() => false;
-        public bool ViewInUIATree() => false;
+        public void ViewInUIATree() => Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksUIATreeButton).Click();
     }
 
-    public class UIATree
+    public class ResultsInUIATree
     {
         WindowsDriver<WindowsElement> Session;
-        public UIATree(WindowsDriver<WindowsElement> session)
+        public ResultsInUIATree(WindowsDriver<WindowsElement> session)
         {
             Session = session;
         }
-        public bool SelectResultsTab() => false;
-        public bool SelectDetailsTab() => false;
-
-        public bool BackToAutomatedChecks() => false;
-    }
-
-    public class TabStops
-    {
-        WindowsDriver<WindowsElement> Session;
-        public TabStops(WindowsDriver<WindowsElement> session)
-        {
-            Session = session;
-        }
-    }
-
-    public class NoElementSelected
-    {
-        WindowsDriver<WindowsElement> Session;
-        public NoElementSelected(WindowsDriver<WindowsElement> session)
-        {
-            Session = session;
-        }
+        public void BackToAutomatedChecks() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinBreadCrumbTwoButton).Click();
     }
 }

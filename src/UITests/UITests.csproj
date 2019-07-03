@@ -111,17 +111,23 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="TestFiles\WildlifeManagerTest.a11ytest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="UITests.runsettings">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
+      <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
+      <Name>SharedUx</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights\AccessibilityInsights.csproj">
       <Project>{5e06484c-a156-46d7-830b-68275ed64f44}</Project>
       <Name>AccessibilityInsights</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\build\delaysign.targets" />

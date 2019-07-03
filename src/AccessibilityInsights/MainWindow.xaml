@@ -2,26 +2,27 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <Window x:Class="AccessibilityInsights.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccessibilityInsights"
-        xmlns:modecontrols="clr-namespace:AccessibilityInsights.Modes"
         xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
-        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+        xmlns:modecontrols="clr-namespace:AccessibilityInsights.Modes"
+        xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
         xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors;assembly=AccessibilityInsights.SharedUx"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+        xmlns:sharedProps="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
         mc:Ignorable="d"
         Title="{x:Static properties:Resources.MainWindowWindowTitle}"
-        MinWidth="304" 
+        MinWidth="304"
         MinHeight="425"
-        ResizeMode="CanResize" 
+        ResizeMode="CanResize"
         Loaded="onLoaded"
         Closed="onClosed"
-        DataContext="{Binding RelativeSource={RelativeSource Self}}" 
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
         WindowStyle="SingleBorderWindow"
         BorderBrush="{DynamicResource ResourceKey=WindowBorderBrush}"
-        xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
         Topmost="True" KeyUp="Window_KeyUp" StateChanged="onStateChanged" Closing="Window_Closing" Height="601.918">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
@@ -293,7 +294,7 @@
                                 <ComboBoxItem x:Name="cbiElement" Content="{x:Static properties:Resources.cbiElementContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiElementAutomationPropertiesName}" IsSelected="True"/>
                                 <ComboBoxItem x:Name="cbiEntireApp" Content="{x:Static properties:Resources.cbiEntireAppContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiEntireAppAutomationPropertiesName}"/>
                             </ComboBox>
-                            <Button x:Name="btnHilighter"
+                            <Button x:Name="btnHilighter" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinHighlightButton}"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                 Click="onHilightButtonClicked"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnHilighterAutomationPropertiesNameOn}">
@@ -445,7 +446,7 @@
                                 </Button.ContextMenu>
                             </Button>
                             <Button x:Name="btnLoad"
-                                Style="{StaticResource BtnStandard}"
+                                Style="{StaticResource BtnStandard}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinLoadButton}"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnLoadAutomationPropertiesName}" Click="btnLoad_Click">
                                 <Button.ToolTip>
@@ -461,10 +462,14 @@
                         </StackPanel>
                         <Label Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}"/>
                         <StackPanel Margin="0" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
-                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" 
+                                    Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"
+                                    AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbOneButton}"/>
                             <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbOne" Style="{StaticResource TbFocusable}" Margin="8,0,0,0" Text="Three" VerticalAlignment="Center" Height="Auto"/>
                             <fabric:FabricIconControl Name="ctrlFabCrumbOne" GlyphName="ChevronRight" GlyphSize="Small" Margin="4,2,4,0" Foreground="{DynamicResource ResourceKey=IconBrush}" VerticalAlignment="Center"/>
-                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbTwo" Style="{StaticResource btnLink}" Content="Two" Click="btnCrumbTwo_Click" VerticalAlignment="Center"/>
+                            <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbTwo" Style="{StaticResource btnLink}"
+                                    Content="Two" Click="btnCrumbTwo_Click" VerticalAlignment="Center"
+                                    AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbTwoButton}"/>
                             <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbTwo" Style="{StaticResource TbFocusable}" Text="Three" VerticalAlignment="Center" Height="Auto"/>
                             <fabric:FabricIconControl Name="ctrlFabCrumbTwo" GlyphName="ChevronRight" GlyphSize="Small" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="4,2,4,0" VerticalAlignment="Center"/>
                             <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbThree" Style="{StaticResource TbFocusable}" Text="Three" VerticalAlignment="Center"/>

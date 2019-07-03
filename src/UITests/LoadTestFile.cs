@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
+using System.Reflection;
 
 namespace UITests
 {
@@ -10,35 +12,49 @@ namespace UITests
     [TestClass]
     public class LoadTestFile : AIWinSession
     {
+        static readonly string TestFileName = "WildlifeManagerTest.a11ytest";
+        static readonly string TestFilePath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\TestFiles";
+
+        /// <summary>
+        /// The entry point for this test scenario. Every TestMethod  will restart ai-win, so
+        /// we want to use them sparingly.
+        /// </summary>
         [TestMethod]
         [TestCategory("NoStrongName")]
-        public void VerifyResultsInUIATreePage()
+        public void LoadTestFileTests()
+        {
+            ScanResultsInUIATreePage();
+            ScanAutomatedChecks();
+        }
+
+        private void ScanResultsInUIATreePage()
         {
             driver.TestMode.AutomatedChecks.ViewInUIATree();
-            // do appropriate testing
-            driver.TestMode.UIATree.BackToAutomatedChecks();
+
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+
+            Assert.AreEqual(0, result.errors);
+            driver.TestMode.ResultsInUIATree.BackToAutomatedChecks();
         }
 
-        [TestMethod]
-        [TestCategory("NoStrongName")]
-        public void VerifyGridContents()
+        private void ScanAutomatedChecks()
         {
-            driver.TestMode.AutomatedChecks.ToggleAllExpanders();
-            // do appropriate testing
-            driver.TestMode.AutomatedChecks.ToggleAllExpanders();
+            var result = driver.ScanAIWin(TestContext.ResultsDirectory);
+            Assert.AreEqual(0, result.errors);
         }
 
-        [ClassInitialize]
-        public static void ClassInitialize(TestContext context)
+        [TestInitialize]
+        public void TestInitialize()
         {
-            Setup(context);
+            Setup();
 
             driver.GettingStarted.DismissTelemetry();
-            driver.GettingStarted.DismissPage();
-            driver.LiveMode.OpenFile("folder", "file");
+            driver.GettingStarted.DismissStartupPage();
+            driver.ToggleHighlighter();
+            driver.LiveMode.OpenFile(TestFilePath, TestFileName);
         }
 
-        [ClassCleanup]
-        public static void ClassCleanup() => TearDown();
+        [TestCleanup]
+        public void ClassCleanup() => TearDown();
     }
 }
