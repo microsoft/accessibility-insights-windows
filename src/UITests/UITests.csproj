@@ -108,10 +108,14 @@
     <Compile Include="GettingStartedPage.cs" />
     <Compile Include="UILibrary\Settings.cs" />
     <Compile Include="UILibrary\TestMode.cs" />
+    <Compile Include="LoadEventFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="TestFiles\WildlifeManagerTest.a11yevent">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="TestFiles\WildlifeManagerTest.a11ytest">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

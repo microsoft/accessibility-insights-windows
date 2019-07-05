@@ -1,0 +1,1725 @@
+﻿[
+  {
+    "EventId": 0,
+    "TimeStamp": "09:58:37.859",
+    "Properties": [
+      {
+        "Key": "Message",
+        "Value": "Succeeded to register an event listener"
+      },
+      {
+        "Key": "Event Id",
+        "Value": 20005
+      },
+      {
+        "Key": "Event Name",
+        "Value": "AutomationFocusChanged"
+      }
+    ],
+    "Element": null
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:38.455",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": " ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30002": {
+          "Value": 4000,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50025,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": false,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": false,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:4000,providerId:0x0 Main(parent link):Unidentified Provider (unmanaged:Windows.UI.Xaml.dll)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:39.076",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "list item 'Owl'",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            7,
+            20264,
+            9886408
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            869.0,
+            995.0,
+            400.0,
+            40.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 20264,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50007,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "list item",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30005": {
+          "Value": "Owl",
+          "Id": 30005,
+          "Name": "Name"
+        },
+        "30008": {
+          "Value": true,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": true,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30012": {
+          "Value": "ListBoxItem",
+          "Id": 30012,
+          "Name": "ClassName"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "WPF",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:20264,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        },
+        "30079": {
+          "Value": true,
+          "Id": 30079,
+          "Name": "SelectionItemPattern.IsSelected"
+        },
+        "30080": {
+          "Value": "list view \"\"",
+          "Id": 30080,
+          "Name": "SelectionItemPattern.SelectionContainer"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "SelectionItemPattern",
+          "Id": 10010,
+          "Properties": [
+            {
+              "Name": "IsSelected",
+              "Value": true,
+              "NodeValue": "IsSelected = True"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "ScrollItemPattern",
+          "Id": 10017,
+          "Properties": [],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:39.186",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "edit ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            7,
+            20264,
+            52579650
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            865.0,
+            1245.0,
+            351.0,
+            148.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 20264,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50004,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "edit",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": true,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30012": {
+          "Value": "TextBox",
+          "Id": 30012,
+          "Name": "ClassName"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "WPF",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:20264,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        },
+        "30046": {
+          "Value": false,
+          "Id": 30046,
+          "Name": "ValuePattern.IsReadOnly"
+        },
+        "30053": {
+          "Value": -1.0,
+          "Id": 30053,
+          "Name": "ScrollPattern.HorizontalScrollPercent"
+        },
+        "30054": {
+          "Value": 100.0,
+          "Id": 30054,
+          "Name": "ScrollPattern.HorizontalViewSize"
+        },
+        "30055": {
+          "Value": -1.0,
+          "Id": 30055,
+          "Name": "ScrollPattern.VerticalScrollPercent"
+        },
+        "30056": {
+          "Value": 100.0,
+          "Id": 30056,
+          "Name": "ScrollPattern.VerticalViewSize"
+        },
+        "30057": {
+          "Value": false,
+          "Id": 30057,
+          "Name": "ScrollPattern.HorizontallyScrollable"
+        },
+        "30058": {
+          "Value": false,
+          "Id": 30058,
+          "Name": "ScrollPattern.VerticallyScrollable"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "ValuePattern",
+          "Id": 10002,
+          "Properties": [
+            {
+              "Name": "IsReadOnly",
+              "Value": false,
+              "NodeValue": "IsReadOnly = False"
+            },
+            {
+              "Name": "Value",
+              "Value": "",
+              "NodeValue": "Value = \"\""
+            }
+          ],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "ScrollPattern",
+          "Id": 10004,
+          "Properties": [
+            {
+              "Name": "HorizontallyScrollable",
+              "Value": false,
+              "NodeValue": "HorizontallyScrollable = False"
+            },
+            {
+              "Name": "HorizontalScrollPercent",
+              "Value": -1.0,
+              "NodeValue": "HorizontalScrollPercent = -1"
+            },
+            {
+              "Name": "HorizontalViewSize",
+              "Value": 100.0,
+              "NodeValue": "HorizontalViewSize = 100"
+            },
+            {
+              "Name": "VerticallyScrollable",
+              "Value": false,
+              "NodeValue": "VerticallyScrollable = False"
+            },
+            {
+              "Name": "VerticalScrollPercent",
+              "Value": -1.0,
+              "NodeValue": "VerticalScrollPercent = -1"
+            },
+            {
+              "Name": "VerticalViewSize",
+              "Value": 100.0,
+              "NodeValue": "VerticalViewSize = 100"
+            }
+          ],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "TextPattern",
+          "Id": 10014,
+          "Properties": [
+            {
+              "Name": "SupportedTextSelection",
+              "Value": 1,
+              "NodeValue": "SupportedTextSelection = SupportedTextSelection_Single"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:39.439",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "list item 'Owl'",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            7,
+            20264,
+            9886408
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            869.0,
+            995.0,
+            400.0,
+            40.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 20264,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50007,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "list item",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30005": {
+          "Value": "Owl",
+          "Id": 30005,
+          "Name": "Name"
+        },
+        "30008": {
+          "Value": true,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": true,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30012": {
+          "Value": "ListBoxItem",
+          "Id": 30012,
+          "Name": "ClassName"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "WPF",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:20264,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        },
+        "30079": {
+          "Value": true,
+          "Id": 30079,
+          "Name": "SelectionItemPattern.IsSelected"
+        },
+        "30080": {
+          "Value": "list view \"\"",
+          "Id": 30080,
+          "Name": "SelectionItemPattern.SelectionContainer"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "SelectionItemPattern",
+          "Id": 10010,
+          "Properties": [
+            {
+              "Name": "IsSelected",
+              "Value": true,
+              "NodeValue": "IsSelected = True"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "ScrollItemPattern",
+          "Id": 10017,
+          "Properties": [],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:41.721",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "edit ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            7,
+            20264,
+            52579650
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            865.0,
+            1245.0,
+            351.0,
+            148.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 20264,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50004,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "edit",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30008": {
+          "Value": true,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": true,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30012": {
+          "Value": "TextBox",
+          "Id": 30012,
+          "Name": "ClassName"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "WPF",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:20264,providerId:0x0 Main(parent link):Unidentified Provider (managed:MS.Internal.Automation.ElementProxy, PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        },
+        "30046": {
+          "Value": false,
+          "Id": 30046,
+          "Name": "ValuePattern.IsReadOnly"
+        },
+        "30053": {
+          "Value": -1.0,
+          "Id": 30053,
+          "Name": "ScrollPattern.HorizontalScrollPercent"
+        },
+        "30054": {
+          "Value": 100.0,
+          "Id": 30054,
+          "Name": "ScrollPattern.HorizontalViewSize"
+        },
+        "30055": {
+          "Value": -1.0,
+          "Id": 30055,
+          "Name": "ScrollPattern.VerticalScrollPercent"
+        },
+        "30056": {
+          "Value": 100.0,
+          "Id": 30056,
+          "Name": "ScrollPattern.VerticalViewSize"
+        },
+        "30057": {
+          "Value": false,
+          "Id": 30057,
+          "Name": "ScrollPattern.HorizontallyScrollable"
+        },
+        "30058": {
+          "Value": false,
+          "Id": 30058,
+          "Name": "ScrollPattern.VerticallyScrollable"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "ValuePattern",
+          "Id": 10002,
+          "Properties": [
+            {
+              "Name": "IsReadOnly",
+              "Value": false,
+              "NodeValue": "IsReadOnly = False"
+            },
+            {
+              "Name": "Value",
+              "Value": "",
+              "NodeValue": "Value = \"\""
+            }
+          ],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "ScrollPattern",
+          "Id": 10004,
+          "Properties": [
+            {
+              "Name": "HorizontallyScrollable",
+              "Value": false,
+              "NodeValue": "HorizontallyScrollable = False"
+            },
+            {
+              "Name": "HorizontalScrollPercent",
+              "Value": -1.0,
+              "NodeValue": "HorizontalScrollPercent = -1"
+            },
+            {
+              "Name": "HorizontalViewSize",
+              "Value": 100.0,
+              "NodeValue": "HorizontalViewSize = 100"
+            },
+            {
+              "Name": "VerticallyScrollable",
+              "Value": false,
+              "NodeValue": "VerticallyScrollable = False"
+            },
+            {
+              "Name": "VerticalScrollPercent",
+              "Value": -1.0,
+              "NodeValue": "VerticalScrollPercent = -1"
+            },
+            {
+              "Name": "VerticalViewSize",
+              "Value": 100.0,
+              "NodeValue": "VerticalViewSize = 100"
+            }
+          ],
+          "IsUIActionable": false
+        },
+        {
+          "Name": "TextPattern",
+          "Id": 10014,
+          "Properties": [
+            {
+              "Name": "SupportedTextSelection",
+              "Value": 1,
+              "NodeValue": "SupportedTextSelection = SupportedTextSelection_Single"
+            }
+          ],
+          "IsUIActionable": true
+        },
+        {
+          "Name": "SynchronizedInputPattern",
+          "Id": 10021,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:42.672",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": " ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30002": {
+          "Value": 4000,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50025,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": false,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": false,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30015": {
+          "Value": 0,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": false,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:4000,providerId:0x0 Main(parent link):Unidentified Provider (unmanaged:Windows.UI.Xaml.dll)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:43.306",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "pane ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            42,
+            2230004,
+            4,
+            50929
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            1531.0,
+            818.0,
+            668.0,
+            228.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 21520,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50033,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "pane",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": false,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30015": {
+          "Value": 1033,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "MicrosoftEdge",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": true,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:21520,providerId:0x0 Main(parent link):Unidentified Provider (unmanaged:edgehtml.dll)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "ScrollItemPattern",
+          "Id": 10017,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:43.368",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "pane ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            42,
+            2230004,
+            4,
+            50929
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            1531.0,
+            818.0,
+            668.0,
+            228.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 21520,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50033,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "pane",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": false,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30015": {
+          "Value": 1033,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "MicrosoftEdge",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": true,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:21520,providerId:0x0 Main(parent link):Unidentified Provider (unmanaged:edgehtml.dll)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "ScrollItemPattern",
+          "Id": 10017,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  },
+  {
+    "EventId": 20005,
+    "TimeStamp": "09:58:43.599",
+    "Properties": null,
+    "Element": {
+      "Orientation": 0,
+      "Glimpse": "pane ''",
+      "UniqueId": 0,
+      "Properties": {
+        "30000": {
+          "Value": [
+            42,
+            2230004,
+            4,
+            50929
+          ],
+          "Id": 30000,
+          "Name": "RuntimeId"
+        },
+        "30001": {
+          "Value": [
+            1531.0,
+            818.0,
+            668.0,
+            228.0
+          ],
+          "Id": 30001,
+          "Name": "BoundingRectangle"
+        },
+        "30002": {
+          "Value": 21520,
+          "Id": 30002,
+          "Name": "ProcessId"
+        },
+        "30003": {
+          "Value": 50033,
+          "Id": 30003,
+          "Name": "ControlType"
+        },
+        "30004": {
+          "Value": "pane",
+          "Id": 30004,
+          "Name": "LocalizedControlType"
+        },
+        "30008": {
+          "Value": false,
+          "Id": 30008,
+          "Name": "HasKeyboardFocus"
+        },
+        "30009": {
+          "Value": false,
+          "Id": 30009,
+          "Name": "IsKeyboardFocusable"
+        },
+        "30010": {
+          "Value": true,
+          "Id": 30010,
+          "Name": "IsEnabled"
+        },
+        "30015": {
+          "Value": 1033,
+          "Id": 30015,
+          "Name": "Culture"
+        },
+        "30016": {
+          "Value": true,
+          "Id": 30016,
+          "Name": "IsControlElement"
+        },
+        "30017": {
+          "Value": true,
+          "Id": 30017,
+          "Name": "IsContentElement"
+        },
+        "30019": {
+          "Value": false,
+          "Id": 30019,
+          "Name": "IsPassword"
+        },
+        "30020": {
+          "Value": 0,
+          "Id": 30020,
+          "Name": "NativeWindowHandle"
+        },
+        "30022": {
+          "Value": false,
+          "Id": 30022,
+          "Name": "IsOffscreen"
+        },
+        "30023": {
+          "Value": 0,
+          "Id": 30023,
+          "Name": "Orientation"
+        },
+        "30024": {
+          "Value": "MicrosoftEdge",
+          "Id": 30024,
+          "Name": "FrameworkId"
+        },
+        "30025": {
+          "Value": false,
+          "Id": 30025,
+          "Name": "IsRequiredForForm"
+        },
+        "30103": {
+          "Value": true,
+          "Id": 30103,
+          "Name": "IsDataValidForForm"
+        },
+        "30107": {
+          "Value": "[pid:21520,providerId:0x0 Main(parent link):Unidentified Provider (unmanaged:edgehtml.dll)]",
+          "Id": 30107,
+          "Name": "ProviderDescription"
+        },
+        "30111": {
+          "Value": false,
+          "Id": 30111,
+          "Name": "OptimizeForVisualContent"
+        },
+        "30135": {
+          "Value": 0,
+          "Id": 30135,
+          "Name": "LiveSetting"
+        },
+        "30150": {
+          "Value": false,
+          "Id": 30150,
+          "Name": "IsPeripheral"
+        },
+        "30162": {
+          "Value": 0,
+          "Id": 30162,
+          "Name": "FillType"
+        },
+        "30163": {
+          "Value": 0,
+          "Id": 30163,
+          "Name": "VisualEffects"
+        },
+        "30173": {
+          "Value": 80050,
+          "Id": 30173,
+          "Name": "HeadingLevel"
+        },
+        "30174": {
+          "Value": false,
+          "Id": 30174,
+          "Name": "IsDialog"
+        }
+      },
+      "PlatformProperties": {},
+      "Patterns": [
+        {
+          "Name": "ScrollItemPattern",
+          "Id": 10017,
+          "Properties": [],
+          "IsUIActionable": false
+        }
+      ],
+      "Children": [],
+      "TreeWalkerMode": 0,
+      "IsAncestorOfSelected": false,
+      "ScanResults": null,
+      "IssueDisplayText": null
+    }
+  }
+]

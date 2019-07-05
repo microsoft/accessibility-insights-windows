@@ -61,5 +61,7 @@ namespace UITests.UILibrary
         public string Title => Session.Title;
 
         public void ToggleHighlighter() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinHighlightButton).Click();
+
+        public void Maximize() => Session.Manage().Window.Maximize();
     }
 }
