@@ -26,7 +26,6 @@ namespace UITests
         {
             driver.Maximize();
             CheckEventLog();
-            CheckEventDetails();
             CheckPropertyView();
             CheckPatternsView();
             ScanWindow();
@@ -43,26 +42,16 @@ namespace UITests
         /// </summary>
         private void CheckEventLog()
         {
-            var eventGrid = driver.FindElementByAccessibilityId("dgEvents");
+            var eventGrid = driver.FindElementByAccessibilityId("ctrlEventMode");
             var rows = eventGrid.FindElementsByClassName("DataGridRow");
-            Assert.AreEqual(rows.Count, 10);
 
             rows[0].Click();
 
             // Text is populated after the cell above is selected (blank otherwise)
             Assert.AreEqual("09:58:37.859, EventRecorderNotification, Event Recorder", rows[0].Text);
-        }
 
-        /// <summary>
-        /// Validate the event details pane in the bottom right
-        /// </summary>
-        private void CheckEventDetails()
-        {
-            var detailGrid = driver.FindElementByAccessibilityId("dgEventDetails");
-            var rows = detailGrid.FindElementsByClassName("DataGridRow");
-
-            // rows.Count is 0, need to understand why
-            // Assert.AreEqual(3, rows.Count);
+            // 10 rows from the event log and 3 from the event details
+            Assert.AreEqual(rows.Count, 13);
         }
 
         /// <summary>
