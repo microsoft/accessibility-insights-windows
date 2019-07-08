@@ -80,29 +80,27 @@ namespace UITests
             {
                 attempts--;
 
-                try
+                StartNewSession();
+                Thread.Sleep(3000);
+
+                // if the session and its title are present, ai-win is ready for testing.
+                if (!string.IsNullOrEmpty(session?.Title))
                 {
-                    StartNewSession();
-                    Thread.Sleep(3000);
-
-                    // if the session has these nulls, ai-win is not ready for testing.
-                    if (session == null || string.IsNullOrEmpty(session.Title) || session.SessionId == null)
-                    {
-                        continue;
-                    }
-
                     break;
                 }
-                catch { }
             }
         }
 
         private void StartNewSession()
         {
-            process.Refresh(); // updates process.MainWindowHandle
-            DesiredCapabilities appCapabilities = new DesiredCapabilities();
-            appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
-            session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+            try
+            {
+                process.Refresh(); // updates process.MainWindowHandle
+                DesiredCapabilities appCapabilities = new DesiredCapabilities();
+                appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
+                session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+            }
+            catch { }
         }
 
         public void TearDown()
