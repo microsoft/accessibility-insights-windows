@@ -60,18 +60,46 @@ namespace UITests
             var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
             process = Process.Start(exePath, configPathArgument);
-            process.WaitForInputIdle();
 
-            // small buffer between splash screen disappearing 
-            // and main window initializing; otherwise in rare
-            // cases splash screen can be picked up as main window
-            Thread.Sleep(30000);
+            const int attempts = 15; // this number should give us enough retries for the build to work
+            RetryAttemptToStartNewSession(attempts);
 
+            driver = new AIWinDriver(session, process.Id);
+        }
+
+        /// <summary>
+        /// We can't start a WinAppDriver session until ai-win is past its splash screen and fully loaded.
+        /// This takes a variable amount of time depending on the executing machine. It is particularly slow
+        /// in our build pipeline. Rather than set a long delay for the worst case scenario, we instead attempt
+        /// to start a new session repeatedly until ai-win is ready.
+        /// </summary>
+        /// <param name="attempts">Number of times to retry starting a new session</param>
+        private void RetryAttemptToStartNewSession(int attempts)
+        {
+            while (attempts > 0)
+            {
+                attempts--;
+
+                try
+                {
+                    StartNewSession();
+                    Thread.Sleep(2000);
+
+                    // if the window title isn't set, ai-win is not ready for testing.
+                    if (string.IsNullOrEmpty(session?.Title)) continue;
+
+                    break;
+                }
+                catch { }
+            }
+        }
+
+        private void StartNewSession()
+        {
+            process.Refresh(); // updates process.MainWindowHandle
             DesiredCapabilities appCapabilities = new DesiredCapabilities();
             appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
             session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
-
-            driver = new AIWinDriver(session, process.Id);
         }
 
         public void TearDown()
