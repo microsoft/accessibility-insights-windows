@@ -61,7 +61,7 @@ namespace UITests
 
             process = Process.Start(exePath, configPathArgument);
 
-            const int attempts = 15; // this number should give us enough retries for the build to work
+            const int attempts = 10; // this number should give us enough retries for the build to work
             RetryAttemptToStartNewSession(attempts);
 
             driver = new AIWinDriver(session, process.Id);
@@ -83,10 +83,13 @@ namespace UITests
                 try
                 {
                     StartNewSession();
-                    Thread.Sleep(2000);
+                    Thread.Sleep(3000);
 
-                    // if the window title isn't set, ai-win is not ready for testing.
-                    if (string.IsNullOrEmpty(session?.Title)) continue;
+                    // if the session has these nulls, ai-win is not ready for testing.
+                    if (session == null || string.IsNullOrEmpty(session.Title) || session.SessionId == null)
+                    {
+                        continue;
+                    }
 
                     break;
                 }
