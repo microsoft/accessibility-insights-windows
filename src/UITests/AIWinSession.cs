@@ -17,8 +17,8 @@ namespace UITests
     public class AIWinSession
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private Process process;
-        private WindowsDriver<WindowsElement> session;
+        private Process _process;
+        private WindowsDriver<WindowsElement> _session;
         protected AIWinDriver driver;
         public TestContext TestContext { get; set; }
 
@@ -35,11 +35,11 @@ namespace UITests
 
             LaunchApplicationAndAttach();
 
-            Assert.IsNotNull(session);
-            Assert.IsNotNull(session.SessionId);
+            Assert.IsNotNull(_session);
+            Assert.IsNotNull(_session.SessionId);
 
             // Set implicit timeout to 1.5 seconds to ensure element search retries every 500 ms for at most three times
-            session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
+            _session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
         }
 
         /// <summary>
@@ -59,19 +59,43 @@ namespace UITests
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
             var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            process = Process.Start(exePath, configPathArgument);
-            process.WaitForInputIdle();
+            _process = Process.Start(exePath, configPathArgument);
 
-            // small buffer between splash screen disappearing 
-            // and main window initializing; otherwise in rare
-            // cases splash screen can be picked up as main window
-            Thread.Sleep(30000);
+            const int attempts = 10; // this number should give us enough retries for the build to work
+            StartNewSessionWithRetry(attempts);
 
-            DesiredCapabilities appCapabilities = new DesiredCapabilities();
-            appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
-            session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+            driver = new AIWinDriver(_session, _process.Id);
+        }
 
-            driver = new AIWinDriver(session, process.Id);
+        /// <summary>
+        /// We can't start a WinAppDriver session until ai-win is past its splash screen and fully loaded.
+        /// This takes a variable amount of time depending on the executing machine. It is particularly slow
+        /// in our build pipeline. Rather than set a long delay for the worst case scenario, we instead attempt
+        /// to start a new session repeatedly until ai-win is ready.
+        /// </summary>
+        /// <param name="attempts">Number of times to retry starting a new session</param>
+        private void StartNewSessionWithRetry(int attempts)
+        {
+            // if the session and its title are present, ai-win is ready for testing.
+            while (attempts > 0 && string.IsNullOrEmpty(_session?.Title))
+            {
+                attempts--;
+
+                StartNewSession();
+                Thread.Sleep(3000);
+            }
+        }
+
+        private void StartNewSession()
+        {
+            try
+            {
+                _process.Refresh(); // updates process.MainWindowHandle
+                DesiredCapabilities appCapabilities = new DesiredCapabilities();
+                appCapabilities.SetCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
+                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+            }
+            catch { }
         }
 
         public void TearDown()
@@ -80,9 +104,9 @@ namespace UITests
 
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
-            process?.Kill();
+            _process?.Kill();
 
-            session?.Quit();
+            _session?.Quit();
         }
 
         private bool IsWinAppDriverRunning()
