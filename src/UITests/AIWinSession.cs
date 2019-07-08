@@ -17,8 +17,8 @@ namespace UITests
     public class AIWinSession
     {
         protected const string WindowsApplicationDriverUrl = "http://127.0.0.1:4723";
-        private Process process;
-        private WindowsDriver<WindowsElement> session;
+        private Process _process;
+        private WindowsDriver<WindowsElement> _session;
         protected AIWinDriver driver;
         public TestContext TestContext { get; set; }
 
@@ -35,11 +35,11 @@ namespace UITests
 
             LaunchApplicationAndAttach();
 
-            Assert.IsNotNull(session);
-            Assert.IsNotNull(session.SessionId);
+            Assert.IsNotNull(_session);
+            Assert.IsNotNull(_session.SessionId);
 
             // Set implicit timeout to 1.5 seconds to ensure element search retries every 500 ms for at most three times
-            session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
+            _session.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1.5);
         }
 
         /// <summary>
@@ -59,12 +59,12 @@ namespace UITests
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
             var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            process = Process.Start(exePath, configPathArgument);
+            _process = Process.Start(exePath, configPathArgument);
 
             const int attempts = 10; // this number should give us enough retries for the build to work
             StartNewSessionWithRetry(attempts);
 
-            driver = new AIWinDriver(session, process.Id);
+            driver = new AIWinDriver(_session, _process.Id);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace UITests
         private void StartNewSessionWithRetry(int attempts)
         {
             // if the session and its title are present, ai-win is ready for testing.
-            while (attempts > 0 && string.IsNullOrEmpty(session?.Title))
+            while (attempts > 0 && string.IsNullOrEmpty(_session?.Title))
             {
                 attempts--;
 
@@ -90,10 +90,10 @@ namespace UITests
         {
             try
             {
-                process.Refresh(); // updates process.MainWindowHandle
+                _process.Refresh(); // updates process.MainWindowHandle
                 DesiredCapabilities appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", process.MainWindowHandle.ToString("x"));
-                session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+                appCapabilities.SetCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
+                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
             }
             catch { }
         }
@@ -104,9 +104,9 @@ namespace UITests
 
             // closing ai-win like this stops it from saving the config. Will have to change this
             // if we ever want to use the saved config.
-            process?.Kill();
+            _process?.Kill();
 
-            session?.Quit();
+            _session?.Quit();
         }
 
         private bool IsWinAppDriverRunning()
