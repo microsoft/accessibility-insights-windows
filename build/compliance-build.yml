@@ -47,6 +47,11 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Start - WinAppDriver'
+    inputs:
+      AgentResolution: 1080p
+
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
     inputs:
@@ -58,6 +63,11 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
       rerunFailedTests: true
+
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Stop - WinAppDriver'
+    inputs:
+      OperationType: Stop
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
@@ -141,6 +151,11 @@ jobs:
       FxCop: true
       FxCopBreakOn: CriticalError
 
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Start - WinAppDriver'
+    inputs:
+      AgentResolution: 1080p
+
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
@@ -153,3 +168,8 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
+
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Stop - WinAppDriver'
+    inputs:
+      OperationType: Stop
