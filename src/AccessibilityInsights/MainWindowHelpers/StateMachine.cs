@@ -42,7 +42,6 @@ namespace AccessibilityInsights
         /// </summary>
         public dynamic CurrentView { get; set; } = null;
 
-
         /// <summary>
         /// Current mode control
         /// </summary>
