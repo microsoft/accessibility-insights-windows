@@ -102,9 +102,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="Sarif.fakes" />
-  </ItemGroup>
-  <ItemGroup>
     <Fakes Condition="$(FAKES_SUPPORTED) == 1" Include="AccessibilityInsights.Extensions.Telemetry.fakes">
       <SubType>Designer</SubType>
     </Fakes>
