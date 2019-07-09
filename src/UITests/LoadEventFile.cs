@@ -12,8 +12,8 @@ namespace UITests
     [TestClass]
     public class LoadEventFile : AIWinSession
     {
-        static readonly string EventFileName = "WildlifeManagerTest.a11yevent";
-        static readonly string TestFilePath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\TestFiles";
+        const string EventFileName = "WildlifeManagerTest.a11yevent";
+        static readonly string TestFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestFiles");
 
         /// <summary>
         /// The entry point for this test scenario. Every TestMethod  will restart ai-win, so
@@ -27,7 +27,6 @@ namespace UITests
             driver.Maximize();
             CheckEventLog();
             CheckPropertyView();
-            CheckPatternsView();
             ScanWindow();
         }
 
@@ -42,7 +41,7 @@ namespace UITests
         /// </summary>
         private void CheckEventLog()
         {
-            var eventGrid = driver.FindElementByAccessibilityId("ctrlEventMode");
+            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventModeControl);
             var rows = eventGrid.FindElementsByClassName("DataGridRow");
 
             rows[0].Click();
@@ -51,7 +50,8 @@ namespace UITests
             Assert.AreEqual("09:58:37.859, EventRecorderNotification, Event Recorder", rows[0].Text);
 
             // 10 rows from the event log and 3 from the event details
-            Assert.AreEqual(rows.Count, 13);
+            int numRows = GetNumEventDataRows();
+            Assert.AreEqual(13, numRows);
         }
 
         /// <summary>
@@ -59,26 +59,21 @@ namespace UITests
         /// </summary>
         private void CheckPropertyView()
         {
-            var eventGrid = driver.FindElementByAccessibilityId("dgEvents");
+            // Click on 3rd event to see its properties
+            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventsDataGrid);
             var eventRows = eventGrid.FindElementsByClassName("DataGridRow");
             eventRows[2].Click();
-            var propertyGrid = driver.FindElementByAccessibilityId("dgProperties");
-            var propertyRows = propertyGrid.FindElementsByClassName("DataGridRow");
 
-            // propertyRows.Count is 0, need to understand why
-            // Assert.AreEqual(propertyRows.Count, 10);
+            // 10 rows from the event log and 10 from the event properties
+            var rowCount = GetNumEventDataRows();
+            Assert.AreEqual(20, rowCount);
         }
 
-        /// <summary>
-        /// Validate the patterns from the 3rd event (list item Owl)
-        /// </summary>
-        private void CheckPatternsView()
+        private int GetNumEventDataRows()
         {
-            var patternTree = driver.FindElementByAccessibilityId("treePatterns");
-            var patternItems = patternTree.FindElementsByClassName("TreeViewItem");
-
-            // patternItems.Count is 0, need to understand why
-            // Assert.AreEqual(3, patternItems.Count);
+            var control = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventModeControl);
+            var rows = control.FindElementsByClassName("DataGridRow");
+            return rows.Count;
         }
 
         [TestInitialize]
