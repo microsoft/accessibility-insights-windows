@@ -18,8 +18,8 @@ namespace UITests
     [TestClass]
     public class LoadTestFile : AIWinSession
     {
-        readonly string TestFileName = "WildlifeManagerTest.a11ytest";
-        readonly string TestFilePath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\TestFiles";
+        const string TestFileName = "WildlifeManagerTest.a11ytest";
+        readonly string TestFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestFiles");
 
         /// <summary>
         /// The entry point for this test scenario. Every TestMethod will restart ai-win, so
