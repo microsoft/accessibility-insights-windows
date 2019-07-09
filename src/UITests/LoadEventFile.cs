@@ -32,7 +32,7 @@ namespace UITests
 
         private void ScanWindow()
         {
-            var issueCount = driver.ScanAIWin(TestContext);
+            var issueCount = driver.ScanAIWin(TestContext, "EventPage");
             Assert.AreEqual(0, issueCount);
         }
 
