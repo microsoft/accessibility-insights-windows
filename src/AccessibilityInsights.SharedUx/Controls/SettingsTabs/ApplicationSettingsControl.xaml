@@ -75,6 +75,7 @@
             <StackPanel Grid.Row="4" Orientation="Horizontal" Margin="1,5,0,0">
                 <Button x:Name="btnHotkeyPause" HorizontalAlignment="Left" Height="16" VerticalAlignment="Top" Width="120" 
                         VerticalContentAlignment="Center" Style="{StaticResource BtnHotkey}" 
+                        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HotkeyPauseButton}"
                         Click="btnToggleHk_Click">
                     <AutomationProperties.Name>
                         <MultiBinding StringFormat="{x:Static Properties:Resources.MultiBindingStringFormat}">

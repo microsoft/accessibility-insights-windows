@@ -5,6 +5,7 @@ using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.IO;
+using static System.FormattableString;
 
 namespace UITests.UILibrary
 {
@@ -37,7 +38,7 @@ namespace UITests.UILibrary
         /// </summary>
         /// <param name="context"></param>
         /// <returns>number of accessibility issues</returns>
-        public int ScanAIWin(TestContext context)
+        public int ScanAIWin(TestContext context, string fileName)
         {
             var outputPath = Path.Combine(context.TestResultsDirectory, context.TestName);
             var config = Config.Builder.ForProcessId(PID)
@@ -50,7 +51,9 @@ namespace UITests.UILibrary
             var result = scanner.Scan();
             if (result.ErrorCount > 0)
             {
-                context.AddResultFile(result.OutputFile.A11yTest);
+                var newPath = Path.Combine(outputPath, Invariant($"{fileName}.a11ytest"));
+                File.Move(result.OutputFile.A11yTest, newPath);
+                context.AddResultFile(newPath);
             }
 
             return result.ErrorCount;
@@ -61,6 +64,8 @@ namespace UITests.UILibrary
         public string Title => Session.Title;
 
         public void ToggleHighlighter() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinHighlightButton).Click();
+
+        public void GoToSettings() => Session.FindElementByAccessibilityId(AutomationIDs.SettingsButton).Click();
 
         public void Maximize() => Session.Manage().Window.Maximize();
     }

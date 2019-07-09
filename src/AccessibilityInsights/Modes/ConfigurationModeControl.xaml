@@ -9,6 +9,7 @@
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:local="clr-namespace:AccessibilityInsights.Modes"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             xmlns:sharedProps="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
              mc:Ignorable="d" AutomationProperties.Name="{x:Static properties:Resources.ConfigurationModeControlAutomationPropertiesName}"
              d:DesignHeight="550" d:DesignWidth="500">
     <UserControl.Resources>
@@ -32,9 +33,10 @@
                 </Grid>
                 <Grid Grid.Row="1">
                     <DockPanel LastChildFill="False" >
-                        <Button DockPanel.Dock="Bottom" TabIndex="-3" x:Name="btnOk" Content="{x:Static properties:Resources.btnOkContent}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="24" Margin="20,20" IsDefault="True" Click="buttonOk_Click" Style="{StaticResource BtnSave}" IsEnabled="False"/>
+                        <Button DockPanel.Dock="Bottom" TabIndex="-3" x:Name="btnOk" Content="{x:Static properties:Resources.btnOkContent}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="24" Margin="20,20" IsDefault="True" Click="buttonOk_Click" Style="{StaticResource BtnSave}" IsEnabled="False" 
+                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SaveAndCloseButton}"/>
                         <TabControl Name="tcTabs" DockPanel.Dock="Top" BorderThickness="0,1,0,0" BorderBrush="#FFEAEAEA" Style="{StaticResource tcScrolling}" SelectionChanged="TabControl_SelectionChanged">
-                            <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsApplicationTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
                                 <controls:ApplicationSettingsControl x:Name="appSettingsCtrl"/>
                             </TabItem>
                             <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
@@ -43,7 +45,7 @@
                             <TabItem Header="{x:Static properties:Resources.tcTabsWhatsNewHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">
                                 <controls:WhatsNewTabControl x:Name="whatsNewTabCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Feedback}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsAboutTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Feedback}">
                                 <controls:AboutTabControl x:Name="aboutTabCtrl"/>
                             </TabItem>
                         </TabControl>

@@ -39,7 +39,8 @@ namespace UITests
         private void ScanResultsInUIATreePage()
         {
             driver.TestMode.AutomatedChecks.ViewInUIATree();
-            var issueCount = driver.ScanAIWin(TestContext);
+
+            var issueCount = driver.ScanAIWin(TestContext, "UIATree");
 
             Assert.AreEqual(0, issueCount);
             driver.TestMode.ResultsInUIATree.BackToAutomatedChecks();
@@ -47,7 +48,7 @@ namespace UITests
 
         private void ScanAutomatedChecks()
         {
-            var issueCount = driver.ScanAIWin(TestContext);
+            var issueCount = driver.ScanAIWin(TestContext, "AutomatedChecks");
             Assert.AreEqual(0, issueCount);
         }
 

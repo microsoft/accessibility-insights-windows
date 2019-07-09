@@ -21,5 +21,15 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string TelemetryDialogExitButton { get; } = nameof(TelemetryDialogExitButton);
         public static string EventsDataGrid { get; } = nameof(EventsDataGrid);
         public static string EventModeControl { get; } = nameof(EventModeControl);
+        public static string SettingsButton { get; } = nameof(SettingsButton);
+        public static string SettingsApplicationTabItem { get; } = nameof(SettingsApplicationTabItem);
+        public static string SettingsAboutTabItem { get; } = nameof(SettingsAboutTabItem);
+        public static string ChannelComboBox { get; } = nameof(ChannelComboBox);
+        public static string SaveAndCloseButton { get; } = nameof(SaveAndCloseButton);
+        public static string PauseButton { get; } = nameof(PauseButton);
+        public static string HotkeyPauseButton { get; } = nameof(HotkeyPauseButton);
+        public static string HotkeyGrabDialog { get; } = nameof(HotkeyGrabDialog);
+        public static string MainWindow { get; } = nameof(MainWindow);
+        public static string ThirdPartyNoticesHyperlink { get; } = nameof(ThirdPartyNoticesHyperlink);
     }
 }

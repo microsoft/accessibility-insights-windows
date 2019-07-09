@@ -12,7 +12,8 @@
         Title="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" Height="162" Width="319" 
         KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
         WindowStartupLocation="CenterOwner"
-        ShowInTaskbar="False" Topmost="True">
+        ShowInTaskbar="False" Topmost="True"
+        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HotkeyGrabDialog}">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </Window.Resources>

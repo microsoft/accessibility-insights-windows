@@ -42,7 +42,7 @@
         <TextBlock Padding="0" FontSize="14" Margin="0,8,0,0" HorizontalAlignment="Left">
             <Hyperlink x:Name="hlNotices" AutomationProperties.Name="{x:Static Properties:Resources.hlThirdpartyNoticesName}" 
                        Click="FileLink_Click" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                       NavigateUri="thirdpartynotices.html" TextDecorations="None">
+                       NavigateUri="thirdpartynotices.html" TextDecorations="None" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ThirdPartyNoticesHyperlink}">
                 <Run Text="{x:Static Properties:Resources.hlThirdpartyNoticesName}" />
             </Hyperlink>
         </TextBlock>
