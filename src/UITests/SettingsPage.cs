@@ -92,7 +92,6 @@ namespace UITests
             Setup();
             driver.GettingStarted.DismissTelemetry();
             driver.GettingStarted.DismissStartupPage();
-            driver.ToggleHighlighter();
             driver.GoToSettings();
             driver.Maximize();
         }

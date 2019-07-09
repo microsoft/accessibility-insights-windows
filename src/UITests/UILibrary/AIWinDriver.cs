@@ -5,6 +5,7 @@ using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.IO;
+using static System.FormattableString;
 
 namespace UITests.UILibrary
 {
@@ -50,7 +51,7 @@ namespace UITests.UILibrary
             var result = scanner.Scan();
             if (result.ErrorCount > 0)
             {
-                var newPath = Path.Combine(outputPath, $"{fileName}.a11ytest");
+                var newPath = Path.Combine(outputPath, Invariant($"{fileName}.a11ytest"));
                 File.Move(result.OutputFile.A11yTest, newPath);
                 context.AddResultFile(newPath);
             }
@@ -67,6 +68,5 @@ namespace UITests.UILibrary
         public void GoToSettings() => Session.FindElementByAccessibilityId(AutomationIDs.SettingsButton).Click();
 
         public void Maximize() => Session.Manage().Window.Maximize();
-
     }
 }
