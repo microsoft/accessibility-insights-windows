@@ -9,8 +9,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             xmlns:sharedUxProperties="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
              mc:Ignorable="d"
              AutomationProperties.Name="{x:Static properties:Resources.EventModeControlAutomationPropertiesName}" Height="600" Width="600"
+             AutomationProperties.AutomationId="{x:Static sharedUxProperties:AutomationIDs.EventModeControl}"
              IsVisibleChanged="UserControl_IsVisibleChanged">
     <Grid Panel.ZIndex="1">
         <Grid.RowDefinitions>

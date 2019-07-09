@@ -48,9 +48,17 @@ namespace UITests
         private void SetupEventListening()
         {
             var log = new EventLog("Application");
-            log.EntryWritten += new EntryWrittenEventHandler((_, args) => Events.Add(args.Entry));
+            log.EntryWritten += AddEvent;
             log.EnableRaisingEvents = true;
         }
+
+        private void ClearEventListening()
+        {
+            var log = new EventLog("Application");
+            log.EntryWritten -= AddEvent;
+        }
+
+        private void AddEvent(object sender, EntryWrittenEventArgs args) => Events.Add(args.Entry);
 
         private void LaunchApplicationAndAttach()
         {
@@ -100,6 +108,7 @@ namespace UITests
 
         public void TearDown()
         {
+            ClearEventListening();
             AttachEvents();
 
             // closing ai-win like this stops it from saving the config. Will have to change this

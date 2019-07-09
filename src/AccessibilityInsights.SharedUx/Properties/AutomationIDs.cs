@@ -11,5 +11,7 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string MainWinBreadCrumbTwoButton { get; } = nameof(MainWinBreadCrumbTwoButton);
         public static string StartUpModeExitButton { get; } = nameof(StartUpModeExitButton);
         public static string TelemetryDialogExitButton { get; } = nameof(TelemetryDialogExitButton);
+        public static string EventsDataGrid { get; } = nameof(EventsDataGrid);
+        public static string EventModeControl { get; } = nameof(EventModeControl);
     }
 }
