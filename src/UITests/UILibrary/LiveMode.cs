@@ -34,11 +34,11 @@ namespace UITests.UILibrary
 
             var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
             folderTextbox.SendKeys(folder);
-            folderTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
+            folderTextbox.SendKeys(Keys.Enter);
 
             var fileTextbox = Session.FindElementByAccessibilityId(OpenFileFileTextBoxAutomationID);
             fileTextbox.SendKeys(fileName);
-            fileTextbox.SendKeys(OpenQA.Selenium.Keys.Enter);
+            fileTextbox.SendKeys(Keys.Enter);
         }
     }
 }

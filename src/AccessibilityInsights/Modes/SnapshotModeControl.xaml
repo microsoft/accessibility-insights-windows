@@ -8,8 +8,9 @@
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
              xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls;assembly=AccessibilityInsights.SharedUx"
+             xmlns:sharedProps="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
              xmlns:Util="clr-namespace:AccessibilityInsights.SharedUx.Utilities;assembly=AccessibilityInsights.SharedUx"
-             mc:Ignorable="d"
+             mc:Ignorable="d" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SnapshotModeControl}"
              AutomationProperties.Name="{x:Static properties:Resources.SnapshotModeControlAutomationPropertiesName}" Height="600" Width="600">
     <Grid Panel.ZIndex="1">
         <Grid.RowDefinitions>

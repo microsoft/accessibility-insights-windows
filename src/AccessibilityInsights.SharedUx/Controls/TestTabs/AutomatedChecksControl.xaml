@@ -77,14 +77,18 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <fabric:FabricIconControl VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"  GlyphName="AlertSolid" Foreground="#CC0000" GlyphSize="Custom" FontSize="14"/>
-                    <TextBlock Name="tbSubTitle" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource tbRowStyle}" TextWrapping="Wrap" MinWidth="300" HorizontalAlignment="Left" Margin="0,2,-0.333,4">
+                    <TextBlock Name="tbSubTitle" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource tbRowStyle}"
+                               TextWrapping="Wrap" MinWidth="300" HorizontalAlignment="Left" Margin="0,2,-0.333,4"
+                               AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsTextBlock}">
                         <Run Name="runFailures" Text="{x:Static Properties:Resources.runFailuresTextOneFailure}"/>
                         <Run Text="{x:Static Properties:Resources.AutomatedChecksControl_tbSubtitleRun}"/>
                     </TextBlock>
                 </Grid>
             </Grid>
             <Border Grid.Row="5" Grid.Column="1" BorderBrush="#EAEAEA" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <ListView AutomationProperties.LabeledBy="{Binding ElementName=lblTitle}" KeyboardNavigation.TabNavigation="Once" Name="lvResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" >
+                <ListView AutomationProperties.LabeledBy="{Binding ElementName=lblTitle}" KeyboardNavigation.TabNavigation="Once"
+                          Name="lvResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
+                          AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}">
                     <ListView.View>
                         <local:CustomGridView x:Name="gv">
                             <GridViewColumn Width="26" DisplayMemberBinding="{x:Null}">
@@ -95,7 +99,11 @@
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <CheckBox Grid.Column="0" VerticalAlignment="Center" Name="chbxSelectAll" Click="chbxSelectAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.chbxSelectAllAutomationPropertiesName}" IsEnabled="True"/>
-                                        <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left" Style="{StaticResource BtnStandard}" Width="8" Height="8" Padding="0" BorderThickness="0" Click="btnExpandAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}" IsHitTestVisible="True">
+                                        <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left"
+                                                Style="{StaticResource BtnStandard}" Width="8" Height="8" Padding="0"
+                                                BorderThickness="0" Click="btnExpandAll_Click" IsHitTestVisible="True"
+                                                AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}"
+                                                AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksExpandAllButton}">
                                             <Grid>
                                                 <AccessText Text="_c" Opacity="0"/>
                                                 <fabric:FabricIconControl x:Name="fabicnExpandAll" GlyphName="CaretSolidRight" GlyphSize="Custom" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="0,2,0,-2"/>
