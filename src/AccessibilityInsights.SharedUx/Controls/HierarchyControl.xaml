@@ -164,7 +164,7 @@
         <Grid ClipToBounds="True"  Grid.Row="3">
             <TreeView x:Name="treeviewHierarchy"
                       ScrollViewer.ScrollChanged="treeviewHierarchy_ScrollChanged"
-                      Margin="0,0,2,0"
+                      Margin="0,0,2,0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HierarchyControlUIATreeView}"
                       IsTextSearchEnabled="True" 
                       SelectedItemChanged="treeviewHierarchy_SelectedItemChanged" 
                       AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_treeviewHierarchyAutomationName}"
