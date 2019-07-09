@@ -22,7 +22,7 @@
                     <ColumnDefinition Width="{Binding Path=Width, 
            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement},Mode=OneWayToSource}"/>
                 </Grid.ColumnDefinitions>
-                <customcontrols:CustomDataGrid x:Name="dgEvents" AutomationProperties.AutomationId="dgEventDetails" GotKeyboardFocus="dgEvents_GotKeyboardFocus"
+                <customcontrols:CustomDataGrid x:Name="dgEvents" GotKeyboardFocus="dgEvents_GotKeyboardFocus"
                   AutomationProperties.Name="{x:Static Properties:Resources.EventDetailControlAutomationPropertiesName}"
                   Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
                     <i:Interaction.Behaviors>
