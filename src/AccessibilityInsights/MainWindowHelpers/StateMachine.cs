@@ -10,11 +10,9 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
-using Axe.Windows.Actions.Sarif;
 using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Automation;
 
