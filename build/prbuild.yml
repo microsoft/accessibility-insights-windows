@@ -43,15 +43,10 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
-  - task: ms-autotest.screen-resolution-utility-task.screen-resolution-utlity-task.ScreenResolutionUtility@1
-    displayName: 'Set Screen Resolution'
-    inputs:
-      displaySettings: specific
-      width: 1920
-      height: 1080
-
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
+    inputs:
+      AgentResolution: 1080p
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
@@ -102,15 +97,10 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
-  - task: ms-autotest.screen-resolution-utility-task.screen-resolution-utlity-task.ScreenResolutionUtility@1
-    displayName: 'Set Screen Resolution'
-    inputs:
-      displaySettings: specific
-      width: 1920
-      height: 1080
-
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
+    inputs:
+      AgentResolution: 1080p
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
