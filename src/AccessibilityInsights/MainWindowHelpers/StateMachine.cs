@@ -365,39 +365,13 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Load a file with sarif data by identifying
-        /// the first internal .a11ytest file and opening
-        /// it as a snapshot
-        /// </summary>
-        /// <param name="path"></param>
-        /// <param name="selectedElementId"></param>
-        private void HandleLoadingSarifData(string path, int? selectedElementId = null)
-        {
-            var allyFileData = OpenSarif.ExtractA11yTestFile(path);
-
-            string tempPath = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-            try
-            {
-                File.WriteAllBytes(tempPath, Convert.FromBase64String(allyFileData));
-                HandleLoadingSnapshotData(tempPath, selectedElementId);
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                e.ReportException();
-                File.Delete(tempPath);
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
-        /// <summary>
         /// Attempts to open a file as either a test or events file
         /// </summary>
         /// <returns>true if file opened successfully; otherwise, false.</returns>
         private bool TryOpenFile(string fileName, int? selectedElementId = null)
         {
             // array of file handlers to be attempted in order. If one throws an exception, the next will be tried
-            FileLoadHandler[] fileHandlers = { HandleLoadingSarifData, HandleLoadingSnapshotData, HandleLoadingEventData };
+            FileLoadHandler[] fileHandlers = { HandleLoadingSnapshotData, HandleLoadingEventData };
 
             foreach(var fileHandler in fileHandlers)
             {

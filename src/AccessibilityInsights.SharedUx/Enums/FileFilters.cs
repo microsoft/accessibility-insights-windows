@@ -12,7 +12,6 @@ namespace AccessibilityInsights.SharedUx.Enums
         public const string EventsFileFilter = "AccessibiltyInsights Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*";
         public const string TestExtension = ".a11ytest";
         public const string EventsExtension = ".a11yevent";
-        public const string SarifExtension = ".sarif";
     }
 
     /// <summary>
@@ -22,6 +21,5 @@ namespace AccessibilityInsights.SharedUx.Enums
     {
         TestResults,
         EventRecord,
-        SarifFile,
     }
 }

@@ -87,9 +87,6 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 case FileType.TestResults:
                     sb.Append(FileFilters.TestExtension);
                     break;
-                case FileType.SarifFile:
-                    sb.Append(FileFilters.SarifExtension);
-                    break;
                 default:
                     sb.Append(FileFilters.EventsExtension);
                     break;
