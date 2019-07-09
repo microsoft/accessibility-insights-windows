@@ -118,6 +118,8 @@ namespace UITests
             Assert.AreEqual("LegacyIAccessiblePattern", patterns.First().Text);
             Assert.AreEqual(10, props.Count);
 
+            // since we've already got an element to use SendKeys, we
+            // switch to the results tab in prepartion for next test
             patterns.Last().SendKeys(Keys.Control + Keys.Tab);
         }
 
