@@ -2,7 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using System.Collections.ObjectModel;
 
 namespace UITests.UILibrary
 {
@@ -40,5 +42,9 @@ namespace UITests.UILibrary
             fileTextbox.SendKeys(fileName);
             fileTextbox.SendKeys(Keys.Enter);
         }
+
+        public void TogglePause() => Session.FindElementByAccessibilityId(AutomationIDs.MainWindow).SendKeys(Keys.Shift + Keys.F5);
+
+        public void RunTests() => Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlTestElementButton).Click();
     }
 }

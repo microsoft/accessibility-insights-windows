@@ -98,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AIWinSession.cs" />
+    <Compile Include="LiveMode.cs" />
     <Compile Include="SettingsPage.cs" />
     <Compile Include="TelemetryDialog.cs" />
     <Compile Include="LoadTestFile.cs" />
