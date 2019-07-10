@@ -30,7 +30,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: release
 
@@ -89,7 +89,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: debug
 
@@ -144,6 +144,6 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: debug
