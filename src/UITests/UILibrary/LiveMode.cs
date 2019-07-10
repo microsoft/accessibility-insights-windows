@@ -18,6 +18,8 @@ namespace UITests.UILibrary
         const string OpenFileFileTextBoxAutomationID = "1148";
         const string OpenFileSearchBoxAutomationID = "SearchEditBox";
 
+        public string SelectedElementText => Session.FindElementByAccessibilityId(AutomationIDs.InspectTabsElementTextBlock).Text;
+
         public LiveMode(WindowsDriver<WindowsElement> session)
         {
             Session = session;
@@ -40,5 +42,9 @@ namespace UITests.UILibrary
             fileTextbox.SendKeys(fileName);
             fileTextbox.SendKeys(Keys.Enter);
         }
+
+        public void TogglePause() => Session.FindElementByAccessibilityId(AutomationIDs.MainWindow).SendKeys(Keys.Shift + Keys.F5);
+
+        public void RunTests() => Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlTestElementButton).Click();
     }
 }

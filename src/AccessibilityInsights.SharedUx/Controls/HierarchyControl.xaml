@@ -201,8 +201,11 @@
                     </HierarchicalDataTemplate>
                 </TreeView.ItemTemplate>
             </TreeView>
-            <Button Name="btnTestElement" AutomationProperties.Name="{x:Static Properties:Resources.btnTestElementAutomationPropertiesName}" HorizontalAlignment="Right" Width="24" Height="24" Margin="0,18,32,0"
-                    VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed" KeyDown="FloatingButton_KeyDown" BorderThickness="2" BorderBrush="{x:Null}">
+            <Button Name="btnTestElement" AutomationProperties.Name="{x:Static Properties:Resources.btnTestElementAutomationPropertiesName}"
+                    HorizontalAlignment="Right" Width="24" Height="24" Margin="0,18,32,0"
+                    VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed" KeyDown="FloatingButton_KeyDown"
+                    BorderThickness="2" BorderBrush="{x:Null}"
+                    AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HierarchyControlTestElementButton}">
                 <i:Interaction.Behaviors>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>

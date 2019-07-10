@@ -8,7 +8,9 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string AutomatedChecksResultsListView { get; } = nameof(AutomatedChecksResultsListView);
         public static string AutomatedChecksResultsTextBlock { get; } = nameof(AutomatedChecksResultsTextBlock);
         public static string AutomatedChecksUIATreeButton { get; } = nameof(AutomatedChecksUIATreeButton);
+        public static string HierarchyControlTestElementButton { get; } = nameof(HierarchyControlTestElementButton);
         public static string HierarchyControlUIATreeView { get; } = nameof(HierarchyControlUIATreeView);
+        public static string InspectTabsElementTextBlock { get; } = nameof(InspectTabsElementTextBlock);
         public static string MainWinLoadButton { get; } = nameof(MainWinLoadButton);
         public static string MainWinHighlightButton { get; } = nameof(MainWinHighlightButton);
         public static string MainWinBreadCrumbOneButton { get; } = nameof(MainWinBreadCrumbOneButton);
