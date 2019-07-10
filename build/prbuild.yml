@@ -59,7 +59,7 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 15.0
+      vsTestVersion: 16.0
       codeCoverageEnabled: true
       platform: '$(BuildPlatform)'
       configuration: release
@@ -119,7 +119,7 @@ jobs:
         **\*test*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      vsTestVersion: 15.0
+      vsTestVersion: 16.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: debug
