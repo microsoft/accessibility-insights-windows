@@ -2,9 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
-using System.Collections.ObjectModel;
 
 namespace UITests.UILibrary
 {
@@ -19,6 +17,8 @@ namespace UITests.UILibrary
         const string OpenFileFolderTextBoxAutomationID = "41477";
         const string OpenFileFileTextBoxAutomationID = "1148";
         const string OpenFileSearchBoxAutomationID = "SearchEditBox";
+
+        public string SelectedElementText => Session.FindElementByAccessibilityId(AutomationIDs.InspectTabsElementTextBlock).Text;
 
         public LiveMode(WindowsDriver<WindowsElement> session)
         {

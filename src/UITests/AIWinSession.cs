@@ -33,8 +33,9 @@ namespace UITests
 
             SetupEventListening();
 
-            LaunchApplicationAndAttach();
+            bool attached = LaunchApplicationAndAttach();
 
+            Assert.IsTrue(attached);
             Assert.IsNotNull(_session);
             Assert.IsNotNull(_session.SessionId);
 
@@ -60,7 +61,7 @@ namespace UITests
 
         private void AddEvent(object sender, EntryWrittenEventArgs args) => Events.Add(args.Entry);
 
-        private void LaunchApplicationAndAttach()
+        private bool LaunchApplicationAndAttach()
         {
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -70,9 +71,10 @@ namespace UITests
             _process = Process.Start(exePath, configPathArgument);
 
             const int attempts = 10; // this number should give us enough retries for the build to work
-            RetryUntilSuccess(() => !string.IsNullOrEmpty(_session?.Title), 3000, attempts, StartNewSession);
-
+            bool attached = WaitFor(() => !string.IsNullOrEmpty(_session?.Title), new TimeSpan(0,0,3), attempts, StartNewSession);
             driver = new AIWinDriver(_session, _process.Id);
+
+            return attached;
         }
 
         private void StartNewSession()
@@ -136,7 +138,7 @@ namespace UITests
             return logPath;
         }
 
-        protected void RetryUntilSuccess(Func<bool> checkSuccess, int interval, int attempts, Action doUntilSuccess)
+        protected bool WaitFor(Func<bool> checkSuccess, TimeSpan interval, int attempts, Action doUntilSuccess=null)
         {
             while (attempts > 0 && !checkSuccess())
             {
@@ -144,6 +146,8 @@ namespace UITests
                 doUntilSuccess?.Invoke();
                 Thread.Sleep(interval);
             }
+
+            return attempts > 0;
         }
     }
 }

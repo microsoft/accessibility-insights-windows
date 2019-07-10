@@ -835,9 +835,6 @@ Accessibility Insights Support Team
   <data name="TextBlockTextDetails" xml:space="preserve">
     <value>DETAILS</value>
   </data>
-  <data name="tbElementAutomationPropertiesName" xml:space="preserve">
-    <value>Glimpse</value>
-  </data>
   <data name="ExpanderAutomationPropertiesNameProps" xml:space="preserve">
     <value>Properties</value>
   </data>

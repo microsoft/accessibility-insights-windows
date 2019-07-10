@@ -55,8 +55,8 @@
                            FontWeight="Bold" 
                            TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis"
-                           Height="30" 
-                           AutomationProperties.Name="{x:Static Properties:Resources.tbElementAutomationPropertiesName}"/>
+                           Height="30"
+                           AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.InspectTabsElementTextBlock}"/>
                     </Grid>
                 </Border>
                 <Grid Grid.Row="1" Name="gdTab">

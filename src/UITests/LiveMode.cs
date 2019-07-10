@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
@@ -29,16 +30,21 @@ namespace UITests
         private void TestTestResults()
         {
             driver.LiveMode.RunTests();
-            Thread.Sleep(2000); // let tests run
+            var testsComplete = WaitFor(() => !driver.Title.Contains("(Scanning)"), new TimeSpan(0,0,0,0,500), 10);
 
+            Assert.IsTrue(testsComplete);
             VerifyTestModeTitle();
             ScanAccessibility();
         }
 
         private void TestLiveMode()
         {
+            var appOpened = WaitFor(() => _wildlifeManager.MainWindowTitle == "Wildlife Manager 2.0", new TimeSpan(0, 0, 1), 10, _wildlifeManager.Refresh);
+            var appSelected = WaitFor(() => driver.LiveMode.SelectedElementText == "window 'Wildlife Manager 2.0'", new TimeSpan(0, 0, 1), 5);
             driver.LiveMode.TogglePause();
 
+            Assert.IsTrue(appOpened);
+            Assert.IsTrue(appSelected);
             VerifyLiveModeTitle();
             ScanAccessibility();
         }
@@ -68,8 +74,6 @@ namespace UITests
             driver.GettingStarted.DismissStartupPage();
 
             _wildlifeManager = Process.Start(TestAppPath);
-            RetryUntilSuccess(() => _wildlifeManager.MainWindowTitle == "Wildlife Manager 2.0", 1500, 10, _wildlifeManager.Refresh);
-            Thread.Sleep(2000); // give ai-win a chance to find the app
         }
 
         [TestCleanup]
