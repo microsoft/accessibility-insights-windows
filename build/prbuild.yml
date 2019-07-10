@@ -10,7 +10,7 @@ variables:
 jobs:
 - job: Release
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   variables:
     FAKES_SUPPORTED: 1
   steps:
@@ -76,7 +76,7 @@ jobs:
 
 - job: Debug
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   variables:
     FAKES_SUPPORTED: 1
   steps:
@@ -133,7 +133,7 @@ jobs:
 
 - job: build_without_fakes
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
