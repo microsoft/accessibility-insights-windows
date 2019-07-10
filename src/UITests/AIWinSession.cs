@@ -70,28 +70,9 @@ namespace UITests
             _process = Process.Start(exePath, configPathArgument);
 
             const int attempts = 10; // this number should give us enough retries for the build to work
-            StartNewSessionWithRetry(attempts);
+            RetryUntilSuccess(() => !string.IsNullOrEmpty(_session?.Title), 3000, attempts, StartNewSession);
 
             driver = new AIWinDriver(_session, _process.Id);
-        }
-
-        /// <summary>
-        /// We can't start a WinAppDriver session until ai-win is past its splash screen and fully loaded.
-        /// This takes a variable amount of time depending on the executing machine. It is particularly slow
-        /// in our build pipeline. Rather than set a long delay for the worst case scenario, we instead attempt
-        /// to start a new session repeatedly until ai-win is ready.
-        /// </summary>
-        /// <param name="attempts">Number of times to retry starting a new session</param>
-        private void StartNewSessionWithRetry(int attempts)
-        {
-            // if the session and its title are present, ai-win is ready for testing.
-            while (attempts > 0 && string.IsNullOrEmpty(_session?.Title))
-            {
-                attempts--;
-
-                StartNewSession();
-                Thread.Sleep(3000);
-            }
         }
 
         private void StartNewSession()
@@ -153,6 +134,16 @@ namespace UITests
                 }
             }
             return logPath;
+        }
+
+        protected void RetryUntilSuccess(Func<bool> checkSuccess, int interval, int attempts, Action doUntilSuccess)
+        {
+            while (attempts > 0 && !checkSuccess())
+            {
+                attempts--;
+                doUntilSuccess?.Invoke();
+                Thread.Sleep(interval);
+            }
         }
     }
 }

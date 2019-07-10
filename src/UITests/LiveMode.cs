@@ -68,7 +68,7 @@ namespace UITests
             driver.GettingStarted.DismissStartupPage();
 
             _wildlifeManager = Process.Start(TestAppPath);
-            _wildlifeManager.WaitForInputIdle();
+            RetryUntilSuccess(() => _wildlifeManager.MainWindowTitle == "Wildlife Manager 2.0", 1500, 10, _wildlifeManager.Refresh);
             Thread.Sleep(2000); // give ai-win a chance to find the app
         }
 
