@@ -68,6 +68,7 @@ namespace UITests
             driver.GettingStarted.DismissStartupPage();
 
             _wildlifeManager = Process.Start(TestAppPath);
+            _wildlifeManager.WaitForInputIdle();
             Thread.Sleep(2000); // give ai-win a chance to find the app
         }
 
