@@ -2,12 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Appium;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace UITests
@@ -54,88 +49,23 @@ namespace UITests
 
         private void ValidateFirstSelectedElement()
         {
-            ValidateFirstResults();
-            ValidateFirstDetails();
-            ValidateFirstTree();
-        }
-
-        private void ValidateFirstResults()
-        {
-            var resultsList = driver.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
-            var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
-            driver.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
-            var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
-            var fixFollowTb = driver.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
-
-            Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
-            Assert.AreEqual(2, resultsFailedOnly.Count);
-            Assert.AreEqual(28, resultsAll.Count);
-
-            resultsAll[0].SendKeys(Keys.Control + Keys.Tab);
-        }
-
-        private void ValidateFirstDetails()
-        {
-            var tree = driver.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
-            var nodes = tree.FindElementsByClassName("TreeViewItem");
-            var props = driver.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl).FindElementsByClassName("DataGridRow");
-            props[0].Click();
-            var patterns = GetPatternsNodes(AutomationIDs.SnapshotModeControl, nodes);
-
-            Assert.AreEqual("InvokePattern", patterns.First().Text);
-            Assert.AreEqual("Name, Ok", props[0].Text);
-            Assert.AreEqual(3, patterns.Count());
-            Assert.AreEqual(10, props.Count);
-        }
-
-        private void ValidateFirstTree()
-        {
-            var tree = driver.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
-            var nodes = tree.FindElementsByClassName("TreeViewItem");
-            nodes.First().SendKeys(Keys.Left);
-
-            Assert.AreEqual(16, nodes.Count);
-            Assert.AreEqual("pane 'Desktop 1' has failed test results in descendants.", nodes.First().Text);
+            driver.TestMode.ResultsInUIATree.ValidateResults(false, 2, 28);
+            driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
+            driver.TestMode.ResultsInUIATree.ValidateDetails("InvokePattern", "Name, Ok", 3, 10);
+            driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1' has failed test results in descendants.", 16);
         }
 
         private void ValidateRootElement()
         {
-            ValidateRootDetails();
-            ValidateRootResults();
-        }
-
-        private void ValidateRootDetails()
-        {
-            var props = driver.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl).FindElementsByClassName("DataGridRow");
-            props[0].Click();
-            var text = props[0].Text;
-            var tree = driver.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
-            var nodes = tree.FindElementsByClassName("TreeViewItem");
-            var patterns = GetPatternsNodes(AutomationIDs.SnapshotModeControl, nodes);
-
-            Assert.AreEqual("Name, Desktop 1", text);
-            Assert.AreEqual(10, patterns.Count());
-            Assert.AreEqual("LegacyIAccessiblePattern", patterns.First().Text);
-            Assert.AreEqual(10, props.Count);
-
-            // since we've already got an element to use SendKeys, we
-            // switch to the results tab in prepartion for next test
-            patterns.Last().SendKeys(Keys.Control + Keys.Tab);
-        }
-
-        private void ValidateRootResults()
-        {
-            var resultsList = driver.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
-            var results = resultsList.FindElementsByClassName("ListViewItem");
-            var fixFollowTb = driver.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
-
-            Assert.IsTrue(string.IsNullOrEmpty(fixFollowTb.Text));
-            Assert.AreEqual(0, results.Count);
+            driver.TestMode.ResultsInUIATree.ValidateDetails("LegacyIAccessiblePattern", "Name, Desktop 1", 10, 10);
+            driver.TestMode.ResultsInUIATree.SwitchToResultsTab();
+            driver.TestMode.ResultsInUIATree.ValidateResults(true, 0, 0);
         }
 
         private void ValidateResultsInUIATree()
         {
             ValidateFirstSelectedElement();
+            driver.TestMode.ResultsInUIATree.SelectElementInTree(0);
             ValidateRootElement();
         }
 
@@ -151,21 +81,6 @@ namespace UITests
             Assert.AreEqual(resultCount, results.Count);
 
             results[0].FindElementByClassName("Button").Click();
-        }
-
-        private IEnumerable<AppiumWebElement> GetPatternsNodes(string parentId, ReadOnlyCollection<AppiumWebElement> nonPatternNodes)
-        {
-            var parent = driver.FindElementByAccessibilityId(parentId);
-            var allnodes = parent.FindElementsByClassName("TreeViewItem");
-            var patterns = allnodes.Except(nonPatternNodes);
-
-            foreach (var pattern in patterns)
-            {
-                pattern.SendKeys(Keys.Right);
-            }
-
-            allnodes = parent.FindElementsByClassName("TreeViewItem");
-            return allnodes.Except(nonPatternNodes);
         }
 
         [TestInitialize]

@@ -1,7 +1,13 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Properties;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace UITests.UILibrary
 {
@@ -36,5 +42,85 @@ namespace UITests.UILibrary
             Session = session;
         }
         public void BackToAutomatedChecks() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinBreadCrumbTwoButton).Click();
+
+        public void SwitchToResultsTab()
+        {
+            var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
+            var nodes = tree.FindElementsByClassName("TreeViewItem");
+            var patterns = GetPatternsNodes(AutomationIDs.SnapshotModeControl, nodes);
+
+            patterns.Last().SendKeys(Keys.Control + Keys.Tab);
+        }
+
+        public void SwitchToDetailsTab()
+        {
+            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
+            var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
+
+            resultsAll.First().SendKeys(Keys.Control + Keys.Tab);
+        }
+
+        public void SelectElementInTree(int element)
+        {
+            var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
+            var nodes = tree.FindElementsByClassName("TreeViewItem");
+            nodes[0].SendKeys(Keys.Enter);
+        }
+
+        public void ValidateDetails(string firstPattern, string firstProperty, int patternCount, int propCount)
+        {
+            var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
+            var nodes = tree.FindElementsByClassName("TreeViewItem");
+            var props = Session.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl).FindElementsByClassName("DataGridRow");
+            props[0].Click();
+            var patterns = GetPatternsNodes(AutomationIDs.SnapshotModeControl, nodes);
+
+            Assert.AreEqual(firstPattern, patterns.First().Text);
+            Assert.AreEqual(firstProperty, props[0].Text);
+            Assert.AreEqual(patternCount, patterns.Count());
+            Assert.AreEqual(propCount, props.Count);
+        }
+
+        public void ValidateTree(string firstNodeText, int nodeCount)
+        {
+            var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
+            var nodes = tree.FindElementsByClassName("TreeViewItem");
+
+            Assert.AreEqual(nodeCount, nodes.Count);
+            Assert.AreEqual(firstNodeText, nodes.First().Text);
+        }
+
+        public void ValidateResults(bool isFixFollowingTextNull, int failedResultsCount, int allResultsCount)
+        {
+            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
+            var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
+
+            if (allResultsCount > 0)
+            {
+                Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
+            }
+
+            var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
+            var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
+
+            Assert.AreEqual(isFixFollowingTextNull, string.IsNullOrEmpty(fixFollowTb.Text));
+            Assert.AreEqual(failedResultsCount, resultsFailedOnly.Count);
+            Assert.AreEqual(allResultsCount, resultsAll.Count);
+        }
+
+        private IEnumerable<AppiumWebElement> GetPatternsNodes(string parentId, ReadOnlyCollection<AppiumWebElement> nonPatternNodes)
+        {
+            var parent = Session.FindElementByAccessibilityId(parentId);
+            var allnodes = parent.FindElementsByClassName("TreeViewItem");
+            var patterns = allnodes.Except(nonPatternNodes);
+
+            foreach (var pattern in patterns)
+            {
+                pattern.SendKeys(Keys.Right);
+            }
+
+            allnodes = parent.FindElementsByClassName("TreeViewItem");
+            return allnodes.Except(nonPatternNodes);
+        }
     }
 }
