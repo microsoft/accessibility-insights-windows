@@ -90,10 +90,11 @@ namespace UITests.UILibrary
 
         public void ValidateDetails(string firstPattern, string firstProperty, int patternCount, int propCount)
         {
-            var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
-            var nodes = tree.FindElementsByClassName("TreeViewItem");
-            var props = Session.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl).FindElementsByClassName("DataGridRow");
+            var snapshotModeControl = Session.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl);
+            var props = snapshotModeControl.FindElementsByClassName("DataGridRow");
             props[0].Click();
+            var tree = snapshotModeControl.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
+            var nodes = tree.FindElementsByClassName("TreeViewItem");
             var patterns = GetPatternsNodes(AutomationIDs.SnapshotModeControl, nodes);
 
             Assert.AreEqual(firstPattern, patterns.First().Text);
