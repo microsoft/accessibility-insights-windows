@@ -61,7 +61,6 @@ namespace UITests
             Assert.IsTrue(appOpened);
             Assert.IsTrue(appSelected);
             VerifyLiveModeTitle();
-            ScanAccessibility();
         }
 
         private void VerifyLiveModeTitle()
@@ -76,7 +75,7 @@ namespace UITests
 
         private void ScanAccessibility()
         {
-            var issueCount = driver.ScanAIWin(TestContext, "EventPage");
+            var issueCount = driver.ScanAIWin(TestContext, "LiveMode");
             Assert.AreEqual(0, issueCount);
         }
 
