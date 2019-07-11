@@ -32,15 +32,15 @@ namespace UITests
             ScanAccessibility();
             ValidateTestModeTitle();
             driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
-            driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(1);
+            driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(4);
             ValidateResultsInUIATree();
         }
 
         private void ValidateResultsInUIATree()
         {
-            driver.TestMode.ResultsInUIATree.ValidateResults(false, 2, 28);
+            driver.TestMode.ResultsInUIATree.ValidateResults(false, 2, 11);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
-            driver.TestMode.ResultsInUIATree.ValidateDetails("InvokePattern", "Name, Ok", 3, 10);
+            driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name, Property does not exist", 1, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);
         }
 
