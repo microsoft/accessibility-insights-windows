@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Properties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Reflection;
@@ -27,7 +26,8 @@ namespace UITests
         {
             ScanAutomatedChecks();
             ScanResultsInUIATreePage();
-            ValidateAutomatedChecks();
+            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
+            driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(0);
             ValidateResultsInUIATree();
         }
 
@@ -67,20 +67,6 @@ namespace UITests
             ValidateFirstSelectedElement();
             driver.TestMode.ResultsInUIATree.SelectElementInTree(0);
             ValidateRootElement();
-        }
-
-        private void ValidateAutomatedChecks()
-        {
-            driver.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksExpandAllButton).Click();
-            var resultsGrid = driver.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsListView);
-            var results = resultsGrid.FindElementsByClassName("ListViewItem");
-            var resultsText = driver.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsTextBlock).Text;
-            var resultCount = int.Parse(resultsText.Split()[0]);
-
-            Assert.AreEqual(12, resultCount);
-            Assert.AreEqual(resultCount, results.Count);
-
-            results[0].FindElementByClassName("Button").Click();
         }
 
         [TestInitialize]

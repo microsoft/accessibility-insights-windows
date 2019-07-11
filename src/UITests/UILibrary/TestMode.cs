@@ -31,7 +31,28 @@ namespace UITests.UILibrary
         {
             Session = session;
         }
+
         public void ViewInUIATree() => Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksUIATreeButton).Click();
+
+        public void GoToAutomatedChecksElementDetails(int element)
+        {
+            var resultsGrid = Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsListView);
+            var results = resultsGrid.FindElementsByClassName("ListViewItem");
+
+            results[element].FindElementByClassName("Button").Click();
+        }
+
+        public void ValidateAutomatedChecks(int resultCount)
+        {
+            Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksExpandAllButton).Click();
+            var resultsGrid = Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsListView);
+            var results = resultsGrid.FindElementsByClassName("ListViewItem");
+            var resultsText = Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsTextBlock).Text;
+            var resultTextCount = int.Parse(resultsText.Split()[0]);
+
+            Assert.AreEqual(resultCount, resultTextCount);
+            Assert.AreEqual(resultTextCount, results.Count);
+        }
     }
 
     public class ResultsInUIATree
