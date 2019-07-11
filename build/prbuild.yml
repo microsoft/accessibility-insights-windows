@@ -10,7 +10,7 @@ variables:
 jobs:
 - job: Release
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   variables:
     FAKES_SUPPORTED: 1
   steps:
@@ -30,7 +30,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: release
 
@@ -59,7 +59,7 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 15.0
+      vsTestVersion: 16.0
       codeCoverageEnabled: true
       platform: '$(BuildPlatform)'
       configuration: release
@@ -76,7 +76,7 @@ jobs:
 
 - job: Debug
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   variables:
     FAKES_SUPPORTED: 1
   steps:
@@ -89,7 +89,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: debug
 
@@ -119,7 +119,7 @@ jobs:
         **\*test*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      vsTestVersion: 15.0
+      vsTestVersion: 16.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: debug
@@ -133,7 +133,7 @@ jobs:
 
 - job: build_without_fakes
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: 'windows-2019'
   steps:
   - task: NuGetToolInstaller@0
     displayName: 'Use NuGet 4.3.0'
@@ -144,6 +144,6 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 15.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: debug
