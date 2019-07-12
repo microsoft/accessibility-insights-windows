@@ -4,8 +4,8 @@ parameters:
   configuration: ''
 
 jobs:
-- job: UITests${{ parameters.configuration }}
-  displayName: UITests ${{ parameters.configuration }}
+- job: Build and run UI Tests - ${{ parameters.configuration }}
+  displayName: Build and run UI Tests - ${{ parameters.configuration }}
   condition: succeeded()
   pool:
     vmImage: windows-2019
@@ -35,10 +35,8 @@ jobs:
         **\*test*.dll
         !**\obj\**
       vsTestVersion: 16.0
-      codeCoverageEnabled: true
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
-      rerunFailedTests: true
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
       testFiltercriteria: 'TestCategory=UITest'
 
