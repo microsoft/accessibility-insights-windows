@@ -8,118 +8,15 @@ variables:
   SignAppForRelease: 'false'
 
 jobs:
-- job: ReleaseBuildUnitTests
-  displayName: Build and run unit tests - release
-  pool:
-    vmImage: 'windows-2019'
-  variables:
-    FAKES_SUPPORTED: 1
-  steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
+- template: build-and-unit-tests.yml
+  parameters:
+    configuration: release
+    checkLicenseHeaders: true
+    runComponentGovernance: true
 
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-
-  - task: PowerShell@2
-    displayName: 'License Header Check'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
-      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
-
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
-    inputs:
-      vsVersion: 16.0
-      platform: '$(BuildPlatform)'
-      configuration: release
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\release\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      vsTestVersion: 16.0
-      codeCoverageEnabled: true
-      platform: '$(BuildPlatform)'
-      configuration: release
-      rerunFailedTests: true
-      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
-      testFiltercriteria: 'TestCategory!=UITest'
-
-  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
-
-- job: DebugBuildUnitTests
-  displayName: Build and run unit tests - debug
-  pool:
-    vmImage: 'windows-2019'
-  variables:
-    FAKES_SUPPORTED: 1
-  steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
-    inputs:
-      vsVersion: 16.0
-      platform: '$(BuildPlatform)'
-      configuration: debug
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\debug\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      testFiltercriteria: 'TestCategory!=UITest'
-      vsTestVersion: 16.0
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: debug
-      rerunFailedTests: true
-      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
-
-- job: build_without_fakes
-  pool:
-    vmImage: 'windows-2019'
-  steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
-
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
-
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
-    inputs:
-      vsVersion: 16.0
-      platform: '$(BuildPlatform)'
-      configuration: debug
+- template: build-and-unit-tests.yml
+  parameters:
+    configuration: debug
 
 - template: ui-test-job.yml
   parameters:

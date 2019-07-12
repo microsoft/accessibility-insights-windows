@@ -1,0 +1,63 @@
+# This template contains jobs to build and run unit tests
+
+parameters:
+  configuration: ''
+  checkLicenseHeaders: ''
+  runComponentGovernance: ''
+
+jobs:
+- job: BuildAndUnitTests${{ parameters.configuration }}
+  displayName: Build and run unit tests - ${{ parameters.configuration }}
+  condition: succeeded()
+  pool:
+    vmImage: windows-2019
+  variables:
+    FAKES_SUPPORTED: 1
+  steps:
+  - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
+    - task: PowerShell@2
+      displayName: 'License Header Check'
+      inputs:
+        targetType: "filePath"
+        filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+        arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 16.0
+      platform: '$(BuildPlatform)'
+      configuration: ${{ parameters.configuration }}
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: **\bin\${{ parameters.configuration }}\**
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: drop'
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\obj\**
+      vsTestVersion: 16.0
+      codeCoverageEnabled: true
+      platform: '$(BuildPlatform)'
+      configuration: release
+      rerunFailedTests: true
+      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
+      testFiltercriteria: 'TestCategory!=UITest'
+
+  - ${{ if eq(parameters.runComponentGovernance, 'true') }}:
+    - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+      displayName: 'Component Detection'
