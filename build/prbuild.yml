@@ -9,7 +9,7 @@ variables:
 
 jobs:
 - job: ReleaseBuildUnitTests
-  displayName: Build and unit tests (release)
+  displayName: Build and run unit tests - release
   pool:
     vmImage: 'windows-2019'
   variables:
@@ -62,7 +62,7 @@ jobs:
     displayName: 'Component Detection'
 
 - job: DebugBuildUnitTests
-  displayName: Build and unit tests (debug)
+  displayName: Build and run unit tests - debug
   pool:
     vmImage: 'windows-2019'
   variables:
