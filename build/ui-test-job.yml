@@ -4,7 +4,7 @@ parameters:
   configuration: ''
 
 jobs:
-- job: Build and run UI Tests ${{ parameters.configuration }}
+- job: UITests${{ parameters.configuration }}
   displayName: Build and run UI Tests - ${{ parameters.configuration }}
   condition: succeeded()
   pool:
