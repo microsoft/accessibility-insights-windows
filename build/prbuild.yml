@@ -8,6 +8,14 @@ variables:
   SignAppForRelease: 'false'
 
 jobs:
+- template: ui-test-job.yml
+  parameters:
+    configuration: release
+
+- template: ui-test-job.yml
+  parameters:
+    configuration: debug
+
 - job: Release
   pool:
     vmImage: 'vs2017-win2016'
@@ -43,16 +51,6 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
-  - task: ms-autotest.screen-resolution-utility-task.screen-resolution-utlity-task.ScreenResolutionUtility@1
-    displayName: 'Set Screen Resolution'
-    inputs:
-      displaySettings: specific
-      width: 1920
-      height: 1080
-
-  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
-    displayName: 'Start - WinAppDriver'
-
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
     inputs:
@@ -65,11 +63,7 @@ jobs:
       configuration: release
       rerunFailedTests: true
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
-
-  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
-    displayName: 'Stop - WinAppDriver'
-    inputs:
-      OperationType: Stop
+      testFiltercriteria: 'TestCategory!=UITest'
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
@@ -102,34 +96,19 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
-  - task: ms-autotest.screen-resolution-utility-task.screen-resolution-utlity-task.ScreenResolutionUtility@1
-    displayName: 'Set Screen Resolution'
-    inputs:
-      displaySettings: specific
-      width: 1920
-      height: 1080
-
-  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
-    displayName: 'Start - WinAppDriver'
-
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      testFiltercriteria: 'TestCategory!=RequiresNetwork'
+      testFiltercriteria: 'TestCategory!=UITest'
       vsTestVersion: 15.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: debug
       rerunFailedTests: true
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
-
-  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
-    displayName: 'Stop - WinAppDriver'
-    inputs:
-      OperationType: Stop
 
 - job: build_without_fakes
   pool:

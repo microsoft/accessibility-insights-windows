@@ -1,0 +1,47 @@
+# This template contains jobs to run UI tests using WinAppDriver.
+
+parameters:
+  configuration: ''
+
+jobs:
+- job: UITests${{ parameters.configuration }}
+  displayName: UITests ${{ parameters.configuration }}
+  condition: succeeded()
+  pool:
+    vmImage: windows-2019
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 16.0
+      platform: '$(BuildPlatform)'
+      configuration: ${{ parameters.configuration }}
+
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Start - WinAppDriver'
+      AgentResolution: 1080p
+
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\obj\**
+      vsTestVersion: 16.0
+      codeCoverageEnabled: true
+      platform: '$(BuildPlatform)'
+      configuration: ${{ parameters.configuration }}
+      rerunFailedTests: true
+      runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
+	  testFiltercriteria: 'TestCategory=UITest'
+
+  - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
+    displayName: 'Stop - WinAppDriver'
+    inputs:
+      OperationType: Stop
