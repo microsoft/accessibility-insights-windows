@@ -8,7 +8,7 @@ variables:
   SignAppForRelease: 'false'
 
 jobs:
-- job: Build and unit tests (Release)
+- job: Build and unit tests Release
   pool:
     vmImage: 'windows-2019'
   variables:
@@ -60,7 +60,7 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-- job: Build and unit tests (Debug)
+- job: Build and unit tests Debug
   pool:
     vmImage: 'windows-2019'
   variables:
