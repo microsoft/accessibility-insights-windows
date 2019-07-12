@@ -25,7 +25,7 @@ jobs:
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
-	inputs:
+    inputs:
       AgentResolution: 1080p
 
   - task: VSTest@2
