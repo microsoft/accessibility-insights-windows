@@ -38,7 +38,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
-      Contents: **\bin\${{ parameters.configuration }}\**
+      Contents: ${{ format('**\bin\{0}\**', parameters.configuration) }}
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
