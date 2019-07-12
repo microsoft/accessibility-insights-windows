@@ -4,7 +4,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Threading;
 
 namespace UITests
 {
@@ -29,12 +28,28 @@ namespace UITests
 
         private void TestTestResults()
         {
+            RunTests();
+            ScanAccessibility();
+            ValidateTestModeTitle();
+            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
+            driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(4);
+            ValidateResultsInUIATree();
+        }
+
+        private void ValidateResultsInUIATree()
+        {
+            driver.TestMode.ResultsInUIATree.ValidateResults(false, 2, 11);
+            driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
+            driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name, Property does not exist", 1, 10);
+            driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);
+        }
+
+        private void RunTests()
+        {
             driver.LiveMode.RunTests();
-            var testsComplete = WaitFor(() => !driver.Title.Contains("(Scanning)"), new TimeSpan(0,0,0,0,500), 10);
+            var testsComplete = WaitFor(() => !driver.Title.Contains("(Scanning)"), new TimeSpan(0, 0, 0, 0, 500), 10);
 
             Assert.IsTrue(testsComplete);
-            VerifyTestModeTitle();
-            ScanAccessibility();
         }
 
         private void TestLiveMode()
@@ -46,7 +61,6 @@ namespace UITests
             Assert.IsTrue(appOpened);
             Assert.IsTrue(appSelected);
             VerifyLiveModeTitle();
-            ScanAccessibility();
         }
 
         private void VerifyLiveModeTitle()
@@ -54,14 +68,14 @@ namespace UITests
             Assert.AreEqual("Accessibility Insights for Windows - Inspect - Live", driver.Title);
         }
 
-        private void VerifyTestModeTitle()
+        private void ValidateTestModeTitle()
         {
             Assert.AreEqual("Accessibility Insights for Windows - Test - Test results", driver.Title);
         }
 
         private void ScanAccessibility()
         {
-            var issueCount = driver.ScanAIWin(TestContext, "EventPage");
+            var issueCount = driver.ScanAIWin(TestContext, "LiveMode");
             Assert.AreEqual(0, issueCount);
         }
 
