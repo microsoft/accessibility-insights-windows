@@ -1,0 +1,20 @@
+parameters:
+  configuration: ''
+
+jobs:
+- job: build_without_fakes_${{ parameters.configuration }}
+  pool:
+    vmImage: 'windows-2019'
+  steps:
+  - task: NuGetToolInstaller@0
+    displayName: 'Use NuGet 4.3.0'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 16.0
+      platform: '$(BuildPlatform)'
+      configuration: ${{ parameters.configuration }}
