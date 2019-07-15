@@ -67,10 +67,10 @@ namespace UITests
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
-            //var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
+            var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            //_process = Process.Start(exePath, configPathArgument);
-            _process = Process.Start(exePath, "--AttachToDebugger");
+            _process = Process.Start(exePath, configPathArgument);
+
             const int attempts = 10; // this number should give us enough retries for the build to work
             bool attached = WaitFor(() => !string.IsNullOrEmpty(_session?.Title), new TimeSpan(0,0,3), attempts, StartNewSession);
             driver = new AIWinDriver(_session, _process.Id);
