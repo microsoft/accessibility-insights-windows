@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
@@ -66,10 +67,10 @@ namespace UITests
             // AccessibilityInsights is referenced by this test project
             var executingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var exePath = Path.Combine(executingDirectory, "AccessibilityInsights.exe");
-            var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
+            //var configPathArgument = $"--ConfigFolder \"{Path.Combine(TestContext.TestResultsDirectory, TestContext.TestName)}\"";
 
-            _process = Process.Start(exePath, configPathArgument);
-
+            //_process = Process.Start(exePath, configPathArgument);
+            _process = Process.Start(exePath, "--AttachToDebugger");
             const int attempts = 10; // this number should give us enough retries for the build to work
             bool attached = WaitFor(() => !string.IsNullOrEmpty(_session?.Title), new TimeSpan(0,0,3), attempts, StartNewSession);
             driver = new AIWinDriver(_session, _process.Id);
@@ -82,9 +83,10 @@ namespace UITests
             try
             {
                 _process.Refresh(); // updates process.MainWindowHandle
-                DesiredCapabilities appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
-                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+                var options = new AppiumOptions();
+                options.AddAdditionalCapability("deviceName", "WindowsPC");
+                options.AddAdditionalCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
+                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
             }
             catch { }
         }
