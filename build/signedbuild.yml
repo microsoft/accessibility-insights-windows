@@ -10,7 +10,21 @@ variables:
   system.debug: 'true' #set to true in case our signed build flakes out again
   FAKES_SUPPORTED: 1
 
+resources:
+  repositories:
+    - repository: templates
+    - type: github
+    - name: Microsoft/accessibility-insights-windows
+
 jobs:
+- template: ui-test-job.yml@templates
+  parameters:
+    configuration: release
+
+- template: ui-test-job.yml@templates
+  parameters:
+    configuration: debug
+
 - job: ComplianceRelease
   pool:
     vmImage: 'windows-2019'
