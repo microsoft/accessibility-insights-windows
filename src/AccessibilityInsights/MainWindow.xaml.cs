@@ -161,6 +161,7 @@ namespace AccessibilityInsights
 
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
+
             // create necessary config folders & their internal config files
             PopulateConfigurations();
 
