@@ -15,10 +15,6 @@ jobs:
   parameters:
     configuration: release
 
-- template: ui-test-job.yml
-  parameters:
-    configuration: debug
-
 - job: ComplianceRelease
   pool:
     vmImage: 'windows-2019'
