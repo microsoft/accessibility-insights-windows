@@ -192,6 +192,8 @@ jobs:
   dependsOn: 
   - ComplianceRelease
   - ComplianceDebug
+  - UITestsdebug
+  - UITestsrelease
   condition: and(succeeded(), succeeded())
   pool: VSEng-MicroBuildVS2019
   steps:
