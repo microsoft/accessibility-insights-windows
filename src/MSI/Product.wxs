@@ -68,7 +68,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\CommandLine.dll"/>
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\Sarif.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.ValueTuple.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Windows.Interactivity.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
