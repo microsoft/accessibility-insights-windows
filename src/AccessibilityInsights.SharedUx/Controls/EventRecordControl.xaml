@@ -153,7 +153,7 @@
             <customcontrols:CustomDataGrid x:Name="dgEvents" GotKeyboardFocus="dgEvents_GotKeyboardFocus"
                       AutomationProperties.LabeledBy="{Binding ElementName=labelEvents}"
                       AutomationProperties.AcceleratorKey="Alt+V"
-                      AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.EventsDataGrid}"
+                      AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.EventRecordControlEventsDataGrid}"
                       Height="Auto" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
                       SelectionChanged="listEvents_SelectionChanged" SelectionMode="Single"
                       HorizontalContentAlignment="Stretch"

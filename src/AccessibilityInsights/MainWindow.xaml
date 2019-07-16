@@ -171,7 +171,7 @@
                         </Button>
                         <Button Width="40" Height="40"
                                     x:Name="btnConfig" Grid.Row="1"
-                                    AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsButton}"
+                                    AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinSettingsButton}"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnConfigAutomationPropertiesName}"
                                     AutomationProperties.HelpText="{x:Static properties:Resources.btnConfigAutomationPropertiesHelpText}"
                                     Style="{StaticResource btnLeftNav}" Click="onbtnConfigClicked">
@@ -375,7 +375,7 @@
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                 Click="btnPause_Click"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}"
-                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.PauseButton}">
+                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinPauseButton}">
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>

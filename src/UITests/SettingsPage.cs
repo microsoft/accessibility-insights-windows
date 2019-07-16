@@ -31,18 +31,18 @@ namespace UITests
         private void CheckShortcut()
         {
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsApplicationTabItem).Click();
-            var pauseHotkey = driver.FindElementByAccessibilityId(AutomationIDs.HotkeyPauseButton);
+            var pauseHotkey = driver.FindElementByAccessibilityId(AutomationIDs.SettingsHotkeyPauseButton);
             pauseHotkey.Click();
 
-            var hotkeyDialog = driver.FindElementByAccessibilityId(AutomationIDs.HotkeyGrabDialog);
+            var hotkeyDialog = driver.FindElementByAccessibilityId(AutomationIDs.SettingsHotkeyGrabDialog);
             hotkeyDialog.SendKeys(Keys.Shift);
             hotkeyDialog.SendKeys(Keys.F6);
 
-            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SaveAndCloseButton);
+            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SettingsSaveAndCloseButton);
             Assert.IsTrue(saveAndClose.Enabled);
             saveAndClose.Click();
 
-            var pauseButton = driver.FindElementByAccessibilityId(AutomationIDs.PauseButton);
+            var pauseButton = driver.FindElementByAccessibilityId(AutomationIDs.MainWinPauseButton);
             Assert.IsTrue(pauseButton.Text.Contains("Pause"));
             var mainWindow = driver.FindElementByAccessibilityId(AutomationIDs.MainWindow);
             mainWindow.SendKeys(Keys.Shift + Keys.F6);
@@ -56,10 +56,10 @@ namespace UITests
         {
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsApplicationTabItem).Click();
 
-            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SaveAndCloseButton);
+            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SettingsSaveAndCloseButton);
             Assert.IsFalse(saveAndClose.Enabled);
 
-            var channelOptions = driver.FindElementByAccessibilityId(AutomationIDs.ChannelComboBox);
+            var channelOptions = driver.FindElementByAccessibilityId(AutomationIDs.SettingsChannelComboBox);
             Assert.AreEqual("Production", channelOptions.Text);
             channelOptions.SendKeys(Keys.ArrowDown);
             Assert.AreEqual("Insider", channelOptions.Text);
@@ -79,7 +79,7 @@ namespace UITests
             driver.GoToSettings();
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsConnectionTabItem).Click();
 
-            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SaveAndCloseButton);
+            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SettingsSaveAndCloseButton);
             var connectionControl = driver.FindElementByAccessibilityId(AutomationIDs.ConnectionControl);
             var radioButtons = connectionControl.FindElementsByClassName("RadioButton");
 
@@ -103,7 +103,7 @@ namespace UITests
         {
             driver.GoToSettings();
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsAboutTabItem).Click();
-            var noticesLink = driver.FindElementByAccessibilityId(AutomationIDs.ThirdPartyNoticesHyperlink);
+            var noticesLink = driver.FindElementByAccessibilityId(AutomationIDs.SettingsThirdPartyNoticesHyperlink);
             Assert.AreEqual("Third party notices", noticesLink.Text);
             CheckAccessibility("AboutTab");
         }
