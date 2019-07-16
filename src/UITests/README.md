@@ -2,7 +2,7 @@
 * UI tests reside in the `UITests` project.
 * [WinAppDriver](https://github.com/Microsoft/WinAppDriver) is used for navigation and [Axe.Windows](https://github.com/microsoft/axe-windows) is used for accessibility scanning.
 * Test classes inherit from `AIWinSession`.
-* Each test class covers an AI-Win usage scenario. For example, the `LoadTestFile` test covers the scenario of loading a test file and inspecting indiviudal test results. Each test class has at least the following methods:
+* Each test class covers an AI-Win usage scenario. For example, the `LoadTestFile` test covers the scenario of loading a test file and inspecting individual test results. Each test class has at least the following methods:
   * A `TestMethod` named `NameOfTestClassTests` that performs the desired validation.
   * A `TestInitialize` method which calls `Setup()`. This will launch AI-Win.
   * A `TestCleanup` method which calls `TearDown()`. This will exit AI-Win.
