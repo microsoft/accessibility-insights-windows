@@ -353,8 +353,6 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void listEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string a = null;
-            _ = a.Length;
             this.SelectedItem = (EventMessage)dgEvents.SelectedItem;
             UpdateElementInfoWithSelectedEventRecord(this.SelectedItem);
         }

@@ -1036,6 +1036,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="e"></param>
         private void btnTree_Click(object sender, RoutedEventArgs e)
         {
+            string a = null;
+            var b = a.Length;
             NotifySelected(ElementContext.Element);
         }
     }
