@@ -43,29 +43,29 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Axe.Windows.Actions, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
+    <Reference Include="Axe.Windows.Actions, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Actions.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Automation, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
+    <Reference Include="Axe.Windows.Automation, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Automation.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Core, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
+    <Reference Include="Axe.Windows.Core, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Desktop, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Rules, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
+    <Reference Include="Axe.Windows.Rules, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Rules.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.RuleSelection, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
+    <Reference Include="Axe.Windows.RuleSelection, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.RuleSelection.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Telemetry, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
+    <Reference Include="Axe.Windows.Telemetry, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Telemetry.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Win32, Version=0.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
+    <Reference Include="Axe.Windows.Win32, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.3.1-prerelease\lib\net471\Axe.Windows.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Interop.UIAutomationClient, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -78,12 +78,9 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Sarif, Version=2.0.0.0, Culture=neutral, PublicKeyToken=21a5e83f6f5bb844, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\Sarif.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.2.0-prerelease\lib\net471\System.Collections.Immutable.dll</HintPath>
+      <HintPath>..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
