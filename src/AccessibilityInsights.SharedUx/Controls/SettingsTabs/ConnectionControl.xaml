@@ -6,7 +6,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
-             mc:Ignorable="d"
+             mc:Ignorable="d" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ConnectionControl}"
              DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
