@@ -18,7 +18,7 @@
 
         For example, the entry for the Expand All button in  `AutomatedChecksControl` looks like:
         ```cs
-        public static string AutomatedChecksExpandAllButton{ get; } = nameof(AutomatedChecksExpandAllButton);
+        public static string AutomatedChecksExpandAllButton { get; } = nameof(AutomatedChecksExpandAllButton);
         ```
     2. Reference that property when setting the `AutomationId` property of your control in xaml:
         ```cs

@@ -22,6 +22,9 @@ Please follow the guidelines outline in the [Adding Unit Tests](AddUnitTests.md)
 #### Q. Where can I find the standards for unit tests?
 Standards have been documented on [Unit Test Bar and Standards](UnitTestBarAndStandards.md).
 
+#### Q. What about UI tests?
+Refer to the [UI Tests](../src/UITests/README.md) readme.
+
 #### Q. How do I go about making internal interfaces available for testing? 
 Please visit [Accessing Internals](AccessingInternals.md).
 
