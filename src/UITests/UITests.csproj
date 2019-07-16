@@ -126,6 +126,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj">
+      <Project>{58dbf9fe-0029-408f-a8a4-23ae500e938d}</Project>
+      <Name>Extensions.AzureDevOps</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj">
+      <Project>{f421aafd-d85f-49b8-b95e-ca17718c38dd}</Project>
+      <Name>Extensions.GitHub</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj">
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
       <Name>SharedUx</Name>

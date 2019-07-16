@@ -17,6 +17,8 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
         <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" />
-        <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" Width="294px" Height="32px" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}" />
+        <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}"
+                                  Width="294px" Height="32px" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
+                                  AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"/>
     </Grid>
 </src:IssueConfigurationControl>

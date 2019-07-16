@@ -8,6 +8,7 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string AutomatedChecksResultsListView { get; } = nameof(AutomatedChecksResultsListView);
         public static string AutomatedChecksResultsTextBlock { get; } = nameof(AutomatedChecksResultsTextBlock);
         public static string AutomatedChecksUIATreeButton { get; } = nameof(AutomatedChecksUIATreeButton);
+        public static string ConnectionControl { get; } = nameof(ConnectionControl);
         public static string HierarchyControlTestElementButton { get; } = nameof(HierarchyControlTestElementButton);
         public static string HierarchyControlUIATreeView { get; } = nameof(HierarchyControlUIATreeView);
         public static string InspectTabsElementTextBlock { get; } = nameof(InspectTabsElementTextBlock);
@@ -25,6 +26,7 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string EventModeControl { get; } = nameof(EventModeControl);
         public static string SettingsButton { get; } = nameof(SettingsButton);
         public static string SettingsApplicationTabItem { get; } = nameof(SettingsApplicationTabItem);
+        public static string SettingsConnectionTabItem { get; } = nameof(SettingsConnectionTabItem);
         public static string SettingsAboutTabItem { get; } = nameof(SettingsAboutTabItem);
         public static string ChannelComboBox { get; } = nameof(ChannelComboBox);
         public static string SaveAndCloseButton { get; } = nameof(SaveAndCloseButton);

@@ -3,6 +3,7 @@
 using AccessibilityInsights.SharedUx.Properties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
+using GitHubAutomationIDs = AccessibilityInsights.Extensions.GitHub.Properties.AutomationIDs;
 
 namespace UITests
 {
@@ -20,6 +21,7 @@ namespace UITests
         {
             CheckApplicationTab();
             CheckShortcut();
+            CheckConnectionTab();
             CheckAboutTab();
         }
 
@@ -66,6 +68,32 @@ namespace UITests
             Assert.AreEqual("Production", channelOptions.Text);
             Assert.IsFalse(saveAndClose.Enabled);
             CheckAccessibility("ApplicationTab");
+        }
+
+
+        /// <summary>
+        /// Spot check the connection tab and do an accessibility check
+        /// </summary>
+        private void CheckConnectionTab()
+        {
+            driver.GoToSettings();
+            driver.FindElementByAccessibilityId(AutomationIDs.SettingsConnectionTabItem).Click();
+
+            var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SaveAndCloseButton);
+            var connectionControl = driver.FindElementByAccessibilityId(AutomationIDs.ConnectionControl);
+            var radioButtons = connectionControl.FindElementsByClassName("RadioButton");
+
+            Assert.IsFalse(saveAndClose.Enabled);
+            Assert.AreEqual(2, radioButtons.Count);
+            Assert.IsTrue(radioButtons[0].Text.Contains("Azure Boards"));
+            Assert.IsTrue(radioButtons[1].Text.Contains("GitHub"));
+
+            radioButtons[1].Click();
+            var urlTb = connectionControl.FindElementByAccessibilityId(GitHubAutomationIDs.IssueConfigurationUrlTextBox);
+            urlTb.SendKeys("https://github.com/microsoft/accessibility-insights-windows");
+            Assert.IsTrue(saveAndClose.Enabled);
+
+            CheckAccessibility("ConnectionTab");
         }
 
         /// <summary>
