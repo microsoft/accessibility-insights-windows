@@ -60,7 +60,7 @@ namespace UITests
         private void CheckPropertyView()
         {
             // Click on 3rd event to see its properties
-            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventsDataGrid);
+            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventRecordControlEventsDataGrid);
             var eventRows = eventGrid.FindElementsByClassName("DataGridRow");
             eventRows[2].Click();
 

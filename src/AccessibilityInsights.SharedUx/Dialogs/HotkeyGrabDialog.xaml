@@ -13,7 +13,7 @@
         KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False" Topmost="True"
-        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HotkeyGrabDialog}">
+        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsHotkeyGrabDialog}">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </Window.Resources>
