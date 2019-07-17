@@ -34,12 +34,12 @@
                 <Grid Grid.Row="1">
                     <DockPanel LastChildFill="False" >
                         <Button DockPanel.Dock="Bottom" TabIndex="-3" x:Name="btnOk" Content="{x:Static properties:Resources.btnOkContent}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="80" Height="24" Margin="20,20" IsDefault="True" Click="buttonOk_Click" Style="{StaticResource BtnSave}" IsEnabled="False" 
-                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SaveAndCloseButton}"/>
+                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsSaveAndCloseButton}"/>
                         <TabControl Name="tcTabs" DockPanel.Dock="Top" BorderThickness="0,1,0,0" BorderBrush="#FFEAEAEA" Style="{StaticResource tcScrolling}" SelectionChanged="TabControl_SelectionChanged">
                             <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsApplicationTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
                                 <controls:ApplicationSettingsControl x:Name="appSettingsCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsConnectionTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
                                 <controls:ConnectionControl x:Name="connectionCtrl"/>
                             </TabItem>
                             <TabItem Header="{x:Static properties:Resources.tcTabsWhatsNewHeader}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">

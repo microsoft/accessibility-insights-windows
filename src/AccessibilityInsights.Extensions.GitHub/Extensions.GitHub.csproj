@@ -71,6 +71,7 @@
     <Compile Include="IssueFormatterFactory.cs" />
     <Compile Include="LinkValidator.cs" />
     <Compile Include="NoFailuresIssueFormatter.cs" />
+    <Compile Include="Properties\AutomationIDs.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

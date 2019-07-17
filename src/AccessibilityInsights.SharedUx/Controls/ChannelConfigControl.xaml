@@ -24,7 +24,7 @@
         <ComboBox Grid.Row="1" Margin="0,8,0,12" ItemsSource="{Binding Path=Channels}"
                   MaxWidth="154" MinWidth="154" HorizontalAlignment="Left"
                   SelectedItem="{Binding CurrentChannel}" AutomationProperties.LabeledBy="{Binding ElementName=lblChannel}"
-                  AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ChannelComboBox}"/>
+                  AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsChannelComboBox}"/>
         <TextBlock Focusable="True" Grid.Row="2" Style="{StaticResource TxtTelemetrySettingInfo}"
                    TextWrapping="Wrap" HorizontalAlignment="Left" Text="{Binding ChannelDescription}"/>
     </Grid>

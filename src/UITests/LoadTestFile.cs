@@ -24,7 +24,7 @@ namespace UITests
         [TestCategory("UITest")]
         public void LoadTestFileTests()
         {
-            ScanAutomatedChecks();
+            driver.VerifyAccessibility(TestContext, "AutomatedChecks", 0);
             ScanResultsInUIATreePage();
             driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
             driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(0);
@@ -35,16 +35,8 @@ namespace UITests
         {
             driver.TestMode.AutomatedChecks.ViewInUIATree();
 
-            var issueCount = driver.ScanAIWin(TestContext, "UIATree");
-
-            Assert.AreEqual(0, issueCount);
+            driver.VerifyAccessibility(TestContext, "UIATree", 0);
             driver.TestMode.ResultsInUIATree.BackToAutomatedChecks();
-        }
-
-        private void ScanAutomatedChecks()
-        {
-            var issueCount = driver.ScanAIWin(TestContext, "AutomatedChecks");
-            Assert.AreEqual(0, issueCount);
         }
 
         private void ValidateFirstSelectedElement()

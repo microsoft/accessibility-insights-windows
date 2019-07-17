@@ -21,9 +21,7 @@ namespace UITests
 
         private void VerifyTelemetryDialog()
         {
-            var issueCount = driver.ScanAIWin(TestContext, "TelemetryDialog");
-            Assert.AreEqual(0, issueCount);
-
+            driver.VerifyAccessibility(TestContext, "TelemetryDialog", 0);
             driver.GettingStarted.DismissTelemetry();
         }
 

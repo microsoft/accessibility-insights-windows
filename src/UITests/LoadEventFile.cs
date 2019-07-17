@@ -27,13 +27,7 @@ namespace UITests
             driver.Maximize();
             CheckEventLog();
             CheckPropertyView();
-            ScanWindow();
-        }
-
-        private void ScanWindow()
-        {
-            var issueCount = driver.ScanAIWin(TestContext, "EventPage");
-            Assert.AreEqual(0, issueCount);
+            driver.VerifyAccessibility(TestContext, "EventPage", 0);
         }
 
         /// <summary>
@@ -47,11 +41,11 @@ namespace UITests
             rows[0].Click();
 
             // Text is populated after the cell above is selected (blank otherwise)
-            Assert.AreEqual("09:58:37.859, EventRecorderNotification, Event Recorder", rows[0].Text);
+            Assert.AreEqual("09:58:37.859, EventRecorderNotification, Event Recorder", rows[0].Text, "Loaded event row has incorrect text");
 
             // 10 rows from the event log and 3 from the event details
             int numRows = GetNumEventDataRows();
-            Assert.AreEqual(13, numRows);
+            Assert.AreEqual(13, numRows, "We expected a different number of loaded event rows");
         }
 
         /// <summary>
@@ -60,13 +54,13 @@ namespace UITests
         private void CheckPropertyView()
         {
             // Click on 3rd event to see its properties
-            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventsDataGrid);
+            var eventGrid = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventRecordControlEventsDataGrid);
             var eventRows = eventGrid.FindElementsByClassName("DataGridRow");
             eventRows[2].Click();
 
             // 10 rows from the event log and 10 from the event properties
             var rowCount = GetNumEventDataRows();
-            Assert.AreEqual(20, rowCount);
+            Assert.AreEqual(20, rowCount, "We expected a different number of loaded event rows after selecting properties");
         }
 
         private int GetNumEventDataRows()

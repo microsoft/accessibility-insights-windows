@@ -11,6 +11,10 @@ variables:
   FAKES_SUPPORTED: 1
 
 jobs:
+- template: ui-test-job.yml
+  parameters:
+    configuration: release
+
 - job: ComplianceRelease
   pool:
     vmImage: 'windows-2019'
@@ -184,6 +188,7 @@ jobs:
   dependsOn: 
   - ComplianceRelease
   - ComplianceDebug
+  - UITestsrelease
   condition: and(succeeded(), succeeded())
   pool: VSEng-MicroBuildVS2019
   steps:

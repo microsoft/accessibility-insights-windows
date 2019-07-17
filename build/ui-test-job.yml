@@ -42,5 +42,6 @@ jobs:
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
+    continueOnError: true
     inputs:
       OperationType: Stop

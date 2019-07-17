@@ -38,7 +38,7 @@ namespace UITests.UILibrary
         /// </summary>
         /// <param name="context"></param>
         /// <returns>number of accessibility issues</returns>
-        public int ScanAIWin(TestContext context, string fileName)
+        private int ScanAIWin(TestContext context, string fileName)
         {
             var outputPath = Path.Combine(context.TestResultsDirectory, context.TestName);
             var config = Config.Builder.ForProcessId(PID)
@@ -59,13 +59,19 @@ namespace UITests.UILibrary
             return result.ErrorCount;
         }
 
+        public void VerifyAccessibility(TestContext context, string fileName, int expectedIssueCount)
+        {
+            var issueCount = this.ScanAIWin(context, fileName);
+            Assert.AreEqual(expectedIssueCount, issueCount, $"axe.windows found accessibility issues, check {fileName}.a11ytest file in test artifacts");
+        }
+
         public WindowsElement FindElementByAccessibilityId(string accessibilityId) => Session.FindElementByAccessibilityId(accessibilityId);
 
         public string Title => Session.Title;
 
         public void ToggleHighlighter() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinHighlightButton).Click();
 
-        public void GoToSettings() => Session.FindElementByAccessibilityId(AutomationIDs.SettingsButton).Click();
+        public void GoToSettings() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinSettingsButton).Click();
 
         public void Maximize() => Session.Manage().Window.Maximize();
     }
