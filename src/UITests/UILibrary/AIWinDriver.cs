@@ -38,7 +38,7 @@ namespace UITests.UILibrary
         /// </summary>
         /// <param name="context"></param>
         /// <returns>number of accessibility issues</returns>
-        public int ScanAIWin(TestContext context, string fileName)
+        private int ScanAIWin(TestContext context, string fileName)
         {
             var outputPath = Path.Combine(context.TestResultsDirectory, context.TestName);
             var config = Config.Builder.ForProcessId(PID)
@@ -57,6 +57,12 @@ namespace UITests.UILibrary
             }
 
             return result.ErrorCount;
+        }
+
+        public void VerifyAccessibility(TestContext context, string fileName, int expectedIssueCount)
+        {
+            var issueCount = this.ScanAIWin(context, fileName);
+            Assert.AreEqual(expectedIssueCount, issueCount, "axe.windows found accessibility issues, check a11ytest file in test artifacts");
         }
 
         public WindowsElement FindElementByAccessibilityId(string accessibilityId) => Session.FindElementByAccessibilityId(accessibilityId);

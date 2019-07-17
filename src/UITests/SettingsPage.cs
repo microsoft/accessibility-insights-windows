@@ -39,14 +39,14 @@ namespace UITests
             hotkeyDialog.SendKeys(Keys.F6);
 
             var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SettingsSaveAndCloseButton);
-            Assert.IsTrue(saveAndClose.Enabled);
+            Assert.IsTrue(saveAndClose.Enabled, "Save and close should be enabled");
             saveAndClose.Click();
 
             var pauseButton = driver.FindElementByAccessibilityId(AutomationIDs.MainWinPauseButton);
-            Assert.IsTrue(pauseButton.Text.Contains("Pause"));
+            Assert.IsTrue(pauseButton.Text.Contains("Pause"), "Live mode should be running, but the pause button doesn't say 'Pause'");
             var mainWindow = driver.FindElementByAccessibilityId(AutomationIDs.MainWindow);
             mainWindow.SendKeys(Keys.Shift + Keys.F6);
-            Assert.IsTrue(pauseButton.Text.Contains("Resume"));
+            Assert.IsTrue(pauseButton.Text.Contains("Resume"), "Live mode should be paused, but the pause button doesn't say 'Resume'");
         }
 
         /// <summary>
@@ -57,17 +57,17 @@ namespace UITests
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsApplicationTabItem).Click();
 
             var saveAndClose = driver.FindElementByAccessibilityId(AutomationIDs.SettingsSaveAndCloseButton);
-            Assert.IsFalse(saveAndClose.Enabled);
+            Assert.IsFalse(saveAndClose.Enabled, "Save and close should be disabled");
 
             var channelOptions = driver.FindElementByAccessibilityId(AutomationIDs.SettingsChannelComboBox);
-            Assert.AreEqual("Production", channelOptions.Text);
+            Assert.AreEqual("Production", channelOptions.Text, "Default channel should be production");
             channelOptions.SendKeys(Keys.ArrowDown);
-            Assert.AreEqual("Insider", channelOptions.Text);
-            Assert.IsTrue(saveAndClose.Enabled);
+            Assert.AreEqual("Insider", channelOptions.Text, "Insider should be the second channel in the combobox");
+            Assert.IsTrue(saveAndClose.Enabled, "Save and close should be enabled after changing to insider");
             channelOptions.SendKeys(Keys.ArrowUp);
-            Assert.AreEqual("Production", channelOptions.Text);
-            Assert.IsFalse(saveAndClose.Enabled);
-            CheckAccessibility("ApplicationTab");
+            Assert.AreEqual("Production", channelOptions.Text, "Insider should change to production after navigating up with the arrow key");
+            Assert.IsFalse(saveAndClose.Enabled, "Save and close should be disabled after changing back to default production channel");
+            driver.VerifyAccessibility(TestContext, "ApplicationTab", 0);
         }
 
 
@@ -83,17 +83,17 @@ namespace UITests
             var connectionControl = driver.FindElementByAccessibilityId(AutomationIDs.ConnectionControl);
             var radioButtons = connectionControl.FindElementsByClassName("RadioButton");
 
-            Assert.IsFalse(saveAndClose.Enabled);
-            Assert.AreEqual(2, radioButtons.Count);
-            Assert.IsTrue(radioButtons[0].Text.Contains("Azure Boards"));
-            Assert.IsTrue(radioButtons[1].Text.Contains("GitHub"));
+            Assert.IsFalse(saveAndClose.Enabled, "Save and close should be disabled");
+            Assert.AreEqual(2, radioButtons.Count, "There should be two connection extensions");
+            Assert.IsTrue(radioButtons[0].Text.Contains("Azure Boards"), "The first connection should be Azure Boards");
+            Assert.IsTrue(radioButtons[1].Text.Contains("GitHub"), "The second connection should be GitHub");
 
             radioButtons[1].Click();
             var urlTb = connectionControl.FindElementByAccessibilityId(GitHubAutomationIDs.IssueConfigurationUrlTextBox);
             urlTb.SendKeys("https://github.com/microsoft/accessibility-insights-windows");
-            Assert.IsTrue(saveAndClose.Enabled);
+            Assert.IsTrue(saveAndClose.Enabled, "The save and close button should be enabled after configuring GitHub");
 
-            CheckAccessibility("ConnectionTab");
+            driver.VerifyAccessibility(TestContext, "ConnectionTab", 0);
         }
 
         /// <summary>
@@ -104,14 +104,8 @@ namespace UITests
             driver.GoToSettings();
             driver.FindElementByAccessibilityId(AutomationIDs.SettingsAboutTabItem).Click();
             var noticesLink = driver.FindElementByAccessibilityId(AutomationIDs.SettingsThirdPartyNoticesHyperlink);
-            Assert.AreEqual("Third party notices", noticesLink.Text);
-            CheckAccessibility("AboutTab");
-        }
-
-        private void CheckAccessibility(string name)
-        {
-            var issueCount = driver.ScanAIWin(TestContext, name);
-            Assert.AreEqual(0, issueCount);
+            Assert.AreEqual("Third party notices", noticesLink.Text, "The notices link text is incorrect");
+            driver.VerifyAccessibility(TestContext, "AboutTab", 0);
         }
 
         [TestInitialize]
