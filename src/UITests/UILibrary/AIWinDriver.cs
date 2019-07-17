@@ -62,7 +62,7 @@ namespace UITests.UILibrary
         public void VerifyAccessibility(TestContext context, string fileName, int expectedIssueCount)
         {
             var issueCount = this.ScanAIWin(context, fileName);
-            Assert.AreEqual(expectedIssueCount, issueCount, "axe.windows found accessibility issues, check a11ytest file in test artifacts");
+            Assert.AreEqual(expectedIssueCount, issueCount, $"axe.windows found accessibility issues, check {fileName}.a11ytest file in test artifacts");
         }
 
         public WindowsElement FindElementByAccessibilityId(string accessibilityId) => Session.FindElementByAccessibilityId(accessibilityId);
