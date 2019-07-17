@@ -17,25 +17,18 @@ namespace UITests
         public void GettingStartedPageTests()
         {
             VerifyGettingStartedTitle();
-            VerifyAccessibility();
+            driver.VerifyAccessibility(TestContext, "GettingStarted", 0);
         }
 
         private void VerifyGettingStartedTitle()
         {
-            Assert.AreEqual("Accessibility Insights for Windows - ", driver.Title);
-        }
-
-        private void VerifyAccessibility()
-        {
-            var issueCount = driver.ScanAIWin(TestContext, "GettingStarted");
-            Assert.AreEqual(0, issueCount);
+            Assert.AreEqual("Accessibility Insights for Windows - ", driver.Title, "Getting Started title is incorrect");
         }
 
         [TestInitialize]
         public void TestInitialize()
         {
             Setup();
-
             driver.GettingStarted.DismissTelemetry();
         }
 

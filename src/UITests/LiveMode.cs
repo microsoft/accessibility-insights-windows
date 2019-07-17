@@ -29,7 +29,7 @@ namespace UITests
         private void TestTestResults()
         {
             RunTests();
-            ScanAccessibility();
+            driver.VerifyAccessibility(TestContext, "LiveMode", 0);
             ValidateTestModeTitle();
             driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
             driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(4);
@@ -49,7 +49,7 @@ namespace UITests
             driver.LiveMode.RunTests();
             var testsComplete = WaitFor(() => !driver.Title.Contains("(Scanning)"), new TimeSpan(0, 0, 0, 0, 500), 10);
 
-            Assert.IsTrue(testsComplete);
+            Assert.IsTrue(testsComplete, "Tests did not complete - (Scanning) title was never found");
         }
 
         private void TestLiveMode()
@@ -58,25 +58,19 @@ namespace UITests
             var appSelected = WaitFor(() => driver.LiveMode.SelectedElementText == "window 'Wildlife Manager 2.0'", new TimeSpan(0, 0, 1), 5);
             driver.LiveMode.TogglePause();
 
-            Assert.IsTrue(appOpened);
-            Assert.IsTrue(appSelected);
+            Assert.IsTrue(appOpened, "Wildlife Manager may not have opened, its window title was not found");
+            Assert.IsTrue(appSelected, "Wildlife Manager was not selected in Live mode");
             VerifyLiveModeTitle();
         }
 
         private void VerifyLiveModeTitle()
         {
-            Assert.AreEqual("Accessibility Insights for Windows - Inspect - Live", driver.Title);
+            Assert.AreEqual("Accessibility Insights for Windows - Inspect - Live", driver.Title, "Live mode title is incorrect");
         }
 
         private void ValidateTestModeTitle()
         {
-            Assert.AreEqual("Accessibility Insights for Windows - Test - Test results", driver.Title);
-        }
-
-        private void ScanAccessibility()
-        {
-            var issueCount = driver.ScanAIWin(TestContext, "LiveMode");
-            Assert.AreEqual(0, issueCount);
+            Assert.AreEqual("Accessibility Insights for Windows - Test - Test results", driver.Title, "Test mode title is incorrect");
         }
 
         [TestInitialize]
