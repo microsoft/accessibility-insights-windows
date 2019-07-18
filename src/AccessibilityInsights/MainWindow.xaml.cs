@@ -159,6 +159,9 @@ namespace AccessibilityInsights
 
             SetHighContrastTheme();
 
+            ///in case we need to do any debugging with elevated app
+            SupportDebugging();
+
             // create necessary config folders & their internal config files
             PopulateConfigurations();
 
@@ -170,8 +173,6 @@ namespace AccessibilityInsights
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
             
-            ///in case we need to do any debugging with elevated app
-            SupportDebugging();
 
             UpdateMainWindowLayout();
 

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
 using OpenQA.Selenium.Remote;
 using System;
@@ -82,9 +83,10 @@ namespace UITests
             try
             {
                 _process.Refresh(); // updates process.MainWindowHandle
-                DesiredCapabilities appCapabilities = new DesiredCapabilities();
-                appCapabilities.SetCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
-                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), appCapabilities);
+                var options = new AppiumOptions();
+                options.AddAdditionalCapability("deviceName", "WindowsPC");
+                options.AddAdditionalCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
+                _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
             }
             catch { }
         }
