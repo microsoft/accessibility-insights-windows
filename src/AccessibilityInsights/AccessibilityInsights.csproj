@@ -254,6 +254,7 @@
     </EmbeddedResource>
     <None Include="AppManifests\UIAccess_Disabled.manifest" />
     <None Include="AppManifests\UIAccess_Enabled.manifest" />
+    <None Include="Scripts\UIAccess.cmd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -336,6 +337,7 @@
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
   <PropertyGroup>
     <PostBuildEvent>copy /y "$(ProjectDir)AppManifests\*.manifest" "$(ProjectDir)$(OutDir)"
+copy /y "$(ProjectDir)Scripts\UIAccess.cmd" "$(ProjectDir)$(OutDir)"
 copy /y "$(ProjectDir)AppManifests\UIAccess_Disabled.manifest" "$(ProjectDir)$(OutDir)\AccessibilityInsights.exe.manifest"
 </PostBuildEvent>
   </PropertyGroup>

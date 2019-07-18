@@ -74,8 +74,9 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
-              <File Source="..\AccessibilityInsights\bin\Release\UIAccess_Enabled.manifest"/>
+              <File Source="..\AccessibilityInsights\bin\Release\UIAccess.cmd"/>
               <File Source="..\AccessibilityInsights\bin\Release\UIAccess_Disabled.manifest"/>
+              <File Source="..\AccessibilityInsights\bin\Release\UIAccess_Enabled.manifest"/>
 
               <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
                 <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>

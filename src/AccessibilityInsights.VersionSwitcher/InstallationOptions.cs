@@ -32,16 +32,23 @@ namespace AccessibilityInsights.VersionSwitcher
         internal TimeSpan DownloadTimeout { get; }
 
         /// <summary>
+        /// Whether or not UIAccess should be enabled post-install
+        /// </summary>
+        internal bool EnableUIAccess { get; }
+
+        /// <summary>
         /// ctor
         /// </summary>
         /// <param name="msiPath">String identifying the installer location</param>
         /// <param name="newChannel">String indicating the value for NewChannel</param>
-        internal InstallationOptions(string msiPath, string newChannel = null)
+        /// <param name="enableUIAccess">True only if we need to enable UIAccess post-install"</param>
+        internal InstallationOptions(string msiPath, string newChannel, bool enableUIAccess)
         {
             MsiPath = new Uri(msiPath);
             NewChannel = newChannel;
             LocalInstallerFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
             DownloadTimeout = TimeSpan.FromSeconds(60);
+            EnableUIAccess = enableUIAccess;
         }
     }
 }
