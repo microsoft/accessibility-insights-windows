@@ -112,7 +112,7 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <param name="enableUIAccess">Desired state of UIAccess.</param>
         private static void SetManifestForUIAccess(bool enableUIAccess)
         {
-            if (enableUIAccess)
+            if (!enableUIAccess)
                 return;   // UIAccess is disabled by default
 
             try
