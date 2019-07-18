@@ -1,6 +1,6 @@
 @echo off
- if /i '%1' == 'Enable' goto Verify
- if /i '%1' == 'Disable' goto Verify
+ if /i '%1' == 'Enable' goto Confirm
+ if /i '%1' == 'Disable' goto Confirm
  
  :Usage
  echo.
@@ -18,7 +18,7 @@
  echo.
  goto :eof
  
- :Verify
+ :Confirm
  echo.
  echo CAUTION! You should only change the UIAccess state if you understand the
  echo          potential security implications!
@@ -26,15 +26,17 @@
  choice /m "Are you sure you want to %1 UIAccess support?"
  if ErrorLevel 1 goto UpdateManifest
  
+ :UserCanceled
  echo.
- echo No change was made
+ echo Operation was canceled.
  echo.
  goto :eof
  
  :UpdateManifest
+ rem DO NOT use copy here, as we also need to update the file's last write time
  type UIAccess_%1d.manifest > AccessibilityInsights.exe.manifest
  echo.
- echo Update complete. The change will take effect the next time Accessibilty
- echo Insights for Windows is started.
+ echo Update complete. Changes will take effect when Accessibilty Insights for
+ echo Windows is next started.
  echo.
  
