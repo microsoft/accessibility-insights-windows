@@ -45,4 +45,5 @@ goto :eof
 
 :UpdateFailed
 echo Unable to complete the update. Please ensure that you are running this script
-echo with administrative privileges.
+echo with administrative privileges, and that you are running it from the same
+echo folder where Accessibilty Insights for Windows has been installed.
