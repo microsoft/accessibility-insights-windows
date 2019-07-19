@@ -15,7 +15,6 @@ echo.
 echo Where ^<action^> is one of:
 echo   ENABLE  (to enable UIAccess support)
 echo   DISABLE (to disable UIAccess support)
-echo.
 goto :eof
 
 :Confirm
@@ -24,18 +23,26 @@ echo CAUTION! You should only change the UIAccess state if you understand the
 echo          potential security implications!
 echo.
 choice /m "Are you sure you want to %1 UIAccess support?"
-if ErrorLevel 1 goto UpdateManifest
- 
+if ErrorLevel 2 goto UserCanceled
+goto UpdateManifest
+
 :UserCanceled
 echo.
 echo Operation was canceled.
-echo.
 goto :eof
 
 :UpdateManifest
-rem DO NOT use copy here, as we also need to update the file's last write time
-type UIAccess_%1d.manifest > AccessibilityInsights.exe.manifest
-echo.
+rem DO NOT use copy here, as we also need to update the file's last write time.
+rem An "Access is denied" failure will not set errorlevel without help. The
+rem extra echo statements provide that help
+type UIAccess_%1d.manifest > AccessibilityInsights.exe.manifest && echo. || echo.
+if errorlevel 1 goto UpdateFailed
+
+:UpdateSucceeded
 echo Update complete. Changes will take effect when Accessibilty Insights for
 echo Windows is next started.
-echo.
+goto :eof
+
+:UpdateFailed
+echo Unable to complete the update. Please ensure that you are running this script
+echo with administrative privileges.
