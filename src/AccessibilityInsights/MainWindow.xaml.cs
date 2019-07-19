@@ -197,7 +197,7 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
-            Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Startup);
+            Logger.PublishTelemetryEvent(Misc.TelemetryEventFactory.ForMainWindowStartup());
         }
 
         /// <summary>
