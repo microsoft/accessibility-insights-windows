@@ -16,6 +16,9 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     internal class InstallationEngine
     {
+        const string AppManifestFile = "AccessibilityInsights.exe.manifest";
+        const string EnabledManifestFile = "UIAccess_Enabled.manifest";
+
         private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly string _productName;
         private readonly string _appToLaunchAfterInstall;
@@ -47,38 +50,85 @@ namespace AccessibilityInsights.VersionSwitcher
                 }
             }
             UpdateConfigWithNewChannel(options.NewChannel);
+            SetManifestForUIAccess(options.EnableUIAccess);
             LaunchPostInstallApp();
             EventLogger.WriteInformationalMessage("Completed Installation");
         }
 
         /// <summary>
-        /// Create a CommandLineParameters object based on available input
+        /// Create an InstallationOptions object based on available input
         /// </summary>
         /// <returns>The populated InstallationOptions object</returns>
         private static InstallationOptions GetInstallationOptions()
         {
-            // Temporary implementation for testing--still need to finalize actual command line
             string[] args = Environment.GetCommandLineArgs();
-
-            string msiPath = null;
             string newChannel = null;
 
             if (args.Length > 1)
             {
-                msiPath = args[1];
+                string msiPath = args[1];
 
                 if (args.Length > 2)
                 {
                     newChannel = args[2];
                 }
 
-                EventLogger.WriteInformationalMessage("Options:\nMSI Path = {0}\nNew Channel = {1}",
-                    msiPath, newChannel);
-                return new InstallationOptions(msiPath, newChannel);
+                bool enableUIAccess = IsUIAccessEnabled();
+
+                EventLogger.WriteInformationalMessage("Options:\nMSI Path = {0}\nNew Channel = {1},\nEnable UIAccess = {2}",
+                    msiPath, newChannel, enableUIAccess);
+                return new InstallationOptions(msiPath, newChannel, enableUIAccess);
             }
 
             string input = string.Join(" | ", args);
             throw new ArgumentException("Invalid Input: " + input);
+        }
+
+        /// <summary>
+        /// Infer UIAccess state from the existing manifest files. Assume false unless proven otherwise
+        /// </summary>
+        private static bool IsUIAccessEnabled()
+        {
+            try
+            {
+                string appPath = Path.GetDirectoryName(MsiUtilities.GetAppInstalledPath());
+                string appManifestContents = File.ReadAllText(Path.Combine(appPath, AppManifestFile));
+                string enabledManifestContents = File.ReadAllText(Path.Combine(appPath, EnabledManifestFile));
+                return appManifestContents == enabledManifestContents;
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                // Report the error, assume no UIAccess
+                EventLogger.WriteWarningMessage("Unable to determine UIAccess status. Assuming disabled. Detail: {0}", e.ToString());
+                return false;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        /// <summary>
+        /// Update manifest files as needed for UIAccess support
+        /// </summary>
+        /// <param name="enableUIAccess">Desired state of UIAccess.</param>
+        private static void SetManifestForUIAccess(bool enableUIAccess)
+        {
+            if (!enableUIAccess)
+                return;   // UIAccess is disabled by default
+
+            try
+            {
+                string appPath = Path.GetDirectoryName(MsiUtilities.GetAppInstalledPath());
+                string enabledManifestContents = File.ReadAllText(Path.Combine(appPath, EnabledManifestFile));
+                File.WriteAllText(Path.Combine(appPath, AppManifestFile), enabledManifestContents, System.Text.Encoding.UTF8);
+                EventLogger.WriteInformationalMessage("UIAccess has been enabled");
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                // Report the error, assume no UIAccess
+                EventLogger.WriteWarningMessage("Unable to enable UIAccess. Detail: {0}", e.ToString());
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -173,15 +223,15 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <param name="newChannel">The new channel to use</param>
         private static void UpdateConfigWithNewChannel(string newChannel)
         {
-            if (newChannel != null)
-            {
-                var defaultConfigPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
-                var configFile = Path.Combine(defaultConfigPaths.ConfigurationFolderPath, Constants.AppConfigFileName);
+            if (newChannel == null)
+                return;
 
-                SettingsDictionary settings = FileHelpers.LoadDataFromJSON<SettingsDictionary>(configFile);
-                settings[Constants.ReleaseChannelKey] = newChannel;
-                FileHelpers.SerializeDataToJSON(settings, configFile);
-            }
+            var defaultConfigPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+            var configFile = Path.Combine(defaultConfigPaths.ConfigurationFolderPath, Constants.AppConfigFileName);
+
+            SettingsDictionary settings = FileHelpers.LoadDataFromJSON<SettingsDictionary>(configFile);
+            settings[Constants.ReleaseChannelKey] = newChannel;
+            FileHelpers.SerializeDataToJSON(settings, configFile);
         }
 
         /// <summary>

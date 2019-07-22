@@ -46,14 +46,11 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(SignAppForRelease)'=='' ">
-    <ApplicationManifest>AppManifests\app_dev.manifest</ApplicationManifest>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(SignAppForRelease)'=='true' ">
-    <ApplicationManifest>AppManifests\app_UIAccess.manifest</ApplicationManifest>
-  </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>..\AccessibilityInsights.SharedUx\Resources\Icons\BrandIconDesktop.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Axe.Windows.Actions, Version=0.3.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -255,8 +252,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Messages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="AppManifests\app_uiaccess.manifest" />
-    <None Include="AppManifests\app_dev.manifest" />
+    <None Include="AppManifests\UIAccess_Disabled.manifest" />
+    <None Include="AppManifests\UIAccess_Enabled.manifest" />
+    <None Include="Scripts\UIAccess.cmd" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -337,4 +335,10 @@
     <Error Condition="!Exists('..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>copy /y "$(ProjectDir)AppManifests\*.manifest" "$(ProjectDir)$(OutDir)"
+copy /y "$(ProjectDir)Scripts\UIAccess.cmd" "$(ProjectDir)$(OutDir)"
+copy /y "$(ProjectDir)AppManifests\UIAccess_Disabled.manifest" "$(ProjectDir)$(OutDir)\AccessibilityInsights.exe.manifest"
+</PostBuildEvent>
+  </PropertyGroup>
 </Project>

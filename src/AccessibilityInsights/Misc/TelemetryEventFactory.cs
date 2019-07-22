@@ -2,9 +2,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Forms.Design;
 
 namespace AccessibilityInsights.Misc
 {
@@ -104,6 +106,15 @@ namespace AccessibilityInsights.Misc
                 new Dictionary<TelemetryProperty, string>
                 {
                     { TelemetryProperty.FileMode, mode },
+                });
+        }
+
+        public static TelemetryEvent ForMainWindowStartup()
+        {
+            return new TelemetryEvent(TelemetryAction.Mainwindow_Startup,
+                new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.UIAccessEnabled, NativeMethods.IsRunningWithUIAccess().ToString(CultureInfo.InvariantCulture) },
                 });
         }
     }

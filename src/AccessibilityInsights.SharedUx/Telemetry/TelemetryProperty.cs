@@ -27,6 +27,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         AppSessionID,
         PatternMethod,
         InstallationID,
+        UIAccessEnabled,
         UpdateTimedOut,
         UpdateInitializationTime,
         UpdateOptionWaitTime,
