@@ -1,6 +1,6 @@
 ## July 24, 2019 Insider Release ([v1.1.0933.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0933.01))
 
-Welcome to the July 24 2019 Insider release of Accessibility Insights for Windows.
+Welcome to the July 24, 2019 Insider release of Accessibility Insights for Windows.
 
 ### Highlights
 
