@@ -18,7 +18,7 @@ UIAccess by default. It can be enabled by running the UIAccess.cmd script that i
   - Settings button should not be a toggle [#364](https://github.com/Microsoft/accessibility-insights-windows/issues/364)
   - Tab stop should highlight the first element right away [#151](https://github.com/Microsoft/accessibility-insights-windows/issues/151)
   - Prevent crash that can occur after scope changes [#381](https://github.com/Microsoft/accessibility-insights-windows/issues/381)
-  - Make the UIAccess status accessible [#388](https://github.com/Microsoft/accessibility-insights-windows/pulls/388)
+  - Make the UIAccess status accessible [#388](https://github.com/microsoft/accessibility-insights-windows/pull/388)
   - Fix a case where the update dialog was incorrectly being displayed [#394](https://github.com/Microsoft/accessibility-insights-windows/issues/394)
   - Fix a repaint issue that occurs when JAWS is running [#379](https://github.com/Microsoft/accessibility-insights-windows/issues/379)
 
