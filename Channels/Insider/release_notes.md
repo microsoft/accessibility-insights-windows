@@ -1,28 +1,27 @@
-## June 4th, 2019 Insider Release ([v1.1.0883.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0883.01))
+## July 24 2019 Insider Release ([v1.1.0933.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0933.01))
 
-Welcome to the June 4th, 2019 release of Accessibility Insights for Windows.
-
-Installation Link: [https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0883.01/AccessibilityInsights.msi](https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0883.01/AccessibilityInsights.msi)
-
-Documentation Link: [https://accessibilityinsights.io/docs/en/windows/overview](https://accessibilityinsights.io/docs/en/windows/overview)
+Welcome to the July 24 2019 Insider release of Accessibility Insights for Windows.
 
 ### Highlights
 
-  - [Axe.Windows](#axe.windows)
-  - [Telemetry Improvements](#telemetry-improvements)
-  
-#### Axe.Windows
+  - [UIAccess changes](#rule-updates)
+  - [Bug Fixes](#bug-fixes)
+  - [Rule Updates](#rule-updates)
 
-The core scanning code from Accessibility Insights for Windows has been moved into a separate GitHub repo (https://github.com/microsoft/axe-windows). Accessibility Insights now gets its core scanning code from that location. This code will be handled separately to make this functionality more broadly available to the accessibility community.
+#### UIAccess Changes
 
-#### Telemetry Improvements
+UIAccess is an advancecd security feature that is required in some very specific scenarios, but it was enabled by default.
+This led to some user confusion from users who do not need UIAccess to be enabled. To address this, we have disabled
+UIAccess by default. It can be enabled by running the UIAccess.cmd script that installs with Accessibility Insights for Windows.
 
-We identified a few points in the code where we had no telemetry about failures that users might be experiencing. We added these data points to help us make the product better. No additional customer data is exposed.
+#### Bug Fixes
+  - Settings button should not be a toggle [#364]
+  - Tab stop should highlight the first element right away [#151]
+  - Prevent crash that can occur after scope changes [#381]
+  - Make the UIAccess status accessible (#388)
+  - Fix a case where the update dialog was incorrectly being displayed [#394]
+  - Fix a repaint issue that occurs when JAWS is running [#379]
 
-### Bug Fixes
-
-- Prevent Accessibility Insights from hiding the UAC dialog during upgrade or channel switch [#336](https://github.com/Microsoft/accessibility-insights-windows/issues/336)
-- Improve the color contrast (including high contrast) in the buttons of the upgrade dialog [#342](https://github.com/Microsoft/accessibility-insights-windows/issues/342)
-- Prevent the upgrade dialog from floating above the browser when viewing release notes [#351](https://github.com/Microsoft/accessibility-insights-windows/issues/351)
-- Make the highlighter more intuitive when opening an events file [#365](https://github.com/Microsoft/accessibility-insights-windows/issues/365)
-- Fix a couple of issues when entering custom hot keys [#378](https://github.com/Microsoft/accessibility-insights-windows/pull/378)
+#### Rule Updates
+We have updated the following accessibility rule based on community feedback.
+  - EditSupportsOnlyValuePattern now returns an error instead of a warning
