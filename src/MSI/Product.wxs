@@ -69,7 +69,11 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\CommandLine.dll"/>
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Win32.Registry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Drawing.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Security.AccessControl.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Security.Principal.Windows.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.ValueTuple.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Windows.Interactivity.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
