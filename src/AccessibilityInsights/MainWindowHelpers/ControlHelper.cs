@@ -266,7 +266,11 @@ namespace AccessibilityInsights
         /// </summary>
         private void UpdateVersionString()
         {
-            this.lblVersion.Content = ComputeVersionBarString();
+            string content = ComputeVersionBarString();
+
+            this.lblVersion.Content = content;
+            this.lblVersion.Visibility = content.Length > 0 ?
+                Visibility.Visible : Visibility.Collapsed;
         }
 
         /// <summary>
@@ -276,7 +280,7 @@ namespace AccessibilityInsights
         {
             ReleaseChannel? channel = ConfigurationManager.GetDefaultInstance()?.AppConfig?.ReleaseChannel;
             if ((channel.HasValue && channel.Value != ReleaseChannel.Production)
-                || _updateOption != AutoUpdateOption.NewerThanCurrent)
+                || _updateOption == AutoUpdateOption.NewerThanCurrent)
             {
                 return string.Format(CultureInfo.InvariantCulture,
                     Properties.Resources.VersionBarPreReleaseVersion,

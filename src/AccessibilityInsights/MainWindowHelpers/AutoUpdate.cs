@@ -221,6 +221,7 @@ namespace AccessibilityInsights
                 try
                 {
                     this.ShowUpgradeDialog();
+                    UpdateVersionString();
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
