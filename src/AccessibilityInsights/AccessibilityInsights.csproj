@@ -282,6 +282,10 @@
       <Project>{eee9cd52-ca10-41ae-ac6e-98ae4bbdfa2d}</Project>
       <Name>CommonUxComponents</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj">
+      <Project>{80165ccc-6d76-4590-a16b-1790a35b08e4}</Project>
+      <Name>Extensions.GitHubAutoUpdate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj">
       <Project>{eaa85d0d-712d-4d85-a246-d3c699c6c602}</Project>
       <Name>Extensions</Name>

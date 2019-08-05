@@ -276,7 +276,7 @@ namespace AccessibilityInsights
         {
             ReleaseChannel? channel = ConfigurationManager.GetDefaultInstance()?.AppConfig?.ReleaseChannel;
             if ((channel.HasValue && channel.Value != ReleaseChannel.Production)
-                || _updateOption != AutoUpdateOption.NewerThanCurrent)
+                || _updateOption == AutoUpdateOption.NewerThanCurrent)
             {
                 return string.Format(CultureInfo.InvariantCulture,
                     Properties.Resources.VersionBarPreReleaseVersion,
