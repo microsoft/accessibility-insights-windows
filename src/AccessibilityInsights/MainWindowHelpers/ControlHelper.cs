@@ -266,7 +266,11 @@ namespace AccessibilityInsights
         /// </summary>
         private void UpdateVersionString()
         {
-            this.lblVersion.Content = ComputeVersionBarString();
+            string content = ComputeVersionBarString();
+
+            this.lblVersion.Content = content;
+            this.lblVersion.Visibility = content.Length > 0 ?
+                Visibility.Visible : Visibility.Collapsed;
         }
 
         /// <summary>
