@@ -15,8 +15,7 @@ namespace UITests
         /// we want to use them sparingly.
         /// </summary>
         [TestMethod]
-        [TestCategory("NoStrongName")]
-        [TestCategory("UITest")]
+        [TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
         public void SettingsPageTests()
         {
             CheckApplicationTab();

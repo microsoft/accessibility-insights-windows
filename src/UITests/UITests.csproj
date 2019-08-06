@@ -103,6 +103,7 @@
     <Compile Include="SettingsPage.cs" />
     <Compile Include="TelemetryDialog.cs" />
     <Compile Include="LoadTestFile.cs" />
+    <Compile Include="TestCategory.cs" />
     <Compile Include="UILibrary\AIWinDriver.cs" />
     <Compile Include="UILibrary\EventsMode.cs" />
     <Compile Include="UILibrary\GettingStarted.cs" />
