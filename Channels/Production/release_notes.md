@@ -1,4 +1,4 @@
-## August 5, 2019 Insider Release ([v1.1.0933.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0933.01))
+## August 5, 2019 Production Release ([v1.1.0933.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0933.01))
 
 Welcome to the August 5, 2019 Production release of Accessibility Insights for Windows.
 
@@ -10,9 +10,7 @@ Welcome to the August 5, 2019 Production release of Accessibility Insights for W
 
 #### UIAccess Changes
 
-UIAccess is an advancecd security feature that is required in some very specific scenarios, but it was enabled by default.
-This led to some user confusion from users who do not need UIAccess to be enabled. To address this, we have disabled
-UIAccess by default. It can be enabled by running the UIAccess.cmd script that installs with Accessibility Insights for Windows.
+UIAccess is an advanced security feature that is required in some very specific scenarios, but it was enabled by default. This led to some user confusion from users who do not need UIAccess to be enabled. To address this, we have disabled UIAccess by default. It can be enabled by running the UIAccess.cmd script that installs with Accessibility Insights for Windows.
 
 #### Bug Fixes
 
