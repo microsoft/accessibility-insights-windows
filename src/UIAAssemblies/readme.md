@@ -9,10 +9,6 @@ The UIA interop files will periodically need to be updated to take advantage of 
 4. Copy Interop.UIAutomationClient.dll to the new folder
 5. Do a global search & replace to update `UIAAssemblies\Win10.XXXXX\` to `UIAAssemblies\Win10.YYYYY\` in the csproj files. As of this writing, this will touch the following projects:
 
-   * Actions.csproj
-   * Desktop.csproj
-   * Rules.csproj
-   * RulesTests.csproj
    * SharedUx.csproj
   
 6. Delete the folder containing the old interop file (potentially in a separate PR, if you wish)
