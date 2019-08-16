@@ -116,7 +116,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll" Id="extensions_AzureDevOps_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll.config" />
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" Id="activedirectory_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" Id="activedirectory_platform_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll" Id="jsonwebtokens.extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Logging.dll" Id="logging_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Tokens.dll" Id="tokens_extension"/>
