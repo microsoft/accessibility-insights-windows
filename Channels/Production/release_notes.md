@@ -2,9 +2,13 @@
 
 Welcome to the August 5, 2019 Production release of Accessibility Insights for Windows.
 
+Installation Link: [https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0933.01/AccessibilityInsights.msi](https://github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.0933.01/AccessibilityInsights.msi)
+
+Documentation Link: [https://accessibilityinsights.io/docs/en/windows/overview](https://accessibilityinsights.io/docs/en/windows/overview)
+
 ### Highlights
 
-- [UIAccess changes](#rule-updates)
+- [UIAccess Changes](#uiaccess-changes)
 - [Bug Fixes](#bug-fixes)
 - [Rule Updates](#rule-updates)
 
