@@ -111,6 +111,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                    <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll" Id="telemetry_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll.config" />
                    <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\Microsoft.ApplicationInsights.dll" Id="applicationinsights_extension" />
+                   <File Source="..\AccessibilityInsights.Extensions.Telemetry\bin\Release\System.Diagnostics.DiagnosticSource.dll" Id="diagnosticsource_extension" />
 
                    <!-- AzureDevOps Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll" Id="extensions_AzureDevOps_extension"/>
