@@ -497,17 +497,8 @@ Accessibility Insights Support Team
   <data name="TextBlockAutomationPropertiesNameInstructions" xml:space="preserve">
     <value>Instructions</value>
   </data>
-  <data name="ColorContrast_HowToTestAuto" xml:space="preserve">
-    <value>Auto-detect an element’s color contrast ratio by hovering over or keyboard focusing on an element in your target application.</value>
-  </data>
   <data name="ColorContrast_Analyzer" xml:space="preserve">
     <value>Analyzer</value>
-  </data>
-  <data name="ColorContrast_HowToTestManualPre" xml:space="preserve">
-    <value>You can manually test the color contrast ratio by selecting colors with the eyedropper</value>
-  </data>
-  <data name="ColorContrast_HowToTestManualPost" xml:space="preserve">
-    <value>button, choosing a color from the drop-down color picker, or entering a hex code value.</value>
   </data>
   <data name="noElementSelected" xml:space="preserve">
     <value>no element selected</value>
@@ -521,8 +512,8 @@ Accessibility Insights Support Team
   <data name="TextBlockTextResult" xml:space="preserve">
     <value>Result</value>
   </data>
-  <data name="TextBlockTextTextSize" xml:space="preserve">
-    <value>Text size</value>
+  <data name="TextBlockTextElement" xml:space="preserve">
+    <value>Element</value>
   </data>
   <data name="TextBlockTextSampleText" xml:space="preserve">
     <value>Sample text</value>
@@ -533,8 +524,8 @@ Accessibility Insights Support Team
   <data name="SetterValuePass" xml:space="preserve">
     <value>Pass</value>
   </data>
-  <data name="TextBlockTextRegular" xml:space="preserve">
-    <value>Regular</value>
+  <data name="TextBlockTextRegularSize" xml:space="preserve">
+    <value>Regular text</value>
   </data>
   <data name="TextBlockTextRequiresRatio" xml:space="preserve">
     <value>(Requires ratio ≥ 4.5)</value>
@@ -545,7 +536,7 @@ Accessibility Insights Support Team
   <data name="largeTextResultAutomationPropertiesName" xml:space="preserve">
     <value>Test result large text</value>
   </data>
-  <data name="ColorContrast_hlHowToTest_Click" xml:space="preserve">
+  <data name="ColorContrast_OpenLinkFailed" xml:space="preserve">
     <value>Failed to open link:
 {0}</value>
   </data>
@@ -1303,15 +1294,6 @@ Accessibility Insights Support Team
   <data name="ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard" xml:space="preserve">
     <value>Error copying to clipboard: </value>
   </data>
-  <data name="ColorContrastViewModel_GetBugInformation" xml:space="preserve">
-    <value>Regular requires ratio &gt;= {0}</value>
-  </data>
-  <data name="ColorContrastViewModel_GetBugInformation1" xml:space="preserve">
-    <value>Large (14pt+bold or 18pt) requires ratio &gt;= {0}</value>
-  </data>
-  <data name="ColorContrastViewModel_GetBugInformation_Color_contrast_ratio_is_less_than_required" xml:space="preserve">
-    <value>Color contrast ratio is less than required</value>
-  </data>
   <data name="EventConfigNodeViewModel_ToString_checked" xml:space="preserve">
     <value> checked</value>
   </data>
@@ -1423,14 +1405,11 @@ Accessibility Insights Support Team
   <data name="ColorContrast_Color2" xml:space="preserve">
     <value>Color 2</value>
   </data>
-  <data name="ColorContrast_FontSizes" xml:space="preserve">
-    <value>(14 pt. bold or 18 pt. regular)</value>
-  </data>
   <data name="ColorContrast_Color1" xml:space="preserve">
     <value>Color 1</value>
   </data>
-  <data name="ColorContrast_Large" xml:space="preserve">
-    <value>Large</value>
+  <data name="TextBlockTextLargeSize" xml:space="preserve">
+    <value>Large text (14 pt. bold or 18 pt. regular)</value>
   </data>
   <data name="ColorContrast_OutputAutomationName" xml:space="preserve">
     <value>Ratio is {0}</value>
@@ -1444,8 +1423,8 @@ Accessibility Insights Support Team
   <data name="ColorContrast_Confidence" xml:space="preserve">
     <value>Confidence level</value>
   </data>
-  <data name="ColorContrast_Requires" xml:space="preserve">
-    <value>(Requires ratio ≥ 3.0)</value>
+  <data name="ColorContrast_RequiresRegularSizePre" xml:space="preserve">
+    <value>Requires a ratio of at least 4.5:1 (</value>
   </data>
   <data name="EventConfigTabControl_ckbxAllEvents" xml:space="preserve">
     <value>Listen to All Events</value>
@@ -1578,5 +1557,29 @@ Do you want to change the channel? </value>
   <data name="VersionLinkFormat" xml:space="preserve">
     <value>https://github.com/microsoft/accessibility-insights-windows/releases/tag/v{0}.{1}.{2:0000}.{3:00}</value>
     <comment>{0} - {3} are placeholders for the 4 fields of a Version object</comment>
+  </data>
+  <data name="ColorContrast_IntroLink" xml:space="preserve">
+    <value>Learn more about analyzing color contrast.</value>
+  </data>
+  <data name="ColorContrast_IntroRun" xml:space="preserve">
+    <value>This color contrast analyzer checks for color contrast ratios and measures them against the WCAG AA guidelines.</value>
+  </data>
+  <data name="ColorContrast_RequiresLargeSizePost" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="ColorContrast_RequiresLargeSizePre" xml:space="preserve">
+    <value>Requires a ratio of at least 3:1 (</value>
+  </data>
+  <data name="ColorContrast_RequiresRegularSizePost" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="ColorContrast_TextBlock_NewForWCAG_2_1" xml:space="preserve">
+    <value>New for WCAG 2.1</value>
+  </data>
+  <data name="ColorContrast_TextBlock_WCAG_1_4_11" xml:space="preserve">
+    <value>WCAG 1.4.11</value>
+  </data>
+  <data name="ColorContrast_TextBlock_WCAG_1_4_3" xml:space="preserve">
+    <value>WCAG 1.4.3</value>
   </data>
 </root>

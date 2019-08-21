@@ -1005,57 +1005,20 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (14 pt. bold or 18 pt. regular).
+        ///   Looks up a localized string similar to Learn more about analyzing color contrast..
         /// </summary>
-        public static string ColorContrast_FontSizes {
+        public static string ColorContrast_IntroLink {
             get {
-                return ResourceManager.GetString("ColorContrast_FontSizes", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_IntroLink", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to open link:
-        ///{0}.
+        ///   Looks up a localized string similar to This color contrast analyzer checks for color contrast ratios and measures them against the WCAG AA guidelines..
         /// </summary>
-        public static string ColorContrast_hlHowToTest_Click {
+        public static string ColorContrast_IntroRun {
             get {
-                return ResourceManager.GetString("ColorContrast_hlHowToTest_Click", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Auto-detect an element’s color contrast ratio by hovering over or keyboard focusing on an element in your target application..
-        /// </summary>
-        public static string ColorContrast_HowToTestAuto {
-            get {
-                return ResourceManager.GetString("ColorContrast_HowToTestAuto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to button, choosing a color from the drop-down color picker, or entering a hex code value..
-        /// </summary>
-        public static string ColorContrast_HowToTestManualPost {
-            get {
-                return ResourceManager.GetString("ColorContrast_HowToTestManualPost", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You can manually test the color contrast ratio by selecting colors with the eyedropper.
-        /// </summary>
-        public static string ColorContrast_HowToTestManualPre {
-            get {
-                return ResourceManager.GetString("ColorContrast_HowToTestManualPre", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Large.
-        /// </summary>
-        public static string ColorContrast_Large {
-            get {
-                return ResourceManager.GetString("ColorContrast_Large", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_IntroRun", resourceCulture);
             }
         }
         
@@ -1065,6 +1028,16 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_LargeSampleHelpText {
             get {
                 return ResourceManager.GetString("ColorContrast_LargeSampleHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to open link:
+        ///{0}.
+        /// </summary>
+        public static string ColorContrast_OpenLinkFailed {
+            get {
+                return ResourceManager.GetString("ColorContrast_OpenLinkFailed", resourceCulture);
             }
         }
         
@@ -1087,11 +1060,38 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Requires ratio ≥ 3.0).
+        ///   Looks up a localized string similar to ).
         /// </summary>
-        public static string ColorContrast_Requires {
+        public static string ColorContrast_RequiresLargeSizePost {
             get {
-                return ResourceManager.GetString("ColorContrast_Requires", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_RequiresLargeSizePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requires a ratio of at least 3:1 (.
+        /// </summary>
+        public static string ColorContrast_RequiresLargeSizePre {
+            get {
+                return ResourceManager.GetString("ColorContrast_RequiresLargeSizePre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        public static string ColorContrast_RequiresRegularSizePost {
+            get {
+                return ResourceManager.GetString("ColorContrast_RequiresRegularSizePost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requires a ratio of at least 4.5:1 (.
+        /// </summary>
+        public static string ColorContrast_RequiresRegularSizePre {
+            get {
+                return ResourceManager.GetString("ColorContrast_RequiresRegularSizePre", resourceCulture);
             }
         }
         
@@ -1132,39 +1132,38 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to New for WCAG 2.1.
+        /// </summary>
+        public static string ColorContrast_TextBlock_NewForWCAG_2_1 {
+            get {
+                return ResourceManager.GetString("ColorContrast_TextBlock_NewForWCAG_2_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WCAG 1.4.11.
+        /// </summary>
+        public static string ColorContrast_TextBlock_WCAG_1_4_11 {
+            get {
+                return ResourceManager.GetString("ColorContrast_TextBlock_WCAG_1_4_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to WCAG 1.4.3.
+        /// </summary>
+        public static string ColorContrast_TextBlock_WCAG_1_4_3 {
+            get {
+                return ResourceManager.GetString("ColorContrast_TextBlock_WCAG_1_4_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Color contrast analyzer.
         /// </summary>
         public static string ColorContrastAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ColorContrastAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Regular requires ratio &gt;= {0}.
-        /// </summary>
-        public static string ColorContrastViewModel_GetBugInformation {
-            get {
-                return ResourceManager.GetString("ColorContrastViewModel_GetBugInformation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Color contrast ratio is less than required.
-        /// </summary>
-        public static string ColorContrastViewModel_GetBugInformation_Color_contrast_ratio_is_less_than_required {
-            get {
-                return ResourceManager.GetString("ColorContrastViewModel_GetBugInformation_Color_contrast_ratio_is_less_than_requir" +
-                        "ed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Large (14pt+bold or 18pt) requires ratio &gt;= {0}.
-        /// </summary>
-        public static string ColorContrastViewModel_GetBugInformation1 {
-            get {
-                return ResourceManager.GetString("ColorContrastViewModel_GetBugInformation1", resourceCulture);
             }
         }
         
@@ -4038,11 +4037,29 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Element.
+        /// </summary>
+        public static string TextBlockTextElement {
+            get {
+                return ResourceManager.GetString("TextBlockTextElement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HOW TO FIX.
         /// </summary>
         public static string TextBlockTextHowToFix {
             get {
                 return ResourceManager.GetString("TextBlockTextHowToFix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Large text (14 pt. bold or 18 pt. regular).
+        /// </summary>
+        public static string TextBlockTextLargeSize {
+            get {
+                return ResourceManager.GetString("TextBlockTextLargeSize", resourceCulture);
             }
         }
         
@@ -4056,11 +4073,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Regular.
+        ///   Looks up a localized string similar to Regular text.
         /// </summary>
-        public static string TextBlockTextRegular {
+        public static string TextBlockTextRegularSize {
             get {
-                return ResourceManager.GetString("TextBlockTextRegular", resourceCulture);
+                return ResourceManager.GetString("TextBlockTextRegularSize", resourceCulture);
             }
         }
         
@@ -4088,15 +4105,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextBlockTextSampleText {
             get {
                 return ResourceManager.GetString("TextBlockTextSampleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Text size.
-        /// </summary>
-        public static string TextBlockTextTextSize {
-            get {
-                return ResourceManager.GetString("TextBlockTextTextSize", resourceCulture);
             }
         }
         
