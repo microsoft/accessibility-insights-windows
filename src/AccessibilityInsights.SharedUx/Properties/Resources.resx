@@ -1573,13 +1573,22 @@ Do you want to change the channel? </value>
   <data name="ColorContrast_RequiresRegularSizePost" xml:space="preserve">
     <value>)</value>
   </data>
-  <data name="ColorContrast_TextBlock_NewForWCAG_2_1" xml:space="preserve">
-    <value>New for WCAG 2.1</value>
-  </data>
   <data name="ColorContrast_TextBlock_WCAG_1_4_11" xml:space="preserve">
     <value>WCAG 1.4.11</value>
   </data>
   <data name="ColorContrast_TextBlock_WCAG_1_4_3" xml:space="preserve">
     <value>WCAG 1.4.3</value>
+  </data>
+  <data name="ColorContrast_NonTextObjectsText" xml:space="preserve">
+    <value>Graphical objects and UI components</value>
+  </data>
+  <data name="ColorContrast_RequiresNonTextObjectsPost" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="ColorContrast_RequiresNonTextObjectsPre" xml:space="preserve">
+    <value>Requires a ratio of at least 3:1 (</value>
+  </data>
+  <data name="TextNewForWCAG_2_1" xml:space="preserve">
+    <value>ADD PILL! New for WCAG 2.1</value>
   </data>
 </root>

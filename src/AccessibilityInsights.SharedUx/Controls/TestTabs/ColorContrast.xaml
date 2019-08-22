@@ -166,6 +166,8 @@
                         <RowDefinition MinHeight="30px"/>
                         <RowDefinition MinHeight="56px"/>
                         <RowDefinition MinHeight="56px"/>
+                        <RowDefinition MinHeight="56px"/>
+                        <RowDefinition MinHeight="56px"/>
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
@@ -213,7 +215,7 @@
                     <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
                         <TextBlock x:Name="regularSizeText" Text="{x:Static Properties:Resources.TextBlockTextRegularSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
-                            <!--  Non-standard line breaks around the hyperlink is intentional to avoid whitespaces around the link -->
+                            <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
                             <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
@@ -272,7 +274,7 @@
                     <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
                         <TextBlock x:Name="largeSizeText" Text="{x:Static Properties:Resources.TextBlockTextLargeSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
-                            <!--  Non-standard line breaks around the hyperlink is intentional to avoid whitespaces around the link -->
+                            <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
                             <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
@@ -298,6 +300,88 @@
                            Foreground="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
                            AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}" HorizontalAlignment="Left"/>
+                    </StackPanel>
+                    <Border Grid.Row="4" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"
+                        BorderThickness="0,0,0,1" Background="{x:Null}" />
+                    <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="4,4">
+                        <fabric:FabricIconControl x:Name="graphicalObjectGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
+                            <fabric:FabricIconControl.Style>
+                                <Style TargetType="fabric:FabricIconControl" BasedOn="{StaticResource GlyphToForeground}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=ContrastVM.PassNonTextObjects, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" Value="False">
+                                            <Setter Property="GlyphName" Value="AlertSolid"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=ContrastVM.PassNonTextObjects, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" Value="True">
+                                            <Setter Property="GlyphName" Value="CompletedSolid"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </fabric:FabricIconControl.Style>
+                        </fabric:FabricIconControl>
+                        <TextBlock x:Name="nonTextObjectResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Path=ContrastVM.PassNonTextObjects, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" Value="False">
+                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueFail}"></Setter>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Path=ContrastVM.PassNonTextObjects, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" Value="True">
+                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValuePass}"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                    <Setter Property="AutomationProperties.Name">
+                                        <Setter.Value>
+                                            <MultiBinding StringFormat="{}{0} {1}">
+                                                <Binding RelativeSource="{RelativeSource Self}" Path="Text"></Binding>
+                                                <Binding ElementName="nonTextObject" Path="Text"></Binding>
+                                            </MultiBinding>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
+                        <TextBlock x:Name="nonTextObject" Text="{x:Static Properties:Resources.ColorContrast_NonTextObjectsText}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
+                        <TextBlock  Margin="0 0 0 8">
+                            <!--  Non-standard line break before the hyperlink is intentional to avoid whitespace before the link -->
+                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
+                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click">
+                                <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" />
+                            </Hyperlink>
+                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" />
+                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
+                        </TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Grid.Row="6"
+                                Grid.Column="2"
+                                HorizontalAlignment="Left"
+                                Margin="4,0"
+                                Width="Auto"
+                                Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}">
+                        <fabric:FabricIconControl x:Name="nonTextObjectSample1"
+                                                  VerticalAlignment="Center"
+                                                  Margin="10 0 8 0"
+                                                  Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
+                                                  GlyphName="CheckboxCompositeReversed"
+                                                  GlyphSize="Larger">
+                        </fabric:FabricIconControl>
+                        <fabric:FabricIconControl x:Name="nonTextObjectSample2"
+                                                  VerticalAlignment="Center"
+                                                  Margin="10 0 8 0"
+                                                  Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
+                                                  GlyphName="ToggleOn"
+                                                  GlyphSize="Larger">
+                        </fabric:FabricIconControl>
+                        <fabric:FabricIconControl x:Name="nonTextObjectSample3"
+                                                  VerticalAlignment="Center"
+                                                  Margin="10 0 10 0"
+                                                  Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
+                                                  GlyphName="ToggleFilled"
+                                                  GlyphSize="Larger">
+                        </fabric:FabricIconControl>
                     </StackPanel>
                 </Grid>
             </Grid>

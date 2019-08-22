@@ -19,6 +19,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         const double SMALL_TEXT_THRESHOLD = 4.5;
         const double LARGE_TEXT_THRESHOLD = 3.0;
+        const double NON_TEXT_THRESHOLD = 3.0;
 
         /// <summary>
         /// Constructor
@@ -122,6 +123,17 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             get
             {
                 return Ratio >= LARGE_TEXT_THRESHOLD;
+            }
+        }
+
+        /// <summary>
+        /// Whether the current ratio passes on graphical objects
+        /// </summary>
+        public bool PassNonTextObjects
+        {
+            get
+            {
+                return Ratio >= NON_TEXT_THRESHOLD;
             }
         }
 

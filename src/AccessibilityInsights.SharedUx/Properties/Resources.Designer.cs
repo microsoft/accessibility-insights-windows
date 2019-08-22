@@ -1032,6 +1032,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Graphical objects and UI components.
+        /// </summary>
+        public static string ColorContrast_NonTextObjectsText {
+            get {
+                return ResourceManager.GetString("ColorContrast_NonTextObjectsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to open link:
         ///{0}.
         /// </summary>
@@ -1074,6 +1083,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_RequiresLargeSizePre {
             get {
                 return ResourceManager.GetString("ColorContrast_RequiresLargeSizePre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        public static string ColorContrast_RequiresNonTextObjectsPost {
+            get {
+                return ResourceManager.GetString("ColorContrast_RequiresNonTextObjectsPost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requires a ratio of at least 3:1 (.
+        /// </summary>
+        public static string ColorContrast_RequiresNonTextObjectsPre {
+            get {
+                return ResourceManager.GetString("ColorContrast_RequiresNonTextObjectsPre", resourceCulture);
             }
         }
         
@@ -1128,15 +1155,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_tbConfidenceAutomationName {
             get {
                 return ResourceManager.GetString("ColorContrast_tbConfidenceAutomationName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to New for WCAG 2.1.
-        /// </summary>
-        public static string ColorContrast_TextBlock_NewForWCAG_2_1 {
-            get {
-                return ResourceManager.GetString("ColorContrast_TextBlock_NewForWCAG_2_1", resourceCulture);
             }
         }
         
@@ -4159,6 +4177,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string textboxSearchAutomationPropertiesName1 {
             get {
                 return ResourceManager.GetString("textboxSearchAutomationPropertiesName1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ADD PILL! New for WCAG 2.1.
+        /// </summary>
+        public static string TextNewForWCAG_2_1 {
+            get {
+                return ResourceManager.GetString("TextNewForWCAG_2_1", resourceCulture);
             }
         }
         
