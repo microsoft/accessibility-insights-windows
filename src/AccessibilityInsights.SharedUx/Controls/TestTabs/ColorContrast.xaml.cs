@@ -32,7 +32,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
     /// </summary>
     public partial class ColorContrast : UserControl
     {
-        const string HelpURL = @"https://go.microsoft.com/fwlink/?linkid=2075365";
+        const string LearnAboutColorContrastURL = @"https://accessibilityinsights.io/docs/en/windows/getstarted/colorcontrast";
+        const string WCAG_1_4_3_URL = @"https://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-contrast.html";
+        const string WCAG_1_4_11_URL = @"https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html";
 
         public ElementContext ElementContext { get; private set; }
 
@@ -218,19 +220,40 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Open the How to test link
+        /// Open the "WCAG 1.4.3" link
         /// </summary>
-        private void hlHowToTest_Click(object sender, RoutedEventArgs e)
+        private void hlWCAG_1_4_3_Click(object sender, RoutedEventArgs e)
+        {
+            OpenLink(WCAG_1_4_3_URL);
+        }
+
+        /// <summary>
+        /// Open the "WCAG 1.4.11" link
+        /// </summary>
+        private void hlWCAG_1_4_11_Click(object sender, RoutedEventArgs e)
+        {
+            OpenLink(WCAG_1_4_11_URL);
+        }
+
+        /// <summary>
+        /// Open the "Learn about analyzing color contrast" link
+        /// </summary>
+        private void hlLearnAboutColorContrast_Click(object sender, RoutedEventArgs e)
+        {
+            OpenLink(LearnAboutColorContrastURL);
+        }
+
+        private void OpenLink(string target)
         {
             try
             {
-                Process.Start(new ProcessStartInfo(HelpURL));
+                Process.Start(new ProcessStartInfo(target));
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
-                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_hlHowToTest_Click, HelpURL));
+                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_OpenLinkFailed, target));
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }
