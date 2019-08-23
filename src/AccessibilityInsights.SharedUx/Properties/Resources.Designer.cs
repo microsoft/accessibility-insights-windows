@@ -4181,7 +4181,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ADD PILL! New for WCAG 2.1.
+        ///   Looks up a localized string similar to New for WCAG 2.1.
         /// </summary>
         public static string TextNewForWCAG_2_1 {
             get {

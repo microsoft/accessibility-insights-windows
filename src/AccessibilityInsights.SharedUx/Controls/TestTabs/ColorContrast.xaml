@@ -345,13 +345,14 @@
                     <StackPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
                         <TextBlock x:Name="nonTextObject" Text="{x:Static Properties:Resources.ColorContrast_NonTextObjectsText}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
-                            <!--  Non-standard line break before the hyperlink is intentional to avoid whitespace before the link -->
+                            <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
                             <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" />
-                            </Hyperlink>
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" />
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
+                            <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=LightGreyBrush}" CornerRadius="10">
+                                <TextBlock Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" Margin="6,4,6,4" Foreground="Black"/>
+                            </Border>
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
