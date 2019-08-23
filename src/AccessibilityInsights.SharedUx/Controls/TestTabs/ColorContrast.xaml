@@ -204,7 +204,7 @@
                                         <Setter.Value>
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding RelativeSource="{RelativeSource Self}" Path="Text"></Binding>
-                                                <Binding ElementName="regularText" Path="Text"></Binding>
+                                                <Binding ElementName="regularSizeText" Path="Text"></Binding>
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
@@ -263,7 +263,7 @@
                                         <Setter.Value>
                                             <MultiBinding StringFormat="{}{0} {1}">
                                                 <Binding RelativeSource="{RelativeSource Self}" Path="Text"></Binding>
-                                                <Binding ElementName="largeText" Path="Text"></Binding>
+                                                <Binding ElementName="largeSizeText" Path="Text"></Binding>
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
