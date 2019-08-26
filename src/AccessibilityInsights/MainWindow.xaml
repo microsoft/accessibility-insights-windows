@@ -233,10 +233,15 @@
                             </ItemsControl.ItemsPanel>
                             <Button Width="35" Height="28"
                                     Style="{StaticResource BtnStandard}"
-                                    x:Name="btnHelp" 
-                                    ToolTip="{x:Static properties:Resources.btnHelpToolTip}" Focusable="False" IsTabStop="False"
+                                    x:Name="btnHelp" Focusable="False" IsTabStop="False"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnHelpAutomationPropertiesName}"
                                     AutomationProperties.HelpText="{x:Static properties:Resources.btnHelpAutomationPropertiesHelpText}" Click="btnHelp_Click">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:KeyboardToolTipButtonBehavior/>
+                                </i:Interaction.Behaviors>
+                                <Button.ToolTip>
+                                    <ToolTip Content="{x:Static properties:Resources.btnHelpToolTip}" />
+                                </Button.ToolTip>
                                 <Grid>
                                     <AccessText Text="_?" Opacity="0"/>
                                     <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>

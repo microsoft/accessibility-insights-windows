@@ -2,13 +2,15 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <Window x:Class="AccessibilityInsights.SharedUx.Dialogs.TextPatternExplorerDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
-        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
         xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
+        xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
         xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+        xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
         mc:Ignorable="d"
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         WindowStartupLocation="CenterOwner"
@@ -43,7 +45,13 @@
                 <Button x:Name="btnRefresh"
                                 Style="{StaticResource BtnStandard}"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
-                                ToolTip="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}" AutomationProperties.Name="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}" Click="btnRefresh_Click">
+                                AutomationProperties.Name="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}" Click="btnRefresh_Click">
+                    <i:Interaction.Behaviors>
+                        <behaviors:KeyboardToolTipButtonBehavior/>
+                    </i:Interaction.Behaviors>
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}"/>
+                    </Button.ToolTip>
                     <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 </Button>
             </StackPanel>

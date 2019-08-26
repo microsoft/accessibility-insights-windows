@@ -2,12 +2,13 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <UserControl x:Class="AccessibilityInsights.SharedUx.Controls.EventConfigurationControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
-            xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
+             xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" behaviors:PropagateBindingsBehavior.PropagateBindings="True"
              d:DesignHeight="300" d:DesignWidth="300"
@@ -142,7 +143,13 @@
                         AutomationProperties.Name="{x:Static Properties:Resources.btnMoveUpAutomationPropertiesName}"
                         Grid.Row="0" Grid.Column="2"
                         AutomationProperties.HelpText="{x:Static Properties:Resources.btnMoveUpAutomationPropertiesHelpText}"
-                        IsEnabled="False" ToolTip="{x:Static Properties:Resources.btnMoveUpAutomationPropertiesName}">
+                        IsEnabled="False">
+                    <i:Interaction.Behaviors>
+                        <behaviors:KeyboardToolTipButtonBehavior/>
+                    </i:Interaction.Behaviors>
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static Properties:Resources.btnMoveUpAutomationPropertiesName}"/>
+                    </Button.ToolTip>
                     <fabric:FabricIconControl GlyphName="Up" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 </Button>
                 <Button x:Name="btnMoveDown" Width="20" Height="20" Click="btnMoveDown_Click"
@@ -150,7 +157,13 @@
                                 AutomationProperties.Name="{x:Static Properties:Resources.btnMoveDownAutomationPropertiesName}"
                                 Grid.Row="1" Grid.Column="2"
                                 AutomationProperties.HelpText="{x:Static Properties:Resources.btnMoveDownAutomationPropertiesHelpText}"
-                                IsEnabled="False" ToolTip="{x:Static Properties:Resources.btnMoveDownAutomationPropertiesName}">
+                                IsEnabled="False">
+                    <i:Interaction.Behaviors>
+                        <behaviors:KeyboardToolTipButtonBehavior/>
+                    </i:Interaction.Behaviors>
+                    <Button.ToolTip>
+                        <ToolTip Content="{x:Static Properties:Resources.btnMoveDownAutomationPropertiesName}"/>
+                    </Button.ToolTip>
                     <fabric:FabricIconControl GlyphName="Down" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 </Button>
             </Grid>
