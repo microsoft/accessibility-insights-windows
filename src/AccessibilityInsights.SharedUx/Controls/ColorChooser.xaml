@@ -17,7 +17,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button x:Name="colorPicker" Style="{StaticResource BtnStandard}" Width="32" Height="32" BorderBrush="Transparent"
-                Click="colorPicker_Click" AutomationProperties.Name="{x:Static Properties:Resources.colorPickerAutomationPropertiesName}">
+                Click="colorPicker_Click" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.colorPickerAutomationPropertiesName}'}">
                 <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Button>
             <ComboBox Name="cbColorPicker" DropDownOpened="Popup_Opened" Width="120" Style="{StaticResource tgbtnColorPicker}" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.cbColorPickerAutomationPropertiesName}'}">
@@ -28,7 +28,7 @@
             <TextBox x:Name="colorTb" Width="100px" Height="32" BorderBrush="{DynamicResource ResourceKey=BorderBrush}" FontSize="17"
                     Text="{Binding StoredColor, Converter={converters:ColorStringConverter}, FallbackValue=#FFFFFF}"
                     VerticalContentAlignment="Center" TextAlignment="Center"
-                    AutomationProperties.Name="{x:Static Properties:Resources.colorTbAutomationPropertiesName}" IsTabStop="True" Focusable="True"
+                    AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.colorTbAutomationPropertiesName}'}" IsTabStop="True" Focusable="True"
                     PreviewTextInput="colorTb_PreviewTextInput">
             </TextBox>
         </StackPanel>
