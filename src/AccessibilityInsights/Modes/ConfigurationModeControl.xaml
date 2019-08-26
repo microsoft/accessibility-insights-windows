@@ -31,9 +31,7 @@
                             <fabric:FabricIconControl GlyphName="ChromeBack" GlyphSize="Custom" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
                         </Grid>
                         <Button.ToolTip>
-                            <ToolTip>
-                                <Run Text="{x:Static properties:Resources.gdConfigBtnCloseAutomationPropertiesName}" />
-                            </ToolTip>
+                            <ToolTip Content="{x:Static properties:Resources.gdConfigBtnCloseAutomationPropertiesName}" />
                         </Button.ToolTip>
                         <i:Interaction.Behaviors>
                             <behaviors:KeyboardToolTipButtonBehavior/>
