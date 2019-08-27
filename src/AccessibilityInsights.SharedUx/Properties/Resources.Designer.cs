@@ -1186,7 +1186,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Eyedropper.
+        ///   Looks up a localized string similar to {0} eyedropper.
         /// </summary>
         public static string colorPickerAutomationPropertiesName {
             get {
@@ -1213,7 +1213,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to hex code.
+        ///   Looks up a localized string similar to {0} hex code.
         /// </summary>
         public static string colorTbAutomationPropertiesName {
             get {

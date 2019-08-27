@@ -626,10 +626,10 @@ Accessibility Insights Support Team
     <value>Color chooser</value>
   </data>
   <data name="colorPickerAutomationPropertiesName" xml:space="preserve">
-    <value>Eyedropper</value>
+    <value>{0} eyedropper</value>
   </data>
   <data name="colorTbAutomationPropertiesName" xml:space="preserve">
-    <value>hex code</value>
+    <value>{0} hex code</value>
   </data>
   <data name="cbColorPickerAutomationPropertiesName" xml:space="preserve">
     <value>{0} color picker</value>
