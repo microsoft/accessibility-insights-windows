@@ -1,19 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Desktop.UIAutomation;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Utilities;
+using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.UIAutomation;
+using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Axe.Windows.Core.Bases;
-using AccessibilityInsights.SharedUx.ViewModels;
-using System.Windows.Automation.Peers;
-using AccessibilityInsights.SharedUx.Utilities;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-
 using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.Controls
@@ -35,6 +35,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             InitializeComponent();
             PatternType.GetInstance().GetKeyValuePairList().ForEach(kv => ExpStates[kv.Key] = false);
+            HidePatternsTree();
         }
 
         protected override AutomationPeer OnCreateAutomationPeer()
@@ -76,14 +77,26 @@ namespace AccessibilityInsights.SharedUx.Controls
                                    select new PatternViewModel(this.Element, p, this.IsActionAllowed, ExpStates.ContainsKey(p.Id) ? ExpStates[p.Id] : false);
 
                     this.treePatterns.ItemsSource = patterns.ToList();
-                    this.lbNoPattern.Visibility = Visibility.Collapsed;
+                    ShowPatternsTree();
                 }
                 else
                 {
-                    this.lbNoPattern.Visibility = Visibility.Visible;
+                    HidePatternsTree();
                     this.treePatterns.ItemsSource = null;
                 }
             }
+        }
+
+        private void HidePatternsTree()
+        {
+            this.treePatterns.Visibility = Visibility.Collapsed;
+            this.lbNoPattern.Visibility = Visibility.Visible;
+        }
+
+        private void ShowPatternsTree()
+        {
+            this.lbNoPattern.Visibility = Visibility.Collapsed;
+            this.treePatterns.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -98,6 +111,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.treePatterns.ItemsSource = null;
             }
             this.Element = null;
+            HidePatternsTree();
         }
 
         private void treePatterns_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
