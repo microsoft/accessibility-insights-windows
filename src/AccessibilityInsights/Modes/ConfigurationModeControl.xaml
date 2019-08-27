@@ -2,13 +2,15 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <UserControl x:Class="AccessibilityInsights.Modes.ConfigurationModeControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs;assembly=AccessibilityInsights.SharedUx"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors;assembly=AccessibilityInsights.SharedUx"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:local="clr-namespace:AccessibilityInsights.Modes"
              xmlns:properties="clr-namespace:AccessibilityInsights.Properties"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.SettingsTabs;assembly=AccessibilityInsights.SharedUx"
              xmlns:sharedProps="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
              mc:Ignorable="d" AutomationProperties.Name="{x:Static properties:Resources.ConfigurationModeControlAutomationPropertiesName}"
              d:DesignHeight="550" d:DesignWidth="500">
@@ -28,6 +30,12 @@
                             <AccessText Text="_x" Opacity="0"/>
                             <fabric:FabricIconControl GlyphName="ChromeBack" GlyphSize="Custom" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
                         </Grid>
+                        <Button.ToolTip>
+                            <ToolTip Content="{x:Static properties:Resources.gdConfigBtnCloseAutomationPropertiesName}" />
+                        </Button.ToolTip>
+                        <i:Interaction.Behaviors>
+                            <behaviors:KeyboardToolTipButtonBehavior/>
+                        </i:Interaction.Behaviors>
                     </Button>
                     <Label Content="{x:Static properties:Resources.gdConfigLabelContent}" HorizontalAlignment="Left" Margin="31,20,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Padding="0"/>
                 </Grid>

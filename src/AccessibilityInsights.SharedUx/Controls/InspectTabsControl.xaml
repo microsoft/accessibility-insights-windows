@@ -2,14 +2,13 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <UserControl x:Class="AccessibilityInsights.SharedUx.Controls.InspectTabsControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
-             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
+             xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" Background="{DynamicResource ResourceKey=UnselectedInspectTabBrush}" BorderThickness="0"
              d:DesignHeight="300" d:DesignWidth="310">
@@ -81,12 +80,14 @@
                                         BorderThickness="0"  HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                         Height="22" Width="22" Padding="0"
                                         Style="{StaticResource BtnStandard}"   
-                                        AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}"
-                                        ToolTip="{x:Static Properties:Resources.btnSettingToolTip2}">
+                                        AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
                                     <i:Interaction.Behaviors>
                                         <behaviors:KeyboardToolTipButtonBehavior/>
                                         <behaviors:DropDownButtonBehavior/>
                                     </i:Interaction.Behaviors>
+                                    <Button.ToolTip>
+                                        <ToolTip Content="{x:Static Properties:Resources.btnSettingToolTip2}"/>
+                                    </Button.ToolTip>
                                     <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
                                     <Button.ContextMenu>
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">

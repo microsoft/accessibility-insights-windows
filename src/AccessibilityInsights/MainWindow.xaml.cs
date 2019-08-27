@@ -741,7 +741,7 @@ namespace AccessibilityInsights
             string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
             string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, IssueReporter.DisplayName);
             AutomationProperties.SetName(btnAccountConfig, tooltipText);
-            btnAccountConfig.ToolTip = tooltipText;
+            btnAccountConfig.ToolTip = new ToolTip() { Content = tooltipText };
         }
 
         #endregion
