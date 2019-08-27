@@ -9,7 +9,7 @@
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d"
-             DataContext="{Binding RelativeSource={RelativeSource Self}}"
+             DataContext="{Binding RelativeSource={RelativeSource Self}}" 
              AutomationProperties.Name="{x:Static Properties:Resources.ColorChooserAutomationPropertiesName}">
     <UserControl.Resources>
         <ResourceDictionary Source="..\Resources\Styles.xaml"/>
