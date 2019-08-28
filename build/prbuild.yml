@@ -12,7 +12,7 @@ jobs:
   parameters:
     configuration: release
     checkLicenseHeaders: true
-    runComponentGovernance: true
+    runComponentGovernance: $[in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI')]
 
 - template: build-and-unit-tests.yml
   parameters:
