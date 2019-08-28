@@ -80,7 +80,6 @@
     <Compile Include="SingleFailureIssueFormatter.cs" />
     <Compile Include="IIssueFormatter.cs" />
     <Compile Include="IssueReporter.cs" />
-    <Compile Include="PlaceHolderTextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <None Include="app.config">
