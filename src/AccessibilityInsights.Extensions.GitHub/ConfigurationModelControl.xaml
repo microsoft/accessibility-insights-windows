@@ -22,7 +22,7 @@
             <TextBlock IsHitTestVisible="False" Text="{x:Static Properties:Resources.PlaceHolder}" VerticalAlignment="Center" HorizontalAlignment="Left" 
                        Margin="10,0,0,0" Foreground="{DynamicResource ResourceKey=TextBrushGray}" FontSize="{DynamicResource StandardTextSize}">
                 <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
+                    <Style TargetType="TextBlock">
                         <Setter Property="Visibility" Value="Collapsed"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
