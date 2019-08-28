@@ -1,21 +1,22 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
-using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Actions.Enums;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Enums;
-using Axe.Windows.Core.Misc;
-using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Actions.Enums;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -28,7 +29,6 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
-using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -790,30 +790,6 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             btnMenu.Margin = new Thickness(0, btnMenu.Margin.Top - e.VerticalChange, right, 0);
             btnTestElement.Margin = new Thickness(0, btnTestElement.Margin.Top - e.VerticalChange, right + TreeButtonHorizontalSpacing, 0);
-        }
-
-
-        /// <summary>
-        /// Hide watermark text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxSearch_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            this.tbSearch.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Show watermark text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxSearch_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if ((sender as TextBox).Text.Length == 0)
-            {
-                this.tbSearch.Visibility = Visibility.Visible;
-            }
         }
 
         /// <summary>

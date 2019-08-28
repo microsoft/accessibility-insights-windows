@@ -91,17 +91,21 @@
                 <DockPanel>
                     <fabric:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                     <Grid>
-                        <TextBlock IsHitTestVisible="False" Name="tbSearch" VerticalAlignment="Center" FontSize="{StaticResource ConstStandardTextSize}">
+                        <TextBlock IsHitTestVisible="False" Name="tbSearch" VerticalAlignment="Center" FontSize="{StaticResource ConstStandardTextSize}" Margin="2,0">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
                                     <Setter Property="FontStyle" Value="Italic"/>
+                                    <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
                                             <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
                                         </DataTrigger>
                                         <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="True">
                                             <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
@@ -116,7 +120,7 @@
                          VerticalContentAlignment="Center"
                          Style="{StaticResource StandardTextBox}" AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}"
                          BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
-                         Background="Transparent"  GotKeyboardFocus="textboxSearch_GotKeyboardFocus" LostKeyboardFocus="textboxSearch_LostKeyboardFocus"/>
+                         Background="Transparent"/>
                     </Grid>
                 </DockPanel>
             </Border>
