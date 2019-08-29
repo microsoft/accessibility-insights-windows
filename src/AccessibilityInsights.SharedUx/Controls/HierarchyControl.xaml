@@ -6,7 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
+             xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
              xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
@@ -89,13 +89,13 @@
             </Grid.ColumnDefinitions>
             <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=LightGreyBrush}">
                 <DockPanel>
-                    <fabric:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
-                    <fabric:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
+                    <controls:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                         AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
                         Height="24" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
                         AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}">
-                        <fabric:PlaceholderTextBox.Style>
-                            <Style TargetType="{x:Type fabric:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                        <controls:PlaceholderTextBox.Style>
+                            <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
@@ -110,8 +110,8 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </fabric:PlaceholderTextBox.Style>
-                    </fabric:PlaceholderTextBox>
+                        </controls:PlaceholderTextBox.Style>
+                    </controls:PlaceholderTextBox>
                 </DockPanel>
             </Border>
             <Button x:Name="btnSetting" Grid.Column="1" Margin="0,0,8,0"
@@ -126,7 +126,7 @@
                 <Button.ToolTip>
                     <ToolTip Content="{x:Static Properties:Resources.btnSettingToolTip1}"/>
                 </Button.ToolTip>
-                <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight">
                         <MenuItem Header="Tree view" FontWeight="Bold" IsEnabled="False" IsCheckable="True"/>
@@ -191,7 +191,7 @@
                         <StackPanel Orientation="Horizontal"
                                     VerticalAlignment="Center"
                                     HorizontalAlignment="Left">
-                            <fabric:DualFabricIconControl Name="fabicnError" IconSizeBack="{Binding Path=IconSizeBack, Mode=OneWay}" IconSizeFront="{Binding Path=IconSizeFront, Mode=OneWay}" Visibility="{Binding Path=IconVisibility, Mode=OneWay}" GlyphNameFront="{Binding Path=IconFront}" GlyphNameBack="{Binding Path=IconBack}" Margin="0,2,2,0"/>
+                            <controls:DualFabricIconControl Name="fabicnError" IconSizeBack="{Binding Path=IconSizeBack, Mode=OneWay}" IconSizeFront="{Binding Path=IconSizeFront, Mode=OneWay}" Visibility="{Binding Path=IconVisibility, Mode=OneWay}" GlyphNameFront="{Binding Path=IconFront}" GlyphNameBack="{Binding Path=IconBack}" Margin="0,2,2,0"/>
                             <TextBlock Text="{Binding Path=Header}" Style="{DynamicResource VarStandardTextBlock}" VerticalAlignment="Center"/>
                         </StackPanel>
                     </HierarchicalDataTemplate>
@@ -215,7 +215,7 @@
                         </Setter>
                     </Style>
                 </Button.Style>
-                <fabric:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="14"/>
+                <controls:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="14"/>
             </Button>
             <Button x:Name="btnMenu" Grid.Column="1" Margin="0,18,4,0"
                    HorizontalAlignment="Right" VerticalContentAlignment="Center"
@@ -227,7 +227,7 @@
                     <behaviors:DropDownButtonBehavior/>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>
-                <fabric:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <controls:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 <Button.ToolTip>
                     <ToolTip Content="{x:Static Properties:Resources.SetterValueMoreOptions}"/>
                 </Button.ToolTip>
