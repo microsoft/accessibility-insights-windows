@@ -2,15 +2,14 @@
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <UserControl x:Class="AccessibilityInsights.SharedUx.Controls.PropertyInfoControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
-             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
-             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              xmlns:customcontrols="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="310"
              AutomationProperties.Name="{x:Static Properties:Resources.PropertyInfoControlAutomationPropertiesName}" Loaded="UserControl_Loaded">
@@ -30,22 +29,14 @@
                 </Grid.ColumnDefinitions>
                 <Border Background="#14000000" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="0,0,0,5">
                     <DockPanel>
-                        <fabric:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333333"/>
-                        <Grid>
-                            <TextBlock IsHitTestVisible="False" Name="tbSearch" Text="{x:Static Properties:Resources.tbSearchText}" VerticalAlignment="Center" Style="{StaticResource VarStandardTextBlock}"/>
-                            <TextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
+                        <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333333"/>
+                        <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                                     AutomationProperties.Name="{x:Static Properties:Resources.tbSearchText}" 
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.PropertyInfoControl_textboxSearch}"
-                                    ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                                    ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                                    Height="24"
-                                    Style="{StaticResource StandardTextBox}"
-                                    HorizontalAlignment="Stretch"
-                                    VerticalContentAlignment="Center"
-                                    BorderThickness="0"
-                                    Background="Transparent" GotKeyboardFocus="textboxSearch_GotKeyboardFocus" LostKeyboardFocus="textboxSearch_LostKeyboardFocus"/>
-                        </Grid>
-                    </DockPanel>
+                                    Height="24" HorizontalAlignment="Stretch"
+                                    VerticalContentAlignment="Center" BorderThickness="0"
+                                    Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}"/>
+                    </DockPanel>                        
                 </Border>
                 <customcontrols:CustomDataGrid
                     x:Name="dgProperties"
