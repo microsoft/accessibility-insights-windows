@@ -90,38 +90,28 @@
             <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=LightGreyBrush}">
                 <DockPanel>
                     <fabric:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
-                    <Grid>
-                        <TextBlock IsHitTestVisible="False" Name="tbSearch" VerticalAlignment="Center" FontSize="{StaticResource ConstStandardTextSize}" Margin="2,0">
-                            <TextBlock.Style>
-                                <Style TargetType="TextBlock">
-                                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
-                                    <Setter Property="FontStyle" Value="Italic"/>
-                                    <Setter Property="Visibility" Value="Collapsed"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
-                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="True">
-                                            <Setter Property="Text" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
-                                        </DataTrigger>
-                                        <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
-                                            <Setter Property="Visibility" Value="Visible"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBlock.Style>
-                        </TextBlock>
-                        <TextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
-                         AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
-                         ScrollViewer.HorizontalScrollBarVisibility="Hidden"
-                         ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                         Height="24"
-                         HorizontalAlignment="Stretch"
-                         VerticalContentAlignment="Center"
-                         Style="{StaticResource StandardTextBox}" AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}"
-                         BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
-                         Background="Transparent"/>
-                    </Grid>
+                    <fabric:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
+                        AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
+                        Height="24" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
+                        AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}">
+                        <fabric:PlaceholderTextBox.Style>
+                            <Style TargetType="{x:Type fabric:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
+                                        <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="True">
+                                        <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
+                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                        <Setter Property="FontStyle" Value="Italic"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </fabric:PlaceholderTextBox.Style>
+                    </fabric:PlaceholderTextBox>
                 </DockPanel>
             </Border>
             <Button x:Name="btnSetting" Grid.Column="1" Margin="0,0,8,0"
