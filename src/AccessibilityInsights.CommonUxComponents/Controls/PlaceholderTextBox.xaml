@@ -7,6 +7,5 @@
          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
          mc:Ignorable="d" Style="{DynamicResource ResourceKey=PlaceholderTextBox}"
          FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
-         BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
          ScrollViewer.HorizontalScrollBarVisibility="Hidden"
          ScrollViewer.VerticalScrollBarVisibility="Disabled"/>

@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
     xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
+    xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d"
     IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -17,21 +18,12 @@
             </Grid.RowDefinitions>
         <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" />
         <Grid Grid.Row="1" >
-            <TextBox Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" 
-                     FontSize="{DynamicResource StandardTextSize}" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"/>
-            <TextBlock IsHitTestVisible="False" Text="{x:Static Properties:Resources.PlaceHolder}" VerticalAlignment="Center" HorizontalAlignment="Left" 
-                       Margin="10,0,0,0" Foreground="{DynamicResource ResourceKey=TextBrushGray}" FontSize="{DynamicResource StandardTextSize}">
-                <TextBlock.Style>
-                    <Style TargetType="TextBlock">
-                        <Setter Property="Visibility" Value="Collapsed"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
-                                <Setter Property="Visibility" Value="Visible"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
+            <controls:PlaceholderTextBox
+                Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
+                AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" 
+                FontSize="{DynamicResource StandardTextSize}"
+                AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"
+                Placeholder="{x:Static Properties:Resources.PlaceHolder}"/>
         </Grid>
     </Grid>
 </src:IssueConfigurationControl>
