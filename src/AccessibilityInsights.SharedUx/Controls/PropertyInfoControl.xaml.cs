@@ -1,20 +1,20 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
-using Axe.Windows.Core.Bases;
-using AccessibilityInsights.SharedUx.ViewModels;
-using AccessibilityInsights.SharedUx.Dialogs;
-using System.Windows.Automation.Peers;
-using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Interfaces;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -71,9 +71,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             foreach (var col in this.dgProperties.Columns)
             {
-                col.Width = 0;                
+                col.Width = 0;
                 col.Width = new DataGridLength(0, DataGridLengthUnitType.Auto);
-            }          
+            }
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void ClearProperties()
         {
-            if(this.dgProperties.ItemsSource != null)
+            if (this.dgProperties.ItemsSource != null)
             {
                 var list = (List<PropertyListViewItemModel>)this.dgProperties.ItemsSource;
                 this.dgProperties.ItemsSource = null;
@@ -166,7 +166,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             Configuration.ShowAllProperties = true;
             UpdateProperties();
-            dpFilter.Visibility = Visibility.Visible;            
+            dpFilter.Visibility = Visibility.Visible;
         }
 
         /// <summary>
@@ -240,29 +240,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 ApplicationCommands.Copy.Execute(null, dgProperties);
                 e.Handled = true;
-            }
-        }
-
-        /// <summary>
-        /// Hide watermark text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxSearch_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            this.tbSearch.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Show watermark text
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void textboxSearch_LostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-            if ((sender as TextBox).Text.Length == 0)
-            {
-                this.tbSearch.Visibility = Visibility.Visible;
             }
         }
 

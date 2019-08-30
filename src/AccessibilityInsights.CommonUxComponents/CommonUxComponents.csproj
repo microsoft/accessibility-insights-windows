@@ -46,6 +46,8 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -58,6 +60,9 @@
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="Controls\CustomControlOverridingAutomationPeer.cs" />
+    <Compile Include="Controls\PlaceholderTextBox.xaml.cs">
+      <DependentUpon>PlaceholderTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DualFabricIconControl.xaml.cs">
       <DependentUpon>DualFabricIconControl.xaml</DependentUpon>
     </Compile>
@@ -79,6 +84,10 @@
     <Compile Include="Utilities\SharedResources.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Controls\PlaceholderTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\DualFabricIconControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

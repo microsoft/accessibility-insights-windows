@@ -6,9 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:local="clr-namespace:AccessibilityInsights.Extensions.GitHub"
-    xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
+    xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
+    xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d"
     IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -17,8 +17,13 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
         <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" />
-        <local:PlaceHolderTextBox Grid.Row="1" x:Name="tbURL" AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}"
-                                  Width="294px" Height="32px" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
-                                  AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"/>
+        <Grid Grid.Row="1" >
+            <controls:PlaceholderTextBox
+                Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
+                AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" 
+                FontSize="{DynamicResource StandardTextSize}"
+                AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"
+                Placeholder="{x:Static Properties:Resources.PlaceHolder}"/>
+        </Grid>
     </Grid>
 </src:IssueConfigurationControl>
