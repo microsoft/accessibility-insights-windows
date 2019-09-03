@@ -1,16 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
+using Axe.Windows.Core.Bases;
 using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using Axe.Windows.Core.Bases;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using System.Windows.Automation;
-using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Settings;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -74,7 +73,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             var control = d as InspectTabsControl;
             if (control != null)
             {
-                control.CurrentMode = (InspectTabMode)e.NewValue;             
+                control.CurrentMode = (InspectTabMode)e.NewValue;
             }
         }
 
@@ -100,13 +99,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public Action<InspectTabType> UpdateMainWinView { get; set; }
 
-        /// <summary>
-        /// private internal data
-        /// </summary>
         InspectTabMode _currentMode;
-        /// <summary>
-        /// Indicate teh current Mode
-        /// </summary>
         public InspectTabMode CurrentMode
         {
             get
@@ -116,60 +109,37 @@ namespace AccessibilityInsights.SharedUx.Controls
             set
             {
                 this._currentMode = value;
+                tabControlInspect.Items.Clear();
+                tabControlInspect.Items.Add(tabDetails);
+
                 switch (_currentMode)
                 {
                     case InspectTabMode.Live:
-                        this.tabHowToFix.Visibility = Visibility.Collapsed;
-                        this.tabEvents.Visibility = Visibility.Collapsed;
-                        this.expEvents.Visibility = Visibility.Collapsed;
-                        this.gsEvents.Visibility = Visibility.Collapsed;
-                        this.rowEvents.MinHeight = 0;
-                        this.rowEvents.Height = new GridLength(0);
+                        DisableEventsPanel();
                         this.tabDetails.IsSelected = true;
                         break;
                     case InspectTabMode.TestHowToFix:
-                        this.tabHowToFix.Visibility = Visibility.Visible;
-                        this.tabEvents.Visibility = Visibility.Collapsed;
-                        this.expEvents.Visibility = Visibility.Collapsed;
-                        this.gsEvents.Visibility = Visibility.Collapsed;
-                        this.rowEvents.MinHeight = 0;
-                        this.rowEvents.Height = new GridLength(0);
+                        tabControlInspect.Items.Add(tabHowToFix);
+                        DisableEventsPanel();
                         this.tabHowToFix.IsSelected = true;
                         break;
                     case InspectTabMode.TestProperties:
-                        this.tabHowToFix.Visibility = Visibility.Visible;
-                        this.tabEvents.Visibility = Visibility.Collapsed;
-                        this.expEvents.Visibility = Visibility.Collapsed;
-                        this.gsEvents.Visibility = Visibility.Collapsed;
-                        this.rowEvents.MinHeight = 0;
-                        this.rowEvents.Height = new GridLength(0);
+                        tabControlInspect.Items.Add(tabHowToFix);
+                        DisableEventsPanel();
                         this.tabDetails.IsSelected = true;
                         break;
                     case InspectTabMode.Events:
-                        this.tabHowToFix.Visibility = Visibility.Collapsed;
-                        this.tabEvents.Visibility = Visibility.Visible;
-                        this.expEvents.Visibility = Visibility.Visible;
-                        this.gsEvents.Visibility = Visibility.Visible;
-                        this.rowEvents.MinHeight = 80;
-                        this.rowEvents.Height = new GridLength(3, GridUnitType.Star);
+                        tabControlInspect.Items.Add(tabEvents);
+                        EnableEventsPanel();
                         this.tabEvents.IsSelected = true;
                         break;
                     case InspectTabMode.EventsRecording:
-                        this.tabHowToFix.Visibility = Visibility.Collapsed;
-                        this.tabEvents.Visibility = Visibility.Visible;
-                        this.expEvents.Visibility = Visibility.Visible;
-                        this.gsEvents.Visibility = Visibility.Visible;
-                        this.rowEvents.MinHeight = 80;
-                        this.rowEvents.Height = new GridLength(3, GridUnitType.Star);
+                        tabControlInspect.Items.Add(tabEvents);
+                        EnableEventsPanel();
                         this.tabDetails.IsSelected = true;
                         break;
                     case InspectTabMode.LoadedEvents:
-                        this.tabHowToFix.Visibility = Visibility.Collapsed;
-                        this.tabEvents.Visibility = Visibility.Collapsed;
-                        this.expEvents.Visibility = Visibility.Visible;
-                        this.gsEvents.Visibility = Visibility.Visible;
-                        this.rowEvents.MinHeight = 80;
-                        this.rowEvents.Height = new GridLength(3, GridUnitType.Star);
+                        EnableEventsPanel();
                         this.tabDetails.IsSelected = true;
                         break;
                 }
@@ -258,7 +228,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.ctrlPatterns.Clear();
             this.ctrlEventMessage.Clear();
         }
-        
+
         /// <summary>
         /// Label as pane
         /// </summary>
@@ -287,7 +257,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             this.ctrlProperties.mniShowCorePropertiesUnchecked();
         }
-        
+
         /// <summary>
         /// Open properties configuration dialog
         /// </summary>
@@ -368,6 +338,22 @@ namespace AccessibilityInsights.SharedUx.Controls
                     UpdateMainWinView?.Invoke(type);
                 }
             }
+        }
+
+        private void EnableEventsPanel()
+        {
+            this.expEvents.Visibility = Visibility.Visible;
+            this.gsEvents.Visibility = Visibility.Visible;
+            this.rowEvents.MinHeight = 80;
+            this.rowEvents.Height = new GridLength(3, GridUnitType.Star);
+        }
+
+        private void DisableEventsPanel()
+        {
+            this.expEvents.Visibility = Visibility.Collapsed;
+            this.gsEvents.Visibility = Visibility.Collapsed;
+            this.rowEvents.MinHeight = 0;
+            this.rowEvents.Height = new GridLength(0);
         }
     } // class
 }//namespace
