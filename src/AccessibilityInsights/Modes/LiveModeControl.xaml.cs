@@ -1,27 +1,26 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
-using Axe.Windows.Actions;
-using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Core.Bases;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
+using Axe.Windows.Actions;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Core.Bases;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Input;
-using System.Globalization;
-using System.Diagnostics;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Highlighting;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.Modes
 {

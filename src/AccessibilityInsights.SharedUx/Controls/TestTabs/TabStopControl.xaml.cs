@@ -1,22 +1,24 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
-using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
-using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Dialogs;
-using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Threading;
@@ -25,9 +27,6 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
-using System.Diagnostics;
-using AccessibilityInsights.SharedUx.Highlighting;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {

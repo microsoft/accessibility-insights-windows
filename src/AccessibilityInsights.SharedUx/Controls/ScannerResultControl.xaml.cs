@@ -1,14 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Results;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Results;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -20,7 +21,6 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
-using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
