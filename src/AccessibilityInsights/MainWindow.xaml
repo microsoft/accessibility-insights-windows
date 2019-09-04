@@ -363,7 +363,7 @@
                                 <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                             </Button>
                             <Button x:Name="btnSave"
-                                    Style="{StaticResource BtnNoAutoHelpText}" AutomationProperties.HelpText=""
+                                    Style="{StaticResource BtnNoAutoHelpText}"
                                     VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnSaveAutomationPropertiesName}" Click="btnSave_Click">
                                 <Button.ToolTip>
