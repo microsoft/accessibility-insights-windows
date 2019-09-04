@@ -70,6 +70,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--BtnNoAutoHelpText has " " HelpText to prevent the button's ToolTip content from being used as HelpText-->
+    <Style TargetType="{x:Type Button}" x:Key="BtnNoAutoHelpText" BasedOn="{StaticResource BtnStandard}">
+        <Setter Property="AutomationProperties.HelpText" Value=" "/>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnNoDisabledBackground" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="Template">
             <Setter.Value>
@@ -566,7 +570,9 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <!--btnLeftNav has " " HelpText to prevent the button's ToolTip content from being used as HelpText-->
     <Style x:Key="btnLeftNav" TargetType="{x:Type Button}">
+        <Setter Property="AutomationProperties.HelpText" Value=" "/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
