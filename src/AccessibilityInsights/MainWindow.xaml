@@ -309,7 +309,7 @@
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
                                 <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                                    <Style TargetType="Button" BasedOn="{StaticResource BtnNoAutoHelpText}">
                                         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
@@ -349,7 +349,7 @@
                                 </fabric:FabricIconControl>
                             </Button>
                             <Button x:Name="btnRefresh"
-                                    Style="{StaticResource BtnStandard}"
+                                    Style="{StaticResource BtnNoAutoHelpText}"
                                     VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="16,0,0,0"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnRefreshAutomationPropertiesName}" Click="btnRefresh_Click">
                                 <Button.ToolTip>
@@ -363,7 +363,7 @@
                                 <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                             </Button>
                             <Button x:Name="btnSave"
-                                    Style="{StaticResource BtnStandard}"
+                                    Style="{StaticResource BtnNoAutoHelpText}"
                                     VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnSaveAutomationPropertiesName}" Click="btnSave_Click">
                                 <Button.ToolTip>
@@ -380,12 +380,12 @@
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                 Click="btnPause_Click"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnPauseAutomationPropertiesNameOn}"
-                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinPauseButton}">
+                                AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinPauseButton}" >
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
                                 <Button.Style>
-                                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                                    <Style TargetType="Button" BasedOn="{StaticResource BtnNoAutoHelpText}">
                                         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="On">
@@ -425,7 +425,7 @@
                                 </fabric:FabricIconControl>
                             </Button>
                             <Button x:Name="btnTimer"
-                            Style="{StaticResource BtnStandard}"
+                            Style="{StaticResource BtnNoAutoHelpText}"
                             VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                             AutomationProperties.Name="{x:Static properties:Resources.btnTimerAutomationPropertiesName}">
                                 <Button.ToolTip>
@@ -454,7 +454,7 @@
                                 </Button.ContextMenu>
                             </Button>
                             <Button x:Name="btnLoad"
-                                Style="{StaticResource BtnStandard}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinLoadButton}"
+                                Style="{StaticResource BtnNoAutoHelpText}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinLoadButton}"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnLoadAutomationPropertiesName}" Click="btnLoad_Click">
                                 <Button.ToolTip>
