@@ -1,16 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions.Contexts;
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using Axe.Windows.Core.Bases;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,7 +28,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Navigation;
 using System.Windows.Threading;
-using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {

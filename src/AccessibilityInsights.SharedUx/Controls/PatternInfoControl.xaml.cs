@@ -1,12 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation;
-using Newtonsoft.Json.Bson;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

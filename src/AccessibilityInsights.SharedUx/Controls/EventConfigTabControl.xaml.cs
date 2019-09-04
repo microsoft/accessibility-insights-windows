@@ -1,22 +1,21 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.ViewModels;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Controls;
-using Axe.Windows.Core.Bases;
+using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
-using System.Windows.Automation.Peers;
-using System.Windows.Automation;
-using Axe.Windows.Desktop.Settings;
+using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.Utility;
-using AccessibilityInsights.SharedUx.Enums;
-using System.Windows.Input;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Windows;
+using System.Windows.Automation;
+using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
