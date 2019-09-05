@@ -30,9 +30,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         private AutomationControlType ControlType;
 
-        /// <summary>
-        /// Whether to hide all children automation peers
-        /// </summary>
         private bool HideChildren;
 
         public AutomationOrientation AutomationOrientation { get; set; }

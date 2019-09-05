@@ -149,7 +149,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         #endregion
 
-        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this);
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateControlViewIconAutomationPeer(this);
     }
 
     #region Icon Values
