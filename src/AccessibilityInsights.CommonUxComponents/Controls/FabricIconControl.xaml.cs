@@ -155,7 +155,13 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            return new CustomControlOverridingAutomationPeer(this, "icon", false);
+            return new CustomControlOverridingAutomationPeer(
+                owner: this, 
+                localizedControl: "icon",
+                isContentElement: true,
+                isControlElement: false,
+                hideChildren: true,
+                controlType: AutomationControlType.Image);
         }
     }
 

@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System.Collections.Generic;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 
@@ -26,19 +27,33 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         private string LocalizedControlType;
 
+        private AutomationControlType ControlType;
+
+        /// <summary>
+        /// Whether to hide all children automation peers
+        /// </summary>
+        private bool HideChildren;
+
         public AutomationOrientation AutomationOrientation { get; set; }
 
-        public CustomControlOverridingAutomationPeer(UserControl owner,string localizedcontrol, bool isControlElement=true, bool isContentElement=false)
+        public CustomControlOverridingAutomationPeer(UserControl owner,string localizedControl, bool isControlElement=true, bool isContentElement=false, bool hideChildren=false, AutomationControlType controlType=AutomationControlType.Custom)
         : base(owner)
         {
-            this.LocalizedControlType = localizedcontrol;
+            this.LocalizedControlType = localizedControl;
             this.IsControlElem = isControlElement;
             this.IsContentElem = isContentElement;
+            this.HideChildren = hideChildren;
+            this.ControlType = controlType;
         }
 
         protected override string GetLocalizedControlTypeCore()
         {
             return LocalizedControlType;
+        }
+
+        protected override AutomationControlType GetAutomationControlTypeCore()
+        {
+            return ControlType;
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -62,6 +77,11 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         protected override bool IsContentElementCore()
         {
             return IsContentElem;
+        }
+
+        protected override List<AutomationPeer> GetChildrenCore()
+        {
+            return HideChildren ? null : base.GetChildrenCore();
         }
 
         protected override AutomationOrientation GetOrientationCore() => AutomationOrientation;
