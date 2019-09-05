@@ -150,19 +150,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #endregion
 
         /// <summary>
-        /// Set LocalizedControlType and mark as raw
+        /// Expose automation properties similar to decorative image
         /// </summary>
         /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(
-                owner: this, 
-                localizedControl: "icon",
-                isContentElement: true,
-                isControlElement: false,
-                hideChildren: true,
-                controlType: AutomationControlType.Image);
-        }
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this);
     }
 
     #region Icon Values

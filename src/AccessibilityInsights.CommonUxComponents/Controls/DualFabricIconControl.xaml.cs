@@ -187,12 +187,9 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         /// <summary>
-        /// Set LocalizedControlType and mark as raw
+        /// Expose automation properties similar to decorative image
         /// </summary>
         /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(this, "icon", false);
-        }
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this);
     }
 }

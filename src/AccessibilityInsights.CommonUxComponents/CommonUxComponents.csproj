@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
     <Compile Include="Controls\CustomControlOverridingAutomationPeer.cs" />
+    <Compile Include="Controls\CommonAutomationPeerCreator.cs" />
     <Compile Include="Controls\PlaceholderTextBox.xaml.cs">
       <DependentUpon>PlaceholderTextBox.xaml</DependentUpon>
     </Compile>

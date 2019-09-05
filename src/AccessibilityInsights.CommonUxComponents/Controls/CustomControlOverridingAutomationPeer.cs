@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Collections.Generic;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
@@ -39,6 +40,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         public CustomControlOverridingAutomationPeer(UserControl owner,string localizedControl, bool isControlElement=true, bool isContentElement=false, bool hideChildren=false, AutomationControlType controlType=AutomationControlType.Custom)
         : base(owner)
         {
+            if (isContentElement && !isControlElement)
+            {
+                throw new ArgumentException("The content tree is a subset of the control tree");
+            }
             this.LocalizedControlType = localizedControl;
             this.IsControlElem = isControlElement;
             this.IsContentElem = isContentElement;
