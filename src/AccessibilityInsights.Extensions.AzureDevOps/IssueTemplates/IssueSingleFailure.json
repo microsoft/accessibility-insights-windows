@@ -1,4 +1,4 @@
 ﻿{
   "Title": "@[RuleSource]@: (@[ProcessName]@/@[Glimpse]@) @[RuleDescription]@",
-  "Tags": "A11y;Accessibility;@[RuleSource]@"
+  "Tags": "Accessibility Insights For Windows;A11y;Accessibility;@[RuleSource]@"
 }
