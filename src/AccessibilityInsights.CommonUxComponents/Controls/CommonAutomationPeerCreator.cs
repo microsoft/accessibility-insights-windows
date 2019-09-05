@@ -18,7 +18,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
                 owner,
                 localizedControl: "icon",
                 isContentElement: false,
-                isControlElement: false,
+                isControlElement: true,
                 hideChildren: true,
                 controlType: AutomationControlType.Image);
         }
