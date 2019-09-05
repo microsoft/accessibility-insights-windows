@@ -149,10 +149,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         #endregion
 
-        /// <summary>
-        /// Expose automation properties similar to decorative image
-        /// </summary>
-        /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this);
     }
 
