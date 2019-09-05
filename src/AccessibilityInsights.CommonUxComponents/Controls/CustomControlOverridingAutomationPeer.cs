@@ -37,7 +37,8 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         public AutomationOrientation AutomationOrientation { get; set; }
 
-        public CustomControlOverridingAutomationPeer(UserControl owner,
+        public CustomControlOverridingAutomationPeer(
+            UserControl owner,
             string localizedControl, 
             bool isControlElement = true, 
             bool isContentElement = false, 
