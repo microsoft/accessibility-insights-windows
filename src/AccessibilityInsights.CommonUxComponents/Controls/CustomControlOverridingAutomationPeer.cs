@@ -37,7 +37,12 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         public AutomationOrientation AutomationOrientation { get; set; }
 
-        public CustomControlOverridingAutomationPeer(UserControl owner,string localizedControl, bool isControlElement=true, bool isContentElement=false, bool hideChildren=false, AutomationControlType controlType=AutomationControlType.Custom)
+        public CustomControlOverridingAutomationPeer(UserControl owner,
+            string localizedControl, 
+            bool isControlElement = true, 
+            bool isContentElement = false, 
+            bool hideChildren = false, 
+            AutomationControlType controlType = AutomationControlType.Custom)
         : base(owner)
         {
             if (isContentElement && !isControlElement)
@@ -51,43 +56,24 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             this.ControlType = controlType;
         }
 
-        protected override string GetLocalizedControlTypeCore()
-        {
-            return LocalizedControlType;
-        }
+        protected override string GetLocalizedControlTypeCore() => LocalizedControlType;
+        protected override AutomationControlType GetAutomationControlTypeCore() => ControlType;
 
-        protected override AutomationControlType GetAutomationControlTypeCore()
-        {
-            return ControlType;
-        }
-
-        public override object GetPattern(PatternInterface patternInterface)
-        {
-            return null;
-        }
+        public override object GetPattern(PatternInterface patternInterface) => null;
 
         /// <summary>
         /// Use provided value for IsControlElement
         /// </summary>
         /// <returns></returns>
-        protected override bool IsControlElementCore()
-        {
-            return IsControlElem;
-        }
+        protected override bool IsControlElementCore() => IsControlElem;
 
         /// <summary>
         /// Use provided value for IsContentElement
         /// </summary>
         /// <returns></returns>
-        protected override bool IsContentElementCore()
-        {
-            return IsContentElem;
-        }
+        protected override bool IsContentElementCore() => IsContentElem;
 
-        protected override List<AutomationPeer> GetChildrenCore()
-        {
-            return HideChildren ? null : base.GetChildrenCore();
-        }
+        protected override List<AutomationPeer> GetChildrenCore() => HideChildren ? null : base.GetChildrenCore();
 
         protected override AutomationOrientation GetOrientationCore() => AutomationOrientation;
     }
