@@ -1340,10 +1340,10 @@ Accessibility Insights Support Team
     <value>Select Highlighter Mode</value>
   </data>
   <data name="ApplicationSettingsControl_KeyboardIconAutomationName" xml:space="preserve">
-    <value>Focus select icon</value>
+    <value>Focus selection</value>
   </data>
   <data name="ApplicationSettingsControl_MouseIconAutomationName" xml:space="preserve">
-    <value>Mouse select icon</value>
+    <value>Mouse selection</value>
   </data>
   <data name="ColorPickerControlAutomationName" xml:space="preserve">
     <value>Color Picker</value>

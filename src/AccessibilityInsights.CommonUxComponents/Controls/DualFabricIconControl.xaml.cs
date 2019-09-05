@@ -186,13 +186,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             this.fabicnBack.GlyphSize = GlyphContext.Custom;
         }
 
-        /// <summary>
-        /// Set LocalizedControlType and mark as raw
-        /// </summary>
-        /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(this, "icon", false);
-        }
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateControlViewIconAutomationPeer(this);
     }
 }

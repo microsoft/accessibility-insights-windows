@@ -107,7 +107,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Focus select icon.
+        ///   Looks up a localized string similar to Focus selection.
         /// </summary>
         public static string ApplicationSettingsControl_KeyboardIconAutomationName {
             get {
@@ -116,7 +116,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Mouse select icon.
+        ///   Looks up a localized string similar to Mouse selection.
         /// </summary>
         public static string ApplicationSettingsControl_MouseIconAutomationName {
             get {
