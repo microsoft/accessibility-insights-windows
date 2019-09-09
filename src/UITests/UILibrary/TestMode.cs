@@ -112,7 +112,7 @@ namespace UITests.UILibrary
             Assert.AreEqual(firstNodeText, nodes.First().Text);
         }
 
-        public void ValidateResults(bool isFixFollowingTextNull, int failedResultsCount, int allResultsCount)
+        public void ValidateResults(int failedResultsCount, int allResultsCount)
         {
             var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
             var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
@@ -123,9 +123,6 @@ namespace UITests.UILibrary
             }
 
             var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
-            var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
-
-            Assert.AreEqual(isFixFollowingTextNull, string.IsNullOrEmpty(fixFollowTb.Text));
             Assert.AreEqual(failedResultsCount, resultsFailedOnly.Count);
             Assert.AreEqual(allResultsCount, resultsAll.Count);
         }
