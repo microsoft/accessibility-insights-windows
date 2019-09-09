@@ -111,10 +111,16 @@ namespace AccessibilityInsights.Misc
 
         public static TelemetryEvent ForMainWindowStartup()
         {
+            int? rawDotNetFrameworkVersion = NativeMethods.GetInstalledDotNetFrameworkVersion();
+            string formattedDotNetFrameworkVersion = rawDotNetFrameworkVersion.HasValue ?
+                rawDotNetFrameworkVersion.Value.ToString(CultureInfo.InvariantCulture) :
+                "unknown";
+
             return new TelemetryEvent(TelemetryAction.Mainwindow_Startup,
                 new Dictionary<TelemetryProperty, string>
                 {
                     { TelemetryProperty.UIAccessEnabled, NativeMethods.IsRunningWithUIAccess().ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.InstalledDotNetFrameworkVersion, formattedDotNetFrameworkVersion }
                 });
         }
     }
