@@ -272,7 +272,7 @@
                         <TextBlock x:Name="smallSampleBold" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="0" FontSize="{DynamicResource ConstStandardTextSize}" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                           FontWeight="Bold" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}" HorizontalAlignment="Left"/>
+                           FontWeight="Bold" AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallSampleBoldHelpText}" HorizontalAlignment="Left"/>
                         <TextBlock x:Name="largeSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="1" FontSize="18" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
                            Foreground="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                            Background="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
