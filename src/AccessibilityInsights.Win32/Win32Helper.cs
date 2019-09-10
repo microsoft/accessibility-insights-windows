@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Microsoft.Win32;
 using System;
 using System.Threading;
 
@@ -93,6 +94,19 @@ namespace AccessibilityInsights.Win32
             const int SPI_GETSCREENREADER = 0x0046;  // Defined in winuser.h
             bool success = NativeMethods.SystemParametersInfo(SPI_GETSCREENREADER, 0, out bool active, 0);
             return success && active;
+        }
+
+        /// <summary>
+        /// Extract the installed .NET Framework version from the registry. Based on information found at
+        /// https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed
+        /// </summary>
+        /// <returns>The integral version if it's available, null if not</returns>
+        internal static int? GetInstalledDotNetFrameworkVersion()
+        {
+            const string keyName = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
+            const string valueName = "Release";
+
+            return (int?)Registry.GetValue(keyName, valueName, null);
         }
     }
 }

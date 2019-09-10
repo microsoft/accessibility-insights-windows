@@ -37,5 +37,6 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ReleaseChannel,
         ReleaseChannelConsidered,
         IssueReporter,
+        InstalledDotNetFrameworkVersion,
     }
 }
