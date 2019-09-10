@@ -109,7 +109,10 @@ namespace UITests.UILibrary
             var nodes = tree.FindElementsByClassName("TreeViewItem");
 
             Assert.AreEqual(nodeCount, nodes.Count);
-            Assert.AreEqual(firstNodeText, nodes.First().Text);
+
+            // We're seeing the Text property here return different values on different versions of .NET framwork.
+            // As such, we only check for Contains (not Equals) here to make the test more flexible.
+            Assert.IsTrue(nodes.First().Text.Contains(firstNodeText));
         }
 
         public void ValidateResults(int failedResultsCount, int allResultsCount)
