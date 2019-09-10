@@ -78,7 +78,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="original">The original object being copied</param>
         public ConnectionInfo(ConnectionInfo original)
+#pragma warning disable CA1062 // Validate arguments of public methods
             : this(original.ServerUri, original.Project, original.Team)
+#pragma warning restore CA1062 // Validate arguments of public methods
         {
         }
 

@@ -187,6 +187,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             Assert.IsNull(issueFieldPairs[IssueField.TestMessages]);
         }
 
+        [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CreateIssuePreviewAsync_IssueInfoIsNull_ThrowsArgumentNullException()
+        {
+            FileIssueHelpers.CreateIssuePreviewAsync(new ConnectionInfo(), null);
+        }
+
 #if FAKES_SUPPORTED
         [TestMethod]
         [Timeout(1000)]
