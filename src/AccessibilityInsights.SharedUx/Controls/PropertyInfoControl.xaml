@@ -38,43 +38,68 @@
                                     Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}"/>
                     </DockPanel>                        
                 </Border>
-                <customcontrols:CustomDataGrid
+                <ListView
                     x:Name="dgProperties"
                     Grid.Row="2"
                     AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
                     KeyUp="dgProperties_KeyUp"
                     IsTabStop="False"
-                    GotKeyboardFocus="onGotKeyBoardFocus"
-                    Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
-                    <i:Interaction.Behaviors>
-                        <behaviors:ColumnResizeHotkeyBehavior/>
-                    </i:Interaction.Behaviors>
-                    <DataGrid.ContextMenu>
+                    GotKeyboardFocus="onGotKeyBoardFocus">
+                    <ListView.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                             <MenuItem x:Name="copyMenuItemProperty" Tag="{x:Static Properties:Resources.copyMenuItemPropertyTag}" IsCheckable="False" Header="{x:Static Properties:Resources.copyMenuItemPropertyHeader}" Command="Copy" Style="{StaticResource miFabIcon}"/>
                         </ContextMenu>
-                    </DataGrid.ContextMenu>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" Width="Auto"/>
-                        <DataGridTextColumn Binding="{Binding Path=Value, TargetNullValue='{x:Static Properties:Resources.PropertyDoesNotExist}'}" 
-                                            ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" Width="Auto">
-                            <DataGridTextColumn.CellStyle>
-                                <Style TargetType="DataGridCell" BasedOn="{StaticResource dgcStyle}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=Value}" Value="{x:Null}">
-                                            <Setter Property="FontStyle" Value="Italic" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGridTextColumn.CellStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                    <DataGrid.ItemContainerStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Setter Property="Focusable" Value="True"/>
+                    </ListView.ContextMenu>
+                    <ListView.View>
+                        <GridView>
+
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" Width="Auto"/>
+                            <GridViewColumn Header="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" Width="Auto" x:Name="testt">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <DataTemplate.Resources>
+                                            <Style TargetType="ContentPresenter">
+                                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                                            </Style>
+                                        </DataTemplate.Resources>
+                                        <Border Background="Gray" HorizontalAlignment="Stretch" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=GridViewColumn} ,Path=ActualWidth}">
+                                            <TextBlock Text="{Binding Path=Value, TargetNullValue='{x:Static Properties:Resources.PropertyDoesNotExist}'}"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Style.Setters>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="ListViewItem">
+                                            <Border Name="Bd" SnapsToDevicePixels="True">
+                                                <GridViewRowPresenter  Content="{TemplateBinding ContentControl.Content}" Name="ContentSite"
+                                                                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                                                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" HorizontalAlignment="Stretch"
+                                                                         TextElement.FontSize="12" >
+                                                    <GridViewRowPresenter.Resources>
+                                                        <Style TargetType="{x:Type ContentPresenter}">
+                                                            <Setter Property="Width" Value="{Binding ElementName=testt, Path=ActualWidth}"/>
+                                                        </Style>
+                                                    </GridViewRowPresenter.Resources>
+                                                    <GridViewRowPresenter.Columns>
+                                                        <TemplateBinding Property="GridView.ColumnCollection">
+                                                        </TemplateBinding>
+                                                    </GridViewRowPresenter.Columns>
+                                                </GridViewRowPresenter>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style.Setters>
                         </Style>
-                    </DataGrid.ItemContainerStyle>
-                </customcontrols:CustomDataGrid>
+                    </ListView.ItemContainerStyle>
+                </ListView>
             </Grid>
         </ScrollViewer>
     </Grid>

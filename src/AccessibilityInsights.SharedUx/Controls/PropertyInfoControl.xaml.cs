@@ -69,11 +69,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             UpdateProperties();
 
-            foreach (var col in this.dgProperties.Columns)
-            {
-                col.Width = 0;
-                col.Width = new DataGridLength(0, DataGridLengthUnitType.Auto);
-            }
         }
 
         /// <summary>
@@ -245,18 +240,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void onGotKeyBoardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
-            if (dgProperties.Items != null && !dgProperties.Items.IsEmpty && !(e.OldFocus is DataGridCell))
-            {
-                if (dgProperties.SelectedIndex == -1)
-                {
-                    dgProperties.SelectedIndex = 0;
-                    dgProperties.CurrentCell = new DataGridCellInfo(dgProperties.Items[0], dgProperties.Columns[0]);
-                }
-                else
-                {
-                    dgProperties.CurrentCell = new DataGridCellInfo(dgProperties.Items[dgProperties.SelectedIndex], dgProperties.Columns[0]);
-                }
-            }
+
         }
     }
 }
