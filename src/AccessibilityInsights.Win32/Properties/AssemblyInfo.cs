@@ -37,6 +37,7 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("AccessibilityInsights.SharedUx")]
 [assembly: InternalsVisibleTo("AccessibilityInsights.CommonUxComponents")]
 [assembly: InternalsVisibleTo("AccessibilityInsights.Extensions")]
+[assembly: InternalsVisibleTo("UITests")]
 #endif
 
 #region FxCop analysis suppressions for entire assembly

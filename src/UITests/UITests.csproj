@@ -155,6 +155,10 @@
       <Project>{723ddc93-8ab7-403c-9d03-c90b01cae774}</Project>
       <Name>SharedUx</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj">
+      <Project>{608e7ef9-c670-4152-a056-46448e2f1e18}</Project>
+      <Name>Win32</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AccessibilityInsights\AccessibilityInsights.csproj">
       <Project>{5e06484c-a156-46d7-830b-68275ed64f44}</Project>
       <Name>AccessibilityInsights</Name>
