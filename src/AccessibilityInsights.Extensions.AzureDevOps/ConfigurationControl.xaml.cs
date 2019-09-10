@@ -435,7 +435,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             if (caughtExceptions.Any())
             {
-                throw new AggregateException("Error populating Projects", caughtExceptions);
+                throw new AggregateException(Properties.Resources.CantPopulateProjects, caughtExceptions);
             }
         }
 
