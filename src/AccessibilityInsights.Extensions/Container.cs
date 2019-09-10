@@ -68,6 +68,8 @@ namespace AccessibilityInsights.Extensions
         /// </summary>
         private Container()
         {
+            // Suppress CA2000 since we want the object to persist until the end of the process
+#pragma warning disable CA2000 // Dispose objects before losing scope
             // An aggregate catalog that combines multiple catalogs
             var catalog = new AggregateCatalog();
 
@@ -102,6 +104,7 @@ namespace AccessibilityInsights.Extensions
                 // and our Telemetry extension will always be null at this point
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+#pragma warning restore CA2000 // Dispose objects before losing scope
         }
 
         #region extensions
