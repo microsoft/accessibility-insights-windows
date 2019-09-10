@@ -110,7 +110,7 @@ namespace UITests.UILibrary
 
             Assert.AreEqual(nodeCount, nodes.Count);
 
-            // We're seeing the Text property here return different values on different versions of .NET framwork.
+            // We're seeing the Text property here return different values on different versions of .NET framework.
             // As such, we only check for Contains (not Equals) here to make the test more flexible.
             Assert.IsTrue(nodes.First().Text.Contains(firstNodeText));
         }

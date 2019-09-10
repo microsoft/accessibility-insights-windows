@@ -56,7 +56,7 @@ namespace UITests
         {
             var appOpened = WaitFor(() => _wildlifeManager.MainWindowTitle == "Wildlife Manager 2.0", new TimeSpan(0, 0, 1), 10, _wildlifeManager.Refresh);
 
-            // set focus on ai win and then wildlifemanager to make sure the app is selected
+            // set focus on ai win and then WildlifeManager to make sure the app is selected
             driver.FocusWindowByResizing();
             NativeMethods.SetForegroundWindow(_wildlifeManager.MainWindowHandle);
 
