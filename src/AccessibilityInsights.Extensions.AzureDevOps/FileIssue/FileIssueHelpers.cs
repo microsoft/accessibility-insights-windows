@@ -35,6 +35,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <returns></returns>
         public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
+            if (issueInfo == null)
+                throw new ArgumentNullException(nameof(issueInfo));
+
             try
             {
                 // Create a A11y-specific Guid for this issue to verify that we are uploading
@@ -67,6 +70,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <returns>Success or failure</returns>
         public static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
         {
+            if (issueInfo == null)
+                throw new ArgumentNullException(nameof(issueInfo));
+
             return await AttachIssueDataInternal(issueInfo.TestFileName, issueInfo.Screenshot, a11yIssueId, issueId).ConfigureAwait(false);
         }
 
@@ -320,6 +326,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
         public static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
         {
+            if (issueInfo == null)
+                throw new ArgumentNullException(nameof(issueInfo));
+
             string templateName = GetTemplateName(issueInfo);
             Dictionary<IssueField, string> issueFieldPairs = issueInfo.ToAzureDevOpsIssueFields();
             TruncateSelectedFields(issueInfo, issueFieldPairs);
