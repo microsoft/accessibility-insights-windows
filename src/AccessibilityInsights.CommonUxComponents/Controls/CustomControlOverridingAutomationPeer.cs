@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Properties;
 using System;
 using System.Collections.Generic;
 using System.Windows.Automation.Peers;
@@ -45,7 +46,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         {
             if (isContentElement && !isControlElement)
             {
-                throw new ArgumentException("The content tree is a subset of the control tree");
+                throw new ArgumentException(Resources.ContentTreeIsSubsetofControlTree);
             }
             this.LocalizedControlType = localizedControl;
             this.IsControlElem = isControlElement;

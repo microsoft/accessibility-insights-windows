@@ -132,4 +132,7 @@
   <data name="btnCloseAutomationPropertiesName1" xml:space="preserve">
     <value>OK</value>
   </data>
+  <data name="ContentTreeIsSubsetofControlTree" xml:space="preserve">
+    <value>The content tree is a subset of the control tree</value>
+  </data>
 </root>
