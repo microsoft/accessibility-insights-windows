@@ -162,4 +162,10 @@
   <data name="ADO_URL_Fromat_Message" xml:space="preserve">
     <value>URL format is not valid. Example URL: https://dev.azure.com/fabrikam</value>
   </data>
+  <data name="CantCreateConnectionInfo" xml:space="preserve">
+    <value>Unable to create ConnectionInfo</value>
+  </data>
+  <data name="CantPopulateProjects" xml:space="preserve">
+    <value>Error populating Projects</value>
+  </data>
 </root>
