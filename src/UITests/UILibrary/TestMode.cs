@@ -120,6 +120,8 @@ namespace UITests.UILibrary
             if (allResultsCount > 0)
             {
                 Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
+                var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
+                Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
             }
 
             var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
