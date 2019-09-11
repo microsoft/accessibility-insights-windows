@@ -32,7 +32,7 @@ namespace AccessibilityInsights.Misc
 
             if (F6Panes.Any())
             {
-                throw new InvalidOperationException("Panes can be set only once");
+                throw new InvalidOperationException(Properties.Resources.PanesCanBeSetOnlyOnce);
             }
 
             F6Panes = new List<FrameworkElement>(f6Panes);

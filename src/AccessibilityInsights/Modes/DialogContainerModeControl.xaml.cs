@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -42,6 +43,9 @@ namespace AccessibilityInsights.Modes
 
         public async Task<bool> ShowDialog(ContainedDialog containedDialog)
         {
+            if (containedDialog == null)
+                throw new ArgumentNullException(nameof(containedDialog));
+
             if (brdrContainer.Child is ContainedDialog oldDlg)
             {
                 oldDlg.DismissDialog();

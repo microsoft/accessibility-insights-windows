@@ -867,7 +867,9 @@ namespace AccessibilityInsights
                 using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
                     Title = Properties.Resources.btnLoad_ClickDialogTitle,
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                     Filter = FileFilters.A11yFileFilter,
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
                     InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
                     AutoUpgradeEnabled = !SystemParameters.HighContrast,
                 })
