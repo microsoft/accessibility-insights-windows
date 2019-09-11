@@ -25,8 +25,13 @@ namespace AccessibilityInsights.SetupLibrary
                 throw new ArgumentNullException(nameof(stream));
 
             stream.Position = 0;
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            // Don't dispose the StreamReader here, since it has the side effect of also
+            // disposing the passed-in Stream, which we don't own.
             StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+#pragma warning restore CA2000 // Dispose objects before losing scope
             string channelString = reader.ReadToEnd();
+
             Dictionary<string, ChannelInfo> convertedData = JsonConvert.DeserializeObject<Dictionary<string, ChannelInfo>>(channelString);
 
             if (convertedData.TryGetValue(keyName, out ChannelInfo channelInfo) &&
