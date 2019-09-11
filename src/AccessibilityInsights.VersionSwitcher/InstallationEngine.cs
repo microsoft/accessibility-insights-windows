@@ -168,7 +168,7 @@ namespace AccessibilityInsights.VersionSwitcher
             if (!verifier.IsVerified)
             {
                 // TODO : Better error messaging
-                throw new ArgumentException("Untrusted file!", nameof(localFile));
+                throw new ArgumentException(Properties.Resources.UntrustedFile, nameof(localFile));
             }
 
             EventLogger.WriteInformationalMessage("Successfully validated local file: {0}", localFile);

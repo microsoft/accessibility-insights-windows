@@ -32,7 +32,7 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 EventLogger.WriteErrorMessage(e.ToString());
                 ExceptionReporter.ReportException(e);
-                MessageBox.Show(e.Message, "An error occurred during install");
+                MessageBox.Show(e.Message, Properties.Resources.InstallError);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
 
