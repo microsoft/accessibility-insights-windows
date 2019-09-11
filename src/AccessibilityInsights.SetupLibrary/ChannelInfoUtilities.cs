@@ -21,6 +21,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// <returns>The valid ChannelInfo</returns>
         public static ChannelInfo GetChannelFromStream(Stream stream, string keyName = "default")
         {
+            if (stream == null)
+                throw new ArgumentNullException(nameof(stream));
+
             stream.Position = 0;
             StreamReader reader = new StreamReader(stream, Encoding.UTF8);
             string channelString = reader.ReadToEnd();

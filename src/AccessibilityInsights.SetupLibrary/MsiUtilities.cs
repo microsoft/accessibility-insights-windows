@@ -26,6 +26,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// <returns></returns>
         public static string GetInstalledProductVersion(IExceptionReporter exceptionReporter)
         {
+            if (exceptionReporter == null)
+                throw new ArgumentNullException(nameof(exceptionReporter));
+
             string targetUpgradeCode = UpdateGuid.ToUpperInvariant();
 
             // Check whether application with target upgrade code is installed on this machine

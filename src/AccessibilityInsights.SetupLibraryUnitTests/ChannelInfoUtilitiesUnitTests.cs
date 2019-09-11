@@ -56,6 +56,14 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        [Timeout(2000)]
+        public void GetChannelFromStream_StreamIsNull_ThrowsArgumentNullException()
+        {
+            ChannelInfoUtilities.GetChannelFromStream(null);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         [Timeout(2000)]
         public void GetChannelFromStream_StreamIsEmpty_ThrowsNullReferenceException()
