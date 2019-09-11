@@ -120,17 +120,19 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         private Bitmap LoadBeakerImage(double DPI)
         {
+            System.Drawing.FontFamily family;
             // Create font 
-            PrivateFontCollection fonts = LoadFontResource();
-            // Get font family 
-            System.Drawing.FontFamily family = (System.Drawing.FontFamily)fonts.Families.GetValue(0);
+            using (PrivateFontCollection fonts = LoadFontResource())
+            {
+                // Get font family 
+                family = (System.Drawing.FontFamily)fonts.Families.GetValue(0);
+            }
             // Create bitmap 
             Bitmap bitmap = new Bitmap(Convert.ToInt32(DefaultWidth * DPI), Convert.ToInt32(DefaultHeight * DPI));
             // Create graphics from image 
             using (Graphics g = Graphics.FromImage(bitmap))
+            using (StringFormat sf = new StringFormat())
             {
-
-                StringFormat sf = new StringFormat();
                 sf.LineAlignment = StringAlignment.Center;
                 sf.Alignment = StringAlignment.Center;
 
@@ -139,13 +141,17 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 // Draw string
                 int fontSize = Convert.ToInt32(9.0f * DPI);
                 g.Clear(bkgColor);
-                g.DrawString(
-                    BeakerCode,
-                    new Font(family, fontSize, System.Drawing.FontStyle.Regular),
-                    new SolidBrush(this.FontBrush),
-                    new Rectangle(0, 0, this.Width, this.Height + BorderMargin * 3),
-                    sf
-                    );
+                using (Font font = new Font(family, fontSize, System.Drawing.FontStyle.Regular))
+                using (SolidBrush brush = new SolidBrush(this.FontBrush))
+                {
+                    g.DrawString(
+                        BeakerCode,
+                        font,
+                        brush,
+                        new Rectangle(0, 0, this.Width, this.Height + BorderMargin * 3),
+                        sf
+                        );
+                }
             }
 
             if (!this.IsHovered)
