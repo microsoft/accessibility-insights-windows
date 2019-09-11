@@ -88,7 +88,9 @@ namespace AccessibilityInsights.SetupLibrary
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new InvalidOperationException("Unable to locate Accessibility Insights for Windows", e);
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }

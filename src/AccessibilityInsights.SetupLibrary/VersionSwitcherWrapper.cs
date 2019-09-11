@@ -34,7 +34,9 @@ namespace AccessibilityInsights.SetupLibrary
                 return;
             }
 
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
             throw new ArgumentException("Unable to get channel information", nameof(newChannel));
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
         }
 
         /// <summary>
@@ -85,7 +87,9 @@ namespace AccessibilityInsights.SetupLibrary
         private static void TreeCopy(string source, string dest, List<FileStream> fileLocks)
         {
             if (!Directory.Exists(source))
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new ArgumentException("No Source folder found", nameof(source));
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
 
             RecursiveTreeCopy(source, dest, fileLocks);
         }
