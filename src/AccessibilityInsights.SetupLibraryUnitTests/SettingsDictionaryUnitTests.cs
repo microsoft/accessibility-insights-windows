@@ -51,6 +51,14 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
 
         [TestMethod]
         [Timeout(2000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void CopyCtor_OriginalIsNull_ThrowsArgumentNullException()
+        {
+            new SettingsDictionary(null);
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
         public void CopyCtor_SettingsAreShallowCopied()
         {
             SettingsDictionary settings1 = new SettingsDictionary
@@ -240,6 +248,21 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
 
             Assert.AreEqual(1, settings.Count);
             Assert.AreEqual((int)TestEnum.Option2, settings[Key1]);
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Diff_OtherIsNull_ThrowsArgumentNullException()
+        {
+            SettingsDictionary settings = new SettingsDictionary
+            {
+                { Key1, BoolValue },
+                { Key2, IntValue },
+                { Key3, LongValue },
+            };
+
+            settings.Diff(null);
         }
 
         [TestMethod]
