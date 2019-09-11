@@ -11,6 +11,14 @@ namespace AccessibilityInsights.Extensions.GitHub
     public class IssueFormatterTest
     {
         [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetNewIssue_IssueInfoIsNull_ThrowsArgumentNullException()
+        {
+            IssueFormatterFactory.GetNewIssueLink(string.Empty, null);
+        }
+
+        [TestMethod]
         public void IssueFormattingTest()
         {
             string link = "https://github.com/bla/bla-blas";

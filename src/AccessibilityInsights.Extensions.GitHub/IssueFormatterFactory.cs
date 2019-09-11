@@ -13,6 +13,9 @@ namespace AccessibilityInsights.Extensions.GitHub
     {
         public static string GetNewIssueLink(string link, IssueInformation issueInfo)
         {
+            if (issueInfo == null)
+                throw new ArgumentNullException(nameof(issueInfo));
+
             IIssueFormatter formatter = null;
             switch (issueInfo.IssueType)
             {

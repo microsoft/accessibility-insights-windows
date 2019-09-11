@@ -2,12 +2,21 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace AccessibilityInsights.Extensions.GitHub
 {
     [TestClass]
     public class LinkValidatorTest
     {
+        [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void IsValidGitHubRepoLink_LinkIsNull_ThrowsArgumentNullException()
+        {
+            LinkValidator.IsValidGitHubRepoLink(null);
+        }
+
         [TestMethod]
         public void IsValidGitHubRepoLink()
         {
