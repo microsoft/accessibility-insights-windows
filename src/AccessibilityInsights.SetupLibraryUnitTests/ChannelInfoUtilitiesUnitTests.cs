@@ -120,6 +120,19 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
         }
 
         [TestMethod]
+        [Timeout(2000)]
+        public void GetChannelFromStream_StreamIsValid_StreamIsNotClosed()
+        {
+            using (Stream stream = PopulateStream(TestCaseContents))
+            {
+                long originalLength = stream.Length;
+                ChannelInfoUtilities.GetChannelFromStream(stream);
+                Assert.AreEqual(originalLength, stream.Length);
+                Assert.AreNotEqual(0, originalLength);
+            }
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(InvalidDataException))]
         [Timeout(2000)]
         public void GetChannelFromStream_StreamIsInvalid_ThrowsInvalidDataException()
