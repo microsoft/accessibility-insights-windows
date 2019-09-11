@@ -40,7 +40,9 @@ namespace AccessibilityInsights.SetupLibrary
                 return channelInfo;
             }
 
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
             throw new InvalidDataException("Unable to get ChannelInfo");
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
         }
 
         /// <summary>
