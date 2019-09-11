@@ -16,9 +16,11 @@ namespace AccessibilityInsights.Misc
         private static CommandOptions InitializeCommandOptions()
         {
             var args = Environment.GetCommandLineArgs();
-            var parser = new Parser(with => with.EnableDashDash = true);
-            return parser.ParseArguments<CommandOptions>(args.Skip(1))
-                .MapResult(parsed => parsed, options => new CommandOptions());
+            using (var parser = new Parser(with => with.EnableDashDash = true))
+            {
+                return parser.ParseArguments<CommandOptions>(args.Skip(1))
+                    .MapResult(parsed => parsed, options => new CommandOptions());
+            }
         }
 
         public static string ConfigFolder => Options.Value.ConfigFolder;
