@@ -494,7 +494,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbRaw.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Raw;
             }
             var suffix = this.rbRaw.IsChecked.HasValue && this.rbRaw.IsChecked.Value ? "Checked" : "";
-            this.mniRaw.SetValue(AutomationProperties.NameProperty, $"Walk tree in Raw view {suffix}");
+            this.mniRaw.SetValue(AutomationProperties.NameProperty, $"Raw view {suffix}");
         }
 
         /// <summary>
@@ -515,7 +515,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbContent.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Content;
             }
             var suffix = this.rbContent.IsChecked.HasValue && this.rbContent.IsChecked.Value ? "Checked" : "";
-            this.mniContent.SetValue(AutomationProperties.NameProperty, $"Walk tree in Content view {suffix}");
+            this.mniContent.SetValue(AutomationProperties.NameProperty, $"Content view {suffix}");
         }
 
         /// <summary>
@@ -536,7 +536,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbControl.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Control;
             }
             var suffix = this.rbControl.IsChecked.HasValue && this.rbControl.IsChecked.Value ? "Checked" : "";
-            this.mniControl.SetValue(AutomationProperties.NameProperty, $"Walk tree in Control view {suffix}");
+            this.mniControl.SetValue(AutomationProperties.NameProperty, $"Control view {suffix}");
         }
 
         /// <summary>
