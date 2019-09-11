@@ -37,34 +37,31 @@
                             Key="V"
                             Modifiers="Alt"/>
             </TabItem.InputBindings>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
-                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="#A6A6A6" BorderThickness="0,0,0,1" >
-                    <Grid Margin="8,10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <TextBlock 
-                           x:Name="tbElement" 
-                           VerticalAlignment="Center" 
-                           FontSize="{StaticResource ConstXXLTextSize}"
-                           FontWeight="Bold" 
-                           TextWrapping="Wrap"
-                           TextTrimming="CharacterEllipsis"
-                           Height="30"
-                           AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.InspectTabsElementTextBlock}"/>
-                    </Grid>
-                </Border>
-                <Grid Grid.Row="1" Name="gdTab">
+            <!--
+                This unnamed NamedPane is a workaround for a Narrator compat issue; without some sort of UIAutomation-included
+                wrapper around the tab content, Narrator doesn't include tbElement in reading order.
+            -->
+            <controls:NamedPane>
+                <Grid Name="gdTab">
                     <Grid.RowDefinitions>
+                        <RowDefinition x:Name="rowElementDescription" Height="Auto" MinHeight="30"/>
                         <RowDefinition x:Name="rowProperties" Height="7*" MinHeight="80"/>
                         <RowDefinition x:Name="rowPatterns" Height="3*" MinHeight="80"/>
                         <RowDefinition x:Name="rowEvents" Height="3*" MinHeight="80"/>
                     </Grid.RowDefinitions>
-                    <Expander Grid.Row="0" IsExpanded="True" Style="{StaticResource expAccordion}"  AutomationProperties.Name="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}">
+                    <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="#A6A6A6" BorderThickness="0,0,0,1" >
+                        <TextBlock 
+                            x:Name="tbElement" 
+                            VerticalAlignment="Center" 
+                            FontSize="{StaticResource ConstXXLTextSize}"
+                            FontWeight="Bold" 
+                            TextWrapping="Wrap"
+                            TextTrimming="CharacterEllipsis"
+                            Height="30"
+                            Margin="8,10"
+                            AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.InspectTabsElementTextBlock}"/>
+                    </Border>
+                    <Expander Grid.Row="1" IsExpanded="True" Style="{StaticResource expAccordion}"  AutomationProperties.Name="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}">
                         <i:Interaction.Behaviors>
                             <behaviors:ExpanderBehavior/>
                         </i:Interaction.Behaviors>
@@ -105,11 +102,11 @@
                         </Grid>
                     </Expander>
                     <GridSplitter x:Name="gsProperties"
-                                  Grid.Row="0" Style="{StaticResource gsStyle}"
-                                  ResizeBehavior="CurrentAndNext"
-                                  AutomationProperties.Name="{x:Static Properties:Resources.gsPropertiesAutomationPropertiesName1}"
-                                  Grid.ColumnSpan="2"/>
-                    <Expander Grid.Row="1" IsExpanded="True" Style="{StaticResource expAccordion}">
+                                    Grid.Row="1" Style="{StaticResource gsStyle}"
+                                    ResizeBehavior="CurrentAndNext"
+                                    AutomationProperties.Name="{x:Static Properties:Resources.gsPropertiesAutomationPropertiesName1}"
+                                    Grid.ColumnSpan="2"/>
+                    <Expander Grid.Row="2" IsExpanded="True" Style="{StaticResource expAccordion}">
                         <i:Interaction.Behaviors>
                             <behaviors:ExpanderBehavior/>
                         </i:Interaction.Behaviors>
@@ -121,11 +118,11 @@
                         </Grid>
                     </Expander>
                     <GridSplitter x:Name="gsEvents"
-                                  Grid.Row="1" Style="{StaticResource gsStyle}"
-                                  ResizeBehavior="CurrentAndNext"
-                                  AutomationProperties.Name="{x:Static Properties:Resources.gsEventsAutomationPropertiesName1}"
-                                  Grid.ColumnSpan="2"/>
-                    <Expander Name="expEvents" Grid.Row="2" IsExpanded="True" Style="{StaticResource expAccordion}">
+                                    Grid.Row="2" Style="{StaticResource gsStyle}"
+                                    ResizeBehavior="CurrentAndNext"
+                                    AutomationProperties.Name="{x:Static Properties:Resources.gsEventsAutomationPropertiesName1}"
+                                    Grid.ColumnSpan="2"/>
+                    <Expander Name="expEvents" Grid.Row="3" IsExpanded="True" Style="{StaticResource expAccordion}">
                         <i:Interaction.Behaviors>
                             <behaviors:ExpanderBehavior/>
                         </i:Interaction.Behaviors>
@@ -134,14 +131,13 @@
                         </Expander.Header>
                         <Grid x:Name="gridEvents" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
                             <controls:EventDetailControl x:Name="ctrlEventMessage"
-                                                       Grid.Row="0"    Margin="8"                                                   
-                                                       Grid.ColumnSpan="2"
-                                                       />
+                                                        Grid.Row="0"    Margin="8"                                                   
+                                                        Grid.ColumnSpan="2"
+                                                        />
                         </Grid>
                     </Expander>
-                    
                 </Grid>
-            </Grid>
+            </controls:NamedPane>
         </TabItem>
         <TabItem Name="tabHowToFix" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
             <TabItem.Header>
