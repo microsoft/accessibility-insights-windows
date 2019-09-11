@@ -347,7 +347,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
             else
             {
-                if (setting.Properties.Where(e => e.Id == id).Count() > 0)
+                if (setting.Properties.Where(e => e.Id == id).Any())
                 {
                     setting.Properties.Where(e => e.Id == id).First().CheckedCount += change;
                 }

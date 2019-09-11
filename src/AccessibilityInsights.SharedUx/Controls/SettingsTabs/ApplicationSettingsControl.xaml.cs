@@ -301,7 +301,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     let n = (string)hkb.Content
                     group n by n into g
                     where g.Count() > 1
-                    select g).Count() != 0;
+                    select g).Any();
         }
 
         /// <summary>
