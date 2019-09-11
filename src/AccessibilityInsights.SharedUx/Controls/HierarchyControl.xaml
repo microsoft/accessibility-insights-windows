@@ -130,7 +130,7 @@
                 <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings">
-                        <MenuItem Header="Tree view" FontWeight="Bold">
+                        <MenuItem Header="Tree view">
                             <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
                                 <MenuItem.Header>
