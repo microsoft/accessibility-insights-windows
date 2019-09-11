@@ -864,25 +864,26 @@ namespace AccessibilityInsights
             {
                 this.DisableElementSelector();
 
-                var dlg = new System.Windows.Forms.OpenFileDialog
+                using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
                     Title = Properties.Resources.btnLoad_ClickDialogTitle,
                     Filter = FileFilters.A11yFileFilter,
                     InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
                     AutoUpgradeEnabled = !SystemParameters.HighContrast,
-                };
-
-                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                })
                 {
-                    if (!TryOpenFile(dlg.FileName))
+                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                        if (!TryOpenFile(dlg.FileName))
+                        {
+                            MessageDialog.Show(Properties.Resources.StartLoadingSnapshotLoadFileException);
+                            this.EnableElementSelector();
+                        }
+                    }
+                    else
+                    {
                         this.EnableElementSelector();
                     }
-                }
-                else
-                {
-                    this.EnableElementSelector();
                 }
             }
         }
