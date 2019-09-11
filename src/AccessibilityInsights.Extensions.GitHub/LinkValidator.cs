@@ -14,20 +14,23 @@ namespace AccessibilityInsights.Extensions.GitHub
         private static readonly string GitHubLink = Properties.Resources.GitHubLink;
         private static readonly string AlphaNumericPattern = Properties.Resources.AlphaNumricPattern;
 
-        public static bool IsValidGitHubRepoLink(string Link)
+        public static bool IsValidGitHubRepoLink(string link)
         {
-            Link = Link.Replace(@"\", "/").Trim(' ').TrimEnd('/');
-            string UserNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumericPattern);
-            string RepoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumericPattern);
-            string LinkPattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, UserNamePattern, RepoNamePattern);
-            Regex gitHubRepoLinkRegex = new Regex(LinkPattern, RegexOptions.IgnoreCase);
-            if (!gitHubRepoLinkRegex.IsMatch(Link))
+            if (link == null)
+                throw new ArgumentNullException(nameof(link));
+
+            link = link.Replace(@"\", "/").Trim(' ').TrimEnd('/');
+            string userNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.UserNamePattern, AlphaNumericPattern);
+            string repoNamePattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.RepoNamePattern, AlphaNumericPattern);
+            string linkPattern = string.Format(CultureInfo.InvariantCulture, Properties.Resources.LinkPatttern, GitHubLink, userNamePattern, repoNamePattern);
+            Regex gitHubRepoLinkRegex = new Regex(linkPattern, RegexOptions.IgnoreCase);
+            if (!gitHubRepoLinkRegex.IsMatch(link))
             {
                 return false;
             }
 
-            Link = Regex.Replace(Link, GitHubLink, "");
-            string[] parts = Regex.Split(Link, @"/+");
+            link = Regex.Replace(link, GitHubLink, "");
+            string[] parts = Regex.Split(link, @"/+");
             if (parts.Length != 2)
             {
                 return false;
