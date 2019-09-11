@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,11 +16,17 @@ namespace AccessibilityInsights.SharedUx.Behaviors
     {
         public static bool GetPropagateBindings(FrameworkElement element)
         {
+            if (element == null)
+                throw new ArgumentNullException(nameof(element));
+
             return (bool)element.GetValue(PropagateBindingsProperty);
         }
 
         public static void SetPropagateBindings(FrameworkElement element, bool value)
         {
+            if (element == null)
+                throw new ArgumentNullException(nameof(element));
+
             element.SetValue(PropagateBindingsProperty, value);
         }
 

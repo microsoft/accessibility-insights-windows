@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Newtonsoft.Json;
@@ -73,6 +72,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="configuration"></param>
         public bool UpdateConfigFromSelections(ConfigurationModel configuration)
         {
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
             // For first time / valid reconfigurations canSave will be enabled and hence config will be saved. Else only set the reporter.
             if (issueConfigurationControl != null && (issueConfigurationControl.CanSave || selectedIssueReporter.IsConfigured))
             {
@@ -110,6 +112,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         public bool IsConfigurationChanged(ConfigurationModel configuration)
         {
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
             if (issueConfigurationControl != null)
             {
                 bool hasReporterChanged = configuration.SelectedIssueReporter != selectedIssueReporter.StableIdentifier;

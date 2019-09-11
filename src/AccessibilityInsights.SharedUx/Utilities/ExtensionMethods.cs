@@ -101,6 +101,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="sb"></param>
         public static void CopyStringToClipboard(this StringBuilder sb)
         {
+            if (sb == null)
+                throw new ArgumentNullException(nameof(sb));
+
             try
             {
                 Clipboard.SetText(sb.ToString());
@@ -123,7 +126,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="isLiveMode">Is node for live mode</param>
         public static HierarchyNodeViewModel GetRootNodeHierarchyViewModel(this ElementDataContext dc, bool showAncestry, bool showUncertain, bool isLiveMode)
         {
-            if (dc.RootElment != null && dc.RootElment.Properties != null && dc.RootElment.Properties.Count != 0 && dc.Element != null)
+            if (dc?.RootElment?.Properties != null && dc.RootElment.Properties.Count != 0 && dc.Element != null)
             {
                 // if need to show ancestry, start from rootnode
                 // if not show ancestry, but element has no parent, return element itself. 
@@ -140,6 +143,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns></returns>
         public static List<RuleResultViewModel> GetRuleResultsViewModelList(this ElementDataContext sc)
         {
+            if (sc == null)
+                throw new ArgumentNullException(nameof(sc));
+
             List<Tuple<RuleResult, A11yElement>> list = new List<Tuple<RuleResult, A11yElement>>();
 
             foreach (var e in sc.Elements.Values)
@@ -194,6 +200,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns></returns>
         public static IssueInformation GetIssueInformation(this A11yElement element, IssueType issueType)
         {
+            if (element == null)
+                throw new ArgumentNullException(nameof(element));
+
             return new IssueInformation(
                 glimpse: element.Glimpse,
                 processName: element.GetProcessName(),
@@ -243,6 +252,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="diff">Amount to resize column</param>
         public static void ResizeColumn(this ColumnDefinition col, double diff)
         {
+            if (col == null)
+                throw new ArgumentNullException(nameof(col));
+
             var newWidth = col.Width.Value + diff;
 
             if (newWidth > 0)

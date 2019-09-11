@@ -188,6 +188,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <returns></returns>
         public bool Select(HierarchyNodeViewModel node, int uniqueId)
         {
+            if (node == null)
+                throw new ArgumentNullException(nameof(node));
 
             foreach (var child in node.Children)
             {

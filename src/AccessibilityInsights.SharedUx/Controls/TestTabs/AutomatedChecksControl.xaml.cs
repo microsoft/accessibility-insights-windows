@@ -298,6 +298,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="ec"></param>
         public void SetElement(ElementContext ec)
         {
+            if (ec == null)
+                throw new ArgumentNullException(nameof(ec));
+
             try
             {
                 // set handler here. it will make sure that highliter button is shown and working. 

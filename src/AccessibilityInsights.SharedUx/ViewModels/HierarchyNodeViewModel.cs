@@ -250,7 +250,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public HierarchyNodeViewModel(A11yElement ce, bool showUncertain, bool isLiveMode)
         {
             this.ShowUncertain = showUncertain;
-            this.Element = ce;
+            this.Element = ce ?? throw new ArgumentNullException(nameof(ce));
 
             if (this.Element.UniqueId == 0)
             {

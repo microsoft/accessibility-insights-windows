@@ -8,6 +8,7 @@ using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.Utility;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -65,6 +66,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="el"></param>
         public void SetElement(A11yElement el)
         {
+            if (el == null)
+                throw new ArgumentNullException(nameof(el));
+
             this.tbElement.Text = el.Glimpse;
 
             RootNodes = new List<EventConfigNodeViewModel>();

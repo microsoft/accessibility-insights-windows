@@ -65,6 +65,9 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         /// <returns></returns>
         public static HotKey GetInstance(string txt)
         {
+            if (txt == null)
+                throw new ArgumentNullException(nameof(txt));
+
             var atoms = from a in txt.Split(new char[] { '+' }, StringSplitOptions.RemoveEmptyEntries)
                         select a.Trim();
             var hk = new HotKey();

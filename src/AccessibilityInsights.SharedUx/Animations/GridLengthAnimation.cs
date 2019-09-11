@@ -71,6 +71,9 @@ namespace AccessibilityInsights.SharedUx.Animations
         /// </summary>
         public override object GetCurrentValue(object defaultOriginValue, object defaultDestinationValue, AnimationClock animationClock)
         {
+            if (animationClock == null)
+                throw new ArgumentNullException(nameof(animationClock));
+
             if (From.Value > To.Value)
             {
                 return new GridLength((1 - animationClock.CurrentProgress.Value) * (From.Value - To.Value) + To.Value, To.IsStar ? GridUnitType.Star : GridUnitType.Pixel);

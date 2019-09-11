@@ -8,10 +8,10 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.Types;
-using Axe.Windows.Desktop.Settings;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
+using System;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -133,6 +133,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="child"></param>
         public void AddChild(EventConfigNodeViewModel child, bool isChecked=false)
         {
+            if (child == null)
+                throw new ArgumentNullException(nameof(child));
+
             this.Children.Add(child);
             child.IsChecked = isChecked;
             if (child.Id == EventType.UIA_AutomationFocusChangedEventId)
@@ -149,6 +152,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="type"></param>
         public void AddChildren(IEnumerable<int> ids, EventConfigNodeType type, bool isChecked=false)
         {
+            if (ids == null)
+                throw new ArgumentNullException(nameof(ids));
+
             foreach (int id in ids)
             {
                 this.AddChild(new EventConfigNodeViewModel(id, type), isChecked);
@@ -162,6 +168,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="type"></param>
         public void AddChildren(IEnumerable<A11yProperty> properties, bool isChecked = false)
         {
+            if (properties == null)
+                throw new ArgumentNullException(nameof(properties));
+
             foreach (A11yProperty property in properties)
             {
                 this.AddChild(new EventConfigNodeViewModel(property.Id, property.Name, EventConfigNodeType.Property), isChecked);
@@ -216,6 +225,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="child"></param>
         public void RemoveChild(EventConfigNodeViewModel child)
         {
+            if (child == null)
+                throw new ArgumentNullException(nameof(child));
+
             child.IsChecked = false;
             this.Children.Remove(child);
         }

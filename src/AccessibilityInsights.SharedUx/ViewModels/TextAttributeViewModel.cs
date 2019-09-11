@@ -5,6 +5,7 @@ using AccessibilityInsights.SharedUx.Dialogs;
 using System.Windows;
 using System.Windows.Input;
 using Axe.Windows.Desktop.Types;
+using System;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -33,8 +34,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.Id = id;
             this.Name = name;
+            this.Element = e ?? throw new ArgumentNullException(nameof(e));
             this.Text = e.Glimpse;
-            this.Element = e;
             this.DetailsVisibility = Visibility.Visible;
             this.Command = new CommandHandler(() => ShowElementInfo(), true);
         }
@@ -49,8 +50,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.Id = id;
             this.Name = name;
+            this.TextRange = tr ?? throw new ArgumentNullException(nameof(tr));
             this.Text = tr.Text;
-            this.TextRange = tr;
             this.DetailsVisibility = Visibility.Visible;
         }
 
