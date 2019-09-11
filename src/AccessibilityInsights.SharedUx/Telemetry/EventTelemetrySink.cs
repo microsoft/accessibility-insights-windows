@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             // because the above call also opens future exceptions to be passed through
             // and in case telemetry is allowed later, we want all the exceptions we can get
             if (!TelemetrySink.IsEnabled)
-                TelemetrySink.ReportException(new Exception("Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open."));
+                TelemetrySink.ReportException(new Exception(Properties.Resources.LostExceptionTelemetry));
         }
 
         /// <summary>

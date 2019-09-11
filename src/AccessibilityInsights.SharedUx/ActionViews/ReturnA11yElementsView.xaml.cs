@@ -348,7 +348,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
             else
             {
-                this.tbResult.Text = "Failed!!";
+                this.tbResult.Text = Properties.Resources.FailedEmphasizedText;
             }
             AutomationProperties.SetName(this.tbResult, "Execution result failed");
         }

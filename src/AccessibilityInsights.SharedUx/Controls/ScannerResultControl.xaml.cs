@@ -168,7 +168,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             this.lvDetails.ItemsSource = null;
             this.List.Clear();
-            this.tbShowAll.Text = "No Test Result";
+            this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
         }
 

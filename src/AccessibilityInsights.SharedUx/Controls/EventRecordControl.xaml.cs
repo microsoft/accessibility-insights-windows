@@ -369,7 +369,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     using (var dlg = new System.Windows.Forms.SaveFileDialog
                     {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                         Filter = FileFilters.EventsFileFilter,
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
                         InitialDirectory = AppConfiguration.EventRecordPath,
                         AutoUpgradeEnabled = !SystemParameters.HighContrast,
                     })
@@ -398,7 +400,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
             }
 
-            MessageDialog.Show("There is no event to save.");
+            MessageDialog.Show(Properties.Resources.NoEventToSave);
         }
 
         /// <summary>

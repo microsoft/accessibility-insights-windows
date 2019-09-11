@@ -370,7 +370,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
             this.lvResults.ItemsSource = null;
-            this.tbGlimpse.Text = "Target:";
+            this.tbGlimpse.Text = Properties.Resources.GlimpseTextTarget;
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.SelectedItems.Clear();
         }
