@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                          where IsNotInList(e.Key, config.Events)
                          select e;
 
-                if (ms.Count() != 0)
+                if (ms.Any())
                 {
                     foreach (var m in ms)
                     {
@@ -92,9 +92,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns></returns>
         private static bool IsNotInList(int key, List<RecordEntitySetting> events)
         {
-            return (from e in events
-                    where e.Id == key
-                    select e).Count() == 0;
+            return !(from e in events
+                     where e.Id == key
+                     select e).Any();
         }
 
         /// <summary>

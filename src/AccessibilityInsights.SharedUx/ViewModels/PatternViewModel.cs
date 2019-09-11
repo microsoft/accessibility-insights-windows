@@ -57,9 +57,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     return ActionType.NotApplicable;
                 default:
                     return ((from m in this.Pattern.GetType().GetMethods()
-                            let a = m.GetCustomAttribute(typeof(PatternMethodAttribute))
-                            where a != null
-                            select m).Count() != 0 ? ActionType.Action : ActionType.NotApplicable);
+                             let a = m.GetCustomAttribute(typeof(PatternMethodAttribute))
+                             where a != null
+                             select m).Any() ? ActionType.Action : ActionType.NotApplicable);
             }
         }
 
