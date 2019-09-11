@@ -41,17 +41,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
 
-        private void FailIfCalled(int unused)
-        {
-            Assert.Fail("This method should never be called");
-        }
-
         [TestMethod]
         [Timeout(1000)]
         [ExpectedException(typeof(ArgumentNullException))]
         public void FileNewIssue_FileIssueIsNull_ThrowsArgumentNullException()
         {
-            FileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, FailIfCalled);
+            FileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); });
         }
 
 #if FAKES_SUPPORTED
