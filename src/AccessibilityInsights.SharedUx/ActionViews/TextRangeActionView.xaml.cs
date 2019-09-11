@@ -27,7 +27,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         public TextRangeActionView(TextRangeActionViewModel a)
         {
-            this.ActionViewModel = a;
+            this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
             this.Counter = 0;
             InitializeComponent();
 

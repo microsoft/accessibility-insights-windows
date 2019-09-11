@@ -104,7 +104,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="ec"></param>
         public void SetElement(ElementContext ec)
         {
-            this.ElementContext = ec;
+            this.ElementContext = ec ?? throw new ArgumentNullException(nameof(ec));
             var bm = ec.Element.CaptureBitmap();
             RunAutoCCA(bm);
         }

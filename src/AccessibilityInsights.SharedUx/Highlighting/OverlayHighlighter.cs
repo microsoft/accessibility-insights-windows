@@ -48,6 +48,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="gap"></param>
         public void SetElement(A11yElement el, SolidColorBrush brush, MouseButtonEventHandler onMouseDown, int gap)
         {
+            if (el == null)
+                throw new ArgumentNullException(nameof(el));
+
             var win = el.GetParentWindow();
             TBCallback = onMouseDown;
             Dimensions = win == null ? el.BoundingRectangle : win.BoundingRectangle;
@@ -104,6 +107,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         private Border AddElement(A11yElement ele, SolidColorBrush brush)
         {
+            if (ele == null)
+                throw new ArgumentNullException(nameof(ele));
+
             Rectangle rect = ele.BoundingRectangle;
 
             var l = (rect.Left - Dimensions.Left) / DPI;
@@ -152,6 +158,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         public void MarkSelectedElement(A11yElement ele)
         {
+            if (ele == null)
+                throw new ArgumentNullException(nameof(ele));
+
             RemoveBorder(SelectedElementRect);
             SelectedElementRect = AddElement(ele, Application.Current.Resources["LoadingBrush"] as SolidColorBrush);
         }
@@ -194,6 +203,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         public void ShowToast(UserControl toast)
         {
+            if (toast == null)
+                throw new ArgumentNullException(nameof(toast));
+
             try
             {
                 var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));

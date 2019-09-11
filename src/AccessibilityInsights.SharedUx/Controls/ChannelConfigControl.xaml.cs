@@ -16,7 +16,13 @@ namespace AccessibilityInsights.SharedUx.Controls
     {
         public ChannelConfigViewModel VM { get; } = new ChannelConfigViewModel();
 
-        public bool GetConfigChanged(ConfigurationModel config) => config.ReleaseChannel != VM.CurrentChannel;
+        public bool GetConfigChanged(ConfigurationModel config)
+        {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
+            return config.ReleaseChannel != VM.CurrentChannel;
+        }
 
         public ChannelConfigControl()
         {
@@ -34,6 +40,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         public void UpdateFromConfig(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             VM.CurrentChannel = config.ReleaseChannel;
         }
 

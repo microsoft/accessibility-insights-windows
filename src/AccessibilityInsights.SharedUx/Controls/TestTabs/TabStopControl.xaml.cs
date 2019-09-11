@@ -175,7 +175,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="ec"></param>
         public void SetElement(ElementContext ec)
         {
-            this.ElementContext = ec;
+            this.ElementContext = ec ?? throw new ArgumentNullException(nameof(ec));
             this.runElement.Text = ec.Element.Glimpse;
             this.EventHandler?.Dispose();
             this.EventHandler = new EventListenerFactory(ec.Element);

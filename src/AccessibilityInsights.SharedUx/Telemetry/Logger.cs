@@ -26,6 +26,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <param name="ev">the event being recorded</param>
         public static void PublishTelemetryEvent(TelemetryEvent ev)
         {
+            if (ev == null)
+                throw new ArgumentNullException(nameof(ev));
+
             PublishTelemetryEvent(ev.Action, ev.Properties);
         }
 

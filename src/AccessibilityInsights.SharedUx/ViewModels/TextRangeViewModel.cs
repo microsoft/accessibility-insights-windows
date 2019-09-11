@@ -136,7 +136,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="isAdded"></param>
         public TextRangeViewModel(TextRange tr, string header)
         {
-            this.TextRange = tr;
+            this.TextRange = tr ?? throw new ArgumentNullException(nameof(tr));
             this.TextPattern = tr.TextPattern;
             this.Header = header;
             this.AddMenuVisibility = this.Listed == false ? Visibility.Visible : Visibility.Collapsed;

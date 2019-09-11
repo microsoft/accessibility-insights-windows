@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
@@ -18,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         public NotSupportActionView(BaseActionViewModel a)
         {
             InitializeComponent();
-            this.ActionViewModel = a;
+            this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
             this.tbName.Text = string.Format(CultureInfo.InvariantCulture,"{0}.{1}", ActionViewModel.PatternName, ActionViewModel.Name);
         }
 

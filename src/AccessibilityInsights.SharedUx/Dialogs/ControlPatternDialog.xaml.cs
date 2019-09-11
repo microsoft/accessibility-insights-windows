@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System.Globalization;
+using System;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
@@ -17,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         public ControlPatternDialog(PatternViewModel patternViewModel)
         {
             InitializeComponent();
-            this.PatternViewModel = patternViewModel;
+            this.PatternViewModel = patternViewModel ?? throw new ArgumentNullException(nameof(patternViewModel));
             this.Title = string.Format(CultureInfo.InvariantCulture, Properties.Resources.ControlPatternDialog_ControlPatternDialog__0__Action, this.PatternViewModel.Name);
             this.tcActions.ItemsSource = this.PatternViewModel.GetActionViewModels();
         }

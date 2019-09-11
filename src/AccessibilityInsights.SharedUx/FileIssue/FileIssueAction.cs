@@ -55,6 +55,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         /// <returns>Success or failure</returns>
         public static void AttachIssueData(IssueInformation issueInformation, Guid ecId, Rectangle? rect, int? elId)
         {
+            if (issueInformation == null)
+                throw new ArgumentNullException(nameof(issueInformation));
+
             // Save snapshot locally in prep for uploading attachment
             var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
             

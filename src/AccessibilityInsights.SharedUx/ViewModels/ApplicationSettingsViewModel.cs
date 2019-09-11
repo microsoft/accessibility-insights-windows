@@ -141,6 +141,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         public void UpdateFromConfig(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             this.SelectionByFocus = config.SelectionByFocus;
             this.SelectionByMouse = config.SelectionByMouse;
             this.AlwaysOnTop = config.AlwaysOnTop;
@@ -153,6 +156,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         public void SaveToConfig(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             config.SelectionByFocus = this.SelectionByFocus;
             config.SelectionByMouse = this.SelectionByMouse;
             config.AlwaysOnTop = this.AlwaysOnTop;

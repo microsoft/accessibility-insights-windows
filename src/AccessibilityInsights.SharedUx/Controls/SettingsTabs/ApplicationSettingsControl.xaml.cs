@@ -129,6 +129,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <returns></returns>
         public bool IsConfigurationChanged(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             if (config.HotKeyForActivatingMainWindow != (string)this.btnHotkeyActivateWindow.Content)
             {
                 return true;
@@ -215,6 +218,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         public void UpdateFromConfig(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             this.btnHotkeyToggle.Content = config.HotKeyForSnap;
             this.btnHotkeyActivateWindow.Content = config.HotKeyForActivatingMainWindow;
             this.btnHotkeyRecord.Content = config.HotKeyForRecord;
@@ -235,6 +241,9 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         public void UpdateConfigFromSelections(ConfigurationModel config)
         {
+            if (config == null)
+                throw new ArgumentNullException(nameof(config));
+
             if (config.HotKeyForSnap != (string) this.btnHotkeyToggle.Content)
             {
                 var dic = new Dictionary<string, string>();

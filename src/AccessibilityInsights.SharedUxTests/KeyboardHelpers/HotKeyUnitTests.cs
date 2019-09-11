@@ -3,6 +3,7 @@
 using AccessibilityInsights.SharedUx.KeyboardHelpers;
 using AccessibilityInsights.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Windows.Forms;
 
 namespace AccessibilityInsights.SharedUxTests.KeyboardHelpers
@@ -10,6 +11,14 @@ namespace AccessibilityInsights.SharedUxTests.KeyboardHelpers
     [TestClass]
     public class HotKeyUnitTests
     {
+        [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetInstance_InputIsNull_ThrowsArgumentNullException()
+        {
+            HotKey.GetInstance(null);
+        }
+
         [TestMethod]
         [Timeout(1000)]
         public void GetInstance_ShiftF10_PropertiesAreCorrect()
