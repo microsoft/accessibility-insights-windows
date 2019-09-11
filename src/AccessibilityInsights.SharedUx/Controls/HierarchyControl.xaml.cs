@@ -131,6 +131,12 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
 
                 UpdateButtonVisibility();
+
+                cmHierarchySettings.Items.Remove(mniShowUncertain);
+                if (this.IsLiveMode == false)
+                {
+                    cmHierarchySettings.Items.Add(mniShowUncertain);
+                }
             }
         }
 
@@ -489,7 +495,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
             var suffix = this.rbRaw.IsChecked.HasValue && this.rbRaw.IsChecked.Value ? "Checked" : "";
             this.mniRaw.SetValue(AutomationProperties.NameProperty, $"Walk tree in Raw view {suffix}");
-            SetFocusOnHierarchyTree();
         }
 
         /// <summary>
@@ -511,7 +516,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
             var suffix = this.rbContent.IsChecked.HasValue && this.rbContent.IsChecked.Value ? "Checked" : "";
             this.mniContent.SetValue(AutomationProperties.NameProperty, $"Walk tree in Content view {suffix}");
-            SetFocusOnHierarchyTree();
         }
 
         /// <summary>
@@ -533,7 +537,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
             var suffix = this.rbControl.IsChecked.HasValue && this.rbControl.IsChecked.Value ? "Checked" : "";
             this.mniControl.SetValue(AutomationProperties.NameProperty, $"Walk tree in Control view {suffix}");
-            SetFocusOnHierarchyTree();
         }
 
         /// <summary>
