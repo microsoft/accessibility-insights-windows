@@ -37,7 +37,7 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("AccessibilityInsights.SharedUx")]
 [assembly: InternalsVisibleTo("AccessibilityInsights.CommonUxComponents")]
 [assembly: InternalsVisibleTo("AccessibilityInsights.Extensions")]
-[assembly: InternalsVisibleTo("UITests")]
+[assembly: InternalsVisibleTo("UITests")] // we don't sign our UITests, so we only need this with signing disabled
 #endif
 
 #region FxCop analysis suppressions for entire assembly
