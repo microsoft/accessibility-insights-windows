@@ -74,5 +74,7 @@ namespace UITests.UILibrary
         public void GoToSettings() => Session.FindElementByAccessibilityId(AutomationIDs.MainWinSettingsButton).Click();
 
         public void Maximize() => Session.Manage().Window.Maximize();
+
+        public void FocusWindowByResizing() => Session.Manage().Window.Size = Session.Manage().Window.Size;
     }
 }
