@@ -149,7 +149,22 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         #endregion
 
-        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateControlViewIconAutomationPeer(this);
+
+        #region ShowInControlView (Dependency Property)
+
+        public static readonly DependencyProperty ShowInControlViewProperty =
+            DependencyProperty.Register("ShowInControlView", typeof(bool), typeof(FabricIconControl), new PropertyMetadata(true));
+
+        public bool ShowInControlView
+        {
+            get { return (bool)GetValue(ShowInControlViewProperty); }
+
+            set { SetValue(ShowInControlViewProperty, value); }
+        }
+
+        #endregion
+
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this, ShowInControlView);
     }
 
     #region Icon Values

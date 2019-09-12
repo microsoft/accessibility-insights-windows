@@ -7,13 +7,13 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 {
     class CommonAutomationPeerCreator
     {
-        public static AutomationPeer CreateControlViewIconAutomationPeer(UserControl owner)
+        public static AutomationPeer CreateIconAutomationPeer(UserControl owner, bool showInControlView)
         {
             return new CustomControlOverridingAutomationPeer(
                 owner,
                 localizedControl: "icon",
                 isContentElement: false,
-                isControlElement: true,
+                isControlElement: showInControlView,
                 hideChildren: true,
                 controlType: AutomationControlType.Image);
         }
