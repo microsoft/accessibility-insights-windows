@@ -3,6 +3,9 @@
 parameters:
   configuration: ''
 
+variables:
+  SignAppForRelease: 'false'
+
 jobs:
 - job: UITests${{ parameters.configuration }}
   displayName: Build and run UI Tests - ${{ parameters.configuration }}
