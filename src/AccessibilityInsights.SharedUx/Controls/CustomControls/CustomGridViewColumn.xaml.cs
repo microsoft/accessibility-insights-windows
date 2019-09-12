@@ -10,35 +10,37 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     public partial class CustomGridViewColumn : GridViewColumn
     {
-        string _setName;
-        public string SetName
+        List<Border> borders = new List<Border>();
+        List<TextBlock> textBlocks = new List<TextBlock>();
+
+        string _registeredName;
+        internal string RegisteredName
         {
-            get => _setName;
+            get => _registeredName;
             set
             {
-                _setName = value;
+                _registeredName = value;
                 borders.ForEach(bd => UpdateBorderWidthBinding(bd));
             }
         }
-        List<Border> borders = new List<Border>();
-        List<TextBlock> textBlocks = new List<TextBlock>();
-        private double Wid => textBlocks.Count == 0 ? 0 : textBlocks.Max(tb => tb.ActualWidth);
 
-        string _headerText;
+        private double MaxColumnWidth => textBlocks.Count == 0 ? 0 : textBlocks.Max(tb => tb.ActualWidth) + 12;
+
+        #region DependencyProperties
+        #region HeaderText
         public string HeaderText
         {
-            get => _headerText;
+            get => (string)GetValue(HeaderTextProperty);
             set
             {
-                _headerText = value;
+                SetValue(HeaderTextProperty, value);
                 tbHeader.Text = value;
             }
         }
 
-        public static readonly DependencyProperty HeaderTextProperty =
+        internal static readonly DependencyProperty HeaderTextProperty =
            DependencyProperty.Register(nameof(HeaderText), typeof(string), typeof(CustomGridViewColumn),
                new PropertyMetadata(new PropertyChangedCallback(HeaderTextPropertyChanged)));
-
 
         private static void HeaderTextPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -47,35 +49,28 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 customCol.HeaderText = (string)e.NewValue;
             }
         }
-
-        string _contentPath;
-        public string ContentPath
+        #endregion HeaderText
+        #region ContentPath
+        internal string ContentPath
         {
-            get => _contentPath;
+            get => (string)GetValue(ContentPathProperty);
+
             set
             {
-                _contentPath = value;
+                SetValue(ContentPathProperty, value);
                 textBlocks.ForEach(tb => UpdateTextBinding(tb));
             }
         }
 
-        public static readonly DependencyProperty ContentPathProperty =
+        internal static readonly DependencyProperty ContentPathProperty =
            DependencyProperty.Register(nameof(ContentPath), typeof(string), typeof(CustomGridViewColumn),
-               new PropertyMetadata(new PropertyChangedCallback(ContentPathPropertyChanged)));
+               new PropertyMetadata(null));
+        #endregion ContentPath
+        #endregion DependencyProperties
 
+        internal CustomGridViewColumn() => InitializeComponent();
 
-        private static void ContentPathPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            if (d is CustomGridViewColumn customCol)
-            {
-                customCol.ContentPath = (string)e.NewValue;
-            }
-        }
-
-        public CustomGridViewColumn()
-        {
-            InitializeComponent();
-        }
+        internal void UpdateWidth() => Width = MaxColumnWidth;
 
         private void TextBlock_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -91,7 +86,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void Border_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             borders.Add(sender as Border);
-            if (!string.IsNullOrEmpty(SetName)) UpdateBorderWidthBinding(sender as Border);
+            if (!string.IsNullOrEmpty(RegisteredName)) UpdateBorderWidthBinding(sender as Border);
         }
 
         private void Border_Unloaded(object sender, System.Windows.RoutedEventArgs e)
@@ -113,7 +108,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             var bind = new Binding()
             {
-                ElementName = SetName,
+                ElementName = RegisteredName,
                 Path = new PropertyPath("ActualWidth"),
             };
             bd.SetBinding(Border.WidthProperty, bind);
@@ -122,12 +117,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void TextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (!e.WidthChanged) return;
-            this.Width = Wid + 12;
+            UpdateWidth();
         }
 
-        private void PART_HeaderGripper_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            this.Width = Wid + 12;
-        }
+        private void PART_HeaderGripper_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => UpdateWidth();
     }
 }

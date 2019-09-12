@@ -1,17 +1,23 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
-    class CustomListView : ListView
+    internal class CustomListView : ListView
     {
-        public CustomListView() : base()
+        private readonly List<CustomGridViewColumn> columns = new List<CustomGridViewColumn>();
+
+        internal CustomListView() : base()
         {
             Initialized += CustomListView_Initialized;
         }
+
+        internal void UpdateAllColumnWidths() => columns.ForEach(col => col.UpdateWidth());
 
         private void CustomListView_Initialized(object sender, EventArgs e)
         {
@@ -27,7 +33,27 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private void Columns_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            foreach (var col in e.NewItems)
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    AddNewColumns(e.NewItems);
+                    break;
+                case NotifyCollectionChangedAction.Replace:
+                    AddNewColumns(e.NewItems);
+                    RemoveOldColumns(e.OldItems);
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    RemoveOldColumns(e.OldItems);
+                    break;
+                case NotifyCollectionChangedAction.Reset:
+                    columns.Clear();
+                    break;
+            }
+        }
+
+        private void AddNewColumns(IList newItems)
+        {
+            foreach (var col in newItems)
             {
                 if (col is CustomGridViewColumn customCol)
                 {
@@ -36,11 +62,26 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
+        private void RemoveOldColumns(IList oldItems)
+        {
+            foreach (var col in oldItems)
+            {
+                if (col is CustomGridViewColumn customCol)
+                {
+                    if (!columns.Contains(customCol)) continue;
+
+                    columns.Remove(customCol);
+                }
+            }
+        }
+
         private void UpdateColumn(CustomGridViewColumn customCol)
         {
             var gridName = $"Column_{Guid.NewGuid().ToString().Replace("-", "")}";
-            this.RegisterName(gridName, customCol);
-            customCol.SetName = gridName;
+
+            RegisterName(gridName, customCol);
+            customCol.RegisteredName = gridName;
+            columns.Add(customCol);
         }
     }
 }
