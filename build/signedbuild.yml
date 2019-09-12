@@ -207,11 +207,12 @@ jobs:
     displayName: 'NuGet restore'
 
   - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
+    displayName: 'Build Solution **\AccessibilityInsights.sln'
     inputs:
       vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: SignedRelease
+      solution: '**/AccessibilityInsights.sln'  # we only want to build AccessibilityInsights for signing
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
