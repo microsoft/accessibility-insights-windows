@@ -38,12 +38,12 @@
                                     Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}"/>
                     </DockPanel>                        
                 </Border>
-                <ListView
+                <customcontrols:CustomListView
                     x:Name="dgProperties"
                     Grid.Row="2"
                     AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
-                    KeyUp="dgProperties_KeyUp"
-                    IsTabStop="False"
+                    KeyUp="dgProperties_KeyUp" 
+                    IsTabStop="False" BorderThickness="0" 
                     GotKeyboardFocus="onGotKeyBoardFocus">
                     <ListView.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
@@ -51,24 +51,21 @@
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
-                        <GridView>
-
-                            <GridViewColumn DisplayMemberBinding="{Binding Path=Name}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" Width="Auto"/>
-                            <GridViewColumn Header="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" Width="Auto" x:Name="testt">
-                                <GridViewColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <DataTemplate.Resources>
-                                            <Style TargetType="ContentPresenter">
-                                                <Setter Property="HorizontalAlignment" Value="Stretch"/>
-                                            </Style>
-                                        </DataTemplate.Resources>
-                                        <Border Background="Gray" HorizontalAlignment="Stretch" MinWidth="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=GridViewColumn} ,Path=ActualWidth}">
-                                            <TextBlock Text="{Binding Path=Value, TargetNullValue='{x:Static Properties:Resources.PropertyDoesNotExist}'}"/>
-                                        </Border>
-                                    </DataTemplate>
-                                </GridViewColumn.CellTemplate>
-                            </GridViewColumn>
-
+                        <GridView x:Name="gvProps" >
+                            <GridView.ColumnHeaderContainerStyle>
+                                <Style TargetType="GridViewColumnHeader">
+                                    <Setter Property="Margin" Value="0,0,0,2"/>
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                                                <Border Background="#EBEBEB" Height="20"/>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </GridView.ColumnHeaderContainerStyle>
+                            <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" ContentPath="Name"/>
+                            <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" ContentPath="Value"/>
                         </GridView>
                     </ListView.View>
                     <ListView.ItemContainerStyle>
@@ -84,7 +81,7 @@
                                                                          TextElement.FontSize="12" >
                                                     <GridViewRowPresenter.Resources>
                                                         <Style TargetType="{x:Type ContentPresenter}">
-                                                            <Setter Property="Width" Value="{Binding ElementName=testt, Path=ActualWidth}"/>
+                                                            
                                                         </Style>
                                                     </GridViewRowPresenter.Resources>
                                                     <GridViewRowPresenter.Columns>
@@ -93,13 +90,18 @@
                                                     </GridViewRowPresenter.Columns>
                                                 </GridViewRowPresenter>
                                             </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsSelected" Value="True">
+                                                    <Setter Property="Border.BorderThickness" Value="23"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
                                         </ControlTemplate>
                                     </Setter.Value>
                                 </Setter>
                             </Style.Setters>
                         </Style>
                     </ListView.ItemContainerStyle>
-                </ListView>
+                </customcontrols:CustomListView>
             </Grid>
         </ScrollViewer>
     </Grid>

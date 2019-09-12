@@ -68,7 +68,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void UpdateUI()
         {
             UpdateProperties();
-
         }
 
         /// <summary>
@@ -241,6 +240,20 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void onGotKeyBoardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
 
+        }
+        private List<TextBlock> Col2Blocks = new List<TextBlock>();
+        private double Wid => Col2Blocks.Count == 0 ? 0 : Col2Blocks.Max(tb => tb.ActualWidth);
+
+        private void TextBlock_Unloaded(object sender, RoutedEventArgs e)
+        {
+            Col2Blocks.Remove(sender as TextBlock);
+            // Col2.Width = Wid + 12;
+        }
+
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
+        {
+            Col2Blocks.Add(sender as TextBlock);
+            //   Col2.Width = Wid + 12;
         }
     }
 }
