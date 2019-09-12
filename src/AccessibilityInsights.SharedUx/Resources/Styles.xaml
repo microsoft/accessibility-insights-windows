@@ -432,9 +432,86 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
-
         </Setter>
     </Style>
+    <!-- CustomGridView related styles -->
+    <Style TargetType="GridViewColumnHeader" x:Key="GvchNoContent">
+        <Setter Property="Margin" Value="0,0,0,2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                    <Border Background="#EBEBEB" Height="20"/>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Thumb" x:Key="ThumbGridViewColumnHeader">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="Width" Value="3"/>
+        <Setter Property="Margin" Value="0,0,3,0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Thumb}">
+                    <Border Padding="{TemplateBinding Padding}" Width="3" Background="Transparent">
+                        <Rectangle HorizontalAlignment="Center" Width="3" Fill="Transparent"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style TargetType="Border" x:Key="BrdrDataGridCell">
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="Margin" Value="-4,1.5"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridBGBrush}"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridSelectedBGBrush}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="TbDataGridCellContent" BasedOn="{StaticResource VarStandardTextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="Margin" Value="4,0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" Value="{x:Null}">
+                <Setter Property="FontStyle" Value="Italic" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="ListViewItem" x:Key="LviDataGridStyle">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border Name="Bd" SnapsToDevicePixels="True">
+                            <GridViewRowPresenter  Content="{TemplateBinding ContentControl.Content}" Name="ContentSite"
+                                                                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                                                                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" HorizontalAlignment="Stretch"
+                                                                         TextElement.FontSize="12" >
+                                <GridViewRowPresenter.Resources>
+                                    <Style TargetType="{x:Type ContentPresenter}">
+
+                                    </Style>
+                                </GridViewRowPresenter.Resources>
+                                <GridViewRowPresenter.Columns>
+                                    <TemplateBinding Property="GridView.ColumnCollection">
+                                    </TemplateBinding>
+                                </GridViewRowPresenter.Columns>
+                            </GridViewRowPresenter>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Border.BorderThickness" Value="23"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+    <!-- End CustomGridView related styles -->
     <Style x:Key="tgbutton" TargetType="{x:Type ToggleButton}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>

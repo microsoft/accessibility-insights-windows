@@ -39,12 +39,10 @@
                     </DockPanel>                        
                 </Border>
                 <customcontrols:CustomListView
-                    x:Name="dgProperties"
-                    Grid.Row="2"
+                    x:Name="dgProperties" Grid.Row="2"
                     AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
-                    KeyUp="dgProperties_KeyUp" 
-                    IsTabStop="False" BorderThickness="0" 
-                    GotKeyboardFocus="onGotKeyBoardFocus">
+                    IsTabStop="False" BorderThickness="0" ItemContainerStyle="{StaticResource LviDataGridStyle}"
+                    KeyUp="dgProperties_KeyUp" GotKeyboardFocus="onGotKeyBoardFocus">
                     <i:Interaction.Behaviors>
                         <behaviors:ColumnResizeHotkeyBehavior/>
                     </i:Interaction.Behaviors>
@@ -54,56 +52,11 @@
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
-                        <GridView x:Name="gvProps" >
-                            <GridView.ColumnHeaderContainerStyle>
-                                <Style TargetType="GridViewColumnHeader">
-                                    <Setter Property="Margin" Value="0,0,0,2"/>
-                                    <Setter Property="Template">
-                                        <Setter.Value>
-                                            <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                                                <Border Background="#EBEBEB" Height="20"/>
-                                            </ControlTemplate>
-                                        </Setter.Value>
-                                    </Setter>
-                                </Style>
-                            </GridView.ColumnHeaderContainerStyle>
+                        <GridView x:Name="gvProps" ColumnHeaderContainerStyle="{StaticResource GvchNoContent}" >
                             <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" ContentPath="Name"/>
                             <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" ContentPath="Value"/>
                         </GridView>
                     </ListView.View>
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Style.Setters>
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="ListViewItem">
-                                            <Border Name="Bd" SnapsToDevicePixels="True">
-                                                <GridViewRowPresenter  Content="{TemplateBinding ContentControl.Content}" Name="ContentSite"
-                                                                         VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
-                                                                         SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" HorizontalAlignment="Stretch"
-                                                                         TextElement.FontSize="12" >
-                                                    <GridViewRowPresenter.Resources>
-                                                        <Style TargetType="{x:Type ContentPresenter}">
-                                                            
-                                                        </Style>
-                                                    </GridViewRowPresenter.Resources>
-                                                    <GridViewRowPresenter.Columns>
-                                                        <TemplateBinding Property="GridView.ColumnCollection">
-                                                        </TemplateBinding>
-                                                    </GridViewRowPresenter.Columns>
-                                                </GridViewRowPresenter>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsSelected" Value="True">
-                                                    <Setter Property="Border.BorderThickness" Value="23"/>
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style.Setters>
-                        </Style>
-                    </ListView.ItemContainerStyle>
                 </customcontrols:CustomListView>
             </Grid>
         </ScrollViewer>

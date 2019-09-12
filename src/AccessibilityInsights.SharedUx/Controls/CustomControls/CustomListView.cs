@@ -8,11 +8,15 @@ using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
-    internal class CustomListView : ListView
+    /// <summary>
+    /// A ListView styled to look like a DataGrid, complete with some custom column resizing behavior.
+    /// Meant to be used in conjunciton with <see cref="CustomGridViewColumn"/>.
+    /// </summary>
+    public class CustomListView : ListView
     {
         private readonly List<CustomGridViewColumn> columns = new List<CustomGridViewColumn>();
 
-        internal CustomListView() : base()
+        public CustomListView() : base()
         {
             Initialized += CustomListView_Initialized;
         }

@@ -5,10 +5,10 @@
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                mc:Ignorable="d" >
+                mc:Ignorable="d">
     <GridViewColumnHeader HorizontalContentAlignment="Stretch" Margin="0,0,0,2" VerticalContentAlignment="Stretch">
         <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" Margin="0,0,4,0" >
-            <TextBlock Name="tbHeader" FontWeight="SemiBold" FontSize="{DynamicResource ResourceKey=StandardTextSize}" Margin="3,0"/>
+            <TextBlock Name="tbHeader" Style="{DynamicResource tbRowStyle}" Margin="3,0"/>
         </Border>
     </GridViewColumnHeader>
     <GridViewColumn.HeaderContainerStyle>
@@ -20,21 +20,8 @@
                             <Border Background="#EBEBEB" Height="20">
                                 <ContentPresenter/>
                             </Border>
-                            <Thumb x:Name="PART_HeaderGripper" MouseDoubleClick="PART_HeaderGripper_MouseDoubleClick" HorizontalAlignment="Right" Width="3" Margin="0,0,3,0">
-                                <Thumb.Style>
-                                    <Style TargetType="Thumb">
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="{x:Type Thumb}">
-                                                    <Border Padding="{TemplateBinding Padding}" Width="3" Background="Transparent">
-                                                        <Rectangle HorizontalAlignment="Center" Width="3" Fill="Transparent"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </Thumb.Style>
-                            </Thumb>
+                            <Thumb x:Name="PART_HeaderGripper" MouseDoubleClick="PART_HeaderGripper_MouseDoubleClick"
+                                   Style="{DynamicResource ResourceKey=ThumbGridViewColumnHeader}"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
@@ -43,25 +30,11 @@
     </GridViewColumn.HeaderContainerStyle>
     <GridViewColumn.CellTemplate>
         <DataTemplate>
-            <Border Loaded="Border_Loaded" Unloaded="Border_Unloaded">
-                <Border.Style>
-                    <Style TargetType="Border">
-                        <Setter Property="Height" Value="20"/>
-                        <Setter Property="Margin" Value="-4,1.5"/>
-                        <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridBGBrush}"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
-                                <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridSelectedBGBrush}"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=Value}" Value="{x:Null}">
-                                <Setter Property="TextBlock.FontStyle" Value="Italic" />
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Border.Style>
-                <TextBlock FontSize="{DynamicResource ResourceKey=StandardTextSize}" HorizontalAlignment="Left"
-                           VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=TextBrush}" SizeChanged="TextBlock_SizeChanged"
-                           Margin="4,0"  Loaded="TextBlock_Loaded" Unloaded="TextBlock_Unloaded"/>
+            <Border Loaded="Border_Loaded" Unloaded="Border_Unloaded"
+                    Style="{DynamicResource ResourceKey=BrdrDataGridCell}">
+                <TextBlock Margin="4,0" SizeChanged="TextBlock_SizeChanged"
+                           Loaded="TextBlock_Loaded" Unloaded="TextBlock_Unloaded"
+                           Style="{DynamicResource ResourceKey=TbDataGridCellContent}"/>
             </Border>
         </DataTemplate>
     </GridViewColumn.CellTemplate>

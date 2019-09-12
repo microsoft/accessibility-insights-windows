@@ -8,6 +8,10 @@ using System.Windows.Data;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
+    /// <summary>
+    /// A GridViewColumn styled so that "cells" look DataGridCells, complete with some custom 
+    /// resizing behavior. Meant to be used in conjunciton with <see cref="CustomGridView"/>.
+    /// </summary>
     public partial class CustomGridViewColumn : GridViewColumn
     {
         List<Border> borders = new List<Border>();
@@ -83,6 +87,12 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             textBlocks.Remove(sender as TextBlock);
         }
 
+        private void TextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (!e.WidthChanged) return;
+            UpdateWidth();
+        }
+
         private void Border_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             borders.Add(sender as Border);
@@ -112,12 +122,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 Path = new PropertyPath("ActualWidth"),
             };
             bd.SetBinding(Border.WidthProperty, bind);
-        }
-
-        private void TextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (!e.WidthChanged) return;
-            UpdateWidth();
         }
 
         private void PART_HeaderGripper_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => UpdateWidth();
