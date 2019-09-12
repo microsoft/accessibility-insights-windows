@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Input;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -76,13 +77,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         internal void UpdateWidth() => Width = MaxColumnWidth;
 
-        private void TextBlock_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             textBlocks.Add(sender as TextBlock);
             if (!string.IsNullOrEmpty(ContentPath)) UpdateTextBinding(sender as TextBlock);
         }
 
-        private void TextBlock_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        private void TextBlock_Unloaded(object sender, RoutedEventArgs e)
         {
             textBlocks.Remove(sender as TextBlock);
         }
@@ -93,13 +94,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             UpdateWidth();
         }
 
-        private void Border_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Border_Loaded(object sender, RoutedEventArgs e)
         {
             borders.Add(sender as Border);
             if (!string.IsNullOrEmpty(RegisteredName)) UpdateBorderWidthBinding(sender as Border);
         }
 
-        private void Border_Unloaded(object sender, System.Windows.RoutedEventArgs e)
+        private void Border_Unloaded(object sender, RoutedEventArgs e)
         {
             borders.Remove(sender as Border);
         }
@@ -124,6 +125,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             bd.SetBinding(Border.WidthProperty, bind);
         }
 
-        private void PART_HeaderGripper_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e) => UpdateWidth();
+        private void PART_HeaderGripper_MouseDoubleClick(object sender, MouseButtonEventArgs e) => UpdateWidth();
     }
 }

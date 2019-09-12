@@ -461,7 +461,7 @@
     </Style>
     <Style TargetType="Border" x:Key="BrdrDataGridCell">
         <Setter Property="Height" Value="20"/>
-        <Setter Property="Margin" Value="-4,1.5"/>
+        <Setter Property="Margin" Value="-4,0"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridBGBrush}"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
@@ -482,6 +482,8 @@
     </Style>
     <Style TargetType="ListViewItem" x:Key="LviDataGridStyle">
         <Style.Setters>
+            <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+            <Setter Property="Margin" Value="2,1.5"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListViewItem">
