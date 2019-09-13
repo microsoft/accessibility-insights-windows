@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Win32;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
@@ -37,7 +38,9 @@ namespace UITests
 
         private void ValidateResultsInUIATree()
         {
-            driver.TestMode.ResultsInUIATree.ValidateResults(false, 2, 11);
+            int expectedResultsCount = 12; // this number should only change if axe-windows or WildlifeManager are modified.
+
+            driver.TestMode.ResultsInUIATree.ValidateResults(2, expectedResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
             driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name, Property does not exist", 1, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);
@@ -54,6 +57,11 @@ namespace UITests
         private void TestLiveMode()
         {
             var appOpened = WaitFor(() => _wildlifeManager.MainWindowTitle == "Wildlife Manager 2.0", new TimeSpan(0, 0, 1), 10, _wildlifeManager.Refresh);
+
+            // set focus on ai win and then WildlifeManager to make sure the app is selected
+            driver.FocusWindowByResizing();
+            NativeMethods.SetForegroundWindow(_wildlifeManager.MainWindowHandle);
+
             var appSelected = WaitFor(() => driver.LiveMode.SelectedElementText == "window 'Wildlife Manager 2.0'", new TimeSpan(0, 0, 1), 5);
             driver.LiveMode.TogglePause();
 

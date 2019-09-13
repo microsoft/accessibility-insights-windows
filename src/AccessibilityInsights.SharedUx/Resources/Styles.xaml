@@ -1172,16 +1172,16 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl x:Name="fbiBorder" GlyphName="ToggleBorder" GlyphSize="Custom" FontSize="26" VerticalAlignment="Center" Margin="0,-10" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
-                            <fabric:FabricIconControl x:Name="fbiFilled" GlyphName="ToggleFilled" GlyphSize="Custom" FontSize="26" VerticalAlignment="Center" Margin="0,-10" Foreground="{DynamicResource ResourceKey=ToggleSliderBlueBrush}"/>
-                            <fabric:FabricIconControl x:Name="fbiFilledHover" GlyphName="ToggleFilled" GlyphSize="Custom" FontSize="26" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,-10" Foreground="Wheat" Opacity=".3"/>
+                            <fabric:FabricIconControl x:Name="fbiBorder" ShowInControlView="False" GlyphName="ToggleBorder" GlyphSize="Custom" FontSize="26" VerticalAlignment="Center" Margin="0,-10" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                            <fabric:FabricIconControl x:Name="fbiFilled" ShowInControlView="False" GlyphName="ToggleFilled" GlyphSize="Custom" FontSize="26" VerticalAlignment="Center" Margin="0,-10" Foreground="{DynamicResource ResourceKey=ToggleSliderBlueBrush}"/>
+                            <fabric:FabricIconControl x:Name="fbiFilledHover" ShowInControlView="False" GlyphName="ToggleFilled" GlyphSize="Custom" FontSize="26" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,-10" Foreground="Wheat" Opacity=".3"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition x:Name="colLeftSide" Width="0"/>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition x:Name="colRightSide" Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <fabric:FabricIconControl Grid.Column="1" x:Name="fbiThumb" GlyphName="ToggleThumb" GlyphSize="Custom" FontSize="6" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="3,8,3,0"/>
+                                <fabric:FabricIconControl Grid.Column="1" x:Name="fbiThumb" ShowInControlView="False" GlyphName="ToggleThumb" GlyphSize="Custom" FontSize="6" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="3,8,3,0"/>
                             </Grid>
                             <Label x:Name="lblState" Padding="4,0,0,0" FontSize="11" VerticalAlignment="Center" Grid.Column="1"/>
                         </Grid>

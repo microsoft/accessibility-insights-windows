@@ -6,6 +6,8 @@ parameters:
 jobs:
 - job: UITests${{ parameters.configuration }}
   displayName: Build and run UI Tests - ${{ parameters.configuration }}
+  variables:
+    SignAppForRelease: 'false'
   condition: succeeded()
   pool:
     vmImage: windows-2019

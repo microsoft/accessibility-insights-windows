@@ -109,10 +109,13 @@ namespace UITests.UILibrary
             var nodes = tree.FindElementsByClassName("TreeViewItem");
 
             Assert.AreEqual(nodeCount, nodes.Count);
-            Assert.AreEqual(firstNodeText, nodes.First().Text);
+
+            // We're seeing the Text property here return different values on different versions of .NET framework.
+            // As such, we only check for Contains (not Equals) here to make the test more flexible.
+            Assert.IsTrue(nodes.First().Text.Contains(firstNodeText));
         }
 
-        public void ValidateResults(bool isFixFollowingTextNull, int failedResultsCount, int allResultsCount)
+        public void ValidateResults(int failedResultsCount, int allResultsCount)
         {
             var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
             var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
@@ -120,12 +123,11 @@ namespace UITests.UILibrary
             if (allResultsCount > 0)
             {
                 Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
+                var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
+                Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
             }
 
             var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
-            var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
-
-            Assert.AreEqual(isFixFollowingTextNull, string.IsNullOrEmpty(fixFollowTb.Text));
             Assert.AreEqual(failedResultsCount, resultsFailedOnly.Count);
             Assert.AreEqual(allResultsCount, resultsAll.Count);
         }

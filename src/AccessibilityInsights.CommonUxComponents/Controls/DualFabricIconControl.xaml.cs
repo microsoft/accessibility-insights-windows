@@ -176,6 +176,20 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         #endregion
 
+        #region ShowInControlView (Dependency Property)
+
+        public static readonly DependencyProperty ShowInControlViewProperty =
+            DependencyProperty.Register("ShowInControlView", typeof(bool), typeof(DualFabricIconControl), new PropertyMetadata(true));
+
+        public bool ShowInControlView
+        {
+            get { return (bool)GetValue(ShowInControlViewProperty); }
+
+            set { SetValue(ShowInControlViewProperty, value); }
+        }
+
+        #endregion
+
         /// <summary>
         /// Constructor with default size
         /// </summary>
@@ -186,6 +200,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             this.fabicnBack.GlyphSize = GlyphContext.Custom;
         }
 
-        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateControlViewIconAutomationPeer(this);
+        protected override AutomationPeer OnCreateAutomationPeer() => CommonAutomationPeerCreator.CreateIconAutomationPeer(this, ShowInControlView);
     }
 }
