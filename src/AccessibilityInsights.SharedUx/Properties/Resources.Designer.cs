@@ -3321,15 +3321,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Join Accessibility Insights Updates and Discussions.
-        /// </summary>
-        public static string RunTextEmailSupport {
-            get {
-                return ResourceManager.GetString("RunTextEmailSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Quickly find accessibility issues with FastPass:.
         /// </summary>
         public static string RunTextFastPass {
@@ -3445,15 +3436,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextPrivacyStatement {
             get {
                 return ResourceManager.GetString("RunTextPrivacyStatement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to to receive email announcements..
-        /// </summary>
-        public static string RunTextReceiveEmail {
-            get {
-                return ResourceManager.GetString("RunTextReceiveEmail", resourceCulture);
             }
         }
         
