@@ -15,39 +15,12 @@
         <ResourceDictionary Source="..\..\Resources\Styles.xaml"/>
     </UserControl.Resources>
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Disabled" Name="scrollview" SizeChanged="scrollview_SizeChanged">
-        <Grid Width="Auto">
+        <Grid Width="Auto" Margin="16,0,0,0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="16"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Fill="{DynamicResource ResourceKey=NoticeBackgroundBrush}" Grid.Row="0" Grid.Column="0" Visibility="Collapsed"/>
-            <Grid Grid.Column="1" Grid.Row="0" Background="{DynamicResource ResourceKey=NoticeBackgroundBrush}" Height="Auto" Visibility="Collapsed">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="8"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="8"/>
-                </Grid.RowDefinitions>
-                <fabric:FabricIconControl GlyphName="Info" Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1"
-                                          GlyphSize="Custom" FontSize="16" Margin="8,2,8,0"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource TbFocusable}" KeyboardNavigation.IsTabStop="True">
-                    <Hyperlink FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None"
-                               NavigateUri="https://aka.ms/accessibility-insights-announcements" RequestNavigate="Hyperlink_RequestNavigate">
-                        <Run Name="tbLinkText" Text="{x:Static Properties:Resources.RunTextEmailSupport}"/>
-                    </Hyperlink>
-                    <Run Text="{x:Static Properties:Resources.RunTextReceiveEmail}"/>
-                </TextBlock>
-            </Grid>
-            <Rectangle Fill="{DynamicResource ResourceKey=LightBackgroundBrush}" Grid.Column="0" Grid.Row="1"/>
-            <Grid Grid.Row="1" Grid.Column="1" Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
+            <Grid Grid.Row="0" Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12"/>
                     <RowDefinition Height="28"/>
@@ -85,7 +58,7 @@
                     </TextBlock>
                 </Grid>
             </Grid>
-            <Border Grid.Row="5" Grid.Column="1" BorderBrush="#EAEAEA" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Border Grid.Row="1" BorderBrush="#EAEAEA" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <ListView AutomationProperties.LabeledBy="{Binding ElementName=lblTitle}" KeyboardNavigation.TabNavigation="Once"
                           Name="lvResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
                           AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}">
@@ -323,9 +296,8 @@
                     </ListView.GroupStyle>
                 </ListView>
             </Border>
-            <Label Grid.Row="6" Grid.Column="1" Name="lblCongrats" Visibility="Collapsed" Content="{x:Static Properties:Resources.lblCongratsContent}" HorizontalAlignment="Center"  Width="Auto" Style="{StaticResource lblHeader2}" Padding="0,32,0,0" />
-            <TextBlock Grid.Row="6" Grid.Column="1" Name="lblNoFail" Visibility="Collapsed" Text="{x:Static Properties:Resources.lblNoFailText}"  Style="{StaticResource tbHeaderDark}" TextWrapping="Wrap" Width="214" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,49,0,0" />
+            <Label Grid.Row="1" Name="lblCongrats" Visibility="Collapsed" Content="{x:Static Properties:Resources.lblCongratsContent}" HorizontalAlignment="Center"  Width="Auto" Style="{StaticResource lblHeader2}" Padding="0,32,0,0" />
+            <TextBlock Grid.Row="1" Name="lblNoFail" Visibility="Collapsed" Text="{x:Static Properties:Resources.lblNoFailText}"  Style="{StaticResource tbHeaderDark}" TextWrapping="Wrap" Width="214" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,49,0,0" />
         </Grid>
     </ScrollViewer>
 </UserControl>
-

@@ -378,12 +378,6 @@
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
-  <data name="RunTextEmailSupport" xml:space="preserve">
-    <value>Join Accessibility Insights Updates and Discussions</value>
-  </data>
-  <data name="RunTextReceiveEmail" xml:space="preserve">
-    <value>to receive email announcements.</value>
-  </data>
   <data name="lblTitleContent" xml:space="preserve">
     <value>AUTOMATED CHECKS</value>
   </data>
