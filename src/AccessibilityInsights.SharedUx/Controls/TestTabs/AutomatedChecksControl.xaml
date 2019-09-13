@@ -18,7 +18,6 @@
         <Grid Width="Auto" Margin="16,0,0,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
@@ -297,8 +296,8 @@
                     </ListView.GroupStyle>
                 </ListView>
             </Border>
-            <Label Grid.Row="2" Name="lblCongrats" Visibility="Collapsed" Content="{x:Static Properties:Resources.lblCongratsContent}" HorizontalAlignment="Center"  Width="Auto" Style="{StaticResource lblHeader2}" Padding="0,32,0,0" />
-            <TextBlock Grid.Row="2" Name="lblNoFail" Visibility="Collapsed" Text="{x:Static Properties:Resources.lblNoFailText}"  Style="{StaticResource tbHeaderDark}" TextWrapping="Wrap" Width="214" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,49,0,0" />
+            <Label Grid.Row="1" Name="lblCongrats" Visibility="Collapsed" Content="{x:Static Properties:Resources.lblCongratsContent}" HorizontalAlignment="Center"  Width="Auto" Style="{StaticResource lblHeader2}" Padding="0,32,0,0" />
+            <TextBlock Grid.Row="1" Name="lblNoFail" Visibility="Collapsed" Text="{x:Static Properties:Resources.lblNoFailText}"  Style="{StaticResource tbHeaderDark}" TextWrapping="Wrap" Width="214" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,49,0,0" />
         </Grid>
     </ScrollViewer>
 </UserControl>
