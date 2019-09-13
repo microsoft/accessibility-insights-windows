@@ -533,7 +533,7 @@ Accessibility Insights Support Team
   <data name="smallSampleText" xml:space="preserve">
     <value>The quick brown fox</value>
   </data>
-  <data name="largeTextResultAutomationPropertiesName" xml:space="preserve">
+  <data name="largeTextResultAutomationHelpText" xml:space="preserve">
     <value>Test result large text</value>
   </data>
   <data name="ColorContrast_OpenLinkFailed" xml:space="preserve">
