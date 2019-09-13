@@ -19,14 +19,14 @@ We have added functionality to the Color Contrast Analyzer feature in Accessibil
 #### Bug Fixes
 
 - We have fixed several issues to make the app more usable for screen reader users.
-- We have updated to Axe.Windows 0.3.4 (#529)
+- We have updated to Axe.Windows 0.3.4 [#529](https://github.com/microsoft/accessibility-insights-windows/pull/529)
 - We have fixed the issue that caused "Prerelease Build" to display incorrectly in the version bar [#450](https://github.com/microsoft/accessibility-insights-windows/pull/450)
 
 #### Rule Updates
 
 We have added/updated the following accessibility rules based on community feedback:
 
-- Added the `NameExcludesPrivateUnicodeCharacters`, `HelpTextExcludesPrivateUnicodeCharacters`, and `LocalizedControlTypeExcludesPrivateUnicodeCharacters` rules to detect characters in the private Unicode range with UIA Name, HelpText, and LocalizedControlType properties; and any other properties where a speech synthesizer or Braille display might be used to convey content to a user [#129].
+- Added the `NameExcludesPrivateUnicodeCharacters`, `HelpTextExcludesPrivateUnicodeCharacters`, and `LocalizedControlTypeExcludesPrivateUnicodeCharacters` rules to detect characters in the private Unicode range with UIA Name, HelpText, and LocalizedControlType properties; and any other properties where a speech synthesizer or Braille display might be used to convey content to a user [#129](https://github.com/microsoft/axe-windows/issues/129).
 
 - Updated the `ControlShouldSupportTextPattern` rule to add the following exemptions [#140](https://github.com/microsoft/axe-windows/issues/140):
 
