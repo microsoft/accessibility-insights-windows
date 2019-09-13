@@ -440,7 +440,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                    <Border Background="#EBEBEB" Height="20"/>
+                    <Border Background="{DynamicResource ResourceKey=ColumnHeaderBGBrush}" Height="20"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -477,6 +477,9 @@
         <Style.Triggers>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" Value="{x:Null}">
                 <Setter Property="FontStyle" Value="Italic" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
