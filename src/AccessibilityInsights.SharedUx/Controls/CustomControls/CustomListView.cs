@@ -1,10 +1,14 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Utilities;
+using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Text;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -18,7 +22,22 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         public CustomListView() : base()
         {
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, HandleCopy, HandleCanCopy));
             Initialized += CustomListView_Initialized;
+        }
+
+        private void HandleCanCopy(object sender, CanExecuteRoutedEventArgs e) =>
+            e.CanExecute = (sender as CustomListView).SelectedItems.Count > 0;
+
+        private void HandleCopy(object sender, EventArgs e)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (PropertyListViewItemModel vm in (sender as CustomListView).SelectedItems)
+            {
+                sb.AppendLine($"{vm.Name}\t{vm.Value ?? "Property does not exist"}");
+            }
+            sb.CopyStringToClipboard();
+            sb.Clear();
         }
 
         internal void UpdateAllColumnWidths() => columns.ForEach(col => col.UpdateWidth());
