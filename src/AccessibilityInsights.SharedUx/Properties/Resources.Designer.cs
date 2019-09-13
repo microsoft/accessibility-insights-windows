@@ -2277,9 +2277,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Test result large text.
         /// </summary>
-        public static string largeTextResultAutomationPropertiesName {
+        public static string largeTextResultAutomationHelpText {
             get {
-                return ResourceManager.GetString("largeTextResultAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("largeTextResultAutomationHelpText", resourceCulture);
             }
         }
         
