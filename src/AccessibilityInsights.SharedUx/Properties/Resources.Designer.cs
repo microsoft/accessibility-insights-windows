@@ -1465,15 +1465,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties.
-        /// </summary>
-        public static string dgPropertiesAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("dgPropertiesAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Return value.
         /// </summary>
         public static string dgReturnAutomationPropertiesName {
@@ -2631,6 +2622,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string lvLeftAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("lvLeftAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties.
+        /// </summary>
+        public static string lvPropertiesAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("lvPropertiesAutomationPropertiesName", resourceCulture);
             }
         }
         

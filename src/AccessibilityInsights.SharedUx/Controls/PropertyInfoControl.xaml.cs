@@ -83,7 +83,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 if (Configuration.ShowAllProperties == false)
                 {
-                    this.dgProperties.ItemsSource = (from id in Configuration.CoreProperties
+                    this.lvProperties.ItemsSource = (from id in Configuration.CoreProperties
                                                      join l in list
                                                      on id equals l.Id into newList
                                                      from l in newList.DefaultIfEmpty(new A11yProperty(id, null))
@@ -97,14 +97,14 @@ namespace AccessibilityInsights.SharedUx.Controls
                             .ToLookup(p => p.Id)
                             .Select(g => g.Aggregate((p1, p2) => p1));
 
-                    this.dgProperties.ItemsSource = (from l in list
+                    this.lvProperties.ItemsSource = (from l in list
                                                      orderby l.Name
                                                      select new PropertyListViewItemModel(l)).ToList();
 
                     // make sure that we are release from original view
                     this.CollectionView?.DetachFromSourceCollection();
 
-                    this.CollectionView = (CollectionView)CollectionViewSource.GetDefaultView(dgProperties.ItemsSource);
+                    this.CollectionView = (CollectionView)CollectionViewSource.GetDefaultView(lvProperties.ItemsSource);
                     this.CollectionView.Filter = NameFilter;
                 }
             }
@@ -119,10 +119,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void ClearProperties()
         {
-            if (this.dgProperties.ItemsSource != null)
+            if (this.lvProperties.ItemsSource != null)
             {
-                var list = (List<PropertyListViewItemModel>)this.dgProperties.ItemsSource;
-                this.dgProperties.ItemsSource = null;
+                var list = (List<PropertyListViewItemModel>)this.lvProperties.ItemsSource;
+                this.lvProperties.ItemsSource = null;
                 list.ForEach(l => l.Clear());
                 list.Clear();
             }
@@ -147,9 +147,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void textboxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.dgProperties.ItemsSource != null && (this.textboxSearch.Text.Length >= 2 || this.textboxSearch.Text.Length == 0))
+            if (this.lvProperties.ItemsSource != null && (this.textboxSearch.Text.Length >= 2 || this.textboxSearch.Text.Length == 0))
             {
-                CollectionViewSource.GetDefaultView(this.dgProperties.ItemsSource).Refresh();
+                CollectionViewSource.GetDefaultView(this.lvProperties.ItemsSource).Refresh();
             }
         }
 
@@ -228,32 +228,13 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dgProperties_KeyUp(object sender, KeyEventArgs e)
+        private void lvProperties_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
-                ApplicationCommands.Copy.Execute(null, dgProperties);
+                ApplicationCommands.Copy.Execute(null, lvProperties);
                 e.Handled = true;
             }
-        }
-
-        private void onGotKeyBoardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {
-
-        }
-        private List<TextBlock> Col2Blocks = new List<TextBlock>();
-        private double Wid => Col2Blocks.Count == 0 ? 0 : Col2Blocks.Max(tb => tb.ActualWidth);
-
-        private void TextBlock_Unloaded(object sender, RoutedEventArgs e)
-        {
-            Col2Blocks.Remove(sender as TextBlock);
-            // Col2.Width = Wid + 12;
-        }
-
-        private void TextBlock_Loaded(object sender, RoutedEventArgs e)
-        {
-            Col2Blocks.Add(sender as TextBlock);
-            //   Col2.Width = Wid + 12;
         }
     }
 }

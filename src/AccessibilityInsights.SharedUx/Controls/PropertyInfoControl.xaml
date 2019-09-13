@@ -39,10 +39,10 @@
                     </DockPanel>                        
                 </Border>
                 <customcontrols:CustomListView
-                    x:Name="dgProperties" Grid.Row="2"
-                    AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
+                    x:Name="lvProperties" Grid.Row="2"
+                    AutomationProperties.Name="{x:Static Properties:Resources.lvPropertiesAutomationPropertiesName}" 
                     IsTabStop="False" BorderThickness="0" ItemContainerStyle="{StaticResource LviDataGridStyle}"
-                    KeyUp="dgProperties_KeyUp" GotKeyboardFocus="onGotKeyBoardFocus">
+                    KeyUp="lvProperties_KeyUp">
                     <i:Interaction.Behaviors>
                         <behaviors:ColumnResizeHotkeyBehavior/>
                     </i:Interaction.Behaviors>
