@@ -26,16 +26,18 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             Initialized += CustomListView_Initialized;
         }
 
-        private void HandleCanCopy(object sender, CanExecuteRoutedEventArgs e) =>
-            e.CanExecute = (sender as CustomListView).SelectedItems.Count > 0;
+        private void HandleCanCopy(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = SelectedItems.Count > 0;
 
         private void HandleCopy(object sender, EventArgs e)
         {
             StringBuilder sb = new StringBuilder();
-            foreach (PropertyListViewItemModel vm in (sender as CustomListView).SelectedItems)
+
+            foreach (PropertyListViewItemModel vm in SelectedItems)
             {
-                sb.AppendLine($"{vm.Name}\t{vm.Value ?? "Property does not exist"}");
+                var line = $"{vm.Name}\t{vm.Value ?? Properties.Resources.PropertyDoesNotExist}";
+                sb.AppendLine(line);
             }
+
             sb.CopyStringToClipboard();
             sb.Clear();
         }
@@ -45,6 +47,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void CustomListView_Initialized(object sender, EventArgs e)
         {
             (View as GridView).Columns.CollectionChanged += Columns_CollectionChanged;
+
             foreach (var col in (View as GridView).Columns)
             {
                 if (col is CustomGridViewColumn customCol)
