@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -24,6 +25,20 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, HandleCopy, HandleCanCopy));
             Initialized += CustomListView_Initialized;
+            PreviewMouseWheel += CustomListView_PreviewMouseWheel;
+        }
+
+        private void CustomListView_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (!e.Handled)
+            {
+                e.Handled = true;
+                var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
+                eventArg.RoutedEvent = MouseWheelEvent;
+                eventArg.Source = sender;
+                var parent = (sender as Control)?.Parent as UIElement;
+                parent?.RaiseEvent(eventArg);
+            }
         }
 
         private void HandleCanCopy(object sender, CanExecuteRoutedEventArgs e) => e.CanExecute = SelectedItems.Count > 0;
