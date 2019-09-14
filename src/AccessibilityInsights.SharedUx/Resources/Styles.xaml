@@ -8,6 +8,7 @@
                     xmlns:colorpickers="clr-namespace:AccessibilityInsights.SharedUx.Controls.ColorPicker;assembly=AccessibilityInsights.SharedUx"
                     xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls;assembly=AccessibilityInsights.SharedUx"
                     xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters;assembly=AccessibilityInsights.SharedUx"
+                    xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <converters:TreeNodeToMarginConverter x:Key="nodeMargin"/>
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
@@ -475,7 +476,7 @@
         <Setter Property="Margin" Value="4,0"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" Value="{x:Null}">
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text}" Value="{x:Static properties:Resources.PropertyDoesNotExist}">
                 <Setter Property="FontStyle" Value="Italic" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
