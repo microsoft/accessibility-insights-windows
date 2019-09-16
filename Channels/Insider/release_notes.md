@@ -1,8 +1,8 @@
-## September 16, 2019 Insider Release ([v1.1.0985.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0985.01))
+## September 16, 2019 Insider Release ([v1.1.0988.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0988.01))
 
 Welcome to the September 16, 2019 Insider release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.0985.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.0988.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
