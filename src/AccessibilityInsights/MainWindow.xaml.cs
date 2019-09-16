@@ -58,7 +58,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// The width of the Bug column in the data grid (0 if bug filing isn't available)
         /// </summary>
-        public static double BugColumnWidth => HelperMethods.GeneralFileBugVisibility == Visibility.Visible ? 80 : 0;
+        public static double BugColumnWidth => HelperMethods.GeneralFileBugVisibility == Visibility.Visible ? HelperMethods.FileIssueColumnWidth : 0;
 
         /// <summary>
         /// Internal bool to ignore or allow updating logic

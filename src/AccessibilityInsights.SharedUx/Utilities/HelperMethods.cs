@@ -51,6 +51,21 @@ namespace AccessibilityInsights.SharedUx.Utilities
         }
 
         /// <summary>
+        /// Get a "File Issue" column width that is appropriate for the currently configured font size
+        /// </summary>
+        public static double FileIssueColumnWidth
+        {
+            get
+            {
+                switch (ConfigurationManager.GetDefaultInstance().AppConfig.FontSize)
+                {
+                    case Enums.FontSize.Small: return 80.0;
+                    default: return 90.0;
+                }
+            }
+        }
+
+        /// <summary>
         /// Provides bindable property for ProgressRingControls
         /// </summary>
         public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
