@@ -53,7 +53,7 @@
 
                 <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_RunAutomatedChecks}"/>
-                    <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                    <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal" ShowInControlView="False"/>
                     <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
                     <Run Name="runHkTest"/><Run Text="."/>
                     <TextBlock>
