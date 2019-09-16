@@ -117,7 +117,7 @@
                     <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                     <Button.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded">
-                            <MenuItem Header="Event recording scope">
+                            <MenuItem Header="{x:Static Properties:Resources.EventRecordControlScopeHeader}">
                                 <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRB_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName}">
                                     <MenuItem.Header>
