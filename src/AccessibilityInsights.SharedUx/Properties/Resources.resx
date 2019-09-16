@@ -1609,4 +1609,7 @@ Do you want to change the channel? </value>
   <data name="RangeSelectionNotChanged" xml:space="preserve">
     <value>No selected Range or the selected Range is already in the list.</value>
   </data>
+  <data name="EventRecordControlScopeHeader" xml:space="preserve">
+    <value>Event recording scope</value>
+  </data>
 </root>

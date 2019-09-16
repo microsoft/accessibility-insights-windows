@@ -1629,6 +1629,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event recording scope.
+        /// </summary>
+        public static string EventRecordControlScopeHeader {
+            get {
+                return ResourceManager.GetString("EventRecordControlScopeHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
         /// </summary>
         public static string ExceptionsLostFromBuffer {
