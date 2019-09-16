@@ -143,6 +143,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\CustomControls\CustomGridViewColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\SettingsTabs\WhatsNewTabControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -325,6 +329,10 @@
       <DependentUpon>ChannelConfigControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomControls\CustomDataGrid.cs" />
+    <Compile Include="Controls\CustomControls\CustomGridViewColumn.xaml.cs">
+      <DependentUpon>CustomGridViewColumn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CustomControls\CustomListView.cs" />
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>

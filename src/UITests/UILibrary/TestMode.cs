@@ -91,7 +91,7 @@ namespace UITests.UILibrary
         public void ValidateDetails(string firstPattern, string firstProperty, int patternCount, int propCount)
         {
             var snapshotModeControl = Session.FindElementByAccessibilityId(AutomationIDs.SnapshotModeControl);
-            var props = snapshotModeControl.FindElementsByClassName("DataGridRow");
+            var props = snapshotModeControl.FindElementsByClassName("ListViewItem");
             props[0].Click();
             var tree = snapshotModeControl.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
             var nodes = tree.FindElementsByClassName("TreeViewItem");

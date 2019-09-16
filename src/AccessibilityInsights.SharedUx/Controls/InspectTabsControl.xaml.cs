@@ -191,7 +191,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void InitAcceleratorPropertiesOnDescendants()
         {
             this.ctrlProperties.textboxSearch.SetValue(AutomationProperties.AcceleratorKeyProperty, "Alt+E");
-            this.ctrlProperties.dgProperties.SetValue(AutomationProperties.AcceleratorKeyProperty, "Alt+P");
+            this.ctrlProperties.lvProperties.SetValue(AutomationProperties.AcceleratorKeyProperty, "Alt+P");
             this.ctrlPatterns.treePatterns.SetValue(AutomationProperties.AcceleratorKeyProperty, "Alt+A");
             this.CtrlEventMessage.dgEvents.SetValue(AutomationProperties.AcceleratorKeyProperty, "Alt+V");
         }
@@ -288,7 +288,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void OnMoveFocusToPropertiesGrid(object sender, RoutedEventArgs e)
         {
             var traversalRequest = new TraversalRequest(FocusNavigationDirection.First);
-            this.ctrlProperties.dgProperties.MoveFocus(traversalRequest);
+            this.ctrlProperties.lvProperties.MoveFocus(traversalRequest);
         }
 
         private void OnMoveFocusToPropertiesSearch(object sender, RoutedEventArgs e)

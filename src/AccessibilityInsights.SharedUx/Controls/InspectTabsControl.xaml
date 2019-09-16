@@ -101,7 +101,7 @@
                             </Grid>
                         </Expander.Header>
                         <Grid x:Name="gridProperties" VerticalAlignment="Stretch" Grid.ColumnSpan="2" Margin="0,0,0.333,0">
-                            <controls:PropertyInfoControl x:Name="ctrlProperties" Margin="8" KeyboardNavigation.TabNavigation="Local"/>
+                            <controls:PropertyInfoControl x:Name="ctrlProperties" Margin="6,12" KeyboardNavigation.TabNavigation="Local"/>
                         </Grid>
                     </Expander>
                     <GridSplitter x:Name="gsProperties"

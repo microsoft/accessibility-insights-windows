@@ -42,13 +42,13 @@ namespace UITests
         {
             driver.TestMode.ResultsInUIATree.ValidateResults(2, 28);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
-            driver.TestMode.ResultsInUIATree.ValidateDetails("InvokePattern", "Name, Ok", 3, 10);
+            driver.TestMode.ResultsInUIATree.ValidateDetails("InvokePattern", "Name: Ok", 3, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1' has failed test results in descendants.", 16);
         }
 
         private void ValidateRootElement()
         {
-            driver.TestMode.ResultsInUIATree.ValidateDetails("LegacyIAccessiblePattern", "Name, Desktop 1", 10, 10);
+            driver.TestMode.ResultsInUIATree.ValidateDetails("LegacyIAccessiblePattern", "Name: Desktop 1", 10, 10);
             driver.TestMode.ResultsInUIATree.SwitchToResultsTab();
             driver.TestMode.ResultsInUIATree.ValidateResults(0, 0);
         }

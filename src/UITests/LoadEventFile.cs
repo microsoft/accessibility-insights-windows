@@ -58,14 +58,23 @@ namespace UITests
             eventRows[2].Click();
 
             // 10 rows from the event log and 10 from the event properties
-            var rowCount = GetNumEventDataRows();
-            Assert.AreEqual(20, rowCount, "We expected a different number of loaded event rows after selecting properties");
+            var rowDataCount = GetNumEventDataRows();
+            var rowPropertyCount = GetNumEventPropertyRows();
+            Assert.AreEqual(10, rowDataCount, "We expected a different number of loaded event rows after selecting properties");
+            Assert.AreEqual(10, rowPropertyCount, "We expected a different number of loaded event property rows after selecting properties");
         }
 
         private int GetNumEventDataRows()
         {
             var control = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventModeControl);
             var rows = control.FindElementsByClassName("DataGridRow");
+            return rows.Count;
+        }
+
+        private int GetNumEventPropertyRows()
+        {
+            var control = driver.FindElementByAccessibilityId(AccessibilityInsights.SharedUx.Properties.AutomationIDs.EventModeControl);
+            var rows = control.FindElementsByClassName("ListViewItem");
             return rows.Count;
         }
 

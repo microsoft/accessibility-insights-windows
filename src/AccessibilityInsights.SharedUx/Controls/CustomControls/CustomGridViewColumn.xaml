@@ -1,0 +1,41 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<GridViewColumn x:Class="AccessibilityInsights.SharedUx.Controls.CustomControls.CustomGridViewColumn"
+                xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                mc:Ignorable="d">
+    <GridViewColumnHeader HorizontalContentAlignment="Stretch" Margin="0,0,0,2" VerticalContentAlignment="Stretch">
+        <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" Margin="0,0,4,0" >
+            <TextBlock Name="tbHeader" Style="{DynamicResource tbRowStyle}" Margin="3,0"/>
+        </Border>
+    </GridViewColumnHeader>
+    <GridViewColumn.HeaderContainerStyle>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                        <Grid Margin="2,0,-2,0">
+                            <Border Background="{DynamicResource ResourceKey=ColumnHeaderBGBrush}" Height="20">
+                                <ContentPresenter/>
+                            </Border>
+                            <Thumb x:Name="PART_HeaderGripper" MouseDoubleClick="PART_HeaderGripper_MouseDoubleClick"
+                                   Style="{DynamicResource ResourceKey=ThumbGridViewColumnHeader}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </GridViewColumn.HeaderContainerStyle>
+    <GridViewColumn.CellTemplate>
+        <DataTemplate>
+            <Border Loaded="Border_Loaded" Unloaded="Border_Unloaded"
+                    Style="{DynamicResource ResourceKey=BrdrDataGridCell}">
+                <TextBlock Margin="4,0" SizeChanged="TextBlock_SizeChanged"
+                           Loaded="TextBlock_Loaded" Unloaded="TextBlock_Unloaded"
+                           Style="{DynamicResource ResourceKey=TbDataGridCellContent}"/>
+            </Border>
+        </DataTemplate>
+    </GridViewColumn.CellTemplate>
+</GridViewColumn>

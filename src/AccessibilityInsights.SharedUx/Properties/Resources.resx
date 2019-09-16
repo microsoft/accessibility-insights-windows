@@ -874,7 +874,7 @@ Accessibility Insights Support Team
   <data name="tbSearchText" xml:space="preserve">
     <value>Search</value>
   </data>
-  <data name="dgPropertiesAutomationPropertiesName" xml:space="preserve">
+  <data name="lvPropertiesAutomationPropertiesName" xml:space="preserve">
     <value>Properties</value>
   </data>
   <data name="copyMenuItemPropertyTag" xml:space="preserve">

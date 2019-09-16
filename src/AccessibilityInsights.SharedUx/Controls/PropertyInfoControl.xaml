@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="{Binding Path=Width, 
            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement},Mode=OneWayToSource}"/>
                 </Grid.ColumnDefinitions>
-                <Border Background="#14000000" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="0,0,0,5">
+                <Border Background="#14000000" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="4,0,2,5">
                     <DockPanel>
                         <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333333" ShowInControlView="False"/>
                         <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
@@ -38,43 +38,26 @@
                                     Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}"/>
                     </DockPanel>                        
                 </Border>
-                <customcontrols:CustomDataGrid
-                    x:Name="dgProperties"
-                    Grid.Row="2"
-                    AutomationProperties.Name="{x:Static Properties:Resources.dgPropertiesAutomationPropertiesName}" 
-                    KeyUp="dgProperties_KeyUp"
-                    IsTabStop="False"
-                    GotKeyboardFocus="onGotKeyBoardFocus"
-                    Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
+                <customcontrols:CustomListView
+                    x:Name="lvProperties" Grid.Row="2"
+                    AutomationProperties.Name="{x:Static Properties:Resources.lvPropertiesAutomationPropertiesName}" 
+                    IsTabStop="False" BorderThickness="0" ItemContainerStyle="{StaticResource LviDataGridStyle}"
+                    KeyUp="lvProperties_KeyUp">
                     <i:Interaction.Behaviors>
                         <behaviors:ColumnResizeHotkeyBehavior/>
                     </i:Interaction.Behaviors>
-                    <DataGrid.ContextMenu>
+                    <ListView.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                             <MenuItem x:Name="copyMenuItemProperty" Tag="{x:Static Properties:Resources.copyMenuItemPropertyTag}" IsCheckable="False" Header="{x:Static Properties:Resources.copyMenuItemPropertyHeader}" Command="Copy" Style="{StaticResource miFabIcon}"/>
                         </ContextMenu>
-                    </DataGrid.ContextMenu>
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Path=Name}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" Width="Auto"/>
-                        <DataGridTextColumn Binding="{Binding Path=Value, TargetNullValue='{x:Static Properties:Resources.PropertyDoesNotExist}'}" 
-                                            ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" Width="Auto">
-                            <DataGridTextColumn.CellStyle>
-                                <Style TargetType="DataGridCell" BasedOn="{StaticResource dgcStyle}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding Path=Value}" Value="{x:Null}">
-                                            <Setter Property="FontStyle" Value="Italic" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </DataGridTextColumn.CellStyle>
-                        </DataGridTextColumn>
-                    </DataGrid.Columns>
-                    <DataGrid.ItemContainerStyle>
-                        <Style TargetType="{x:Type DataGridRow}">
-                            <Setter Property="Focusable" Value="True"/>
-                        </Style>
-                    </DataGrid.ItemContainerStyle>
-                </customcontrols:CustomDataGrid>
+                    </ListView.ContextMenu>
+                    <ListView.View>
+                        <GridView x:Name="gvProps" ColumnHeaderContainerStyle="{StaticResource GvchNoContent}" >
+                            <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderProperty}" ContentPath="Name"/>
+                            <customcontrols:CustomGridViewColumn Width="Auto" HeaderText="{x:Static Properties:Resources.DataGridTextColumnHeaderValue}" ContentPath="Value"/>
+                        </GridView>
+                    </ListView.View>
+                </customcontrols:CustomListView>
             </Grid>
         </ScrollViewer>
     </Grid>

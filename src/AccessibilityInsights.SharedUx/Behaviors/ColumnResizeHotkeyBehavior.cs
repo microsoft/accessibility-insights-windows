@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Controls;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -36,6 +37,10 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             if (sender is DataGrid dg)
             {
                 ResizeDataGrid(dg);
+            }
+            else if (sender is CustomListView customList)
+            {
+                customList.UpdateAllColumnWidths();
             }
             else if (sender is ListView lv)
             {
