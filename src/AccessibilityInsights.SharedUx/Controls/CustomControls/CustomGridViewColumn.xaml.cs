@@ -10,8 +10,8 @@ using System.Windows.Input;
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     /// <summary>
-    /// A GridViewColumn styled so that "cells" look DataGridCells, complete with some custom 
-    /// resizing behavior. Meant to be used in conjunciton with <see cref="CustomGridView"/>.
+    /// A GridViewColumn styled so that "cells" look like DataGridCells, complete with some custom 
+    /// resizing behavior. Meant to be used in conjunction with <see cref="CustomGridView"/>.
     /// </summary>
     public partial class CustomGridViewColumn : GridViewColumn
     {
