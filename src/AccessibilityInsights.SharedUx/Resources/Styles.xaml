@@ -496,11 +496,6 @@
                                                                          VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
                                                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" HorizontalAlignment="Stretch"
                                                                          TextElement.FontSize="12" >
-                                <GridViewRowPresenter.Resources>
-                                    <Style TargetType="{x:Type ContentPresenter}">
-
-                                    </Style>
-                                </GridViewRowPresenter.Resources>
                                 <GridViewRowPresenter.Columns>
                                     <TemplateBinding Property="GridView.ColumnCollection">
                                     </TemplateBinding>

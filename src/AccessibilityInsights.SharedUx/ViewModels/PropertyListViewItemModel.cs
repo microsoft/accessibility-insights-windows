@@ -9,7 +9,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// PropertyListViewItem class
     /// ViewModel for ElementProperty in Property ListView
     /// </summary>
-    public class PropertyListViewItemModel: ViewModelBase
+    public class PropertyListViewItemModel : ViewModelBase
     {
         public A11yProperty Property { get; private set; }
 
@@ -33,7 +33,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             get
             {
-                return string.Format(CultureInfo.InvariantCulture, "{0}: {1}", Name, Value);
+                return string.Format(CultureInfo.InvariantCulture, "{0}: {1}", Name, Value ?? Properties.Resources.PropertyDoesNotExist);
             }
         }
 

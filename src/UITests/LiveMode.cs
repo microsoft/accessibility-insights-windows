@@ -42,7 +42,7 @@ namespace UITests
 
             driver.TestMode.ResultsInUIATree.ValidateResults(2, expectedResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
-            driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name, Property does not exist", 1, 10);
+            driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name: Property does not exist", 1, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);
         }
 
