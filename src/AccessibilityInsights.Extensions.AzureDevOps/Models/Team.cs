@@ -30,6 +30,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         /// Copy ctor - enforces correct types internally
         /// </summary>
         /// <param name="original">The original object being copied</param>
+#pragma warning disable CA1062 // Validate arguments of public methods
         public Team(Team original) : this(original.Name, original.Id, original.ParentProject) { }
+#pragma warning restore CA1062 // Validate arguments of public methods
     }
 }

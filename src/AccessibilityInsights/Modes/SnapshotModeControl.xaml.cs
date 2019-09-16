@@ -471,30 +471,33 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public void Save()
         {
-            var dlg = new System.Windows.Forms.SaveFileDialog
+            using (var dlg = new System.Windows.Forms.SaveFileDialog
             {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                 Filter = FileFilters.TestFileFilter,
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
                 InitialDirectory = Configuration.TestReportPath,
                 AutoUpgradeEnabled = !SystemParameters.HighContrast,
-            };
-
-            dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.TestResults);
-
-            Logger.PublishTelemetryEvent(TelemetryAction.Hierarchy_Save);
-
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            })
             {
-                try
+                dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.TestResults);
+
+                Logger.PublishTelemetryEvent(TelemetryAction.Hierarchy_Save);
+
+                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, this.ctrlHierarchy.GetSelectedElement().UniqueId, A11yFileMode.Inspect);
-                }
+                    try
+                    {
+                        SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, this.ctrlHierarchy.GetSelectedElement().UniqueId, A11yFileMode.Inspect);
+                    }
 #pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException, ex.Message));
-                }
+                    catch (Exception ex)
+                    {
+                        ex.ReportException();
+                        MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException, ex.Message));
+                    }
 #pragma warning restore CA1031 // Do not catch general exception types
+                }
             }
         }
 

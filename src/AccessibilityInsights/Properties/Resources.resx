@@ -612,4 +612,8 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="AutomatedChecksRole" xml:space="preserve">
     <value>Did you know? Automated checks can detect some common accessibility problems, such as missing or invalid properties. However, most accessibility problems can be identified only through manual testing.</value>
   </data>
+  <data name="PanesCanBeSetOnlyOnce" xml:space="preserve">
+    <value>Panes can be set only once</value>
+    <comment>Description</comment>
+  </data>
 </root>

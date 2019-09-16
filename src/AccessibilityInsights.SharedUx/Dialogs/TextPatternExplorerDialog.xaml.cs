@@ -250,7 +250,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 }
                 else
                 {
-                    MessageDialog.Show("No child Element from the selected TextRange.");
+                    MessageDialog.Show(Properties.Resources.NoChildElementFromTextRange);
                 }
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -486,7 +486,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
             else
             {
-                MessageDialog.Show("No selected Range or the selected Range is already in the list.");
+                MessageDialog.Show(Properties.Resources.RangeSelectionNotChanged);
             }
         }
 

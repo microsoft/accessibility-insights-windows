@@ -586,6 +586,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns></returns>
         public static ConfigurationModel GetDefaultConfigurationModel(FixedConfigSettingsProvider provider)
         {
+            if (provider == null)
+                throw new ArgumentNullException(nameof(provider));
+
             ConfigurationModel config = new ConfigurationModel
             {
                 AppVersion = VersionTools.GetAppVersion(),
@@ -639,6 +642,11 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns>A dictionary of all the properties that has a new value. Key is the name of the key and value is new property value</returns>
         public static IReadOnlyDictionary<string, object> Diff(ConfigurationModel oldModel, ConfigurationModel newModel)
         {
+            if (oldModel == null)
+                throw new ArgumentNullException(nameof(oldModel));
+            if (newModel == null)
+                throw new ArgumentNullException(nameof(newModel));
+
             return oldModel._settings.Diff(newModel._settings);
         }
 

@@ -367,37 +367,40 @@ namespace AccessibilityInsights.SharedUx.Controls
                 var la = ListenAction.GetInstance(this.EventRecorderId.Value);
                 if (HasRecordedEvents())
                 {
-                    var dlg = new System.Windows.Forms.SaveFileDialog
+                    using (var dlg = new System.Windows.Forms.SaveFileDialog
                     {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
                         Filter = FileFilters.EventsFileFilter,
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
                         InitialDirectory = AppConfiguration.EventRecordPath,
                         AutoUpgradeEnabled = !SystemParameters.HighContrast,
-                    };
-
-                    dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.EventRecord);
-
-                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    })
                     {
-                        Logger.PublishTelemetryEvent(TelemetryAction.Event_Save);
+                        dlg.FileName = dlg.InitialDirectory.GetSuggestedFileName(FileType.EventRecord);
 
-                        try
+                        if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                         {
-                            SetupLibrary.FileHelpers.SerializeDataToJSON(this.dgEvents.Items, dlg.FileName);
-                        }
+                            Logger.PublishTelemetryEvent(TelemetryAction.Event_Save);
+
+                            try
+                            {
+                                SetupLibrary.FileHelpers.SerializeDataToJSON(this.dgEvents.Items, dlg.FileName);
+                            }
 #pragma warning disable CA1031 // Do not catch general exception types
-                        catch (Exception ex)
-                        {
-                            ex.ReportException();
-                            MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Couldn't save the event record file: {0}", ex.Message));
-                        }
+                            catch (Exception ex)
+                            {
+                                ex.ReportException();
+                                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Couldn't save the event record file: {0}", ex.Message));
+                            }
 #pragma warning restore CA1031 // Do not catch general exception types
-                    }
+                        }
 
-                    return;
+                        return;
+                    }
                 }
             }
 
-            MessageDialog.Show("There is no event to save.");
+            MessageDialog.Show(Properties.Resources.NoEventToSave);
         }
 
         /// <summary>

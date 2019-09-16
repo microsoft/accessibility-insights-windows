@@ -17,6 +17,9 @@ namespace AccessibilityInsights.SetupLibrary.REST
         /// </summary>
         public static void LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout)
         {
+            if (uri == null)
+                throw new ArgumentNullException(nameof(uri));
+
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(uri);
             request.Timeout = (int)timeout.TotalMilliseconds;
             request.AutomaticDecompression = DecompressionMethods.GZip;

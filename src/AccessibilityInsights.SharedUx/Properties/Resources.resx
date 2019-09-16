@@ -1585,4 +1585,28 @@ Do you want to change the channel? </value>
   <data name="TextNewForWCAG_2_1" xml:space="preserve">
     <value>New for WCAG 2.1</value>
   </data>
+  <data name="ExceptionsLostFromBuffer" xml:space="preserve">
+    <value>Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open.</value>
+  </data>
+  <data name="FailedEmphasizedText" xml:space="preserve">
+    <value>Failed!!</value>
+  </data>
+  <data name="GlimpseTextTarget" xml:space="preserve">
+    <value>Target:</value>
+  </data>
+  <data name="LostExceptionTelemetry" xml:space="preserve">
+    <value>Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open.</value>
+  </data>
+  <data name="NoChildElementFromTextRange" xml:space="preserve">
+    <value>No child Element from the selected TextRange.</value>
+  </data>
+  <data name="NoEventToSave" xml:space="preserve">
+    <value>There is no event to save.</value>
+  </data>
+  <data name="NoTestResult" xml:space="preserve">
+    <value>No test result</value>
+  </data>
+  <data name="RangeSelectionNotChanged" xml:space="preserve">
+    <value>No selected Range or the selected Range is already in the list.</value>
+  </data>
 </root>

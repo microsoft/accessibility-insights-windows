@@ -215,6 +215,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="sender"></param>
         public static void mniShowCorePropertiesLoaded(object sender)
         {
+            if (sender == null)
+                throw new ArgumentNullException(nameof(sender));
+
             ((MenuItem)sender).IsChecked = Configuration.ShowAllProperties;
         }
 

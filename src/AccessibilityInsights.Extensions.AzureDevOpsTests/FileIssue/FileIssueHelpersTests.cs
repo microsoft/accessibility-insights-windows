@@ -41,6 +41,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
 
+        [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void FileNewIssue_FileIssueIsNull_ThrowsArgumentNullException()
+        {
+            FileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); });
+        }
+
 #if FAKES_SUPPORTED
         [TestMethod]
         public void FileNewIssue_IsNotEnabled_ReturnsPlaceholder()

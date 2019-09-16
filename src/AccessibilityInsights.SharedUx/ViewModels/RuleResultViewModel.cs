@@ -129,8 +129,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="rr">Scan result</param>
         public RuleResultViewModel(A11yElement e, RuleResult rr)
         {
-            this.Element = e;
-           
+            if (rr == null)
+                throw new ArgumentNullException(nameof(rr));
+
+            this.Element = e ?? throw new ArgumentNullException(nameof(e));
+
             var p = e.Properties.ById(rr.MetaInfo.PropertyId);
             if (p != null)
             {

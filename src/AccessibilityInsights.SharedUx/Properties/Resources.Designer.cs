@@ -1638,6 +1638,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
+        /// </summary>
+        public static string ExceptionsLostFromBuffer {
+            get {
+                return ResourceManager.GetString("ExceptionsLostFromBuffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string ExpanderAutomationPropertiesNameProps {
@@ -1670,6 +1679,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string EyedropperWindowWindowTitle {
             get {
                 return ResourceManager.GetString("EyedropperWindowWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed!!.
+        /// </summary>
+        public static string FailedEmphasizedText {
+            get {
+                return ResourceManager.GetString("FailedEmphasizedText", resourceCulture);
             }
         }
         
@@ -1769,6 +1787,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string GeneralActionView_ExecuteAction_Succeeded {
             get {
                 return ResourceManager.GetString("GeneralActionView_ExecuteAction_Succeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target:.
+        /// </summary>
+        public static string GlimpseTextTarget {
+            get {
+                return ResourceManager.GetString("GlimpseTextTarget", resourceCulture);
             }
         }
         
@@ -2626,6 +2653,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
+        /// </summary>
+        public static string LostExceptionTelemetry {
+            get {
+                return ResourceManager.GetString("LostExceptionTelemetry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available.
         /// </summary>
         public static string lvLeftAutomationPropertiesName {
@@ -3076,11 +3112,38 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No child Element from the selected TextRange..
+        /// </summary>
+        public static string NoChildElementFromTextRange {
+            get {
+                return ResourceManager.GetString("NoChildElementFromTextRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to no element selected.
         /// </summary>
         public static string noElementSelected {
             get {
                 return ResourceManager.GetString("noElementSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no event to save..
+        /// </summary>
+        public static string NoEventToSave {
+            get {
+                return ResourceManager.GetString("NoEventToSave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No test result.
+        /// </summary>
+        public static string NoTestResult {
+            get {
+                return ResourceManager.GetString("NoTestResult", resourceCulture);
             }
         }
         
@@ -3244,6 +3307,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string radiobuttonScopeSubtreeContent {
             get {
                 return ResourceManager.GetString("radiobuttonScopeSubtreeContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No selected Range or the selected Range is already in the list..
+        /// </summary>
+        public static string RangeSelectionNotChanged {
+            get {
+                return ResourceManager.GetString("RangeSelectionNotChanged", resourceCulture);
             }
         }
         

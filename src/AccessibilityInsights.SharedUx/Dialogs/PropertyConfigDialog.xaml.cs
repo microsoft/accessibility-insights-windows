@@ -3,6 +3,7 @@
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Core.Types;
 using Axe.Windows.Desktop.UIAutomation;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -27,6 +28,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="coreProps"></param>
         public PropertyConfigDialog(IEnumerable<int> coreProps, TypeBase source, string title)
         {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
             InitializeComponent();
 
             this.Title = $"{title} Configuration";

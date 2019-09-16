@@ -26,6 +26,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         public SettingsDictionary(SettingsDictionary source)
         {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
             foreach (KeyValuePair<string, object> pair in source)
             {
                 if (pair.Value != null)
@@ -61,6 +64,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// different if they have incompatible types or different values</returns>
         public IReadOnlyDictionary<string, object> Diff(SettingsDictionary other)
         {
+            if (other == null)
+                throw new ArgumentNullException(nameof(other));
+
             Dictionary<string, object> diff = new Dictionary<string, object>();
 
             foreach (KeyValuePair<string, object> pair in this)

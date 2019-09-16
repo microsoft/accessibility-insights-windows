@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         public ElementInfoDialog(List<DesktopElement> list)
         {
             InitializeComponent();
-            this.lbElements.ItemsSource = list;
+            this.lbElements.ItemsSource = list ?? throw new ArgumentNullException(nameof(list));
             this.lbElements.SelectedIndex = 0;
             this.lbElements.Visibility = list.Count <= 1 ? Visibility.Collapsed : Visibility.Visible;
             this.lElements.Visibility = list.Count <= 1 ? Visibility.Collapsed : Visibility.Visible;

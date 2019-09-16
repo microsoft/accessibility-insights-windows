@@ -32,6 +32,9 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
 
         public void RegisterHotKey(HotKey hk)
         {
+            if (hk == null)
+                throw new ArgumentNullException(nameof(hk));
+
             if (Find(hk) == null)
             {
                 // Add the hook if needed

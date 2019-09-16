@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
+using AccessibilityInsights.Extensions.AzureDevOps.Properties;
 using Newtonsoft.Json;
 using System;
 
@@ -63,7 +64,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public ConnectionInfo(string configString)
         {
             if (string.IsNullOrEmpty(configString))
-                throw new ArgumentException("Unable to create ConnectionInfo", nameof(configString));
+                throw new ArgumentException(Resources.CantCreateConnectionInfo, nameof(configString));
 
             // If this throws, we'll catch it upstream
             ConnectionInfo savedConnectionInfo = JsonConvert.DeserializeObject<ConnectionInfo>(configString);
@@ -78,7 +79,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="original">The original object being copied</param>
         public ConnectionInfo(ConnectionInfo original)
+#pragma warning disable CA1062 // Validate arguments of public methods
             : this(original.ServerUri, original.Project, original.Team)
+#pragma warning restore CA1062 // Validate arguments of public methods
         {
         }
 

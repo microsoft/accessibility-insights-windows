@@ -27,6 +27,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     {
         public static List<ScanListViewItemViewModel> GetScanListViewItemViewModels(A11yElement e)
         {
+            if (e == null)
+                throw new ArgumentNullException(nameof(e));
+
             ScanResults tr = e.ScanResults;
 
             var list = new List<ScanListViewItemViewModel>();
@@ -158,7 +161,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="sr"></param>
         public ScanListViewItemViewModel(A11yElement e, RuleResult sr)
         {
-            this.RR = sr;
+            this.RR = sr ?? throw new ArgumentNullException(nameof(sr));
             this.Element = e;
             this.Header = sr.Description;
             this.Status = sr.Status;

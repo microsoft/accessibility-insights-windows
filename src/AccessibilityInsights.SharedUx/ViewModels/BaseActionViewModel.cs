@@ -56,9 +56,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="ptn"></param>
         /// <param name="m"></param>
         protected BaseActionViewModel(A11yPattern ptn, MethodInfo m)
-        { 
-            this.pattern = ptn;
-            this.methodinfo = m;
+        {
+            this.pattern = ptn ?? throw new ArgumentNullException(nameof(ptn));
+            this.methodinfo = m ?? throw new ArgumentNullException(nameof(m));
 
             this.PatternName = ptn.Name;
             this.Name = m.Name;

@@ -13,6 +13,7 @@ using Axe.Windows.Desktop.UIAutomation.Patterns;
 using Axe.Windows.Core.Misc;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Properties;
+using System;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -24,13 +25,12 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public PatternViewModel(A11yElement e,A11yPattern pattern, bool isActionAllowed, bool isExpanded)
         {
             this.IsExpanded = isExpanded;
-            this.Pattern = pattern;
+            this.Pattern = pattern ?? throw new ArgumentNullException(nameof(pattern));
             this.Element = e;
             this.ActionType = GetActionType();
             this.ActionVisibility = isActionAllowed && this.ActionType != ActionType.NotApplicable ? Visibility.Visible : Visibility.Collapsed;
             this.ActionName = GetActionButtonText();
             this.Properties = (from p in this.Pattern.Properties select new PatternPropertyUIWrapper(p)).ToList();
-
         }
 
         /// <summary>
@@ -57,9 +57,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     return ActionType.NotApplicable;
                 default:
                     return ((from m in this.Pattern.GetType().GetMethods()
-                            let a = m.GetCustomAttribute(typeof(PatternMethodAttribute))
-                            where a != null
-                            select m).Count() != 0 ? ActionType.Action : ActionType.NotApplicable);
+                             let a = m.GetCustomAttribute(typeof(PatternMethodAttribute))
+                             where a != null
+                             select m).Any() ? ActionType.Action : ActionType.NotApplicable);
             }
         }
 
@@ -198,6 +198,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public string NodeValue { get; private set; }
         public PatternPropertyUIWrapper(A11yPatternProperty p)
         {
+            if (p == null)
+                throw new ArgumentNullException(nameof(p));
+
             /// Trim node text if it contains a newline and append ...
             /// Full value will be available via tooltip 
             int idx = p.NodeValue.IndexOfAny(new char[] { '\r', '\n' });

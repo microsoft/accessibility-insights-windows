@@ -63,7 +63,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="brush"></param>
         public void SetElement(A11yElement el, int gap = 2, SolidColorBrush brush=null)
         {
-            this.BaseElement = el;
+            this.BaseElement = el ?? throw new ArgumentNullException(nameof(el));
             if (brush == null)
             {
                 this.Brush = Application.Current.Resources["HLbrushRed"] as SolidColorBrush;

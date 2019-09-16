@@ -128,7 +128,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         this.text = value.Substring(0, Max_Text_Length) + "...";
                     }
 
-                    this.IsVisible = this.IsVisible; // invoke IsVisual.Set
+#pragma warning disable CA2245 // Do not assign a property to itself.
+                    // This looks odd, but it forces an invocation of IsVisual.Set
+                    this.IsVisible = this.IsVisible;
+#pragma warning restore CA2245 // Do not assign a property to itself.
 
                     CalcSize();
                 }

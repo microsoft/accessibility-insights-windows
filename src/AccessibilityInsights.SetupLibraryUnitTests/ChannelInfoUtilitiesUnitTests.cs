@@ -56,6 +56,14 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        [Timeout(2000)]
+        public void GetChannelFromStream_StreamIsNull_ThrowsArgumentNullException()
+        {
+            ChannelInfoUtilities.GetChannelFromStream(null);
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
         [Timeout(2000)]
         public void GetChannelFromStream_StreamIsEmpty_ThrowsNullReferenceException()
@@ -108,6 +116,19 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
                 Assert.AreEqual(Version1300, channelInfo.MinimumVersion);
                 Assert.AreEqual(ExpectedInstaller(Version1330), channelInfo.InstallAsset);
                 Assert.AreEqual(ExpectedReleaseNotes(Version1330), channelInfo.ReleaseNotesAsset);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        public void GetChannelFromStream_StreamIsValid_StreamIsNotClosed()
+        {
+            using (Stream stream = PopulateStream(TestCaseContents))
+            {
+                long originalLength = stream.Length;
+                ChannelInfoUtilities.GetChannelFromStream(stream);
+                Assert.AreEqual(originalLength, stream.Length);
+                Assert.AreNotEqual(0, originalLength);
             }
         }
 

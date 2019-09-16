@@ -55,6 +55,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         /// <returns>Success or failure</returns>
         public static void AttachIssueData(IssueInformation issueInformation, Guid ecId, Rectangle? rect, int? elId)
         {
+            if (issueInformation == null)
+                throw new ArgumentNullException(nameof(issueInformation));
+
             // Save snapshot locally in prep for uploading attachment
             var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
             
@@ -96,14 +99,15 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 {
                     Rectangle valueRect = rect.Value;
                     using (var graphics = Graphics.FromImage(newImg))
+                    using (Pen pen = new Pen(Color.Red, 5))
                     {
                         // Use element 
                         var el = GetDataAction.GetA11yElementInDataContext(ecId, dc.ScreenshotElementId);
                         var outerRect = el.BoundingRectangle;
 
-                        valueRect.X = valueRect.X - outerRect.X;
-                        valueRect.Y = valueRect.Y - outerRect.Y;
-                        graphics.DrawRectangle(new Pen(Color.Red, 5), valueRect);
+                        valueRect.X -= outerRect.X;
+                        valueRect.Y -= outerRect.Y;
+                        graphics.DrawRectangle(pen, valueRect);
                     }
                 }
                 return newImg;

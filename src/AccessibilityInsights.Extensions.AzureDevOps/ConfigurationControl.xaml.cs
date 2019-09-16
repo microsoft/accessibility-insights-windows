@@ -83,6 +83,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             if (InteractionAllowed) // in case team projects were already being loaded (todo: cancel old task)
             {
+                if (configuration == null)
+                    throw new ArgumentNullException(nameof(configuration));
+
                 this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections().ToList();
                 ConnectionInfo connectionInfo = AzureDevOps.ConnectedToAzureDevOps ?
                     AzureDevOps.Configuration.SavedConnection :
@@ -99,6 +102,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="configuration"></param>
         public void UpdateConfigFromSelections(ExtensionConfiguration configuration)
         {
+            if (configuration == null)
+                throw new ArgumentNullException(nameof(configuration));
+
             var connection = GetConnectionFromTreeView();
             if (connection != null)
             {
@@ -429,7 +435,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             if (caughtExceptions.Any())
             {
-                throw new AggregateException("Error populating Projects", caughtExceptions);
+                throw new AggregateException(Properties.Resources.CantPopulateProjects, caughtExceptions);
             }
         }
 

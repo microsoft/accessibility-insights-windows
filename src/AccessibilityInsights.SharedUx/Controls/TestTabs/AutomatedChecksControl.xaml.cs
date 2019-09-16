@@ -298,6 +298,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <param name="ec"></param>
         public void SetElement(ElementContext ec)
         {
+            if (ec == null)
+                throw new ArgumentNullException(nameof(ec));
+
             try
             {
                 // set handler here. it will make sure that highliter button is shown and working. 
@@ -370,7 +373,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
             this.lvResults.ItemsSource = null;
-            this.tbGlimpse.Text = "Target:";
+            this.tbGlimpse.Text = Properties.Resources.GlimpseTextTarget;
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.SelectedItems.Clear();
         }

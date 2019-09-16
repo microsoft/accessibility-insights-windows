@@ -31,6 +31,9 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         public GeneralActionView(GeneralActionViewModel a)
         {
+            if (a == null)
+                throw new ArgumentNullException(nameof(a));
+
             this.ActionViewModel = a;
             this.Counter = 0;
             InitializeComponent();
