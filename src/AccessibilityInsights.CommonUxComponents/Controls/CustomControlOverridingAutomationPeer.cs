@@ -14,19 +14,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     /// </summary>
     public class CustomControlOverridingAutomationPeer: UserControlAutomationPeer
     {
-        /// <summary>
-        /// Value for custom IsControlElement
-        /// </summary>
         private bool IsControlElem;
 
-        /// <summary>
-        /// Value for custom IsContentElement
-        /// </summary>
         private bool IsContentElem;
 
-        /// <summary>
-        /// String for custom LocalizedControlType
-        /// </summary>
         private string LocalizedControlType;
 
         private AutomationControlType ControlType;
@@ -60,17 +51,9 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         public override object GetPattern(PatternInterface patternInterface) => null;
 
-        /// <summary>
-        /// Use provided value for IsControlElement
-        /// </summary>
-        /// <returns></returns>
-        protected override bool IsControlElementCore() => IsControlElem;
+        protected override bool IsControlElementCore() => this.Owner.IsVisible && IsControlElem;
 
-        /// <summary>
-        /// Use provided value for IsContentElement
-        /// </summary>
-        /// <returns></returns>
-        protected override bool IsContentElementCore() => IsContentElem;
+        protected override bool IsContentElementCore() => this.Owner.IsVisible && IsContentElem;
 
         protected override List<AutomationPeer> GetChildrenCore() => HideChildren ? null : base.GetChildrenCore();
 
