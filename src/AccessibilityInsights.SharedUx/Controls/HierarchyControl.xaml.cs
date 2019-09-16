@@ -131,6 +131,18 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
 
                 UpdateButtonVisibility();
+
+                // We remove and re-add the "show uncertain" item from the visual tree
+                // in order to ensure n-of-m information is read correctly
+                // by screen readers via the SizeOfSet and PositionInSet properties.
+                if (cmHierarchySettings.Items.Contains(mniShowUncertain))
+                {
+                    cmHierarchySettings.Items.Remove(mniShowUncertain);
+                }
+                if (this.IsLiveMode == false)
+                {
+                    cmHierarchySettings.Items.Add(mniShowUncertain);
+                }
             }
         }
 
@@ -488,8 +500,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbRaw.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Raw;
             }
             var suffix = this.rbRaw.IsChecked.HasValue && this.rbRaw.IsChecked.Value ? "Checked" : "";
-            this.mniRaw.SetValue(AutomationProperties.NameProperty, $"Walk tree in Raw view {suffix}");
-            SetFocusOnHierarchyTree();
+            this.mniRaw.SetValue(AutomationProperties.NameProperty, $"Raw view {suffix}");
         }
 
         /// <summary>
@@ -510,8 +521,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbContent.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Content;
             }
             var suffix = this.rbContent.IsChecked.HasValue && this.rbContent.IsChecked.Value ? "Checked" : "";
-            this.mniContent.SetValue(AutomationProperties.NameProperty, $"Walk tree in Content view {suffix}");
-            SetFocusOnHierarchyTree();
+            this.mniContent.SetValue(AutomationProperties.NameProperty, $"Content view {suffix}");
         }
 
         /// <summary>
@@ -532,8 +542,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.rbControl.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Control;
             }
             var suffix = this.rbControl.IsChecked.HasValue && this.rbControl.IsChecked.Value ? "Checked" : "";
-            this.mniControl.SetValue(AutomationProperties.NameProperty, $"Walk tree in Control view {suffix}");
-            SetFocusOnHierarchyTree();
+            this.mniControl.SetValue(AutomationProperties.NameProperty, $"Control view {suffix}");
         }
 
         /// <summary>

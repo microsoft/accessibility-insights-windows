@@ -129,27 +129,27 @@
                 </Button.ToolTip>
                 <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
                 <Button.ContextMenu>
-                    <ContextMenu FlowDirection="LeftToRight">
-                        <MenuItem Header="Tree view" FontWeight="Bold" IsEnabled="False" IsCheckable="True"/>
-                        <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
+                    <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings">
+                        <MenuItem Header="Tree view">
+                            <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
-                            <MenuItem.Header>
-                                <RadioButton x:Name="rbRaw" Content="_Raw" Loaded="mniRaw_Loaded" Click="rbRaw_Click" Focusable="False" />
-                            </MenuItem.Header>
-                        </MenuItem>
-                        <MenuItem x:Name="mniControl" IsCheckable="False" Click="mniControl_Click" 
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="rbRaw" Content="_Raw" Loaded="mniRaw_Loaded" Click="rbRaw_Click" Focusable="False" />
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="mniControl" IsCheckable="False" Click="mniControl_Click" 
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniControlAutomationPropertiesName}">
-                            <MenuItem.Header>
-                                <RadioButton x:Name="rbControl" Content="_Control" Loaded="mniControl_Loaded" Click="rbControl_Click" Focusable="False" />
-                            </MenuItem.Header>
-                        </MenuItem>
-                        <MenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click"
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="rbControl" Content="_Control" Loaded="mniControl_Loaded" Click="rbControl_Click" Focusable="False" />
+                                </MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName1}">
-                            <MenuItem.Header>
-                                <RadioButton x:Name="rbContent" Content="Con_tent" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
-                            </MenuItem.Header>
+                                <MenuItem.Header>
+                                    <RadioButton x:Name="rbContent" Content="Con_tent" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
+                                </MenuItem.Header>
+                            </MenuItem>
                         </MenuItem>
-                        <Separator/>
                         <MenuItem Header="Show _Ancestry" x:Name="mniShowAncestry" IsCheckable="True" 
                                   Loaded="mniShowAncestry_Loaded" Click="mniShowAncestry_Click"/>
                         <MenuItem Header="Show _Uncertain results" x:Name="mniShowUncertain" IsCheckable="True" 

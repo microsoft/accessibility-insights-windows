@@ -2959,7 +2959,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Walk tree in Content view.
+        ///   Looks up a localized string similar to Content view.
         /// </summary>
         public static string mniContentAutomationPropertiesName1 {
             get {
@@ -2968,7 +2968,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Walk tree in Control view.
+        ///   Looks up a localized string similar to Control view.
         /// </summary>
         public static string mniControlAutomationPropertiesName {
             get {
@@ -3004,7 +3004,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Walk tree in Raw view.
+        ///   Looks up a localized string similar to Raw view.
         /// </summary>
         public static string mniRawAutomationPropertiesName1 {
             get {
