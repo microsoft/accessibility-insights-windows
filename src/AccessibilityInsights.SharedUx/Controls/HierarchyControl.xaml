@@ -89,7 +89,7 @@
             </Grid.ColumnDefinitions>
             <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=LightGreyBrush}">
                 <DockPanel>
-                    <controls:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <controls:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" ShowInControlView="False"/>
                     <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                         AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
                         Height="24" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"

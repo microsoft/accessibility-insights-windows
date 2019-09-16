@@ -31,7 +31,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="0"/>
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="0" ShowInControlView="False"/>
             <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="0">
                 <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextInspectMode}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextInspectLiveUIATree}"/>
@@ -47,7 +47,7 @@
                 </TextBlock>
             </TextBlock>
 
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Rocket" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="1"/>
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Rocket" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="1" ShowInControlView="False"/>
             <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="1" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
                 <Run Name="tbFastPass" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFastPass}"/>
                 <Run Name="tbFastPassInfo" Text="{x:Static Properties:Resources.tbFastPassInfoText}"/>
@@ -69,7 +69,7 @@
                 </AutomationProperties.Name>
             </TextBlock>
 
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="2"/>
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="2" ShowInControlView="False"/>
             <TextBlock Style="{StaticResource TbFocusable}" Margin="0,12" Grid.Column="2" Grid.Row="2">
                 <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextFileBugs}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextLogBugsIn}"/>
@@ -85,7 +85,7 @@
                 </TextBlock>
             </TextBlock>
 
-            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Color" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="3"/>
+            <fabric:FabricIconControl VerticalAlignment="Center" GlyphName="Color" GlyphSize="Custom" FontSize="18" Foreground="{DynamicResource ResourceKey=IconBrush}" Grid.Column="1" Grid.Row="3" ShowInControlView="False"/>
             <TextBlock Margin="0,12"  Grid.Column="2" Grid.Row="3" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
                 <Run Name="tbColorContrast" FontWeight="SemiBold" Text="{x:Static Properties:Resources.RunTextColorContrast}"/>
                 <Run Text="{x:Static Properties:Resources.RunTextManualColorTest}"/>

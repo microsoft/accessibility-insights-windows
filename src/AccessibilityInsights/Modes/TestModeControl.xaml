@@ -32,7 +32,7 @@
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="#333333"/>
+                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="#333333" ShowInControlView="False"/>
                             <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top"/>
                         </Grid>
                     </TabItem.Header>
@@ -58,9 +58,9 @@
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" x:Name="tbSelectElement" Style="{StaticResource TbFocusableCenter}" MinWidth="40">
                 <Run Text="{x:Static properties:Resources.TestModeControl_RunAutomatedChecks}"/>
-                <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <fabric:FabricIconControl GlyphName="SearchAndApps" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal" ShowInControlView="False"/>
                 <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
-                <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal"/>
+                <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal" ShowInControlView="False"/>
                 <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
                 <Run Name="runHotkey"/><Run Text="."/>
                 <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate"

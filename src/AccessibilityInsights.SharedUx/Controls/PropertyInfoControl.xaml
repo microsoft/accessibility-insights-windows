@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
                 <Border Background="#14000000" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="0,0,0,5">
                     <DockPanel>
-                        <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333333"/>
+                        <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="#333333" ShowInControlView="False"/>
                         <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                                     AutomationProperties.Name="{x:Static Properties:Resources.tbSearchText}" 
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.PropertyInfoControl_textboxSearch}"

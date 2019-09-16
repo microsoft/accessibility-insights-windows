@@ -1050,7 +1050,7 @@
                                 <ColumnDefinition Width="24"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl x:Name="fbIcn" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" GlyphName="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}"/>
+                            <fabric:FabricIconControl x:Name="fbIcn" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" GlyphName="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}" ShowInControlView="False"/>
                             <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" />
                         </Grid>
                     </Border>

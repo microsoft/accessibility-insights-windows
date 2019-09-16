@@ -162,7 +162,7 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="130"/>
                 </Grid.ColumnDefinitions>
-                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="KeyboardClassic" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_KeyboardIconAutomationName}"/>
+                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="KeyboardClassic" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_KeyboardIconAutomationName}" ShowInControlView="False"/>
                 <Label Name="lblFocusLabel" Grid.Column="1" Content="{x:Static Properties:Resources.lblFocusLabelContent}" Margin="8,0,0,0" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
                 <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnKeyboard" AutomationProperties.LabeledBy="{Binding ElementName=lblFocusLabel}" IsChecked="{Binding SelectionByFocus}"/>
             </Grid>
@@ -173,7 +173,7 @@
                     <ColumnDefinition Width="50"/>
                     <ColumnDefinition Width="130"/>
                 </Grid.ColumnDefinitions>
-                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="F12DevTools" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_MouseIconAutomationName}"/>
+                <controls:FabricIconControl Grid.Column="0" Height="16" Width="16" GlyphName="F12DevTools" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}" AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_MouseIconAutomationName}" ShowInControlView="False"/>
                 <Label Name="lblMouseLabel" Grid.Column="1" Margin="8,0,0,0" Content="{x:Static Properties:Resources.lblMouseLabelContent}"  RenderTransformOrigin="0.877,0.538" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
                 <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnMouse" AutomationProperties.LabeledBy="{Binding ElementName=lblMouseLabel}" IsChecked="{Binding SelectionByMouse}"/>
                 <StackPanel Grid.Column="3" Margin="30,0,0,0" Orientation="Horizontal">
