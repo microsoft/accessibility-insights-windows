@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     /// <summary>
     /// A ListView styled to look like a DataGrid, complete with some custom column resizing behavior.
-    /// Meant to be used in conjunciton with <see cref="CustomGridViewColumn"/>.
+    /// Meant to be used in conjunction with <see cref="CustomGridViewColumn"/>.
     /// </summary>
     public class CustomListView : ListView
     {
