@@ -132,7 +132,13 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 UpdateButtonVisibility();
 
-                cmHierarchySettings.Items.Remove(mniShowUncertain);
+                // We remove and re-add the "show uncertain" item from the visual tree
+                // in order to ensure n-of-m information is read correctly
+                // by screen readers via the SizeOfSet and PositionInSet properties.
+                if (cmHierarchySettings.Items.Contains(mniShowUncertain))
+                {
+                    cmHierarchySettings.Items.Remove(mniShowUncertain);
+                }
                 if (this.IsLiveMode == false)
                 {
                     cmHierarchySettings.Items.Add(mniShowUncertain);
