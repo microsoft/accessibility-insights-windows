@@ -115,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void TbHotkey_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (e.Command == ApplicationCommands.Paste)
+            if (e.Command == ApplicationCommands.Paste || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Delete)
             {
                 e.Handled = true;
             }
