@@ -7,6 +7,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Results;
@@ -33,11 +34,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
         public bool HasUserResizedLvHeader { get; set; } = false;
-
-        /// <summary>
-        /// Fixed width for bug column
-        /// </summary>
-        const int BugColumnWidth = 80;
 
         /// <summary>
         /// Constructor
@@ -413,7 +409,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
             if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
             {
-                header.Column.Width = BugColumnWidth;
+                header.Column.Width = HelperMethods.FileIssueColumnWidth;
             }
         }
     }
