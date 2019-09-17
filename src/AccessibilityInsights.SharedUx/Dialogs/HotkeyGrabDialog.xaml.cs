@@ -102,7 +102,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             return str;
         }
 
-        private void TextBox_KeyUp(object sender, KeyEventArgs e)
+        private void WindowAndTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
