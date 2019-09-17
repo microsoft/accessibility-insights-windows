@@ -27,7 +27,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource LblH5}" Padding="0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap" Name="tbInstructions"
+        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap"
                    VerticalAlignment="Top" Width="303" Grid.Row="1" Style="{StaticResource TxtBlkText}">
             <Run Text="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"/>
         </TextBlock>
