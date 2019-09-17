@@ -11,7 +11,7 @@
         Title="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" Height="162" Width="319" 
         KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
         WindowStartupLocation="CenterOwner"
-        ShowInTaskbar="False" Topmost="True" FocusManager.FocusedElement="{Binding ElementName=tbHotkey}"
+        ShowInTaskbar="False" FocusManager.FocusedElement="{Binding ElementName=tbHotkey}"
         AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsHotkeyGrabDialog}">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>

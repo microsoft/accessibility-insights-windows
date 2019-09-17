@@ -24,6 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         public HotkeyGrabDialog(Button tb)
         {
             ButtonParent = tb;
+            Topmost = Application.Current.MainWindow.Topmost;
             InitializeComponent();
         }
 
