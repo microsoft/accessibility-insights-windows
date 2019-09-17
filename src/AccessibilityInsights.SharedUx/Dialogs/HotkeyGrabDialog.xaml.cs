@@ -34,7 +34,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Window_KeyDown(object sender, KeyEventArgs e)
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
         {
             Key tempKey = (e.Key == Key.System ? e.SystemKey : e.Key);
 
@@ -102,7 +102,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             return str;
         }
 
-        private void Window_KeyUp(object sender, KeyEventArgs e)
+        private void WindowAndTextBox_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
@@ -115,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void TbHotkey_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
         {
-            if (e.Command == ApplicationCommands.Paste)
+            if (e.Command == ApplicationCommands.Paste || e.Command == ApplicationCommands.Cut || e.Command == ApplicationCommands.Delete)
             {
                 e.Handled = true;
             }

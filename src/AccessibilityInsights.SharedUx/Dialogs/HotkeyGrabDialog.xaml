@@ -9,8 +9,7 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" Height="162" Width="319" 
-        KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
-        WindowStartupLocation="CenterOwner"
+        KeyUp="WindowAndTextBox_KeyUp" WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False" FocusManager.FocusedElement="{Binding ElementName=tbHotkey}"
         AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsHotkeyGrabDialog}">
     <Window.Resources>
@@ -32,7 +31,7 @@
                  VerticalContentAlignment="Center" Style="{StaticResource StandardTextBox}"
                  AutomationProperties.Name="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}"
                  AutomationProperties.HelpText="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"
-                 KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
+                 KeyDown="TextBox_KeyDown" KeyUp="WindowAndTextBox_KeyUp"
                  PreviewTextInput="TbHotkey_PreviewTextInput" ContextMenu="{x:Null}"
                  CommandManager.PreviewExecuted="TbHotkey_PreviewExecuted"/>
         <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap"
