@@ -48,7 +48,7 @@
         </Menu>
         <TextBlock TextWrapping="Wrap" Margin="10,10,96,46" Text="Wildlife Manager" Grid.Row="0" FontSize="16" Grid.Column="2" FontWeight="Bold" Grid.RowSpan="2"/>
         <TextBlock TextWrapping="Wrap" Margin="10,26,123,10" Text="Current Animals:" Grid.Row="1" Grid.Column="2"/>
-        <TextBlock VerticalAlignment="Center" Margin="52,11,0,68" Height="24" Text="Weight:" Grid.Row="5" Grid.Column="1"/>
+        <TextBlock VerticalAlignment="Center" Margin="52,11,0,68" Height="24" Text="Weight:" Grid.Row="5" Grid.Column="1" Foreground="LightGray"/>
         <TextBlock TextWrapping="Wrap" Margin="50,10,0,110" Text="Species:" RenderTransformOrigin="0.379,0.838" Grid.Row="4" Grid.Column="1"/>
         <local:InvokeToggleButton Width="71" Foreground="#0070FF" AutomationProperties.Name="Ok" Background="LightBlue" HorizontalAlignment="Left" Margin="78,27,0,28.667" Grid.Row="7" Content="Ok">
             <Button.Template>
