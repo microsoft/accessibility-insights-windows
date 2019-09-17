@@ -23,7 +23,7 @@ We have added functionality to the Color Contrast Analyzer feature in Accessibil
 - We have fixed several issues to make the app more usable for screen reader users.
 - We have updated to Axe.Windows 0.3.4 [#529](https://github.com/microsoft/accessibility-insights-windows/pull/529)
 - We have fixed the issue that caused "Prerelease Build" to display incorrectly in the version bar [#450](https://github.com/microsoft/accessibility-insights-windows/pull/450)
-- We have fixed the "File issue" button column width so it scales appropriately with font size [#551](https://github.com/microsoft/accessibility-insights-windows/pull/551)
+- We have fixed the "File issue" button column width so it scales appropriately with font size [#544 ](https://github.com/microsoft/accessibility-insights-windows/issues/544)
 
 #### Rule Updates
 
