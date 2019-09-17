@@ -165,7 +165,7 @@ namespace AccessibilityInsights.Win32
         [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         internal static extern bool UnregisterClass(string lpClassName, IntPtr hInstance);
 
-        [DllImport("user32", ExactSpelling = true, SetLastError = true)]
+        [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
         internal static extern int MapWindowPoints(IntPtr hWndFrom, IntPtr hWndTo, [In, Out] ref RECT rect, [MarshalAs(UnmanagedType.U4)] int cPoints);
 
         [DllImport("gdi32.dll")]
