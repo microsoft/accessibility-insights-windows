@@ -27,10 +27,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource LblH5}" Padding="0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap"
-                   VerticalAlignment="Top" Width="303" Grid.Row="1" Style="{StaticResource TxtBlkText}">
-            <Run Text="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"/>
-        </TextBlock>
         <TextBox Grid.Row="2" Margin="0,10" Name="tbHotkey"  
                  Height="24" Width="300" HorizontalContentAlignment="Center"
                  VerticalContentAlignment="Center" Style="{StaticResource StandardTextBox}"
@@ -39,6 +35,10 @@
                  KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
                  PreviewTextInput="TbHotkey_PreviewTextInput" ContextMenu="{x:Null}"
                  CommandManager.PreviewExecuted="TbHotkey_PreviewExecuted"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap"
+                   VerticalAlignment="Top" Width="303" Grid.Row="1" Style="{StaticResource TxtBlkText}">
+            <Run Text="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"/>
+        </TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="8,0" TextWrapping="Wrap" 
                    VerticalAlignment="Top" Width="303" Grid.Row="3" Style="{StaticResource TxtBlkText}"
                    Text="{x:Static Properties:Resources.TextBlockTextPressEscabeToCancel}" />
