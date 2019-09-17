@@ -12,14 +12,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     /// </summary>
     public partial class HotkeyGrabDialog : Window
     {
-        /// <summary>
-        /// Modifier key
-        /// </summary>
         ModifierKeys ModKey;
 
-        /// <summary>
-        /// Selected non-modifier key
-        /// </summary>
         Key SelectedKey;
 
         /// <summary>
@@ -27,14 +21,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         Button ButtonParent;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="tb">Button which triggered dialog</param>
         public HotkeyGrabDialog(Button tb)
         {
             ButtonParent = tb;
-            InitializeComponent();            
+            Topmost = Application.Current.MainWindow.Topmost;
+            InitializeComponent();
         }
 
         /// <summary>
@@ -50,6 +41,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             switch (tempKey)
             {
                 case Key.Escape:
+                case Key.Tab:
                     return;
                 case Key.LeftAlt:
                 case Key.RightAlt:
@@ -72,22 +64,16 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     break;
             }
 
-            if (ModKey != ModifierKeys.None)
-            {
-                this.lbModifiers.Content = GetCleanModifierString();
-            }
+            UpdateHotkeyText();
 
-            if (SelectedKey != Key.None)
-            {
-                this.lbKey.Content = GetCleanKeyString();
-            }
-
-            if(ModKey != ModifierKeys.None && SelectedKey != Key.None)
+            if (ModKey != ModifierKeys.None && SelectedKey != Key.None)
             {
                 ButtonParent.Content = string.Format(CultureInfo.InvariantCulture, "{0} + {1}", GetCleanModifierString(), GetCleanKeyString());
                 this.Close();
             }
         }
+
+        private void UpdateHotkeyText() => tbHotkey.Text = $"{GetCleanModifierString()} + {GetCleanKeyString()}";
 
         /// <summary>
         /// Get the string to represent ModKeys. This string removes any spaces that get
@@ -101,12 +87,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             return ModKey.ToString().Replace(" ", "");
         }
-        /// <summary>
-        /// Get clean key string for display
-        /// </summary>
-        /// <returns></returns>
+
         private string GetCleanKeyString()
         {
+            if (SelectedKey == Key.None) return string.Empty;
+
             var str = SelectedKey.ToString();
 
             if (SelectedKey >= Key.D0 && SelectedKey <= Key.D9)
@@ -117,18 +102,23 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             return str;
         }
 
-        /// <summary>
-        /// Handles key up. Closes window on esc.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
             {
                 e.Handled = true;
                 this.Close();
-            } 
+            }
+        }
+
+        private void TbHotkey_PreviewTextInput(object sender, TextCompositionEventArgs e) => e.Handled = true;
+
+        private void TbHotkey_PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Command == ApplicationCommands.Paste)
+            {
+                e.Handled = true;
+            }
         }
     }
 }
