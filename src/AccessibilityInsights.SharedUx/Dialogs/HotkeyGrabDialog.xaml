@@ -5,14 +5,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
         xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
         mc:Ignorable="d"
         ResizeMode="NoResize"
         Title="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" Height="162" Width="319" 
         KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
         WindowStartupLocation="CenterOwner"
-        ShowInTaskbar="False" Topmost="True"
+        ShowInTaskbar="False" Topmost="True" FocusManager.FocusedElement="{Binding ElementName=tbHotkey}"
         AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsHotkeyGrabDialog}">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
@@ -28,19 +27,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource LblH5}" Padding="0"/>
-        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap" 
+        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap" Name="tbInstructions"
                    VerticalAlignment="Top" Width="303" Grid.Row="1" Style="{StaticResource TxtBlkText}">
-            <Run Text="{x:Static Properties:Resources.RunTextToChangeKeyBoard}" />
+            <Run Text="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"/>
         </TextBlock>
-        <Grid Grid.Row="2" Margin="8,10,0,0">
-            <Rectangle HorizontalAlignment="Left" Fill="#F4F4F4" VerticalAlignment="Top" Height="24" Width="300" StrokeThickness="0"/>
-            <StackPanel Orientation="Horizontal">
-                <Label Name="lbModifiers" Content="" Margin="30,0,0,0"  HorizontalAlignment="Left" Height="23" VerticalAlignment="Top" Width="103" HorizontalContentAlignment="Right" Style="{StaticResource LblText}"/>
-                <Label x:Name="lbPlus" Content="+" HorizontalAlignment="Center" Height="23"  VerticalAlignment="Top" Width="18" Style="{StaticResource LblText}" />
-                <Label x:Name="lbKey" Content="" Margin="20,0,0,0" HorizontalAlignment="Right" Height="23"  VerticalAlignment="Top" Width="50" Style="{StaticResource LblText}"/>
-            </StackPanel>
-        </Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="8,10,0,0" TextWrapping="Wrap" 
-                   VerticalAlignment="Top" Width="303" Grid.Row="3" Style="{StaticResource TxtBlkText}" Text="{x:Static Properties:Resources.TextBlockTextPressEscabeToCancel}" />
+        <TextBox Grid.Row="2" Margin="0,10" Name="tbHotkey"  
+                 Height="24" Width="300" HorizontalContentAlignment="Center"
+                 VerticalContentAlignment="Center" Style="{StaticResource StandardTextBox}"
+                 AutomationProperties.Name="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}"
+                 AutomationProperties.HelpText="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"
+                 KeyDown="Window_KeyDown" KeyUp="Window_KeyUp" 
+                 PreviewTextInput="TbHotkey_PreviewTextInput" ContextMenu="{x:Null}"
+                 CommandManager.PreviewExecuted="TbHotkey_PreviewExecuted"/>
+        <TextBlock HorizontalAlignment="Left" Margin="8,0" TextWrapping="Wrap" 
+                   VerticalAlignment="Top" Width="303" Grid.Row="3" Style="{StaticResource TxtBlkText}"
+                   Text="{x:Static Properties:Resources.TextBlockTextPressEscabeToCancel}" />
     </Grid>
 </Window>
