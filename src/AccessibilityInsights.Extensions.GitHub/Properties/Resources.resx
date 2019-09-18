@@ -138,7 +138,7 @@
     <value>({0}/{1}) has an accessibility issue that needs investigation</value>
   </data>
   <data name="PlaceHolder" xml:space="preserve">
-    <value>https//github.com/owner/repo</value>
+    <value>https://github.com/owner/repo</value>
   </data>
   <data name="SingleFailureIssueBody" xml:space="preserve">
     <value>The following accessibility issue needs investigation.
