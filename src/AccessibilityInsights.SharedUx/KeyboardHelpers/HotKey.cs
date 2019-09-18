@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         public Keys Key { get; internal set; }
         public HotkeyModifier Modifier { get; internal set; }
 
-        public Action Action { get; set; }
+        public Action Action { get; private set; }
 
         public uint ErrorCode { get; private set; }
 
@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         {
             this.ErrorCode = 0;
 
-            if(NativeMethods.RegisterHotKey(hWnd, Id, (int)this.Modifier, Key.GetHashCode()) == false)
+            if (NativeMethods.RegisterHotKey(hWnd, Id, (int)this.Modifier, Key.GetHashCode()) == false)
             {
                 ErrorCode = NativeMethods.GetLastError();
                 return false;
@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         {
             this.ErrorCode = 0;
 
-            if(NativeMethods.UnregisterHotKey(hWnd, Id) == false)
+            if (NativeMethods.UnregisterHotKey(hWnd, Id) == false)
             {
                 ErrorCode = NativeMethods.GetLastError();
                 return false;
@@ -109,7 +109,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         private static HotkeyModifier GetModifier(string mods)
         {
             var fms = from m in mods.Split(',')
-                     select $"MOD_{m.Trim().ToUpperInvariant()}";
+                      select $"MOD_{m.Trim().ToUpperInvariant()}";
 
             HotkeyModifier result = HotkeyModifier.MOD_NoModifier;
 
@@ -135,6 +135,17 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
             }
 
             return result;
+        }
+
+        public void SetConditionalAction(Action action, Func<bool> condition)
+        {
+            Action = () =>
+            {
+                if (condition == null || condition())
+                {
+                    action();
+                }
+            };
         }
     }
 }

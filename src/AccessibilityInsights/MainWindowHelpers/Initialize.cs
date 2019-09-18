@@ -191,7 +191,7 @@ namespace AccessibilityInsights
             {
                 if (this.HotkeyHandler.Exist(hk) == false)
                 {
-                    hk.Action = action;
+                    hk.SetConditionalAction(action, () => !ctrlConfigurationMode.IsVisible);
 
                     this.HotkeyHandler.RegisterHotKey(hk);
                 }
