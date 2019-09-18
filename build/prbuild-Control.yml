@@ -11,7 +11,7 @@ jobs:
     displayName: 'NuGet - Octokit install'
     inputs:
       command: custom
-      arguments: 'install OctoKit -source "https://api.nuget.org/v3/index.json"'  
+      arguments: 'install -version $(OctokitVersion) OctoKit -source "https://api.nuget.org/v3/index.json"'
     
   - task: PowerShell@2
     displayName: 'Validate release_info.json Files'
