@@ -1296,15 +1296,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What&apos;s New.
-        /// </summary>
-        public static string tcTabsWhatsNewHeader {
-            get {
-                return ResourceManager.GetString("tcTabsWhatsNewHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to or press Ctrl + I to go to Inspect mode, hover over the element within the target application, and select the Test icon.
         /// </summary>
         public static string TestModeControl_HoverAndTest {

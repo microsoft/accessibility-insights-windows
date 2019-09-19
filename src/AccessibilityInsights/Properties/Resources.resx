@@ -442,9 +442,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="tcTabsTestHeader" xml:space="preserve">
     <value>Test</value>
   </data>
-  <data name="tcTabsWhatsNewHeader" xml:space="preserve">
-    <value>What's New</value>
-  </data>
   <data name="TestModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Test page</value>
   </data>
