@@ -4487,14 +4487,5 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("WhatsNewControl_Version_What_s_new_value", resourceCulture);
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What&apos;s new.
-        /// </summary>
-        public static string WhatsNewTabControlAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("WhatsNewTabControlAutomationPropertiesName", resourceCulture);
-            }
-        }
     }
 }

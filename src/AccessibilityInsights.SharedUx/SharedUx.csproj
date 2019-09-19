@@ -147,10 +147,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\SettingsTabs\WhatsNewTabControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Controls\SettingsTabs\ApplicationSettingsControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -386,9 +382,6 @@
       <DependentUpon>ColorChooser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\NamedPane.cs" />
-    <Compile Include="Controls\SettingsTabs\WhatsNewTabControl.xaml.cs">
-      <DependentUpon>WhatsNewTabControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Controls\SettingsTabs\ApplicationSettingsControl.xaml.cs">
       <DependentUpon>ApplicationSettingsControl.xaml</DependentUpon>
     </Compile>
