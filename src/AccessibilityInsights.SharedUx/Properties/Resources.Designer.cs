@@ -61,6 +61,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Built with Axe-Windows v{0}.
+        /// </summary>
+        public static string AboutTabControl_AxeVersionFormat {
+            get {
+                return ResourceManager.GetString("AboutTabControl_AxeVersionFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to passed value is not supported type..
         /// </summary>
         public static string ActionViewModelConverter_Convert_passed_value_is_not_supported_type {
