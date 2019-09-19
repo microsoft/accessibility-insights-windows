@@ -108,7 +108,7 @@ namespace AccessibilityInsights.Modes
         /// <returns></returns>
         private bool IsConfigurationChanged()
         {
-            return appSettingsCtrl.IsConfigurationChanged(Configuration) 
+            return appSettingsCtrl.IsConfigurationChanged(Configuration)
                 || connectionCtrl.IsConfigurationChanged(Configuration);
         }
 
@@ -204,11 +204,7 @@ namespace AccessibilityInsights.Modes
         {
             Application,
             Connection,
-            Test,
             About,
-            Feedback,
-            WhatsNew,
-            Preview
         }
 
         /// <summary>
@@ -219,7 +215,7 @@ namespace AccessibilityInsights.Modes
         {
             if (mode == SettingModes.Application || mode == SettingModes.Connection)
             {
-                btnOk.Visibility = Visibility.Visible;    
+                btnOk.Visibility = Visibility.Visible;
             }
             else
             {
@@ -277,9 +273,6 @@ namespace AccessibilityInsights.Modes
             {
                 var mode = (SettingModes)(e.AddedItems[0] as TabItem).Tag;
                 UpdateUIBasedOnSettingMode(mode);
-
-                if (mode == SettingModes.Preview) // BeginInvoke stops dialog from blocking this event from returning
-                    Dispatcher.BeginInvoke(new Action(() => MessageDialog.Show(Properties.Resources.TabControl_SelectionChangedDialogMessage)));
             }
         }
     }

@@ -50,7 +50,7 @@
                             <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsConnectionTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
                                 <controls:ConnectionControl x:Name="connectionCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsAboutTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Feedback}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsAboutTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">
                                 <controls:AboutTabControl x:Name="aboutTabCtrl"/>
                             </TabItem>
                         </TabControl>
