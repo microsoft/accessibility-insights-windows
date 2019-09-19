@@ -1,5 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Axe.Windows.Core.Misc;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace AccessibilityInsights.SharedUx.Misc
 {
@@ -11,8 +14,10 @@ namespace AccessibilityInsights.SharedUx.Misc
         /// <returns>The file version string (as formatted in the file resources)</returns>
         public static string GetAppVersion()
         {
-            string fileVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetExecutingAssembly().Location).FileVersion;
+            string fileVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
             return fileVersion;
         }
+
+        public static string GetAxeVersion() => PackageInfo.InformationalVersion;
     }
 }

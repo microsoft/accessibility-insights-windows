@@ -1573,6 +1573,9 @@ Do you want to change the channel? </value>
   <data name="ColorContrast_NonTextObjectsText" xml:space="preserve">
     <value>Graphical objects and UI components</value>
   </data>
+  <data name="AboutTabControl_AxeVersionFormat" xml:space="preserve">
+    <value>Built with Axe.Windows {0}</value>
+  </data>
   <data name="ColorContrast_RequiresNonTextObjectsPost" xml:space="preserve">
     <value>)</value>
   </data>

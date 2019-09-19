@@ -56,6 +56,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public string VersionInfoLabel => string.Format(CultureInfo.InvariantCulture,
             Properties.Resources.VersionLinkContentFormat, VersionTools.GetAppVersion());
 
+        public string AxeVersion => VersionTools.GetAxeVersion();
 #pragma warning restore CA1822
     }
 }
