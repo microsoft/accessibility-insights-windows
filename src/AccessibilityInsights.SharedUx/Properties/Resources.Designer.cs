@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Built with Axe-Windows v{0}.
+        ///   Looks up a localized string similar to Built with Axe-Windows {0}.
         /// </summary>
         public static string AboutTabControl_AxeVersionFormat {
             get {
