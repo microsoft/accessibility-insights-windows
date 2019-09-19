@@ -670,6 +670,16 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to start the video. please use this URL to open page.
+        /// {0}.
+        /// </summary>
+        public static string btnVideo_ClickException {
+            get {
+                return ResourceManager.GetString("btnVideo_ClickException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close the notification toast.
         /// </summary>
         public static string ButtonAutomationPropertiesNameCloseToastNotification {
@@ -956,6 +966,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ckbxAgreeToHelp {
             get {
                 return ResourceManager.GetString("ckbxAgreeToHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to  Don&apos;t show this again.
+        /// </summary>
+        public static string ckbxDontShowContent {
+            get {
+                return ResourceManager.GetString("ckbxDontShowContent", resourceCulture);
             }
         }
         
@@ -2032,6 +2051,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to open link..
+        /// </summary>
+        public static string hlLink_RequestNavigateException {
+            get {
+                return ResourceManager.GetString("hlLink_RequestNavigateException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to questions or feedback.
         /// </summary>
         public static string hlLinkAutomationPropertiesName {
@@ -2082,6 +2110,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ImageAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ImageAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting started video thumbnail.
+        /// </summary>
+        public static string imageVideoAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("imageVideoAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -2653,6 +2690,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to page.
+        /// </summary>
+        public static string LocalizedControlType_Page {
+            get {
+                return ResourceManager.GetString("LocalizedControlType_Page", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
         /// </summary>
         public static string LostExceptionTelemetry {
@@ -2982,6 +3028,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string MessageDialogWindowTitle {
             get {
                 return ResourceManager.GetString("MessageDialogWindowTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bring Accessibility Insights for Windows to the foreground or minimize it..
+        /// </summary>
+        public static string minmizeOrActivateWindowText {
+            get {
+                return ResourceManager.GetString("minmizeOrActivateWindowText", resourceCulture);
             }
         }
         
@@ -3380,6 +3435,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string runFailuresTextOneFailure {
             get {
                 return ResourceManager.GetString("runFailuresTextOneFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run tests on the selected element..
+        /// </summary>
+        public static string runSelectedTestText {
+            get {
+                return ResourceManager.GetString("runSelectedTestText", resourceCulture);
             }
         }
         
@@ -3831,6 +3895,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Go to the full list of keyboard shortcuts for Accessibility Insights for Windows..
+        /// </summary>
+        public static string shortcutsDescription {
+            get {
+                return ResourceManager.GetString("shortcutsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequently used shortcuts.
+        /// </summary>
+        public static string shortcutsTitle {
+            get {
+                return ResourceManager.GetString("shortcutsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hue.
         /// </summary>
         public static string sliderColorSliderAutomationPropertiesName {
@@ -3845,6 +3927,42 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string smallSampleText {
             get {
                 return ResourceManager.GetString("smallSampleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Started.
+        /// </summary>
+        public static string StartUpModeControl_btnExit {
+            get {
+                return ResourceManager.GetString("StartUpModeControl_btnExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to go to the latest release notes.
+        /// </summary>
+        public static string StartupModeControl_latestReleaseNotes {
+            get {
+                return ResourceManager.GetString("StartupModeControl_latestReleaseNotes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For more information,.
+        /// </summary>
+        public static string StartupModeControl_moreInformationText {
+            get {
+                return ResourceManager.GetString("StartupModeControl_moreInformationText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome page.
+        /// </summary>
+        public static string StartUpModeControlAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("StartUpModeControlAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -4022,6 +4140,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tbTitleText {
             get {
                 return ResourceManager.GetString("tbTitleText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get started.
+        /// </summary>
+        public static string tbVideoText1 {
+            get {
+                return ResourceManager.GetString("tbVideoText1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn about Accessibility Insights for Windows with this 4-minute introductory video..
+        /// </summary>
+        public static string tbVideoText2 {
+            get {
+                return ResourceManager.GetString("tbVideoText2", resourceCulture);
             }
         }
         
@@ -4426,6 +4562,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Start or stop event recording for the selected element..
+        /// </summary>
+        public static string toggleEventText {
+            get {
+                return ResourceManager.GetString("toggleEventText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patterns.
         /// </summary>
         public static string treePatternsAutomationPropertiesName {
@@ -4467,6 +4612,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string VersionLinkFormat {
             get {
                 return ResourceManager.GetString("VersionLinkFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to Accessibility Insights for Windows.
+        /// </summary>
+        public static string WelcomeToAccessibilityInsightsForWindowsLabelContent {
+            get {
+                return ResourceManager.GetString("WelcomeToAccessibilityInsightsForWindowsLabelContent", resourceCulture);
             }
         }
         

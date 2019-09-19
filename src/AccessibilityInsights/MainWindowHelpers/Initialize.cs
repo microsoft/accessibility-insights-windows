@@ -5,6 +5,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.KeyboardHelpers;
 using AccessibilityInsights.SharedUx.Settings;
@@ -34,7 +35,7 @@ namespace AccessibilityInsights
         void StartStartMode()
         {
             this.CurrentPage = AppPage.Start;
-            this.ctrlCurMode = ctrlStartUpMode;
+            this.ctrlCurMode = ctrlLiveMode;
             PageTracker.TrackPage(this.CurrentPage, null);
 
             /// Make sure that title and Name property are set with same value. 
@@ -57,7 +58,8 @@ namespace AccessibilityInsights
             {
                 this.bdLeftNav.IsEnabled = false;
                 this.gdModes.Visibility = Visibility.Collapsed;
-                this.ctrlStartUpMode.ShowControl();
+                _ = ctrlDialogContainer.ShowDialog(new StartUpModeControl());
+
                 //show telemetry dialog
                 ShowTelemetryDialog();
                 // make sure that we show update. 

@@ -203,6 +203,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\StartUpModeControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\TelemetryApproveContainedDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -335,6 +339,9 @@
     <Compile Include="Dialogs\ContainedDialog.cs" />
     <Compile Include="Dialogs\ChangeChannelContainedDialog.xaml.cs">
       <DependentUpon>ChangeChannelContainedDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\StartUpModeControl.xaml.cs">
+      <DependentUpon>StartUpModeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\TelemetryApproveContainedDialog.xaml.cs">
       <DependentUpon>TelemetryApproveContainedDialog.xaml</DependentUpon>
