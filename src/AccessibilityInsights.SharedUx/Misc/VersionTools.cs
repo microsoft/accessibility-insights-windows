@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Actions;
+using Axe.Windows.Core.Misc;
 using System.Diagnostics;
 using System.Reflection;
 
@@ -18,6 +18,6 @@ namespace AccessibilityInsights.SharedUx.Misc
             return fileVersion;
         }
 
-        public static string GetAxeVersion() => FileVersionInfo.GetVersionInfo(Assembly.GetAssembly(typeof(CaptureAction)).Location).FileVersion;
+        public static string GetAxeVersion() => PackageInfo.InformationalVersion;
     }
 }
