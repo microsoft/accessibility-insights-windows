@@ -190,10 +190,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Modes\StartUpModeControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Modes\CCAModeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -233,9 +229,6 @@
     </Compile>
     <Compile Include="Modes\ConfigurationModeControl.xaml.cs">
       <DependentUpon>ConfigurationModeControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Modes\StartUpModeControl.xaml.cs">
-      <DependentUpon>StartUpModeControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Modes\CCAModeControl.xaml.cs">
       <DependentUpon>CCAModeControl.xaml</DependentUpon>

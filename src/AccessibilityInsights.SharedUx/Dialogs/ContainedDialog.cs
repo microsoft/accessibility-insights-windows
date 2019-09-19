@@ -1,17 +1,16 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Controls;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Automation.Peers;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
-    public abstract class ContainedDialog : UserControl
+    public abstract class ContainedDialog : Border
     {
         /// <summary>
         /// Used to determine when the "dialog" is ready to return its result
@@ -23,11 +22,22 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <summary>
         /// Used to hide the ContainedDialog's container
         /// </summary>
-        protected Action HideDialog { get; set; }
+        protected Action<ContainedDialog> HideDialog { get; set; }
 
         public ContainedDialog()
         {
             KeyDown += ContainedDialog_KeyUp;
+            var rd = new ResourceDictionary()
+            {
+                Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute),
+            };
+
+            Style = rd[nameof(ContainedDialog)] as Style;
+        }
+
+        private void ContainedDialog_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
 
         private void ContainedDialog_KeyUp(object sender, KeyEventArgs e)
@@ -46,16 +56,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         protected abstract void SetFocusOnDefaultControl();
 
-        /// <summary>
-        /// Overriding LocalizedControlType
-        /// </summary>
-        /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(this, "dialog");
-        }
 
-        public Task<bool> ShowDialog(Action hideDialog)
+        public Task<bool> ShowDialog(Action<ContainedDialog> hideDialog)
         {
             HideDialog = hideDialog;
             Dispatcher.InvokeAsync(SetFocusOnDefaultControl, DispatcherPriority.Input);
@@ -70,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private bool WaitAndHide()
         {
             WaitHandle.WaitOne();
-            HideDialog?.Invoke();
+            HideDialog?.Invoke(this);
             return DialogResult;
         }
     }

@@ -22,6 +22,24 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="Border" x:Key="ContainedDialog">
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Background">
+            <Setter.Value>
+                <SolidColorBrush Color="Black" Opacity=".25"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="CornerRadius" Value="0"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect BlurRadius="120" Opacity=".5"/>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type Label}" x:Key="VarStandardLabel">
         <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
     </Style>

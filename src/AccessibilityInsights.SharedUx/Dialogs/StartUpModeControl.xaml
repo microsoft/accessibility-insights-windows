@@ -12,11 +12,11 @@
              xmlns:whatsNew="clr-namespace:AccessibilityInsights.SharedUx.Controls.WhatsNew"
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d"
-             AutomationProperties.Name="{x:Static properties:Resources.StartUpModeControlAutomationPropertiesName}" Height="700" Width="700">
-  <UserControl.Resources>
+             AutomationProperties.Name="{x:Static properties:Resources.StartUpModeControlAutomationPropertiesName}">
+    <dialogs:ContainedDialog.Resources>
     <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
-  </UserControl.Resources>
-  <Grid Background="{DynamicResource ResourceKey=LightGreyBrush}" >
+  </dialogs:ContainedDialog.Resources>
+    <Grid Background="{DynamicResource ResourceKey=LightGreyBrush}" MaxHeight="700" MaxWidth="700">
     <Grid.RowDefinitions>
       <RowDefinition Height="30"/>
       <RowDefinition Height="72"/>

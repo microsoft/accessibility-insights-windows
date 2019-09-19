@@ -29,27 +29,29 @@ namespace AccessibilityInsights.Modes
             return new CustomControlOverridingAutomationPeer(this, Properties.Resources.LocalizedControlType_Page);
         }
 
-        private void HideControl() => Dispatcher.Invoke(() =>
+        private void HideControl(ContainedDialog dialog) => Dispatcher.Invoke(() =>
         {
-            this.Visibility = Visibility.Collapsed;
-            brdrContainer.Child = null;
+            if (gdContainer.Children.Contains(dialog))
+            {
+                gdContainer.Children.Remove(dialog);
+            }
+
+            if (gdContainer.Children.Count == 0)
+            {
+                this.Visibility = Visibility.Collapsed;
+            }
         });
 
         private void ShowControl(ContainedDialog containedDialog) => Dispatcher.InvokeAsync(() =>
         {
             this.Visibility = Visibility.Visible;
-            brdrContainer.Child = containedDialog;
+            gdContainer.Children.Add(containedDialog);
         });
 
         public async Task<bool> ShowDialog(ContainedDialog containedDialog)
         {
             if (containedDialog == null)
                 throw new ArgumentNullException(nameof(containedDialog));
-
-            if (brdrContainer.Child is ContainedDialog oldDlg)
-            {
-                oldDlg.DismissDialog();
-            }
 
             ShowControl(containedDialog);
 

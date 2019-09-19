@@ -63,6 +63,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 hlLink.NavigateUri = releaseNotesUri;
             }
+            WaitHandle.Reset();
+
         }
 
         /// <summary>
@@ -88,6 +90,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 ConfigurationManager.GetDefaultInstance().AppConfig.ShowWelcomeScreenOnLaunch = false;
             }
+            DismissDialog();
         }
 
         /// <summary>

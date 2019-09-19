@@ -14,6 +14,7 @@ using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
@@ -36,6 +37,7 @@ namespace AccessibilityInsights
         {
             this.CurrentPage = AppPage.Start;
             this.ctrlCurMode = ctrlLiveMode;
+            this.ctrlCurMode.ShowControl();
             PageTracker.TrackPage(this.CurrentPage, null);
 
             /// Make sure that title and Name property are set with same value. 
@@ -52,14 +54,13 @@ namespace AccessibilityInsights
             InitTimerAutoSnap();
             InitAccessKeyRule();
             InitHighlighter();
-
+            this.gdModes.Visibility = Visibility.Visible;
+            this.btnPause.Visibility = Visibility.Visible;
             /// Set UI appropriately if showing startup screen
             if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen())
             {
-                this.bdLeftNav.IsEnabled = false;
-                this.gdModes.Visibility = Visibility.Collapsed;
-                _ = ctrlDialogContainer.ShowDialog(new StartUpModeControl());
-
+                //this.bdLeftNav.IsEnabled = false;
+                _ = ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
                 //show telemetry dialog
                 ShowTelemetryDialog();
                 // make sure that we show update. 
@@ -84,6 +85,8 @@ namespace AccessibilityInsights
 
             UpdateTabSelection();
         }
+
+        private void BackToSelectingOnDispatcher(Task<bool> _) => Dispatcher.Invoke(HandleBackToSelectingState);
 
         /// <summary>
         ///  Update main window layout. 
