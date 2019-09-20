@@ -1,8 +1,10 @@
-## September 16, 2019 Insider Release ([v1.1.0988.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0988.01))
 
-Welcome to the September 16, 2019 Insider release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.0988.01/AccessibilityInsights.msi
+## September 18, 2019 Insider Release ([v1.1.0990.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.0990.01))
+
+Welcome to the September 18, 2019 Insider release of Accessibility Insights for Windows.
+
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.0990.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
@@ -21,6 +23,7 @@ We have added functionality to the Color Contrast Analyzer feature in Accessibil
 - We have fixed several issues to make the app more usable for screen reader users.
 - We have updated to Axe.Windows 0.3.4 [#529](https://github.com/microsoft/accessibility-insights-windows/pull/529)
 - We have fixed the issue that caused "Prerelease Build" to display incorrectly in the version bar [#450](https://github.com/microsoft/accessibility-insights-windows/pull/450)
+- We have fixed the "File issue" button column width so it scales appropriately with font size [#544 ](https://github.com/microsoft/accessibility-insights-windows/issues/544)
 
 #### Rule Updates
 
