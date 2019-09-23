@@ -55,10 +55,10 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             try
             {
-                var fp = Path.Combine(SettingsProvider.UserDataFolderPath, LayoutFileName);
+                var fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, LayoutFileName);
                 this.AppLayout.SerializeInJSON(fp);
 
-                fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
+                fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, Constants.AppConfigFileName);
                 this.AppConfig.SerializeInJSON(fp);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
