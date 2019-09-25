@@ -59,8 +59,7 @@ namespace AccessibilityInsights
             /// Set UI appropriately if showing startup screen
             if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen())
             {
-                //this.bdLeftNav.IsEnabled = false;
-                _ = ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
+                ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
                 //show telemetry dialog
                 ShowTelemetryDialog();
                 // make sure that we show update. 

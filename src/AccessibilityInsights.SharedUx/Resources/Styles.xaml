@@ -23,7 +23,6 @@
         </Setter>
     </Style>
     <Style TargetType="Border" x:Key="ContainedDialog">
-        <Setter Property="BorderBrush" Value="Black"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="Background">
             <Setter.Value>
