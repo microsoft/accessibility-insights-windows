@@ -308,7 +308,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\video_thumb.png" />
     <Resource Include="Resources\Light\hilight_off.png" />
     <Resource Include="Resources\Light\hilight_on.png" />
   </ItemGroup>

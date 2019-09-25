@@ -586,7 +586,9 @@
       <Name>Win32</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\video_thumb.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\BrandIcon.ico" />
     <Resource Include="Resources\Icons\BrandIcon_white.ico" />
