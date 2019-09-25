@@ -27,6 +27,7 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -96,7 +97,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             get
             {
-                lock(this)
+                lock (this)
                 {
                     tabStopCount++;
                     return tabStopCount;
@@ -503,7 +504,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             this.IsTabOpen = false;
             this.StopRecordEvents();
-            ClearOverlayDriver.GetDefaultInstance().Hide();
+
+            // if we don't run this on dispatcher like this, we get rendering issues in the parent
+            // tab control in TestModeControl on hide.
+            Dispatcher.BeginInvoke(new Action(ClearOverlayDriver.GetDefaultInstance().Hide));
         }
 
         /// Automated Checks mode is shown
