@@ -5,6 +5,7 @@ using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Misc;
 using AccessibilityInsights.SetupLibrary;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.KeyboardHelpers;
 using AccessibilityInsights.SharedUx.Settings;
@@ -13,6 +14,7 @@ using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using System;
 using System.Globalization;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
 using System.Windows.Shell;
@@ -34,7 +36,8 @@ namespace AccessibilityInsights
         void StartStartMode()
         {
             this.CurrentPage = AppPage.Start;
-            this.ctrlCurMode = ctrlStartUpMode;
+            this.ctrlCurMode = ctrlLiveMode;
+            this.ctrlCurMode.ShowControl();
             PageTracker.TrackPage(this.CurrentPage, null);
 
             /// Make sure that title and Name property are set with same value. 
@@ -51,13 +54,12 @@ namespace AccessibilityInsights
             InitTimerAutoSnap();
             InitAccessKeyRule();
             InitHighlighter();
-
+            this.gdModes.Visibility = Visibility.Visible;
+            this.btnPause.Visibility = Visibility.Visible;
             /// Set UI appropriately if showing startup screen
             if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen())
             {
-                this.bdLeftNav.IsEnabled = false;
-                this.gdModes.Visibility = Visibility.Collapsed;
-                this.ctrlStartUpMode.ShowControl();
+                ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
                 //show telemetry dialog
                 ShowTelemetryDialog();
                 // make sure that we show update. 
@@ -82,6 +84,8 @@ namespace AccessibilityInsights
 
             UpdateTabSelection();
         }
+
+        private void BackToSelectingOnDispatcher(Task<bool> _) => Dispatcher.Invoke(HandleBackToSelectingState);
 
         /// <summary>
         ///  Update main window layout. 

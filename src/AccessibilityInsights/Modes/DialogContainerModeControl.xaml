@@ -7,15 +7,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" KeyboardNavigation.TabNavigation="Cycle"
         KeyboardNavigation.DirectionalNavigation="Cycle">
-    <UserControl.Background>
-        <SolidColorBrush Opacity="0.25" Color="Black"/>
-    </UserControl.Background>
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Border BorderBrush="Black" BorderThickness="0" CornerRadius="0" Margin="0" Name="brdrContainer">
-        <Border.Effect>
-            <DropShadowEffect Opacity="0.5" BlurRadius="120"></DropShadowEffect>
-        </Border.Effect>
-    </Border>
+    
+        <Grid Name="gdContainer"/>
+    
 </UserControl>

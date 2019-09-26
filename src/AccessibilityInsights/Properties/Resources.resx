@@ -291,9 +291,6 @@
   <data name="CCAModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Test start up page</value>
   </data>
-  <data name="ckbxDontShowContent" xml:space="preserve">
-    <value> Don't show this again</value>
-  </data>
   <data name="colorContrast" xml:space="preserve">
     <value>Color Contrast analyzer</value>
   </data>
@@ -342,29 +339,14 @@
   <data name="HandleRequestRecordingByHotkeySelectElementMessage" xml:space="preserve">
     <value>Please select an element first before starting Event page.</value>
   </data>
-  <data name="shortcutsTitle" xml:space="preserve">
-    <value>Frequently used shortcuts</value>
-  </data>
   <data name="hlLink_RequestNavigateException" xml:space="preserve">
     <value>Failed to open link.</value>
-  </data>
-  <data name="imageVideoAutomationPropertiesName" xml:space="preserve">
-    <value>Getting started video thumbnail</value>
   </data>
   <data name="liveInspect" xml:space="preserve">
     <value>Live Inspect</value>
   </data>
   <data name="LiveModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Live Inspect page</value>
-  </data>
-  <data name="minmizeOrActivateWindowText" xml:space="preserve">
-    <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
-  </data>
-  <data name="StartupModeControl_moreInformationText" xml:space="preserve">
-    <value>For more information,</value>
-  </data>
-  <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
-    <value>go to the latest release notes</value>
   </data>
   <data name="noScreenShotAvailableMessage" xml:space="preserve">
     <value>The element's bounding rectangle is empty (app minimized?)- no screenshot is available.</value>
@@ -377,9 +359,6 @@
   </data>
   <data name="resultsInUIATree" xml:space="preserve">
     <value>Results in UI Automation Tree</value>
-  </data>
-  <data name="runSelectedTestText" xml:space="preserve">
-    <value>Run tests on the selected element.</value>
   </data>
   <data name="SetElementCultureInfoFormatMessage" xml:space="preserve">
     <value>Only the first {0:N0} elements are being scanned. You will not be able to save the results or file any bugs from this scan.</value>
@@ -400,9 +379,6 @@
     <value>Unable to load the selected file.
 Please ensure that you are opening a valid test file using the most recent release of Accessibility Insights for Windows (https://aka.ms/AccessibilityInsights).</value>
   </data>
-  <data name="StartUpModeControlAutomationPropertiesName" xml:space="preserve">
-    <value>Welcome page</value>
-  </data>
   <data name="tabControlLabelContent" xml:space="preserve">
     <value>FastPass</value>
   </data>
@@ -420,12 +396,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="tbiTabStopHeader" xml:space="preserve">
     <value>Tab Stops</value>
-  </data>
-  <data name="tbVideoText1" xml:space="preserve">
-    <value>Get started</value>
-  </data>
-  <data name="tbVideoText2" xml:space="preserve">
-    <value>Learn about Accessibility Insights for Windows with this 4-minute introductory video.</value>
   </data>
   <data name="tcTabsAboutHeader" xml:space="preserve">
     <value>About</value>
@@ -493,14 +463,8 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="TitleTextMapTestTabStops" xml:space="preserve">
     <value>Test - Tab Stops</value>
   </data>
-  <data name="toggleEventText" xml:space="preserve">
-    <value>Start or stop event recording for the selected element.</value>
-  </data>
   <data name="UpdateTitleStringTitle" xml:space="preserve">
     <value>Accessibility Insights for Windows</value>
-  </data>
-  <data name="WelcomeToAccessibilityInsightsForWindowsLabelContent" xml:space="preserve">
-    <value>Welcome to Accessibility Insights for Windows</value>
   </data>
   <data name="LiveModeControl_HoverOverElement" xml:space="preserve">
     <value>To begin inspecting a UI Automation element, hover over the element within the target application or set keyboard focus on the element. To inspect its properties, bring focus back to Accessibility Insights for Windows by pressing</value>
@@ -554,10 +518,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="UpdateDialogWindowTitle" xml:space="preserve">
     <value>There is an update available</value>
   </data>
-  <data name="btnVideo_ClickException" xml:space="preserve">
-    <value>Failed to start the video. please use this URL to open page.
- {0}</value>
-  </data>
   <data name="SetElementInspectTestDetail" xml:space="preserve">
     <value>Inspect Test Detail of {0}</value>
   </data>
@@ -596,12 +556,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="btnConfigAutomationPropertiesNameNoBugFiling" xml:space="preserve">
     <value>Settings</value>
-  </data>
-  <data name="StartUpModeControl_btnExit" xml:space="preserve">
-    <value>Get Started</value>
-  </data>
-  <data name="shortcutsDescription" xml:space="preserve">
-    <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
   </data>
   <data name="LocalizedControlType_Page" xml:space="preserve">
     <value>page</value>

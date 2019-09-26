@@ -898,6 +898,58 @@ Accessibility Insights Support Team
   <data name="btnFileBugAutomationPropertiesName1" xml:space="preserve">
     <value>File a bug</value>
   </data>
+  <data name="StartupModeControl_moreInformationText" xml:space="preserve">
+    <value>For more information,</value>
+  </data>
+  <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
+    <value>go to the latest release notes</value>
+  </data>
+  <data name="StartUpModeControlAutomationPropertiesName" xml:space="preserve">
+    <value>Welcome page</value>
+  </data>
+  <data name="StartUpModeControl_btnExit" xml:space="preserve">
+    <value>Get Started</value>
+  </data>
+  <data name="minmizeOrActivateWindowText" xml:space="preserve">
+    <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
+  </data>
+  <data name="WelcomeToAccessibilityInsightsForWindowsLabelContent" xml:space="preserve">
+    <value>Welcome to Accessibility Insights for Windows</value>
+  </data>
+  <data name="ckbxDontShowContent" xml:space="preserve">
+    <value> Don't show this again</value>
+  </data>
+  <data name="runSelectedTestText" xml:space="preserve">
+    <value>Run tests on the selected element.</value>
+  </data>
+  <data name="toggleEventText" xml:space="preserve">
+    <value>Start or stop event recording for the selected element.</value>
+  </data>
+  <data name="shortcutsDescription" xml:space="preserve">
+    <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
+  </data>
+  <data name="shortcutsTitle" xml:space="preserve">
+    <value>Frequently used shortcuts</value>
+  </data>
+  <data name="imageVideoAutomationPropertiesName" xml:space="preserve">
+    <value>Getting started video thumbnail</value>
+  </data>
+  <data name="tbVideoText1" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="tbVideoText2" xml:space="preserve">
+    <value>Learn about Accessibility Insights for Windows with this 4-minute introductory video.</value>
+  </data>
+  <data name="LocalizedControlType_Page" xml:space="preserve">
+    <value>page</value>
+  </data>
+  <data name="btnVideo_ClickException" xml:space="preserve">
+    <value>Failed to start the video. please use this URL to open page.
+ {0}</value>
+  </data>
+  <data name="hlLink_RequestNavigateException" xml:space="preserve">
+    <value>Failed to open link.</value>
+  </data>
   <data name="tbShowAllText" xml:space="preserve">
     <value>Pass or Uncertain test(s)</value>
   </data>

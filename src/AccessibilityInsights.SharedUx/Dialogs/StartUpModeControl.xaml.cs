@@ -1,44 +1,29 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SetupLibrary;
-using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation.Peers;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
-namespace AccessibilityInsights.Modes
+namespace AccessibilityInsights.SharedUx.Dialogs
 {
     /// <summary>
     /// Interaction logic for StartUpModeControl.xaml
     /// </summary>
-    public partial class StartUpModeControl : UserControl, IModeControl
+    public partial class StartUpModeControl : ContainedDialog
     {
         /// <summary>
         /// URL to getting started video
         /// </summary>
         const string VideoUrl = "https://go.microsoft.com/fwlink/?linkid=2077681";
 
-        /// <summary>
-        /// MainWindow to access shared methods
-        /// </summary>
-        static MainWindow MainWin
-        {
-            get
-            {
-                return (MainWindow)Application.Current.MainWindow;
-            }
-        }
 
         /// <summary>
         /// App configation
@@ -62,14 +47,6 @@ namespace AccessibilityInsights.Modes
             }
         }
 
-        /// <summary>
-        /// Overriding LocalizedControlType
-        /// </summary>
-        /// <returns></returns>
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CustomControlOverridingAutomationPeer(this, Properties.Resources.LocalizedControlType_Page);
-        }
 
         /// <summary>
         /// Most recent version string
@@ -86,6 +63,8 @@ namespace AccessibilityInsights.Modes
             {
                 hlLink.NavigateUri = releaseNotesUri;
             }
+            WaitHandle.Reset();
+
         }
 
         /// <summary>
@@ -98,61 +77,7 @@ namespace AccessibilityInsights.Modes
             this.lblActivateHk.Content = Configuration.HotKeyForActivatingMainWindow;
         }
 
-        // <summary>
-        // Updates Window size with stored data
-        // </summary>
-        public void AdjustMainWindowSize()
-        {
-            MainWin.SizeToContent = SizeToContent.Manual;
-        }
 
-        ///not implemented--nothing will copy
-        public void CopyToClipboard()
-        {
-            return;
-        }
-
-        /// <summary>
-        /// Hide control and hilighter
-        /// </summary>
-        public void HideControl()
-        {
-            UpdateConfigWithSize();
-            this.Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Show control and hilighter
-        /// </summary>
-        public void ShowControl()
-        {
-            AdjustMainWindowSize();
-            UpdateHotkeyLabels();
-            this.Visibility = Visibility.Visible;
-
-            Dispatcher.InvokeAsync(() =>
-            {
-                this.SetFocusOnDefaultControl();
-            }
-           , System.Windows.Threading.DispatcherPriority.Input);
-        }
-
-        /// <summary>
-        /// not needed. 
-        /// </summary>
-        /// <param name="ecId"></param>
-#pragma warning disable CS1998
-        public async Task SetElement(Guid ecId) { }
-#pragma warning restore CS1998
-
-        /// <summary>
-        /// Not needed.
-        /// </summary>
-        public void UpdateConfigWithSize() { }
-
-        public void Clear()
-        {
-        }
 
         /// <summary>
         /// Event handler for Got it button
@@ -165,48 +90,7 @@ namespace AccessibilityInsights.Modes
             {
                 ConfigurationManager.GetDefaultInstance().AppConfig.ShowWelcomeScreenOnLaunch = false;
             }
-            MainWin.HandleBackToSelectingState();
-        }
-
-        /// <summary>
-        /// Refresh button is not needed on main command bar
-        /// </summary>
-        public bool IsRefreshEnabled { get { return false; } }
-
-        /// <summary>
-        /// Save button is not neeeded on main command bar
-        /// </summary>
-        public bool IsSaveEnabled { get { return false; } }
-
-        /// <summary>
-        /// No action
-        /// </summary>
-        public void Refresh()
-        {
-        }
-
-        /// <summary>
-        /// No action
-        /// </summary>
-        public void Save()
-        {
-        }
-
-        /// <summary>
-        /// Handle toggle highlighter request
-        /// </summary>
-        /// <returns></returns>
-        public bool ToggleHighlighter()
-        {
-            return true;
-        }
-
-        /// <summary>
-        /// Set focus on default control for mode
-        /// </summary>
-        public void SetFocusOnDefaultControl()
-        {
-            this.btnVideo.Focus();
+            DismissDialog();
         }
 
         /// <summary>
@@ -262,5 +146,7 @@ namespace AccessibilityInsights.Modes
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }
+
+        protected override void SetFocusOnDefaultControl() => btnVideo.Focus();
     }
 }
