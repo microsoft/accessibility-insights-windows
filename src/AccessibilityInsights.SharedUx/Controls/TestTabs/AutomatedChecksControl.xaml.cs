@@ -444,60 +444,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Finds all controls of the given type under the given object
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="element"></param>
-        /// <returns></returns>
-        public IEnumerable<T> FindChildren<T>(DependencyObject element) where T : DependencyObject
-        {
-            if (element != null)
-            {
-                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
-                {
-                    DependencyObject child = VisualTreeHelper.GetChild(element, i);
-                    if (child != null && child is T)
-                    {
-                        yield return (T) child;
-                    }
-                    foreach (T descendant in FindChildren<T>(child))
-                    {
-                        yield return descendant;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
-        /// Get child element of specified type
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="element"></param>
-        /// <returns></returns>
-        public DependencyObject GetFirstChildElement<T>(DependencyObject element)
-        {
-            if (element == null)
-            {
-                return null;
-            }
-
-            if (element is T)
-            {
-                return element as DependencyObject;
-            }
-
-            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(element); x++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(element, x);
-                var b = GetFirstChildElement<T>(child);
-
-                if (b != null)
-                    return b;
-            }
-            return null;
-        }
-
-        /// <summary>
         /// Finds object up parent hierarchy of specified type
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -540,13 +486,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 if (e.Key == Key.Right)
                 {
-                    var vb = GetFirstChildElement<CheckBox>(sender as DependencyObject) as CheckBox;
+                    var vb = HelperMethods.GetFirstChildElement<CheckBox>(sender as DependencyObject) as CheckBox;
                     vb.Focus();
                 }
                 else
                 {
                     var parent = GetParentElem<Expander>(sender as DependencyObject) as Expander;
-                    var vb = GetFirstChildElement<Label>(parent as DependencyObject) as Label;
+                    var vb = HelperMethods.GetFirstChildElement<Label>(parent as DependencyObject) as Label;
                     vb.Focus();
                 }
                 e.Handled = true;
@@ -554,8 +500,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             else if ((e.Key == Key.Right || e.Key == Key.Left) && (Keyboard.FocusedElement is CheckBox || Keyboard.FocusedElement is Button))
             {
                 var elements = new List<DependencyObject>();
-                elements.Add(GetFirstChildElement<CheckBox>(sender as DependencyObject));
-                elements.AddRange(FindChildren<Button>(sender as DependencyObject));
+                elements.Add(HelperMethods.GetFirstChildElement<CheckBox>(sender as DependencyObject));
+                elements.AddRange(HelperMethods.FindChildren<Button>(sender as DependencyObject));
                 int selectedElementIndex = elements.FindIndex(b => b.Equals(Keyboard.FocusedElement));
 
                 if (e.Key == Key.Right)
@@ -602,7 +548,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
             else if (e.Key == Key.Return && Keyboard.FocusedElement is ListViewItem)
             {
-                var btn = GetFirstChildElement<Button>(sender as DependencyObject) as Button;
+                var btn = HelperMethods.GetFirstChildElement<Button>(sender as DependencyObject) as Button;
                 ButtonElem_Click(btn, e);
             }
         }
@@ -696,7 +642,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             var exp = sender as Expander;
             var lst = exp.DataContext as CollectionViewGroup;
-            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            var cb = HelperMethods.GetFirstChildElement<CheckBox>(exp) as CheckBox;
             SetItemsChecked(lst.Items, cb.IsChecked.Value);
             exp.SizeChanged -= Exp_Checked;
         }
@@ -711,7 +657,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             var lvi = sender as ListViewItem;
             var exp = GetParentElem<Expander>(lvi) as Expander;
-            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            var cb = HelperMethods.GetFirstChildElement<CheckBox>(exp) as CheckBox;
             var srvm = lvi.DataContext as RuleResultViewModel;
 
             // ElementContext can be null when app is closed.
@@ -803,7 +749,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 var lvi = sender as ListViewItem;
                 var exp = GetParentElem<Expander>(lvi) as Expander;
-                var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+                var cb = HelperMethods.GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 var itm = lvi.DataContext as RuleResultViewModel;
                 if (!SelectedItems.Contains(itm))
                 {
@@ -863,8 +809,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
 
             var gi = sender as GroupItem;
-            var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            var urlLink = FindChildren<Label>(sp).FirstOrDefault(obj => obj.Content is Hyperlink).Content as Hyperlink;
+            var sp = HelperMethods.GetFirstChildElement<StackPanel>(gi) as StackPanel;
+            var urlLink = HelperMethods.FindChildren<Label>(sp).FirstOrDefault(obj => obj.Content is Hyperlink).Content as Hyperlink;
             var exp = GetParentElem<Expander>(sp) as Expander;
 
             if (e.Key == Key.Right)
@@ -894,7 +840,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
             else if (e.Key == Key.Space && Keyboard.FocusedElement == sender)
             {
-                var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+                var cb = HelperMethods.GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 cb.IsChecked = !cb.IsChecked ?? false;
                 CheckBox_Click(cb, null);
                 e.Handled = true;
@@ -914,7 +860,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 else
                 {
-                    ListViewItem firstResult = GetFirstChildElement<ListViewItem>(exp) as ListViewItem;
+                    ListViewItem firstResult = HelperMethods.GetFirstChildElement<ListViewItem>(exp) as ListViewItem;
                     firstResult.Focus();
                 }
                 e.Handled = true;

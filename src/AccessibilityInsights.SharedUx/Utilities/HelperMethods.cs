@@ -5,7 +5,9 @@ using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using System;
+using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
@@ -69,5 +71,59 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// Provides bindable property for ProgressRingControls
         /// </summary>
         public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
+
+        /// <summary>
+        /// Finds all controls of the given type under the given object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static IEnumerable<T> FindChildren<T>(DependencyObject element) where T : DependencyObject
+        {
+            if (element != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(element, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+                    foreach (T descendant in FindChildren<T>(child))
+                    {
+                        yield return descendant;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get child element of specified type
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="element"></param>
+        /// <returns></returns>
+        public static DependencyObject GetFirstChildElement<T>(DependencyObject element)
+        {
+            if (element == null)
+            {
+                return null;
+            }
+
+            if (element is T)
+            {
+                return element as DependencyObject;
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(element); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(element, x);
+                var b = GetFirstChildElement<T>(child);
+
+                if (b != null)
+                    return b;
+            }
+            return null;
+        }
     }
 }

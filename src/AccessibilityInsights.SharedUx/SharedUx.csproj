@@ -333,6 +333,7 @@
       <DependentUpon>CustomGridViewColumn.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomControls\CustomListView.cs" />
+    <Compile Include="Controls\CustomControls\ListViewWithGroupItem.cs" />
     <Compile Include="Controls\PrivacyLearnMore.xaml.cs">
       <DependentUpon>PrivacyLearnMore.xaml</DependentUpon>
     </Compile>
