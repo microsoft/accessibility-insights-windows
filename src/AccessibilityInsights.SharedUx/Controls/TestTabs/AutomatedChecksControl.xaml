@@ -201,7 +201,7 @@
                                 <Setter Property="IsEnabled" Value="{Binding Path=ScreenshotAvailable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
                             </Style.Setters>
                         </Style>
-                        <Style TargetType="{x:Type Expander}">
+                        <Style TargetType="{x:Type local:CustomExpander}">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
                             <Setter Property="Background" Value="Transparent"/>
                             <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -265,9 +265,9 @@
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
-                                                <Expander IsExpanded="False" KeyboardNavigation.DirectionalNavigation="Local" 
+                                                <local:CustomExpander IsExpanded="False" KeyboardNavigation.DirectionalNavigation="Local" 
                                                           RequestBringIntoView="Expander_RequestBringIntoView" Collapsed="Expander_Collapsed">
-                                                    <Expander.Header>
+                                                    <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
                                                             <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" 
@@ -284,9 +284,9 @@
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
                                                             <Label Content=")" Style="{StaticResource lblRowStyle}"  VerticalAlignment="Center" />
                                                         </StackPanel>
-                                                    </Expander.Header>
+                                                    </local:CustomExpander.Header>
                                                     <ItemsPresenter/>
-                                                </Expander>
+                                                </local:CustomExpander>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>

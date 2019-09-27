@@ -99,7 +99,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Gets/sets fastpass highlighter visibility, updating as necessary 
         /// </summary>
-#pragma warning disable CA1822 
+#pragma warning disable CA1822
         public bool HighlightVisibility
 #pragma warning restore CA1822
         {
@@ -151,7 +151,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 this.gdFailures.Focus();
                 var count = results.Where(r => r.RuleResult.Status == Axe.Windows.Core.Results.ScanStatus.Fail).Count();
 
-                switch(count)
+                switch (count)
                 {
                     case 0:
                         this.runFailures.Text = Properties.Resources.AutomatedChecksControl_SetRuleResults_No_failure_was;
@@ -160,7 +160,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                         this.runFailures.Text = Properties.Resources.AutomatedChecksControl_SetRuleResults_1_failure_was;
                         break;
                     default:
-                        this.runFailures.Text = String.Format(CultureInfo.InvariantCulture,Properties.Resources.AutomatedChecksControl_SetRuleResults_0_failures_were, results.Count);
+                        this.runFailures.Text = String.Format(CultureInfo.InvariantCulture, Properties.Resources.AutomatedChecksControl_SetRuleResults_0_failures_were, results.Count);
                         break;
                 }
 
@@ -458,7 +458,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     DependencyObject child = VisualTreeHelper.GetChild(element, i);
                     if (child != null && child is T)
                     {
-                        yield return (T) child;
+                        yield return (T)child;
                     }
                     foreach (T descendant in FindChildren<T>(child))
                     {
@@ -562,7 +562,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     if (selectedElementIndex + 1 < elements.Count)
                     {
-                        ((UIElement) elements.ElementAt(selectedElementIndex + 1)).Focus();
+                        ((UIElement)elements.ElementAt(selectedElementIndex + 1)).Focus();
                     }
                 }
                 else if (selectedElementIndex - 1 >= 0)
@@ -595,7 +595,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     }
                     else
                     {
-                        (GetParentElem<GroupItem>(sender as DependencyObject) as UIElement).Focus();
+                        (GetParentElem<Expander>(sender as DependencyObject) as UIElement).Focus();
                     }
                 }
                 e.Handled = true;
@@ -647,7 +647,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
             {
                 DependencyObject child = VisualTreeHelper.GetChild(root, x);
-                CheckAllBoxes(child,check);
+                CheckAllBoxes(child, check);
             }
         }
 
@@ -660,7 +660,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
         {
             var ret = true;
-            foreach(RuleResultViewModel itm in lst.AsParallel())
+            foreach (RuleResultViewModel itm in lst.AsParallel())
             {
                 if (check && !SelectedItems.Contains(itm))
                 {
@@ -722,7 +722,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             SelectedItems.Remove(srvm);
             var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-            var dc =  cb.DataContext as CollectionViewGroup;
+            var dc = cb.DataContext as CollectionViewGroup;
             var itms = dc.Items;
             var any = itms.Intersect(SelectedItems).Any();
             if (any)
