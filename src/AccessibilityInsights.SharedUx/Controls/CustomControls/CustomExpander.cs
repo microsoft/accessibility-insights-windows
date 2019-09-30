@@ -23,7 +23,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// In .NET 4.8 grouped ListViews, the GroupItem's HasKeyboardFocus value is set based on its child expander's
         /// HasKeyboardFocus value, not its own IsFocused value. In our AutomatedChecks use case, this breaks ATs'
         /// readings of the ListView group headers. By setting the child expander's HasKeyboardFocus value here,
-        /// we get the desired value in its parent GroupItem's value, and ATs fuction properly again.
+        /// we get the desired value in its parent GroupItem's value, and ATs function properly again.
         /// </summary>
         override protected bool HasKeyboardFocusCore() => parentGroupItem?.IsFocused ?? base.HasKeyboardFocusCore();
     }
