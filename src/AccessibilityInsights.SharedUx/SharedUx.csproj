@@ -329,6 +329,7 @@
       <DependentUpon>ChannelConfigControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\CustomControls\CustomDataGrid.cs" />
+    <Compile Include="Controls\CustomControls\CustomExpander.cs" />
     <Compile Include="Controls\CustomControls\CustomGridViewColumn.xaml.cs">
       <DependentUpon>CustomGridViewColumn.xaml</DependentUpon>
     </Compile>
