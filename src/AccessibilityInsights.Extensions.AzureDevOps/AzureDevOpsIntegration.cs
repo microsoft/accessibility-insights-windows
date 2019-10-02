@@ -183,7 +183,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             //  is less than the number of elements we requested
             do
             {
-                var newProjects = proClient.GetProjects(null, AzureDevOps_PAGE_SIZE, projects.Count()).Result;
+                var newProjects = proClient.GetProjects(null, AzureDevOps_PAGE_SIZE, projects.Count).Result;
                 newElementsReturned = newProjects.Count();
                 projects.AddRange(newProjects);
             }
@@ -212,8 +212,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             //  is less than the number of elements we requested
             do
             {
-                var newTeams = teamClient.GetTeamsAsync(project.Id.ToString("D", CultureInfo.InvariantCulture), AzureDevOps_PAGE_SIZE, teams.Count()).Result;
-                newElementsReturned = newTeams.Count();
+                var newTeams = teamClient.GetTeamsAsync(project.Id.ToString("D", CultureInfo.InvariantCulture), AzureDevOps_PAGE_SIZE, teams.Count).Result;
+                newElementsReturned = newTeams.Count;
                 teams.AddRange(newTeams);
             }
             while (newElementsReturned >= AzureDevOps_PAGE_SIZE);
