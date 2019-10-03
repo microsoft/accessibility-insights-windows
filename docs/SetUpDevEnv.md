@@ -8,13 +8,7 @@
    - Add ".NET Framework 4.7.1 development tools"
 
 ### Install Wix tools
-To build the MSI project, you need to install Wix tools
-1. Install Wix build tool 
-   - Install Wix build tool from [here](https://visualstudio.microsoft.com/vs/)
-   - Use the Wix 3.1.1 tool set (requires .Net framework 3.5.1). You can find the installation package from [here](https://www.microsoft.com/en-US/download/details.aspx?id=25150).
-
-2. Install Wix Toolset Visual Studio 2017 extension
-   - The extension is available in the Visual Studio marketplace and can be found [here](http://wixtoolset.org/releases/).
+To build the MSI project, you need to install the Wix Toolset extension for Visual Studio. The extension is available in the Visual Studio marketplace and can be found [here](http://wixtoolset.org/releases/).
 
 ### Install WinAppDriver
 1. To run the UI tests, install WinAppDriver from [here](https://github.com/Microsoft/WinAppDriver/releases)

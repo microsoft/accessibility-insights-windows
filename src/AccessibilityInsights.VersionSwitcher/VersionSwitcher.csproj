@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\packages\WiX.3.11.2\build\wix.props')" />
   <Import Project="..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.5\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.5\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" />
   <Import Project="..\packages\Microsoft.NetFramework.Analyzers.2.9.5\build\Microsoft.NetFramework.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.5\build\Microsoft.NetFramework.Analyzers.props')" />
   <Import Project="..\packages\Microsoft.NetCore.Analyzers.2.9.5\build\Microsoft.NetCore.Analyzers.props" Condition="Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.5\build\Microsoft.NetCore.Analyzers.props')" />
@@ -7,7 +8,6 @@
   <Import Project="..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.5\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props" Condition="Exists('..\packages\Microsoft.CodeAnalysis.VersionCheckAnalyzer.2.9.5\build\Microsoft.CodeAnalysis.VersionCheckAnalyzer.props')" />
   <Import Project="..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props" Condition="Exists('..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props')" />
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" />
-  <Import Project="..\packages\WiX.3.11.1\build\wix.props" Condition="Exists('..\packages\WiX.3.11.1\build\wix.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -52,7 +52,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Deployment.WindowsInstaller, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WiX.3.11.1\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+      <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -145,7 +145,6 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\WiX.3.11.1\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WiX.3.11.1\build\wix.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets'))" />
     <Error Condition="!Exists('..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Text.Analyzers.2.6.4\build\Text.Analyzers.props'))" />
@@ -154,6 +153,7 @@
     <Error Condition="!Exists('..\packages\Microsoft.NetCore.Analyzers.2.9.5\build\Microsoft.NetCore.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetCore.Analyzers.2.9.5\build\Microsoft.NetCore.Analyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.NetFramework.Analyzers.2.9.5\build\Microsoft.NetFramework.Analyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.NetFramework.Analyzers.2.9.5\build\Microsoft.NetFramework.Analyzers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.5\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeAnalysis.FxCopAnalyzers.2.9.5\build\Microsoft.CodeAnalysis.FxCopAnalyzers.props'))" />
+    <Error Condition="!Exists('..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WiX.3.11.2\build\wix.props'))" />
   </Target>
   <Import Project="..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets" Condition="Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" />
 </Project>
