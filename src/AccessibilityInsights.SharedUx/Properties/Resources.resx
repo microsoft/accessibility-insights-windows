@@ -462,23 +462,6 @@
   <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
   </data>
-  <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
-    <value>Hi,
-
-Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
-To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
-
-
-Best,
-Accessibility Insights Support Team
-
-
-
-</value>
-  </data>
-  <data name="AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_false_positive_report" xml:space="preserve">
-    <value>Accessibility Insights for Windows false positive report</value>
-  </data>
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
     <value>Color contrast analyzer</value>
   </data>
@@ -1432,9 +1415,6 @@ Accessibility Insights Support Team
   </data>
   <data name="SetterValueExpandAllDescendants" xml:space="preserve">
     <value>Expand all descendants</value>
-  </data>
-  <data name="AutomatedChecksControl_emailSupport" xml:space="preserve">
-    <value>Email Support.</value>
   </data>
   <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
     <value>detected.</value>

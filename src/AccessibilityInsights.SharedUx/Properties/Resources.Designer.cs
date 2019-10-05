@@ -163,45 +163,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Email Support..
-        /// </summary>
-        public static string AutomatedChecksControl_emailSupport {
-            get {
-                return ResourceManager.GetString("AutomatedChecksControl_emailSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hi,
-        ///
-        ///Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
-        ///To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
-        ///
-        ///
-        ///Best,
-        ///Accessibility Insights Support Team
-        ///
-        ///
-        ///
-        ///.
-        /// </summary>
-        public static string AutomatedChecksControl_SendEmailToSupport {
-            get {
-                return ResourceManager.GetString("AutomatedChecksControl_SendEmailToSupport", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Accessibility Insights for Windows false positive report.
-        /// </summary>
-        public static string AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_false_positive_report {
-            get {
-                return ResourceManager.GetString("AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_fals" +
-                        "e_positive_report", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {0} failures were.
         /// </summary>
         public static string AutomatedChecksControl_SetRuleResults_0_failures_were {
