@@ -174,9 +174,6 @@
   <data name="btnLoadAutomationPropertiesName" xml:space="preserve">
     <value>Load test or event file</value>
   </data>
-  <data name="btnLoad_ClickDialogErrorMessage" xml:space="preserve">
-    <value>The selected file is not an Accessibility Insights for Windows file.</value>
-  </data>
   <data name="btnLoad_ClickDialogTitle" xml:space="preserve">
     <value>Load Accessibility Insights for Windows file</value>
   </data>
@@ -240,9 +237,6 @@
   <data name="onClosedDebugMessage" xml:space="preserve">
     <value>Error: MainWindow Closed</value>
   </data>
-  <data name="onLoadedDialogWaitMessage" xml:space="preserve">
-    <value>Please wait, trying to sign in!</value>
-  </data>
   <data name="SupportDebuggingDialogMessage" xml:space="preserve">
     <value>Attach now</value>
   </data>
@@ -281,9 +275,6 @@
   </data>
   <data name="ReleaseNotes_ClickURLErrorMessage" xml:space="preserve">
     <value>The URL was not properly formatted.\nURL:</value>
-  </data>
-  <data name="btnCloseScreenAutomationPropertiesName" xml:space="preserve">
-    <value>Close welcome screen</value>
   </data>
   <data name="btnOkContent" xml:space="preserve">
     <value>Save and close</value>
@@ -351,9 +342,6 @@
   <data name="noScreenShotAvailableMessage" xml:space="preserve">
     <value>The element's bounding rectangle is empty (app minimized?)- no screenshot is available.</value>
   </data>
-  <data name="NotifyLoginUnsuccessfulDialogMessage" xml:space="preserve">
-    <value>Login was unsuccessful. Make sure the server URL is complete (e.g. https://accountname.visualstudio.com)</value>
-  </data>
   <data name="paused" xml:space="preserve">
     <value>Paused</value>
   </data>
@@ -382,9 +370,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="tabControlLabelContent" xml:space="preserve">
     <value>FastPass</value>
   </data>
-  <data name="TabControl_SelectionChangedDialogMessage" xml:space="preserve">
-    <value>The following feature is for certain internal dogfooders to help diagnose our preliminary test result de-duping logic. The UX and tool may cause unpredictable behavior.</value>
-  </data>
   <data name="tbiAutomatedChecksAutomationPropertiesName" xml:space="preserve">
     <value>Automated checks in FastPass</value>
   </data>
@@ -405,12 +390,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="tcTabsConnectionHeader" xml:space="preserve">
     <value>Connection</value>
-  </data>
-  <data name="tcTabsFeedbackHeader" xml:space="preserve">
-    <value>Feedback</value>
-  </data>
-  <data name="tcTabsTestHeader" xml:space="preserve">
-    <value>Test</value>
   </data>
   <data name="TestModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Test page</value>
@@ -463,9 +442,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="TitleTextMapTestTabStops" xml:space="preserve">
     <value>Test - Tab Stops</value>
   </data>
-  <data name="UpdateTitleStringTitle" xml:space="preserve">
-    <value>Accessibility Insights for Windows</value>
-  </data>
   <data name="LiveModeControl_HoverOverElement" xml:space="preserve">
     <value>To begin inspecting a UI Automation element, hover over the element within the target application or set keyboard focus on the element. To inspect its properties, bring focus back to Accessibility Insights for Windows by pressing</value>
   </data>
@@ -504,9 +480,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="MainWindow_AutomationPropertiesName_0_1_2" xml:space="preserve">
     <value>{0} {1} {2}</value>
-  </data>
-  <data name="MainWindow_HandleLoadingEventData_Couldnt_load_the_selected_file_0" xml:space="preserve">
-    <value>Couldn't load the selected file: {0}</value>
   </data>
   <data name="CultureInfoErrorMessage" xml:space="preserve">
     <value>"{0}" is not proper hotkey combination. Hotkey should be [Shift|Ctrl|Alt|Window]+[a single key including function key]</value>

@@ -151,15 +151,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Close welcome screen.
-        /// </summary>
-        public static string btnCloseScreenAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnCloseScreenAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Configure settings of Accessibility Insights for Windows.
         /// </summary>
         public static string btnConfigAutomationPropertiesHelpText {
@@ -255,15 +246,6 @@ namespace AccessibilityInsights.Properties {
         public static string btnInspectToolTip {
             get {
                 return ResourceManager.GetString("btnInspectToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The selected file is not an Accessibility Insights for Windows file..
-        /// </summary>
-        public static string btnLoad_ClickDialogErrorMessage {
-            get {
-                return ResourceManager.GetString("btnLoad_ClickDialogErrorMessage", resourceCulture);
             }
         }
         
@@ -790,15 +772,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t load the selected file: {0}.
-        /// </summary>
-        public static string MainWindow_HandleLoadingEventData_Couldnt_load_the_selected_file_0 {
-            get {
-                return ResourceManager.GetString("MainWindow_HandleLoadingEventData_Couldnt_load_the_selected_file_0", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to An update is available..
         /// </summary>
         public static string MainWindow_ShowUpgradeDialog_An_update_is_available {
@@ -871,29 +844,11 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Login was unsuccessful. Make sure the server URL is complete (e.g. https://accountname.visualstudio.com).
-        /// </summary>
-        public static string NotifyLoginUnsuccessfulDialogMessage {
-            get {
-                return ResourceManager.GetString("NotifyLoginUnsuccessfulDialogMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Error: MainWindow Closed.
         /// </summary>
         public static string onClosedDebugMessage {
             get {
                 return ResourceManager.GetString("onClosedDebugMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please wait, trying to sign in!.
-        /// </summary>
-        public static string onLoadedDialogWaitMessage {
-            get {
-                return ResourceManager.GetString("onLoadedDialogWaitMessage", resourceCulture);
             }
         }
         
@@ -1034,15 +989,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The following feature is for certain internal dogfooders to help diagnose our preliminary test result de-duping logic. The UX and tool may cause unpredictable behavior..
-        /// </summary>
-        public static string TabControl_SelectionChangedDialogMessage {
-            get {
-                return ResourceManager.GetString("TabControl_SelectionChangedDialogMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to FastPass.
         /// </summary>
         public static string tabControlLabelContent {
@@ -1156,24 +1102,6 @@ namespace AccessibilityInsights.Properties {
         public static string tcTabsConnectionHeader {
             get {
                 return ResourceManager.GetString("tcTabsConnectionHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Feedback.
-        /// </summary>
-        public static string tcTabsFeedbackHeader {
-            get {
-                return ResourceManager.GetString("tcTabsFeedbackHeader", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test.
-        /// </summary>
-        public static string tcTabsTestHeader {
-            get {
-                return ResourceManager.GetString("tcTabsTestHeader", resourceCulture);
             }
         }
         
@@ -1363,15 +1291,6 @@ namespace AccessibilityInsights.Properties {
         public static string UpdateMainWindowLoginFieldsSignedInAs {
             get {
                 return ResourceManager.GetString("UpdateMainWindowLoginFieldsSignedInAs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Accessibility Insights for Windows.
-        /// </summary>
-        public static string UpdateTitleStringTitle {
-            get {
-                return ResourceManager.GetString("UpdateTitleStringTitle", resourceCulture);
             }
         }
         
