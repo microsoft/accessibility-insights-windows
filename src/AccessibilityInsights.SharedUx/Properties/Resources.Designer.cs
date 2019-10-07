@@ -1992,27 +1992,27 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Patterns.
         /// </summary>
-        public static string labalFixFollowingContent {
+        public static string labelFixFollowingContent {
             get {
-                return ResourceManager.GetString("labalFixFollowingContent", resourceCulture);
+                return ResourceManager.GetString("labelFixFollowingContent", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Patterns.
         /// </summary>
-        public static string labalFixFollowingContent1 {
+        public static string labelFixFollowingContent1 {
             get {
-                return ResourceManager.GetString("labalFixFollowingContent1", resourceCulture);
+                return ResourceManager.GetString("labelFixFollowingContent1", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Patterns.
         /// </summary>
-        public static string labalFixFollowingContent2 {
+        public static string labelFixFollowingContent2 {
             get {
-                return ResourceManager.GetString("labalFixFollowingContent2", resourceCulture);
+                return ResourceManager.GetString("labelFixFollowingContent2", resourceCulture);
             }
         }
         
