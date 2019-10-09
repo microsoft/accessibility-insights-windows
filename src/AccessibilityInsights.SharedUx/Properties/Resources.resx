@@ -195,7 +195,7 @@
   <data name="gsPropertiesAutomationPropertiesName" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent" xml:space="preserve">
+  <data name="labelFixFollowingContent" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="TextRangeActionView_Button_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
@@ -734,7 +734,7 @@
   <data name="gsPropertiesAutomationPropertiesName1" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent1" xml:space="preserve">
+  <data name="labelFixFollowingContent1" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="gsEventsAutomationPropertiesName1" xml:space="preserve">
@@ -966,7 +966,7 @@
   <data name="gsPropertiesAutomationPropertiesName2" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent2" xml:space="preserve">
+  <data name="labelFixFollowingContent2" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="btnCloseAutomationPropertiesName" xml:space="preserve">
