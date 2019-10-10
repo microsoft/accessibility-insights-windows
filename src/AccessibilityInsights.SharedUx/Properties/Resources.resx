@@ -150,9 +150,6 @@
   <data name="GeneralActionView_ExecuteAction_Execution_result_passed" xml:space="preserve">
     <value>Execution result passed</value>
   </data>
-  <data name="GeneralActionView_ExecuteAction_Failed__" xml:space="preserve">
-    <value>Failed!!</value>
-  </data>
   <data name="GeneralActionView_ExecuteAction_Failed" xml:space="preserve">
     <value>Failed!!</value>
   </data>
@@ -198,7 +195,7 @@
   <data name="gsPropertiesAutomationPropertiesName" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent" xml:space="preserve">
+  <data name="labelFixFollowingContent" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="TextRangeActionView_Button_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
@@ -348,47 +345,14 @@
   <data name="btnNextAutomationPropertiesName" xml:space="preserve">
     <value>Next</value>
   </data>
-  <data name="LabelContentZero" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="LabelContentFive" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="LabelContentTen" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="hlLinkAutomationPropertiesName" xml:space="preserve">
-    <value>questions or feedback</value>
-  </data>
-  <data name="LabelContentAutomatedChecks" xml:space="preserve">
-    <value>Automated checks</value>
-  </data>
-  <data name="AutomatedChecksControlAutomationPropertiesName" xml:space="preserve">
-    <value>Automated checks</value>
-  </data>
   <data name="RunTextFastPass" xml:space="preserve">
     <value>Quickly find accessibility issues with FastPass:</value>
-  </data>
-  <data name="RunTextAutomatedChecks" xml:space="preserve">
-    <value>Automated Checks</value>
   </data>
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
   <data name="lblTitleContent" xml:space="preserve">
     <value>AUTOMATED CHECKS</value>
-  </data>
-  <data name="CustomGridViewColumnHeaderAutomationPropertiesNameAUTOMATEDCHECKS" xml:space="preserve">
-    <value>Highlight or expand results</value>
-  </data>
-  <data name="chbxSelectAllAutomationPropertiesNameHighlightAllResults" xml:space="preserve">
-    <value>Highlight all results</value>
-  </data>
-  <data name="chbxRowAutomationPropertiesNameHighlightThisElement" xml:space="preserve">
-    <value>Highlight this element</value>
-  </data>
-  <data name="RunTextHelpFindIssues" xml:space="preserve">
-    <value> will help you find about 25% of accessibility issues.</value>
   </data>
   <data name="localCustomGridViewColumnHeaderAutomationPropertiesName" xml:space="preserve">
     <value>Highlight or expand results</value>
@@ -456,43 +420,14 @@
   <data name="AutomatedChecksControl_SetRuleResults_TitleURL" xml:space="preserve">
     <value>TitleURL</value>
   </data>
-  <data name="AutomatedChecksControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug__This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description__Attachments_have_not_been_uploaded" xml:space="preserve">
-    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
-  </data>
   <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
-  </data>
-  <data name="AutomatedChecksControl_SendEmailToSupport" xml:space="preserve">
-    <value>Hi,
-
-Thank you for reporting this false positive. The Accessibility Insights team is committed to zero false positives.  We will investigate this issue and if the false positive is confirmed will fix and deploy an update as quickly as possible.
-To help us investigate this issue, please zip and attach the A11yTest file and specify which failure instance you feel is a false positive.
-
-
-Best,
-Accessibility Insights Support Team
-
-
-
-</value>
-  </data>
-  <data name="AutomatedChecksControl_SendEmailToSupport_Accessibility_Insights_for_Windows_false_positive_report" xml:space="preserve">
-    <value>Accessibility Insights for Windows false positive report</value>
   </data>
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
     <value>Color contrast analyzer</value>
   </data>
   <data name="RunTextHowToTest" xml:space="preserve">
     <value>How to test</value>
-  </data>
-  <data name="TextBlockAutomationPropertiesNameInstructions" xml:space="preserve">
-    <value>Instructions</value>
-  </data>
-  <data name="ColorContrast_Analyzer" xml:space="preserve">
-    <value>Analyzer</value>
-  </data>
-  <data name="noElementSelected" xml:space="preserve">
-    <value>no element selected</value>
   </data>
   <data name="firstChooserAutomationPropertiesName" xml:space="preserve">
     <value>first color</value>
@@ -506,9 +441,6 @@ Accessibility Insights Support Team
   <data name="TextBlockTextElement" xml:space="preserve">
     <value>Element</value>
   </data>
-  <data name="TextBlockTextSampleText" xml:space="preserve">
-    <value>Sample text</value>
-  </data>
   <data name="SetterValueFail" xml:space="preserve">
     <value>Fail</value>
   </data>
@@ -517,9 +449,6 @@ Accessibility Insights Support Team
   </data>
   <data name="TextBlockTextRegularSize" xml:space="preserve">
     <value>Regular text</value>
-  </data>
-  <data name="TextBlockTextRequiresRatio" xml:space="preserve">
-    <value>(Requires ratio ≥ 4.5)</value>
   </data>
   <data name="smallSampleText" xml:space="preserve">
     <value>The quick brown fox</value>
@@ -562,9 +491,6 @@ Accessibility Insights Support Team
   <data name="tbTitleText" xml:space="preserve">
     <value>What's new</value>
   </data>
-  <data name="RunTextSetDefaultStartupMode" xml:space="preserve">
-    <value>set the default startup mode to Inspect or Test in the application settings:</value>
-  </data>
   <data name="RunTextInspectLiveUIATree" xml:space="preserve">
     <value>Inspect the live UI Automation tree using Inspect mode.</value>
   </data>
@@ -603,15 +529,6 @@ Accessibility Insights Support Team
   </data>
   <data name="CCALink" xml:space="preserve">
     <value>Learn more about checking color contrast.</value>
-  </data>
-  <data name="RunTextUseThe" xml:space="preserve">
-    <value>use the</value>
-  </data>
-  <data name="RunTextLinkFromUIATree" xml:space="preserve">
-    <value>link from the UI Automation tree to easily file bugs for any accessibility issue you detect. A screenshot of the app and a11ytest file will automatically get attached to the bug.  </value>
-  </data>
-  <data name="RunTextSemiBold" xml:space="preserve">
-    <value>SemiBold</value>
   </data>
   <data name="ColorChooserAutomationPropertiesName" xml:space="preserve">
     <value>Color chooser</value>
@@ -712,9 +629,6 @@ Accessibility Insights Support Team
   <data name="SetterValueStopRecordingHelpText" xml:space="preserve">
     <value>Stop recording the events of the selected elements and descendants.</value>
   </data>
-  <data name="btnSettingAutomationPropertiesNameEventStting" xml:space="preserve">
-    <value>Event settings menu</value>
-  </data>
   <data name="SetterValueEventSetting" xml:space="preserve">
     <value>Event setting</value>
   </data>
@@ -723,9 +637,6 @@ Accessibility Insights Support Team
   </data>
   <data name="radiobuttonScopeSubtreeContent" xml:space="preserve">
     <value>Selected UI element and descendants</value>
-  </data>
-  <data name="radiobuttonScopeDescendentsContent" xml:space="preserve">
-    <value>Descendants only</value>
   </data>
   <data name="tbIntroTextSelectEventRecord" xml:space="preserve">
     <value>Select the events to listen to in the Configuration tab, and select Record</value>
@@ -808,9 +719,6 @@ Accessibility Insights Support Team
   <data name="HierarchyControl_FileBug_Could_not_find_the_selected_item__the_bug_filing_is_canceled" xml:space="preserve">
     <value>Could not find the selected item, the bug filing is canceled.</value>
   </data>
-  <data name="HierarchyControl_FileBug_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
-    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
-  </data>
   <data name="HierarchyControl_FileIssue_Configure" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
   </data>
@@ -826,7 +734,7 @@ Accessibility Insights Support Team
   <data name="gsPropertiesAutomationPropertiesName1" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent1" xml:space="preserve">
+  <data name="labelFixFollowingContent1" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="gsEventsAutomationPropertiesName1" xml:space="preserve">
@@ -888,9 +796,6 @@ Accessibility Insights Support Team
   </data>
   <data name="ScannerResultControlAutomationPropertiesName" xml:space="preserve">
     <value>Test results</value>
-  </data>
-  <data name="btnFileIssueContent1" xml:space="preserve">
-    <value>File issue</value>
   </data>
   <data name="btnFileBugAutomationPropertiesHelpText1" xml:space="preserve">
     <value>Bug for {0}</value>
@@ -964,9 +869,6 @@ Accessibility Insights Support Team
   </data>
   <data name="ScannerResultControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
-  </data>
-  <data name="ScannerResultControl_btnFileBug_Click_There_was_an_error_identifying_the_created_bug_This_may_occur_if_the_ID_used_to_create_the_bug_is_removed_from_its_AzureDevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
-    <value>There was an error identifying the created bug. This may occur if the ID used to create the bug is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
   <data name="ScannerResultControl_Thumb_DragDelta_Rule" xml:space="preserve">
     <value>Rule</value>
@@ -1064,7 +966,7 @@ Accessibility Insights Support Team
   <data name="gsPropertiesAutomationPropertiesName2" xml:space="preserve">
     <value>splitter between Properties and Patterns</value>
   </data>
-  <data name="labalFixFollowingContent2" xml:space="preserve">
+  <data name="labelFixFollowingContent2" xml:space="preserve">
     <value>Patterns</value>
   </data>
   <data name="btnCloseAutomationPropertiesName" xml:space="preserve">
@@ -1148,23 +1050,8 @@ Accessibility Insights Support Team
   <data name="MoveTextRangeDialog_btnAction_Click_Return_0" xml:space="preserve">
     <value>Return: {0}</value>
   </data>
-  <data name="ProcessWindowWindowTitle" xml:space="preserve">
-    <value>Snapshot to a process</value>
-  </data>
-  <data name="lbProcessesContent" xml:space="preserve">
-    <value>Available Processes</value>
-  </data>
   <data name="btnRefreshAutomationPropertiesName" xml:space="preserve">
     <value>Refresh</value>
-  </data>
-  <data name="btnRefreshAutomationPropertiesHelpText" xml:space="preserve">
-    <value>Refresh Available process list</value>
-  </data>
-  <data name="btnSelectContent" xml:space="preserve">
-    <value>_Snapshot</value>
-  </data>
-  <data name="ProcessWindow_btnSelect_Click_Please_select_a_process_first" xml:space="preserve">
-    <value>Please select a process first.</value>
   </data>
   <data name="PropertyConfigDialogWindowTitle" xml:space="preserve">
     <value>Properties Configuration</value>
@@ -1433,9 +1320,6 @@ Accessibility Insights Support Team
   <data name="SetterValueExpandAllDescendants" xml:space="preserve">
     <value>Expand all descendants</value>
   </data>
-  <data name="AutomatedChecksControl_emailSupport" xml:space="preserve">
-    <value>Email Support.</value>
-  </data>
   <data name="AutomatedChecksControl_tbSubtitleRun" xml:space="preserve">
     <value>detected.</value>
   </data>
@@ -1518,9 +1402,6 @@ We collect anonymized data to identify the top accessibility issues found by use
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>
-  </data>
-  <data name="InvalidConfiguration" xml:space="preserve">
-    <value>Invalid Configuration Format!</value>
   </data>
   <data name="issueFilingLink" xml:space="preserve">
     <value>Learn more about issue filing</value>
@@ -1636,9 +1517,6 @@ Do you want to change the channel? </value>
   </data>
   <data name="TextNewForWCAG_2_1" xml:space="preserve">
     <value>New for WCAG 2.1</value>
-  </data>
-  <data name="ExceptionsLostFromBuffer" xml:space="preserve">
-    <value>Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open.</value>
   </data>
   <data name="FailedEmphasizedText" xml:space="preserve">
     <value>Failed!!</value>

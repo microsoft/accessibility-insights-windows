@@ -149,7 +149,7 @@
                     <behaviors:ExpanderBehavior/>
                 </i:Interaction.Behaviors>
                 <Expander.Header>
-                    <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labalFixFollowing" Content="{x:Static Properties:Resources.labalFixFollowingContent}"/>
+                    <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labelFixFollowing" Content="{x:Static Properties:Resources.labelFixFollowingContent}"/>
                 </Expander.Header>
                 <Grid x:Name="gridPatterns" VerticalAlignment="Stretch" Grid.ColumnSpan="2">
                     <controls:PatternInfoControl x:Name="ctrlPatterns" Margin="0,4" KeyboardNavigation.TabNavigation="Local"/>
