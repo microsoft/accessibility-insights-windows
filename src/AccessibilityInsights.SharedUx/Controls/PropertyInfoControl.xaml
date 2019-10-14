@@ -35,7 +35,17 @@
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.PropertyInfoControl_textboxSearch}"
                                     Height="24" HorizontalAlignment="Stretch"
                                     VerticalContentAlignment="Center" BorderThickness="0"
-                                    Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}"/>
+                                    Background="Transparent" Placeholder="{x:Static Properties:Resources.tbSearchText}">
+                            <controls:PlaceholderTextBox.Style>
+                                <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
+                                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </controls:PlaceholderTextBox.Style>
+                        </controls:PlaceholderTextBox>
                     </DockPanel>                        
                 </Border>
                 <customcontrols:CustomListView

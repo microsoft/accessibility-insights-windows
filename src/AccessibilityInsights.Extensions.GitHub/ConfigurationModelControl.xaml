@@ -11,19 +11,33 @@
     xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d"
     IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" />
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=TextBrush}"/>
         <Grid Grid.Row="1" >
             <controls:PlaceholderTextBox
                 Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
                 AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" 
                 FontSize="{DynamicResource StandardTextSize}"
                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"
-                Placeholder="{x:Static Properties:Resources.PlaceHolder}"/>
+                BorderThickness="1"
+                Placeholder="{x:Static Properties:Resources.PlaceHolder}">
+                <controls:PlaceholderTextBox.Style>
+                    <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
+                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </controls:PlaceholderTextBox.Style>
+            </controls:PlaceholderTextBox>
         </Grid>
     </Grid>
 </src:IssueConfigurationControl>
