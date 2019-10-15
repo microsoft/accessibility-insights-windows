@@ -41,6 +41,7 @@ jobs:
       configuration: ${{ parameters.configuration }}
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
       testFiltercriteria: 'TestCategory=Integration&TestCategory!=LiveMode'
+      rerunFailedTests: true
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
