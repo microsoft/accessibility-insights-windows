@@ -1429,7 +1429,6 @@
                                    Text="{TemplateBinding Property=Placeholder}" Margin="2,0">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
-                                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
                                     <Setter Property="Visibility" Value="Collapsed"/>
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Path=Text, RelativeSource={RelativeSource Mode=TemplatedParent}}" Value="">
