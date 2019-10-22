@@ -366,6 +366,7 @@ namespace AccessibilityInsights
         {
             HandlePauseButtonToggle(true);
 
+            PublishScanResultsOneShot = false;
             StartLoadingSnapshot(path, selectedElementId);
             UpdateMainWindowUI();
         }
