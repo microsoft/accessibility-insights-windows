@@ -173,7 +173,6 @@ namespace AccessibilityInsights
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
 
-
             UpdateMainWindowLayout();
 
             this.TreeNavigator = new TreeNavigator(this);
