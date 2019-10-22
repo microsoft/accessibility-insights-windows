@@ -42,6 +42,8 @@ jobs:
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
       testFiltercriteria: 'TestCategory=Integration&TestCategory!=LiveMode'
       rerunFailedTests: true
+      rerunType: basedOnTestFailureCount
+      rerunFailedTestCasesMaxLimit: 100 # Rerun even if all UI tests fail on a given run (much larger than count of tests)
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Stop - WinAppDriver'
