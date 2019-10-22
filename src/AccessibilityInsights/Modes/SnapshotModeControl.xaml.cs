@@ -133,13 +133,13 @@ namespace AccessibilityInsights.Modes
             {
                 this.ctrlHierarchy.IsEnabled = false;
                 ElementContext ec = null;
-                bool publishScanResults = MainWin.PublishScanResultsOneShot;
                 await Task.Run(() =>
                 {
-                    CaptureAction.SetTestModeDataContext(ecId, this.DataContextMode, Configuration.TreeViewMode);
+                    bool contextChanged = CaptureAction.SetTestModeDataContext(ecId,
+                        this.DataContextMode, Configuration.TreeViewMode);
                     ec = GetDataAction.GetElementContext(ecId);
 
-                    if (publishScanResults)
+                    if (contextChanged && this.DataContextMode != DataContextMode.Load)
                     {
                         // send telemetry of scan results. 
                         var dc = GetDataAction.GetElementDataContext(ecId);
