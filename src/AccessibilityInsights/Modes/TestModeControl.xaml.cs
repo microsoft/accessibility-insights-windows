@@ -150,7 +150,8 @@ namespace AccessibilityInsights.Modes
 
                     await Task.Run(() =>
                     {
-                        bool contextChanged = CaptureAction.SetTestModeDataContext(ecId, this.DataContextMode, Configuration.TreeViewMode);
+                        bool contextChanged = CaptureAction.SetTestModeDataContext(ecId,
+                            this.DataContextMode, Configuration.TreeViewMode);
                         ec = GetDataAction.GetElementContext(ecId);
 
                         // send telemetry of scan results. 
