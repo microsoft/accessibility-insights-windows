@@ -24,6 +24,28 @@ namespace AccessibilityInsights
     /// </summary>
     public partial class MainWindow
     {
+        private bool _publishScanResults;
+
+        /// <summary>
+        /// This gets set to true when fresh data is loaded, then cleared
+        /// after it is read. It is intended to be read to determine whether
+        /// or not to publish the scan results.
+        /// </summary>
+        public bool PublishScanResultsOneShot
+        {
+            get
+            {
+                bool freshData = _publishScanResults;
+                _publishScanResults = false;
+                return freshData;
+            }
+
+            set
+            {
+                _publishScanResults = value;
+            }
+        }
+
         /// <summary>
         /// Current Page variable to keep track of state.
         /// - Startup
@@ -232,6 +254,8 @@ namespace AccessibilityInsights
                         sa.SetCandidateElement(ctrlLiveMode.SelectedInHierarchyElement.Item1, ctrlLiveMode.SelectedInHierarchyElement.Item2);
                         sa.Select();
                     }
+
+                    PublishScanResultsOneShot = true;
                 }
 
                 // Based on Ux model feedback from PM team, we decided to go to AutomatedTestResults as default page view for snapshot.

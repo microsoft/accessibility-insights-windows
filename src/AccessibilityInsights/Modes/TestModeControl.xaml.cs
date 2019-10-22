@@ -146,6 +146,7 @@ namespace AccessibilityInsights.Modes
 
                     ElementContext ec = null;
                     string warning = string.Empty;
+                    bool publishScanResults = MainWin.PublishScanResultsOneShot;
 
                     await Task.Run(() =>
                     {
@@ -161,7 +162,10 @@ namespace AccessibilityInsights.Modes
                                 dc.ElementCounter.UpperBound);
                             IsSaveEnabled = false;
                         }
-                        dc.PublishScanResults();
+                        if (publishScanResults)
+                        {
+                            dc.PublishScanResults();
+                        }
                     }).ConfigureAwait(false);
 
                     Application.Current.Dispatcher.Invoke(() =>
