@@ -29,18 +29,22 @@ namespace AccessibilityInsights
         public HotKeyHandler HotkeyHandler { get; private set; }
         readonly TreeNavigator TreeNavigator = null;
 
-        /// <summary>
-        /// Start Start Mode
-        /// </summary>
-        /// <returns></returns>
-        void StartStartMode()
+        void InitStartMode()
         {
             this.CurrentPage = AppPage.Start;
+            PageTracker.TrackPage(this.CurrentPage, null);
+            this.gdModes.Visibility = Visibility.Visible;
+            this.btnPause.Visibility = Visibility.Visible;
+            ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
+            ShowTelemetryDialog();
+            CheckForUpdates();
+        }
+
+        private void Initialize()
+        {
             this.ctrlCurMode = ctrlLiveMode;
             this.ctrlCurMode.ShowControl();
-            PageTracker.TrackPage(this.CurrentPage, null);
 
-            /// Make sure that title and Name property are set with same value. 
             UpdateTitleString();
 
             this.hWnd = new WindowInteropHelper(this).Handle;
@@ -54,16 +58,10 @@ namespace AccessibilityInsights
             InitTimerAutoSnap();
             InitAccessKeyRule();
             InitHighlighter();
-            this.gdModes.Visibility = Visibility.Visible;
-            this.btnPause.Visibility = Visibility.Visible;
-            /// Set UI appropriately if showing startup screen
-            if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen())
+
+            if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen() && CommandLineSettings.FileToOpen == null)
             {
-                ctrlDialogContainer.ShowDialog(new StartUpModeControl()).ContinueWith(BackToSelectingOnDispatcher, TaskScheduler.Current);
-                //show telemetry dialog
-                ShowTelemetryDialog();
-                // make sure that we show update. 
-                CheckForUpdates();
+                InitStartMode();
             }
             else
             {
@@ -71,7 +69,6 @@ namespace AccessibilityInsights
                 // make sure that we disable selector before showing update
                 // otherwise, UI could be in weird state (Main window is gray out but still show selection and update dialog is disappearing)
                 DisableElementSelector();
-                //show telemetry dialog
                 ShowTelemetryDialog();
                 CheckForUpdates();
                 EnableElementSelector();

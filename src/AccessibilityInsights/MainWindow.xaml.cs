@@ -108,7 +108,7 @@ namespace AccessibilityInsights
         {
             get
             {
-                return string.Format(CultureInfo.InvariantCulture, Properties.Resources.MainWindow_AutomationPropertiesName_0_1_2, Properties.Resources.btnCCAAutomationPropertiesName , this.CurrentPage.ToString(), Properties.Resources.ModeIsEnabled);
+                return string.Format(CultureInfo.InvariantCulture, Properties.Resources.MainWindow_AutomationPropertiesName_0_1_2, Properties.Resources.btnCCAAutomationPropertiesName, this.CurrentPage.ToString(), Properties.Resources.ModeIsEnabled);
             }
         }
 
@@ -172,7 +172,6 @@ namespace AccessibilityInsights
             InitializeComponent();
 
             this.Topmost = ConfigurationManager.GetDefaultInstance().AppConfig.AlwaysOnTop;
-            
 
             UpdateMainWindowLayout();
 
@@ -310,7 +309,7 @@ namespace AccessibilityInsights
             // update version string. 
             UpdateVersionString();
 
-            StartStartMode();
+            Initialize();
 
             HandleFileAssociationOpenRequest();
         }
