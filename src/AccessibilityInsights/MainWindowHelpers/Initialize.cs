@@ -59,7 +59,7 @@ namespace AccessibilityInsights
             InitAccessKeyRule();
             InitHighlighter();
 
-            if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen())
+            if (ConfigurationManager.GetDefaultInstance().AppConfig.NeedToShowWelcomeScreen() && CommandLineSettings.FileToOpen == null)
             {
                 InitStartMode();
             }
