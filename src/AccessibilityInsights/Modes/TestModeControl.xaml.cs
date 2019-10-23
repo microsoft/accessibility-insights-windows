@@ -16,6 +16,7 @@ using Axe.Windows.Actions.Enums;
 using Axe.Windows.Actions.Misc;
 using Axe.Windows.Desktop.Settings;
 using System;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
@@ -149,7 +150,8 @@ namespace AccessibilityInsights.Modes
 
                     await Task.Run(() =>
                     {
-                        var updated = CaptureAction.SetTestModeDataContext(ecId, this.DataContextMode, Configuration.TreeViewMode);
+                        bool contextChanged = CaptureAction.SetTestModeDataContext(ecId,
+                            this.DataContextMode, Configuration.TreeViewMode);
                         ec = GetDataAction.GetElementContext(ecId);
 
                         // send telemetry of scan results. 
@@ -161,7 +163,10 @@ namespace AccessibilityInsights.Modes
                                 dc.ElementCounter.UpperBound);
                             IsSaveEnabled = false;
                         }
-                        dc.PublishScanResults();
+                        if (contextChanged && this.DataContextMode != DataContextMode.Load)
+                        {
+                            dc.PublishScanResults();
+                        }
                     }).ConfigureAwait(false);
 
                     Application.Current.Dispatcher.Invoke(() =>
