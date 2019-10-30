@@ -7,7 +7,7 @@
   <Import Project="common.targets" />
 
   <Choose>
-    <When Condition=" '$(SignAppForRelease)'=='true' AND '$(Configuration)' == 'SignedRelease'">
+    <When Condition=" '$(SignAppForRelease)'=='true' ">
       <PropertyGroup>
         <DefineConstants>$(DefineConstants);ENABLE_SIGNING;</DefineConstants>
         <SignAssembly>true</SignAssembly>
