@@ -7,7 +7,7 @@
   <Import Project="delaysign.targets" />
 
   <Choose>
-    <When Condition=" '$(SignAppForRelease)'=='true' AND '$(Configuration)' == 'SignedRelease'">
+    <When Condition=" '$(SignAppForRelease)'=='true' AND '$(Configuration)' == 'Release'">
       <ItemGroup>
         <FilesToSign Include="@(DropSignedFile)">
           <Authenticode>Microsoft400</Authenticode>
