@@ -3,7 +3,6 @@
 using AccessibilityInsights.CommonUxComponents.Utilities;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
-using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

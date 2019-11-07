@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.Win32;
 using System;
+using System.Drawing;
 using System.Threading;
 
 namespace AccessibilityInsights.Win32
@@ -107,6 +108,39 @@ namespace AccessibilityInsights.Win32
             const string valueName = "Release";
 
             return (int?)Registry.GetValue(keyName, valueName, null);
+        }
+
+        /// <summary>
+        /// Check whether the current Windows is Windows 7 or not. 
+        /// </summary>
+        /// <returns></returns>
+        internal static bool IsWindows7()
+        {
+            return Environment.OSVersion.Version.Major == 6 && Environment.OSVersion.Version.Minor == 1;
+        }
+
+        /// <summary>
+        /// Get DPI value from pointer
+        /// </summary>
+        /// <param name="point"></param>
+        /// <param name="dpiType"></param>
+        /// <param name="dpiX"></param>
+        /// <param name="dpiY"></param>
+        internal static void GetDpi(Point point, DpiType dpiType, out uint dpiX, out uint dpiY)
+        {
+            var mon = NativeMethods.MonitorFromPoint(point, 2/*MONITOR_DEFAULTTONEAREST*/);
+            if (IsWindows7())
+            {
+                Graphics g = Graphics.FromHwnd(IntPtr.Zero);
+                IntPtr desktop = g.GetHdc();
+
+                dpiX = NativeMethods.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSX);
+                dpiY = NativeMethods.GetDeviceCaps(desktop, (int)DeviceCap.LOGPIXELSY);
+            }
+            else
+            {
+                NativeMethods.GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
+            }
         }
     }
 }

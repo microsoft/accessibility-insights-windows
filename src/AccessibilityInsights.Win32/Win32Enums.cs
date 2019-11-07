@@ -446,5 +446,31 @@ namespace AccessibilityInsights.Win32
         UntrustedRoot = 0x800B0109                  // CERT_E_UNTRUSTEDROOT - A certification chain processed correctly but terminated in a root certificate that is not trusted by the trust provider.
     }
 
+    /// <summary>
+    /// https://msdn.microsoft.com/en-us/library/windows/desktop/dn280511(v=vs.85).aspx
+    /// </summary>
+    public enum DpiType
+    {
+        Effective = 0,
+        Angular = 1,
+        Raw = 2,
+    }
+
+    /// <summary>
+    /// Device Cap
+    /// https://docs.microsoft.com/en-us/windows/desktop/api/wingdi/nf-wingdi-getdevicecaps
+    /// </summary>
+    public enum DeviceCap
+    {
+        /// <summary>
+        /// Logical pixels inch in X
+        /// </summary>
+        LOGPIXELSX = 88,
+        /// <summary>
+        /// Logical pixels inch in Y
+        /// </summary>
+        LOGPIXELSY = 90
+    }
+
 #pragma warning restore CA1712 // Do not prefix enum values with type name
 }
