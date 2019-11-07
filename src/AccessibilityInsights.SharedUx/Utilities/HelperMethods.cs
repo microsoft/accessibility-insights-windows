@@ -77,7 +77,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="rc"></param>
         /// <returns></returns>
-        public static double GetDPI(this Rectangle rc)
+        internal static double GetDPI(this Rectangle rc)
         {
             return GetDPI(rc.Left, rc.Top);
         }
@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="left"></param>
         /// <param name="top"></param>
         /// <returns></returns>
-        public static double GetDPI(int left, int top)
+        private static double GetDPI(int left, int top)
         {
             NativeMethods.GetDpi(new System.Drawing.Point(left, top), DpiType.Effective, out uint dpiX, out uint dpiY);
 
@@ -111,7 +111,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// when setting Window.Left / Window.Top before calling show()
         /// </summary>
         /// <returns></returns>
-        public static double GetWPFWindowPositioningDPI()
+        internal static double GetWPFWindowPositioningDPI()
         {
             return new Rectangle().GetDPI();
         }

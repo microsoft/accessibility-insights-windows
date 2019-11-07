@@ -267,7 +267,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
         }
 
-        public static System.Windows.Media.Color ToMediaColor(this System.Drawing.Color color)
+        internal static System.Windows.Media.Color ToMediaColor(this System.Drawing.Color color)
         {
             return System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);
         }
@@ -277,7 +277,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="bitmap"></param>
         /// <returns></returns>
-        public static BitmapSource ConvertToSource(this Bitmap bitmap)
+        internal static BitmapSource ConvertToSource(this Bitmap bitmap)
         {
             if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
 
