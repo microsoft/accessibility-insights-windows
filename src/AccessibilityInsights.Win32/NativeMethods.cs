@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace AccessibilityInsights.Win32
@@ -11,6 +12,17 @@ namespace AccessibilityInsights.Win32
     /// </summary>
     internal static partial class NativeMethods
     {
+        [DllImport("gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
+        internal static extern uint GetDeviceCaps(IntPtr hDC, int nIndex);
+
+        //https://msdn.microsoft.com/en-us/library/windows/desktop/dd145062(v=vs.85).aspx
+        [DllImport("User32.dll")]
+        internal static extern IntPtr MonitorFromPoint([In]Point pt, [In]uint dwFlags);
+
+        //https://msdn.microsoft.com/en-us/library/windows/desktop/dn280510(v=vs.85).aspx
+        [DllImport("Shcore.dll")]
+        internal static extern uint GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+
         [DllImport("Gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern IntPtr CreateCompatibleDC(IntPtr hDC);
 

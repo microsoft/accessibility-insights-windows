@@ -2,9 +2,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using System;
+using System.Drawing;
 using System.Windows;
 
 namespace AccessibilityInsights.SharedUx.Utilities
@@ -69,5 +71,49 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// Provides bindable property for ProgressRingControls
         /// </summary>
         public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
+
+        /// <summary>
+        /// Get DPI
+        /// </summary>
+        /// <param name="rc"></param>
+        /// <returns></returns>
+        internal static double GetDPI(this Rectangle rc)
+        {
+            return GetDPI(rc.Left, rc.Top);
+        }
+
+        /// <summary>
+        /// Get DPI with left/top
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="top"></param>
+        /// <returns></returns>
+        private static double GetDPI(int left, int top)
+        {
+            NativeMethods.GetDpi(new System.Drawing.Point(left, top), DpiType.Effective, out uint dpiX, out uint dpiY);
+
+            return GetDPIRate(dpiX);
+        }
+
+        /// <summary>
+        /// turn raw DPI value to DPI rate
+        /// </summary>
+        /// <param name="dpiX"></param>
+        /// <returns></returns>
+        private static double GetDPIRate(uint dpi)
+        {
+            return dpi / 96.0; // 96 is 100% scale. 
+        }
+
+        /// <summary>
+        /// Gets the DPI that WPF seems to use internally
+        /// when positioning windows; scale by this DPI 
+        /// when setting Window.Left / Window.Top before calling show()
+        /// </summary>
+        /// <returns></returns>
+        internal static double GetWPFWindowPositioningDPI()
+        {
+            return new Rectangle().GetDPI();
+        }
     }
 }

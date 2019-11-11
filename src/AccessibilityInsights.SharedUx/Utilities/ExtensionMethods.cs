@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
+using AccessibilityInsights.Win32;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
@@ -13,6 +14,7 @@ using Axe.Windows.Core.Results;
 using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -21,8 +23,13 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Interop;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using static System.FormattableString;
+
+using MediaColor = System.Windows.Media.Color;
+using WindowsPoint = System.Windows.Point;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
@@ -181,9 +188,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
-        public static Point GetTopLeftPoint(this Window window)
+        public static WindowsPoint GetTopLeftPoint(this Window window)
         {
-            Point topLeft = new Point();
+            WindowsPoint topLeft = new WindowsPoint();
             // .Top & .Left are not updated when window is maximized, so need to 
             //  recover the position of the window in this case
             var left = typeof(Window).GetField("_actualLeft", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
@@ -263,9 +270,24 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
         }
 
-        public static Color ToMediaColor(this System.Drawing.Color color)
+        internal static MediaColor ToMediaColor(this System.Drawing.Color color)
         {
-            return Color.FromArgb(color.A, color.R, color.G, color.B);
+            return MediaColor.FromArgb(color.A, color.R, color.G, color.B);
+        }
+
+        /// <summary>
+        /// Gets source for bitmap
+        /// </summary>
+        /// <param name="bitmap"></param>
+        /// <returns></returns>
+        internal static BitmapSource ConvertToSource(this Bitmap bitmap)
+        {
+            if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
+
+            var hbmp = bitmap.GetHbitmap();
+            var result = Imaging.CreateBitmapSourceFromHBitmap(hbmp, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            NativeMethods.DeleteObject(hbmp);
+            return result;
         }
     }
 }
