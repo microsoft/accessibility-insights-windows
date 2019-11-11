@@ -28,6 +28,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using static System.FormattableString;
 
+using MediaColor = System.Windows.Media.Color;
+using WindowsPoint = System.Windows.Point;
+
 namespace AccessibilityInsights.SharedUx.Utilities
 {
     /// <summary>
@@ -185,9 +188,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
-        public static System.Windows.Point GetTopLeftPoint(this Window window)
+        public static WindowsPoint GetTopLeftPoint(this Window window)
         {
-            System.Windows.Point topLeft = new System.Windows.Point();
+            WindowsPoint topLeft = new WindowsPoint();
             // .Top & .Left are not updated when window is maximized, so need to 
             //  recover the position of the window in this case
             var left = typeof(Window).GetField("_actualLeft", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
@@ -267,9 +270,9 @@ namespace AccessibilityInsights.SharedUx.Utilities
             }
         }
 
-        internal static System.Windows.Media.Color ToMediaColor(this System.Drawing.Color color)
+        internal static MediaColor ToMediaColor(this System.Drawing.Color color)
         {
-            return System.Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B);
+            return MediaColor.FromArgb(color.A, color.R, color.G, color.B);
         }
 
         /// <summary>

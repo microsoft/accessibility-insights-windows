@@ -21,7 +21,7 @@ namespace AccessibilityInsights.Win32
 
         //https://msdn.microsoft.com/en-us/library/windows/desktop/dn280510(v=vs.85).aspx
         [DllImport("Shcore.dll")]
-        internal static extern IntPtr GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+        internal static extern uint GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
 
         [DllImport("Gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern IntPtr CreateCompatibleDC(IntPtr hDC);

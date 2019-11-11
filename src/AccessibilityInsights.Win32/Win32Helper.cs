@@ -120,7 +120,7 @@ namespace AccessibilityInsights.Win32
         }
 
         /// <summary>
-        /// Get DPI value from pointer
+        /// Get DPI value from point
         /// </summary>
         /// <param name="point"></param>
         /// <param name="dpiType"></param>
@@ -128,6 +128,9 @@ namespace AccessibilityInsights.Win32
         /// <param name="dpiY"></param>
         internal static void GetDpi(Point point, DpiType dpiType, out uint dpiX, out uint dpiY)
         {
+            const uint defaultDpi = 96;
+            const uint S_OK = 0;
+
             var mon = NativeMethods.MonitorFromPoint(point, 2/*MONITOR_DEFAULTTONEAREST*/);
             if (IsWindows7())
             {
@@ -139,7 +142,17 @@ namespace AccessibilityInsights.Win32
             }
             else
             {
-                NativeMethods.GetDpiForMonitor(mon, dpiType, out dpiX, out dpiY);
+                uint localDpiX, localDpiY;
+                if (NativeMethods.GetDpiForMonitor(mon, dpiType, out localDpiX, out localDpiY) == S_OK)
+                {
+                    dpiX = localDpiX;
+                    dpiY = localDpiY;
+                }
+                else
+                {
+                    dpiX = defaultDpi;
+                    dpiY = defaultDpi;
+                }
             }
         }
     }
