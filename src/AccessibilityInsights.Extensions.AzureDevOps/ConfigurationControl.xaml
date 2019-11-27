@@ -59,6 +59,7 @@
             <Button Grid.Column="3" x:Name="btnNext" Padding="8,0" HorizontalAlignment="Left" 
                     Content="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" Click="NextButton_Click"
                     AutomationProperties.Name="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" IsTabStop="True"
+                    IsEnabled="{Binding ElementName=ServerComboBox, Path=Text.Length, Mode=OneWay}"
                     Style="{DynamicResource BtnBlueSquared}" Visibility="{Binding BtnConnectVisibility}" />
             <Button Name="btnDisconnect" Content="{x:Static Properties:Resources.ButtonAutomationPropertiesName}"
                     Click="disconnectButton_Click" Cursor="Hand" Grid.Column="3" HorizontalAlignment="Right" Padding="8,0"
