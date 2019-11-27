@@ -71,19 +71,11 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Image Grid.Column="0" x:Name="imgAvatar" Width="40" Height="40"
-                       Source="{Binding Path=Avatar, TargetNullValue={x:Null}, Mode=OneWay}">
-                <Image.Clip>
-                    <EllipseGeometry Center="20,20" RadiusX="20" RadiusY="20" />
-                </Image.Clip>
-            </Image>
             <Grid Grid.Column="1" Margin="12px 0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TextBlock x:Name="displayNameField" Grid.Row="0" Text="{Binding Path=DisplayName}" FontSize="{DynamicResource StandardTextSize}"/>
-                <TextBlock x:Name="emailField" Grid.Row="1" Text="{Binding Path=Email}" FontSize="{DynamicResource StandardTextSize}"/>
             </Grid>
         </Grid>
         <Grid x:Name="teamSelectedGrid" Visibility="{Binding TeamSelectedGridVisibility}" Grid.Row="4" Margin="0px 0px 24px 12px">
