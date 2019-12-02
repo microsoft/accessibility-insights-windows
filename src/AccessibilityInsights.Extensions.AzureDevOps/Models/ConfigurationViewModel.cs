@@ -23,6 +23,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 avatar = value;
                 OnPropertyChanged(nameof(Avatar));
+                OnPropertyChanged(nameof(AvatarVisibility));
             }
         }
 
@@ -35,6 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 displayName = value;
                 OnPropertyChanged(nameof(DisplayName));
+                OnPropertyChanged(nameof(DisplayNameVisibility));
             }
         }
 
@@ -48,6 +50,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 email = value;
                 OnPropertyChanged(nameof(Email));
+                OnPropertyChanged(nameof(EmailVisibility));
             }
         }
 
@@ -104,6 +107,30 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             get
             {
                 return State == ControlState.EditingServer;
+            }
+        }
+
+        public Visibility AvatarVisibility
+        {
+            get
+            {
+                return (avatar == null || avatar.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public Visibility DisplayNameVisibility
+        {
+            get
+            {
+                return string.IsNullOrEmpty(displayName) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public Visibility EmailVisibility
+        {
+            get
+            {
+                return string.IsNullOrEmpty(email) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
     }
