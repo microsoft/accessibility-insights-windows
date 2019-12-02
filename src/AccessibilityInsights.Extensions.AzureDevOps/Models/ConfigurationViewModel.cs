@@ -67,9 +67,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 OnPropertyChanged(nameof(BtnDisconnectVisibility));
                 OnPropertyChanged(nameof(IsSelectTeamGridEnabled));
                 OnPropertyChanged(nameof(SelectTeamGridVisibility));
-                OnPropertyChanged(nameof(AvatarVisibility));
-                OnPropertyChanged(nameof(DisplayNameVisibility));
-                OnPropertyChanged(nameof(EmailVisibility));
             }
         }
 
