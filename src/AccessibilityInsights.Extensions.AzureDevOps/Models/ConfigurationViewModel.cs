@@ -114,7 +114,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         {
             get
             {
-                return (Avatar == null || Avatar.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+                return (avatar == null || avatar.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -122,7 +122,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         {
             get
             {
-                return (DisplayName == null || DisplayName.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+                return string.IsNullOrEmpty(displayName) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
 
@@ -130,7 +130,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         {
             get
             {
-                return (Email == null || Email.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+                return string.IsNullOrEmpty(email) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
     }
