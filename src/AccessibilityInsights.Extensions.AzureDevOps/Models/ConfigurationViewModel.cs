@@ -23,6 +23,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 avatar = value;
                 OnPropertyChanged(nameof(Avatar));
+                OnPropertyChanged(nameof(AvatarVisibility));
             }
         }
 
@@ -35,6 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 displayName = value;
                 OnPropertyChanged(nameof(DisplayName));
+                OnPropertyChanged(nameof(DisplayNameVisibility));
             }
         }
 
@@ -48,6 +50,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             {
                 email = value;
                 OnPropertyChanged(nameof(Email));
+                OnPropertyChanged(nameof(EmailVisibility));
             }
         }
 
@@ -64,6 +67,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 OnPropertyChanged(nameof(BtnDisconnectVisibility));
                 OnPropertyChanged(nameof(IsSelectTeamGridEnabled));
                 OnPropertyChanged(nameof(SelectTeamGridVisibility));
+                OnPropertyChanged(nameof(AvatarVisibility));
+                OnPropertyChanged(nameof(DisplayNameVisibility));
+                OnPropertyChanged(nameof(EmailVisibility));
             }
         }
 
@@ -104,6 +110,30 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             get
             {
                 return State == ControlState.EditingServer;
+            }
+        }
+
+        public Visibility AvatarVisibility
+        {
+            get
+            {
+                return (Avatar == null || Avatar.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public Visibility DisplayNameVisibility
+        {
+            get
+            {
+                return (DisplayName == null || DisplayName.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        public Visibility EmailVisibility
+        {
+            get
+            {
+                return (Email == null || Email.Length == 0) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
     }
