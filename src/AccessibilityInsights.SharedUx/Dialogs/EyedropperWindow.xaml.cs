@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Actions.Contexts;
-using Axe.Windows.Desktop.Utility;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -115,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             this.EC = context;
             if (screenshot != null)
             {
-                this.backgroundImageScale = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI(
+                this.backgroundImageScale = HelperMethods.GetDPI(
                     (int)System.Windows.Application.Current.MainWindow.Top, 
                     (int)System.Windows.Application.Current.MainWindow.Left);
                 

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -51,13 +51,13 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             if (el == null)
                 throw new ArgumentNullException(nameof(el));
 
-            var win = el.GetParentWindow();
+            var win = Axe.Windows.Desktop.Utility.ExtensionMethods.GetParentWindow(el);
             TBCallback = onMouseDown;
             Dimensions = win == null ? el.BoundingRectangle : win.BoundingRectangle;
             Brush = brush;
-            GapWidth = gap;            
+            GapWidth = gap;
         }
-                
+
         /// <summary>
         /// Create and show highlighter window
         /// </summary>
@@ -82,7 +82,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 WindowStartupLocation = WindowStartupLocation.Manual
             };
 
-            var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
+            var xyDpi = HelperMethods.GetWPFWindowPositioningDPI();
             this.HighlightWindow.Top = Dimensions.Top / xyDpi;
             this.HighlightWindow.Left = Dimensions.Left / xyDpi;
 
@@ -208,7 +208,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             try
             {
-                var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
+                var xyDpi = HelperMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
                 var l = (Dimensions.Width / xyDpi- toast.Width) - (GapWidth * 2) ;
                 var t = (Dimensions.Height / xyDpi - toast.Height) - (GapWidth * 2);
                 canvas.Children.Add(toast);

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -100,7 +100,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             // if so make sure that dimension is correct to be visible.
             if(el.PlatformObject == null)
             {
-                var dpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetDPI((int)Application.Current.MainWindow.Top, (int)Application.Current.MainWindow.Left);
+                var dpi = HelperMethods.GetDPI((int)Application.Current.MainWindow.Top, (int)Application.Current.MainWindow.Left);
                 this.WinRect = new Rect()
                 {
                     Y = (int)Application.Current.MainWindow.Top,
@@ -229,7 +229,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             if (WinRect.IsEmpty)
             {
-                var xyDpi = Axe.Windows.Desktop.Utility.ExtensionMethods.GetWPFWindowPositioningDPI();
+                var xyDpi = HelperMethods.GetWPFWindowPositioningDPI();
                 this.HighlightWindow.Top = Dimensions.Top / xyDpi;
                 this.HighlightWindow.Left = Dimensions.Left / xyDpi;
 
