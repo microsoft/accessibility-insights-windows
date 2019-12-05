@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -51,7 +52,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             if (el == null)
                 throw new ArgumentNullException(nameof(el));
 
-            var win = Axe.Windows.Desktop.Utility.ExtensionMethods.GetParentWindow(el);
+            var win = el.GetParentWindow();
             TBCallback = onMouseDown;
             Dimensions = win == null ? el.BoundingRectangle : win.BoundingRectangle;
             Brush = brush;
