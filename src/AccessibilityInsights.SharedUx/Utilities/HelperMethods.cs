@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="left"></param>
         /// <param name="top"></param>
         /// <returns></returns>
-        private static double GetDPI(int left, int top)
+        internal static double GetDPI(int left, int top)
         {
             NativeMethods.GetDpi(new System.Drawing.Point(left, top), DpiType.Effective, out uint dpiX, out uint dpiY);
 
