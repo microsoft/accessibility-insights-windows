@@ -120,6 +120,20 @@ namespace AccessibilityInsights.Win32
         }
 
         /// <summary>
+        /// Check whether the user has selected dark mode. Reads the registry directly
+        /// </summary>
+        /// <returns>true if dark mode is enabled</returns>
+        internal static bool IsDarkModeEnabled()
+        {
+            const string keyName = @"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize\";
+            const string valueName = "AppsUseLightTheme";
+
+            int? value = (int?)Registry.GetValue(keyName, valueName, null);
+
+            return value.HasValue && value.Value == 0;
+        }
+
+        /// <summary>
         /// Get DPI value from point
         /// </summary>
         /// <param name="point"></param>

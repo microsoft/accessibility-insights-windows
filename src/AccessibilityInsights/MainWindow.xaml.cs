@@ -157,7 +157,7 @@ namespace AccessibilityInsights
         {
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
 
-            SetHighContrastTheme();
+            SetColorTheme();
 
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
@@ -208,16 +208,31 @@ namespace AccessibilityInsights
         {
             if (e.Category == UserPreferenceCategory.Color || e.Category == UserPreferenceCategory.VisualStyle)
             {
-                SetHighContrastTheme();
+                SetColorTheme();
             }
         }
 
         /// <summary>
-        /// Choose theme based on system theme
+        /// Choose color theme based on system settings
         /// </summary>
-        private static void SetHighContrastTheme()
+        private static void SetColorTheme()
         {
-            (App.Current as App).SetColorTheme(SystemParameters.HighContrast ? App.Theme.HighContrast : App.Theme.Light);
+            App.Theme theme;
+
+            if (SystemParameters.HighContrast)
+            {
+                theme = App.Theme.HighContrast;
+            }
+            else if (NativeMethods.IsDarkModeEnabled())
+            {
+                theme = App.Theme.Dark;
+            }
+            else
+            {
+                theme = App.Theme.Light;
+            }
+
+            (App.Current as App).SetColorTheme(theme);
         }
 
         /// <summary>
