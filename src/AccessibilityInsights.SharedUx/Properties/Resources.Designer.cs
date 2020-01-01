@@ -866,7 +866,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Don&apos;t show this again.
+        ///   Looks up a localized string similar to Show this window on startup.
         /// </summary>
         public static string ckbxDontShowContent {
             get {
@@ -1990,33 +1990,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Patterns.
-        /// </summary>
-        public static string labelFixFollowingContent {
-            get {
-                return ResourceManager.GetString("labelFixFollowingContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Patterns.
-        /// </summary>
-        public static string labelFixFollowingContent1 {
-            get {
-                return ResourceManager.GetString("labelFixFollowingContent1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Patterns.
-        /// </summary>
-        public static string labelFixFollowingContent2 {
-            get {
-                return ResourceManager.GetString("labelFixFollowingContent2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows.
         /// </summary>
         public static string LabelContentAccessibilityInsightsForWindows {
@@ -2112,6 +2085,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string labelEventsContent {
             get {
                 return ResourceManager.GetString("labelEventsContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patterns.
+        /// </summary>
+        public static string labelFixFollowingContent {
+            get {
+                return ResourceManager.GetString("labelFixFollowingContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patterns.
+        /// </summary>
+        public static string labelFixFollowingContent1 {
+            get {
+                return ResourceManager.GetString("labelFixFollowingContent1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patterns.
+        /// </summary>
+        public static string labelFixFollowingContent2 {
+            get {
+                return ResourceManager.GetString("labelFixFollowingContent2", resourceCulture);
             }
         }
         
@@ -4274,29 +4274,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to Accessibility Insights for Windows.
+        ///   Looks up a localized string similar to Welcome to.
         /// </summary>
         public static string WelcomeToAccessibilityInsightsForWindowsLabelContent {
             get {
                 return ResourceManager.GetString("WelcomeToAccessibilityInsightsForWindowsLabelContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What&apos;s new.
-        /// </summary>
-        public static string WhatsNewControl_Version_What_s_new {
-            get {
-                return ResourceManager.GetString("WhatsNewControl_Version_What_s_new", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What&apos;s new - {0}.
-        /// </summary>
-        public static string WhatsNewControl_Version_What_s_new_value {
-            get {
-                return ResourceManager.GetString("WhatsNewControl_Version_What_s_new_value", resourceCulture);
             }
         }
     }

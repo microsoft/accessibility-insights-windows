@@ -9,24 +9,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
-             xmlns:whatsNew="clr-namespace:AccessibilityInsights.SharedUx.Controls.WhatsNew"
              DataContext="{Binding RelativeSource={RelativeSource Self}}"
              mc:Ignorable="d"
              AutomationProperties.Name="{x:Static properties:Resources.StartUpModeControlAutomationPropertiesName}">
     <dialogs:ContainedDialog.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
-    <Border MaxHeight="700" MaxWidth="700"
+    <Border MaxHeight="700" MaxWidth="700" VerticalAlignment="Center"
             Background="{DynamicResource ResourceKey=LightGreyBrush}"
             BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
             BorderBrush="{DynamicResource ResourceKey=TextBrush}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="72"/>
-                <RowDefinition Height="250"/>
-                <RowDefinition Height="6"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="12"/>
                 <RowDefinition Height="48"/>
                 <RowDefinition Height="12"/>
@@ -70,21 +67,7 @@
                     </Button>
                 </Grid>
             </Border>
-            <Border Grid.Column="3" Grid.Row="2" Grid.RowSpan="3" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
-                <StackPanel>
-                    <whatsNew:WhatsNewControl/>
-                    <TextBlock FontWeight="SemiBold" Margin="12,10" Grid.Row="2" Style="{StaticResource TbFocusable}">
-              <Run Text="{x:Static properties:Resources.StartupModeControl_moreInformationText}"/>
-              <TextBlock>
-                <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077922">
-                  <Run Text="{x:Static properties:Resources.StartupModeControl_latestReleaseNotes}"/>
-                </Hyperlink>
-                <Run Text="."/>
-              </TextBlock>
-            </TextBlock>
-                </StackPanel>
-            </Border>
-            <Border Grid.Column="1" Grid.Row="4" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="16"/>
@@ -155,20 +138,17 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="14"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="1" Content="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="24" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Padding="0" FontWeight="Light" VerticalAlignment="Top"/>
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Padding="0"
+                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
+                    <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
+                    <LineBreak/>
+                    <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
+                </TextBlock>
             </Grid>
-            <Grid Grid.Column="3" Grid.Row="6" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <CheckBox Grid.Column="0" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"
-                    FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center"
-                    FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-                <Button Grid.Column="2" x:Name="btnExit"  Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static properties:AutomationIDs.StartUpModeExitButton}"
-                  Width="100" Height="30" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlueRounded}"/>
-            </Grid>
+                <CheckBox Grid.Column="1" Grid.Row="4" Content="{x:Static properties:Resources.ckbxDontShowContent}" Name="ckbxDontShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"
+                          FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" IsChecked="True"/>
+                <Button Grid.Column="3" Grid.Row="4" x:Name="btnExit" Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static properties:AutomationIDs.StartUpModeExitButton}"
+                        Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlueRounded}"/>
         </Grid>
     </Border>
 </dialogs:ContainedDialog>

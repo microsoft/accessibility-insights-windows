@@ -515,12 +515,6 @@
   <data name="FileBugLink" xml:space="preserve">
     <value>Learn more about bug filing.</value>
   </data>
-  <data name="WhatsNewControl_Version_What_s_new" xml:space="preserve">
-    <value>What's new</value>
-  </data>
-  <data name="WhatsNewControl_Version_What_s_new_value" xml:space="preserve">
-    <value>What's new - {0}</value>
-  </data>
   <data name="RunTextColorContrast" xml:space="preserve">
     <value>Check color contrast:</value>
   </data>
@@ -819,10 +813,10 @@
     <value>Bring Accessibility Insights for Windows to the foreground or minimize it.</value>
   </data>
   <data name="WelcomeToAccessibilityInsightsForWindowsLabelContent" xml:space="preserve">
-    <value>Welcome to Accessibility Insights for Windows</value>
+    <value>Welcome to</value>
   </data>
   <data name="ckbxDontShowContent" xml:space="preserve">
-    <value> Don't show this again</value>
+    <value>Show this window on startup</value>
   </data>
   <data name="runSelectedTestText" xml:space="preserve">
     <value>Run tests on the selected element.</value>

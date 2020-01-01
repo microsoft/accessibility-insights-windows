@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             Uri releaseNotesUri = MsiUtilities.GetReleaseNotesUri(new SetupExceptionReporter());
             if (releaseNotesUri != null)
             {
-                hlLink.NavigateUri = releaseNotesUri;
+                //hlLink.NavigateUri = releaseNotesUri;
             }
             WaitHandle.Reset();
 
@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="e"></param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            if (ckbxDontShow.IsChecked.Value)
+            if (!ckbxDontShow.IsChecked.Value)
             {
                 ConfigurationManager.GetDefaultInstance().AppConfig.ShowWelcomeScreenOnLaunch = false;
             }
