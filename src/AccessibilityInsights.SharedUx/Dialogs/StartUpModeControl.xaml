@@ -21,7 +21,7 @@
             BorderBrush="{DynamicResource ResourceKey=TextBrush}">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
+                <RowDefinition Height="8"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="12"/>
