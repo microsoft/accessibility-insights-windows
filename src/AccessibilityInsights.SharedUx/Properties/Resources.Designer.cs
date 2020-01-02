@@ -868,9 +868,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Show this window on startup.
         /// </summary>
-        public static string ckbxDoShowContent {
+        public static string ckbxShowContent {
             get {
-                return ResourceManager.GetString("ckbxDoShowContent", resourceCulture);
+                return ResourceManager.GetString("ckbxShowContent", resourceCulture);
             }
         }
         

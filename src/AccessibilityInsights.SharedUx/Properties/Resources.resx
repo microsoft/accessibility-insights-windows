@@ -815,7 +815,7 @@
   <data name="WelcomeToAccessibilityInsightsForWindowsLabelContent" xml:space="preserve">
     <value>Welcome to</value>
   </data>
-  <data name="ckbxDoShowContent" xml:space="preserve">
+  <data name="ckbxShowContent" xml:space="preserve">
     <value>Show this window on startup</value>
   </data>
   <data name="runSelectedTestText" xml:space="preserve">
