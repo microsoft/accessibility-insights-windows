@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Misc;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -57,14 +56,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             this.VersionString = VersionTools.GetAppVersion();
             InitializeComponent();
-            // If possible, point to build-specific release notes
-            Uri releaseNotesUri = MsiUtilities.GetReleaseNotesUri(new SetupExceptionReporter());
-            if (releaseNotesUri != null)
-            {
-                //hlLink.NavigateUri = releaseNotesUri;
-            }
             WaitHandle.Reset();
-
         }
 
         /// <summary>
