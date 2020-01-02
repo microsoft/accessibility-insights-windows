@@ -78,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="e"></param>
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            if (!ckbxDontShow.IsChecked.Value)
+            if (!ckbxDoShow.IsChecked.Value)
             {
                 ConfigurationManager.GetDefaultInstance().AppConfig.ShowWelcomeScreenOnLaunch = false;
             }
