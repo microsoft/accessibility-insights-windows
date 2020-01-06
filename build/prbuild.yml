@@ -4,12 +4,13 @@ pr: none
 variables:
   BuildPlatform: 'x86'
   MAICreateNuget: 'true'
-  PublicRelease: 'false'
+  PublicRelease: 'true'
   SignAppForRelease: 'false'
   TeamName: 'Accessibility Insights Windows'
   system.debug: 'true'
   FAKES_SUPPORTED: 1
-  
+  runCodesignValidationInjection: 'false'
+
 jobs:
 - template: ui-test-job.yml
   parameters:
