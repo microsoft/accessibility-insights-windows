@@ -6,26 +6,11 @@ variables:
   MAICreateNuget: 'true'
   PublicRelease: 'false'
   SignAppForRelease: 'false'
-
+  TeamName: 'Accessibility Insights Windows'
+  system.debug: 'true'
+  FAKES_SUPPORTED: 1
+  
 jobs:
-- template: build-and-unit-tests.yml
-  parameters:
-    configuration: release
-    checkLicenseHeaders: true
-    runComponentGovernance: $[in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI')]
-
-- template: build-and-unit-tests.yml
-  parameters:
-    configuration: debug
-
 - template: ui-test-job.yml
   parameters:
     configuration: release
-
-- template: ui-test-job.yml
-  parameters:
-    configuration: debug
-
-- template: build-without-fakes.yml
-  parameters:
-    configuration: debug
