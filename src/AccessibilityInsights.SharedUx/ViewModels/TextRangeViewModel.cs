@@ -187,6 +187,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     }
                     break;
                 case TextAttributeType.UIA_StyleIdAttributeId:
+                    if (value is int)
+                    {
+                        list.Add(new TextAttributeViewModel(kv.Key, kv.Value, StyleId.GetInstance().GetNameById(value)));
+                    }
+                    break;
                 case TextAttributeType.UIA_SayAsInterpretAsAttributeId:
                     // VT_I4
                     if (value is int)
