@@ -195,10 +195,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\WhatsNew\WhatsNewControl.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Dialogs\ChangeChannelContainedDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -426,9 +422,6 @@
     <Compile Include="Controls\TestTabs\ColorContrast.xaml.cs">
       <DependentUpon>ColorContrast.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\WhatsNew\WhatsNewControl.xaml.cs">
-      <DependentUpon>WhatsNewControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Converters\ColorStringConverter.cs" />
     <Compile Include="Converters\TreeNodeToMarginConverter.cs" />
     <Compile Include="Dialogs\EyedropperWindow.xaml.cs">
@@ -441,12 +434,12 @@
     <Compile Include="Misc\ListViewSelectionLock.cs" />
     <Compile Include="Misc\SetupExceptionReporter.cs" />
     <Compile Include="Misc\VersionTools.cs" />
+    <Compile Include="Properties\AutomationIDs.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AutomationIDs.cs" />
     <Compile Include="Settings\ConfigurationBase.cs" />
     <Compile Include="Settings\ConfigurationManager.cs" />
     <Compile Include="Settings\Layout.cs" />
