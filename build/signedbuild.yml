@@ -12,10 +12,6 @@ variables:
   runCodesignValidationInjection: 'false'
 
 jobs:
-- template: ui-test-job.yml
-  parameters:
-    configuration: release
-
 - job: ComplianceRelease
   pool:
     vmImage: 'windows-2019'
