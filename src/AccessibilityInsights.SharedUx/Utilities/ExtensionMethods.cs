@@ -289,5 +289,19 @@ namespace AccessibilityInsights.SharedUx.Utilities
             NativeMethods.DeleteObject(hbmp);
             return result;
         }
+
+        /// <summary>
+        /// Check whether p is fully visible based on current screen size
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="c"></param>
+        /// <param name="margin"></param>
+        /// <returns></returns>
+        internal static bool IsVisibleLocation(this Rectangle p)
+        {
+            return (from s in System.Windows.Forms.Screen.AllScreens
+                    where s.Bounds.Contains(p)
+                    select s).Any();
+        }
     }
 }
