@@ -28,6 +28,30 @@ You can find more information on how to set up your development environment [her
   cd accessibility-insights-windows
   ```
 
+Please
+
+Do Not
+
+Accept
+
+These
+
+Changes
+
+I am
+
+Using
+
+This to 
+
+Demo
+
+CLA Assistant
+
+Thanks
+
+<3 - Patrick
+
 #### 2. Open the solution in visual studio
 - Use the `src/AccessibilityInsights.sln` file to open the solution.
 
