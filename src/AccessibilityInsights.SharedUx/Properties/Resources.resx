@@ -426,8 +426,8 @@
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
     <value>Color contrast analyzer</value>
   </data>
-  <data name="RunTextHowToTest" xml:space="preserve">
-    <value>How to test</value>
+  <data name="RunTextGuidance" xml:space="preserve">
+    <value>Guidance</value>
   </data>
   <data name="firstChooserAutomationPropertiesName" xml:space="preserve">
     <value>first color</value>
