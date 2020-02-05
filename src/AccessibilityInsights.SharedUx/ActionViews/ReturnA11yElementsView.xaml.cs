@@ -361,9 +361,13 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             {
                 MarkElement(((A11yElement)this.cbElements.SelectedItem));
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException e)
             {
-                ex.ReportException();
+                e.ReportException();
+            }
+            catch (ArgumentNullException e)
+            {
+                e.ReportException();
             }
         }
 

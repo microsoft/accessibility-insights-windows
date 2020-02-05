@@ -151,6 +151,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             {
                 // TODO : Report this?
             }
+            catch (ArgumentNullException)
+            {
+                // TODO : Report this?
+            }
         }
 
 
@@ -194,6 +198,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 // TODO : Report this?
             }
             catch (NullReferenceException)
+            {
+                // TODO : Report this?
+            }
+            catch (ArgumentNullException)
             {
                 // TODO : Report this?
             }
