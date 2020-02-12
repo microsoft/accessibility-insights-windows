@@ -12,10 +12,6 @@ variables:
   runCodesignValidationInjection: 'false'
 
 jobs:
-- template: ui-test-job.yml
-  parameters:
-    configuration: release
-
 - job: ComplianceRelease
   pool:
     vmImage: 'windows-2019'
@@ -109,6 +105,7 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
     inputs:
+      toolMajorVersion: V2
       verboseOutput: true
       debugMode: false
 
@@ -187,7 +184,6 @@ jobs:
   dependsOn: 
   - ComplianceRelease
   - ComplianceDebug
-  - UITestsrelease
   condition: and(succeeded(), succeeded())
   pool: VSEng-MicroBuildVS2019
   variables:
