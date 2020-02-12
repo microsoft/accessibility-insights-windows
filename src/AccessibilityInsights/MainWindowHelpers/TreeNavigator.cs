@@ -69,7 +69,7 @@ namespace AccessibilityInsights
 
         private void MoveToNextSibbling(TreeTracker treeTracker)
         {
-            treeTracker?.MoveToNextSibbling();
+            treeTracker?.MoveToNextSibling();
         }
 
         public void MoveToPreviousSibbling()
@@ -79,7 +79,7 @@ namespace AccessibilityInsights
 
         private void MoveToPreviousSibbling(TreeTracker treeTracker)
         {
-            treeTracker?.MoveToPreviousSibbling();
+            treeTracker?.MoveToPreviousSibling();
         }
 
         private delegate void MoveToDelegate(TreeTracker treeTracker);
