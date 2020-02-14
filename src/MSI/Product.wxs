@@ -197,7 +197,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="63DCD2B5-CF57-494B-A81F-748DFDA7E9CF">
         <Shortcut Id="ApplicationStartMenuShortcut"
-           Name="Accessibility Insights"
+           Name="Accessibility Insights for Windows"
            Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
            Target="[#FileExe]"
            WorkingDirectory="INSTALLFOLDER"/>
