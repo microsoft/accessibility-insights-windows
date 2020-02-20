@@ -25,6 +25,18 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <WixVariable Id="WixUIBannerBmp" Value="Resources\WixDialogBanner.png" />
     <WixVariable Id="WixUILicenseRtf" Value="..\AccessibilityInsights\bin\Release\eula.rtf" />
 
+    <Property Id="NETCORERUNTIMEFOUNDX86">
+      <DirectorySearch Id="NetCoreDirectoryFoundx86" Path="[ProgramFilesFolder]dotnet" >
+        <FileSearch Name="dotnet.exe" MinVersion="3.0"/>
+      </DirectorySearch>
+    </Property>
+
+    <Property Id="NETCORERUNTIMEFOUNDX64">
+      <DirectorySearch Id="NetCoreDirectoryFoundx64" Path="[ProgramFiles64Folder]dotnet" >
+        <FileSearch Name="dotnet.exe" MinVersion="3.0"/>
+      </DirectorySearch>
+    </Property>
+
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature" Title="Accessibility Insights for Windows" Level="1">
@@ -40,6 +52,10 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <PropertyRef Id="NETFRAMEWORK45" />
     <Condition Message="[ProductName] requires .NET Framework 4.7.1 or later.">
       <![CDATA[Installed OR (NETFRAMEWORK45 AND NETFRAMEWORK45 >= "#461308")]]>
+    </Condition>
+
+    <Condition Message="[ProductName] requires .NET Core Runtime 3.0 or newer. Please visit https://dotnet.microsoft.com/download/dotnet-core">
+      <![CDATA[Installed OR NETCORERUNTIMEFOUNDX64 OR NETCORERUNTIMEFOUNDX86]]>
     </Condition>
 
     <Directory Id="TARGETDIR" Name="SourceDir">
