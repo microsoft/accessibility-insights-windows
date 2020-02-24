@@ -3427,15 +3427,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam.
-        /// </summary>
-        public static string ServerComboBoxAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bug {0}.
         /// </summary>
         public static string SetterValueBug {

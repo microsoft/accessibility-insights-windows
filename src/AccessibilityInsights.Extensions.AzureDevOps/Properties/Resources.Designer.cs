@@ -160,15 +160,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam.
-        /// </summary>
-        public static string ServerComboBoxAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Team project.
         /// </summary>
         public static string serverTreeviewAutomationPropertiesName {
