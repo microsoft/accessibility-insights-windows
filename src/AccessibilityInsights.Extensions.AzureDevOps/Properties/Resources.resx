@@ -120,6 +120,9 @@
   <data name="connectionInstrText" xml:space="preserve">
     <value>Enter desired Azure Boards link</value>
   </data>
+  <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
+    <value>Enter your desired Azure Boards link</value>
+  </data>
   <data name="accountPlaceholderText" xml:space="preserve">
     <value>https://dev.azure.com/fabrikam</value>
   </data>
@@ -164,8 +167,5 @@
   </data>
   <data name="CantPopulateProjects" xml:space="preserve">
     <value>Error populating Projects</value>
-  </data>
-  <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
-    <value>Enter your desired Azure Boards link</value>
   </data>
 </root>
