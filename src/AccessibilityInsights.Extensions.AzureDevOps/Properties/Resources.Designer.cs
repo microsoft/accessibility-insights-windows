@@ -160,6 +160,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enter your desired Azure Boards link.
+        /// </summary>
+        public static string ServerComboBoxAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Team project.
         /// </summary>
         public static string serverTreeviewAutomationPropertiesName {
