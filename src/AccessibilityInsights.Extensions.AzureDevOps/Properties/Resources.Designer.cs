@@ -160,7 +160,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam.
+        ///   Looks up a localized string similar to Enter your desired Azure Boards link.
         /// </summary>
         public static string ServerComboBoxAutomationPropertiesName {
             get {

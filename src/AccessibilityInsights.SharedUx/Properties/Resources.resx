@@ -336,9 +336,6 @@
   <data name="connectionInstrText" xml:space="preserve">
     <value>To start filing issues, select where you want to file your issues.</value>
   </data>
-  <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
-    <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
-  </data>
   <data name="lblIssueFiling" xml:space="preserve">
     <value>Issue Filing</value>
   </data>

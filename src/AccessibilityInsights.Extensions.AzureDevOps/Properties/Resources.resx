@@ -121,7 +121,7 @@
     <value>Enter desired Azure Boards link</value>
   </data>
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
-    <value>Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam</value>
+    <value>Enter your desired Azure Boards link</value>
   </data>
   <data name="accountPlaceholderText" xml:space="preserve">
     <value>https://dev.azure.com/fabrikam</value>
