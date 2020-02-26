@@ -153,9 +153,6 @@
   <data name="ConnectionControl_selectTeam" xml:space="preserve">
     <value>Select your Azure Boards team</value>
   </data>
-  <data name="ConnectionControl_serverURL" xml:space="preserve">
-    <value>Server URL</value>
-  </data>
   <data name="There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded" xml:space="preserve">
     <value>There was an error identifying the created issue. This may occur if the ID used to create the issue is removed from its Azure DevOps description. Attachments have not been uploaded.</value>
   </data>
