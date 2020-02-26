@@ -142,15 +142,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server URL.
-        /// </summary>
-        public static string ConnectionControl_serverURL {
-            get {
-                return ResourceManager.GetString("ConnectionControl_serverURL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Enter desired Azure Boards link.
         /// </summary>
         public static string connectionInstrText {
