@@ -34,7 +34,6 @@
                 <ColumnDefinition Width="8"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="0" TextWrapping="Wrap" Margin="0 0 0 12px" Text="{x:Static Properties:Resources.ConnectionControl_serverURL}" FontSize="{DynamicResource StandardTextSize}" Grid.ColumnSpan="2"/>
             <Grid Grid.ColumnSpan="2">
                 <ComboBox x:Name ="ServerComboBox" Grid.Row="1" IsEditable="True" Height="30" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
                               AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">

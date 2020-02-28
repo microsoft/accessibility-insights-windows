@@ -3225,6 +3225,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Guidance.
+        /// </summary>
+        public static string RunTextGuidance {
+            get {
+                return ResourceManager.GetString("RunTextGuidance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to By opting into telemetry, you.
         /// </summary>
         public static string RunTextHelpCommunity1 {
@@ -3250,15 +3259,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextHelpCommunity3 {
             get {
                 return ResourceManager.GetString("RunTextHelpCommunity3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to How to test.
-        /// </summary>
-        public static string RunTextHowToTest {
-            get {
-                return ResourceManager.GetString("RunTextHowToTest", resourceCulture);
             }
         }
         
@@ -3423,15 +3423,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string secondChooserAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("secondChooserAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter the full Azure DevOps URL such as https://dev.azure.com/fabrikam.
-        /// </summary>
-        public static string ServerComboBoxAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
             }
         }
         

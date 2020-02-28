@@ -71,11 +71,24 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Win32.Registry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Newtonsoft.Json.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Data.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Diagnostics.StackTrace.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Diagnostics.Tracing.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Drawing.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Globalization.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.IO.Compression.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.IO.Packaging.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Net.Http.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Net.Sockets.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Runtime.Serialization.Primitives.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Security.AccessControl.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Security.Cryptography.Algorithms.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Security.Principal.Windows.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Security.SecureString.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Threading.Overlapped.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.ValueTuple.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\System.Windows.Interactivity.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\System.Xml.XPath.XDocument.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\links.json"/>
@@ -197,7 +210,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <DirectoryRef Id="ApplicationProgramsFolder">
       <Component Id="ApplicationShortcut" Guid="63DCD2B5-CF57-494B-A81F-748DFDA7E9CF">
         <Shortcut Id="ApplicationStartMenuShortcut"
-           Name="Accessibility Insights"
+           Name="Accessibility Insights for Windows"
            Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
            Target="[#FileExe]"
            WorkingDirectory="INSTALLFOLDER"/>

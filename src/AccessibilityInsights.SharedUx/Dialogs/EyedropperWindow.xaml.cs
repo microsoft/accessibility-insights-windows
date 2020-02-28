@@ -231,6 +231,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 e.ReportException();
             }
+            catch (ArgumentNullException e)
+            {
+                e.ReportException();
+            }
         }
 
         /// <summary>
