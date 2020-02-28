@@ -22,7 +22,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - Fixed issue to simplify automation name in Azure Boards connection dialog [#707](https://github.com/microsoft/accessibility-insights-windows/issues/707)
 - Fixed issue to change programmatic order of save button on Settings page [#700](https://github.com/microsoft/accessibility-insights-windows/issues/700)
 - Fixed issue to use system color for link-style buttons in high contrast modes [#693](https://github.com/microsoft/accessibility-insights-windows/pull/693)
-- Fixed issue to change AutomationName and ToolTip for tabstops icon link [#692](https://github.com/microsoft/accessibility-insights-windows/pull/692)
+- Fixed issue to change AutomationName and ToolTip for tabstops (i) icon link [#692](https://github.com/microsoft/accessibility-insights-windows/pull/692)
 - Fixed UIA HeadingLevel values being reported incorrectly [#263](https://github.com/microsoft/axe-windows/issues/263)
 - Fixed issue to prevent UIA StyleId property values being always reported as "Unknown" [#265](https://github.com/microsoft/axe-windows/issues/265)
 
