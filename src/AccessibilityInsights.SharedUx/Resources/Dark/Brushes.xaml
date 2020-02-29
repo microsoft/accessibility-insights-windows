@@ -49,29 +49,29 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast, borders of ADO's "disconnect" button -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>     <!-- Background of disabled button (but I can't find any examples) -->
-    <SolidColorBrush po:Freeze="True" x:Key="LightGreyBrush" Color="#F4F4F4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>
-    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="#106EBE"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>
-    <SolidColorBrush po:Freeze="True" x:Key="CheckMarkBrush" Color="#C8C8C8"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#FFFFFF"/>
-    <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#D9D9D9"/>
-    <SolidColorBrush po:Freeze="True" x:Key="InspectTabHeaderBrush" Color="#4F4F4F"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TextHighlightBrush" Color="#FFF2CC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>
-    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>
-    <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>
-    <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>
-    <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>
-    <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>
-    <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>
-    <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>
+    <SolidColorBrush po:Freeze="True" x:Key="LightGreyBrush" Color="#F4F4F4"/>          <!-- Background in lots of places (same color as title bar) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>       <!-- Ask John -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>   <!-- Ask John -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>       <!-- Text color for links -->
+    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="#106EBE"/>        <!-- Not Used? (Nobody uses rbSelect style) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="CheckMarkBrush" Color="#C8C8C8"/>          <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>          <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#FFFFFF"/> <!-- Background color of selected tab (Details, HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#D9D9D9"/>    <!-- Background color of non-selected tab (Details, HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="InspectTabHeaderBrush" Color="#4F4F4F"/>   <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>      <!-- Background of Snapshot button (non-hover) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>   <!-- Background of Snapshot button (hover) -->
+    <SolidColorBrush po:Freeze="True" x:Key="TextHighlightBrush" Color="#FFF2CC"/>      <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>  <!-- Borders of buttons ? -->
+    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- NOT USED -->
+    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>          <!-- Border of Color Contrast preview -->
+    <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>                               <!-- Color of FAILED color contrast icon, hierarchy highlighter -->
+    <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>                             <!-- Color of PASSED color contrast icon -->
+    <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>                            <!-- Color of glimpse shown in tab stops list -->
+    <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>                           <!-- NOT USED -->
+    <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- NOT USED -->
+    <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>
 </ResourceDictionary>
