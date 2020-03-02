@@ -74,4 +74,5 @@
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>                            <!-- Color of "warning" icon in results -->
     <SolidColorBrush x:Key="SettingsIconBrush" Color="#333333 "/>                       <!-- Color of settings gear, search icon, rocket icon -->
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>                      <!-- Border brush used in various locations -->
+    <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086 "/>                  <!-- Background of video in startup dialog -->
 </ResourceDictionary>

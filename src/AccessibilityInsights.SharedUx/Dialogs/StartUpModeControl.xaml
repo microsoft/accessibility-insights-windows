@@ -55,13 +55,13 @@
                                         <Setter Property="Background" Value="#403E3E"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding ElementName=btnVideo,Path=IsMouseOver}" Value="True">
-                                                <Setter Property="Background" Value="#0C5086"/>
+                                                <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupBackgroundBrush}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
                             </Border>
-                            <Border Width="20" Height="20" Background="#0C5086" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <Border Width="20" Height="20" Background="{DynamicResource ResourceKey=StartupBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             <fabric:FabricIconControl Foreground="#FFFFFF" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button>
