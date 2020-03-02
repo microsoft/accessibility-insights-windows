@@ -45,7 +45,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <TabControl Name="tcTabs" Grid.Row="0" BorderThickness="0,1,0,0" BorderBrush="#FFEAEAEA" Style="{StaticResource tcScrolling}" SelectionChanged="TabControl_SelectionChanged">
+                        <TabControl Name="tcTabs" Grid.Row="0" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" Style="{StaticResource tcScrolling}" SelectionChanged="TabControl_SelectionChanged">
                             <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsApplicationTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
                                 <controls:ApplicationSettingsControl x:Name="appSettingsCtrl"/>
                             </TabItem>

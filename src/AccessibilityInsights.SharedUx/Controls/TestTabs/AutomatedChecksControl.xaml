@@ -58,7 +58,7 @@
                     </TextBlock>
                 </Grid>
             </Grid>
-            <Border Grid.Row="1" BorderBrush="#EAEAEA" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Border Grid.Row="1" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <ListView AutomationProperties.LabeledBy="{Binding ElementName=lblTitle}" KeyboardNavigation.TabNavigation="Once"
                           Name="lvResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
                           AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}">
@@ -239,7 +239,7 @@
                         </Style>
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Background" Value="Transparent"/>
-                            <Setter Property="BorderBrush" Value="#EAEAEA"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=TabBorderBrush}"/>
                             <Setter Property="Margin" Value="0,-1,-1,0"/>
                         </Style>
                     </ListView.Resources>
