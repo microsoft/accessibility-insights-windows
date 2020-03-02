@@ -212,7 +212,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         {
                             BorderBrush = Application.Current.Resources["DarkGreyTextBrush"] as SolidColorBrush,
                             BorderThickness = new Thickness(2),
-                            Background = Application.Current.Resources["LightBackgroundBrush"] as SolidColorBrush,
+                            Background = Application.Current.Resources["PrimaryBackgroundBrush"] as SolidColorBrush,
                             Width = 28,
                             Height = 28,
                             CornerRadius = new CornerRadius(28),

@@ -92,9 +92,9 @@
                                     <Button.ContextMenu>
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
                                             <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 
-                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
+                                    Background="{DynamicResource ResourceKey=PrimaryBackgroundBrush}" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
                                             <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"
-                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}"/>
+                                    Background="{DynamicResource ResourceKey=PrimaryBackgroundBrush}"/>
                                         </ContextMenu>
                                     </Button.ContextMenu>
                                 </Button>

@@ -35,7 +35,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=PrimaryBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -67,7 +67,7 @@
                     </Button>
                 </Grid>
             </Border>
-            <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=PrimaryBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="16"/>
