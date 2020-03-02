@@ -21,7 +21,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>
-    <SolidColorBrush po:Freeze="True" x:Key="NoticeBackgroundBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
         <GradientStop Color="#004280" Offset="0"/>
