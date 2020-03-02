@@ -39,7 +39,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>          <!-- Used to draw the icons on the nav bar -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/> <!-- Used for toggles in the "on" position -->
-    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>     <!-- Ask John? -->
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>     <!-- Background of search bar in properties view -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D4"/>     <!-- Non-hover background for (blue) active buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#FF0067B5"/>    <!-- Hover background for (blue) active buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#FF005A9E"/>   <!-- NOT USED -->
@@ -73,5 +73,5 @@
     <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>                           <!-- NOT USED -->
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- NOT USED -->
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
-    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>
+    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
 </ResourceDictionary>
