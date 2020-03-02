@@ -28,7 +28,6 @@
     </LinearGradientBrush>
     <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="#6E6E6E"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TextBrushDark" Color="#1A1A1A"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
