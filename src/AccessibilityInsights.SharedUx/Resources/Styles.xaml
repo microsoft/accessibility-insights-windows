@@ -225,41 +225,6 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
-    <Style TargetType="{x:Type RadioButton}" x:Key="rbSelect">
-        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-        <Setter Property="OverridesDefaultStyle" Value="true"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type RadioButton}">
-                    <BulletDecorator Background="{DynamicResource ResourceKey=ButtonBackgroundBrush}">
-                        <BulletDecorator.Bullet>
-                            <Grid Width="12" 
-                                  Height="12">
-                                <Ellipse x:Name="Border"  
-                                         Fill="{x:Null}"
-                                         StrokeThickness="1"
-                                         Stroke="{DynamicResource ResourceKey=RadioBulletBrush}" />
-                                <Ellipse x:Name="CheckMark"
-                                         Width="5" Height="5"
-                                         Fill="{DynamicResource ResourceKey=RadioBulletBrush}"/>
-                            </Grid>
-                        </BulletDecorator.Bullet>
-                        <ContentPresenter 
-                            Margin="6,0,0,0"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left"
-                            RecognizesAccessKey="True"/>
-                    </BulletDecorator>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsChecked" Value="false">
-                            <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="Border" Property="Stroke" Value="{DynamicResource ResourceKey=CheckMarkBrush}"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnTabActive">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>

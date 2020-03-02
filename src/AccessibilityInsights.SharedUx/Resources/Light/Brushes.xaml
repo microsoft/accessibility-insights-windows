@@ -51,9 +51,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>
-    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="#106EBE"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>
-    <SolidColorBrush po:Freeze="True" x:Key="CheckMarkBrush" Color="#C8C8C8"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#FFFFFF"/>

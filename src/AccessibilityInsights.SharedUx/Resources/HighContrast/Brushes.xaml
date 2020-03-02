@@ -42,7 +42,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushRed" Color="#CC0000"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushGreen" Color="#107c10"/>
