@@ -52,7 +52,7 @@
                             <Border Opacity=".40" Name="bdOverlay">
                                 <Border.Style>
                                     <Style TargetType="Border">
-                                        <Setter Property="Background" Value="#403E3E"/>
+                                        <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupVideoBorder}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding ElementName=btnVideo,Path=IsMouseOver}" Value="True">
                                                 <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupBackgroundBrush}"/>
