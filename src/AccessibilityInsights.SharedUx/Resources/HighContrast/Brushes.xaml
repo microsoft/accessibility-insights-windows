@@ -15,7 +15,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LightBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightGreyBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBackground" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>

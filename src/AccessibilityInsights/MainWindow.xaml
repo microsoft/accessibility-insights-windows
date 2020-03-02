@@ -288,7 +288,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <StackPanel x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=LightGreyBrush}"
+                        <StackPanel x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=PrimaryBackground}"
                             WindowChrome.IsHitTestVisibleInChrome="True" Focusable="True" GotKeyboardFocus="spCommandBar_GotKeyboardFocus"
                             Orientation="Horizontal" KeyboardNavigation.DirectionalNavigation="Cycle"
                             Height="28" KeyboardNavigation.TabNavigation="Once"
