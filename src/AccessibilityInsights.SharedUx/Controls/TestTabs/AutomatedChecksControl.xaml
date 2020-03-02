@@ -160,7 +160,7 @@
                         <Style TargetType="{x:Type ListViewItem}">
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#F4F4F4"/>
+                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=TabHoverBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedACRowBGBrush}"/>
