@@ -66,7 +66,6 @@
     <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>
     <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>
-    <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>
