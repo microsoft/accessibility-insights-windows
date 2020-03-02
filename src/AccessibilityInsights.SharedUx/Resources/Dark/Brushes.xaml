@@ -21,7 +21,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>      <!-- Background brush of non-selected items in list view -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>    <!-- Replace with SelectedTabBrush ? -->
     <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>              <!-- Border color on welcoem screen -->
-    <SolidColorBrush po:Freeze="True" x:Key="NoticeBackgroundBrush" Color="#EFF6FC"/>   <!-- NOT USED -->
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
         <GradientStop Color="#004280" Offset="0"/>
@@ -29,7 +28,6 @@
     </LinearGradientBrush>
     <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="#000000"/>               <!-- Generic text color (used eveywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="#6E6E6E"/>           <!-- Disabled or de-emphsaized text (like details of channel switcher) -->
-    <SolidColorBrush po:Freeze="True" x:Key="TextBrushDark" Color="#1A1A1A"/>           <!-- NOT USED -->
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>         <!-- Used ONLY for "New for WCAG 2.1" bubble -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>       <!-- Generic selected text color (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>               <!-- Used for black icons ("off" toggles, etc), TextColor in HC -->
@@ -53,17 +51,13 @@
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>       <!-- Ask John -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>   <!-- Ask John -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>       <!-- Text color for links -->
-    <SolidColorBrush po:Freeze="True" x:Key="RadioBulletBrush" Color="#106EBE"/>        <!-- Not Used? (Nobody uses rbSelect style) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
-    <SolidColorBrush po:Freeze="True" x:Key="CheckMarkBrush" Color="#C8C8C8"/>          <!-- Not Used? (Nobody uses rbSelect style -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>          <!-- Border color on toggles (inactive?) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#FFFFFF"/> <!-- Background color of selected tab (Details, HowToFix) -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#D9D9D9"/>    <!-- Background color of non-selected tab (Details, HowToFix) -->
-    <SolidColorBrush po:Freeze="True" x:Key="InspectTabHeaderBrush" Color="#4F4F4F"/>   <!-- NOT USED -->
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>      <!-- Background of Snapshot button (non-hover) -->
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>   <!-- Background of Snapshot button (hover) -->
-    <SolidColorBrush po:Freeze="True" x:Key="TextHighlightBrush" Color="#FFF2CC"/>      <!-- NOT USED -->
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>  <!-- Borders of buttons ? -->
     <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- Background of StackPanel in Color Contrast -->
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>          <!-- Border of Color Contrast preview -->
