@@ -183,7 +183,7 @@
                                 <Setter.Value>
                                     <ControlTemplate TargetType="{x:Type ListViewItem}">
                                         <Grid>
-                                            <Border BorderBrush="#F4F4F4" BorderThickness="0,1,0,0"/>
+                                            <Border BorderBrush="{DynamicResource ResourceKey=WindowBorderBrush}" BorderThickness="0,1,0,0"/>
                                             <Border BorderBrush="{TemplateBinding BorderBrush}"
                                                          BorderThickness="{TemplateBinding BorderThickness}"
                                                          Background="{TemplateBinding Background}">
