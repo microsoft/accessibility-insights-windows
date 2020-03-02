@@ -49,7 +49,7 @@
                         <ColumnDefinition Width="16"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
-                    <fabric:FabricIconControl VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"  GlyphName="AlertSolid" Foreground="#CC0000" GlyphSize="Custom" FontSize="14"/>
+                    <fabric:FabricIconControl VerticalAlignment="Center" HorizontalAlignment="Left"  Grid.Column="0"  GlyphName="AlertSolid" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                     <TextBlock Name="tbSubTitle" Grid.Column="1" VerticalAlignment="Center" Style="{StaticResource tbRowStyle}"
                                TextWrapping="Wrap" MinWidth="300" HorizontalAlignment="Left" Margin="0,2,-0.333,4"
                                AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsTextBlock}">
@@ -280,7 +280,7 @@
                                                                 </Hyperlink>
                                                             </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
-                                                            <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}"  Foreground="#CC0000" GlyphSize="Custom" FontSize="14"/>
+                                                            <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}"  Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
                                                             <Label Content=")" Style="{StaticResource lblRowStyle}"  VerticalAlignment="Center" />
                                                         </StackPanel>

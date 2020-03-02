@@ -90,10 +90,10 @@
                                                             <Style TargetType="controls:FabricIconControl">
                                                                 <Style.Triggers>
                                                                     <Trigger Property="GlyphName" Value="AlertSolid">
-                                                                        <Setter Property="Foreground" Value="#CC0000"/>
+                                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}" />
                                                                     </Trigger>
                                                                     <Trigger Property="GlyphName" Value="MapDirections">
-                                                                        <Setter Property="Foreground" Value="#CC0000"/>
+                                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}" />
                                                                     </Trigger>
                                                                     <Trigger Property="GlyphName" Value="IncidentTriangle">
                                                                         <Setter Property="Foreground" Value="#FF8C00"/>
