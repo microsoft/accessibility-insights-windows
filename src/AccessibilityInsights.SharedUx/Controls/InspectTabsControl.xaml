@@ -42,7 +42,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="#A6A6A6" BorderThickness="0,0,0,1" >
+                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="{DynamicResource ResourceKey=GenericBorderBrush}" BorderThickness="0,0,0,1" >
                     <Grid Margin="8,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>

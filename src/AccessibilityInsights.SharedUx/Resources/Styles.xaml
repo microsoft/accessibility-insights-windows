@@ -1315,7 +1315,7 @@
         </Setter>
     </Style>
     <Style x:Key="{x:Type colorpickers:ColorThumb}" TargetType="{x:Type colorpickers:ColorThumb}">
-        <Setter Property="PointerOutlineBrush" Value="#A6A6A6" />
+        <Setter Property="PointerOutlineBrush" Value="{DynamicResource ResourceKey=GenericBorderBrush}" />
         <Setter Property="PointerOutlineThickness" Value="1" />
         <Setter Property="Foreground" Value="{x:Null}"/>
         <Setter Property="ThumbColor" Value="Transparent" />

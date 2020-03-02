@@ -79,4 +79,5 @@
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>
     <SolidColorBrush x:Key="SettingsIconBrush" Color="#333333 "/>
+    <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>
 </ResourceDictionary>
