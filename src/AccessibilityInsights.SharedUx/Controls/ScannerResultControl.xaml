@@ -99,7 +99,7 @@
                                                                         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WarningBrush}"/>
                                                                     </Trigger>
                                                                     <Trigger Property="GlyphName" Value="CompletedSolid">
-                                                                        <Setter Property="Foreground" Value="#107C10"/>
+                                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushGreen}"/>
                                                                     </Trigger>
                                                                 </Style.Triggers>
                                                             </Style>
