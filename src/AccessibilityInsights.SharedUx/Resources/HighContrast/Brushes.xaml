@@ -58,4 +58,5 @@
     <!-- NEW BRUSHES -->
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>
+    <SolidColorBrush x:Key="SettingsIconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
 </ResourceDictionary>

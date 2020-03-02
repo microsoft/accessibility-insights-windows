@@ -32,7 +32,7 @@
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="#333333" ShowInControlView="False"/>
+                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="{DynamicResource ResourceKey=SettingsIconBrush}" ShowInControlView="False"/>
                             <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top"/>
                         </Grid>
                     </TabItem.Header>

@@ -78,4 +78,5 @@
     <!-- NEW BRUSHES -->
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>                         <!-- Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>                            <!-- Color of "warning" icon in results -->
+    <SolidColorBrush x:Key="SettingsIconBrush" Color="#333333 "/>                       <!-- Color of settings gear, search icon, rocket icon -->
 </ResourceDictionary>
