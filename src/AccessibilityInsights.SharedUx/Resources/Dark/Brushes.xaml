@@ -59,7 +59,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>      <!-- Background of Snapshot button (non-hover) -->
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>   <!-- Background of Snapshot button (hover) -->
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>  <!-- Borders of buttons ? -->
-    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- Background of StackPanel in Color Contrast -->
+    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- Background of Color Contrast preview -->
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>          <!-- Border of Color Contrast preview -->
     <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>                               <!-- Color of FAILED color contrast icon, hierarchy highlighter -->
     <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>                             <!-- Color of PASSED color contrast icon -->
