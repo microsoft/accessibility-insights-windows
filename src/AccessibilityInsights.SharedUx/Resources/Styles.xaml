@@ -116,7 +116,7 @@
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonTextBrush}"/>
         <Setter Property="Padding" Value="0,-2,0,0"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
@@ -978,7 +978,7 @@
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnBlueBase">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonTextBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
@@ -997,7 +997,7 @@
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextHoverBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonHoverTextBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushActive}"/>

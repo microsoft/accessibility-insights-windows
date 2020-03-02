@@ -23,6 +23,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
