@@ -70,7 +70,7 @@
                             <i:Interaction.Behaviors>
                                 <behaviors:DropDownButtonBehavior/>
                             </i:Interaction.Behaviors>
-                            <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SettingsIconBrush}"/>
+                            <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                             <Button.ContextMenu>
                                 <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingContextMenuAutomationPropertiesName}">
                                     <MenuItem Header="{x:Static Properties:Resources.mniShowCorePropsHeader}" x:Name="mniShowCoreProps" IsCheckable="true" 

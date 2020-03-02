@@ -29,7 +29,7 @@
                 </Grid.ColumnDefinitions>
                 <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="4,0,2,5">
                     <DockPanel>
-                        <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SettingsIconBrush}" ShowInControlView="False"/>
+                        <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}" ShowInControlView="False"/>
                         <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                                     AutomationProperties.Name="{x:Static Properties:Resources.tbSearchText}" 
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.PropertyInfoControl_textboxSearch}"
@@ -40,7 +40,7 @@
                                 <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
-                                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

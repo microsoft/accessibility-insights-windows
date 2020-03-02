@@ -210,7 +210,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
                         var bord = new Border()
                         {
-                            BorderBrush = Application.Current.Resources["DarkGreyTextBrush"] as SolidColorBrush,
+                            BorderBrush = Application.Current.Resources["SearchAndIconForegroundBrush"] as SolidColorBrush,
                             BorderThickness = new Thickness(2),
                             Background = Application.Current.Resources["PrimaryBackgroundBrush"] as SolidColorBrush,
                             Width = 28,

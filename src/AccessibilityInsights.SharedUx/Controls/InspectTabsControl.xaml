@@ -88,7 +88,7 @@
                                     <Button.ToolTip>
                                         <ToolTip Content="{x:Static Properties:Resources.btnSettingToolTip2}"/>
                                     </Button.ToolTip>
-                                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                                     <Button.ContextMenu>
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
                                             <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 

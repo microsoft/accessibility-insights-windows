@@ -72,7 +72,7 @@
     <!-- NEW BRUSHES -->
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>                         <!-- Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>                            <!-- Color of "warning" icon in results -->
-    <SolidColorBrush x:Key="SettingsIconBrush" Color="#333333 "/>                       <!-- Color of settings gear, search icon, rocket icon -->
+    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333 "/>            <!-- Color of search text and various icons -->
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>                      <!-- Border brush used in various locations -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086 "/>                  <!-- Background of video in startup dialog -->
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E "/>                      <!-- Border or video in startup diaog -->

@@ -148,7 +148,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SettingsIconBrush}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
