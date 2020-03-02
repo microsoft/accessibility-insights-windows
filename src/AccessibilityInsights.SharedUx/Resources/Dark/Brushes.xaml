@@ -74,4 +74,7 @@
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- Text color for highlighter tooltip -->
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
+
+    <!-- NEW BRUSHES -->
+    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>                         <!-- Color of "start recording" button in events -->
 </ResourceDictionary>

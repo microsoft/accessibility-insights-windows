@@ -54,4 +54,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="{x:Static SystemColors.InactiveBorderColor}" />
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
+
+    <!-- NEW BRUSHES -->
+    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>
 </ResourceDictionary>

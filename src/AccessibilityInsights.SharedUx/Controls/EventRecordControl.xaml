@@ -87,7 +87,7 @@
                             <Style>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding Path=vmEventRecorder.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:EventRecordControl}}" Value="Off">
-                                        <Setter Property="fabric:FabricIconControl.Foreground" Value="#A80000"/>
+                                        <Setter Property="fabric:FabricIconControl.Foreground" Value="{DynamicResource ResourceKey=EventStartBrush}"/>
                                         <Setter Property="fabric:FabricIconControl.GlyphName" Value="CircleFill"/>
                                         <Setter Property="fabric:FabricIconControl.Visibility" Value="Visible"/>
                                     </DataTrigger>
@@ -145,7 +145,7 @@
         </Grid>
         <TextBlock Name="tbIntro" Grid.Row="1" Padding="4" TextWrapping="Wrap" Style="{StaticResource TbFocusable}">
             <Run Text="{x:Static Properties:Resources.tbIntroTextSelectEventRecord}"/>
-            <fabric:FabricIconControl GlyphName="CircleFill" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="#A80000" FontStyle="Normal" ShowInControlView="False"/>
+            <fabric:FabricIconControl GlyphName="CircleFill" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=EventStartBrush}" FontStyle="Normal" ShowInControlView="False"/>
             <Run Text="{x:Static Properties:Resources.tbIntroTextStartRecording}"/>
             <Run Name="runHkRecord"/><Run Text="."/>
         </TextBlock>
