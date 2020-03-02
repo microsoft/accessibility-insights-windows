@@ -62,7 +62,7 @@
                                 </Border.Style>
                             </Border>
                             <Border Width="20" Height="20" Background="{DynamicResource ResourceKey=StartupBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <fabric:FabricIconControl Foreground="#FFFFFF" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <fabric:FabricIconControl Foreground="{DynamicResource ResourceKey=WhiteTextBrush}" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button>
                 </Grid>
