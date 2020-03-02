@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="{Binding Path=Width, 
            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement},Mode=OneWayToSource}"/>
                 </Grid.ColumnDefinitions>
-                <Border Background="#14000000" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="4,0,2,5">
+                <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="24" Margin="4,0,2,5">
                     <DockPanel>
                         <controls:FabricIconControl GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SettingsIconBrush}" ShowInControlView="False"/>
                         <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
