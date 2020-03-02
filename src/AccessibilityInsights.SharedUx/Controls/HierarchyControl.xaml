@@ -105,7 +105,7 @@
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
-                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                                         <Setter Property="Visibility" Value="Visible"/>
                                         <Setter Property="FontStyle" Value="Italic"/>
                                     </DataTrigger>
