@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=AccentBackground}">
+            <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=AccentBackgroundBrush}">
                 <DockPanel>
                     <controls:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" ShowInControlView="False"/>
                     <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
@@ -208,7 +208,7 @@
                 </i:Interaction.Behaviors>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                         <Setter Property="Button.ToolTip">
                             <Setter.Value>
                                 <ToolTip>Test Element</ToolTip>
@@ -234,7 +234,7 @@
                 </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsLiveMode}" Value="False">
                                 <Setter Property="ContextMenu" Value="{StaticResource ExpandDescendantsPopup}"/>

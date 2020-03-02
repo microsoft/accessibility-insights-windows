@@ -132,7 +132,7 @@
                             <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -536,7 +536,7 @@
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnClose">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -554,7 +554,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnMinMax">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -779,7 +779,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
@@ -842,7 +842,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
@@ -1003,7 +1003,7 @@
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushActive}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackground}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBackgroundBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
             </Trigger>
         </Style.Triggers>

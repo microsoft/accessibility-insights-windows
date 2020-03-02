@@ -47,7 +47,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>
-    <SolidColorBrush po:Freeze="True" x:Key="AccentBackground" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="AccentBackgroundBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>
