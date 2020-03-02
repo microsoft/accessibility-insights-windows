@@ -47,6 +47,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushRed" Color="#CC0000"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushPurple" Color="#A45EF4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="HLTextBrush" Color="#FFFF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="{x:Static SystemColors.InactiveBorderColor}" />
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
