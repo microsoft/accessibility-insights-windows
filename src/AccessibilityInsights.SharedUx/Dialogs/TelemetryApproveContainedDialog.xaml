@@ -36,7 +36,7 @@
             </Grid.ColumnDefinitions>
             <TextBlock Style="{StaticResource TxtTelemetryDialogText}" TextWrapping="Wrap" >
                     <Run Text="{x:Static properties:Resources.RunTextHelpCommunity1}"/>
-                    <Hyperlink x:Name="hlHelpCommunity" AutomationProperties.Name="{x:Static properties:Resources.RunTextHelpCommunity2}" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077765" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None"><Run Text="{x:Static properties:Resources.RunTextHelpCommunity2}" /></Hyperlink>
+                    <Hyperlink x:Name="hlHelpCommunity" AutomationProperties.Name="{x:Static properties:Resources.RunTextHelpCommunity2}" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077765" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" Style="{StaticResource hLink}"><Run Text="{x:Static properties:Resources.RunTextHelpCommunity2}" /></Hyperlink>
                     <Run Text="{x:Static properties:Resources.RunTextHelpCommunity3}" />
             </TextBlock>
         </Grid>
@@ -44,7 +44,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="251"/>
             </Grid.ColumnDefinitions>
-            <CheckBox IsChecked="True" Grid.Column="0" Content="{x:Static properties:Resources.ckbxAgreeToHelp}" 
+            <CheckBox IsChecked="True" Grid.Column="0" Content="{x:Static properties:Resources.ckbxAgreeToHelp}" Foreground="{DynamicResource ResourceKey=TextBrush}" 
                           VerticalAlignment="Center" Name="ckbxAgreeToHelp" FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" 
                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         </Grid>
