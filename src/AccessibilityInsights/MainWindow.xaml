@@ -295,7 +295,7 @@
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                             <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                             <ComboBox x:Name="cbSelectionScope" AutomationProperties.Name="{x:Static properties:Resources.cbSelectionScopeAutomationPropertiesName}" Width="92" 
-                                      HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                                      HorizontalAlignment="Left" VerticalContentAlignment="Center" Style="{StaticResource commandBarComboBox}"
                                       FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" FontSize="{StaticResource ConstStandardTextSize}"
                                       SelectionChanged="ComboBox_SelectionChanged" PreviewKeyDown="processComboBox_PreviewKeyDown">
                                 <ComboBoxItem x:Name="cbiElement" Content="{x:Static properties:Resources.cbiElementContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiElementAutomationPropertiesName}" IsSelected="True"/>

@@ -72,10 +72,12 @@
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
 
     <!-- NEW BRUSHES -->
-    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>                         <!-- Color of "start recording" button in events -->
-    <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>                            <!-- Color of "warning" icon in results -->
-    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333 "/>            <!-- Color of search text and various icons -->
-    <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>                      <!-- Border brush used in various locations -->
-    <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086 "/>                  <!-- Background of video in startup dialog -->
-    <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E "/>                      <!-- Border or video in startup diaog -->
+    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
+    <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>                             <!-- Color of "warning" icon in results -->
+    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333"/>             <!-- Color of search text and various icons -->
+    <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6"/>                       <!-- Border brush used in various locations -->
+    <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>                   <!-- Background of video in startup dialog -->
+    <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>                       <!-- Border of video in startup dialog -->
+    <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#6D767E"/>             <!-- Border of selection combobox in command bar -->
+    <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#31383D"/>             <!-- List background of selection combobox in command bar -->
 </ResourceDictionary>
