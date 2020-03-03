@@ -52,7 +52,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="AccentBackgroundBrush" Color="#22272B"/>   <!-- (UPDATED) Accent background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>       <!-- Ask John -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>   <!-- Ask John -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>       <!-- Text color for links -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>          <!-- Border color on toggles (inactive?) -->

@@ -91,7 +91,7 @@
                     </TextBlock>
                     <TextBlock Grid.Row="1" Grid.ColumnSpan="8" Padding="16,10" TextWrapping="Wrap">
                         <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
-                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}">
+                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
                             <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" FontSize="12" FontWeight="Light"/>
                         </Hyperlink>  
                     </TextBlock>

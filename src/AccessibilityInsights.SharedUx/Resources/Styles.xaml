@@ -309,6 +309,9 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="{x:Type Hyperlink}" x:Key="hLink" BasedOn="{StaticResource {x:Type Hyperlink}}">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
+    </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblLink">
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="FontSize" Value="11"/>
