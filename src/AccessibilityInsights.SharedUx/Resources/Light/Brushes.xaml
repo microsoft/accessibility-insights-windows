@@ -45,7 +45,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverFGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonGreyBGBrush" Color="#CCCCCC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBackgroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>

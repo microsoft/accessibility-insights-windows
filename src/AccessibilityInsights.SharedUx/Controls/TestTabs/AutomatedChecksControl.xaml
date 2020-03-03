@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="{DynamicResource ResourceKey=PrimaryBackgroundBrush}">
+            <Grid Grid.Row="0" Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12"/>
                     <RowDefinition Height="28"/>
