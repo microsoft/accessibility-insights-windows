@@ -44,7 +44,7 @@
                             <Setter Property="Visibility" Value="Collapsed"/>
                             <Setter Property="VerticalAlignment" Value="Center"/>
                             <Setter Property="Margin" Value="6 0 0 6"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
                             <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ElementName=ServerComboBox, Path=Text.Length}" Value="0">

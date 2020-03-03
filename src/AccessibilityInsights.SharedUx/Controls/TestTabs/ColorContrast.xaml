@@ -42,7 +42,7 @@
                 FontSize="{DynamicResource ConstXXLTextSize}"
                 Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0,0,0,16"/>
                 <TextBlock Grid.Row="1" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
+                <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
                 <Hyperlink
                     TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click">
                     <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
@@ -202,10 +202,10 @@
                         <TextBlock x:Name="regularSizeText" Text="{x:Static Properties:Resources.TextBlockTextRegularSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePre}" /><Hyperlink
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePost}" />
                         </TextBlock>
                     </StackPanel>
                     <TextBlock x:Name="smallSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="2" Grid.Column="2" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
@@ -261,10 +261,10 @@
                         <TextBlock x:Name="largeSizeText" Text="{x:Static Properties:Resources.TextBlockTextLargeSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePre}" /><Hyperlink
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePost}" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="4" Grid.Column="2">
@@ -332,10 +332,10 @@
                         <TextBlock x:Name="nonTextObject" Text="{x:Static Properties:Resources.ColorContrast_NonTextObjectsText}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
                             <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=AccentBackgroundBrush}" CornerRadius="10">
                                 <TextBlock Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" Margin="6,4,6,4" Foreground="{DynamicResource ResourceKey=WindowTextBrush}"/>
                             </Border>

@@ -164,7 +164,7 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetrySettingInfo">
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="TxtTelemetryDialogLabel">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXXLTextSize}"/>
@@ -173,7 +173,7 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogPrivacyStatement">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstSmallTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogText">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstStandardTextSize}"/>

@@ -32,7 +32,7 @@
                     <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
-                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
