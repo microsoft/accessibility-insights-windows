@@ -10,7 +10,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="StartupTextBrush" Color="#333333"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#333333"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>
