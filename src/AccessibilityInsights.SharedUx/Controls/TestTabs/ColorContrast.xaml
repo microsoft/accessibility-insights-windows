@@ -336,7 +336,7 @@
                                 TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" />
                             </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
-                            <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=AccentBackgroundBrush}" CornerRadius="10">
+                            <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=AccentBGBrush}" CornerRadius="10">
                                 <TextBlock Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" Margin="6,4,6,4" Foreground="{DynamicResource ResourceKey=WindowTextBrush}"/>
                             </Border>
                         </TextBlock>
