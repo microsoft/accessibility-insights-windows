@@ -38,11 +38,11 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/> <!-- Used for toggles in the "on" position -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>     <!-- Background of search bar in properties view -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D4"/>     <!-- Non-hover background for (blue) active buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#FF0067B5"/>    <!-- Hover background for (blue) active buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#FF005A9E"/>   <!-- Pressed background for (blue) actuve buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="#FFFFFF"/>         <!-- Text color (normal) on blue buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="#FFFFFF"/>    <!-- Text color (hover) on blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#2B88D8"/>       <!-- (UPDATED) Background (normal) for (blue) active buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#4296D6"/>  <!-- (UPDATED) Background (hover) for (blue) active buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#6BADE0"/> <!-- (UPDATED) Background (pressed) for (blue) actuve buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="#0B1116"/>         <!-- (UPDATED) Text color (normal) on blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="#0B1116"/>    <!-- (UPDATED) Text color (hover) on blue buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonGreyBGBrush" Color="#CCCCCC"/>       <!-- Background for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBackgroundBrush" Color="#2B3034"/>  <!-- (UPDATED) Primary background brush -->
