@@ -26,7 +26,7 @@
         <GradientStop Color="#004280" Offset="0"/>
         <GradientStop Color="#000000" Offset="0.5"/>
     </LinearGradientBrush>
-    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Generic text color (used eveywhere) -->
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most eveywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="#B2B3B5"/>           <!-- (UPDATED) Disabled or de-emphsaized text (like details of channel switcher) -->
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>         <!-- Used ONLY for "New for WCAG 2.1" bubble -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>       <!-- Generic selected text color (used everywhere) -->
