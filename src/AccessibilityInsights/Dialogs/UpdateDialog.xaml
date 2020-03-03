@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="{DynamicResource ResourceKey=AccentBGBrush}">
+            <Grid Grid.Column="0" Background="{DynamicResource ResourceKey=DarkBGBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
