@@ -244,25 +244,25 @@
                                 </Button.ToolTip>
                                 <Grid>
                                     <AccessText Text="_?" Opacity="0"/>
-                                    <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnMin" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMin_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnMinAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMin}">
-                                    <fabric:FabricIconControl GlyphName="ChromeMinimize" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="ChromeMinimize" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnMax" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMax_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnMaxAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMax}">
-                                    <fabric:FabricIconControl Name="btnMaxFabric" GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl Name="btnMaxFabric" GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnClose" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnClose_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnCloseAutomationPropertiesName}" Style="{StaticResource btnClose}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnClose}">
-                                    <fabric:FabricIconControl GlyphName="Cancel" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Cancel" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                         </ItemsControl>

@@ -539,7 +539,7 @@
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnClose">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=WindowBorderBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -557,7 +557,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnMinMax">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=AccentBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=WindowBorderBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>

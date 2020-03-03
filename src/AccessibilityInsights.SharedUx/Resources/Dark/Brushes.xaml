@@ -7,8 +7,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBrush" Color="#FFBEE6FD"/>      <!-- Button hover background color -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="#FFE81123"/>   <!-- Exit Button hover color -->
-    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#F4F4F4"/>       <!-- Caption/border background -->
-    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#000000"/>   <!-- Caption Text -->
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#2B3034"/>       <!-- (UPDATED) Caption/border background -->
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Caption Text -->
     <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>         <!-- Inner Border on Getting Started dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Text in Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/>           <!-- Selected item highlight in "How to Fix" view -->
