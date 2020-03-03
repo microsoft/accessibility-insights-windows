@@ -20,7 +20,7 @@
                     <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WarningBrush}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="DOM">
-                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="{x:Null}">
                     <Setter Property="Visibility" Value="Collapsed"/>

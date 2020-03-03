@@ -9,7 +9,7 @@ namespace AccessibilityInsights.SharedUx.Enums
     public enum HighlighterColor
     {
         DefaultBrush, // This is the default highlighter color
-        TextBrush,
+        PrimaryFGBrush,
         GreenTextBrush
     }
 }

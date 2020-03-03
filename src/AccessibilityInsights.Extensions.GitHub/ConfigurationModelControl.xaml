@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=TextBrush}"/>
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Grid Grid.Row="1" >
             <controls:PlaceholderTextBox
                 Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"

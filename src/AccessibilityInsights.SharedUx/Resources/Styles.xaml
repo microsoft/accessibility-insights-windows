@@ -67,7 +67,7 @@
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -155,7 +155,7 @@
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblFocusable" BasedOn="{StaticResource ResourceKey=VarStandardLabel}">
         <Setter Property="Focusable" Value="True"/>
@@ -168,7 +168,7 @@
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="TxtTelemetryDialogLabel">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXXLTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogPrivacyStatement">
@@ -177,11 +177,11 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogText">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstStandardTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBox}" x:Key="TxtBxText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
@@ -212,17 +212,17 @@
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="2,0"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBackgroundBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblToggle">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblH4">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnTabActive">
@@ -240,57 +240,57 @@
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbRowStyle" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblRowStyle" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblFaint" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblDark" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbLine" BasedOn="{StaticResource VarStandardTextBlock}">
         <Setter Property="LineHeight" Value="18"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblXLHeader" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXLTextSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblLarge" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstLargeTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstLargeTextSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader2" BasedOn="{StaticResource VarStandardLabel}">
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader3" BasedOn="{StaticResource VarStandardLabel}">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbHeaderDark" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbLink">
@@ -315,7 +315,7 @@
     <Style TargetType="{x:Type Label}" x:Key="lblLink">
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -457,7 +457,7 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="TextBlock" x:Key="TbDataGridCellContent" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="4,0"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -531,11 +531,11 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtBlkText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblH5">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnClose">
@@ -688,7 +688,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblAccordionHeader" BasedOn="{StaticResource VarHeaderLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
@@ -706,7 +706,7 @@
                             </Grid.ColumnDefinitions>
                             <Rectangle Fill="{DynamicResource ResourceKey=ButtonBackgroundBrush}"
                                                         Grid.ColumnSpan="2"/>
-                            <fabric:FabricIconControl x:Name="fabicnArrow" Grid.Column="1" GlyphName="ChevronUp" GlyphSize="Custom" Margin="4,0" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=TextBrush}" RenderTransformOrigin="0.5,0.5"/>
+                            <fabric:FabricIconControl x:Name="fabicnArrow" Grid.Column="1" GlyphName="ChevronUp" GlyphSize="Custom" Margin="4,0" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" RenderTransformOrigin="0.5,0.5"/>
                             <ContentPresenter x:Name="HeaderContent"
                                                 Grid.Column="0"
                                                 Margin="4,0,0,0"
@@ -906,7 +906,7 @@
         <Setter Property="ToolTip" Value="{Binding Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridSelectedBGBrush}"/>
             </Trigger>
         </Style.Triggers>
@@ -1022,7 +1022,7 @@
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnGreySquared">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=GreyBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
@@ -1049,7 +1049,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=LargeTextBlockSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -1061,7 +1061,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TbBaseWrap">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable" BasedOn="{StaticResource TbBaseWrap}">

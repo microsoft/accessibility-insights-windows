@@ -44,7 +44,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="251"/>
             </Grid.ColumnDefinitions>
-            <CheckBox IsChecked="True" Grid.Column="0" Content="{x:Static properties:Resources.ckbxAgreeToHelp}" Foreground="{DynamicResource ResourceKey=TextBrush}" 
+            <CheckBox IsChecked="True" Grid.Column="0" Content="{x:Static properties:Resources.ckbxAgreeToHelp}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" 
                           VerticalAlignment="Center" Name="ckbxAgreeToHelp" FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" 
                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         </Grid>

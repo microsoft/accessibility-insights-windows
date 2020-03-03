@@ -26,7 +26,7 @@
         <GradientStop Color="#004280" Offset="0"/>
         <GradientStop Color="#000000" Offset="0.5"/>
     </LinearGradientBrush>
-    <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="#6E6E6E"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>

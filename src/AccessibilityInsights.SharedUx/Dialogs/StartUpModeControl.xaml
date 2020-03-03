@@ -18,7 +18,7 @@
     <Border MaxHeight="700" MaxWidth="700" VerticalAlignment="Center"
             Background="{DynamicResource ResourceKey=AccentBackgroundBrush}"
             BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
-            BorderBrush="{DynamicResource ResourceKey=TextBrush}">
+            BorderBrush="{DynamicResource ResourceKey=PrimaryFGBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="8"/>
