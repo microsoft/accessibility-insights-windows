@@ -38,9 +38,9 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#FF0067B5"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#FF005A9E"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBGBrush" Color="#FF0078D4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBGBrush" Color="#FF0067B5"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonPressedBGBrush" Color="#FF005A9E"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>

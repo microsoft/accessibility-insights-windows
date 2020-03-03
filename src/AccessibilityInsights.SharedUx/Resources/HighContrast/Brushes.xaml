@@ -21,8 +21,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>

@@ -38,9 +38,9 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/> <!-- Used for toggles in the "on" position -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>     <!-- Background of search bar in properties view -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#2B88D8"/>       <!-- (UPDATED) Background (normal) for (blue) active buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#4296D6"/>  <!-- (UPDATED) Background (hover) for (blue) active buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#6BADE0"/> <!-- (UPDATED) Background (pressed) for (blue) actuve buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBGBrush" Color="#2B88D8"/>           <!-- (UPDATED) Background (normal) for (blue) active buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBGBrush" Color="#4296D6"/>      <!-- (UPDATED) Background (hover) for (blue) active buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonPressedBGBrush" Color="#6BADE0"/>    <!-- (UPDATED) Background (pressed) for (blue) actuve buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonTextBrush" Color="#0B1116"/>         <!-- (UPDATED) Text color (normal) on blue buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverTextBrush" Color="#0B1116"/>    <!-- (UPDATED) Text color (hover) on blue buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
