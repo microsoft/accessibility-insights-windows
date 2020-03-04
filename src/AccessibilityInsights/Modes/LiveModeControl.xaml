@@ -16,7 +16,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Grid Panel.ZIndex="1" Background="{DynamicResource ResourceKey=DarkBGBrush}">
+    <Grid Panel.ZIndex="1">
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
@@ -25,7 +25,7 @@
             <ColumnDefinition x:Name="columnSnap" Width="410"/>
             <ColumnDefinition x:Name="columnInfo" Width="*"/>
         </Grid.ColumnDefinitions>
-        <Grid Name="HierarchyGrid"
+        <Grid Name="HierarchyGrid" Background="{DynamicResource ResourceKey=DarkBGBrush}"
             Grid.Column="0" Grid.Row="1"
               KeyboardNavigation.TabNavigation="Cycle">
             <Grid.InputBindings>
