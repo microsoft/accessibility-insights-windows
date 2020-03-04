@@ -168,6 +168,7 @@
                       FontSize="12" BorderThickness="0"
                       VirtualizingPanel.IsVirtualizing="False"
                       HorizontalContentAlignment="Left"
+                      Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
                       Grid.IsSharedSizeScope="True" GotFocus="treeviewHierarchy_GotFocus">
                 <TreeView.ItemContainerStyle>
                     <Style TargetType="TreeViewItem" BasedOn="{StaticResource ResourceKey=tviStandard}">
@@ -175,6 +176,7 @@
                         <Setter Property="Visibility" Value="{Binding Path=Visibility, Mode=OneWay}"/>
                         <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="AutomationProperties.Name" Value="{Binding Path=AutomationName, Mode=OneWay}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <EventSetter Event="RequestBringIntoView" Handler="TreeViewItem_RequestBringIntoView"/>
                         <EventSetter Event="Selected" Handler="OnSelected"/>
                         <Style.Triggers>
@@ -201,14 +203,14 @@
             <Button Name="btnTestElement" AutomationProperties.Name="{x:Static Properties:Resources.btnTestElementAutomationPropertiesName}"
                     HorizontalAlignment="Right" Width="24" Height="24" Margin="0,18,32,0"
                     VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed" KeyDown="FloatingButton_KeyDown"
-                    BorderThickness="2" BorderBrush="{x:Null}"
+                    BorderThickness="2" BorderBrush="Transparent"
                     AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.HierarchyControlTestElementButton}">
                 <i:Interaction.Behaviors>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                        <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         <Setter Property="Button.ToolTip">
                             <Setter.Value>
                                 <ToolTip>Test Element</ToolTip>
@@ -216,25 +218,25 @@
                         </Setter>
                     </Style>
                 </Button.Style>
-                <controls:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="14"/>
+                <controls:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}" GlyphSize="Custom" FontSize="14"/>
             </Button>
             <Button x:Name="btnMenu" Grid.Column="1" Margin="0,18,4,0"
                    HorizontalAlignment="Right" VerticalContentAlignment="Center"
                     VerticalAlignment="Top" Grid.Row="3" Visibility="Collapsed"
                      Height="24" MinWidth="24" KeyDown="FloatingButton_KeyDown"
-                     BorderThickness="2" BorderBrush="{x:Null}"
+                     BorderThickness="2" BorderBrush="Transparent"
                   AutomationProperties.Name="{x:Static Properties:Resources.btnMenuAutomationPropertiesName}">
                 <i:Interaction.Behaviors>
                     <behaviors:DropDownButtonBehavior/>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>
-                <controls:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <controls:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}"/>
                 <Button.ToolTip>
                     <ToolTip Content="{x:Static Properties:Resources.SetterValueMoreOptions}"/>
                 </Button.ToolTip>
                 <Button.Style>
                     <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                        <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                        <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsLiveMode}" Value="False">
                                 <Setter Property="ContextMenu" Value="{StaticResource ExpandDescendantsPopup}"/>

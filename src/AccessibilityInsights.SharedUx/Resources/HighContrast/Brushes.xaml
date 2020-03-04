@@ -66,4 +66,5 @@
     <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 </ResourceDictionary>
