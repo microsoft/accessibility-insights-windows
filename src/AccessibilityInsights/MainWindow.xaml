@@ -469,7 +469,7 @@
                             </Button>
                         </StackPanel>
                         <Label Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}"/>
-                        <StackPanel Margin="0" Background="{DynamicResource ResourceKey=DarkBGBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
+                        <StackPanel Margin="0" Background="{DynamicResource ResourceKey=PrimaryBGBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
                             <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" 
                                     Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"
                                     AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbOneButton}"/>
@@ -502,7 +502,7 @@
                         <modecontrols:SnapshotModeControl x:Name="ctrlSnapMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
                         <modecontrols:EventModeControl x:Name="ctrlEventMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
                     </Grid>
-                    <Grid x:Name="gridlayerConfig" Background="{DynamicResource ResourceKey=LightBGBrush}" Visibility="Collapsed">
+                    <Grid x:Name="gridlayerConfig" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" Visibility="Collapsed">
                         <modecontrols:ConfigurationModeControl x:Name="ctrlConfigurationMode" AutomationProperties.Name="{x:Static properties:Resources.ctrlConfigurationModeAutomationPropertiesName}" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch"/>
                     </Grid>
                 </Grid>

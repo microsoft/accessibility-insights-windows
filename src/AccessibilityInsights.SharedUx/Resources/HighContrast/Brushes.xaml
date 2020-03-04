@@ -14,8 +14,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DarkBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
@@ -64,4 +64,6 @@
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E "/>
     <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
 </ResourceDictionary>

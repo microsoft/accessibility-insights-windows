@@ -132,7 +132,7 @@
                             <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkBGBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -214,7 +214,7 @@
         <Setter Property="Padding" Value="2,0"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=SecondaryBGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblToggle">
         <Setter Property="FontSize" Value="11"/>
@@ -782,7 +782,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=DarkBGBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
@@ -845,7 +845,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=DarkBGBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
@@ -1006,7 +1006,7 @@
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonPressedBGBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=DarkBGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
@@ -1108,7 +1108,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
-                    <Border Padding="8,4" x:Name="Border" Background="{DynamicResource ResourceKey=LightBGBrush}">
+                    <Border Padding="8,4" x:Name="Border" Background="{DynamicResource ResourceKey=SecondaryBGBrush}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="24"/>
@@ -1139,7 +1139,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="{DynamicResource ResourceKey=LightBGBrush}" BorderBrush="Gray" BorderThickness="1">
+                    <Border Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" BorderThickness="1">
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>
                 </ControlTemplate>
@@ -1206,7 +1206,7 @@
                             </Trigger.ExitActions>
                             <Setter TargetName="fbiFilled" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="fbiBorder" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="fbiThumb" Property="Foreground" Value="{DynamicResource ResourceKey=LightBGBrush}"/>
+                            <Setter TargetName="fbiThumb" Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryBGBrush}"/>
                             <Setter TargetName="lblState" Property="Content" Value="On"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
