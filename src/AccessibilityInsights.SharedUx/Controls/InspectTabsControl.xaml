@@ -52,6 +52,7 @@
                            VerticalAlignment="Center" 
                            FontSize="{StaticResource ConstXXLTextSize}"
                            FontWeight="Bold" 
+                           Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                            TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis"
                            Height="30"
