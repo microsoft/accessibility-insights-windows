@@ -23,6 +23,7 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         WindowStyle="SingleBorderWindow"
         BorderBrush="{DynamicResource ResourceKey=WindowBorderBrush}"
+        Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
         Topmost="True" KeyUp="Window_KeyUp" StateChanged="onStateChanged" Closing="Window_Closing" Height="601.918"
         AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWindow}">
     <Window.Resources>
