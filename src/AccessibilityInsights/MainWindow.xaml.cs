@@ -229,7 +229,7 @@ namespace AccessibilityInsights
             }
             else
             {
-                theme = App.Theme.Dark;  // TEMP CHANGE FOR TESTING
+                theme = App.Theme.Light;
             }
 
             (App.Current as App).SetColorTheme(theme);
