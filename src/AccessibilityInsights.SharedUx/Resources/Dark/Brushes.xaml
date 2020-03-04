@@ -55,7 +55,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
-    <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>          <!-- Border color on toggles (inactive?) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Border color on expandos -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#22272B"/> <!-- (UPDATED) Background color of selected tab (Details, HowToFix) -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#182025"/>    <!-- (UPDATED) Background color of non-selected tab (Details, HowToFix) -->
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>      <!-- Background of Snapshot button (non-hover) -->
@@ -75,7 +75,7 @@
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>                             <!-- Color of "warning" icon in results -->
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333"/>             <!-- Color of search text and various icons -->
-    <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6"/>                       <!-- Border brush used in various locations -->
+    <SolidColorBrush x:Key="GenericBorderBrush" Color="#6D767E"/>                       <!-- (UPDATED) Border brush used in various locations -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>                   <!-- Background of video in startup dialog -->
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>                       <!-- Border of video in startup dialog -->
     <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#6D767E"/>             <!-- Border of selection combobox in command bar -->
