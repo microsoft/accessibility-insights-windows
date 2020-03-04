@@ -206,6 +206,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void SystemEvents_UserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
         {
+            // TODO DHT: Create listener to detect changes in light/dark mode (this one doesn't catch them)
             if (e.Category == UserPreferenceCategory.Color || e.Category == UserPreferenceCategory.VisualStyle)
             {
                 SetColorTheme();
