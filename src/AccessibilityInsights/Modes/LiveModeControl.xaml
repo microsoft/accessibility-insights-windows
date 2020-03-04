@@ -16,7 +16,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Grid Panel.ZIndex="1">
+    <Grid Panel.ZIndex="1" Background="{DynamicResource ResourceKey=DarkBGBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
@@ -45,7 +45,7 @@
                     <Run Text="{x:Static properties:Resources.LiveModeControl_HoverOverElement}"/>
                     <Run Name="runHkActivate"/><Run Text="."/>
                     <TextBlock>
-                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075123" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
                              <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreInspect}"/>
                         </Hyperlink><Run Text="."/>
                     </TextBlock>
@@ -53,12 +53,12 @@
 
                 <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_RunAutomatedChecks}"/>
-                    <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal" ShowInControlView="False"/>
+                    <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" FontStyle="Normal" ShowInControlView="False"/>
                     <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
                     <Run Name="runHkTest"/><Run Text="."/>
                     <TextBlock>
-                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                             <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}"/>
+                        <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
+                             <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}" />
                         </Hyperlink><Run Text="."/>
                     </TextBlock>
                 </TextBlock>
