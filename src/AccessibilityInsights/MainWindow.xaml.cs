@@ -206,8 +206,10 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void SystemEvents_UserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
         {
-            // TODO DHT: Create listener to detect changes in light/dark mode (this one doesn't catch them)
-            if (e.Category == UserPreferenceCategory.Color || e.Category == UserPreferenceCategory.VisualStyle)
+            // TODO DHT: General triggers when changing dark mode--is it too expensive?
+            if (e.Category == UserPreferenceCategory.Color || 
+                e.Category == UserPreferenceCategory.VisualStyle ||
+                e.Category == UserPreferenceCategory.General)
             {
                 SetColorTheme();
             }
