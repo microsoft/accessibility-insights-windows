@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="..\Resources\Styles.xaml"/>
     </UserControl.Resources>
-    <TabControl Name="tabControlInspect" BorderThickness="0" SelectionChanged="TabControl_SelectionChanged">
+    <TabControl Name="tabControlInspect" BorderThickness="0" SelectionChanged="TabControl_SelectionChanged" Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
         <TabItem Name="tabDetails" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
             <TabItem.Header>
                 <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextDetails}" Style="{StaticResource tbTabHead}"/>
