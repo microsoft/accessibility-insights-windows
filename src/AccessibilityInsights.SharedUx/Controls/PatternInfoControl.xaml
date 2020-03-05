@@ -42,18 +42,13 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Properties}">
                     <StackPanel Orientation="Horizontal" Margin="0,1">
                         <TextBlock Text="{Binding Path=NodeValue}" VerticalAlignment="Center" ToolTip="{Binding Path=ToolTip}" Style="{DynamicResource VarStandardTextBlock}"/>
-                        <Button x:Name="buttonAction" Command="{Binding ClickCommand}"
+                        <Button x:Name="buttonAction" Command="{Binding ClickCommand}" Style="{StaticResource BtnActions}"
                                 VerticalContentAlignment="Center" VerticalAlignment="Center"
                                 Visibility="{Binding Path=ActionVisibility, BindsDirectlyToSource=True}"
                                 Content="{Binding Path=ActionName, BindsDirectlyToSource=True}"
                                 IsEnabled="True" Padding="4,0" FontWeight="Normal"
                                 Height="18" IsTabStop="False"
                                 Margin="5,0,0,0">
-                            <Button.Style>
-                                <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonBGBrush}"/>
-                                </Style>
-                            </Button.Style>
                         </Button>
                     </StackPanel>
                 </HierarchicalDataTemplate>

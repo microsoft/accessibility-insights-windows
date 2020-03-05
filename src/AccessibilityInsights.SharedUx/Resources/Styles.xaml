@@ -92,6 +92,23 @@
     <Style TargetType="{x:Type Button}" x:Key="BtnNoAutoHelpText" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="AutomationProperties.HelpText" Value=" "/>
     </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnActions" BasedOn="{StaticResource BtnStandard}">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonBGBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonHoverBGBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnNoDisabledBackground" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="Template">
             <Setter.Value>

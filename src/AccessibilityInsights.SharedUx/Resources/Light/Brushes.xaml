@@ -83,4 +83,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#BEE6FD"/>
 </ResourceDictionary>
