@@ -44,7 +44,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BlueButtonFGBrush" Color="#0B1116"/>       <!-- (UPDATED) Foreground (normal) color of blue buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverFGBrush" Color="#0B1116"/>  <!-- (UPDATED) Foreground (hover) color of blue buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonGreyBGBrush" Color="#CCCCCC"/>       <!-- Background for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonBGBrush" Color="#444C52"/>    <!-- (UPDATED) Background for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#2B3034"/>        <!-- (UPDATED) Secondary background brush (not u-->
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast, borders of ADO's "disconnect" button -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->

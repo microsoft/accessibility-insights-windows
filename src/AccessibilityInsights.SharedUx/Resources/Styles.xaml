@@ -1040,7 +1040,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonGreyBGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonBGBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
