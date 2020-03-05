@@ -488,7 +488,7 @@
                 <Setter Property="FontStyle" Value="Italic" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedRowFGBrush}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

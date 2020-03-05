@@ -91,4 +91,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D747E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D747E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of in selected row in a data grid (list of properties) -->
 </ResourceDictionary>
