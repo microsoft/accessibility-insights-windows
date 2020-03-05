@@ -97,6 +97,8 @@
                         BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}">
                         <controls:PlaceholderTextBox.Style>
                             <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                                <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
