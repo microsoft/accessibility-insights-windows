@@ -73,7 +73,7 @@
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
-    
+
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333"/>
