@@ -9,7 +9,7 @@
     <GridViewColumnHeader HorizontalContentAlignment="Stretch" Margin="0,0,0,2" VerticalContentAlignment="Stretch">
         <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" Margin="0,0,4,0" >
             <StackPanel Orientation="Horizontal" Background="{DynamicResource ResourceKey=ColumnHeaderBGBrush}">
-                <TextBlock Name="tbHeader" Style="{DynamicResource columnHeaderRow}" Margin="2,0"/>
+                <TextBlock Name="tbHeader" Style="{DynamicResource columnHeaderRow}" Margin="3,0"/>
             </StackPanel>
         </Border>
     </GridViewColumnHeader>
