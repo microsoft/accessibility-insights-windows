@@ -56,9 +56,13 @@
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
 
     <!-- NEW BRUSHES -->
+    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
+
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="Transparent"/>
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>  <!-- TODO: Find better value for this? -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086 "/>
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E "/>

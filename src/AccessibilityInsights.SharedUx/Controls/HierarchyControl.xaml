@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
+            <Border Height="24" Margin="8,5,8,5" Background="{DynamicResource ResourceKey=PrimaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=SearchPanelBorderBrush}" BorderThickness="{DynamicResource ResourceKey=SearchPanelBorderThickness}">
                 <DockPanel>
                     <controls:FabricIconControl DockPanel.Dock="Left" Margin="5,0,5,0" GlyphName="Search" FontSize="{StaticResource ConstStandardTextSize}" GlyphSize="Custom" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" ShowInControlView="False"/>
                     <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
@@ -105,7 +105,7 @@
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
-                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
+                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchPlaceholderFGBrush}"/>
                                         <Setter Property="Visibility" Value="Visible"/>
                                         <Setter Property="FontStyle" Value="Italic"/>
                                     </DataTrigger>

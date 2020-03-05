@@ -71,10 +71,14 @@
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
 
-    <!-- NEW BRUSHES -->
+    <!-- NEW SETTINGS -->
+    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>        <!-- (UPDATED) Thickness of border around search panel -->
+
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>                             <!-- Color of "warning" icon in results -->
-    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of search text and various icons -->
+    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of various icons -->
+    <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#B2B3B5"/>                 <!-- (UPDATED) Color of placeholder text in search box -->
+    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="#656E75"/>                   <!-- (UPDATED) Color of border around search panel -->
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#6D767E"/>                       <!-- (UPDATED) Border brush used in various locations -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>                   <!-- Background of video in startup dialog -->
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>                       <!-- Border of video in startup dialog -->
