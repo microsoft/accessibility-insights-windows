@@ -1158,11 +1158,12 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type ContextMenu}" x:Key="menuPlainWhite">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <Border Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" BorderThickness="1">
-                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
