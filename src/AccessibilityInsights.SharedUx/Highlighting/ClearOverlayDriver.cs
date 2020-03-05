@@ -101,7 +101,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         public void Hide()
         {
-            Highlighter.Hide();
+            Highlighter?.Hide();
         }
 
         /// <summary>
