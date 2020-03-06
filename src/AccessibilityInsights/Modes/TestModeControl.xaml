@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </UserControl.Resources>
-    <Grid>
+    <Grid Background="Transparent">
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
@@ -23,17 +23,17 @@
         <Border BorderBrush="LightGray" BorderThickness="1" Padding="4" Margin="0" Grid.Row="1">
             <TabControl Name="tabControl" TabStripPlacement="Left" BorderThickness="1,0,0,0" Padding="0" Margin="-5.333,-5.333,0,0" 
                         UseLayoutRounding="False" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" ItemContainerStyle="{StaticResource tabItemStyle}" 
-                        SelectionChanged="TabControl_SelectionChanged" KeyboardNavigation.TabNavigation="Cycle">
+                        SelectionChanged="TabControl_SelectionChanged" KeyboardNavigation.TabNavigation="Cycle" Background="Transparent">
                 <TabItem IsEnabled="False" AutomationProperties.LabeledBy="{Binding ElementName=lblFastpass}">
                     <TabItem.Header>
-                        <Grid>
+                        <Grid Background="Transparent">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="14"/>
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}" ShowInControlView="False"/>
-                            <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top"/>
+                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" ShowInControlView="False" Background="Transparent"/>
+                            <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top" Background="Transparent"/>
                         </Grid>
                     </TabItem.Header>
                 </TabItem>

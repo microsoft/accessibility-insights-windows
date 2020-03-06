@@ -92,4 +92,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
 </ResourceDictionary>

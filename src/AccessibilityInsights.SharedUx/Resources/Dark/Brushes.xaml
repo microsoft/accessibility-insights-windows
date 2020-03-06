@@ -14,11 +14,11 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#6D767E"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>            <!-- Progress ring (dots and text) -->
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>    <!-- MainWindow: Overlay for "Tab Stops" ? -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#EFF6FC"/>        <!-- Background brush of selected items in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#F4F4F4"/>           <!-- Hover color in main window (Detail/HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#6D767E"/>        <!-- (UPDATED) Background brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#444C52"/>           <!-- (UPDATED) Hover color in main window (Detail/HowToFix) -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>       <!-- "Passed and uncertain tests" foreground, also tree icon -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>          <!-- Automated checks header horizontal border -->
-    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>      <!-- Background brush of non-selected items in list view -->
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>    <!-- Replace with SelectedTabBrush ? -->
     <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>              <!-- Border color on welcome screen -->
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
@@ -92,4 +92,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D747E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of in selected row in a data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (IN PROCESS) Foreground brush of selected tab in Tests view -->
 </ResourceDictionary>
