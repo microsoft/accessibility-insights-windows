@@ -12,11 +12,11 @@
              d:DesignHeight="100" d:DesignWidth="350"
              >
     <Grid Background="{DynamicResource ResourceKey=SecondaryBGBrush}" AutomationProperties.Name="{x:Static Properties:Resources.GridAutomationPropertiesNameTabStopsToastNotification}">
-        <Button HorizontalAlignment="Right" Background="{DynamicResource ResourceKey=SecondaryBGBrush}"  BorderThickness="0" WindowChrome.IsHitTestVisibleInChrome="True"  Click="btnExit_Click" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameCloseToastNotification}" Width="16" Margin="0,0,0,84">
-            <fabric:FabricIconControl GlyphName="Clear" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Custom" FontSize="10"/>
+        <Button HorizontalAlignment="Right" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderThickness="0" WindowChrome.IsHitTestVisibleInChrome="True" Click="btnExit_Click" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameCloseToastNotification}" Width="16" Margin="0,0,0,84">
+            <fabric:FabricIconControl GlyphName="Clear" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" GlyphSize="Custom" FontSize="10"/>
         </Button>
         <Image Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon_256x.png" Height="80" Width="80" HorizontalAlignment="Left" Margin="10,10,0,10" AutomationProperties.Name="{x:Static Properties:Resources.ImageAutomationPropertiesName}"/>
-        <TextBlock Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}" FontSize="14" HorizontalAlignment="Left" Height="43" Margin="104,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesName}"><Run Text="{x:Static Properties:Resources.TextBlockAutomationPropertiesName}"/></TextBlock>
-        <TextBlock FontWeight="SemiBold"  HorizontalAlignment="Left" Height="33" Margin="104,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesName1}"><Run Text="{x:Static Properties:Resources.TextBlockAutomationPropertiesName1}"/></TextBlock>
+        <TextBlock Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" FontSize="14" HorizontalAlignment="Left" Height="43" Margin="104,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="218" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesName}"><Run Text="{x:Static Properties:Resources.TextBlockAutomationPropertiesName}"/></TextBlock>
+        <TextBlock Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"  FontWeight="SemiBold" HorizontalAlignment="Left" Height="33" Margin="104,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="223" AutomationProperties.Name="{x:Static Properties:Resources.TextBlockAutomationPropertiesName1}"><Run Text="{x:Static Properties:Resources.TextBlockAutomationPropertiesName1}"/></TextBlock>
     </Grid>
 </UserControl>
