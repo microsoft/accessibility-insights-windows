@@ -42,7 +42,7 @@
                 <Run Text="{x:Static Properties:Resources.TabStopControl_target}" FontWeight="SemiBold"/>
                 <Run Name="runElement"/>
             </TextBlock>
-            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,10" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                 <Run FontWeight="SemiBold" FontSize="{DynamicResource ConstXLTextSize}" Text="{x:Static Properties:Resources.RunTextTabStops}" />
                 <Hyperlink TextDecorations="{x:Null}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
                            ToolTip="{x:Static Properties:Resources.RunTextGuidance}"
@@ -56,7 +56,7 @@
                 <ToggleButton Style="{StaticResource tgbSlider}" Name="tgbtnRecord" Margin="8,2,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblRecord}" Click="btnRecord_Click"/>
             </StackPanel>
             <Label Name="tabIntro" Grid.Row="4" Grid.Column="1" Content="{x:Static Properties:Resources.tabIntroContent}" Style="{StaticResource lblRowStyle}" HorizontalAlignment="Left"/>
-            <RichTextBox Margin="-4,0,0,0" Grid.Row="5" Grid.Column="1" Style="{StaticResource ResourceKey=RtbReadonlyText}" Name="rtbInstructions"  AutomationProperties.LabeledBy="{Binding ElementName=tabIntro}">
+            <RichTextBox Margin="-4,0,0,0" Grid.Row="5" Grid.Column="1" Style="{StaticResource ResourceKey=RtbReadonlyText}" Name="rtbInstructions" AutomationProperties.LabeledBy="{Binding ElementName=tabIntro}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                 <FlowDocument LineHeight="6"/>
             </RichTextBox>
             <Label Name="lblResults" Grid.Row="7" Grid.Column="1" Content="Recorded order results" Style="{StaticResource lblHeader}" HorizontalAlignment="Left"/>
