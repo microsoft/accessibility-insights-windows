@@ -351,7 +351,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Border BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabBorderBrush}">
+                    <Border BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabHorizontalBorderBrush}">
                         <Grid x:Name="gdTab">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4"/>
@@ -400,7 +400,6 @@
         <Setter Property="Width" Value="200"/>
         <Setter Property="Height" Value="32"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BorderBrush" Value="Green"/>
         <Setter Property="FontSize" Value="{StaticResource ConstLargeTextSize}" />
     </Style>
     <Style TargetType="{x:Type Thumb}" x:Key="thbAutomatedChecks">

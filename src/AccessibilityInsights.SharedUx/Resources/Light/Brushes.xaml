@@ -73,6 +73,7 @@
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">1</Thickness>
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>
@@ -93,4 +94,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="#EAEAEA"/>
 </ResourceDictionary>

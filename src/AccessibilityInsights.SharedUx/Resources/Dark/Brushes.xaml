@@ -17,7 +17,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#6D767E"/>        <!-- (UPDATED) Background brush of selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#444C52"/>           <!-- (UPDATED) Hover color in main window (Detail/HowToFix) -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>       <!-- "Passed and uncertain tests" foreground, also tree icon -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>          <!-- Automated checks header horizontal border -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Vertical Border on tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>    <!-- Replace with SelectedTabBrush ? -->
     <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>              <!-- Border color on welcome screen -->
@@ -73,6 +73,7 @@
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>        <!-- (UPDATED) Thickness of border around search panel -->
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>                             <!-- Color of "warning" icon in results -->
@@ -92,5 +93,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D747E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of in selected row in a data grid (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (IN PROCESS) Foreground brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="Transparent"/>    <!-- (UPDATED) Horizontal Border between tab items in test mode -->
 </ResourceDictionary>

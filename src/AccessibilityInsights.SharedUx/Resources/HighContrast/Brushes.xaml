@@ -57,6 +57,7 @@
 
     <!-- NEW BRUSHES -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">1</Thickness>
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000 "/>
     <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00 "/>
