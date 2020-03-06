@@ -55,7 +55,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
 
-    <!-- NEW BRUSHES -->
+    <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">1</Thickness>
 
