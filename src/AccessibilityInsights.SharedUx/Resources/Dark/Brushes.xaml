@@ -84,10 +84,10 @@
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#6D767E"/>                       <!-- (UPDATED) Border brush used in various locations -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>                   <!-- Background of video in startup dialog -->
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>                       <!-- Border of video in startup dialog -->
-    <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#6D767E"/>             <!-- Border of selection combobox in command bar -->
-    <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#31383D"/>             <!-- List background of selection combobox in command bar -->
-    <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- Startup Primary background brush -->
-    <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- Startup Secondary background brush -->
+    <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#6D767E"/>             <!-- (UPDATED) Border of selection combobox in command bar -->
+    <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#31383D"/>             <!-- (UPDATED) List background of selection combobox in command bar -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- (UPDATED) Startup Primary background brush -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- (UPDATED) Startup Secondary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/> <!-- (UPDATED) Selected text color in TreeView -->
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
