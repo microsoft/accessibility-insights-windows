@@ -1191,7 +1191,7 @@
                                 </Grid.ColumnDefinitions>
                                 <fabric:FabricIconControl Grid.Column="1" x:Name="fbiThumb" ShowInControlView="False" GlyphName="ToggleThumb" GlyphSize="Custom" FontSize="6" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="3,8,3,0"/>
                             </Grid>
-                            <Label x:Name="lblState" Padding="4,0,0,0" FontSize="11" VerticalAlignment="Center" Grid.Column="1"/>
+                            <Label x:Name="lblState" Padding="4,0,0,0" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
