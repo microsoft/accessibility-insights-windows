@@ -23,7 +23,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/> <!-- Background sample keys on Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
-        <GradientStop Color="#004280" Offset="0"/>
+        <GradientStop Color="#004880" Offset="0"/>
         <GradientStop Color="#000000" Offset="0.5"/>
     </LinearGradientBrush>
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most eveywhere) -->
