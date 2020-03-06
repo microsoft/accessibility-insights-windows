@@ -9,7 +9,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="#FFE81123"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#E4E4E4"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#333333"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
@@ -20,7 +20,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
         <GradientStop Color="#004280" Offset="0"/>

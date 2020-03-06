@@ -1108,7 +1108,7 @@
     </Style>
     <Style TargetType="{x:Type Border}" x:Key="BrdrKey">
         <Setter Property="CornerRadius" Value="2"/>
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=KeyBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupSampleKeyBGBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=LeftNavBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>

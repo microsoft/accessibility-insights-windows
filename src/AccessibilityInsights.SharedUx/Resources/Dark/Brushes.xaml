@@ -1,4 +1,4 @@
-`<!-- Copyright (c) Microsoft. All rights reserved.
+<!-- Copyright (c) Microsoft. All rights reserved.
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <!-- Contains theme for the default AccessibilityInsights dark theme -->
 <ResourceDictionary     
@@ -9,7 +9,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="#FFE81123"/>   <!-- Exit Button hover color -->
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#2B3034"/>       <!-- (UPDATED) Caption/border background -->
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Caption Text -->
-    <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>         <!-- Inner Border on Getting Started dialog -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#6D767E"/> <!-- (UPDATED) Inner Border on Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Text in Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#6D767E"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>            <!-- Progress ring (dots and text) -->
@@ -20,7 +20,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Vertical Border on tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#31383D"/>    <!-- (UPDATED) Background brush for selected row in Automated checks -->
-    <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>              <!-- Border color on welcome screen -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/> <!-- Background sample keys on Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
         <GradientStop Color="#004280" Offset="0"/>
