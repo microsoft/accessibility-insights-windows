@@ -227,6 +227,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                                 Tag = el,                               
                                 HorizontalAlignment = HorizontalAlignment.Center,
                                 VerticalAlignment = VerticalAlignment.Center,
+                                Foreground = Application.Current.Resources["PrimaryFGBrush"] as SolidColorBrush,
                             };
                             if (TBCallback != null)
                             {
