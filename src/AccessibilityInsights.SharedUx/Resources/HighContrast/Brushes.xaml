@@ -78,4 +78,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
 </ResourceDictionary>

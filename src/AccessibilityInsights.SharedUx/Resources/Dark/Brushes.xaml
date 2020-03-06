@@ -1,4 +1,4 @@
-<!-- Copyright (c) Microsoft. All rights reserved.
+`<!-- Copyright (c) Microsoft. All rights reserved.
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <!-- Contains theme for the default AccessibilityInsights dark theme -->
 <ResourceDictionary     
@@ -19,7 +19,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>       <!-- "Passed and uncertain tests" foreground, also tree icon -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Vertical Border on tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>    <!-- Replace with SelectedTabBrush ? -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#31383D"/>    <!-- (UPDATED) Background brush for selected row in Automated checks -->
     <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>              <!-- Border color on welcome screen -->
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
@@ -51,7 +51,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>     <!-- Background of disabled button (but I can't find any examples) -->
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#22272B"/>          <!-- (UPDATED) Primary background brush (not in startup mode) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#444C52"/>         <!-- (UPDATED) Background of data grid items (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (IN PROCESS) Background of selected item in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (UPDATED) Background of selected item in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
@@ -89,10 +89,11 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- Startup Primary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- Startup Secondary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/> <!-- (UPDATED) Selected text color in TreeView -->
-    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D747E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D747E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of in selected row in a data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="Transparent"/>    <!-- (UPDATED) Horizontal Border between tab items in test mode -->
+    <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#2B3034"/>       <!-- (UPDATED) Hover background color of automated checks rows -->
 </ResourceDictionary>

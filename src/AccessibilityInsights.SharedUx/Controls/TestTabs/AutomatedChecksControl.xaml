@@ -20,7 +20,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="{DynamicResource ResourceKey=SecondaryBGBrush}">
+            <Grid Grid.Row="0" Background="Transparent">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="12"/>
                     <RowDefinition Height="28"/>
@@ -40,7 +40,7 @@
                         AutomationProperties.Name="{Binding ElementName=tbViewResults,Path=Text}"
                         AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksUIATreeButton}">
                     <StackPanel Orientation="Horizontal">
-                        <fabric:FabricIconControl GlyphName="DOM" FontSize="14" Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" Margin="0,0,4,0" ShowInControlView="False"/>
+                        <fabric:FabricIconControl GlyphName="DOM" FontSize="14" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}" Margin="0,0,4,0" ShowInControlView="False"/>
                         <TextBlock Name="tbViewResults" Text="{x:Static Properties:Resources.tbViewResultsText}" Style="{StaticResource tbLink}" Focusable="False"/>
                     </StackPanel>
                 </Button>
@@ -61,7 +61,7 @@
             <Border Grid.Row="1" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <ListView AutomationProperties.LabeledBy="{Binding ElementName=lblTitle}" KeyboardNavigation.TabNavigation="Once"
                           Name="lvResults" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
-                          AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}">
+                          AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}" Background="Transparent">
                     <ListView.View>
                         <local:CustomGridView x:Name="gv">
                             <GridViewColumn Width="26" DisplayMemberBinding="{x:Null}">
@@ -160,7 +160,7 @@
                         <Style TargetType="{x:Type ListViewItem}">
                             <Style.Triggers>
                                 <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=TabHoverBrush}"/>
+                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ACRowHoverBGBrush}"/>
                                 </Trigger>
                                 <Trigger Property="IsSelected" Value="True">
                                     <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedACRowBGBrush}"/>
@@ -266,7 +266,7 @@
                                         <Setter.Value>
                                             <ControlTemplate>
                                                 <local:CustomExpander IsExpanded="False" KeyboardNavigation.DirectionalNavigation="Local" 
-                                                          RequestBringIntoView="Expander_RequestBringIntoView" Collapsed="Expander_Collapsed">
+                                                          RequestBringIntoView="Expander_RequestBringIntoView" Collapsed="Expander_Collapsed" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                                                     <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
@@ -274,13 +274,13 @@
                                                                    VerticalAlignment="Center" FontWeight="SemiBold"
                                                                    AutomationProperties.Name="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsLabelAutomationPropertiesName}'}">
                                                                 <Hyperlink KeyboardNavigation.IsTabStop="False" NavigateUri="{Binding Path=Items[0].URL}"
-                                                                           RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None"
+                                                                           RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Style="{StaticResource hLink}"
                                                                            FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                                                                     <Run Text="{Binding Mode=OneWay,Path=Items[0].Source}"/>
                                                                 </Hyperlink>
                                                             </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
-                                                            <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}"  Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
+                                                            <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
                                                             <Label Content=")" Style="{StaticResource lblRowStyle}"  VerticalAlignment="Center" />
                                                         </StackPanel>
