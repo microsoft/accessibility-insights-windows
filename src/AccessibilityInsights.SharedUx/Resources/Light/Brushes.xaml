@@ -96,4 +96,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#EFF6FC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#F4F4F4"/>
 </ResourceDictionary>
