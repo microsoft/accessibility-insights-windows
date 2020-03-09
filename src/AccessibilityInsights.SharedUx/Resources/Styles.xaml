@@ -199,6 +199,8 @@
     <Style TargetType="{x:Type TextBox}" x:Key="TxtBxText">
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
