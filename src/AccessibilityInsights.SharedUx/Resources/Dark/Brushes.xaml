@@ -76,7 +76,7 @@
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
-    <SolidColorBrush x:Key="WarningBrush" Color="#6BADE0"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
+    <SolidColorBrush x:Key="WarningBrush" Color="#D67F3C"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of various icons -->
     <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#B2B3B5"/>                 <!-- (UPDATED) Color of placeholder text in search box -->
     <SolidColorBrush x:Key="SearchPanelBGBrush" Color="Transparent"/>                   <!-- (UPDATED) Color of background in search panel -->
