@@ -37,6 +37,8 @@
                     <StackPanel Focusable="False">
                         <ListView x:Name="lvDetails" SizeChanged="lvDetails_SizeChanged"
                             AutomationProperties.LabeledBy="{Binding ElementName=labelResults}"
+                            Background="Transparent"
+                            Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                             BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"
                             Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"
                             SelectionMode="Extended"
@@ -53,7 +55,8 @@
                                         <Trigger Property="IsSelected" Value="True">
                                             <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                                             <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedRowFGBrush}"/>
+                                            <Setter Property="FontWeight" Value="DemiBold"/>
                                         </Trigger>
                                     </Style.Triggers>
                                     <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
@@ -81,7 +84,7 @@
                             <ListView.View>
                                 <local:CustomGridView x:Name="gvRules">
                                     <GridViewColumn>
-                                        <GridViewColumnHeader Content="Rule" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
+                                        <GridViewColumnHeader Content="Rule" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}" Background="Transparent" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -107,7 +110,7 @@
                                                     </controls:FabricIconControl>
                                                     <TextBlock Style="{DynamicResource VarStandardTextBlock}" VerticalAlignment="Center" Margin="0,0,0,2">
                                                         <Run Text="{Binding Path=Header,Mode=OneWay}"/>
-                                                        <Hyperlink Click="Hyperlink_Click" AutomationProperties.Name="{Binding Path=Source}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                                                        <Hyperlink Click="Hyperlink_Click" AutomationProperties.Name="{Binding Path=Source}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource ResourceKey=hLink}">
                                                             <TextBlock Text="{Binding Path=Source}"/>
                                                         </Hyperlink>
                                                     </TextBlock>
@@ -143,7 +146,7 @@
                             Click="BtnShowAll_Click" Cursor="Hand"
                             Margin="20,0,0,0">
                             <TextBlock Name="tbShowAll" Text="{x:Static Properties:Resources.tbShowAllText}"
-                                       Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}"
+                                       Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}"
                                        TextDecorations="Underline" Style="{DynamicResource SmallTextBlock}"
                                        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsShowAllButton}"/>
                         </Button>
@@ -164,7 +167,7 @@
                 <Grid Margin="8,4,8,8">
                     <StackPanel Name="spHowToFix" Grid.Row="1" >
                         <TextBox Text="{Binding Path=HowToFixText, Mode=OneWay}" AutomationProperties.LabeledBy="{Binding ElementName=labelFixFollowing}"
-                                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsFixFollowingTextBox}">
+                                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsFixFollowingTextBox}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBox.Style>
                                 <Style TargetType="TextBox" BasedOn="{StaticResource TxtReadonlyText}">
                                     <Style.Triggers>
@@ -200,7 +203,7 @@
                             <Hyperlink Click="HyperlinkSnippetClick"
                                 FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">View Code Sample
                                 <Hyperlink.Style>
-                                    <Style TargetType="Hyperlink">
+                                    <Style TargetType="Hyperlink" BasedOn="{StaticResource hLink}">
                                         <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
                                         <Setter Property="KeyboardNavigation.IsTabStop" Value="False"/>
                                         <Style.Triggers>
