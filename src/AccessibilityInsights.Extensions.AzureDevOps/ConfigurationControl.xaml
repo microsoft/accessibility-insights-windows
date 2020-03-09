@@ -22,7 +22,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.connectionInstrText}"
-                           TextWrapping="Wrap" Margin="0,20,0,8" FontSize="{DynamicResource StandardTextSize}"/>
+                           TextWrapping="Wrap" Margin="0,20,0,8" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Grid Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -123,11 +123,11 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_selectTeam}" Margin="0 4px"
-                           TextWrapping="Wrap" FontSize="{DynamicResource StandardTextSize}"/>
+                           TextWrapping="Wrap" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{DynamicResource BtnStandard}">
                     <Button.Template>
                         <ControlTemplate>
-                            <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="Blue"/>
+                            <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>

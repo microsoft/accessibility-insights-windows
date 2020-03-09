@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px"  FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Grid Grid.Row="1" >
             <controls:PlaceholderTextBox
                 Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
@@ -30,9 +30,12 @@
                 Placeholder="{x:Static Properties:Resources.PlaceHolder}">
                 <controls:PlaceholderTextBox.Style>
                     <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                        <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
                                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
+                                <Setter Property="FontStyle" Value="Italic"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
