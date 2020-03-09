@@ -63,8 +63,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>  <!-- Borders of buttons ? -->
     <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- Background of Color Contrast preview -->
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>          <!-- Border of Color Contrast preview -->
-    <SolidColorBrush x:Key="HLbrushRed" Color="#CC0000"/>                               <!-- Color of FAILED color contrast icon, hierarchy highlighter -->
-    <SolidColorBrush x:Key="HLbrushGreen" Color="#107c10"/>                             <!-- Color of PASSED color contrast icon -->
+    <SolidColorBrush x:Key="HLbrushRed" Color="#CD4A45"/>                               <!-- (UPDATED) Color of FAILED color contrast icon, hierarchy highlighter -->
+    <SolidColorBrush x:Key="HLbrushGreen" Color="#55A362"/>                             <!-- (UPDATED) Color of PASSED color contrast icon -->
     <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>                            <!-- Color of glimpse shown in tab stops list -->
     <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>                           <!-- Border color of highlighter box -->
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- Text color for highlighter tooltip -->
@@ -76,7 +76,7 @@
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
-    <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>                             <!-- Color of "warning" icon in results -->
+    <SolidColorBrush x:Key="WarningBrush" Color="#6BADE0"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of various icons -->
     <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#B2B3B5"/>                 <!-- (UPDATED) Color of placeholder text in search box -->
     <SolidColorBrush x:Key="SearchPanelBGBrush" Color="Transparent"/>                   <!-- (UPDATED) Color of background in search panel -->
