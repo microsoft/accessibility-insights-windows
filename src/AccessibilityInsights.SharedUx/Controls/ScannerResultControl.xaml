@@ -119,7 +119,7 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Width="{Binding BugColumnWidth}">
-                                        <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="Issue" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}"/>
+                                        <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="Issue" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}" Background="Transparent" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" MinWidth="200">
