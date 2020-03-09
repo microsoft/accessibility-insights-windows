@@ -824,6 +824,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedInspectTabBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedInspectTabBrush}"/>
