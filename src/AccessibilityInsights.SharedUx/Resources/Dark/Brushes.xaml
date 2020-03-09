@@ -12,7 +12,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#6D767E"/> <!-- (UPDATED) Inner Border on Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Text in Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#6D767E"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
-    <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>            <!-- Progress ring (dots and text) -->
+    <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#6BADE0"/>            <!-- (UPDATED) Progress ring (dots and text) -->
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>    <!-- MainWindow: Overlay for "Tab Stops" ? -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#6D767E"/>        <!-- (UPDATED) Background brush of selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#444C52"/>           <!-- (UPDATED) Hover color in main window (Detail/HowToFix) -->
@@ -28,7 +28,7 @@
     </LinearGradientBrush>
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most eveywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryFGBrush" Color="#B2B3B5"/>        <!-- (UPDATED) Secondary Foreground color (de-emphasized text) -->
-    <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>         <!-- Used ONLY for "New for WCAG 2.1" bubble -->
+    <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#696C6F"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#FFFFFF"/>       <!-- (UPDATED) Generic selected text color (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#FFFFFF"/>               <!-- (UPDATED) Used for fabric icons, some (incorrect?) borders -->
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for snapshot button and video player -->
