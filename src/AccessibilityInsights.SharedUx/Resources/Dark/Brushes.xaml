@@ -1,0 +1,102 @@
+<!-- Copyright (c) Microsoft. All rights reserved.
+     Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
+<!-- Contains theme for the default AccessibilityInsights dark theme -->
+<ResourceDictionary     
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverBrush" Color="#525D67"/>        <!-- (UPDATED NEEDS UI REVIEW) Button hover background color -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="#FFE81123"/>   <!-- Exit Button hover color -->
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#2B3034"/>       <!-- (UPDATED) Caption/border background -->
+    <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Caption Text -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#6D767E"/> <!-- (UPDATED) Inner Border on Startup dialog -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Text in Startup dialog -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#6D767E"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
+    <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#6BADE0"/>            <!-- (UPDATED) Progress ring (dots and text) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>    <!-- MainWindow: Overlay for "Tab Stops" ? -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#6D767E"/>        <!-- (UPDATED) Background brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#444C52"/>           <!-- (UPDATED) Hover color in main window (Detail/HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>       <!-- "Passed and uncertain tests" foreground, also tree icon -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Vertical Border on tab items in test mode -->
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#31383D"/>    <!-- (UPDATED) Background brush for selected row in Automated checks -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/> <!-- Background sample keys on Startup dialog -->
+    <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>  <!-- Keep Transparent for dark mode -->
+    <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
+        <GradientStop Color="#004880" Offset="0"/>
+        <GradientStop Color="#000000" Offset="0.5"/>
+    </LinearGradientBrush>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most eveywhere) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SecondaryFGBrush" Color="#B2B3B5"/>        <!-- (UPDATED) Secondary Foreground color (de-emphasized text) -->
+    <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#696C6F"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#FFFFFF"/>       <!-- (UPDATED) Generic selected text color (used everywhere) -->
+    <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#FFFFFF"/>               <!-- (UPDATED) Used for fabric icons, some (incorrect?) borders -->
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for snapshot button and video player -->
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>     <!-- Text color (hover) for snapshot button and video player -->
+    <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>             <!-- Generic light border (used everywhere) -->
+    <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>          <!-- Used to draw the icons on the nav bar -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
+    <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/> <!-- Used for toggles in the "on" position -->
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderEmptyBGBrush" Color="#22272B"/><!-- (UPDATED) Background of "empty" column headers in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonBGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Background (normal) of blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverBGBrush" Color="#4296D6"/>  <!-- (UPDATED) Background (hover) of blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonPressedBGBrush" Color="#2B88D8"/><!-- (UPDATED) Background (pressed) of blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonFGBrush" Color="#0B1116"/>       <!-- (UPDATED) Foreground (normal) color of blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverFGBrush" Color="#0B1116"/>  <!-- (UPDATED) Foreground (hover) color of blue buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonBGBrush" Color="#444C52"/>    <!-- (UPDATED) Background for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#2B3034"/>        <!-- (UPDATED) Secondary background brush (not u-->
+    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast, borders of ADO's "disconnect" button -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>     <!-- Background of disabled button (but I can't find any examples) -->
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#22272B"/>          <!-- (UPDATED) Primary background brush (not in startup mode) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#444C52"/>         <!-- (UPDATED) Background of data grid items (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (UPDATED) Background of selected item in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Border color on expandos -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#22272B"/> <!-- (UPDATED) Background color of selected tab (Details, HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#182025"/>    <!-- (UPDATED) Background color of non-selected tab (Details, HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="#0C5186"/>      <!-- Background of Snapshot button (non-hover) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="#0E78C8"/>   <!-- Background of Snapshot button (hover) -->
+    <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>  <!-- Borders of buttons ? -->
+    <SolidColorBrush po:Freeze="True" x:Key="CCABackgroundBrush" Color="#F8F8F8"/>      <!-- Background of Color Contrast preview -->
+    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="#7a7a7a"/>          <!-- Border of Color Contrast preview -->
+    <SolidColorBrush x:Key="HLbrushRed" Color="#CD4A45"/>                               <!-- (UPDATED) Color of FAILED color contrast icon, hierarchy highlighter -->
+    <SolidColorBrush x:Key="HLbrushGreen" Color="#55A362"/>                             <!-- (UPDATED) Color of PASSED color contrast icon -->
+    <SolidColorBrush x:Key="HLbrushPurple" Color="#A45EF4"/>                            <!-- Color of glimpse shown in tab stops list -->
+    <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>                           <!-- Border color of highlighter box -->
+    <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- Text color for highlighter tooltip -->
+    <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
+    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
+
+    <!-- NEW SETTINGS -->
+    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>        <!-- (UPDATED) Thickness of border around search panel -->
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
+
+    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
+    <SolidColorBrush x:Key="WarningBrush" Color="#D67F3C"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
+    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of various icons -->
+    <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#B2B3B5"/>                 <!-- (UPDATED) Color of placeholder text in search box -->
+    <SolidColorBrush x:Key="SearchPanelBGBrush" Color="Transparent"/>                   <!-- (UPDATED) Color of background in search panel -->
+    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="#656E75"/>                   <!-- (UPDATED) Color of border around search panel -->
+    <SolidColorBrush x:Key="GenericBorderBrush" Color="#6D767E"/>                       <!-- (UPDATED) Border brush used in various locations -->
+    <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>                   <!-- Background of video in startup dialog -->
+    <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>                       <!-- Border of video in startup dialog -->
+    <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#6D767E"/>             <!-- (UPDATED) Border of selection combobox in command bar -->
+    <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#31383D"/>             <!-- (UPDATED) List background of selection combobox in command bar -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- (UPDATED) Startup Primary background brush -->
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- (UPDATED) Startup Secondary background brush -->
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/> <!-- (UPDATED) Selected text color in TreeView -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="Transparent"/>    <!-- (UPDATED) Horizontal Border between tab items in test mode -->
+    <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#2B3034"/>       <!-- (UPDATED) Hover background color of automated checks rows -->
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>    <!-- (UPDATED) Foreground color of selected tab stop rows -->
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#B2B3B5"/>    <!-- (UPDATED) Background color of selected tab stop rows -->
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#31383D"/>       <!-- (UPDATED) Hover color of selected tab stop rows -->
+</ResourceDictionary>

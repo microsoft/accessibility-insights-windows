@@ -23,6 +23,7 @@
         DataContext="{Binding RelativeSource={RelativeSource Self}}"
         WindowStyle="SingleBorderWindow"
         BorderBrush="{DynamicResource ResourceKey=WindowBorderBrush}"
+        Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
         Topmost="True" KeyUp="Window_KeyUp" StateChanged="onStateChanged" Closing="Window_Closing" Height="601.918"
         AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWindow}">
     <Window.Resources>
@@ -244,25 +245,25 @@
                                 </Button.ToolTip>
                                 <Grid>
                                     <AccessText Text="_?" Opacity="0"/>
-                                    <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnMin" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMin_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnMinAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMin}">
-                                    <fabric:FabricIconControl GlyphName="ChromeMinimize" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="ChromeMinimize" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnMax" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnMax_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnMaxAutomationPropertiesName}" Style="{StaticResource btnMinMax}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnMax}">
-                                    <fabric:FabricIconControl Name="btnMaxFabric" GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl Name="btnMaxFabric" GlyphName="Checkbox" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                             <Button Name="btnClose" Width="35" Height="28" BorderBrush="{x:Null}"  HorizontalContentAlignment="Center" Click="btnClose_Click"
                                     AutomationProperties.Name="{x:Static properties:Resources.btnCloseAutomationPropertiesName}" Style="{StaticResource btnClose}">
                                 <Grid Width="35" Height="28" Background="{Binding Background, ElementName=btnClose}">
-                                    <fabric:FabricIconControl GlyphName="Cancel" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Cancel" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
                         </ItemsControl>
@@ -271,7 +272,7 @@
                 <controls:NamedPane x:Name="ctrlNamedCommandbar"
                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                     KeyboardNavigation.TabNavigation="Cycle"
-                                    Grid.Row="1" Grid.RowSpan="2" Height="Auto"
+                                    Grid.Row="1" Grid.RowSpan="2" Height="Auto" Panel.ZIndex="2"
                                     BorderThickness="0" Visibility="Collapsed"
                                     AutomationProperties.Name="{x:Static properties:Resources.ctrlNamedCommandbarAutomationPropertiesName}">
                     <controls:NamedPane.InputBindings>
@@ -288,14 +289,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <StackPanel x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=LightGreyBrush}"
+                        <StackPanel x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=WindowBorderBrush}"
                             WindowChrome.IsHitTestVisibleInChrome="True" Focusable="True" GotKeyboardFocus="spCommandBar_GotKeyboardFocus"
                             Orientation="Horizontal" KeyboardNavigation.DirectionalNavigation="Cycle"
                             Height="28" KeyboardNavigation.TabNavigation="Once"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                            <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0"/>
+                            <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                             <ComboBox x:Name="cbSelectionScope" AutomationProperties.Name="{x:Static properties:Resources.cbSelectionScopeAutomationPropertiesName}" Width="92" 
-                                      HorizontalAlignment="Left" VerticalContentAlignment="Center" 
+                                      HorizontalAlignment="Left" VerticalContentAlignment="Center"
                                       FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" FontSize="{StaticResource ConstStandardTextSize}"
                                       SelectionChanged="ComboBox_SelectionChanged" PreviewKeyDown="processComboBox_PreviewKeyDown">
                                 <ComboBoxItem x:Name="cbiElement" Content="{x:Static properties:Resources.cbiElementContent}" AutomationProperties.Name="{x:Static properties:Resources.cbiElementAutomationPropertiesName}" IsSelected="True"/>
@@ -333,7 +334,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Button.Style>
-                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default">
+                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}" GlyphSize="Default">
                                     <fabric:FabricIconControl.Style>
                                         <Style TargetType="fabric:FabricIconControl">
                                             <Style.Triggers>
@@ -360,7 +361,7 @@
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
-                                <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                             </Button>
                             <Button x:Name="btnSave"
                                     Style="{StaticResource BtnNoAutoHelpText}"
@@ -374,7 +375,7 @@
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
-                                <fabric:FabricIconControl GlyphName="Save" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                <fabric:FabricIconControl GlyphName="Save" FontSize="16" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                             </Button>
                             <Button x:Name="btnPause"
                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
@@ -409,7 +410,7 @@
                                         </Style.Triggers>
                                     </Style>
                                 </Button.Style>
-                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default">
+                                <fabric:FabricIconControl Height="16" Width="16" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}" GlyphSize="Default">
                                     <fabric:FabricIconControl.Style>
                                         <Style TargetType="fabric:FabricIconControl">
                                             <Style.Triggers>
@@ -437,7 +438,7 @@
                                     <behaviors:DropDownButtonBehavior/>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
-                                <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 <Button.ContextMenu>
                                     <ContextMenu>
                                         <MenuItem Name="miTimer" AutomationProperties.Name="{x:Static properties:Resources.miTimerAutomationPropertiesName}" Click="btnTimer_Click">
@@ -465,11 +466,11 @@
                                 <i:Interaction.Behaviors>
                                     <behaviors:KeyboardToolTipButtonBehavior/>
                                 </i:Interaction.Behaviors>
-                                <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                                <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                             </Button>
                         </StackPanel>
-                        <Label Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}"/>
-                        <StackPanel Margin="0" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
+                        <Label Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                        <StackPanel Margin="0" Background="{DynamicResource ResourceKey=PrimaryBGBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
                             <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" 
                                     Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"
                                     AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbOneButton}"/>
@@ -502,7 +503,7 @@
                         <modecontrols:SnapshotModeControl x:Name="ctrlSnapMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
                         <modecontrols:EventModeControl x:Name="ctrlEventMode" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Visibility="Collapsed"/>
                     </Grid>
-                    <Grid x:Name="gridlayerConfig" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Visibility="Collapsed">
+                    <Grid x:Name="gridlayerConfig" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" Visibility="Collapsed">
                         <modecontrols:ConfigurationModeControl x:Name="ctrlConfigurationMode" AutomationProperties.Name="{x:Static properties:Resources.ctrlConfigurationModeAutomationPropertiesName}" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch"/>
                     </Grid>
                 </Grid>

@@ -42,9 +42,9 @@
                 FontSize="{DynamicResource ConstXXLTextSize}"
                 Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0,0,0,16"/>
                 <TextBlock Grid.Row="1" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
+                <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
                 <Hyperlink
-                    TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click">
+                    TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click" Style="{StaticResource hLink}">
                     <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
                 </Hyperlink>
                 </TextBlock>
@@ -72,7 +72,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Grid.Column="0" >
                         <TextBlock FontSize="14" Margin="0 4">
-                        <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.ColorContrast_Color1}"  AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color1}" />
+                        <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.ColorContrast_Color1}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color1}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </TextBlock>
                         <controls:ColorChooser x:Name="firstChooser"
                                    HorizontalAlignment="Left"
@@ -86,7 +86,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1" Margin="0 8" Grid.Column="0">
                         <TextBlock FontSize="14" Margin="0 4">
-                    <Run FontWeight="SemiBold"  Text="{x:Static Properties:Resources.ColorContrast_Color2}"  AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color2}" />
+                    <Run FontWeight="SemiBold"  Text="{x:Static Properties:Resources.ColorContrast_Color2}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color2}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </TextBlock>
                         <controls:ColorChooser x:Name="secondChooser"
                                HorizontalAlignment="Left"
@@ -157,8 +157,8 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1"/>
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="4,4">
                         <fabric:FabricIconControl x:Name="smallTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
                             <fabric:FabricIconControl.Style>
@@ -175,7 +175,7 @@
                             </fabric:FabricIconControl.Style>
                         </fabric:FabricIconControl>
                         <TextBlock x:Name="smallTextResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
-                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
@@ -199,13 +199,13 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
-                        <TextBlock x:Name="regularSizeText" Text="{x:Static Properties:Resources.TextBlockTextRegularSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
+                        <TextBlock x:Name="regularSizeText" Text="{x:Static Properties:Resources.TextBlockTextRegularSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePre}" /><Hyperlink
-                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePre}"/><Hyperlink
+                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click" Style="{StaticResource hLink}">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresRegularSizePost}" />
                         </TextBlock>
                     </StackPanel>
                     <TextBlock x:Name="smallSample" Text="{x:Static Properties:Resources.smallSampleText}" Grid.Row="2" Grid.Column="2" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap"
@@ -234,7 +234,7 @@
                             </fabric:FabricIconControl.Style>
                         </fabric:FabricIconControl>
                         <TextBlock x:Name="largeTextResult" KeyboardNavigation.IsTabStop="True" Focusable="True" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
-                               AutomationProperties.HelpText="{x:Static Properties:Resources.largeTextResultAutomationHelpText}" VerticalAlignment="Center">
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.largeTextResultAutomationHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
@@ -258,13 +258,13 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
-                        <TextBlock x:Name="largeSizeText" Text="{x:Static Properties:Resources.TextBlockTextLargeSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
+                        <TextBlock x:Name="largeSizeText" Text="{x:Static Properties:Resources.TextBlockTextLargeSize}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePre}" /><Hyperlink
-                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click">
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePre}" /><Hyperlink
+                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" Click="hlWCAG_1_4_3_Click" Style="{StaticResource hLink}">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_3}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePost}" />
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresLargeSizePost}" />
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="4" Grid.Column="2">
@@ -305,7 +305,7 @@
                             </fabric:FabricIconControl.Style>
                         </fabric:FabricIconControl>
                         <TextBlock x:Name="nonTextObjectResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
-                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center">
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
@@ -329,15 +329,15 @@
                         </TextBlock>
                     </StackPanel>
                     <StackPanel Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="4 0">
-                        <TextBlock x:Name="nonTextObject" Text="{x:Static Properties:Resources.ColorContrast_NonTextObjectsText}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0"/>
+                        <TextBlock x:Name="nonTextObject" Text="{x:Static Properties:Resources.ColorContrast_NonTextObjectsText}" FontSize="{DynamicResource ConstLargeTextSize}" FontWeight="SemiBold" Margin="0 8 0 0" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <TextBlock  Margin="0 0 0 8">
                             <!--  Non-standard line breaks around the hyperlink are intentional to avoid whitespaces around the link -->
-                            <Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
-                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click">
+                            <Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPre}" /><Hyperlink
+                                TextDecorations="{x:Null}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" Click="hlWCAG_1_4_11_Click" Style="{StaticResource hLink}">
                                 <Run Text="{x:Static Properties:Resources.ColorContrast_TextBlock_WCAG_1_4_11}" />
-                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=TextBrushGray}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
-                            <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=LightGreyBrush}" CornerRadius="10">
-                                <TextBlock Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" Margin="6,4,6,4" Foreground="{DynamicResource ResourceKey=WindowTextBrush}"/>
+                            </Hyperlink><Run Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_RequiresNonTextObjectsPost}" />
+                            <Border Margin="6,0,0,-7" VerticalAlignment="Center" Background="{DynamicResource ResourceKey=BubbleBGBrush}" CornerRadius="10">
+                                <TextBlock Text="{x:Static Properties:Resources.TextNewForWCAG_2_1}" Margin="6,4,6,4" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                             </Border>
                         </TextBlock>
                     </StackPanel>

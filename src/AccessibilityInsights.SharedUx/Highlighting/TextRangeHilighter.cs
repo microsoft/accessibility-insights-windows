@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// constructor
         /// </summary>
         /// <param name="color"></param>
-        public TextRangeHilighter(HighlighterColor color = HighlighterColor.TextBrush)
+        public TextRangeHilighter(HighlighterColor color = HighlighterColor.PrimaryFGBrush)
         {
             this.Color = color;
             this.Hilighters = new List<Highlighter>();

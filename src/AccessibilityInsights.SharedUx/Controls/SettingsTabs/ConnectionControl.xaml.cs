@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Navigation;
 
 namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
@@ -38,6 +39,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         private RadioButton CreateRadioButton(IIssueReporting reporter)
         {
             RadioButton issueReportingOption = new RadioButton();
+            issueReportingOption.Foreground = Application.Current.Resources["PrimaryFGBrush"] as SolidColorBrush;
             issueReportingOption.Content = reporter.ServiceName;
             issueReportingOption.Tag = reporter.StableIdentifier;
             issueReportingOption.Margin = new Thickness(2, 2, 2, 2);

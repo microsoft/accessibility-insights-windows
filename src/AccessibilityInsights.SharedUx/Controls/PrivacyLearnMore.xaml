@@ -16,6 +16,11 @@
                 RequestNavigate="Hyperlink_RequestNavigate" 
                 FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
                 TextDecorations="None">
+        <Hyperlink.Style>
+            <Style TargetType="Hyperlink" BasedOn="{StaticResource {x:Type Hyperlink}}">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
+            </Style>
+        </Hyperlink.Style>
         <Run Text="{x:Static Properties:Resources.PrivacyLearnMoreLink}" />
     </Hyperlink>
     <Run Text="{x:Static Properties:Resources.PrivacyLearnMore2}" />

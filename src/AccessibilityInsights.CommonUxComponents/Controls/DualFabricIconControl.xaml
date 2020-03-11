@@ -11,16 +11,16 @@
         <Style TargetType="local:FabricIconControl">
             <Style.Triggers>
                 <Trigger Property="GlyphName" Value="AlertSolid">
-                    <Setter Property="Foreground" Value="#CC0000"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="MapDirections">
-                    <Setter Property="Foreground" Value="#CC0000"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="IncidentTriangle">
-                    <Setter Property="Foreground" Value="#FF8C00"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WarningBrush}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="DOM">
-                    <Setter Property="Foreground" Value="#000000"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 </Trigger>
                 <Trigger Property="GlyphName" Value="{x:Null}">
                     <Setter Property="Visibility" Value="Collapsed"/>

@@ -21,6 +21,7 @@ namespace AccessibilityInsights
         public enum Theme
         {
             Light,
+            Dark,
             HighContrast
         }
 
@@ -55,6 +56,7 @@ namespace AccessibilityInsights
             Brushes = new Dictionary<Theme, Uri>()
             {
                 { Theme.Light, new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Light/Brushes.xaml", UriKind.Absolute) },
+                { Theme.Dark, new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Dark/Brushes.xaml", UriKind.Absolute) },
                 { Theme.HighContrast, new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/HighContrast/Brushes.xaml", UriKind.Absolute) }
             };
 
@@ -85,13 +87,13 @@ namespace AccessibilityInsights
             Resources.MergedDictionaries.Add(this.themeResourceDictionaty);
 
             // give the window a border if in high contrast mode
-            if (theme == Theme.Light)
+            if (theme == Theme.HighContrast)
             {
-                App.Current.MainWindow.BorderThickness = new Thickness(0);
+                App.Current.MainWindow.BorderThickness = new Thickness(4);
             }
             else
             {
-                App.Current.MainWindow.BorderThickness = new Thickness(4);
+                App.Current.MainWindow.BorderThickness = new Thickness(0);
             }
         }
 

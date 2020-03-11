@@ -15,7 +15,7 @@
     <UserControl.Resources>
         <ResourceDictionary Source="..\Resources\Styles.xaml"/>
     </UserControl.Resources>
-    <TabControl Name="tabControlInspect" BorderThickness="0" SelectionChanged="TabControl_SelectionChanged">
+    <TabControl Name="tabControlInspect" BorderThickness="0" SelectionChanged="TabControl_SelectionChanged" Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
         <TabItem Name="tabDetails" BorderThickness="1" Style="{StaticResource tbiInspectTabs}">
             <TabItem.Header>
                 <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextDetails}" Style="{StaticResource tbTabHead}"/>
@@ -42,7 +42,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="#A6A6A6" BorderThickness="0,0,0,1" >
+                <Border Margin="-1,0" Grid.Row="0" Grid.Column="0" BorderBrush="{DynamicResource ResourceKey=GenericBorderBrush}" BorderThickness="0,0,0,1" >
                     <Grid Margin="8,10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="30"/>
@@ -52,6 +52,7 @@
                            VerticalAlignment="Center" 
                            FontSize="{StaticResource ConstXXLTextSize}"
                            FontWeight="Bold" 
+                           Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                            TextWrapping="Wrap"
                            TextTrimming="CharacterEllipsis"
                            Height="30"
@@ -88,13 +89,13 @@
                                     <Button.ToolTip>
                                         <ToolTip Content="{x:Static Properties:Resources.btnSettingToolTip2}"/>
                                     </Button.ToolTip>
-                                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"/>
+                                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9"  VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                                     <Button.ContextMenu>
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
                                             <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 
-                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
+                                    Background="{DynamicResource ResourceKey=SecondaryBGBrush}" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
                                             <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"
-                                    Background="{DynamicResource ResourceKey=LightBackgroundBrush}"/>
+                                    Background="{DynamicResource ResourceKey=SecondaryBGBrush}"/>
                                         </ContextMenu>
                                     </Button.ContextMenu>
                                 </Button>

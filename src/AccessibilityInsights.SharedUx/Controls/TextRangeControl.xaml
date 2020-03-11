@@ -112,7 +112,7 @@
             </Border>
             <ListView x:Name="listAttributes"
                     BorderThickness="2"
-                    BorderBrush="#c8c8c8"
+                    BorderBrush="{DynamicResource ResourceKey=BorderBrush}"
                     Grid.Row="2"
                     AutomationProperties.LabeledBy="{Binding ElementName=lbAttributes}"
                     ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
@@ -148,7 +148,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Foreground" Value="#333333"/>
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>

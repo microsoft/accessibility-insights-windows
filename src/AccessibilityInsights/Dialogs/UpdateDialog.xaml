@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0" Background="{DynamicResource ResourceKey=LightGreyBrush}">
+            <Grid Grid.Column="0" Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
@@ -39,10 +39,10 @@
                 <TextBlock Text="{x:Static properties:Resources.btnUpdateNowText}" Margin="8px" LineHeight="15px"  FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
             </Button>
             <Button x:Name="btnUpdateLater" Click="UpdateLater_Click" Grid.Column="2" Style="{StaticResource BtnBlueSharpSquared}">
-                <TextBlock Text="{x:Static properties:Resources.btnUpdateLaterText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=WhiteTextBrush}" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{x:Static properties:Resources.btnUpdateLaterText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=BlueButtonFGBrush}" VerticalAlignment="Center"></TextBlock>
             </Button>
             <Button x:Name="btnReleaseNotes" Click="ReleaseNotes_Click" Grid.Column="3" Style="{StaticResource BtnBlueSharpSquared}">
-                <TextBlock Text="{x:Static properties:Resources.btnReleaseNotesText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=WhiteTextBrush}" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{x:Static properties:Resources.btnReleaseNotesText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=BlueButtonFGBrush}" VerticalAlignment="Center"></TextBlock>
             </Button>
         </Grid>
     </Border>

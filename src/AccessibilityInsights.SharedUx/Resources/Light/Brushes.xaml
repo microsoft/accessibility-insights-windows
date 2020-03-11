@@ -9,8 +9,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="#FFE81123"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DarkBorderBrush" Color="#E4E4E4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="DarkGreyTextBrush" Color="#333333"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#E4E4E4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#333333"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>
@@ -20,15 +20,15 @@
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="KeyBGBrush" Color="#575757"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>
     <LinearGradientBrush po:Freeze="True" x:Key="LeftNavBarBrush" StartPoint="0,0" EndPoint="10,0" >
         <GradientStop Color="#004280" Offset="0"/>
         <GradientStop Color="#000000" Offset="0.5"/>
     </LinearGradientBrush>
-    <SolidColorBrush po:Freeze="True" x:Key="TextBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TextBrushGray" Color="#6E6E6E"/>
-    <SolidColorBrush po:Freeze="True" x:Key="WindowTextBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SecondaryFGBrush" Color="#6E6E6E"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
@@ -37,17 +37,19 @@
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#EBEBEB"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrush" Color="#FF0078D4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushHover" Color="#FF0067B5"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonBlueBGBrushActive" Color="#FF005A9E"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderEmptyBGBrush" Color="#EBEBEB"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonBGBrush" Color="#FF0078D4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverBGBrush" Color="#FF0067B5"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonPressedBGBrush" Color="#FF005A9E"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonFGBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BlueButtonHoverFGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonGreyBGBrush" Color="#CCCCCC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightBackgroundBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonBGBrush" Color="#CCCCCC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightGreyBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#14000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>
@@ -68,4 +70,33 @@
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>
+
+    <!-- NEW SETTINGS -->
+    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">1</Thickness>
+
+    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>
+    <SolidColorBrush x:Key="WarningBrush" Color="#FF8C00"/>
+    <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#333333"/>
+    <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#333333"/>
+    <SolidColorBrush x:Key="SearchPanelBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6"/>
+    <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086"/>
+    <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E"/>
+    <SolidColorBrush x:Key="SelectionDropDownBorderBrush" Color="#ACACAC"/>
+    <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#ACACAC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#BEE6FD"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="#EAEAEA"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#EFF6FC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#F4F4F4"/>
 </ResourceDictionary>

@@ -210,9 +210,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
                         var bord = new Border()
                         {
-                            BorderBrush = Application.Current.Resources["DarkGreyTextBrush"] as SolidColorBrush,
+                            BorderBrush = Application.Current.Resources["SearchAndIconForegroundBrush"] as SolidColorBrush,
                             BorderThickness = new Thickness(2),
-                            Background = Application.Current.Resources["LightBackgroundBrush"] as SolidColorBrush,
+                            Background = Application.Current.Resources["SecondaryBGBrush"] as SolidColorBrush,
                             Width = 28,
                             Height = 28,
                             CornerRadius = new CornerRadius(28),
@@ -227,6 +227,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                                 Tag = el,                               
                                 HorizontalAlignment = HorizontalAlignment.Center,
                                 VerticalAlignment = VerticalAlignment.Center,
+                                Foreground = Application.Current.Resources["PrimaryFGBrush"] as SolidColorBrush,
                             };
                             if (TBCallback != null)
                             {

@@ -16,9 +16,9 @@
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
     <Border MaxHeight="700" MaxWidth="700" VerticalAlignment="Center"
-            Background="{DynamicResource ResourceKey=LightGreyBrush}"
+            Background="{DynamicResource ResourceKey=StartupPrimaryBGBrush}"
             BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
-            BorderBrush="{DynamicResource ResourceKey=TextBrush}">
+            BorderBrush="{DynamicResource ResourceKey=PrimaryFGBrush}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="8"/>
@@ -35,39 +35,39 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="18"/>
             </Grid.ColumnDefinitions>
-            <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=StartupSecondaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=StartupInnerBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <TextBlock Name="tbVideo" FontSize="22" Padding="16,10,16,0" FontWeight="Light" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
+                    <TextBlock Name="tbVideo" FontSize="22" Padding="16,10,16,0" FontWeight="Light" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
               <Run Text="{x:Static properties:Resources.tbVideoText1}"/>
                     </TextBlock>
-                    <TextBlock x:Name="videoDescription" Grid.Row="1" FontSize="12" Style="{StaticResource TbFocusable}" Padding="16,10" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
+                    <TextBlock x:Name="videoDescription" Grid.Row="1" FontSize="12" Style="{StaticResource TbFocusable}" Padding="16,10" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
                     <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.LabeledBy="{Binding ElementName=videoDescription}" VerticalAlignment="Top">
                         <Grid>
                             <Image Width="240" Height="135" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
                             <Border Opacity=".40" Name="bdOverlay">
                                 <Border.Style>
                                     <Style TargetType="Border">
-                                        <Setter Property="Background" Value="#403E3E"/>
+                                        <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupVideoBorder}"/>
                                         <Style.Triggers>
                                             <DataTrigger Binding="{Binding ElementName=btnVideo,Path=IsMouseOver}" Value="True">
-                                                <Setter Property="Background" Value="#0C5086"/>
+                                                <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupBackgroundBrush}"/>
                                             </DataTrigger>
                                         </Style.Triggers>
                                     </Style>
                                 </Border.Style>
                             </Border>
-                            <Border Width="20" Height="20" Background="#0C5086" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <fabric:FabricIconControl Foreground="#FFFFFF" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Border Width="20" Height="20" Background="{DynamicResource ResourceKey=StartupBackgroundBrush}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            <fabric:FabricIconControl Foreground="{DynamicResource ResourceKey=WhiteTextBrush}" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button>
                 </Grid>
             </Border>
-            <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="{DynamicResource ResourceKey=DarkBorderBrush}" BorderThickness="1">
+            <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=StartupSecondaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=StartupInnerBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="16"/>
@@ -86,12 +86,12 @@
                         <RowDefinition Height="48"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="22" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" FontWeight="Light">
+                    <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="22" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" FontWeight="Light">
                         <Run Text="{x:Static properties:Resources.shortcutsTitle}"/>
                     </TextBlock>
                     <TextBlock Grid.Row="1" Grid.ColumnSpan="8" Padding="16,10" TextWrapping="Wrap">
                         <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
-                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}">
+                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
                             <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.shortcutsDescription}" FontSize="12" FontWeight="Light"/>
                         </Hyperlink>  
                     </TextBlock>
@@ -105,7 +105,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="2" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}"/>
+                    <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="2" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="4" Grid.Column="1" Style="{StaticResource BrdrKey}">
                         <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,1">
                             <AutomationProperties.Name>
@@ -116,7 +116,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="4" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}"/>
+                    <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="4" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="6" Grid.Column="1" Style="{StaticResource BrdrKey}" Height="32" VerticalAlignment="Top">
                         <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,1">
                             <AutomationProperties.Name>
@@ -127,7 +127,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtActivateHk" Grid.Row="6" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}"/>
+                    <TextBlock Name="txtActivateHk" Grid.Row="6" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                 </Grid>
             </Border>
             <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
@@ -138,14 +138,14 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="14"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}" Padding="0"
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
                            FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
                     <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
                     <LineBreak/>
                     <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
                 </TextBlock>
             </Grid>
-                <CheckBox Grid.Column="1" Grid.Row="4" Content="{x:Static properties:Resources.ckbxShowContent}" Name="ckbxShow" FontSize="12" Foreground="{DynamicResource ResourceKey=DarkGreyTextBrush}"
+                <CheckBox Grid.Column="1" Grid.Row="4" Content="{x:Static properties:Resources.ckbxShowContent}" Name="ckbxShow" FontSize="12" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"
                           FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" IsChecked="True"/>
                 <Button Grid.Column="3" Grid.Row="4" x:Name="btnExit" Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static properties:AutomationIDs.StartUpModeExitButton}"
                         Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Content="{x:Static properties:Resources.StartUpModeControl_btnExit}" Style="{StaticResource BtnBlueRounded}"/>

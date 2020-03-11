@@ -128,6 +128,9 @@ namespace AccessibilityInsights
             // enable/disable telemetry
             if (ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
                 TelemetryController.EnableTelemetry();
+
+            // Update theming since it depends on config options
+            SetColorTheme();
         }
 
         /// <summary>

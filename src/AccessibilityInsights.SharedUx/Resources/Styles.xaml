@@ -67,7 +67,7 @@
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -92,6 +92,23 @@
     <Style TargetType="{x:Type Button}" x:Key="BtnNoAutoHelpText" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="AutomationProperties.HelpText" Value=" "/>
     </Style>
+    <Style TargetType="{x:Type Button}" x:Key="BtnActions" BasedOn="{StaticResource BtnStandard}">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonBGBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonHoverBGBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnNoDisabledBackground" BasedOn="{StaticResource BtnStandard}">
         <Setter Property="Template">
             <Setter.Value>
@@ -113,10 +130,10 @@
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnSave">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonBGBrush}"/>
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=BlueButtonFGBrush}"/>
         <Setter Property="Padding" Value="0,-2,0,0"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BtnBrderBrush}"/>
@@ -129,10 +146,10 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
@@ -155,7 +172,7 @@
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblFocusable" BasedOn="{StaticResource ResourceKey=VarStandardLabel}">
         <Setter Property="Focusable" Value="True"/>
@@ -164,24 +181,26 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetrySettingInfo">
         <Setter Property="FontSize" Value="10"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="TxtTelemetryDialogLabel">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXXLTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold" />
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogPrivacyStatement">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstSmallTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrushGray}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetryDialogText">
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstStandardTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBox}" x:Key="TxtBxText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
@@ -212,22 +231,22 @@
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="2,0"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=SecondaryBGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblToggle">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblH4">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnTabActive">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=BlueButtonBGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
@@ -239,58 +258,63 @@
         <Setter Property="FontSize" Value="11"/>
         <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
     </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="columnHeaderRow" BasedOn="{StaticResource VarStandardTextBlock}">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ColumnHeaderFGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=ColumnHeaderBGBrush}"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+    </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbRowStyle" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblRowStyle" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblFaint" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblDark" BasedOn="{StaticResource VarStandardLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbLine" BasedOn="{StaticResource VarStandardTextBlock}">
         <Setter Property="LineHeight" Value="18"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblXLHeader" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstXLTextSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblLarge" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstLargeTextSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader" >
         <Setter Property="FontSize" Value="{StaticResource ResourceKey=ConstLargeTextSize}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader2" BasedOn="{StaticResource VarStandardLabel}">
         <Setter Property="FontWeight" Value="SemiBold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblHeader3" BasedOn="{StaticResource VarStandardLabel}">
         <Setter Property="FontFamily" Value="Segoe UI"/>
         <Setter Property="FontWeight" Value="Bold"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbHeaderDark" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="tbLink">
@@ -309,10 +333,13 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="{x:Type Hyperlink}" x:Key="hLink" BasedOn="{StaticResource {x:Type Hyperlink}}">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
+    </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblLink">
         <Setter Property="Background" Value="{x:Null}"/>
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -326,7 +353,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Border BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabBorderBrush}">
+                    <Border BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabHorizontalBorderBrush}">
                         <Grid x:Name="gdTab">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4"/>
@@ -344,11 +371,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
-                        </Trigger>
-                        <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedTabBrush}"/>
-                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=ActiveBlueBrush}"/>
-                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -358,6 +381,11 @@
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabHoverBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedTabBrush}"/>
+                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=ActiveBlueBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTabFGBrush}"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Height" Value="42"/>
                             <Setter Property="Margin" Value="0,-3,0,0"/>
@@ -374,12 +402,11 @@
         <Setter Property="Width" Value="200"/>
         <Setter Property="Height" Value="32"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="BorderBrush" Value="Green"/>
         <Setter Property="FontSize" Value="{StaticResource ConstLargeTextSize}" />
     </Style>
     <Style TargetType="{x:Type Thumb}" x:Key="thbAutomatedChecks">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
-        <Setter Property="BorderBrush" Value="White"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=TabBorderBrush}"/>
@@ -402,7 +429,7 @@
                             <ContentPresenter />
                             <Thumb x:Name="PART_RightHeaderGripper" Style="{StaticResource thbAutomatedChecks}" Grid.Column="1"
                         HorizontalAlignment="Right"
-                        Width="2" BorderThickness="1"                       
+                        Width="2" BorderThickness="1"
                         Cursor="SizeWE"/>
                         </Grid>
                     </Border>
@@ -418,13 +445,42 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type GridViewColumnHeader}" x:Key="gvchTabStops">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
+                    <Border BorderThickness="0,0,1,1" BorderBrush="{DynamicResource ResourceKey=SecondaryFGBrush}" Background="Transparent" Margin="-2,0">
+                        <TextBlock x:Name="ContentHeader" Text="{TemplateBinding Content}" Padding="5,2,5,5" Width="{TemplateBinding Width}" TextAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}" />
+    </Style>
+    <Style x:Key="lviTabStops" TargetType="{x:Type ListViewItem}">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=TSRowHoverBGBrush}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <!-- CustomGridView related styles -->
     <Style TargetType="GridViewColumnHeader" x:Key="GvchNoContent">
         <Setter Property="Margin" Value="0,0,0,2"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type GridViewColumnHeader}">
-                    <Border Background="{DynamicResource ResourceKey=ColumnHeaderBGBrush}" Height="20"/>
+                    <Border Background="{DynamicResource ResourceKey=ColumnHeaderEmptyBGBrush}" Height="20"/>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
@@ -454,7 +510,7 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="TextBlock" x:Key="TbDataGridCellContent" BasedOn="{StaticResource VarStandardTextBlock}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Margin" Value="4,0"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
@@ -463,7 +519,7 @@
                 <Setter Property="FontStyle" Value="Italic" />
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=ListViewItem,Mode=FindAncestor},Path=IsSelected}" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedRowFGBrush}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
@@ -528,15 +584,15 @@
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtBlkText">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="LblH5">
         <Setter Property="FontSize" Value="11"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnClose">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=WindowBorderBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -554,7 +610,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="btnMinMax">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=WindowBorderBrush}"/>
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -649,7 +705,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
                 <Setter Property="BorderBrush" Value="White"/>
@@ -685,7 +741,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Label}" x:Key="lblAccordionHeader" BasedOn="{StaticResource VarHeaderLabel}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="0"/>
     </Style>
@@ -703,7 +759,7 @@
                             </Grid.ColumnDefinitions>
                             <Rectangle Fill="{DynamicResource ResourceKey=ButtonBackgroundBrush}"
                                                         Grid.ColumnSpan="2"/>
-                            <fabric:FabricIconControl x:Name="fabicnArrow" Grid.Column="1" GlyphName="ChevronUp" GlyphSize="Custom" Margin="4,0" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=TextBrush}" RenderTransformOrigin="0.5,0.5"/>
+                            <fabric:FabricIconControl x:Name="fabicnArrow" Grid.Column="1" GlyphName="ChevronUp" GlyphSize="Custom" Margin="4,0" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" RenderTransformOrigin="0.5,0.5"/>
                             <ContentPresenter x:Name="HeaderContent"
                                                 Grid.Column="0"
                                                 Margin="4,0,0,0"
@@ -770,6 +826,7 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedInspectTabBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}" />
                         </Trigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedInspectTabBrush}"/>
@@ -779,7 +836,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
@@ -833,7 +890,7 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="brdrActive" Property="BorderBrush" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
+                            <Setter TargetName="brdrActive" Property="BorderBrush" Value="{DynamicResource ResourceKey=BlueButtonBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SettingsTabBgBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </Trigger>
@@ -842,7 +899,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
@@ -903,7 +960,7 @@
         <Setter Property="ToolTip" Value="{Binding Content.Text, Mode=OneWay, RelativeSource={RelativeSource Self}}" />
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridSelectedBGBrush}"/>
             </Trigger>
         </Style.Triggers>
@@ -977,8 +1034,8 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnBlueBase">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonBGBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=BlueButtonFGBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
@@ -996,14 +1053,14 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushHover}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextHoverBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=BlueButtonHoverFGBrush}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonBlueBGBrushActive}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonPressedBGBrush}"/>
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=LightGreyBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
             </Trigger>
         </Style.Triggers>
@@ -1019,7 +1076,7 @@
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnGreySquared">
         <Setter Property="Background" Value="{DynamicResource ResourceKey=GreyBackgroundBrush}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
         <Setter Property="BorderThickness" Value="{DynamicResource ResourceKey=BtnBrdrThickness}"/>
@@ -1037,7 +1094,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonGreyBGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=ActionsButtonBGBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -1046,7 +1103,7 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=LargeTextBlockSize}"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -1058,7 +1115,7 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TbBaseWrap">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable" BasedOn="{StaticResource TbBaseWrap}">
@@ -1083,7 +1140,7 @@
     </Style>
     <Style TargetType="{x:Type Border}" x:Key="BrdrKey">
         <Setter Property="CornerRadius" Value="2"/>
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=KeyBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=StartupSampleKeyBGBrush}"/>
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=LeftNavBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
@@ -1105,7 +1162,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
-                    <Border Padding="8,4" x:Name="Border" Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
+                    <Border Padding="8,4" x:Name="Border" Background="{DynamicResource ResourceKey=SecondaryBGBrush}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="24"/>
@@ -1133,11 +1190,12 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type ContextMenu}" x:Key="menuPlainWhite">
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
-                    <Border Background="{DynamicResource ResourceKey=LightBackgroundBrush}" BorderBrush="Gray" BorderThickness="1">
-                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    <Border Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" BorderThickness="1">
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
@@ -1165,7 +1223,7 @@
                                 </Grid.ColumnDefinitions>
                                 <fabric:FabricIconControl Grid.Column="1" x:Name="fbiThumb" ShowInControlView="False" GlyphName="ToggleThumb" GlyphSize="Custom" FontSize="6" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="3,8,3,0"/>
                             </Grid>
-                            <Label x:Name="lblState" Padding="4,0,0,0" FontSize="11" VerticalAlignment="Center" Grid.Column="1"/>
+                            <Label x:Name="lblState" Padding="4,0,0,0" FontSize="11" VerticalAlignment="Center" Grid.Column="1" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
@@ -1203,7 +1261,7 @@
                             </Trigger.ExitActions>
                             <Setter TargetName="fbiFilled" Property="Visibility" Value="Visible"/>
                             <Setter TargetName="fbiBorder" Property="Visibility" Value="Collapsed"/>
-                            <Setter TargetName="fbiThumb" Property="Foreground" Value="{DynamicResource ResourceKey=LightBackgroundBrush}"/>
+                            <Setter TargetName="fbiThumb" Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryBGBrush}"/>
                             <Setter TargetName="lblState" Property="Content" Value="On"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
@@ -1260,7 +1318,7 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -1269,7 +1327,7 @@
                             </MultiTrigger.Conditions>
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter Property="FontWeight" Value="Bold"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
@@ -1280,7 +1338,7 @@
         </Setter>
     </Style>
     <Style x:Key="{x:Type colorpickers:ColorThumb}" TargetType="{x:Type colorpickers:ColorThumb}">
-        <Setter Property="PointerOutlineBrush" Value="#A6A6A6" />
+        <Setter Property="PointerOutlineBrush" Value="{DynamicResource ResourceKey=GenericBorderBrush}" />
         <Setter Property="PointerOutlineThickness" Value="1" />
         <Setter Property="Foreground" Value="{x:Null}"/>
         <Setter Property="ThumbColor" Value="Transparent" />

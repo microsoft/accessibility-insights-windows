@@ -20,12 +20,12 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label x:Name="lblIssueFiling" Grid.Row="0" Grid.Column="0" Margin="-4 15 0 7" VerticalAlignment="Center" FontSize="{StaticResource ConstXLTextSize}"
-                Content="{x:Static Properties:Resources.lblIssueFiling}" Focusable="True" IsTabStop="True"/>
+                Content="{x:Static Properties:Resources.lblIssueFiling}" Focusable="True" IsTabStop="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
             <TextBlock x:Name="connectionInstr" Grid.Row="1" MaxWidth="336" HorizontalAlignment="Left" FontSize="{StaticResource ConstStandardTextSize}"
-                        TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=TextBrushGray}" Focusable="True">
+                        TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Focusable="True">
                 <Run Text="{x:Static Properties:Resources.connectionInstrText}"/>
                <TextBlock>
-                    <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269">
+                    <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" Style="{StaticResource hLink}">
                         <Run Text="{x:Static Properties:Resources.issueFilingLink}"/>
                     </Hyperlink><Run Text="."/>
                 </TextBlock>

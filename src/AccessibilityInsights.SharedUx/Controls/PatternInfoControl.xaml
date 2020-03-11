@@ -16,6 +16,7 @@
         <TreeView x:Name="treePatterns" PreviewKeyDown="treePatterns_PreviewKeyDown"
                       AutomationProperties.Name="{x:Static Properties:Resources.treePatternsAutomationPropertiesName}"
                       BorderThickness="0" ContextMenuOpening="treePatterns_ContextMenuOpening"
+                      Background="Transparent"
                       MinHeight="40" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" SelectedItemChanged="treePatterns_SelectedItemChanged">
             <TreeView.ContextMenu>
@@ -29,7 +30,9 @@
                 <Style TargetType="TreeViewItem" BasedOn="{StaticResource ResourceKey=tviStandard}">
                     <Setter Property="AutomationProperties.Name" Value="{Binding Path=NodeValue, Mode=OneWay}"/>
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}"/>
+                    <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.SetterValueYouCanInspect}"/>
+                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                     <EventSetter Event="KeyUp" Handler="TreeViewItem_KeyUp"></EventSetter>
                     <EventSetter Event="Expanded" Handler="TreeViewItem_Expanded"/>
                     <EventSetter Event="Collapsed" Handler="TreeViewItem_Collapsed"/>
@@ -39,18 +42,13 @@
                 <HierarchicalDataTemplate ItemsSource="{Binding Path=Properties}">
                     <StackPanel Orientation="Horizontal" Margin="0,1">
                         <TextBlock Text="{Binding Path=NodeValue}" VerticalAlignment="Center" ToolTip="{Binding Path=ToolTip}" Style="{DynamicResource VarStandardTextBlock}"/>
-                        <Button x:Name="buttonAction" Command="{Binding ClickCommand}"
+                        <Button x:Name="buttonAction" Command="{Binding ClickCommand}" Style="{StaticResource BtnActions}"
                                 VerticalContentAlignment="Center" VerticalAlignment="Center"
                                 Visibility="{Binding Path=ActionVisibility, BindsDirectlyToSource=True}"
                                 Content="{Binding Path=ActionName, BindsDirectlyToSource=True}"
                                 IsEnabled="True" Padding="4,0" FontWeight="Normal"
                                 Height="18" IsTabStop="False"
                                 Margin="5,0,0,0">
-                            <Button.Style>
-                                <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
-                                    <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonGreyBGBrush}"/>
-                                </Style>
-                            </Button.Style>
                         </Button>
                     </StackPanel>
                 </HierarchicalDataTemplate>
@@ -58,6 +56,7 @@
         </TreeView>
         <Label x:Name="lbNoPattern" Content="{x:Static Properties:Resources.lbNoPatternContent}"
                    Grid.Row="1"
+                   Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                    Style="{DynamicResource LblFocusable}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>

@@ -97,6 +97,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
                 config.CoreProperties.ToArray());
             ConfirmEnumerablesMatchExpectations(new int[] { }, config.CoreTPAttributes.ToArray());
             Assert.IsFalse(config.DisableTestsInSnapMode);
+            Assert.IsFalse(config.EnableDarkMode);
             Assert.IsTrue(config.EnableTelemetry);
             Assert.IsTrue(config.EventRecordPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(FontSize.Standard, config.FontSize);
@@ -129,7 +130,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
-            Assert.AreEqual(36, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(37, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -146,6 +147,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json", testProvider);
 
             ConfirmOverrideConfigMatchesExpectation(config,
+                enableDarkMode: true,
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
                 releaseChannel: ReleaseChannel.Canary
@@ -159,7 +161,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
             Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
-            ReleaseChannel? releaseChannel = null)
+            ReleaseChannel? releaseChannel = null, bool enableDarkMode = false)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -170,6 +172,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
                 config.CoreProperties.ToArray());
             ConfirmEnumerablesMatchExpectations( new int[] { }, config.CoreTPAttributes.ToArray());
             Assert.IsFalse(config.DisableTestsInSnapMode);
+            Assert.AreEqual(config.EnableDarkMode, enableDarkMode);
             Assert.IsFalse(config.EnableTelemetry);
             Assert.AreEqual(@"C:\blah\AccessibilityInsightsEventFiles", config.EventRecordPath);
             Assert.AreEqual(FontSize.Small, config.FontSize);

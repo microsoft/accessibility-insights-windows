@@ -14,7 +14,7 @@
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
     <Grid Width="502" HorizontalAlignment="Center" VerticalAlignment="Center"
-              Background="{DynamicResource ResourceKey=LightBackgroundBrush}">
+              Background="{DynamicResource ResourceKey=SecondaryBGBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="19"/>
             <RowDefinition Height="Auto"/>

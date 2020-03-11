@@ -157,7 +157,7 @@ namespace AccessibilityInsights
         {
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
 
-            SetHighContrastTheme();
+            SetColorTheme();
 
             ///in case we need to do any debugging with elevated app
             SupportDebugging();
@@ -206,18 +206,37 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void SystemEvents_UserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
         {
-            if (e.Category == UserPreferenceCategory.Color || e.Category == UserPreferenceCategory.VisualStyle)
+            // TODO DHT: General triggers when changing dark mode--is it too expensive?
+            if (e.Category == UserPreferenceCategory.Color || 
+                e.Category == UserPreferenceCategory.VisualStyle ||
+                e.Category == UserPreferenceCategory.General)
             {
-                SetHighContrastTheme();
+                SetColorTheme();
             }
         }
 
         /// <summary>
-        /// Choose theme based on system theme
+        /// Choose color theme based on system settings
         /// </summary>
-        private static void SetHighContrastTheme()
+        private static void SetColorTheme()
         {
-            (App.Current as App).SetColorTheme(SystemParameters.HighContrast ? App.Theme.HighContrast : App.Theme.Light);
+            App.Theme theme;
+
+            if (SystemParameters.HighContrast)
+            {
+                theme = App.Theme.HighContrast;
+            }
+            else
+            {
+                // Due to initialization order, config will be null the first time this is called
+                ConfigurationModel config = ConfigurationManager.GetDefaultInstance()?.AppConfig;
+
+                theme = (config != null && config.EnableDarkMode && NativeMethods.IsDarkModeEnabled())
+                    ? App.Theme.Dark
+                    : App.Theme.Light;
+            }
+
+            (App.Current as App).SetColorTheme(theme);
         }
 
         /// <summary>
