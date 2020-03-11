@@ -1469,48 +1469,4 @@
             </Setter.Value>
         </Setter>
     </Style>
-    <Style x:Key="commandBarComboBox" TargetType="{x:Type ComboBox}">
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
-        <Setter Property="VerticalAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="ComboBox">
-                    <Grid>
-                        <ToggleButton Grid.Column="2" Focusable="false" IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}">
-                            <ToggleButton.Template>
-                                <ControlTemplate>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="5*"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Border x:Name="Span" Grid.ColumnSpan="2" Background="{DynamicResource ResourceKey=WindowBorderBrush}" BorderBrush="{DynamicResource ResourceKey=SelectionDropDownBorderBrush}" BorderThickness="1"/>
-                                        <Path x:Name="Glyph" Grid.Column="1" Fill="{DynamicResource ResourceKey=WindowBorderTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" Data="M 0 0 L 3 5 L 6 0 L 5 0 L 3 4 L 1 0 Z"/>
-                                    </Grid>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="ToggleButton.IsMouseOver" Value="False">
-                                            <Setter TargetName="Span" Property="Background" Value="{DynamicResource ResourceKey=WindowBorderBrush}"/>
-                                        </Trigger>
-                                        <Trigger Property="ToggleButton.IsMouseOver" Value="True">
-                                            <Setter TargetName="Span" Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </ToggleButton.Template>
-                        </ToggleButton>
-                        <ContentPresenter Name="ContentSite" IsHitTestVisible="False" Content="{TemplateBinding SelectionBoxItem}" ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}" ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}" Margin="3"/>
-                        <TextBox x:Name="PART_EditableTextBox" Visibility="Hidden"/>
-                        <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}" AllowsTransparency="False" Focusable="False" PopupAnimation="Slide">
-                            <Grid  Name="DropDown" SnapsToDevicePixels="True" MinWidth="{TemplateBinding ActualWidth}">
-                                <Border x:Name="DropDownBorder" Background="{DynamicResource ResourceKey=SelectionDropDownListBGBrush}"/>
-                                <ScrollViewer SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True"/>
-                                </ScrollViewer>
-                            </Grid>
-                        </Popup>
-                    </Grid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 </ResourceDictionary>
