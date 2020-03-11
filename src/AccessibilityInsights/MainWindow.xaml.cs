@@ -226,13 +226,14 @@ namespace AccessibilityInsights
             {
                 theme = App.Theme.HighContrast;
             }
-            else if (NativeMethods.IsDarkModeEnabled())
-            {
-                theme = App.Theme.Dark;
-            }
             else
             {
-                theme = App.Theme.Light;
+                // Due to initialization order, config will be null the first time this is called
+                ConfigurationModel config = ConfigurationManager.GetDefaultInstance()?.AppConfig;
+
+                theme = (config != null && config.EnableDarkMode && NativeMethods.IsDarkModeEnabled())
+                    ? App.Theme.Dark
+                    : App.Theme.Light;
             }
 
             (App.Current as App).SetColorTheme(theme);
