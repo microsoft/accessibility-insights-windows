@@ -69,7 +69,7 @@
                                 <TextBlock Name="tbNode" VerticalAlignment="Center" Text="{Binding Header}" Visibility="{Binding TextVisibility}" Margin="0,0,4,0" FontSize="11" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                 <Button VerticalAlignment="Center" Visibility="{Binding ButtonVisibility}" Name="btnConfig" Click="btnConfig_Click" IsEnabled="{Binding IsEditEnabled}" Background="Transparent" BorderThickness="0"
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.btnConfigAutomationPropertiesHelpText}">
-                                    <TextBlock TextDecorations="Underline" Foreground="Blue" Text="{Binding ButtonText}" FontSize="11"/>
+                                    <TextBlock TextDecorations="Underline" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}" Text="{Binding ButtonText}" FontSize="11"/>
                                 </Button>
                             </StackPanel>
                         </HierarchicalDataTemplate>
