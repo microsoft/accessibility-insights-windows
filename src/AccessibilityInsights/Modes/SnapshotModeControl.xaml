@@ -12,7 +12,7 @@
              xmlns:Util="clr-namespace:AccessibilityInsights.SharedUx.Utilities;assembly=AccessibilityInsights.SharedUx"
              mc:Ignorable="d" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SnapshotModeControl}"
              AutomationProperties.Name="{x:Static properties:Resources.SnapshotModeControlAutomationPropertiesName}" Height="600" Width="600">
-    <Grid Panel.ZIndex="3">
+    <Grid Panel.ZIndex="1">
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
