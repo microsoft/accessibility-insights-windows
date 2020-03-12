@@ -931,7 +931,8 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type DataGridColumnHeader}" x:Key="dgchStyle">
-        <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridBGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=ColumnHeaderBGBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ColumnHeaderFGBrush}"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=SmallTextBlockSize}"/>
         <Setter Property="Padding" Value="4,0"/>
@@ -944,11 +945,14 @@
     <Style TargetType="{x:Type DataGridRow}" x:Key="dgrStyle">
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+        <Setter Property="Background" Value="Transparent"/>
     </Style>
     <Style x:Key="DataGridTextCellStyle" TargetType="{x:Type TextBlock}">
         <Setter Property="VerticalAlignment" Value="Center" />
         <Setter Property="Padding" Value="4,0"/>
         <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=DataGridBGGrush}"/>
     </Style>
     <Style TargetType="{x:Type DataGridCell}" x:Key="dgcStyle">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>

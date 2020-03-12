@@ -53,7 +53,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#444C52"/>         <!-- (UPDATED) Background of data grid items (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (UPDATED) Background of selected item in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="Transparent"/> <!-- (UPDATED) Brush for border of data grid (event view) -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Border color on expandos -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#22272B"/> <!-- (UPDATED) Background color of selected tab (Details, HowToFix) -->
