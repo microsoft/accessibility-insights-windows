@@ -53,7 +53,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#444C52"/>         <!-- (UPDATED) Background of data grid items (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (UPDATED) Background of selected item in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#6BADE0"/>       <!-- (UPDATED) Text color for links -->
-    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>     <!-- Brush for border of data grid -->
+    <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="Transparent"/> <!-- (UPDATED) Brush for border of data grid (event view) -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>              <!-- Foreground color in tab (search bar?) -->
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Border color on expandos -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#22272B"/> <!-- (UPDATED) Background color of selected tab (Details, HowToFix) -->
@@ -75,7 +75,7 @@
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>        <!-- (UPDATED) Thickness of border around search panel -->
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
 
-    <SolidColorBrush x:Key="EventStartBrush" Color="#A80000"/>                          <!-- Color of "start recording" button in events -->
+    <SolidColorBrush x:Key="EventStartBrush" Color="#CD4A45"/>                          <!-- (UPDATED) Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#D67F3C"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="#FFFFFF"/>             <!-- (UPDATED) Color of various icons -->
     <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="#B2B3B5"/>                 <!-- (UPDATED) Color of placeholder text in search box -->

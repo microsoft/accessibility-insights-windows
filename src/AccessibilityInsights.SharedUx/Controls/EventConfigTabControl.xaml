@@ -42,7 +42,7 @@
                            AutomationProperties.HelpText="{x:Static Properties:Resources.tbElementAutomationPropertiesHelpText}"/>
             </Grid>
         </Border>
-        <Label Grid.Row="1" FontSize="11" Content="{x:Static Properties:Resources.EventConfigTabControl_SelectEvents}" Margin="8,8,4,4" Padding="0" FontWeight="SemiBold"/>
+        <Label Grid.Row="1" FontSize="11" Content="{x:Static Properties:Resources.EventConfigTabControl_SelectEvents}" Margin="8,8,4,4" Padding="0" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Grid.Row="2">
             <Grid>
                 <Grid.RowDefinitions>
@@ -66,10 +66,10 @@
                      ItemsSource="{Binding Children}">
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
                                 <CheckBox VerticalAlignment="Center" Visibility="{Binding TextVisibility}" IsChecked="{Binding IsChecked}" Margin="0,0,4,0" IsEnabled="{Binding IsEditEnabled}" IsTabStop="False" AutomationProperties.LabeledBy="{Binding ElementName=tbNode}"/>
-                                <TextBlock Name="tbNode" VerticalAlignment="Center" Text="{Binding Header}" Visibility="{Binding TextVisibility}" Margin="0,0,4,0" FontSize="11"/>
+                                <TextBlock Name="tbNode" VerticalAlignment="Center" Text="{Binding Header}" Visibility="{Binding TextVisibility}" Margin="0,0,4,0" FontSize="11" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                 <Button VerticalAlignment="Center" Visibility="{Binding ButtonVisibility}" Name="btnConfig" Click="btnConfig_Click" IsEnabled="{Binding IsEditEnabled}" Background="Transparent" BorderThickness="0"
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.btnConfigAutomationPropertiesHelpText}">
-                                    <TextBlock TextDecorations="Underline" Foreground="Blue" Text="{Binding ButtonText}" FontSize="11"/>
+                                    <TextBlock TextDecorations="Underline" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}" Text="{Binding ButtonText}" FontSize="11"/>
                                 </Button>
                             </StackPanel>
                         </HierarchicalDataTemplate>
@@ -82,7 +82,7 @@
                     </TreeView.ItemContainerStyle>
                 </TreeView>
                 <CheckBox Grid.Row="1" Content="{x:Static Properties:Resources.EventConfigTabControl_ckbxAllEvents}"
-                          Margin="27,2" FontSize="11" Name="ckbxAllEvents"
+                          Margin="27,2" FontSize="11" Name="ckbxAllEvents" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                           Checked="ckbxAllEvents_Checked" Unchecked="ckbxAllEvents_Unchecked"
                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
             </Grid>

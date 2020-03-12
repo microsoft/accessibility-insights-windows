@@ -44,7 +44,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Label VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" x:Name="labelEvents" Padding="0" Margin="0" Content="{x:Static Properties:Resources.labelEventsContent}" />
+            <Label VerticalAlignment="Center" FontSize="15" FontWeight="SemiBold" x:Name="labelEvents" Padding="0" Margin="0" Content="{x:Static Properties:Resources.labelEventsContent}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
             <ItemsControl WindowChrome.IsHitTestVisibleInChrome="True" 
                           BorderBrush="{x:Null}"  
                           Grid.Column="1"
