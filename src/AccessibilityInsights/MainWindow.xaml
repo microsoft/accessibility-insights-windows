@@ -272,7 +272,7 @@
                 <controls:NamedPane x:Name="ctrlNamedCommandbar"
                                     KeyboardNavigation.DirectionalNavigation="Contained"
                                     KeyboardNavigation.TabNavigation="Cycle"
-                                    Grid.Row="1" Grid.RowSpan="2" Height="Auto" Panel.ZIndex="2"
+                                    Grid.Row="1" Grid.RowSpan="2" Height="Auto"
                                     BorderThickness="0" Visibility="Collapsed"
                                     AutomationProperties.Name="{x:Static properties:Resources.ctrlNamedCommandbarAutomationPropertiesName}">
                     <controls:NamedPane.InputBindings>
