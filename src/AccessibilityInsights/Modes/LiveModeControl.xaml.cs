@@ -180,7 +180,7 @@ namespace AccessibilityInsights.Modes
 
                     this.ctrlHierarchy.IsEnabled = false;
                     ctrlHierarchy.Visibility = Visibility.Visible;
-                    spInstructions.Visibility = Visibility.Collapsed;
+                    svInstructions.Visibility = Visibility.Collapsed;
                     await Task.Run(() =>
                     {
                         CaptureAction.SetLiveModeDataContext(ecId, Configuration.TreeViewMode);
@@ -304,7 +304,7 @@ namespace AccessibilityInsights.Modes
         public void Clear()
         {
             ctrlHierarchy.Visibility = Visibility.Collapsed;
-            spInstructions.Visibility = Visibility.Visible;
+            svInstructions.Visibility = Visibility.Visible;
 
             this.SelectedInHierarchyElement = null;
             this.ElementContext = null;
