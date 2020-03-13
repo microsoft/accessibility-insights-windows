@@ -33,16 +33,16 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <fabric:FabricIconControl Grid.Column="0" VerticalAlignment="Center" Margin="8px 4px 4px 0" GlyphName="Info" GlyphSize="Small" Foreground="{DynamicResource ResourceKey=IconBrush}"></fabric:FabricIconControl>
-                <TextBlock x:Name="txtUpdateNotice" Grid.Column="1" Margin="0 0 24px 0" LineHeight="15px" FontSize="11px" VerticalAlignment="Center"></TextBlock>
+                <TextBlock x:Name="txtUpdateNotice" Grid.Column="1" Margin="0 0 24px 0" LineHeight="15px" FontSize="11px" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"></TextBlock>
             </Grid>
             <Button x:Name="btnUpdateNow" Click="UpdateNow_Click" Grid.Column="1" Style="{StaticResource BtnBlueSharpSquared}">
                 <TextBlock Text="{x:Static properties:Resources.btnUpdateNowText}" Margin="8px" LineHeight="15px"  FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
             </Button>
             <Button x:Name="btnUpdateLater" Click="UpdateLater_Click" Grid.Column="2" Style="{StaticResource BtnBlueSharpSquared}">
-                <TextBlock Text="{x:Static properties:Resources.btnUpdateLaterText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=BlueButtonFGBrush}" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{x:Static properties:Resources.btnUpdateLaterText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
             </Button>
             <Button x:Name="btnReleaseNotes" Click="ReleaseNotes_Click" Grid.Column="3" Style="{StaticResource BtnBlueSharpSquared}">
-                <TextBlock Text="{x:Static properties:Resources.btnReleaseNotesText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" Foreground="{DynamicResource ResourceKey=BlueButtonFGBrush}" VerticalAlignment="Center"></TextBlock>
+                <TextBlock Text="{x:Static properties:Resources.btnReleaseNotesText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
             </Button>
         </Grid>
     </Border>
