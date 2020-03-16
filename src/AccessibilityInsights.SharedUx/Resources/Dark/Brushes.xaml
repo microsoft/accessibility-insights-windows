@@ -48,7 +48,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#2B3034"/>        <!-- (UPDATED) Secondary background brush (not u-->
     <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast, borders of ADO's "disconnect" button -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->
-    <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#A6A6A6"/>     <!-- Background of disabled button (but I can't find any examples) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#656E75"/>     <!-- (UPDATED) Background of disabled button (example: Later button in update dialog on mandatory update) -->
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#22272B"/>          <!-- (UPDATED) Primary background brush (not in startup mode) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBGBrush" Color="#444C52"/>         <!-- (UPDATED) Background of data grid items (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#6D767E"/> <!-- (UPDATED) Background of selected item in data grid (list of properties) -->
