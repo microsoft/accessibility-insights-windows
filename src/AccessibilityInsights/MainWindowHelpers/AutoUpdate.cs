@@ -95,8 +95,11 @@ namespace AccessibilityInsights
         private UpdateDialog CreateUpgradeDialog(Uri releaseNotesUri, AutoUpdateOption updateOption)
         {
             UpdateDialog dialog = new UpdateDialog(releaseNotesUri);
-            dialog.btnUpdateLater.IsEnabled = (updateOption != AutoUpdateOption.RequiredUpgrade);
-            dialog.txtUpdateNotice.Text = (updateOption == AutoUpdateOption.RequiredUpgrade) ? Properties.Resources.MainWindow_ShowUpgradeDialog_An_update_is_required : Properties.Resources.MainWindow_ShowUpgradeDialog_An_update_is_available;
+            if (updateOption == AutoUpdateOption.RequiredUpgrade)
+            {
+                dialog.btnUpdateLater.Visibility = Visibility.Collapsed;
+                dialog.txtUpdateNotice.Text = Properties.Resources.MainWindow_ShowUpgradeDialog_An_update_is_required;
+            }
 
             // center horizontally - does not work when maximized on secondary screen
             Point topLeft = this.WindowState == WindowState.Maximized ?
