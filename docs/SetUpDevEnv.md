@@ -5,7 +5,7 @@
 ### Install Visual Studio
 1. Install Visual Studio 2017 from [here](https://visualstudio.microsoft.com/vs/)
    - Choose ".NET desktop development" option
-   - Add ".NET Framework 4.7.1 development tools"
+   - Add ".NET Framework 4.7.2 development tools"
 
 ### Install Wix tools
 To build the MSI project, you need to install the Wix Toolset extension for Visual Studio. The extension is available in the Visual Studio marketplace and can be found [here](http://wixtoolset.org/releases/).
