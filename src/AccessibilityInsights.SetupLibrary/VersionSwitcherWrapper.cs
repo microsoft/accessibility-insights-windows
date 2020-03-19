@@ -52,7 +52,7 @@ namespace AccessibilityInsights.SetupLibrary
                 string installedFolder = GetInstalledVersionSwitcherFolder();
                 string temporaryFolder = GetTemporaryVersionSwitcherFolder();
                 RemoveFolder(temporaryFolder);
-                RecursiveTreeCopy(installedFolder, temporaryFolder, fileLocks);
+                TreeCopy(installedFolder, temporaryFolder, fileLocks);
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
@@ -118,6 +118,30 @@ namespace AccessibilityInsights.SetupLibrary
                 string destFile = Path.Combine(dest, fileInfo.Name);
                 fileInfo.CopyTo(destFile, true);
                 fileLocks.Add(File.OpenRead(destFile));
+                EnsureFilesAreIdentical(file, destFile);
+            }
+        }
+
+        private static void EnsureFilesAreIdentical(string file1, string file2)
+        {
+            byte[] file1Bytes = File.ReadAllBytes(file1);
+            byte[] file2Bytes = File.ReadAllBytes(file2);
+
+            bool matches = file1Bytes.Length == file2Bytes.Length;
+
+            for (int index = 0; matches && index < file1Bytes.Length; index++)
+            {
+                if (file1Bytes[index] != file2Bytes[index])
+                {
+                    matches = false;
+                }
+            }
+
+            if (!matches)
+            {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                throw new IOException("File " + file1 + " does not match " + file2);
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
         }
 
