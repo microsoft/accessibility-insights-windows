@@ -103,9 +103,9 @@
                         VerticalAlignment="Top" Height="110" Width="200">
                     <StackPanel Background="{DynamicResource ResourceKey=CCABackgroundBrush}">
                         <StackPanel Orientation="Vertical" Margin="10,6,0,0" MinWidth="132">
-                            <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14"/>
+                            <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                             <TextBlock x:Name="output" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
-                               AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
+                               AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                                AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
                                KeyboardNavigation.TabIndex="3" Focusable="True"
                                Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}">

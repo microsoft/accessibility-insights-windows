@@ -27,6 +27,7 @@
             </ComboBox>
             <TextBox x:Name="colorTb" Width="100px" Height="32" BorderBrush="{DynamicResource ResourceKey=BorderBrush}" FontSize="17"
                     Text="{Binding StoredColor, Converter={converters:ColorStringConverter}, FallbackValue=#FFFFFF}"
+                    Background="{DynamicResource ResourceKey=PrimaryBGBrush}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" CaretBrush="{DynamicResource ResourceKey=PrimaryFGBrush}"
                     VerticalContentAlignment="Center" TextAlignment="Center"
                     AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.colorTbAutomationPropertiesName}'}" IsTabStop="True" Focusable="True"
                     PreviewTextInput="colorTb_PreviewTextInput">
