@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace AccessibilityInsights.SetupLibrary
 {
@@ -124,20 +125,7 @@ namespace AccessibilityInsights.SetupLibrary
 
         private static void EnsureFilesAreIdentical(string file1, string file2)
         {
-            byte[] file1Bytes = File.ReadAllBytes(file1);
-            byte[] file2Bytes = File.ReadAllBytes(file2);
-
-            bool matches = file1Bytes.Length == file2Bytes.Length;
-
-            for (int index = 0; matches && index < file1Bytes.Length; index++)
-            {
-                if (file1Bytes[index] != file2Bytes[index])
-                {
-                    matches = false;
-                }
-            }
-
-            if (!matches)
+            if (!File.ReadAllBytes(file1).SequenceEqual(File.ReadAllBytes(file2)))
             {
 #pragma warning disable CA1303 // Do not pass literals as localized parameters
                 throw new IOException("File " + file1 + " does not match " + file2);
