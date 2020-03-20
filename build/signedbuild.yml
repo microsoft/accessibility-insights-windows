@@ -18,8 +18,10 @@ jobs:
   variables:
     PublicRelease: 'false'
   steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
@@ -75,8 +77,10 @@ jobs:
   variables:
     PublicRelease: 'false'
   steps:
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
@@ -199,8 +203,10 @@ jobs:
     inputs:
       signType: real
 
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
