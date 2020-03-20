@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace AccessibilityInsights.SetupLibrary
 {
@@ -52,7 +53,7 @@ namespace AccessibilityInsights.SetupLibrary
                 string installedFolder = GetInstalledVersionSwitcherFolder();
                 string temporaryFolder = GetTemporaryVersionSwitcherFolder();
                 RemoveFolder(temporaryFolder);
-                RecursiveTreeCopy(installedFolder, temporaryFolder, fileLocks);
+                TreeCopy(installedFolder, temporaryFolder, fileLocks);
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
@@ -118,6 +119,17 @@ namespace AccessibilityInsights.SetupLibrary
                 string destFile = Path.Combine(dest, fileInfo.Name);
                 fileInfo.CopyTo(destFile, true);
                 fileLocks.Add(File.OpenRead(destFile));
+                EnsureFilesAreIdentical(file, destFile);
+            }
+        }
+
+        private static void EnsureFilesAreIdentical(string file1, string file2)
+        {
+            if (!File.ReadAllBytes(file1).SequenceEqual(File.ReadAllBytes(file2)))
+            {
+#pragma warning disable CA1303 // Do not pass literals as localized parameters
+                throw new IOException("File " + file1 + " does not match " + file2);
+#pragma warning restore CA1303 // Do not pass literals as localized parameters
             }
         }
 
