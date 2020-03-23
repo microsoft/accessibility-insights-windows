@@ -22,8 +22,10 @@ jobs:
         filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
         arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
 
-  - task: NuGetToolInstaller@0
-    displayName: 'Use NuGet 4.3.0'
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
