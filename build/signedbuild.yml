@@ -273,21 +273,6 @@ jobs:
       rerunFailedTests: true
       testFiltercriteria: 'TestCategory!=NoStrongName'
 
-  - task: PublishSymbols@1
-    displayName: 'Index Sources'
-    inputs:
-      SearchPattern: '**\bin\**\*.pdb'
-    continueOnError: true
-
-  - task: ms-vscs-artifact.build-tasks.artifactSymbolTask-1.artifactSymbolTask@0
-    displayName: 'Publish Symbols'
-    inputs:
-      symbolServiceURI: 'https://microsoft.artifacts.visualstudio.com/DefaultCollection'
-      requestName: 'CollectionId/$(System.CollectionId)/ProjectId/$(System.TeamProjectId)/BuildId/$(Build.BuildId)'
-      sourcePath: '$(Build.ArtifactStagingDirectory)'
-      detailedLog: true
-      usePat: false
-
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
