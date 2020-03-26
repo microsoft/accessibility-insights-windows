@@ -294,7 +294,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return new ConnectionCache(configString);
         }
 
-        public static ConnectionInfo CreateConnectionInfo(Uri serverUri, TeamProject project, Team team)
+        public static ConnectionInfo CreateConnectionInfo(Uri serverUri, TeamProject project, AdoTeam team)
         {
             return new ConnectionInfo(serverUri, project, team);
         }

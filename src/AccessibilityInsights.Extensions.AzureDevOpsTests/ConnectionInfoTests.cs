@@ -15,7 +15,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         private static readonly Guid TeamGuid = new Guid("{4A56A1A0-B99F-49CA-986D-9C6D7FA6137D}");
         private static readonly Guid ProjectGuid = new Guid("{71B41AF3-4C55-44EB-A1D4-3B0973C07EA3}");
         private static readonly TeamProject TestProject = new TeamProject("My Project", ProjectGuid);
-        private static readonly Team TestTeam = new Team("My Team", TeamGuid, TestProject);
+        private static readonly AdoTeam TestTeam = new AdoTeam("My Team", TeamGuid, TestProject);
         private static readonly Uri TestUri = new Uri("https://www.bing.com");
         private static readonly DateTime LastUsage = new DateTime(2018, 12, 23, 16, 19, 30, DateTimeKind.Utc);
 

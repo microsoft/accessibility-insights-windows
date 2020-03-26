@@ -15,7 +15,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         // * fields exists for JSON serialization (don't serialize the public counterparts)
         public Uri ServerUri { get; set; }
         public TeamProject Project { get; set; }
-        public Team Team { get; set; }
+        public AdoTeam Team { get; set; }
         public DateTime LastUsage { get; set; }
 
         // This is the time we'll use if no other time is specified. We use this instead of
@@ -42,7 +42,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="serverUrl">Uri of the server</param>
         /// <param name="project">Identifies the project--null is a valid value</param>
         /// <param name="team">Identifies the team--null is a valid value</param>
-        public ConnectionInfo(Uri serverUrl, TeamProject project, Team team)
+        public ConnectionInfo(Uri serverUrl, TeamProject project, AdoTeam team)
         {
             ServerUri = serverUrl;
             if (project != null)
@@ -52,8 +52,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
             if (team != null)
             {
-                Team typedTeam = team as Team;
-                Team = typedTeam ?? new Team(team);
+                AdoTeam typedTeam = team as AdoTeam;
+                Team = typedTeam ?? new AdoTeam(team);
             }
         }
 
