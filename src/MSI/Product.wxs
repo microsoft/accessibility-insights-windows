@@ -117,27 +117,38 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                    <!-- AzureDevOps Extension Assemblies -->
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll" Id="extensions_AzureDevOps_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll.config" />
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Ben.Demystifier.dll" Id="demystifier_extension" />
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" Id="activedirectory_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll" Id="jsonwebtokens.extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Logging.dll" Id="logging_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.IdentityModel.Tokens.dll" Id="tokens_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.ServiceBus.dll" Id="servicebus_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Build2.WebApi.dll" Id="build2_webapi_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Chat.WebApi.dll" Id="chat_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Common.dll" Id="common_tfs_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Core.WebApi.dll" Id="core_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Dashboards.WebApi.dll" Id="dashboards_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" Id="contracts_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Policy.WebApi.dll" Id="policy_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.SourceControl.WebApi.dll" Id="sourcecontrol_webapi_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.TestManagement.WebApi.dll" Id="testmanagement_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Test.WebApi.dll" Id="test_webapi_extension"/>
-                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" Id="workitemtracking_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.TestManagement.WebApi.dll" Id="testmanagement_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Wiki.WebApi.dll" Id="wiki_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.Work.WebApi.dll" Id="work_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll" Id="workitemtracking_process_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" Id="workitemtracking_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.Client.Interactive.dll" Id="client_interactive_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.Common.dll" Id="services_common_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" Id="services_testplanning_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.TestResults.WebApi.dll" Id="services_testresults_webapi_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\Microsoft.VisualStudio.Services.WebApi.dll" Id="services_webapi_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Buffers.dll" Id="buffers_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Collections.Immutable.dll" Id="immutable_extension"/>
                    <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.IdentityModel.Tokens.Jwt.dll" Id="tokens_jwt_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Memory.dll" Id="memory_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Net.Http.Formatting.dll" Id="http_formatting_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Numerics.Vectors.dll" Id="vectors_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Reflection.Metadata.dll" Id="reflection_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" Id="compilerservices_extension"/>
+                   <File Source="..\AccessibilityInsights.Extensions.AzureDevOps\bin\Release\System.Threading.Tasks.Extensions.dll" Id="tasks_extensions_extension"/>
                  </Component>
 
                  <Directory Id="IssueTemplates" Name="IssueTemplates">
