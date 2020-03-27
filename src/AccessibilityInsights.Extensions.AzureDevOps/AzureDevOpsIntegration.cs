@@ -289,7 +289,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
             AttachmentReference attachment;
-            attachment = await wit.CreateAttachmentAsync(path, Invariant($"{issueId}.a11ytest")).ConfigureAwait(false);
+            using (FileStream outputStream = new FileStream(path, FileMode.Open))
+            {
+                attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}.a11ytest"), "Simple", null).ConfigureAwait(false);
+            }
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
             {
@@ -338,8 +341,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
             AttachmentReference attachment;
-            attachment = await wit.CreateAttachmentAsync(path, Invariant($"{issueId}-pic.png")).ConfigureAwait(false);
-            
+            using (FileStream outputStream = new FileStream(path, FileMode.Open))
+            {
+                attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}-pic.png"), "Simple", null).ConfigureAwait(false);
+            }
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
             {
