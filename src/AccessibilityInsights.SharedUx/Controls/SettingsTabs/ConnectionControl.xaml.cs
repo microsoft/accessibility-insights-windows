@@ -89,7 +89,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     Dictionary<Guid, string> configs = new Dictionary<Guid, string>();
                     try
                     {
-                        configs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                        Dictionary<Guid, string> parsedConfigs = JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigs);
+                        configs = parsedConfigs ?? configs;
                     }
 #pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception e)
