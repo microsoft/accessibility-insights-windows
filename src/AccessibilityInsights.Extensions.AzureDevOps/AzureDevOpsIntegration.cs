@@ -184,7 +184,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             do
             {
                 var newProjects = proClient.GetProjects(null, AzureDevOps_PAGE_SIZE, projects.Count).Result;
-                newElementsReturned = newProjects.Count();
+                newElementsReturned = newProjects.Count;
                 projects.AddRange(newProjects);
             }
             while (newElementsReturned >= AzureDevOps_PAGE_SIZE);
@@ -197,7 +197,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="teamProjectId">AzureDevOps team project ID for which to retrieve teams</param>
         /// <returns>teams associated with the given team project, or null if disconnected</returns>
-        internal IEnumerable<Models.Team> GetTeamsFromProject(Models.TeamProject project)
+        internal IEnumerable<Models.AdoTeam> GetTeamsFromProject(Models.TeamProject project)
         {
             if (!ConnectedToAzureDevOps)
             {
@@ -212,13 +212,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             //  is less than the number of elements we requested
             do
             {
-                var newTeams = teamClient.GetTeamsAsync(project.Id.ToString("D", CultureInfo.InvariantCulture), AzureDevOps_PAGE_SIZE, teams.Count).Result;
+                var newTeams = teamClient.GetTeamsAsync(project.Id.ToString("D", CultureInfo.InvariantCulture), null, AzureDevOps_PAGE_SIZE, teams.Count).Result;
                 newElementsReturned = newTeams.Count;
                 teams.AddRange(newTeams);
             }
             while (newElementsReturned >= AzureDevOps_PAGE_SIZE);
 
-            return teams.Select(t => new Models.Team(t.Name, t.Id, project));
+            return teams.Select(t => new Models.AdoTeam(t.Name, t.Id, project));
         }
 
         #region base AzureDevOps (non-server) connection code
@@ -289,9 +289,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
             AttachmentReference attachment;
-            using(FileStream outputStream = new FileStream(path, FileMode.Open))
+            using (FileStream outputStream = new FileStream(path, FileMode.Open))
             {
-                attachment = await wit.CreateAttachmentAsync(outputStream, Invariant($"{issueId}.a11ytest")).ConfigureAwait(false);
+                attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}.a11ytest"), "Simple", null).ConfigureAwait(false);
             }
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
@@ -343,9 +343,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             AttachmentReference attachment;
             using (FileStream outputStream = new FileStream(path, FileMode.Open))
             {
-                attachment = await wit.CreateAttachmentAsync(outputStream, Invariant($"{issueId}-pic.png")).ConfigureAwait(false);
+                attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}-pic.png"), "Simple", null).ConfigureAwait(false);
             }
-            
             JsonPatchDocument patchDoc = new JsonPatchDocument();
             patchDoc.Add(new JsonPatchOperation()
             {
