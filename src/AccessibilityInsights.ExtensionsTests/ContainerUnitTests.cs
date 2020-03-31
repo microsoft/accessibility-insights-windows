@@ -3,49 +3,48 @@
 using AccessibilityInsights.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-#if FAKES_SUPPORTED
-using Microsoft.QualityTools.Testing.Fakes;
-using System.IO.Fakes;
-#endif
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 
 namespace AccessibilityInsights.ExtensionsTests
 {
     [TestClass]
     public class ContainerUnitTests
     {
+        private class TestContainer : Container
+        {
+            public TestContainer() : base() { }
+        }
+
         [TestMethod]
         [Timeout(1000)]
-        public void GetExtensionPaths_FindsThreeFolders_ReturnsCorrectValues()
+        public void AutoUpdate_ReturnsNull()
         {
-            using (ShimsContext.Create())
+            using (Container container = new TestContainer())
             {
-                List<string> directories = new List<string> { "a", "b", "c" };
-                ShimDirectory.EnumerateDirectoriesString = (_) => directories;
-                ShimDirectory.ExistsString = (_) => true;
-                List<string> outputDirs = Container.GetExtensionPaths().ToList();
-                string currentDir = Path.GetDirectoryName(typeof(Container).Assembly.Location);
-
-                Assert.AreEqual(directories.Count, outputDirs.Count);
-                for (int loop = 0; loop < directories.Count; loop++)
-                {
-                    Assert.AreEqual(Path.Combine(currentDir, directories[loop]), Path.Combine(currentDir, outputDirs[loop]));
-                }
+                Assert.IsNull(container.AutoUpdate);
             }
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void GetExtensionPaths_NoFolders_ReturnsCorrectValues()
+        public void Telemetry_ReturnsNull()
         {
-            using (ShimsContext.Create())
+            using (Container container = new TestContainer())
             {
-                List<string> directories = new List<string> { };
-                ShimDirectory.EnumerateDirectoriesString = (_) => directories;
-                List<string> outputDirs = Container.GetExtensionPaths().ToList();
-                string currentDir = Path.GetDirectoryName(typeof(Container).Assembly.Location);
-                Assert.AreEqual(directories.Count, outputDirs.Count);
+                Assert.IsNull(container.Telemetry);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IssueReportingOptions_ReturnsNull()
+        {
+            using (Container container = new TestContainer())
+            {
+                IEnumerable<IIssueReporting> reportingOptions = container.IssueReportingOptions;
+                Assert.IsNotNull(reportingOptions);
+                Assert.IsFalse(reportingOptions.Any());
             }
         }
     }

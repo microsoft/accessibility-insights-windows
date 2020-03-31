@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.IO;
-using System.Reflection;
 
 namespace AccessibilityInsights.Extensions
 {
@@ -19,75 +18,19 @@ namespace AccessibilityInsights.Extensions
     internal class Container : IDisposable
     {
         private CompositionContainer _container;
-        private ResolveEventHandler _assemblyEventResolver;
-        private readonly IEnumerable<string> _extensionPaths;
-        const string ExtensionSearchPattern = "*.extensions.*.dll";
+        private const string ExtensionSearchPattern = "*.extensions.*.dll";
 
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
         /// <summary>
-        /// Get all the extension sub folder names under .\Extensions directory
-        /// </summary>
-        internal static IEnumerable<string> GetExtensionPaths()
-        {
-            string searchPath = Path.Combine(Path.GetDirectoryName(typeof(Container).Assembly.Location), @"Extensions");
-            if (Directory.Exists(searchPath))
-            {
-                foreach (string directory in Directory.EnumerateDirectories(searchPath))
-                {
-                    yield return directory;
-                }
-            }
-        }
-
-        private Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
-        {
-            AssemblyName assemblyName = new AssemblyName(args.Name);
-            foreach (string path in _extensionPaths)
-            {
-                string filePath = Path.Combine(path, assemblyName.Name + ".dll");
-                if (File.Exists(filePath))
-                {
-                    try
-                    {
-                        return Assembly.LoadFrom(filePath);
-                    }
-#pragma warning disable CA1031 // Do not catch general exception types
-                    catch (Exception e)
-                    {
-                        Telemetry?.ReportException(e);
-                    }
-#pragma warning restore CA1031 // Do not catch general exception types
-                }
-            }
-            return null;
-        }
-
-        /// <summary>
         /// constructor
         /// </summary>
-        private Container()
+        protected Container()
         {
             // Suppress CA2000 since we want the object to persist until the end of the process
 #pragma warning disable CA2000 // Dispose objects before losing scope
-            // An aggregate catalog that combines multiple catalogs
-            var catalog = new AggregateCatalog();
-
-            // Adds all the parts found in the folder whether Microsoft.AcccessiblityInsights.Extentions.dll
-            // later we will need to make it configurable.
-            var dirCatalog = new DirectoryCatalog(Path.GetDirectoryName(typeof(Container).Assembly.Location), ExtensionSearchPattern);
-            catalog.Catalogs.Add(dirCatalog);
-
-            // Dynamically search for assemblies when it fails to resolve
-            _extensionPaths = GetExtensionPaths();
-            _assemblyEventResolver = new ResolveEventHandler(CurrentDomain_AssemblyResolve);
-            AppDomain.CurrentDomain.AssemblyResolve += _assemblyEventResolver;
-
-            // Adds all the parts found in .\Extensions directory
-            foreach (string path in _extensionPaths)
-            {
-                catalog.Catalogs.Add(new DirectoryCatalog(path, ExtensionSearchPattern));
-            }
+            // Adds all the parts found in the folder where Microsoft.AcccessiblityInsights.Extentions.dll lives
+            var catalog = new DirectoryCatalog(Path.GetDirectoryName(typeof(Container).Assembly.Location), ExtensionSearchPattern);
 
             //Create the CompositionContainer with the parts in the catalog
             _container = new CompositionContainer(catalog);
@@ -174,12 +117,6 @@ namespace AccessibilityInsights.Extensions
             {
                 if (disposing)
                 {
-                    if (_assemblyEventResolver != null)
-                    {
-                        AppDomain.CurrentDomain.AssemblyResolve -= _assemblyEventResolver;
-                        _assemblyEventResolver = null;
-                    }
-
                     if (this._container == null)
                     {
                         this._container.Dispose();
