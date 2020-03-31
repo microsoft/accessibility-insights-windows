@@ -86,9 +86,11 @@ namespace AccessibilityInsights.ExtensionsTests
                 Assert.IsNotNull(reportingOptions);
                 List<IIssueReporting> optionList = reportingOptions.ToList();
                 Assert.AreEqual(2, optionList.Count);
-                HashSet<Type> set = new HashSet<Type>();
-                set.Add(optionList[0].GetType());
-                set.Add(optionList[1].GetType());
+                HashSet<Type> set = new HashSet<Type>
+                {
+                    optionList[0].GetType(),
+                    optionList[1].GetType()
+                };
 
                 Assert.IsTrue(set.Contains(typeof(DummyIssueReporting1)));
                 Assert.IsTrue(set.Contains(typeof(DummyIssueReporting2)));
