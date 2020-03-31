@@ -58,7 +58,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.AzureDevOps.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.GitHub.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.Telemetrydll" />
+              <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.Extensions.Telemetry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\AccessibilityInsights.SharedUx.dll.config" />
@@ -73,7 +73,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\Axe.Windows.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Ben.Demystifier.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\CommandLine.dll"/>
-              <File Source="..\AccessibilityInsights\bin\Release\ApplicationInsights.dll"/>
+              <File Source="..\AccessibilityInsights\bin\Release\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\Microsoft.IdentityModel.JsonWebTokens.dll" />
