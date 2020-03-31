@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
@@ -10,8 +11,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-
-using Container = AccessibilityInsights.Extensions.Container;
 
 namespace AccessibilityInsights.ExtensionsTests
 {
