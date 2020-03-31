@@ -19,7 +19,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         /// <summary>
         /// The server-based Team associated with this view
         /// </summary>
-        public Team Team { get; set; }
+        public AdoTeam Team { get; set; }
 
         public string Name => Project == null ? Team.Name : Project.Name;
 
@@ -85,7 +85,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             this._children = children ?? new List<TeamProjectViewModel>();
         }
 
-        public TeamProjectViewModel(Team team, List<TeamProjectViewModel> children)
+        public TeamProjectViewModel(AdoTeam team, List<TeamProjectViewModel> children)
         {
             this.Team = team;
             this._children = children ?? new List<TeamProjectViewModel>();

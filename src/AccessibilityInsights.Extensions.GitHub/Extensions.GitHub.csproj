@@ -16,11 +16,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AccessibilityInsights.Extensions.GitHub</RootNamespace>
     <AssemblyName>AccessibilityInsights.Extensions.GitHub</AssemblyName>
-    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

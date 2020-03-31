@@ -223,7 +223,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
-                    new Team(expectedTeamName, Guid.Empty));
+                    new AdoTeam(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
                 Uri actualUri = FileIssueHelpers.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
@@ -261,7 +261,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
                 ConnectionInfo connectionInfo = new ConnectionInfo(expectedUri,
                     new TeamProject(expectedProjectName, Guid.Empty),
-                    new Team(expectedTeamName, Guid.Empty));
+                    new AdoTeam(expectedTeamName, Guid.Empty));
                 IssueInformation issueInfo = new IssueInformation();
 
                 Uri actualUri = FileIssueHelpers.CreateIssuePreviewAsync(connectionInfo, issueInfo).Result;
