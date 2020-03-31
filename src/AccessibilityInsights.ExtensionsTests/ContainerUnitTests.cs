@@ -17,14 +17,14 @@ namespace AccessibilityInsights.ExtensionsTests
     [TestClass]
     public class ContainerUnitTests
     {
-        const string NoMatchOverride = "this_file_does_not_exist.dll";
-        static string MatchOverride = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
+        const string ExtensionsDoNotExistSearchPattern = null;
+        static string ExtensionsExistSearchPattern = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
 
         [TestMethod]
         [Timeout(1000)]
-        public void AutoUpdate_NoMatch_ReturnsNull()
+        public void AutoUpdate_ExtensionsDoNotExist_ReturnsNull()
         {
-            using (Container container = new Container(NoMatchOverride))
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
                 Assert.IsNull(container.AutoUpdate);
             }
@@ -32,9 +32,9 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void AutoUpdate_Match_ReturnsCorrectType()
+        public void AutoUpdate_ExtensionsExist_ReturnsCorrectType()
         {
-            using (Container container = new Container(MatchOverride))
+            using (Container container = new Container(ExtensionsExistSearchPattern))
             {
                 IAutoUpdate autoUpdate = container.AutoUpdate;
                 Assert.IsNotNull(autoUpdate);
@@ -44,9 +44,9 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void Telemetry_NoMatch_ReturnsNull()
+        public void Telemetry_ExtensionsDoNotExist_ReturnsNull()
         {
-            using (Container container = new Container(NoMatchOverride))
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
                 Assert.IsNull(container.Telemetry);
             }
@@ -54,9 +54,9 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void Telemetry_Match_ReturnsCorrectType()
+        public void Telemetry_ExtensionsExist_ReturnsCorrectType()
         {
-            using (Container container = new Container(MatchOverride))
+            using (Container container = new Container(ExtensionsExistSearchPattern))
             {
                 ITelemetry telemetry = container.Telemetry;
                 Assert.IsNotNull(telemetry);
@@ -66,9 +66,9 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void IssueReportingOptions_NoMatch_ReturnsNull()
+        public void IssueReportingOptions_ExtensionsDoNotExist_ReturnsNull()
         {
-            using (Container container = new Container(NoMatchOverride))
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
                 IEnumerable<IIssueReporting> reportingOptions = container.IssueReportingOptions;
                 Assert.IsNotNull(reportingOptions);
@@ -78,9 +78,9 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void IssueReportingOptions_Match_ReturnsCorrectTypes()
+        public void IssueReportingOptions_ExtensionsExist_ReturnsCorrectTypes()
         {
-            using (Container container = new Container(MatchOverride))
+            using (Container container = new Container(ExtensionsExistSearchPattern))
             {
                 IEnumerable<IIssueReporting> reportingOptions = container.IssueReportingOptions;
                 Assert.IsNotNull(reportingOptions);
