@@ -57,10 +57,14 @@
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ContainerUnitTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="DummyClasses\DummyAutoUpdate.cs" />
+    <Compile Include="DummyClasses\DummyIssueReporting.cs" />
+    <Compile Include="DummyClasses\DummyTelemetry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
   </ItemGroup>

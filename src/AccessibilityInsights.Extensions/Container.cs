@@ -23,14 +23,22 @@ namespace AccessibilityInsights.Extensions
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
         /// <summary>
-        /// constructor
+        /// Production ctor
         /// </summary>
-        protected Container()
+        private Container() : this(null) { }
+
+        /// <summary>
+        /// Testable ctor
+        /// </summary>
+        /// <param name="searchPatternOverride">Allows override of search pattern for testing</param>
+        internal Container(string searchPatternOverride)
         {
+            string searchPattern = searchPatternOverride ?? ExtensionSearchPattern;
+
             // Suppress CA2000 since we want the object to persist until the end of the process
 #pragma warning disable CA2000 // Dispose objects before losing scope
             // Adds all the parts found in the folder where Microsoft.AcccessiblityInsights.Extentions.dll lives
-            var catalog = new DirectoryCatalog(Path.GetDirectoryName(typeof(Container).Assembly.Location), ExtensionSearchPattern);
+            var catalog = new DirectoryCatalog(Path.GetDirectoryName(typeof(Container).Assembly.Location), searchPattern);
 
             //Create the CompositionContainer with the parts in the catalog
             _container = new CompositionContainer(catalog);
