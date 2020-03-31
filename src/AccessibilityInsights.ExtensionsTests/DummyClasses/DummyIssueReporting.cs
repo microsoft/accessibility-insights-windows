@@ -10,7 +10,7 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
     /// <summary>
     ///  Dummy IssueReporting implementation for container. No need to
     ///  implement the methods other than the boilerplate.
-    ///  This is abstract so we use it in 2 concrete classes
+    ///  This is abstract so we can easily use it in 2 concrete classes
     /// </summary>
     public abstract class DummyIssueReportingBase : IIssueReporting
     {
