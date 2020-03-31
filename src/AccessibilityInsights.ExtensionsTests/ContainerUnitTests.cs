@@ -1,51 +1,99 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.Extensions.Interfaces.Telemetry;
+using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+using AccessibilityInsights.ExtensionsTests.DummyClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-#if FAKES_SUPPORTED
-using Microsoft.QualityTools.Testing.Fakes;
-using System.IO.Fakes;
-#endif
+using System.Reflection;
 
 namespace AccessibilityInsights.ExtensionsTests
 {
     [TestClass]
     public class ContainerUnitTests
     {
+        const string ExtensionsDoNotExistSearchPattern = null;
+        static string ExtensionsExistSearchPattern = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
+
         [TestMethod]
         [Timeout(1000)]
-        public void GetExtensionPaths_FindsThreeFolders_ReturnsCorrectValues()
+        public void AutoUpdate_ExtensionsDoNotExist_ReturnsNull()
         {
-            using (ShimsContext.Create())
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
-                List<string> directories = new List<string> { "a", "b", "c" };
-                ShimDirectory.EnumerateDirectoriesString = (_) => directories;
-                ShimDirectory.ExistsString = (_) => true;
-                List<string> outputDirs = Container.GetExtensionPaths().ToList();
-                string currentDir = Path.GetDirectoryName(typeof(Container).Assembly.Location);
-
-                Assert.AreEqual(directories.Count, outputDirs.Count);
-                for (int loop = 0; loop < directories.Count; loop++)
-                {
-                    Assert.AreEqual(Path.Combine(currentDir, directories[loop]), Path.Combine(currentDir, outputDirs[loop]));
-                }
+                Assert.IsNull(container.AutoUpdate);
             }
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void GetExtensionPaths_NoFolders_ReturnsCorrectValues()
+        public void AutoUpdate_ExtensionsExist_ReturnsCorrectType()
         {
-            using (ShimsContext.Create())
+            using (Container container = new Container(ExtensionsExistSearchPattern))
             {
-                List<string> directories = new List<string> { };
-                ShimDirectory.EnumerateDirectoriesString = (_) => directories;
-                List<string> outputDirs = Container.GetExtensionPaths().ToList();
-                string currentDir = Path.GetDirectoryName(typeof(Container).Assembly.Location);
-                Assert.AreEqual(directories.Count, outputDirs.Count);
+                IAutoUpdate autoUpdate = container.AutoUpdate;
+                Assert.IsNotNull(autoUpdate);
+                Assert.IsInstanceOfType(autoUpdate, typeof(DummyAutoUpdate));
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void Telemetry_ExtensionsDoNotExist_ReturnsNull()
+        {
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
+            {
+                Assert.IsNull(container.Telemetry);
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void Telemetry_ExtensionsExist_ReturnsCorrectType()
+        {
+            using (Container container = new Container(ExtensionsExistSearchPattern))
+            {
+                ITelemetry telemetry = container.Telemetry;
+                Assert.IsNotNull(telemetry);
+                Assert.IsInstanceOfType(telemetry, typeof(DummyTelemetry));
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IssueReportingOptions_ExtensionsDoNotExist_ReturnsNull()
+        {
+            using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
+            {
+                IEnumerable<IIssueReporting> reportingOptions = container.IssueReportingOptions;
+                Assert.IsNotNull(reportingOptions);
+                Assert.IsFalse(reportingOptions.Any());
+            }
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IssueReportingOptions_ExtensionsExist_ReturnsCorrectTypes()
+        {
+            using (Container container = new Container(ExtensionsExistSearchPattern))
+            {
+                IEnumerable<IIssueReporting> reportingOptions = container.IssueReportingOptions;
+                Assert.IsNotNull(reportingOptions);
+                List<IIssueReporting> optionList = reportingOptions.ToList();
+                Assert.AreEqual(2, optionList.Count);
+                HashSet<Type> set = new HashSet<Type>
+                {
+                    optionList[0].GetType(),
+                    optionList[1].GetType(),
+                };
+
+                Assert.IsTrue(set.Contains(typeof(DummyIssueReporting1)));
+                Assert.IsTrue(set.Contains(typeof(DummyIssueReporting2)));
             }
         }
     }
