@@ -1,16 +1,17 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.ExtensionsTests.DummyClasses;
-using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
+using AccessibilityInsights.Extensions.Interfaces.Upgrades;
+using AccessibilityInsights.ExtensionsTests.DummyClasses;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-using System.Reflection;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Reflection;
+
+using Container = AccessibilityInsights.Extensions.Container;
 
 namespace AccessibilityInsights.ExtensionsTests
 {
@@ -89,7 +90,7 @@ namespace AccessibilityInsights.ExtensionsTests
                 HashSet<Type> set = new HashSet<Type>
                 {
                     optionList[0].GetType(),
-                    optionList[1].GetType()
+                    optionList[1].GetType(),
                 };
 
                 Assert.IsTrue(set.Contains(typeof(DummyIssueReporting1)));
