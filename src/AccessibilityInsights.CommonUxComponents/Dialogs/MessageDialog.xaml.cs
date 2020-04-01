@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Windows;
 using System.Windows.Input;
 
@@ -15,6 +16,15 @@ namespace AccessibilityInsights.CommonUxComponents.Dialogs
         public MessageDialog()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Invoke MessageDialog.Show on the UI thread.
+        /// </summary>
+        /// <param name="message">The message to display</param>
+        public static void Invoke(string message)
+        {
+            Application.Current.Dispatcher.BeginInvoke(new Action(() => { Show(message); }));
         }
 
         /// <summary>

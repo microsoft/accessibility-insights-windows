@@ -71,7 +71,7 @@ namespace AccessibilityInsights.Extensions.GitHub
                 catch (Exception e)
                 {
                     e.ReportException();
-                    MessageDialog.Show(Properties.Resources.InvalidLink);
+                    MessageDialog.Invoke(Properties.Resources.InvalidLink);
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
             }
