@@ -11,7 +11,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Caption Text -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="#6D767E"/> <!-- (UPDATED) Inner Border on Startup dialog -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Text in Startup dialog -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#6D767E"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#31383D"/>           <!-- (UPDATED) Selected item highlight in Hierarchy and "How to Fix" view -->
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#6BADE0"/>            <!-- (UPDATED) Progress ring (dots and text) -->
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>    <!-- MainWindow: Overlay for "Tab Stops" ? -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#6D767E"/>        <!-- (UPDATED) Background brush of selected tab in Tests view -->
@@ -88,7 +88,7 @@
     <SolidColorBrush x:Key="SelectionDropDownListBGBrush" Color="#31383D"/>             <!-- (UPDATED) List background of selection combobox in command bar -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- (UPDATED) Startup Primary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- (UPDATED) Startup Secondary background brush -->
-    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/> <!-- (UPDATED) Selected text color in TreeView -->
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#FFFFFF"/> <!-- (UPDATED) Selected text color in TreeView -->
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
