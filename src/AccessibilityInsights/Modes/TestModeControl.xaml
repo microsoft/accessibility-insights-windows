@@ -32,8 +32,8 @@
                                 <ColumnDefinition Width="4"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" ShowInControlView="False" Background="Transparent"/>
-                            <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top" Background="Transparent"/>
+                            <fabric:FabricIconControl Grid.Column="0" GlyphName="Rocket" GlyphSize="Custom" FontSize="14" VerticalAlignment="Center" Margin="0,4,0,2" Foreground="{DynamicResource ResourceKey=FastPassLabelFGBrush}" ShowInControlView="False" Background="Transparent"/>
+                            <Label Name="lblFastpass" Grid.Column="2" Content="{x:Static properties:Resources.tabControlLabelContent}" Style="{StaticResource lblXLHeader}" VerticalAlignment="Top" Foreground="{DynamicResource ResourceKey=FastPassLabelFGBrush}" Background="Transparent"/>
                         </Grid>
                     </TabItem.Header>
                 </TabItem>
