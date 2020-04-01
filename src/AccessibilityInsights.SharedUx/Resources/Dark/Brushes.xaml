@@ -92,7 +92,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="Transparent"/>    <!-- (UPDATED) Horizontal Border between tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#2B3034"/>       <!-- (UPDATED) Hover background color of automated checks rows -->
