@@ -83,4 +83,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="FastPassLabelFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
 </ResourceDictionary>

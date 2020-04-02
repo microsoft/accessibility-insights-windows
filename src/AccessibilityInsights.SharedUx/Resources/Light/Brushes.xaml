@@ -100,4 +100,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="FastPassLabelFGBrush" Color="#6E6E6E"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="#EAEAEA"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#CCCCCC"/>
 </ResourceDictionary>

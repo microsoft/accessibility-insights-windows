@@ -46,7 +46,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonBGBrush" Color="#444C52"/>    <!-- (UPDATED) Background for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#2B3034"/>        <!-- (UPDATED) Secondary background brush (not u-->
-    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast, borders of ADO's "disconnect" button -->
+    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledBrush" Color="#656E75"/>     <!-- (UPDATED) Background of disabled button (example: Later button in update dialog on mandatory update) -->
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#22272B"/>          <!-- (UPDATED) Primary background brush (not in startup mode) -->
@@ -99,5 +99,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>    <!-- (UPDATED) Foreground color of selected tab stop rows -->
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#B2B3B5"/>    <!-- (UPDATED) Background color of selected tab stop rows -->
     <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#31383D"/>       <!-- (UPDATED) Hover color of selected tab stop rows -->
-    <SolidColorBrush po:Freeze="True" x:Key="FastPassLabelFGBrush" Color="#FFFFFF"/>    <!-- (UPDATED) Foreground brush of "FastPass" label and icon -->
+    <SolidColorBrush po:Freeze="True" x:Key="FastPassLabelFGBrush" Color="#FFFFFF"/>    <!-- (UPDATED) Foreground of "FastPass" label and icon -->
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="#EAEAEA"/>       <!-- (UPDATED) Background of "BtnGreySquared" buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>       <!-- (UPDATED) Foreground of "BtnGreySquared" buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#B2B3B5"/>  <!-- (UPDATED) Background of "BtnGreySquared" buttons on hover -->
 </ResourceDictionary>
