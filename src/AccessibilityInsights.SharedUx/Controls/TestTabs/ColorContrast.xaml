@@ -112,11 +112,11 @@
                                 </TextBlock>
                         </StackPanel>
                         <StackPanel Name="spConfidence" Orientation="Vertical" Margin="10,10,0,6" MinWidth="132">
-                            <TextBlock Name="tbConfidenceLabel" Text="{x:Static Properties:Resources.ColorContrast_Confidence}" FontSize="14"/>
+                            <TextBlock Name="tbConfidenceLabel" Text="{x:Static Properties:Resources.ColorContrast_Confidence}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" FontSize="14"/>
                             <TextBlock x:Name="tbConfidence" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
                                        AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
                                        AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_tbConfidenceAutomationName}}"
-                                       KeyboardNavigation.TabIndex="4" Focusable="True">
+                                       KeyboardNavigation.TabIndex="4" Focusable="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
