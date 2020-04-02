@@ -95,7 +95,7 @@
                 <Button Click="changeButton_Click" Cursor="Hand" Grid.Row="1" HorizontalAlignment="Right" Margin="0 4px" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameChangeTeam}" IsTabStop="True" Style="{DynamicResource BtnStandard}">
                     <Button.Template>
                         <ControlTemplate>
-                            <TextBlock Text="{x:Static Properties:Resources.TextBlockTextChange}" TextWrapping="Wrap" Foreground="Blue"/>
+                            <TextBlock Text="{x:Static Properties:Resources.TextBlockTextChange}" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
