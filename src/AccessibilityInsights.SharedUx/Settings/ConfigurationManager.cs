@@ -166,7 +166,16 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (sDefaultInstance == null && provider != null)
             {
-                sDefaultInstance = new ConfigurationManager(provider);
+                try
+                {
+                    sDefaultInstance = new ConfigurationManager(provider);
+                }
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception e)
+                {
+                    e.ReportException();
+                }
+#pragma warning restore CA1031 // Do not catch general exception types
             }
 
             return sDefaultInstance;
