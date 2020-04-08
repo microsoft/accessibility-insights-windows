@@ -164,18 +164,9 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns></returns>
         public static ConfigurationManager GetDefaultInstance(FixedConfigSettingsProvider provider = null)
         {
-            if(sDefaultInstance == null)
+            if (sDefaultInstance == null && provider != null)
             {
-                try
-                {
-                    sDefaultInstance = new ConfigurationManager(provider);
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch
-                {
-                    // be silent. since it will be ok later once Main window is up.
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
+                sDefaultInstance = new ConfigurationManager(provider);
             }
 
             return sDefaultInstance;
