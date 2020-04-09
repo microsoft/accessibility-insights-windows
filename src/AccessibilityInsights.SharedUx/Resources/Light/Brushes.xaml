@@ -99,4 +99,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="IconHoverFGBrush" Color="#000000"/>
 </ResourceDictionary>

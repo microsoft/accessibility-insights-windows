@@ -99,4 +99,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>    <!-- (UPDATED) Foreground color of selected tab stop rows -->
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="#B2B3B5"/>    <!-- (UPDATED) Background color of selected tab stop rows -->
     <SolidColorBrush po:Freeze="True" x:Key="TSRowHoverBGBrush" Color="#31383D"/>       <!-- (UPDATED) Hover color of selected tab stop rows -->
+    <SolidColorBrush po:Freeze="True" x:Key="IconHoverFGBrush" Color="#FFFFFF"/>        <!-- (UPDATED) Foreground of icons on mouse hover -->
 </ResourceDictionary>
