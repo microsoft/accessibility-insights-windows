@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Border BorderThickness="2" Margin="-2"
-                      BorderBrush="{DynamicResource ResourceKey=IconBrush}"
+                      BorderBrush="{DynamicResource ResourceKey=FocusBorderBrush}"
                       SnapsToDevicePixels="true"/>
                 </ControlTemplate>
             </Setter.Value>
@@ -1472,5 +1472,15 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style TargetType="fabric:FabricIconControl" x:Key="hoverAwareFabricIcon">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
