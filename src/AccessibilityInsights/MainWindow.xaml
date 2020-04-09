@@ -289,13 +289,13 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <DockPanel Height="Auto" Background="{DynamicResource ResourceKey=WindowBorderBrush}">
-                            <StackPanel DockPanel.Dock="Left" x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=WindowBorderBrush}"
+                        <DockPanel Height="Auto" Background="{DynamicResource ResourceKey=CommandBarBGBrush}">
+                            <StackPanel DockPanel.Dock="Left" x:Name="spCommandBar" Grid.Row="0" Background="{DynamicResource ResourceKey=CommandBarBGBrush}"
                                     WindowChrome.IsHitTestVisibleInChrome="True" Focusable="True" GotKeyboardFocus="spCommandBar_GotKeyboardFocus"
                                     Orientation="Horizontal" KeyboardNavigation.DirectionalNavigation="Cycle"
                                     Height="28" KeyboardNavigation.TabNavigation="Once"
                                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                                <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
+                                <TextBlock x:Name="tbComboboxLabel" FontSize="{StaticResource ConstStandardTextSize}" Text="{x:Static properties:Resources.tbComboboxLabelText}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0" Foreground="{DynamicResource ResourceKey=CommandBarFGBrush}"/>
                                 <ComboBox x:Name="cbSelectionScope" AutomationProperties.Name="{x:Static properties:Resources.cbSelectionScopeAutomationPropertiesName}" Width="92" 
                                     HorizontalAlignment="Left" VerticalContentAlignment="Center"
                                     FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" FontSize="{StaticResource ConstStandardTextSize}"

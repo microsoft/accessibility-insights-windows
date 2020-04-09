@@ -16,7 +16,7 @@
             <Setter.Value>
                 <ControlTemplate>
                     <Border BorderThickness="2" Margin="-2"
-                      BorderBrush="{DynamicResource ResourceKey=IconBrush}"
+                      BorderBrush="{DynamicResource ResourceKey=FocusBorderBrush}"
                       SnapsToDevicePixels="true"/>
                 </ControlTemplate>
             </Setter.Value>
