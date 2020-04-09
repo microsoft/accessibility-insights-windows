@@ -31,7 +31,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#696C6F"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#FFFFFF"/>       <!-- (UPDATED) Generic selected text color (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#FFFFFF"/>               <!-- (UPDATED) Used for fabric icons, some (incorrect?) borders -->
-    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for snapshot button and video player -->
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for video player -->
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>     <!-- Text color (hover) for snapshot button and video player -->
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>             <!-- Generic light border (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>          <!-- Used to draw the icons on the nav bar -->
@@ -102,5 +102,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="IconHoverFGBrush" Color="#FFFFFF"/>        <!-- (UPDATED) Foreground of icons on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarBGBrush" Color="#2B3034"/>       <!-- (UPDATED) Background of command bar -->
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarFGBrush" Color="#FFFFFF"/>       <!-- (UPDATED) Foreground of command bar -->
-    <SolidColorBrush po:Freeze="True" x:Key="FocusBorderBrush" Color="#FFFFFF"/>        <!-- (UPDATED) Border color to track keyboard focus -->
+    <SolidColorBrush po:Freeze="True" x:Key="FocusBorderBrush" Color="#FFFFFF"/>        <!-- (UPDATED) Border of keyboard focus tracker -->
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground of snapshot button -->
 </ResourceDictionary>
