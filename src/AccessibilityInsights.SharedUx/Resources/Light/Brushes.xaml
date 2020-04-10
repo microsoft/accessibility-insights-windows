@@ -103,4 +103,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="FocusBorderBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnFGBrush" Color="#FFFFFF"/>
 </ResourceDictionary>

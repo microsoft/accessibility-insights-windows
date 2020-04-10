@@ -42,13 +42,13 @@
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnBGBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushRed" Color="#CC0000"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushGreen" Color="#107c10"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLbrushPurple" Color="#A45EF4"/>
-    <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HLDefaultBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="HLTextBrush" Color="#FFFF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="{x:Static SystemColors.InactiveBorderColor}" />
@@ -86,4 +86,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="FocusBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnFGBrush" Color="{x:Static SystemColors.MenuBarColor}"/>
 </ResourceDictionary>

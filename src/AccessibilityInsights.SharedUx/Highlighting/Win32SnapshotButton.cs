@@ -66,7 +66,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             this.BackgroundBrush = System.Drawing.Color.FromArgb(brush.Color.A, brush.Color.R, brush.Color.G, brush.Color.B);
             brush = Application.Current.Resources["SnapshotBtnHoverBrush"] as SolidColorBrush;
             this.HoveredBackgroundBrush = System.Drawing.Color.FromArgb(brush.Color.A, brush.Color.R, brush.Color.G, brush.Color.B);
-            brush = Application.Current.Resources["WhiteTextBrush"] as SolidColorBrush;
+            brush = Application.Current.Resources["SnapshotBtnFGBrush"] as SolidColorBrush;
             this.FontBrush = System.Drawing.Color.FromArgb(brush.Color.A, brush.Color.R, brush.Color.G, brush.Color.B);
 
             beakerIconCollection = new Dictionary<double, Bitmap>();
