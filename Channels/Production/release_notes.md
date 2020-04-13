@@ -21,7 +21,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - Improved highlighter contrast in HC modes [#757](https://github.com/microsoft/accessibility-insights-windows/pull/757), [#759](https://github.com/microsoft/accessibility-insights-windows/pull/759)
 - Scroll Live Mode instructions at zoom [#725](https://github.com/microsoft/accessibility-insights-windows/pull/725)
 - Improved border area at zoom [#730](https://github.com/microsoft/accessibility-insights-windows/pull/730)
-- Fixed an issue for the ItemContainer pattern's FindItemByProperty UI to account for the starting element parameter [#751](https://github.com/microsoft/accessibility-insights-windows/issues/745)
+- Fixed an issue for the ItemContainer pattern's FindItemByProperty UI to account for the starting element parameter [#744](https://github.com/microsoft/accessibility-insights-windows/issues/744)
 
 #### Other Updates
 
