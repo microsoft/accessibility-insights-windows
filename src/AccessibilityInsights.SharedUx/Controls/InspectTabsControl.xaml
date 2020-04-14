@@ -94,8 +94,7 @@
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
                                             <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 
                                                     Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
-                                            <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"
-                                                    />
+                                            <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click" />
                                         </ContextMenu>
                                     </Button.ContextMenu>
                                 </Button>
