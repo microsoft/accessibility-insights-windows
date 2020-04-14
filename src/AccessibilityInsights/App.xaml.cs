@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.Highlighting;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -85,6 +86,7 @@ namespace AccessibilityInsights
             Resources.MergedDictionaries.Remove(this.themeResourceDictionaty);
             this.themeResourceDictionaty = new ResourceDictionary() { Source = Brushes[theme] };
             Resources.MergedDictionaries.Add(this.themeResourceDictionaty);
+            HollowHighlightDriver.ClearAllHighlighters();
 
             // give the window a border if in high contrast mode
             if (theme == Theme.HighContrast)
