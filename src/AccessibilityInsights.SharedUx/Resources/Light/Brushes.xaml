@@ -108,4 +108,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#CCCCCC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#BEE6Fd"/>
 </ResourceDictionary>

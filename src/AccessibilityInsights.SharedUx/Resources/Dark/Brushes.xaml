@@ -108,4 +108,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="#EAEAEA"/>       <!-- (UPDATED) Background of "BtnGreySquared" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>       <!-- (UPDATED) Foreground of "BtnGreySquared" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#B2B3B5"/>  <!-- (UPDATED) Background of "BtnGreySquared" buttons on hover -->
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Hover of "BtnOnSelectedLine" buttons -->
 </ResourceDictionary>
