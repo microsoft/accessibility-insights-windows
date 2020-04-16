@@ -211,7 +211,7 @@
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>
                 <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnOnSelectedLine}">
                         <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         <Setter Property="Button.ToolTip">
                             <Setter.Value>
@@ -220,7 +220,7 @@
                         </Setter>
                     </Style>
                 </Button.Style>
-                <controls:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}" GlyphSize="Custom" FontSize="14"/>
+                <controls:FabricIconControl GlyphName="TestBeaker" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}" GlyphSize="Custom" FontSize="14" Padding="1,1,1,1"/>
             </Button>
             <Button x:Name="btnMenu" Grid.Column="1" Margin="0,18,4,0"
                    HorizontalAlignment="Right" VerticalContentAlignment="Center"
@@ -232,12 +232,12 @@
                     <behaviors:DropDownButtonBehavior/>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                 </i:Interaction.Behaviors>
-                <controls:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}"/>
+                <controls:FabricIconControl GlyphName="More" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}" Background="{DynamicResource ResourceKey=SelectedBrush}" Padding="2,2,2,2"/>
                 <Button.ToolTip>
                     <ToolTip Content="{x:Static Properties:Resources.SetterValueMoreOptions}"/>
                 </Button.ToolTip>
                 <Button.Style>
-                    <Style TargetType="Button" BasedOn="{StaticResource BtnStandard}">
+                    <Style TargetType="Button" BasedOn="{StaticResource BtnOnSelectedLine}">
                         <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsLiveMode}" Value="False">

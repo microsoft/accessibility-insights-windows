@@ -46,13 +46,13 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <TabControl Name="tcTabs" Grid.Row="0" BorderThickness="0,1,0,0" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" Style="{StaticResource tcScrolling}" SelectionChanged="TabControl_SelectionChanged">
-                            <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsApplicationTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsApplicationHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsApplicationTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiApplication" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Application}">
                                 <controls:ApplicationSettingsControl x:Name="appSettingsCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsConnectionTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsConnectionHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsConnectionTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Name="tbiConnection" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.Connection}">
                                 <controls:ConnectionControl x:Name="connectionCtrl"/>
                             </TabItem>
-                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsAboutTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">
+                            <TabItem Header="{x:Static properties:Resources.tcTabsAboutHeader}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SettingsAboutTabItem}" Style="{StaticResource ResourceKey=tbiSettingsTab}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Tag="{x:Static Member=local:ConfigurationModeControl+SettingModes.About}">
                                 <controls:AboutTabControl x:Name="aboutTabCtrl"/>
                             </TabItem>
                         </TabControl>

@@ -87,4 +87,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="CommandBarFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="FocusBorderBrush" Color="{x:Static SystemColors.WindowFrameColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SnapshotBtnFGBrush" Color="{x:Static SystemColors.MenuBarColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="FastPassLabelFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 </ResourceDictionary>
