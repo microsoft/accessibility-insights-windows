@@ -423,12 +423,12 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// If true, dark mode will be enabled
+        /// If true, dark mode will be disabled
         /// </summary>
-        public bool EnableDarkMode
+        public bool DisableDarkMode
         {
-            get => GetDataValue<bool>(keyEnableDarkMode);
-            set => SetDataValue<bool>(keyEnableDarkMode, value);
+            get => GetDataValue<bool>(keyDisableDarkMode);
+            set => SetDataValue<bool>(keyDisableDarkMode, value);
         }
 
         /// <summary>
