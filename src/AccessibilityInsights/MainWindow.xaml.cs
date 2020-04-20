@@ -231,7 +231,7 @@ namespace AccessibilityInsights
                 // Due to initialization order, config will be null the first time this is called
                 ConfigurationModel config = ConfigurationManager.GetDefaultInstance()?.AppConfig;
 
-                theme = (config != null && config.EnableDarkMode && NativeMethods.IsDarkModeEnabled())
+                theme = (config != null && !config.DisableDarkMode && NativeMethods.IsDarkModeEnabled())
                     ? App.Theme.Dark
                     : App.Theme.Light;
             }

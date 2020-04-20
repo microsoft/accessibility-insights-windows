@@ -14,8 +14,8 @@
         30101
     ],
     "CoreTPAttributes": [],
+    "DisableDarkMode": true,
     "DisableTestsInSnapMode": false,
-    "EnableDarkMode": true,
     "EnableTelemetry": false,
     "EventRecordPath": "C:\\blah\\AccessibilityInsightsEventFiles",
     "FontSize": "Small",
