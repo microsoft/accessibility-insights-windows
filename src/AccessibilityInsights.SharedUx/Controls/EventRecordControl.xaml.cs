@@ -240,11 +240,13 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.dgEvents.Items.Clear();
                 this.vmEventRecorder.State = ButtonState.On;
 
-                var config = ConfigurationManager.GetDefaultInstance().EventConfig;
+                var configManager = ConfigurationManager.GetDefaultInstance();
+                var config = configManager.EventConfig;
                 this.EventRecorderId = ListenAction.CreateInstance(config.ListenScope, this.ElementContext.Id, onRecordEvent);
                 var propIds = GeneratePropertyIds(config);
                 var eventIds = GenerateEventIds(config);
-                ListenAction.GetInstance(this.EventRecorderId.Value).Start(eventIds, propIds);
+                ListenAction.GetInstance(this.EventRecorderId.Value).Start(eventIds, propIds,
+                    configManager.AppConfig.EventListeningRegistrationOrder);
             }
             else
             {

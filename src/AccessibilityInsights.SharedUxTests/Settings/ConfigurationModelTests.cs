@@ -3,6 +3,7 @@
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
+using Axe.Windows.Actions.Enums;
 using Axe.Windows.Core.Enums;
 using Axe.Windows.Desktop.UIAutomation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -99,6 +100,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.DisableTestsInSnapMode);
             Assert.IsFalse(config.DisableDarkMode);
             Assert.IsTrue(config.EnableTelemetry);
+            Assert.AreEqual(EventRegistrationOrder.PropertyEventsFirst, config.EventListeningRegistrationOrder);
             Assert.IsTrue(config.EventRecordPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(FontSize.Standard, config.FontSize);
             Assert.AreEqual(HighlighterMode.HighlighterBeakerTooltip, config.HighlighterMode);
@@ -130,7 +132,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
-            Assert.AreEqual(37, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(38, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -150,7 +152,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
                 disableDarkMode: true,
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
-                releaseChannel: ReleaseChannel.Canary
+                releaseChannel: ReleaseChannel.Canary,
+                eventRegistrationOrder: EventRegistrationOrder.PropertyEventsLast
                 );
         }
 
@@ -161,7 +164,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
             Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
-            ReleaseChannel? releaseChannel = null, bool disableDarkMode = false)
+            ReleaseChannel? releaseChannel = null, bool disableDarkMode = false,
+            EventRegistrationOrder eventRegistrationOrder = EventRegistrationOrder.PropertyEventsFirst)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -174,6 +178,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsFalse(config.DisableTestsInSnapMode);
             Assert.AreEqual(config.DisableDarkMode, disableDarkMode);
             Assert.IsFalse(config.EnableTelemetry);
+            Assert.AreEqual(eventRegistrationOrder, config.EventListeningRegistrationOrder);
             Assert.AreEqual(@"C:\blah\AccessibilityInsightsEventFiles", config.EventRecordPath);
             Assert.AreEqual(FontSize.Small, config.FontSize);
             Assert.AreEqual(HighlighterMode.HighlighterTooltip, config.HighlighterMode);

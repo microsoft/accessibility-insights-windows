@@ -40,6 +40,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string keyDisableDarkMode = "DisableDarkMode";
         private const string keyDisableTestsInSnapMode = "DisableTestsInSnapMode";
         private const string keyEnableTelemetry = "EnableTelemetry";
+        private const string keyEventListeningRegistrationOrder = "EventListeningRegistrationOrder";
         private const string keyEventRecordPath = "EventRecordPath";
         public const string keyFontSize = "FontSize";
         private const string keyHighlighterMode = "HighlighterMode";
