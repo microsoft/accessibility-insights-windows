@@ -17,6 +17,7 @@
     "DisableDarkMode": true,
     "DisableTestsInSnapMode": false,
     "EnableTelemetry": false,
+    "EventListeningRegistrationOrder": "PropertyEventsLast",
     "EventRecordPath": "C:\\blah\\AccessibilityInsightsEventFiles",
     "FontSize": "Small",
     "HighlighterMode": "HighlighterTooltip",
