@@ -25,6 +25,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         public GeneralActionViewModel ActionViewModel { get; private set; }
         int Counter;
         Timer timerInvoke = null;
+        private readonly object _lockObject = new object();
 
         // Keep track of comboxbox dropdown state
         bool isDropDownOpen = false;
@@ -66,7 +67,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             Dispatcher.Invoke(delegate ()
             {
-                lock (this)
+                lock (_lockObject)
                 {
                     this.Counter--;
                     if (this.Counter == 0)
@@ -156,7 +157,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801 // unused parameter
         {
-            lock (this)
+            lock (_lockObject)
             {
                 if(Counter != 0 && this.IsVisible == false)
                 {

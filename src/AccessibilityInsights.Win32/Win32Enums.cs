@@ -68,7 +68,6 @@ namespace AccessibilityInsights.Win32
         WS_EX_DLGMODALFRAME = 0x00000001,
         WS_EX_LAYERED = 0x00080000,
         WS_EX_LAYOUTRTL = 0x00400000,
-        WS_EX_LEFT = 0x00000000,
         WS_EX_LEFTSCROLLBAR = 0x00004000,
         WS_EX_LTRREADING = 0x00000000,
         WS_EX_MDICHILD = 0x00000040,
@@ -78,7 +77,6 @@ namespace AccessibilityInsights.Win32
         WS_EX_OVERLAPPEDWINDOW = WS_EX_WINDOWEDGE | WS_EX_CLIENTEDGE,
         WS_EX_PALETTEWINDOW = WS_EX_WINDOWEDGE | WS_EX_TOOLWINDOW | WS_EX_TOPMOST,
         WS_EX_RIGHT = 0x00001000,
-        WS_EX_RIGHTSCROLLBAR = 0x00000000,
         WS_EX_RTLREADING = 0x00002000,
         WS_EX_STATICEDGE = 0x00020000,
         WS_EX_TOOLWINDOW = 0x00000080,
@@ -127,7 +125,6 @@ namespace AccessibilityInsights.Win32
         DEFAULT_CHARSET = 1,
         SYMBOL_CHARSET = 2,
         SHIFTJIS_CHARSET = 128,
-        HANGEUL_CHARSET = 129,
         HANGUL_CHARSET = 129,
         GB2312_CHARSET = 134,
         CHINESEBIG5_CHARSET = 136,
@@ -188,7 +185,7 @@ namespace AccessibilityInsights.Win32
         DEFAULT_PITCH = 0,
         FIXED_PITCH = 1,
         VARIABLE_PITCH = 2,
-        FF_DONTCARE = (0 << 4),
+        // FF_DONTCARE = (0 << 4),
         FF_ROMAN = (1 << 4),
         FF_SWISS = (2 << 4),
         FF_MODERN = (3 << 4),
@@ -205,9 +202,7 @@ namespace AccessibilityInsights.Win32
         SM_CYCAPTION = 4,  // 0x04
         SM_CXBORDER = 5,  // 0x05
         SM_CYBORDER = 6,  // 0x06
-        SM_CXDLGFRAME = 7,  // 0x07
         SM_CXFIXEDFRAME = 7,  // 0x07
-        SM_CYDLGFRAME = 8,  // 0x08
         SM_CYFIXEDFRAME = 8,  // 0x08
         SM_CYVTHUMB = 9,  // 0x09
         SM_CXHTHUMB = 10, // 0x0A
@@ -229,9 +224,7 @@ namespace AccessibilityInsights.Win32
         SM_CXSIZE = 30, // 0x1E
         SM_CYSIZE = 31, // 0x1F
         SM_CXSIZEFRAME = 32, // 0x20
-        SM_CXFRAME = 32, // 0x20
         SM_CYSIZEFRAME = 33, // 0x21
-        SM_CYFRAME = 33, // 0x21
         SM_CXMINTRACK = 34, // 0x22
         SM_CYMINTRACK = 35, // 0x23
         SM_CXDOUBLECLK = 36, // 0x24
