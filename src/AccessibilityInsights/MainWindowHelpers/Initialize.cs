@@ -217,11 +217,11 @@ namespace AccessibilityInsights
             SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForRecord,
                       new Action(() =>
                       {
-                          lock (this)
+                          lock (_lockObject)
                           {
                               Dispatcher.Invoke(() =>
                               {
-                                  lock (this)
+                                  lock (_lockObject)
                                   {
                                       if (this.CurrentPage == AppPage.Test && (TestView)this.CurrentView == TestView.TabStop)
                                       {
@@ -258,11 +258,11 @@ namespace AccessibilityInsights
             SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForPause,
                       new Action(() =>
                       {
-                          lock (this)
+                          lock (_lockObject)
                           {
                               Dispatcher.Invoke(() =>
                               {
-                                  lock (this)
+                                  lock (_lockObject)
                                   {
                                       if (this.btnPause.IsVisible)
                                       {
@@ -287,11 +287,11 @@ namespace AccessibilityInsights
             SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForSnap,
                       new Action(() =>
                       {
-                          lock (this)
+                          lock (_lockObject)
                           {
                               Dispatcher.Invoke(() =>
                               {
-                                  lock (this)
+                                  lock (_lockObject)
                                   {
                                       HandleRunTestsByHotkey();
                                       BringToForeground();
@@ -311,11 +311,11 @@ namespace AccessibilityInsights
             SetHotKey(ConfigurationManager.GetDefaultInstance().AppConfig.HotKeyForActivatingMainWindow,
                       new Action(() =>
                       {
-                          lock (this)
+                          lock (_lockObject)
                           {
                               Dispatcher.Invoke(() =>
                               {
-                                  lock (this)
+                                  lock (_lockObject)
                                   {
                                       if (this.hWnd == NativeMethods.GetForegroundWindow())
                                       {
@@ -384,7 +384,7 @@ namespace AccessibilityInsights
         {
             return () =>
             {
-                lock (this)
+                lock (_lockObject)
                 {
                     Dispatcher.Invoke(action);
                 } // lock

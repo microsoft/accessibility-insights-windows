@@ -24,6 +24,7 @@ namespace AccessibilityInsights
     class TreeNavigator
     {
         IControlTreeNavigation Controller = null;
+        private readonly object _lockObject = new object();
 
         public Action SelectionChanged;
 
@@ -92,7 +93,7 @@ namespace AccessibilityInsights
         /// </param>
         private void MoveTo(MoveToDelegate moveTo)
         {
-            lock (this)
+            lock (_lockObject)
             {
                 if (this.Controller == null) return;
                 if (!this.Controller.IsTreeNavigationAllowed()) return;

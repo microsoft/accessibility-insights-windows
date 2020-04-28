@@ -50,7 +50,7 @@ namespace AccessibilityInsights
                 {
                     Dispatcher.Invoke(delegate ()
                     {
-                        lock (this)
+                        lock (_lockObject)
                         {
                             if (this.CurrentPage != AppPage.Exit && AllowFurtherAction)
                             {
@@ -76,7 +76,7 @@ namespace AccessibilityInsights
                     });
                 }
 
-                lock (this)
+                lock (_lockObject)
                 {
                     EnableTimerSafely(timerSelector, true); // make sure that it is disabled.
                 }
@@ -84,7 +84,7 @@ namespace AccessibilityInsights
             }
             else
             {
-                lock (this)
+                lock (_lockObject)
                 {
                     EnableTimerSafely(timerSelector, false); // make sure that it is disabled.
                 }
@@ -135,7 +135,7 @@ namespace AccessibilityInsights
             {
                 Dispatcher.Invoke(delegate ()
                 {
-                    lock (this)
+                    lock (_lockObject)
                     {
                         if (this.CurrentPage != AppPage.Exit)
                         {

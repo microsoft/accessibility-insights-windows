@@ -48,6 +48,8 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private ElementContext ElementContext = null;
 
+        private readonly object _lockObject = new object();
+
         public static RecorderSetting RecorderSetting
         {
             get
@@ -187,7 +189,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void ToggleRecording()
         {
-            lock (this)
+            lock (_lockObject)
             {
                 if (vmEventRecorder.State == ButtonState.Off)
                 {

@@ -65,6 +65,7 @@ namespace AccessibilityInsights
         /// </summary>
         private bool IgnoreUpdates = false;
 
+        private readonly object _lockObject = new object();
 
         /// <summary>
         /// Is title bar context menu open
@@ -129,7 +130,7 @@ namespace AccessibilityInsights
         /// <param name="allow"></param>
         public void SetAllowFurtherAction(bool allow)
         {
-            lock (this)
+            lock (_lockObject)
             {
                 if (AllowFurtherAction != allow && IsCurrentModeAllowingSelection())
                 {
@@ -376,7 +377,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void onClosed(object sender, EventArgs e)
         {
-            lock (this)
+            lock (_lockObject)
             {
                 try
                 {

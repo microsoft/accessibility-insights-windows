@@ -68,6 +68,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// Toast Notification
         /// </summary>
         private ToastNotification Toast;
+
+        private readonly object _lockObject = new object();
+
         /// <summary>
         /// App configation
         /// </summary>
@@ -97,7 +100,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             get
             {
-                lock (this)
+                lock (_lockObject)
                 {
                     tabStopCount++;
                     return tabStopCount;
@@ -227,7 +230,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             if (this.IsTabOpen)
             {
-                lock (this)
+                lock (_lockObject)
                 {
                     if (IsRecordingActive)
                     {
