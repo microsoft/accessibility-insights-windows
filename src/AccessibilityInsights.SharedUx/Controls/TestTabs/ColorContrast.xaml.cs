@@ -243,7 +243,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             OpenLink(LearnAboutColorContrastURL);
         }
 
-        private void OpenLink(string target)
+        private static void OpenLink(string target)
         {
             try
             {

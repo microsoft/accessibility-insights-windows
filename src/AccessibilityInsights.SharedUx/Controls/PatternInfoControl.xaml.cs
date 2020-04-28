@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
         }
 
-        private IEnumerable<int> GetBasicPropertyList()
+        private static IEnumerable<int> GetBasicPropertyList()
         {
             return DesktopElementHelper.GetCorePropertiesList();
         }
