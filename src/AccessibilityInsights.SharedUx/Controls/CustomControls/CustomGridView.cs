@@ -12,20 +12,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     {
         protected override IViewAutomationPeer GetAutomationPeer(ListView parent)
         {
-            return new CustomGridViewAutomationPeer(this, parent);
-        }
-    }
-
-    /// <summary>
-    /// Improves accessibility on gridviewcellitems
-    /// </summary>
-    public class CustomGridViewAutomationPeer : GridViewAutomationPeer, IViewAutomationPeer
-    {
-        private ListView listView = null;
-        public CustomGridViewAutomationPeer(GridView owner, ListView listView)
-            : base(owner, listView)
-        {
-            this.listView = listView;
+            return new GridViewAutomationPeer(this, parent);
         }
     }
 }
