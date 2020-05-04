@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using System.Reflection;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -69,17 +68,5 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
             return child as T;
         }
-
-        //private GridViewCellAutomationPeer CreateCellAutomationPeer(Visual owner, ListViewAutomationPeer peer)
-        //{
-        //    GridViewCellAutomationPeer cellPeer = null;
-        //    ConstructorInfo[] infos = typeof(GridViewCellAutomationPeer).GetConstructors(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
-        //    if (infos != null && infos.Length == 2)
-        //    {
-        //        cellPeer = infos[1].Invoke(new Object[] { owner, peer }) as GridViewCellAutomationPeer;
-        //    }
-
-        //    return cellPeer;
-        //}
     }
 }
