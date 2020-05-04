@@ -30,16 +30,4 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             this.listView = listView;
         }
     }
-
-    /// <summary>
-    /// Class to remove custom control wrapping GridView cell
-    /// </summary>
-    public class CustomGridViewItemAutomationPeer : GridViewItemAutomationPeer
-    {
-        private ListViewAutomationPeer listviewAP;
-        public CustomGridViewItemAutomationPeer(object owner, ListViewAutomationPeer listviewAP): base(owner, listviewAP)
-        {
-            this.listviewAP = listviewAP;
-        }
-    }
 }
