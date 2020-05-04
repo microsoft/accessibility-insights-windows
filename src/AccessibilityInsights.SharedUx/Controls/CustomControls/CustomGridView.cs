@@ -41,27 +41,5 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             this.listviewAP = listviewAP;
         }
-
-        private static T GetVisualChild<T>(Visual referenceVisual) where T : Visual
-        {
-            Visual child = null;
-            for (Int32 i = 0; i < VisualTreeHelper.GetChildrenCount(referenceVisual); i++)
-            {
-                child = VisualTreeHelper.GetChild(referenceVisual, i) as Visual;
-                if (child != null && (child.GetType() == typeof(T)))
-                {
-                    break;
-                }
-                else if (child != null)
-                {
-                    child = GetVisualChild<T>(child);
-                    if (child != null && (child.GetType() == typeof(T)))
-                    {
-                        break;
-                    }
-                }
-            }
-            return child as T;
-        }
     }
 }
