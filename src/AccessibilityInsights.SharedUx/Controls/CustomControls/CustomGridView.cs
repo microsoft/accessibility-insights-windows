@@ -29,11 +29,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             this.listView = listView;
         }
-
-        ItemAutomationPeer CreateItemAutomationPeer(object item)
-        {
-            return new CustomGridViewItemAutomationPeer(item, UIElementAutomationPeer.FromElement(this.listView) as ListViewAutomationPeer);
-        }
     }
 
     /// <summary>
