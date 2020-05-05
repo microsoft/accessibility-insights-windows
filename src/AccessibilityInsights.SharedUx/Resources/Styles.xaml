@@ -490,7 +490,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <!-- CustomGridView related styles -->
+    <!-- GridView related styles -->
     <Style TargetType="GridViewColumnHeader" x:Key="GvchNoContent">
         <Setter Property="Margin" Value="0,0,0,2"/>
         <Setter Property="Template">
@@ -567,7 +567,7 @@
             </Setter>
         </Style.Setters>
     </Style>
-    <!-- End CustomGridView related styles -->
+    <!-- End GridView related styles -->
     <Style x:Key="tgbutton" TargetType="{x:Type ToggleButton}">
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
