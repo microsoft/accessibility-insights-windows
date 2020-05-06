@@ -40,10 +40,11 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
                     <TextBlock Name="tbVideo" FontSize="22" Padding="16,10,16,0" FontWeight="Light" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Style="{StaticResource TbFocusable}" TextWrapping="Wrap">
-              <Run Text="{x:Static properties:Resources.tbVideoText1}"/>
+                        <Run Text="{x:Static properties:Resources.tbVideoText1}"/>
                     </TextBlock>
                     <TextBlock x:Name="videoDescription" Grid.Row="1" FontSize="12" Style="{StaticResource TbFocusable}" Padding="16,10" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
                     <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.LabeledBy="{Binding ElementName=videoDescription}" VerticalAlignment="Top">
@@ -65,6 +66,13 @@
                             <fabric:FabricIconControl Foreground="{DynamicResource ResourceKey=WhiteTextBrush}" Name="fabPlay" GlyphName="MSNVideosSolid" GlyphSize="Custom" FontSize="36" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Button>
+                    <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
+                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,20,12,12">
+                        <Hyperlink x:Name="hlHelp" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077919"
+                                    AutomationProperties.Name="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" Style="{StaticResource hLink}">
+                            <Run Text="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" FontSize="12" FontWeight="Light"/>
+                        </Hyperlink>
+                    </TextBlock>
                 </Grid>
             </Border>
             <Border Grid.Column="3" Grid.Row="2" Background="{DynamicResource ResourceKey=StartupSecondaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=StartupInnerBorderBrush}" BorderThickness="1">

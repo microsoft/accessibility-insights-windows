@@ -3625,11 +3625,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For more information,.
+        ///   Looks up a localized string similar to More guidance and tutorials.
         /// </summary>
-        public static string StartupModeControl_moreInformationText {
+        public static string StartupModeControl_moreGuidanceText {
             get {
-                return ResourceManager.GetString("StartupModeControl_moreInformationText", resourceCulture);
+                return ResourceManager.GetString("StartupModeControl_moreGuidanceText", resourceCulture);
             }
         }
         
