@@ -143,6 +143,12 @@
                     <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
                     <LineBreak/>
                     <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Hyperlink x:Name="hlVersion" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="{Binding Path=AppVersionUri, Mode=OneWay}"
+                                AutomationProperties.Name="{x:Static properties:Resources.hlVersion}" Style="{StaticResource hLink}">
+                        <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" FontSize="12" FontWeight="Light"/>
+                    </Hyperlink>
                 </TextBlock>
             </Grid>
                 <CheckBox Grid.Column="1" Grid.Row="4" Content="{x:Static properties:Resources.ckbxShowContent}" Name="ckbxShow" FontSize="12" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"

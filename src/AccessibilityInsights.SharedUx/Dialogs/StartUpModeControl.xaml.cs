@@ -8,6 +8,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Navigation;
 
@@ -22,7 +23,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// URL to getting started video
         /// </summary>
         const string VideoUrl = "https://go.microsoft.com/fwlink/?linkid=2077681";
-
 
         /// <summary>
         /// App configation
@@ -46,15 +46,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
         }
 
-
         /// <summary>
-        /// Most recent version string
+        /// Label for AppVersion
         /// </summary>
-        public string VersionString { get; private set; }
+        public static string VersionInfoLabel => VersionTools.AppVersionLabel;
+
+        public static Uri AppVersionUri => VersionTools.AppVersionUri;
 
         public StartUpModeControl()
         {
-            this.VersionString = VersionTools.GetAppVersion();
             InitializeComponent();
             WaitHandle.Reset();
         }
