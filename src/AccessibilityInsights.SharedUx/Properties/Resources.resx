@@ -821,11 +821,11 @@
   <data name="toggleEventText" xml:space="preserve">
     <value>Start or stop event recording for the selected element.</value>
   </data>
-  <data name="shortcutsDescription" xml:space="preserve">
-    <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
+  <data name="StartupModeControl_shortcutsLinkLabel" xml:space="preserve">
+    <value>View the full list of default keyboard shortcuts</value>
   </data>
-  <data name="shortcutsTitle" xml:space="preserve">
-    <value>Frequently used shortcuts</value>
+  <data name="StartupModeControl_shortcutsTitle" xml:space="preserve">
+    <value>Default frequently used shortcuts</value>
   </data>
   <data name="imageVideoAutomationPropertiesName" xml:space="preserve">
     <value>Getting started video thumbnail</value>
@@ -1532,5 +1532,8 @@ Do you want to change the channel? </value>
   </data>
   <data name="EventRecordControlScopeHeader" xml:space="preserve">
     <value>Event recording scope</value>
+  </data>
+  <data name="StartupModeControl_shortcutsDescription" xml:space="preserve">
+    <value>These keystrokes are default, but you can customize your shortcut keystrokes in settings.</value>
   </data>
 </root>
