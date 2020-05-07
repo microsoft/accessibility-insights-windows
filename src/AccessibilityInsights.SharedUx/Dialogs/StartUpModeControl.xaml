@@ -67,7 +67,7 @@
                         </Grid>
                     </Button>
                     <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
-                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,12,12,12">
+                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,17,12,12">
                         <Hyperlink x:Name="hlHelp" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077919"
                                     AutomationProperties.Name="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" Style="{StaticResource hLink}">
                             <Run Text="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" FontSize="12" FontWeight="Light"/>
@@ -98,14 +98,8 @@
                     <TextBlock Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="20" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" FontWeight="Light">
                         <Run Text="{x:Static properties:Resources.StartupModeControl_shortcutsTitle}"/>
                     </TextBlock>
-                    <TextBlock Grid.Row="1" Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,0" FontSize="12" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" FontWeight="Light">
+                    <TextBlock Grid.Row="1" Style="{StaticResource TbFocusable}" Grid.ColumnSpan="8" Padding="16,10,16,15" FontSize="12" Foreground="{DynamicResource ResourceKey=StartupFGBrush}">
                         <Run Text="{x:Static properties:Resources.StartupModeControl_shortcutsDescription}"/>
-                    </TextBlock>
-                    <TextBlock Grid.Row="2" Grid.ColumnSpan="8" Padding="16,6,0,10" TextWrapping="Wrap">
-                        <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
-                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
-                            <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.StartupModeControl_shortcutsLinkLabel}" FontSize="12" FontWeight="Light"/>
-                        </Hyperlink>  
                     </TextBlock>
                     <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}" VerticalAlignment="Center">
                         <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,6">
@@ -140,6 +134,12 @@
                         </Label>
                     </Border>
                     <TextBlock Name="txtActivateHk" Grid.Row="7" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
+                    <TextBlock Grid.Row="8" Grid.ColumnSpan="8" Padding="16,4,0,10" TextWrapping="Wrap">
+                        <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
+                                   AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
+                            <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.StartupModeControl_shortcutsLinkLabel}" FontSize="12" FontWeight="Light"/>
+                        </Hyperlink>
+                    </TextBlock>
                 </Grid>
             </Border>
             <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
