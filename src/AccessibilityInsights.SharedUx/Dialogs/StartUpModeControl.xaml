@@ -108,7 +108,7 @@
                         </Hyperlink>  
                     </TextBlock>
                     <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}">
-                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,1">
+                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
@@ -119,7 +119,7 @@
                     </Border>
                     <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BrdrKey}">
-                        <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,1">
+                        <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
@@ -130,7 +130,7 @@
                     </Border>
                     <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="5" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="7" Grid.Column="1" Style="{StaticResource BrdrKey}" Height="32" VerticalAlignment="Top">
-                        <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,1">
+                        <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
