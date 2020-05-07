@@ -3634,7 +3634,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Default frequently used shortcuts.
+        ///   Looks up a localized string similar to Frequently used shortcuts.
         /// </summary>
         public static string StartupModeControl_shortcutsTitle {
             get {
