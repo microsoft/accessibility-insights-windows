@@ -15,7 +15,7 @@
     <dialogs:ContainedDialog.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
-    <Border MaxHeight="700" MaxWidth="700" VerticalAlignment="Center"
+    <Border MaxHeight="700" MaxWidth="728" VerticalAlignment="Center"
             Background="{DynamicResource ResourceKey=StartupPrimaryBGBrush}"
             BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
             BorderBrush="{DynamicResource ResourceKey=PrimaryFGBrush}">
@@ -29,11 +29,11 @@
                 <RowDefinition Height="12"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="32"/>
-                <ColumnDefinition Width="300"/>
-                <ColumnDefinition Width="6"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="18"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="340"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="340"/>
+                <ColumnDefinition Width="16"/>
             </Grid.ColumnDefinitions>
             <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=StartupSecondaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=StartupInnerBorderBrush}" BorderThickness="1">
                 <Grid>
@@ -47,7 +47,7 @@
                         <Run Text="{x:Static properties:Resources.tbVideoText1}"/>
                     </TextBlock>
                     <TextBlock x:Name="videoDescription" Grid.Row="1" FontSize="12" Style="{StaticResource TbFocusable}" Padding="16,10" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" TextWrapping="Wrap" Text="{x:Static properties:Resources.tbVideoText2}"/>
-                    <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.LabeledBy="{Binding ElementName=videoDescription}" VerticalAlignment="Top">
+                    <Button Style="{StaticResource BtnStandard}" Cursor="Hand" Grid.Row="2" Width="240" Height="121" BorderThickness="0" Name="btnVideo" Click="btnVideo_Click" AutomationProperties.LabeledBy="{Binding ElementName=videoDescription}" VerticalAlignment="Top" Margin="10">
                         <Grid>
                             <Image Width="240" Height="135" Source="../Resources/video_thumb.png" AutomationProperties.Name="{x:Static properties:Resources.imageVideoAutomationPropertiesName}"/>
                             <Border Opacity=".40" Name="bdOverlay">
@@ -67,7 +67,7 @@
                         </Grid>
                     </Button>
                     <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
-                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,20,12,12">
+                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,12,12,12">
                         <Hyperlink x:Name="hlHelp" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077919"
                                     AutomationProperties.Name="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" Style="{StaticResource hLink}">
                             <Run Text="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" FontSize="12" FontWeight="Light"/>
