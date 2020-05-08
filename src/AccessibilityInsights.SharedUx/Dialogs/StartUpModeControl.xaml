@@ -35,6 +35,27 @@
                 <ColumnDefinition Width="290"/>
                 <ColumnDefinition Width="13"/>
             </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="14"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="14"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
+                            FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
+                    <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
+                    <LineBreak/>
+                    <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
+                    <LineBreak/>
+                    <LineBreak/>
+                    <Hyperlink x:Name="hlVersion" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="{Binding Path=AppVersionUri, Mode=OneWay}"
+                                AutomationProperties.Name="{Binding Path=VersionInfoLabel, Mode=OneWay}" Style="{StaticResource hLink}">
+                        <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" FontSize="12"/>
+                    </Hyperlink>
+                </TextBlock>
+            </Grid>
             <Border Grid.Column="1" Grid.Row="2" Background="{DynamicResource ResourceKey=StartupSecondaryBGBrush}" BorderBrush="{DynamicResource ResourceKey=StartupInnerBorderBrush}" BorderThickness="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -142,27 +163,6 @@
                     </TextBlock>
                 </Grid>
             </Border>
-            <Grid Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="14"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="14"/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
-                           FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
-                    <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
-                    <LineBreak/>
-                    <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
-                    <LineBreak/>
-                    <LineBreak/>
-                    <Hyperlink x:Name="hlVersion" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="{Binding Path=AppVersionUri, Mode=OneWay}"
-                                AutomationProperties.Name="{Binding Path=VersionInfoLabel, Mode=OneWay}" Style="{StaticResource hLink}">
-                        <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" FontSize="12"/>
-                    </Hyperlink>
-                </TextBlock>
-            </Grid>
             <CheckBox Grid.Column="1" Grid.Row="4" Content="{x:Static properties:Resources.ckbxShowContent}" Name="ckbxShow" FontSize="12" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"
                         FontWeight="SemiBold" Style="{StaticResource CkbxRightSide}" VerticalAlignment="Center" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" IsChecked="True"/>
             <Button Grid.Column="3" Grid.Row="4" x:Name="btnExit" Click="btnExit_Click" UseLayoutRounding="True" AutomationProperties.AutomationId="{x:Static properties:AutomationIDs.StartUpModeExitButton}"
