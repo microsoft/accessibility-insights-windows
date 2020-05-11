@@ -8,6 +8,8 @@
     <AssemblyName>AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests</AssemblyName>
   </PropertyGroup>
 
+  <Import Project="..\..\build\NetFrameworkTest.targets" />
+
   <ItemGroup>
     <PackageReference Include="Codecov" Version="1.10.0" />
     <PackageReference Include="coverlet.msbuild" Version="2.8.1">
