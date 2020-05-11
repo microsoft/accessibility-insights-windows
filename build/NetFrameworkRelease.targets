@@ -1,0 +1,29 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudioEng.MicroBuild.Core" Version="0.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <Choose>
+    <When Condition=" '$(DropSignedFile)' == '' ">
+      <ItemGroup>
+        <DropSignedFile Include="$(TargetPath)" />
+      </ItemGroup>
+    </When>
+  </Choose>
+
+  <Import Project="NetFrameworkAll.targets" />
+  <Import Project="settings.targets" />
+
+</Project>

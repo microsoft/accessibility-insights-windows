@@ -28,12 +28,14 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// </summary>
         private Dictionary<string, string> ContextProperties { get; }
 
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         public AITelemetry()
         {
             ContextProperties = new Dictionary<string, string>();
 
             InitializeTClient();
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
         /// Initialize Telemetry Client with default values
