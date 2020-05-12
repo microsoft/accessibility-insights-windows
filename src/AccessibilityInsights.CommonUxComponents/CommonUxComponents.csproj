@@ -30,7 +30,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\FabMDL2.ttf" />
+    <None Remove="Resources\Sound\scanner_sound.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\FabMDL2.ttf" />
   </ItemGroup>
 
 </Project>
