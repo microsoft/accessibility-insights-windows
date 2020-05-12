@@ -39,11 +39,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj" />
+    <Resource Include="Resources\FabMDL2.ttf" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Resources\FabMDL2.ttf" />
+    <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj" />
   </ItemGroup>
 
 </Project>
