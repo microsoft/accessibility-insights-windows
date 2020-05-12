@@ -30,16 +30,16 @@
   </ItemGroup>
 
   <ItemGroup>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resources\FabMDL2.ttf" />
-    <None Remove="Resources\Sound\scanner_sound.wav" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Resources\FabMDL2.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Sound\scanner_sound.wav" />
+    <EmbeddedResource Include="Resources\Sound\scanner_sound.wav" />
   </ItemGroup>
 
   <ItemGroup>
