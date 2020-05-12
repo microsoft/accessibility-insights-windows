@@ -147,12 +147,12 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             <Directory Id="VersionSwitcher" Name="VersionSwitcher">
               <Component Id="VersionSwitcherComp" Guid="1AAD6099-09E1-4E8F-A28B-57806F4A29DF">
                 <!-- ID's are needed for these files, since several of them are also installed with the main app -->
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoftt"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>
               </Component>
             </Directory>
 
