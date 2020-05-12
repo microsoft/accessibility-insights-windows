@@ -2,11 +2,11 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Controls;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
+using Microsoft.Xaml.Behaviors;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 
 namespace AccessibilityInsights.SharedUx.Behaviors
 {

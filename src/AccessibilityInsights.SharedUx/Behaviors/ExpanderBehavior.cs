@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Settings;
+using Microsoft.Xaml.Behaviors;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Interactivity;
 
 namespace AccessibilityInsights.SharedUx.Behaviors
 {
