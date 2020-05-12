@@ -45,4 +45,29 @@
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Icons\BrandIcon.ico" />
+    <Resource Include="Resources\Icons\BrandIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\BrandIconDesktop.ico" />
+    <Resource Include="Resources\Icons\BrandIconDesktop.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\BrandIcon_256x.png" />
+    <Resource Include="Resources\Icons\BrandIcon_256x.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Icons\BrandIcon_white.ico" />
+    <Resource Include="Resources\Icons\BrandIcon_white.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\video_thumb.png" />
+    <Resource Include="Resources\video_thumb.png" />
+  </ItemGroup>
+
 </Project>
