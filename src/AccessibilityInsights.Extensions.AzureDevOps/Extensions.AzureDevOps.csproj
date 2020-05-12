@@ -58,6 +58,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Icons\BrandIcon.ico" />
+    <Resource Include="Resources\Icons\BrandIcon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="IssueTemplates\IssueColorContrast.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
