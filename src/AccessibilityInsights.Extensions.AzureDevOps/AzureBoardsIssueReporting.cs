@@ -12,7 +12,9 @@ using System.Windows;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
 {
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
     [Export(typeof(IIssueReporting))]
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
         private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();

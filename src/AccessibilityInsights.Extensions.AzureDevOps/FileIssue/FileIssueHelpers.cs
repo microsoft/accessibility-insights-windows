@@ -4,12 +4,14 @@ using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualStudio.Services.Common;
 using mshtml;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -210,7 +212,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             {
                 foreach (IHTMLDOMNode divnode in divnodes)
                 {
-                    foreach (IHTMLDOMNode child in divnode.childNodes)
+                    foreach (IHTMLDOMNode child in GetChildren(divnode))
                     {
                         string nodevalue = child.nodeValue?.ToString();
                         if (nodevalue != null && nodevalue.Contains(keyText) == true)
@@ -226,13 +228,22 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             if (node != null)
             {
-                foreach (var n in node.childNodes)
+                // Get all children up front to avoid modifying the list while iterating
+                foreach (IHTMLDOMNode child in GetChildren(node).ToList())
                 {
-                    node.removeChild(n);
+                    node.removeChild(child);
                 }
             }
 
             return doc.body.outerHTML;
+        }
+
+        private static IEnumerable<IHTMLDOMNode> GetChildren(IHTMLDOMNode node)
+        {
+            for (IHTMLDOMNode child = node.firstChild; child != null; child = child.nextSibling)
+            {
+                yield return child;
+            }
         }
 
         /// <summary>
