@@ -51,6 +51,9 @@
   <PropertyGroup>
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Axe.Windows.Actions, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Actions.dll</HintPath>

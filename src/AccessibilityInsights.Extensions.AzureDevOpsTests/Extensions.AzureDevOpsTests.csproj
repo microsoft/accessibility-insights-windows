@@ -41,6 +41,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
     <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
   </PropertyGroup>
