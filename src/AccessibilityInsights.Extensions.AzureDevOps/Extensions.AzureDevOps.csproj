@@ -6,7 +6,6 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>AccessibilityInsights.Extensions.AzureDevOps</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.AzureDevOps</RootNamespace>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
