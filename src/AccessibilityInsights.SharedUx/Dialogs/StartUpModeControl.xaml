@@ -15,7 +15,7 @@
     <dialogs:ContainedDialog.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
     </dialogs:ContainedDialog.Resources>
-    <Border MaxHeight="460" MaxWidth="620" VerticalAlignment="Center"
+    <Border MaxHeight="460" MaxWidth="613" VerticalAlignment="Center"
             Background="{DynamicResource ResourceKey=StartupPrimaryBGBrush}"
             BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}"
             BorderBrush="{DynamicResource ResourceKey=PrimaryFGBrush}">
@@ -31,7 +31,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="13"/>
                 <ColumnDefinition Width="290"/>
-                <ColumnDefinition Width="13"/>
+                <ColumnDefinition Width="6"/>
                 <ColumnDefinition Width="290"/>
                 <ColumnDefinition Width="13"/>
             </Grid.ColumnDefinitions>
@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="14"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" FontSize="10" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
                             FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
                     <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
                     <LineBreak/>

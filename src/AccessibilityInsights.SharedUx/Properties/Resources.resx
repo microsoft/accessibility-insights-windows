@@ -822,7 +822,7 @@
     <value>Start or stop event recording for the selected element.</value>
   </data>
   <data name="StartupModeControl_shortcutsLinkLabel" xml:space="preserve">
-    <value>View the full list of default keyboard shortcuts</value>
+    <value>More information about shortcuts</value>
   </data>
   <data name="StartupModeControl_shortcutsTitle" xml:space="preserve">
     <value>Frequently used shortcuts</value>

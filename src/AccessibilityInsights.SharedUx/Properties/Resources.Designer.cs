@@ -3625,7 +3625,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View the full list of default keyboard shortcuts.
+        ///   Looks up a localized string similar to More information about shortcuts.
         /// </summary>
         public static string StartupModeControl_shortcutsLinkLabel {
             get {
