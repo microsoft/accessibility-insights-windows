@@ -61,7 +61,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.Telemetry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.SetupLibrary.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.SharedUx.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.SharedUx.dll.config" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Actions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Core.dll" />
