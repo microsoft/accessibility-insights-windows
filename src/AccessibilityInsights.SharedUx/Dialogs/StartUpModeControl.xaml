@@ -43,7 +43,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="14"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" FontSize="10" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
+                <TextBlock Grid.Column="1" Grid.ColumnSpan="3" FontSize="4" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
                             FontWeight="Light" VerticalAlignment="Center" TextAlignment="Center" Margin="12">
                     <Run Text="{x:Static properties:Resources.WelcomeToAccessibilityInsightsForWindowsLabelContent}" FontSize="18"/>
                     <LineBreak/>
