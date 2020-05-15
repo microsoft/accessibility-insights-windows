@@ -25,9 +25,9 @@ namespace AccessibilityInsights.Extensions.Telemetry
             await Task.Run(new Action(() => _client.TrackEvent(data))).ConfigureAwait(false);
         }
 
-        void ITelemetryClientWrapper.TrackException(Exception e, Dictionary<string, string> contextProperties)
+        async void ITelemetryClientWrapper.TrackException(Exception e, Dictionary<string, string> contextProperties)
         {
-            _client.TrackException(e, contextProperties);
+            await Task.Run(new Action(() => _client.TrackException(e, contextProperties))).ConfigureAwait(false);
         }
     }
 }
