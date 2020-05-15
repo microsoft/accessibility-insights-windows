@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.TelemetryTests
     {
         [TestMethod]
         [Timeout(1000)]
-        public void Ctor_CreatesObjectWithExcpectedProperties()
+        public void Ctor_CreatesObjectWithExpectedProperties()
         {
             const string expectedInstrumentationKey = "My key";
             string expectedVersion = OSHelpers.GetVersion();
