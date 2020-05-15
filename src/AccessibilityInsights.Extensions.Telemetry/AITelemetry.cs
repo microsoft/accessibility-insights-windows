@@ -1,12 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
-using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.DataContracts;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
-using System.Threading.Tasks;
 
 namespace AccessibilityInsights.Extensions.Telemetry
 {
@@ -16,12 +14,11 @@ namespace AccessibilityInsights.Extensions.Telemetry
     [Export(typeof(ITelemetry))]
     public class AITelemetry : ITelemetry
     {
+        private readonly ITelemetryClientWrapper _clientWrapper = null;
         /// <summary>
         /// Instrumentation key from Azure portal
         /// </summary>
         const string InstrumentationKey = "0ad67074-7af0-494c-adee-be70a786448a";
-
-        private TelemetryClient TClient;
 
         /// <summary>
         /// Properties that are sent alongside all telemetry
@@ -29,25 +26,27 @@ namespace AccessibilityInsights.Extensions.Telemetry
         private Dictionary<string, string> ContextProperties { get; }
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
+        /// <summary>
+        /// Production ctor--must be public for MEF
+        /// </summary>
         public AITelemetry()
+            :this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(InstrumentationKey)))
         {
-            ContextProperties = new Dictionary<string, string>();
-
-            InitializeTClient();
         }
-#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
-        /// Initialize Telemetry Client with default values
+        /// Unit test ctor
         /// </summary>
-        private void InitializeTClient()
+        /// <param name="clientWrapper">The wrapper of the TelemetryClient</param>
+        internal AITelemetry(ITelemetryClientWrapper clientWrapper)
         {
-            var tc = new TelemetryClient();
-            tc.InstrumentationKey = InstrumentationKey;
-            tc.Context.Device.OperatingSystem = OSHelpers.GetVersion();
-            tc.Context.Cloud.RoleInstance = "undefined";
-            this.TClient = tc;
+            if (clientWrapper == null)
+                throw new ArgumentNullException(nameof(clientWrapper));
+
+            _clientWrapper = clientWrapper;
+            ContextProperties = new Dictionary<string, string>();
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
         /// Publishes telemetry to AI with the given action and propertybag
@@ -83,11 +82,11 @@ namespace AccessibilityInsights.Extensions.Telemetry
         }
 
         /// <summary>
-        /// Process an event asynchronously
+        /// Process an event
         /// </summary>
-        private async void ProcessEvent(EventTelemetry aiEvent)
+        private void ProcessEvent(EventTelemetry aiEvent)
         {
-            await Task.Run(new Action(() => TClient?.TrackEvent(aiEvent))).ConfigureAwait(false);
+            _clientWrapper.TrackEvent(aiEvent);
         }
 
         /// <summary>
@@ -113,7 +112,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
             {
                 try
                 {
-                    TClient.TrackException(e, ContextProperties);
+                    _clientWrapper.TrackException(e, ContextProperties);
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch { } // Don't try to report this Exception
