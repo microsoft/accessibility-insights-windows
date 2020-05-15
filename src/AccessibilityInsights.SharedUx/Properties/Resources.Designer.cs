@@ -3571,24 +3571,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Go to the full list of keyboard shortcuts for Accessibility Insights for Windows..
-        /// </summary>
-        public static string shortcutsDescription {
-            get {
-                return ResourceManager.GetString("shortcutsDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frequently used shortcuts.
-        /// </summary>
-        public static string shortcutsTitle {
-            get {
-                return ResourceManager.GetString("shortcutsTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Hue.
         /// </summary>
         public static string sliderColorSliderAutomationPropertiesName {
@@ -3625,11 +3607,38 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For more information,.
+        ///   Looks up a localized string similar to More guidance and tutorials.
         /// </summary>
-        public static string StartupModeControl_moreInformationText {
+        public static string StartupModeControl_moreGuidanceText {
             get {
-                return ResourceManager.GetString("StartupModeControl_moreInformationText", resourceCulture);
+                return ResourceManager.GetString("StartupModeControl_moreGuidanceText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to These keystrokes are default, but you can customize your shortcut keystrokes in settings..
+        /// </summary>
+        public static string StartupModeControl_shortcutsDescription {
+            get {
+                return ResourceManager.GetString("StartupModeControl_shortcutsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More information about shortcuts.
+        /// </summary>
+        public static string StartupModeControl_shortcutsLinkLabel {
+            get {
+                return ResourceManager.GetString("StartupModeControl_shortcutsLinkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frequently used shortcuts.
+        /// </summary>
+        public static string StartupModeControl_shortcutsTitle {
+            get {
+                return ResourceManager.GetString("StartupModeControl_shortcutsTitle", resourceCulture);
             }
         }
         

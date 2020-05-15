@@ -23,7 +23,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         const string VideoUrl = "https://go.microsoft.com/fwlink/?linkid=2077681";
 
-
         /// <summary>
         /// App configation
         /// </summary>
@@ -46,15 +45,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
         }
 
-
         /// <summary>
-        /// Most recent version string
+        /// Label for AppVersion
         /// </summary>
-        public string VersionString { get; private set; }
+        public static string VersionInfoLabel => VersionTools.AppVersionLabel;
+
+        public static Uri AppVersionUri => VersionTools.AppVersionUri;
 
         public StartUpModeControl()
         {
-            this.VersionString = VersionTools.GetAppVersion();
             InitializeComponent();
             WaitHandle.Reset();
         }
@@ -139,6 +138,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
-        protected override void SetFocusOnDefaultControl() => btnVideo.Focus();
+        protected override void SetFocusOnDefaultControl() => hlVersion.Focus();
     }
 }
