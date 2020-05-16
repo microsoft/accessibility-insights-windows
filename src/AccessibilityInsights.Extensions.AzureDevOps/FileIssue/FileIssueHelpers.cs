@@ -18,17 +18,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// <summary>
     /// Class with static functions used for filing issues
     /// </summary>
-    internal static class FileIssueHelpers
+    internal class FileIssueHelpers
     {
-        private volatile static IDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+        private readonly IDevOpsIntegration _devOpsIntegration;
 
-        /// <summary>
-        /// Test method to allow override of AzureDevOps
-        /// </summary>
-        /// <param name="newValue">Test value to use (set to null to restore the default value)</param>
-        internal static void SetAzureDevOpsIntegrationForTest(IDevOpsIntegration newValue)
+        internal FileIssueHelpers(IDevOpsIntegration devOpsIntegration)
         {
-            AzureDevOps = newValue ?? AzureDevOpsIntegration.GetCurrentInstance();
+            _devOpsIntegration = devOpsIntegration;
         }
 
         /// <summary>
@@ -40,7 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="zoomLevel">Zoom level for issue file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
-        internal static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        internal (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
             return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, null);
         }
@@ -48,7 +44,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <summary>
         /// Testable version of FileNewIssue, allows caller to specify an issueId instead of going off-box
         /// </summary>
-        internal static (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, int? testIssueId)
+        internal (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, int? testIssueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -86,7 +82,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="a11yIssueId">Issue's A11y-specific id</param>
         /// <param name="issueId">Issue's server-side id</param>
         /// <returns>Success or failure</returns>
-        internal static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
+        internal async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -141,10 +137,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="issueId">Issue's server-side id</param>
         /// <param name="snapshotFileName">saved snapshot file name</param>
         /// <returns>Success or failure</returns>
-        private static async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
+        private async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
         {
             var imageFileName = GetTempFileName(".png");
-            var filedIssueReproSteps = await AzureDevOps.GetExistingIssueDescription(issueId).ConfigureAwait(false);
+            var filedIssueReproSteps = await _devOpsIntegration.GetExistingIssueDescription(issueId).ConfigureAwait(false);
 
             if (GuidsMatchInReproSteps(a11yIssueId, filedIssueReproSteps))
             {
@@ -156,7 +152,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 {
                     try
                     {
-                        attachmentResponse = await AzureDevOps.AttachTestResultToIssue(snapshotFileName, issueId).ConfigureAwait(false);
+                        attachmentResponse = await _devOpsIntegration.AttachTestResultToIssue(snapshotFileName, issueId).ConfigureAwait(false);
                         break;
                     }
                     catch (Exception ex)
@@ -172,12 +168,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 if (imageFileName != null)
                 {
-                    var imgUrl = await AzureDevOps.AttachScreenshotToIssue(imageFileName, issueId).ConfigureAwait(false);
+                    var imgUrl = await _devOpsIntegration.AttachScreenshotToIssue(imageFileName, issueId).ConfigureAwait(false);
                     htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
                 }
 
                 var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId) + htmlDescription;
-                await AzureDevOps.ReplaceIssueDescription(scrubbedHTML, issueId).ConfigureAwait(false);
+                await _devOpsIntegration.ReplaceIssueDescription(scrubbedHTML, issueId).ConfigureAwait(false);
                 File.Delete(snapshotFileName);
                 if (imageFileName != null)
                 {
@@ -292,7 +288,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
         }
 
-        internal static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
+        internal Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -304,17 +300,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             Dictionary<AzureDevOpsField, string> fieldPairs = GenerateIssueTemplate(issueFieldPairs, templateName);
             AddAreaAndIterationPathFields(connectionInfo, fieldPairs);
 
-            return Task<Uri>.Run(() => AzureDevOps.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
+            return Task<Uri>.Run(() => _devOpsIntegration.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
         }
 
-        private static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
+        private Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
         {
-            return Task<string>.Run(() => AzureDevOps.GetAreaPath(connectionInfo));
+            return Task<string>.Run(() => _devOpsIntegration.GetAreaPath(connectionInfo));
         }
 
-        private static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
+        private Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
         {
-            return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
+            return Task<string>.Run(() => _devOpsIntegration.GetIteration(connectionInfo));
         }
 
         /// <summary>
@@ -339,7 +335,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// </summary>
         /// <param name="connectionInfo">The source of the data to extract</param>
         /// <param name="fieldPairs">The destination of the extracted data</param>
-        private static void AddAreaAndIterationPathFields(ConnectionInfo connectionInfo, IDictionary<AzureDevOpsField, string> fieldPairs)
+        private void AddAreaAndIterationPathFields(ConnectionInfo connectionInfo, IDictionary<AzureDevOpsField, string> fieldPairs)
         {
             var areaPathTask = GetAreaPathAsync(connectionInfo);
             var iterationPathTask = GetIterationPathAsync(connectionInfo);

@@ -15,6 +15,34 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     [Export(typeof(IIssueReporting))]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
+        private readonly FileIssueHelpers _fileIssueHelpers;
+        private readonly IDevOpsIntegration _devOpsIntegration;
+
+        /// <summary>
+        /// Production ctor
+        /// </summary>
+        public AzureBoardsIssueReporting()
+            : this(AzureDevOpsIntegration.GetCurrentInstance())
+        {
+        }
+
+        /// <summary>
+        /// "Intermediate" production ctor
+        /// </summary>
+        private AzureBoardsIssueReporting(IDevOpsIntegration devOpsIntegration)
+            : this(devOpsIntegration, new FileIssueHelpers(devOpsIntegration))
+        {
+        }
+
+        /// <summary>
+        /// Unit testable ctor
+        /// </summary>
+        internal AzureBoardsIssueReporting(IDevOpsIntegration devOpsIntegration, FileIssueHelpers fileIssueHelpers)
+        {
+            _fileIssueHelpers = fileIssueHelpers;
+            _devOpsIntegration = devOpsIntegration;
+        }
+
         private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
 
         private static ExtensionConfiguration Configuration => AzureDevOps.Configuration;
@@ -51,7 +79,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             Application.Current.Dispatcher.Invoke(() => topMost = Application.Current.MainWindow.Topmost);
 
             Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-            (int? issueId, string newIssueId) = FileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
+            (int? issueId, string newIssueId) = _fileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
                 topMost, Configuration.ZoomLevel, updateZoom);
 
             return Task.Run<IIssueResult>(() => {
@@ -60,7 +88,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                 try
                 {
-                    if (!FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
+                    if (!_fileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
                     {
                         MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                     }

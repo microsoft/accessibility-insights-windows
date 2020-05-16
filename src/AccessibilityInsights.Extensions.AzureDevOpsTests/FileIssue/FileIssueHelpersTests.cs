@@ -23,18 +23,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         static readonly Guid testIssueGuid = new Guid(testIssueGuidString);
 
         Mock<IDevOpsIntegration> _adoIntegrationMock;
+        FileIssueHelpers _fileIssueHelpers;
 
         [TestInitialize]
         public void BeforeEach()
         {
             _adoIntegrationMock = new Mock<IDevOpsIntegration>(MockBehavior.Strict);
-            FileIssueHelpers.SetAzureDevOpsIntegrationForTest(_adoIntegrationMock.Object);
-        }
-
-        [TestCleanup]
-        public void AfterEach()
-        {
-            FileIssueHelpers.SetAzureDevOpsIntegrationForTest(null);
+            _fileIssueHelpers = new FileIssueHelpers(_adoIntegrationMock.Object);
         }
 
         [TestMethod]
@@ -42,7 +37,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         [ExpectedException(typeof(ArgumentNullException))]
         public void CreateIssuePreviewAsync_IssueInfoIsNull_ThrowsArgumentNullException()
         {
-            FileIssueHelpers.CreateIssuePreviewAsync(new ConnectionInfo(), null);
+            _fileIssueHelpers.CreateIssuePreviewAsync(new ConnectionInfo(), null);
         }
 
         [TestMethod]
@@ -74,7 +69,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         [ExpectedException(typeof(ArgumentNullException))]
         public void FileNewIssue_FileIssueIsNull_ThrowsArgumentNullException()
         {
-            FileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); });
+            _fileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); });
         }
 
         [TestMethod]
@@ -89,7 +84,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 .Returns(testIteration);
 
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
-            var output = FileIssueHelpers.FileNewIssue(issueInfo,
+            var output = _fileIssueHelpers.FileNewIssue(issueInfo,
                 connInfo, false, 0, (_) => { });
 
             Assert.IsNull(output.issueId);
@@ -109,7 +104,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 .Returns<string>(null);
 
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
-            var output = FileIssueHelpers.FileNewIssue(issueInfo,
+            var output = _fileIssueHelpers.FileNewIssue(issueInfo,
                 connInfo, false, 0, (_) => { });
 
             Assert.IsNull(output.issueId);
@@ -135,7 +130,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 .Returns(new Uri("https://www.bing.com"));
 
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
-            var output = FileIssueHelpers.FileNewIssueTestable(issueInfo,
+            var output = _fileIssueHelpers.FileNewIssueTestable(issueInfo,
                 connInfo, false, 0, (_) => { }, testIssueId);
 
             Assert.AreEqual(testIssueId, output.issueId);
