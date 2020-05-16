@@ -378,7 +378,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 List<TeamProjectViewModel> result = new List<TeamProjectViewModel>();
                 try
                 {
-                    var projects = FileIssueHelpers.GetProjectsAsync().Result;
+                    var projects = GetProjectsAsync().Result;
                     foreach (var project in projects.OrderBy(project => project.Name))
                     {
                         var vm = new TeamProjectViewModel(project, new List<TeamProjectViewModel>());
@@ -397,6 +397,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             });
 
             return t;
+        }
+
+        /// <summary>
+        /// Asynchronously collect the current user's projects
+        /// </summary>
+        /// <returns></returns>
+        private static Task<IEnumerable<TeamProject>> GetProjectsAsync()
+        {
+            return Task<IEnumerable<TeamProject>>.Run(() => AzureDevOps.GetTeamProjects());
         }
 
         /// <summary>

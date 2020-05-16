@@ -359,11 +359,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
         }
 
-        public static Task<IEnumerable<TeamProject>> GetProjectsAsync()
-        {
-            return Task<IEnumerable<TeamProject>>.Run(() => AzureDevOps.GetTeamProjects());
-        }
-
         public static Task PopulateUserProfileAsync()
         {
             return AzureDevOps.PopulateUserProfile();
