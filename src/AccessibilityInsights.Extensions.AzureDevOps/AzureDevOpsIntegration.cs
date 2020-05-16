@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
-using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.TeamFoundation.Core.WebApi;
