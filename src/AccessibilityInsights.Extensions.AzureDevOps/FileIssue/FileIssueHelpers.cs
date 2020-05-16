@@ -359,11 +359,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
         }
 
-        public static Task PopulateUserProfileAsync()
-        {
-            return AzureDevOps.PopulateUserProfile();
-        }
-
         public static Task<int?> ReplaceIssueDescriptionAsync(string description, int issueId)
         {
             return AzureDevOps.ReplaceIssueDescription(description, issueId);
