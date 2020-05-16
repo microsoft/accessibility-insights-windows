@@ -431,7 +431,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             try
             {
-                await FileIssueHelpers.ConnectAsync(serverUri, showDialog).ConfigureAwait(true);
+                await ConnectToAzureDevOpsAccount(serverUri, showDialog).ConfigureAwait(true);
                 await PopulateUserProfile().ConfigureAwait(true);
             }
 #pragma warning disable CA1031 // Do not catch general exception types

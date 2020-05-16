@@ -294,11 +294,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
         }
 
-        public static Task ConnectAsync(Uri uri, CredentialPromptType prompt)
-        {
-            return AzureDevOps.ConnectToAzureDevOpsAccount(uri, prompt);
-        }
-
         public static void FlushToken(Uri uri)
         {
             AzureDevOps.FlushToken(uri);
