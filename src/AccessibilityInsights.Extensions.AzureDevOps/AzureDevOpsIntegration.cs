@@ -438,7 +438,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             catch (Exception ex)
             {
                 ex.ReportException();
-                FileIssueHelpers.FlushToken(serverUri);
+                FlushToken(serverUri);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
 
