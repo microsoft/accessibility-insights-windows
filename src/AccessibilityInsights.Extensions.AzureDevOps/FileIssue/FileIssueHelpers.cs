@@ -18,7 +18,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// <summary>
     /// Class with static functions used for filing issues
     /// </summary>
-    public static class FileIssueHelpers
+    internal static class FileIssueHelpers
     {
         private volatile static IDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
 
@@ -40,7 +40,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="zoomLevel">Zoom level for issue file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
-        public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        internal static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
             return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, null);
         }
@@ -86,7 +86,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="a11yIssueId">Issue's A11y-specific id</param>
         /// <param name="issueId">Issue's server-side id</param>
         /// <returns>Success or failure</returns>
-        public static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
+        internal static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -101,7 +101,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// </summary>
         /// <param name="ex">The exception to check</param>
         /// <returns></returns>
-        public static bool IsTransient(Exception ex)
+        private static bool IsTransient(Exception ex)
         {
             switch (ex)
             {
@@ -212,7 +212,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="inputHTML"></param>
         /// <param name="keyText"></param>
         /// <returns></returns>
-        public static string RemoveInternalHTML(string inputHTML, string keyText)
+        internal static string RemoveInternalHTML(string inputHTML, string keyText)
         {
             object[] htmlText = { inputHTML };
             HTMLDocument doc = new HTMLDocument();
@@ -292,7 +292,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
         }
 
-        public static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
+        internal static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -307,12 +307,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Task<Uri>.Run(() => AzureDevOps.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
         }
 
-        public static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
+        private static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
         {
             return Task<string>.Run(() => AzureDevOps.GetAreaPath(connectionInfo));
         }
 
-        public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
+        private static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
         {
             return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
         }
