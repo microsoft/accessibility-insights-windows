@@ -22,18 +22,35 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// </summary>
     public static class FileIssueHelpers
     {
-        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
+        private volatile static IDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+
+        /// <summary>
+        /// Test method to allow override of AzureDevOps
+        /// </summary>
+        /// <param name="newValue">Test value to use (set to null to restore the default value)</param>
+        internal static void SetAzureDevOpsIntegrationForTest(IDevOpsIntegration newValue)
+        {
+            AzureDevOps = newValue ?? AzureDevOpsIntegration.GetCurrentInstance();
+        }
 
         /// <summary>
         /// Opens issue filing window with prepopulated data
         /// </summary>
-        /// <p  aram name="issueInfo">Dictionary of issue info from with which to populate the issue</param>
+        /// <param name="issueInfo">Dictionary of issue info from with which to populate the issue</param>
         /// <param name="connection">connection info</param>
         /// <param name="onTop">Is window always on top</param>
         /// <param name="zoomLevel">Zoom level for issue file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
         public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        {
+            return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, null);
+        }
+
+        /// <summary>
+        /// Testable version of FileNewIssue, allows caller to specify an issueId instead of going off-box
+        /// </summary>
+        internal static (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, int? testIssueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -46,7 +63,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     ? issueInfo.InternalGuid.Value.ToString()
                     : string.Empty;
                 Uri url = CreateIssuePreviewAsync(connection, issueInfo).Result;
-                var issueId = FileIssueWindow(url, onTop, zoomLevel, updateZoom);
+
+                int? issueId = testIssueId.HasValue
+                    ? testIssueId.Value
+                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom);
 
                 return (issueId, a11yIssueId);
             }

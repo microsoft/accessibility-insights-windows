@@ -193,6 +193,7 @@
     </Compile>
     <Compile Include="FileIssue\IEBrowserEmulation.cs" />
     <Compile Include="ForcedDependencies.cs" />
+    <Compile Include="IDevOpsIntegration.cs" />
     <Compile Include="IssueInformationHelpers.cs" />
     <Compile Include="Enums\IssueField.cs" />
     <Compile Include="Enums\AzureDevOpsField.cs" />

@@ -413,7 +413,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 try
                 {
-                    var teams = (vm.Project.GetTeamsAsync().Result)?.ToList();
+                    var teams = (vm.Project.GetTeamsAsync(AzureDevOps).Result)?.ToList();
                     if (teams != null && teams.Any())
                     {
                         teams.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));

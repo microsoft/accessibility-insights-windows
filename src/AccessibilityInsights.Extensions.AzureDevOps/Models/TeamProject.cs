@@ -26,9 +26,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         public TeamProject(TeamProject original) : this(original.Name, original.Id) { }
 #pragma warning restore CA1062 // Validate arguments of public methods
 
-        public Task<IEnumerable<AdoTeam>> GetTeamsAsync()
+        internal Task<IEnumerable<AdoTeam>> GetTeamsAsync(IDevOpsIntegration devOpsIntegration)
         {
-            return Task.Run(() => AzureDevOpsIntegration.GetCurrentInstance().GetTeamsFromProject(this));
+            return Task.Run(() => devOpsIntegration.GetTeamsFromProject(this));
         }
     }
 }
