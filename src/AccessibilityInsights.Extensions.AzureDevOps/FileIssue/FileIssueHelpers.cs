@@ -158,7 +158,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 {
                     try
                     {
-                        attachmentResponse = await AttachTestResultToIssueAsync(snapshotFileName, issueId).ConfigureAwait(false);
+                        attachmentResponse = await AzureDevOps.AttachTestResultToIssue(snapshotFileName, issueId).ConfigureAwait(false);
                         break;
                     }
                     catch (Exception ex)
@@ -292,11 +292,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         private static string GetTempFileName(string extension)
         {
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
-        }
-
-        public static Task<int?> AttachTestResultToIssueAsync(string path, int issueId)
-        {
-            return AzureDevOps.AttachTestResultToIssue(path, issueId);
         }
 
         public static Task ConnectAsync(Uri uri, CredentialPromptType prompt)
