@@ -309,16 +309,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return AzureDevOps.ConnectToAzureDevOpsAccount(uri, prompt);
         }
 
-        public static ConnectionCache CreateConnectionCache(string configString)
-        {
-            return new ConnectionCache(configString);
-        }
-
-        public static void Disconnect()
-        {
-            AzureDevOps.Disconnect();
-        }
-
         public static void FlushToken(Uri uri)
         {
             AzureDevOps.FlushToken(uri);
@@ -347,11 +337,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         public static Task<string> GetExistingIssueDescriptionAsync(int issueId)
         {
             return AzureDevOps.GetExistingIssueDescription(issueId);
-        }
-
-        public static Task<Uri> GetExistingIssueUriAsync(int issueId)
-        {
-            return Task<Uri>.Run(() => AzureDevOps.GetExistingIssueUrl(issueId));
         }
 
         public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
