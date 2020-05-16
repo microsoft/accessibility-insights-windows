@@ -146,7 +146,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         private static async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
         {
             var imageFileName = GetTempFileName(".png");
-            var filedIssueReproSteps = await GetExistingIssueDescriptionAsync(issueId).ConfigureAwait(false);
+            var filedIssueReproSteps = await AzureDevOps.GetExistingIssueDescription(issueId).ConfigureAwait(false);
 
             if (GuidsMatchInReproSteps(a11yIssueId, filedIssueReproSteps))
             {
@@ -312,11 +312,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         public static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
         {
             return Task<string>.Run(() => AzureDevOps.GetAreaPath(connectionInfo));
-        }
-
-        public static Task<string> GetExistingIssueDescriptionAsync(int issueId)
-        {
-            return AzureDevOps.GetExistingIssueDescription(issueId);
         }
 
         public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
