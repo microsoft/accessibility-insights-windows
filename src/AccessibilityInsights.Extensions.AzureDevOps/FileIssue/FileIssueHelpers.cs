@@ -179,7 +179,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 }
 
                 var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId) + htmlDescription;
-                await ReplaceIssueDescriptionAsync(scrubbedHTML, issueId).ConfigureAwait(false);
+                await AzureDevOps.ReplaceIssueDescription(scrubbedHTML, issueId).ConfigureAwait(false);
                 File.Delete(snapshotFileName);
                 if (imageFileName != null)
                 {
@@ -357,11 +357,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
         {
             return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
-        }
-
-        public static Task<int?> ReplaceIssueDescriptionAsync(string description, int issueId)
-        {
-            return AzureDevOps.ReplaceIssueDescription(description, issueId);
         }
 
         /// <summary>
