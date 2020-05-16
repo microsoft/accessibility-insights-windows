@@ -148,7 +148,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {
-                        AzureDevOps.Configuration.SavedConnection = FileIssueHelpers.CreateConnectionInfo(serverUri, null, null);
+                        AzureDevOps.Configuration.SavedConnection = new ConnectionInfo(serverUri, null, null);
                         ChangeStates(ControlState.EditingServer);
                     }
                     else
@@ -348,7 +348,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 team = null;
             }
 
-            ConnectionInfo connection = FileIssueHelpers.CreateConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
+            ConnectionInfo connection = new ConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
             connection.SetLastUsage(DateTime.Now);
             return connection;
         }

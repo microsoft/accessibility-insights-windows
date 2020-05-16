@@ -314,26 +314,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return new ConnectionCache(configString);
         }
 
-        public static ConnectionInfo CreateConnectionInfo(Uri serverUri, TeamProject project, AdoTeam team)
-        {
-            return new ConnectionInfo(serverUri, project, team);
-        }
-
-        public static ConnectionInfo CreateConnectionInfo(string configString)
-        {
-            try
-            {
-                return new ConnectionInfo(configString);
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                e.ReportException();
-                return null;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
         public static void Disconnect()
         {
             AzureDevOps.Disconnect();
