@@ -91,6 +91,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             return _instance;
         }
 
+        #region base AzureDevOps (non-server) connection code
+
+        private const string BASE_VSO_URL = "https://app.vssps.visualstudio.com";
+        #endregion
+
         #region IssueFiling
         /// <summary>
         /// Implements <see cref="IDevOpsIntegration.ConnectToAzureDevOpsAccount(Uri, CredentialPromptType)"/>
@@ -207,11 +212,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             return teams.Select(t => new Models.AdoTeam(t.Name, t.Id, project));
         }
-
-        #region base AzureDevOps (non-server) connection code
-
-        private const string BASE_VSO_URL = "https://app.vssps.visualstudio.com";
-        #endregion
 
         /// <summary>
         /// Implements <see cref="IDevOpsIntegration.GetExistingIssueDescription(int)"/>
