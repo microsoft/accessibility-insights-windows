@@ -174,7 +174,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 if (imageFileName != null)
                 {
-                    var imgUrl = await AttachScreenshotToIssueAsync(imageFileName, issueId).ConfigureAwait(false);
+                    var imgUrl = await AzureDevOps.AttachScreenshotToIssue(imageFileName, issueId).ConfigureAwait(false);
                     htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
                 }
 
@@ -292,11 +292,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         private static string GetTempFileName(string extension)
         {
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
-        }
-
-        public static Task<string> AttachScreenshotToIssueAsync(string path, int issueId)
-        {
-            return AzureDevOps.AttachScreenshotToIssue(path, issueId);
         }
 
         public static Task<int?> AttachTestResultToIssueAsync(string path, int issueId)
