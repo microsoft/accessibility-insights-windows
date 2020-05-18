@@ -49,9 +49,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Returns true if user has authenticated with VS server URL
         /// </summary>
-        internal bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
+        public bool ConnectedToAzureDevOps => _baseServerConnection?.HasAuthenticated == true;
 
-        internal ExtensionConfiguration Configuration { get; } = new ExtensionConfiguration();
+        public ExtensionConfiguration Configuration { get; } = new ExtensionConfiguration();
 
         /// <summary>
         /// Base uri of the AzureDevOps connection

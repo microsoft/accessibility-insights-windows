@@ -43,17 +43,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             _devOpsIntegration = devOpsIntegration;
         }
 
-        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
+        private ExtensionConfiguration Configuration => _devOpsIntegration.Configuration;
 
-        private static ExtensionConfiguration Configuration => AzureDevOps.Configuration;
-
-        public static bool IsConnected => AzureDevOps.ConnectedToAzureDevOps;
+        public bool IsConnected => _devOpsIntegration.ConnectedToAzureDevOps;
 
         public string ServiceName { get; } = "Azure Boards";
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
-        public bool IsConfigured => AzureDevOps.ConnectedToAzureDevOps;
+        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps;
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 
@@ -70,7 +68,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 Configuration.LoadFromSerializedString(serializedConfig);
             }
 
-            return AzureDevOps.HandleLoginAsync();
+            return _devOpsIntegration.HandleLoginAsync();
         }
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
@@ -96,7 +94,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     return new IssueResult()
                     {
                         DisplayText = issueId.ToString(),
-                        IssueLink = AzureDevOps.GetExistingIssueUrl(issueId.Value)
+                        IssueLink = _devOpsIntegration.GetExistingIssueUrl(issueId.Value)
                     };
                 }
 #pragma warning disable CA1031 // Do not catch general exception types

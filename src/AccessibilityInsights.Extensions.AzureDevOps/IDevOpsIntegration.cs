@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
+using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using Microsoft.VisualStudio.Services.Common;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// </summary>
     internal interface IDevOpsIntegration
     {
+        /// <summary>
+        /// Returns true if user has authenticated with VS server URL
+        /// </summary>
+        bool ConnectedToAzureDevOps { get; }
+
+        /// <summary>
+        /// Stored configuration information (shared between config dialog and server connection)
+        /// </summary>
+        ExtensionConfiguration Configuration { get; }
+
         /// <summary>
         /// Connects to the AzureDevOps server at the given url (e.g. https://myaccount.visualstudio.com)
         ///     If prompt is true, then we may prompt if needed - otherwise, we turn prompting off on credentials
@@ -36,7 +47,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Disconnects from AzureDevOps, resets AzureDevOps instance
         /// </summary>
-        /// <returns></returns>
         void Disconnect();
 
         /// <summary>
