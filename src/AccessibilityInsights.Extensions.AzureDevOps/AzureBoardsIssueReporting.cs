@@ -19,10 +19,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private readonly IDevOpsIntegration _devOpsIntegration;
 
         /// <summary>
+        /// The one and only IDevOpsIntegration object used in production. It's static
+        /// so that the ConfigurationControl code can read it. Note that code in this
+        /// class reads only the instanced version, not the static version.
+        /// </summary>
+        internal static IDevOpsIntegration DevOpsIntegration { get; private set; }
+
+        /// <summary>
         /// Production ctor
         /// </summary>
         public AzureBoardsIssueReporting()
-            : this(AzureDevOpsIntegration.GetCurrentInstance())
+            : this(new AzureDevOpsIntegration())
         {
         }
 
@@ -41,6 +48,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             _fileIssueHelpers = fileIssueHelpers;
             _devOpsIntegration = devOpsIntegration;
+            DevOpsIntegration = devOpsIntegration;
         }
 
         private ExtensionConfiguration Configuration => _devOpsIntegration.Configuration;

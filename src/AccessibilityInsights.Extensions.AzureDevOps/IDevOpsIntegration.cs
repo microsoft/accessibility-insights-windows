@@ -15,6 +15,23 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     internal interface IDevOpsIntegration
     {
         /// <summary>
+        /// The display name of the currently logged in user
+        /// </summary>
+        string DisplayName { get; }
+
+        /// <summary>
+        /// The avatar of the currently logged in user
+        /// </summary>
+#pragma warning disable CA1819 // Properties should not return arrays
+        byte[] Avatar { get; }
+#pragma warning restore CA1819 // Properties should not return arrays
+
+        /// <summary>
+        /// The email of the currently logged in user
+        /// </summary>
+        string Email { get; }
+
+        /// <summary>
         /// Returns true if user has authenticated with VS server URL
         /// </summary>
         bool ConnectedToAzureDevOps { get; }

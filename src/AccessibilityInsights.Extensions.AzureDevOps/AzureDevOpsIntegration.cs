@@ -62,33 +62,23 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// AzureDevOps profile fields
         /// </summary>
         internal Profile UserProfile { get; private set; }
-        internal string DisplayName => UserProfile?.DisplayName;
-#pragma warning disable CA1819 // Properties should not return arrays
-        internal byte[] Avatar => UserProfile?.Avatar.Value;
-#pragma warning restore CA1819 // Properties should not return arrays
-        internal string Email => UserProfile?.EmailAddress;
-
-        private static AzureDevOpsIntegration _instance;
 
         /// <summary>
-        /// Get default instance
+        /// Implements <see cref="IDevOpsIntegration.DisplayName"/>
         /// </summary>
-        /// <returns></returns>
-        internal static AzureDevOpsIntegration GetCurrentInstance()
-        {
-            if (_instance == null)
-            {
-                lock (myLock)
-                {
-                    if (_instance == null)
-                    {
-                        _instance = new AzureDevOpsIntegration();
-                    }
-                }
-            }
+        public string DisplayName => UserProfile?.DisplayName;
 
-            return _instance;
-        }
+        /// <summary>
+        /// Implements <see cref="IDevOpsIntegration.Avatar"/>
+        /// </summary>
+#pragma warning disable CA1819 // Properties should not return arrays
+        public byte[] Avatar => UserProfile?.Avatar.Value;
+#pragma warning restore CA1819 // Properties should not return arrays
+
+        /// <summary>
+        /// Implements <see cref="IDevOpsIntegration.Email"/>
+        /// </summary>
+        public string Email => UserProfile?.EmailAddress;
 
         #region base AzureDevOps (non-server) connection code
 

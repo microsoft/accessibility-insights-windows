@@ -18,14 +18,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         [Timeout(1000)]
         public void GetTeamProjectUri_ProjectNameIsNull_ReturnsNull()
         {
-            Assert.IsNull(AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUri(null, TestTeam));
+            Assert.IsNull(new AzureDevOpsIntegration().GetTeamProjectUri(null, TestTeam));
         }
 
         [TestMethod]
         [Timeout(1000)]
         public void GetTeamProjectUri_NotConnected_ReturnsNull()
         {
-            Assert.IsNull(AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUri(TestProject, TestTeam));
+            Assert.IsNull(new AzureDevOpsIntegration().GetTeamProjectUri(TestProject, TestTeam));
         }
 
         [TestMethod]

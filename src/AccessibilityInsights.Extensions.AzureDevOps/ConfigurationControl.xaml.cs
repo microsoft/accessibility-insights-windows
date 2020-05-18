@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -24,7 +23,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// </summary>
     public partial class ConfigurationControl : IssueConfigurationControl
     {
-        private static AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+        // This code can't be in a ctor due to initialization order
+        private static IDevOpsIntegration AzureDevOps => AzureBoardsIssueReporting.DevOpsIntegration;
 
         public ConfigurationControl()
         {
