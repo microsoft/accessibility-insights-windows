@@ -403,8 +403,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 return null;
             }
 
+            return GetTeamProjectUriInternal(projectName, teamName, this.ConnectedUri);
+        }
+
+        internal static Uri GetTeamProjectUriInternal(string projectName, string teamName, Uri connectedUri)
+        {
             UriBuilder builder = new UriBuilder(Uri.UriSchemeHttps,
-                this.ConnectedUri.Host + this.ConnectedUri.PathAndQuery.TrimEnd('/'), -1, projectName + 
+                connectedUri.Host + connectedUri.PathAndQuery.TrimEnd('/'), -1, projectName +
                 (teamName == null ? string.Empty : ("/" + teamName)));
             return builder.Uri;
         }
