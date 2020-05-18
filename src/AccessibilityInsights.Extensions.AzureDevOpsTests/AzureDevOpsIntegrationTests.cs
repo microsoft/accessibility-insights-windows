@@ -30,27 +30,27 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void TestGetTeamProjectUriInternal()
+        public void GetTeamProjectUriInternal_TeamIsNotNull_ReturnsExpectedUri()
         {
-            const string expectedUrl = "https://myaccount.visualstudio.com/my%20project/my%20team";
+            const string expectedUri = "https://myaccount.visualstudio.com/my%20project/my%20team";
 
-            Assert.AreEqual(expectedUrl,
+            Assert.AreEqual(expectedUri,
                 AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, TestTeam, TestUri).AbsoluteUri);
 
-            Assert.AreEqual(expectedUrl,
+            Assert.AreEqual(expectedUri,
                 AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, TestTeam, SlashTestUri).AbsoluteUri);
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void TestGetTeamProjectUriInternal_NullTeam()
+        public void TestGetTeamProjectUriInternal_TeamIsNull_ReturnsExpectedUri()
         {
-            const string expectedUrl = "https://myaccount.visualstudio.com/my%20project";
+            const string expectedUri = "https://myaccount.visualstudio.com/my%20project";
 
-            Assert.AreEqual(expectedUrl,
+            Assert.AreEqual(expectedUri,
                 AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, null, TestUri).AbsoluteUri);
 
-            Assert.AreEqual(expectedUrl,
+            Assert.AreEqual(expectedUri,
                 AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, null, SlashTestUri).AbsoluteUri);
         }
     }
