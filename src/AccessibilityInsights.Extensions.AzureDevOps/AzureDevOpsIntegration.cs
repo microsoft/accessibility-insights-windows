@@ -38,7 +38,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Single VSO server connection object for reuse
         /// </summary>
         private VssConnection _baseServerConnection;
-        private static Object myLock = new Object();
+        private object _lockObject = new object();
 
         /// <summary>
         /// When selecting all team projects from AzureDevOps server, do so in chunks
@@ -91,7 +91,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         public Task ConnectToAzureDevOpsAccount(Uri url, CredentialPromptType prompt = CredentialPromptType.PromptIfNeeded)
         {
-            lock (myLock)
+            lock (_lockObject)
             {
                 // reset connection state
                 Disconnect();
@@ -118,7 +118,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Implements <see cref="IDevOpsIntegration.PopulateUserProfile"/>
         public Task PopulateUserProfile()
         {
-            lock (myLock)
+            lock (_lockObject)
             {
                 return Task.Run(async () =>
                 {
@@ -139,7 +139,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         public void Disconnect()
         {
-            lock (myLock)
+            lock (_lockObject)
             {
                 try
                 {
