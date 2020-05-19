@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -24,7 +23,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// </summary>
     public partial class ConfigurationControl : IssueConfigurationControl
     {
-        private static AzureDevOpsIntegration AzureDevOps = AzureDevOpsIntegration.GetCurrentInstance();
+        // This code can't be in a ctor due to initialization order
+        private static IDevOpsIntegration AzureDevOps => AzureBoardsIssueReporting.DevOpsIntegration;
 
         public ConfigurationControl()
         {
@@ -148,7 +148,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {
-                        AzureDevOps.Configuration.SavedConnection = FileIssueHelpers.CreateConnectionInfo(serverUri, null, null);
+                        AzureDevOps.Configuration.SavedConnection = new ConnectionInfo(serverUri, null, null);
                         ChangeStates(ControlState.EditingServer);
                     }
                     else
@@ -348,7 +348,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 team = null;
             }
 
-            ConnectionInfo connection = FileIssueHelpers.CreateConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
+            ConnectionInfo connection = new ConnectionInfo(new Uri(this.ServerComboBox.Text), project, team);
             connection.SetLastUsage(DateTime.Now);
             return connection;
         }
@@ -378,7 +378,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 List<TeamProjectViewModel> result = new List<TeamProjectViewModel>();
                 try
                 {
-                    var projects = FileIssueHelpers.GetProjectsAsync().Result;
+                    var projects = GetProjectsAsync().Result;
                     foreach (var project in projects.OrderBy(project => project.Name))
                     {
                         var vm = new TeamProjectViewModel(project, new List<TeamProjectViewModel>());
@@ -400,6 +400,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
+        /// Asynchronously collect the current user's projects
+        /// </summary>
+        /// <returns></returns>
+        private static Task<IEnumerable<TeamProject>> GetProjectsAsync()
+        {
+            return Task<IEnumerable<TeamProject>>.Run(() => AzureDevOps.GetTeamProjects());
+        }
+
+        /// <summary>
         /// Populates each team project in the given list with specific teams, 
         ///     e.g. somewhere underneath VSOnline
         /// The teams are added to a project in sorted order
@@ -413,7 +422,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 try
                 {
-                    var teams = (vm.Project.GetTeamsAsync().Result)?.ToList();
+                    var teams = (vm.Project.GetTeamsAsync(AzureDevOps).Result)?.ToList();
                     if (teams != null && teams.Any())
                     {
                         teams.Sort((a, b) => string.CompareOrdinal(a.Name, b.Name));

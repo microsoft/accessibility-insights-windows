@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
-using AccessibilityInsights.Extensions.AzureDevOps.Fakes;
-using Microsoft.QualityTools.Testing.Fakes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
@@ -11,63 +9,49 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
     [TestClass]
     public class AzureDevOpsIntegrationTests
     {
-        private const string FeatureName = "FeatureName";  // Defined in the TelemetryHint class, but we don't want coupling
-        private const string DefaultFeatureName = "NoFeatureMapped";
-        private const string AreaName = "AccessibilityInsights";
+        const string TestProject = "my project";
+        const string TestTeam = "my team";
+        static readonly Uri TestUri = new Uri("https://myaccount.visualstudio.com");
+        static readonly Uri SlashTestUri = new Uri("https://myaccount.visualstudio.com/");
 
         [TestMethod]
         [Timeout(1000)]
-        public void TestGetTeamProjectUrl()
+        public void GetTeamProjectUri_ProjectNameIsNull_ReturnsNull()
         {
-            using (ShimsContext.Create())
-            {
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => true;
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project/my%20team", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", "my team").AbsoluteUri);
-
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project/my%20team", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", "my team").AbsoluteUri);
-
-                // trailing slash
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com/");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project/my%20team", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", "my team").AbsoluteUri);
-            }
+            Assert.IsNull(new AzureDevOpsIntegration().GetTeamProjectUri(null, TestTeam));
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void TestGetTeamProjectUrl_SpaceInArgument_Encoded()
+        public void GetTeamProjectUri_NotConnected_ReturnsNull()
         {
-            using (ShimsContext.Create())
-            {
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => true;
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project/my%20team", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", "my team").AbsoluteUri);
-
-                // trailing slash
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com/");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project/my%20team", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", "my team").AbsoluteUri);
-            }
+            Assert.IsNull(new AzureDevOpsIntegration().GetTeamProjectUri(TestProject, TestTeam));
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void TestGetTeamProjectUrl_NullTeam()
+        public void GetTeamProjectUriInternal_TeamIsNotNull_ReturnsExpectedUri()
         {
-            using (ShimsContext.Create())
-            {
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedToAzureDevOpsGet = (_) => true;
+            const string expectedUri = "https://myaccount.visualstudio.com/my%20project/my%20team";
 
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com");
-                Assert.AreEqual("https://myaccount.visualstudio.com/myproject", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("myproject", null).AbsoluteUri);
+            Assert.AreEqual(expectedUri,
+                AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, TestTeam, TestUri).AbsoluteUri);
 
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com/");
-                Assert.AreEqual("https://myaccount.visualstudio.com/myproject", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("myproject", null).AbsoluteUri);
+            Assert.AreEqual(expectedUri,
+                AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, TestTeam, SlashTestUri).AbsoluteUri);
+        }
 
-                ShimAzureDevOpsIntegration.AllInstances.ConnectedUriGet = (_) => new Uri("https://myaccount.visualstudio.com/");
-                Assert.AreEqual("https://myaccount.visualstudio.com/my%20project", AzureDevOpsIntegration.GetCurrentInstance().GetTeamProjectUrl("my project", null).AbsoluteUri);
-            }
+        [TestMethod]
+        [Timeout(1000)]
+        public void TestGetTeamProjectUriInternal_TeamIsNull_ReturnsExpectedUri()
+        {
+            const string expectedUri = "https://myaccount.visualstudio.com/my%20project";
+
+            Assert.AreEqual(expectedUri,
+                AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, null, TestUri).AbsoluteUri);
+
+            Assert.AreEqual(expectedUri,
+                AzureDevOpsIntegration.GetTeamProjectUriInternal(TestProject, null, SlashTestUri).AbsoluteUri);
         }
     }
-    
 }

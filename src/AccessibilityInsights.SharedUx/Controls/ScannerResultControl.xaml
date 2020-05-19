@@ -6,7 +6,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
-             xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
              xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
@@ -82,7 +81,7 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                             <ListView.View>
-                                <local:CustomGridView x:Name="gvRules">
+                                <GridView x:Name="gvRules">
                                     <GridViewColumn>
                                         <GridViewColumnHeader Content="Rule" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}" Background="Transparent" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                         <GridViewColumn.CellTemplate>
@@ -135,7 +134,7 @@
                                             </DataTemplate>
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
-                                </local:CustomGridView>
+                                </GridView>
                             </ListView.View>
                         </ListView>
                         <Button Name="btnShowAll"

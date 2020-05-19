@@ -401,7 +401,6 @@
     <Compile Include="Controls\SettingsTabs\ConnectionControl.xaml.cs">
       <DependentUpon>ConnectionControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\CustomControls\CustomGridView.cs" />
     <Compile Include="Controls\CustomControls\CustomGridViewColumnHeader.cs" />
     <Compile Include="Controls\DisplayCountControl.xaml.cs">
       <DependentUpon>DisplayCountControl.xaml</DependentUpon>

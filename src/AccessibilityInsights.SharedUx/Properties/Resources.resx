@@ -794,8 +794,8 @@
   <data name="btnFileBugAutomationPropertiesName1" xml:space="preserve">
     <value>File a bug</value>
   </data>
-  <data name="StartupModeControl_moreInformationText" xml:space="preserve">
-    <value>For more information,</value>
+  <data name="StartupModeControl_moreGuidanceText" xml:space="preserve">
+    <value>More guidance and tutorials</value>
   </data>
   <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
     <value>go to the latest release notes</value>
@@ -821,10 +821,10 @@
   <data name="toggleEventText" xml:space="preserve">
     <value>Start or stop event recording for the selected element.</value>
   </data>
-  <data name="shortcutsDescription" xml:space="preserve">
-    <value>Go to the full list of keyboard shortcuts for Accessibility Insights for Windows.</value>
+  <data name="StartupModeControl_shortcutsLinkLabel" xml:space="preserve">
+    <value>More information about shortcuts</value>
   </data>
-  <data name="shortcutsTitle" xml:space="preserve">
+  <data name="StartupModeControl_shortcutsTitle" xml:space="preserve">
     <value>Frequently used shortcuts</value>
   </data>
   <data name="imageVideoAutomationPropertiesName" xml:space="preserve">
@@ -1532,5 +1532,8 @@ Do you want to change the channel? </value>
   </data>
   <data name="EventRecordControlScopeHeader" xml:space="preserve">
     <value>Event recording scope</value>
+  </data>
+  <data name="StartupModeControl_shortcutsDescription" xml:space="preserve">
+    <value>These keystrokes are default, but you can customize your shortcut keystrokes in settings.</value>
   </data>
 </root>
