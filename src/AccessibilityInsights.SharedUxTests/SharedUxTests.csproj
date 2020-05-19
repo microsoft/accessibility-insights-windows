@@ -44,20 +44,20 @@
     <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Axe.Windows.Actions, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Actions.dll</HintPath>
+    <Reference Include="Axe.Windows.Actions, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Actions.dll</HintPath>
     </Reference>
     <Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Actions.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Automation, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Automation.dll</HintPath>
+    <Reference Include="Axe.Windows.Automation, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Automation.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Core, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Core.dll</HintPath>
+    <Reference Include="Axe.Windows.Core, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Desktop, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Desktop.dll</HintPath>
+    <Reference Include="Axe.Windows.Desktop, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="Axe.Windows.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Desktop.Fakes.dll</HintPath>
@@ -68,20 +68,20 @@
     <Reference Include="AccessibilityInsights.SharedUx.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
       <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.SharedUx.Fakes.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Rules, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Rules.dll</HintPath>
+    <Reference Include="Axe.Windows.Rules, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Rules.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.RuleSelection, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.RuleSelection.dll</HintPath>
+    <Reference Include="Axe.Windows.RuleSelection, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.RuleSelection.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.SystemAbstractions, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.SystemAbstractions.dll</HintPath>
+    <Reference Include="Axe.Windows.SystemAbstractions, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.SystemAbstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Telemetry, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Telemetry.dll</HintPath>
+    <Reference Include="Axe.Windows.Telemetry, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Telemetry.dll</HintPath>
     </Reference>
-    <Reference Include="Axe.Windows.Win32, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Win32.dll</HintPath>
+    <Reference Include="Axe.Windows.Win32, Version=0.9.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Axe.Windows.0.9.6-prerelease\lib\netstandard20\Axe.Windows.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.4.0\lib\net45\Castle.Core.dll</HintPath>
