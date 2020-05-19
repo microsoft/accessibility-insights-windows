@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Telemetry;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -16,6 +15,13 @@ namespace AccessibilityInsights.SharedUx.Utilities
     /// </summary>
     public class InstallationInfo
     {
+        #region Unit test overrides
+        internal static Func<string, InstallationInfo> ReadFromDiskOverride;
+        internal static Action<string, InstallationInfo> WriteToDiskOverride;
+        #endregion
+
+        private readonly static DateTime DistantPast = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
         [JsonProperty]
         public Guid InstallationGuid { get; private set; }
 
@@ -23,36 +29,46 @@ namespace AccessibilityInsights.SharedUx.Utilities
         public DateTime LastReset { get; private set; }
 
         /// <summary>
-        /// Instantiates a new Guid and populates LastReset with the current time
+        /// Production ctor - Uses a new installId and current time
         /// </summary>
         public InstallationInfo()
+            : this(Guid.NewGuid(), DateTime.UtcNow)
         {
-            RegenerateFields();
         }
 
         /// <summary>
-        /// Instantiates a new Guid and populates LastReset with the current time
+        /// Unit test ctor - lets caller specify installID and lastReset time
         /// </summary>
-        private void RegenerateFields()
+        /// <param name="installId">The initial value of InstallationGuid</param>
+        /// <param name="lastReset">The initial value of LastReset</param>
+        internal InstallationInfo(Guid installId, DateTime lastReset)
         {
-            this.InstallationGuid = Guid.NewGuid();
-            this.LastReset = DateTime.UtcNow;
+            RegenerateFields(installId, lastReset);
+
+        }
+        /// <summary>
+        /// Updates InstallationGuid and LastReset
+        /// </summary>
+        private void RegenerateFields(Guid installationGuid, DateTime lastReset)
+        {
+            this.InstallationGuid = installationGuid;
+            this.LastReset = lastReset;
         }
 
         /// <summary>
-        /// Resets this InstallationInfo object if the current month
-        /// is later than the LastReset month
+        /// Resets this InstallationInfo object if the "utcNow" month
+        /// is later than the "LastReset" month
         /// </summary>
         /// <returns>whether the object reset</returns>
-        private bool ResetIfMonthChanged()
+        private bool ResetIfMonthChanged(DateTime utcNow)
         {
-            bool needToReset = DateTime.UtcNow.Month > LastReset.Month || DateTime.UtcNow.Year > LastReset.Year;
+            bool needToReset = utcNow.Month > LastReset.Month || utcNow.Year > LastReset.Year;
             // months range from 1 to 12, year from 1 to 9999
             // reset if the current month is later than old month. 
             // - need to check year too in case we compare 12/2017 to 1/2018
             if (needToReset)
             {
-                RegenerateFields();
+                RegenerateFields(Guid.NewGuid(), utcNow);
             }
             return needToReset;
         }
@@ -64,47 +80,67 @@ namespace AccessibilityInsights.SharedUx.Utilities
         private const string InstallationInfoFileName = "InstallationInfo.json";
 
         /// <summary>
-        /// Serializes this InstallationInfo object in json format to the given path
-        /// </summary>
-        /// <param name="path">file path in which to serialize the object</param>
-        private void JsonSerialize(string path)
-        {
-            var json = JsonConvert.SerializeObject(this, Formatting.Indented);
-            File.WriteAllText(path, json, Encoding.UTF8);
-        }
-
-        /// <summary>
-        /// Attempts to deserialize a InstallationInfo object from the given directory path,
+        /// Attempts to deserialize an InstallationInfo object from the given directory path,
         /// returns a newly constructed InstallationInfo object otherwise
         /// 
         /// Resets/reserializes the InstallationInfo object if needed
         /// </summary>
         /// <param name="path">directory path from which to load the json</param>
-        /// <returns></returns>
-        public static InstallationInfo LoadFromPath(string path)
+        /// <param name="utcNow">The current UTC time</param>
+        /// <returns>The current InstallationInfo object</returns>
+        public static InstallationInfo LoadFromPath(string path, DateTime utcNow)
         {
-            var installInfoPath = Path.Combine(path, InstallationInfo.InstallationInfoFileName);
-            InstallationInfo info = new InstallationInfo();
-            bool fileExists = File.Exists(installInfoPath);
-            if (fileExists) {
-                var text = File.ReadAllText(installInfoPath, Encoding.UTF8);
-                try
-                {
-                    info = JsonConvert.DeserializeObject<InstallationInfo>(text);
-                }
-                catch (JsonException e)
-                {
-                    e.ReportException();
-                    // ignore silently
-                }
-            }
+            var installInfoPath = Path.Combine(path, InstallationInfoFileName);
+            InstallationInfo info = ReadFromDisk(installInfoPath);
 
-            bool reset = info.ResetIfMonthChanged();
-            if (!fileExists || reset)
+            if (info.ResetIfMonthChanged(utcNow))
             {
-                info.JsonSerialize(installInfoPath);
+                WriteToDisk(installInfoPath, info);
             }
             return info;
+        }
+
+        private static InstallationInfo ReadFromDisk(string installInfoPath)
+        {
+            if (ReadFromDiskOverride != null)
+            {
+                return ReadFromDiskOverride(installInfoPath);
+            }
+
+            try
+            {
+                var text = File.ReadAllText(installInfoPath, Encoding.UTF8);
+                return JsonConvert.DeserializeObject<InstallationInfo>(text);
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
+            {
+                // ignore silently without sending to telemetry (not yet initialized)
+                // Use a date in the distant past and reset will occur automatically
+                return new InstallationInfo(Guid.NewGuid(), DistantPast);
+            }
+        }
+
+        private static void WriteToDisk(string installInfoPath, InstallationInfo info)
+        {
+            if (WriteToDiskOverride != null)
+            {
+                WriteToDiskOverride(installInfoPath, info);
+                return;
+            }
+
+            try
+            {
+                var json = JsonConvert.SerializeObject(info, Formatting.Indented);
+                File.WriteAllText(installInfoPath, json, Encoding.UTF8);
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+#pragma warning restore CA1031 // Do not catch general exception types
+            {
+                // ignore silently without sending to telemetry (not yet initialized)
+            }
         }
         #endregion
     }
