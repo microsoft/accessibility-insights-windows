@@ -19,12 +19,12 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         private static ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
 
         /// <summary>
-        /// Method to allow the ITelemetrySink to be replacedfor unit tests
+        /// Method to allow the ITelemetrySink to be replaced for unit tests
         /// </summary>
-        /// <param name="newSink">The new sink to use</param>
+        /// <param name="newSink">The new sink to use. If null, the default sink will be set</param>
         internal static void SetTelemetrySink(ITelemetrySink newSink)
         {
-            Sink = newSink;
+            Sink = newSink ?? TelemetrySink.DefaultTelemetrySink;
         }
 
         /// <summary>
@@ -90,8 +90,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <param name="e">The Exception to report</param>
         public static void ReportException(this Exception e)
         {
-            if (!IsEnabled) return;
             if (e == null) return;
+            if (!IsEnabled) return;
 
             Sink.ReportException(e);
         }

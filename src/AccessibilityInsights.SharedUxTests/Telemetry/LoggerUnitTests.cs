@@ -1,48 +1,64 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-#if FAKES_SUPPORTED
-using AccessibilityInsights.SharedUx.Telemetry.Fakes;
-using AccessibilityInsights.Extensions.Interfaces.Telemetry.Fakes;
-using Microsoft.QualityTools.Testing.Fakes;
-#endif
+using Moq;
+
+using TelemetryPropertyBag = System.Collections.Generic.IReadOnlyDictionary<AccessibilityInsights.SharedUx.Telemetry.TelemetryProperty, string>;
+using StringPropertyBag = System.Collections.Generic.IReadOnlyDictionary<string, string>;
 
 namespace AccessibilityInsights.SharedUXTests.Telemetry
 {
     [TestClass]
     public class LoggerUnitTests
     {
-#if FAKES_SUPPORTED
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void IsEnabled_ImplementationIsNotNull_IsTelemetryAllowedGetIsTrue_ReturnsTrue()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        ShimTelemetrySink.TelemetryGet = () => new StubITelemetry();
-        //        TelemetrySink.IsTelemetryAllowed = true;
+        const TelemetryAction Action1 = (TelemetryAction)1;
+        const TelemetryAction Action2 = (TelemetryAction)2;
+        const TelemetryProperty Property1 = (TelemetryProperty)1;
+        const TelemetryProperty Property2 = (TelemetryProperty)2;
+        const TelemetryProperty Property3 = (TelemetryProperty)3;
+        const string Value1 = "January";
+        const string Value2 = "February";
+        const string Value3 = "March";
 
-        //        Assert.IsTrue(Logger.IsEnabled);
-        //    }
-        //}
+        private Mock<ITelemetrySink> _sinkMock;
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void IsEnabled_ImplementationIsNotNull_IsTelemetryAllowedGetIsFalse_ReturnsFalse()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        ShimTelemetrySink.TelemetryGet = () => new StubITelemetry();
-        //        TelemetrySink.IsTelemetryAllowed = false;
+        [TestInitialize]
+        public void BeforeEachTest()
+        {
+            _sinkMock = new Mock<ITelemetrySink>(MockBehavior.Strict);
+            Logger.SetTelemetrySink(_sinkMock.Object);
+        }
 
-        //        Assert.IsFalse(Logger.IsEnabled);
-        //    }
-        //}
-#endif
+        [TestCleanup]
+        public void AfterEachTest()
+        {
+            Logger.SetTelemetrySink(null);  // Reset to default sink
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IsEnabled_SinkIsNotEnabled_ReturnsFalse()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
+
+            Assert.IsFalse(Logger.IsEnabled);
+
+            _sinkMock.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IsEnabled_SinkIsEnabled_ReturnsTrue()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+
+            Assert.IsTrue(Logger.IsEnabled);
+
+            _sinkMock.VerifyAll();
+        }
 
         [TestMethod]
         [Timeout(1000)]
@@ -62,306 +78,167 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         [Timeout(1000)]
         public void ConvertFromProperties_InputIsNontrivial_OutputIsCorrect()
         {
-            const string value1 = "January";
-            const string value2 = "February";
-            const string value3 = "March";
-
             // Specific values of TelemetryProperty are unimportant for this test
-            Dictionary<TelemetryProperty, string> input = new Dictionary<TelemetryProperty, string>
+            TelemetryPropertyBag expectedProperties = new Dictionary<TelemetryProperty, string>
             {
-                { (TelemetryProperty)1, value1 },
-                { (TelemetryProperty)2, value2 },
-                { (TelemetryProperty)3, value3 },
+                { Property1, Value1 },
+                { Property2, Value2 },
+                { Property3, Value3 },
             };
 
-            IReadOnlyDictionary<string, string> output = Logger.ConvertFromProperties(input);
+            StringPropertyBag convertedProperties = Logger.ConvertFromProperties(expectedProperties);
 
-            Assert.AreEqual(input.Count, output.Count);
-            foreach (KeyValuePair<TelemetryProperty, string> pair in input)
-            {
-                Assert.AreEqual(pair.Value, output[pair.Key.ToString()]);
-            }
+            ValidatePropertyBag(expectedProperties, convertedProperties);
         }
 
-#if FAKES_SUPPORTED
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void PublishTelemetryEvent_SingleProperty_TelemetryIsNotEnabled_DoesNothing()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        TelemetrySink.IsTelemetryAllowed = false;
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_EventObject_EventIsNull_ThrowsArgumentNullException()
+        {
+            Assert.ThrowsException<ArgumentNullException>(() => Logger.PublishTelemetryEvent(null));
+        }
 
-        //        // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
-        //        Logger.PublishTelemetryEvent((TelemetryAction)0, (TelemetryProperty)0, "abc");
-        //    }
-        //}
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_EventObject_EventIsNotNull_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            TelemetryEvent expectedEvent = new TelemetryEvent(Action1, new Dictionary<TelemetryProperty, string>
+            {
+                { Property2, Value3 },
+            });
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void PublishTelemetryEvent_SingleProperty_TelemteryIsEnabled_EnablesAndChainsThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
-        //        const TelemetryAction action = (TelemetryAction)4;
-        //        const TelemetryProperty property = (TelemetryProperty)5;
-        //        const string value = "Friday";
-        //        string actualName = null;
-        //        IReadOnlyDictionary<string, string> actualTelemetryPropertyBag = null;
-        //        ITelemetry telemetry = new StubITelemetry
-        //        {
-        //            PublishEventStringIReadOnlyDictionaryOfStringString = (name, telemetryPropertyBag) =>
-        //            {
-        //                actualName = name;
-        //                actualTelemetryPropertyBag = telemetryPropertyBag;
-        //            }
-        //        };
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
 
-        //        Logger.PublishTelemetryEvent(action, property, value);
+            Logger.PublishTelemetryEvent(expectedEvent);
 
-        //        Assert.AreEqual(action.ToString(), actualName);
-        //        Assert.AreEqual(1, actualTelemetryPropertyBag.Count);
-        //        Assert.AreEqual(value, actualTelemetryPropertyBag[property.ToString()]);
-        //    }
-        //}
+            _sinkMock.VerifyAll();
+        }
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void PublishTelemetryEventContainer_TelemetryIsEnabled_EnablesAndChainsThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
-        //        TelemetryAction action = (TelemetryAction)6;
-        //        TelemetryProperty property = (TelemetryProperty)7;
-        //        var fakeId = "id";
-        //        var fakeEvent = new TelemetryEvent(action, new Dictionary<TelemetryProperty, string>
-        //        {
-        //            { property, fakeId },
-        //        });
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_MultiProperty_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            TelemetryPropertyBag expectedProperties = new Dictionary<TelemetryProperty, string>
+            {
+                { Property2, Value3 },
+                { Property3, Value1 },
+            };
 
-        //        string actualName = null;
-        //        IReadOnlyDictionary<string, string> actualTelemetryPropertyBag = null;
-        //        ITelemetry telemetry = new StubITelemetry
-        //        {
-        //            PublishEventStringIReadOnlyDictionaryOfStringString = (name, telemetryPropertyBag) =>
-        //            {
-        //                actualName = name;
-        //                actualTelemetryPropertyBag = telemetryPropertyBag;
-        //            }
-        //        };
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
 
-        //        Logger.PublishTelemetryEvent(fakeEvent);
+            Logger.PublishTelemetryEvent(Action2, expectedProperties);
 
-        //        Assert.AreEqual(fakeEvent.Action.ToString(), actualName);
-        //        Assert.AreEqual(1, actualTelemetryPropertyBag.Count);
-        //        Assert.AreEqual(fakeId, actualTelemetryPropertyBag[property.ToString()]);
-        //    }
-        //}
+            _sinkMock.VerifyAll();
+        }
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void PublishTelemetryEvent_MultiProperty_TelemteryIsNotEnabled_DoesNothing()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        TelemetrySink.IsTelemetryAllowed = false;
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_MultiProperty_SinkIsEnabled_ChainsToSink()
+        {
+            StringPropertyBag actualProperties = null;
+            TelemetryPropertyBag expectedProperties = new Dictionary<TelemetryProperty, string>
+            {
+                { Property2, Value3 },
+                { Property3, Value1 },
+            };
 
-        //        // Specific value of TelemetryAction is unimportant for this test
-        //        Logger.PublishTelemetryEvent((TelemetryAction)7, null);
-        //    }
-        //}
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+            _sinkMock.Setup(x => x.PublishTelemetryEvent(Action2.ToString(), It.IsAny<StringPropertyBag>()))
+                .Callback<string, StringPropertyBag>((_, p) => actualProperties = p);
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void PublishTelemetryEvent_MultiProperty_TelemteryIsEnabled_EnablesAndChainsThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        // Specific values of TelemetryAction and TelemetryProperty are unimportant for this test
-        //        const TelemetryAction action = (TelemetryAction)8;
-        //        const TelemetryProperty property = (TelemetryProperty)9;
-        //        const string value = "Saturday";
-        //        string actualName = null;
-        //        IReadOnlyDictionary<TelemetryProperty, string> actualConverterInput = null;
-        //        IReadOnlyDictionary<string, string> actualTelemetryPropertyBag = null;
-        //        ITelemetry telemetry = new StubITelemetry
-        //        {
-        //            PublishEventStringIReadOnlyDictionaryOfStringString = (name, telemetryPropertyBag) =>
-        //            {
-        //                actualName = name;
-        //                actualTelemetryPropertyBag = telemetryPropertyBag;
-        //            }
-        //        };
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            Logger.PublishTelemetryEvent(Action2, expectedProperties);
 
-        //        Dictionary<string, string> expectedConverterOutput = new Dictionary<string, string>
-        //        {
-        //            { "abc", "def" },
-        //        };
-        //        ShimLogger.ConvertFromPropertiesIReadOnlyDictionaryOfTelemetryPropertyString = (input) =>
-        //        {
-        //            actualConverterInput = input;
-        //            return expectedConverterOutput;
-        //        };
+            ValidatePropertyBag(expectedProperties, actualProperties);
+            _sinkMock.VerifyAll();
+        }
 
-        //        Dictionary<TelemetryProperty, string> initalInput = new Dictionary<TelemetryProperty, string>
-        //        {
-        //            { property, value },
-        //        };
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_SingleProperty_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
 
-        //        Logger.PublishTelemetryEvent(action, initalInput);
+            Logger.PublishTelemetryEvent(Action1, Property3, Value2);
 
-        //        Assert.AreEqual(action.ToString(), actualName);
-        //        Assert.AreEqual(initalInput, actualConverterInput);
-        //        Assert.AreSame(expectedConverterOutput, actualTelemetryPropertyBag);
-        //        Assert.AreEqual(action.ToString(), actualName);
-        //    }
-        //}
+            _sinkMock.VerifyAll();
+        }
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void AddOrUpdateContextProperty_TelemetryIsNotEnabled_DoesNothing()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        TelemetrySink.IsTelemetryAllowed = false;
-        //    }
-        //}
+        [TestMethod]
+        [Timeout(1000)]
+        public void PublishTelemetryEvent_SingleProperty_SinkIsEnabled_ChainsToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+            _sinkMock.Setup(x => x.PublishTelemetryEvent(Action1.ToString(), Property3.ToString(), Value2));
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void AddOrUpdateContextProperty_TelemetryIsEnabled_DoesNothing()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        // Specific value of TelemetryProperty is unimportant for this test
-        //        const TelemetryProperty expectedProperty = (TelemetryProperty)9;
-        //        const string expectedValue = "carrot";
+            Logger.PublishTelemetryEvent(Action1, Property3, Value2);
 
-        //        string actualProperty = null;
-        //        string actualValue = null;
-        //        StubITelemetry telemetry = new StubITelemetry
-        //        {
-        //            AddOrUpdateContextPropertyStringString = (property, value) =>
-        //            {
-        //                actualProperty = property;
-        //                actualValue = value;
-        //            }
-        //        };
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            _sinkMock.VerifyAll();
+        }
 
-        //        Logger.AddOrUpdateContextProperty(expectedProperty, expectedValue);
+        [TestMethod]
+        [Timeout(1000)]
+        public void AddOrUpdateContextProperty_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
 
-        //        Assert.AreEqual(expectedProperty.ToString(), actualProperty);
-        //        Assert.AreEqual(expectedValue, actualValue);
-        //    }
-        //}
+            Logger.AddOrUpdateContextProperty(Property1, Value1);
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void ReportException_IsNotEnabled_DoesNotChainThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        Exception expectedException = new Exception("blah");
+            _sinkMock.VerifyAll();
+        }
 
-        //        StubITelemetry telemetry = new StubITelemetry
-        //        {
-        //            ReportExceptionException = (e) =>
-        //            {
-        //                Assert.Fail("This should not be called");
-        //            }
-        //        };
+        [TestMethod]
+        [Timeout(1000)]
+        public void AddOrUpdateContextProperty_SinkIsEnabled_ChainsToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+            _sinkMock.Setup(x => x.AddOrUpdateContextProperty(Property1.ToString(), Value1));
 
-        //        TelemetrySink.IsTelemetryAllowed = false;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            Logger.AddOrUpdateContextProperty(Property1, Value1);
 
-        //        Logger.ReportException(expectedException);
-        //    }
-        //}
+            _sinkMock.VerifyAll();
+        }
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void ReportException_IsEnabled_ExceptionIsNull_DoesNotChainThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        Exception expectedException = null;
-        //        Exception actualException = null;
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_ExceptionIsNull_DoesNotChainToSink()
+        {
+            Logger.ReportException(null);
+        }
 
-        //        StubITelemetry telemetry = new StubITelemetry
-        //        {
-        //            ReportExceptionException = (e) =>
-        //            {
-        //                Assert.Fail("This should not be called");
-        //            }
-        //        };
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            Exception expectedException = new DivideByZeroException();
 
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
 
-        //        Logger.ReportException(expectedException);
-        //        Assert.IsNull(actualException);
-        //    }
-        //}
+            expectedException.ReportException();
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void ReportException_IsEnabled_ExceptionIsNotNull_ChainsThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        Exception expectedException = new Exception("blah");
-        //        Exception actualException = null;
+            _sinkMock.VerifyAll();
+        }
 
-        //        StubITelemetry telemetry = new StubITelemetry
-        //        {
-        //            ReportExceptionException = (e) =>
-        //            {
-        //                actualException = e;
-        //            }
-        //        };
+        [TestMethod]
+        [Timeout(1000)]
+        public void ReportException_SinkIsEnabled_ChainsToSink()
+        {
+            Exception expectedException = new OutOfMemoryException();
 
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+            _sinkMock.Setup(x => x.ReportException(expectedException));
 
-        //        Logger.ReportException(expectedException);
-        //        Assert.AreSame(expectedException, actualException);
-        //    }
-        //}
+            expectedException.ReportException();
 
-        //[TestMethod]
-        //[Timeout(1000)]
-        //public void ReportException_CalledAsExtension_IsEnabled_ExceptionIsNotNull_ChainsThrough()
-        //{
-        //    using (ShimsContext.Create())
-        //    {
-        //        Exception expectedException = new Exception("blah");
-        //        Exception actualException = null;
+            _sinkMock.VerifyAll();
+        }
 
-        //        StubITelemetry telemetry = new StubITelemetry
-        //        {
-        //            ReportExceptionException = (e) =>
-        //            {
-        //                actualException = e;
-        //            }
-        //        };
-
-        //        TelemetrySink.IsTelemetryAllowed = true;
-        //        ShimTelemetrySink.TelemetryGet = () => telemetry;
-
-        //        expectedException.ReportException();
-        //        Assert.AreSame(expectedException, actualException);
-        //    }
-        //}
-#endif
+        private void ValidatePropertyBag(TelemetryPropertyBag expected, StringPropertyBag actual)
+        {
+            Assert.AreEqual(expected.Count, actual.Count);
+            foreach (KeyValuePair<TelemetryProperty, string> pair in expected)
+            {
+                Assert.AreEqual(pair.Value, actual[pair.Key.ToString()]);
+            }
+        }
     }
 }
