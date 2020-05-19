@@ -12,8 +12,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     internal static class EventTelemetrySink
     {
         private static bool IsReportExceptionHandlerAttached = false;
+        private readonly static ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
         private readonly static object LockObject = new object();
-        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(TelemetrySink.ReportException);
+        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(Sink.ReportException);
 
         static EventTelemetrySink()
         {
@@ -29,8 +30,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             // we report this problem after the buffer is flushed
             // because the above call also opens future exceptions to be passed through
             // and in case telemetry is allowed later, we want all the exceptions we can get
-            if (!TelemetrySink.IsEnabled)
-                TelemetrySink.ReportException(new Exception(Properties.Resources.LostExceptionTelemetry));
+            if (!Sink.IsEnabled)
+                Sink.ReportException(new Exception(Properties.Resources.LostExceptionTelemetry));
         }
 
         /// <summary>

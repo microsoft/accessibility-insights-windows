@@ -1,11 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.Extensions;
-using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Axe.Windows.Telemetry;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace AccessibilityInsights.SharedUx.Telemetry
 {
@@ -15,27 +12,31 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// </summary>
     class AxeWindowsTelemetrySink : IAxeWindowsTelemetry
     {
+        private readonly ITelemetrySink _telemetrySink;
+
         public static void Enable()
         {
-            Axe.Windows.Telemetry.Logger.SetTelemetrySink(new AxeWindowsTelemetrySink());
+            Axe.Windows.Telemetry.Logger.SetTelemetrySink(new AxeWindowsTelemetrySink(TelemetrySink.DefaultTelemetrySink));
         }
 
         /// <summary>
         /// Private constructor so the class cannot be instantiated by any other class
         /// </summary>
-        private AxeWindowsTelemetrySink()
-        { }
+        private AxeWindowsTelemetrySink(ITelemetrySink telemetrySink)
+        {
+            _telemetrySink = telemetrySink;
+        }
 
         public void PublishEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag)
         {
-            TelemetrySink.PublishTelemetryEvent(eventName, propertyBag);
+            _telemetrySink.PublishTelemetryEvent(eventName, propertyBag);
         }
 
         public void ReportException(Exception e)
         {
-            TelemetrySink.ReportException(e);
+            _telemetrySink.ReportException(e);
         }
 
-        public bool IsEnabled => TelemetrySink.IsEnabled;
+        public bool IsEnabled => _telemetrySink.IsEnabled;
     } // class
 } // namespace

@@ -6,10 +6,12 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 {
     public static class TelemetryController
     {
+        private static readonly ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
+
         public static void EnableTelemetry()
         {
             // Open the telemetry sink
-            TelemetrySink.IsTelemetryAllowed = true;
+            Sink.IsTelemetryAllowed = true;
 
             // Begin listening for telemetry events
             // This must be done after the low-level sink is opened above
@@ -22,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public static void DisableTelemetry()
         {
             // Close the telemetry sink
-            TelemetrySink.IsTelemetryAllowed = false;
+            Sink.IsTelemetryAllowed = false;
         }
     } // class
 } // namespace

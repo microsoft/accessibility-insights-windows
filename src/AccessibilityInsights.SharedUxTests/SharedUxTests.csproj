@@ -161,6 +161,7 @@
     <Compile Include="Settings\AppLayoutTests.cs" />
     <Compile Include="Settings\InstallationInfoTests.cs" />
     <Compile Include="Telemetry\LoggerUnitTests.cs" />
+    <Compile Include="Telemetry\TelemetrySinkUnitTests.cs" />
     <Compile Include="ViewModels\ColorContrastViewModelTests.cs" />
     <Compile Include="ViewModels\ViewModelTests.cs" />
   </ItemGroup>

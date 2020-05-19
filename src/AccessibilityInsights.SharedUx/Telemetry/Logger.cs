@@ -14,11 +14,24 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     public static class Logger
     {
         /// <summary>
+        /// The sink for Telemetry events
+        /// </summary>
+        private static ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
+
+        /// <summary>
+        /// Method to allow the ITelemetrySink to be replacedfor unit tests
+        /// </summary>
+        /// <param name="newSink">The new sink to use</param>
+        internal static void SetTelemetrySink(ITelemetrySink newSink)
+        {
+            Sink = newSink;
+        }
+
+        /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
         /// work to short-circuit their processing when telemetry is disabled
         /// </summary>
-        public static bool IsEnabled => TelemetrySink.IsEnabled;
-
+        public static bool IsEnabled => Sink.IsEnabled;
 
         /// <summary>
         /// Publishes an event to the current telemetry pipeline
@@ -43,7 +56,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             // Conversions to strings are expensive, so skip it if possible
             if (!IsEnabled) return;
 
-            TelemetrySink.PublishTelemetryEvent(action.ToString(), property.ToString(), value);
+            Sink.PublishTelemetryEvent(action.ToString(), property.ToString(), value);
         }
 
         /// <summary>
@@ -56,7 +69,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             // Conversions to strings are expensive, so skip it if possible
             if (!IsEnabled) return;
 
-            TelemetrySink.PublishTelemetryEvent(action.ToString(), ConvertFromProperties(propertyBag));
+            Sink.PublishTelemetryEvent(action.ToString(), ConvertFromProperties(propertyBag));
         }
 
         /// <summary>
@@ -68,7 +81,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         {
             if (!IsEnabled) return;
 
-            TelemetrySink.AddOrUpdateContextProperty(property.ToString(), value);
+            Sink.AddOrUpdateContextProperty(property.ToString(), value);
         }
 
         /// <summary>
@@ -80,7 +93,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (!IsEnabled) return;
             if (e == null) return;
 
-            TelemetrySink.ReportException(e);
+            Sink.ReportException(e);
         }
 
         internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)
