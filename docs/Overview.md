@@ -54,12 +54,11 @@ Project | Responsibility
 MSI | Builds the MSI file that installs the application.
 
 #### Tests
-Unit tests are built using a combination of Moq and Microsoft Fakes. The folllowing assemblies exist for testing purposes:
+Unit tests are built using Moq. The folllowing assemblies exist for testing purposes:
 - AccessibilityInsights.Extensions.AzureDevOpsTests
 - AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests
 - AccessibilityInsights.Extensions.GitHubUnitTests
 - AccessibilityInsights.Extensions.TelemetryTests
 - AccessibilityInsights.ExtensionsTests
-- AccessibilityInsights.Fakes.Prebuild
 - AccessibilityInsights.SetupLibraryUnitTests
 - AccessibilityInsights.SharedUxTests
