@@ -13,15 +13,39 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     /// </summary>
     static public class IssueReporter
     {
+        #region Unit test overrides
+        internal static bool? TestControlledIsEnabled;
+        internal static string TestControlledDisplayName;
+        internal static Func<IssueInformation, IIssueResult> TestControlledFileIssueAsync;
+        #endregion
+
         public static IIssueReporting IssueReporting { get; set; }
 
-        public static bool IsEnabled => (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
+        public static bool IsEnabled
+        {
+            get
+            {
+                if (TestControlledIsEnabled.HasValue)
+                    return TestControlledIsEnabled.Value;
+
+                return (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
+            }
+        }
 
         public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
 
         public static ReporterFabricIcon Logo => (IsEnabled && IssueReporting != null )? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected ;
 
-        public static string DisplayName => (IsEnabled && IssueReporting != null) ? IssueReporting.ServiceName : null;
+        public static string DisplayName
+        {
+            get
+            {
+                if (TestControlledDisplayName != null)
+                    return TestControlledDisplayName;
+
+                return (IsEnabled && IssueReporting != null) ? IssueReporting.ServiceName : null;
+            }
+        }
 
         public static Dictionary<Guid, IIssueReporting> GetIssueReporters()
         {
@@ -39,6 +63,11 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
+            if (TestControlledFileIssueAsync != null)
+            {
+                return TestControlledFileIssueAsync(issueInformation);
+            }
+
             if (IsEnabled && IsConnected)
             {
                 // Coding to the agreement that FileIssueAsync will return a kicked off task. 
