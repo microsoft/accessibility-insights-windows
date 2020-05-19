@@ -40,15 +40,9 @@
     <WarningLevel>4</WarningLevel>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
-  <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
-    <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Axe.Windows.Actions, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Actions.dll</HintPath>
-    </Reference>
-    <Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Actions.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Axe.Windows.Automation, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Automation.dll</HintPath>
@@ -58,15 +52,6 @@
     </Reference>
     <Reference Include="Axe.Windows.Desktop, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Desktop.dll</HintPath>
-    </Reference>
-    <Reference Include="Axe.Windows.Desktop.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\Axe.Windows.Desktop.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="AccessibilityInsights.Extensions.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.Extensions.Fakes.dll</HintPath>
-    </Reference>
-    <Reference Include="AccessibilityInsights.SharedUx.Fakes" Condition="$(FAKES_SUPPORTED) == 1">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\AccessibilityInsights.SharedUx.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Axe.Windows.Rules, Version=0.9.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Axe.Windows.0.9.5-prerelease\lib\netstandard20\Axe.Windows.Rules.dll</HintPath>
@@ -86,9 +71,6 @@
     <Reference Include="Castle.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Core.4.4.1\lib\net45\Castle.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=12.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.1.1\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -100,9 +82,6 @@
     </Reference>
     <Reference Include="Moq, Version=4.14.0.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.14.1\lib\net45\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib.4.0.0.0.Fakes">
-      <HintPath>..\AccessibilityInsights.Fakes.Prebuild\FakesAssemblies\mscorlib.4.0.0.0.Fakes.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -152,7 +131,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Converters\BoolToVisibilityConverterTests.cs" />
-    <Compile Include="FileIssue\FileIssueActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1" />
+    <Compile Include="FileIssue\FileIssueActionTests.cs" />
     <Compile Include="FileIssue\IssueReporterManagerTests.cs" />
     <Compile Include="KeyboardHelpers\HotKeyUnitTests.cs" />
     <Compile Include="Settings\ConfigurationModelTests.cs" />
