@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace AccessibilityInsights.Extensions.Telemetry
 {
     /// <summary>
-    /// Simple interface to wrap TelemetryClient (which is sealed) for unit testing without fakes
+    /// Simple interface to wrap TelemetryClient (which is sealed) for unit testing
     /// </summary>
     internal interface ITelemetryClientWrapper
     {
