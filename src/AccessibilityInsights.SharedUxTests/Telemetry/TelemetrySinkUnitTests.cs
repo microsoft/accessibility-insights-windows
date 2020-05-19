@@ -229,6 +229,5 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
 
             _telemetryMock.VerifyAll();
         }
-
     }
 }
