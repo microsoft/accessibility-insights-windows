@@ -1,11 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
-using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.VisualStudio.Services.Common;
 using mshtml;
 using System;
 using System.Collections.Generic;
@@ -22,20 +19,33 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// <summary>
     /// Class with static functions used for filing issues
     /// </summary>
-    public static class FileIssueHelpers
+    internal class FileIssueHelpers
     {
-        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
+        private readonly IDevOpsIntegration _devOpsIntegration;
+
+        internal FileIssueHelpers(IDevOpsIntegration devOpsIntegration)
+        {
+            _devOpsIntegration = devOpsIntegration;
+        }
 
         /// <summary>
         /// Opens issue filing window with prepopulated data
         /// </summary>
-        /// <p  aram name="issueInfo">Dictionary of issue info from with which to populate the issue</param>
+        /// <param name="issueInfo">Dictionary of issue info from with which to populate the issue</param>
         /// <param name="connection">connection info</param>
         /// <param name="onTop">Is window always on top</param>
         /// <param name="zoomLevel">Zoom level for issue file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
-        public static (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        internal (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        {
+            return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, null);
+        }
+
+        /// <summary>
+        /// Testable version of FileNewIssue, allows caller to specify an issueId instead of going off-box
+        /// </summary>
+        internal (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, int? testIssueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -48,7 +58,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     ? issueInfo.InternalGuid.Value.ToString()
                     : string.Empty;
                 Uri url = CreateIssuePreviewAsync(connection, issueInfo).Result;
-                var issueId = FileIssueWindow(url, onTop, zoomLevel, updateZoom);
+
+                int? issueId = testIssueId.HasValue
+                    ? testIssueId.Value
+                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom);
 
                 return (issueId, a11yIssueId);
             }
@@ -70,7 +83,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="a11yIssueId">Issue's A11y-specific id</param>
         /// <param name="issueId">Issue's server-side id</param>
         /// <returns>Success or failure</returns>
-        public static async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
+        internal async Task<bool> AttachIssueData(IssueInformation issueInfo, string a11yIssueId, int issueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -85,7 +98,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// </summary>
         /// <param name="ex">The exception to check</param>
         /// <returns></returns>
-        public static bool IsTransient(Exception ex)
+        private static bool IsTransient(Exception ex)
         {
             switch (ex)
             {
@@ -125,10 +138,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="issueId">Issue's server-side id</param>
         /// <param name="snapshotFileName">saved snapshot file name</param>
         /// <returns>Success or failure</returns>
-        private static async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
+        private async Task<bool> AttachIssueDataInternal(string snapshotFileName, Bitmap bitmap, string a11yIssueId, int issueId)
         {
             var imageFileName = GetTempFileName(".png");
-            var filedIssueReproSteps = await GetExistingIssueDescriptionAsync(issueId).ConfigureAwait(false);
+            var filedIssueReproSteps = await _devOpsIntegration.GetExistingIssueDescription(issueId).ConfigureAwait(false);
 
             if (GuidsMatchInReproSteps(a11yIssueId, filedIssueReproSteps))
             {
@@ -140,7 +153,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 {
                     try
                     {
-                        attachmentResponse = await AttachTestResultToIssueAsync(snapshotFileName, issueId).ConfigureAwait(false);
+                        attachmentResponse = await _devOpsIntegration.AttachTestResultToIssue(snapshotFileName, issueId).ConfigureAwait(false);
                         break;
                     }
                     catch (Exception ex)
@@ -156,12 +169,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 if (imageFileName != null)
                 {
-                    var imgUrl = await AttachScreenshotToIssueAsync(imageFileName, issueId).ConfigureAwait(false);
+                    var imgUrl = await _devOpsIntegration.AttachScreenshotToIssue(imageFileName, issueId).ConfigureAwait(false);
                     htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
                 }
 
                 var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId) + htmlDescription;
-                await ReplaceIssueDescriptionAsync(scrubbedHTML, issueId).ConfigureAwait(false);
+                await _devOpsIntegration.ReplaceIssueDescription(scrubbedHTML, issueId).ConfigureAwait(false);
                 File.Delete(snapshotFileName);
                 if (imageFileName != null)
                 {
@@ -196,7 +209,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="inputHTML"></param>
         /// <param name="keyText"></param>
         /// <returns></returns>
-        public static string RemoveInternalHTML(string inputHTML, string keyText)
+        internal static string RemoveInternalHTML(string inputHTML, string keyText)
         {
             object[] htmlText = { inputHTML };
             HTMLDocument doc = new HTMLDocument();
@@ -228,7 +241,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             if (node != null)
             {
-                // Get all children up front to avoid modifying the list while iterating
                 foreach (IHTMLDOMNode child in GetChildren(node).ToList())
                 {
                     node.removeChild(child);
@@ -285,57 +297,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             return Path.Combine(GetTempDir(), Path.GetRandomFileName() + extension);
         }
 
-        public static Task<string> AttachScreenshotToIssueAsync(string path, int issueId)
-        {
-            return AzureDevOps.AttachScreenshotToIssue(path, issueId);
-        }
-
-        public static Task<int?> AttachTestResultToIssueAsync(string path, int issueId)
-        {
-            return AzureDevOps.AttachTestResultToIssue(path, issueId);
-        }
-
-        public static Task ConnectAsync(Uri uri, CredentialPromptType prompt)
-        {
-            return AzureDevOps.ConnectToAzureDevOpsAccount(uri, prompt);
-        }
-
-        public static ConnectionCache CreateConnectionCache(string configString)
-        {
-            return new ConnectionCache(configString);
-        }
-
-        public static ConnectionInfo CreateConnectionInfo(Uri serverUri, TeamProject project, AdoTeam team)
-        {
-            return new ConnectionInfo(serverUri, project, team);
-        }
-
-        public static ConnectionInfo CreateConnectionInfo(string configString)
-        {
-            try
-            {
-                return new ConnectionInfo(configString);
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                e.ReportException();
-                return null;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
-        public static void Disconnect()
-        {
-            AzureDevOps.Disconnect();
-        }
-
-        public static void FlushToken(Uri uri)
-        {
-            AzureDevOps.FlushToken(uri);
-        }
-
-        public static Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
+        internal Task<Uri> CreateIssuePreviewAsync(ConnectionInfo connectionInfo, IssueInformation issueInfo)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -347,42 +309,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             Dictionary<AzureDevOpsField, string> fieldPairs = GenerateIssueTemplate(issueFieldPairs, templateName);
             AddAreaAndIterationPathFields(connectionInfo, fieldPairs);
 
-            return Task<Uri>.Run(() => AzureDevOps.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
+            return Task<Uri>.Run(() => _devOpsIntegration.CreateIssuePreview(connectionInfo.Project.Name, connectionInfo.Team?.Name, fieldPairs));
         }
 
-        public static Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
+        private Task<string> GetAreaPathAsync(ConnectionInfo connectionInfo)
         {
-            return Task<string>.Run(() => AzureDevOps.GetAreaPath(connectionInfo));
+            return Task<string>.Run(() => _devOpsIntegration.GetAreaPath(connectionInfo));
         }
 
-        public static Task<string> GetExistingIssueDescriptionAsync(int issueId)
+        private Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
         {
-            return AzureDevOps.GetExistingIssueDescription(issueId);
-        }
-
-        public static Task<Uri> GetExistingIssueUriAsync(int issueId)
-        {
-            return Task<Uri>.Run(() => AzureDevOps.GetExistingIssueUrl(issueId));
-        }
-
-        public static Task<string> GetIterationPathAsync(ConnectionInfo connectionInfo)
-        {
-            return Task<string>.Run(() => AzureDevOps.GetIteration(connectionInfo));
-        }
-
-        public static Task<IEnumerable<TeamProject>> GetProjectsAsync()
-        {
-            return Task<IEnumerable<TeamProject>>.Run(() => AzureDevOps.GetTeamProjects());
-        }
-
-        public static Task PopulateUserProfileAsync()
-        {
-            return AzureDevOps.PopulateUserProfile();
-        }
-
-        public static Task<int?> ReplaceIssueDescriptionAsync(string description, int issueId)
-        {
-            return AzureDevOps.ReplaceIssueDescription(description, issueId);
+            return Task<string>.Run(() => _devOpsIntegration.GetIteration(connectionInfo));
         }
 
         /// <summary>
@@ -407,7 +344,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// </summary>
         /// <param name="connectionInfo">The source of the data to extract</param>
         /// <param name="fieldPairs">The destination of the extracted data</param>
-        private static void AddAreaAndIterationPathFields(ConnectionInfo connectionInfo, IDictionary<AzureDevOpsField, string> fieldPairs)
+        private void AddAreaAndIterationPathFields(ConnectionInfo connectionInfo, IDictionary<AzureDevOpsField, string> fieldPairs)
         {
             var areaPathTask = GetAreaPathAsync(connectionInfo);
             var iterationPathTask = GetIterationPathAsync(connectionInfo);

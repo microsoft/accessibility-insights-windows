@@ -191,7 +191,7 @@ namespace AccessibilityInsights
         {
             var configFolder = ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath;
             // Initialize user info from file if it exists, reset if needed, and re-serialize
-            var installInfo = InstallationInfo.LoadFromPath(configFolder);
+            var installInfo = InstallationInfo.LoadFromPath(configFolder, DateTime.UtcNow);
             Logger.AddOrUpdateContextProperty(TelemetryProperty.InstallationID, installInfo.InstallationGuid.ToString());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, VersionTools.GetAppVersion());
             Logger.AddOrUpdateContextProperty(TelemetryProperty.AppSessionID, Guid.NewGuid().ToString());

@@ -71,7 +71,7 @@
                             <Menu x:Name="mnTRControl" Grid.Column="1" Visibility="{Binding Path=MenuVisibility, Mode=OneWay}" Margin="10,0,0,0" >
                                 <MenuItem IsCheckable="False" Padding="0" AutomationProperties.Name="{x:Static Properties:Resources.MenuItemAutomationPropertiesNameControlSelectedTextRange}">
                                     <MenuItem.Icon>
-                                        <fabric:FabricIconControl GlyphName="More" Foreground="{DynamicResource ResourceKey=IconBrush}" GlyphSize="Default"/>
+                                        <fabric:FabricIconControl GlyphName="More" Foreground="{DynamicResource ResourceKey=TextPatternExplorerFGBrush}" GlyphSize="Default"/>
                                     </MenuItem.Icon>
                                     <MenuItem Header="{x:Static Properties:Resources.mniCloneHeader}" x:Name="mniClone" Click="mniClone_Click"/>
                                     <MenuItem Header="{x:Static Properties:Resources.MenuItemHeaderCompare}">

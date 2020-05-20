@@ -14,28 +14,34 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     /// such as Logger and TelemetryController.
     /// This class should not throw any exceptions.
     /// </summary>
-    internal static class TelemetrySink
+    internal class TelemetrySink : ITelemetrySink
     {
-        private static ITelemetry Telemetry => Container.GetDefaultInstance()?.Telemetry;
+        /// <summary>
+        /// Holds the production TelemetrySink object
+        /// </summary>
+        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry);
+
+        private readonly ITelemetry _telemetry;
+
+        internal TelemetrySink(ITelemetry telemetry)
+        {
+            _telemetry = telemetry;
+        }
 
         /// <summary>
-        /// Whether or not telemetry toggle button is enabled in the settings.
+        /// Implements <see cref="ITelemetrySink.IsTelemetryAllowed"/>
         /// </summary>
-        public static bool IsTelemetryAllowed { get; internal set; } = false;
+        public bool IsTelemetryAllowed { get; set; } = false;
 
         /// <summary>
-        /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of
-        /// work to short-circuit their processing when telemetry is disabled
+        /// Implements <see cref="ITelemetrySink.IsEnabled"/>
         /// </summary>
-        public static bool IsEnabled => IsTelemetryAllowed && Telemetry != null;
+        public bool IsEnabled => IsTelemetryAllowed && _telemetry != null;
 
         /// <summary>
-        /// Publishes event with single property/value pair to the current telemetry pipeline
+        /// Implements <see cref="ITelemetrySink.PublishTelemetryEvent(string, string, string)"/>
         /// </summary>
-        /// <param name="eventName"></param>
-        /// <param name="property"></param>
-        /// <param name="value"></param>
-        public static void PublishTelemetryEvent(string eventName, string property, string value)
+        public void PublishTelemetryEvent(string eventName, string property, string value)
         {
             PublishTelemetryEvent(eventName, new Dictionary<string, string>
             {
@@ -44,17 +50,15 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Publishes event to the current telemetry pipeline
+        /// Implements <see cref="ITelemetrySink.PublishTelemetryEvent(string, IReadOnlyDictionary{string, string})"/>
         /// </summary>
-        /// <param name="eventName">The event being recorded</param>
-        /// <param name="propertyBag">Associated property bag--this may be null</param>
-        public static void PublishTelemetryEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag = null)
+        public void PublishTelemetryEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag = null)
         {
             if (!IsEnabled) return;
 
             try
             {
-                Telemetry.PublishEvent(eventName, propertyBag);
+                _telemetry.PublishEvent(eventName, propertyBag);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
@@ -65,17 +69,15 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Explicitly updates context properties to be appended to future calls to the current telemetry pipeline
+        /// Implements <see cref="ITelemetrySink.AddOrUpdateContextProperty(string, string)"/>
         /// </summary>
-        /// <param name="property"></param>
-        /// <param name="value"></param>
-        public static void AddOrUpdateContextProperty(string property, string value)
+        public void AddOrUpdateContextProperty(string property, string value)
         {
             if (!IsEnabled) return;
 
             try
             {
-                Telemetry.AddOrUpdateContextProperty(property, value);
+                _telemetry.AddOrUpdateContextProperty(property, value);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
@@ -86,17 +88,16 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         }
 
         /// <summary>
-        /// Report an Exception into the pipeline
+        /// Implements <see cref="ITelemetrySink.ReportException(Exception)"/>
         /// </summary>
-        /// <param name="e">The Exception to report</param>
-        public static void ReportException(Exception e)
+        public void ReportException(Exception e)
         {
             if (!IsEnabled) return;
             if (e == null) return;
 
             try
             {
-                Telemetry.ReportException(e);
+                _telemetry.ReportException(e);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)

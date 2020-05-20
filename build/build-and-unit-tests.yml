@@ -11,8 +11,6 @@ jobs:
   condition: succeeded()
   pool:
     vmImage: windows-2019
-  variables:
-    FAKES_SUPPORTED: 1
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2

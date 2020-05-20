@@ -17,17 +17,53 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
-        private static AzureDevOpsIntegration AzureDevOps => AzureDevOpsIntegration.GetCurrentInstance();
+        private readonly FileIssueHelpers _fileIssueHelpers;
+        private readonly IDevOpsIntegration _devOpsIntegration;
 
-        private static ExtensionConfiguration Configuration => AzureDevOps.Configuration;
+        /// <summary>
+        /// The one and only IDevOpsIntegration object used in production. It's static
+        /// so that the ConfigurationControl code can read it. Note that code in this
+        /// class reads only the instanced version, not the static version.
+        /// </summary>
+        internal static IDevOpsIntegration DevOpsIntegration { get; private set; }
 
-        public static bool IsConnected => AzureDevOps.ConnectedToAzureDevOps;
+        /// <summary>
+        /// Production ctor
+        /// </summary>
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
+        public AzureBoardsIssueReporting()
+            : this(new AzureDevOpsIntegration())
+        {
+        }
+
+        /// <summary>
+        /// "Intermediate" production ctor
+        /// </summary>
+        private AzureBoardsIssueReporting(IDevOpsIntegration devOpsIntegration)
+            : this(devOpsIntegration, new FileIssueHelpers(devOpsIntegration))
+        {
+        }
+
+        /// <summary>
+        /// Unit testable ctor
+        /// </summary>
+        internal AzureBoardsIssueReporting(IDevOpsIntegration devOpsIntegration, FileIssueHelpers fileIssueHelpers)
+        {
+            _fileIssueHelpers = fileIssueHelpers;
+            _devOpsIntegration = devOpsIntegration;
+            DevOpsIntegration = devOpsIntegration;
+        }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
+
+        private ExtensionConfiguration Configuration => _devOpsIntegration.Configuration;
+
+        public bool IsConnected => _devOpsIntegration.ConnectedToAzureDevOps;
 
         public string ServiceName { get; } = "Azure Boards";
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
-        public bool IsConfigured => AzureDevOps.ConnectedToAzureDevOps;
+        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps;
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 
@@ -44,7 +80,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 Configuration.LoadFromSerializedString(serializedConfig);
             }
 
-            return AzureDevOps.HandleLoginAsync();
+            return _devOpsIntegration.HandleLoginAsync();
         }
 
         public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
@@ -53,7 +89,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             Application.Current.Dispatcher.Invoke(() => topMost = Application.Current.MainWindow.Topmost);
 
             Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
-            (int? issueId, string newIssueId) = FileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
+            (int? issueId, string newIssueId) = _fileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
                 topMost, Configuration.ZoomLevel, updateZoom);
 
             return Task.Run<IIssueResult>(() => {
@@ -62,7 +98,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
                 try
                 {
-                    if (!FileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
+                    if (!_fileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
                     {
                         MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                     }
@@ -70,7 +106,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     return new IssueResult()
                     {
                         DisplayText = issueId.ToString(),
-                        IssueLink = AzureDevOps.GetExistingIssueUrl(issueId.Value)
+                        IssueLink = _devOpsIntegration.GetExistingIssueUrl(issueId.Value)
                     };
                 }
 #pragma warning disable CA1031 // Do not catch general exception types

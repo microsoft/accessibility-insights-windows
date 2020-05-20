@@ -91,4 +91,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
 </ResourceDictionary>

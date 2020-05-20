@@ -78,7 +78,7 @@
                         <ColumnDefinition Width="28"/>
                     </Grid.ColumnDefinitions>
                     <DockPanel>
-                        <fabric:FabricIconControl DockPanel.Dock="Left" GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                        <fabric:FabricIconControl DockPanel.Dock="Left" GlyphName="Search" GlyphSize="Custom" FontSize="18" Margin="5,0,5,0" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="{DynamicResource ResourceKey=TextPatternExplorerFGBrush}"/>
                         <TextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                                  AutomationProperties.Name="{x:Static Properties:Resources.textboxSearchAutomationPropertiesName1}"
                                  AutomationProperties.HelpText="{x:Static Properties:Resources.textboxSearchAutomationPropertiesHelpText1}"
@@ -148,7 +148,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
-                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SearchAndIconForegroundBrush}"/>
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TextPatternExplorerFGBrush}"/>
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>

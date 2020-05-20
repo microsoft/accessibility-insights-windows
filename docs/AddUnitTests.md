@@ -50,56 +50,7 @@ The output will now tell you that `IsTrue` failed, but also why. This is especia
 
 ### Working with Microsoft Fakes
 
-Please read both sections below before making any changes that involve Microsoft Fakes.
+Microsoft Fakes are not an approved technology for Accessibility Insights for Windows. Please use Moq instead.
 
-#### Adding a test assembly that requires Fakes
-
-Due to the known issue (overwriting fakes assemblies from different unit tests when they have the same name), all `Fakes` assemblies are generated in a single project (`AccessibilityInsights.Fakes.Prebuild`). 
-
-If you need to add a new `Fake` assembly, please follow the below steps:
-1. Add a new fakes file into `AccessibilityInsights.Fakes.Prebuild`. 
-2. Build `AccessibilityInsights.Fakes.Prebuild`.
-3. Add a project dependency (not project reference) of `AccessibilityInsights.Fakes.Prebuild` into the unit test which needs a new fakes assembly.
-4. Add an assembly reference of *.fakes.dll (or exe) in `AccessibilityInsights.Fakes.Prebuild/FakesAssemblies` folder to the unit test.
-5. Add `Microsoft.QualityTools.Testing.Fakes.dll` into the assembly reference of the unit test.
-6. Any references to Fakes assemblies which are added to any test projects should be conditional on the environment variable `FAKES_SUPPORTED = 1`. See the next section for details.
-
-#### Important: Not all editions of Visual Studio support Fakes
-
-Some of the unit tests in Accessibility Insights For Windows use Microsoft Fakes to replace system calls which are otherwise difficult to mock using standard mocking frameworks. The problem is that certain editions of Visual Studio, like Enterprise, support Fakes. And some, like Community, do not. Because Accessibility Insights is open source, we cannot predict which editions of Visual Studio contributors will have access to. Therefore, we have disabled the use of Fakes by default.
-
-If you have an edition of Visual Studio which supports Fakes and you would like to run the unit tests which require them, add an environment variable to your system named `FAKES_SUPPORTED` and set it equal to `1`. Then, restart Visual Studio.
-
-If you want to add any unit tests which use Fakes into a project, make sure of the following:
-
-1. All Fakes references in the project are conditional on the `FAKES_SUPPORTED` environment variable. For example.<BR/>
-`<Reference Include="Axe.Windows.Actions.Fakes" Condition="$(FAKES_SUPPORTED) == 1"/>`
-2. The FAKES_SUPPORTED preprocessor symbol is defined for the project based on the environment variable. For example,<BR/>
-    ```
-    <PropertyGroup Condition="$(FAKES_SUPPORTED) == 1">
-        <DefineConstants>$(DefineConstants);FAKES_SUPPORTED</DefineConstants>
-    </PropertyGroup>
-    ```
-3. Any code which uses Fakes, including using directives, is placed within a `#if FAKES_SUPPORTED` block, for example,<BR/>
-    ```
-    #if FAKES_SUPPORTED
-    // code using Fakes
-    #endif
-    ```
-
-**Note:** You will need to perform the edits to the project file in a text editor. You can do this in Visual Studio by doing the following:
-
-1. Right click the project in the solution view and select "Unload project".
-2. Right click the project in the solution view and select "Edit [Project name].vcsproj".
-3. Make changes to the project file as text.
-4. right click the project in the solution view and select "Reload project".
-
-**Note:** If every test in a single file uses Fakes, it is acceptable to compile the file conditionally rather than surrounding the code in a `#if FAKES_SUPPORTED` block. To include/exclude an entire file which uses Fakes, add a condition to the files `Compile` tag in the project file as follows:
-
-`<Compile Include="FileBug\FileBugActionTests.cs" Condition="$(FAKES_SUPPORTED) == 1"/>`
-
-These precautions make it possible for contributors who have editions of Visual Studio which do not support Fakes to still compile and run Accessibility Insights successfully. 
-
-**Note:** All official builds of Accessibility Insights include unit tests which use Fakes. So if you add or change such a test, please make sure it passes before submitting a pull request.
 
 For unit test bar and standards please visit [Unit test Bar and Standards](UnitTestBarAndStandards.md)
