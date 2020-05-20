@@ -120,6 +120,10 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [Timeout(1000)]
         public void LoadFromPath_FileIsOneMonthOld_UnableToWrite_ReturnsRefreshedDataEachTime()
         {
+            // Intentionally don't set WriteToDiskOverride so that we try to write to disk.
+            // Since we haven't created a folder for _testFolder, the attempt to write to
+            // disk will fail. This simulates the case where we're unable to update the
+            // configuration file for whatever reason (file is locked, disk is full, etc.)
             DateTime now = February2015;
             InstallationInfo.ReadFromDiskOverride = (_) => new InstallationInfo(InstallationGuid, January2015);
 
