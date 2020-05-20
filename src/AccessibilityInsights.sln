@@ -1,7 +1,7 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2024
-VisualStudioVersion = 16.0.30104.148
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUxTests", "AccessibilityInsights.SharedUxTests\SharedUxTests.csproj", "{F595A9C3-E625-40C9-82A5-79F05804F535}"
 EndProject
