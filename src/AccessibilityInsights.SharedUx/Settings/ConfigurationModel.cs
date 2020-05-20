@@ -3,7 +3,6 @@
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Misc;
-using Axe.Windows.Actions.Enums;
 using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Desktop.UIAutomation;
@@ -439,15 +438,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get => GetDataValue<bool>(keyShowTelemetryDialog);
             set => SetDataValue<bool>(keyShowTelemetryDialog, value);
-        }
-
-        /// <summary>
-        /// Event listening registration order. Has no UI or setter. Included to allow
-        /// a way to force Axe.Windows to revert to legacy event listening behavior
-        /// </summary>
-        public EventRegistrationOrder EventListeningRegistrationOrder
-        {
-            get => GetEnumDataValue<EventRegistrationOrder>(keyEventListeningRegistrationOrder);
         }
 
         /// <summary>
