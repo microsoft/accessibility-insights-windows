@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
         }
 
         [TestMethod]
-        [Timeout(1000)]
+        [Timeout(2000)]
         public void IsEnabled_SinkIsNotEnabled_ReturnsFalse()
         {
             _sinkMock.Setup(x => x.IsEnabled).Returns(false);
