@@ -15,7 +15,7 @@ Add the following block to the end of your AssemblyInfo.cs file, replacing <Your
 [assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 #endif
 ```
-The PublicKey values for DynamicProxyGenAssembly2 are fixed by and ***must*** remain unchanged. The PublicKey for the main assembly must remain in sync with the public key used for the entire project. You can safely omit the DynamicProxyGenAssembly2 entry if you don't unit tests with Moq.
+The PublicKey values for DynamicProxyGenAssembly2 are fixed and ***must*** remain unchanged. The PublicKey for the main assembly must remain in sync with the public key used for the entire project. You can safely omit the DynamicProxyGenAssembly2 entry if you don't unit test with Moq.
 
 ### Validation of signing
 Signing can only be fully validated in the signed build environment, which is not externally accessible. If you are making any changes that change the InternalsVisibleTo in any way, please create the PR as usual, then create an issue to request validation of the signing changes.
