@@ -26,9 +26,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             get
             {
                 if (TestControlledIsEnabled.HasValue)
-				{
+                {
                     return TestControlledIsEnabled.Value;
-				}
+                }
 
                 return (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
             }
