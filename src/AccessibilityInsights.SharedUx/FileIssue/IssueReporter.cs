@@ -43,9 +43,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             get
             {
                 if (TestControlledDisplayName != null)
-				{
+                {
                     return TestControlledDisplayName;
-				}
+                }
 
                 return (IsEnabled && IssueReporting != null) ? IssueReporting.ServiceName : null;
             }
