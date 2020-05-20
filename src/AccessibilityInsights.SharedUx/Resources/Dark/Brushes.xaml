@@ -109,5 +109,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>       <!-- (UPDATED) Foreground of "BtnGreySquared" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#B2B3B5"/>  <!-- (UPDATED) Background of "BtnGreySquared" buttons on hover -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Hover of "BtnOnSelectedLine" buttons -->
-    <SolidColorBrush po:Freeze="True" x:Key="TextRangeControlFGBrush" Color="#333333"/>  <!-- (UPDATED) Text of Attibutes in TextPatternExplorer -->
+    <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="#333333"/>  <!-- (UPDATED) Foreground in TextPatternExplorer -->
 </ResourceDictionary>
