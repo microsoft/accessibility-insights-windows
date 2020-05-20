@@ -5,9 +5,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Globalization;
 using System.IO;
 
 namespace AccessibilityInsights.SharedUx.FileIssue

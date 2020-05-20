@@ -25,7 +25,3 @@ jobs:
 - template: ui-test-job.yml
   parameters:
     configuration: debug
-
-- template: build-without-fakes.yml
-  parameters:
-    configuration: debug

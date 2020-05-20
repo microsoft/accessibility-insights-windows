@@ -3,57 +3,156 @@
 using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-#if FAKES_SUPPORTED
-using Microsoft.QualityTools.Testing.Fakes;
-using System.Fakes;
-using System.IO.Fakes;
-#endif
+using System.IO;
 
 namespace AccessibilityInsights.SharedUxTests.Settings
 {
     [TestClass]
     public class InstallationInfoTests
     {
-#if FAKES_SUPPORTED
-        /// <summary>
-        /// Checks whether the guid resets when the month changes
-        /// </summary>
-        [TestMethod]
-        public void TestInstallationInfoGuidResets()
+        private static readonly Guid InstallationGuid = new Guid("FF812E13-1061-4AA9-B236-F1628EB0D311");
+        private static readonly Guid InstallationGuid2 = new Guid("8E2668D8-4036-455E-B7C2-BEFFE446A1F7");
+        private static readonly Guid InstallationGuid3 = new Guid("34462CAE-4C96-47F5-9DED-520FEA62ADA6");
+        private static readonly DateTime January2015 = new DateTime(2015, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly DateTime February2015 = new DateTime(2015, 2, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly DateTime January2016 = new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+
+        private string _testFolder;
+
+        [TestInitialize]
+        public void BeforeEachTest()
         {
-            using (ShimsContext.Create())
+            _testFolder = Path.Combine(Path.GetTempPath(), "InstallationInfoTest_" + Guid.NewGuid().ToString());
+        }
+
+        [TestCleanup]
+        public void AfterEachTest()
+        {
+            if (Directory.Exists(_testFolder))
             {
-                // We shim the filesystem related methods. currentJson represents the current 
-                // state of what would be saved on disk
-                string fakePath = "fake\\";
-                var currentJson = "";
-                ShimFile.ReadAllTextStringEncoding = (_, __) => { return currentJson; };
-                ShimFile.ExistsString = (_) => !string.IsNullOrEmpty(currentJson);
-                ShimFile.WriteAllTextStringStringEncoding = (_, json, __) => { currentJson = json; };
+                Directory.Delete(_testFolder, /*recursive*/true);
+            }
 
-                ShimDateTime.UtcNowGet = () => new DateTime(2015, 1, 1);
-                InstallationInfo janInfo1 = InstallationInfo.LoadFromPath(fakePath);
+            InstallationInfo.ReadFromDiskOverride = null;
+            InstallationInfo.WriteToDiskOverride = null;
+        }
 
-                // The guid shouldn't reset if the month is the same
-                InstallationInfo info2 = InstallationInfo.LoadFromPath(fakePath);
-                Assert.AreEqual(janInfo1.InstallationGuid, info2.InstallationGuid);
-
-                // A month has elapsed so the guid should reset
-                DateTime februaryYearOne = new DateTime(2015, 2, 1);
-                ShimDateTime.UtcNowGet = () => februaryYearOne;
-                InstallationInfo febInfo = InstallationInfo.LoadFromPath(fakePath);
-                Assert.AreNotEqual(janInfo1.InstallationGuid, febInfo.InstallationGuid);
-                Assert.AreEqual(febInfo.LastReset, februaryYearOne);
-
-                // although the old month (2) > current month(1), a year has elapsed
-                //  so the guid should reset
-                DateTime januaryYearTwo = new DateTime(2016, 1, 1);
-                ShimDateTime.UtcNowGet = () => januaryYearTwo;
-                InstallationInfo janInfo2 = InstallationInfo.LoadFromPath(fakePath);
-                Assert.AreNotEqual(febInfo.InstallationGuid, janInfo2.InstallationGuid);
-                Assert.AreEqual(janInfo2.LastReset, januaryYearTwo);
+        [TestMethod]
+        [Timeout(1000)]
+        public void Ctor_InstallationIdAndLastResetAreCorrectlySet()
+        {
+            DateTime[] dates = { January2015, February2015, January2016 };
+            Guid[] guids = { InstallationGuid, InstallationGuid2, InstallationGuid3 };
+            foreach (DateTime date in dates)
+            {
+                foreach (Guid guid in guids)
+                {
+                    InstallationInfo info = new InstallationInfo(guid, date);
+                    Assert.AreEqual(date, info.LastReset);
+                    Assert.AreEqual(guid, info.InstallationGuid);
+                }
             }
         }
-#endif
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void LoadFromPath_FileDoesNotExist_LastResetIsProvidedTime()
+        {
+            DateTime now = January2015;
+            bool wasRefreshed = false;
+            InstallationInfo.WriteToDiskOverride = (_, __) => wasRefreshed = true;
+
+            InstallationInfo info = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.IsTrue(wasRefreshed);
+            Assert.AreEqual(now, info.LastReset);
+            Assert.AreNotEqual(InstallationGuid, info.InstallationGuid);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void LoadFromPath_FileIsCurrent_FileIsNotRefreshed()
+        {
+            DateTime now = January2015;
+            bool wasRefreshed = false;
+            InstallationInfo.WriteToDiskOverride = (_, __) => wasRefreshed = true;
+            InstallationInfo.ReadFromDiskOverride = (_) => new InstallationInfo(InstallationGuid, now);
+            InstallationInfo info = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.IsFalse(wasRefreshed);
+            Assert.AreEqual(now, info.LastReset);
+            Assert.AreEqual(InstallationGuid, info.InstallationGuid);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void LoadFromPath_FileIsOneMonthOld_FileIsRefreshedWithProvidedTime()
+        {
+            DateTime now = February2015;
+            bool wasRefreshed = false;
+            InstallationInfo.WriteToDiskOverride = (_, __) => wasRefreshed = true;
+            InstallationInfo.ReadFromDiskOverride = (_) => new InstallationInfo(InstallationGuid, January2015);
+
+            InstallationInfo info = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.IsTrue(wasRefreshed);
+            Assert.AreEqual(now, info.LastReset);
+            Assert.AreNotEqual(InstallationGuid, info.InstallationGuid);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void LoadFromPath_FileIsOneYearOld_FileIsRefreshedWithProvidedTime()
+        {
+            DateTime now = January2016;
+            bool wasRefreshed = false;
+            InstallationInfo.WriteToDiskOverride = (_, __) => wasRefreshed = true;
+            InstallationInfo.ReadFromDiskOverride = (_) => new InstallationInfo(InstallationGuid, January2015);
+
+            InstallationInfo info = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.IsTrue(wasRefreshed);
+            Assert.AreEqual(now, info.LastReset);
+            Assert.AreNotEqual(InstallationGuid, info.InstallationGuid);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void LoadFromPath_FileIsOneMonthOld_UnableToWrite_ReturnsRefreshedDataEachTime()
+        {
+            // Intentionally don't set WriteToDiskOverride so that we try to write to disk.
+            // Since we haven't created a folder for _testFolder, the attempt to write to
+            // disk will fail. This simulates the case where we're unable to update the
+            // configuration file for whatever reason (file is locked, disk is full, etc.)
+            DateTime now = February2015;
+            InstallationInfo.ReadFromDiskOverride = (_) => new InstallationInfo(InstallationGuid, January2015);
+
+            InstallationInfo info1 = InstallationInfo.LoadFromPath(_testFolder, now);
+            InstallationInfo info2 = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.AreEqual(now, info1.LastReset);
+            Assert.AreEqual(now, info2.LastReset);
+            Assert.AreNotEqual(InstallationGuid, info1.InstallationGuid);
+            Assert.AreNotEqual(InstallationGuid, info2.InstallationGuid);
+            Assert.AreNotEqual(info1.InstallationGuid, info2.InstallationGuid);
+        }
+
+        [TestMethod]
+        [Timeout(2000)]
+        public void LoadFromPath_RoundTripThroughDisk_FileIsNotRefreshed()
+        {
+            // Note: Not strictly a unit test since it pushes data through the disk
+            DateTime now = DateTime.UtcNow;
+            Directory.CreateDirectory(_testFolder);
+
+            InstallationInfo info1 = InstallationInfo.LoadFromPath(_testFolder, now);
+            InstallationInfo info2 = InstallationInfo.LoadFromPath(_testFolder, now);
+
+            Assert.AreEqual(now, info1.LastReset);
+            Assert.AreEqual(info1.LastReset, info2.LastReset);
+
+            Assert.AreNotEqual(InstallationGuid, info1.InstallationGuid);
+            Assert.AreEqual(info1.InstallationGuid, info2.InstallationGuid);
+        }
     }
 }

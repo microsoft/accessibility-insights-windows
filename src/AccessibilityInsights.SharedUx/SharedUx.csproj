@@ -519,6 +519,7 @@
     <Compile Include="Settings\RecorderSetting.cs" />
     <Compile Include="Telemetry\AxeWindowsTelemetrySink.cs" />
     <Compile Include="Telemetry\EventTelemetrySink.cs" />
+    <Compile Include="Telemetry\ITelemetrySink.cs" />
     <Compile Include="Telemetry\Logger.cs" />
     <Compile Include="Telemetry\ReportExceptionBuffer.cs" />
     <Compile Include="Telemetry\TelemetryAction.cs" />

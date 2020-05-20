@@ -3,9 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUxTests", "AccessibilityInsights.SharedUxTests\SharedUxTests.csproj", "{F595A9C3-E625-40C9-82A5-79F05804F535}"
-	ProjectSection(ProjectDependencies) = postProject
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
-	EndProjectSection
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MSI", "MSI\MSI.wixproj", "{137DB774-6464-48BC-B577-091ABEAF0178}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -31,25 +28,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.AzureDevOps", "AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj", "{58DBF9FE-0029-408F-A8A4-23AE500E938D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.AzureDevOpsTests", "AccessibilityInsights.Extensions.AzureDevOpsTests\Extensions.AzureDevOpsTests.csproj", "{723F3286-D001-4CB1-9F4D-29EF6B894877}"
-	ProjectSection(ProjectDependencies) = postProject
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{C23FB215-D2F6-454D-BD08-7736562CDFB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{7514A72C-6BC5-431A-920F-55B62413EAC8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fakes", "Fakes", "{5B002126-170A-41D4-B4BC-F5ED12FBD09D}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsUx", "WindowsUx", "{809F77B0-82E0-4990-A9A4-4806157385E9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32", "AccessibilityInsights.Win32\Win32.csproj", "{608E7EF9-C670-4152-A056-46448E2F1E18}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fakes.Prebuild", "AccessibilityInsights.Fakes.Prebuild\Fakes.Prebuild.csproj", "{149576B1-9947-4BE0-9008-DFFD0DA36E00}"
-	ProjectSection(ProjectDependencies) = postProject
-		{D17E1749-28FE-44B9-A9F6-AF8985124FE4} = {D17E1749-28FE-44B9-A9F6-AF8985124FE4}
-		{58DBF9FE-0029-408F-A8A4-23AE500E938D} = {58DBF9FE-0029-408F-A8A4-23AE500E938D}
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}"
 EndProject
@@ -63,9 +49,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubAutoUpdateUnitTests", "AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests\Extensions.GitHubAutoUpdateUnitTests.csproj", "{7199C6A9-DD07-46A2-8D89-8458968C0897}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.TelemetryTests", "AccessibilityInsights.Extensions.TelemetryTests\Extensions.TelemetryTests.csproj", "{53A83593-015F-460A-9797-D910CB997E62}"
-	ProjectSection(ProjectDependencies) = postProject
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionSwitcher", "AccessibilityInsights.VersionSwitcher\VersionSwitcher.csproj", "{1D4F9843-B1CB-4CCC-A13A-D132336750F2}"
 	ProjectSection(ProjectDependencies) = postProject
@@ -81,9 +64,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHub", "AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj", "{F421AAFD-D85F-49B8-B95E-CA17718C38DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsTests", "AccessibilityInsights.ExtensionsTests\ExtensionsTests.csproj", "{BE9F7E62-D9D6-4FC7-B449-820899498621}"
-	ProjectSection(ProjectDependencies) = postProject
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {149576B1-9947-4BE0-9008-DFFD0DA36E00}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubUnitTests", "AccessibilityInsights.Extensions.GitHubUnitTests\Extensions.GitHubUnitTests.csproj", "{8CCBEC10-F28B-4330-A351-0B4B900F1169}"
 EndProject
@@ -241,24 +221,6 @@ Global
 		{608E7EF9-C670-4152-A056-46448E2F1E18}.SignedRelease|x64.Build.0 = Release|Any CPU
 		{608E7EF9-C670-4152-A056-46448E2F1E18}.SignedRelease|x86.ActiveCfg = Release|Any CPU
 		{608E7EF9-C670-4152-A056-46448E2F1E18}.SignedRelease|x86.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|x64.Build.0 = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Debug|x86.Build.0 = Debug|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|x64.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|x64.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|x86.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.Release|x86.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|Any CPU.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|x64.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|x64.Build.0 = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|x86.ActiveCfg = Release|Any CPU
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00}.SignedRelease|x86.Build.0 = Release|Any CPU
 		{EAA85D0D-712D-4D85-A246-D3C699C6C602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EAA85D0D-712D-4D85-A246-D3C699C6C602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAA85D0D-712D-4D85-A246-D3C699C6C602}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -485,7 +447,6 @@ Global
 		{58DBF9FE-0029-408F-A8A4-23AE500E938D} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{723F3286-D001-4CB1-9F4D-29EF6B894877} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{608E7EF9-C670-4152-A056-46448E2F1E18} = {7514A72C-6BC5-431A-920F-55B62413EAC8}
-		{149576B1-9947-4BE0-9008-DFFD0DA36E00} = {5B002126-170A-41D4-B4BC-F5ED12FBD09D}
 		{EAA85D0D-712D-4D85-A246-D3C699C6C602} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{80165CCC-6D76-4590-A16B-1790A35B08E4} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{7199C6A9-DD07-46A2-8D89-8458968C0897} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
