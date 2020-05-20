@@ -26,7 +26,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             get
             {
                 if (TestControlledIsEnabled.HasValue)
+				{
                     return TestControlledIsEnabled.Value;
+				}
 
                 return (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
             }
@@ -41,7 +43,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             get
             {
                 if (TestControlledDisplayName != null)
+				{
                     return TestControlledDisplayName;
+				}
 
                 return (IsEnabled && IssueReporting != null) ? IssueReporting.ServiceName : null;
             }
