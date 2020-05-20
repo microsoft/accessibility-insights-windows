@@ -22,6 +22,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     public partial class TextRangeFindDialog : Window
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
+        private const int SearchForText = 0;
+
         private TextRangeViewModel ViewModel;
         private TextRangeHilighter Hilighter;
         private TextRangeFinder Finder;
@@ -30,8 +32,16 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             this.ViewModel = trvm;
             InitializeComponent();
-            this.cbAttributes.ItemsSource = TextAttributeType.GetInstance().GetTemplate();
+            this.cbAttributes.ItemsSource = GetSourceTemplate();
             this.Hilighter = new TextRangeHilighter(HighlighterColor.GreenTextBrush); // green color
+        }
+
+        private static System.Collections.IEnumerable GetSourceTemplate()
+        {
+            var textItem = new Tuple<int, string, dynamic, Type>(SearchForText, "Text", null, typeof(string));
+            var template = TextAttributeTemplate.GetTemplate();
+            template?.Insert(0, textItem);
+            return template;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -63,7 +73,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     cbValues.Visibility = Visibility.Hidden;
                 }
 
-                chbIgnoreCase.IsEnabled = item.Item1 == TextAttributeType.UIA_TextAttributeId;
+                chbIgnoreCase.IsEnabled = item.Item1 == SearchForText;
 
                 this.Finder = new TextRangeFinder(this.ViewModel.TextRange);
             }
@@ -137,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
 
-            return item.Item1 == TextAttributeType.UIA_TextAttributeId;
+            return item.Item1 == 0;
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
@@ -162,7 +172,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             try
             {
-                range = this.Finder.Find(GetAttributeId(), GetAttributeValue(), backward, this.chbIgnoreCase.IsChecked.Value);
+                var attributeId = GetAttributeId();
+
+                range =  attributeId == SearchForText
+                    ? this.Finder.FindText(GetAttributeValue() as string, backward, chbIgnoreCase.IsChecked ?? false)
+                    : this.Finder.Find(attributeId, GetAttributeValue(), backward);
 
                 if (range != null)
                 {
