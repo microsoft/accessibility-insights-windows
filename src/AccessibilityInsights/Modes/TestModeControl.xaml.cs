@@ -16,7 +16,6 @@ using Axe.Windows.Actions.Enums;
 using Axe.Windows.Actions.Misc;
 using Axe.Windows.Desktop.Settings;
 using System;
-using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Globalization;
 using System.Threading.Tasks;
