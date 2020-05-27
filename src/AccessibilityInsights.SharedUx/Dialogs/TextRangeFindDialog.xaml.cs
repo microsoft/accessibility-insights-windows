@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
 
-            return item.Item1 == 0;
+            return item.Item1 == SearchForText;
         }
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
