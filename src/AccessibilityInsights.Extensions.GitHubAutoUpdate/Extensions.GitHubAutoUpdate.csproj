@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
     <AssemblyName>AccessibilityInsights.Extensions.GitHubAutoUpdate</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.GitHubAutoUpdate</RootNamespace>
   </PropertyGroup>

@@ -1,11 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-
-    <IsPackable>false</IsPackable>
-
     <AssemblyName>AccessibilityInsights.SetupLibraryUnitTests</AssemblyName>
+    <RootNamespace>AccessibilityInsights.SetupLibraryUnitTests</RootNamespace>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkTest.targets" />

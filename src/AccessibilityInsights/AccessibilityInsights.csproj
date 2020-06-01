@@ -1,15 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net472</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWPF>true</UseWPF>
     <AssemblyName>AccessibilityInsights</AssemblyName>
     <RootNamespace>AccessibilityInsights</RootNamespace>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <OutputType>WinExe</OutputType>
     <ApplicationIcon>..\AccessibilityInsights.SharedUx\Resources\Icons\BrandIconDesktop.ico</ApplicationIcon>
     <NoWin32Manifest>true</NoWin32Manifest>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />

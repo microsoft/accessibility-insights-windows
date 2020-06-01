@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
-    <UseWPF>true</UseWPF>
     <AssemblyName>AccessibilityInsights.Extensions.AzureDevOps</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.AzureDevOps</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />

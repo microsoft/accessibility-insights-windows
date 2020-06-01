@@ -1,6 +1,7 @@
 ﻿<Project>
 
   <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>

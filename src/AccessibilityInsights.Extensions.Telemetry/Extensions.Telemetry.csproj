@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
     <AssemblyName>AccessibilityInsights.Extensions.Telemetry</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.Telemetry</RootNamespace>
   </PropertyGroup>

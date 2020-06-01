@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <UseWPF>true</UseWPF>
     <AssemblyName>AccessibilityInsights.Extensions.GitHub</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.GitHub</RootNamespace>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />

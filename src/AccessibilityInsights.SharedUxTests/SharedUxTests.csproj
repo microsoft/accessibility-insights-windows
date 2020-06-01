@@ -1,12 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <UseWindowsForms>true</UseWindowsForms>
-    <IsPackable>false</IsPackable>
-
     <AssemblyName>AccessibilityInsights.SharedUxTests</AssemblyName>
+    <RootNamespace>AccessibilityInsights.SharedUxTests</RootNamespace>
+    <UseWindowsForms>true</UseWindowsForms>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkTest.targets" />

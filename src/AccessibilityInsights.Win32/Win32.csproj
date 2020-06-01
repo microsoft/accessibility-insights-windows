@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" InitialTargets="CreateVersionFile">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
     <AssemblyName>AccessibilityInsights.Win32</AssemblyName>
     <RootNamespace>AccessibilityInsights.Win32</RootNamespace>
   </PropertyGroup>

@@ -1,12 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <UseWPF>true</UseWPF>
-
-    <IsPackable>false</IsPackable>
-
     <AssemblyName>AccessibilityInsights.Extensions.AzureDevOpsTests</AssemblyName>
+    <RootNamespace>AccessibilityInsights.Extensions.AzureDevOpsTests</RootNamespace>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkTest.targets" />
