@@ -1,8 +1,8 @@
-## April 13, 2020 Production Release ([v1.1.1198.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1198.01))
+## June 2, 2020 Production Release ([v1.1.1248.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1248.01))
 
-Welcome to the April 13, 2020 Production release of Accessibility Insights for Windows.
+Welcome to the June 2, 2020 Insider release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1198.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1248.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
@@ -14,16 +14,14 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 #### Rule Updates
 
-- “An element's BoundingRectangle must not obscure its container element” should exclude dialogs [#322](https://github.com/microsoft/axe-windows/issues/322)
+- Removed rule IsOffScreenChild (false positive [#369](https://github.com/microsoft/axe-windows/pull/369)
 
 #### Bug Fixes
 
-- Improved highlighter contrast in HC modes [#757](https://github.com/microsoft/accessibility-insights-windows/pull/757), [#759](https://github.com/microsoft/accessibility-insights-windows/pull/759)
-- Scroll Live Mode instructions at zoom [#725](https://github.com/microsoft/accessibility-insights-windows/pull/725)
-- Improved border area at zoom [#730](https://github.com/microsoft/accessibility-insights-windows/pull/730)
-- Fixed an issue to prevent an error while calling FindItemByProperty [#744](https://github.com/microsoft/accessibility-insights-windows/issues/744)
+- Fixed text issues in TextPattern explorer in dark mode [#799](https://github.com/microsoft/accessibility-insights-windows/issues/799)
+- Fixed disappearing icons in HC White mode [#756](https://github.com/microsoft/accessibility-insights-windows/issues/756)
+- Updated the welcome screen [#790](https://github.com/microsoft/accessibility-insights-windows/pull/790)
 
 #### Other Updates
 
-- Updated target framework to .NET Framework 4.7.2 [#740](https://github.com/microsoft/accessibility-insights-windows/pull/740)
-- Updated third party notices [#753](https://github.com/microsoft/accessibility-insights-windows/pull/753), [#758](https://github.com/microsoft/accessibility-insights-windows/pull/758)
+- Enabled dark mode by default [#764](https://github.com/microsoft/accessibility-insights-windows/pull/764) to address [#623](https://github.com/microsoft/accessibility-insights-windows/issues/623)
