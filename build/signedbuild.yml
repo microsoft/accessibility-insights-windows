@@ -25,6 +25,13 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
+
   - task: PowerShell@2
     displayName: 'License Header Check'
     inputs:
@@ -83,6 +90,13 @@ jobs:
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -209,6 +223,13 @@ jobs:
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\AccessibilityInsights.sln'
