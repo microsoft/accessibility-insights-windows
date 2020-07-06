@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Dialogs"
         xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
         xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:behaviors="clr-namespace:AccessibilityInsights.SharedUx.Behaviors"
         xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
         mc:Ignorable="d"

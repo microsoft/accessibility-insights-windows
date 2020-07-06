@@ -4,11 +4,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
                     xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
-                    xmlns:animations="clr-namespace:AccessibilityInsights.SharedUx.Animations;assembly=AccessibilityInsights.SharedUx"
-                    xmlns:colorpickers="clr-namespace:AccessibilityInsights.SharedUx.Controls.ColorPicker;assembly=AccessibilityInsights.SharedUx"
-                    xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls;assembly=AccessibilityInsights.SharedUx"
-                    xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters;assembly=AccessibilityInsights.SharedUx"
-                    xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties;assembly=AccessibilityInsights.SharedUx"
+                    xmlns:animations="clr-namespace:AccessibilityInsights.SharedUx.Animations"
+                    xmlns:colorpickers="clr-namespace:AccessibilityInsights.SharedUx.Controls.ColorPicker"
+                    xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
+                    xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
+                    xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <converters:TreeNodeToMarginConverter x:Key="nodeMargin"/>
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">

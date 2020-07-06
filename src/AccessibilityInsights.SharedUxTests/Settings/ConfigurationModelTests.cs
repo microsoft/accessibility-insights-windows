@@ -136,7 +136,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod]
         public void LoadFronJSON_LegacyFormat_DataIsCorrect()
         {
-            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\LegacyConfigSettings.json", testProvider);
+            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@".\Resources\LegacyConfigSettings.json", testProvider);
 
             ConfirmOverrideConfigMatchesExpectation(config);
         }
@@ -144,7 +144,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [TestMethod]
         public void LoadFronJSON_CurrentFormat_DataIsCorrect()
         {
-            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@"..\..\Resources\ConfigSettings.json", testProvider);
+            ConfigurationModel config = ConfigurationModel.LoadFromJSON(@".\Resources\ConfigSettings.json", testProvider);
 
             ConfirmOverrideConfigMatchesExpectation(config,
                 disableDarkMode: true,

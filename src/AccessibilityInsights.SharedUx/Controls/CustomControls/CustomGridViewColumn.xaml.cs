@@ -73,7 +73,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         #endregion ContentPath
         #endregion DependencyProperties
 
-        internal CustomGridViewColumn() => InitializeComponent();
+        public CustomGridViewColumn() => InitializeComponent();
 
         internal void UpdateWidth() => Width = MaxColumnWidth;
 

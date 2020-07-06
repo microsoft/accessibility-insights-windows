@@ -1,0 +1,11 @@
+﻿<Project>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;CA1707</NoWarn>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <Import Project=".\NetFrameworkAll.targets" />
+  <Import Project=".\DelaySign.targets" />
+
+</Project>

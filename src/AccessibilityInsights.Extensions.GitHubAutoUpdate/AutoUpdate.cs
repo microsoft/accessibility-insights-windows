@@ -171,11 +171,13 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <summary>
         /// Production ctor - MUST be a default ctor or extensions will break
         /// </summary>
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         public AutoUpdate() :
             this(ConfiguredReleaseChannelProvider, () => MsiUtilities.GetInstalledProductVersion(ExceptionReporter),
                 new ProductionChannelInfoProvider(new GitHubWrapper(ExceptionReporter), ExceptionReporter))
         {
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
         /// Unit testable ctor - allows dependency injection for testing
@@ -183,6 +185,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="releaseChannelProvider">Provides the client's current release channel</param>
         /// <param name="installedVersionProvider">Method that provides the installed version string</param>
         /// <param name="channelInfoProvider">Method that provides a (potentially invalid) ChannelInfo</param>
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         internal AutoUpdate(Func<ReleaseChannel> releaseChannelProvider, Func<string> installedVersionProvider, IChannelInfoProvider channelInfoProvider)
         {
             _strongReleaseChannel = releaseChannelProvider();
@@ -191,6 +194,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
             ReleaseChannel = _strongReleaseChannel.ToString();
             _initTask = Task.Run(() => InitializeWithTimer());
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         private static ReleaseChannel ConfiguredReleaseChannelProvider()
         {

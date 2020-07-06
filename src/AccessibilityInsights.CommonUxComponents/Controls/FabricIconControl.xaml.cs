@@ -33,7 +33,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region GlyphName (Dependency Property)
 
         public static readonly DependencyProperty GlyphNameProperty =
-            DependencyProperty.Register("GlyphName", typeof(FabricIcon?), typeof(FabricIconControl), new PropertyMetadata(default(FabricIcon?), OnGlyphNameChanged));
+            DependencyProperty.Register("GlyphName", typeof(FabricIcon?), typeof(FabricIconControl), new PropertyMetadata(null, OnGlyphNameChanged));
 
         public FabricIcon? GlyphName
         {
@@ -128,7 +128,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region Foreground (Dependency Property)
 
         new public static readonly DependencyProperty ForegroundProperty =
-            DependencyProperty.Register("Foreground", typeof(Brush), typeof(FabricIconControl), new PropertyMetadata(default(Brush), OnForegroundChanged));
+            DependencyProperty.Register("Foreground", typeof(Brush), typeof(FabricIconControl), new PropertyMetadata(null, OnForegroundChanged));
 
         new public Brush Foreground
         {

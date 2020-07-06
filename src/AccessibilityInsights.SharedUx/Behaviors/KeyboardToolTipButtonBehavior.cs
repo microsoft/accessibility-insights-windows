@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using Microsoft.Xaml.Behaviors;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Interactivity;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Behaviors
