@@ -19,4 +19,13 @@
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="TestFiles\WildlifeManagerTest.a11yevent">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestFiles\WildlifeManagerTest.a11ytest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
