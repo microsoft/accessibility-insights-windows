@@ -6,7 +6,7 @@
 [![Downloads](https://img.shields.io/github/downloads/microsoft/accessibility-insights-windows/total.svg)](https://github.com/Microsoft/accessibility-insights-windows/releases/latest)
 [![Release](https://img.shields.io/github/release/microsoft/accessibility-insights-windows.svg)](https://github.com/Microsoft/accessibility-insights-windows/releases/latest)
 
-Accessibility Insights for Windows is the project for Accessibility tools on Windows platform (Win7/Win8x/Win10).
+Accessibility Insights for Windows is the project for Accessibility tools on the Windows platform.
 
 ### Installing Accessibility Insights for Windows
 You can download and install the application from https://accessibilityinsights.io.
