@@ -46,10 +46,10 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
 
-  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
-    displayName: 'WPF Static Analysis'
-    inputs:
-      input: 'src\AccessibilityInsights\bin\Release'
+#  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
+#    displayName: 'WPF Static Analysis'
+#    inputs:
+#      input: 'src\AccessibilityInsights\bin\Release'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -131,13 +131,8 @@ jobs:
     inputs:
       inputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
-                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
+      targets: "src\\AccessibilityInsights\\bin\\Debug\\net472\\*.exe;\
+                src\\AccessibilityInsights\\bin\\Debug\\net472\\AccessibilityInsights.*.dll;\
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
