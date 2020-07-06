@@ -132,7 +132,7 @@ jobs:
       inputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
       targets: "src\\AccessibilityInsights\\bin\\Debug\\net472\\*.exe;\
-                src\\AccessibilityInsights\\bin\\Debug\\net472\\AccessibilityInsights.*.dll;\
+                src\\AccessibilityInsights\\bin\\Debug\\net472\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
