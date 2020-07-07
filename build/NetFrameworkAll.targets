@@ -5,6 +5,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
 </Project>
