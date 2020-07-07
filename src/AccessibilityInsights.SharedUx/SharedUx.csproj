@@ -324,7 +324,6 @@
     <Compile Include="ActionViews\TextRangeActionView.xaml.cs">
       <DependentUpon>TextRangeActionView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Animations\GridLengthAnimation.cs" />
     <Compile Include="Behaviors\ExpanderBehavior.cs" />
     <Compile Include="Behaviors\DropDownButtonBehavior.cs" />
     <Compile Include="Behaviors\ColumnResizeHotkeyBehavior.cs" />
