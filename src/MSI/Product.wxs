@@ -75,9 +75,11 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.JsonWebTokens.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Logging.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Tokens.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.mshtml.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Build2.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Common.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Core.WebApi.dll" />
@@ -97,6 +99,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.TestResults.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Win32.Registry.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Xaml.Behaviors.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Buffers.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Collections.Immutable.dll" />
