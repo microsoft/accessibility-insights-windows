@@ -158,14 +158,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Messages.resx</DependentUpon>
     </Compile>
-    <Page Include="Animations\BeakerAnimationControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Animations\FocusAnimationControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Modes\DialogContainerModeControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -179,12 +171,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" />
-    <Compile Include="Animations\BeakerAnimationControl.xaml.cs">
-      <DependentUpon>BeakerAnimationControl.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Animations\FocusAnimationControl.xaml.cs">
-      <DependentUpon>FocusAnimationControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
