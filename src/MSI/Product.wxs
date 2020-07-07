@@ -103,6 +103,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Buffers.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Collections.Immutable.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Diagnostics.DiagnosticSource.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Drawing.Common.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.IdentityModel.Tokens.Jwt.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.IO.Packaging.dll" />
