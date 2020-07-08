@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
     <WarningsAsErrors />
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <PlatformTarget>x86</PlatformTarget>
