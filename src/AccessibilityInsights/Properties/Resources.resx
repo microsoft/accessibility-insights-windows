@@ -506,12 +506,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="MainWindow_ShowUpgradeDialog_An_update_is_available" xml:space="preserve">
     <value>An update is available.</value>
   </data>
-  <data name="BeakerAnimationControlAutomationPropertiesName" xml:space="preserve">
-    <value>Beaker click animation</value>
-  </data>
-  <data name="FocusAnimationControlAutomationPropertiesName" xml:space="preserve">
-    <value>Keyboard focus animation</value>
-  </data>
   <data name="bdLeftNavAutomationPropertiesName" xml:space="preserve">
     <value>Navigation Bar</value>
   </data>

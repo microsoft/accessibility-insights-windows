@@ -79,15 +79,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Beaker click animation.
-        /// </summary>
-        public static string BeakerAnimationControlAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("BeakerAnimationControlAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Sign into AzureDevOps and configure sign in settings.
         /// </summary>
         public static string btnAccountConfigAutomationPropertiesHelpText {
@@ -561,15 +552,6 @@ namespace AccessibilityInsights.Properties {
         public static string events {
             get {
                 return ResourceManager.GetString("events", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Keyboard focus animation.
-        /// </summary>
-        public static string FocusAnimationControlAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("FocusAnimationControlAutomationPropertiesName", resourceCulture);
             }
         }
         
