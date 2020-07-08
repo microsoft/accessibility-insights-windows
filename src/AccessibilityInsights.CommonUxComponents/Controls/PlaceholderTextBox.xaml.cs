@@ -13,7 +13,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region Placeholder (Dependency Property)
 
         public static readonly DependencyProperty PlaceholderProperty =
-            DependencyProperty.Register("Placeholder", typeof(string), typeof(PlaceholderTextBox), new PropertyMetadata(default(string)));
+            DependencyProperty.Register("Placeholder", typeof(string), typeof(PlaceholderTextBox), new PropertyMetadata(null));
 
         public string Placeholder
         {

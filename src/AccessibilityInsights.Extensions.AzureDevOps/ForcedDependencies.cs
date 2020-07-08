@@ -37,7 +37,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ForceDependency(typeof(Microsoft.IdentityModel.JsonWebTokens.JsonClaimValueTypes));
             ForceDependency(typeof(Microsoft.IdentityModel.Logging.IdentityModelEventSource));
             ForceDependency(typeof(Microsoft.IdentityModel.Tokens.AsymmetricSecurityKey));
-            ForceDependency(typeof(System.Buffers.BuffersExtensions));
             ForceDependency(typeof(System.IdentityModel.Tokens.Jwt.JsonClaimValueTypes));
             ForceDependency(typeof(System.Net.Http.Formatting.BaseJsonMediaTypeFormatter));
             ForceDependency(typeof(System.Reflection.Metadata.ArrayShape));

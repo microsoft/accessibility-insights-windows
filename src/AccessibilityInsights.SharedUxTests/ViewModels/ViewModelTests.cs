@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
         [TestMethod()]
         public void GetDescendentStatusCounts()
         {
-            A11yElement e = LoadA11yElementsFromJSON("Snapshots/Taskbar.snapshot");
+            A11yElement e = LoadA11yElementsFromJSON("./Snapshots/Taskbar.snapshot");
             PopulateChildrenTests(e);
             HierarchyNodeViewModel model = new HierarchyNodeViewModel(e, true, false);
             Assert.AreEqual(23, model.AggregateStatusCounts[(int)ScanStatus.Pass]);

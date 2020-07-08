@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
@@ -30,8 +29,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
             const string pattern = "*.dll";
 
             string testLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            string flavor = testLocation.EndsWith("debug", StringComparison.OrdinalIgnoreCase) ? "debug" : "release";
-            string sourceLocation = Path.Combine(testLocation, @"..\..\..\AccessibilityInsights.Extensions.AzureDevOps\bin\" + flavor);
+            string sourceLocation = testLocation.Replace(@".AzureDevOpsTests\", @".AzureDevOps\");
 
             List<string> sourceFiles = GetFilesInPath(sourceLocation, pattern);
             List<string> targetFiles = GetFilesInPath(testLocation, pattern);

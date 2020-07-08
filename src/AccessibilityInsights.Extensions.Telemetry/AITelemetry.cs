@@ -25,6 +25,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// </summary>
         private Dictionary<string, string> ContextProperties { get; }
 
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         /// <summary>
         /// Production ctor--must be public for MEF
         /// </summary>
@@ -45,6 +46,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
             _clientWrapper = clientWrapper;
             ContextProperties = new Dictionary<string, string>();
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
         /// Publishes telemetry to AI with the given action and propertybag

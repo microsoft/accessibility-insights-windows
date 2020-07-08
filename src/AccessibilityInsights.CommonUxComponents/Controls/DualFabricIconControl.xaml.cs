@@ -19,7 +19,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region GlyphNameFront (Dependency Property)
 
         public static readonly DependencyProperty GlyphNameFrontProperty =
-            DependencyProperty.Register("GlyphNameFront", typeof(FabricIcon?), typeof(DualFabricIconControl), new PropertyMetadata(default(FabricIcon?), OnGlyphNameFrontChanged));
+            DependencyProperty.Register("GlyphNameFront", typeof(FabricIcon?), typeof(DualFabricIconControl), new PropertyMetadata(null, OnGlyphNameFrontChanged));
 
         public FabricIcon? GlyphNameFront
         {
@@ -73,7 +73,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region Foreground (Dependency Property)
 
         new public static readonly DependencyProperty ForegroundProperty =
-            DependencyProperty.Register("Foreground", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(default(Brush), OnForegroundChanged));
+            DependencyProperty.Register("Foreground", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(null, OnForegroundChanged));
 
         new public Brush Foreground
         {
@@ -100,7 +100,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region GlyphNameBack (Dependency Property)
 
         public static readonly DependencyProperty GlyphNameBackProperty =
-            DependencyProperty.Register("GlyphNameBack", typeof(FabricIcon?), typeof(DualFabricIconControl), new PropertyMetadata(default(FabricIcon?), OnGlyphNameBackChanged));
+            DependencyProperty.Register("GlyphNameBack", typeof(FabricIcon?), typeof(DualFabricIconControl), new PropertyMetadata(null, OnGlyphNameBackChanged));
 
         public FabricIcon? GlyphNameBack
         {
@@ -154,7 +154,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #region Background (Dependency Property)
 
         new public static readonly DependencyProperty BackgroundProperty =
-            DependencyProperty.Register("Background", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(default(Brush), OnBackgroundChanged));
+            DependencyProperty.Register("Background", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(null, OnBackgroundChanged));
 
         new public Brush Background
         {

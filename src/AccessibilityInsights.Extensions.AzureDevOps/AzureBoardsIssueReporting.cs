@@ -12,7 +12,9 @@ using System.Windows;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
 {
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
     [Export(typeof(IIssueReporting))]
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
     public class AzureBoardsIssueReporting : IIssueReporting
     {
         private readonly FileIssueHelpers _fileIssueHelpers;
@@ -28,6 +30,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Production ctor
         /// </summary>
+#pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         public AzureBoardsIssueReporting()
             : this(new AzureDevOpsIntegration())
         {
@@ -50,6 +53,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             _devOpsIntegration = devOpsIntegration;
             DevOpsIntegration = devOpsIntegration;
         }
+#pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         private ExtensionConfiguration Configuration => _devOpsIntegration.Configuration;
 

@@ -25,6 +25,13 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
+
   - task: PowerShell@2
     displayName: 'License Header Check'
     inputs:
@@ -39,10 +46,10 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
 
-  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
-    displayName: 'WPF Static Analysis'
-    inputs:
-      input: 'src\AccessibilityInsights\bin\Release'
+#  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
+#    displayName: 'WPF Static Analysis'
+#    inputs:
+#      input: 'src\AccessibilityInsights\bin\Release'
 
   - task: CopyFiles@2
     displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
@@ -84,6 +91,13 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
+
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
@@ -117,13 +131,8 @@ jobs:
     inputs:
       inputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      targets: "src\\AccessibilityInsights\\bin\\Debug\\*.exe;\
-                src\\AccessibilityInsights\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.GitHub\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Debug\\AccessibilityInsights.*.dll;\
-                src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Debug\\AccessibilityInsights.*.dll;"
+      targets: "src\\AccessibilityInsights\\bin\\Debug\\net472\\*.exe;\
+                src\\AccessibilityInsights\\bin\\Debug\\net472\\AccessibilityInsights.*.dll;"
       ignoreGeneratedCode: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@1
@@ -210,6 +219,13 @@ jobs:
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
+
   - task: VSBuild@1
     displayName: 'Build Solution **\AccessibilityInsights.sln'
     inputs:
@@ -238,13 +254,10 @@ jobs:
     inputs:
       InputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\*.exe;\
-                      src\\AccessibilityInsights\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.AzureDevOps\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.GitHub\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.GitHubAutoUpdate\\bin\\Release\\*.dll;\
-                      src\\AccessibilityInsights.Extensions.Telemetry\\bin\\Release\\*.dll;"
+      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\net472\\*.exe;\
+                      src\\AccessibilityInsights\\bin\\Release\\net472\\AccessibilityInsights.*.dll;\
+                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net472\\*.exe;\
+                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net472\\AccessibilityInsights.*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report (BinSkim)'

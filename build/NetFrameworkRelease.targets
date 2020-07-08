@@ -1,12 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project>
 
   <PropertyGroup>
-    <AssemblyName>AccessibilityInsights.Extensions</AssemblyName>
-    <RootNamespace>AccessibilityInsights.Extensions</RootNamespace>
-    <UseWPF>true</UseWPF>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
-  <Import Project="..\..\build\NetFrameworkRelease.targets" />
+  <ItemGroup>
+    <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudioEng.MicroBuild.Core" Version="0.4.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.0.0">
@@ -28,8 +35,15 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="System.ComponentModel.Composition" />
-  </ItemGroup>
+  <Choose>
+    <When Condition=" '$(DropSignedFile)' == '' ">
+      <ItemGroup>
+        <DropSignedFile Include="$(TargetPath)" />
+      </ItemGroup>
+    </When>
+  </Choose>
+
+  <Import Project="NetFrameworkAll.targets" />
+  <Import Project="settings.targets" />
 
 </Project>

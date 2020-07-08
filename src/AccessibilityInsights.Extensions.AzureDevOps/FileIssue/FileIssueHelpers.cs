@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -224,7 +225,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             {
                 foreach (IHTMLDOMNode divnode in divnodes)
                 {
-                    foreach (IHTMLDOMNode child in divnode.childNodes)
+                    foreach (IHTMLDOMNode child in GetChildren(divnode))
                     {
                         string nodevalue = child.nodeValue?.ToString();
                         if (nodevalue != null && nodevalue.Contains(keyText) == true)
@@ -240,13 +241,21 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             if (node != null)
             {
-                foreach (var n in node.childNodes)
+                foreach (IHTMLDOMNode child in GetChildren(node).ToList())
                 {
-                    node.removeChild(n);
+                    node.removeChild(child);
                 }
             }
 
             return doc.body.outerHTML;
+        }
+
+        private static IEnumerable<IHTMLDOMNode> GetChildren(IHTMLDOMNode node)
+        {
+            for (IHTMLDOMNode child = node.firstChild; child != null; child = child.nextSibling)
+            {
+                yield return child;
+            }
         }
 
         /// <summary>
