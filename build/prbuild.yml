@@ -3,25 +3,41 @@ trigger: none
 pr: none
 variables:
   BuildPlatform: 'x86'
-  MAICreateNuget: 'true'
-  PublicRelease: 'false'
   SignAppForRelease: 'false'
+  TeamName: 'Accessibility Insights Windows'
+  system.debug: 'true' #set to true in case our signed build flakes out again
+  runCodesignValidationInjection: 'false'
 
 jobs:
-- template: build-and-unit-tests.yml
-  parameters:
-    configuration: release
-    checkLicenseHeaders: true
-    runComponentGovernance: $[in(variables['Build.Reason'], 'IndividualCI', 'BatchedCI')]
+- job: StaticAnalysisTest
+  pool:
+    vmImage: 'windows-2019'
+  variables:
+    PublicRelease: 'false'
+  steps:
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
 
-- template: build-and-unit-tests.yml
-  parameters:
-    configuration: debug
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
 
-- template: ui-test-job.yml
-  parameters:
-    configuration: release
+  - task: DotNetCoreCLI@2
+    displayName: 'dotnet restore'
+    inputs:
+      command: restore
+      projects: |
+        **\*.csproj
 
-- template: ui-test-job.yml
-  parameters:
-    configuration: debug
+  - task: VSBuild@1
+    displayName: 'Build Solution **\*.sln'
+    inputs:
+      vsVersion: 16.0
+      platform: '$(BuildPlatform)'
+      configuration: release
+
+  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
+    displayName: 'WPF Static Analysis'
+    inputs:
+      input: 'src\AccessibilityInsights\bin\Release'
