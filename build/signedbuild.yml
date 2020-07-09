@@ -37,7 +37,12 @@ jobs:
     inputs:
       vsVersion: 16.0
       platform: '$(BuildPlatform)'
-      configuration: debug
+      configuration: release
+
+  - task: AzurePowerShell@4
+    displayName: 'Show variables'
+    inputs:
+      inline: 'dir env:'
 
   - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
     displayName: 'WPF Static Analysis'
