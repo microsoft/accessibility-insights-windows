@@ -32,7 +32,7 @@ jobs:
     displayName: 'Enumerate scanner files'
     inputs:
       targetType: 'inline'
-      script: 'get-childitem -recurse -directory $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
+      script: 'get-childitem -recurse $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
