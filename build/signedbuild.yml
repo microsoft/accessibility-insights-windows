@@ -37,7 +37,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy Scanner Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
-      Contents: '$(AGENT_ROOTDIRECTORY)\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
+      Contents: '..\..\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
