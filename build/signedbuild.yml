@@ -34,11 +34,6 @@ jobs:
       targetType: 'inline'
       script: 'Compress-Archive -verbose -Path $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9 -DestinationPath $env:BUILD_ARTIFACTSTAGINGDIRECTORY\scanner.zip'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: ScannerFiles'
-    inputs:
-      ArtifactName: 'ScannerFiles'
-
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
@@ -55,6 +50,11 @@ jobs:
       vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: release
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: ScannerFiles'
+    inputs:
+      ArtifactName: 'ScannerFiles'
 
   - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
     displayName: 'WPF Static Analysis'
