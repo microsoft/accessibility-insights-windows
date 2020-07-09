@@ -51,10 +51,16 @@ jobs:
       platform: '$(BuildPlatform)'
       configuration: release
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: ScannerFiles'
+  - task: CopyFiles@2
+    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
     inputs:
-      ArtifactName: 'ScannerFiles'
+      Contents: '**\bin\release\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Compliance'
+    inputs:
+      ArtifactName: 'Compliance'
 
   - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
     displayName: 'WPF Static Analysis'
