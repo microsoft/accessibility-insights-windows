@@ -29,16 +29,10 @@ jobs:
       script: 'dir env:'
 
   - task: PowerShell@2
-    displayName: 'Enumerate scanner files'
+    displayName: 'Compress scanner files'
     inputs:
       targetType: 'inline'
-      script: 'get-childitem -recurse $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
-
-  - task: CopyFiles@2
-    displayName: 'Copy Scanner Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '..\..\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      script: 'Compress-Archive -Path $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9 -DestinationPath $env:BUILD_ARTIFACTSTAGINGDIRECTORY'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: ScannerFiles'
