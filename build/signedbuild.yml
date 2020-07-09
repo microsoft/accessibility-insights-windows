@@ -32,7 +32,7 @@ jobs:
     displayName: 'Compress scanner files'
     inputs:
       targetType: 'inline'
-      script: 'Compress-Archive -verbose -Path $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9 -DestinationPath $env:BUILD_ARTIFACTSTAGINGDIRECTORY'
+      script: 'Compress-Archive -verbose -Path $env:AGENT_ROOTDIRECTORY\_tasks\wpf-static-analysis_4e47c0d8-ab6d-4a21-8f27-e7a48d275df9 -DestinationPath $env:BUILD_ARTIFACTSTAGINGDIRECTORY\scanner.zip'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: ScannerFiles'
