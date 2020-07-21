@@ -35,6 +35,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <DropSignedFile Include="$(TargetPath)" />
+    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Ben.Demystifier.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj" />
