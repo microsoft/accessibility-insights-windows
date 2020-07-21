@@ -10,6 +10,13 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <DropSignedFile Include="$(TargetPath)" />
+    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Ben.Demystifier.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
+  </ItemGroup>
+
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
 
   <ItemGroup>
@@ -32,13 +39,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <DropSignedFile Include="$(TargetPath)" />
-    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
-    <Drop3PartySignedFile Include="$(TargetDir)\Ben.Demystifier.dll" />
-    <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
   </ItemGroup>
 
   <ItemGroup>
