@@ -13,10 +13,6 @@ variables:
 jobs:
 
 - job: SignedRelease
-  dependsOn: 
-  - ComplianceRelease
-  - ComplianceDebug
-  condition: and(succeeded(), succeeded())
   pool: VSEng-MicroBuildVS2019
   variables:
     runCodesignValidationInjection: 'true'
