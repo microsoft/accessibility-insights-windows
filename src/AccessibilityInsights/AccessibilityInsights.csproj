@@ -10,6 +10,13 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <DropSignedFile Include="$(TargetPath)" />
+    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Ben.Demystifier.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
+  </ItemGroup>
+
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
 
   <ItemGroup>
