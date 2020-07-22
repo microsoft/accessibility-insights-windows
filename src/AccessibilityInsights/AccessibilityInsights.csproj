@@ -12,8 +12,9 @@
 
   <ItemGroup>
     <DropSignedFile Include="$(TargetPath)" />
-    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
     <Drop3PartySignedFile Include="$(TargetDir)\Ben.Demystifier.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\Microsoft.Deployment.WindowsInstaller.dll" />
     <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
   </ItemGroup>
 

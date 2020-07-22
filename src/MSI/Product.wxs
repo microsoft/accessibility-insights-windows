@@ -152,8 +152,8 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
-                <!-- We sign Newtonsoft.Json.dll in the main AccessibilityInsights project. To avoid duplicate signing, we reuse it below. -->
+                <!-- We sign the following assemblies in the main AccessibilityInsights project. To avoid duplicate signing, we reuse them below. -->
+                <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
                 <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>
               </Component>
             </Directory>
