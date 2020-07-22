@@ -201,6 +201,7 @@ jobs:
   variables:
     runCodesignValidationInjection: 'true'
     SignAppForRelease: 'true'
+    GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
   steps:
   - task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@1
@@ -309,6 +310,16 @@ jobs:
       uploadPREfast: false
       uploadRoslyn: false
       uploadTSLint: false
+
+  - task: CopyFiles@2
+    displayName: 'Copy Files for Signing Validation'
+    inputs:
+      SourceFolder: '$(Build.SourcesDirectory)\src'
+      Contents: |
+       AccessibilityInsights\bin\Release\net472\**\?(*.exe|*.dll)
+       AccessibilityInsights.VersionSwitcher\bin\Release\net472\**\?(*.exe|AccessibilityInsights.*.dll)
+       MSI\bin\Release\msi\**\AccessibilityInsights.msi
+      TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
   - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
     displayName: 'Perform Cleanup Tasks'
