@@ -6,6 +6,7 @@ using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -211,6 +212,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.UpdateIssueReporterSettings(issueReportingMock.Object);
 
             issueReportingMock.VerifyAll();
+            Assert.AreEqual(TestReporterConfigs, GetIssueReporterConfig(configs, TestGuid));
         }
 
         [TestMethod]
@@ -225,11 +227,22 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
                 expectRestoreConfig: false, supportGetSerializedSettings: true,
                 newSettings: newSettings);
             Assert.IsFalse(configs.IssueReporterSerializedConfigs.Contains(newSettings));
+            Assert.AreEqual(TestReporterConfigs, GetIssueReporterConfig(configs, TestGuid));
 
             repManager.UpdateIssueReporterSettings(issueReportingMock.Object);
 
             issueReportingMock.VerifyAll();
-            Assert.IsTrue(configs.IssueReporterSerializedConfigs.Contains(newSettings));
+            Assert.AreEqual(newSettings, GetIssueReporterConfig(configs, TestGuid));
+        }
+
+        private string GetIssueReporterConfig(ConfigurationModel config, Guid stableIdentifier)
+        {
+            string serializedData = config.IssueReporterSerializedConfigs;
+
+            Dictionary<Guid, string> configsDictionary = 
+                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedData);
+
+            return configsDictionary[stableIdentifier];
         }
 
         private Mock<IIssueReporting> GetIssueReporterMock(bool setStableIdentifier = true,
