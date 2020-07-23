@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="columnSnap" Width="360"/>
+            <ColumnDefinition x:Name="columnSnap" Width="360" MinWidth="2"/>
             <ColumnDefinition x:Name="columnInfo" Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="1">
