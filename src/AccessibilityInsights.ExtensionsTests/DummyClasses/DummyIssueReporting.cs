@@ -40,6 +40,11 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
         {
             throw new NotImplementedException();
         }
+
+        public bool TryGetCurrentSerializedSettings(out string settings)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     [Export(typeof(IIssueReporting))]

@@ -41,8 +41,14 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// <summary>
         /// Method to restore the extension’s configuration, presumably on app startup
         /// </summary>
-        /// <returns>A Task that completes when complete</returns>
+        /// <returns>A Task that completes when the config is ready</returns>
         Task RestoreConfigurationAsync(string serializedConfig);
+
+        /// <summary>
+        /// Method to try to fetch the current serialized settings
+        /// </summary>
+        /// <returns>true (and sets settings) if supported</returns>
+        bool TryGetCurrentSerializedSettings(out string settings);
 
         /// <summary>
         /// Control to let user configure/login to issue reporting service. 

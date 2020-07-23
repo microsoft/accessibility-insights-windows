@@ -19,6 +19,8 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         readonly static object _lockObject = new object();
         Dictionary<Guid, IIssueReporting> IssueReportingOptionsDict = new Dictionary<Guid, IIssueReporting>();
         private static IssueReporterManager _defaultInstance = null;
+        private readonly ConfigurationModel _appConfig;
+        private readonly IEnumerable<IIssueReporting> _issueReportingOptions;
 
         public static IssueReporterManager GetInstance()
         {
@@ -28,7 +30,9 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 {
                     if (_defaultInstance == null)
                     {
-                        _defaultInstance = new IssueReporterManager();
+                        IssueReporterManager newInstance = new IssueReporterManager();
+                        newInstance.RestorePersistedConfigurations();
+                        _defaultInstance = newInstance;
                     }
                 }
             }
@@ -42,14 +46,20 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         }
 
         // Unit testing constructor
-        internal IssueReporterManager(ConfigurationModel configs, IEnumerable<IIssueReporting> issueReportingOptions)
+        internal IssueReporterManager(ConfigurationModel appConfig, IEnumerable<IIssueReporting> issueReportingOptions)
         {
-            var serializedConfigsDict = configs.IssueReporterSerializedConfigs;
-            Dictionary<Guid, string> configsDictionary = !string.IsNullOrWhiteSpace(serializedConfigsDict) ?
-                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict)
-                : new Dictionary<Guid, string>();
+            if (appConfig == null)
+                throw new ArgumentNullException(nameof(appConfig));
 
-            foreach (IIssueReporting issueReporter in issueReportingOptions ?? Enumerable.Empty<IIssueReporting>())
+            _appConfig = appConfig;
+            _issueReportingOptions = issueReportingOptions ?? Enumerable.Empty<IIssueReporting>();
+        }
+
+        internal void RestorePersistedConfigurations()
+        {
+            Dictionary<Guid, string> configsDictionary = GetConfigsDictionary();
+
+            foreach (IIssueReporting issueReporter in _issueReportingOptions)
             {
                 try
                 {
@@ -57,7 +67,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                     {
                         IssueReportingOptionsDict.Add(issueReporter.StableIdentifier, issueReporter);
 
-                        // If config exists, restore it.
+                        // If configs exist, restore them.
                         configsDictionary.TryGetValue(issueReporter.StableIdentifier, out string serializedConfig);
                         if (!string.IsNullOrWhiteSpace(serializedConfig))
                         {
@@ -73,6 +83,34 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                     Logger.ReportException(ex);
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
+            }
+        }
+
+        private Dictionary<Guid, string> GetConfigsDictionary()
+        {
+            var serializedConfigsDict = _appConfig.IssueReporterSerializedConfigs;
+            Dictionary<Guid, string> configsDictionary = !string.IsNullOrWhiteSpace(serializedConfigsDict) ?
+                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedConfigsDict)
+                : new Dictionary<Guid, string>();
+            return configsDictionary;
+        }
+
+        private void SaveConfigsDictionary(Dictionary<Guid, string> configsDictionary)
+        {
+            _appConfig.IssueReporterSerializedConfigs = 
+                JsonConvert.SerializeObject(configsDictionary);
+        }
+
+        public void UpdateIssueReporterSettings(IIssueReporting issueReporting)
+        {
+            if (issueReporting == null)
+                throw new ArgumentNullException(nameof(issueReporting));
+
+            if (issueReporting.TryGetCurrentSerializedSettings(out string settings))
+            {
+                Dictionary<Guid, string> configsDictionary = GetConfigsDictionary();
+                configsDictionary[issueReporting.StableIdentifier] = settings;
+                SaveConfigsDictionary(configsDictionary);
             }
         }
 
