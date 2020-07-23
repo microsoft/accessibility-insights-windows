@@ -107,5 +107,11 @@ namespace AccessibilityInsights.Extensions.GitHub
             this.ConfigurationControl.UpdateSaveButton = UpdateSaveButton;
             return ConfigurationControl;
         }
+
+        public bool TryGetCurrentSerializedSettings(out string settings)
+        {
+            settings = null;
+            return false;
+        }
     }
 }

@@ -6,8 +6,10 @@ using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace AccessibilityInsights.SharedUxTests.FileIssue
@@ -23,7 +25,33 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_Normal_DictionaryPopulated()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void Constructor_AppConfigIsNull_ThrowsArgumentNullException()
+        {
+            new IssueReporterManager(null, Enumerable.Empty<IIssueReporting>());
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void Constructor_EnumerbleIsNull_DoesNotThrow()
+        {
+            ConfigurationModel configs = new ConfigurationModel();
+
+            new IssueReporterManager(configs, null);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void Constructor_NoNullInputs_DoesNotThrow()
+        {
+            ConfigurationModel configs = new ConfigurationModel();
+
+            new IssueReporterManager(configs, Enumerable.Empty<IIssueReporting>());
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void RestorePersistedConfigurations_Normal_DictionaryPopulated()
         {
             ConfigurationModel configs = new ConfigurationModel();
             configs.IssueReporterSerializedConfigs = TestSerializedConfigs;
@@ -33,13 +61,15 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
 
+            repManager.RestorePersistedConfigurations();
+
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Once);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_NullConfigs_NoRestore()
+        public void RestorePersistedConfigurations_NullConfigs_NoRestore()
         {
             ConfigurationModel configs = GetConfigurationModel(null);
 
@@ -48,20 +78,22 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
 
+            repManager.RestorePersistedConfigurations();
+
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_EmptyConfigs_NoRestore()
+        public void RestorePersistedConfigurations_EmptyConfigs_NoRestore()
         {
             ConfigurationModel configs = GetConfigurationModel(string.Empty);
-
             var issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
-
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
+
+            repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
@@ -69,14 +101,14 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_WhitespaceConfigs_NoRestore()
+        public void RestorePersistedConfigurations_WhitespaceConfigs_NoRestore()
         {
             ConfigurationModel configs = GetConfigurationModel(" ");
-
             var issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
-
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
+
+            repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
@@ -84,15 +116,15 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_EmptyReporterConfig_NoRestore()
+        public void RestorePersistedConfigurations_EmptyReporterConfig_NoRestore()
         {
             ConfigurationModel configs = GetConfigurationModel("{\"" + TestGuidString + "\":\"\"}");
-
             var issueReporterMock = GetIssueReporterMock();
             issueReporterMock.Setup(p => p.RestoreConfigurationAsync(string.Empty)).Returns(new Task<IIssueResult>(() => { return null; }));
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
-
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
+
+            repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(string.Empty), Times.Never);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
@@ -100,14 +132,14 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
         [TestMethod]
         [Timeout(1000)]
-        public void Constructor_NullReporterConfig_NoRestore()
+        public void RestorePersistedConfigurations_NullReporterConfig_NoRestore()
         {
             ConfigurationModel configs = GetConfigurationModel("{\"" + RandomTestGuid + "\":\"\"}");
-
             var issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
-
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
+
+            repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(null), Times.Never);
             Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
@@ -118,10 +150,10 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         public void SetIssueReporter_Valid_ReporterSet()
         {
             ConfigurationModel configs = GetConfigurationModel(null);
-
             var issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
             IssueReporterManager repManager = new IssueReporterManager(configs, issueReportingOptions);
+            repManager.RestorePersistedConfigurations();
 
             repManager.SetIssueReporter(TestGuid);
 
@@ -143,11 +175,100 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             Assert.IsNull(IssueReporter.IssueReporting);
         }
 
-        private Mock<IIssueReporting> GetIssueReporterMock()
+        [TestMethod]
+        [Timeout(1000)]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void UpdateIssueReporterSettings_InputIsNull_ThrowsArgumentNullException()
         {
-            var issueReporterMock = new Mock<IIssueReporting>();
-            issueReporterMock.Setup(p => p.StableIdentifier).Returns(TestGuid);
-            issueReporterMock.Setup(p => p.RestoreConfigurationAsync(TestReporterConfigs)).Returns(new Task<IIssueResult>(() => { return null; }));
+            ConfigurationModel configs = GetConfigurationModel(null);
+            IssueReporterManager repManager = new IssueReporterManager(configs, Enumerable.Empty<IIssueReporting>());
+
+            repManager.UpdateIssueReporterSettings(null);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void UpdateIssueReporterSettings_ReporterDoesNotSupportGetSettings_DoesNothing()
+        {
+            ConfigurationModel configs = GetConfigurationModel(null);
+            IssueReporterManager repManager = new IssueReporterManager(configs, Enumerable.Empty<IIssueReporting>());
+            Mock<IIssueReporting> issueReportingMock = GetIssueReporterMock(
+                setStableIdentifier: false, expectRestoreConfig: false, supportGetSerializedSettings: false);
+
+            repManager.UpdateIssueReporterSettings(issueReportingMock.Object);
+
+            issueReportingMock.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void UpdateIssueReporterSettings_SettingNotInOriginalConfig_AddsToConfig()
+        {
+            ConfigurationModel configs = GetConfigurationModel(null);
+            IssueReporterManager repManager = new IssueReporterManager(configs, Enumerable.Empty<IIssueReporting>());
+            Mock<IIssueReporting> issueReportingMock = GetIssueReporterMock(
+                expectRestoreConfig: false, supportGetSerializedSettings: true);
+
+            repManager.UpdateIssueReporterSettings(issueReportingMock.Object);
+
+            issueReportingMock.VerifyAll();
+            Assert.AreEqual(TestReporterConfigs, GetIssueReporterConfig(configs, TestGuid));
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void UpdateIssueReporterSettings_SettingInOriginalConfig_UpdatesConfig()
+        {
+            const string newSettings = "la di dah";
+            ConfigurationModel configs = GetConfigurationModel(null);
+            configs.IssueReporterSerializedConfigs = TestSerializedConfigs;
+            IssueReporterManager repManager = new IssueReporterManager(configs, Enumerable.Empty<IIssueReporting>());
+            Mock<IIssueReporting> issueReportingMock = GetIssueReporterMock(
+                expectRestoreConfig: false, supportGetSerializedSettings: true,
+                newSettings: newSettings);
+            Assert.IsFalse(configs.IssueReporterSerializedConfigs.Contains(newSettings));
+            Assert.AreEqual(TestReporterConfigs, GetIssueReporterConfig(configs, TestGuid));
+
+            repManager.UpdateIssueReporterSettings(issueReportingMock.Object);
+
+            issueReportingMock.VerifyAll();
+            Assert.AreEqual(newSettings, GetIssueReporterConfig(configs, TestGuid));
+        }
+
+        private string GetIssueReporterConfig(ConfigurationModel config, Guid stableIdentifier)
+        {
+            string serializedData = config.IssueReporterSerializedConfigs;
+
+            Dictionary<Guid, string> configsDictionary = 
+                JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedData);
+
+            return configsDictionary[stableIdentifier];
+        }
+
+        private Mock<IIssueReporting> GetIssueReporterMock(bool setStableIdentifier = true,
+            bool expectRestoreConfig = true, bool? supportGetSerializedSettings = null,
+            string newSettings = TestReporterConfigs)
+        {
+            var issueReporterMock = new Mock<IIssueReporting>(MockBehavior.Strict);
+
+            if (setStableIdentifier)
+            {
+                issueReporterMock.Setup(p => p.StableIdentifier).Returns(TestGuid);
+            }
+
+            if (expectRestoreConfig)
+            {
+                issueReporterMock.Setup(p => p.RestoreConfigurationAsync(TestReporterConfigs)).Returns(new Task<IIssueResult>(() => { return null; }));
+            }
+
+            if (supportGetSerializedSettings.HasValue)
+            {
+                string settings = supportGetSerializedSettings.Value 
+                    ? newSettings : null;
+                issueReporterMock.Setup(p => p.TryGetCurrentSerializedSettings(out settings))
+                    .Returns(supportGetSerializedSettings.Value);
+            }
+
             return issueReporterMock;
         }
 

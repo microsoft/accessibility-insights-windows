@@ -125,5 +125,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ConfigurationControl.UpdateSaveButton = UpdateSaveButton;
             return ConfigurationControl;
         }
+
+        public bool TryGetCurrentSerializedSettings(out string settings)
+        {
+            settings = _devOpsIntegration?.Configuration?.GetSerializedConfig();
+            return settings != null;
+        }
     }
 }
