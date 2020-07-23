@@ -101,6 +101,11 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 JsonConvert.SerializeObject(configsDictionary);
         }
 
+        /// <summary>
+        /// Call this when settings for an IIssueReporting object may have changed. The
+        /// settings will be fetched and updated in the store.
+        /// </summary>
+        /// <param name="issueReporting">The object whose settings may have changed</param>
         public void UpdateIssueReporterSettings(IIssueReporting issueReporting)
         {
             if (issueReporting == null)
