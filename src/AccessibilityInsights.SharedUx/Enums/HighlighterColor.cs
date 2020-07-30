@@ -8,8 +8,8 @@ namespace AccessibilityInsights.SharedUx.Enums
     /// </summary>
     public enum HighlighterColor
     {
-        DefaultBrush, // This is the default highlighter color
-        PrimaryFGBrush,
-        GreenTextBrush
+        DefaultBrush,   // color resources key = HLDefaultBrush
+        TextBrush,      // color resources key = HLTextBrush
+        GreenTextBrush, // color resources key = HLGreenTextBrush
     }
 }

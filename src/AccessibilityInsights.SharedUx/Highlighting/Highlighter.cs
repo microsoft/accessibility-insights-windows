@@ -207,7 +207,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <returns></returns>
         private static SolidColorBrush GetBrush(HighlighterColor color)
         {
-            return Application.Current.Resources[$"HL{color.ToString()}"] as SolidColorBrush;
+            return Application.Current.Resources[$"HL{color}"] as SolidColorBrush;
         }
 
         /// <summary>
