@@ -47,7 +47,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
         <Directory Id="AccessibilityInsightsFolder" Name="AccessibilityInsights" >
           <Directory Id="INSTALLFOLDER" Name="1.1">
             <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
-              <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe" >
+              <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe" KeyPath="yes" >
                 <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
                           Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
               </File>
