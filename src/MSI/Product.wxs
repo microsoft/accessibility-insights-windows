@@ -31,6 +31,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
       <ComponentRef Id="ProductComponent" />
       <ComponentRef Id="IssueTemplateComp" />
       <ComponentRef Id="VersionSwitcherComp" />
+      <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 
     <!--Until WIX_IS_NETFRAMEWORK_47_OR_LATER_INSTALLED property is supported,
@@ -121,14 +122,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Disabled.manifest"/>
               <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Enabled.manifest"/>
 
-              <Shortcut Id="ApplicationStartMenuShortcut"
-                        Directory="ApplicationProgramsFolder"
-                        Name="Accessibility Insights for Windows"
-                        Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
-                        WorkingDirectory="INSTALLFOLDER"
-                        Target="[#FileExe]"
-                        Icon="AccessibilityInsights.exe" IconIndex="0"/>
-
               <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
                 <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
                   <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
@@ -139,11 +132,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                   <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
                 </Extension>
               </ProgId>
-
-              <RemoveFolder Id="DeleteShortcutFolder"
-                            Directory="ApplicationProgramsFolder"
-                            On="uninstall" />
-
             </Component>
 
             <Directory Id="IssueTemplates" Name="IssueTemplates">
@@ -187,5 +175,17 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
     <InstallExecuteSequence>
       <Custom Action='LaunchInstalledExe' After='InstallFinalize'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
     </InstallExecuteSequence>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="63DCD2B5-CF57-494B-A81F-748DFDA7E9CF">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+           Name="Accessibility Insights for Windows"
+           Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
+           Target="[#FileExe]"
+           WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\AccessibilityInsights" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
   </Product>
 </Wix>
