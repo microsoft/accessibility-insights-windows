@@ -49,13 +49,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe" KeyPath="yes" >
                 <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
                           Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
-                <Shortcut Id="ApplicationStartMenuShortcut"
-                          Directory="ApplicationProgramsFolder"
-                          Name="Accessibility Insights for Windows"
-                          Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
-                          WorkingDirectory="INSTALLFOLDER"
-                          Advertise="yes"
-                          Icon="AccessibilityInsights.exe" IconIndex="0"/>
               </File>
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe.config" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe.manifest" />
@@ -127,6 +120,14 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess.cmd"/>
               <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Disabled.manifest"/>
               <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Enabled.manifest"/>
+
+              <Shortcut Id="ApplicationStartMenuShortcut"
+                        Directory="ApplicationProgramsFolder"
+                        Name="Accessibility Insights for Windows"
+                        Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
+                        WorkingDirectory="INSTALLFOLDER"
+                        Target="[#FileExe]"
+                        Icon="AccessibilityInsights.exe" IconIndex="0"/>
 
               <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
                 <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
