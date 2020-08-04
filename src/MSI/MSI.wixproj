@@ -32,6 +32,7 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>BuildVer=$(BuildNumber);</DefineConstants>
+    <SuppressSpecificWarnings>1076;69</SuppressSpecificWarnings>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Product.wxs" />
