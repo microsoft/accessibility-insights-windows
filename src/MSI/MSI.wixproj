@@ -40,11 +40,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <SignMsi Include="$(TargetPath)">
-      <Authenticode>Microsoft400</Authenticode>
-    </SignMsi>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="bin\Debug\" />
   </ItemGroup>
