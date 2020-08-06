@@ -22,9 +22,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     public class EventConfigNodeViewModel : ViewModelBase, INotifyPropertyChanged
     {
         /// <summary>
-        /// Child ViewModels
+        /// Child ViewModels - external code can read but not modify
         /// </summary>
-        public ObservableCollection<EventConfigNodeViewModel> Children { get; private set; }
+        public IReadOnlyCollection<EventConfigNodeViewModel> Children => this._children;
+
+        private readonly ObservableCollection<EventConfigNodeViewModel> _children;
 
         /// <summary>
         /// Depth for treeviewitem
@@ -82,7 +84,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                             SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Property, value.Value, this.Header);
                             break;
                         case EventConfigNodeType.Group:
-                            this.Children?.ToList().ForEach(c => c.IsChecked = value.Value);
+                            this._children?.ToList().ForEach(c => c.IsChecked = value.Value);
                             break;
                     }
                 }
@@ -97,7 +99,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             int uncheckedChildCount = 0;
             int indeterminateChildCount = 0;
 
-            foreach (var child in this.Children)
+            foreach (var child in this._children)
             {
                 // Skip buttons
                 if (!string.IsNullOrWhiteSpace(child.ButtonText))
@@ -205,7 +207,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
-            this.Children.Insert(index, child);
+            this._children.Insert(index, child);
             child._parent = this;
             this.SetCheckedInternal(null, respondingToChildChange: true);
         }
@@ -219,7 +221,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
-            this.Children.Add(child);
+            this._children.Add(child);
             child.IsChecked = isChecked;
             if (child.Id == EventType.UIA_AutomationFocusChangedEventId)
             {
@@ -277,11 +279,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public void SortChildren()
         {
-            var l = Children.OrderBy(e => e.Header).ToList();
-            this.Children.Clear();
+            var l = _children.OrderBy(e => e.Header).ToList();
+            this._children.Clear();
             foreach(var c in l)
             {
-                this.Children.Add(c);
+                this._children.Add(c);
             }
         }
 
@@ -299,7 +301,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             set
             {
                 _iseditenabled = value;
-                this.Children?.AsParallel().ForAll(c => c.IsEditEnabled = value);
+                this._children?.AsParallel().ForAll(c => c.IsEditEnabled = value);
                 OnPropertyChanged(nameof(IsEditEnabled));
             }
         }
@@ -313,7 +315,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
-            this.Children.Remove(child);
+            this._children.Remove(child);
             this.SetCheckedInternal(null, respondingToChildChange: true);
             child.IsChecked = false;
         }
@@ -364,7 +366,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.Type = EventConfigNodeType.Group;
             this.Header = name;
-            this.Children = new ObservableCollection<EventConfigNodeViewModel>();
+            this._children = new ObservableCollection<EventConfigNodeViewModel>();
             this.Depth = 0;
             this.ButtonText = txt;
             this.ButtonVisibility = vis;
@@ -386,9 +388,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.IsExpanded = true;
 
-            if(expandchildren && this.Children.Count != 0)
+            if(expandchildren && this._children.Count != 0)
             {
-                foreach(var c in this.Children)
+                foreach(var c in this._children)
                 {
                     c.Expand(true);
                 }
@@ -400,14 +402,14 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         internal void Clear()
         {
-            if (this.Children != null)
+            if (this._children != null)
             {
-                foreach (var c in this.Children)
+                foreach (var c in this._children)
                 {
                     c.Clear();
                 }
 
-                this.Children.Clear();
+                this._children.Clear();
             }
         }
 
