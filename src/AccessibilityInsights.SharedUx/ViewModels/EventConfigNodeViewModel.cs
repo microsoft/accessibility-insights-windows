@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
                 else if (!value.HasValue)
                 {
-                    value = false; // Skip user-driven intermediate state (false is the next step in the cycle)
+                    value = false; // Skip user-driven intermediate state (false follows indeterminate in the cycle)
                 }
             }
 
@@ -435,8 +435,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// Set the checked state based on id and type
         /// </summary>B
         /// <param name="id"></param>
-        /// <param name="type">Event or Property</param>
-        /// <param name="val">The new value for IsChecked</param>
+        /// <param name="type"></param>
+        /// <param name="val"></param>
         private static void SetChecked(RecorderSetting setting, int id, RecordEntityType type, bool val, string name = null)
         {
             int change = val ? 1 : -1;
@@ -476,6 +476,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private void NewChildCheckState(bool? childIsChecked)
         {
+            // Respond to children only if their state doesn't match the current state
             if (this.IsThreeState && childIsChecked != IsChecked)
             {
                 SetCheckedInternal(null, respondingToChildChange: true);
