@@ -321,8 +321,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Constructor for property leaf node with given name
         /// </summary>
-        /// <param name="id">Event or Property ID/param>
-        /// <param name="type">Event/Property</param>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
         public EventConfigNodeViewModel(int id, string name, EventConfigNodeType type)
         {
             this.Id = id;
@@ -335,8 +335,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Constructor for event or property leaf node from id
         /// </summary>
-        /// <param name="id">Event or Property ID/param>
-        /// <param name="type">Event/Property</param>
+        /// <param name="id"></param>
+        /// <param name="type"></param>
         public EventConfigNodeViewModel(int id, EventConfigNodeType type)
         {
             this.Id = id;
