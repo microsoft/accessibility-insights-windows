@@ -433,7 +433,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         /// <summary>
         /// Set the checked state based on id and type
-        /// </summary>B
+        /// </summary>
         /// <param name="id"></param>
         /// <param name="type"></param>
         /// <param name="val"></param>
