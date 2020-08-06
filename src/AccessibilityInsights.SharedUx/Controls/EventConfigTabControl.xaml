@@ -65,7 +65,7 @@
                     DataType="{x:Type vm:EventConfigNodeViewModel}"
                      ItemsSource="{Binding Children}">
                             <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                <CheckBox VerticalAlignment="Center" Visibility="{Binding TextVisibility}" IsChecked="{Binding IsChecked}" Margin="0,0,4,0" IsEnabled="{Binding IsEditEnabled}" IsTabStop="False" AutomationProperties.LabeledBy="{Binding ElementName=tbNode}"/>
+                                <CheckBox VerticalAlignment="Center" Visibility="{Binding TextVisibility}" IsThreeState="{Binding IsThreeState}" IsChecked="{Binding IsChecked}" Margin="0,0,4,0" IsEnabled="{Binding IsEditEnabled}" IsTabStop="False" AutomationProperties.LabeledBy="{Binding ElementName=tbNode}"/>
                                 <TextBlock Name="tbNode" VerticalAlignment="Center" Text="{Binding Header}" Visibility="{Binding TextVisibility}" Margin="0,0,4,0" FontSize="11" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                 <Button VerticalAlignment="Center" Visibility="{Binding ButtonVisibility}" Name="btnConfig" Click="btnConfig_Click" IsEnabled="{Binding IsEditEnabled}" Background="Transparent" BorderThickness="0"
                                     AutomationProperties.HelpText="{x:Static Properties:Resources.btnConfigAutomationPropertiesHelpText}">
