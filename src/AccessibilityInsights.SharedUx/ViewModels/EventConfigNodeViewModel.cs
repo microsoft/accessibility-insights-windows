@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
                 else if (!value.HasValue)
                 {
-                    value = false; // Skip user-driven intermediate state (false follows indeterminate in the cycle)
+                    value = false; // Skip user-driven intermediate state (false follows "mixed" in the cycle)
                 }
             }
 
