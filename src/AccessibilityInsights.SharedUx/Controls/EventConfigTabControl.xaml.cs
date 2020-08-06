@@ -98,7 +98,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             CustomNode = new EventConfigNodeViewModel("My Events", isThreeState: true);
 
-            CustomPropertiesNode = new EventConfigNodeViewModel("Properties") { Depth = 1 };
+            CustomPropertiesNode = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
             EditBtnNode = new EventConfigNodeViewModel("", Visibility.Visible, Properties.Resources.EventConfigTabControl_SetElement_Edit_My_Events) { Depth = 1, TextVisibility = Visibility.Collapsed };
 
             UpdateCustomNode();
