@@ -74,7 +74,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             RootNodes = new List<EventConfigNodeViewModel>();
             trviewConfigEvents.ItemsSource = RootNodes;
             var ids = SupportedEvents.GetEventsForControl(el.ControlTypeId, el.Patterns);
-            SuggestedNode = new EventConfigNodeViewModel(string.Format(CultureInfo.InvariantCulture, Properties.Resources.EventConfigTabControl_SetElement_Expected_Events_based_on_the_0_control_type, Axe.Windows.Core.Types.ControlType.GetInstance().GetNameById(el.ControlTypeId))) { IsExpanded = true };
+            SuggestedNode = new EventConfigNodeViewModel(string.Format(CultureInfo.InvariantCulture, Properties.Resources.EventConfigTabControl_SetElement_Expected_Events_based_on_the_0_control_type, Axe.Windows.Core.Types.ControlType.GetInstance().GetNameById(el.ControlTypeId)), isThreeState: true) { IsExpanded = true };
 
             if (ids.Any())
             {
@@ -82,7 +82,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 SuggestedNode.SortChildren();
             }
 
-            var properties = new EventConfigNodeViewModel("Properties") { Depth = 1 };
+            var properties = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
             properties.AddChildren(el.Properties.Values);
             
             if (properties.Children.Any())
@@ -96,9 +96,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 RootNodes.Add(SuggestedNode);
             }
 
-            CustomNode = new EventConfigNodeViewModel("My Events");
+            CustomNode = new EventConfigNodeViewModel("My Events", isThreeState: true);
 
-            CustomPropertiesNode = new EventConfigNodeViewModel("Properties") { Depth = 1 };
+            CustomPropertiesNode = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
             EditBtnNode = new EventConfigNodeViewModel("", Visibility.Visible, Properties.Resources.EventConfigTabControl_SetElement_Edit_My_Events) { Depth = 1, TextVisibility = Visibility.Collapsed };
 
             UpdateCustomNode();
@@ -122,8 +122,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void UpdateCustomNode()
         {
-            CustomNode.Children.Remove(CustomPropertiesNode);
-            CustomNode.Children.Remove(EditBtnNode);
+            CustomNode.RemoveChild(CustomPropertiesNode);
+            CustomNode.RemoveChild(EditBtnNode);
             var custom = (from e in ConfigurationManager.GetDefaultInstance().EventConfig.Events
                           where e.IsRecorded
                           select e.Id).ToList();
@@ -133,7 +133,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             var add = custom.Where(id => !CustomNode.Children.Select(c => c.Id).Contains(id)).ToList();
             CustomNode.AddChildren(add, EventConfigNodeType.Event);
             CustomNode.SortChildren();
-            CustomNode.Children.Insert(0, EditBtnNode);
+            CustomNode.InsertChildAtIndex(0, EditBtnNode);
 
             custom = (from e in ConfigurationManager.GetDefaultInstance().EventConfig.Properties
                           where e.IsRecorded
@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Controls
          
             if (CustomPropertiesNode.Children.Count > 0)
             {
-                CustomNode.Children.Add(CustomPropertiesNode);
+                CustomNode.AddChild(CustomPropertiesNode);
             }
         }
 

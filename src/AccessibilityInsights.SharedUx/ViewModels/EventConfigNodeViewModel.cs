@@ -22,9 +22,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     public class EventConfigNodeViewModel : ViewModelBase, INotifyPropertyChanged
     {
         /// <summary>
-        /// Child ViewModels
+        /// Child ViewModels - external code can read but not modify
         /// </summary>
-        public ObservableCollection<EventConfigNodeViewModel> Children { get; private set; }
+        public IReadOnlyCollection<EventConfigNodeViewModel> Children => this._children;
+
+        private readonly ObservableCollection<EventConfigNodeViewModel> _children;
 
         /// <summary>
         /// Depth for treeviewitem
@@ -32,36 +34,104 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public int Depth { get; set; }
 
         /// <summary>
-        /// Is node checked
+        /// Status of IsThreeState property
         /// </summary>
-        private bool _ischecked = false;
-        public bool IsChecked
+        public bool IsThreeState { get; } = false;
+
+        /// <summary>
+        /// Is node checked (null if in "mixed" ThreeState value)
+        /// </summary>
+        private bool? _ischecked = false;
+        public bool? IsChecked
         {
             get
             {
-                return this._ischecked;
+                return this.IsThreeState ? this._ischecked :
+                    this._ischecked.HasValue ? this._ischecked.Value : false;
             }
 
             set
             {
-                if (_ischecked != value)
+                SetCheckedInternal(value);
+            }
+        }
+
+        private void SetCheckedInternal(bool? value, bool respondingToChildChange = false)
+        {
+            if (this.IsThreeState)
+            {
+                if (respondingToChildChange)
+                {
+                    value = ComputeCheckedStateBasedOnChildren();
+                }
+                else if (!value.HasValue)
+                {
+                    value = false; // Skip user-driven intermediate state (false follows "mixed" in the cycle)
+                }
+            }
+
+            if (value != this._ischecked)
+            {
+                this._ischecked = value;
+                if (value.HasValue)
                 {
                     switch (this.Type)
                     {
                         case EventConfigNodeType.Event:
-                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Event, value);
+                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Event, value.Value);
                             break;
                         case EventConfigNodeType.Property:
-                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Property, value, this.Header);
+                            SetChecked(ConfigurationManager.GetDefaultInstance().EventConfig, this.Id, RecordEntityType.Property, value.Value, this.Header);
                             break;
                         case EventConfigNodeType.Group:
-                            this.Children?.ToList().ForEach(c => c.IsChecked = value);
+                            this._children?.ToList().ForEach(c => c.IsChecked = value.Value);
                             break;
                     }
                 }
-                this._ischecked = value;
+                this._parent?.ChildCheckStateHasChanged(value);
                 OnPropertyChanged(nameof(this.IsChecked));
             }
+        }
+        private bool? ComputeCheckedStateBasedOnChildren()
+        {
+            int checkboxChildCount = 0;
+            int checkedChildCount = 0;
+            int uncheckedChildCount = 0;
+            int indeterminateChildCount = 0;
+
+            foreach (var child in this._children)
+            {
+                // Skip buttons
+                if (!string.IsNullOrWhiteSpace(child.ButtonText))
+                    continue;
+
+                checkboxChildCount++;
+
+                bool? childIsChecked = child?.IsChecked;
+
+                if (!childIsChecked.HasValue)
+                {
+                    indeterminateChildCount++;
+                }
+                else if (childIsChecked.Value)
+                {
+                    checkedChildCount++;
+                }
+                else
+                {
+                    uncheckedChildCount++;
+                }
+            }
+
+            if (checkedChildCount == checkboxChildCount)
+            {
+                return checkboxChildCount > 0; // Return false only if we have no checkbox children
+            }
+            if (uncheckedChildCount == checkboxChildCount)
+            {
+                return false;
+            }
+            return null;
         }
 
         /// <summary>
@@ -128,6 +198,21 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
+        /// Insert a single child at the specified location
+        /// </summary>
+        /// <param name="index">The index in the list to insert the child</param>
+        /// <param name="child">The child to insert</param>
+        public void InsertChildAtIndex(int index, EventConfigNodeViewModel child)
+        {
+            if (child == null)
+                throw new ArgumentNullException(nameof(child));
+
+            this._children.Insert(index, child);
+            child._parent = this;
+            this.SetCheckedInternal(null, respondingToChildChange: true);
+        }
+
+        /// <summary>
         /// Add a single child to node
         /// </summary>
         /// <param name="child"></param>
@@ -136,13 +221,15 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
-            this.Children.Add(child);
+            this._children.Add(child);
             child.IsChecked = isChecked;
             if (child.Id == EventType.UIA_AutomationFocusChangedEventId)
             {
                 child.IsChecked = ConfigurationManager.GetDefaultInstance().EventConfig.IsListeningFocusChangedEvent;
             }
             child.Depth = this.Depth + 1;
+            child._parent = this;
+            this.SetCheckedInternal(null, respondingToChildChange: true);
         }
 
         /// <summary>
@@ -192,11 +279,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public void SortChildren()
         {
-            var l = Children.OrderBy(e => e.Header).ToList();
-            this.Children.Clear();
+            var l = _children.OrderBy(e => e.Header).ToList();
+            this._children.Clear();
             foreach(var c in l)
             {
-                this.Children.Add(c);
+                this._children.Add(c);
             }
         }
 
@@ -214,7 +301,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             set
             {
                 _iseditenabled = value;
-                this.Children?.AsParallel().ForAll(c => c.IsEditEnabled = value);
+                this._children?.AsParallel().ForAll(c => c.IsEditEnabled = value);
                 OnPropertyChanged(nameof(IsEditEnabled));
             }
         }
@@ -228,8 +315,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
+            this._children.Remove(child);
+            this.SetCheckedInternal(null, respondingToChildChange: true);
             child.IsChecked = false;
-            this.Children.Remove(child);
         }
 
         /// <summary>
@@ -270,18 +358,24 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Constructor for a node with children
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="vis"></param>
-        /// <param name="txt"></param>
-        public EventConfigNodeViewModel(string name, Visibility vis = Visibility.Collapsed, string txt = "")
+        /// <param name="name">Name to display (checkbox only)</param>
+        /// <param name="vis">Initial Visibility State</param>
+        /// <param name="txt">Text to display (buttons only)</param>
+        /// <param name="isThreeState">true to enable ThreeState behavior (chechboxes only)</param>
+        public EventConfigNodeViewModel(string name, Visibility vis = Visibility.Collapsed, string txt = "", bool isThreeState = false)
         {
             this.Type = EventConfigNodeType.Group;
             this.Header = name;
-            this.Children = new ObservableCollection<EventConfigNodeViewModel>();
+            this._children = new ObservableCollection<EventConfigNodeViewModel>();
             this.Depth = 0;
             this.ButtonText = txt;
             this.ButtonVisibility = vis;
             this.TextVisibility = Visibility.Visible;
+            this.IsThreeState = isThreeState;
+            if (isThreeState)
+            {
+                this.IsChecked = null;
+            }
         }
       
         /// <summary>
@@ -294,9 +388,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.IsExpanded = true;
 
-            if(expandchildren && this.Children.Count != 0)
+            if(expandchildren && this._children.Count != 0)
             {
-                foreach(var c in this.Children)
+                foreach(var c in this._children)
                 {
                     c.Expand(true);
                 }
@@ -308,14 +402,14 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         internal void Clear()
         {
-            if (this.Children != null)
+            if (this._children != null)
             {
-                foreach (var c in this.Children)
+                foreach (var c in this._children)
                 {
                     c.Clear();
                 }
 
-                this.Children.Clear();
+                this._children.Clear();
             }
         }
 
@@ -327,7 +421,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             if (this.TextVisibility == Visibility.Visible)
             {
-                var check = this.IsChecked ? Resources.EventConfigNodeViewModel_ToString_checked : Resources.EventConfigNodeViewModel_ToString_unchecked;
+                var check = (this.IsChecked.HasValue && this.IsChecked.Value) 
+                    ? Resources.EventConfigNodeViewModel_ToString_checked
+                    : Resources.EventConfigNodeViewModel_ToString_unchecked;
                 return this.Header + check;
             }
             else
@@ -375,6 +471,17 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                         CheckedCount = 1
                     });
                 }
+            }
+        }
+
+        private EventConfigNodeViewModel _parent;
+
+        private void ChildCheckStateHasChanged(bool? childIsChecked)
+        {
+            // Respond to children only if their state doesn't match the current state
+            if (this.IsThreeState && childIsChecked != IsChecked)
+            {
+                SetCheckedInternal(null, respondingToChildChange: true);
             }
         }
     }
