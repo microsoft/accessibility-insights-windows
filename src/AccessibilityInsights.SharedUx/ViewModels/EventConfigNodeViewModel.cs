@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public bool IsThreeState { get; } = false;
 
         /// <summary>
-        /// Is node checked (indeterminate if null)
+        /// Is node checked (null if in "mixed" ThreeState value)
         /// </summary>
         private bool? _ischecked = false;
         public bool? IsChecked
