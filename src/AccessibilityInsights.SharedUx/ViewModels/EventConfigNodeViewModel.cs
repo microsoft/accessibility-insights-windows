@@ -56,9 +56,16 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private void SetCheckedInternal(bool? value, bool respondingToChildChange = false)
         {
-            if (this.IsThreeState && (respondingToChildChange || !value.HasValue))
+            if (this.IsThreeState)
             {
-                value = ComputeCheckedStateFromChildrenAndCurrentCheckedState(respondingToChildChange);
+                if (respondingToChildChange)
+                {
+                    value = ComputeCheckedStateBasedOnChildren();
+                }
+                else if (!value.HasValue)
+                {
+                    value = false; // Skip user-driven intermediate state (false is the next step in the cycle)
+                }
             }
 
             if (value != this._ischecked)
@@ -83,19 +90,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 OnPropertyChanged(nameof(this.IsChecked));
             }
         }
-        private bool? ComputeCheckedStateFromChildrenAndCurrentCheckedState(bool respondingToChildChange)
-        {
-            bool? checkedStateFromChildren = ComputeNewCheckedStateFromChildrenCheckedState();
-
-            if (respondingToChildChange)
-            {
-                return checkedStateFromChildren;
-            }
-
-            return !IsChecked;
-        }
-
-        private bool? ComputeNewCheckedStateFromChildrenCheckedState()
+        private bool? ComputeCheckedStateBasedOnChildren()
         {
             int checkboxChildCount = 0;
             int checkedChildCount = 0;
