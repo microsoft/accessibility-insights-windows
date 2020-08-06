@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                             break;
                     }
                 }
-                this._parent?.NewChildCheckState(value);
+                this._parent?.ChildCheckStateHasChanged(value);
                 OnPropertyChanged(nameof(this.IsChecked));
             }
         }
@@ -474,7 +474,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private EventConfigNodeViewModel _parent;
 
-        private void NewChildCheckState(bool? childIsChecked)
+        private void ChildCheckStateHasChanged(bool? childIsChecked)
         {
             // Respond to children only if their state doesn't match the current state
             if (this.IsThreeState && childIsChecked != IsChecked)
