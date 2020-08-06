@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Controls
          
             if (CustomPropertiesNode.Children.Count > 0)
             {
-                CustomNode.Children.Add(CustomPropertiesNode);
+                CustomNode.AddChild(CustomPropertiesNode);
             }
         }
 
