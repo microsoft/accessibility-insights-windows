@@ -3,6 +3,7 @@
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.VersionSwitcher</AssemblyName>
     <RootNamespace>AccessibilityInsights.VersionSwitcher</RootNamespace>
+	<ApplicationManifest>AppManifests\app.manifest</ApplicationManifest>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
