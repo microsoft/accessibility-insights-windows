@@ -180,7 +180,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TreeViewItem_KeyUp(object sender, KeyEventArgs e)
+        private void TreeViewItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
             {
