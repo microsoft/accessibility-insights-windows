@@ -314,6 +314,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
 
+            child._parent = null;
             this._children.Remove(child);
             this.SetCheckedInternal(null, respondingToChildChange: true);
             child.IsChecked = false;
