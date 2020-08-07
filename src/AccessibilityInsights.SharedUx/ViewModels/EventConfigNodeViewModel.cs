@@ -46,7 +46,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             get
             {
-                return this.IsThreeState ? this._ischecked : this._ischecked.Value == true;
+                return this.IsThreeState ? this._ischecked : (this._ischecked.HasValue && this._ischecked.Value);
             }
 
             set
