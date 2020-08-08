@@ -53,7 +53,7 @@
                     AutomationProperties.Name="{x:Static Properties:Resources.lvPropertiesAutomationPropertiesName}" 
                     IsTabStop="False" BorderThickness="0" ItemContainerStyle="{StaticResource LviDataGridStyle}"
                     Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
-                    KeyUp="lvProperties_KeyUp">
+                    KeyDown="lvProperties_KeyDown">
                     <i:Interaction.Behaviors>
                         <behaviors:ColumnResizeHotkeyBehavior/>
                     </i:Interaction.Behaviors>
