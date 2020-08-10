@@ -532,7 +532,7 @@ namespace AccessibilityInsights
             Process.Start(new ProcessStartInfo(HelpDocLink));
         }
 
-        private void Window_KeyUp(object sender, KeyEventArgs e)
+        private void Window_KeyDown(object sender, KeyEventArgs e)
         {
 
             if (e.Key == Key.C && (Keyboard.Modifiers & ModifierKeys.Control) == ModifierKeys.Control && !(Keyboard.FocusedElement is ListViewItem lvi && !(lvi.DataContext is ScanListViewItemViewModel)))
