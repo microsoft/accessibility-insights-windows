@@ -27,7 +27,7 @@ namespace AccessibilityInsights
     public partial class MainWindow
     {
         public HotKeyHandler HotkeyHandler { get; private set; }
-        readonly TreeNavigator TreeNavigator = null;
+        readonly TreeNavigator TreeNavigator;
 
         void InitStartMode()
         {

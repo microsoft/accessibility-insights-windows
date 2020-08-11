@@ -17,12 +17,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     public class HollowHighlightDriver:IDisposable
     {
-        readonly Highlighter Highlighter = null;
+        readonly Highlighter Highlighter;
 
         /// <summary>
         /// information of current element
         /// </summary>
-        Rectangle? BoundingRectangle = null;
+        Rectangle? BoundingRectangle;
 
         #region public members
         /// <summary>
@@ -228,7 +228,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {

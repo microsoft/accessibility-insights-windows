@@ -23,7 +23,7 @@ namespace AccessibilityInsights
     /// </summary>
     class TreeNavigator
     {
-        IControlTreeNavigation Controller = null;
+        IControlTreeNavigation Controller;
         private readonly object _lockObject = new object();
 
         public Action SelectionChanged;

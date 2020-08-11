@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Callback for error textblock click
         /// </summary>
-        internal MouseButtonEventHandler TBCallback = null;
+        internal MouseButtonEventHandler TBCallback;
 
         /// <summary>
         /// Color for borders
@@ -69,7 +69,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Is highlighter currently open
         /// </summary>
-        internal bool IsClosed = false;
+        internal bool IsClosed;
 
         /// <summary>
         /// get the middle point to start drawing from

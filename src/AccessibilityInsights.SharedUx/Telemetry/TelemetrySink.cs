@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsTelemetryAllowed"/>
         /// </summary>
-        public bool IsTelemetryAllowed { get; set; } = false;
+        public bool IsTelemetryAllowed { get; set; }
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsEnabled"/>

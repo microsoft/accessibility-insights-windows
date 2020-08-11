@@ -47,7 +47,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
             }
 
-            return list;            
+            return list;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public TextPattern TextPattern { get; private set; }
 
-        private bool isSelected = false;
+        private bool isSelected;
         public bool IsSelected
         {
             get
@@ -112,7 +112,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// indicate whether item is listed in custom list or not. 
         /// </summary>
-        bool listed = false;
+        bool listed;
         public bool Listed
         {
             get

@@ -46,7 +46,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         public Action<EventMessage> UpdateElementInfoWithSelectedEventRecord { get; set; }
 
-        private ElementContext ElementContext = null;
+        private ElementContext ElementContext;
 
         private readonly object _lockObject = new object();
 
@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
         }
 
-        Guid? _eventRecorderId = null;
+        Guid? _eventRecorderId;
         /// <summary>
         /// EventRecorder Id
         /// </summary>

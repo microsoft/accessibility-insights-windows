@@ -18,10 +18,10 @@ namespace AccessibilityInsights
     public partial class MainWindow
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
-        Timer timerAutoSnap = null;
-        Timer timerSelector = null;
+        Timer timerAutoSnap;
+        Timer timerSelector;
 
-        int autoSnapCounter = 0;
+        int autoSnapCounter;
         const int IntervalTimerAutoSnap = 1000; // milliseconds
         const int InternalTimerSelector = 200; // milliseconds
 

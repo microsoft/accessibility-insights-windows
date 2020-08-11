@@ -40,12 +40,12 @@ namespace AccessibilityInsights
         ///  . TestDetail
         ///  . Test
         /// </summary>
-        public dynamic CurrentView { get; set; } = null;
+        public dynamic CurrentView { get; set; }
 
         /// <summary>
         /// Current mode control
         /// </summary>
-        IModeControl ctrlCurMode = null;
+        IModeControl ctrlCurMode;
 
         /// <summary>
         /// Handle Target Selection Change

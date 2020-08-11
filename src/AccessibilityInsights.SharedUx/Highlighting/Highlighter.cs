@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const int DEFAULT_RECTGAP = 2;
 
         readonly List<LineBorder> Border = new List<LineBorder>();
-        TextTip Text = null;
+        TextTip Text;
         Win32SnapshotButton Win32Snapshot { get; set; }
         private readonly string WndClassNameBase;
 
@@ -223,7 +223,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {

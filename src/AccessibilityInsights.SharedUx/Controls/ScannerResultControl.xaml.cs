@@ -33,7 +33,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
-        public bool HasUserResizedLvHeader { get; set; } = false;
+        public bool HasUserResizedLvHeader { get; set; }
 
         /// <summary>
         /// Constructor
@@ -78,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Show all scan results
         /// </summary>
-        bool ShowAllResults = false;
+        bool ShowAllResults;
 
         protected override AutomationPeer OnCreateAutomationPeer()
         {

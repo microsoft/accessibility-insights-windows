@@ -56,7 +56,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// it is set to true, when TapStop enters into a loop with existing records. 
         /// it will be set back to false when new recording is started. 
         /// </summary>
-        private bool IsTabStopLooped = false;
+        private bool IsTabStopLooped;
 
         /// <summary>
         /// Set Highlighter button state in main UI
@@ -85,14 +85,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Keep track of tab open state
         /// </summary>
-        bool IsTabOpen = false;
+        bool IsTabOpen;
 
         /// <summary>
         /// Event Handler
         /// </summary>
-        EventListenerFactory EventHandler = null;
+        EventListenerFactory EventHandler;
 
-        int tabStopCount = 0;
+        int tabStopCount;
         /// <summary>
         /// Counter for current tab stop number
         /// </summary>
@@ -145,7 +145,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
-        private bool _isRecordingActive = false;
+        private bool _isRecordingActive;
         private bool IsRecordingActive
         {
             get => _isRecordingActive;

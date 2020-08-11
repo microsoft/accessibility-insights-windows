@@ -150,9 +150,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// to indicate whether the node should be hilighed or not
+        /// to indicate whether the node should be hilighted or not
         /// </summary>
-        private bool _ishilighted = false;
+        private bool _ishilighted;
         public bool IsHilighted
         {
             get
@@ -170,7 +170,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Is node selected
         /// </summary>
-        private bool _isselected = false;
+        private bool _isselected;
         public bool IsSelected
         {
             get
@@ -188,7 +188,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Is node selected
         /// </summary>
-        private bool _isexpanded = false;
+        private bool _isexpanded;
         public bool IsExpanded
         {
             get
@@ -211,7 +211,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public string Header { get; private set; }
 
-        private readonly string SearchContext = null;
+        private readonly string SearchContext;
 
         /// <summary>
         /// These are searchable string properties

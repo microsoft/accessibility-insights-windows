@@ -72,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// Pixel position over original screenshot that is at the center of the magnified region
         /// The top left corner of the original image (0, 0) would correspond to (MAGNIFY_RADIUS, MAGNIFY_RADIUS)
         /// </summary>
-        private System.Drawing.Point magnifierPosition = new System.Drawing.Point();
+        private System.Drawing.Point magnifierPosition;
 
         /// <summary>
         /// The screenshot itself is usually larger than it appears visually because of HDPI.
@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// Keeps track of whether we are currently
         /// updating the stored color using the eyedropper
         /// </summary>
-        private bool updating = false;
+        private bool updating;
         private bool Updating {
             get
             {

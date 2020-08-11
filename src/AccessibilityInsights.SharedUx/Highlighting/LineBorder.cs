@@ -19,10 +19,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private readonly static ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
         private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
 
-        IntPtr hWnd = default(IntPtr);
+        IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
-        IntPtr hInstance = default(IntPtr);
+        IntPtr hInstance;
 
         int Id;
 
@@ -267,7 +267,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {

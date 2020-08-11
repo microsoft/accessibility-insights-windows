@@ -32,7 +32,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             DataContext = VMConfig;
         }
 
-        private bool canSave = false;
+        private bool canSave;
 
         public override bool CanSave => canSave;
 

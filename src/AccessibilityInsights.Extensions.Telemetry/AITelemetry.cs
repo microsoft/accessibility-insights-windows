@@ -14,7 +14,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
     [Export(typeof(ITelemetry))]
     public class AITelemetry : ITelemetry
     {
-        private readonly ITelemetryClientWrapper _clientWrapper = null;
+        private readonly ITelemetryClientWrapper _clientWrapper;
         /// <summary>
         /// Instrumentation key from Azure portal
         /// </summary>

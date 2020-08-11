@@ -68,7 +68,7 @@ namespace AccessibilityInsights.Modes
         /// <summary>
         /// Keeps a snapshot of the configuration as a baseline for config diff
         /// </summary>
-        private ConfigurationModel configSnapshot = null;
+        private ConfigurationModel configSnapshot;
 
         /// <summary>
         /// Constructor

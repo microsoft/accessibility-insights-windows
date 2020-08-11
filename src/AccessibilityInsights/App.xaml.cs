@@ -71,12 +71,12 @@ namespace AccessibilityInsights
         /// <summary>
         /// reference to current theme resource
         /// </summary>
-        private ResourceDictionary themeResourceDictionaty = null;
+        private ResourceDictionary themeResourceDictionaty;
 
         /// <summary>
         /// reference to current font resource
         /// </summary>
-        private ResourceDictionary fontResourceDictionary = null;
+        private ResourceDictionary fontResourceDictionary;
 
         /// <summary>
         /// Set color theme

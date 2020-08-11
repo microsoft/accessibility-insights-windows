@@ -11,9 +11,9 @@ namespace AccessibilityInsights.SetupLibrary
     {
         // used to keep the file handle open for the lifetime of the object
         // Thus preventing modification after the file has been verified.
-        private FileStream _file = null;
+        private FileStream _file;
 
-        public bool IsVerified { get; } = false;
+        public bool IsVerified { get; }
 
         public TrustVerifier(string filePath)
         {

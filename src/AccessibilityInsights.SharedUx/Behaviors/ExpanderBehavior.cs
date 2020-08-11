@@ -13,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
     /// </summary>
     public class ExpanderBehavior : Behavior<Expander>
     {
-        private Grid ParentGrid = null;
+        private Grid ParentGrid;
 
         /// <summary>
         /// Attach to necessary event handlers

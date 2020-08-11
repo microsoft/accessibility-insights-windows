@@ -41,7 +41,7 @@ namespace AccessibilityInsights
         const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
 
         IntPtr hWnd;
-        private bool isClosed = false;
+        private bool isClosed;
 
         public TwoStateButtonViewModel vmHilighter { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
         public TwoStateButtonViewModel vmLiveModePauseResume { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
@@ -65,7 +65,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// Is title bar context menu open
         /// </summary>
-        bool IsSystemMenuOpen = false;
+        bool IsSystemMenuOpen;
 
         /// <summary>
         /// Handle toggle highlighter request
@@ -146,8 +146,8 @@ namespace AccessibilityInsights
         /// <summary>
         /// Contains the FrameworkElements, in order, that make up the F6 and shift + F6 pane cycle.
         /// </summary>
-        private List<FrameworkElement> F6Panes = null;
-        private List<FrameworkElement> ShiftF6Panes = null;
+        private List<FrameworkElement> F6Panes;
+        private List<FrameworkElement> ShiftF6Panes;
 
         public MainWindow()
         {

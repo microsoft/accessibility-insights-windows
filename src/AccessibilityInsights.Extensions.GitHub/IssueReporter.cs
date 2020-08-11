@@ -45,7 +45,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         public string ServiceName => Properties.Resources.extensionName;
 
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
-        public bool IsConfigured { get; private set; } = false;
+        public bool IsConfigured { get; private set; }
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.GitHubLogo;
 

@@ -25,12 +25,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const int TEXTGAP = 8;       // Gep between object and rectangle
         const int Default_Font_Height = 25;
 
-        IntPtr hWnd = default(IntPtr);
+        IntPtr hWnd;
         
         public string WindowClassName { get; private set; }
-        IntPtr hInstance = default(IntPtr);
+        IntPtr hInstance;
 
-        POINT size = new POINT();
+        POINT size;
         int m_TabStop;
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             return NativeMethods.DefWindowProc(hWnd, uMsg, wParam, lParam);
         }
 
-        IntPtr hFont = default(IntPtr);
+        IntPtr hFont;
         public IntPtr Font
         {
             set
@@ -87,7 +87,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
-        bool isVisible = false;
+        bool isVisible;
         public bool IsVisible
         {
             get
@@ -106,7 +106,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
-        string text = null;
+        string text;
         public string Text
         {
             get
@@ -536,7 +536,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {
