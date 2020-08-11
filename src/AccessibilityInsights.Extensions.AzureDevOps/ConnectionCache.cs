@@ -78,7 +78,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             bool reachedCapacity = CachedConnections.Count >= CAPACITY;
             if (reachedCapacity)
             {
-                CachedConnections.OrderBy(c => c.LastUsage);
+                // Note that the new item is always added, even if we bump a newer entry
+                CachedConnections.Sort(delegate (ConnectionInfo x, ConnectionInfo y)
+                {
+                    return x.LastUsage.CompareTo(y.LastUsage);
+                });
                 CachedConnections.RemoveAt(0); // assumes capacity > 0
             }
 
