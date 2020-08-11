@@ -60,11 +60,6 @@ namespace AccessibilityInsights
         /// </summary>
         public static double BugColumnWidth => HelperMethods.GeneralFileBugVisibility == Visibility.Visible ? HelperMethods.FileIssueColumnWidth : 0;
 
-        /// <summary>
-        /// Internal bool to ignore or allow updating logic
-        /// </summary>
-        private bool IgnoreUpdates = false;
-
         private readonly object _lockObject = new object();
 
         /// <summary>
