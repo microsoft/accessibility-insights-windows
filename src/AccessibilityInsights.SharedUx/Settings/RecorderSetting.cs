@@ -36,7 +36,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Should event recorder ignore individual settings and listen to all events/properties
         /// </summary>
-        public bool IsListeningAllEvents { get; set; } = false;
+        public bool IsListeningAllEvents { get; set; }
 
         public ListenScope ListenScope { get; set; }
         #endregion

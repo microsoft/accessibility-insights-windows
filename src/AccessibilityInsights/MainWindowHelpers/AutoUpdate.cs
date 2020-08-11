@@ -219,20 +219,17 @@ namespace AccessibilityInsights
         /// </summary>
         private void CheckForUpdates()
         {
-            if (!IgnoreUpdates)
+            try
             {
-                try
-                {
-                    this.ShowUpgradeDialog();
-                    UpdateVersionString();
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
+                this.ShowUpgradeDialog();
+                UpdateVersionString();
             }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
+            {
+                ex.ReportException();
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

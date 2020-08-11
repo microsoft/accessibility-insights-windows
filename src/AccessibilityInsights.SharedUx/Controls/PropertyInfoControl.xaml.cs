@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
         }
 
-        A11yElement Element = null;
+        A11yElement Element;
         private CollectionView CollectionView;
 
         public PropertyInfoControl()

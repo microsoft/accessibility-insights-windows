@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         private const int MaxBufferLength = 10;
 
         private ConcurrentQueue<Exception> _bufferedExceptions = new ConcurrentQueue<Exception>();
-        private bool _forwardExceptions = false;
+        private bool _forwardExceptions;
         private readonly Action<Exception> _target;
 
         /// <summary>

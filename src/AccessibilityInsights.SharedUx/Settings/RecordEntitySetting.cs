@@ -28,7 +28,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Is the property custom or standard
         /// </summary>
-        public bool IsCustom { get; set; } = false;
+        public bool IsCustom { get; set; }
 
         [NonSerialized]
         private int _checkedcount = 0;

@@ -156,7 +156,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Default configuration manager
         /// </summary>
-        static ConfigurationManager sDefaultInstance = null;
+        static ConfigurationManager sDefaultInstance;
 
         /// <summary>
         /// Get the default instance of ConfigurationManager

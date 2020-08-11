@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
     {
         readonly IntPtr hWnd;
         private HwndSource source;
-        int idCount = 0;
+        int idCount;
         readonly List<HotKey> HotKeyList = new List<HotKey>();
 
         private HotKeyHandler(IntPtr hWnd)
@@ -124,7 +124,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         }
 
         #region static code
-        static HotKeyHandler singleton = null;
+        static HotKeyHandler singleton;
 
         public static HotKeyHandler GetHotkeyHandler(IntPtr hWnd)
         {

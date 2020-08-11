@@ -104,7 +104,7 @@ namespace AccessibilityInsights.Win32
         IntPtr FileInfoPtr = IntPtr.Zero;
         WinTrustDataStateAction StateAction = WinTrustDataStateAction.Verify;
         IntPtr StateData = IntPtr.Zero;
-        String URLReference = null;
+        String URLReference;
         WinTrustDataProvFlags ProvFlags = WinTrustDataProvFlags.RevocationCheckChainExcludeRoot;
         WinTrustDataUIContext UIContext = WinTrustDataUIContext.Execute;
 

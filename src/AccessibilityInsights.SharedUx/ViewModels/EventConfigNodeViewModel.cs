@@ -36,7 +36,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Status of IsThreeState property
         /// </summary>
-        public bool IsThreeState { get; } = false;
+        public bool IsThreeState { get; }
 
         /// <summary>
         /// Is node checked (null if in "mixed" ThreeState value)
@@ -136,7 +136,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Is node expanded
         /// </summary>
-        private bool _isexpanded = false;
+        private bool _isexpanded;
         public bool IsExpanded
         {
             get

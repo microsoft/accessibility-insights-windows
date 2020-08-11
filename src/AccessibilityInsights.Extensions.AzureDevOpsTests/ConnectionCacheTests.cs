@@ -56,31 +56,40 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         {
             ConnectionCache cache = new ConnectionCache();
 
-            // set to some issue number
-            int highNumber = ConnectionCache.CAPACITY + 100;
+            // set to some high number
+            const int highNumber = ConnectionCache.CAPACITY + 100;
+            ConnectionInfo expectedMostRecentConnection = null;
 
-            // fill up with sequential high last-usage values
-            for (int i = 1; i <= ConnectionCache.CAPACITY; i++)
+            // Full cache with lastUsage values in reverse order (to force sorting).
+            // Intentionally add one more than will fit in the cache
+            for (int i = ConnectionCache.CAPACITY; i >= 0; i--)
             {
-                cache.AddToCache(GetConnectionInfo(i + highNumber));
+                ConnectionInfo newConnectionInfo = GetConnectionInfo(i + highNumber);
+                cache.AddToCache(newConnectionInfo);
+
+                if (expectedMostRecentConnection == null)
+                {
+                    expectedMostRecentConnection = newConnectionInfo;
+                }
+                AssertExpectedMostRecent(cache, expectedMostRecentConnection);
             }
 
-            var highestExpected = $"http://fake.fake/{highNumber + ConnectionCache.CAPACITY}";
+            // Add a new ConnectionInfo with a newer time--GetMostRecentConnectionInfo should update
+            ConnectionInfo newerConnection = GetConnectionInfo(2 * highNumber);
+            cache.AddToCache(newerConnection);
+            AssertExpectedMostRecent(cache, newerConnection);
 
-            // add connections with low last-usage values, verify that 
-            //  the most recent connection is still the highest value from the
-            //  initial population
-            for (int i = 1; i < ConnectionCache.CAPACITY; i++)
-            {
-                // add connection with low last-usage value
-                cache.AddToCache(GetConnectionInfo(i));
-                var mostRecent = cache.GetMostRecentConnection();
-                Assert.IsTrue(mostRecent.ServerUri.Equals(highestExpected));
-            }
+            // Revise a ConnectionInfo with an even newer time--GetMostRecentConnectionInfo should update
+            newerConnection.SetLastUsage(newerConnection.LastUsage.AddDays(1));
+            cache.AddToCache(newerConnection);
+            AssertExpectedMostRecent(cache, newerConnection);
+        }
 
-            // adding one more should bump out original highest value
-            cache.AddToCache(GetConnectionInfo(0));
-            Assert.IsFalse(cache.GetMostRecentConnection().ServerUri.Equals(highestExpected));
+        private void AssertExpectedMostRecent(ConnectionCache cache, ConnectionInfo expectedMostRecent)
+        {
+            ConnectionInfo actualMostRecent = cache.GetMostRecentConnection();
+            Assert.AreEqual(expectedMostRecent.ServerUri, actualMostRecent.ServerUri);
+            Assert.AreEqual(expectedMostRecent.LastUsage, actualMostRecent.LastUsage);
         }
 
         [TestMethod]
@@ -146,15 +155,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         }
 
         /// <summary>
-        /// returns info object with both server url and last usage set to i
+        /// returns info object with both server url and last usage set
         /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        private ConnectionInfo GetConnectionInfo(int i, bool hasProject = false)
+        private ConnectionInfo GetConnectionInfo(int i, bool hasProject = false, int? offsetInTicks = null)
         {
             TeamProject project = hasProject ? GetProject(i) : null;
             ConnectionInfo info = new ConnectionInfo(new Uri($"http://fake.fake/{i}"), project, null);
-            info.SetLastUsage(BaseDateTime.AddTicks(i));
+            info.SetLastUsage(BaseDateTime.AddTicks(offsetInTicks ?? i));
             return info;
         }
     }

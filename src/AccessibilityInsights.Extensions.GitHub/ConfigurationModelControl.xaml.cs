@@ -71,7 +71,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             UpdateSaveButton();
         }
 
-        private bool canSave = false;
+        private bool canSave;
         /// <summary>
         /// Can the save button be clicked
         /// </summary>

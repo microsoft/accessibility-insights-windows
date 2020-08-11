@@ -31,8 +31,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         public Action UpdateSaveButton { get; set; }
         public Action<bool> ShowSaveButton { get; set; }
 
-        IssueConfigurationControl issueConfigurationControl = null;
-        IIssueReporting selectedIssueReporter = null;
+        IssueConfigurationControl issueConfigurationControl;
+        IIssueReporting selectedIssueReporter;
 
         #region configuration updating code
 

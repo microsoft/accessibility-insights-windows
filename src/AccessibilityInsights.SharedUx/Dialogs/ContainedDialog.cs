@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         protected EventWaitHandle WaitHandle { get; } = new AutoResetEvent(true);
 
-        protected bool DialogResult { get; set; } = false;
+        protected bool DialogResult { get; set; }
 
         /// <summary>
         /// Used to hide the ContainedDialog's container

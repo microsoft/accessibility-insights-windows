@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private readonly static ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
         private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
 
-        private IntPtr hWnd = default(IntPtr);
+        private IntPtr hWnd;
 
         const int BorderMargin = 1;
         const int DefaultWidth = 20;
@@ -50,7 +50,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
-        IntPtr hInstance = default(IntPtr);
+        IntPtr hInstance;
         public Action Clicked { get; set; }
 
         private Dictionary<double, Bitmap> beakerIconCollection;
@@ -307,7 +307,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)

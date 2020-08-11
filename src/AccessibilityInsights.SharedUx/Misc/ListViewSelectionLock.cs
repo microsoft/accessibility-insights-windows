@@ -11,9 +11,9 @@ namespace AccessibilityInsights.SharedUx.Misc
     /// </summary>
     class ListViewSelectionLock : IDisposable
     {
-        private readonly ListView ListView = null;
-        private readonly bool HadFocus = false;
-        private readonly int SelectedIndex = 0;
+        private readonly ListView ListView;
+        private readonly bool HadFocus;
+        private readonly int SelectedIndex;
 
         public ListViewSelectionLock(ListView listView)
             {
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.Misc
         }
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {

@@ -24,11 +24,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     {
         public GeneralActionViewModel ActionViewModel { get; private set; }
         int Counter;
-        Timer timerInvoke = null;
+        Timer timerInvoke;
         private readonly object _lockObject = new object();
 
         // Keep track of comboxbox dropdown state
-        bool isDropDownOpen = false;
+        bool isDropDownOpen;
 
         public GeneralActionView(GeneralActionViewModel a)
         {

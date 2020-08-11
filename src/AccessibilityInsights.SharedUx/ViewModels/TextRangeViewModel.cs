@@ -47,7 +47,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
             }
 
-            return list;            
+            return list;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public TextPattern TextPattern { get; private set; }
 
-        private bool isSelected = false;
+        private bool isSelected;
         public bool IsSelected
         {
             get
@@ -112,7 +112,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// indicate whether item is listed in custom list or not. 
         /// </summary>
-        bool listed = false;
+        bool listed;
         public bool Listed
         {
             get
@@ -384,7 +384,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             else if (value is Array)
             {
                 Array arr = value;
-                sb.Append("[");
+                sb.Append('[');
                 if (arr.Length > 0)
                 {
                     sb.AppendFormat(CultureInfo.InvariantCulture, "{0}", arr.GetValue(0));
@@ -393,7 +393,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                         sb.AppendFormat(CultureInfo.InvariantCulture, ", {0}", arr.GetValue(i));
                     }
                 }
-                sb.Append("]");
+                sb.Append(']');
             }
 
             return sb.Length != 0 ? sb.ToString() : null;

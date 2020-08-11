@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
     /// </summary>
     public class KeyboardToolTipButtonBehavior : Behavior<Button>
     {
-        private static object currentToolTipButton = null;
+        private static object currentToolTipButton;
 
         /// <summary>
         /// Attach to necessary event handlers

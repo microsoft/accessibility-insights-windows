@@ -44,7 +44,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Tracks if all groups are expanded
         /// </summary>
-        bool AllExpanded = false;
+        bool AllExpanded;
 
         /// <summary>
         /// Element context
@@ -59,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Data context
         /// </summary>
-        new ElementDataContext DataContext = null;
+        new ElementDataContext DataContext;
 
         /// <summary>
         /// Action to perform when element clicked on in listview

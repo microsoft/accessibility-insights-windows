@@ -72,7 +72,7 @@ namespace AccessibilityInsights.Extensions
 
         #region static members
         readonly static object _lockObject = new object();
-        static Container _defaultInstance = null;
+        static Container _defaultInstance;
 
         /// <summary>
         /// Report an Exception via ReportedExceptionEvent
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.Extensions
         #endregion
 
         #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
         {

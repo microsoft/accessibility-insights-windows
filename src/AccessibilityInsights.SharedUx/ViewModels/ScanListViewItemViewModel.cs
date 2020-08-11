@@ -92,7 +92,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         public string HowToFixText { get; private set; }
 
-        public string SnippetLink { get; private set; } = null;
+        public string SnippetLink { get; private set; }
 
         public string AutomationHelpText { get; private set; }
 

@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Modes
         /// <summary>
         /// Inidate whether need to EnableElementSelector at the hierarchy node Selection change. 
         /// </summary>
-        private bool EnableSelectorWhenPOISelectedInHierarchy = false;
+        private bool EnableSelectorWhenPOISelectedInHierarchy;
 
         /// <summary>
         /// MainWindow to access shared methods
