@@ -263,7 +263,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                         gView.Columns[0].Width = width;
                     }
                 }
-                
             }
         }
 
@@ -325,7 +324,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                             File.Delete(issueInformation.TestFileName);
                         }
                     }
-
                 }
                 else
                 {

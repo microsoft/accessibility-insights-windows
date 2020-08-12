@@ -109,7 +109,8 @@ namespace AccessibilityInsights
         // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
         protected override void OnStartup(StartupEventArgs e)
         {
-            if (DisableHardwareRendering) {
+            if (DisableHardwareRendering)
+            {
                 RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
             }
         }

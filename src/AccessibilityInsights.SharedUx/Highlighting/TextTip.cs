@@ -474,7 +474,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         hBrush = NativeMethods.SelectObject(hDC, hBrush);
                         NativeMethods.DeleteObject(hBrush);
 
-
                         IntPtr hPen = NativeMethods.GetStockObject(StockObjects.BLACK_PEN);
                         hPen = NativeMethods.SelectObject(hDC, hPen);
 
@@ -533,7 +532,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             NativeMethods.UnregisterClass(this.WindowClassName, this.hInstance);
         }
-
 
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls

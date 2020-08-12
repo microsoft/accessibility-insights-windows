@@ -60,7 +60,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         private bool InteractionAllowed { get; set; } = true;
 
-
         /// <summary>
         /// Avatar view model
         /// </summary>
@@ -494,7 +493,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 node.Selected = false;
             }
-
         }
 
         /// <summary>

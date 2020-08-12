@@ -80,7 +80,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void TextBlock_Loaded(object sender, RoutedEventArgs e)
         {
             textBlocks.Add(sender as TextBlock);
-            if (!string.IsNullOrEmpty(ContentPath)) UpdateTextBinding(sender as TextBlock);
+            if (!string.IsNullOrEmpty(ContentPath))
+            {
+                UpdateTextBinding(sender as TextBlock);
+            }
         }
 
         private void TextBlock_Unloaded(object sender, RoutedEventArgs e)
@@ -90,14 +93,19 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private void TextBlock_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            if (!e.WidthChanged) return;
+            if (!e.WidthChanged)
+                return;
+
             UpdateWidth();
         }
 
         private void Border_Loaded(object sender, RoutedEventArgs e)
         {
             borders.Add(sender as Border);
-            if (!string.IsNullOrEmpty(RegisteredName)) UpdateBorderWidthBinding(sender as Border);
+            if (!string.IsNullOrEmpty(RegisteredName))
+            {
+                UpdateBorderWidthBinding(sender as Border);
+            }
         }
 
         private void Border_Unloaded(object sender, RoutedEventArgs e)

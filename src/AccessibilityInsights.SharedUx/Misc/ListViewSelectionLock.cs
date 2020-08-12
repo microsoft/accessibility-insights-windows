@@ -16,8 +16,9 @@ namespace AccessibilityInsights.SharedUx.Misc
         private readonly int SelectedIndex;
 
         public ListViewSelectionLock(ListView listView)
-            {
-            if (listView == null) throw new ArgumentNullException(nameof(listView));
+        {
+            if (listView == null)
+                throw new ArgumentNullException(nameof(listView));
 
             this.ListView = listView;
             this.HadFocus = listView.IsKeyboardFocusWithin;
@@ -33,9 +34,12 @@ namespace AccessibilityInsights.SharedUx.Misc
             {
                 if (disposing)
                 {
-                    if (!HadFocus) return;
-                    if (this.ListView.Items.Count <= 0) return;
-                    if (this.SelectedIndex < 0) return;
+                    if (!HadFocus)
+                        return;
+                    if (this.ListView.Items.Count <= 0)
+                        return;
+                    if (this.SelectedIndex < 0)
+                        return;
 
                     var newIndex = this.SelectedIndex >= this.ListView.Items.Count
                         ? this.ListView.Items.Count - 1
@@ -59,7 +63,5 @@ namespace AccessibilityInsights.SharedUx.Misc
             GC.SuppressFinalize(this);
         }
         #endregion
-
-
     } //class
 } //namespace

@@ -77,7 +77,6 @@ namespace AccessibilityInsights.SharedUx.ActionViews
                     hollowDriver.HighlighterMode = ConfigurationManager.GetDefaultInstance().AppConfig.HighlighterMode;
                     overlayDriver.Hide();
                 }
-
             }
         }
 

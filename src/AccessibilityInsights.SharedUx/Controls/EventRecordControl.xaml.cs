@@ -518,7 +518,5 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (sender is MenuItem mi && mi.Header is RadioButton rb)
                 rb.IsChecked = !rb.IsChecked;
         }
-
-
     } // class
 } // namespace

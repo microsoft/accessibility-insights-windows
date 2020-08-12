@@ -309,6 +309,5 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             this.ctrlProgressRing.Deactivate();
         }
-
     }
 }

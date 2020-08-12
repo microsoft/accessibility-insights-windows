@@ -105,6 +105,5 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 this.Close();
             }
         }
-
     }
 }

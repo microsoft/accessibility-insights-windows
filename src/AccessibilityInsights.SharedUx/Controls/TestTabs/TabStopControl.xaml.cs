@@ -141,7 +141,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     ha.Hide();
                 }
-
             }
         }
 
@@ -255,7 +254,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 TurnOffHighlighter();
                 this.Toast.Visibility = Visibility.Collapsed;
             }
-
         }
 
         /// <summary>
@@ -413,7 +411,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private static void ProcessEventRecorderNotification(EventMessage message)
         {
-            if (!IsListenerRegisteredNotification(message)) return;
+            if (!IsListenerRegisteredNotification(message))
+                return;
 
             ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
         }

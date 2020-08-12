@@ -147,7 +147,7 @@ namespace AccessibilityInsights
             catch (Exception e)
             {
                 e.ReportException();
-            };
+            }
 #pragma warning restore CA1031 // Do not catch general exception types
 
             Topmost = previousTopmostSetting;

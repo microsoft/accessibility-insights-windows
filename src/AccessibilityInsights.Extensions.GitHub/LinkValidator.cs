@@ -78,6 +78,5 @@ namespace AccessibilityInsights.Extensions.GitHub
 
             return true;
         }
-
     }
 }

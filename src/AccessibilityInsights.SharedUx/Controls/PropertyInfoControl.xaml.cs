@@ -61,7 +61,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
         }
 
-
         /// <summary>
         /// Update properties grid
         /// </summary>

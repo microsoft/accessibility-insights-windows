@@ -78,7 +78,6 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         public bool IsSaveEnabled { get { return MainWin.CurrentView != EventsView.Load; } }
 
-
         /// <summary>
         /// Overriding LocalizedControlType
         /// </summary>

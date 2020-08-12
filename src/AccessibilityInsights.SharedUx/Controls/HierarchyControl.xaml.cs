@@ -639,7 +639,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         private static void SetTreeViewModeOnSelectAction(TreeViewMode mode)
         {
             var selectAction = SelectAction.GetDefaultInstance();
-            if (selectAction == null) return;
+            if (selectAction == null)
+                return;
 
             selectAction.TreeViewMode = mode;
         }

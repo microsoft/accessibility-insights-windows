@@ -42,7 +42,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void ContainedDialog_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.Key != Key.Escape) return;
+            if (e.Key != Key.Escape)
+                return;
 
             e.Handled = true;
             DismissDialog();
@@ -55,7 +56,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         protected abstract void SetFocusOnDefaultControl();
-
 
         public Task<bool> ShowDialog(Action<ContainedDialog> hideDialog)
         {

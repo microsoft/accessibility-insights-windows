@@ -107,7 +107,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 case AggregateException agEx:
                     foreach (var inner in agEx.InnerExceptions)
                     {
-                        if (!IsTransient(inner)) return false;
+                        if (!IsTransient(inner))
+                        {
+                            return false;
+                        }
                     }
                     return true;
                 case WebException webEx:
@@ -128,7 +131,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             WebExceptionStatus.RequestCanceled,
             WebExceptionStatus.NameResolutionFailure
         };
-
 
         /// <summary>
         /// Saves screenshot, attaches screenshot and already saved results file to existing issue
@@ -158,7 +160,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     }
                     catch (Exception ex)
                     {
-                        if (!IsTransient(ex)) throw;
+                        if (!IsTransient(ex))
+                        {
+                            throw;
+                        }
                     }
                 }
 
@@ -235,7 +240,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                         }
                     }
 
-                    if (node != null) break;
+                    if (node != null)
+                    {
+                        break;
+                    }
                 }
             }
 

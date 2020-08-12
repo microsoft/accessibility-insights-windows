@@ -466,7 +466,10 @@ namespace AccessibilityInsights.Modes
         /// </summary>
         private void gsMid_DragDelta(object sender, System.Windows.Controls.Primitives.DragDeltaEventArgs e)
         {
-            if (e.HorizontalChange != 0) columnSnap.ResizeColumn(e.HorizontalChange);
+            if (e.HorizontalChange != 0)
+            {
+                columnSnap.ResizeColumn(e.HorizontalChange);
+            }
         }
 
         /// <summary>

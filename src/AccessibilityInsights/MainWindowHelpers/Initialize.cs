@@ -100,7 +100,6 @@ namespace AccessibilityInsights
             this.WindowState = layout.WinState;
         }
 
-
         /// <summary>
         /// Populate all configurations
         /// </summary>

@@ -53,7 +53,8 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private FocusNavigationDirection? GetNavDir(Key key)
         {
-            if (Orientation != Orientation.Vertical) return null;
+            if (Orientation != Orientation.Vertical)
+                return null;
 
             switch (key)
             {
@@ -75,7 +76,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             var control = d as NamedPane;
 
-            if (control == null) return;
+            if (control == null)
+                return;
 
             control.Orientation = (Orientation) e.NewValue;
         }

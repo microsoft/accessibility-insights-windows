@@ -80,7 +80,6 @@ namespace AccessibilityInsights
                 {
                     EnableTimerSafely(timerSelector, true); // make sure that it is disabled.
                 }
-
             }
             else
             {

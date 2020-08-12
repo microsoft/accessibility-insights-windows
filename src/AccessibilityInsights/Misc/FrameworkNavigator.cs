@@ -21,13 +21,16 @@ namespace AccessibilityInsights.Misc
         /// <param name="panes"></param>
         public static FrameworkElement GetSubsequentFrameworkElement(FrameworkElement e, IReadOnlyList<FrameworkElement> panes)
         {
-            if (e == null) return null;
-            if (panes == null) return null;
+            if (e == null)
+                return null;
+            if (panes == null)
+                return null;
 
             var count = panes.Count;
             for (int i = 0; i < count; ++i)
             {
-                if (panes[i] != e) continue;
+                if (panes[i] != e)
+                    continue;
 
                 var next = ++i < count ? i : 0;
                 return panes[next];

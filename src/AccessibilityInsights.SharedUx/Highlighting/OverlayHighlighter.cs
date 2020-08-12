@@ -157,7 +157,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
-
         /// <summary>
         /// Draw rectangle around the selected element in the application
         /// </summary>

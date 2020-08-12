@@ -118,7 +118,6 @@ namespace AccessibilityInsights
             AutomationProperties.SetName(btnCCA, AutomationPropertiesNameCCA);
         }
 
-
         /// <summary>
         /// allow/disallow Element selection or mode switch
         /// </summary>
@@ -487,10 +486,12 @@ namespace AccessibilityInsights
                 return nextPane;
 
             // if config pane is open, let it get focus
-            if (gridlayerConfig.Visibility == Visibility.Visible) return nextPane;
+            if (gridlayerConfig.Visibility == Visibility.Visible)
+                return nextPane;
 
             var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null) return nextPane;
+            if (subPaneNavigation == null)
+                return nextPane;
 
             var subPane = subPaneNavigation.GetFirstPane();
             return subPane ?? nextPane;
@@ -509,7 +510,8 @@ namespace AccessibilityInsights
                 return nextPane;
 
             var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null) return nextPane;
+            if (subPaneNavigation == null)
+                return nextPane;
 
             var subPane = subPaneNavigation.GetLastPane();
             return subPane ?? nextPane;
@@ -538,7 +540,6 @@ namespace AccessibilityInsights
             {
                 e.Handled = false;
             }
-
         }
 
         private static bool IsTextAllowed(string text)
@@ -819,7 +820,8 @@ namespace AccessibilityInsights
         /// <returns></returns>
         public bool IsTreeNavigationAllowed()
         {
-            if (this.CurrentPage != AppPage.Inspect) return false;
+            if (this.CurrentPage != AppPage.Inspect)
+                return false;
 
             return (InspectView)this.CurrentView == InspectView.Live;
         }

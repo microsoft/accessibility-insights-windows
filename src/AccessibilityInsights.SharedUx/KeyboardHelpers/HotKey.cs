@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         public int Id { get; internal set; }
 
         public Keys Key { get; internal set; }
-        public HotkeyModifier Modifier { get; internal set; }
+        internal HotkeyModifier Modifier { get; set; }
 
         public Action Action { get; private set; }
 
@@ -130,7 +130,6 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
                     {
                         result |= tmp;
                     }
-
                 }
             }
 

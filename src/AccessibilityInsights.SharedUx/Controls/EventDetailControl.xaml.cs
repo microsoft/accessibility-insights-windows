@@ -6,7 +6,6 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-
 namespace AccessibilityInsights.SharedUx.Controls
 {
     /// <summary>
