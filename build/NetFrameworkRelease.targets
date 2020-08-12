@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	<NoWarn>RS0016</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
