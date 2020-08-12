@@ -126,7 +126,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void Window_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (this.IsActive) this.Close();
+            if (this.IsActive)
+            {
+                this.Close();
+            }
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

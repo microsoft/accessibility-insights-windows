@@ -64,7 +64,6 @@ namespace AccessibilityInsights
                 SetCurrentViewAndUpdateUI(InspectView.Live);
                 EnableElementSelector();
             }
-
         }
 
         /// <summary>

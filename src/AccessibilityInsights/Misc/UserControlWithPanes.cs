@@ -62,18 +62,22 @@ namespace AccessibilityInsights.Misc
 
         public FrameworkElement GetFirstPane()
         {
-            if (this.F6Panes == null) return null;
-            if (this.F6Panes.Count <= 0) return null;
+            if (this.F6Panes == null)
+                return null;
+            if (this.F6Panes.Count <= 0)
+                return null;
 
             return this.F6Panes[0];
         }
 
         public FrameworkElement GetLastPane()
         {
-            if (this.F6Panes == null) return null;
+            if (this.F6Panes == null)
+                return null;
 
             var count = this.F6Panes.Count;
-            if (count <= 0) return null;
+            if (count <= 0)
+                return null;
 
             return this.F6Panes[count - 1];
         }

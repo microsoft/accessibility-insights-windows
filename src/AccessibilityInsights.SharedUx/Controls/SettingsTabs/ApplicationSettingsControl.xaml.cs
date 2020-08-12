@@ -120,7 +120,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// <param name="e"></param>
         private void tbMouseDelay_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(this.UpdateSaveButton != null) UpdateSaveButton();
+            if (this.UpdateSaveButton != null)
+            {
+                UpdateSaveButton();
+            }
         }
 
         /// <summary>
@@ -235,7 +238,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             ctrlChannelConfig.UpdateFromConfig(config);
         }
 
-
         /// <summary>
         /// Updates configuration with user's selections
         /// </summary>
@@ -321,7 +323,8 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         private void cbComboBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             ComboBox combo = sender as ComboBox;
-            if (combo == null) return;
+            if (combo == null)
+                return;
 
             if (e.Key == Key.Up || e.Key == Key.Down)
             {

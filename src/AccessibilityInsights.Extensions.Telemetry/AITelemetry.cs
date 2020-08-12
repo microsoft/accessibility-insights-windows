@@ -73,7 +73,8 @@ namespace AccessibilityInsights.Extensions.Telemetry
 
         private static void MergeIntoProperties(EventTelemetry aiEvent, IReadOnlyDictionary<string, string> props)
         {
-            if (props == null) return;
+            if (props == null)
+                return;
 
             foreach (var pair in props)
             {

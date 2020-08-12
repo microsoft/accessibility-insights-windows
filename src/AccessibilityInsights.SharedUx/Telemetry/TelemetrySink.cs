@@ -54,7 +54,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         public void PublishTelemetryEvent(string eventName, IReadOnlyDictionary<string, string> propertyBag = null)
         {
-            if (!IsEnabled) return;
+            if (!IsEnabled)
+                return;
 
             try
             {
@@ -73,7 +74,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         public void AddOrUpdateContextProperty(string property, string value)
         {
-            if (!IsEnabled) return;
+            if (!IsEnabled)
+                return;
 
             try
             {
@@ -92,8 +94,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         public void ReportException(Exception e)
         {
-            if (!IsEnabled) return;
-            if (e == null) return;
+            if (!IsEnabled)
+                return;
+            if (e == null)
+                return;
 
             try
             {

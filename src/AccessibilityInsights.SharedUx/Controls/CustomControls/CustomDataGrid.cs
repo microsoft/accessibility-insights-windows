@@ -26,7 +26,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             var modKey = e.KeyboardDevice.Modifiers;
 
-            if (!(e.Key == Key.Tab) || !(modKey == ModifierKeys.None || modKey == ModifierKeys.Shift)) return;
+            if (!(e.Key == Key.Tab) || !(modKey == ModifierKeys.None || modKey == ModifierKeys.Shift))
+                return;
 
             var dir = modKey == ModifierKeys.Shift ? FocusNavigationDirection.Previous : FocusNavigationDirection.Next;
 

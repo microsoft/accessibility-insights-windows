@@ -95,8 +95,10 @@ namespace AccessibilityInsights
         {
             lock (_lockObject)
             {
-                if (this.Controller == null) return;
-                if (!this.Controller.IsTreeNavigationAllowed()) return;
+                if (this.Controller == null)
+                    return;
+                if (!this.Controller.IsTreeNavigationAllowed())
+                    return;
 
                 try
                 {

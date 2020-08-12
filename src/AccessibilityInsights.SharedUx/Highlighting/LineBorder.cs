@@ -265,7 +265,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             NativeMethods.UnregisterClass(this.WindowClassName, this.hInstance);
         }
 
-
         #region IDisposable Support
         private bool disposedValue; // To detect redundant calls
 

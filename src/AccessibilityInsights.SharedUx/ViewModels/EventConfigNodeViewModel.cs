@@ -12,6 +12,7 @@ using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
 using System;
+using System.Windows.Input.StylusPlugIns;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -234,9 +235,15 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Create and add children from a collection of ids
         /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="type"></param>
-        public void AddChildren(IEnumerable<int> ids, EventConfigNodeType type, bool isChecked=false)
+        public void AddChildren(IEnumerable<int> ids, EventConfigNodeType type)
+        {
+            this.AddChildren(ids, type, false);
+        }
+
+        /// <summary>
+        /// Create and add children from a collection of ids
+        /// </summary>
+        public void AddChildren(IEnumerable<int> ids, EventConfigNodeType type, bool isChecked)
         {
             if (ids == null)
                 throw new ArgumentNullException(nameof(ids));
@@ -250,9 +257,15 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Create and add children from a collection of properties
         /// </summary>
-        /// <param name="ids"></param>
-        /// <param name="type"></param>
-        public void AddChildren(IEnumerable<A11yProperty> properties, bool isChecked = false)
+        public void AddChildren(IEnumerable<A11yProperty> properties)
+        {
+            this.AddChildren(properties, false);
+        }
+
+        /// <summary>
+        /// Create and add children from a collection of properties
+        /// </summary>
+        public void AddChildren(IEnumerable<A11yProperty> properties, bool isChecked)
         {
             if (properties == null)
                 throw new ArgumentNullException(nameof(properties));
@@ -431,7 +444,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 return this.ButtonText + " node";
             }
         }
-
 
         /// <summary>
         /// Set the checked state based on id and type

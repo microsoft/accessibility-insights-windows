@@ -282,7 +282,8 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns></returns>
         internal static BitmapSource ConvertToSource(this Bitmap bitmap)
         {
-            if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
+            if (bitmap == null)
+                throw new ArgumentNullException(nameof(bitmap));
 
             var hbmp = bitmap.GetHbitmap();
             var result = Imaging.CreateBitmapSourceFromHBitmap(hbmp, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());

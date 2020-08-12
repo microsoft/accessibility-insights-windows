@@ -463,7 +463,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private static string CreateSearchContext(A11yElement e)
         {
-            if (e == null) return null;
+            if (e == null)
+                return null;
 
             var properties = CreateSearchPropertiesString(e);
             var patterns = CreateSearchPatternsString(e);
@@ -474,23 +475,27 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private static string CreateSearchPropertiesString(A11yElement e)
         {
-            if (e == null) return null;
+            if (e == null)
+                return null;
 
             var properties = from p in CommonStringProperties
                              let value = e.GetPropertyOrDefault<string>(p)
                              select value;
 
-            if (properties == null) return null;
+            if (properties == null)
+                return null;
 
             return string.Join(" ", properties);
         }
 
         private static string CreateSearchPatternsString(A11yElement e)
         {
-            if (e == null) return null;
+            if (e == null)
+                return null;
 
             var patterns = e.Patterns?.Select(p => PatternType.GetInstance().GetNameById(p.Id));
-            if (patterns == null) return null;
+            if (patterns == null)
+                return null;
 
             return string.Join(" ", patterns);
         }

@@ -54,7 +54,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public static void PublishTelemetryEvent(TelemetryAction action, TelemetryProperty property, string value)
         {
             // Conversions to strings are expensive, so skip it if possible
-            if (!IsEnabled) return;
+            if (!IsEnabled)
+                return;
 
             Sink.PublishTelemetryEvent(action.ToString(), property.ToString(), value);
         }
@@ -63,11 +64,21 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// Publishes an event to the current telemetry pipeline
         /// </summary>
         /// <param name="action">The action being recorded</param>
+        public static void PublishTelemetryEvent(TelemetryAction action)
+        {
+            PublishTelemetryEvent(action, null);
+        }
+
+        /// <summary>
+        /// Publishes an event to the current telemetry pipeline
+        /// </summary>
+        /// <param name="action">The action being recorded</param>
         /// <param name="propertyBag">Associated property bag--this may be null</param>
-        public static void PublishTelemetryEvent(TelemetryAction action, IReadOnlyDictionary<TelemetryProperty, string> propertyBag = null)
+        public static void PublishTelemetryEvent(TelemetryAction action, IReadOnlyDictionary<TelemetryProperty, string> propertyBag)
         {
             // Conversions to strings are expensive, so skip it if possible
-            if (!IsEnabled) return;
+            if (!IsEnabled)
+                return;
 
             Sink.PublishTelemetryEvent(action.ToString(), ConvertFromProperties(propertyBag));
         }
@@ -79,7 +90,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <param name="value"></param>
         public static void AddOrUpdateContextProperty(TelemetryProperty property, string value)
         {
-            if (!IsEnabled) return;
+            if (!IsEnabled)
+                return;
 
             Sink.AddOrUpdateContextProperty(property.ToString(), value);
         }
@@ -90,8 +102,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <param name="e">The Exception to report</param>
         public static void ReportException(this Exception e)
         {
-            if (e == null) return;
-            if (!IsEnabled) return;
+            if (e == null)
+                return;
+            if (!IsEnabled)
+                return;
 
             Sink.ReportException(e);
         }

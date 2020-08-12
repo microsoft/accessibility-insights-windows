@@ -77,7 +77,6 @@ namespace AccessibilityInsights.Extensions.GitHub
         /// </summary>
         public override bool CanSave => canSave;
 
-
         private Action updateSaveButton;
         public override Action UpdateSaveButton
         {

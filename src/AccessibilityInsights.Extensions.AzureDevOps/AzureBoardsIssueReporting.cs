@@ -94,7 +94,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             return Task.Run<IIssueResult>(() => {
                 // Check whether issue was filed once dialog closed & process accordingly
-                if (!issueId.HasValue) return null;
+                if (!issueId.HasValue)
+                    return null;
 
                 try
                 {

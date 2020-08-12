@@ -47,11 +47,13 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         private static void AttachReportExceptionHandler()
         {
-            if (IsReportExceptionHandlerAttached) return;
+            if (IsReportExceptionHandlerAttached)
+                return;
 
             lock (LockObject)
             {
-                if (IsReportExceptionHandlerAttached) return;
+                if (IsReportExceptionHandlerAttached)
+                    return;
 
                 Container.ReportedExceptionEvent += OnReportedException;
                 IsReportExceptionHandlerAttached = true;

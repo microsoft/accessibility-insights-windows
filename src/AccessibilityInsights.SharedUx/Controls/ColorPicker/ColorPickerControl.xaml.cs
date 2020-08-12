@@ -67,7 +67,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
         }
 
-
         #region RGB Properties       
         // Gets or sets the ARGB red value of the selected color.
         public byte Red
@@ -109,7 +108,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
         #endregion RGB Properties
 
-
         // Gets or sets the the selected color in hexadecimal notation.
         public string HexadecimalString
         {
@@ -124,7 +122,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
 
         #endregion
-
 
         #region Public Events
 
@@ -142,7 +139,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
 
         #endregion
-
 
         #region Dependency Property Fields
         public static readonly DependencyProperty SelectedColorProperty =
@@ -183,7 +179,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
         #endregion
 
-
         #region RoutedEvent Fields
 
         public static readonly RoutedEvent SelectedColorChangedEvent = EventManager.RegisterRoutedEvent(
@@ -193,7 +188,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             typeof(ColorPickerControl)
         );
         #endregion
-
 
         #region Property Changed Callbacks
 
@@ -279,11 +273,13 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor);
             newEventArgs.RoutedEvent = ColorPickerControl.SelectedColorChangedEvent;
             RaiseEvent(newEventArgs);
-            if (this.DataContext is ColorChooser cc) cc.StoredColor = newColor;
+            if (this.DataContext is ColorChooser cc)
+            {
+                cc.StoredColor = newColor;
+            }
         }
 
         #endregion
-
 
         #region Template Part Event Handlers
         private void BaseColorChanged(object sender, RoutedPropertyChangedEventArgs<Double> e)
@@ -328,7 +324,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
         #endregion
 
-
         #region Color Resolution Helpers
 
         private void setColor(Color theColor)
@@ -357,7 +352,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             
             markerTransform.X = p.X;
             p.X = p.X / brdrColorDetail.ActualWidth;
-
 
             if (p.Y < 0)
             {
@@ -403,7 +397,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
 
         #endregion
-
 
         #region Private Fields
         private TranslateTransform markerTransform = new TranslateTransform();
@@ -452,7 +445,9 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             if ((bool)e.NewValue)
             {
                 (sender as UIElement)?.Focus();
-                if (this.DataContext is ColorChooser cc) SelectedColor = cc.StoredColor;
+                if (this.DataContext is ColorChooser cc)
+                    SelectedColor = cc.StoredColor;
+
                 HexadecimalString = SelectedColor.ToString(CultureInfo.InvariantCulture);
                 this.updateMarkerPosition(SelectedColor);
                 m_color = SelectedColor;

@@ -183,9 +183,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
         }
 
-
         public EventConfigurationControl()
-        {            
+        {
             InitializeComponent();
 
             InitCommandBindings();
@@ -340,9 +339,12 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="lv"></param>
         private static void MoveFocusToListView(ListView lv)
         {
-            if (lv == null) return;
-            if (lv.IsKeyboardFocusWithin) return;
-            if (lv.Items.Count <= 0) return;
+            if (lv == null)
+                return;
+            if (lv.IsKeyboardFocusWithin)
+                return;
+            if (lv.Items.Count <= 0)
+                return;
 
             var traversalRequest = new TraversalRequest(FocusNavigationDirection.First);
             lv.MoveFocus(traversalRequest);

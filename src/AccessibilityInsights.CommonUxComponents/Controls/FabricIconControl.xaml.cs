@@ -149,7 +149,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         #endregion
 
-
         #region ShowInControlView (Dependency Property)
 
         public static readonly DependencyProperty ShowInControlViewProperty =

@@ -62,7 +62,8 @@ namespace AccessibilityInsights.Win32
 
         public WinTrustFileInfo(String filePath)
         {
-            if (string.IsNullOrEmpty(filePath)) throw new ArgumentNullException(nameof(filePath));
+            if (string.IsNullOrEmpty(filePath))
+                throw new ArgumentNullException(nameof(filePath));
 
             pszFilePath = Marshal.StringToCoTaskMemAuto(filePath);
         }

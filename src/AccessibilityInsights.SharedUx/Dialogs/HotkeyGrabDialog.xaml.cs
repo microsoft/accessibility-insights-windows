@@ -90,7 +90,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private string GetCleanKeyString()
         {
-            if (SelectedKey == Key.None) return string.Empty;
+            if (SelectedKey == Key.None)
+                return string.Empty;
 
             var str = SelectedKey.ToString();
 

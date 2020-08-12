@@ -607,7 +607,6 @@ namespace AccessibilityInsights
             HandleBackToSelectingState();
         }
 
-
         /// <summary>
         /// Shows a dialog with an error message and then goes back to selecting state
         /// </summary>

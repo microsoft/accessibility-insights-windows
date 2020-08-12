@@ -105,7 +105,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
-
         /// <summary>
         /// Set the text value
         /// </summary>

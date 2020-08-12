@@ -411,7 +411,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             serverUri = serverUri ?? Configuration.SavedConnection.ServerUri;
 
-            if (serverUri == null) return;
+            if (serverUri == null)
+                return;
 
             // If the main window is always on top, then an error occurs where
             //  the login dialog is not a child of the main window, so we temporarily

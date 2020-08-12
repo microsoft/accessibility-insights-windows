@@ -68,8 +68,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             this.lblActivateHk.Content = Configuration.HotKeyForActivatingMainWindow;
         }
 
-
-
         /// <summary>
         /// Event handler for Got it button
         /// </summary>

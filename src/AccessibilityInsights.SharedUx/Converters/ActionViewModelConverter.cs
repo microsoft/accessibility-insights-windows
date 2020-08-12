@@ -43,7 +43,5 @@ namespace AccessibilityInsights.SharedUx.Converters
         {
             return _instance ?? (_instance = new ActionViewModelConverter());
         }
-
     }
-
 }

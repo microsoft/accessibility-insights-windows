@@ -109,7 +109,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             {
                 if (col is CustomGridViewColumn customCol)
                 {
-                    if (!columns.Contains(customCol)) continue;
+                    if (!columns.Contains(customCol))
+                        continue;
 
                     columns.Remove(customCol);
                 }

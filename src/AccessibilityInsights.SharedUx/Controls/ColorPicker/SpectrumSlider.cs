@@ -34,7 +34,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
         #endregion 
 
-
         #region Dependency Property Fields
         public static readonly DependencyProperty SelectedColorProperty =
             DependencyProperty.Register
@@ -42,7 +41,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             new PropertyMetadata(System.Windows.Media.Colors.Transparent));
 
         #endregion
-
 
         #region Public Methods
         public override void OnApplyTemplate()
@@ -54,7 +52,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
         #endregion
 
-
         #region Protected Methods
         protected override void OnValueChanged(double oldValue, double newValue)
         {
@@ -63,7 +60,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             SetValue(SelectedColorProperty, theColor);
         }
         #endregion
-
 
         #region Private Methods
         private void updateColorSpectrum()
@@ -94,7 +90,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             m_spectrumDisplay.Fill = pickerBrush;
         }
         #endregion
-
 
         #region Private Fields
         private static string SpectrumDisplayName = "PART_SpectrumDisplay";

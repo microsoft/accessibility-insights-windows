@@ -156,7 +156,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                         b = q;
                         break;
                 }
-
             }
 
             return Color.FromArgb(255, (byte)(r * 255), (byte)(g * 255), (byte)(b * 255));

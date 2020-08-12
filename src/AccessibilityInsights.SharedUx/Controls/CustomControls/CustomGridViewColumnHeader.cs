@@ -31,6 +31,4 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             return base.GetPattern(patternInterface);
         }
     }
-
-    
 }

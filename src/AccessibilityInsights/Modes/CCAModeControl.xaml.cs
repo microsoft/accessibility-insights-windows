@@ -211,7 +211,6 @@ namespace AccessibilityInsights.Modes
 
                         HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
-
                         HollowHighlightDriver.GetDefaultInstance().SetText(toolTipText);
 
                         // enable element selector
@@ -229,7 +228,6 @@ namespace AccessibilityInsights.Modes
                         MainWin.CurrentView = CCAView.Automatic;
                         HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
-
                         HollowHighlightDriver.GetDefaultInstance().SetText("Unable to detect colors!");
                         // enable element selector
                         MainWin.EnableElementSelector();
@@ -238,9 +236,7 @@ namespace AccessibilityInsights.Modes
                     });
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
-
             }
-
         }
 
         /// <summary>
