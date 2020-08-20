@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="columnSnap" Width="410" MinWidth="2"/>
+            <ColumnDefinition x:Name="columnSnap" Style="{StaticResource LeftPaneColumn}"/>
             <ColumnDefinition x:Name="columnInfo" Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Name="HierarchyGrid" Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
@@ -72,6 +72,7 @@
                             Grid.Column="0" Grid.RowSpan="2"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Right"
+                          Padding="4"
                             ResizeDirection="Columns" Margin="0,-34,0,0"
                             BorderBrush="Gray" BorderThickness="1"
                             AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"

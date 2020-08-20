@@ -12,13 +12,16 @@
              xmlns:Util="clr-namespace:AccessibilityInsights.SharedUx.Utilities;assembly=AccessibilityInsights.SharedUx"
              mc:Ignorable="d" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.SnapshotModeControl}"
              AutomationProperties.Name="{x:Static properties:Resources.SnapshotModeControlAutomationPropertiesName}" Height="600" Width="600">
+    <UserControl.Resources>
+        <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
+    </UserControl.Resources>
     <Grid Panel.ZIndex="1">
         <Grid.RowDefinitions>
             <RowDefinition Height="34"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="columnSnap" Width="360" MinWidth="2"/>
+            <ColumnDefinition x:Name="columnSnap" Style="{StaticResource LeftPaneColumn}"/>
             <ColumnDefinition x:Name="columnInfo" Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0" Grid.Row="1">
