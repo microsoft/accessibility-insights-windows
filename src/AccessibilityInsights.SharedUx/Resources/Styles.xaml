@@ -1499,4 +1499,17 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="ColumnDefinition" x:Key="LeftPaneColumn">
+        <Setter Property="MaxWidth">
+            <Setter.Value>
+                <Binding Path="ActualWidth" Converter="{converters:ColumnMaxWidthSpacingConverter}">
+                    <Binding.RelativeSource>
+                        <RelativeSource  Mode="FindAncestor" AncestorType="UserControl"/>
+                    </Binding.RelativeSource>
+                </Binding>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="MinWidth" Value="2"/>
+        <Setter Property="Width" Value="410"/>
+    </Style>
 </ResourceDictionary>

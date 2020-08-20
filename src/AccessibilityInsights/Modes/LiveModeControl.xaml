@@ -22,7 +22,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="columnSnap" Width="410" MinWidth="2"/>
+            <ColumnDefinition x:Name="columnSnap" Style="{StaticResource LeftPaneColumn}"/>
             <ColumnDefinition x:Name="columnInfo" Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid Name="HierarchyGrid" Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
