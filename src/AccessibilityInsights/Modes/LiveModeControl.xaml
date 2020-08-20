@@ -72,7 +72,6 @@
                             Grid.Column="0" Grid.RowSpan="2"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Right"
-                          Padding="4"
                             ResizeDirection="Columns" Margin="0,-34,0,0"
                             BorderBrush="Gray" BorderThickness="1"
                             AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
