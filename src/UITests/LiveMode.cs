@@ -11,7 +11,7 @@ namespace UITests
     [TestClass]
     public class LiveMode : AIWinSession
     {
-        readonly string TestAppPath = Path.GetFullPath("../../../../tools/WildlifeManager/WildlifeManager.exe");
+        readonly string TestAppPath = Path.GetFullPath("../../../../../tools/WildlifeManager/WildlifeManager.exe");
         Process _wildlifeManager;
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace UITests
 
         private void ValidateResultsInUIATree()
         {
-            int expectedResultsCount = 12; // this number should only change if axe-windows or WildlifeManager are modified.
+            int expectedResultsCount = 13; // this number should only change if axe-windows or WildlifeManager are modified.
 
             driver.TestMode.ResultsInUIATree.ValidateResults(2, expectedResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
