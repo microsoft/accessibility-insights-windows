@@ -131,7 +131,7 @@
                                                 Content="{Binding IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
                                                 Focusable="True" IsTabStop="False" IsVisibleChanged="btnFileBug_IsVisibleChanged"
                                                 AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText}'}"
-                                                AutomationProperties.Name="{Binding Path=IssueDisplayText, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName}', TargetNullValue='{x:Static Properties:Resources.btnFileBugAutomationPropertiesNameTargetValue}'}">
+                                                AutomationProperties.Name="{Binding Path=IssueDisplayText, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesName}', TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}">
                                             </Button>
                                             <fabric:FabricIconControl x:Name="progressIcon"  GlyphName="ProgressRingDots" 
                                                                       Foreground="LightGray" RenderTransformOrigin="0.5, 0.5"
