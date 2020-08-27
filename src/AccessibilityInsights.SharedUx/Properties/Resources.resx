@@ -381,9 +381,6 @@
   <data name="btnFileBugAutomationPropertiesName" xml:space="preserve">
     <value>Open link to bug #{0}</value>
   </data>
-  <data name="btnFileBugAutomationPropertiesNameTargetValue" xml:space="preserve">
-    <value>File a bug</value>
-  </data>
   <data name="lvResultsHelpText" xml:space="preserve">
     <value>Press Enter to inspect detail or right arrow key for column options</value>
   </data>
@@ -790,9 +787,6 @@
   </data>
   <data name="btnFileBugAutomationPropertiesHelpText1" xml:space="preserve">
     <value>Bug for {0}</value>
-  </data>
-  <data name="btnFileBugAutomationPropertiesName1" xml:space="preserve">
-    <value>File a bug</value>
   </data>
   <data name="StartupModeControl_moreGuidanceText" xml:space="preserve">
     <value>More guidance and tutorials</value>
