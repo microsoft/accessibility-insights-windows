@@ -75,7 +75,7 @@
                             ResizeDirection="Columns" Margin="0,-34,0,0"
                             BorderBrush="Gray" BorderThickness="1"
                             AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
-                            AutomationProperties.HelpText="{x:Static properties:Resources.gsMidAutomationPropertiesHelpText1}" DragDelta="gsMid_DragDelta" KeyDown="gsMid_KeyDown"/>
+                            AutomationProperties.HelpText="{x:Static properties:Resources.gsMidAutomationPropertiesHelpText}" DragDelta="gsMid_DragDelta" KeyDown="gsMid_KeyDown"/>
         </Grid>
         <controls:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="Live" Grid.RowSpan="2"
                                      AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsElementAutomationPropertiesName}"
