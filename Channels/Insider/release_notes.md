@@ -1,8 +1,8 @@
-## June 2, 2020 Insider Release ([v1.1.1248.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1248.01))
+## August 28, 2020 Insider Release ([v1.1.1334.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1334.02))
 
-Welcome to the June 2, 2020 Insider release of Accessibility Insights for Windows.
+Welcome to the August 28, 2020 Insider release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1248.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1334.02/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
@@ -10,18 +10,15 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 - [Rule Updates](#rule-updates)
 - [Bug Fixes](#bug-fixes)
-- [Other Updates](#other-updates)
 
 #### Rule Updates
 
-- Removed rule IsOffScreenChild (false positive [#369](https://github.com/microsoft/axe-windows/pull/369)
+- Fixed an issue to properly exclude System menu bars if the text is non-English in BoundingRectangleNotNull [#402](https://github.com/microsoft/axe-windows/issues/402)
+- Fixed a false positive with WPF DataGrid's [#417](https://github.com/microsoft/axe-windows/issues/417)
 
 #### Bug Fixes
 
-- Fixed text issues in TextPattern explorer in dark mode [#799](https://github.com/microsoft/accessibility-insights-windows/issues/799)
-- Fixed disappearing icons in HC White mode [#756](https://github.com/microsoft/accessibility-insights-windows/issues/756)
-- Updated the welcome screen [#790](https://github.com/microsoft/accessibility-insights-windows/pull/790)
-
-#### Other Updates
-
-- Enabled dark mode by default [#764](https://github.com/microsoft/accessibility-insights-windows/pull/764) to address [#623](https://github.com/microsoft/accessibility-insights-windows/issues/623)
+- Fixed an issue to persist zoom level in Azure Boards [#809](https://github.com/microsoft/accessibility-insights-windows/issues/809)
+- Added minimum width for the UIA tree pane so the width cannot be reduced to zero [#814](https://github.com/microsoft/accessibility-insights-windows/issues/814)
+- Fixed an issue that was causing an error with the Text Pattern Explorer [#840](https://github.com/microsoft/accessibility-insights-windows/issues/840)
+- Fixed an issue that was causing attempts to upgrade or switch channels to fail [#891](https://github.com/microsoft/accessibility-insights-windows/issues/891)
