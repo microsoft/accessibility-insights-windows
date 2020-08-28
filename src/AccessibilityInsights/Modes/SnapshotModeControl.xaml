@@ -39,7 +39,7 @@
                         ResizeDirection="Columns"
                         BorderBrush="Gray" BorderThickness="1"
                         AutomationProperties.Name="{x:Static properties:Resources.gsMidAutomationPropertiesName}"
-                        AutomationProperties.HelpText="{x:Static properties:Resources.HandleFailedSelectionResetConnectionLostMessage}"/>
+                        AutomationProperties.HelpText="{x:Static properties:Resources.gsMidAutomationPropertiesHelpText}"/>
         <controls:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="TestProperties" AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsElementAutomationPropertiesName}" Grid.RowSpan="2"/>
         <fabric:ProgressRingControl Size="30" Grid.RowSpan="2"
                                 x:Name="ctrlProgressRing"

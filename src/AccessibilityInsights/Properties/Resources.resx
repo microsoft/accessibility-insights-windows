@@ -518,9 +518,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="ctrlNamedCommandbarAutomationPropertiesName" xml:space="preserve">
     <value>Command bar</value>
   </data>
-  <data name="gsMidAutomationPropertiesHelpText1" xml:space="preserve">
-    <value>change horizontal size of Hierarchy pane</value>
-  </data>
   <data name="btnConfigAutomationPropertiesNameNoBugFiling" xml:space="preserve">
     <value>Settings</value>
   </data>
