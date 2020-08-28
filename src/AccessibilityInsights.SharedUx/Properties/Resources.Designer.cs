@@ -1927,15 +1927,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Version.
-        /// </summary>
-        public static string hlVersion {
-            get {
-                return ResourceManager.GetString("hlVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Type a keyboard shortcut.
         /// </summary>
         public static string HotkeyGrabDialogWindowTitle {
