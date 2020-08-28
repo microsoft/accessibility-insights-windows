@@ -583,15 +583,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to change horizontal size of Hierarchy pane.
-        /// </summary>
-        public static string gsMidAutomationPropertiesHelpText1 {
-            get {
-                return ResourceManager.GetString("gsMidAutomationPropertiesHelpText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to splitter for Hierarchy pane.
         /// </summary>
         public static string gsMidAutomationPropertiesName {
