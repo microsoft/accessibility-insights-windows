@@ -18,7 +18,7 @@
         <Label Padding="0" FontSize="20" FontWeight="Bold" Content="{x:Static Properties:Resources.LabelContentAccessibilityInsightsForWindows}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Label Padding="0" FontSize="14" Margin="0,5,0,0" Content="{x:Static Properties:Resources.LabelContentByMicrosoftCorporation}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <TextBlock Padding="0" FontSize="14" Margin="0,5,0,0" HorizontalAlignment="Left">
-            <Hyperlink x:Name="hlVersion" AutomationProperties.Name="{x:Static Properties:Resources.hlVersion}" 
+            <Hyperlink x:Name="hlVersion" AutomationProperties.Name="{Binding Path=VersionInfoLabel, Mode=OneWay}" 
                     Click="HyperLink_Click" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
                     NavigateUri="{Binding Path=VersionInfoUri}" TextDecorations="None" Style="{StaticResource hLink}">
                 <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" />
