@@ -100,7 +100,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             get
             {
-                if (string.IsNullOrWhiteSpace(this.textboxSearch.Text))
+                if (string.IsNullOrEmpty(this.textboxSearch.Text))
                 {
                     return this.IsLiveMode ? Properties.Resources.SetterValueSearchByName : Properties.Resources.SetterValueSearchByString;
                 }
