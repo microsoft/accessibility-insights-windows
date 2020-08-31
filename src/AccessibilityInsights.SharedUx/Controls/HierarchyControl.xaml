@@ -93,7 +93,7 @@
                     <controls:PlaceholderTextBox x:Name="textboxSearch" TextChanged="textboxSearch_TextChanged"
                         AutomationProperties.Name="{x:Static Properties:Resources.HierarchyControl_textboxSearchAutomationName}"
                         Height="24" HorizontalAlignment="Stretch" VerticalContentAlignment="Center"
-                        AutomationProperties.HelpText="{Binding ElementName=tbSearch, Path=Text}"
+                        AutomationProperties.HelpText="{Binding SearchBoxHelpText, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}"
                         BorderThickness="{DynamicResource ResourceKey=BtnBrdrThickness}">
                         <controls:PlaceholderTextBox.Style>
                             <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">

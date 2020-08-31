@@ -3472,7 +3472,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search by name and control type..
+        ///   Looks up a localized string similar to Search by name and control type.
         /// </summary>
         public static string SetterValueSearchByName {
             get {
@@ -3481,7 +3481,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search by common string properties and patterns..
+        ///   Looks up a localized string similar to Search by common string properties and patterns.
         /// </summary>
         public static string SetterValueSearchByString {
             get {

@@ -663,10 +663,10 @@
     <value>Bug {0}</value>
   </data>
   <data name="SetterValueSearchByString" xml:space="preserve">
-    <value>Search by common string properties and patterns.</value>
+    <value>Search by common string properties and patterns</value>
   </data>
   <data name="SetterValueSearchByName" xml:space="preserve">
-    <value>Search by name and control type.</value>
+    <value>Search by name and control type</value>
   </data>
   <data name="btnSettingsAutomationPropertiesName1" xml:space="preserve">
     <value>Settings</value>

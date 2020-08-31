@@ -94,6 +94,22 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
+        /// Help text for search box
+        /// </summary>
+        public string SearchBoxHelpText
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(this.textboxSearch.Text))
+                {
+                    return this.IsLiveMode ? Properties.Resources.SetterValueSearchByName : Properties.Resources.SetterValueSearchByString;
+                }
+
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public HierarchyControl()
@@ -306,6 +322,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 FireAsyncContentLoadedEvent();
             }
+            this.textboxSearch.SetValue(AutomationProperties.HelpTextProperty, SearchBoxHelpText);
         }
 
         /// <summary>
