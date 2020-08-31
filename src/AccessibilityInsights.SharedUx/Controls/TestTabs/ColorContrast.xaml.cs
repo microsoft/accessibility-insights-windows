@@ -309,5 +309,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             this.ctrlProgressRing.Deactivate();
         }
+
+        public new void Focus() 
+        {
+            this.hlLearnMore.Focus();
+        }
     }
 }
