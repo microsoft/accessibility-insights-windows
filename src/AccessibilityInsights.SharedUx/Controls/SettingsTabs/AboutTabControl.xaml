@@ -24,8 +24,8 @@
                 <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" />
             </Hyperlink>
         </TextBlock>
-        <Label Content="{Binding Path=AxeVersion}" ContentStringFormat="{x:Static Properties:Resources.AboutTabControl_AxeVersionFormat}"
-               Style="{StaticResource lblDark}" Margin="0,5,0,0"/>
+        <TextBlock Text="{Binding Path=AxeVersion, StringFormat={x:Static Properties:Resources.AboutTabControl_AxeVersionFormat}}"
+               Style="{StaticResource tbHeaderDark}" Margin="0,5,0,0"/>
         <Label Style="{StaticResource lblDark}" Margin="0,5,0,0" Content="{Binding Path=UIAccessStatus, Mode=OneWay}" />
         <TextBlock Padding="0" FontSize="14" Margin="0,32,0,0" HorizontalAlignment="Left">
             <Hyperlink x:Name="hlHelp" AutomationProperties.Name="{x:Static Properties:Resources.hlHelpName}" 
