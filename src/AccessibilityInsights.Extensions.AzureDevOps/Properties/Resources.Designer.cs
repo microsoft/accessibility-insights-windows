@@ -142,14 +142,25 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter desired Azure Boards link.
+        ///   Looks up a localized string similar to Enter desired Azure Boards link (example: .
         /// </summary>
-        public static string connectionInstrText {
+        public static string connectionInstrText1 {
             get {
-                return ResourceManager.GetString("connectionInstrText", resourceCulture);
+                return ResourceManager.GetString("connectionInstrText1", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        public static string connectionInstrText2
+        {
+            get
+            {
+                return ResourceManager.GetString("connectionInstrText2", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Enter your desired Azure Boards link.
         /// </summary>
