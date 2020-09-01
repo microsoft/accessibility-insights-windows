@@ -29,7 +29,7 @@
         </TextBlock>
         <Grid Grid.Row="1" HorizontalAlignment="Left" >
             <controls:PlaceholderTextBox
-                Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
+                Width="380px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
                 AutomationProperties.Name="{x:Static Properties:Resources.RepoLinkAutomationName}" 
                 FontSize="{DynamicResource StandardTextSize}"
                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"
