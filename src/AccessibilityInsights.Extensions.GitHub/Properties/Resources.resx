@@ -156,8 +156,11 @@ This accessibility issue was found using Accessibility Insights for Windows, a t
   <data name="SingleFailureIssueTitle" xml:space="preserve">
     <value>{0}: ({1}/{2}) {3}</value>
   </data>
-  <data name="tbURLPlaceHolder" xml:space="preserve">
-    <value>Enter desired GitHub repo link</value>
+  <data name="tbURLPlaceHolder1" xml:space="preserve">
+    <value>Enter desired GitHub repo link (example: </value>
+  </data>
+  <data name="tbURLPlaceHolder2" xml:space="preserve">
+    <value>)</value>
   </data>
   <data name="AlphaNumricPattern" xml:space="preserve">
     <value>[a-zA-Z0-9]</value>
@@ -179,5 +182,8 @@ This accessibility issue was found using Accessibility Insights for Windows, a t
   </data>
   <data name="InvalidLink" xml:space="preserve">
     <value>Invalid GitHub Link Format!</value>
+  </data>
+  <data name="RepoLinkAutomationName" xml:space="preserve">
+    <value>Repo link</value>
   </data>
 </root>
