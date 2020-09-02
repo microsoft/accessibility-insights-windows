@@ -141,11 +141,38 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repo link.
+        /// </summary>
+        internal static string RepoLinkAutomationName {
+            get {
+                return ResourceManager.GetString("RepoLinkAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://github.com/owner/repo.
         /// </summary>
-        internal static string PlaceHolder {
+        internal static string RepoLinkDescriptionItalicized {
             get {
-                return ResourceManager.GetString("PlaceHolder", resourceCulture);
+                return ResourceManager.GetString("RepoLinkDescriptionItalicized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter desired GitHub repo link (example: .
+        /// </summary>
+        internal static string RepoLinkDescriptionPrefix {
+            get {
+                return ResourceManager.GetString("RepoLinkDescriptionPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        internal static string RepoLinkDescriptionSuffix {
+            get {
+                return ResourceManager.GetString("RepoLinkDescriptionSuffix", resourceCulture);
             }
         }
         
@@ -192,15 +219,6 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         internal static string SingleFailureIssueTitle {
             get {
                 return ResourceManager.GetString("SingleFailureIssueTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter desired GitHub repo link.
-        /// </summary>
-        internal static string tbURLPlaceHolder {
-            get {
-                return ResourceManager.GetString("tbURLPlaceHolder", resourceCulture);
             }
         }
         

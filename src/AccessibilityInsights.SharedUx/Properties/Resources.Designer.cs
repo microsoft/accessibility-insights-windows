@@ -711,15 +711,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hover over the element or set keyboard focus to auto detect color contrast ratio..
-        /// </summary>
-        internal static string CCToggleToolTip {
-            get {
-                return ResourceManager.GetString("CCToggleToolTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Do not change channel.
         /// </summary>
         internal static string ChangeChannelContainedDialog_BtnExit {
@@ -862,6 +853,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         internal static string ColorChooserAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ColorChooserAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
+        /// </summary>
+        internal static string ColorContrast_AutoDetectGuidance {
+            get {
+                return ResourceManager.GetString("ColorContrast_AutoDetectGuidance", resourceCulture);
             }
         }
         

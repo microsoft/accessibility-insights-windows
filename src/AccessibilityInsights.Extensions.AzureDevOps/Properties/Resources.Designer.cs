@@ -61,15 +61,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
-        /// </summary>
-        internal static string accountPlaceholderText {
-            get {
-                return ResourceManager.GetString("accountPlaceholderText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to URL format is not valid. Example URL: https://dev.azure.com/fabrikam.
         /// </summary>
         internal static string ADO_URL_Fromat_Message {
@@ -142,16 +133,34 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter desired Azure Boards link.
+        ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
         /// </summary>
-        internal static string connectionInstrText {
+        internal static string ConnectionDescriptionItalicized {
             get {
-                return ResourceManager.GetString("connectionInstrText", resourceCulture);
+                return ResourceManager.GetString("ConnectionDescriptionItalicized", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter your desired Azure Boards link.
+        ///   Looks up a localized string similar to Enter desired Azure Boards link (example: .
+        /// </summary>
+        internal static string ConnectionDescriptionPrefix {
+            get {
+                return ResourceManager.GetString("ConnectionDescriptionPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        internal static string ConnectionDescriptionSuffix {
+            get {
+                return ResourceManager.GetString("ConnectionDescriptionSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repo link.
         /// </summary>
         internal static string ServerComboBoxAutomationPropertiesName {
             get {

@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Properties="clr-namespace:AccessibilityInsights.Extensions.GitHub.Properties"
     xmlns:src="clr-namespace:AccessibilityInsights.Extensions.Interfaces.IssueReporting;assembly=AccessibilityInsights.Extensions"
-    xmlns:controls="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
     mc:Ignorable="d"
     IsVisibleChanged="IssueConfigurationControl_IsVisibleChanged">
     <UserControl.Resources>
@@ -19,28 +18,22 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-        <TextBlock x:Name="connectionInstr" Grid.Row="0" Text="{x:Static Properties:Resources.tbURLPlaceHolder}" TextWrapping="Wrap" Margin="0 9px" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
-        <Grid Grid.Row="1" >
-            <controls:PlaceholderTextBox
-                Width="294px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
-                AutomationProperties.Name="{x:Static Properties:Resources.tbURLPlaceHolder}" 
+        <TextBlock x:Name="connectionInstr" Grid.Row="0" TextWrapping="Wrap" Margin="0 9px" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Focusable="True" >
+            <TextBlock.Inlines>
+                <!-- comments here are to avoid space insertion between runs -->
+                <Run Text="{x:Static Properties:Resources.RepoLinkDescriptionPrefix}" /><!--
+                --><Run FontStyle="Italic" Text="{x:Static Properties:Resources.RepoLinkDescriptionItalicized}" /><!--
+                --><Run Text="{x:Static Properties:Resources.RepoLinkDescriptionSuffix}" />
+            </TextBlock.Inlines>
+        </TextBlock>
+        <Grid Grid.Row="1" HorizontalAlignment="Left" >
+            <TextBox
+                Width="380px" Height="32px" VerticalContentAlignment="Center" x:Name="tbURL" Margin="5"
+                AutomationProperties.Name="{x:Static Properties:Resources.RepoLinkAutomationName}" 
                 FontSize="{DynamicResource StandardTextSize}"
                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.IssueConfigurationUrlTextBox}"
-                BorderThickness="1"
-                Placeholder="{x:Static Properties:Resources.PlaceHolder}">
-                <controls:PlaceholderTextBox.Style>
-                    <Style TargetType="{x:Type controls:PlaceholderTextBox}" BasedOn="{StaticResource ResourceKey=PlaceholderTextBox}">
-                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
-                        <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Text, ElementName=tbURL}" Value="">
-                                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
-                                <Setter Property="FontStyle" Value="Italic"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </controls:PlaceholderTextBox.Style>
-            </controls:PlaceholderTextBox>
+                BorderThickness="1" >
+            </TextBox>
         </Grid>
     </Grid>
 </src:IssueConfigurationControl>
