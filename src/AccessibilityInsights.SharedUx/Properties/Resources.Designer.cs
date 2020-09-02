@@ -727,13 +727,13 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("CCALink", resourceCulture);
             }
         }
-        
+
         /// <summary>
-        ///   Looks up a localized string similar to Hover over the element or set keyboard focus to auto detect color contrast ratio..
+        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
         /// </summary>
-        public static string CCToggleToolTip {
+        public static string ColorContrast_AutoDetectGuidance {
             get {
-                return ResourceManager.GetString("CCToggleToolTip", resourceCulture);
+                return ResourceManager.GetString("ColorContrast_AutoDetectGuidance", resourceCulture);
             }
         }
         

@@ -55,13 +55,12 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Label Name="lblAutoDetect" Content="{x:Static Properties:Resources.lblAutoDetectContent}" Grid.Column="0" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
-                    <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="2" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click">
-                        <ToggleButton.ToolTip>
-                            <Run Text="{x:Static Properties:Resources.CCToggleToolTip}"/>
-                        </ToggleButton.ToolTip>
-                    </ToggleButton>
+                    <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="2" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click">                    </ToggleButton>
                 </Grid>
-                <Grid Grid.Row="3" Grid.Column="0" Margin="0,16,0,0">
+                <TextBlock Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Focusable="True">
+                    <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_AutoDetectGuidance}" />
+                </TextBlock>
+                <Grid Grid.Row="4" Grid.Column="0" Margin="0,16,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" MinWidth="240"/>
                         <ColumnDefinition Width="1*"/>
@@ -99,7 +98,7 @@
                                />
                     </StackPanel>
                 </Grid>
-                <Border Margin="20,43,20,0" Grid.Row="3" Grid.Column="1" BorderThickness="2" BorderBrush="{DynamicResource ResourceKey=CCABorderBrush}"
+                <Border Margin="20,43,20,0" Grid.Row="4" Grid.Column="1" BorderThickness="2" BorderBrush="{DynamicResource ResourceKey=CCABorderBrush}"
                         VerticalAlignment="Top" Height="110" Width="200">
                     <StackPanel Background="{DynamicResource ResourceKey=CCABackgroundBrush}">
                         <StackPanel Orientation="Vertical" Margin="10,6,0,0" MinWidth="132">
@@ -121,7 +120,7 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Grid Grid.Row="4" Margin="0,12,115,0" Grid.ColumnSpan="2">
+                <Grid Grid.Row="5" Margin="0,12,115,0" Grid.ColumnSpan="2">
                     <Grid.Resources>
                         <Style TargetType="{x:Type TextBlock}">
                             <Setter Property="FontSize" Value="12"/>
