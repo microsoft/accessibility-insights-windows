@@ -43,24 +43,8 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.ColumnSpan="2">
                 <ComboBox x:Name ="ServerComboBox" Grid.Row="1" IsEditable="True" Height="30" VerticalContentAlignment="Center" FontSize="{DynamicResource StandardTextSize}"
-                              AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">
+                        AutomationProperties.Name="{x:Static Properties:Resources.ServerComboBoxAutomationPropertiesName}" KeyDown="ServerComboBox_KeyDown">
                 </ComboBox>
-                <TextBlock x:Name="accountPlaceholder" Text="{x:Static Properties:Resources.accountPlaceholderText}" IsHitTestVisible="False">
-                    <TextBlock.Style>
-                        <Style TargetType="TextBlock">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                            <Setter Property="VerticalAlignment" Value="Center"/>
-                            <Setter Property="Margin" Value="6 0 0 6"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
-                            <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ElementName=ServerComboBox, Path=Text.Length}" Value="0">
-                                    <Setter Property="Visibility" Value="Visible"></Setter>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBlock.Style>
-                </TextBlock>
             </Grid>
             <Button Grid.Column="3" x:Name="btnNext" Padding="8,0" HorizontalAlignment="Left" 
                     Content="{x:Static Properties:Resources.btnNextAutomationPropertiesName}" Click="NextButton_Click"
