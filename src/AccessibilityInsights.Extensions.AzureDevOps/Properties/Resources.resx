@@ -117,13 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="connectionInstrText" xml:space="preserve">
-    <value>Enter desired Azure Boards link</value>
+  <data name="ConnectionDescriptionPrefix" xml:space="preserve">
+    <value>Enter desired Azure Boards link (example: </value>
+  </data>
+  <data name="ConnectionDescriptionSuffix" xml:space="preserve">
+    <value>)</value>
   </data>
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
-    <value>Enter your desired Azure Boards link</value>
+    <value>Repo link</value>
   </data>
-  <data name="accountPlaceholderText" xml:space="preserve">
+  <data name="ConnectionDescriptionItalicized" xml:space="preserve">
     <value>https://dev.azure.com/fabrikam</value>
   </data>
   <data name="btnNextAutomationPropertiesName" xml:space="preserve">
