@@ -22,7 +22,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.CommonUxComponents.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        internal static string btnCloseAutomationPropertiesName1 {
+        public static string btnCloseAutomationPropertiesName1 {
             get {
                 return ResourceManager.GetString("btnCloseAutomationPropertiesName1", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The content tree is a subset of the control tree.
         /// </summary>
-        internal static string ContentTreeIsSubsetofControlTree {
+        public static string ContentTreeIsSubsetofControlTree {
             get {
                 return ResourceManager.GetString("ContentTreeIsSubsetofControlTree", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Loading....
         /// </summary>
-        internal static string LabelContentLoading {
+        public static string LabelContentLoading {
             get {
                 return ResourceManager.GetString("LabelContentLoading", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Microsoft Accessibility Insights.
         /// </summary>
-        internal static string MessageDialogWindowTitle {
+        public static string MessageDialogWindowTitle {
             get {
                 return ResourceManager.GetString("MessageDialogWindowTitle", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp.
         /// </summary>
-        internal static string ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp {
+        public static string ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp {
             get {
                 return ResourceManager.GetString("ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_Cu" +
                         "rrentVersion_AccessibilityTemp", resourceCulture);
@@ -109,7 +109,7 @@ namespace AccessibilityInsights.CommonUxComponents.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Progress Loading Ring.
         /// </summary>
-        internal static string ProgressRingControlAutomationPropertiesName {
+        public static string ProgressRingControlAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ProgressRingControlAutomationPropertiesName", resourceCulture);
             }

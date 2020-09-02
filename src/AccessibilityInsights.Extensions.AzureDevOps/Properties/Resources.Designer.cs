@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.Extensions.AzureDevOps.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to URL format is not valid. Example URL: https://dev.azure.com/fabrikam.
         /// </summary>
-        internal static string ADO_URL_Fromat_Message {
+        public static string ADO_URL_Fromat_Message {
             get {
                 return ResourceManager.GetString("ADO_URL_Fromat_Message", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Connect Azure Boards account.
         /// </summary>
-        internal static string btnNextAutomationPropertiesName {
+        public static string btnNextAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnNextAutomationPropertiesName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Disconnect Azure Boards account.
         /// </summary>
-        internal static string ButtonAutomationPropertiesName {
+        public static string ButtonAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesName", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Change team.
         /// </summary>
-        internal static string ButtonAutomationPropertiesNameChangeTeam {
+        public static string ButtonAutomationPropertiesNameChangeTeam {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameChangeTeam", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
-        internal static string ButtonAutomationPropertiesNameRefresh {
+        public static string ButtonAutomationPropertiesNameRefresh {
             get {
                 return ResourceManager.GetString("ButtonAutomationPropertiesNameRefresh", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Unable to create ConnectionInfo.
         /// </summary>
-        internal static string CantCreateConnectionInfo {
+        public static string CantCreateConnectionInfo {
             get {
                 return ResourceManager.GetString("CantCreateConnectionInfo", resourceCulture);
             }
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error populating Projects.
         /// </summary>
-        internal static string CantPopulateProjects {
+        public static string CantPopulateProjects {
             get {
                 return ResourceManager.GetString("CantPopulateProjects", resourceCulture);
             }
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
-        internal static string ConnectionControl_selectTeam {
+        public static string ConnectionControl_selectTeam {
             get {
                 return ResourceManager.GetString("ConnectionControl_selectTeam", resourceCulture);
             }
@@ -135,7 +135,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
         /// </summary>
-        internal static string ConnectionDescriptionItalicized {
+        public static string ConnectionDescriptionItalicized {
             get {
                 return ResourceManager.GetString("ConnectionDescriptionItalicized", resourceCulture);
             }
@@ -144,7 +144,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enter desired Azure Boards link (example: .
         /// </summary>
-        internal static string ConnectionDescriptionPrefix {
+        public static string ConnectionDescriptionPrefix {
             get {
                 return ResourceManager.GetString("ConnectionDescriptionPrefix", resourceCulture);
             }
@@ -153,7 +153,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ).
         /// </summary>
-        internal static string ConnectionDescriptionSuffix {
+        public static string ConnectionDescriptionSuffix {
             get {
                 return ResourceManager.GetString("ConnectionDescriptionSuffix", resourceCulture);
             }
@@ -162,7 +162,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Repo link.
         /// </summary>
-        internal static string ServerComboBoxAutomationPropertiesName {
+        public static string ServerComboBoxAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ServerComboBoxAutomationPropertiesName", resourceCulture);
             }
@@ -171,7 +171,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Team project.
         /// </summary>
-        internal static string serverTreeviewAutomationPropertiesName {
+        public static string serverTreeviewAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("serverTreeviewAutomationPropertiesName", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
-        internal static string tbTeamProjectSearchAutomationPropertiesName {
+        public static string tbTeamProjectSearchAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tbTeamProjectSearchAutomationPropertiesName", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
-        internal static string TextBlockTextChange {
+        public static string TextBlockTextChange {
             get {
                 return ResourceManager.GetString("TextBlockTextChange", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Selected team.
         /// </summary>
-        internal static string TextBlockTextSelectedteam {
+        public static string TextBlockTextSelectedteam {
             get {
                 return ResourceManager.GetString("TextBlockTextSelectedteam", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There was an error identifying the created issue. This may occur if the ID used to create the issue is removed from its Azure DevOps description. Attachments have not been uploaded..
         /// </summary>
-        internal static string There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded {
+        public static string There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded {
             get {
                 return ResourceManager.GetString("There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to" +
                         "_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_" +
