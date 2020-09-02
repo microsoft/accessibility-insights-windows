@@ -5,7 +5,6 @@ using AccessibilityInsights.Dialogs;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.Resources;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using System;
@@ -205,12 +204,12 @@ namespace AccessibilityInsights
 
         private static string GetMessageForOptionalUpdateFailure()
         {
-            return Messages.OptionalUpdateFailedUnknown;
+            return Properties.Resources.OptionalUpdateFailedUnknown;
         }
 
         private static string GetMessageForRequiredUpdateFailure()
         {
-            return Messages.RequiredUpdateFailedUnknown;
+            return Properties.Resources.RequiredUpdateFailedUnknown;
         }
 
         /// <summary>
