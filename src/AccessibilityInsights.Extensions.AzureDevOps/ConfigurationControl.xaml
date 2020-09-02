@@ -25,9 +25,9 @@
                 FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
             <TextBlock.Inlines>
                 <!-- comments here are to avoid space insertion between runs -->
-                <Run Text="{x:Static Properties:Resources.connectionInstrText1}"/><!--
-                --><Run FontStyle="Italic" Text="{x:Static Properties:Resources.accountPlaceholderText}"/><!--
-                --><Run Text="{x:Static Properties:Resources.connectionInstrText2}"/>
+                <Run Text="{x:Static Properties:Resources.ConnectionDescriptionPrefix}"/><!--
+                --><Run FontStyle="Italic" Text="{x:Static Properties:Resources.ConnectionDescriptionItalicized}"/><!--
+                --><Run Text="{x:Static Properties:Resources.ConnectionDescriptionSuffix}"/>
             </TextBlock.Inlines>
         </TextBlock>
         <Grid Grid.Row="1">

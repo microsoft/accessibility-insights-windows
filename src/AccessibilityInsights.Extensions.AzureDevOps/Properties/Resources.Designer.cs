@@ -63,9 +63,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://dev.azure.com/fabrikam.
         /// </summary>
-        public static string accountPlaceholderText {
+        public static string ConnectionDescriptionItalicized {
             get {
-                return ResourceManager.GetString("accountPlaceholderText", resourceCulture);
+                return ResourceManager.GetString("ConnectionDescriptionItalicized", resourceCulture);
             }
         }
         
@@ -144,20 +144,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enter desired Azure Boards link (example: .
         /// </summary>
-        public static string connectionInstrText1 {
+        public static string ConnectionDescriptionPrefix {
             get {
-                return ResourceManager.GetString("connectionInstrText1", resourceCulture);
+                return ResourceManager.GetString("ConnectionDescriptionPrefix", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to ).
         /// </summary>
-        public static string connectionInstrText2
+        public static string ConnectionDescriptionSuffix
         {
             get
             {
-                return ResourceManager.GetString("connectionInstrText2", resourceCulture);
+                return ResourceManager.GetString("ConnectionDescriptionSuffix", resourceCulture);
             }
         }
 
