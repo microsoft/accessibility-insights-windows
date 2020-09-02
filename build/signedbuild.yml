@@ -228,6 +228,15 @@ jobs:
       projects: |
         **\*.csproj
 
+  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+    displayName: 'Component Detection'
+
+  - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
+    displayName: 'generate thirdpartynotices.html file'
+    inputs:
+        outputfile: '$(System.DefaultWorkingDirectory)/thirdpartynotices.html'
+        outputformat: html
+
   - task: VSBuild@1
     displayName: 'Build Solution **\AccessibilityInsights.sln'
     inputs:
@@ -286,9 +295,6 @@ jobs:
       configuration: release
       rerunFailedTests: true
       testFiltercriteria: 'TestCategory!=NoStrongName'
-
-  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload (BinSkim)'
