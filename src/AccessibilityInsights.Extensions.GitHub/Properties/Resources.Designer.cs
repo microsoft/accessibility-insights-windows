@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class Resources {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AccessibilityInsights.Extensions.GitHub.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to [a-zA-Z0-9].
         /// </summary>
-        public static string AlphaNumricPattern {
+        internal static string AlphaNumricPattern {
             get {
                 return ResourceManager.GetString("AlphaNumricPattern", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to GitHub.
         /// </summary>
-        public static string extensionName {
+        internal static string extensionName {
             get {
                 return ResourceManager.GetString("extensionName", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}/issues/new?title={1}&amp;body={2}.
         /// </summary>
-        public static string FormattedLink {
+        internal static string FormattedLink {
             get {
                 return ResourceManager.GetString("FormattedLink", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to (https:/*github.com/*|https:/*www.github.com/*|www.github.com/*).
         /// </summary>
-        public static string GitHubLink {
+        internal static string GitHubLink {
             get {
                 return ResourceManager.GetString("GitHubLink", resourceCulture);
             }
@@ -99,7 +99,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Invalid GitHub Link Format!.
         /// </summary>
-        public static string InvalidLink {
+        internal static string InvalidLink {
             get {
                 return ResourceManager.GetString("InvalidLink", resourceCulture);
             }
@@ -108,7 +108,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^{0}/+{1}/+{2}$.
         /// </summary>
-        public static string LinkPatttern {
+        internal static string LinkPatttern {
             get {
                 return ResourceManager.GetString("LinkPatttern", resourceCulture);
             }
@@ -125,7 +125,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         ///
         ///**How To Fix:** [].
         /// </summary>
-        public static string NoFailureIssueBody {
+        internal static string NoFailureIssueBody {
             get {
                 return ResourceManager.GetString("NoFailureIssueBody", resourceCulture);
             }
@@ -134,7 +134,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ({0}/{1}) has an accessibility issue that needs investigation.
         /// </summary>
-        public static string NoFailureIssueTitle {
+        internal static string NoFailureIssueTitle {
             get {
                 return ResourceManager.GetString("NoFailureIssueTitle", resourceCulture);
             }
@@ -143,7 +143,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://github.com/owner/repo.
         /// </summary>
-        public static string PlaceHolder {
+        internal static string PlaceHolder {
             get {
                 return ResourceManager.GetString("PlaceHolder", resourceCulture);
             }
@@ -152,7 +152,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ({0}?[_]?[-]?[.]?)+.
         /// </summary>
-        public static string RepoNamePattern {
+        internal static string RepoNamePattern {
             get {
                 return ResourceManager.GetString("RepoNamePattern", resourceCulture);
             }
@@ -161,7 +161,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ...
         /// </summary>
-        public static string RepoNameSpecialCasesDoubleDot {
+        internal static string RepoNameSpecialCasesDoubleDot {
             get {
                 return ResourceManager.GetString("RepoNameSpecialCasesDoubleDot", resourceCulture);
             }
@@ -180,7 +180,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         ///
         ///This accessibility issue was found using Accessibility Insights for Windows, a tool that helps debug and find accessibility issues earlier. Get more information and download this tool at https://aka.ms/AccessibilityInsights..
         /// </summary>
-        public static string SingleFailureIssueBody {
+        internal static string SingleFailureIssueBody {
             get {
                 return ResourceManager.GetString("SingleFailureIssueBody", resourceCulture);
             }
@@ -189,7 +189,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}: ({1}/{2}) {3}.
         /// </summary>
-        public static string SingleFailureIssueTitle {
+        internal static string SingleFailureIssueTitle {
             get {
                 return ResourceManager.GetString("SingleFailureIssueTitle", resourceCulture);
             }
@@ -198,7 +198,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enter desired GitHub repo link.
         /// </summary>
-        public static string tbURLPlaceHolder {
+        internal static string tbURLPlaceHolder {
             get {
                 return ResourceManager.GetString("tbURLPlaceHolder", resourceCulture);
             }
@@ -207,7 +207,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to {0}+([-]{0}+)*.
         /// </summary>
-        public static string UserNamePattern {
+        internal static string UserNamePattern {
             get {
                 return ResourceManager.GetString("UserNamePattern", resourceCulture);
             }
