@@ -21,9 +21,9 @@
         <TextBlock x:Name="connectionInstr" Grid.Row="0" TextWrapping="Wrap" Margin="0 9px" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Focusable="True" >
             <TextBlock.Inlines>
                 <!-- comments here are to avoid space insertion between runs -->
-                <Run Text="{x:Static Properties:Resources.tbURLPlaceHolder1}" /><!--
-                --><Run FontStyle="Italic" Text="{x:Static Properties:Resources.PlaceHolder}" /><!--
-                --><Run Text="{x:Static Properties:Resources.tbURLPlaceHolder2}" />
+                <Run Text="{x:Static Properties:Resources.RepoLinkDescriptionPrefix}" /><!--
+                --><Run FontStyle="Italic" Text="{x:Static Properties:Resources.RepoLinkDescriptionItalicized}" /><!--
+                --><Run Text="{x:Static Properties:Resources.RepoLinkDescriptionSuffix}" />
             </TextBlock.Inlines>
         </TextBlock>
         <Grid Grid.Row="1" HorizontalAlignment="Left" >

@@ -152,9 +152,9 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to https://github.com/owner/repo.
         /// </summary>
-        public static string PlaceHolder {
+        public static string RepoLinkDescriptionItalicized {
             get {
-                return ResourceManager.GetString("PlaceHolder", resourceCulture);
+                return ResourceManager.GetString("RepoLinkDescriptionItalicized", resourceCulture);
             }
         }
         
@@ -207,20 +207,20 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Enter desired GitHub repo link (example: .
         /// </summary>
-        public static string tbURLPlaceHolder1 {
+        public static string RepoLinkDescriptionPrefix {
             get {
-                return ResourceManager.GetString("tbURLPlaceHolder1", resourceCulture);
+                return ResourceManager.GetString("RepoLinkDescriptionPrefix", resourceCulture);
             }
         }
 
         /// <summary>
         ///   Looks up a localized string similar to ).
         /// </summary>
-        public static string tbURLPlaceHolder2
+        public static string RepoLinkDescriptionSuffix
         {
             get
             {
-                return ResourceManager.GetString("tbURLPlaceHolder2", resourceCulture);
+                return ResourceManager.GetString("RepoLinkDescriptionSuffix", resourceCulture);
             }
         }
 
