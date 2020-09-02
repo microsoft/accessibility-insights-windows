@@ -1380,7 +1380,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Learn more about Inspect.</value>
   </data>
   <data name="ColorContrast_AutoDetectGuidance" xml:space="preserve">
-    <value>When you enable auto-detection of color contrast ratios, you can detect color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
+    <value>Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
   </data>
   <data name="ADO_URL_Fromat_Message" xml:space="preserve">
     <value>URL format is not valid. Example URL: https://dev.azure.com/fabrikam</value>

@@ -729,7 +729,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to When you enable auto-detection of color contrast ratios, you can detect color contrast ratios by hovering over an element or setting the keyboard focus on it..
+        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
         /// </summary>
         public static string ColorContrast_AutoDetectGuidance {
             get {
