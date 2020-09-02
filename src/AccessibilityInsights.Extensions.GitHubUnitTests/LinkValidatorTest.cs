@@ -1,10 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using AccessibilityInsights.Extensions.GitHub;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace AccessibilityInsights.Extensions.GitHub
+namespace AccessibilityInsights.Extensions.GitHubUnitTests
 {
     [TestClass]
     public class LinkValidatorTest
