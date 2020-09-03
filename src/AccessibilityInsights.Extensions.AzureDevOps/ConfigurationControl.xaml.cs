@@ -273,7 +273,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 catch (Exception e)
                 {
                     e.ReportException();
-                    Dispatcher.BeginInvoke(new Action(() => MessageDialog.Show("Error when retrieving team projects"))); // not awaiting, dispatcher suspended when connect, disconnect, re-initialize
+                    Dispatcher.Invoke(new Action(() => MessageDialog.Show("Error when retrieving team projects"))); // have seen crash bc 'dispatcher is suspended', looking for repro
                     ToggleLoading(false);
                     disconnectButton_Click(null, null);
                 }
