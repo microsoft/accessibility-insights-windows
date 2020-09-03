@@ -29,15 +29,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             this.Operation = operation;
         }
 
-        private async void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                await Operation().ConfigureAwait(true);
-            }
-            catch (BrowserFlowException)
-            {
-                /* if window closed w external window around:
+        /* ADO window from HandleLoginAsync throws if this window is closed while the other is up
              Microsoft.VisualStudio.Services.Client.Controls.BrowserFlowException
   HResult=0x80131600
   Message=SP324098: Your browser could not complete the operation.
@@ -56,13 +48,11 @@ InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to 
 
              
              */
-            }
-            this.Close();
-        }
 
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+            await Operation().ConfigureAwait(true);
+            this.Close();
         }
     }
 }
