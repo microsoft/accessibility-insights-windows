@@ -1,11 +1,12 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.Extensions.GitHub;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Globalization;
 
-namespace AccessibilityInsights.Extensions.GitHub
+namespace AccessibilityInsights.Extensions.GitHubUnitTests
 {
     [TestClass]
     public class IssueFormatterTest
@@ -50,7 +51,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private string GetLink(string link, IIssueFormatter formatter)
         {
-            string FormattedURL = string.Format(CultureInfo.InvariantCulture, Properties.Resources.FormattedLink,
+            string FormattedURL = string.Format(CultureInfo.InvariantCulture, GitHub.Properties.Resources.FormattedLink,
                link,
                formatter.GetFormattedTitle(),
                formatter.GetFormattedBody());
