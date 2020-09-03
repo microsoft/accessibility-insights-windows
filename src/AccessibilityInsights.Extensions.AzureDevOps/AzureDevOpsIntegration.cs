@@ -9,12 +9,14 @@ using Microsoft.TeamFoundation.Work.WebApi;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi;
 using Microsoft.TeamFoundation.WorkItemTracking.WebApi.Models;
 using Microsoft.VisualStudio.Services.Client;
+using Microsoft.VisualStudio.Services.Client.Controls;
 using Microsoft.VisualStudio.Services.Common;
 using Microsoft.VisualStudio.Services.Profile;
 using Microsoft.VisualStudio.Services.Profile.Client;
 using Microsoft.VisualStudio.Services.WebApi;
 using Microsoft.VisualStudio.Services.WebApi.Patch;
 using Microsoft.VisualStudio.Services.WebApi.Patch.Json;
+using mshtml;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -23,6 +25,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Interop;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
@@ -84,6 +87,18 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         private const string BASE_VSO_URL = "https://app.vssps.visualstudio.com";
         #endregion
+
+        internal class DialogHost : IDialogHost
+        {
+#pragma warning disable CS1998 // Async method lacks 'await' operators and will run synchronously
+            public async Task<bool?> InvokeDialogAsync(InvokeDialogFunc showDialog, object state)
+#pragma warning restore CS1998 // Async method lacks 'await' operators and will run synchronously
+            {
+                var window = Application.Current.Windows.OfType<LoadingWindow>().FirstOrDefault() ?? Application.Current.MainWindow;
+                var ptr = new WindowInteropHelper(window).Handle;
+                return showDialog(ptr, state);
+            }
+        }
 
         #region IssueFiling
         /// <summary>

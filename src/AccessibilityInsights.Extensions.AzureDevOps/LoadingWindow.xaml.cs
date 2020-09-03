@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.Services.Client.Controls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +31,32 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            await Operation().ConfigureAwait(true);
+            try
+            {
+                await Operation().ConfigureAwait(true);
+            }
+            catch (BrowserFlowException)
+            {
+                /* if window closed w external window around:
+             Microsoft.VisualStudio.Services.Client.Controls.BrowserFlowException
+  HResult=0x80131600
+  Message=SP324098: Your browser could not complete the operation.
+  Source=Microsoft.VisualStudio.Services.Client.Interactive
+  StackTrace:
+   at Microsoft.VisualStudio.Services.Client.Controls.VssFederatedCredentialPrompt.InvokeDialog(IntPtr owner, Object state)
+   at Microsoft.VisualStudio.Services.Client.Controls.DialogHost.<>c__DisplayClass0_1.<InvokeDialogAsync>b__0()
+   at System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart()
+
+Inner Exception 1:
+InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to interface type 'IInternetSession'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{79EAC9E7-BAF9-11CE-8C82-00AA004BA90B}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+
+             
+             */
+            }
             this.Close();
         }
 
