@@ -440,13 +440,13 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void mniShowAncestry_Click(object sender, RoutedEventArgs e)
         {
+            SetFocusOnHierarchyTree();
             Configuration.ShowAncestry = this.mniShowAncestry.IsChecked;
             if (this.SelectedElement != null)
             {
                 var dic = new Dictionary<string, string>();
                 this.HierarchyActions.RefreshHierarchy(false);
             }
-            SetFocusOnHierarchyTree();
         }
 
         /// <summary>
@@ -458,7 +458,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void mniShowAncestry_Loaded(object sender, RoutedEventArgs e)
         {
             ((MenuItem)sender).IsChecked = Configuration.ShowAncestry;
-            SetFocusOnHierarchyTree();
         }
         #endregion
 
@@ -644,13 +643,13 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             Configuration.TreeViewMode = mode;
             SetTreeViewModeOnSelectAction(mode);
+            SetFocusOnHierarchyTree();
 
             if (this.SelectedElement != null)
             {
                 // refresh tree automatically.
                 this.HierarchyActions.RefreshHierarchy(true);
             }
-            SetFocusOnHierarchyTree();
         }
 
         private static void SetTreeViewModeOnSelectAction(TreeViewMode mode)
