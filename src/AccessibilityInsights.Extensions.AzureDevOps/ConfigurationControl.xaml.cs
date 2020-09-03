@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.Services.Common;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -153,6 +154,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     else
                     {
                         ToggleLoading(false);
+                        Dispatcher.Invoke(() => MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
+                            Properties.Resources.UnableToConnectFormattedMessage, serverUri.ToString())));
                         Dispatcher.Invoke(ServerComboBox.Focus);
                     }
                 }
