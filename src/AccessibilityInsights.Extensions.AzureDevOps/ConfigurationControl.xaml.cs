@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -25,7 +26,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     {
         // This code can't be in a ctor due to initialization order
         private static IDevOpsIntegration AzureDevOps => AzureBoardsIssueReporting.DevOpsIntegration;
-
+        private LoadingWindow loadingWindow { get; set; }
         public ConfigurationControl()
         {
             InitializeComponent();
@@ -133,7 +134,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void NextButton_Click(object sender, RoutedEventArgs e)
+        private void NextButton_Click(object sender, RoutedEventArgs e)
         {
             if (InteractionAllowed)
             {
@@ -142,8 +143,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     var serverUri = ToUri(ServerComboBox.Text);
 
                     // block clicking "next" until login request is done
-                    ToggleLoading(true);
-                    await AzureDevOps.HandleLoginAsync(CredentialPromptType.PromptIfNeeded, serverUri).ConfigureAwait(false);
+                    ToggleLoading(true, () => Task.Run(async () => {
+                        await AzureDevOps.HandleLoginAsync(CredentialPromptType.PromptIfNeeded, serverUri).ConfigureAwait(false);
+                    }));
 
                     if (AzureDevOps.ConnectedToAzureDevOps)
                     {
@@ -233,7 +235,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Switch screens in this connection config view
         /// </summary>
         /// <param name="state"></param>
-        private async void ChangeStates(ControlState state)
+        private void ChangeStates(ControlState state)
         {
             VMConfig.Avatar = AzureDevOps.Avatar;
             VMConfig.DisplayName = AzureDevOps.DisplayName;
@@ -245,10 +247,25 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 // Load the team project list, show progress animation
                 try
                 {
-                    ToggleLoading(true);
                     Dispatcher.Invoke(projects.Clear);
-                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
-                    newProjectList.ForEach(p => projects.Add(p));
+
+                    // If the main window is always on top, then an error occurs where
+                    //  the login dialog is not a child of the main window, so we temporarily
+                    //  turn topmost off and turn it back on after logging in
+                    bool oldTopmost = false;
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
+                        oldTopmost = Application.Current.MainWindow.Topmost;
+                        Application.Current.MainWindow.Topmost = false;
+                    });
+
+                    ToggleLoading(true, () => Task.Run(async () =>
+                    {
+                        var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
+                        Dispatcher.Invoke(() => newProjectList.ForEach(p => projects.Add(p)));
+                    }));
+
+                    Application.Current.Dispatcher.Invoke(() => Application.Current.MainWindow.Topmost = oldTopmost);
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
@@ -256,7 +273,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 catch (Exception e)
                 {
                     e.ReportException();
-                    Dispatcher.Invoke(() => MessageDialog.Show("Error when retrieving team projects"));
+                    Dispatcher.BeginInvoke(new Action(() => MessageDialog.Show("Error when retrieving team projects"))); // not awaiting, dispatcher suspended when connect, disconnect, re-initialize
                     ToggleLoading(false);
                     disconnectButton_Click(null, null);
                 }
@@ -356,13 +373,21 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Toggle whether the progress circle is visible and if user can click on "disconnect", etc
         /// </summary>
         /// <param name="starting">whether to start blocking (true) or stop blocking (false)</param>
-        private void ToggleLoading(bool starting)
+        private void ToggleLoading(bool starting, Func<Task> operation = null)
         {
             InteractionAllowed = !starting;
             Dispatcher.Invoke(() =>
             {
-                this.ctrlProgressRing.IsActive = starting;
-                this.IsEnabled = InteractionAllowed;
+                if (starting)
+                {
+                    loadingWindow = new LoadingWindow(Application.Current.MainWindow, operation);
+                    loadingWindow.ShowDialog();
+                }
+                else
+                {
+                    loadingWindow.Close();
+                    loadingWindow = null;
+                }
             });
         }
 
