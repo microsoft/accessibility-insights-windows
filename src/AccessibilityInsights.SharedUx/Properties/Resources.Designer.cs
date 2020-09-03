@@ -332,24 +332,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File a bug.
-        /// </summary>
-        public static string btnFileBugAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnFileBugAutomationPropertiesName1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File a bug.
-        /// </summary>
-        public static string btnFileBugAutomationPropertiesNameTargetValue {
-            get {
-                return ResourceManager.GetString("btnFileBugAutomationPropertiesNameTargetValue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File issue.
         /// </summary>
         public static string btnFileIssueContent {
@@ -727,15 +709,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
                 return ResourceManager.GetString("CCALink", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
-        /// </summary>
-        public static string ColorContrast_AutoDetectGuidance {
-            get {
-                return ResourceManager.GetString("ColorContrast_AutoDetectGuidance", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Do not change channel.
@@ -880,6 +853,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorChooserAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("ColorChooserAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
+        /// </summary>
+        public static string ColorContrast_AutoDetectGuidance {
+            get {
+                return ResourceManager.GetString("ColorContrast_AutoDetectGuidance", resourceCulture);
             }
         }
         

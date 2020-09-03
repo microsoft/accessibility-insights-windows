@@ -113,16 +113,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
                 return ResourceManager.GetString("LinkPatttern", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Repo link.
-        /// </summary>
-        public static string RepoLinkAutomationName {
-            get {
-                return ResourceManager.GetString("RepoLinkAutomationName", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The following accessibility issue needs investigation.
         ///
@@ -150,11 +141,38 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Repo link.
+        /// </summary>
+        public static string RepoLinkAutomationName {
+            get {
+                return ResourceManager.GetString("RepoLinkAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to https://github.com/owner/repo.
         /// </summary>
         public static string RepoLinkDescriptionItalicized {
             get {
                 return ResourceManager.GetString("RepoLinkDescriptionItalicized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter desired GitHub repo link (example: .
+        /// </summary>
+        public static string RepoLinkDescriptionPrefix {
+            get {
+                return ResourceManager.GetString("RepoLinkDescriptionPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        public static string RepoLinkDescriptionSuffix {
+            get {
+                return ResourceManager.GetString("RepoLinkDescriptionSuffix", resourceCulture);
             }
         }
         
@@ -204,26 +222,6 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
             }
         }
         
-        /// <summary>
-        ///   Looks up a localized string similar to Enter desired GitHub repo link (example: .
-        /// </summary>
-        public static string RepoLinkDescriptionPrefix {
-            get {
-                return ResourceManager.GetString("RepoLinkDescriptionPrefix", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to ).
-        /// </summary>
-        public static string RepoLinkDescriptionSuffix
-        {
-            get
-            {
-                return ResourceManager.GetString("RepoLinkDescriptionSuffix", resourceCulture);
-            }
-        }
-
         /// <summary>
         ///   Looks up a localized string similar to {0}+([-]{0}+)*.
         /// </summary>

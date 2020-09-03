@@ -3,7 +3,7 @@
 <Application x:Class="AccessibilityInsights.VersionSwitcher.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:VersionSwitcher"
+             xmlns:local="clr-namespace:AccessibilityInsights.VersionSwitcher"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

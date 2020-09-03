@@ -826,6 +826,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem updating the application. Please check your internet connection and try again..
+        /// </summary>
+        public static string OptionalUpdateFailedUnknown {
+            get {
+                return ResourceManager.GetString("OptionalUpdateFailedUnknown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Panes can be set only once.
         /// </summary>
         public static string PanesCanBeSetOnlyOnce {
@@ -867,6 +876,15 @@ namespace AccessibilityInsights.Properties {
         public static string ReleaseNotes_ClickURLErrorMessage {
             get {
                 return ResourceManager.GetString("ReleaseNotes_ClickURLErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was a problem updating the application. Because this is a required update, the app will be shut down. Please check your internet connection and try again..
+        /// </summary>
+        public static string RequiredUpdateFailedUnknown {
+            get {
+                return ResourceManager.GetString("RequiredUpdateFailedUnknown", resourceCulture);
             }
         }
         
