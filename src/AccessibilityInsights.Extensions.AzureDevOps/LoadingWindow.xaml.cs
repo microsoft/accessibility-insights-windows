@@ -30,17 +30,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         private async void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                await Operation().ConfigureAwait(true);
-                this.DialogResult = true; // crash in case dialog closed before this(?)
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception)
-#pragma warning restore CA1031 // Do not catch general exception types
-            {
-                this.DialogResult = false;
-            }
+            await Operation().ConfigureAwait(true);
             this.Close();
         }
 
