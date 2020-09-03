@@ -214,5 +214,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
                         "not_been_uploaded", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to connect to &apos;{0}&apos;. Please confirm that you have entered the correct Azure Boards link..
+        /// </summary>
+        public static string UnableToConnectFormattedMessage {
+            get {
+                return ResourceManager.GetString("UnableToConnectFormattedMessage", resourceCulture);
+            }
+        }
     }
 }
