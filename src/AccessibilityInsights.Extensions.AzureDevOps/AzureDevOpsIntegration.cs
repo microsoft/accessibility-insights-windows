@@ -174,7 +174,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 return null;
             }
-            /* Microsoft.VisualStudio.Services.Common.VssAuthenticationException: 'We were unable to establish the connection because it is configured for user Anonymous but you attempted to connect using user Karanbir Singh. To connect as a different user perform a switch user operation. To connect with the configured identity just attempt the last operation again.' */
             ProjectHttpClient proClient = _baseServerConnection.GetClient<ProjectHttpClient>();
             var projects = new List<TeamProjectReference>();
             var newElementsReturned = 0;
