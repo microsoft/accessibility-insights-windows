@@ -280,19 +280,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Handles hyperlink click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
-        {
-            if (!String.IsNullOrEmpty(e.Uri.OriginalString))
-            {
-                Process.Start(e.Uri.ToString());
-            }
-        }
-
-        /// <summary>
         /// Sets element context and updates UI
         /// </summary>
         /// <param name="ec"></param>
@@ -871,11 +858,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
             else if (e.Key == Key.Left)
             {
-                if (Keyboard.FocusedElement is Hyperlink)
-                {
-                    gi.Focus();
-                }
-                else if (exp.IsExpanded)
+                if (exp.IsExpanded)
                 {
                     exp.IsExpanded = false;
                 }
