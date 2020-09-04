@@ -600,11 +600,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
                 e.Handled = true;
             }
-            else if (e.Key == Key.Return && Keyboard.FocusedElement is ListViewItem)
-            {
-                var btn = GetFirstChildElement<Button>(sender as DependencyObject) as Button;
-                ButtonElem_Click(btn, e);
-            }
         }
 
         /// <summary>
@@ -864,7 +859,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             var gi = sender as GroupItem;
             var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            var urlLink = FindChildren<Label>(sp).FirstOrDefault(obj => obj.Content is Hyperlink).Content as Hyperlink;
             var exp = GetParentElem<Expander>(sp) as Expander;
 
             if (e.Key == Key.Right)
@@ -872,10 +866,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (!exp.IsExpanded)
                 {
                     exp.IsExpanded = true;
-                }
-                else
-                {
-                    urlLink?.Focus();
                 }
                 e.Handled = true;
             }
@@ -892,19 +882,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 e.Handled = true;
             }
-            else if (e.Key == Key.Space && Keyboard.FocusedElement == sender)
+            else if ((e.Key == Key.Space || e.Key == Key.Enter) && Keyboard.FocusedElement == sender)
             {
                 var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 cb.IsChecked = !cb.IsChecked ?? false;
                 CheckBox_Click(cb, null);
                 e.Handled = true;
-            }
-            else if (e.Key == Key.Enter && Keyboard.FocusedElement == sender)
-            {
-                if (urlLink != null)
-                {
-                    Hyperlink_RequestNavigate(urlLink, new RequestNavigateEventArgs(urlLink.NavigateUri, null));
-                }
             }
             else if (e.Key == Key.Down)
             {

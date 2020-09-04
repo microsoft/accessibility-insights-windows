@@ -255,13 +255,12 @@
                                         <Setter.Value>
                                             <MultiBinding StringFormat="{x:Static Properties:Resources.lvResultsListViewAutomationPropertiesName}">
                                                 <Binding Path="Items[0].Description"/>
-                                                <Binding Path="Items[0].Source"/>
                                                 <Binding Path="ItemCount"/>
                                                 <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
-                                    <Setter Property="AutomationProperties.HelpText" Value="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsListViewHelpText}'}"/>
+                                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.lvResultsListViewHelpText}" />
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
@@ -270,15 +269,6 @@
                                                     <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
-                                                            <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" 
-                                                                   VerticalAlignment="Center" FontWeight="SemiBold"
-                                                                   AutomationProperties.Name="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsLabelAutomationPropertiesName}'}">
-                                                                <Hyperlink KeyboardNavigation.IsTabStop="False" NavigateUri="{Binding Path=Items[0].URL}"
-                                                                           RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Style="{StaticResource hLink}"
-                                                                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                                                                    <Run Text="{Binding Mode=OneWay,Path=Items[0].Source}"/>
-                                                                </Hyperlink>
-                                                            </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
                                                             <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />

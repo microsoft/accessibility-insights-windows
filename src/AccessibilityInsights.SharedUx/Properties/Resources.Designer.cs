@@ -2503,16 +2503,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open link to {0} rule information.
-        /// </summary>
-        public static string lvResultsLabelAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("lvResultsLabelAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {2} errors - {0}, rule from {1}, {3} children highlighted.
+        ///   Looks up a localized string similar to {1} errors - {0}, {2} children highlighted.
         /// </summary>
         public static string lvResultsListViewAutomationPropertiesName {
             get {
@@ -2521,7 +2512,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Press right arrow key to expand, enter to view {0} in browser, or space to toggle children highlighting.
+        ///   Looks up a localized string similar to Press right arrow key to expand, enter or space to toggle children highlighting.
         /// </summary>
         public static string lvResultsListViewHelpText {
             get {
