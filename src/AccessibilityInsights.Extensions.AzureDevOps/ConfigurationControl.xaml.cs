@@ -251,7 +251,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     ToggleLoading(true);
                     Dispatcher.Invoke(projects.Clear);
                     var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
-                    newProjectList.ForEach(p => projects.Add(p));
+                    Dispatcher.Invoke(() => newProjectList.ForEach(p => projects.Add(p)));
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
                 }
@@ -265,7 +265,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
 
-                FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed);
+                Dispatcher.Invoke(() => FireAsyncContentLoadedEvent(AsyncContentLoadedState.Completed));
             }
             else if (state == ControlState.HasServer)
             {
