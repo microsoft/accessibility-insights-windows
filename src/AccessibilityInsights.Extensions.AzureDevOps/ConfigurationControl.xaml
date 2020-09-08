@@ -154,7 +154,8 @@
                                    Size="25"  
                                    Visibility="Collapsed"
                                    HorizontalAlignment="Center" 
-                                   VerticalAlignment="Center" Grid.RowSpan="5">
+                                   VerticalAlignment="Center" Grid.RowSpan="5"
+                                   AutomationProperties.LiveSetting="Assertive">
         </fabric:ProgressRingControl>
     </Grid>
 </issuereporting:IssueConfigurationControl>
