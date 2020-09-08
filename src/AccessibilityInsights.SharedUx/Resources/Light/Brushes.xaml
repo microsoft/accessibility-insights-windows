@@ -28,7 +28,8 @@
     </LinearGradientBrush>
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryFGBrush" Color="#6E6E6E"/>
-    <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="BubbleFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
