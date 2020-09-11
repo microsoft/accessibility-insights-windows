@@ -254,6 +254,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     Dispatcher.Invoke(() => newProjectList.ForEach(p => projects.Add(p)));
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
+                    Dispatcher.Invoke(() => serverTreeview.Focus());
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)
@@ -365,6 +366,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             Dispatcher.Invoke(() =>
             {
                 this.ctrlProgressRing.IsActive = starting;
+                if (starting)
+                {
+                    var peer = FrameworkElementAutomationPeer.FromElement(ctrlProgressRing);
+                    if (peer != null)
+                    {
+                        peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+                    }
+                }
                 this.IsEnabled = InteractionAllowed;
             });
         }
