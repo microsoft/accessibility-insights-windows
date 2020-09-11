@@ -169,7 +169,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Team project.
+        ///   Looks up a localized string similar to Select team project.
         /// </summary>
         public static string serverTreeviewAutomationPropertiesName {
             get {
@@ -221,6 +221,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         public static string UnableToConnectFormattedMessage {
             get {
                 return ResourceManager.GetString("UnableToConnectFormattedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waiting to connect to Azure Boards.
+        /// </summary>
+        public static string WaitingToConnect {
+            get {
+                return ResourceManager.GetString("WaitingToConnect", resourceCulture);
             }
         }
     }

@@ -156,7 +156,7 @@
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center" Grid.RowSpan="5"
                                    AutomationProperties.LiveSetting="Assertive"
-                                   AutomationProperties.Name="Waiting to connect to Azure Boards">
+                                   AutomationProperties.Name="{x:Static Properties:Resources.WaitingToConnect}">
         </fabric:ProgressRingControl>
     </Grid>
 </issuereporting:IssueConfigurationControl>

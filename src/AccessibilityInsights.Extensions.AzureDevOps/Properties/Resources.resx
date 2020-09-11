@@ -151,7 +151,7 @@
     <value>Select your Azure Boards team</value>
   </data>
   <data name="serverTreeviewAutomationPropertiesName" xml:space="preserve">
-    <value>Team project</value>
+    <value>Select team project</value>
   </data>
   <data name="ConnectionControl_selectTeam" xml:space="preserve">
     <value>Select your Azure Boards team</value>
@@ -171,5 +171,8 @@
   <data name="UnableToConnectFormattedMessage" xml:space="preserve">
     <value>Unable to connect to '{0}'. Please confirm that you have entered the correct Azure Boards link.</value>
     <comment>{0} is the server Uri</comment>
+  </data>
+  <data name="WaitingToConnect" xml:space="preserve">
+    <value>Waiting to connect to Azure Boards</value>
   </data>
 </root>
