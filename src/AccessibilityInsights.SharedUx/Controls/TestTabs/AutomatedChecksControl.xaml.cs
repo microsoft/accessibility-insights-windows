@@ -280,15 +280,17 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Handles hyperlink click
+        /// Handles click on source link button
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        private void btnSourceLink_Click(object sender, RoutedEventArgs e)
         {
-            if (!String.IsNullOrEmpty(e.Uri.OriginalString))
+            var vm = ((Button)sender).Tag as RuleResultViewModel;
+            string urlToLaunch = vm?.URL?.ToString();
+            if (!string.IsNullOrEmpty(urlToLaunch))
             {
-                Process.Start(e.Uri.ToString());
+                Process.Start(urlToLaunch);
             }
         }
 
@@ -864,7 +866,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             var gi = sender as GroupItem;
             var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            var urlLink = FindChildren<Label>(sp).FirstOrDefault(obj => obj.Content is Hyperlink).Content as Hyperlink;
             var exp = GetParentElem<Expander>(sp) as Expander;
 
             if (e.Key == Key.Right)
@@ -873,38 +874,23 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     exp.IsExpanded = true;
                 }
-                else
-                {
-                    urlLink?.Focus();
-                }
                 e.Handled = true;
             }
             else if (e.Key == Key.Left)
             {
-                if (Keyboard.FocusedElement is Hyperlink)
-                {
-                    gi.Focus();
-                }
-                else if (exp.IsExpanded)
+                if (exp.IsExpanded)
                 {
                     exp.IsExpanded = false;
                 }
 
                 e.Handled = true;
             }
-            else if (e.Key == Key.Space && Keyboard.FocusedElement == sender)
+            else if ((e.Key == Key.Space || e.Key == Key.Enter) && Keyboard.FocusedElement == sender)
             {
                 var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 cb.IsChecked = !cb.IsChecked ?? false;
                 CheckBox_Click(cb, null);
                 e.Handled = true;
-            }
-            else if (e.Key == Key.Enter && Keyboard.FocusedElement == sender)
-            {
-                if (urlLink != null)
-                {
-                    Hyperlink_RequestNavigate(urlLink, new RequestNavigateEventArgs(urlLink.NavigateUri, null));
-                }
             }
             else if (e.Key == Key.Down)
             {
