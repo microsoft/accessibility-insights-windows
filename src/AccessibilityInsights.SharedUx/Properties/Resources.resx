@@ -388,10 +388,10 @@
     <value>Highlight elements</value>
   </data>
   <data name="lvResultsListViewAutomationPropertiesName" xml:space="preserve">
-    <value>{2} errors - {0}, rule from {1}, {3} children highlighted</value>
+    <value>{1} errors - {0}, {2} children highlighted</value>
   </data>
   <data name="lvResultsListViewHelpText" xml:space="preserve">
-    <value>Press right arrow key to expand, enter to view {0} in browser, or space to toggle children highlighting</value>
+    <value>Press right arrow key to expand, enter or space to toggle children highlighting</value>
   </data>
   <data name="lvResultsLabelAutomationPropertiesName" xml:space="preserve">
     <value>Open link to {0} rule information</value>
@@ -1526,5 +1526,11 @@ Do you want to change the channel? </value>
   </data>
   <data name="StartupModeControl_shortcutsDescription" xml:space="preserve">
     <value>These keystrokes are default, but you can customize your shortcut keystrokes in settings.</value>
+  </data>
+  <data name="AutomatedChecksControl_RuleSourceHelpText" xml:space="preserve">
+    <value>Press Enter or Space to view more information in browser</value>
+  </data>
+  <data name="AutomatedChecksControl_RuleSourceLabel" xml:space="preserve">
+    <value>Rule source</value>
   </data>
 </root>

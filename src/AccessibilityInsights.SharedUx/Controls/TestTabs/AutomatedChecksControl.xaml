@@ -124,7 +124,7 @@
                                 </local:CustomGridViewColumnHeader>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
-                                        <StackPanel Orientation="Horizontal" MinWidth="200">
+                                        <StackPanel Orientation="Horizontal" MinWidth="150">
                                             <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=BlueButtonBGBrush}" Margin="0,0,4,0" Visibility="{Binding Path=FileBugVisibility}" ShowInControlView="False"/>
                                             <Button Visibility="{Binding FileBugVisibility}" VerticalAlignment="Center" Tag="{Binding}"
                                                 Style="{StaticResource btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
@@ -151,6 +151,22 @@
                                                 </fabric:FabricIconControl.Triggers>
                                             </fabric:FabricIconControl>
                                         </StackPanel>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Width="Auto">
+                                <local:CustomGridViewColumnHeader Style="{StaticResource gvchAutomatedChecks}" Focusable="True">
+                                    <Label Visibility="{Binding BugColumnVisibility}" Content="{x:Static Properties:Resources.AutomatedChecksControl_RuleSourceLabel}" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
+                                </local:CustomGridViewColumnHeader>
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button VerticalAlignment="Center" Tag="{Binding}" MinWidth="200"
+                                                Style="{StaticResource btnLink}" Name="btnSourceLink" Click="btnSourceLink_Click"
+                                                Content="{Binding Path=Source}"
+                                                Focusable="True" IsTabStop="False" 
+                                                AutomationProperties.HelpText="{x:Static Properties:Resources.AutomatedChecksControl_RuleSourceHelpText}"
+                                                AutomationProperties.Name="{Binding Path=Source}">
+                                        </Button>
                                     </DataTemplate>
                                 </GridViewColumn.CellTemplate>
                             </GridViewColumn>
@@ -255,13 +271,12 @@
                                         <Setter.Value>
                                             <MultiBinding StringFormat="{x:Static Properties:Resources.lvResultsListViewAutomationPropertiesName}">
                                                 <Binding Path="Items[0].Description"/>
-                                                <Binding Path="Items[0].Source"/>
                                                 <Binding Path="ItemCount"/>
                                                 <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
-                                    <Setter Property="AutomationProperties.HelpText" Value="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsListViewHelpText}'}"/>
+                                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.lvResultsListViewHelpText}"/>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
@@ -273,11 +288,6 @@
                                                             <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" 
                                                                    VerticalAlignment="Center" FontWeight="SemiBold"
                                                                    AutomationProperties.Name="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsLabelAutomationPropertiesName}'}">
-                                                                <Hyperlink KeyboardNavigation.IsTabStop="False" NavigateUri="{Binding Path=Items[0].URL}"
-                                                                           RequestNavigate="Hyperlink_RequestNavigate" TextDecorations="None" Style="{StaticResource hLink}"
-                                                                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                                                                    <Run Text="{Binding Mode=OneWay,Path=Items[0].Source}"/>
-                                                                </Hyperlink>
                                                             </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
                                                             <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
