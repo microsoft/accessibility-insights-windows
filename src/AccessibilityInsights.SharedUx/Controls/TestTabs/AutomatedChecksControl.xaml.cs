@@ -878,11 +878,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
             else if (e.Key == Key.Left)
             {
-                if (Keyboard.FocusedElement is Hyperlink)
-                {
-                    gi.Focus();
-                }
-                else if (exp.IsExpanded)
+                if (exp.IsExpanded)
                 {
                     exp.IsExpanded = false;
                 }

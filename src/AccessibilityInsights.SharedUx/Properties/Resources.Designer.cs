@@ -2521,15 +2521,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open link to {0} rule information.
-        /// </summary>
-        public static string lvResultsLabelAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("lvResultsLabelAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to {1} errors - {0}, {2} children highlighted.
         /// </summary>
         public static string lvResultsListViewAutomationPropertiesName {

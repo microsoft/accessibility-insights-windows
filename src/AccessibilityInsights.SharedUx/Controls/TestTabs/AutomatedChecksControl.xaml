@@ -285,10 +285,6 @@
                                                     <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
-                                                            <Label Margin="4,0,0,0" Padding="0" Style="{StaticResource lblLink}" 
-                                                                   VerticalAlignment="Center" FontWeight="SemiBold"
-                                                                   AutomationProperties.Name="{Binding Path=Items[0].Source, StringFormat='{x:Static Properties:Resources.lvResultsLabelAutomationPropertiesName}'}">
-                                                            </Label>
                                                             <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
                                                             <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />

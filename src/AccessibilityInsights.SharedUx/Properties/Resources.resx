@@ -393,9 +393,6 @@
   <data name="lvResultsListViewHelpText" xml:space="preserve">
     <value>Press right arrow key to expand, enter or space to toggle children highlighting</value>
   </data>
-  <data name="lvResultsLabelAutomationPropertiesName" xml:space="preserve">
-    <value>Open link to {0} rule information</value>
-  </data>
   <data name="lblCongratsContent" xml:space="preserve">
     <value>Congratulations</value>
   </data>
