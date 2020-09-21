@@ -81,7 +81,7 @@
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledFGBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -137,7 +137,7 @@
                             <Setter Property="Background" Value="{DynamicResource ResourceKey=ButtonHoverBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledFGBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -166,7 +166,7 @@
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledFGBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -1081,7 +1081,7 @@
             </Trigger>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledFGBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -1511,5 +1511,33 @@
         </Setter>
         <Setter Property="MinWidth" Value="2"/>
         <Setter Property="Width" Value="410"/>
+    </Style>
+    <Style TargetType="{x:Type Grid}" x:Key="gridPartialOpacityWhenDisabled">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value=".3"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="tbUseDisabledFGBrush">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonDisabledFGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="tbPrimaryFGBrushWithDisabledFGBrush" BasedOn="{StaticResource tbUseDisabledFGBrush}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="tbButtonLinkFGBrushWithDisabledFGBrush" BasedOn="{StaticResource tbUseDisabledFGBrush}">
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 </ResourceDictionary>
