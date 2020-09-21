@@ -93,15 +93,6 @@
             <TextBlock x:Name="selectedTeamText" Grid.Row="1" FontStyle="Italic" HorizontalAlignment="Left" FontSize="{DynamicResource StandardTextSize}"></TextBlock>
         </Grid>
         <Grid x:Name="selectTeamGrid" Visibility="{Binding SelectTeamGridVisibility}" IsEnabled="{Binding IsSelectTeamGridEnabled}" Grid.Row="4" Margin="0px 0px 24px 12px">
-            <Grid.Style>
-                <Style TargetType="Grid">
-                    <Style.Triggers>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" Value=".3"/>
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Grid.Style>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -113,23 +104,23 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0" Text="{x:Static Properties:Resources.ConnectionControl_selectTeam}" Margin="0 4px"
-                           TextWrapping="Wrap" FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                           TextWrapping="Wrap" FontSize="{DynamicResource StandardTextSize}" Style="{DynamicResource ResourceKey=tbPrimaryFGBrushWithDisabledFGBrush}" />
                 <Button Click="refreshButton_Click" Grid.Column="1" HorizontalAlignment="Right" AutomationProperties.Name="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" IsTabStop="True" Margin="0 4px" Style="{DynamicResource BtnStandard}">
                     <Button.Template>
                         <ControlTemplate>
-                            <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
+                            <TextBlock Text="{x:Static Properties:Resources.ButtonAutomationPropertiesNameRefresh}" TextWrapping="Wrap" Style="{DynamicResource ResourceKey=tbButtonLinkFGBrushWithDisabledFGBrush}" />
                         </ControlTemplate>
                     </Button.Template>
                 </Button>
             </Grid>
-            <Grid Grid.Row="1">
+            <Grid Grid.Row="1" Style="{DynamicResource ResourceKey=gridPartialOpacityWhenDisabled}">
                 <TextBox Height="30" VerticalContentAlignment="Center" x:Name="tbTeamProjectSearch" TextChanged="TextBox_TextChanged"
                          AutomationProperties.Name="{x:Static Properties:Resources.tbTeamProjectSearchAutomationPropertiesName}"
                          FontSize="{DynamicResource StandardTextSize}"/>
                 <fabric:FabricIconControl HorizontalAlignment="Right" Margin="5,0,5,0" 
                                                   GlyphName="Search" GlyphSize="Custom" FontSize="11" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Grid>
-            <Grid Grid.Row="2" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
+            <Grid Grid.Row="2" Style="{DynamicResource ResourceKey=gridPartialOpacityWhenDisabled}" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
                 <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=projects}" 
                                   SelectedItemChanged="serverTreeview_SelectedItemChanged" AutomationProperties.Name="{x:Static Properties:Resources.serverTreeviewAutomationPropertiesName}"
                                   VirtualizingStackPanel.IsVirtualizing="False">
