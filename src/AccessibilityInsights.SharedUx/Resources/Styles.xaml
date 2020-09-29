@@ -219,6 +219,7 @@
         <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBox}" x:Key="TxtReadonlyText">
         <Setter Property="FontSize" Value="{DynamicResource ResourceKey=StandardTextSize}"/>
