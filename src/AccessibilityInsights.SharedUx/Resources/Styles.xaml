@@ -1165,7 +1165,10 @@
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=LeftNavBorderBrush}"/>
         <Setter Property="BorderThickness" Value="1"/>
     </Style>
-    <Style TargetType="{x:Type CheckBox}" x:Key="CkbxLeftSide">
+    <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxContastingBorder">
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+    </Style>
+    <Style TargetType="{x:Type CheckBox}" x:Key="CkbxLeftSide" BasedOn="{StaticResource CheckBoxContastingBorder}">
         <Style.Resources>
             <Style TargetType="{x:Type Path}">
                 <Setter Property="FlowDirection" Value="LeftToRight" />
@@ -1176,7 +1179,7 @@
         </Style.Resources>
         <Setter Property="FlowDirection" Value="RightToLeft" />
     </Style>
-    <Style TargetType="{x:Type CheckBox}" x:Key="CkbxRightSide">
+    <Style TargetType="{x:Type CheckBox}" x:Key="CkbxRightSide" BasedOn="{StaticResource CheckBoxContastingBorder}">
         <Setter Property="FontSize" Value="14"/>
     </Style>
     <Style TargetType="{x:Type MenuItem}" x:Key="miFabIcon">

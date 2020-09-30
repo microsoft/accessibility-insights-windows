@@ -71,7 +71,7 @@
                                             <ColumnDefinition Width="17"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
-                                        <CheckBox Grid.Column="0" VerticalAlignment="Center" Name="chbxSelectAll" Click="chbxSelectAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.chbxSelectAllAutomationPropertiesName}" IsEnabled="True"/>
+                                        <CheckBox Grid.Column="0" VerticalAlignment="Center" Name="chbxSelectAll" Click="chbxSelectAll_Click" AutomationProperties.Name="{x:Static Properties:Resources.chbxSelectAllAutomationPropertiesName}" IsEnabled="True" Style="{StaticResource CheckBoxContastingBorder}"/>
                                         <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left"
                                                 Style="{StaticResource BtnStandard}" Width="8" Height="8" Padding="0"
                                                 BorderThickness="0" Click="btnExpandAll_Click" IsHitTestVisible="True"
@@ -88,7 +88,7 @@
                                     <DataTemplate>
                                         <CheckBox Name="chbxRow" Focusable="True" IsTabStop="False" AutomationProperties.Name="{x:Static Properties:Resources.chbxRowAutomationPropertiesName}" Margin="0.5,0,-2,0" >
                                             <CheckBox.Style>
-                                                <Style TargetType="CheckBox">
+                                                <Style TargetType="CheckBox" BasedOn="{StaticResource CheckBoxContastingBorder}">
                                                     <Style.Setters>
                                                         <Setter Property="IsEnabled" Value="{Binding Path=ScreenshotAvailable, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}"/>
                                                     </Style.Setters>
@@ -230,7 +230,7 @@
                                     <ControlTemplate TargetType="{x:Type Expander}">
                                         <Border Background="{TemplateBinding Background}">
                                             <DockPanel>
-                                                <CheckBox Margin="0,5,2,0" Tag="tag" Focusable="True" IsTabStop="False" Click="CheckBox_Click" AutomationProperties.Name="{x:Static Properties:Resources.lvResultsCheckBoxAutomationPropertiesName}"/>
+                                                <CheckBox Margin="0,5,2,0" Tag="tag" Focusable="True" IsTabStop="False" Click="CheckBox_Click" AutomationProperties.Name="{x:Static Properties:Resources.lvResultsCheckBoxAutomationPropertiesName}" Style="{StaticResource CheckBoxContastingBorder}"/>
                                                 <ToggleButton x:Name="HeaderSite" IsTabStop="False" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" 
                                                               Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" 
                                                               FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" 

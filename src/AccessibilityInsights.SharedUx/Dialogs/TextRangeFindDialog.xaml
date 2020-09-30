@@ -15,6 +15,9 @@
         Icon="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Icons/BrandIcon.ico"
         Title="{x:Static Properties:Resources.TextRangeFindDialogWindowTitle}" SizeToContent="Height" Width="450" Loaded="Window_Loaded" Unloaded="Window_Unloaded"
         ShowInTaskbar="False" Topmost="True">
+    <Window.Resources>
+        <ResourceDictionary Source="..\Resources\Styles.xaml"/>
+    </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -78,6 +81,7 @@
                       AutomationProperties.Name="{x:Static Properties:Resources.chbIgnoreCaseAutomationPropertiesName}"
                       Margin="10,0,0,0"
                       VerticalAlignment="Center"
+                      Style="{StaticResource CheckBoxContastingBorder}"
                       Content="{x:Static Properties:Resources.chbIgnoreCaseAutomationPropertiesName}"/>
             <StackPanel Orientation="Horizontal"
                         Grid.Column="1"
