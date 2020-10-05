@@ -1492,6 +1492,16 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="fabric:FabricIconControl" x:Key="hoverAwareFabricIconOnButtonParent">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="ColumnDefinition" x:Key="LeftPaneColumn">
         <Setter Property="MaxWidth">
             <Setter.Value>
