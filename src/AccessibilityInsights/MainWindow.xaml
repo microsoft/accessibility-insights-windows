@@ -345,12 +345,12 @@
                                                     <DataTrigger Binding="{Binding Path=vmHilighter.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
                                                         <Setter Property="GlyphName" Value="UnSetColor"/>
                                                     </DataTrigger>
-                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
                                                         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="False">
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
                                                         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
-                                                    </Trigger>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </fabric:FabricIconControl.Style>
@@ -368,7 +368,7 @@
                                     <i:Interaction.Behaviors>
                                         <behaviors:KeyboardToolTipButtonBehavior/>
                                     </i:Interaction.Behaviors>
-                                    <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Style="{StaticResource hoverAwareFabricIcon}"/>
+                                    <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                 </Button>
                                 <Button x:Name="btnSave"
                                         Style="{StaticResource BtnNoAutoHelpText}"
@@ -382,7 +382,7 @@
                                     <i:Interaction.Behaviors>
                                         <behaviors:KeyboardToolTipButtonBehavior/>
                                     </i:Interaction.Behaviors>
-                                    <fabric:FabricIconControl GlyphName="Save" FontSize="16" Style="{StaticResource hoverAwareFabricIcon}"/>
+                                    <fabric:FabricIconControl GlyphName="Save" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                 </Button>
                                 <Button x:Name="btnPause"
                                         VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
@@ -427,12 +427,12 @@
                                                     <DataTrigger Binding="{Binding Path=vmLiveModePauseResume.State, Mode=OneWay, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}" Value="Off">
                                                         <Setter Property="GlyphName" Value="Play"/>
                                                     </DataTrigger>
-                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
                                                         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
-                                                    </Trigger>
-                                                    <Trigger Property="IsMouseOver" Value="False">
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
                                                         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
-                                                    </Trigger>
+                                                    </DataTrigger>
                                                 </Style.Triggers>
                                             </Style>
                                         </fabric:FabricIconControl.Style>
@@ -451,7 +451,7 @@
                                         <behaviors:DropDownButtonBehavior/>
                                         <behaviors:KeyboardToolTipButtonBehavior/>
                                     </i:Interaction.Behaviors>
-                                    <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Style="{StaticResource hoverAwareFabricIcon}"/>
+                                    <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                     <Button.ContextMenu>
                                         <ContextMenu>
                                             <MenuItem Name="miTimer" AutomationProperties.Name="{x:Static properties:Resources.miTimerAutomationPropertiesName}" Click="btnTimer_Click">
@@ -479,7 +479,7 @@
                                     <i:Interaction.Behaviors>
                                         <behaviors:KeyboardToolTipButtonBehavior/>
                                     </i:Interaction.Behaviors>
-                                    <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Style="{StaticResource hoverAwareFabricIcon}"/>
+                                    <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                 </Button>
                             </StackPanel>
                             <Label DockPanel.Dock="Right" Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
