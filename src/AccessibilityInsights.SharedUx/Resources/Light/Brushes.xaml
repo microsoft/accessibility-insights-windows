@@ -111,6 +111,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#BEE6Fd"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="#333333"/>
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconFGBrush" Color="#EAEAEA"/>
-    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverBGBrush" Color="#0067B5"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>
 </ResourceDictionary>

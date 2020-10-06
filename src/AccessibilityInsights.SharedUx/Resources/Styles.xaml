@@ -722,7 +722,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=NavBarIconHoverBGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=NavBarButtonHoverBGBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
                 <Setter Property="BorderBrush" Value="White"/>
