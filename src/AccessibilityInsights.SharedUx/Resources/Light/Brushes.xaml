@@ -35,7 +35,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderEmptyBGBrush" Color="#EBEBEB"/>
@@ -111,4 +110,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#CCCCCC"/>
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#BEE6Fd"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="#333333"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconFGBrush" Color="#EAEAEA"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>
 </ResourceDictionary>
