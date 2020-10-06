@@ -32,7 +32,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BubbleFGBrush" Color="#FFFFFF"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble FG -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#FFFFFF"/>       <!-- (UPDATED) Generic selected text color (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#FFFFFF"/>               <!-- (UPDATED) Used for fabric icons, some (incorrect?) borders -->
-    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for video player -->
+    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color for shortcut buttons on welcome screen -->
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>     <!-- Text color (hover) for snapshot button and video player -->
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>             <!-- Generic light border (used everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
