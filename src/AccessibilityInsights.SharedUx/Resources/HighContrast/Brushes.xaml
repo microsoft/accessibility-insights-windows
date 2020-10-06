@@ -19,7 +19,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="BubbleFGBrush" Color="{x:Static SystemColors.WindowColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="BlueButtonBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
@@ -94,4 +93,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
 </ResourceDictionary>

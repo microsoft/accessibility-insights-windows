@@ -722,7 +722,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=BlueButtonHoverBGBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource ResourceKey=NavBarIconHoverBGBrush}"/>
             </Trigger>
             <Trigger Property="IsFocused" Value="true">
                 <Setter Property="BorderBrush" Value="White"/>
@@ -1499,6 +1499,16 @@
             </DataTrigger>
             <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="fabric:FabricIconControl" x:Key="hoverAwareNavBarFabricIcon">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NavBarIconHoverFGBrush}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NavBarIconFGBrush}"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>

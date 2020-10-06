@@ -35,7 +35,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>          <!-- Text color (normal) for video player -->
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>     <!-- Text color (hover) for snapshot button and video player -->
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>             <!-- Generic light border (used everywhere) -->
-    <SolidColorBrush po:Freeze="True" x:Key="LightIconBrush" Color="#EAEAEA"/>          <!-- Used to draw the icons on the nav bar -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>   <!-- Keep Transparent in Dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="#FF0078D6"/> <!-- Used for toggles in the "on" position -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderEmptyBGBrush" Color="#22272B"/><!-- (UPDATED) Background of "empty" column headers in data grid (list of properties) -->
@@ -111,4 +110,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#B2B3B5"/>  <!-- (UPDATED) Background of "BtnGreySquared" buttons on hover -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Hover of "BtnOnSelectedLine" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="#333333"/>  <!-- (UPDATED) Foreground in TextPatternExplorer -->
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconFGBrush" Color="#EAEAEA"/>       <!-- Foreground of nav bar icons -->
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>  <!-- Foreground of nav bar icons on mouse hover -->
+    <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverBGBrush" Color="#4296D6"/>  <!-- Background of nav bar icons on mouse hover -->
 </ResourceDictionary>
