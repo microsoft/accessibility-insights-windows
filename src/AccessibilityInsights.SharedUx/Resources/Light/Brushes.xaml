@@ -32,7 +32,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="BubbleFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedTextBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="IconBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="WhiteTextBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SampleKeyFGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="WhiteTextHoverBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="#C7C7C7"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="Transparent"/>
