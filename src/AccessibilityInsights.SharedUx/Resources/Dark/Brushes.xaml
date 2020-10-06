@@ -69,11 +69,11 @@
     <SolidColorBrush x:Key="HLDefaultBrush" Color="#0C5186"/>                           <!-- Border color of highlighter box -->
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>                        <!-- Text color for highlighter tooltip -->
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>                             <!-- Background color for highlighter tooltip -->
-    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                  <!-- Keep as 0 in dark -->
+    <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                    <!-- Keep as 0 in dark -->
 
     <!-- NEW SETTINGS -->
-    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>        <!-- (UPDATED) Thickness of border around search panel -->
-    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>           <!-- (UPDATED) Thickness of border around test mode view -->
+    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>          <!-- (UPDATED) Thickness of border around search panel -->
+    <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>             <!-- (UPDATED) Thickness of border around test mode view -->
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#CD4A45"/>                          <!-- (UPDATED) Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#D67F3C"/>                             <!-- (UPDATED) Color of "warning" icon in results -->
@@ -89,7 +89,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- (UPDATED) Startup Primary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- (UPDATED) Startup Secondary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#FFFFFF"/> <!-- (UPDATED) Selected text color in TreeView -->
-    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>    <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>   <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
@@ -108,7 +108,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGBrush" Color="#EAEAEA"/>       <!-- (UPDATED) Background of "BtnGreySquared" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonFGBrush" Color="#000000"/>       <!-- (UPDATED) Foreground of "BtnGreySquared" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="GreyButtonBGHoverBrush" Color="#B2B3B5"/>  <!-- (UPDATED) Background of "BtnGreySquared" buttons on hover -->
-    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#FFFFFF"/>   <!-- (UPDATED) Hover of "BtnOnSelectedLine" buttons -->
+    <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedHoverBrush" Color="#FFFFFF"/>  <!-- (UPDATED) Hover of "BtnOnSelectedLine" buttons -->
     <SolidColorBrush po:Freeze="True" x:Key="TextPatternExplorerFGBrush" Color="#333333"/>  <!-- (UPDATED) Foreground in TextPatternExplorer -->
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconFGBrush" Color="#EAEAEA"/>       <!-- Foreground of nav bar icons -->
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>  <!-- Foreground of nav bar icons on mouse hover -->
