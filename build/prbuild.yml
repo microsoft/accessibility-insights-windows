@@ -1,6 +1,5 @@
 name: $(date:yyyy-MM-dd)$(rev:.rr)
 trigger: none
-pr: none
 variables:
   BuildPlatform: 'x86'
   MAICreateNuget: 'true'
