@@ -1154,7 +1154,7 @@
     <Style TargetType="{x:Type Label}" x:Key="LblKey">
         <Setter Property="IsTabStop" Value="True"/>
         <Setter Property="Focusable" Value="True"/>
-        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WhiteTextBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SampleKeyFGBrush}"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
