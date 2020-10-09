@@ -1,6 +1,6 @@
 <!-- Copyright (c) Microsoft. All rights reserved.
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
-<!-- Contains theme for the default AccessibilityInsights dark theme -->
+<!-- Contains the color theme for AccessibilityInsights in dark mode -->
 <ResourceDictionary     
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
@@ -93,7 +93,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="Transparent"/>    <!-- (UPDATED) Horizontal Border between tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#2B3034"/>       <!-- (UPDATED) Hover background color of automated checks rows -->
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>    <!-- (UPDATED) Foreground color of selected tab stop rows -->

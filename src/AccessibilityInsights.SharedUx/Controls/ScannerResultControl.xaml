@@ -177,7 +177,7 @@
                                 </Style>
                             </TextBox.Style>
                         </TextBox>
-                        <TextBox Text="{x:Static Properties:Resources.ScannerResultControl_noFailures}" AutomationProperties.LabeledBy="{Binding ElementName=labelFixFollowing}">
+                        <TextBox Text="{x:Static Properties:Resources.ScannerResultControl_noFailures}" AutomationProperties.LabeledBy="{Binding ElementName=labelFixFollowing}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBox.Style>
                                 <Style TargetType="TextBox" BasedOn="{StaticResource TxtReadonlyText}">
                                     <Setter Property="Visibility" Value="Collapsed" />
