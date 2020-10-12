@@ -418,6 +418,7 @@
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TabBGBrush}" />
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
                             <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TabNonEnabledFGBrush}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
