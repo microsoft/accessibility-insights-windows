@@ -68,12 +68,12 @@
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>                    <!-- Keep as 0 in dark -->
 
     <!-- Brushes used exclusively in tabs of test view-->
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotEnabledFGBrush" Color="#B3B3B3"/>    <!-- Foreground color of non-enabled items in tab (test view) -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedBGBrush" Color="#22272B"/>   <!-- (UPDATED) Background brush of non-selected items in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverBGBrush" Color="#444C52"/>   <!-- (UPDATED) Background Hover brush of non-selected tab in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverFGBrush" Color="#FFFFFF"/>   <!-- Foreground hover brush of non-selected tab in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedBGBrush" Color="#6D767E"/>      <!-- (UPDATED) Background brush of selected tab in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotEnabledFGBrush" Color="#B3B3B3"/>    <!-- Foreground color of non-enabled items in tab (test view) -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedBGBrush" Color="#22272B"/>   <!-- (UPDATED) Background brush of non-selected items in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverBGBrush" Color="#444C52"/>   <!-- (UPDATED) Background Hover brush of non-selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverFGBrush" Color="#FFFFFF"/>   <!-- Foreground hover brush of non-selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedBGBrush" Color="#6D767E"/>      <!-- (UPDATED) Background brush of selected tab in Tests view -->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground brush of selected tab in Tests view -->
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>          <!-- (UPDATED) Thickness of border around search panel -->

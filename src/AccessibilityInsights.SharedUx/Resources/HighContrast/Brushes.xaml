@@ -54,12 +54,12 @@
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
 
     <!-- Brushes used exclusively in tabs of test view-->
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotEnabledFGBrush" Color="{x:Static SystemColors.GrayTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotEnabledFGBrush" Color="{x:Static SystemColors.GrayTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
