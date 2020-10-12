@@ -14,7 +14,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#EFF6FC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>
@@ -93,7 +93,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabSelectedFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>

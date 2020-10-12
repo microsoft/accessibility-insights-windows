@@ -406,9 +406,9 @@
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedTabBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabSelectedBGBrush}"/>
                             <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=ActiveBlueBrush}"/>
-                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTabFGBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TabSelectedFGBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Height" Value="42"/>
