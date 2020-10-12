@@ -15,7 +15,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#6BADE0"/>            <!-- (UPDATED) Progress ring (dots and text) -->
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>    <!-- MainWindow: Overlay for "Tab Stops" ? -->
     <SolidColorBrush po:Freeze="True" x:Key="TabSelectedBGBrush" Color="#6D767E"/>      <!-- (UPDATED) Background brush of selected tab in Tests view -->
-    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#444C52"/>           <!-- (UPDATED) Hover color in main window (Detail/HowToFix) -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverBGBrush" Color="#444C52"/>   <!-- (UPDATED) Background Hover brush of non-selected tab in Tests view -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>       <!-- "Passed and uncertain tests" foreground, also tree icon -->
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#6D767E"/>          <!-- (UPDATED) Vertical Border on tab items in test mode -->
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#22272B"/>      <!-- (UPDATED) Background brush of non-selected items in list view -->

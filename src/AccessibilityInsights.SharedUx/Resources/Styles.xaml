@@ -402,7 +402,7 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabHoverBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabNotSelectedHoverBGBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="True">
