@@ -114,4 +114,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>  <!-- Foreground of nav bar icons on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>    <!-- Background of nav bar buttons on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="#c7e0f4"/>  <!-- Foreground of hyperlinks on mouse hover -->
+    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverFGBrush" Color="#FFFFFF"/>   <!-- Foreground hover brush of non-selected tab in Tests view -->
 </ResourceDictionary>

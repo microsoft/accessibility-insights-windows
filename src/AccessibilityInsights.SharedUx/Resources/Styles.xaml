@@ -404,6 +404,7 @@
                             </MultiTrigger.Conditions>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabNotSelectedHoverBGBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TabNotSelectedHoverFGBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="True">
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabSelectedBGBrush}"/>
