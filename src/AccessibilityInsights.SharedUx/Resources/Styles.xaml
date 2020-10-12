@@ -394,7 +394,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabNotSelectedBGBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -417,8 +417,8 @@
                         </Trigger>
                         <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}" Value="False">
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TabBGBrush}" />
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
-                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabNotSelectedBGBrush}"/>
+                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=TabNotSelectedBGBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TabNonEnabledFGBrush}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>

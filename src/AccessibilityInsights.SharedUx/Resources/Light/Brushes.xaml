@@ -18,7 +18,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedHoverBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>
-    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TabNotSelectedBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>
