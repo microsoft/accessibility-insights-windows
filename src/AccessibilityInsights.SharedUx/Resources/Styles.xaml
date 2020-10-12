@@ -416,7 +416,7 @@
                             <Setter Property="Margin" Value="0,-3,0,0"/>
                         </Trigger>
                         <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TabBGBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TabNotEnabledFGBrush}" />
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabNotSelectedBGBrush}"/>
                             <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=TabNotSelectedBGBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TabNotEnabledFGBrush}" />
