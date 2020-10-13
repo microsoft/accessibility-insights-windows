@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         private RadioButton CreateRadioButton(IIssueReporting reporter)
         {
             RadioButton issueReportingOption = new RadioButton();
-            issueReportingOption.Foreground = Application.Current.Resources["PrimaryFGBrush"] as SolidColorBrush;
+            issueReportingOption.Style = FindResource("primaryFGRadioButtonStyle") as Style;
             issueReportingOption.Content = reporter.ServiceName;
             issueReportingOption.Tag = reporter.StableIdentifier;
             issueReportingOption.Margin = new Thickness(2, 2, 2, 2);
