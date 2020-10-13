@@ -1563,4 +1563,8 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="{x:Type RadioButton}" x:Key="primaryFGRadioButtonStyle" BasedOn="{StaticResource {x:Type RadioButton}}">
+        <!-- This style is set programmatically, so renaming it will require a change in the code-behind -->
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+    </Style>
 </ResourceDictionary>
