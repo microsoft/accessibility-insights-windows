@@ -1342,6 +1342,7 @@
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter Property="FontWeight" Value="Bold"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}"/>
+                            <Setter TargetName="Expander" Property="Foreground" Value="{DynamicResource ResourceKey=TreeViewSelectedFGBrush}"/>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
