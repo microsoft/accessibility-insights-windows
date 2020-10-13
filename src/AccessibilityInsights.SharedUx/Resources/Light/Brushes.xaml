@@ -14,11 +14,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="#F4F4F4"/> 
     <SolidColorBrush po:Freeze="True" x:Key="LoadingBrush" Color="#0000FF"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="#FDFDFD"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="#EFF6FC"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="#FF0078D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabBorderBrush" Color="#EAEAEA"/>
-    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedACRowBGBrush" Color="#EFF6FC"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupSampleKeyBGBrush" Color="#575757"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="Transparent"/>
@@ -54,7 +51,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="#3C000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="#106EBE"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridBorderBrush" Color="#FFFFFF"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabBGBrush" Color="#B3B3B3"/>
     <SolidColorBrush po:Freeze="True" x:Key="ExpBorderBrush" Color="#E0E0E0"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="#D9D9D9"/>
@@ -70,6 +66,14 @@
     <SolidColorBrush x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush x:Key="HLTextBrush" Color="#FFFF00 "/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">0</Thickness>
+
+    <!-- Brushes used exclusively in tabs of test view-->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotEnabledFGBrush" Color="#B3B3B3"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedBGBrush" Color="#FFFFFF"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverBGBrush" Color="#F4F4F4"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedBGBrush" Color="#EFF6FC"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="#000000"/>
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
@@ -93,7 +97,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="TabHorizontalBorderBrush" Color="#EAEAEA"/>
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="#F4F4F4"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="#000000"/>

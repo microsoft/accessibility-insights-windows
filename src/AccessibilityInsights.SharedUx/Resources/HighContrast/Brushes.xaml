@@ -12,7 +12,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonHoverRedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupInnerBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="StartupFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="TabHoverBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActiveBlueBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
@@ -35,9 +34,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="{x:Static SystemColors.ActiveCaptionColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="{x:Static SystemColors.ActiveCaptionTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="UnselectedTabBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="{x:Static SystemColors.HighlightColor}"/>
@@ -55,6 +52,14 @@
     <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledFGBrush" Color="{x:Static SystemColors.GrayTextColor}"/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
+
+    <!-- Brushes used exclusively in tabs of test view-->
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotEnabledFGBrush" Color="{x:Static SystemColors.GrayTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemNotSelectedHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
@@ -78,7 +83,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedTabFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ACRowHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="TSRowSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>

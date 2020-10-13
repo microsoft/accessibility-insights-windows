@@ -394,7 +394,7 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsSelected" Value="False">
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TestViewTabItemNotSelectedBGBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </Trigger>
                         <MultiTrigger>
@@ -402,22 +402,24 @@
                                 <Condition Property="IsMouseOver" Value="True"/>
                                 <Condition Property="IsSelected" Value="False"/>
                             </MultiTrigger.Conditions>
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TabHoverBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TestViewTabItemNotSelectedHoverBGBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TestViewTabItemNotSelectedHoverFGBrush}"/>
                         </MultiTrigger>
                         <Trigger Property="IsSelected" Value="True">
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedTabBrush}"/>
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TestViewTabItemSelectedBGBrush}"/>
                             <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=ActiveBlueBrush}"/>
-                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=SelectedTabFGBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TestViewTabItemSelectedFGBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Height" Value="42"/>
                             <Setter Property="Margin" Value="0,-3,0,0"/>
                         </Trigger>
                         <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource AncestorType={x:Type TabControl}, Mode=FindAncestor}}" Value="False">
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TabBGBrush}" />
-                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
-                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=UnselectedTabBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TestViewTabItemNotEnabledFGBrush}" />
+                            <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TestViewTabItemNotSelectedBGBrush}"/>
+                            <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=TestViewTabItemNotSelectedBGBrush}"/>
+                            <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TestViewTabItemNotEnabledFGBrush}" />
                         </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
