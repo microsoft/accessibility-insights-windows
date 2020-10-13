@@ -93,7 +93,8 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupPrimaryBGBrush" Color="#22272B"/>   <!-- (UPDATED) Startup Primary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#2B3034"/> <!-- (UPDATED) Startup Secondary background brush -->
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#FFFFFF"/> <!-- (UPDATED) Selected text color in TreeView -->
-    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>   <!-- (UPDATED NEEDS UI REVIEW) Background Hover for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#6D767E"/>   <!-- Background Hover brush for "Actions" button in Patterns pane -->
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverFGBrush" Color="#FFFFFF"/>   <!-- Foreground Hover brush for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>     <!-- (UPDATED) Foreground of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#6D767E"/>     <!-- (UPDATED) Background of column headers in data grid (list of properties) -->
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#FFFFFF"/>      <!-- (UPDATED) Foreground of selected row in a data grid (list of properties) -->
