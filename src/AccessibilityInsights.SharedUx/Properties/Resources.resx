@@ -984,12 +984,6 @@
   <data name="buttonCancelContent" xml:space="preserve">
     <value>_Cancel</value>
   </data>
-  <data name="EyedropperWindowWindowTitle" xml:space="preserve">
-    <value>EyedropperWindow</value>
-  </data>
-  <data name="EyedropperWindowWindowAutomationPropertiesHelpText" xml:space="preserve">
-    <value>Use eyedropper to select color or press escape to cancel.</value>
-  </data>
   <data name="GlobalEyedropperWindowWindowAutomationPropertiesHelpText" xml:space="preserve">
     <value>Use eyedropper to select color. Press escape or enter to exit.</value>
   </data>
