@@ -94,6 +94,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="StartupSecondaryBGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="TreeViewSelectedFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverBGBrush" Color="#BEE6FD"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonHoverFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColumnHeaderBGBrush" Color="#D9D9D9"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedRowFGBrush" Color="#000000"/>
