@@ -1553,24 +1553,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use eyedropper to select color or press escape to cancel..
-        /// </summary>
-        public static string EyedropperWindowWindowAutomationPropertiesHelpText {
-            get {
-                return ResourceManager.GetString("EyedropperWindowWindowAutomationPropertiesHelpText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to EyedropperWindow.
-        /// </summary>
-        public static string EyedropperWindowWindowTitle {
-            get {
-                return ResourceManager.GetString("EyedropperWindowWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Failed!!.
         /// </summary>
         public static string FailedEmphasizedText {
