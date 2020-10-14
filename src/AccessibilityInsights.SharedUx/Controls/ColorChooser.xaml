@@ -18,7 +18,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button x:Name="colorPicker" Style="{StaticResource BtnStandard}" Width="32" Height="32" BorderBrush="Transparent"
                 Click="colorPicker_Click" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.colorPickerAutomationPropertiesName}'}">
-                <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <fabric:FabricIconControl GlyphName="Eyedropper" GlyphSize="Default" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
             </Button>
             <ComboBox Name="cbColorPicker" DropDownOpened="Popup_Opened" Width="120" Style="{StaticResource tgbtnColorPicker}" AutomationProperties.Name="{Binding Path=ColorPickerName, StringFormat='{x:Static Properties:Resources.cbColorPickerAutomationPropertiesName}'}">
                 <ComboBox.Background>
