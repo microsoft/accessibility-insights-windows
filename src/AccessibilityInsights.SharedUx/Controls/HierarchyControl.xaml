@@ -129,7 +129,7 @@
                 <Button.ToolTip>
                     <ToolTip Content="{x:Static Properties:Resources.btnSettingToolTip1}"/>
                 </Button.ToolTip>
-                <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings">
                         <MenuItem Header="Tree view">
