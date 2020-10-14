@@ -98,7 +98,7 @@
                         <i:Interaction.Behaviors>
                             <behaviors:DropDownButtonBehavior/>
                         </i:Interaction.Behaviors>
-                        <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                        <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                         <Button.ContextMenu>
                             <ContextMenu FlowDirection="LeftToRight">
                                 <MenuItem Header="_Collapse AnnotationTypes" IsChecked="True" IsCheckable="True" Click="MenuItem_Click"/>
@@ -175,7 +175,7 @@
                 <i:Interaction.Behaviors>
                     <behaviors:DropDownButtonBehavior/>
                 </i:Interaction.Behaviors>
-                <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight">
                         <MenuItem Header="_Replace whitespace with formatting symbols" IsChecked="True" IsCheckable="True" Name="mniWhitespace" Click="mniWhitespace_Click"/>
