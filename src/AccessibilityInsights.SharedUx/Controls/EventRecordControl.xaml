@@ -114,7 +114,7 @@
                             <Setter Property="Button.ToolTip" Value="{x:Static Properties:Resources.SetterValueEventSetting}" />
                         </Style>
                     </Button.Style>
-                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                     <Button.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded">
                             <MenuItem Header="{x:Static Properties:Resources.EventRecordControlScopeHeader}">
