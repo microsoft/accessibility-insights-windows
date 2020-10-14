@@ -378,7 +378,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Border BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabHorizontalBorderBrush}">
+                    <Border x:Name="bdTab" BorderThickness="0,0,0,1" Background="{DynamicResource ResourceKey=TabHorizontalBorderBrush}">
                         <Grid x:Name="gdTab">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="4"/>
@@ -411,6 +411,10 @@
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=TestViewTabItemSelectedBGBrush}"/>
                             <Setter TargetName="rctActiveBar" Property="Fill" Value="{DynamicResource ResourceKey=ActiveBlueBrush}"/>
                             <Setter TargetName="ContentSite" Property="TextElement.Foreground" Value="{DynamicResource ResourceKey=TestViewTabItemSelectedFGBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="bdTab" Property="BorderThickness" Value="1"/>
+                            <Setter TargetName="bdTab" Property="BorderBrush" Value="{DynamicResource ResourceKey=ButtonBackgroundBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Height" Value="42"/>
