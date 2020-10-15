@@ -28,7 +28,7 @@
                     <Button x:Name="btnClose" Margin="12,24,20,14" Width="15" Height="15" Click="Button_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" IsCancel="True" IsTabStop="True" AutomationProperties.Name="{x:Static properties:Resources.gdConfigBtnCloseAutomationPropertiesName}" KeyboardNavigation.TabIndex="-2" Style="{StaticResource BtnNoAutoHelpText}">
                         <Grid>
                             <AccessText Text="_x" Opacity="0"/>
-                            <fabric:FabricIconControl GlyphName="ChromeBack" GlyphSize="Custom" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                            <fabric:FabricIconControl GlyphName="ChromeBack" GlyphSize="Custom" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                         </Grid>
                         <Button.ToolTip>
                             <ToolTip Content="{x:Static properties:Resources.gdConfigBtnCloseAutomationPropertiesName}"/>

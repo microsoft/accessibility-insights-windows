@@ -1,6 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.SharedUx.Utilities;
 using Microsoft.Xaml.Behaviors;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -15,11 +20,8 @@ namespace AccessibilityInsights.SharedUx.Behaviors
     public class DropDownButtonBehavior : Behavior<Button>
     {
         private bool isContextMenuOpen;
-
-        /// <summary>
-        /// Stores the button's background so that it can be restored later
-        /// </summary>
-        private Brush origBackground;
+        private IReadOnlyList<FabricIconControl> _containedFabricIconControls;
+        private Style _savedFabricIconControlStyle;
 
         /// <summary>
         /// Attach to necessary event handlers
@@ -29,17 +31,6 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             base.OnAttached();
             AssociatedObject.AddHandler(Button.ClickEvent, new RoutedEventHandler(AssociatedObject_Click), true);
             AssociatedObject.AddHandler(Button.ContextMenuOpeningEvent, new ContextMenuEventHandler(AssocisatedObject_ContextMenuOpening), true);
-            AssociatedObject.AddHandler(Button.LoadedEvent, new RoutedEventHandler(AssociatedObject_Loaded), true);
-        }
-
-        /// <summary>
-        /// Save button's original background once loaded
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AssociatedObject_Loaded(object sender, RoutedEventArgs e)
-        {
-            origBackground = AssociatedObject.Background;
         }
 
         /// <summary>
@@ -52,17 +43,49 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             e.Handled = true;
         }
 
+        private void ForContainedFabricIconControls(Action<FabricIconControl> action)
+        {
+            if (_containedFabricIconControls != null)
+            {
+                foreach (FabricIconControl fabricIconControl in _containedFabricIconControls)
+                {
+                    action(fabricIconControl);
+                }
+            }
+        }
+
+        private void StyleContainedFabricIconControls()
+        {
+            _containedFabricIconControls = ContainedControlFinder<FabricIconControl>.Find(AssociatedObject).ToList();
+
+            if (_containedFabricIconControls.Any())
+            {
+                // This assumes that all contained FabricIconControls use the same style
+                _savedFabricIconControlStyle = _containedFabricIconControls[0].Style;
+                Style pressedStyle = AssociatedObject.FindResource("fabricIconOnPressedButtonParentStyle") as Style;
+                ForContainedFabricIconControls(fabricIconControl => fabricIconControl.Style = pressedStyle);
+            }
+        }
+
+        private void UnstyleContainedFabricIconControls()
+        {
+            ForContainedFabricIconControls(fabricIconControl => fabricIconControl.Style = _savedFabricIconControlStyle);
+            _containedFabricIconControls = null;
+            _savedFabricIconControlStyle = null;
+        }
+
         /// <summary>
         /// Open context menu when button is clicked.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        void AssociatedObject_Click(object sender, System.Windows.RoutedEventArgs e)
+        void AssociatedObject_Click(object sender, RoutedEventArgs e)
         {
             Button source = sender as Button;
             if (source != null && source.ContextMenu != null)
-            {                
+            {
                 source.Background = Application.Current.Resources["ButtonHoverBrush"] as SolidColorBrush;
+                StyleContainedFabricIconControls();
 
                 if (!isContextMenuOpen)
                 {
@@ -90,7 +113,9 @@ namespace AccessibilityInsights.SharedUx.Behaviors
         /// <param name="e"></param>
         void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
-            AssociatedObject.Background = origBackground;
+            AssociatedObject.ClearValue(Control.BackgroundProperty);
+            UnstyleContainedFabricIconControls();
+
             isContextMenuOpen = false;
             var contextMenu = sender as ContextMenu;
             if (contextMenu != null)
