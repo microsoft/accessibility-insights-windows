@@ -54,20 +54,20 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             }
         }
 
-        private void StyleContainedFabricIcons()
+        private void StyleContainedFabricIconControls()
         {
             _containedFabricIconControls = ContainedControlFinder<FabricIconControl>.Find(AssociatedObject).ToList();
 
             if (_containedFabricIconControls.Any())
             {
-                // This assumes that all associated FabricIconControls use the same style
+                // This assumes that all contained FabricIconControls use the same style
                 _savedFabricIconControlStyle = _containedFabricIconControls[0].Style;
                 Style pressedStyle = AssociatedObject.FindResource("fabricIconOnPressedButtonParentStyle") as Style;
                 ForContainedFabricIconControls(fabricIconControl => fabricIconControl.Style = pressedStyle);
             }
         }
 
-        private void UnstyleContainedFabricIcons()
+        private void UnstyleContainedFabricIconControls()
         {
             ForContainedFabricIconControls(fabricIconControl => fabricIconControl.Style = _savedFabricIconControlStyle);
             _containedFabricIconControls = null;
@@ -85,7 +85,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             if (source != null && source.ContextMenu != null)
             {
                 source.Background = Application.Current.Resources["ButtonHoverBrush"] as SolidColorBrush;
-                StyleContainedFabricIcons();
+                StyleContainedFabricIconControls();
 
                 if (!isContextMenuOpen)
                 {
@@ -114,7 +114,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
         void ContextMenu_Closed(object sender, RoutedEventArgs e)
         {
             AssociatedObject.ClearValue(Control.BackgroundProperty);
-            UnstyleContainedFabricIcons();
+            UnstyleContainedFabricIconControls();
 
             isContextMenuOpen = false;
             var contextMenu = sender as ContextMenu;
