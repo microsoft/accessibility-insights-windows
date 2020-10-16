@@ -78,6 +78,7 @@
     <!-- NEW SETTINGS -->
     <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>          <!-- (UPDATED) Thickness of border around search panel -->
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>             <!-- (UPDATED) Thickness of border around test mode view -->
+    <Thickness po:Freeze="True" x:Key="ActionsButtonBorderThickness">0</Thickness>        <!-- Thickness of border around Actions buttons (patterns view) -->
 
     <SolidColorBrush x:Key="EventStartBrush" Color="#CD4A45"/>                          <!-- (UPDATED) Color of "start recording" button in events -->
     <SolidColorBrush x:Key="WarningBrush" Color="#D67F3C"/>                             <!-- (UPDATED) Color of "warning" icon in results -->

@@ -113,7 +113,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
-                    <Border Background="{TemplateBinding Background}">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Foreground}" BorderThickness="{DynamicResource ResourceKey=ActionsButtonBorderThickness}" CornerRadius="3" Padding="4,1">
                         <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Border>
                     <ControlTemplate.Triggers>
