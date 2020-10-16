@@ -45,8 +45,8 @@
                                 VerticalContentAlignment="Center" VerticalAlignment="Center"
                                 Visibility="{Binding Path=ActionVisibility, BindsDirectlyToSource=True}"
                                 Content="{Binding Path=ActionName, BindsDirectlyToSource=True}"
-                                IsEnabled="True" Padding="4,0" FontWeight="Normal"
-                                Height="18" IsTabStop="False"
+                                IsEnabled="True" FontWeight="Normal"
+                                IsTabStop="False"
                                 Margin="5,0,0,0">
                         </Button>
                     </StackPanel>
