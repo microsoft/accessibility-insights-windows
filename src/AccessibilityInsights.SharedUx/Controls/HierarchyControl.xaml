@@ -178,7 +178,6 @@
                         <Setter Property="Visibility" Value="{Binding Path=Visibility, Mode=OneWay}"/>
                         <Setter Property="IsSelected" Value="{Binding Path=IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="AutomationProperties.Name" Value="{Binding Path=AutomationName, Mode=OneWay}"/>
-                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         <EventSetter Event="RequestBringIntoView" Handler="TreeViewItem_RequestBringIntoView"/>
                         <EventSetter Event="Selected" Handler="OnSelected"/>
                         <Style.Triggers>

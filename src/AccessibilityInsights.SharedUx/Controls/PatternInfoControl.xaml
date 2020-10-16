@@ -32,7 +32,6 @@
                     <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded}"/>
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.SetterValueYouCanInspect}"/>
-                    <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                     <EventSetter Event="KeyDown" Handler="TreeViewItem_KeyDown"></EventSetter>
                     <EventSetter Event="Expanded" Handler="TreeViewItem_Expanded"/>
                     <EventSetter Event="Collapsed" Handler="TreeViewItem_Collapsed"/>
