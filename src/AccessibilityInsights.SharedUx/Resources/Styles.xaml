@@ -89,6 +89,22 @@
         </Setter>
     </Style>
     <Style TargetType="{x:Type Button}" x:Key="BtnOnSelectedLine" BasedOn="{StaticResource BtnStandard}">
+        <Setter Property="FocusVisualStyle">
+            <Setter.Value>
+                <Style>
+                    <Setter Property="Control.Template">
+                        <Setter.Value>
+                            <ControlTemplate>
+                                <Rectangle SnapsToDevicePixels="true"
+                                        Margin="-2"
+                                        Stroke="{DynamicResource ResourceKey=SelectedTextBrush}"
+                                        StrokeThickness="4"/>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
