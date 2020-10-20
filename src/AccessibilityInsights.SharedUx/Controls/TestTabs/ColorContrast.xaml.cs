@@ -18,6 +18,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -115,18 +116,19 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             var bmc = new BitmapCollection(bitmap);
             var result = bmc.RunColorContrastCalculation();
-            var pair = result?.GetMostLikelyColorPair();
+            var pair = result.GetMostLikelyColorPair();
 
             if (pair == null)
             {
+                this.ContrastVM.FirstColor = Colors.Gray;
+                this.ContrastVM.SecondColor = Colors.Gray;
                 tbConfidence.Text = ColorContrastResult.Confidence.None.ToString();
+                throw new InvalidOperationException("Unable to determine colors!");
             }
-            else 
-            {
-                this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
-                this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
-                tbConfidence.Text = result.ConfidenceValue().ToString();
-            }
+
+            this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
+            this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
+            tbConfidence.Text = result.ConfidenceValue().ToString();
         }
 
         private void RaiseLiveRegionEvents()
