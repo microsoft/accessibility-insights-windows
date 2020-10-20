@@ -232,6 +232,7 @@ namespace AccessibilityInsights.Modes
                         // enable element selector
                         MainWin.EnableElementSelector();
 
+                        this.ctrlContrast.ClearUI();
                         this.ctrlContrast.DeactivateProgressRing();
                     });
                 }

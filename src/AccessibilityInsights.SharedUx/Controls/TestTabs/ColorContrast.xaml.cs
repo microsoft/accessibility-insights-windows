@@ -18,7 +18,6 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
@@ -120,9 +119,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             if (pair == null)
             {
-                this.ContrastVM.FirstColor = Colors.Gray;
-                this.ContrastVM.SecondColor = Colors.Gray;
-                tbConfidence.Text = ColorContrastResult.Confidence.None.ToString();
                 throw new InvalidOperationException("Unable to determine colors!");
             }
 
@@ -168,6 +164,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.Reset();
             this.firstChooser.Reset();
             this.secondChooser.Reset();
+            this.tbConfidence.Text = string.Empty;
         }
 
         public object getConfidence()
