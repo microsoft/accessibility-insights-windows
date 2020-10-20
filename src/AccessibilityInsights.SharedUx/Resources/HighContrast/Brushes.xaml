@@ -35,6 +35,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderTextBrush" Color="{x:Static SystemColors.ActiveCaptionTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="LeftNavBorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SelectedInspectTabBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="UnselectedInspectTabBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DisabledOverlayBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="BtnBrderBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ToggleSliderBlueBrush" Color="{x:Static SystemColors.HighlightColor}"/>
