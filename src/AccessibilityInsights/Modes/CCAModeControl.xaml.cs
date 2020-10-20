@@ -188,7 +188,7 @@ namespace AccessibilityInsights.Modes
                     {
                         if (ec == null || ec.Element == null)
                         {
-                            toolTipText = "No Eelement Selected!";
+                            toolTipText = "No Element Selected!";
                         }
                         else
                         {
