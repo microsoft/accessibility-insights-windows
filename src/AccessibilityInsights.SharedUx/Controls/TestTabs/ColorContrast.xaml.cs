@@ -116,6 +116,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             var bmc = new BitmapCollection(bitmap);
             var result = bmc.RunColorContrastCalculation();
             var pair = result.GetMostLikelyColorPair();
+
+            if (pair == null)
+            {
+                throw new InvalidOperationException("Unable to determine colors!");
+            }
+
             this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
             this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
             tbConfidence.Text = result.ConfidenceValue().ToString();
@@ -158,6 +164,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.Reset();
             this.firstChooser.Reset();
             this.secondChooser.Reset();
+            this.tbConfidence.Text = string.Empty;
         }
 
         public object getConfidence()
