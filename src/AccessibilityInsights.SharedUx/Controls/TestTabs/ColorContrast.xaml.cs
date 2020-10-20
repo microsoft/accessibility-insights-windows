@@ -115,10 +115,18 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             var bmc = new BitmapCollection(bitmap);
             var result = bmc.RunColorContrastCalculation();
-            var pair = result.GetMostLikelyColorPair();
-            this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
-            this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
-            tbConfidence.Text = result.ConfidenceValue().ToString();
+            var pair = result?.GetMostLikelyColorPair();
+
+            if (pair == null)
+            {
+                tbConfidence.Text = ColorContrastResult.Confidence.None.ToString();
+            }
+            else 
+            {
+                this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
+                this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
+                tbConfidence.Text = result.ConfidenceValue().ToString();
+            }
         }
 
         private void RaiseLiveRegionEvents()
