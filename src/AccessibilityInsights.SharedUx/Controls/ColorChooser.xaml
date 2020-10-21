@@ -25,7 +25,7 @@
                     <SolidColorBrush Color="{Binding StoredColor}"/>
                 </ComboBox.Background>
             </ComboBox>
-            <TextBox x:Name="colorTb" Width="100px" Height="32" BorderBrush="{DynamicResource ResourceKey=BorderBrush}" FontSize="17"
+            <TextBox x:Name="colorTb" Width="100px" Height="32" BorderBrush="{DynamicResource ResourceKey=ColorPickerBorderBrush}" FontSize="17"
                     Text="{Binding StoredColor, Converter={converters:ColorStringConverter}, FallbackValue=#FFFFFF}"
                     Background="{DynamicResource ResourceKey=PrimaryBGBrush}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" CaretBrush="{DynamicResource ResourceKey=PrimaryFGBrush}"
                     VerticalContentAlignment="Center" TextAlignment="Center"
