@@ -889,7 +889,7 @@
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="Overlay" Property="BorderThickness" Value="3"/>
                             <Setter TargetName="Overlay" Property="Margin" Value="-1"/>
-                            <Setter TargetName="Overlay" Property="BorderBrush" Value="{DynamicResource ResourceKey=SelectedFocusedTabBorderBrush}"/>
+                            <Setter TargetName="Overlay" Property="BorderBrush" Value="{DynamicResource ResourceKey=InspectTabsFocusOverlayBorderBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

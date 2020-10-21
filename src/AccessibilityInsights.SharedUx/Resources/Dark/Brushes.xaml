@@ -119,5 +119,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>  <!-- Foreground of nav bar icons on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>    <!-- Background of nav bar buttons on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="#c7e0f4"/>  <!-- Foreground of hyperlinks on mouse hover -->
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedFocusedTabBorderBrush" Color="#22272B"/> <!-- Border around focused selected tab (Details, HowToFix). Matches SelectedInspectTabBrush -->
+    <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="#22272B"/> <!-- Border around focused selected tab (Details, HowToFix). Matches SelectedInspectTabBrush -->
 </ResourceDictionary>

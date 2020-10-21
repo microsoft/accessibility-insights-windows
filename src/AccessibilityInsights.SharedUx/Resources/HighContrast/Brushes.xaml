@@ -104,5 +104,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="SelectedFocusedTabBorderBrush" Color="{x:Static SystemColors.WindowColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="{x:Static SystemColors.WindowColor}"/>
 </ResourceDictionary>
