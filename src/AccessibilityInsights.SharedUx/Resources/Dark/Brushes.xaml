@@ -43,7 +43,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="Transparent"/>  <!-- Keep Transparent in dark -->
     <SolidColorBrush po:Freeze="True" x:Key="ActionsButtonBGBrush" Color="#444C52"/>    <!-- (UPDATED) Background for "Actions" button in Patterns pane -->
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryBGBrush" Color="#2B3034"/>        <!-- (UPDATED) Secondary background brush (not u-->
-    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="#EAEAEA"/>     <!-- Horizontal rules in color contrast -->
+    <SolidColorBrush po:Freeze="True" x:Key="HorizontalRuleBGBrush" Color="#EAEAEA"/>   <!-- Horizontal rules in color contrast -->
     <SolidColorBrush po:Freeze="True" x:Key="ActiveModeBrush" Color="#FFFFFF"/>         <!-- Color of "active" marker in nav bar -->
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledFGBrush" Color="#656E75"/>   <!-- (UPDATED) Foreground of disabled button (example: Refresh button in ADO connect when no connection exists) -->
     <SolidColorBrush po:Freeze="True" x:Key="PrimaryBGBrush" Color="#22272B"/>          <!-- (UPDATED) Primary background brush (not in startup mode) -->
