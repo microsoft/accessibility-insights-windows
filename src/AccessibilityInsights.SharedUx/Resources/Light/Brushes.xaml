@@ -120,5 +120,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="#FF0000"/>
     <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="#FFFFFF"/>
-    <SolidColorBrush po:Freeze="True" x:Key="ColorPickerBorderBrush" Color="#949494"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="#949494"/>
 </ResourceDictionary>

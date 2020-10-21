@@ -1465,14 +1465,14 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ComboBox}">
-                    <Border BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorPickerBorderBrush}">
+                    <Border BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorChooserBorderBrush}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="Auto"/>
                             </Grid.ColumnDefinitions>
                             <Border Margin="2" Background="{TemplateBinding Background}" Grid.Column="0"/>
-                            <ToggleButton x:Name="brdrBtn" Grid.Column="1" Padding="4" BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorPickerBorderBrush}" Margin="-1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" IsTabStop="False" Background="Transparent">
+                            <ToggleButton x:Name="brdrBtn" Grid.Column="1" Padding="4" BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorChooserBorderBrush}" Margin="-1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" IsTabStop="False" Background="Transparent">
                                 <fabric:FabricIconControl GlyphSize="Default" GlyphName="ChevronDown" Foreground="{DynamicResource ResourceKey=IconBrush}" VerticalAlignment="Center"/>
                             </ToggleButton>
                             <Popup PopupAnimation="Slide" x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Width="281" Height="338">
