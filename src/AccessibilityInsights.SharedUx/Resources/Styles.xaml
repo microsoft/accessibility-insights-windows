@@ -861,7 +861,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
-                    <Border BorderThickness="0,0,1,0" BorderBrush="White" Margin="0,-2,0,0">
+                    <Border x:Name="Overlay" BorderThickness="0,0,1,0" BorderBrush="White" Margin="0,-2,0,0">
                         <Grid x:Name="gdTab">
                             <ContentPresenter x:Name="ContentSite"
                                         VerticalAlignment="Center"
@@ -886,6 +886,11 @@
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
                             <Setter TargetName="gdTab" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                         </MultiTrigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Overlay" Property="BorderThickness" Value="3"/>
+                            <Setter TargetName="Overlay" Property="Margin" Value="-1"/>
+                            <Setter TargetName="Overlay" Property="BorderBrush" Value="{DynamicResource ResourceKey=SelectedFocusedTabBorderBrush}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>

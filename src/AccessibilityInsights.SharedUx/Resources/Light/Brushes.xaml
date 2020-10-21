@@ -119,4 +119,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarIconHoverFGBrush" Color="#FFFFFF"/>
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="#4296D6"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="#FF0000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="SelectedFocusedTabBorderBrush" Color="#FFFFFF"/>
 </ResourceDictionary>
