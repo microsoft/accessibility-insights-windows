@@ -33,7 +33,7 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Name="tbGlimpse" TextTrimming="CharacterEllipsis" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Style="{StaticResource tbHeaderDark}"/>
-                <Label Name="lblTitle" Grid.Row="2" Grid.Column="0" Content="{x:Static Properties:Resources.lblTitleContent}" VerticalAlignment="Top" Style="{StaticResource lblHeader3}"/>
+                <Label Name="lblTitle" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Content="{x:Static Properties:Resources.lblTitleContent}" VerticalAlignment="Top" Style="{StaticResource lblHeader3}"/>
                 <Button Grid.Column="1"  Grid.Row="1" Margin="8,0" Style="{StaticResource BtnNoHoverColor}" 
                         Foreground="{DynamicResource ResourceKey=ActiveBlueBrush}" HorizontalAlignment="Right"
                         VerticalAlignment="Top" Name="btnTree" Click="btnTree_Click"
@@ -44,7 +44,7 @@
                         <TextBlock Name="tbViewResults" Text="{x:Static Properties:Resources.tbViewResultsText}" Style="{StaticResource tbLink}" Focusable="False"/>
                     </StackPanel>
                 </Button>
-                <Grid Visibility="Collapsed" Name="gdFailures" Grid.Row="3" Grid.Column="0">
+                <Grid Visibility="Collapsed" Name="gdFailures" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="16"/>
                         <ColumnDefinition/>
