@@ -154,7 +154,7 @@
                         <RowDefinition MinHeight="56px"/>
                         <RowDefinition MinHeight="56px"/>
                     </Grid.RowDefinitions>
-                    <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}" 
+                    <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=HorizontalRuleBGBrush}" 
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
                     <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
                     <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
@@ -215,7 +215,7 @@
                        Foreground="{Binding Path=ContrastVM.SecondColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                        Background="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}" 
                        AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallSampleHelpText}" HorizontalAlignment="Left" FontSize="{DynamicResource ConstStandardTextSize}"/>
-                    <Border Grid.Row="2" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"
+                    <Border Grid.Row="2" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=HorizontalRuleBGBrush}"
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
                     <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Margin="4,4">
                         <fabric:FabricIconControl x:Name="largeTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
@@ -286,7 +286,7 @@
                            Background="{Binding Path=ContrastVM.FirstColor, Converter={converters:ColorStringConverter}, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
                            AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_LargeSampleHelpText}" HorizontalAlignment="Left"/>
                     </StackPanel>
-                    <Border Grid.Row="4" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=GreyBackgroundBrush}"
+                    <Border Grid.Row="4" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=HorizontalRuleBGBrush}"
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
                     <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" Margin="4,4">
                         <fabric:FabricIconControl x:Name="graphicalObjectGlyph" VerticalAlignment="Center" Margin="0 0 2 0">

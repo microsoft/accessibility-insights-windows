@@ -28,7 +28,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="SelectedBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="DataGridSelectedBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="SettingsTabBgBrush" Color="{x:Static SystemColors.HighlightColor}"/>
-    <SolidColorBrush po:Freeze="True" x:Key="GreyBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="HorizontalRuleBGBrush" Color="{x:Static SystemColors.ControlDarkColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonBackgroundBrush" Color="{x:Static SystemColors.ControlColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkFGBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="WindowBorderBrush" Color="{x:Static SystemColors.ActiveCaptionColor}"/>
@@ -50,7 +50,7 @@
     <SolidColorBrush po:Freeze="True" x:Key="HLGreenTextBrush" Color="#00FF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="HLTextBrush" Color="#FFFF00 "/>
     <SolidColorBrush po:Freeze="True" x:Key="BorderBrush" Color="{x:Static SystemColors.InactiveBorderColor}" />
-    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.ActiveBorderColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="CCABorderBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonDisabledFGBrush" Color="{x:Static SystemColors.GrayTextColor}"/>
     <Thickness po:Freeze="True" x:Key="BtnBrdrThickness">1</Thickness>
 
@@ -105,4 +105,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="NavBarButtonHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="{x:Static SystemColors.WindowColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
 </ResourceDictionary>
