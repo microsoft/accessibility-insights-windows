@@ -22,12 +22,14 @@ namespace AccessibilityInsights.SetupLibrary
         private FileStream _file;
 
         public bool IsVerified { get; }
+        public bool IsSignerTrusted { get; }
 
         public TrustVerifier(string filePath)
         {
             try
             {
                 IsVerified = IsFileTrusted(filePath);
+                IsSignerTrusted = IsFileSignerSubjectTrusted(filePath);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
@@ -48,8 +50,7 @@ namespace AccessibilityInsights.SetupLibrary
             using (var winTrustData = new WinTrustData(fileInfo))
             {
                 var result = WinVerifyTrust(IntPtr.Zero, WINTRUST_ACTION_GENERIC_VERIFY_V2, winTrustData);
-                return result == WinVerifyTrustResult.Success && 
-                    IsFileSignerSubjectTrusted(filePath);
+                return result == WinVerifyTrustResult.Success;
             }
         }
 
