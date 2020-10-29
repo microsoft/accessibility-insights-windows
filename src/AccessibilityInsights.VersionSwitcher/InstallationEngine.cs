@@ -171,11 +171,6 @@ namespace AccessibilityInsights.VersionSwitcher
                 throw new ArgumentException(Properties.Resources.UntrustedFile, nameof(localFile));
             }
 
-            if (!verifier.IsSignerTrusted)
-            {
-                // TODO : Allow user to install anyway?
-                throw new ArgumentException(Properties.Resources.UntrustedFile, nameof(localFile));
-            }
             EventLogger.WriteInformationalMessage("Successfully validated local file: {0}", localFile);
 
             return verifier;

@@ -4,7 +4,6 @@ using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using static AccessibilityInsights.Win32.NativeMethods;
 
@@ -12,9 +11,10 @@ namespace AccessibilityInsights.SetupLibrary
 {
     public class TrustVerifier : IDisposable
     {
-        private static readonly IReadOnlyCollection<string> TrustedSignerSubjects = new List<string>
+        // This list intentionally excludes the CN, since we are validating only the organization
+        private static readonly IReadOnlyCollection<string> TrustedCertIssuerEndings = new List<string>
         {
-            "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+            ", O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
         };
         
         // used to keep the file handle open for the lifetime of the object
@@ -22,14 +22,12 @@ namespace AccessibilityInsights.SetupLibrary
         private FileStream _file;
 
         public bool IsVerified { get; }
-        public bool IsSignerTrusted { get; }
 
         public TrustVerifier(string filePath)
         {
             try
             {
-                IsVerified = IsFileTrusted(filePath);
-                IsSignerTrusted = IsFileSignerSubjectTrusted(filePath);
+                IsVerified = IsFileTrusted(filePath) && IsFileIssuingOrganizationTrusted(filePath);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
@@ -54,12 +52,21 @@ namespace AccessibilityInsights.SetupLibrary
             }
         }
 
-        private static bool IsFileSignerSubjectTrusted(string filePath)
+        public static bool IsFileIssuingOrganizationTrusted(string filePath)
         {
-            using (X509Certificate signer = X509Certificate.CreateFromSignedFile(filePath))
+            using (X509Certificate cert = X509Certificate.CreateFromSignedFile(filePath))
             {
-                return TrustedSignerSubjects.Contains(signer.Subject);
+                string issuer = cert.Issuer;
+                foreach (string trustecCertIssuerEnding in TrustedCertIssuerEndings)
+                {
+                    if (issuer.EndsWith(trustecCertIssuerEnding, StringComparison.Ordinal))
+                    {
+                        return true;
+                    }
+                }    
             }
+
+            return false;
         }
 
         ~TrustVerifier()
