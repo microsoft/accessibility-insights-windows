@@ -12,6 +12,8 @@
         KeyUp="WindowAndTextBox_KeyUp" WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False" FocusManager.FocusedElement="{Binding ElementName=tbHotkey}"
         Background="{DynamicResource ResourceKey=PrimaryBGBrush}"
+        BorderBrush="{DynamicResource ResourceKey=PrimaryFGBrush}"
+        BorderThickness="2"
         AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.SettingsHotkeyGrabDialog}">
     <Window.Resources>
         <ResourceDictionary Source="pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml"/>
@@ -27,8 +29,8 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Label Content="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}" HorizontalAlignment="Left" Margin="8,8,0,0" Grid.Row="0" VerticalAlignment="Top" Style="{StaticResource LblH5}" Padding="0"/>
-        <TextBox Grid.Row="2" Margin="0,10" Name="tbHotkey"  
-                 Height="24" Width="300" HorizontalContentAlignment="Center"
+        <TextBox Grid.Row="2" Margin="0,10" Name="tbHotkey"
+                 Height="30" Width="300" HorizontalContentAlignment="Center"
                  VerticalContentAlignment="Center" Style="{StaticResource StandardTextBox}"
                  AutomationProperties.Name="{x:Static Properties:Resources.HotkeyGrabDialogWindowTitle}"
                  AutomationProperties.HelpText="{x:Static Properties:Resources.RunTextToChangeKeyBoard}"
