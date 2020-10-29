@@ -57,9 +57,9 @@ namespace AccessibilityInsights.SetupLibrary
             using (X509Certificate cert = X509Certificate.CreateFromSignedFile(filePath))
             {
                 string issuer = cert.Issuer;
-                foreach (string trustecCertIssuerEnding in TrustedCertIssuerEndings)
+                foreach (string trustedCertIssuerEnding in TrustedCertIssuerEndings)
                 {
-                    if (issuer.EndsWith(trustecCertIssuerEnding, StringComparison.Ordinal))
+                    if (issuer.EndsWith(trustedCertIssuerEnding, StringComparison.Ordinal))
                     {
                         return true;
                     }
