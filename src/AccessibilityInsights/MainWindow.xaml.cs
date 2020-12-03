@@ -1034,3 +1034,20 @@ namespace AccessibilityInsights
         #endregion
     }
 }
+
+/*
+Adding a long comment to this file.
+The comment should be more than 15 lines.
+I'm trying to get the auto CLA checker
+to prompt me to accept the CLA.
+Yesterday, all my troubles seemed so far away.
+Now it looks as though they're here to stay.
+Oh I remember yesterday.
+Suddenly, I'm not half the man I used to be.
+There's a shadow hanging over me.
+O yesterday came suddenly.
+Why she had to go,
+I don't know;
+she wouldn't say.
+I said something wrong now I long for yesterday.
+*/
