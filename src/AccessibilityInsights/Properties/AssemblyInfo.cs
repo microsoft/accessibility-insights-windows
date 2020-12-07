@@ -41,7 +41,3 @@ using System.Windows;
                                               // app, or any theme specific resource dictionaries)
 )]
 [assembly: NeutralResourcesLanguage("en-US")]
-
-#region FxCop analysis suppressions for entire assembly
-[assembly: SuppressMessage("Microsoft.Reliability", "CA2001:AvoidCallingProblematicMethods", MessageId = "System.GC.Collect", Justification = "We use GC.Collect to accelerate memory recovery")]
-#endregion

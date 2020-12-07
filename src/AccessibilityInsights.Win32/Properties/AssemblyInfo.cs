@@ -45,9 +45,7 @@ using System.Runtime.InteropServices;
 
 #region FxCop analysis suppressions for entire assembly
 [assembly: SuppressMessage("Microsoft.Naming", "CA1707", Justification = "Underscores are allowed to keep the same name as Win32")]
-[assembly: SuppressMessage("Microsoft.Naming", "CA1714", Justification = "Keep the same name as Win32")]
 [assembly: SuppressMessage("Microsoft.Naming", "CA1717", Justification = "Keep the same name as Win32")]
 [assembly: SuppressMessage("Microsoft.Design", "CA1028", Justification = "Keep the same name as Win32")]
 [assembly: SuppressMessage("Microsoft.Performance", "CA1815", Justification = "== or != operators are not needed for parity with Win32")]
-[assembly: SuppressMessage("Microsoft.Design", "CA1051", Justification = "For Win32 structure parity, allow visible instance fields")]
 #endregion
