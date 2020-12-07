@@ -3,7 +3,7 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	<NoWarn>RS0016</NoWarn>
-    <!-- used by Microsoft.CodeAnalysis.NetAnalyzers -->
+      <!-- used by Microsoft.CodeAnalysis.NetAnalyzers -->
       <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 
