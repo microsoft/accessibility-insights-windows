@@ -1473,7 +1473,7 @@
                             </Grid.ColumnDefinitions>
                             <Border Margin="2" Background="{TemplateBinding Background}" Grid.Column="0"/>
                             <ToggleButton x:Name="brdrBtn" Grid.Column="1" Padding="4" BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorChooserBorderBrush}" Margin="-1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" IsTabStop="False" Background="Transparent">
-                                <fabric:FabricIconControl x:Name="iconChevron" GlyphName="ChevronDown" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                                <fabric:FabricIconControl x:Name="iconChevron" GlyphSize="Default" GlyphName="ChevronDown" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" VerticalAlignment="Center"/>
                             </ToggleButton>
                             <Popup PopupAnimation="Slide" x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Width="281" Height="338">
                                 <colorpickers:ColorPickerControl x:Name="cpPick"/>
