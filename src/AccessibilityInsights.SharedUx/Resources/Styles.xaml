@@ -1473,7 +1473,7 @@
                             </Grid.ColumnDefinitions>
                             <Border Margin="2" Background="{TemplateBinding Background}" Grid.Column="0"/>
                             <ToggleButton x:Name="brdrBtn" Grid.Column="1" Padding="4" BorderThickness="1" BorderBrush="{DynamicResource ResourceKey=ColorChooserBorderBrush}" Margin="-1" IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" Focusable="False" IsTabStop="False" Background="Transparent">
-                                <fabric:FabricIconControl GlyphSize="Default" GlyphName="ChevronDown" Foreground="{DynamicResource ResourceKey=IconBrush}" VerticalAlignment="Center"/>
+                                <fabric:FabricIconControl x:Name="iconChevron" GlyphName="ChevronDown" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                             </ToggleButton>
                             <Popup PopupAnimation="Slide" x:Name="PART_Popup" IsOpen="{TemplateBinding IsDropDownOpen}" Width="281" Height="338">
                                 <colorpickers:ColorPickerControl x:Name="cpPick"/>
@@ -1482,10 +1482,12 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="brdrBtn" Property="Background" Value="{DynamicResource ResourceKey=ButtonHoverBrush}"/>
+                            <Setter TargetName="brdrBtn" Property="Background" Value="{DynamicResource ResourceKey=ComboToggleHoverBGBrush}"/>
+                            <Setter TargetName="iconChevron" Property="Foreground" Value="{DynamicResource ResourceKey=ComboToggleHoverFGBrush}"/>
                         </Trigger>
                         <Trigger Property="IsDropDownOpen" Value="True">
-                            <Setter TargetName="brdrBtn" Property="Background" Value="{DynamicResource ResourceKey=ButtonHoverBrush}"/>
+                            <Setter TargetName="brdrBtn" Property="Background" Value="{DynamicResource ResourceKey=ComboToggleHoverBGBrush}"/>
+                            <Setter TargetName="iconChevron" Property="Foreground" Value="{DynamicResource ResourceKey=ComboToggleHoverFGBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

@@ -121,4 +121,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="#c7e0f4"/>  <!-- Foreground of hyperlinks on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="#22272B"/> <!-- Border around focused selected tab (Details, HowToFix). Matches SelectedInspectTabBrush -->
     <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="#6D767E"/> <!-- Border around color chooser (combobox + edit) -->
+    <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverBGBrush" Color="#BEE6FD"/>  <!-- Background of combobox toggle on mouse hover -->
+    <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverFGBrush" Color="#000000"/>  <!-- Foreground or combobox toggle on mouse hover -->
 </ResourceDictionary>

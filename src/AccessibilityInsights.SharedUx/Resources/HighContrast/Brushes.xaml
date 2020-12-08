@@ -106,4 +106,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="ButtonLinkHoverFGBrush" Color="{x:Static SystemColors.HotTrackColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="InspectTabsFocusOverlayBorderBrush" Color="{x:Static SystemColors.WindowColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 </ResourceDictionary>
