@@ -147,23 +147,23 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Move window and mouse cursor with arrow keys
+        /// Control window and mouse cursor with keyboard
         /// </summary>
         private void Window_PreviewKeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            switch(e.Key)
+            switch (e.Key)
             {
                 case Key.Up:
-                    MoveCursor(0, -1);
+                    MoveCursor(0, -StepSize(e, Height));
                     break;
                 case Key.Down:
-                    MoveCursor(0, 1);
+                    MoveCursor(0, StepSize(e, Height));
                     break;
                 case Key.Left:
-                    MoveCursor(-1,0);
+                    MoveCursor(-StepSize(e, Width), 0);
                     break;
                 case Key.Right:
-                    MoveCursor(1,0);
+                    MoveCursor(StepSize(e, Width), 0);
                     break;
                 case Key.Enter:
                 case Key.Escape:
@@ -172,6 +172,13 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             }
 
             e.Handled = true;
+        }
+
+        private int StepSize(System.Windows.Input.KeyEventArgs e, double stepWithCtrl)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+                return (int)(stepWithCtrl / zoomLevel);
+            return 1;
         }
     }
 }
