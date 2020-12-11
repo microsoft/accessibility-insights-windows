@@ -201,7 +201,7 @@ jobs:
   pool: VSEng-MicroBuildVS2019
   variables:
     runCodesignValidationInjection: 'true'
-    SignAppForRelease: 'false'
+    SignAppForRelease: 'true'
     GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
   steps:
