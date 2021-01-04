@@ -125,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void PopulateEventConfiguration()
         {
-            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(SettingsProvider.ConfigurationFolderPath, EventConfigFileName);
             try
             {
                 var rcfg = RecorderSetting.LoadConfiguration(configpath);
@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void SaveEventsConfiguration()
         {
-            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(SettingsProvider.ConfigurationFolderPath, EventConfigFileName);
 
             this.EventConfig.SerializeInJSON(configpath);
         }
