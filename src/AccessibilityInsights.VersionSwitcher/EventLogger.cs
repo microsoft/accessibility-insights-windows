@@ -13,7 +13,7 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     internal class EventLogger : IDisposable
     {
-        private const string EventSource = "ApplicationInsights.VersionSwitcher";
+        private const string EventSource = "AccessibilityInsights.VersionSwitcher";
         private const string ApplicationLog = "Application";
 
         // This gives us an easy static option without making the whole class static
