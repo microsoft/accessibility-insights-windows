@@ -121,16 +121,42 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
+        /// Temporary method to migrate EventConfig.json from the legacy folder (under documents)
+        /// to the config folder (under %localappdata%). This is a one-way migration that will
+        /// be removed after a couple of production releases.
+        /// </summary>
+        private void MigrateEventConfigurationFile()
+        {
+            try
+            {
+                string legacyConfigPath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
+                string newConfigPath = Path.Combine(SettingsProvider.ConfigurationFolderPath, EventConfigFileName);
+
+                if (File.Exists(legacyConfigPath) && !File.Exists(newConfigPath))
+                {
+                    FileHelpers.CreateFolder(SettingsProvider.ConfigurationFolderPath);
+                    File.Move(legacyConfigPath, newConfigPath);
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                e.ReportException();
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        /// <summary>
         /// Populate event configuration
         /// </summary>
         public void PopulateEventConfiguration()
         {
-            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
+            MigrateEventConfigurationFile();
+            var configpath = Path.Combine(SettingsProvider.ConfigurationFolderPath, EventConfigFileName);
             try
             {
                 var rcfg = RecorderSetting.LoadConfiguration(configpath);
                 this.EventConfig = rcfg;
-
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
@@ -147,7 +173,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public void SaveEventsConfiguration()
         {
-            var configpath = Path.Combine(SettingsProvider.UserDataFolderPath, EventConfigFileName);
+            var configpath = Path.Combine(SettingsProvider.ConfigurationFolderPath, EventConfigFileName);
 
             this.EventConfig.SerializeInJSON(configpath);
         }
