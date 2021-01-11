@@ -21,23 +21,15 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     {
         private static FixedConfigSettingsProvider testProvider;
 
-        private static string TestBaseDirectory;
-
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            TestBaseDirectory = Path.Combine(context.TestRunDirectory, "ConfigurationModelTests");
+            string testBaseDirectory = Path.Combine(context.TestRunDirectory, "ConfigurationModelTests");
 
-            var configDir = Path.Combine(TestBaseDirectory, "config");
-            var userDir = Path.Combine(TestBaseDirectory, "user");
+            var configDir = Path.Combine(testBaseDirectory, "config");
+            var userDir = Path.Combine(testBaseDirectory, "user");
             testProvider = new FixedConfigSettingsProvider(configDir, userDir);
             Directory.CreateDirectory(testProvider.ConfigurationFolderPath);
-        }
-
-        [ClassCleanup()]
-        public static void ClassCleanup()
-        {
-            Directory.Delete(TestBaseDirectory);
         }
 
         /// <summary>
