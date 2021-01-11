@@ -75,7 +75,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.JsonWebTokens.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Logging.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Tokens.dll" />
