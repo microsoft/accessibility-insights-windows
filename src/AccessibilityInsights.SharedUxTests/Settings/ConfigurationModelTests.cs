@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            string testBaseDirectory = Path.Combine(context.TestRunDirectory, context.TestName);
+            string testBaseDirectory = Path.Combine(context.TestRunDirectory, context.FullyQualifiedTestClassName);
 
             var configDir = Path.Combine(testBaseDirectory, "config");
             var userDir = Path.Combine(testBaseDirectory, "user");
