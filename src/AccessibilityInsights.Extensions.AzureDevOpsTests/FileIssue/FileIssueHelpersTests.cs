@@ -33,7 +33,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         }
 
         [TestMethod]
-        [Timeout(1000)]
+        [Timeout(2000)]
         [ExpectedException(typeof(ArgumentNullException))]
         public void CreateIssuePreviewAsync_IssueInfoIsNull_ThrowsArgumentNullException()
         {
