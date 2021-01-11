@@ -24,17 +24,12 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         [ClassInitialize()]
         public static void ClassInit(TestContext context)
         {
-            var configDir = Path.Combine(context.TestRunDirectory, "config");
-            var userDir = Path.Combine(context.TestRunDirectory, "user");
+            string testBaseDirectory = Path.Combine(context.TestRunDirectory, context.FullyQualifiedTestClassName);
+
+            var configDir = Path.Combine(testBaseDirectory, "config");
+            var userDir = Path.Combine(testBaseDirectory, "user");
             testProvider = new FixedConfigSettingsProvider(configDir, userDir);
             Directory.CreateDirectory(testProvider.ConfigurationFolderPath);
-        }
-
-        [ClassCleanup()]
-        public static void ClassCleanup()
-        {
-            Directory.Delete(testProvider.ConfigurationFolderPath);
-            Directory.Delete(testProvider.UserDataFolderPath);
         }
 
         /// <summary>
