@@ -44,9 +44,13 @@ namespace AccessibilityInsights.VersionSwitcher
             DownloadFromUriToLocalFile(options);
             using (ValidateLocalFile(options.LocalInstallerFile))
             {
-                using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
+                using (FilePreserver configFilePreserver = new FilePreserver(FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath))
                 {
-                    InstallWithinTransaction(options, transaction);
+                    configFilePreserver.PreserveFiles();
+                    using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
+                    {
+                        InstallWithinTransaction(options, transaction);
+                    }
                 }
             }
             UpdateConfigWithNewChannel(options.NewChannel);
