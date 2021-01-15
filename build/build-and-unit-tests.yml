@@ -34,7 +34,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
-        !**\AccessibilityInsights.CustomActions.csproj
+        !**\CustomActions.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
