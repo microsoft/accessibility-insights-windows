@@ -1,42 +1,52 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SetupLibrary;
 using Microsoft.Deployment.WindowsInstaller;
 using System;
-using System.Diagnostics;
-using System.IO;
 
 namespace AccessibilityInsights.CustomActions
 {
     public class ConfigFileCleaner
     {
+        private readonly ISystemShim _systemShim;
+
         [CustomAction]
         public static ActionResult RemoveUserConfigFiles(Session session)
+        {
+            ConfigFileCleaner cleaner = new ConfigFileCleaner(new SystemShim(session));
+            return cleaner.RunAction();
+        }
+
+        internal ConfigFileCleaner(ISystemShim systemShim)
+        {
+            _systemShim = systemShim;
+        }
+
+        internal ActionResult RunAction()
         {
             try
             {
                 if (IsVersionSwitcherRunning())
                 {
-                    session.Log("RemoveUserConfigFiles: Found VersionSwitcher, leaving config files intact.");
+                    _systemShim.LogToSession("RemoveUserConfigFiles: Found VersionSwitcher, ignoring config files.");
                 }
                 else
                 {
-                    DeleteConfigFiles(session);
+                    DeleteConfigFiles();
                 }
             }
             catch (Exception e)
             {
-                session.Log("Caught Exception: " + e);
+                _systemShim.LogToSession("Caught Exception: " + e);
             }
 
-            return ActionResult.Success;  // Don't block installer if we can't clean up the files
+            return ActionResult.Success;  // Don't block installer if an error occurs
         }
 
-        private static bool IsVersionSwitcherRunning()
+        private bool IsVersionSwitcherRunning()
         {
-            foreach (var x in Process.GetProcesses())
+            foreach (var processName in _systemShim.GetRunningProcessNames())
             {
-                if (x.ProcessName.Equals("AccessibilityInsights.VersionSwitcher", StringComparison.OrdinalIgnoreCase))
+                if (processName.Equals("AccessibilityInsights.VersionSwitcher", StringComparison.OrdinalIgnoreCase))
                 {
                     return true;
                 }
@@ -45,14 +55,13 @@ namespace AccessibilityInsights.CustomActions
             return false;
         }
 
-        private static void DeleteConfigFiles(Session session)
+        private void DeleteConfigFiles()
         {
-            string configPath = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
-
-            foreach (string fileName in Directory.EnumerateFiles(configPath))
+            _systemShim.LogToSession("RemoveUserConfigFiles: Finding config files");
+            foreach (string fileName in _systemShim.GetConfigFiles())
             {
-                session.Log("RemoveUserConfigFiles: Deleting file: {0}", fileName);
-                File.Delete(fileName);
+                _systemShim.LogToSession("RemoveUserConfigFiles: Deleting file: " + fileName);
+                _systemShim.DeleteFile(fileName);
             }
         }
     }

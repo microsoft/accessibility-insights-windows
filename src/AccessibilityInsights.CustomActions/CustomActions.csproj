@@ -44,7 +44,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigFileCleaner.cs" />
+    <Compile Include="ISystemShim.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SystemShim.cs" />
     <Content Include="CustomAction.config" />
     <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
   </ItemGroup>
