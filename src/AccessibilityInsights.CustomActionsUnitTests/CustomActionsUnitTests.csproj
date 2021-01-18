@@ -9,13 +9,13 @@
   <Import Project="..\..\build\NetFrameworkTest.targets" />
 
   <ItemGroup>
-    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0" >
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0">
       <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
     </Reference>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Codecov" Version="1.12.3" />
+    <PackageReference Include="Codecov" Version="1.12.4" />
     <PackageReference Include="coverlet.collector" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,7 +24,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Moq" Version="4.15.2" />
+    <PackageReference Include="Moq" Version="4.16.0" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
   </ItemGroup>
