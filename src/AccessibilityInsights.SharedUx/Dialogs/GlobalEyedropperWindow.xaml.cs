@@ -56,7 +56,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void CaptureScreenshot()
         {
-            screenshot = new Bitmap(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+            screenshot = new Bitmap(SystemInformation.VirtualScreen.Width, SystemInformation.VirtualScreen.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
 
             using (Graphics g = Graphics.FromImage(screenshot))
             {
