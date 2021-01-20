@@ -62,9 +62,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="WiX">
-      <Version>3.11.2</Version>
-    </PackageReference>
+    <PackageReference Include="WiX" Version="3.11.2" />
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0" >
+      <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(WixCATargetsPath)" Condition=" '$(WixCATargetsPath)' != '' " />
