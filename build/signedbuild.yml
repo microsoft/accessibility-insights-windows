@@ -31,7 +31,6 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
-        !**\CustomActions*.csproj
 
   - task: PowerShell@2
     displayName: 'License Header Check'

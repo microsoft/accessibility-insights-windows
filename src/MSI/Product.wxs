@@ -12,8 +12,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                   AllowDowngrades="no"
                   DowngradeErrorMessage="A newer version of [ProductName] is already installed." 
                   AllowSameVersionUpgrades="no"/>
-    <Binary Id="CustomActions"
-            SourceFile="..\AccessibilityInsights.CustomActions\bin\Release\AccessibilityInsights.CustomActions.CA.dll" />
     <UI>
       <UIRef Id="WixUI_InstallDir"/>
       <Publish Dialog="ExitDialog"
@@ -172,11 +170,9 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
 
     <Property Id="WixShellExecTarget" Value="[#FileExe]"/>
     <CustomAction Id="LaunchInstalledExe" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
-    <CustomAction Id="RemoveUserConfigFiles" BinaryKey="CustomActions" DllEntry="RemoveUserConfigFiles" Impersonate="yes" />
 
     <InstallExecuteSequence>
-      <Custom Action='RemoveUserConfigFiles' After='InstallFinalize'>Installed and (REMOVE="ALL") and NOT UPGRADINGPRODUCTCODE</Custom>
-      <Custom Action='LaunchInstalledExe' After='RemoveUserConfigFiles'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
+      <Custom Action='LaunchInstalledExe' After='InstallFinalize'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
     </InstallExecuteSequence>
 
     <DirectoryRef Id="ApplicationProgramsFolder">
