@@ -98,6 +98,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
+        !**\CustomActions*.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -228,6 +229,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
+        !**\CustomActions*.csproj
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
