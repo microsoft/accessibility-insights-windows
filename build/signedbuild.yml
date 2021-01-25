@@ -40,6 +40,7 @@ jobs:
       projects: |
         **\*.csproj
         !**\CustomActions.csproj
+        !**\CustomActionsUnitTests.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\AccessibilityInsights.sln'
