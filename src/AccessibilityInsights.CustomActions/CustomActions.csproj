@@ -75,7 +75,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.CustomActions.dll" />
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.CustomActions.CA.dll" />
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
 </Project>
