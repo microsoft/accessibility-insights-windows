@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.CustomActionsUnitTests</AssemblyName>
@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.CustomActions\CustomActions.csproj" />
+    <ProjectReference Include="..\AccessibilityInsights.CustomActions2\CustomActions2.csproj" />
   </ItemGroup>
 
 </Project>
