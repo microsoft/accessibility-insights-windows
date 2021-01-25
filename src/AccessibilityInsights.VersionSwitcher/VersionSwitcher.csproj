@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.CustomActions2\CustomActions2.csproj" />
+    <ProjectReference Include="..\AccessibilityInsights.CustomActions\CustomActions.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Win32\Win32.csproj" />
   </ItemGroup>

@@ -13,7 +13,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                   DowngradeErrorMessage="A newer version of [ProductName] is already installed." 
                   AllowSameVersionUpgrades="no"/>
     <Binary Id="CustomActions"
-            SourceFile="..\AccessibilityInsights.CustomActions\bin\Release\AccessibilityInsights.CustomActions.CA.dll" />
+            SourceFile="..\AccessibilityInsights.CustomActions.Package\bin\Release\AccessibilityInsights.CustomActions.CA.dll" />
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />

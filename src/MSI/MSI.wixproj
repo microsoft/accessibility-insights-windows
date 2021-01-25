@@ -59,8 +59,8 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.CustomActions\CustomActions.csproj">
-      <Name>CustomActions</Name>
+    <ProjectReference Include="..\AccessibilityInsights.CustomActions.Package\CustomActions.Package.csproj">
+      <Name>CustomActions.Package</Name>
       <Project>{01426834-55ce-4942-8445-194e4e1be22a}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
