@@ -74,4 +74,8 @@
       <Name>SetupLibrary</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <DropSignedFile Include="$(OutDir)\AccessibilityInsights.CustomActions.dll" />
+  </ItemGroup>
+  <Import Project="..\..\build\settings.targets" />
 </Project>
