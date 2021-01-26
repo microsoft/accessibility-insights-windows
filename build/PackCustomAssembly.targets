@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Project
+  xmlns="http://schemas.microsoft.com/developer/msbuild/2003"
+  InitialTargets="PackageCustomAssembly">
+
+  <!--
+  *****************************************************
+  SetCustomAssemblyPackingVariables: Set the variables that we use
+  *****************************************************
+  -->
+  <Target
+    Name="SetCustomAssemblyPackingVariables"
+    DependsOnTargets="SetProjectSpecificCustomAssemblyPackingVariables" >
+
+    <Error Condition=" '$(CustomActionDllBaseName)' == '' " Text="CustomActionDllBaseName has not been set!" />
+
+    <PropertyGroup>
+      <!-- Properties that are invariant for all projects -->
+      <SdkPath>$(SolutionDir)packages\wix.3.11.2\tools\sdk\</SdkPath>
+      <PackageTool>$(SdkPath)makesfxca.exe</PackageTool>
+      <BasePackage>$(SdkPath)x86\sfxca.dll</BasePackage>
+
+      <!-- Project-specific properties -->
+      <IntermediatePath>$(ProjectDir)$(IntermediateOutputPath)</IntermediatePath>
+      <HarvestPath>$(IntermediatePath)Harvest\</HarvestPath>
+      <CustomActionsDllNameNoPath>$(CustomActionDllBaseName).dll</CustomActionsDllNameNoPath>
+      <DllNameInHarvest>$(HarvestPath)$(CustomActionsDllNameNoPath)</DllNameInHarvest>
+      <PackagedDllNameInHarvest>$(ProjectDir)$(OutDir)$(CustomActionDllBaseName).CA.dll</PackagedDllNameInHarvest>
+    </PropertyGroup>
+
+  </Target>
+
+  <!--
+  *****************************************************
+  PackageCustomAssembly: Packages the custom assembly
+  *****************************************************
+  -->
+  <Target
+    Name="PackageCustomAssembly"
+    DependsOnTargets="SetCustomAssemblyPackingVariables" >
+
+    <Message Text='HarvestPath = "$(HarvestPath)"' />
+    <Message Text='AssembliesToHarvest = @(AssembliesToHarvest)' />
+
+    <Copy SourceFiles="@(AssembliesToHarvest)" DestinationFolder="$(HarvestPath)" />
+
+    <ItemGroup>
+      <SupportFiles Include="$(HarvestPath)*.*" Exclude="$(DllNameInHarvest)" />
+    </ItemGroup>
+
+    <Message Text='SupportFiles = "@(SupportFiles)"' />
+
+    <PropertyGroup Condition=" '@(SupportFiles)' != '' ">
+        <CmdLine>"$(PackageTool)" "$(PackagedDllNameInHarvest)" "$(BasePackage)" "$(DllNameInHarvest)" "@(SupportFiles)"</CmdLine>
+    </PropertyGroup>
+
+    <Message Condition=" '$(CmdLine)' == '' " Text='CmdLine= $(CmdLine)'/>
+    <Exec Condition=" '$(CmdLine)' != '' " Command='$(CmdLine)' />
+
+    <Copy SourceFiles="@(PackagedDllNameInHarvest)" DestinationFolder="$OutDir)" />
+
+  </Target>
+
+  <!--
+  *****************************************************
+  CleanHarvestPath: Cleans the harvest path
+  *****************************************************
+  -->
+  <Target Name="CleanCustomAction"
+    DependsOnTargets="_SetVariables">
+    <RemoveDir Directories="$(HarvestPath)" />
+  </Target>
+
+  <!--
+  *****************************************************
+  BeforeClean (redefinition): Make sure clean removes intermediate files
+  *****************************************************
+  -->
+  <Target Name="BeforeClean"
+   DependsOnTargets="CleanHarvestPath" />
+
+</Project>

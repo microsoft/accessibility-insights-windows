@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AccessibilityInsights.CusttomActions.Test</AssemblyName>
+    <RootNamespace>AccessibilityInsights.CustomActions.Test</RootNamespace>
+    <DropSignedFile>$(ProjectDir)$(OutDir)AccessibilityInsights.CustomActions.CA.dll</DropSignedFile>
+  </PropertyGroup>
+
+  <!--
+  *****************************************************
+  SetProjectSpecificCustomAssemblyPackingVariables: Needed for packing custom assembly
+  *****************************************************
+  -->
+  <Target
+    Name="SetProjectSpecificCustomAssemblyPackingVariables" >
+
+    <PropertyGroup>
+      <CustomActionDllBaseName>AccessibilityInsights.CustomActions</CustomActionDllBaseName>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <AssembliesToHarvest Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
+    </ItemGroup>
+
+  </Target>
+
+  <Import Project="..\..\build\NetFrameworkRelease.targets" />
+  <Import Project="..\..\build\PackCustomAssembly.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="WiX" Version="3.11.2" />
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0" >
+      <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.CustomActions\CustomActions.csproj" />
+  </ItemGroup>
+
+</Project>
