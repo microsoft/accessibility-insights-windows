@@ -25,8 +25,9 @@
   </Target>
 
   <PropertyGroup>
-    <DropSignedFileTarget>$(OutDir)AccessibilityInsights.CustomActions.CA.dll</DropSignedFileTarget>
+    <DropSignedFileTarget>$(ProjectDir)bin\$(Configuration)\net472\AccessibilityInsights.CustomActions.CA.dll</DropSignedFileTarget>
   </PropertyGroup>
+
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
   <Import Project="..\..\build\PackCustomAssembly.targets" />
 
