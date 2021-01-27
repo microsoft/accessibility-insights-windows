@@ -38,16 +38,11 @@
   </ItemGroup>
 
   <Choose>
-    <When Condition=" '$(DropSignedFileTarget)' == '' ">
+    <When Condition=" '$(DropSignedFile)' == '' ">
       <ItemGroup>
         <DropSignedFile Include="$(TargetPath)" />
       </ItemGroup>
     </When>
-    <Otherwise>
-      <ItemGroup>
-        <DropSignedFile Include="$(DropSignedFileTarget)" />
-      </ItemGroup>
-    </Otherwise>
   </Choose>
 
   <Import Project="NetFrameworkAll.targets" />

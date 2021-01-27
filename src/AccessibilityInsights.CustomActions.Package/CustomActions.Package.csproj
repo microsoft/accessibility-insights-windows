@@ -7,7 +7,6 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{01426834-55CE-4942-8445-194E4E1BE22A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AccessibilityInsights.CustomActions</RootNamespace>
     <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -36,46 +35,27 @@
   <Import Project="..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\packages\WiX.3.11.2\build\wix.props')" />
   <Import Project="$(WixCATargetsPath)" Condition=" '$(WixCATargetsPath)' != '' " />
   <Import Project="..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets" Condition=" '$(WixCATargetsPath)' == '' AND Exists('..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets') " />
-  <!-- Manually collect assemblies to package -->
-  <Target Name="CollectAssembliesToPackage" BeforeTargets="ResolveAssemblyReferences">
+  <!--
+  ==================================================================================================
+  AfterCompile (redefinition of what is set up in wix.ca.targets)
+  ==================================================================================================
+  -->
+  <Target Name="AfterCompile" DependsOnTargets="CollectAssembliesToPackage;PackCustomAction" />
+  <Target Name="CollectAssembliesToPackage">
+    <!-- Manually collect assemblies to package -->
     <ItemGroup>
-      <ModuleFiles Include="$(SolutionDir)AccessibilityInsights.SetupLibrary\bin\$(ConfigurationName)\net472\*.*" />
+      <ModuleFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(IntermediateOutputPath)" />
+    <PropertyGroup>
+      <CustomActionContents>$(IntermediateOutputPath)Microsoft.Deployment.WindowsInstaller.dll</CustomActionContents>
+    </PropertyGroup>
   </Target>
   <ItemGroup>
     <PackageReference Include="WiX" Version="3.11.2" />
-    <Reference Include="Microsoft.Deployment.WindowsInstaller, Version=3.0.0.0, Culture=neutral, PublicKeyToken=ce35f76fcda82bad, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\WiX.3.11.1\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.Deployment.WindowsInstaller">
-      <Private>True</Private>
-    </Reference>
+    <Compile Include="DummyClass.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ConfigFileCleaner.cs" />
-    <Compile Include="ISystemShim.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SystemShim.cs" />
-    <Content Include="CustomAction.config" />
-    <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
-      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
-      <Name>SetupLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <PropertyGroup>
-    <DropSignedFileTarget>$(OutDir)AccessibilityInsights.CustomActions.CA.dll</DropSignedFileTarget>
-  </PropertyGroup>
   <Import Project="..\..\build\settings.targets" />
 </Project>
