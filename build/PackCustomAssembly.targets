@@ -58,7 +58,7 @@
     <Message Condition=" '$(CmdLine)' == '' " Text='CmdLine= $(CmdLine)'/>
     <Exec Condition=" '$(CmdLine)' != '' " Command='$(CmdLine)' />
 
-    <Copy SourceFiles="@(PackagedDllNameInHarvest)" DestinationFolder="$OutDir)" />
+    <Copy SourceFiles="@(PackagedDllNameInHarvest)" DestinationFolder="$(TargetDir)" />
 
     <Message Text="DropSignedFile= @(DropSignedFile)" />
 
