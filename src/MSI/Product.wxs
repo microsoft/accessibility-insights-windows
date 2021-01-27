@@ -20,7 +20,8 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             Control="Finish"
             Event="DoAction"
             Value="LaunchInstalledExe">NOT Installed</Publish>
-    </UI>    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+    </UI>
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\WixDialogBanner.png" />
