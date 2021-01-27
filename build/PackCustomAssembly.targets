@@ -60,8 +60,6 @@
 
     <Copy SourceFiles="@(PackagedDllNameInHarvest)" DestinationFolder="$(TargetDir)" />
 
-    <Message Text="DropSignedFile= @(DropSignedFile)" />
-
   </Target>
 
   <!--
