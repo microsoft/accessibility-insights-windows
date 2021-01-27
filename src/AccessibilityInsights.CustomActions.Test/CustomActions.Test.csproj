@@ -1,10 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <AssemblyName>AccessibilityInsights.CusttomActions.Test</AssemblyName>
+    <AssemblyName>AccessibilityInsights.CustomActions.Test</AssemblyName>
     <RootNamespace>AccessibilityInsights.CustomActions.Test</RootNamespace>
-    <DropSignedFile>$(ProjectDir)$(OutDir)AccessibilityInsights.CustomActions.CA.dll</DropSignedFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <DropSignedFile Include="$(ProjectDir)$(OutDir)AccessibilityInsights.CustomActions.CA.dll" />
+  </ItemGroup>
 
   <!--
   *****************************************************
