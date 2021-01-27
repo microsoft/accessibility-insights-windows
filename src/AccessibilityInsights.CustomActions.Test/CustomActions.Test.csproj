@@ -5,9 +5,6 @@
     <RootNamespace>AccessibilityInsights.CustomActions.Test</RootNamespace>
   </PropertyGroup>
 
-  <ItemGroup>
-    <DropSignedFile Include="$(ProjectDir)$(OutDir)AccessibilityInsights.CustomActions.CA.dll" />
-  </ItemGroup>
 
   <!--
   *****************************************************
@@ -28,6 +25,9 @@
   </Target>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
+  <ItemGroup>
+    <DropSignedFile Include="$(ProjectDir)$(OutDir)AccessibilityInsights.CustomActions.CA.dll" />
+  </ItemGroup>
   <Import Project="..\..\build\PackCustomAssembly.targets" />
 
   <ItemGroup>
