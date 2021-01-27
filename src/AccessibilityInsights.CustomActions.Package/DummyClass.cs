@@ -3,6 +3,10 @@
 
 namespace AccessibilityInsights.CustomActions
 {
+    /// <summary>
+    /// This assembly is a placeholder that gets replaced by the project file. This class
+    /// just gives the placeholder a bit of code.
+    /// </summary>
     internal static class DummyClass
     {
         internal static void DummyMethod() { }
