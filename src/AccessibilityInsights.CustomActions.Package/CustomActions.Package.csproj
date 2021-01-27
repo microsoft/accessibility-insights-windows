@@ -36,8 +36,8 @@
   <Import Project="..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\packages\WiX.3.11.2\build\wix.props')" />
   <Import Project="$(WixCATargetsPath)" Condition=" '$(WixCATargetsPath)' != '' " />
   <Import Project="..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets" Condition=" '$(WixCATargetsPath)' == '' AND Exists('..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets') " />
-  <!-- Manually harvest files from SetupLibrary -->
-  <Target Name="HarvestSetupLibraryFiles" BeforeTargets="ResolveAssemblyReferences">
+  <!-- Manually collect assemblies to package -->
+  <Target Name="CollectAssembliesToPackage" BeforeTargets="ResolveAssemblyReferences">
     <ItemGroup>
       <ModuleFiles Include="$(SolutionDir)AccessibilityInsights.SetupLibrary\bin\$(ConfigurationName)\net472\*.*" />
     </ItemGroup>

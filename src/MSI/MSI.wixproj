@@ -34,6 +34,20 @@
     <DefineConstants>BuildVer=$(BuildNumber);</DefineConstants>
     <SuppressSpecificWarnings>1076;69</SuppressSpecificWarnings>
   </PropertyGroup>
+  <!--
+  *****************************************************
+  SetProjectSpecificCustomAssemblyPackingVariables: Needed for packing custom assembly
+  *****************************************************
+  -->
+  <Target Name="SetProjectSpecificCustomAssemblyPackingVariables">
+    <PropertyGroup>
+      <CustomActionDllBaseName>AccessibilityInsights.CustomActions</CustomActionDllBaseName>
+    </PropertyGroup>
+    <ItemGroup>
+      <AssembliesToHarvest Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
+    </ItemGroup>
+  </Target>
+  <Import Project="..\..\build\PackCustomAssembly.targets" />
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
@@ -57,16 +71,6 @@
       <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
       <Name>WixUtilExtension</Name>
     </WixExtension>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AccessibilityInsights.CustomActions.Package\CustomActions.Package.csproj">
-      <Name>CustomActions.Package</Name>
-      <Project>{01426834-55ce-4942-8445-194e4e1be22a}</Project>
-      <Private>True</Private>
-      <DoNotHarvest>True</DoNotHarvest>
-      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
-      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" Condition=" '$(WixTargetsPath)' != '' " />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets" Condition=" '$(WixTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets') " />

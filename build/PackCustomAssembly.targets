@@ -23,10 +23,10 @@
 
       <!-- Project-specific properties -->
       <IntermediatePath>$(ProjectDir)$(IntermediateOutputPath)</IntermediatePath>
-      <HarvestPath>$(IntermediatePath)Harvest\</HarvestPath>
+      <PackagingIntermediatePath>$(IntermediatePath)Packaging\</PackagingIntermediatePath>
       <CustomActionsDllNameNoPath>$(CustomActionDllBaseName).dll</CustomActionsDllNameNoPath>
-      <DllNameInHarvest>$(HarvestPath)$(CustomActionsDllNameNoPath)</DllNameInHarvest>
-      <PackagedDllNameInHarvest>$(ProjectDir)$(OutDir)$(CustomActionDllBaseName).CA.dll</PackagedDllNameInHarvest>
+      <DllNameInPackagingIntermediatePath>$(PackagingIntermediatePath)$(CustomActionsDllNameNoPath)</DllNameInPackagingIntermediatePath>
+      <PackagedDllNameInPackagingIntermediatePath>$(ProjectDir)$(OutDir)$(CustomActionDllBaseName).CA.dll</PackagedDllNameInPackagingIntermediatePath>
     </PropertyGroup>
 
   </Target>
@@ -40,36 +40,36 @@
     Name="PackageCustomAssembly"
     DependsOnTargets="SetCustomAssemblyPackingVariables" >
 
-    <Message Text='HarvestPath = "$(HarvestPath)"' />
-    <Message Text='AssembliesToHarvest = @(AssembliesToHarvest)' />
+    <Message Text='PackagingIntermediatePath = "$(PackagingIntermediatePath)"' />
+    <Message Text='AssembliesToPackage = @(AssembliesToPackage)' />
 
-    <Copy SourceFiles="@(AssembliesToHarvest)" DestinationFolder="$(HarvestPath)" />
+    <Copy SourceFiles="@(AssembliesToPackage)" DestinationFolder="$(PackagingIntermediatePath)" />
 
     <ItemGroup>
-      <SupportFiles Include="$(HarvestPath)*.*" Exclude="$(DllNameInHarvest)" />
+      <SupportFiles Include="$(PackagingIntermediatePath)*.*" Exclude="$(DllNameInPackagingIntermediatePath)" />
     </ItemGroup>
 
     <Message Text='SupportFiles = "@(SupportFiles)"' />
 
     <PropertyGroup Condition=" '@(SupportFiles)' != '' ">
-        <CmdLine>"$(PackageTool)" "$(PackagedDllNameInHarvest)" "$(BasePackage)" "$(DllNameInHarvest)" "@(SupportFiles)"</CmdLine>
+        <CmdLine>"$(PackageTool)" "$(PackagedDllNameInPackagingIntermediatePath)" "$(BasePackage)" "$(DllNameInPackagingIntermediatePathFolder)" "@(SupportFiles)"</CmdLine>
     </PropertyGroup>
 
     <Message Condition=" '$(CmdLine)' == '' " Text='CmdLine= $(CmdLine)'/>
     <Exec Condition=" '$(CmdLine)' != '' " Command='$(CmdLine)' />
 
-    <Copy SourceFiles="@(PackagedDllNameInHarvest)" DestinationFolder="$(TargetDir)" />
+    <Copy SourceFiles="@(PackagedDllNameInPackagingIntermediatePathFolder)" DestinationFolder="$(TargetDir)" />
 
   </Target>
 
   <!--
   *****************************************************
-  CleanHarvestPath: Cleans the harvest path
+  CleanPackagingIntermediatePath: Cleans the PackagingIntermediatePath folder
   *****************************************************
   -->
-  <Target Name="CleanCustomAction"
+  <Target Name="CleanPackagingIntermediatePath"
     DependsOnTargets="_SetVariables">
-    <RemoveDir Directories="$(HarvestPath)" />
+    <RemoveDir Directories="$(PackagingIntermediatePath)" />
   </Target>
 
   <!--
@@ -78,6 +78,8 @@
   *****************************************************
   -->
   <Target Name="BeforeClean"
-   DependsOnTargets="CleanHarvestPath" />
+   DependsOnTargets="CleanPackagingIntermediatePath">
+     <Error Text="InBeforeClean" />
+   </Target>
 
 </Project>

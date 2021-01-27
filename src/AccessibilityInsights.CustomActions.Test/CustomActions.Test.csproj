@@ -19,7 +19,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <AssembliesToHarvest Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
+      <AssembliesToPackage Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
     </ItemGroup>
 
   </Target>
