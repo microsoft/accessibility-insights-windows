@@ -14,15 +14,25 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                   AllowSameVersionUpgrades="no"/>
     <Binary Id="CustomActions"
             SourceFile="..\AccessibilityInsights.CustomActions.Package\bin\Release\AccessibilityInsights.CustomActions.CA.dll" />
-    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
+    <UI>
+      <UIRef Id="WixUI_InstallDir"/>
+      <Publish Dialog="ExitDialog"
+            Control="Finish"
+            Event="DoAction"
+            Value="LaunchInstalledExe">NOT Installed</Publish>
+    </UI>    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\WixDialogBanner.png" />
+    <WixVariable Id="WixUILicenseRtf" Value="..\AccessibilityInsights\bin\Release\net472\eula.rtf" />
 
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="ProductFeature" Title="Accessibility Insights for Windows" Level="1">
+      <ComponentRef Id="ProductComponent" />
+      <ComponentRef Id="IssueTemplateComp" />
       <ComponentRef Id="VersionSwitcherComp" />
+      <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 
     <!--Until WIX_IS_NETFRAMEWORK_47_OR_LATER_INSTALLED property is supported,
@@ -37,6 +47,104 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
       <Directory Id="ProgramFilesFolder">
         <Directory Id="AccessibilityInsightsFolder" Name="AccessibilityInsights" >
           <Directory Id="INSTALLFOLDER" Name="1.1">
+            <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
+              <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe" KeyPath="yes" >
+                <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
+                          Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
+              </File>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe.config" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe.manifest" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.CommonUxComponents.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.AzureDevOps.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.GitHub.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Extensions.Telemetry.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.SetupLibrary.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.SharedUx.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Actions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Core.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Desktop.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Rules.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.RuleSelection.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.SystemAbstractions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Telemetry.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Win32.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Ben.Demystifier.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\CommandLine.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.JsonWebTokens.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Logging.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Tokens.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.mshtml.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Build2.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Core.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Dashboards.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Policy.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Test.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.TestManagement.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Wiki.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Work.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.Client.Interactive.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.TestResults.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Win32.Registry.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Xaml.Behaviors.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Buffers.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Collections.Immutable.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Diagnostics.DiagnosticSource.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Drawing.Common.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.IdentityModel.Tokens.Jwt.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.IO.Packaging.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Memory.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Net.Http.Formatting.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Numerics.Vectors.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Reflection.Metadata.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Runtime.CompilerServices.Unsafe.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.AccessControl.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.Principal.Windows.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Threading.Tasks.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\ThirdPartyNotices.html"/>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\eula.rtf"/>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\links.json"/>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess.cmd"/>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Disabled.manifest"/>
+              <File Source="..\AccessibilityInsights\bin\Release\net472\UIAccess_Enabled.manifest"/>
+
+              <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
+                <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+              <ProgId Id='A11y.Event' Description='Accessibility Insights For Windows Events file'>
+                <Extension Id='a11yevent' ContentType='AccessibilityInsights Events File'>
+                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
+                </Extension>
+              </ProgId>
+            </Component>
+
+            <Directory Id="IssueTemplates" Name="IssueTemplates">
+              <Component Id="IssueTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueNoFailures.json"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueNoFailures.html"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueSingleFailure.json"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueSingleFailure.html"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueColorContrast.json"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\IssueTemplates\IssueColorContrast.html"/>
+              </Component>
+            </Directory>
+
             <Directory Id="VersionSwitcher" Name="VersionSwitcher">
               <Component Id="VersionSwitcherComp" Guid="1AAD6099-09E1-4E8F-A28B-57806F4A29DF">
                 <!-- ID's are needed for these files, since several of them are also installed with the main app -->
@@ -44,20 +152,42 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net472\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>
+                <!-- We sign the following assemblies in the main AccessibilityInsights project. To avoid duplicate signing, we reuse them below. -->
+                <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
+                <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>
               </Component>
             </Directory>
 
           </Directory>
         </Directory>
       </Directory>
+      <Directory Id="DesktopFolder"/>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="AccessibilityInsights"/>
+      </Directory>
     </Directory>
 
+    <Icon Id="AccessibilityInsights.exe" SourceFile="..\AccessibilityInsights\bin\Release\net472\AccessibilityInsights.exe" />
+
+    <Property Id="WixShellExecTarget" Value="[#FileExe]"/>
+    <CustomAction Id="LaunchInstalledExe" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
     <CustomAction Id="RemoveUserConfigFiles" BinaryKey="CustomActions" DllEntry="RemoveUserConfigFiles" Impersonate="yes" />
 
     <InstallExecuteSequence>
       <Custom Action='RemoveUserConfigFiles' After='InstallFinalize'>Installed and (REMOVE="ALL") and NOT UPGRADINGPRODUCTCODE</Custom>
+      <Custom Action='LaunchInstalledExe' After='RemoveUserConfigFiles'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
     </InstallExecuteSequence>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcut" Guid="63DCD2B5-CF57-494B-A81F-748DFDA7E9CF">
+        <Shortcut Id="ApplicationStartMenuShortcut"
+           Name="Accessibility Insights for Windows"
+           Description="Accessibility Insights for Windows v1.1 (Desktop Accessibility tool)"
+           Target="[#FileExe]"
+           WorkingDirectory="INSTALLFOLDER"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU" Key="Software\AccessibilityInsights" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
   </Product>
 </Wix>
