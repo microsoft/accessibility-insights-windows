@@ -57,5 +57,11 @@
   <ItemGroup>
     <Compile Include="DummyClass.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
 </Project>
