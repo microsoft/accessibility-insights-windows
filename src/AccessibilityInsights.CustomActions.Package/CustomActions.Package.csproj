@@ -1,4 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This project exists to produce the AccessibilityInsights.CustomActions.CA.dll file that is
+  consumed by the MSI installer. It's a very non-standard project, so exercise extreme care
+  when modifying it.
+-->
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +12,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{01426834-55CE-4942-8445-194E4E1BE22A}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AccessibilityInsights.CustomActions</RootNamespace>
+    <RootNamespace>AccessibilityInsights.CustomActions.Package</RootNamespace>
     <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -57,7 +62,7 @@
     <PackageReference Include="WiX" Version="3.11.2" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DummyClass.cs" />
+    <Compile Include="PlaceholderClass.cs" />
     <Content Include="CustomAction.config" />
   </ItemGroup>
   <ItemGroup>
