@@ -49,9 +49,9 @@
   <Target Name="OverwriteWithSignedAssemblies">
     <!-- Manually overwrite assemblies with signed versions before packing everything up -->
     <ItemGroup>
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\Release\net472\AccessibilityInsights.CustomActions.*" />
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(Configuration)\net472\AccessibilityInsights.CustomActions.*" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Microsoft.Deployment.WindowsInstaller.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Newtonsoft.Json.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(SignedOverwriteFiles)" DestinationFolder="$(IntermediateOutputPath)" />
     <PropertyGroup>
@@ -72,4 +72,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\..\build\settings.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WiX.3.11.2\build\wix.props'))" />
+  </Target>
 </Project>
