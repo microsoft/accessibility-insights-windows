@@ -51,7 +51,6 @@
       <AssembliesToHarvest Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
     </ItemGroup>
   </Target>
-  <Import Project="..\..\build\PackCustomAssembly.targets" />
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
