@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DummyClass.cs" />
+    <Content Include="CustomAction.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
