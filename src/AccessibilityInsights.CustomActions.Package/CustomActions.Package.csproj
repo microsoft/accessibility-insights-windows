@@ -40,13 +40,15 @@
   AfterCompile (redefinition of what is set up in wix.ca.targets)
   ==================================================================================================
   -->
-  <Target Name="AfterCompile" DependsOnTargets="CollectAssembliesToPackage;PackCustomAction" />
-  <Target Name="CollectAssembliesToPackage">
-    <!-- Manually collect assemblies to package -->
+  <Target Name="AfterCompile" DependsOnTargets="OverwriteWithSignedAssemblies;PackCustomAction" />
+  <Target Name="OverwriteWithSignedAssemblies">
+    <!-- Manually overwrite assemblies with signed versions before packing everything up -->
     <ItemGroup>
-      <ModuleFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.*" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\Release\net472\AccessibilityInsights.CustomActions.*" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
     </ItemGroup>
-    <Copy SourceFiles="@(ModuleFiles)" DestinationFolder="$(IntermediateOutputPath)" />
+    <Copy SourceFiles="@(SignedOverwriteFiles)" DestinationFolder="$(IntermediateOutputPath)" />
     <PropertyGroup>
       <CustomActionContents>$(IntermediateOutputPath)Microsoft.Deployment.WindowsInstaller.dll</CustomActionContents>
     </PropertyGroup>
