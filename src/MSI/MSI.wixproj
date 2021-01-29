@@ -38,19 +38,6 @@
     <DefineConstants>BuildVer=$(BuildNumber);</DefineConstants>
     <SuppressSpecificWarnings>1076;69</SuppressSpecificWarnings>
   </PropertyGroup>
-  <!--
-  *****************************************************
-  SetProjectSpecificCustomAssemblyPackingVariables: Needed for packing custom assembly
-  *****************************************************
-  -->
-  <Target Name="SetProjectSpecificCustomAssemblyPackingVariables">
-    <PropertyGroup>
-      <CustomActionDllBaseName>AccessibilityInsights.CustomActions</CustomActionDllBaseName>
-    </PropertyGroup>
-    <ItemGroup>
-      <AssembliesToHarvest Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(ConfigurationName)\net472\*.dll" />
-    </ItemGroup>
-  </Target>
   <ItemGroup>
     <Compile Include="Product.wxs" />
   </ItemGroup>
