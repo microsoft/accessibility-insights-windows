@@ -31,6 +31,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
+        !**\CustomActions.Package.csproj
 
   - task: PowerShell@2
     displayName: 'License Header Check'
@@ -97,6 +98,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
+        !**\CustomActions.Package.csproj
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -142,7 +144,7 @@ jobs:
     inputs:
       targetType: F
     continueOnError: true
-    
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report (CredScan, RoslynAnalyzers, and PoliCheck)'
     inputs:
@@ -179,7 +181,7 @@ jobs:
       uploadModernCop: false
       uploadPREfast: false
       uploadTSLint: false
-      
+
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
     inputs:
@@ -227,6 +229,7 @@ jobs:
       command: restore
       projects: |
         **\*.csproj
+        !**\CustomActions.Package.csproj
 
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'

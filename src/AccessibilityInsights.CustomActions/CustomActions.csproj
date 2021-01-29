@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
+    <RootNamespace>AccessibilityInsights.CustomActions</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\NetFrameworkRelease.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="WiX" Version="3.11.2" />
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0">
+      <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj" />
+  </ItemGroup>
+
+</Project>

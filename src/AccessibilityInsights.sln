@@ -2,11 +2,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUxTests", "AccessibilityInsights.SharedUxTests\SharedUxTests.csproj", "{F595A9C3-E625-40C9-82A5-79F05804F535}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedUxTests", "AccessibilityInsights.SharedUxTests\SharedUxTests.csproj", "{F595A9C3-E625-40C9-82A5-79F05804F535}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MSI", "MSI\MSI.wixproj", "{137DB774-6464-48BC-B577-091ABEAF0178}"
 	ProjectSection(ProjectDependencies) = postProject
 		{EAA85D0D-712D-4D85-A246-D3C699C6C602} = {EAA85D0D-712D-4D85-A246-D3C699C6C602}
+		{01426834-55CE-4942-8445-194E4E1BE22A} = {01426834-55CE-4942-8445-194E4E1BE22A}
 		{1D4F9843-B1CB-4CCC-A13A-D132336750F2} = {1D4F9843-B1CB-4CCC-A13A-D132336750F2}
 		{D17E1749-28FE-44B9-A9F6-AF8985124FE4} = {D17E1749-28FE-44B9-A9F6-AF8985124FE4}
 		{5E06484C-A156-46D7-830B-68275ED64F44} = {5E06484C-A156-46D7-830B-68275ED64F44}
@@ -19,15 +20,15 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "MSI", "MSI\MSI.wixproj", "{
 		{58DBF9FE-0029-408F-A8A4-23AE500E938D} = {58DBF9FE-0029-408F-A8A4-23AE500E938D}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.Telemetry", "AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj", "{D17E1749-28FE-44B9-A9F6-AF8985124FE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.Telemetry", "AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj", "{D17E1749-28FE-44B9-A9F6-AF8985124FE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedUx", "AccessibilityInsights.SharedUx\SharedUx.csproj", "{723DDC93-8AB7-403C-9D03-C90B01CAE774}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedUx", "AccessibilityInsights.SharedUx\SharedUx.csproj", "{723DDC93-8AB7-403C-9D03-C90B01CAE774}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccessibilityInsights", "AccessibilityInsights\AccessibilityInsights.csproj", "{5E06484C-A156-46D7-830B-68275ED64F44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessibilityInsights", "AccessibilityInsights\AccessibilityInsights.csproj", "{5E06484C-A156-46D7-830B-68275ED64F44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.AzureDevOps", "AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj", "{58DBF9FE-0029-408F-A8A4-23AE500E938D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.AzureDevOps", "AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj", "{58DBF9FE-0029-408F-A8A4-23AE500E938D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.AzureDevOpsTests", "AccessibilityInsights.Extensions.AzureDevOpsTests\Extensions.AzureDevOpsTests.csproj", "{723F3286-D001-4CB1-9F4D-29EF6B894877}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.AzureDevOpsTests", "AccessibilityInsights.Extensions.AzureDevOpsTests\Extensions.AzureDevOpsTests.csproj", "{723F3286-D001-4CB1-9F4D-29EF6B894877}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Packages", "Packages", "{C23FB215-D2F6-454D-BD08-7736562CDFB3}"
 EndProject
@@ -35,41 +36,51 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Runtime", "Runtime", "{7514
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WindowsUx", "WindowsUx", "{809F77B0-82E0-4990-A9A4-4806157385E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win32", "AccessibilityInsights.Win32\Win32.csproj", "{608E7EF9-C670-4152-A056-46448E2F1E18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Win32", "AccessibilityInsights.Win32\Win32.csproj", "{608E7EF9-C670-4152-A056-46448E2F1E18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions", "AccessibilityInsights.Extensions\Extensions.csproj", "{EAA85D0D-712D-4D85-A246-D3C699C6C602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions", "AccessibilityInsights.Extensions\Extensions.csproj", "{EAA85D0D-712D-4D85-A246-D3C699C6C602}"
 	ProjectSection(ProjectDependencies) = postProject
 		{608E7EF9-C670-4152-A056-46448E2F1E18} = {608E7EF9-C670-4152-A056-46448E2F1E18}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubAutoUpdate", "AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj", "{80165CCC-6D76-4590-A16B-1790A35B08E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.GitHubAutoUpdate", "AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj", "{80165CCC-6D76-4590-A16B-1790A35B08E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubAutoUpdateUnitTests", "AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests\Extensions.GitHubAutoUpdateUnitTests.csproj", "{7199C6A9-DD07-46A2-8D89-8458968C0897}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.GitHubAutoUpdateUnitTests", "AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests\Extensions.GitHubAutoUpdateUnitTests.csproj", "{7199C6A9-DD07-46A2-8D89-8458968C0897}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.TelemetryTests", "AccessibilityInsights.Extensions.TelemetryTests\Extensions.TelemetryTests.csproj", "{53A83593-015F-460A-9797-D910CB997E62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.TelemetryTests", "AccessibilityInsights.Extensions.TelemetryTests\Extensions.TelemetryTests.csproj", "{53A83593-015F-460A-9797-D910CB997E62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionSwitcher", "AccessibilityInsights.VersionSwitcher\VersionSwitcher.csproj", "{1D4F9843-B1CB-4CCC-A13A-D132336750F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersionSwitcher", "AccessibilityInsights.VersionSwitcher\VersionSwitcher.csproj", "{1D4F9843-B1CB-4CCC-A13A-D132336750F2}"
 	ProjectSection(ProjectDependencies) = postProject
 		{608E7EF9-C670-4152-A056-46448E2F1E18} = {608E7EF9-C670-4152-A056-46448E2F1E18}
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Setup Tools", "Setup Tools", "{2190F103-4B22-43FE-A047-093356B1007A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupLibrary", "AccessibilityInsights.SetupLibrary\SetupLibrary.csproj", "{B1DED5B2-FA82-4B17-8E10-7B3B6F6A14FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetupLibrary", "AccessibilityInsights.SetupLibrary\SetupLibrary.csproj", "{B1DED5B2-FA82-4B17-8E10-7B3B6F6A14FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetupLibraryUnitTests", "AccessibilityInsights.SetupLibraryUnitTests\SetupLibraryUnitTests.csproj", "{F9F353A9-CC0B-4FA4-990E-4390D6A6D825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SetupLibraryUnitTests", "AccessibilityInsights.SetupLibraryUnitTests\SetupLibraryUnitTests.csproj", "{F9F353A9-CC0B-4FA4-990E-4390D6A6D825}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHub", "AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj", "{F421AAFD-D85F-49B8-B95E-CA17718C38DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.GitHub", "AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj", "{F421AAFD-D85F-49B8-B95E-CA17718C38DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionsTests", "AccessibilityInsights.ExtensionsTests\ExtensionsTests.csproj", "{BE9F7E62-D9D6-4FC7-B449-820899498621}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsTests", "AccessibilityInsights.ExtensionsTests\ExtensionsTests.csproj", "{BE9F7E62-D9D6-4FC7-B449-820899498621}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.GitHubUnitTests", "AccessibilityInsights.Extensions.GitHubUnitTests\Extensions.GitHubUnitTests.csproj", "{8CCBEC10-F28B-4330-A351-0B4B900F1169}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.GitHubUnitTests", "AccessibilityInsights.Extensions.GitHubUnitTests\Extensions.GitHubUnitTests.csproj", "{8CCBEC10-F28B-4330-A351-0B4B900F1169}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonUxComponents", "AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj", "{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonUxComponents", "AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj", "{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITests", "UITests\UITests.csproj", "{7A7C04EA-8279-4D69-959D-E804DD81BC70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UITests", "UITests\UITests.csproj", "{7A7C04EA-8279-4D69-959D-E804DD81BC70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomActions.Package", "AccessibilityInsights.CustomActions.Package\CustomActions.Package.csproj", "{01426834-55CE-4942-8445-194E4E1BE22A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5838601C-D9EB-4198-9608-5F93735A04E4} = {5838601C-D9EB-4198-9608-5F93735A04E4}
+		{5E06484C-A156-46D7-830B-68275ED64F44} = {5E06484C-A156-46D7-830B-68275ED64F44}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomActions", "AccessibilityInsights.CustomActions\CustomActions.csproj", "{5838601C-D9EB-4198-9608-5F93735A04E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomActionsUnitTests", "AccessibilityInsights.CustomActionsUnitTests\CustomActionsUnitTests.csproj", "{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +117,7 @@ Global
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Debug|x64.ActiveCfg = Debug|x86
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Debug|x86.ActiveCfg = Debug|x86
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Release|Any CPU.ActiveCfg = Release|x86
+		{137DB774-6464-48BC-B577-091ABEAF0178}.Release|Any CPU.Build.0 = Release|x86
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Release|x64.ActiveCfg = Release|x86
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Release|x86.ActiveCfg = Release|x86
 		{137DB774-6464-48BC-B577-091ABEAF0178}.Release|x86.Build.0 = Release|x86
@@ -434,6 +446,56 @@ Global
 		{7A7C04EA-8279-4D69-959D-E804DD81BC70}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
 		{7A7C04EA-8279-4D69-959D-E804DD81BC70}.SignedRelease|x64.ActiveCfg = Release|Any CPU
 		{7A7C04EA-8279-4D69-959D-E804DD81BC70}.SignedRelease|x86.ActiveCfg = Release|Any CPU
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Debug|Any CPU.Build.0 = Debug|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Debug|x64.ActiveCfg = Debug|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Debug|x86.ActiveCfg = Debug|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Debug|x86.Build.0 = Debug|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Release|Any CPU.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Release|Any CPU.Build.0 = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Release|x64.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Release|x86.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.Release|x86.Build.0 = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|Any CPU.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|Any CPU.Build.0 = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|x64.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|x64.Build.0 = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|x86.ActiveCfg = Release|x86
+		{01426834-55CE-4942-8445-194E4E1BE22A}.SignedRelease|x86.Build.0 = Release|x86
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|x64.Build.0 = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Debug|x86.Build.0 = Debug|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|x64.Build.0 = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|x86.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.Release|x86.Build.0 = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|Any CPU.Build.0 = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|x64.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|x64.Build.0 = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|x86.ActiveCfg = Release|Any CPU
+		{5838601C-D9EB-4198-9608-5F93735A04E4}.SignedRelease|x86.Build.0 = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|x64.Build.0 = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Debug|x86.Build.0 = Debug|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Release|x64.ActiveCfg = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Release|x64.Build.0 = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.Release|x86.ActiveCfg = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.SignedRelease|Any CPU.Build.0 = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.SignedRelease|x64.ActiveCfg = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.SignedRelease|x64.Build.0 = Release|Any CPU
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E}.SignedRelease|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -459,6 +521,9 @@ Global
 		{8CCBEC10-F28B-4330-A351-0B4B900F1169} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{EEE9CD52-CA10-41AE-AC6E-98AE4BBDFA2D} = {809F77B0-82E0-4990-A9A4-4806157385E9}
 		{7A7C04EA-8279-4D69-959D-E804DD81BC70} = {809F77B0-82E0-4990-A9A4-4806157385E9}
+		{01426834-55CE-4942-8445-194E4E1BE22A} = {C23FB215-D2F6-454D-BD08-7736562CDFB3}
+		{5838601C-D9EB-4198-9608-5F93735A04E4} = {2190F103-4B22-43FE-A047-093356B1007A}
+		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E} = {2190F103-4B22-43FE-A047-093356B1007A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25101A75-9178-4066-B360-E932959B9758}
