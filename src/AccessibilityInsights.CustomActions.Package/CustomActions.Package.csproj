@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+  This project exists to produce the AccessibilityInsights.CustomActions.CA.dll file that is
+  consumed by the MSI installer. It's a very non-standard project, so exercise extreme care
+  when modifying it.
+-->
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{01426834-55CE-4942-8445-194E4E1BE22A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AccessibilityInsights.CustomActions.Package</RootNamespace>
+    <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\WiX.3.11.2\build\wix.props" Condition="Exists('..\packages\WiX.3.11.2\build\wix.props')" />
+  <Import Project="$(WixCATargetsPath)" Condition=" '$(WixCATargetsPath)' != '' " />
+  <Import Project="..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets" Condition=" '$(WixCATargetsPath)' == '' AND Exists('..\packages\WiX.3.11.2\tools\sdk\wix.ca.targets') " />
+  <!--
+  ==================================================================================================
+  AfterCompile (redefinition of what is set up in wix.ca.targets)
+  ==================================================================================================
+  -->
+  <Target Name="AfterCompile" DependsOnTargets="OverwriteWithSignedAssemblies;PackCustomAction" />
+  <Target Name="OverwriteWithSignedAssemblies">
+    <!-- Manually overwrite assemblies with signed versions before packing everything up -->
+    <ItemGroup>
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(Configuration)\net472\AccessibilityInsights.CustomActions.*" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Microsoft.Deployment.WindowsInstaller.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Newtonsoft.Json.dll" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SignedOverwriteFiles)" DestinationFolder="$(IntermediateOutputPath)" />
+    <PropertyGroup>
+      <CustomActionContents>$(IntermediateOutputPath)Microsoft.Deployment.WindowsInstaller.dll</CustomActionContents>
+    </PropertyGroup>
+  </Target>
+  <ItemGroup>
+    <PackageReference Include="WiX" Version="3.11.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="PlaceholderClass.cs" />
+    <Content Include="CustomAction.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.SetupLibrary\SetupLibrary.csproj">
+      <Project>{b1ded5b2-fa82-4b17-8e10-7b3b6f6a14fb}</Project>
+      <Name>SetupLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\build\settings.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudioEng.MicroBuild.Core.0.4.1\build\Microsoft.VisualStudioEng.MicroBuild.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\WiX.3.11.2\build\wix.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\WiX.3.11.2\build\wix.props'))" />
+  </Target>
+</Project>
