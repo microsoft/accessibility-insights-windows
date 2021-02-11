@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.16.0" />
-    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
     <PackageReference Include="System.IO.Packaging" Version="5.0.0" />
   </ItemGroup>
 
