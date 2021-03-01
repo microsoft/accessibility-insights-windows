@@ -123,3 +123,35 @@ Additional properties: None
 #### Event_Start_Record
 Meaning: The user has begun event recording  
 Additional properties: None
+
+#### Hierarchy_Load_NewFormat
+Meaning: The user has successfully opened an A11yTest file  
+Additional properties:
+Name | Value
+--- | ---
+customDimensions.FileMode | Indicates the app mode when the file was opened. Valid values: `Contrast`,  `Inspect`, or `Test`
+
+#### Hierarchy_Save
+Meaning: The user has successfully saved an A11yTest file  
+Additional properties: None
+
+#### Hilighter_Expand_AllDescendants
+Meaning: The user has clicked on the "Expand all descendants" context menu in test mode hierarchy  
+Additional properties: None
+
+#### Issue_File_Attempt
+Meaning: The user has completed the "File Issue" experience, but with no confirmed success (could be fire-and-forget or it could be a network failure)
+Additional properties: 
+Name | Value
+--- | ---
+customDimensions.IssueReporter | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO, or `GitHub` for GitHub
+
+#### Issue_Save
+Meaning: The user has completed the "File Issue" experience, with confirmed success  
+Additional properties: 
+Name | Value
+--- | ---
+customDimensions.IssueReporter | The ServiceName property of the associated issue reporter. Current values are Azure Boards for ADO, or GitHub for GitHub
+customDimension.RuleId | Present only if axe-windows flagged an issue. Reports the rule flagged by axe-windows
+customDimension.UIFramework | Present only if axe-windows flagged an issue. Reports the UI Framework of the UI Automation element flagged by axe-windows
+
