@@ -27,7 +27,7 @@ Logger.PublishTelemetryEvent(TelemetryAction.Bug_Save, new Dictionary<TelemetryP
 The `TelemetryAction` and `TelemetryProperty` enumerations can be extended to add new actions or properties.
 
 #### Context Properties
-There are some proeprties that are desired on every reported telemetry action. The `Logger.AddOrUpdateContextProperty` method exists for this purpose. When a context property is set, it will be automatically added as a property to each subsequent call to `Logger.PublishTelemetryEvent`. This sample adds a context property:
+There are some properties that are desired on every reported telemetry action. The `Logger.AddOrUpdateContextProperty` method exists for this purpose. When a context property is set, it will be automatically added as a property to each subsequent call to `Logger.PublishTelemetryEvent`. This sample adds a context property:
 ```
 Logger.AddOrUpdateContextProperty(TelemetryProperty.Version, GetAppVersion());  // value is a locale-agnostic string
 ```
