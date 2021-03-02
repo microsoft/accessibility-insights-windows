@@ -6,70 +6,67 @@ This document provides detailed information about telemetry events. It reflects 
 
 ### Application Events
 Application events are queried from the `customEvents` table. All application events follow the same pattern and contain 3 types of data:
-- [Common Data Properties](#common-data-properties).
-- A `name` property whose value corresponds to an event from  [Defined Application Events](#defined-application-events).
+- The [Common Data Properties](#common-data-properties).
+- A `name` property that matches one of the events defined below.
 - An optional set of event-specific properties, as defined with each event.
 
-### Defined Application Events
-This section describes the telemetry events that are defined by Accessibility Insights for Windows. Each will contain the [Common Data Properties](#common-data-properties), and may include additional properties, as described below:
-
 #### ColorContrast_Click_Dropdown
-Meaning: The user has opened a color picker popup in the Color Contrast view.  
-Additional properties: None
+Trigger: The user opens a color picker popup in the Color Contrast view.  
+Additional properties: None.
 
 #### ColorContrast_Click_Eyedropper
-Meaning: The user has clicked on an eyedropper in the Color Contrast view.  
-Additional properties: None
+Trigger: The user clicks on an eyedropper in the Color Contrast view.  
+Additional properties: None.
 
 #### ColorContrast_Click_HexChange
-Meaning: The user has entered a value in a hex dialog in the Color Contrast view.  
-Additional properties: None
+Trigger: The user enters a value in a hex dialog in the Color Contrast view.  
+Additional properties: None.
 
 #### Event_Load
-Meaning: The user has successfully opened a previously-saved A11yEvents file.  
-Additional properties: None
+Trigger: The user successfully opens a previously-saved A11yEvents file.  
+Additional properties: None.
 
 #### Event_Save
-Meaning: The user has successfully saved an A11yEvents file.  
-Additional properties: None
+Trigger: The user successfully saves an A11yEvents file.  
+Additional properties: None.
 
 #### Event_Start_Record
-Meaning: The user has begun event recording.  
-Additional properties: None
+Trigger: The user begins event recording.  
+Additional properties: None.
 
 #### Hierarchy_Load_NewFormat
-Meaning: The user has successfully opened an A11yTest file.  
+Trigger: The user successfully opens an A11yTest file.  
 Additional properties:
 Name | Value
 --- | ---
-`customDimensions.FileMode` | Indicates the app mode when the file was opened. Current values: `Contrast`, `Inspect`, or `Test`
+`customDimensions.FileMode` | Indicates the app mode when the file was opened. Current values: `Contrast`, `Inspect`, or `Test`.
 
 #### Hierarchy_Save
-Meaning: The user has successfully saved an A11yTest file.  
-Additional properties: None
+Trigger: The user successfully saves an A11yTest file.  
+Additional properties: None.
 
 #### Hilighter_Expand_AllDescendants
-Meaning: The user has clicked on the "Expand all descendants" context menu in test mode hierarchy.  
-Additional properties: None
+Trigger: The user clicks on the "Expand all descendants" context menu in the test mode hierarchy.  
+Additional properties: None.
 
 #### Issue_File_Attempt
-Meaning: The user has completed the "File Issue" experience, but with no confirmed success (could be fire-and-forget or it could be a network failure).  
+Trigger: The user attempts the "File Issue" experience, but with no confirmed success (could be fire-and-forget or it could be a network failure).  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub
+`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub.
 
 #### Issue_Save
-Meaning: The user has completed the "File Issue" experience, with confirmed success.  
+Trigger: The user completes the "File Issue" experience, with confirmed success.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub
-`customDimension.RuleId` | *Present only if axe-windows flagged an issue*. Reports the rule flagged by axe-windows
-`customDimension.UIFramework` | *Present only if axe-windows flagged an issue*. Reports the UI Framework of the UI Automation element flagged by axe-windows
+`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub.
+`customDimension.RuleId` | *Present only if axe-windows flagged an issue*. Reports the rule flagged by Axe.Windows.
+`customDimension.UIFramework` | *Present only if axe-windows flagged an issue*. Reports the UI Framework of the UI Automation element flagged by Axe.Windows.
 
 #### Mainwindow_Startup
-Meaning: The user has started the application.  
+Trigger: The user starts the application.  
 Additional properties:
 Name | Value
 --- | ---
@@ -77,99 +74,99 @@ Name | Value
 c`ustomDimensions.InstalledDotNetFrameworkVersion` | The numeric version of the installed .NET Framework version. If this value is 528040 or greater, then .NET Framework 4.8 is installed. Otherwise, .NET Framework 4.7.2 is installed.
 
 #### Mainwindow_Timer_Started
-Meaning: The user has used the "Scan with Timer" feature with a non-default value. *Note that this does not send data if the default value is used*.   
+Trigger: The user uses the "Scan with Timer" feature with a non-default value. *Note that this does not send data if the default value is used*.   
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Seconds` | The number of seconds specified by the user
+`customDimensions.Seconds` | The number of seconds specified by the user.
 
 ### Pattern_Invoke_Action
-Meaning: The user has invoked a pattern through the patterns UI.  
+Trigger: The user invokes a pattern through the patterns UI.  
 Additional properties: 
 Name | Value
 --- | ---
 `customDimensions.PatternMethod` | The pattern method that was invoked
 
 ### ReleaseChannel_ChangeConsidered
-Meaning: The user has selected a new channel and is being shown the dialog to confirm the change.  
+Trigger: The user selects a new channel and is being shown the dialog to confirm the change.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.ReleaseChannel` | The user's existing ReleaseChannel
-`customDimensions.ReleaseChannelConsidered` | The user's new selection for ReleaseChannel
+`customDimensions.ReleaseChannel` | The user's existing ReleaseChannel.
+`customDimensions.ReleaseChannelConsidered` | The user's considered selection for ReleaseChannel.
 
 #### Scan_File_Bug
-Meaning: The user has begun the process of filing a bug.  
+Trigger: The user begins the process of filing a bug.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.By` | The source of the bug filing. Current values are `HowtoFix`, `Hierarchy`, or `AutomatedChecks`
-`customDimensions.IsAlreadyLoggedIn` | `True` if the IssueReporter has all needed config information, otherwise `False`
-`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub
+`customDimensions.By` | The source of the bug filing. Current values are `HowtoFix`, `Hierarchy`, or `AutomatedChecks`.
+`customDimensions.IsAlreadyLoggedIn` | `True` if the IssueReporter has all needed config information, otherwise `False`.
+`customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub.
 
 #### TabStop_Record_On
-Meaning: The user has begun to record tab stops.  
+Trigger: The user begins to record tab stops.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`
+`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`.
 
 #### TabStop_Select_Records
-Meaning: The user has selected one or more tab stops that have been recorded.  
+Trigger: The user selects one or more tab stops that have been recorded.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.By` | The count of selected items
+`customDimensions.By` | The count of selected items.
 
 #### TestSelection_Set_Scope
-Meaning: The user has set the selection scope via the command bar.  
+Trigger: The user sets the selection scope via the command bar.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`
+`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`.
 
 #### Test_Requested
-Meaning: The user has triggered an automated scan.  
+Trigger: The user triggers an automated scan.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.By` | The trigger mechanism. Current values are `HotKey`, `Beaker`, `HierarchyMode`, or `Timer`
-`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`
+`customDimensions.By` | The trigger mechanism. Current values are `HotKey`, `Beaker`, `HierarchyMode`, or `Timer`.
+`customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`.
 
 #### Upgrade_DoInstallation
-Meaning: The user has successfully triggered an install from the Upgrade dialog.  
+Trigger: The user completes an install from the Upgrade dialog.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.UpdateInstallerUpdateTime` | The time it took to download the new MSI, validate it, and launch the VersionSwitcher. Does not include the execution time of the VersionSwitcher.
-`customDimensions.UpdateResult` | The result of the operation
+`customDimensions.UpdateInstallerUpdateTime` | The time it took to download the new MSI, validate it, and launch the VersionSwitcher. Does not include the execution time of the VersionSwitcher. Format is Hours:Minutes:Seconds.FractionalSeconds.
+`customDimensions.UpdateResult` | The result of the operation. Current values are `Unknown`, `Success`, or `RequiredUpgrade`.
 
 #### Upgrade_GetUpgradeOption
-Meaning: An upgrade has been triggered at application startup.  
+Trigger: The application checks for upgrade at application startup.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.UpdateInitializationTime` | The updater's measurement of how long it took to determine the UpdateOption
-`customDimensions.UpdateOptionWaitTime` | The app's measurement of how long it took to determine the UpdateOption. It is different from UpdateInitializationTime, since they start at different times on different threads.
-`customDimensions.UpdateOption` | The UpdateOption that was returned to the app (will be ignored if we timed out)
-`customDimensions.UpdateTimedOut` | `True` if the AutoUpdate process exceeded the 2 second timeout, otherwise `False`
+`customDimensions.UpdateInitializationTime` | The updater's measurement of how long it took to determine the UpdateOption. Format is Hours:Minutes:Seconds.FractionalSeconds.
+`customDimensions.UpdateOptionWaitTime` | The app's measurement of how long it took to determine the UpdateOption. It is different from UpdateInitializationTime, since they start at different times on different threads. Format is Hours:Minutes:Seconds.FractionalSeconds.
+`customDimensions.UpdateOption` | The UpdateOption that was returned to the app (will be ignored if we timed out).
+`customDimensions.UpdateTimedOut` | `True` if the AutoUpdate process exceeded the 2 second timeout, otherwise `False`.
 
 #### Upgrade_InstallationError
-Meaning: The user has triggered an install from the Upgrade dialog, and an Exception was caught.  
+Trigger: The user triggers an install from the Upgrade dialog, and an error occurred.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Error` | The UpdateResult
+`customDimensions.Error` | The UpdateResult, which is always `Unknown`. *Note: Should this provide more useful information?*
 
 #### Upgrade_Update_Dismiss
-Meaning: The user has pressed the "Later" button in the Upgrade dialog.  
+Trigger: The user presses the "Later" button in the Upgrade dialog.  
 Additional properties: 
 Name | Value
 --- | ---
 `customDimensions.MSIVersion` | The version of the previously installed client. *note: We already have the old version, should this log the new version instead?*
 
 #### Upgrade_Update_ReleaseNote
-Meaning: The user has pressed the "Release Notes" button from the Upgrade dialog.  
+Trigger: The user presses the "Release Notes" button from the Upgrade dialog.  
 Additional properties: 
 Name | Value
 --- | ---
@@ -179,15 +176,15 @@ Name | Value
 Accessibility Insights for Windows provides a mechanism by which Axe.Windows is able to provide telemetry that then gets merged into the telemetry stream that already exists for the application. These events inherit all of the [Common Data Properties](#common-data-properties), and appear just like events that originate from Accessibility Insights for Windows. These will be documented in the Axe.Windows repo, but are duplicated here for convenience:
 
 #### Scan_Statistics
-Meaning: An automated scan has completed.  
+Trigger: An automated scan completes.  
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.ElementsInScan` | The number of elements included in the scan
-`customDimensions.UpperBoundExceeded` | `True` if ElementsInScan exceeds our upper bound of 20,000, otherwise `False`
+`customDimensions.ElementsInScan` | The number of elements included in the scan.
+`customDimensions.UpperBoundExceeded` | `True` if ElementsInScan exceeds our upper bound of 20,000, otherwise `False`.
 
 #### SingleRule_Tested_Results
-Meaning: A single rule has been run on all elements within a scan.  
+Trigger: A single rule runs on all elements within a scan.  
 Additional properties: 
 Name | Value
 --- | ---
@@ -227,7 +224,7 @@ Here's an expanded example of the JSON-serialized object, containing a mixture o
 
 ### Exception Events
 Exception events are queried from the `exceptions` table. All exception events follow the same pattern and contains 2 types of data:
-- [Common Data Properties](#common-data-properties).
+- The [Common Data Properties](#common-data-properties).
 - [Exception-Specific Properties](#exception-specific-properties).
 
 #### Exception-Specific Properties
@@ -245,8 +242,7 @@ Name | Description | Sample
 `outerAssembly` | The assembly from which the outermost Exception was thrown. | `PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`
 `outerMethod` | The method from which the outermost Exception was thrown. | `System.Windows.Media.Visual.TrySimpleTransformToAncestor`
 `problemId` | A concatenation of the innermost Exception type and the method from which the innermost Exception was thrown. | `System.InvalidOperationException at AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0`
-`itemType` | Always `exception` | `exception`
-`details` | A JSON-serialized array of [ExceptionDetail objects](#exceptiondetail-objects) that correspond to the outermost Exception. The first item in the array is always the outermost Exception | `[{"parsedStack":[{"method":"System.Windows.Media.Visual.TrySimpleTransformToAncestor","level":0,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"System.Windows.Media.Visual.TransformToAncestor","level":1,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0","level":2,"line":0,"assembly":"AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"}],"outerId":"0","message":"The specified Visual is not an ancestor of this Visual.","type":"System.InvalidOperationException","id":"25819492"}]`
+`details` | A JSON-serialized array of [ExceptionDetail objects](#exceptiondetail-objects) that correspond to this Exception. The first item in the array is always the outermost Exception | `[{"parsedStack":[{"method":"System.Windows.Media.Visual.TrySimpleTransformToAncestor","level":0,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"System.Windows.Media.Visual.TransformToAncestor","level":1,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0","level":2,"line":0,"assembly":"AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"}],"outerId":"0","message":"The specified Visual is not an ancestor of this Visual.","type":"System.InvalidOperationException","id":"25819492"}]`
 
 ##### ExceptionDetail Objects
 Each ExceptionDetail object represents a single Exception that was thrown, along with its stack trace. Exceptions can be nested, with each inner Exception pointing to its immediate wrapper Exception. The following properties are defined:
@@ -334,7 +330,7 @@ These values identify the UI framework used to create the application being eval
 
 ###### Values from Axe.Windows
 These values are returned from Axe.Windows:
-Value | Meaning
+Value | Framework
 --- | ---
 `MicrosoftEdge` | Microsoft Edge (non-Chromium version)
 `InternetExplorer` | Internet Explorer
@@ -345,7 +341,7 @@ Value | Meaning
 
 ###### Values from application frameworks
 The following framework values have also been observed:
-Value | Meaning
+Value | Framework
 --- | ---
 `Chrome` | Chromium (includes Google Chrome and newer versios of Microsoft Edge)
 `DirectUI` | DirectUI apps
