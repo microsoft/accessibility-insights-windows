@@ -51,14 +51,14 @@ The following fields are set in the pipeline and are accessible for queries--not
 
 Name | Description | Event Sample | Exception Sample
 --- | --- | --- | ---
-`timestamp` | The UTC time that the event occurred | 2019-06-21T06:23:05.435691Z | 2019-06-20T15:16:56.334167Z
-`itemType` | The type of event (used for routing) | customEvent | exception
+`timestamp` | The UTC time that the event occurred | `2019-06-21T06:23:05.435691Z` | `2019-06-20T15:16:56.334167Z`
+`itemType` | The type of event (used for routing) | `customEvent` | `exception`
 `customDimensions` | User-defined data for this telemetry event
 `client_OS` | App-specified value to represent the client OS version. See [client_OS Values](#client_os-values) for details		
-`client_IP` | Identifies client IP, always scrubbed to 0.0.0.0 for privacy | 0.0.0.0 | 0.0.0.0
-`client_City` | Client city based on IP lookup in pipeline | Hyderabad | Redmond
-`client_StateOrProvince` | Client State/Province based on IP lookup in pipeline | Telangana | Washington
-`client_CountryOrRegion` | Client County/Region based on IP lookup in pipeline | India | United States
+`client_IP` | Identifies client IP, always scrubbed to 0.0.0.0 for privacy | `0.0.0.0` | `0.0.0.0`
+`client_City` | Client city based on reverse IP lookup in pipeline | `Hyderabad` | `Redmond`
+`client_StateOrProvince` | Client State/Province based on reverse IP lookup in pipeline | `Telangana` | `Washington`
+`client_CountryOrRegion` | Client County/Region based on reverse IP lookup in pipeline | `India` | `United States`
 `itemId` | Pipeline-assigned Guid for this item | *some guid* | *some guid*
 
 #### client_OS Values
