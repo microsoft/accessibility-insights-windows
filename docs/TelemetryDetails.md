@@ -312,7 +312,7 @@ Value | OS Version
 6.3.19041 | Windows 10 (2004)
 6.3.19042 | Windows 10 (20H2)
 
-Builds on internal previews may also be in the data with version numbers greater than what appear in the table.
+This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
 ##### customDimension.UIFramework identifiers
 These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are from Axe.Windows, and others are dynamically reported by application frameworks:
