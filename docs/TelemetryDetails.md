@@ -268,7 +268,7 @@ Additional properties:
 Name | Value
 --- | ---
 `customDimensions.UpdateInitializationTime` | The updater's measurement of how long it took to determine the UpdateOption
-`customDimensions.UpdateOptionWaitTime` | The app's measurement of how long it took to determine the UpdateOption. Different from UpdateInitializationTime, since they start at different times on different threads.
+`customDimensions.UpdateOptionWaitTime` | The app's measurement of how long it took to determine the UpdateOption. It is different from UpdateInitializationTime, since they start at different times on different threads.
 `customDimensions.UpdateOption` | The UpdateOption that was returned to the app (will be ignored if we timed out)
 `customDimensions.UpdateTimedOut` | `True` if the AutoUpdate process exceeded the 2 second timeout, otherwise `False`
 
@@ -291,5 +291,54 @@ Meaning: The user has pressed the "Release Notes" button from the Upgrade dialog
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Error` | The error from the clicking the release notes (nore: should this include the Exception type and/or the Uri to the release notes?)
+`customDimensions.Error` | The error from the clicking the release notes *note: Should this include the Exception type and/or the Uri to the release notes?*
 
+### Events from Axe.Windows
+Accessibility Insights for Windows provides a mechanism by which Axe.Windows is able to provide telemetry that then gets merged into the telemetry stream that already exists for the application. These events inherit all of the [Common Data Properties](#common-data-properties), and appear just like events that originate from Accessibility Insights for Windows. These will be documented in the Axe.Windows repo, but are duplicated here for convenience:
+
+#### Scan_Statistics
+Meaning: An automated scan has completed.  
+Additional properties: 
+Name | Value
+--- | ---
+`customDimensions.ElementsInScan` | The number of elements included in the scan
+`customDimensions.UpperBoundExceeded` | `True` if ElementsInScan exceeds our upper bound of 20,000, otherwise `False`
+
+#### SingleRule_Tested_Results
+Meaning: A single rule has been run on all elements within a scan.  
+Additional properties: 
+Name | Value
+--- | ---
+`customDimensions.TestResults` | The JSON-serialized data summarizing the results of this rule (where it was run and the results it produced). Contains a RuleId and an array of Result objects. Each result object contains a ControlType, a UIFramework, an optional Fail result, and an optional Pass Result. Pass and Fail results can appear in any order within the object.
+
+Here's an expanded example of the JSON-serialized object, containing a mixture of Pass and Fail results, to better visualize this data (*note that the data in the telemetry stream is **not** expanded*):
+
+```
+{
+    "RuleId":"NameNotNull",
+    "Results":[
+        {
+            "ControlType":"Text",
+            "UIFramework":"Win32",
+            "Fail":"2",
+            "Pass":"7"
+        },
+        {
+            "ControlType":"Button",
+            "UIFramework":"Win32",
+            "Pass":"2",
+            "Fail":"1"
+        },
+        {
+            "ControlType":"TabItem",
+            "UIFramework":"Win32",
+            "Pass":"4"
+        },
+        {
+            "ControlType":"Hyperlink",
+            "UIFramework":"Win32",
+            "Pass":"1"
+        }
+    ]
+}
+```		
