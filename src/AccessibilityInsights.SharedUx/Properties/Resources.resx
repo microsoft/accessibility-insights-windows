@@ -417,8 +417,8 @@
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
     <value>Color contrast analyzer</value>
   </data>
-  <data name="RunTextGuidance" xml:space="preserve">
-    <value>Guidance</value>
+  <data name="TabStopsControl_TabStopsLink" xml:space="preserve">
+    <value>Learn more about tab stops.</value>
   </data>
   <data name="firstChooserAutomationPropertiesName" xml:space="preserve">
     <value>first color</value>
