@@ -314,17 +314,6 @@ Value | OS Version
 
 Builds on internal previews may also be in the data with version numbers greater than what appear in the table.
 
-
-##### Dynamic properties within an app session
-The following context properties can vary during the lifetime of the process, depending on user actions:
-
-Name | Description
---- | ---
-`customDimensions.View` | The app's view. Current values are`Live`, `CapturingData`, `Recording`, `TabStop`, or `ElementHowToFix`.
-`customDimensions.UIFramework` | See [customDimension.UIFramework identifiers](#customdimension.uiframework-identifiers).
-`customDimensions.ModeName` | The app's page. Current values are `Start`, `Test`, `Inspect`, `CCA`, `Events`, or `Exit`.
-`customDimensions.ModeSessionId` | A Guid that gets generated every time the page mode changes.
-
 ##### customDimension.UIFramework identifiers
 These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are from Axe.Windows, and others are dynamically reported by application frameworks:
 
