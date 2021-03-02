@@ -349,3 +349,70 @@ Value | Framework
 `Qt` | Undetermined
 `SWT` | Undetermined
 `Avalonia` | Undetermined
+
+### Sample Queries
+Queries are written using the [Kusto Query Language](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/). Here are some sample queries:
+
+#### How many sessions started in the last day?
+```
+customEvents 
+| where timestamp >= ago(1d)
+| where name == 'Mainwindow_Startup'
+| summarize count()
+```
+
+#### How many unique install ID's have started sessions in the last day?
+```
+customEvents 
+| where timestamp >= ago(1d)
+| where name == 'Mainwindow_Startup'
+| extend installId = tostring(customDimensions.InstallationID)
+| extend version = tostring(customDimensions.Version)
+| summarize dcount(installId)
+```
+
+#### How many unique install ID's have started sessions in the last day, broken down by app version, as a barchart?
+```
+customEvents 
+| where timestamp >= ago(1d)
+| where name == 'Mainwindow_Startup'
+| extend installId = tostring(customDimensions.InstallationID)
+| extend version = tostring(customDimensions.Version)
+| summarize dcount(installId) by version
+| sort by version desc
+| render barchart
+```
+
+#### How many unique install ID's have started sessions in the last 60 days, per day, broken down by app version, as a barchart?
+```
+customEvents
+| where timestamp > ago(60d)
+| where name == 'Mainwindow_Startup'
+| project installId=tostring(customDimensions.InstallationID), days=bin(timestamp, 1d), version=tostring(customDimensions.Version)
+| distinct installId, version, days
+| summarize count() by days, version
+| render barchart
+```
+
+#### What are the top 10 Exceptions that have been reported in version 1.1.1467.1 in the last 7 days?
+```
+exceptions
+| where timestamp >= ago(7d)
+| extend version = tostring(customDimensions.Version)
+| where version == '1.1.1467.1'
+| summarize count(problemId) by problemId
+| sort by count_problemId desc
+| take 10
+```
+
+#### What are the top 10 Exceptions that have been reported in version 1.1.1467.1 in the last 7 days, but that occur outside of UIAutomationClient.dll?
+```
+exceptions
+| where timestamp  >= ago(7d)
+| extend version = tostring(customDimensions.Version)
+| where version == '1.1.1467.1'
+| where not(problemId contains 'UIAutomationClient')
+| summarize count(problemId) by problemId
+| sort by count_problemId desc
+| take 10
+```
