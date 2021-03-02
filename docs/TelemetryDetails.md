@@ -265,7 +265,7 @@ Name | Description | Sample
 `line` | If available, the line of the indicated stack frame (0 if unavailable). | `0`
 
 ### Common Data Properties
-Common data properties are included with every telemetry event. Some of these properties pipeline-controlled, and some are application-controlled. The following tables outline these properties.
+Common data properties are included with every telemetry event. Some of these properties are pipeline-controlled, and some are application-controlled. The following tables outline these properties.
 
 #### Pipeline-controlled properties
 The following properties are controlled by the telemetry pipeline and are useful for queries--note that this list is intentionally limited to those properties that are most likely to be useful for writing queries:
