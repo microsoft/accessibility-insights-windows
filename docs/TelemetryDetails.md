@@ -88,8 +88,8 @@ The following context properties remain fixed throughout the lifetime of the pro
 
 Name | Description | Sample
 --- | --- | ---
-`customDimensions.Version` | The app version with no leading zeros | 1.1.1467.1
-`customDimensions.ReleaseChannel` | The client's Release Channel. Current values are `Production`, `Insider`, or `Canary` | Production
+`customDimensions.Version` | The app version with no leading zeros | `1.1.1467.1`
+`customDimensions.ReleaseChannel` | The client's Release Channel. Current values are `Production`, `Insider`, or `Canary` | `Production`
 `customDimensions.AppSessionID` | A Guid that remains consistent for that app's process session | *some guid*
 `customDimensions.InstallationID` | An installation-specific Guid that remains consistent within a calendar month but changes randomly between months | *some guid*
 
