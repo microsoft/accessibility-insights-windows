@@ -160,7 +160,7 @@ Meaning: The user has successfully opened an A11yTest file.
 Additional properties:
 Name | Value
 --- | ---
-`customDimensions.FileMode` | Indicates the app mode when the file was opened. Valid values: `Contrast`,  `Inspect`, or `Test`
+`customDimensions.FileMode` | Indicates the app mode when the file was opened. Current values: `Contrast`,  `Inspect`, or `Test`
 
 #### Hierarchy_Save
 Meaning: The user has successfully saved an A11yTest file.  
