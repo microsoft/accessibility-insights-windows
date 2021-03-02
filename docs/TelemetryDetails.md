@@ -62,8 +62,8 @@ Additional properties:
 Name | Value
 --- | ---
 `customDimensions.IssueReporter` | The ServiceName property of the associated issue reporter. Current values are `Azure Boards` for ADO or `GitHub` for GitHub.
-`customDimension.RuleId` | *Present only if axe-windows flagged an issue*. Reports the rule flagged by Axe.Windows.
-`customDimension.UIFramework` | *Present only if axe-windows flagged an issue*. Reports the UI Framework of the UI Automation element flagged by Axe.Windows.
+`customDimension.RuleId` | *Present only if Axe.Windows flagged an issue*. Reports the rule flagged by Axe.Windows.
+`customDimension.UIFramework` | *Present only if Axe.Windows flagged an issue*. Reports the UI Framework of the UI Automation element flagged by Axe.Windows.
 
 #### Mainwindow_Startup
 Trigger: The user starts the application.  
@@ -85,7 +85,7 @@ Trigger: The user invokes a pattern through the patterns UI.
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.PatternMethod` | The pattern method that was invoked
+`customDimensions.PatternMethod` | The pattern method that was invoked.
 
 ### ReleaseChannel_ChangeConsidered
 Trigger: The user selects a new channel and is being shown the dialog to confirm the change.  
@@ -234,7 +234,7 @@ Name | Description | Sample
 --- | --- | --- 
 `type` | The .NET type of the innermost Exception that was thrown. | `System.InvalidOperationException`
 `assembly` | Identifies the assembly where the outermost Exception was caught. | `AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a`
-`method` | Identifies the method where the outermost Exception was caught | `AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0`
+`method` | Identifies the method where the outermost Exception was caught. | `AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0`
 `innermostType` | The .NET type of the innermost Exception that was thrown. *note: This property exists only if the innermost Exception was wrapped by another Exception.* | 
 `innermostMessage` | The `Message` property of the innermost Exception that was thrown. *note: This property exists only in the innermost Exception was wrapped by another Exception.* | 
 `outerType` | The .NET type of the outermost Exception that was thrown. This may be different from the `type` that was thrown by the innermost Exception. | `System.InvalidOperationException`
@@ -242,27 +242,27 @@ Name | Description | Sample
 `outerAssembly` | The assembly from which the outermost Exception was thrown. | `PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`
 `outerMethod` | The method from which the outermost Exception was thrown. | `System.Windows.Media.Visual.TrySimpleTransformToAncestor`
 `problemId` | A concatenation of the innermost Exception type and the method from which the innermost Exception was thrown. | `System.InvalidOperationException at AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0`
-`details` | A JSON-serialized array of [ExceptionDetail objects](#exceptiondetail-objects) that correspond to this Exception. The first item in the array is always the outermost Exception | `[{"parsedStack":[{"method":"System.Windows.Media.Visual.TrySimpleTransformToAncestor","level":0,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"System.Windows.Media.Visual.TransformToAncestor","level":1,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0","level":2,"line":0,"assembly":"AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"}],"outerId":"0","message":"The specified Visual is not an ancestor of this Visual.","type":"System.InvalidOperationException","id":"25819492"}]`
+`details` | A JSON-serialized array of [ExceptionDetail objects](#exceptiondetail-objects) that correspond to this Exception. The first item in the array is always the outermost Exception. | `[{"parsedStack":[{"method":"System.Windows.Media.Visual.TrySimpleTransformToAncestor","level":0,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"System.Windows.Media.Visual.TransformToAncestor","level":1,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0","level":2,"line":0,"assembly":"AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"}],"outerId":"0","message":"The specified Visual is not an ancestor of this Visual.","type":"System.InvalidOperationException","id":"25819492"}]`
 
 ##### ExceptionDetail Objects
 Each ExceptionDetail object represents a single Exception that was thrown, along with its stack trace. Exceptions can be nested, with each inner Exception pointing to its immediate wrapper Exception. The following properties are defined:
 
 Name | Description | Sample
 --- | --- | ---
-`type` | The type of Exception that was thrown | `System.InvalidOperationException`
-`message` | The `Message` property specified when this Exception was thrown | `The specified Visual is not an ancestor of this Visual.`
-`id` | A system-assigned ID for this specific exception event. This is used to link the Exception chain | *some id*
-`outerId` | A system-assigned value that maps to the id or the immediate parent of this Exception. Will be 0 for the outermost Exception | *some id*
+`type` | The type of Exception that was thrown. | `System.InvalidOperationException`
+`message` | The `Message` property specified when this Exception was thrown. | `The specified Visual is not an ancestor of this Visual.`
+`id` | A system-assigned ID for this specific exception event. This is used to link the Exception chain. | *some id*
+`outerId` | A system-assigned value that maps to the id or the immediate parent of this Exception. Will be 0 for the outermost Exception. | *some id*
 `parsedStack` | A JSON-serialized array of [StackFrame Objects[(#stackframe-objects)] that identify where this Exception was thrown. Index 0 is the innermost frame, index 1 is the next innermost, etc. | `[{"method":"System.Windows.Media.Visual.TrySimpleTransformToAncestor","level":0,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"System.Windows.Media.Visual.TransformToAncestor","level":1,"line":0,"assembly":"PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"},{"method":"AccessibilityInsights.SharedUx.Controls.HierarchyControl+<>c__DisplayClass55_0.<OnSelected>b__0","level":2,"line":0,"assembly":"AccessibilityInsights.SharedUx, Version=1.1.899.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"}]`
 
 ##### StackFrame Objects
 Each StackFrame object represents a frame on the exception stack with the 4 following properties:
 Name | Description | Sample
 --- | --- | ---
-`level` | The count of stack frames from the innermost Exception | `1`
-`assembly` | The assembly of the indicated stack frame | `PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`
-`method` | The method of the indicated stack frame | `System.Windows.Media.Visual.TransformToAncestor`
-`line` | If available, the line of the indicated stack frame (0 if unavailable) | `0`
+`level` | The count of stack frames from the innermost Exception. | `1`
+`assembly` | The assembly of the indicated stack frame. | `PresentationCore, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35`
+`method` | The method of the indicated stack frame. | `System.Windows.Media.Visual.TransformToAncestor`
+`line` | If available, the line of the indicated stack frame (0 if unavailable). | `0`
 
 ### Common Data Properties
 Common data properties are included with every telemetry event. Some of these properties pipeline-controlled, and some are application-controlled. The following tables outline these properties.
@@ -272,10 +272,10 @@ The following properties are controlled by the telemetry pipeline and are useful
 
 Name | Description | Event Sample | Exception Sample
 --- | --- | --- | ---
-`timestamp` | The UTC time that the event occurred | `2019-06-21T06:23:05.435691Z` | `2019-06-20T15:16:56.334167Z`
-`client_City` | Client city based on reverse IP lookup in pipeline | `Hyderabad` | `Redmond`
-`client_StateOrProvince` | Client State/Province based on reverse IP lookup in pipeline | `Telangana` | `Washington`
-`client_CountryOrRegion` | Client County/Region based on reverse IP lookup in pipeline | `India` | `United States`
+`timestamp` | The UTC time that the event occurred. | `2019-06-21T06:23:05.435691Z` | `2019-06-20T15:16:56.334167Z`
+`client_City` | Client city based on reverse IP lookup in pipeline. | `Hyderabad` | `Redmond`
+`client_StateOrProvince` | Client State/Province based on reverse IP lookup in pipeline. | `Telangana` | `Washington`
+`client_CountryOrRegion` | Client County/Region based on reverse IP lookup in pipeline. | `India` | `United States`
 
 #### Application-controlled properties
 The following properties are controlled by the application--note that this list is intentionally limited to those properties that are most likely to be useful for writing queries. Most of these properties are included in the `customProperties` field of the telemetry events. Some of these values are dynamic and may change during a session, as outlined below:
@@ -320,10 +320,10 @@ The following context properties can vary during the lifetime of the process, de
 
 Name | Description
 --- | ---
-`customDimensions.View` | The app's view. Current values are`Live`, `CapturingData`, `Recording`, `TabStop`, or `ElementHowToFix`
-`customDimensions.UIFramework` | See [customDimension.UIFramework identifiers](#customdimension.uiframework-identifiers)
-`customDimensions.ModeName` | The app's page. Current values are `Start`, `Test`, `Inspect`, `CCA`, `Events`, or `Exit`
-`customDimensions.ModeSessionId` | A Guid that gets generated every time the page mode changes
+`customDimensions.View` | The app's view. Current values are`Live`, `CapturingData`, `Recording`, `TabStop`, or `ElementHowToFix`.
+`customDimensions.UIFramework` | See [customDimension.UIFramework identifiers](#customdimension.uiframework-identifiers).
+`customDimensions.ModeName` | The app's page. Current values are `Start`, `Test`, `Inspect`, `CCA`, `Events`, or `Exit`.
+`customDimensions.ModeSessionId` | A Guid that gets generated every time the page mode changes.
 
 ##### customDimension.UIFramework identifiers
 These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are from Axe.Windows, and others are dynamically reported by application frameworks:
