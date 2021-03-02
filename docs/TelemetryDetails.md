@@ -5,7 +5,7 @@ This document provides detailed information about telemetry events. It reflects 
 ### Telemetry Events
 Telemetry events are queried from the `customEvents` table. All events follow the same pattern. Each event contains 3 types of data:
 - [Common Data Properties](#common-data-properties).
-- A `name` field that corresponds to an event from  [Defined Telemetry Events](#defined-telemetry-events).
+- A `name` property whose value corresponds to an event from  [Defined Telemetry Events](#defined-telemetry-events).
 - An optional set of event-specific properties (defined with each event).
 
 ### Exceptions
@@ -44,22 +44,19 @@ Name | Description | Sample
 `method` | The method of the indicated stack | `System.Windows.Media.Visual.TrySimpleTransformToAncestor`
 
 ### Common Data Properties
-Common data is included with every event and Exception in the pipeline. Some of the data is pipeline-assigned, and some is app-assigned. The following tables outline this data.
+Common data properties are included with every event and Exception in the pipeline. Some of these properties pipeline-assigned, and some are app-assigned. The following tables outline these properties.
 
-#### Pipeline Data
-The following fields are set in the pipeline and are accessible for queries--note that this list intentionally omits some fields that are not generally useful.
+#### Pipeline-assigned properties
+The following properties are set in the pipeline and are useful for queries--note that this list intentionally omits some properties that are not generally useful for queries:
 
 Name | Description | Event Sample | Exception Sample
 --- | --- | --- | ---
 `timestamp` | The UTC time that the event occurred | `2019-06-21T06:23:05.435691Z` | `2019-06-20T15:16:56.334167Z`
-`itemType` | The type of event (used for routing) | `customEvent` | `exception`
 `customDimensions` | User-defined data for this telemetry event
 `client_OS` | App-specified value to represent the client OS version. See [client_OS Values](#client_os-values) for details		
-`client_IP` | Identifies client IP, always scrubbed to 0.0.0.0 for privacy | `0.0.0.0` | `0.0.0.0`
 `client_City` | Client city based on reverse IP lookup in pipeline | `Hyderabad` | `Redmond`
 `client_StateOrProvince` | Client State/Province based on reverse IP lookup in pipeline | `Telangana` | `Washington`
 `client_CountryOrRegion` | Client County/Region based on reverse IP lookup in pipeline | `India` | `United States`
-`itemId` | Pipeline-assigned Guid for this item | *some guid* | *some guid*
 
 #### client_OS Values
 The Windows version is fetched directly from the registry. The CurrentVersion and CurrentBuildVersion registry values from the "HKLM\SOFTWARE\Microsoft\Windows NT" key are combined into a single string format. The current mappings (based on a blend of https://en.wikipedia.org/wiki/Windows_10_version_history and http://www.jrsoftware.org/ishelp/index.php?topic=winvernotes) include:
@@ -160,7 +157,7 @@ Meaning: The user has successfully opened an A11yTest file.
 Additional properties:
 Name | Value
 --- | ---
-`customDimensions.FileMode` | Indicates the app mode when the file was opened. Current values: `Contrast`,  `Inspect`, or `Test`
+`customDimensions.FileMode` | Indicates the app mode when the file was opened. Current values: `Contrast`, `Inspect`, or `Test`
 
 #### Hierarchy_Save
 Meaning: The user has successfully saved an A11yTest file.  
