@@ -84,7 +84,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="element"></param>
         void SetElementInternal(A11yElement element)
         {
-            if (element != null && element.BoundingRectangle != null)
+            if (element != null && !element.BoundingRectangle.IsEmpty)
             {
                 if (this.BoundingRectangle == null || element.BoundingRectangle.Equals(this.BoundingRectangle) == false)
                 {
