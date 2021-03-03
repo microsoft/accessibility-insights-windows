@@ -288,7 +288,7 @@ Name | Description | Dynamic Value? | Sample
 `customDimensions.AppSessionID` | A Guid that allows correlation within the process session. | No | *some guid*
 `customDimensions.InstallationID` | A Guid that allows correlation of activity on a client within a calendar month. | No | *some guid*
 `customDimensions.View` | The app's view. Current values are`Live`, `CapturingData`, `Recording`, `TabStop`, or `ElementHowToFix`. | Yes | `Live`
-`customDimensions.UIFramework` | See [customDimension.UIFramework identifiers](#uiframework-identifiers) for details. | Yes
+`customDimensions.UIFramework` | See [customDimension.UIFramework identifiers](#customdimensions.uiframework-identifiers) for details. | Yes
 `customDimensions.ModeName` | The app's page. Current values are `Start`, `Test`, `Inspect`, `CCA`, `Events`, or `Exit`. | Yes | `Start`
 `customDimensions.ModeSessionId` | A Guid that allows correlation within a specific mode change within a session. | Yes | *some guid*
 
@@ -314,7 +314,7 @@ Value | OS Version
 
 This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
-##### UIFramework identifiers
+##### customDimensions.UIFramework identifiers
 These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are from Axe.Windows, and others are dynamically reported by application frameworks:
 
 ###### Values from Axe.Windows
