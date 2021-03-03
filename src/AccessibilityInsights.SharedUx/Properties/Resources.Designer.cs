@@ -3189,15 +3189,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Guidance.
-        /// </summary>
-        public static string RunTextGuidance {
-            get {
-                return ResourceManager.GetString("RunTextGuidance", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to By opting into telemetry, you.
         /// </summary>
         public static string RunTextHelpCommunity1 {
@@ -3699,6 +3690,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TabStopControlAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("TabStopControlAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about tab stops..
+        /// </summary>
+        public static string TabStopsControl_TabStopsLink {
+            get {
+                return ResourceManager.GetString("TabStopsControl_TabStopsLink", resourceCulture);
             }
         }
         

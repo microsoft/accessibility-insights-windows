@@ -45,10 +45,9 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,10" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                 <Run FontWeight="SemiBold" FontSize="{DynamicResource ConstXLTextSize}" Text="{x:Static Properties:Resources.RunTextTabStops}" />
                 <Hyperlink TextDecorations="{x:Null}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
-                           ToolTip="{x:Static Properties:Resources.RunTextGuidance}"
-                           AutomationProperties.Name="{x:Static Properties:Resources.RunTextGuidance}" AutomationProperties.HelpText=" "
-                           NavigateUri="https://go.microsoft.com/fwlink/?linkid=2080645" RequestNavigate="Hyperlink_RequestNavigate">
-                    <fabric:FabricIconControl GlyphName="Info" GlyphSize="Custom" FontSize="17" Margin="8,0,0,-3" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                           NavigateUri="https://go.microsoft.com/fwlink/?linkid=2080645" RequestNavigate="Hyperlink_RequestNavigate"
+                           Style="{StaticResource hLink}">
+                    <Run Text="{x:Static Properties:Resources.TabStopsControl_TabStopsLink}"/>
                 </Hyperlink>
             </TextBlock>
             <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="1" Height="24" VerticalAlignment="Top" Margin="0,0,0,24">
