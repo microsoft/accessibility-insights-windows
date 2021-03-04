@@ -135,6 +135,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         static ImageOverlayDriver defaultHighlightImageAction;
 
+#pragma warning disable CA1024 // This should not be a property
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
@@ -148,6 +149,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             return defaultHighlightImageAction;
         }
+#pragma warning restore CA1024 // This should not be a property
 
         /// <summary>
         /// Clear default Highlighter instance
