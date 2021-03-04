@@ -199,7 +199,7 @@ namespace AccessibilityInsights.Modes
                                     this.ctrlContrast.SetElement(ec);
                                 })).Wait();
                                 toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}",
-                                    this.ctrlContrast.getRatio(), this.ctrlContrast.getConfidence());
+                                    this.ctrlContrast.Ratio, this.ctrlContrast.Confidence);
                             }
                             else
                             {

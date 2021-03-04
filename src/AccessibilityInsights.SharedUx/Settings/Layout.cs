@@ -46,6 +46,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public WindowState WinState { get; set; }
 
+#pragma warning disable CA1024 // This should not be a property
         /// <summary>
         /// Returns a Layout with default values for a Live Mode window.
         /// </summary>
@@ -65,7 +66,9 @@ namespace AccessibilityInsights.SharedUx.Settings
                 WinState = WindowState.Normal
             };
         }
+#pragma warning restore CA1024 // This should not be a property
 
+#pragma warning disable CA1024 // This should not be a property
         /// <summary>
         /// Returns a Layout with default values for a Snapshot Mode window.
         /// </summary>
@@ -85,5 +88,6 @@ namespace AccessibilityInsights.SharedUx.Settings
                 WinState = WindowState.Normal
             };
         }
+#pragma warning restore CA1024 // This should not be a property
     }
 }

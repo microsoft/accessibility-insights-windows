@@ -60,7 +60,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             Guid clickedOptionTag = (Guid)((RadioButton)sender).Tag;
             if (clickedOptionTag != Guid.Empty)
             {
-                IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().TryGetValue(clickedOptionTag, out selectedIssueReporter);
+                IssueReporterManager.GetInstance().IssueFilingOptionsDict.TryGetValue(clickedOptionTag, out selectedIssueReporter);
                 issueConfigurationControl = selectedIssueReporter?.RetrieveConfigurationControl(this.UpdateSaveButton);
                 Grid.SetRow(issueConfigurationControl, 3);
                 issueFilingGrid.Children.Add(issueConfigurationControl);
@@ -136,7 +136,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         public void InitializeView()
         {
-            IReadOnlyDictionary<Guid, IIssueReporting> options = IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
+            IReadOnlyDictionary<Guid, IIssueReporting> options = IssueReporterManager.GetInstance().IssueFilingOptionsDict;
             availableIssueReporters.Children.Clear();
             Guid selectedGUID = IssueReporter.IssueReporting != null ? IssueReporter.IssueReporting.StableIdentifier : default(Guid);
             foreach (var reporter in options)

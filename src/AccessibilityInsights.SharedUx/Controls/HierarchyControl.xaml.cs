@@ -46,12 +46,12 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Element that was selected originally to set up this tree hierarchy. 
         /// </summary>
-        A11yElement SelectedElement;
+        A11yElement _selectedElement;
 
         /// <summary>
         /// Root Node ViewModel on Hierarchy tree
         /// </summary>
-        HierarchyNodeViewModel RootNode;
+        HierarchyNodeViewModel _rootNode;
 
         /// <summary>
         /// Contains necessary actions for hierarchy control
@@ -143,7 +143,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 else
                 {
                     UpdateTreeView(ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry,Configuration.ShowUncertain, this.IsLiveMode), expandall);
-                    this.SelectedElement = ec.Element;
+                    this._selectedElement = ec.Element;
                 }
 
                 UpdateButtonVisibility();
@@ -279,7 +279,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             UpdateTreeView(rnvm, expandall);
 
-            this.SelectedElement = ec.Element;
+            this._selectedElement = ec.Element;
             var span = DateTime.Now - begin;
 
             this.tbTimeSpan.Visibility = Visibility.Collapsed;
@@ -296,7 +296,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 CleanUpTreeView();
             }
-            this.RootNode = rnvm;
+            this._rootNode = rnvm;
             this.treeviewHierarchy.ItemsSource = new List<HierarchyNodeViewModel>() { rnvm };
             this.treeviewHierarchy.IsEnabled = true;
             this.HierarchyActions.SelectedElementChanged();
@@ -312,13 +312,13 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void textboxSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (this.RootNode != null)
+            if (this._rootNode != null)
             {
-                this.RootNode.ApplyFilter(this.textboxSearch.Text);
+                this._rootNode.ApplyFilter(this.textboxSearch.Text);
 
                 // we do the following so that when focus moves to the tree, focus will be placed on a tree item
                 // Otherwise, keyboard users won't be able to navigate through the tree.
-                this.RootNode.SelectFirstVisibleLeafNode();
+                this._rootNode.SelectFirstVisibleLeafNode();
 
                 FireAsyncContentLoadedEvent();
             }
@@ -351,8 +351,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.SelectedInHierarchyElement = null;
                 this.ElementContext = null;
                 // clean up all data.
-                this.SelectedElement = null;
-                this.RootNode = null;
+                this._selectedElement = null;
+                this._rootNode = null;
                 this.btnTestElement.Visibility = Visibility.Collapsed;
                 this.btnMenu.Visibility = Visibility.Collapsed;
             }
@@ -387,12 +387,12 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void btnMoveToParent_Click(object sender, RoutedEventArgs e)
         {
-            if (this.SelectedElement.Parent != null)
+            if (this._selectedElement.Parent != null)
             {
-                if (this.SelectedElement.Parent.IsRootElement() == false)
+                if (this._selectedElement.Parent.IsRootElement() == false)
                 {
                     var sa = SelectAction.GetDefaultInstance();
-                    sa.SetCandidateElement(this.ElementContext.Id, this.SelectedElement.Parent.UniqueId);
+                    sa.SetCandidateElement(this.ElementContext.Id, this._selectedElement.Parent.UniqueId);
                     sa.Select();
                     this.HierarchyActions.RefreshHierarchy(true);
                 }
@@ -416,9 +416,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             if(this.treeviewHierarchy.SelectedItem == null)
             {
-                if(this.RootNode != null)
+                if(this._rootNode != null)
                 {
-                    this.RootNode.IsSelected = true;
+                    this._rootNode.IsSelected = true;
                 }
             }
         }
@@ -427,10 +427,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Returns currently selected element in hierarchy tree
         /// </summary>
         /// <returns></returns>
-        public A11yElement GetSelectedElement()
-        {
-            return (this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel).Element;
-        }
+        public A11yElement SelectedElement => (this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel).Element;
 
         #region Handle context menu for showing ancestry
         /// <summary>
@@ -442,7 +439,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             SetFocusOnHierarchyTree();
             Configuration.ShowAncestry = this.mniShowAncestry.IsChecked;
-            if (this.SelectedElement != null)
+            if (this._selectedElement != null)
             {
                 var dic = new Dictionary<string, string>();
                 this.HierarchyActions.RefreshHierarchy(false);
@@ -471,7 +468,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void mniShowUncertain_Click(object sender, RoutedEventArgs e)
         {
             Configuration.ShowUncertain = this.mniShowUncertain.IsChecked;
-            if (this.SelectedElement != null)
+            if (this._selectedElement != null)
             {
                 var dic = new Dictionary<string, string>();
                 this.HierarchyActions.RefreshHierarchy(false);
@@ -645,7 +642,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             SetTreeViewModeOnSelectAction(mode);
             SetFocusOnHierarchyTree();
 
-            if (this.SelectedElement != null)
+            if (this._selectedElement != null)
             {
                 // refresh tree automatically.
                 this.HierarchyActions.RefreshHierarchy(true);
@@ -863,9 +860,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 if (IssueReporter.IsConnected)
                 {
-                    IssueInformation issueInformation = this.SelectedElement.GetIssueInformation(IssueType.NoFailure);
-                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, this.SelectedElement.BoundingRectangle,
-                                this.SelectedElement.UniqueId);
+                    IssueInformation issueInformation = this._selectedElement.GetIssueInformation(IssueType.NoFailure);
+                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, this._selectedElement.BoundingRectangle,
+                                this._selectedElement.UniqueId);
                     IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
                     if (issueResult != null)
                     {

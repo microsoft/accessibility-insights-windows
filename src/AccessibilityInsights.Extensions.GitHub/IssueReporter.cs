@@ -33,6 +33,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             this.IsConfigured = isConfigured;
         }
 
+#pragma warning disable CA1024 // This should not be a property
         public IssueReporter GetDefaultInstance()
         {
             if (_instance == null)
@@ -41,6 +42,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             }
             return _instance;
         }
+#pragma warning restore CA1024 // This should not be a property
 
         public string ServiceName => Properties.Resources.extensionName;
 

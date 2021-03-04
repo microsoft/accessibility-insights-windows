@@ -161,14 +161,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// Get the element count
         /// </summary>
         /// <returns></returns>
-        public int GetElementCount()
-        {
-            return Highlighter.Items.Count;
-        }
+        public int ElementCount => Highlighter.Items.Count;
 
         #region static members
         private static ClearOverlayDriver defaultHighlightOverlayAction;
 
+#pragma warning disable CA1024 // This should not be a property
         /// <summary>
         /// Get default HighlightAction
         /// </summary>
@@ -181,8 +179,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
 
             return defaultHighlightOverlayAction;
-            
         }
+#pragma warning disable CA1024 // This should not be a property
 
         /// <summary>
         /// Clear default Highlighter instance
