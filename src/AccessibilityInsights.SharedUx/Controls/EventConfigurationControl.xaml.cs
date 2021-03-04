@@ -235,6 +235,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void UpdateListViews()
         {
+#pragma warning disable CA1508 // Dead code warning doesn't apply here
             using (new ListViewSelectionLock(this.lvLeft))
             using (new ListViewSelectionLock(this.lvRight))
             {
@@ -251,6 +252,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 textboxSearch.Text = "";
                 FireAsyncContentLoadedEvent();
             } // using
+#pragma warning restore CA1508 // Dead code warning doesn't apply here
         }
 
         private void FireAsyncContentLoadedEvent()
