@@ -45,16 +45,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public ConnectionInfo(Uri serverUrl, TeamProject project, AdoTeam team)
         {
             ServerUri = serverUrl;
-            if (project != null)
-            {
-                TeamProject typedProject = project as TeamProject;
-                Project = typedProject ?? new TeamProject(project);
-            }
-            if (team != null)
-            {
-                AdoTeam typedTeam = team as AdoTeam;
-                Team = typedTeam ?? new AdoTeam(team);
-            }
+            Project = project;
+            Team = team;
         }
 
         /// <summary>

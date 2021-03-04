@@ -117,7 +117,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             set
             {
                 this.text = value;
-                if (value == null || string.IsNullOrEmpty(value))
+                if (string.IsNullOrEmpty(value))
                 {
                     this.IsVisible = false;
                 }
