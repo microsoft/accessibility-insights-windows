@@ -161,10 +161,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// Get the element count
         /// </summary>
         /// <returns></returns>
-        public int GetElementCount()
-        {
-            return Highlighter.Items.Count;
-        }
+        public int ElementCount => Highlighter.Items.Count;
 
         #region static members
         private static ClearOverlayDriver defaultHighlightOverlayAction;

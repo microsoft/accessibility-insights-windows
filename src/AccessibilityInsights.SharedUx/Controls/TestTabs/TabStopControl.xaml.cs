@@ -340,7 +340,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             // record the number of items highlighted.
             Logger.PublishTelemetryEvent(TelemetryAction.TabStop_Select_Records,
-                TelemetryProperty.By, ha.GetElementCount().ToString(CultureInfo.InvariantCulture));
+                TelemetryProperty.By, ha.ElementCount.ToString(CultureInfo.InvariantCulture));
 
             var list = from TabStopItemViewModel l in lvElements.SelectedItems where !e.AddedItems.Contains(l) select l;
             foreach (TabStopItemViewModel mes in list)
