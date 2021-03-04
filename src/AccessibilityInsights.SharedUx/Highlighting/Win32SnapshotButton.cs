@@ -204,7 +204,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         private double UpdateBeakerSize()
         {
-            double currentDPI = this.HiLighterRect != null ? this.HiLighterRect.GetDPI() : 1.0;
+            double currentDPI = this.HiLighterRect.IsEmpty ? 1.0 : this.HiLighterRect.GetDPI();
 
             this.Width = Convert.ToInt32((Convert.ToDouble(DefaultWidth) * currentDPI));
             this.Height = Convert.ToInt32((Convert.ToDouble(DefaultHeight) * currentDPI));
