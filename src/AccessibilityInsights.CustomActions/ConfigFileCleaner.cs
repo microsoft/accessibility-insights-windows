@@ -34,10 +34,12 @@ namespace AccessibilityInsights.CustomActions
                     DeleteConfigFiles();
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 _systemShim.LogToSession("Caught Exception: " + e);
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return ActionResult.Success;  // Don't block installer if an error occurs
         }

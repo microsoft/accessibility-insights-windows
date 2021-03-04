@@ -18,11 +18,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 
         public AdoTeam(string name, Guid id, TeamProject parent = null) : base(name, id)
         {
-            if (parent != null)
-            {
-                TeamProject typedParent = parent as TeamProject;
-                ParentProject = typedParent ?? new TeamProject(parent);
-            }
+            ParentProject = parent;
         }
 
         /// <summary>
