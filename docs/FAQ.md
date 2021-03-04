@@ -48,6 +48,12 @@ All PRs kick off a build and the build status is visible in the PR checks sectio
 #### Q.How do I go about adding telemetry for my changes?
 Please visit the [Telemetry Overview](TelemetryOverview.md) page on how to do so.
 
+#### Q.How do I learn about the telemetry that is collected?
+Please visit the [Telemetry Details](TelemetryDetails.md) page for more information.
+
+#### Q.How do I access the telemetry dashboard?
+This information is only available internally. If you have specific questions about telemetry, please create an issue providing the details of what you are hoping to learn and why. We will consider the request at our regularly scheduled triage meeting.
+
 #### Q. How do I add a project to the solution?
 Visit [Adding a new project](NewProject.md) for instructions.
 
