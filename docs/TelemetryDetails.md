@@ -80,7 +80,7 @@ Name | Value
 --- | ---
 `customDimensions.Seconds` | The number of seconds specified by the user.
 
-### Pattern_Invoke_Action
+#### Pattern_Invoke_Action
 Trigger: The user invokes a pattern through the patterns UI.  
 Additional properties: 
 Name | Value
