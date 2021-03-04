@@ -154,16 +154,16 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             switch (e.Key)
             {
                 case Key.Up:
-                    MoveCursor(0, -StepSize(e, Height));
+                    MoveCursor(0, -StepSize(Height));
                     break;
                 case Key.Down:
-                    MoveCursor(0, StepSize(e, Height));
+                    MoveCursor(0, StepSize(Height));
                     break;
                 case Key.Left:
-                    MoveCursor(-StepSize(e, Width), 0);
+                    MoveCursor(-StepSize(Width), 0);
                     break;
                 case Key.Right:
-                    MoveCursor(StepSize(e, Width), 0);
+                    MoveCursor(StepSize(Width), 0);
                     break;
                 case Key.Enter:
                 case Key.Escape:
@@ -174,7 +174,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             e.Handled = true;
         }
 
-        private int StepSize(System.Windows.Input.KeyEventArgs e, double stepWithCtrl)
+        private int StepSize(double stepWithCtrl)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
                 return (int)(stepWithCtrl / zoomLevel);
