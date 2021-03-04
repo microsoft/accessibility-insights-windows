@@ -174,7 +174,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             e.Handled = true;
         }
 
-        private int StepSize(System.Windows.Input.KeyEventArgs e, double stepWithCtrl)
+        private static int StepSize(System.Windows.Input.KeyEventArgs e, double stepWithCtrl)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
                 return (int)(stepWithCtrl / zoomLevel);
