@@ -427,10 +427,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Returns currently selected element in hierarchy tree
         /// </summary>
         /// <returns></returns>
-        public A11yElement GetSelectedElement()
-        {
-            return (this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel).Element;
-        }
+        public A11yElement SelectedElement => (this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel).Element;
 
         #region Handle context menu for showing ancestry
         /// <summary>

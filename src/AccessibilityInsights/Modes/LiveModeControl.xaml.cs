@@ -338,7 +338,7 @@ namespace AccessibilityInsights.Modes
         {
             if (this.ElementContext != null)
             {
-                var elementToCopy = this.ctrlHierarchy.GetSelectedElement() ?? this.ElementContext.Element;
+                var elementToCopy = this.ctrlHierarchy.SelectedElement ?? this.ElementContext.Element;
 
                 if (elementToCopy != null)
                 {

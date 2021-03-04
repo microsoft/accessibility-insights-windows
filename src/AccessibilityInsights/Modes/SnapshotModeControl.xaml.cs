@@ -390,7 +390,7 @@ namespace AccessibilityInsights.Modes
             }
             else if (this.ElementContext != null)
             {
-                var se = this.ctrlHierarchy.GetSelectedElement() ?? this.ElementContext.Element;
+                var se = this.ctrlHierarchy.SelectedElement ?? this.ElementContext.Element;
 
                 // glimpse
                 sb.AppendFormat(CultureInfo.InvariantCulture, "Glimpse: {0}", se.Glimpse);
@@ -492,7 +492,7 @@ namespace AccessibilityInsights.Modes
                 {
                     try
                     {
-                        SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, this.ctrlHierarchy.GetSelectedElement().UniqueId, A11yFileMode.Inspect);
+                        SaveAction.SaveSnapshotZip(dlg.FileName, this.ElementContext.Id, this.ctrlHierarchy.SelectedElement.UniqueId, A11yFileMode.Inspect);
                     }
 #pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
