@@ -70,7 +70,7 @@ Trigger: The user starts the application.
 Additional properties:
 Name | Value
 --- | ---
-`customDimensions.UIAccessEnabled` | `True` if the the user has explicitly enabled UIAccess, otherwise `False`. 
+`customDimensions.UIAccessEnabled` | `True` if the user has explicitly enabled UIAccess, otherwise `False`. 
 c`ustomDimensions.InstalledDotNetFrameworkVersion` | The numeric version of the installed .NET Framework version. If this value is 528040 or greater, then .NET Framework 4.8 is installed. Otherwise, .NET Framework 4.7.2 is installed.
 
 #### Mainwindow_Timer_Started
