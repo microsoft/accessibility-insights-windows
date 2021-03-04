@@ -54,6 +54,7 @@ namespace AccessibilityInsights.Win32
         MaxTokenInfoClass,
     }
 
+#pragma warning disable CA1711 // These are Win32 definitions
     /// <summary>
     /// Windows Style Extended
     /// </summary>
@@ -84,6 +85,7 @@ namespace AccessibilityInsights.Win32
         WS_EX_TRANSPARENT = 0x00000020,
         WS_EX_WINDOWEDGE = 0x00000100
     }
+#pragma warning restore CA1711 // These are Win32 definitions
 
     public enum TernaryRasterOperations
     {
