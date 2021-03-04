@@ -170,7 +170,7 @@ Trigger: The user presses the "Release Notes" button from the Upgrade dialog.
 Additional properties: 
 Name | Value
 --- | ---
-`customDimensions.Error` | The error from the clicking the release notes *note: Should this include the Exception type and/or the Uri to the release notes?*
+`customDimensions.Error` | The error from clicking the release notes button *note: Should this include the Exception type and/or the Uri to the release notes?*
 
 ### Events from Axe.Windows
 Accessibility Insights for Windows provides a mechanism by which Axe.Windows is able to provide telemetry that then gets merged into the telemetry stream that already exists for the application. These events inherit all of the [Common Data Properties](#common-data-properties), and appear just like events that originate from Accessibility Insights for Windows. These will be documented in the Axe.Windows repo, but are duplicated here for convenience:
