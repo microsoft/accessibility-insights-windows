@@ -167,15 +167,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.tbConfidence.Text = string.Empty;
         }
 
-        public object getConfidence()
-        {
-            return this.tbConfidence.Text;
-        }
+        public object Confidence => this.tbConfidence.Text;
 
-        public object getRatio()
-        {
-            return this.output.Text;
-        }
+        public object Ratio => this.output.Text;
 
         /// <summary>
         /// App configuration
