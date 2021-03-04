@@ -2657,7 +2657,9 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         StackedBarChart,
         StackedLineChart,
         BuildQueue,
+#pragma warning disable CA1711 // These are defined externally so we keep the existing name
         BuildQueueNew,
+#pragma warning restore CA1711 // These are defined externally so we keep the existing name
         UserFollowed,
         ContactLink,
         Stack,
