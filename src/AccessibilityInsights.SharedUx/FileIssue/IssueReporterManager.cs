@@ -119,10 +119,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             }
         }
 
-        public Dictionary<Guid, IIssueReporting> GetIssueFilingOptionsDict()
-        {
-            return IssueReportingOptionsDict;
-        }
+        public Dictionary<Guid, IIssueReporting> IssueFilingOptionsDict => IssueReportingOptionsDict;
 
         /// <summary>
         /// Sets the issue reporter guid in the issue reporter manager and makes sure that the bug reporter instance is updated.

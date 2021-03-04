@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Once);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]
@@ -96,7 +96,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]
@@ -111,7 +111,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(TestReporterConfigs), Times.Never);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]
@@ -127,7 +127,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(string.Empty), Times.Never);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]
@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
             repManager.RestorePersistedConfigurations();
 
             issueReporterMock.Verify(p => p.RestoreConfigurationAsync(null), Times.Never);
-            Assert.IsTrue(repManager.GetIssueFilingOptionsDict().ContainsKey(TestGuid));
+            Assert.IsTrue(repManager.IssueFilingOptionsDict.ContainsKey(TestGuid));
         }
 
         [TestMethod]

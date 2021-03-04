@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                     return TestControlledIsEnabled.Value;
                 }
 
-                return (IssueReporterManager.GetInstance().GetIssueFilingOptionsDict() != null && IssueReporterManager.GetInstance().GetIssueFilingOptionsDict().Any());
+                return (IssueReporterManager.GetInstance().IssueFilingOptionsDict != null && IssueReporterManager.GetInstance().IssueFilingOptionsDict.Any());
             }
         }
 
@@ -54,7 +54,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static Dictionary<Guid, IIssueReporting> GetIssueReporters()
         {
-            return IssueReporterManager.GetInstance().GetIssueFilingOptionsDict();
+            return IssueReporterManager.GetInstance().IssueFilingOptionsDict;
         }
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
