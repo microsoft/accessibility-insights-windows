@@ -52,7 +52,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             UpdateSaveButton();
         }
 
-        public void TextChangeUpdateSaveButton(object sender, EventArgs e)
+        private void TextChangeUpdateSaveButton(object sender, EventArgs e)
         {
             TextChangeUpdateSaveButtonHelper();
         }

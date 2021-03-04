@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-	<NoWarn>RS0016;CA1002;CA1003;CA1008;CA1012;CA1014;CA1024;CA1027;CA1031;CA1508;CA1708;CA1711;CA1725;CA1801;CA1813;CA1822;CA2109;CA2201</NoWarn>
+	<NoWarn>RS0016;CA1002;CA1003;CA1008;CA1012;CA1014;CA1024;CA1027;CA1031;CA1508;CA1708;CA1711;CA1725;CA1801;CA1813;CA1822;CA2201</NoWarn>
       <!-- used by Microsoft.CodeAnalysis.NetAnalyzers -->
       <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
