@@ -52,11 +52,11 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// Publishes telemetry to AI with the given action and propertybag
         /// Sent telemetry will also include all context values unless they are overwritten
         /// </summary>
-        /// <param name="action">Will be used as event name</param>
-        /// <param name="propertyBag">if null, doesn't send any additional property values beyond context</param>
-        public void PublishEvent(string action, IReadOnlyDictionary<string, string> propertyBag = null)
+        /// <param name="eventName">Will be used as event name</param>
+        /// <param name="properties">if null, doesn't send any additional property values beyond context</param>
+        public void PublishEvent(string eventName, IReadOnlyDictionary<string, string> properties = null)
         {
-            var aiEvent = MakeEventTelemetry(action, propertyBag);
+            var aiEvent = MakeEventTelemetry(eventName, properties);
 
             ProcessEvent(aiEvent);
         }
@@ -93,13 +93,13 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// <summary>
         /// Sets property/value pair of context; all values in context are sent in telemetry events
         /// </summary>
-        /// <param name="property"></param>
-        /// <param name="value"></param>
-        public void AddOrUpdateContextProperty(string property, string value)
+        /// <param name="propertyName"></param>
+        /// <param name="propertyValue"></param>
+        public void AddOrUpdateContextProperty(string propertyName, string propertyValue)
         {
-            if (!string.IsNullOrWhiteSpace(property))
+            if (!string.IsNullOrWhiteSpace(propertyName))
             {
-                ContextProperties[property] = value;
+                ContextProperties[propertyName] = propertyValue;
             }
         }
 
