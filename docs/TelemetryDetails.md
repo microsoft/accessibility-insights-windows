@@ -87,7 +87,7 @@ Name | Value
 --- | ---
 `customDimensions.PatternMethod` | The pattern method that was invoked.
 
-### ReleaseChannel_ChangeConsidered
+#### ReleaseChannel_ChangeConsidered
 Trigger: The user selects a new channel and is being shown the dialog to confirm the change.  
 Additional properties: 
 Name | Value
