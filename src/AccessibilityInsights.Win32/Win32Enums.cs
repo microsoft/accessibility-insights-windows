@@ -58,6 +58,7 @@ namespace AccessibilityInsights.Win32
     /// <summary>
     /// Windows Style Extended
     /// </summary>
+    [FlagsAttribute]
     public enum WindowStylesEx
     {
         WS_EX_ACCEPTFILES = 0x00000010,
@@ -182,6 +183,7 @@ namespace AccessibilityInsights.Win32
         CLEARTYPE_NATURAL_QUALITY = 6,
     }
 
+    [FlagsAttribute]
     public enum FontPitchAndFamily : UInt32
     {
         DEFAULT_PITCH = 0,
@@ -292,6 +294,7 @@ namespace AccessibilityInsights.Win32
         SM_SYSTEMDOCKED = 0x2004,
     }
 
+    [FlagsAttribute]
     public enum WindowStyles : uint
     {
         WS_POPUP = 0x80000000,
@@ -319,6 +322,7 @@ namespace AccessibilityInsights.Win32
         ForceMinimize = 11
     }
 
+#pragma warning disable CA1027 // These are not flags
     public enum StockObjects
     {
         WHITE_BRUSH = 0,
@@ -342,7 +346,9 @@ namespace AccessibilityInsights.Win32
         DC_BRUSH = 18,
         DC_PEN = 19,
     }
+#pragma warning restore CA1027 // These are not flags
 
+    [FlagsAttribute]
     public enum ClassStyles : uint
     {
         ByteAlignClient = 0x1000,
@@ -359,6 +365,7 @@ namespace AccessibilityInsights.Win32
         VerticalRedraw = 0x1
     }
 
+#pragma warning disable CA1027 // These are not flags
     public enum CombineRgnStyles : int
     {
         RGN_AND = 1,
@@ -369,6 +376,7 @@ namespace AccessibilityInsights.Win32
         RGN_MIN = RGN_AND,
         RGN_MAX = RGN_COPY
     }
+#pragma warning restore CA1027 // These are not flags
 
     internal enum WinTrustDataUIChoice : uint
     {
