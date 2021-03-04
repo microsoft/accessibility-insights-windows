@@ -121,14 +121,14 @@ namespace AccessibilityInsights
         /// <summary>
         /// allow/disallow Element selection or mode switch
         /// </summary>
-        /// <param name="allow"></param>
-        public void SetAllowFurtherAction(bool allow)
+        /// <param name="enabled"></param>
+        public void SetAllowFurtherAction(bool enabled)
         {
             lock (_lockObject)
             {
-                if (AllowFurtherAction != allow && IsCurrentModeAllowingSelection())
+                if (AllowFurtherAction != enabled && IsCurrentModeAllowingSelection())
                 {
-                    AllowFurtherAction = allow;
+                    AllowFurtherAction = enabled;
                 }
             }
         }
