@@ -44,6 +44,6 @@ namespace AccessibilityInsights.SharedUx.Misc
             }
         }
 
-        public static string GetAxeVersion() => PackageInfo.InformationalVersion;
+        public static string AxeVersion => PackageInfo.InformationalVersion;
     }
 }

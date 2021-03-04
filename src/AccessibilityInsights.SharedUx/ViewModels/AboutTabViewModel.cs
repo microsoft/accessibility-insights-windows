@@ -47,7 +47,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public string VersionInfoLabel => VersionTools.AppVersionLabel;
 
-        public string AxeVersion => VersionTools.GetAxeVersion();
+        public string AxeVersion => VersionTools.AxeVersion;
 #pragma warning restore CA1822
     }
 }
