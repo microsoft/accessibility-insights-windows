@@ -2,7 +2,7 @@
 
 This document provides detailed information about telemetry events. It reflects the current state of the code and will be updated as telemetry is modified. Telemetry Events come in 2 types:
 - [Application Events](#application-events) identify typical application usage (start the app, run tests, save a file, etc.) in ways that allow evaluation of how the app is being used, but without including any user-identifiable data.
-- [Exception Events](#exception-events) identify application errors and provide visibility into problems that users are experiencing, again without including any user-identifable data.
+- [Exception Events](#exception-events) identify application errors and provide visibility into problems that users are experiencing, again without including any user-identifiable data.
 
 ### Application Events
 Application events are queried from the `customEvents` table. All application events follow the same pattern and contain 3 types of data:
