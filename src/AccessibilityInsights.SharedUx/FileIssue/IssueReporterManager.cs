@@ -28,12 +28,14 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             {
                 lock (_lockObject)
                 {
+#pragma warning disable CA1508 // Analyzer doesn't understand threading
                     if (_defaultInstance == null)
                     {
                         IssueReporterManager newInstance = new IssueReporterManager();
                         newInstance.RestorePersistedConfigurations();
                         _defaultInstance = newInstance;
                     }
+#pragma warning restore CA1508 // Analyzer doesn't understand threading
                 }
             }
             return _defaultInstance;

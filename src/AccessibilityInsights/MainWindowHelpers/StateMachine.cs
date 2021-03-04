@@ -153,6 +153,7 @@ namespace AccessibilityInsights
             /// make sure that all Mode UIs are clean since new selection will be done. 
             CleanUpAllModeUIs();
 
+#pragma warning disable CA1508 // Dead code warning doesn't apply here
             if (this.CurrentPage == AppPage.Start
                 || (this.CurrentPage == AppPage.CCA)
                 || (this.CurrentPage == AppPage.Test)
@@ -166,6 +167,7 @@ namespace AccessibilityInsights
                 this.CurrentPage = AppPage.Inspect;
                 this.CurrentView = InspectView.Live;
             }
+#pragma warning restore CA1508 // Dead code warning doesn't apply here
 
             // garbage collection for any UI elements
             GC.Collect();

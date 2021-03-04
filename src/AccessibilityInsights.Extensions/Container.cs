@@ -95,10 +95,12 @@ namespace AccessibilityInsights.Extensions
             {
                 lock(_lockObject)
                 {
+#pragma warning disable CA1508 // Analyzer doesn't understand threading
                     if (_defaultInstance == null)
                     {
                         _defaultInstance = new Container();
                     }
+#pragma warning restore CA1508 // Analyzer doesn't understand threading
                 }
             }
 
