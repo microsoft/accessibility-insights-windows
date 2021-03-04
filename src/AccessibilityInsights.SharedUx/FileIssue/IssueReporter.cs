@@ -59,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static Task RestoreConfigurationAsync(string serializedConfig)
         {
-            if (IsEnabled && IssueReporting != null && IssueReporterManager.SelectedIssueReporterGuid != null)
+            if (IsEnabled && IssueReporting != null && IssueReporterManager.SelectedIssueReporterGuid != Guid.Empty)
             {
                 return IssueReporting.RestoreConfigurationAsync(serializedConfig);
             }

@@ -141,7 +141,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             Guid selectedGUID = IssueReporter.IssueReporting != null ? IssueReporter.IssueReporting.StableIdentifier : default(Guid);
             foreach (var reporter in options)
             {
-                if (reporter.Key == null || reporter.Value == null)
+                if (reporter.Key == Guid.Empty || reporter.Value == null)
                     continue;
 
                 RadioButton rb = CreateRadioButton(reporter.Value);

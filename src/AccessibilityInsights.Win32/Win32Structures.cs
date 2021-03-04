@@ -140,7 +140,7 @@ namespace AccessibilityInsights.Win32
 
         protected virtual void Dispose(bool disposing)
         {
-            if (FileInfoPtr != null)
+            if (FileInfoPtr != IntPtr.Zero)
             {
                 Marshal.FreeCoTaskMem(FileInfoPtr);
                 FileInfoPtr = IntPtr.Zero;
