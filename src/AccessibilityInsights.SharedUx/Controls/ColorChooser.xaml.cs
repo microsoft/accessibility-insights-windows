@@ -14,7 +14,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 {
     public enum ColorChanger { Dropdown, Eyedropper, Text }
 
-    public class SourceArgs
+    public class ColorChangedEventArgs : EventArgs
     {
         public ColorChanger Source { get; set; }
     }
@@ -42,7 +42,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// (could be eyedropper, dropdown, or hex)
         /// The sender is the specific control invoked
         /// </summary>
-        public event EventHandler<SourceArgs> ColorChangerInvoked;
+        public event EventHandler<ColorChangedEventArgs> ColorChangerInvoked;
 
         /// <summary>
         /// Two colors are maintained: StoredColor represents the
@@ -94,7 +94,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void colorPicker_Click(object sender, RoutedEventArgs e)
         {
             Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Eyedropper);
-            ColorChangerInvoked?.Invoke(this, new SourceArgs { Source = ColorChanger.Eyedropper });
+            ColorChangerInvoked?.Invoke(this, new ColorChangedEventArgs { Source = ColorChanger.Eyedropper });
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void colorTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            ColorChangerInvoked?.Invoke(this, new SourceArgs { Source = ColorChanger.Text });
+            ColorChangerInvoked?.Invoke(this, new ColorChangedEventArgs { Source = ColorChanger.Text });
             Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_HexChange);
         }
 
@@ -144,7 +144,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void Popup_Opened(object sender, EventArgs e)
         {
-            ColorChangerInvoked?.Invoke(this, new SourceArgs() { Source = ColorChanger.Dropdown });
+            ColorChangerInvoked?.Invoke(this, new ColorChangedEventArgs() { Source = ColorChanger.Dropdown });
             Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_Click_Dropdown);
         }
 
