@@ -7,6 +7,7 @@ namespace AccessibilityInsights.Win32
 {
     // Some of these definitions originated from https://pinvoke.net/namespace
 #pragma warning disable CA1712 // Do not prefix enum values with type name
+#pragma warning disable CA1008 // These are defined by Win32 and we won't add a 0 value if not called for
 
     /// <summary>
     /// https://msdn.microsoft.com/en-us/library/windows/desktop/ms646309(v=vs.85).aspx
@@ -475,5 +476,6 @@ namespace AccessibilityInsights.Win32
         LOGPIXELSY = 90
     }
 
+#pragma warning restore CA1008 // These are defined by Win32 and we won't add a 0 value if not called for
 #pragma warning restore CA1712 // Do not prefix enum values with type name
 }
