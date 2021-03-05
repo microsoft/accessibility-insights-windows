@@ -30,6 +30,8 @@ namespace AccessibilityInsights.SharedUx.Controls
     /// </summary>
     public partial class ScannerResultControl : UserControl
     {
+        private readonly List<ScanListViewItemViewModel> _list;
+
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
@@ -41,7 +43,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         public ScannerResultControl()
         {
             InitializeComponent();
-            this.List = new List<ScanListViewItemViewModel>();
+            _list = new List<ScanListViewItemViewModel>();
             lvDetails.AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
             Resources.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
         }
@@ -56,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private Guid EcId;
 
-        public List<ScanListViewItemViewModel> List { get; private set; }
+        public IList<ScanListViewItemViewModel> List => _list;
         public A11yElement Element { get; private set; }
 
         /// <summary>
@@ -106,7 +108,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.List.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
+            _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.lvDetails.ItemsSource = null;
 
             // enable UI elements since Clear() disables them. 

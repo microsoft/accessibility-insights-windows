@@ -275,11 +275,19 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.RootNodes?.Clear();
             this.trviewConfigEvents.ItemsSource = null;
             this.RootNodes = null;
-            ConfigurationManager.GetDefaultInstance().EventConfig.Events.ForEach(e => e.CheckedCount = 0);
-            ConfigurationManager.GetDefaultInstance().EventConfig.Properties.ForEach(e => e.CheckedCount = 0);
+            ClearCheckedCounts(ConfigurationManager.GetDefaultInstance().EventConfig.Events);
+            ClearCheckedCounts(ConfigurationManager.GetDefaultInstance().EventConfig.Properties);
             this.ckbxAllEvents.IsChecked = false;
             ConfigurationManager.GetDefaultInstance().EventConfig.IsListeningAllEvents = false;
             this.tbElement.Text = "";
+        }
+
+        private static void ClearCheckedCounts(IEnumerable<RecordEntitySetting> settings)
+        {
+            foreach (RecordEntitySetting setting in settings)
+            {
+                setting.CheckedCount = 0;
+            }
         }
 
         /// <summary>

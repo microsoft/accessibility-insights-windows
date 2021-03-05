@@ -38,7 +38,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Child ViewModels
         /// </summary>
-        public List<HierarchyNodeViewModel> Children { get; private set; }
+        public IList<HierarchyNodeViewModel> Children { get; private set; }
 
 #pragma warning disable CA1819 // Properties should not return arrays
         /// <summary>

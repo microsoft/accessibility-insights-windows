@@ -65,8 +65,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             }
         }
 
-        private List<TeamProjectViewModel> _children;
-        public List<TeamProjectViewModel> Children
+        private IList<TeamProjectViewModel> _children;
+        public IList<TeamProjectViewModel> Children
         {
             get
             {
@@ -79,13 +79,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
             }
         }
 
-        public TeamProjectViewModel(TeamProject project, List<TeamProjectViewModel> children)
+        public TeamProjectViewModel(TeamProject project, IList<TeamProjectViewModel> children)
         {
             this.Project = project;
             this._children = children ?? new List<TeamProjectViewModel>();
         }
 
-        public TeamProjectViewModel(AdoTeam team, List<TeamProjectViewModel> children)
+        public TeamProjectViewModel(AdoTeam team, IList<TeamProjectViewModel> children)
         {
             this.Team = team;
             this._children = children ?? new List<TeamProjectViewModel>();

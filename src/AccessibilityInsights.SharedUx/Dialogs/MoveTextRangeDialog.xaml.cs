@@ -27,7 +27,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         private Action UpdateHighlighter;
 
-        public MoveTextRangeDialog(TextRangeViewModel vm, OpMode mode, List<TextRangeViewModel> customList, Action updateHighlighter)
+        public MoveTextRangeDialog(TextRangeViewModel vm, OpMode mode, IList<TextRangeViewModel> customList, Action updateHighlighter)
         {
             this.UpdateHighlighter = updateHighlighter;
 

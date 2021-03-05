@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// Get ActionViewModels based on Pattern Methods
         /// </summary>
         /// <returns></returns>
-        public List<BaseActionViewModel> GetActionViewModels()
+        public IList<BaseActionViewModel> GetActionViewModels()
         {
             return (from m in this.Pattern.Methods
                     select BaseActionViewModel.GetActionViewModel(this.Pattern, m)).ToList();
@@ -118,7 +118,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
-        public List<PatternPropertyUIWrapper> Properties { get; private set; }
+        public IList<PatternPropertyUIWrapper> Properties { get; private set; }
 
         public Visibility ActionVisibility { get; private set; }
 

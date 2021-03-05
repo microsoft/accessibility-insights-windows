@@ -132,13 +132,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Currently selected items
         /// </summary>
-        List<RuleResultViewModel> SelectedItems = new List<RuleResultViewModel>();
+        IList<RuleResultViewModel> SelectedItems = new List<RuleResultViewModel>();
 
         /// <summary>
         /// Set results and populate UI
         /// </summary>
         /// <param name="results"></param>
-        public void SetRuleResults(List<RuleResultViewModel> results)
+        public void SetRuleResults(IList<RuleResultViewModel> results)
         {
             if (results != null)
             {
