@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Chooser_ColorPickerClicked(object sender, SourceArgs e)
+        private void Chooser_ColorPickerClicked(object sender, ColorChangedEventArgs e)
         {
             SetAutoCCAState(false);
 
