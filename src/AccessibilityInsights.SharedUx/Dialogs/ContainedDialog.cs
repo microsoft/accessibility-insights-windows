@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         protected Action<ContainedDialog> HideDialog { get; set; }
 
-        public ContainedDialog()
+        protected ContainedDialog()
         {
             KeyDown += ContainedDialog_KeyUp;
             var rd = new ResourceDictionary()
