@@ -58,7 +58,7 @@ namespace AccessibilityInsights.Win32
     /// <summary>
     /// Windows Style Extended
     /// </summary>
-    [FlagsAttribute]
+    [Flags]
     public enum WindowStylesEx
     {
         WS_EX_ACCEPTFILES = 0x00000010,
@@ -183,7 +183,7 @@ namespace AccessibilityInsights.Win32
         CLEARTYPE_NATURAL_QUALITY = 6,
     }
 
-    [FlagsAttribute]
+    [Flags]
     public enum FontPitchAndFamily : UInt32
     {
         DEFAULT_PITCH = 0,
@@ -294,7 +294,7 @@ namespace AccessibilityInsights.Win32
         SM_SYSTEMDOCKED = 0x2004,
     }
 
-    [FlagsAttribute]
+    [Flags]
     public enum WindowStyles : uint
     {
         WS_POPUP = 0x80000000,
@@ -348,7 +348,7 @@ namespace AccessibilityInsights.Win32
     }
 #pragma warning restore CA1027 // These are not flags
 
-    [FlagsAttribute]
+    [Flags]
     public enum ClassStyles : uint
     {
         ByteAlignClient = 0x1000,
