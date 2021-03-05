@@ -38,10 +38,10 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// Get ActionViewModels based on Pattern Methods
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<BaseActionViewModel> GetActionViewModels()
+        public IList<BaseActionViewModel> GetActionViewModels()
         {
             return (from m in this.Pattern.Methods
-                    select BaseActionViewModel.GetActionViewModel(this.Pattern, m));
+                    select BaseActionViewModel.GetActionViewModel(this.Pattern, m)).ToList();
         }
 
         /// <summary>

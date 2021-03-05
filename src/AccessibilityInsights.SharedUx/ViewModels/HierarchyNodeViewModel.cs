@@ -21,8 +21,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class HierarchyNodeViewModel: ViewModelBase
     {
-        private List<HierarchyNodeViewModel> _children;
-
         const int NormalIconSizeBack = 14; // size for non composite icon
         const int TreeIconSizeBack = 16;   // size for tree in composite icon
         const int NormalIconSizeFront = 9; // size for error state in composite icon
@@ -40,7 +38,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Child ViewModels
         /// </summary>
-        public IReadOnlyCollection<HierarchyNodeViewModel> Children => _children;
+        public IList<HierarchyNodeViewModel> Children { get; private set; }
 
 #pragma warning disable CA1819 // Properties should not return arrays
         /// <summary>
@@ -275,8 +273,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
             if (ce.Children != null)
             {
-                _children = (from c in ce.Children
-                             select new HierarchyNodeViewModel(c, showUncertain, isLiveMode)).ToList();
+                this.Children = (from c in ce.Children
+                                 select new HierarchyNodeViewModel(c, showUncertain, isLiveMode)).ToList();
             }
 
             if (isLiveMode == false)
@@ -457,7 +455,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     c.Clear();
                 }
 
-                _children.Clear();
+                this.Children.Clear();
             }
 
             this.Element = null;

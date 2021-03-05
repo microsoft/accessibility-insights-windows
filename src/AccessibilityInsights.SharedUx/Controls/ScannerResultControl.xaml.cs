@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private Guid EcId;
 
-        public ICollection<ScanListViewItemViewModel> List => _list;
+        public IList<ScanListViewItemViewModel> List => _list;
         public A11yElement Element { get; private set; }
 
         /// <summary>

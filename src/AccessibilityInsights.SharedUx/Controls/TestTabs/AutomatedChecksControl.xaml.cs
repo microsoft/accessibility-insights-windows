@@ -138,7 +138,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// Set results and populate UI
         /// </summary>
         /// <param name="results"></param>
-        public void SetRuleResults(IReadOnlyCollection<RuleResultViewModel> results)
+        public void SetRuleResults(IList<RuleResultViewModel> results)
         {
             if (results != null)
             {

@@ -90,7 +90,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <param name="key"></param>
         /// <param name="events"></param>
         /// <returns></returns>
-        private static bool IsNotInList(int key, IEnumerable<RecordEntitySetting> events)
+        private static bool IsNotInList(int key, IList<RecordEntitySetting> events)
         {
             return !(from e in events
                      where e.Id == key
