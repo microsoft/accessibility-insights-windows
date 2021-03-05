@@ -130,7 +130,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             CustomNode.Children.Where(c => c.Type != EventConfigNodeType.Group && !custom.Contains(c.Id)).ToList().ForEach(c => CustomNode.RemoveChild(c));
 
-            var add = custom.Where(id => !CustomNode.Children.Select(c => c.Id).Contains(id)).ToList();
+            var add = custom.Where(id => !CustomNode.Children.Select(c => c.Id).Contains(id));
             CustomNode.AddChildren(add, EventConfigNodeType.Event);
             CustomNode.SortChildren();
             CustomNode.InsertChildAtIndex(0, EditBtnNode);
@@ -141,7 +141,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             CustomPropertiesNode.Children.Where(c => c.Type != EventConfigNodeType.Group && !custom.Contains(c.Id)).ToList().ForEach(c => CustomPropertiesNode.RemoveChild(c));
 
-            add = custom.Where(id => !CustomPropertiesNode.Children.Select(c => c.Id).Contains(id)).ToList();
+            add = custom.Where(id => !CustomPropertiesNode.Children.Select(c => c.Id).Contains(id));
             CustomPropertiesNode.AddChildren(add, EventConfigNodeType.Property);
             CustomPropertiesNode.SortChildren();
          

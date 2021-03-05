@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                                                      join l in list
                                                      on id equals l.Id into newList
                                                      from l in newList.DefaultIfEmpty(new A11yProperty(id, null))
-                                                     select new PropertyListViewItemModel(l)).ToList();
+                                                     select new PropertyListViewItemModel(l));
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                     this.lvProperties.ItemsSource = (from l in list
                                                      orderby l.Name
-                                                     select new PropertyListViewItemModel(l)).ToList();
+                                                     select new PropertyListViewItemModel(l));
 
                     // make sure that we are release from original view
                     this.CollectionView?.DetachFromSourceCollection();
@@ -195,7 +195,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (dlg.DialogResult == true)
             {
-                Configuration.CoreProperties = dlg.ctrlPropertySelect.SelectedList.Select(v => v.Id).ToList();
+                Configuration.CoreProperties = dlg.ctrlPropertySelect.SelectedList.Select(v => v.Id);
             }
 
             UpdateProperties();

@@ -388,7 +388,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                     }
                 }
 
-                lvRight.ItemsSource = SelectedList.ToList();
+                lvRight.ItemsSource = SelectedList;
                 UpdateReorderButtons();
             }
         }

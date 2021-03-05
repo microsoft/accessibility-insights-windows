@@ -243,7 +243,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (dlg.DialogResult == true)
             {
-                ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes = dlg.ctrlPropertySelect.SelectedList.Select(v => v.Id).ToList();
+                ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes = dlg.ctrlPropertySelect.SelectedList.Select(v => v.Id);
                 UpdateAttributeList();
             }
         }

@@ -249,6 +249,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             if (node != null)
             {
+                // Note: The ToList() call is needed to avoid changing the list while iterating over it
                 foreach (IHTMLDOMNode child in GetChildren(node).ToList())
                 {
                     node.removeChild(child);

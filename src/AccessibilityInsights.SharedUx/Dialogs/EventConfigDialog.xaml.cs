@@ -24,15 +24,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         public EventConfigWindow()
-        {            
+        {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.controlEvents.SetList(RecorderSetting.Events);
-            this.controlProperties.SetList(RecorderSetting.Properties.Where(rs => rs.IsCustom == false).ToList());
-        }        
+            this.controlProperties.SetList(RecorderSetting.Properties.Where(rs => rs.IsCustom == false));
+        }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {

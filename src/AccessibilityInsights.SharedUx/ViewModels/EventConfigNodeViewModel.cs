@@ -291,7 +291,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         public void SortChildren()
         {
-            var l = _children.OrderBy(e => e.Header).ToList();
+            var l = _children.OrderBy(e => e.Header);
             this._children.Clear();
             foreach(var c in l)
             {

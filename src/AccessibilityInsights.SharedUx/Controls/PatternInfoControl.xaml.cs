@@ -75,7 +75,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                     var patterns = from p in this.Element.Patterns
                                    select new PatternViewModel(this.Element, p, this.IsActionAllowed, ExpStates.ContainsKey(p.Id) ? ExpStates[p.Id] : false);
 
-                    this.treePatterns.ItemsSource = patterns.ToList();
+                    this.treePatterns.ItemsSource = patterns;
                     ShowPatternsTree();
                 }
                 else
