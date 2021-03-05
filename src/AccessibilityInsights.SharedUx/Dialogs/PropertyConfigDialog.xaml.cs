@@ -44,11 +44,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                            Name = kv.Value,
                            IsRecorded = coreProps.Contains(kv.Key),
                            Type = RecordEntityType.Property
-                       });
+                       }).ToList();
 
-            var selList = coreProps.Select(l => list.Where(r => r.Id == l).FirstOrDefault());
+            var selList = coreProps.Select(l => list.Where(r => r.Id == l).FirstOrDefault()).ToList();
             CoreProperties = selList.ToList();// generate base list here. 
-            ctrlPropertySelect.SetLists(list, selList);
+            ctrlPropertySelect.SetLists(list.ToList(), selList);
             ((INotifyCollectionChanged)ctrlPropertySelect.lvRight.Items).CollectionChanged += lvRight_CollectionChanged;
         }
 

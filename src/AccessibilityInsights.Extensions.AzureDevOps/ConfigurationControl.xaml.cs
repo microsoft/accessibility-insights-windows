@@ -86,7 +86,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 if (configuration == null)
                     throw new ArgumentNullException(nameof(configuration));
 
-                this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections();
+                this.ServerComboBox.ItemsSource = configuration.CachedConnections?.GetCachedConnections().ToList();
                 ConnectionInfo connectionInfo = AzureDevOps.ConnectedToAzureDevOps ?
                     AzureDevOps.Configuration.SavedConnection :
                     configuration.CachedConnections?.GetMostRecentConnection();
