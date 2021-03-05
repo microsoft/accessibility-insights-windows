@@ -35,7 +35,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Set the boundingrectangles to hilight
         /// </summary>
-        public void SetBoundingRectangles(IList<Rectangle> rects)
+        public void SetBoundingRectangles(IEnumerable<Rectangle> rects)
         {
             if (Hilighters.Count != 0)
             {

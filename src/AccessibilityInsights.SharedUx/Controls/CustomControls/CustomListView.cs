@@ -92,7 +92,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
-        private void AddNewColumns(IList newItems)
+        private void AddNewColumns(IEnumerable newItems)
         {
             foreach (var col in newItems)
             {
@@ -103,7 +103,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
-        private void RemoveOldColumns(IList oldItems)
+        private void RemoveOldColumns(IEnumerable oldItems)
         {
             foreach (var col in oldItems)
             {

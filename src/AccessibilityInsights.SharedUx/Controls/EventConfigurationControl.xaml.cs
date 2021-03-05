@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Controls
     /// </summary>
     public partial class EventConfigurationControl : UserControl
     {
-        public IList<RecordEntitySetting> List { get; private set; }
+        public IEnumerable<RecordEntitySetting> List { get; private set; }
         public static readonly RoutedCommand AddEventCommand = new RoutedCommand();
         public static readonly RoutedCommand RemoveEventCommand = new RoutedCommand();
         public static readonly RoutedCommand MoveFocusToAvailableEventsCommand = new RoutedCommand();
@@ -72,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 this.SetValue(CanDragReorderProperty, value);
             }
-        }      
+        }
 
         /// <summary>
         /// Dependency property to show properties column labels
@@ -206,7 +206,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             new CommandBinding(MoveFocusToSearchCommand, OnMoveFocusToSearchField) };
         }
 
-    protected override AutomationPeer OnCreateAutomationPeer()
+        protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new CustomControlOverridingAutomationPeer(this, "pane");
         }
@@ -215,7 +215,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Set the list of all events and generate selected list
         /// </summary>
         /// <param name="list"></param>
-        public void SetList(IList<RecordEntitySetting> list)
+        public void SetList(IEnumerable<RecordEntitySetting> list)
         {
             this.List = list;
             this.SelectedList = this.List.Where(l => l.IsRecorded).ToList();
@@ -226,10 +226,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Set list and selected list 
         /// </summary>
         /// <param name="list"></param>
-        public void SetLists(IList<RecordEntitySetting> list, IList<RecordEntitySetting> selList)
+        public void SetLists(IEnumerable<RecordEntitySetting> list, IEnumerable<RecordEntitySetting> selList)
         {
             this.List = list;
-            this.SelectedList = selList;
+            this.SelectedList = selList.ToList();
             UpdateListViews();
         }
 

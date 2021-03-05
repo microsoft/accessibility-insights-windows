@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Text Range Attributes
         /// </summary>
-        public IList<TextAttributeViewModel> GetAttributes(bool collapse) 
+        public IEnumerable<TextAttributeViewModel> GetAttributes(bool collapse) 
         {
             var list = new List<TextAttributeViewModel>();
 
@@ -53,7 +53,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// List of BoundingRectangles
         /// </summary>
-        public IList<Rectangle> BoundingRectangles
+        public IEnumerable<Rectangle> BoundingRectangles
         {
             get
             {

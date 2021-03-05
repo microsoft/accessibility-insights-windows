@@ -148,7 +148,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// Any results with Fail or ScanNotSupported state are picked up for this. 
         /// </summary>
         /// <returns></returns>
-        public static IList<RuleResultViewModel> GetRuleResultsViewModelList(this ElementDataContext sc)
+        public static IReadOnlyCollection<RuleResultViewModel> GetRuleResultsViewModelList(this ElementDataContext sc)
         {
             if (sc == null)
                 throw new ArgumentNullException(nameof(sc));

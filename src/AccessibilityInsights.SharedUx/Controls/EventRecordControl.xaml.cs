@@ -161,7 +161,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Load saved Event Records
         /// </summary>
         /// <param name="el"></param>
-        public void LoadEventRecords(IList<EventMessage> el)
+        public void LoadEventRecords(IEnumerable<EventMessage> el)
         {
             this.btnRecord.Visibility = Visibility.Collapsed;
             this.tbIntro.Visibility = Visibility.Collapsed;

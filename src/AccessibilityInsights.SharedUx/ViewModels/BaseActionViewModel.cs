@@ -48,7 +48,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Parameters
         /// </summary>
-        public IList<Parameter> Parameters { get; private set; }
+        public IReadOnlyCollection<Parameter> Parameters { get; private set; }
 
         /// <summary>
         /// constructor

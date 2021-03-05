@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class ScanListViewItemViewModel:ViewModelBase
     {
-        public static IList<ScanListViewItemViewModel> GetScanListViewItemViewModels(A11yElement e)
+        public static IEnumerable<ScanListViewItemViewModel> GetScanListViewItemViewModels(A11yElement e)
         {
             if (e == null)
                 throw new ArgumentNullException(nameof(e));

@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     {
         public ElementInfoDialog(DesktopElement e) : this(new List<DesktopElement>() { e }) { } 
 
-        public ElementInfoDialog(IList<DesktopElement> list)
+        public ElementInfoDialog(IReadOnlyCollection<DesktopElement> list)
         {
             InitializeComponent();
             this.lbElements.ItemsSource = list ?? throw new ArgumentNullException(nameof(list));
