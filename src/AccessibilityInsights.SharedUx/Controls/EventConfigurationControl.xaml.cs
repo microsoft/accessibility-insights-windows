@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Controls
     /// </summary>
     public partial class EventConfigurationControl : UserControl
     {
-        public List<RecordEntitySetting> List { get; private set; }
+        public IList<RecordEntitySetting> List { get; private set; }
         public static readonly RoutedCommand AddEventCommand = new RoutedCommand();
         public static readonly RoutedCommand RemoveEventCommand = new RoutedCommand();
         public static readonly RoutedCommand MoveFocusToAvailableEventsCommand = new RoutedCommand();
@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// List on right side in user's order
         /// </summary>
-        public List<RecordEntitySetting> SelectedList { get; private set; }
+        public IList<RecordEntitySetting> SelectedList { get; private set; }
 
         /// <summary>
         /// Dependency property to allow drag n drop reordering
@@ -215,7 +215,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Set the list of all events and generate selected list
         /// </summary>
         /// <param name="list"></param>
-        public void SetList(List<RecordEntitySetting> list)
+        public void SetList(IList<RecordEntitySetting> list)
         {
             this.List = list;
             this.SelectedList = this.List.Where(l => l.IsRecorded).ToList();
@@ -226,7 +226,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// Set list and selected list 
         /// </summary>
         /// <param name="list"></param>
-        public void SetLists(List<RecordEntitySetting> list, List<RecordEntitySetting> selList)
+        public void SetLists(IList<RecordEntitySetting> list, IList<RecordEntitySetting> selList)
         {
             this.List = list;
             this.SelectedList = selList;

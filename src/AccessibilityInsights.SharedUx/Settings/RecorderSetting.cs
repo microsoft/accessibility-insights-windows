@@ -18,14 +18,14 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// List of Events for recorder setting
         /// </summary>
-        public List<RecordEntitySetting> Events { get; set; }
+        public IList<RecordEntitySetting> Events { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
 
 #pragma warning disable CA2227 // Collection properties should be read only
         /// <summary>
         /// List of Properties for recorder setting
         /// </summary>
-        public List<RecordEntitySetting> Properties { get; set; }
+        public IList<RecordEntitySetting> Properties { get; set; }
 #pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <param name="key"></param>
         /// <param name="events"></param>
         /// <returns></returns>
-        private static bool IsNotInList(int key, List<RecordEntitySetting> events)
+        private static bool IsNotInList(int key, IList<RecordEntitySetting> events)
         {
             return !(from e in events
                      where e.Id == key
