@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
@@ -40,6 +41,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             {
                 SetValue(HeaderTextProperty, value);
                 tbHeader.Text = value;
+                AutomationProperties.SetName(gvcHeader, value);
             }
         }
 

@@ -6,7 +6,7 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                 mc:Ignorable="d">
-    <GridViewColumnHeader HorizontalContentAlignment="Stretch" Margin="0,0,0,2" VerticalContentAlignment="Stretch">
+    <GridViewColumnHeader Name="gvcHeader" HorizontalContentAlignment="Stretch" Margin="0,0,0,2" VerticalContentAlignment="Stretch">
         <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" Margin="0,0,4,0" >
             <StackPanel Orientation="Horizontal" Background="{DynamicResource ResourceKey=ColumnHeaderBGBrush}">
                 <TextBlock Name="tbHeader" Style="{DynamicResource columnHeaderRow}" Margin="3,0"/>
