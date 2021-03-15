@@ -15,7 +15,7 @@
 #### Pull request checklist
 <!-- If a checklist item is not applicable to this change, write "n/a" in the checkbox -->
 
-- [ ] Run through of all [test scenarios](https://github.com/Microsoft/accessibility-insights-windows/blob/master/docs/Scenarios.md) completed?
+- [ ] Run through of all [test scenarios](https://github.com/Microsoft/accessibility-insights-windows/blob/main/docs/Scenarios.md) completed?
 - [ ] Does this address an existing issue? If yes, Issue# - 
 - [ ] Includes UI changes?
   - [ ] Run the production version of Accessibility Insights for Windows against a version with changes.

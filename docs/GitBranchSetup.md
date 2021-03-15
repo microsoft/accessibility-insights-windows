@@ -57,25 +57,25 @@ upstream        https://github.com/Microsoft/accessibility-insights-windows (pus
 
 ## Making code changes and creating a pull request
 
-Create a branch from your fork and start making the code changes. Once you are happy with the changes, and want to merge them to the main **accessibility-insights-windows** project, create a pull request from your branch directly to "Microsoft/accessibility-insights-windows master".
+Create a branch from your fork and start making the code changes. Once you are happy with the changes, and want to merge them to the main **accessibility-insights-windows** project, create a pull request from your branch directly to "Microsoft/accessibility-insights-windows main".
 
-## Merging upstream master into your fork master
+## Merging upstream main into your fork main
 
-From time to time, your fork will get out of sync with the upstream remote. Use the following commands to get the master branch of your fork up to date.
+From time to time, your fork will get out of sync with the upstream remote. Use the following commands to get the main branch of your fork up to date.
 
 ```
 git fetch upstream
-git checkout master
-git pull upstream master
+git checkout main
+git pull upstream main
 git push
 ```
 
-## Merging upstream master into your current branch
+## Merging upstream main into your current branch
 
 Use these commands instead if you would like to update your current branch in your fork from the upstream remote.
 
 ```
 git fetch upstream
-git pull upstream master
+git pull upstream main
 git push
 ```

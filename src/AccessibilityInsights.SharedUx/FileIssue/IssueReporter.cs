@@ -79,7 +79,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 // This will block the main thread. 
                 // It does seem like we currently block the main thread when we show the win form for azure devops
                 // so keeping it as is till we have a discussion. Check for blocking behavior at that link.
-                // https://github.com/Microsoft/accessibility-insights-windows/blob/master/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858
+                // https://github.com/Microsoft/accessibility-insights-windows/blob/main/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858
                 IIssueResult result = IssueReporting.FileIssueAsync(issueInformation).Result;
                 IssueReporterManager.GetInstance().UpdateIssueReporterSettings(IssueReporting);
                 return result;
