@@ -4,7 +4,7 @@
 Please review the [Code of Conduct](./CODE_OF_CONDUCT.md) for this project.
 
 ### Contribution model 
-All contributions to this project should be through pull requests (PR) against the `master` branch.
+All contributions to this project should be through pull requests (PR) against the `main` branch.
 
 Before you start, make sure you have read the [Git branch setup instructions](./docs/GitBranchSetup.md).
 
