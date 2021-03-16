@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
@@ -29,6 +28,11 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// Event recorder settings
         /// </summary>
         public RecorderSetting EventConfig { get; private set; }
+
+        /// <summary>
+        /// Property settings
+        /// </summary>
+        public PropertySettings PropertyConfig { get; } = new PropertySettings();
 
         /// <summary>
         /// Provider for fixed configuration settings such as path to user config folder
@@ -117,7 +121,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             }
 #pragma warning restore CA1031 // Do not catch general exception types
 
-            DesktopElementHelper.SetCorePropertiesList(this.AppConfig.CoreProperties);
+            PropertyConfig.SelectedCoreProperties = AppConfig.CoreProperties;
         }
 
         /// <summary>
