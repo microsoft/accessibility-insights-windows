@@ -4,7 +4,6 @@ using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Core.Enums;
-using Axe.Windows.Desktop.UIAutomation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Globalization;
@@ -40,7 +39,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test");
 
-            var coreProps = DesktopElementHelper.GetDefaultCoreProperties();
+            var coreProps = PropertySettings.DefaultCoreProperties;
 
             ConfigurationModel config = new ConfigurationModel
             {

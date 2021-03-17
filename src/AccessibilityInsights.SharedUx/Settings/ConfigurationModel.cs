@@ -5,7 +5,6 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Misc;
 using Axe.Windows.Core.Enums;
 using Axe.Windows.Core.Misc;
-using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -543,7 +542,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 
             if (!config.CoreProperties.Any())
             {
-                config.CoreProperties = DesktopElementHelper.GetDefaultCoreProperties();
+                config.CoreProperties = PropertySettings.DefaultCoreProperties;
             }
 
             if (config.CoreTPAttributes == null)
@@ -616,7 +615,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 HotKeyForMoveToNextSibling = ConfigurationModel.DefaultHotKeyMoveToNextSibling,
                 HotKeyForMoveToPreviousSibling = ConfigurationModel.DefaultHotKeyMoveToPreviousSibling,
 
-                CoreProperties = DesktopElementHelper.GetDefaultCoreProperties(),
+                CoreProperties = PropertySettings.DefaultCoreProperties,
                 CoreTPAttributes = new List<int>(),
 
                 MouseSelectionDelayMilliSeconds = ConfigurationModel.DefaultSelectionDelayMilliseconds,
