@@ -33,7 +33,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         public PatternInfoControl()
         {
             InitializeComponent();
-            PatternType.GetInstance().GetKeyValuePairList().ForEach(kv => ExpStates[kv.Key] = false);
+            foreach (var kv in PatternType.GetInstance().GetKeyValuePairList())
+            {
+                ExpStates[kv.Key] = false;
+            }
             HidePatternsTree();
         }
 

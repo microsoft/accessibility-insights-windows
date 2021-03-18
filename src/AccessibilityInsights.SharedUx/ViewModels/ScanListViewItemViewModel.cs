@@ -180,7 +180,10 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             this.AutomationHelpText = GetAutomationHelpText();
            
             StringBuilder sb = new StringBuilder();
-            sr.Messages.ForEach(m => sb.AppendLine(m));
+            foreach (var message in sr.Messages)
+            {
+                sb.AppendLine(message);
+            }
             this.HowToFixText = sb.ToString();
             this.Source = sr.Source;
         }

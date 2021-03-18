@@ -50,10 +50,11 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
                     var next = elements.Dequeue();
                     if (next.Children != null)
                     {
-                        next.Children.ForEach(c => {
+                        foreach (var c in next.Children)
+                        {
                             c.Parent = next;
                             elements.Enqueue(c);
-                        });
+                        };
                     }
                 }
             }
@@ -70,15 +71,17 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
         /// <returns></returns>
         private static void PopulateChildrenTests(A11yElement e)
         {
-            e.ScanResults.Items.ForEach(item => {
+            foreach (var item in e.ScanResults.Items)
+            {
                 item.Items = new List<RuleResult>();
                 RuleResult r = new RuleResult();
                 r.Status = e.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
                 item.Items.Add(r);
-            });
-            e.Children.ForEach(c => {
+            };
+            foreach (var c in e.Children)
+            {
                 PopulateChildrenTests(c);
-            });
+            };
         }
     }
 }
