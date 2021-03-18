@@ -237,7 +237,7 @@ namespace AccessibilityInsights
                                           // make sure that POI is set. 
                                           if (this.IsInSelectingState() && sa.HasPOIElement())
                                           {
-                                              this.StartEventsMode(GetDataAction.GetElementContext(sa.GetSelectedElementContextId().Value).Element);
+                                              this.StartEventsMode(GetDataAction.GetElementContext(sa.SelectedElementContextId.Value).Element);
                                               UpdateMainWindowUI();
                                           }
                                       }

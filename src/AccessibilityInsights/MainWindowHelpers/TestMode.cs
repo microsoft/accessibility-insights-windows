@@ -56,7 +56,7 @@ namespace AccessibilityInsights
         /// </summary>
         private void StartElementDetailView()
         {
-            var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ecId = SelectAction.GetDefaultInstance().SelectedElementContextId;
             if (ecId != null)
             {
                 this.CurrentPage = AppPage.Test;
@@ -92,7 +92,7 @@ namespace AccessibilityInsights
         /// <param name="followUp">An action to perform after tests have been run</param>
         private void StartElementHowToFixView(Action followUp = null)
         {
-            var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ecId = SelectAction.GetDefaultInstance().SelectedElementContextId;
 
             this.CurrentPage = AppPage.Test;
             this.CurrentView = TestView.ElementHowToFix;
@@ -135,7 +135,7 @@ namespace AccessibilityInsights
         /// </summary>
         private void StartTestAutomatedChecksView()
         {
-            var ec = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ec = SelectAction.GetDefaultInstance().SelectedElementContextId;
 
             if (ec != null)
             {
@@ -174,7 +174,7 @@ namespace AccessibilityInsights
         /// <param name="view"></param>
         internal void SetCurrentViewAndUpdateUI(dynamic view)
         {
-            var ec = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ec = SelectAction.GetDefaultInstance().SelectedElementContextId;
 
             this.CurrentView = view;
             if (ec != null)

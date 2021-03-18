@@ -118,7 +118,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         /// <param name="ec"></param>
         public void SetElement()
         {
-            var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ecId = SelectAction.GetDefaultInstance().SelectedElementContextId;
             if (ecId.HasValue)
             {
                 ElementContext ec = GetDataAction.GetElementContext(ecId.Value);

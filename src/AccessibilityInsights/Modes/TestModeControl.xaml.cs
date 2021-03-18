@@ -365,7 +365,7 @@ namespace AccessibilityInsights.Modes
 
             ImageOverlayDriver.ClearDefaultInstance();
 
-            var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId().Value;
+            var ecId = SelectAction.GetDefaultInstance().SelectedElementContextId.Value;
             SetDataAction.ReleaseDataContext(ecId);
 #pragma warning disable CS4014
             // NOTE: We aren't awaiting this async call, so if you

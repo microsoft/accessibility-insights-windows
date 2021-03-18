@@ -97,7 +97,7 @@ namespace AccessibilityInsights
 
                 if (sa.HasPOIElement())
                 {
-                    var poi = GetDataAction.GetElementContext(sa.GetSelectedElementContextId().Value);
+                    var poi = GetDataAction.GetElementContext(sa.SelectedElementContextId.Value);
                     this.StartEventsMode(poi.Element);
                     UpdateMainWindowUI();
                 }
@@ -226,7 +226,7 @@ namespace AccessibilityInsights
                 {
                     if (ctrlLiveMode.SelectedInHierarchyElement.Item2 == 0)
                     {
-                        SetDataAction.ReleaseDataContext(SelectAction.GetDefaultInstance().GetSelectedElementContextId().Value);
+                        SetDataAction.ReleaseDataContext(SelectAction.GetDefaultInstance().SelectedElementContextId.Value);
                     }
                     else
                     {
@@ -411,7 +411,7 @@ namespace AccessibilityInsights
             {
                 if (ctrlLiveMode.SelectedInHierarchyElement.Item2 == 0)
                 {
-                    SetDataAction.ReleaseDataContext(SelectAction.GetDefaultInstance().GetSelectedElementContextId().Value);
+                    SetDataAction.ReleaseDataContext(SelectAction.GetDefaultInstance().SelectedElementContextId.Value);
                 }
                 else
                 {

@@ -55,7 +55,7 @@ namespace AccessibilityInsights
             // set the state to Capturing view. it will prevent testing for safety.
             this.CurrentView = CCAView.CapturingData;
 
-            var ecId = SelectAction.GetDefaultInstance().GetSelectedElementContextId();
+            var ecId = SelectAction.GetDefaultInstance().SelectedElementContextId;
             if (ecId != null)
             {
                 // make sure that no more selection is requested.

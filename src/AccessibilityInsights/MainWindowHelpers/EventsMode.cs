@@ -57,7 +57,7 @@ namespace AccessibilityInsights
 #pragma warning disable CS4014
                 // NOTE: We aren't awaiting this async call, so if you
                 // touch it, consider if you need to add the await
-                this.ctrlEventMode.SetElement(sa.GetSelectedElementContextId().Value);
+                this.ctrlEventMode.SetElement(sa.SelectedElementContextId.Value);
 #pragma warning restore CS4014
                 this.CurrentPage = AppPage.Events;
                 this.CurrentView = EventsView.Config;
