@@ -1203,6 +1203,9 @@
     <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxContastingBorder">
         <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
+    <Style TargetType="{x:Type CheckBox}" x:Key="CheckBoxNoDarkThemeContastingBorder">
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=NoDarkThemeContrastingFGBrush}"/>
+    </Style>
     <Style TargetType="{x:Type CheckBox}" x:Key="CkbxRightSide" BasedOn="{StaticResource CheckBoxContastingBorder}">
         <Setter Property="FontSize" Value="14"/>
     </Style>

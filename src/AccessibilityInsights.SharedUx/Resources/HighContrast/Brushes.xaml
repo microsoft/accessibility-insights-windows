@@ -108,4 +108,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="{x:Static SystemColors.WindowTextColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverBGBrush" Color="{x:Static SystemColors.HighlightColor}"/>
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
+    <SolidColorBrush po:Freeze="True" x:Key="NoDarkThemeContrastingFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
 </ResourceDictionary>
