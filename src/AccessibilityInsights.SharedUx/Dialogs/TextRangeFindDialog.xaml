@@ -81,7 +81,7 @@
                       AutomationProperties.Name="{x:Static Properties:Resources.chbIgnoreCaseAutomationPropertiesName}"
                       Margin="10,0,0,0"
                       VerticalAlignment="Center"
-                      Style="{StaticResource CheckBoxContastingBorder}"
+                      Style="{StaticResource CheckBoxNoDarkThemeContrastingBorder}"
                       Content="{x:Static Properties:Resources.chbIgnoreCaseAutomationPropertiesName}"/>
             <StackPanel Orientation="Horizontal"
                         Grid.Column="1"
