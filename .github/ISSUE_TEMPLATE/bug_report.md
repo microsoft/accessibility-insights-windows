@@ -6,6 +6,8 @@ labels: bug, needs triage
 assignees: ''
 
 ---
+If the bug is about the ruleset, consider filing this issue at [axe-windows](https://github.com/microsoft/axe-windows/issues/new/choose) instead.
+
 Please check whether the bug has [already been filed](https://github.com/Microsoft/accessibility-insights-windows/issues).
 
 **Describe the bug**
