@@ -318,7 +318,7 @@ This table includes only officially published builds. The data in table may also
 These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are recognized and reported by Axe.Windows; others are dynamically reported by application frameworks:
 
 ###### Values reported by Axe.Windows
-The following values (sorted alphabetically) are returned from Axe.Windows:
+The following values (sorted alphabetically) are reported by Axe.Windows:
 Value | Framework
 --- | ---
 `InternetExplorer` | Microsoft Internet Explorer
