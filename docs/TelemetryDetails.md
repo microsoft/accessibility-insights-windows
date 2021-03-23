@@ -315,7 +315,7 @@ Value | OS Version
 This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
 ##### UIFramework identifiers
-These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are reported from Axe.Windows, and others are dynamically reported by application frameworks:
+These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are recognized and reported by Axe.Windows; others are dynamically reported by application frameworks:
 
 ###### Values reported by Axe.Windows
 The following values (sorted alphabetically) are returned from Axe.Windows:
