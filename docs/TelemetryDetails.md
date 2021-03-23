@@ -321,6 +321,7 @@ These values identify the UI framework used to create the application being eval
 The following values (sorted alphabetically) are reported by Axe.Windows:
 Value | Framework
 --- | ---
+`DirectUI` | DirectUI framework (C++)
 `InternetExplorer` | Microsoft Internet Explorer
 `MicrosoftEdge` | Microsoft Edge (non-Chromium version)
 `Win32` | Generic Win32 apps (multiple languages)
@@ -334,7 +335,6 @@ Value | Framework
 --- | ---
 `Avalonia` | Avalonia framework (.NET)
 `Chrome` | Chromium (C++, includes Google Chrome and newer versions of Microsoft Edge)
-`DirectUI` | DirectUI framework (C++)
 `Gecko` | Gecko browser engine (C++, used in FireFox and Thunderbird)
 `JUCE` | Juce framework (C++)
 `nexacro` | Nexacro platform (HTML5/JavaScript)
