@@ -315,32 +315,25 @@ Value | OS Version
 This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
 ##### UIFramework identifiers
-These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are recognized and reported by Axe.Windows; others are dynamically reported by application frameworks:
+These identifiers are provided by UI frameworks and allow assistive technologies to provide framework-specific behaviors. This table reports the values (sorted alphabetically) that have appeared in telemetry, and their corresponding UI frameworks:
 
-###### Values reported by Axe.Windows
-The following values (sorted alphabetically) are reported by Axe.Windows:
-Value | Framework
---- | ---
-`DirectUI` | DirectUI framework (C++)
-`InternetExplorer` | Microsoft Internet Explorer
-`MicrosoftEdge` | Microsoft Edge (non-Chromium version)
-`Win32` | Generic Win32 apps (multiple languages)
-`WinForm` | Windows Forms (.NET)
-`WPF` | Windows Presentation Framework (.NET)
-`XAML` | Universal Windows Platform (.NET)
-
-###### Values reported by application frameworks
-The following framework values (sorted alphabetically) have also been observed:
 Value | Framework
 --- | ---
 `Avalonia` | Avalonia framework (.NET)
 `Chrome` | Chromium (C++, includes Google Chrome and newer versions of Microsoft Edge)
+`DirectUI` | DirectUI framework (C++)
 `Gecko` | Gecko browser engine (C++, used in FireFox and Thunderbird)
+`InternetExplorer` | Microsoft Internet Explorer
 `JUCE` | Juce framework (C++)
+`MicrosoftEdge` | Microsoft Edge (non-Chromium version)
 `nexacro` | Nexacro platform (HTML5/JavaScript)
 `Qt` | Qt framework (multiple languages)
 `Silveright` | Silverlight (.NET)
 `SWT` | Standard Widgets Toolkit (Java)
+`Win32` | Generic Win32 apps (multiple languages)
+`WinForm` | Windows Forms (.NET)
+`WPF` | Windows Presentation Framework (.NET)
+`XAML` | Universal Windows Platform (.NET)
 
 ### Sample Queries
 Queries are written using the [Kusto Query Language](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/). Here are some sample queries:
