@@ -315,29 +315,25 @@ Value | OS Version
 This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
 ##### UIFramework identifiers
-These values identify the UI framework used to create the application being evaluated. These values come from 2 sources--some are from Axe.Windows, and others are dynamically reported by application frameworks:
+These identifiers are provided by UI frameworks and allow assistive technologies to provide framework-specific behaviors. This table reports the values (sorted alphabetically) that have appeared in telemetry, and their corresponding UI frameworks:
 
-###### Values from Axe.Windows
-These values are returned from Axe.Windows:
 Value | Framework
 --- | ---
+`Avalonia` | Avalonia framework (.NET)
+`Chrome` | Chromium (C++, includes Google Chrome and newer versions of Microsoft Edge)
+`DirectUI` | DirectUI framework (C++)
+`Gecko` | Gecko browser engine (C++, used in FireFox and Thunderbird)
+`InternetExplorer` | Microsoft Internet Explorer
+`JUCE` | Juce framework (C++)
 `MicrosoftEdge` | Microsoft Edge (non-Chromium version)
-`InternetExplorer` | Internet Explorer
-`WPF` | WPF Apps
-`WinForm` | Windows Forms Apps
-`Win32` | Win32 apps
-`XAML` | UWP apps
-
-###### Values from application frameworks
-The following framework values have also been observed:
-Value | Framework
---- | ---
-`Chrome` | Chromium (includes Google Chrome and newer versions of Microsoft Edge)
-`DirectUI` | DirectUI apps
-`Gecko` | Undetermined
-`Qt` | Undetermined
-`SWT` | Undetermined
-`Avalonia` | Undetermined
+`nexacro` | Nexacro platform (HTML5/JavaScript)
+`Qt` | Qt framework (multiple languages)
+`Silveright` | Silverlight (.NET)
+`SWT` | Standard Widgets Toolkit (Java)
+`Win32` | Generic Win32 apps (multiple languages)
+`WinForm` | Windows Forms (.NET)
+`WPF` | Windows Presentation Framework (.NET)
+`XAML` | Universal Windows Platform (.NET)
 
 ### Sample Queries
 Queries are written using the [Kusto Query Language](https://docs.microsoft.com/en-us/azure/data-explorer/kusto/query/). Here are some sample queries:
@@ -404,4 +400,14 @@ exceptions
 | summarize count(problemId) by problemId
 | sort by count_problemId desc
 | take 10
+```
+#### What UI frameworks have been scanned in the last 30 days, in descending order of count?
+```
+customEvents 
+| where timestamp >= ago(30d)
+| where name == 'Scan_Statistics'
+| extend framework = tostring(customDimensions.UIFramework)
+| where framework != ''
+| summarize count() by framework
+| sort by count_ desc
 ```
