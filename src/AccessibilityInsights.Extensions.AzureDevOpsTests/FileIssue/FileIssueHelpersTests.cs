@@ -5,8 +5,8 @@ using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.FileIssue;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Moq;
+using System;
 using System.Collections.Generic;
 
 namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue

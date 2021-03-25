@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Globalization;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
-using AccessibilityInsights.SharedUx.Properties;
 
 namespace AccessibilityInsights.SharedUx.Converters
 {

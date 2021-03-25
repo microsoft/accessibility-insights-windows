@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Bases;
 using AccessibilityInsights.SharedUx.ActionViews;
+using Axe.Windows.Core.Bases;
 using System.Reflection;
 
 namespace AccessibilityInsights.SharedUx.ViewModels

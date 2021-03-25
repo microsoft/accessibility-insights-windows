@@ -1,19 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Interfaces;
+using AccessibilityInsights.SharedUx.Properties;
 using Axe.Windows.Core.Attributes;
 using Axe.Windows.Core.Bases;
-using AccessibilityInsights.SharedUx.Dialogs;
+using Axe.Windows.Core.Misc;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.UIAutomation.Patterns;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Input;
-using Axe.Windows.Core.Types;
-using Axe.Windows.Desktop.UIAutomation.Patterns;
-using Axe.Windows.Core.Misc;
-using AccessibilityInsights.SharedUx.Interfaces;
-using AccessibilityInsights.SharedUx.Properties;
-using System;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
