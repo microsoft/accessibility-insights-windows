@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Misc;
-using AccessibilityInsights.SharedUx.Telemetry;
 using System.Globalization;
 using System.Timers;
 using System.Windows;

@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
 using Axe.Windows.Desktop.Styles;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation;
@@ -7,12 +8,11 @@ using Axe.Windows.Desktop.UIAutomation.Patterns;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using UIAutomationClient;
-using System.Text.RegularExpressions;
-using System.Globalization;
-using AccessibilityInsights.SharedUx.Properties;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.ViewModels

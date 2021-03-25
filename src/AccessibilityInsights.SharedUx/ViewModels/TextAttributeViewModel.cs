@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Desktop.UIAutomation;
 using AccessibilityInsights.SharedUx.Dialogs;
+using Axe.Windows.Desktop.Types;
+using Axe.Windows.Desktop.UIAutomation;
+using System;
 using System.Windows;
 using System.Windows.Input;
-using Axe.Windows.Desktop.Types;
-using System;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
