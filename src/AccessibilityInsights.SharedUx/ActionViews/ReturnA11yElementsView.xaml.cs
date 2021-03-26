@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         public ElementContext ElementContext { get; set; }
 
         /// <summary>
-        /// Gets/sets fastpass highlighter visibility, updating as necessary 
+        /// Gets/sets fastpass highlighter visibility, updating as necessary
         /// </summary>
         public static bool HighlightVisibility
         {
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         }
 
         /// <summary>
-        /// Implicitly turn on highlighter when recording start. 
+        /// Implicitly turn on highlighter when recording start.
         /// </summary>
         private static void TurnOnHighlighter()
         {
@@ -89,7 +89,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         }
 
         /// <summary>
-        /// Implicitly turn off highlighter when recording start. 
+        /// Implicitly turn off highlighter when recording start.
         /// </summary>
         private static void TurnOffHighlighter()
         {

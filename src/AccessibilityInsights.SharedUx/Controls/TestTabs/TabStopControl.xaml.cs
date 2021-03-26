@@ -53,8 +53,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private A11yElement CurrentElement { get; set; }
 
         /// <summary>
-        /// it is set to true, when TapStop enters into a loop with existing records. 
-        /// it will be set back to false when new recording is started. 
+        /// it is set to true, when TapStop enters into a loop with existing records.
+        /// it will be set back to false when new recording is started.
         /// </summary>
         private bool IsTabStopLooped;
 
@@ -113,7 +113,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Gets/sets fastpass highlighter visibility, updating as necessary 
+        /// Gets/sets fastpass highlighter visibility, updating as necessary
         /// </summary>
 #pragma warning disable CA1822
         public bool HighlightVisibility
@@ -257,7 +257,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Collapse the toast notification 
+        /// Collapse the toast notification
         /// </summary>
         private Task DelayCollapse()
         {
@@ -272,8 +272,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Implicitly turn on highlighter when recording start. 
-        /// otherwise, users will be confused since there is no indication of recording. 
+        /// Implicitly turn on highlighter when recording start.
+        /// otherwise, users will be confused since there is no indication of recording.
         /// </summary>
         private void TurnOnHighlighter()
         {
@@ -282,8 +282,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Implicitly turn off highlighter when recording start. 
-        /// otherwise, users will be confused since there is no indication of recording. 
+        /// Implicitly turn off highlighter when recording start.
+        /// otherwise, users will be confused since there is no indication of recording.
         /// </summary>
         private void TurnOffHighlighter()
         {
@@ -419,11 +419,11 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void ProcessFocusedChangedEvent(EventMessage message)
         {
-            // exclude tooltip since it is transient UI. 
+            // exclude tooltip since it is transient UI.
             if (message.Element.ControlTypeId != Axe.Windows.Core.Types.ControlType.UIA_ToolTipControlTypeId && !message.Element.IsSameUIElement(CurrentElement))
             {
-                // ancestry variable is not used directly. however, it populates ancestry of message.Element and the ancestry is used in IsChildOf(...) method. 
-                // Don't remove it. 
+                // ancestry variable is not used directly. however, it populates ancestry of message.Element and the ancestry is used in IsChildOf(...) method.
+                // Don't remove it.
                 var ancestry = new DesktopElementAncestry(TreeViewMode.Control, message.Element, true);
 
                 /// Don't do anything if focused element isn't in target scope
@@ -490,7 +490,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Record a telemetry log for tabstop recording end. 
+        /// Record a telemetry log for tabstop recording end.
         /// </summary>
         private void AddTraceToTelemetryForTabStopEnd()
         {

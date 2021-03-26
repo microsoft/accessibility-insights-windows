@@ -69,7 +69,7 @@ namespace AccessibilityInsights.Modes
         public EventsView CurrentView { get; set; }
 
         /// <summary>
-        /// Express whether Refresh button is needed. 
+        /// Express whether Refresh button is needed.
         /// </summary>
         public bool IsRefreshEnabled { get { return false; } }
 
@@ -164,8 +164,8 @@ namespace AccessibilityInsights.Modes
                 this.ctrlTabs.CurrentMode = InspectTabMode.Events;
                 try
                 {
-                    // the element context is special one for Event. so it doen't have any data yet. 
-                    // need to populate data with selected element. 
+                    // the element context is special one for Event. so it doen't have any data yet.
+                    // need to populate data with selected element.
                     var e = GetDataAction.GetA11yElementWithLiveData(ecId, 0);
                     this.ElementContext = ec;
                     this.ctrlEvents.SetElement(ec);
@@ -212,14 +212,14 @@ namespace AccessibilityInsights.Modes
             AdjustMainWindowSize();
             this.Visibility = Visibility.Visible;
             this.ctrlEvents.ShowControl();
-            // set focus on default element. 
+            // set focus on default element.
             Dispatcher.InvokeAsync(() =>
             {
                 this.SetFocusOnDefaultControl();
             }
             , System.Windows.Threading.DispatcherPriority.Input);
 
-            // Inspect tab control current mode to Events. 
+            // Inspect tab control current mode to Events.
             this.ctrlTabs.CurrentMode = InspectTabMode.Events;
         }
 

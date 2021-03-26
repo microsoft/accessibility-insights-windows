@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     {
 
         /// <summary>
-        /// Selected element rectangle 
+        /// Selected element rectangle
         /// </summary>
         private Border SelectedElementRect;
 
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             Items = new Dictionary<A11yElement, GroupHighlighterItem>();
         }
-        
+
         /// <summary>
         /// Set base element and other info
         /// </summary>
@@ -183,7 +183,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 elem.Clear();
             }
 
-            this.Items.Clear();            
+            this.Items.Clear();
             this.canvas = null;
             this.HighlightWindow?.Close();
             this.HighlightWindow = null;
@@ -228,7 +228,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 // TODO : Report this?
             }
         }
-        
+
         /// <summary>
         /// Clear highlighter data. This will close the highlighter.
         /// </summary>

@@ -28,7 +28,7 @@ namespace UITests.UILibrary
         {
             Session.FindElementByAccessibilityId(AutomationIDs.MainWinLoadButton).Click();
             Session.FindElementByName(OpenFileAllLocationsElementName).Click();
-            
+
             var folderTextbox = Session.FindElementByAccessibilityId(OpenFileFolderTextBoxAutomationID);
             folderTextbox.SendKeys(folder + Keys.Enter);
 

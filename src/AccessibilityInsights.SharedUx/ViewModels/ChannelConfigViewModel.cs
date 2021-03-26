@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     public class ChannelConfigViewModel : ViewModelBase
     {
         public ObservableCollection<ReleaseChannel> Channels { get; } = new ObservableCollection<ReleaseChannel>(Enum.GetValues(typeof(ReleaseChannel)).Cast<ReleaseChannel>());
-        
+
         private readonly Dictionary<ReleaseChannel, string> ChannelTextMapping = new Dictionary<ReleaseChannel, string>()
         {
             { ReleaseChannel.Production, Resources.ChannelConfigControl_ProductionDescription },

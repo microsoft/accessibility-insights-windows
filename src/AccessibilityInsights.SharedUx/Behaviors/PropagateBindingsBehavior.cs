@@ -7,7 +7,7 @@ using System.Windows.Input;
 namespace AccessibilityInsights.SharedUx.Behaviors
 {
     /// <summary>
-    /// This behavior will propagate input and command bindings up to the parent window 
+    /// This behavior will propagate input and command bindings up to the parent window
     /// of the attached FrameworkElement when the element IsVisible and remove them when
     /// it is not
     /// Based on solution found at https://stackoverflow.com/questions/23316274/inputbindings-work-only-when-focused
@@ -79,6 +79,6 @@ namespace AccessibilityInsights.SharedUx.Behaviors
                     win.CommandBindings.Remove(bind);
                 }
             }
-        }        
+        }
     }
 }

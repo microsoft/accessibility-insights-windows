@@ -67,7 +67,7 @@ namespace AccessibilityInsights.SetupLibrary
 
         /// <summary>
         /// Get the installed app path, based on the registry open file verb
-        /// 
+        ///
         /// This verb is a string in the following format:
         /// "C:\Program Files (x86)\AccessibilityInsights\1.1\AccessibilityInsights.exe" "%1"
         ///

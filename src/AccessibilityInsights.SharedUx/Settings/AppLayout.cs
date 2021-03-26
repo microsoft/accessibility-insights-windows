@@ -87,11 +87,11 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <param name="left">Current left position of window</param>
         /// <returns></returns>
         public void LoadLayoutIfPrevVersion(double top, double left)
-        {            
+        {
             if (this.Version == null || string.CompareOrdinal(this.Version, AppLayout.CurrentVersion) != 0)
             {
-                // for now we enforce the layout to be always be default if the version mismatch. 
-                // it will reduce the unnecessary crashes or noize. but it may lose the previous layout info. 
+                // for now we enforce the layout to be always be default if the version mismatch.
+                // it will reduce the unnecessary crashes or noize. but it may lose the previous layout info.
                 // we may bear the lose of previous layout for now.
                 this.Top = top;
                 this.Left = left;
@@ -102,8 +102,8 @@ namespace AccessibilityInsights.SharedUx.Settings
                 this.LayoutEvent = MainWindowLayout.GetLayoutSnapshot();
                 this.LayoutLive = MainWindowLayout.GetLayoutLive();
                 this.Version = CurrentVersion;
-            }            
-        }        
+            }
+        }
     }
 }
 

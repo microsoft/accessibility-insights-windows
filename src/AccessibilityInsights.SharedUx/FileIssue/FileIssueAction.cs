@@ -43,13 +43,13 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         /// <summary>
         /// Attaches screenshot and results file to existing issue
-        /// Default case - resulting test file will open in A11yFileMode.Inspect mode, 
+        /// Default case - resulting test file will open in A11yFileMode.Inspect mode,
         ///     no additional loading parameters needed
         /// </summary>
         /// <param name="issueInformation"> Issue information object that needs to be populated with attachments</param>
         /// <param name="ecId">Element context id</param>
         /// <param name="rect">Bounding rect of element for screenshot</param>
-        /// <param name="elId">Element unique id</param>         
+        /// <param name="elId">Element unique id</param>
         /// <returns>Success or failure</returns>
         public static void AttachIssueData(IssueInformation issueInformation, Guid ecId, Rectangle? rect, int? elId)
         {
@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
             // Save snapshot locally in prep for uploading attachment
             var snapshotFileName = GetTempFileName(FileFilters.TestExtension);
-            
+
             // when the file is open, it will be open in Inspect view, not Test view.
             SaveAction.SaveSnapshotZip(snapshotFileName, ecId, elId, Axe.Windows.Desktop.Settings.A11yFileMode.Inspect);
             issueInformation.Screenshot = GetScreenShotForIssueDescription(ecId, rect);
@@ -79,7 +79,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         /// <summary>
         /// Highlights the given rectangle on a clone of the given data context's
         /// inner bitmap and returns it
-        /// 
+        ///
         /// If the given rectangle is null (might happen if bounding rectangle doesn't exist),
         ///     then the original bitmap is returned
         /// </summary>
@@ -99,7 +99,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                     using (var graphics = Graphics.FromImage(newImg))
                     using (Pen pen = new Pen(Color.Red, 5))
                     {
-                        // Use element 
+                        // Use element
                         var el = GetDataAction.GetA11yElementInDataContext(ecId, dc.ScreenshotElementId);
                         var outerRect = el.BoundingRectangle;
 

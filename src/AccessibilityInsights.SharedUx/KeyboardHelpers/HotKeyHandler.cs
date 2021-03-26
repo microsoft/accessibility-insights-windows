@@ -8,7 +8,7 @@ using System.Windows.Interop;
 namespace AccessibilityInsights.SharedUx.KeyboardHelpers
 {
     /// <summary>
-    /// Hotkey handler 
+    /// Hotkey handler
     /// singleton
     /// this is not thread safe.
     /// </summary>
@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
 
         private HotKeyHandler(IntPtr hWnd)
         {
-            this.hWnd = hWnd; 
+            this.hWnd = hWnd;
             source = HwndSource.FromHwnd(hWnd);
         }
 
@@ -101,7 +101,7 @@ namespace AccessibilityInsights.SharedUx.KeyboardHelpers
         }
 
         /// <summary>
-        /// HotKey handler 
+        /// HotKey handler
         /// </summary>
         /// <param name="hwnd"></param>
         /// <param name="msg"></param>

@@ -9,7 +9,7 @@ using System.Windows.Media;
 namespace AccessibilityInsights.CommonUxComponents.Controls
 {
     /// <summary>
-    /// FabricIconControl is a lightweight control derived from ContentControl, 
+    /// FabricIconControl is a lightweight control derived from ContentControl,
     /// used to display glyphs housed within the Fabric MDL2 Symbol icon font.
     /// Set the GlyphName property to render an icon. Set the GlyphSize to map
     /// to a pre-defined set of usage contexts.
@@ -55,7 +55,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         #endregion
 
         /// <summary>
-        /// Size of icon 
+        /// Size of icon
         /// </summary>
         #region GlyphSize (Dependency Property)
 
@@ -172,7 +172,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
     /// <summary>
     /// FabricIconControlValues is a static lookup class that houses name/value dictionaries for
-    /// custom icon fonts needed to support the product. Each custom font is supported 
+    /// custom icon fonts needed to support the product. Each custom font is supported
     /// by a table and custom FontIcon-derived control.
     /// </summary>
     public static class FabricIconControlValues
@@ -3117,7 +3117,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         SliderHandleSize,
         DefaultRatio,
         NumberSequence,
-#pragma warning disable CA1720 // GUID is type name. but it is ok here. 
+#pragma warning disable CA1720 // GUID is type name. but it is ok here.
         GUID,
 #pragma warning restore CA1720
         ReportAdd,

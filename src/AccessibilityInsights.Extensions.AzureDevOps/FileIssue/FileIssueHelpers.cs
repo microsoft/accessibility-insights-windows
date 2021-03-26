@@ -76,7 +76,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
         /// <summary>
         /// Attaches screenshot and results file to existing issue
-        /// Default case - resulting test file will open in A11yFileMode.Inspect mode, 
+        /// Default case - resulting test file will open in A11yFileMode.Inspect mode,
         ///     no additional loading parameters needed
         /// </summary>
         /// <param name="rect">Bounding rect of element for screenshot</param>
@@ -207,9 +207,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         /// <summary>
-        /// Remove internal text from repro step. 
-        /// since the internal text is wrapped in a "div", find a div with matching key text and remove the child nodes of div. 
-        /// generally, keyText is guid value. 
+        /// Remove internal text from repro step.
+        /// since the internal text is wrapped in a "div", find a div with matching key text and remove the child nodes of div.
+        /// generally, keyText is guid value.
         /// </summary>
         /// <param name="inputHTML"></param>
         /// <param name="keyText"></param>
@@ -222,8 +222,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             doc2.write(htmlText);
             IHTMLDOMNode node = null;
 
-            // search div with matching issueguid. 
-            // remove any of it if there is matched one. 
+            // search div with matching issueguid.
+            // remove any of it if there is matched one.
             var divnodes = doc.getElementsByTagName("div");
 
             if (divnodes != null)

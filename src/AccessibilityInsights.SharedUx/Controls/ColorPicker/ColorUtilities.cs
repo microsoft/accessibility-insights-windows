@@ -162,7 +162,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
 
         // Generates a list of colors with hues ranging from 0 360
-        // and a saturation and value of 1. 
+        // and a saturation and value of 1.
         public static List<Color> GenerateHsvSpectrum()
         {
             List<Color> colorsList = new List<Color>(8);

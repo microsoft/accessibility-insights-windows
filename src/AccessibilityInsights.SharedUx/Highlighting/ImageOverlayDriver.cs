@@ -76,7 +76,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Set Background image with Element on highlighter
-        /// it is to set bounding rectangle of background image based on screenshot element. 
+        /// it is to set bounding rectangle of background image based on screenshot element.
         /// </summary>
         /// <param name="ecId"></param>
         /// <param name="eId"></param>

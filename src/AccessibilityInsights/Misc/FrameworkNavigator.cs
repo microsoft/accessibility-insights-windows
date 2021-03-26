@@ -34,7 +34,7 @@ namespace AccessibilityInsights.Misc
 
                 var next = ++i < count ? i : 0;
                 return panes[next];
-            } // for 
+            } // for
 
             return null;
         }

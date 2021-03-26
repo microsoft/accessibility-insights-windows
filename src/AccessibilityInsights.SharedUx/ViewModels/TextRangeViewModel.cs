@@ -22,7 +22,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class TextRangeViewModel:ViewModelBase
     {
-        const int MaxTextSize = 5000; // based on Inspect code. 
+        const int MaxTextSize = 5000; // based on Inspect code.
 
         /// <summary>
         /// TextRange Instance
@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Text Range Attributes
         /// </summary>
-        public IList<TextAttributeViewModel> GetAttributes(bool collapse) 
+        public IList<TextAttributeViewModel> GetAttributes(bool collapse)
         {
             var list = new List<TextAttributeViewModel>();
 
@@ -62,7 +62,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// TextPattern which this text range is from. 
+        /// TextPattern which this text range is from.
         /// </summary>
         public TextPattern TextPattern { get; private set; }
 
@@ -110,7 +110,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public Visibility RemoveMenuVisibility { get; private set; }
 
         /// <summary>
-        /// indicate whether item is listed in custom list or not. 
+        /// indicate whether item is listed in custom list or not.
         /// </summary>
         bool listed;
         public bool Listed
@@ -236,10 +236,10 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, Axe.Windows.Desktop.Styles.FontWeight.GetInstance().GetNameById(value)));
                     }
                     break;
-                case TextAttributeType.UIA_IsHiddenAttributeId: 
-                case TextAttributeType.UIA_IsItalicAttributeId: 
-                case TextAttributeType.UIA_IsReadOnlyAttributeId: 
-                case TextAttributeType.UIA_IsSubscriptAttributeId: 
+                case TextAttributeType.UIA_IsHiddenAttributeId:
+                case TextAttributeType.UIA_IsItalicAttributeId:
+                case TextAttributeType.UIA_IsReadOnlyAttributeId:
+                case TextAttributeType.UIA_IsSubscriptAttributeId:
                 case TextAttributeType.UIA_IsSuperscriptAttributeId:
                 case TextAttributeType.UIA_IsActiveAttributeId:
                     if (value is bool)
@@ -319,7 +319,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                         }
                     }
                     break;
-                case TextAttributeType.UIA_SelectionActiveEndAttributeId: 
+                case TextAttributeType.UIA_SelectionActiveEndAttributeId:
                     if (value is int)
                     {
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, ActiveEnd.GetInstance().GetNameById(value)));
@@ -351,7 +351,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     }
                     break;
                 case TextAttributeType.UIA_LinkAttributeId:
-                    // do nothing for now until it is shown as necessary information. 
+                    // do nothing for now until it is shown as necessary information.
                     //try
                     //{
                     //    IUIAutomationTextRange lnk = Marshal.GetObjectForIUnknown(value) as IUIAutomationTextRange;
@@ -363,7 +363,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     //}
                     break;
                 default:
-                    // need to make a decision for these Attributes since it return Object. 
+                    // need to make a decision for these Attributes since it return Object.
                     if (value.GetType().Name != "__ComObject")
                     {
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, value));

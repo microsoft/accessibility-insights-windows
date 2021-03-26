@@ -52,7 +52,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Start snapshot mode. 
+        /// Start snapshot mode.
         /// </summary>
         private void StartElementDetailView()
         {
@@ -131,7 +131,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Start fastpass mode. 
+        /// Start fastpass mode.
         /// </summary>
         private void StartTestAutomatedChecksView()
         {
@@ -142,7 +142,7 @@ namespace AccessibilityInsights
                 DisableElementSelector();
 
                 ctrlCurMode.HideControl();
-                // make sure that we honor loaded data. but in this case, some of manual test should be disabled. 
+                // make sure that we honor loaded data. but in this case, some of manual test should be disabled.
                 ctrlTestMode.DataContextMode = GetDataContextModeForTest();
                 ctrlCurMode = ctrlTestMode;
                 ctrlCurMode.ShowControl();

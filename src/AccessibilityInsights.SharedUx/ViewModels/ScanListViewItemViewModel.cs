@@ -178,7 +178,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
 
             this.AutomationHelpText = GetAutomationHelpText();
-           
+
             StringBuilder sb = new StringBuilder();
             sr.Messages.ForEach(m => sb.AppendLine(m));
             this.HowToFixText = sb.ToString();

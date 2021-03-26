@@ -84,7 +84,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             var properties = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
             properties.AddChildren(el.Properties.Values);
-            
+
             if (properties.Children.Any())
             {
                 properties.SortChildren();
@@ -144,7 +144,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             add = custom.Where(id => !CustomPropertiesNode.Children.Select(c => c.Id).Contains(id)).ToList();
             CustomPropertiesNode.AddChildren(add, EventConfigNodeType.Property);
             CustomPropertiesNode.SortChildren();
-         
+
             if (CustomPropertiesNode.Children.Count > 0)
             {
                 CustomNode.AddChild(CustomPropertiesNode);

@@ -102,12 +102,12 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns></returns>
         private static double GetDPIRate(uint dpi)
         {
-            return dpi / 96.0; // 96 is 100% scale. 
+            return dpi / 96.0; // 96 is 100% scale.
         }
 
         /// <summary>
         /// Gets the DPI that WPF seems to use internally
-        /// when positioning windows; scale by this DPI 
+        /// when positioning windows; scale by this DPI
         /// when setting Window.Left / Window.Top before calling show()
         /// </summary>
         /// <returns></returns>

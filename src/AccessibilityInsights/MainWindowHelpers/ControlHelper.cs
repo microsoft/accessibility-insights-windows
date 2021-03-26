@@ -30,13 +30,13 @@ namespace AccessibilityInsights
         /// <summary>
         /// Enable appropriate Tracker in SelectAction based on configuration
         /// Keyboard focus vs. Mouse
-        /// allow enable only in selection is feasibile based on mode. 
+        /// allow enable only in selection is feasibile based on mode.
         /// </summary>
         internal void EnableElementSelector()
         {
             var sa = SelectAction.GetDefaultInstance();
-            if (!sa.IsPaused && 
-                ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live) 
+            if (!sa.IsPaused &&
+                ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live)
                 ||
                 (CurrentPage == AppPage.CCA&& (CCAView)CurrentView == CCAView.Automatic)
                 ))
@@ -56,8 +56,8 @@ namespace AccessibilityInsights
             if (!sa.IsPaused)
             {
                 this.AllowFurtherAction = false;
-                this.timerSelector?.Stop(); // make sure selection timer is disabled. 
-                sa.Stop(); // stop selector action. 
+                this.timerSelector?.Stop(); // make sure selection timer is disabled.
+                sa.Stop(); // stop selector action.
             }
         }
 
@@ -224,7 +224,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Update Highlighter of the selected Tab on left side. 
+        /// Update Highlighter of the selected Tab on left side.
         /// </summary>
         private void UpdateTabSelection()
         {
@@ -252,7 +252,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set the title string for Main window.
-        /// Update Automation Property Name too. 
+        /// Update Automation Property Name too.
         /// </summary>
         /// <returns></returns>
         private void UpdateTitleString()

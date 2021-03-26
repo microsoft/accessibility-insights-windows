@@ -239,7 +239,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         {
             string serializedData = config.IssueReporterSerializedConfigs;
 
-            Dictionary<Guid, string> configsDictionary = 
+            Dictionary<Guid, string> configsDictionary =
                 JsonConvert.DeserializeObject<Dictionary<Guid, string>>(serializedData);
 
             return configsDictionary[stableIdentifier];
@@ -263,7 +263,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
             if (supportGetSerializedSettings.HasValue)
             {
-                string settings = supportGetSerializedSettings.Value 
+                string settings = supportGetSerializedSettings.Value
                     ? newSettings : null;
                 issueReporterMock.Setup(p => p.TryGetCurrentSerializedSettings(out settings))
                     .Returns(supportGetSerializedSettings.Value);

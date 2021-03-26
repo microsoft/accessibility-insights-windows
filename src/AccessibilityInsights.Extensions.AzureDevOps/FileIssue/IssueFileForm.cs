@@ -11,7 +11,7 @@ using static System.FormattableString;
 namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 {
     /// <summary>
-    /// Winform based issue filing dialog code. 
+    /// Winform based issue filing dialog code.
     /// because of parenting issue, wpf can't be used for IE Control
     /// </summary>
     public partial class IssueFileForm: Form

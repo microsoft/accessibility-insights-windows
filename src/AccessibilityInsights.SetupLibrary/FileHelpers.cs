@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Create folder if it doesn't exist. 
+        /// Create folder if it doesn't exist.
         /// </summary>
         /// <param name="path"></param>
         public static void CreateFolder(string path)

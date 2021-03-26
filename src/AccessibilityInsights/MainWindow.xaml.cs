@@ -202,7 +202,7 @@ namespace AccessibilityInsights
         private void SystemEvents_UserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
         {
             // TODO DHT: General triggers when changing dark mode--is it too expensive?
-            if (e.Category == UserPreferenceCategory.Color || 
+            if (e.Category == UserPreferenceCategory.Color ||
                 e.Category == UserPreferenceCategory.VisualStyle ||
                 e.Category == UserPreferenceCategory.General)
             {
@@ -270,7 +270,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// To debug elevated app, Set "AttachAccessibilityInsights" Env Variable and run it. 
+        /// To debug elevated app, Set "AttachAccessibilityInsights" Env Variable and run it.
         /// </summary>
         private static void SupportDebugging()
         {
@@ -302,7 +302,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Handle OnLoaded Event for Main window. 
+        /// Handle OnLoaded Event for Main window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -320,7 +320,7 @@ namespace AccessibilityInsights
 
             handleWindowStateChange();
 
-            // update version string. 
+            // update version string.
             UpdateVersionString();
 
             Initialize();
@@ -391,7 +391,7 @@ namespace AccessibilityInsights
                 {
                     Debug.WriteLine(Properties.Resources.onClosedDebugMessage);
 
-                    // close silently since it is the end of process. 
+                    // close silently since it is the end of process.
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
                 finally
@@ -665,7 +665,7 @@ namespace AccessibilityInsights
 
         #region LeftNavButtons
         /// <summary>
-        /// Event handler for Inspect Tab button. 
+        /// Event handler for Inspect Tab button.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -916,7 +916,7 @@ namespace AccessibilityInsights
             int sec;
             if (int.TryParse(tbxTimer.Text, out sec))
             {
-                sec = Math.Max(sec, 1); // make sure that delay is bigger than 1 seconds. 
+                sec = Math.Max(sec, 1); // make sure that delay is bigger than 1 seconds.
                 this.tbxTimer.Text = sec.ToString(CultureInfo.InvariantCulture); // set the new value back.
                 this.StartTimerAutoSnap(sec);
             }
@@ -963,7 +963,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void btnCrumbOne_Click(object sender, RoutedEventArgs e)
         {
-            /// make sure that we are not capturing data. 
+            /// make sure that we are not capturing data.
             if (IsCapturingData() == false)
             {
                 switch (this.CurrentPage)

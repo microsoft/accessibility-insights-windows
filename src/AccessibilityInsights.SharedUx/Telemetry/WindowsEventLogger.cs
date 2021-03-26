@@ -13,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     {
         /// <summary>
         /// using existing value to avoid security exception
-        /// since ETW source creation and usage can't be done in sequence. 
+        /// since ETW source creation and usage can't be done in sequence.
         /// </summary>
         const string LogTarget = "Application";
         const string LogSource = "Application";

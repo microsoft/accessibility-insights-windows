@@ -9,8 +9,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 {
     /// <summary>
     /// Interaction logic for EventConfigWindow.xaml
-    /// Need to move this code to MVVM scheme. 
-    /// for demo, I'm not doing it yet. 
+    /// Need to move this code to MVVM scheme.
+    /// for demo, I'm not doing it yet.
     /// </summary>
     public partial class EventConfigWindow : Window
     {
@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         public EventConfigWindow()
-        {            
+        {
             InitializeComponent();
         }
 
@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             this.controlEvents.SetList(RecorderSetting.Events);
             this.controlProperties.SetList(RecorderSetting.Properties.Where(rs => rs.IsCustom == false).ToList());
-        }        
+        }
 
         private void buttonCancel_Click(object sender, RoutedEventArgs e)
         {

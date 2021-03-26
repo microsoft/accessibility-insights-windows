@@ -91,7 +91,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 return false;
             }
 
-            // crash was reported over watson. 
+            // crash was reported over watson.
             // make sure Project and Team are not null first.
             return ServerUri != null && ServerUri.Equals(other.ServerUri)
                 && Project != null && Project.Equals(other.Project)

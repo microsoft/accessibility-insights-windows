@@ -51,7 +51,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         bool TryGetCurrentSerializedSettings(out string settings);
 
         /// <summary>
-        /// Control to let user configure/login to issue reporting service. 
+        /// Control to let user configure/login to issue reporting service.
         /// UpdateSaveButton action needs to be called when the extension is ready to save.
         /// </summary>
         IssueConfigurationControl RetrieveConfigurationControl(Action UpdateSaveButton);

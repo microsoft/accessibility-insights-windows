@@ -45,7 +45,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         public void RemoveInternalFromIssueText_MatchingTextExists()
         {
             var guid = Guid.NewGuid().ToString();
-            // Internal id doesn't exist if the text is modified by user in edit pane. this scenario simulate the case. 
+            // Internal id doesn't exist if the text is modified by user in edit pane. this scenario simulate the case.
             string original = $"<br><br><div><hr>{guid}<hr></div>";
             string expected = "\r\n<BODY><BR><BR>\r\n<DIV></DIV></BODY>";
 

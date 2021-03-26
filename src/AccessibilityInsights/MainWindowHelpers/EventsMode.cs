@@ -20,7 +20,7 @@ namespace AccessibilityInsights
     public partial class MainWindow
     {
         /// <summary>
-        /// Start snapshot mode. 
+        /// Start snapshot mode.
         /// </summary>
         /// <param name="e">root element for listening events</param>
         private void StartEventsMode(A11yElement e)
@@ -53,7 +53,7 @@ namespace AccessibilityInsights
 
                 var sa = SelectAction.GetDefaultInstance();
 
-                // set the root element to listen to. 
+                // set the root element to listen to.
 #pragma warning disable CS4014
                 // NOTE: We aren't awaiting this async call, so if you
                 // touch it, consider if you need to add the await

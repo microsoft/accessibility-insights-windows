@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         void FlushToken(Uri url);
 
         /// <summary>
-        /// Refreshes profile of current user 
+        /// Refreshes profile of current user
         /// </summary>
         Task PopulateUserProfile();
 

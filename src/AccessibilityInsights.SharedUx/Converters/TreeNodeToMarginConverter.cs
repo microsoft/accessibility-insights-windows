@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Converters
         public TreeNodeToMarginConverter() { }
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        { 
+        {
             var nodeDepth = 0;
             if (value != null && value is HierarchyNodeViewModel vm)
             {
@@ -42,7 +42,7 @@ namespace AccessibilityInsights.SharedUx.Converters
                 // intent event recording config
                 nodeDepth = evnvm.Depth;
             }
-            return new Thickness(nodeDepth * -16, 0,0,0); 
+            return new Thickness(nodeDepth * -16, 0,0,0);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -123,7 +123,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         protected virtual void InvokeMethod()
         {
-            var ret = ControlPatternAction.RunAction(this.pattern.Element.UniqueId,this.pattern.Id, this.methodinfo.Name ,GetParametersArray()); 
+            var ret = ControlPatternAction.RunAction(this.pattern.Element.UniqueId,this.pattern.Id, this.methodinfo.Name ,GetParametersArray());
 
             if (this.ReturnType != typeof(void))
             {

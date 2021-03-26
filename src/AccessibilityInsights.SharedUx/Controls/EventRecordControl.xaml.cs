@@ -93,7 +93,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         public static readonly RoutedCommand MoveFocusToEventsGridCommand = new RoutedCommand();
 
         public EventRecordControl()
-        {           
+        {
             InitializeComponent();
 
             InitCommandBindings();
@@ -132,7 +132,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Clear Event record grid. 
+        /// Clear Event record grid.
         /// </summary>
         private void ClearEventRecordGrid()
         {
@@ -203,7 +203,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Set 
+        /// Set
         /// </summary>
         /// <param name="e"></param>
         public void SetElement(ElementContext ec)

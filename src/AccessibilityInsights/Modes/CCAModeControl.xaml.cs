@@ -29,7 +29,7 @@ namespace AccessibilityInsights.Modes
     {
 
         /// <summary>
-        /// Indicate how to do the data context population. 
+        /// Indicate how to do the data context population.
         /// Live/Snapshot/Load
         /// </summary>
         public DataContextMode DataContextMode { get; set; } = DataContextMode.Live;
@@ -241,11 +241,11 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Make sure that statemachine and UI are updated for Live mode. 
+        /// Make sure that statemachine and UI are updated for Live mode.
         /// </summary>
         private static void UpdateStateMachineForCCAAutomaticMode()
         {
-            // enable selector once UI update is finished. 
+            // enable selector once UI update is finished.
             MainWin?.SetCurrentViewAndUpdateUI(CCAView.Automatic);
             MainWin?.EnableElementSelector();
         }

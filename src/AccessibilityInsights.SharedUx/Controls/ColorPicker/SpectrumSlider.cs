@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 SetValue(SelectedColorProperty, value);
             }
         }
-        #endregion 
+        #endregion
 
         #region Dependency Property Fields
         public static readonly DependencyProperty SelectedColorProperty =

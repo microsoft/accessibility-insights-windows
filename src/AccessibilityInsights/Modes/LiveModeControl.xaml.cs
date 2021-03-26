@@ -37,7 +37,7 @@ namespace AccessibilityInsights.Modes
         public Tuple<Guid,int> SelectedInHierarchyElement { get; private set; }
 
         /// <summary>
-        /// Inidate whether need to EnableElementSelector at the hierarchy node Selection change. 
+        /// Inidate whether need to EnableElementSelector at the hierarchy node Selection change.
         /// </summary>
         private bool EnableSelectorWhenPOISelectedInHierarchy;
 
@@ -104,7 +104,7 @@ namespace AccessibilityInsights.Modes
         {
             if (newData)
             {
-                // keep the selected element since it is for refresh. 
+                // keep the selected element since it is for refresh.
                 SetDataAction.ReleaseDataContext(ElementContext.Id);
             }
 
@@ -116,7 +116,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Event handler when node selection is changed in treeview. 
+        /// Event handler when node selection is changed in treeview.
         /// </summary>
         public void SelectedElementChanged()
         {
@@ -124,7 +124,7 @@ namespace AccessibilityInsights.Modes
             {
                 this.SelectedInHierarchyElement = this.ctrlHierarchy.SelectedInHierarchyElement != null ? new Tuple<Guid, int>(this.ElementContext.Id, this.ctrlHierarchy.SelectedInHierarchyElement.UniqueId) : null;
 
-                // selection only when UI snapshot is done. 
+                // selection only when UI snapshot is done.
                 if (this.SelectedInHierarchyElement != null && MainWin.CurrentPage == AppPage.Inspect && (InspectView)MainWin.CurrentView == InspectView.Live)
                 {
                     var e = GetDataAction.GetA11yElementWithLiveData(this.SelectedInHierarchyElement.Item1, this.SelectedInHierarchyElement.Item2);
@@ -141,7 +141,7 @@ namespace AccessibilityInsights.Modes
             // it is to make sure that ElementSelector is continued after populating UI
             if (EnableSelectorWhenPOISelectedInHierarchy)
             {
-                // enable selector once UI update is finished. 
+                // enable selector once UI update is finished.
                 UpdateStateMachineForLiveMode();
                 EnableSelectorWhenPOISelectedInHierarchy = false;
             }
@@ -189,7 +189,7 @@ namespace AccessibilityInsights.Modes
                         this.ctrlHierarchy.DataContext = ec.DataContext;
                         this.ElementContext = ec;
 
-                        // make sure that  when selected node is changed in hiearchy tree, enable selector. 
+                        // make sure that  when selected node is changed in hiearchy tree, enable selector.
                         EnableSelectorWhenPOISelectedInHierarchy = true;
 
                         this.ctrlHierarchy.SetElement(ec);
@@ -201,7 +201,7 @@ namespace AccessibilityInsights.Modes
                 catch (Exception e)
                 {
                     e.ReportException();
-                    // if there was any exception, make sure that we enable selector later. 
+                    // if there was any exception, make sure that we enable selector later.
                     EnableSelectorWhenPOISelectedInHierarchy = false;
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
@@ -234,18 +234,18 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Make sure that statemachine and UI are updated for Live mode. 
+        /// Make sure that statemachine and UI are updated for Live mode.
         /// </summary>
         private static void UpdateStateMachineForLiveMode()
         {
-            // enable selector once UI update is finished. 
+            // enable selector once UI update is finished.
             MainWin?.SetCurrentViewAndUpdateUI(InspectView.Live);
             MainWin?.EnableElementSelector();
         }
 
         /// <summary>
-        /// Fire Async Content Loaded Event to notify Live mode data load completion. 
-        /// it is not used for now based on customer feedback. we may revisit it. 
+        /// Fire Async Content Loaded Event to notify Live mode data load completion.
+        /// it is not used for now based on customer feedback. we may revisit it.
         /// </summary>
         private void FireAsyncContentLoadedEvent()
         {
@@ -275,7 +275,7 @@ namespace AccessibilityInsights.Modes
         {
             UpdateConfigWithSize();
             // make sure that nothing is marked as selected.
-            this.SelectedInHierarchyElement = null; 
+            this.SelectedInHierarchyElement = null;
             this.Visibility = Visibility.Collapsed;
         }
 
@@ -321,7 +321,7 @@ namespace AccessibilityInsights.Modes
         }
 
         // <summary>
-        // Updates Window size with stored data and adjusts layout for Live Mode 
+        // Updates Window size with stored data and adjusts layout for Live Mode
         // </summary>
         public void AdjustMainWindowSize()
         {
@@ -359,7 +359,7 @@ namespace AccessibilityInsights.Modes
                     sb.AppendLine();
 
                     sb.AppendLine("Available patterns:");
-                    // patterns   
+                    // patterns
                     foreach (var pt in elementToCopy.Patterns)
                     {
                         sb.Append(pt.Name);
@@ -430,7 +430,7 @@ namespace AccessibilityInsights.Modes
             if (this.ctrlHierarchy.Visibility == Visibility.Visible)
             {
                 this.ctrlHierarchy.Focus();
-            } 
+            }
             else
             {
                 this.tbInstructions.Focus();

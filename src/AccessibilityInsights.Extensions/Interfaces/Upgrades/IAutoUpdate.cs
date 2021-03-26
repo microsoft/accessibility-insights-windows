@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         /// <summary>
         /// Report the current update option. Async as it may go off-box
         /// </summary>
-        Task<AutoUpdateOption> UpdateOptionAsync { get; } 
+        Task<AutoUpdateOption> UpdateOptionAsync { get; }
 
         /// <summary>
         /// Uri to Release notes associated with the updated version.

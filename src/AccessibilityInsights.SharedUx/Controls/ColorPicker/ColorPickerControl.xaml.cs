@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             templateApplied = false;
             m_color = Colors.White;
             shouldFindPoint = true;
-            
+
             SetValue(RedProperty, m_color.R);
             SetValue(GreenProperty, m_color.G);
             SetValue(BlueProperty, m_color.B);
@@ -67,7 +67,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
         }
 
-        #region RGB Properties       
+        #region RGB Properties
         // Gets or sets the ARGB red value of the selected color.
         public byte Red
         {
@@ -349,7 +349,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             {
                 p.X = brdrColorDetail.Width;
             }
-            
+
             markerTransform.X = p.X;
             p.X = p.X / brdrColorDetail.ActualWidth;
 

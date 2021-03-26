@@ -62,7 +62,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Get the file extension from given file name. 
+        /// Get the file extension from given file name.
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>

@@ -37,7 +37,7 @@ namespace AccessibilityInsights.Modes
         private ElementContext ElementContext;
 
         /// <summary>
-        /// Indicate how to do the data context population. 
+        /// Indicate how to do the data context population.
         /// Live/Snapshot/Load
         /// </summary>
         public DataContextMode DataContextMode { get; set; } = DataContextMode.Test;
@@ -153,7 +153,7 @@ namespace AccessibilityInsights.Modes
                             this.DataContextMode, Configuration.TreeViewMode);
                         ec = GetDataAction.GetElementContext(ecId);
 
-                        // send telemetry of scan results. 
+                        // send telemetry of scan results.
                         var dc = GetDataAction.GetElementDataContext(ecId);
                         if (dc.ElementCounter.UpperBoundExceeded)
                         {
@@ -253,7 +253,7 @@ namespace AccessibilityInsights.Modes
 
             Application.Current.Dispatcher.Invoke(() =>
             {
-                // Set the right view state : 
+                // Set the right view state :
                 if (selectionFailure)
                 {
                     MainWin.HandleFailedSelectionReset();
@@ -333,13 +333,13 @@ namespace AccessibilityInsights.Modes
 
         /// <summary>
         /// Refresh button is needed on main command bar
-        /// if it is load mode(PlatformObject is null), disable it. 
+        /// if it is load mode(PlatformObject is null), disable it.
         /// </summary>
         public bool IsRefreshEnabled { get; private set; }
 
         /// <summary>
         /// Save button is neeeded on main command bar
-        /// if it is load mode(PlatformObject is null), disable it. 
+        /// if it is load mode(PlatformObject is null), disable it.
         /// </summary>
         public bool IsSaveEnabled { get; private set; }
 
@@ -425,18 +425,18 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// place holder for Size change. 
+        /// place holder for Size change.
         /// </summary>
         public void UpdateConfigWithSize() { }
 
         /// <summary>
-        /// understand the selection change and update view info. 
+        /// understand the selection change and update view info.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // make sure that tab change is really reflected only when Test Mode is Visible. 
+            // make sure that tab change is really reflected only when Test Mode is Visible.
             if (this.Visibility == Visibility.Visible && MainWin != null && MainWin.CurrentView is TestView)
             {
                 // make sure that mode is update only when it is relevant

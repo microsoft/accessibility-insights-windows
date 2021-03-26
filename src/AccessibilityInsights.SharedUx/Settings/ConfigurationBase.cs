@@ -8,7 +8,7 @@ using System;
 namespace AccessibilityInsights.SharedUx.Settings
 {
     /// <summary>
-    /// Base class for configuration files. Subclasses for individual configuration files 
+    /// Base class for configuration files. Subclasses for individual configuration files
     /// extend this class. Contains data and methods shared across all configuration
     /// classes.
     /// </summary>
