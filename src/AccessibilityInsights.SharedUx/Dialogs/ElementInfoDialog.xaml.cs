@@ -13,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     /// </summary>
     public partial class ElementInfoDialog : Window
     {
-        public ElementInfoDialog(DesktopElement e) : this(new List<DesktopElement>() { e }) { } 
+        public ElementInfoDialog(DesktopElement e) : this(new List<DesktopElement>() { e }) { }
 
         public ElementInfoDialog(IList<DesktopElement> list)
         {

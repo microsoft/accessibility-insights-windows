@@ -75,8 +75,8 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
             if (IsEnabled && IsConnected)
             {
-                // Coding to the agreement that FileIssueAsync will return a kicked off task. 
-                // This will block the main thread. 
+                // Coding to the agreement that FileIssueAsync will return a kicked off task.
+                // This will block the main thread.
                 // It does seem like we currently block the main thread when we show the win form for azure devops
                 // so keeping it as is till we have a discussion. Check for blocking behavior at that link.
                 // https://github.com/Microsoft/accessibility-insights-windows/blob/main/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858

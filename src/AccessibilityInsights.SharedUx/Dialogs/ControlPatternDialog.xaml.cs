@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Key up event handler to close window when ESC is pressed. 
+        /// Key up event handler to close window when ESC is pressed.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

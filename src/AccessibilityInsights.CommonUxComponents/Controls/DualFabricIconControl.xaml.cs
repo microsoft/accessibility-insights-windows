@@ -39,7 +39,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         #endregion
-        
+
         /// <summary>
         /// Size of icon in front
         /// </summary>

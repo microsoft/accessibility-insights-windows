@@ -8,9 +8,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Enums
     public enum IssueField
     {
         WindowTitle,    // title of window that element belongs to
-        Glimpse,        
+        Glimpse,
         HowToFixLink,   // snippet query URL
-        HelpURL,        
+        HelpURL,
         RuleSource,     // MSDN, A11y, etc
         RuleDescription,
         TestMessages,    // Messages shown in "Fix the following"

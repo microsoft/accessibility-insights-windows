@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public Visibility DetailsVisibility { get; private set; } = Visibility.Collapsed;
 
         /// <summary>
-        /// Constructor with DesktopElement 
+        /// Constructor with DesktopElement
         /// </summary>
         /// <param name="name"></param>
         /// <param name="Text"></param>

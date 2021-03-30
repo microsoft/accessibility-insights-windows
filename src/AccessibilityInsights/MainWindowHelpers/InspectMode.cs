@@ -24,7 +24,7 @@ namespace AccessibilityInsights
             {
                 case InspectView.Live:
                     StartLiveMode();
-                    break;             
+                    break;
             }
         }
 
@@ -40,7 +40,7 @@ namespace AccessibilityInsights
                 this.CurrentView = InspectView.Live;
                 PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
 
-                // make sure that highlighter is cleared for new selection. 
+                // make sure that highlighter is cleared for new selection.
                 HollowHighlightDriver.GetDefaultInstance().Clear();
 
                 SetWindowForLiveMode();

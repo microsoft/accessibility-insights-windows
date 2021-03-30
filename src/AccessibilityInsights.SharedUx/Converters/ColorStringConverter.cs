@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SharedUx.Converters
     public class ColorStringConverter : MarkupExtension, IValueConverter
     {
         private static ColorStringConverter _instance;
-        
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             try

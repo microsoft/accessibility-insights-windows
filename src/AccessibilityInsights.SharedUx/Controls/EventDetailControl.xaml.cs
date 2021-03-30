@@ -46,7 +46,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void dgEvents_GotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
-        {            
+        {
             var dg = sender as DataGrid;
             if (dg.Items != null && !dg.Items.IsEmpty && !(e.OldFocus is DataGridCell))
             {
@@ -59,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     dg.CurrentCell = new DataGridCellInfo(dg.Items[dg.SelectedIndex], dg.Columns[0]);
                 }
-            }            
+            }
         }
     }
 }

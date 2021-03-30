@@ -43,7 +43,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Clear 
+        /// Clear
         /// </summary>
         public void Clear()
         {

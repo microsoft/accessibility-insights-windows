@@ -426,7 +426,7 @@ namespace AccessibilityInsights.Win32
         UseDefaultOsverCheck = 0x00000400,
         LifetimeSigningFlag = 0x00000800,
         CacheOnlyUrlRetrieval = 0x00001000,     // affects CRL retrieval and AIA retrieval
-        DisableMD2andMD4 = 0x00002000           // Win7 SP1+: Disallows use of MD2 or MD4 in the chain except for the root 
+        DisableMD2andMD4 = 0x00002000           // Win7 SP1+: Disallows use of MD2 or MD4 in the chain except for the root
     }
 
     internal enum WinTrustDataUIContext : uint

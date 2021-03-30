@@ -120,15 +120,15 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private Bitmap LoadBeakerImage(double DPI)
         {
             System.Drawing.FontFamily family;
-            // Create font 
+            // Create font
             using (PrivateFontCollection fonts = LoadFontResource())
             {
-                // Get font family 
+                // Get font family
                 family = (System.Drawing.FontFamily)fonts.Families.GetValue(0);
             }
-            // Create bitmap 
+            // Create bitmap
             Bitmap bitmap = new Bitmap(Convert.ToInt32(DefaultWidth * DPI), Convert.ToInt32(DefaultHeight * DPI));
-            // Create graphics from image 
+            // Create graphics from image
             using (Graphics g = Graphics.FromImage(bitmap))
             using (StringFormat sf = new StringFormat())
             {

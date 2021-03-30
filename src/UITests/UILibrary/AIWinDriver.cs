@@ -33,7 +33,7 @@ namespace UITests.UILibrary
 
         /// <summary>
         /// Run an accessibility scan on Accessibility Insights for Windows
-        /// and add an a11ytest file to the given context's test results 
+        /// and add an a11ytest file to the given context's test results
         /// if there are any errors
         /// </summary>
         /// <param name="context"></param>

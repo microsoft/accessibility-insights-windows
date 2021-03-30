@@ -109,7 +109,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         }
 
         private void ExecuteAction()
-        { 
+        {
             this.ActionViewModel.DoAction();
 
             if (this.ActionViewModel.ReturnType == typeof(void) || this.ActionViewModel.IsSucceeded == false)

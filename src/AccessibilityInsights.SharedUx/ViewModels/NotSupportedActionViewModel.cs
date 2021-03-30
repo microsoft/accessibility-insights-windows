@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 {
     /// <summary>
     /// class NotSupportedActionViewModel
-    /// ViewModel for Not yet supported Action. 
+    /// ViewModel for Not yet supported Action.
     /// </summary>
     [TargetActionView(ViewType = typeof(NotSupportActionView))]
     public class NotSupportedActionViewModel:BaseActionViewModel

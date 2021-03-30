@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Element order number
         /// </summary>
-        public String Number { get; private set; }        
+        public String Number { get; private set; }
 
         /// <summary>
         /// Constructor

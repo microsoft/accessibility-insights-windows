@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     public partial class TextPatternExplorerDialog : Window
     {
         /// <summary>
-        /// TextPattern 
+        /// TextPattern
         /// </summary>
         private TextPattern TextPattern;
         /// <summary>
@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// </summary>
         private TextPattern2 TextPattern2;
         /// <summary>
-        /// Custom list which contains the user-added TextRangeViewModels 
+        /// Custom list which contains the user-added TextRangeViewModels
         /// </summary>
         private List<TextRangeViewModel> CustomList;
 
@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             this.TextPattern2 = tp2;
             this.cbiCaret.IsEnabled = tp2 != null;
             this.CustomList = new List<TextRangeViewModel>();
-            cbRanges.SelectedIndex = 0; 
+            cbRanges.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="list"></param>
         private void UpdateRangesList(List<TextRangeViewModel> list)
         {
-            this.ltbRanges.ItemsSource = null; // clean up first. 
+            this.ltbRanges.ItemsSource = null; // clean up first.
             this.ltbRanges.ItemsSource = list;
 
             if (list.Count != 0)
@@ -157,7 +157,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Event handler for Range selection change. 
+        /// Event handler for Range selection change.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -391,7 +391,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Refresh highliter with new Bounding Rectangle information. 
+        /// Refresh highliter with new Bounding Rectangle information.
         /// </summary>
         private void UpdateHilighter()
         {
@@ -556,7 +556,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         #endregion
 
         /// <summary>
-        /// Key up handler to close window when ESC is pressed. 
+        /// Key up handler to close window when ESC is pressed.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

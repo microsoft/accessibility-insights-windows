@@ -21,14 +21,14 @@ namespace AccessibilityInsights.SharedUx.Controls
     /// </summary>
 #pragma warning disable CA1001
     public partial class TextRangeControl : UserControl
-#pragma warning restore CA1001 
+#pragma warning restore CA1001
     {
         private TextRangeViewModel TextRangeViewModel;
         private TextRangeHilighter Hilighter;
 
         private bool _isArrayCollapsed = true;
         /// <summary>
-        /// Should the annotation array in the attribute 
+        /// Should the annotation array in the attribute
         /// list be collapsed into a single row
         /// </summary>
         internal bool IsArrayCollapsed
@@ -67,12 +67,12 @@ namespace AccessibilityInsights.SharedUx.Controls
         void CopyLVItems(object source, ExecutedRoutedEventArgs e)
         {
             ListView lv = e.OriginalSource as ListView;
-            StringBuilder sb = new StringBuilder();             
+            StringBuilder sb = new StringBuilder();
             foreach (var item in lv.SelectedItems)
             {
                 if (item is TextAttributeViewModel vm)
                 {
-                    sb.AppendLine(vm.ToString());                    
+                    sb.AppendLine(vm.ToString());
                 }
             }
             sb.CopyStringToClipboard();
@@ -125,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.listAttributes.ItemsSource = from att in ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes
                                                   join l in list
                                                   on att equals l.Id into newList
-                                                  from l in newList.DefaultIfEmpty(new TextAttributeViewModel(att))                                                  
+                                                  from l in newList.DefaultIfEmpty(new TextAttributeViewModel(att))
                                                   select l;
             }
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(listAttributes.ItemsSource);
@@ -134,7 +134,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Clean up UI to show nothing. 
+        /// Clean up UI to show nothing.
         /// </summary>
         private void CleanUi()
         {
@@ -199,7 +199,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         /// <summary>
         /// Refresh Highlighter by getting new bounding rectangles
-        /// based on the highlighter state, turn on or off. 
+        /// based on the highlighter state, turn on or off.
         /// </summary>
         internal void RefreshHighlighter()
         {
@@ -239,7 +239,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             var dlg = new PropertyConfigDialog(ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes, TextAttributeType.GetInstance(), "Attributes");
             dlg.Owner = Window.GetWindow(this);
-            dlg.ShowDialog();            
+            dlg.ShowDialog();
 
             if (dlg.DialogResult == true)
             {

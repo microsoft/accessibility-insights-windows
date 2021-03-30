@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 {
     /// <summary>
     /// Class ColorContrastViewModel
-    /// 
+    ///
     /// Contains information about two colors, whether they pass color contrast test,
     /// their ratio, etc
     /// </summary>
@@ -103,7 +103,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 return (Math.Truncate(1000 * Ratio) / 1000).ToString(CultureInfo.InvariantCulture) + ":1";
             }
         }
-        
+
         /// <summary>
         /// Whether the current ratio passes on small text
         /// </summary>
@@ -114,7 +114,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 return Ratio >= SMALL_TEXT_THRESHOLD;
             }
         }
-        
+
         /// <summary>
         /// Whether the current ratio passes on large text
         /// </summary>

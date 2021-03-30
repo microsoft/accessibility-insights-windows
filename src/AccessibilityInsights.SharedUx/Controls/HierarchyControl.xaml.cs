@@ -39,12 +39,12 @@ namespace AccessibilityInsights.SharedUx.Controls
     {
         /// <summary>
         /// Selected Element in Tree hierarchy
-        /// it is used by external code. 
+        /// it is used by external code.
         /// </summary>
         public A11yElement SelectedInHierarchyElement { get; private set; }
 
         /// <summary>
-        /// Element that was selected originally to set up this tree hierarchy. 
+        /// Element that was selected originally to set up this tree hierarchy.
         /// </summary>
         A11yElement _selectedElement;
 
@@ -60,7 +60,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         /// <summary>
         /// Const values for floating button sizing and spacing
-        /// </summary>        
+        /// </summary>
         const int TreeButtonHeight = 24;
         const int TreeButtonHorizontalSpacing = 28;
         const int TreeButtonVerticalSpacing = 36;
@@ -200,7 +200,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="runtimeId">RuntimeID of element to select</param>
         public void SelectElement(int uniqueId)
@@ -267,7 +267,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             var tm = Configuration.TreeViewMode;
             var showa = Configuration.ShowAncestry;
 
-            /// in the case that UIElement is not alive any more, it will fail. 
+            /// in the case that UIElement is not alive any more, it will fail.
             /// we need to handle it properly
             rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, this.IsLiveMode);
 
@@ -301,7 +301,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.treeviewHierarchy.IsEnabled = true;
             this.HierarchyActions.SelectedElementChanged();
 
-            // expand all if it is required. 
+            // expand all if it is required.
             if(expandall)
             {
                 rnvm.Expand(true);
@@ -326,7 +326,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Notify the tree update when search is complete. 
+        /// Notify the tree update when search is complete.
         /// </summary>
         private void FireAsyncContentLoadedEvent()
         {
@@ -374,7 +374,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 catch (Exception e)
                 {
                     e.ReportException();
-                    // silently ignore. 
+                    // silently ignore.
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
             }
@@ -431,7 +431,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         #region Handle context menu for showing ancestry
         /// <summary>
-        /// Event handler for Show Ancestry menu. 
+        /// Event handler for Show Ancestry menu.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -447,8 +447,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// reflect the status of Ancestry setting. 
-        /// since data binding is not working. I'm using this way. 
+        /// reflect the status of Ancestry setting.
+        /// since data binding is not working. I'm using this way.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -633,7 +633,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Request Refresh at Tree view mode change. 
+        /// Request Refresh at Tree view mode change.
         /// </summary>
         /// <param name="mode"></param>
         private void RequestRefreshBasedOnTreeViewChange(TreeViewMode mode)
@@ -689,7 +689,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         /// <summary>
         // Correctly handle programmatically selected items
-        // This updates the floating buttons 
+        // This updates the floating buttons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -786,7 +786,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void treeviewHierarchy_ScrollChanged(object sender, ScrollChangedEventArgs e)
         {
-            // set scroll bar location info. 
+            // set scroll bar location info.
             var sv = e.OriginalSource as ScrollViewer;
             int right;
 

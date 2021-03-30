@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             catch (Exception ex)
             {
                 ex.ReportException();
-                // silently ignore. 
+                // silently ignore.
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             catch (Exception ex)
             {
                 ex.ReportException();
-                // silently ignore. 
+                // silently ignore.
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }

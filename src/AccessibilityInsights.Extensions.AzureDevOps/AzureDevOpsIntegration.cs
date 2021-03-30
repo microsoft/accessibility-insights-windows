@@ -473,7 +473,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <returns></returns>
         private static string EscapeForUrl(string str)
         {
-            // characters such as the middle dot can 
+            // characters such as the middle dot can
             // cause issues during navigation, so we only allow
             // a basic set of characters when building the URL
             var sb = new StringBuilder();

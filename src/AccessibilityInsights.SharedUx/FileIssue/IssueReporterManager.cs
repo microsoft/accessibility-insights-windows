@@ -99,7 +99,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         private void SaveConfigsDictionary(Dictionary<Guid, string> configsDictionary)
         {
-            _appConfig.IssueReporterSerializedConfigs = 
+            _appConfig.IssueReporterSerializedConfigs =
                 JsonConvert.SerializeObject(configsDictionary);
         }
 

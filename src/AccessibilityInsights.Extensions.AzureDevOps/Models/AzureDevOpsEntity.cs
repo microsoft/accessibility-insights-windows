@@ -30,7 +30,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
 
         /// <summary>
         /// equal override
-        /// since we compare the contents than object. 
+        /// since we compare the contents than object.
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>

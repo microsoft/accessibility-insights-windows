@@ -72,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 this.SetValue(CanDragReorderProperty, value);
             }
-        }      
+        }
 
         /// <summary>
         /// Dependency property to show properties column labels
@@ -223,7 +223,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Set list and selected list 
+        /// Set list and selected list
         /// </summary>
         /// <param name="list"></param>
         public void SetLists(IList<RecordEntitySetting> list, IList<RecordEntitySetting> selList)
@@ -304,7 +304,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             foreach (RecordEntitySetting l in this.lvLeft.SelectedItems)
             {
                 SelectedList.Add(l);
-                l.IsRecorded = true;                
+                l.IsRecorded = true;
             }
 
             UpdateListViews();
@@ -424,7 +424,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 int destPos = SelectedList.IndexOf(target);
 
                 lvi.BorderBrush = new SolidColorBrush(Colors.Black);
-             
+
                 if (sourcePos > destPos)
                 {
                     lvi.BorderThickness = new Thickness(0, 1, 0, 0);
@@ -492,7 +492,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                        select new Tuple<RecordEntitySetting, int>(item, SelectedList.IndexOf(item));
 
             foreach (var l in list)
-            {               
+            {
                 SelectedList.Remove(l.Item1);
                 SelectedList.Insert(l.Item2 - 1, l.Item1);
             }

@@ -366,7 +366,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         public bool IsHighlighterOn { get; set; } = true;
 
         /// <summary>
-        /// Show/no show Uncertain results. 
+        /// Show/no show Uncertain results.
         /// </summary>
         public bool ShowUncertain
         {
@@ -525,7 +525,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 
             if (ContainsNull(config))
             {
-                // retain hot key mapping 
+                // retain hot key mapping
                 string hksnapshot = config.HotKeyForSnap;
                 string hkrecord = config.HotKeyForRecord == ConfigurationModel.OldHotKeyRecord ? null : config.HotKeyForRecord;
                 string hkpause = config.HotKeyForPause;

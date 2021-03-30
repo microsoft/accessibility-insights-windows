@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
     /// <summary>
     /// Encapsulates a semi-persistent guid helpful for
     /// tracking usage in telemetry
-    /// 
+    ///
     /// The guid is reset when the month changes
     /// </summary>
     public class InstallationInfo
@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         {
             bool needToReset = utcNow.Month > LastReset.Month || utcNow.Year > LastReset.Year;
             // months range from 1 to 12, year from 1 to 9999
-            // reset if the current month is later than old month. 
+            // reset if the current month is later than old month.
             // - need to check year too in case we compare 12/2017 to 1/2018
             if (needToReset)
             {
@@ -82,7 +82,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <summary>
         /// Attempts to deserialize an InstallationInfo object from the given directory path,
         /// returns a newly constructed InstallationInfo object otherwise
-        /// 
+        ///
         /// Resets/reserializes the InstallationInfo object if needed
         /// </summary>
         /// <param name="path">directory path from which to load the json</param>

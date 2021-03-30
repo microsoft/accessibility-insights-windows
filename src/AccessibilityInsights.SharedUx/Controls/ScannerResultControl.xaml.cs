@@ -111,7 +111,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.lvDetails.ItemsSource = null;
 
-            // enable UI elements since Clear() disables them. 
+            // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
 
             UpdateTree();

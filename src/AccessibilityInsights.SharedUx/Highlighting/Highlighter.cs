@@ -171,8 +171,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="fLocSizeChanged"></param>
         void UpdateAllChildren(bool fColorChanged, bool fLocSizeChanged)
         {
-            // make sure that we don't update the border location when mode is tooltip only. 
-            // otherwise, it will draw borders. 
+            // make sure that we don't update the border location when mode is tooltip only.
+            // otherwise, it will draw borders.
             if (this.HighlighterMode != HighlighterMode.Tooltip)
             {
                 this.Border.ForEach(b => b.Update(fColorChanged, fLocSizeChanged));

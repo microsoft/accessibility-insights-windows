@@ -48,7 +48,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         #region Static methods to get instance
         public static RecorderSetting LoadConfiguration(string path)
         {
-            // Get Recorder configuration from local location. but if it is not available, get it from default location. 
+            // Get Recorder configuration from local location. but if it is not available, get it from default location.
             RecorderSetting config = new RecorderSetting();
             config = RecorderSetting.LoadFromJSON<RecorderSetting>(path);
             if (config == null)
@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             }
             else
             {
-                // check whether there is any new events to be added into configuration. 
+                // check whether there is any new events to be added into configuration.
                 var events = EventType.GetInstance();
                 var ms = from e in events.GetKeyValuePairList()
                          where IsNotInList(e.Key, config.Events)
@@ -85,7 +85,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// check whether key exist in the given list. 
+        /// check whether key exist in the given list.
         /// </summary>
         /// <param name="key"></param>
         /// <param name="events"></param>

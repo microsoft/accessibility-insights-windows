@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
     internal static class OSHelpers
     {
         /// <summary>
-        /// Get the current Windows version (intended to be used for telemetry). If trying to 
+        /// Get the current Windows version (intended to be used for telemetry). If trying to
         /// determine a minimum build for features, please use the IsWindowsXXXOrLater methods
         /// (or create a new one if you can't find an appropriate one).
         /// </summary>

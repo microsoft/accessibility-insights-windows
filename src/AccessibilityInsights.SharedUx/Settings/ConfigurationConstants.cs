@@ -27,7 +27,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string DefaultHotKeyRecord = "Shift + F7";
         private const string DefaultHotKeySnap = "Shift + F8";
         private const string OldHotKeyRecord = "Shift + F6";
-        private const int DefaultSelectionDelayMilliseconds = 100; // milliseconds 
+        private const int DefaultSelectionDelayMilliseconds = 100; // milliseconds
         internal const int MinimumSelectionDelayMilliseconds = 50;
 
         /// <summary>
