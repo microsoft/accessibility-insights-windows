@@ -14,7 +14,7 @@ namespace AccessibilityInsights.SharedUx.Converters
     public class ColumnMaxWidthSpacingConverter : MarkupExtension, IValueConverter
     {
         private static ColumnMaxWidthSpacingConverter _instance;
-        
+
         internal const int SpacingConstant = 4;
 
         public ColumnMaxWidthSpacingConverter() { }

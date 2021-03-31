@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SetupLibrary
         {
             ", O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
         };
-        
+
         // used to keep the file handle open for the lifetime of the object
         // Thus preventing modification after the file has been verified.
         private FileStream _file;
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.SetupLibrary
                     {
                         return true;
                     }
-                }    
+                }
             }
 
             return false;

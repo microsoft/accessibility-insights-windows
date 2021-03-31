@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
     /// <summary>
     /// Encapsulates an eyedropper button and a standard color picker dropdown
-    /// 
+    ///
     /// Interaction logic for ColorChooser.xaml
     /// </summary>
     public partial class ColorChooser : UserControl
@@ -30,9 +30,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             InitializeComponent();
         }
-        
+
         /// <summary>
-        /// Represents whether the stored color has been 
+        /// Represents whether the stored color has been
         /// set by the user after its default initialization
         /// </summary>
         public bool ColorSetByUser { get; private set; }

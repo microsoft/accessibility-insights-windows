@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
-using System.Windows.Media;
 using System.Collections.Generic;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 {
@@ -162,7 +162,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
 
         // Generates a list of colors with hues ranging from 0 360
-        // and a saturation and value of 1. 
+        // and a saturation and value of 1.
         public static List<Color> GenerateHsvSpectrum()
         {
             List<Color> colorsList = new List<Color>(8);

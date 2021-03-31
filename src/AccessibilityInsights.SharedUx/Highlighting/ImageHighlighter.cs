@@ -74,12 +74,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
             GapWidth = gap;
 
-            Dimensions = GetBitMapWindowDimension(el);            
+            Dimensions = GetBitMapWindowDimension(el);
         }
 
         /// <summary>
         /// Set button click handler
-        /// if it is set to nall, button would not be shown on highlighter. 
+        /// if it is set to nall, button would not be shown on highlighter.
         /// </summary>
         /// <param name="h"></param>
         public void SetButtonClickHandler(MouseButtonEventHandler h)
@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         /// <summary>
-        /// Get the proper dimension of selected element. 
+        /// Get the proper dimension of selected element.
         /// </summary>
         /// <param name="el"></param>
         /// <returns></returns>
@@ -96,7 +96,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             var dim = el.BoundingRectangle;
 
-            // check whether el is from saved file. 
+            // check whether el is from saved file.
             // if so make sure that dimension is correct to be visible.
             if(el.PlatformObject == null)
             {
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             if (!closedCalled)
             {
                 setHighlightBtnState?.Invoke(false);
-                IsVisible = false; // it is not visible any more. 
+                IsVisible = false; // it is not visible any more.
             }
             closedCalled = false;
             this.HighlightWindow = null;
@@ -161,7 +161,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void onClick(object sender, EventArgs e)
-        { 
+        {
             var visKeyFrames = new ObjectKeyFrameCollection
             {
                 new DiscreteObjectKeyFrame { KeyTime = TimeSpan.FromSeconds(0), Value = Visibility.Visible },
@@ -174,11 +174,11 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 new LinearDoubleKeyFrame { KeyTime = TimeSpan.FromSeconds(2.5), Value = 0},
             };
             bdClick.BeginAnimation(TextBlock.VisibilityProperty, new ObjectAnimationUsingKeyFrames() { KeyFrames = visKeyFrames });
-            bdClick.BeginAnimation(TextBlock.OpacityProperty, new DoubleAnimationUsingKeyFrames() { KeyFrames = opKeyFrames });            
+            bdClick.BeginAnimation(TextBlock.OpacityProperty, new DoubleAnimationUsingKeyFrames() { KeyFrames = opKeyFrames });
         }
 
         /// <summary>
-        /// Create highlighter window 
+        /// Create highlighter window
         /// </summary>
         public void InitializeWindow()
         {
@@ -235,14 +235,14 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
                 var dpi = Dimensions.GetDPI();
                 this.HighlightWindow.Width = Dimensions.Width / dpi;
-                this.HighlightWindow.Height = Dimensions.Height / dpi;                
+                this.HighlightWindow.Height = Dimensions.Height / dpi;
             }
             else
             {
                 this.HighlightWindow.Top = WinRect.Top;
                 this.HighlightWindow.Left = WinRect.Left;
                 this.HighlightWindow.Width = WinRect.Width;
-                this.HighlightWindow.Height = WinRect.Height;                
+                this.HighlightWindow.Height = WinRect.Height;
             }
 
             HighlightWindow.Show();
@@ -259,8 +259,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 IsVisible = true;
                 closedCalled = false;
                 InitializeWindow();
-            } 
-        }      
+            }
+        }
 
         /// <summary>
         /// Clear selected elements
@@ -281,7 +281,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// Hide window
         /// </summary>
         public override void Hide()
-        {            
+        {
             this.ClearElements();
             if (canvas != null)
             {
@@ -294,7 +294,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             this.closedCalled = true;
             this.HighlightWindow?.Close();
-            this.HighlightWindow = null;            
+            this.HighlightWindow = null;
         }
 
         /// <summary>

@@ -129,7 +129,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         #region state change button handlers
         /// <summary>
         /// Logs the user in and moves to editing server screen.
-        /// Forces a configuration change to the saved connection so the server URL is set, 
+        /// Forces a configuration change to the saved connection so the server URL is set,
         /// but the team project and team are null
         /// </summary>
         /// <param name="sender"></param>
@@ -194,7 +194,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         /// <summary>
         /// Logs the user out and moves to selecting a new server screen.
-        /// Forces a configuration change to the saved connection so it is null. 
+        /// Forces a configuration change to the saved connection so it is null.
         /// This means we will not try to automatically connect when we next start up.
         /// </summary>
         /// <param name="sender"></param>
@@ -250,7 +250,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     ToggleLoading(true);
                     Dispatcher.Invoke(projects.Clear);
-                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread. 
+                    var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread.
                     Dispatcher.Invoke(() => newProjectList.ForEach(p => projects.Add(p)));
                     ToggleLoading(false);
                     Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
@@ -276,7 +276,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         /// <summary>
         /// Routes to the correct state given whether the user has logged into the server or not.
-        /// If the user is connected to the server but they haven't chosen a team project / team yet, we 
+        /// If the user is connected to the server but they haven't chosen a team project / team yet, we
         /// allow them to select their team project / team without having to re-connect.
         public void InitializeView()
         {
@@ -420,7 +420,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Populates each team project in the given list with specific teams, 
+        /// Populates each team project in the given list with specific teams,
         ///     e.g. somewhere underneath VSOnline
         /// The teams are added to a project in sorted order
         /// </summary>
@@ -487,7 +487,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Change the expanded and visibility properties on the view model and its children 
+        /// Change the expanded and visibility properties on the view model and its children
         /// based on whether they pass the given filter
         /// </summary>
         /// <param name="node"></param>
@@ -499,7 +499,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             node.Expanded = node.Children.Any(c => c.Visibility == Visibility.Visible);
             bool shouldBeVisible = matched || node.Expanded;
             node.Visibility = shouldBeVisible ? Visibility.Visible : Visibility.Collapsed;
-            // if a TreeViewItem previously selected by the user is now 
+            // if a TreeViewItem previously selected by the user is now
             // hidden due to our search filter, we should deselect it.
             if (shouldBeVisible == false)
             {

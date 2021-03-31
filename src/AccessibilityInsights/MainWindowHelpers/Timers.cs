@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
+using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Misc;
-using AccessibilityInsights.SharedUx.Telemetry;
 using System.Globalization;
 using System.Timers;
 using System.Windows;
@@ -34,7 +34,7 @@ namespace AccessibilityInsights
             this.timerSelector = new Timer(InternalTimerSelector);
             this.timerSelector.Elapsed += new ElapsedEventHandler(this.OntimerSelectorElapsedEvent);
             this.timerSelector.Enabled = true;
-            this.timerSelector.AutoReset = false;// disable autoreset to do reset in timer handerl    
+            this.timerSelector.AutoReset = false;// disable autoreset to do reset in timer handerl
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace AccessibilityInsights
             this.timerAutoSnap = new Timer(IntervalTimerAutoSnap);
             this.timerAutoSnap.Elapsed += new ElapsedEventHandler(this.OntimerAutoSnapElapsedEvent);
             this.timerAutoSnap.Enabled = false;
-            this.timerAutoSnap.AutoReset = false;// disable autoreset to do reset in timer handerl        
+            this.timerAutoSnap.AutoReset = false;// disable autoreset to do reset in timer handerl
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace AccessibilityInsights
 
                 if (count != 5)
                 {
-                    Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Timer_Started, 
+                    Logger.PublishTelemetryEvent(TelemetryAction.Mainwindow_Timer_Started,
                         TelemetryProperty.Seconds, count.ToString(CultureInfo.InvariantCulture));
                 }
             }

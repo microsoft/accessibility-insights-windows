@@ -6,7 +6,7 @@ using System.Windows.Controls;
 namespace AccessibilityInsights.SharedUx.Misc
 {
     /// <summary>
-    /// Attempts to maintain the closest possible selection index in a list view 
+    /// Attempts to maintain the closest possible selection index in a list view
     /// whose items may be removed or added while the list view has focus.
     /// </summary>
     class ListViewSelectionLock : IDisposable

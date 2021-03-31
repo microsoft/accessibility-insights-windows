@@ -74,7 +74,7 @@ namespace AccessibilityInsights
                 EnableElementSelector();
             }
 
-            // chrome height is set to make sure system menu is shown over title bar area. 
+            // chrome height is set to make sure system menu is shown over title bar area.
             var chrome = new WindowChrome();
             chrome.CaptionHeight = 35;
             WindowChrome.SetWindowChrome(this, chrome);
@@ -85,7 +85,7 @@ namespace AccessibilityInsights
         private void BackToSelectingOnDispatcher(Task<bool> _) => Dispatcher.Invoke(HandleBackToSelectingState);
 
         /// <summary>
-        ///  Update main window layout. 
+        ///  Update main window layout.
         /// </summary>
         private void UpdateMainWindowLayout()
         {
@@ -118,7 +118,7 @@ namespace AccessibilityInsights
             ConfigurationManager.GetDefaultInstance(configPathProvider);
 
             // based on customer feedback, we will set default selection mode to Element
-            // when AccessibilityInsights starts up. 
+            // when AccessibilityInsights starts up.
             ConfigurationManager.GetDefaultInstance().AppConfig.IsUnderElementScope = true;
 
             // Configure the correct ReleaseChannel for autoupdate
@@ -209,7 +209,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set Hot Key for event recording
-        /// honor the value from Configuration file. 
+        /// honor the value from Configuration file.
         /// </summary>
         private void SetHotKeyForToggleRecord()
         {
@@ -234,7 +234,7 @@ namespace AccessibilityInsights
                                       {
                                           var sa = SelectAction.GetDefaultInstance();
 
-                                          // make sure that POI is set. 
+                                          // make sure that POI is set.
                                           if (this.IsInSelectingState() && sa.HasPOIElement())
                                           {
                                               this.StartEventsMode(GetDataAction.GetElementContext(sa.SelectedElementContextId.Value).Element);
@@ -250,7 +250,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set Hot Key for event recording
-        /// honor the value from Configuration file. 
+        /// honor the value from Configuration file.
         /// </summary>
         private void SetHotKeyForTogglePause()
         {
@@ -279,7 +279,7 @@ namespace AccessibilityInsights
 
         /// <summary>
         /// Set Hot Key for Mode Switch
-        /// honor the value from Configuration file. 
+        /// honor the value from Configuration file.
         /// </summary>
         private void SetHotKeyForModeSwitch()
         {

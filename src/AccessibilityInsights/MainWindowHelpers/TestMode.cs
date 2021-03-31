@@ -1,15 +1,15 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
+using AccessibilityInsights.SharedUx.Dialogs;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Desktop.Settings;
-using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Globalization;
-using AccessibilityInsights.SharedUx.Highlighting;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights
 {
@@ -52,7 +52,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Start snapshot mode. 
+        /// Start snapshot mode.
         /// </summary>
         private void StartElementDetailView()
         {
@@ -131,7 +131,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Start fastpass mode. 
+        /// Start fastpass mode.
         /// </summary>
         private void StartTestAutomatedChecksView()
         {
@@ -142,7 +142,7 @@ namespace AccessibilityInsights
                 DisableElementSelector();
 
                 ctrlCurMode.HideControl();
-                // make sure that we honor loaded data. but in this case, some of manual test should be disabled. 
+                // make sure that we honor loaded data. but in this case, some of manual test should be disabled.
                 ctrlTestMode.DataContextMode = GetDataContextModeForTest();
                 ctrlCurMode = ctrlTestMode;
                 ctrlCurMode.ShowControl();

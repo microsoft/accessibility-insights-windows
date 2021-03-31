@@ -215,13 +215,13 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Update UI based on current setting. 
+        /// Update UI based on current setting.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            // make sure that filter dock pane is gone. 
+            // make sure that filter dock pane is gone.
             this.dpFilter.Visibility = Configuration != null && Configuration.ShowAllProperties ? Visibility.Visible : Visibility.Collapsed;
         }
 

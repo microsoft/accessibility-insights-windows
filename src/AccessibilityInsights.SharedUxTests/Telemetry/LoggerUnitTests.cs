@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Telemetry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 using System;
 using System.Collections.Generic;
-using Moq;
 
 using TelemetryPropertyBag = System.Collections.Generic.IReadOnlyDictionary<AccessibilityInsights.SharedUx.Telemetry.TelemetryProperty, string>;
 using StringPropertyBag = System.Collections.Generic.IReadOnlyDictionary<string, string>;

@@ -25,7 +25,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// DependencyProperty IsActive
         /// </summary>
         public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(ProgressRingControl), 
+            DependencyProperty.Register(nameof(IsActive), typeof(bool), typeof(ProgressRingControl),
                 new PropertyMetadata(new PropertyChangedCallback(IsActivePropertyChanged)));
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         /// <summary>
-        /// Stops and starts animation, with or without sound depending on 
+        /// Stops and starts animation, with or without sound depending on
         /// the configuration as well as if there is an AT user
         /// </summary>
         public bool IsActive

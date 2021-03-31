@@ -47,7 +47,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                        }).ToList();
 
             var selList = coreProps.Select(l => list.Where(r => r.Id == l).FirstOrDefault()).ToList();
-            CoreProperties = selList.ToList();// generate base list here. 
+            CoreProperties = selList.ToList();// generate base list here.
             ctrlPropertySelect.SetLists(list.ToList(), selList);
             ((INotifyCollectionChanged)ctrlPropertySelect.lvRight.Items).CollectionChanged += lvRight_CollectionChanged;
         }

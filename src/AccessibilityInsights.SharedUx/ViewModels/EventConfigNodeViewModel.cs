@@ -1,17 +1,17 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Bases;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using Axe.Windows.Core.Types;
-using Axe.Windows.Desktop.Types;
-using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.Settings;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Types;
+using Axe.Windows.Desktop.Types;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Input.StylusPlugIns;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
@@ -282,7 +282,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public int Id { get; set; }
 
         /// <summary>
-        /// Is node event, property, or neither 
+        /// Is node event, property, or neither
         /// </summary>
         public EventConfigNodeType Type { get; set; }
 
@@ -317,9 +317,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 OnPropertyChanged(nameof(IsEditEnabled));
             }
         }
-        
+
         /// <summary>
-        /// Remove a child 
+        /// Remove a child
         /// </summary>
         /// <param name="child"></param>
         public void RemoveChild(EventConfigNodeViewModel child)
@@ -341,7 +341,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public EventConfigNodeViewModel(int id, string name, EventConfigNodeType type)
         {
             this.Id = id;
-            this.Header = name;            
+            this.Header = name;
             this.Type = type;
             this.ButtonVisibility = Visibility.Collapsed;
             this.TextVisibility = Visibility.Visible;
@@ -390,7 +390,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 this.IsChecked = null;
             }
         }
-      
+
         /// <summary>
         /// Expand tree
         /// if expandchildren is true, make children expanded too
@@ -434,7 +434,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             if (this.TextVisibility == Visibility.Visible)
             {
-                var check = (this.IsChecked.HasValue && this.IsChecked.Value) 
+                var check = (this.IsChecked.HasValue && this.IsChecked.Value)
                     ? Resources.EventConfigNodeViewModel_ToString_checked
                     : Resources.EventConfigNodeViewModel_ToString_unchecked;
                 return this.Header + check;

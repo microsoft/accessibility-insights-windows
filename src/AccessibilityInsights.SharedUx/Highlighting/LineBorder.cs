@@ -10,7 +10,7 @@ using static System.FormattableString;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Class LineBorder 
+    /// Class LineBorder
     /// it will draw a single border of highlighter
     /// Ported from C++ code of Hilight.cpp in Windows AT team code for Inspect.
     /// </summary>
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         /// <summary>
-        /// Set the Visibility state. 
+        /// Set the Visibility state.
         /// </summary>
         /// <param name="bVisible"></param>
         public void SetVisible(bool bVisible)

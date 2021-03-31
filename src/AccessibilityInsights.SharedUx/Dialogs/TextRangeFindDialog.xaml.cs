@@ -15,7 +15,7 @@ using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
-#pragma warning disable CA1001 // Types that own disposable fields should be disposable. but here we do dispose it at window close. 
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable. but here we do dispose it at window close.
     /// <summary>
     /// Interaction logic for TextRangeFindDialog.xaml
     /// </summary>

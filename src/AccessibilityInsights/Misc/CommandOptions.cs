@@ -6,7 +6,7 @@ namespace AccessibilityInsights.Misc
 {
     /// <summary>
     /// command line options for Accessibility Insights for Windows
-    /// 
+    ///
     /// with the exception of FileToOpen, all commands are intended for internal testing only
     /// </summary>
     public class CommandOptions

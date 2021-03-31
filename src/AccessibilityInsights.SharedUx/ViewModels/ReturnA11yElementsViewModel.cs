@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.ActionViews;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Desktop.UIAutomation;
 using System.Collections.Generic;
 using System.Reflection;
-using Axe.Windows.Core.Bases;
-using AccessibilityInsights.SharedUx.ActionViews;
-using Axe.Windows.Desktop.UIAutomation;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {

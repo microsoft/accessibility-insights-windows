@@ -123,4 +123,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ColorChooserBorderBrush" Color="#6D767E"/> <!-- Border around color chooser (combobox + edit) -->
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverBGBrush" Color="#BEE6FD"/>  <!-- Background of combobox toggle on mouse hover -->
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverFGBrush" Color="#000000"/>  <!-- Foreground or combobox toggle on mouse hover -->
+    <SolidColorBrush po:Freeze="True" x:Key="NoDarkThemeContrastingFGBrush" Color="#000000"/>  <!-- Contrasting foreground for screens with no Dark Mode theme -->
 </ResourceDictionary>

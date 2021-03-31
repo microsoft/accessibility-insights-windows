@@ -8,7 +8,7 @@ namespace AccessibilityInsights.SharedUx.Interfaces
     /// <summary>
     /// Interface for main window mode controls
     /// </summary>
-    public interface IModeControl 
+    public interface IModeControl
     {
         /// <summary>
         /// Hides control

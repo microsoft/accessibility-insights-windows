@@ -28,10 +28,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         public CustomControlOverridingAutomationPeer(
             UserControl owner,
-            string localizedControl, 
-            bool isControlElement = true, 
-            bool isContentElement = false, 
-            bool hideChildren = false, 
+            string localizedControl,
+            bool isControlElement = true,
+            bool isContentElement = false,
+            bool hideChildren = false,
             AutomationControlType controlType = AutomationControlType.Custom)
         : base(owner)
         {

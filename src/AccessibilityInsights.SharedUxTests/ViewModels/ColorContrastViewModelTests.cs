@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using AccessibilityInsights.SharedUx.ViewModels;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUxTest.ViewModels
@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUxTest.ViewModels
     /// <summary>
     /// Tests various properties of color contrast view model
     /// and their interaction
-    /// 
+    ///
     /// Ratio values are checked against the results of
     /// colour contrast analyzer tool
     /// </summary>
@@ -74,7 +74,7 @@ namespace AccessibilityInsights.SharedUxTest.ViewModels
                 .CalculateContrastRatio(Color.FromRgb(0, 255, 0), Colors.White);
             Assert.AreEqual(1.4, Math.Round(value, 1));
         }
-        
+
         [TestMethod]
         public void TestCalculateContrastRatio_WhiteGreen()
         {

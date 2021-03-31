@@ -224,7 +224,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                             tb = new TextBlock()
                             {
                                 Text = txt,
-                                Tag = el,                               
+                                Tag = el,
                                 HorizontalAlignment = HorizontalAlignment.Center,
                                 VerticalAlignment = VerticalAlignment.Center,
                                 Foreground = Application.Current.Resources["PrimaryFGBrush"] as SolidColorBrush,
@@ -233,7 +233,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                             {
                                 tb.MouseDown += TBCallback;
                             }
-                            
+
                             bord.Child = tb;
                         }
                         canvas.Children.Add(bord);

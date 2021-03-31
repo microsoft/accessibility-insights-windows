@@ -1,12 +1,12 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
 using Axe.Windows.Core.Results;
 using Axe.Windows.Core.Types;
-using AccessibilityInsights.SharedUx.Properties;
-using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -296,7 +296,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         /// <summary>
         /// Update Icon information and AutomationProperties.Name
-        /// since they share similar logic, combine calculation to improve perf. 
+        /// since they share similar logic, combine calculation to improve perf.
         /// </summary>
         /// <param name="isLiveMode">Is node in live mode</param>
         private void UpdateIconInfoAndAutomationName(bool isLiveMode)
@@ -331,7 +331,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
                 else
                 {
-                    // no result or all pass, we need to use aggregated data. 
+                    // no result or all pass, we need to use aggregated data.
                     this.IconBack = FabricIcon.DOM;
                     this.IconSizeBack = TreeIconSizeBack;
 
@@ -374,7 +374,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 }
             }
 
-            if (string.IsNullOrEmpty(filter) 
+            if (string.IsNullOrEmpty(filter)
                 || (this.SearchContext != null
                 && this.SearchContext.IndexOf(filter, StringComparison.OrdinalIgnoreCase) != -1))
             {

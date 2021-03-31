@@ -37,8 +37,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// Log message to console
         /// </summary>
         /// <param name="s"></param>
-#pragma warning disable CA1822 // Exempted since it is required by COM interaction. 
+#pragma warning disable CA1822 // Exempted since it is required by COM interaction.
         public void Log(string s) => System.Diagnostics.Debug.WriteLine(s);
-#pragma warning restore CA1822 
+#pragma warning restore CA1822
     }
 }

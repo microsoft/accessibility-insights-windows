@@ -103,7 +103,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Check whether any configuration is changed. 
+        /// Check whether any configuration is changed.
         /// </summary>
         /// <returns></returns>
         private bool IsConfigurationChanged()

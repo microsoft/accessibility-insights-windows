@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
 
         private static void ClearButtonTooltip()
         {
-            if ((currentToolTipButton as Control)?.ToolTip != null && 
+            if ((currentToolTipButton as Control)?.ToolTip != null &&
                 (currentToolTipButton as Control).ToolTip.GetType().Name.Equals("ToolTip", StringComparison.Ordinal))
             {
                 ToolTip tt = (ToolTip)(currentToolTipButton as Control).ToolTip;

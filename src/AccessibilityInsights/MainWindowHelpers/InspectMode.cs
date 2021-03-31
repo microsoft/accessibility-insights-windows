@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
+using AccessibilityInsights.SharedUx.Highlighting;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Enums;
-using AccessibilityInsights.SharedUx.Highlighting;
 
 namespace AccessibilityInsights
 {
@@ -24,7 +24,7 @@ namespace AccessibilityInsights
             {
                 case InspectView.Live:
                     StartLiveMode();
-                    break;             
+                    break;
             }
         }
 
@@ -40,7 +40,7 @@ namespace AccessibilityInsights
                 this.CurrentView = InspectView.Live;
                 PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
 
-                // make sure that highlighter is cleared for new selection. 
+                // make sure that highlighter is cleared for new selection.
                 HollowHighlightDriver.GetDefaultInstance().Clear();
 
                 SetWindowForLiveMode();

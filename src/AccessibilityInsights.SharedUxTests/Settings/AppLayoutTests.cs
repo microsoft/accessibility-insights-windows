@@ -28,9 +28,9 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         }
 
         /// <summary>
-        /// Tests LoadAppLayout and SerializeInJSON by creating a new AppLayout, serializing 
-        /// and saving it, and then reading it back into a new AppLayout. Values are then 
-        /// compared to original values. 
+        /// Tests LoadAppLayout and SerializeInJSON by creating a new AppLayout, serializing
+        /// and saving it, and then reading it back into a new AppLayout. Values are then
+        /// compared to original values.
         /// </summary>
         [TestMethod()]
         public void LoadDefaultAppLayoutTest()
@@ -65,7 +65,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         /// <summary>
         /// Tests AppLayout constructor against given values and expected
-        /// default values. 
+        /// default values.
         /// </summary>
         [TestMethod()]
         public void AppLayoutTest()
@@ -89,8 +89,8 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         }
 
         /// <summary>
-        /// Tests RemoveConfigurationTest by removing any existing backups, writing 
-        /// a new AppLayout, and removing it. A backup is then verified to have 
+        /// Tests RemoveConfigurationTest by removing any existing backups, writing
+        /// a new AppLayout, and removing it. A backup is then verified to have
         /// been created.
         /// </summary>
         [TestMethod()]
@@ -124,7 +124,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         }
 
         /// <summary>
-        /// Test: replacing old layout with new one if version is change. 
+        /// Test: replacing old layout with new one if version is change.
         /// </summary>
         [TestMethod()]
         public void LoadLayoutIfPrevVersionTest()

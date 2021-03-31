@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 {
     /// <summary>
     /// Configuration Manager class
-    /// it handles all configuration related operation and maintain default configuration. 
+    /// it handles all configuration related operation and maintain default configuration.
     /// </summary>
     public class ConfigurationManager
     {
@@ -51,7 +51,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Save all configuration. 
+        /// Save all configuration.
         /// - AppConfig
         /// - Layout
         /// </summary>
@@ -68,7 +68,7 @@ namespace AccessibilityInsights.SharedUx.Settings
 #pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
-                // fail silently since it is called at the end of the app life cycle. 
+                // fail silently since it is called at the end of the app life cycle.
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }
@@ -106,7 +106,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             var fp = Path.Combine(SettingsProvider.ConfigurationFolderPath, SetupLibrary.Constants.AppConfigFileName);
 
-            // Main configuration 
+            // Main configuration
             try
             {
                 this.AppConfig = ConfigurationModel.LoadFromJSON(fp, SettingsProvider);

@@ -15,8 +15,8 @@ using UIAutomationClient;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Since OverlayHighlighter is used for Tabstop which doesn't record data into Any context. 
-    /// it is using element to set highlighting information. 
+    /// Since OverlayHighlighter is used for Tabstop which doesn't record data into Any context.
+    /// it is using element to set highlighting information.
     /// </summary>
     public class ClearOverlayDriver:IDisposable
     {
@@ -41,7 +41,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             Highlighter.Show();
         }
 
-        /// <summary> 
+        /// <summary>
         /// Show Toast on top of the hiligher window
         /// </summary>
         public void ShowToast(UserControl toast)
@@ -106,7 +106,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Add Element in highlighter
-        /// Overlay highlighter needs element than Id. please see comment above at class definition. 
+        /// Overlay highlighter needs element than Id. please see comment above at class definition.
         /// </summary>
         /// <param name="e">element</param>
         /// <param name="num">Id Number of highlighter</param>
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Clear highligted elements in bitmap.
-        /// Overlay highlighter needs element than Id. please see comment above at class definition. 
+        /// Overlay highlighter needs element than Id. please see comment above at class definition.
         /// </summary>
         public void Clear()
         {
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Set Element
-        /// Overlay highlighter needs element than Id. please see comment above at class definition. 
+        /// Overlay highlighter needs element than Id. please see comment above at class definition.
         /// </summary>
         /// <param name="e"></param>
         /// <param name="brush"></param>
@@ -139,7 +139,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Remove Element
-        /// Overlay highlighter needs element than Id. please see comment above at class definition. 
+        /// Overlay highlighter needs element than Id. please see comment above at class definition.
         /// </summary>
         /// <param name="e"></param>
         public void RemoveElement(A11yElement e)
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         /// <summary>
         /// Update Element
-        /// Overlay highlighter needs element than Id. please see comment above at class definition. 
+        /// Overlay highlighter needs element than Id. please see comment above at class definition.
         /// </summary>
         /// <param name="el"></param>
         public void UpdateElement(A11yElement el)

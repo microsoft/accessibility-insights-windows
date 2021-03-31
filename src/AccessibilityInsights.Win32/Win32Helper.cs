@@ -8,7 +8,7 @@ using System.Threading;
 namespace AccessibilityInsights.Win32
 {
     /// <summary>
-    /// NativeMethods partial class to hold all Win32 related helper methods.  
+    /// NativeMethods partial class to hold all Win32 related helper methods.
     /// </summary>
     internal static partial class NativeMethods
     {
@@ -111,7 +111,7 @@ namespace AccessibilityInsights.Win32
         }
 
         /// <summary>
-        /// Check whether the current Windows is Windows 7 or not. 
+        /// Check whether the current Windows is Windows 7 or not.
         /// </summary>
         /// <returns></returns>
         internal static bool IsWindows7()

@@ -23,10 +23,10 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 {
     /// <summary>
     /// Color contrast user control
-    /// 
+    ///
     /// maintains two color choosers and computes color contrast between
     /// them when they are populated
-    /// 
+    ///
     /// maintains an eyedropper screenshot that is shared
     /// between the two color choosers
     /// </summary>
@@ -45,7 +45,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             InitializeComponent();
             this.ContrastVM = new ColorContrastViewModel();
 
-            // When user interacts with color chooser, reset selected element, hide pixel locations, and 
+            // When user interacts with color chooser, reset selected element, hide pixel locations, and
             //  begin recording if eyedropper action is selected
             this.firstChooser.ColorChangerInvoked += Chooser_ColorPickerClicked;
             this.secondChooser.ColorChangerInvoked += Chooser_ColorPickerClicked;
@@ -313,7 +313,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ctrlProgressRing.Deactivate();
         }
 
-        public new void Focus() 
+        public new void Focus()
         {
             this.hlLearnMore.Focus();
         }

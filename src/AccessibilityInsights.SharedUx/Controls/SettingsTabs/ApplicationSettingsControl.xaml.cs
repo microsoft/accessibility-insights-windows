@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         private ApplicationSettingsViewModel DataContextVM = new ApplicationSettingsViewModel();
 
         /// <summary>
-        /// Keep the list of Hotkey buttons for checking duplication later. 
+        /// Keep the list of Hotkey buttons for checking duplication later.
         /// </summary>
         private List<Button> HotKeyButtons;
 
@@ -83,7 +83,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Opens hotkey recording dialog. Does not allow more than one 
+        /// Opens hotkey recording dialog. Does not allow more than one
         /// to be open at a time.
         /// </summary>
         /// <param name="button"></param>
@@ -180,7 +180,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 return true;
             }
 
-            // make sure that text is parsable. 
+            // make sure that text is parsable.
             int milsec;
             var conv = int.TryParse(this.tbMouseDelay.Text, out milsec);
             if (conv == true && config.MouseSelectionDelayMilliSeconds != milsec)
@@ -303,7 +303,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         }
 
         /// <summary>
-        /// Check whether all hot keys are duplicated or not. 
+        /// Check whether all hot keys are duplicated or not.
         /// </summary>
         /// <returns></returns>
         private bool HadDuplicatedHotkeys()

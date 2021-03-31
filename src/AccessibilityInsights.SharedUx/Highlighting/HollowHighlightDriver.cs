@@ -12,7 +12,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Wraps and provides access to highlight capabilities that are 'hollow', e.g.
-    /// hovering over the resulting rectangle still allows clicking through to the 
+    /// hovering over the resulting rectangle still allows clicking through to the
     /// underlying element
     /// </summary>
     public class HollowHighlightDriver:IDisposable
@@ -91,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     this.Highlighter.SetLocation(element.BoundingRectangle);
                     this.BoundingRectangle = element.BoundingRectangle;
                 }
-                
+
                 if (this.IsEnabled)
                 {
                     this.Highlighter.IsVisible = true;

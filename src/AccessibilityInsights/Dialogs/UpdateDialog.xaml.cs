@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Dialogs
         public Uri ReleaseNotesUri { get; }
 
         /// <summary>
-        /// Initializes update dialog 
+        /// Initializes update dialog
         /// </summary>
         /// <param name="releaseNotesUri">Uri to release notes</param>
         public UpdateDialog(Uri releaseNotesUri)

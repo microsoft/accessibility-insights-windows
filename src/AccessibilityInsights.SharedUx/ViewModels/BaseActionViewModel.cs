@@ -1,19 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using Axe.Windows.Core.Bases;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
+using Axe.Windows.Actions;
+using Axe.Windows.Core.Bases;
+using Axe.Windows.Core.Enums;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
-using AccessibilityInsights.SharedUx.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
-using Axe.Windows.Actions;
-using Axe.Windows.Core.Enums;
-using System.Globalization;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -123,7 +123,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         protected virtual void InvokeMethod()
         {
-            var ret = ControlPatternAction.RunAction(this.pattern.Element.UniqueId,this.pattern.Id, this.methodinfo.Name ,GetParametersArray()); 
+            var ret = ControlPatternAction.RunAction(this.pattern.Element.UniqueId,this.pattern.Id, this.methodinfo.Name ,GetParametersArray());
 
             if (this.ReturnType != typeof(void))
             {

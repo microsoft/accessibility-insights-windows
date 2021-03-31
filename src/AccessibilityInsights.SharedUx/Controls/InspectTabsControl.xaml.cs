@@ -78,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// flat to show whether record is changed. 
+        /// flat to show whether record is changed.
         /// </summary>
         /// <param name="isStarted"></param>
         public void IsRecordingChanged(bool isStarted)
@@ -184,7 +184,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// This function is necessary because we need the accelerator keys to be 
+        /// This function is necessary because we need the accelerator keys to be
         /// available from everywhere inside the InspectTabsControl.
         /// However, the AutomationProperties for accelerator keys belong to a different class.
         /// </summary>

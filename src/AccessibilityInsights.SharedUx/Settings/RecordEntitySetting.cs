@@ -34,7 +34,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private int _checkedcount = 0;
         /// <summary>
         /// Indicate whether it will be recorded or not
-        /// </summary>        
+        /// </summary>
         public int CheckedCount
         {
             get
@@ -48,7 +48,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                     this._checkedcount = value;
                 }
             }
-        }        
+        }
 
         public override string ToString()
         {

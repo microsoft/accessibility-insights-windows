@@ -91,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
                 {
                     // Add handler to detect when the ContextMenu closes
                     source.ContextMenu.AddHandler(ContextMenu.ClosedEvent, new RoutedEventHandler(ContextMenu_Closed), true);
-                    // If there is a drop-down assigned to this button, then position and display it 
+                    // If there is a drop-down assigned to this button, then position and display it
                     source.ContextMenu.PlacementTarget = source;
                     source.ContextMenu.Placement = PlacementMode.Bottom;
                     source.ContextMenu.IsOpen = true;

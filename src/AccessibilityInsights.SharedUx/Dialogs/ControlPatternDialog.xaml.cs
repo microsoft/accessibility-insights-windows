@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.ViewModels;
+using System;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Input;
-using AccessibilityInsights.SharedUx.ViewModels;
-using System.Globalization;
-using System;
 
 namespace AccessibilityInsights.SharedUx.Dialogs
 {
@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Key up event handler to close window when ESC is pressed. 
+        /// Key up event handler to close window when ESC is pressed.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

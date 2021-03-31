@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SharedUx.Properties;
+using AccessibilityInsights.SharedUx.Telemetry;
 using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
-using AccessibilityInsights.SharedUx.Properties;
-using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights.SharedUx.Converters
 {
@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SharedUx.Converters
     public class ColorStringConverter : MarkupExtension, IValueConverter
     {
         private static ColorStringConverter _instance;
-        
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             try

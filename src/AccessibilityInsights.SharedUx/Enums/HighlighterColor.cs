@@ -3,7 +3,7 @@
 namespace AccessibilityInsights.SharedUx.Enums
 {
     /// <summary>
-    /// These values (as strings) correspond to keys of SolidColorBrushes 
+    /// These values (as strings) correspond to keys of SolidColorBrushes
     /// found in the Brushes.xaml resource dictionary
     /// </summary>
     public enum HighlighterColor

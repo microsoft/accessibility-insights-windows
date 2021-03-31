@@ -8,6 +8,8 @@ assignees: ''
 ---
 Please check whether the bug has [already been filed](https://github.com/Microsoft/accessibility-insights-windows/issues).
 
+This repo contains code for Accessibility Insights for Windows. We maintain code for its automated checks rule engine at [axe-windows](https://github.com/microsoft/axe-windows/issues/). Most false positive questions or rule clarifications belong in [axe-windows](https://github.com/microsoft/axe-windows/issues/new/choose), whereas questions about the Accessibility Insights tool UI should go here. If you aren't sure, it's definitely OK to use this repo. Thanks for contributing!
+
 **Describe the bug**
 A clear and concise description of what the bug is.
 

@@ -97,9 +97,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         public bool ScreenshotAvailable => DataContext != null && DataContext.Screenshot != null;
 
         /// <summary>
-        /// Gets/sets fastpass highlighter visibility, updating as necessary 
+        /// Gets/sets fastpass highlighter visibility, updating as necessary
         /// </summary>
-#pragma warning disable CA1822 
+#pragma warning disable CA1822
         public bool HighlightVisibility
 #pragma warning restore CA1822
         {
@@ -190,7 +190,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         public void Show()
         {
             var ha = ImageOverlayDriver.GetDefaultInstance();
-            // set handler here. it will make sure that highliter button is shown and working. 
+            // set handler here. it will make sure that highliter button is shown and working.
             ha.SetHighlighterButtonClickHandler(TBElem_Click);
 
             if (this.HighlightVisibility)
@@ -203,7 +203,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
 
                 /// Only activate the main window if tests have already been run. This ensures we don't lose transient UI.
-                /// We need to activate the window so that keyboard focus isn't lost when switching from Tab Stops to 
+                /// We need to activate the window so that keyboard focus isn't lost when switching from Tab Stops to
                 /// Automated Checks.
                 if (this.ElementContext != null)
                 {
@@ -305,7 +305,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             try
             {
-                // set handler here. it will make sure that highliter button is shown and working. 
+                // set handler here. it will make sure that highliter button is shown and working.
                 ImageOverlayDriver.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
@@ -944,7 +944,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// We disable this because otherwise the scrollviewer will scroll past the 
+        /// We disable this because otherwise the scrollviewer will scroll past the
         /// left-most checkboxes and instead have the expander on the very left. This looks
         /// visually jarring.
         /// </summary>

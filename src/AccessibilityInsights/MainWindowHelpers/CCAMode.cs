@@ -44,7 +44,7 @@ namespace AccessibilityInsights
                 this.CurrentView = CCAView.Automatic;
                 PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
 
-                // make sure that highlighter is cleared for new selection. 
+                // make sure that highlighter is cleared for new selection.
                 HollowHighlightDriver.GetDefaultInstance().Clear();
 
                 SetWindowForAutomaticMode();

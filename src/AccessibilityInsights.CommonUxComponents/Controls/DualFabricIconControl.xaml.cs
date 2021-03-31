@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System.Windows.Controls;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Automation.Peers;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.CommonUxComponents.Controls
 {
@@ -39,7 +39,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         #endregion
-        
+
         /// <summary>
         /// Size of icon in front
         /// </summary>

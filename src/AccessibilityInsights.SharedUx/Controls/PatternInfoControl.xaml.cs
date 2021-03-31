@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("Available patterns:");
-            // patterns   
+            // patterns
             foreach (var pt in this.Element.Patterns)
             {
                 AddPatternToStringBuilder(sb, pt);
