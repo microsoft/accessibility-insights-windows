@@ -55,11 +55,11 @@ namespace AccessibilityInsights
                             if (this.CurrentPage != AppPage.Exit && AllowFurtherAction)
                             {
                                 var sa = SelectAction.GetDefaultInstance();
-                                var cecId = sa.GetSelectedElementContextId();
+                                var cecId = sa.SelectedElementContextId;
                                 var cec = cecId.HasValue ? GetDataAction.GetElementContext(cecId.Value) : null;
                                 if (sa.Select())
                                 {
-                                    var ec = GetDataAction.GetElementContext(sa.GetSelectedElementContextId().Value);
+                                    var ec = GetDataAction.GetElementContext(sa.SelectedElementContextId.Value);
 
                                     if ((cec == null || cec.Element.IsSameUIElement(ec.Element) == false) && ec.Element.IsRootElement() == false)
                                     {

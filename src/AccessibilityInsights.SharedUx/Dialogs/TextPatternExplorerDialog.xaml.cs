@@ -114,7 +114,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             UpdateTextRanges(new List<Axe.Windows.Desktop.UIAutomation.Patterns.TextRange>() { textRange });
         }
 
-        private void UpdateTextRanges(List<Axe.Windows.Desktop.UIAutomation.Patterns.TextRange> list)
+        private void UpdateTextRanges(IList<Axe.Windows.Desktop.UIAutomation.Patterns.TextRange> list)
         {
             var prefix = this.CurrentSourceType.ToString();
             List<TextRangeViewModel> trvms = new List<TextRangeViewModel>();

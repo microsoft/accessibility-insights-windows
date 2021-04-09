@@ -115,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             var bmc = new BitmapCollection(bitmap);
             var result = bmc.RunColorContrastCalculation();
-            var pair = result.GetMostLikelyColorPair();
+            var pair = result.MostLikelyColorPair;
 
             if (pair == null)
             {

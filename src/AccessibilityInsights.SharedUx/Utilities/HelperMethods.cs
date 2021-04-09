@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 if (GeneralFileBugVisibility == Visibility.Collapsed)
                     return Visibility.Collapsed;
 
-                Guid? ecId = SelectAction.GetDefaultInstance()?.GetSelectedElementContextId();
+                Guid? ecId = SelectAction.GetDefaultInstance()?.SelectedElementContextId;
                 if (ecId.HasValue)
                 {
                     ElementDataContext dataContext = GetDataAction.GetElementDataContext(ecId.Value);
