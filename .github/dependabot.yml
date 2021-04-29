@@ -1,0 +1,52 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "13:00"
+  ignore:
+  - dependency-name: Microsoft.ApplicationInsights
+    versions:
+    - ">= 2.11.a, < 2.12"
+  - dependency-name: Microsoft.CodeAnalysis.BinSkim
+    versions:
+    - "> 1.7.0, < 1.8"
+  - dependency-name: Microsoft.TeamFoundationServer.Client
+    versions:
+    - "> 15.112.1, < 16"
+  - dependency-name: Microsoft.VisualStudio.Services.InteractiveClient
+    versions:
+    - "> 15.112.1, < 16"
+  - dependency-name: System.Collections.Immutable
+    versions:
+    - ">= 1.6.a, < 1.7"
+  - dependency-name: System.Diagnostics.DiagnosticSource
+    versions:
+    - ">= 4.6.a, < 4.7"
+  - dependency-name: WindowsAzure.ServiceBus
+    versions:
+    - "> 4.1.10, < 4.2"
+  - dependency-name: WindowsAzure.ServiceBus
+    versions:
+    - ">= 5.a, < 6"
+  - dependency-name: WindowsAzure.ServiceBus
+    versions:
+    - ">= 6.0.a, < 6.1"
+  - dependency-name: Microsoft.IdentityModel.Tokens
+    versions:
+    - 6.10.0
+    - 6.9.0
+  - dependency-name: Microsoft.IdentityModel.JsonWebTokens
+    versions:
+    - 6.10.0
+  - dependency-name: System.IdentityModel.Tokens.Jwt
+    versions:
+    - 6.10.0
+    - 6.9.0
+  - dependency-name: Microsoft.IdentityModel.Logging
+    versions:
+    - 6.9.0
+  - dependency-name: System.Drawing.Common
+    versions:
+    - 5.0.1
