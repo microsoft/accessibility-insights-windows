@@ -3739,7 +3739,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Set delay in MS.
+        ///   Looks up a localized string similar to Set delay in milliseconds.
         /// </summary>
         public static string tbMouseDelayAutomationName {
             get {
