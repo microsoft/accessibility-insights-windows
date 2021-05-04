@@ -292,7 +292,7 @@
     <value>Set _delay</value>
   </data>
   <data name="tbMouseDelayAutomationName" xml:space="preserve">
-    <value>Set delay in MS</value>
+    <value>Set delay in milliseconds</value>
   </data>
   <data name="LabelContentOtherOptions" xml:space="preserve">
     <value>Other options</value>
