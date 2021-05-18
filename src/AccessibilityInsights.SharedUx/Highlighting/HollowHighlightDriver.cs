@@ -75,7 +75,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void SetElement(A11yElement el)
         {
+#pragma warning disable CA1062 // Validate arguments of public methods
             SetElementInternal(el);
+#pragma warning restore CA1062 // Validate arguments of public methods
         }
 
         /// <summary>
@@ -84,7 +86,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="element"></param>
         void SetElementInternal(A11yElement element)
         {
-            if (element != null && !element.BoundingRectangle.IsEmpty)
+            bool visible = element != null && !element.BoundingRectangle.IsEmpty;
+            if (visible)
             {
                 if (this.BoundingRectangle == null || element.BoundingRectangle.Equals(this.BoundingRectangle) == false)
                 {
@@ -94,15 +97,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
                 if (this.IsEnabled)
                 {
-                    this.Highlighter.IsVisible = true;
                     var text = GetHighlightText(element);
                     this.Highlighter.SetText(text);
                 }
             }
-            else
-            {
-                this.Highlighter.IsVisible = false;
-            }
+
+            this.Highlighter.IsVisible = this.IsEnabled && visible;
         }
 
         /// <summary>
