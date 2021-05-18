@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     ///
     /// To allow multiple Release Channels, the JSON file can report back more than one
     /// set of information (each ChannelInfo object holds the data for one channel). The
-    /// code defaults to the "deafult" channel, but this can be overridden by the caller.
+    /// code defaults to the "default" channel, but this can be overridden by the caller.
     ///
     /// A note about timing: Due to the way that extensions get loaded, our ctor may get
     /// called some time before the app requests the upgrade status. Since we need to make
