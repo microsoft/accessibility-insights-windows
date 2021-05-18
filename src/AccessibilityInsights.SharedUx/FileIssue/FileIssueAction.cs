@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         /// <summary>
         /// File an issue. Telemetry wrapper.
         /// </summary>
-        /// <param name="issueInformation">Issue infromation to pass on to the reporter</param>
+        /// <param name="issueInformation">Issue information to pass on to the reporter</param>
         /// <returns></returns>
         public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
