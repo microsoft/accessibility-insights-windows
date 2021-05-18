@@ -58,7 +58,7 @@
             <RichTextBox Margin="-4,0,0,0" Grid.Row="5" Grid.Column="1" Style="{StaticResource ResourceKey=RtbReadonlyText}" Name="rtbInstructions" AutomationProperties.LabeledBy="{Binding ElementName=tabIntro}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                 <FlowDocument LineHeight="6"/>
             </RichTextBox>
-            <Label Name="lblResults" Grid.Row="7" Grid.Column="1" Content="Recorded order results" Style="{StaticResource lblHeader}" HorizontalAlignment="Left"/>
+            <Label Name="lblResults" Grid.Row="7" Grid.Column="1" Content="{x:Static Properties:Resources.TabStopControl_Recorded_order_results}" Style="{StaticResource lblHeader}" HorizontalAlignment="Left"/>
             <ListView x:Name="lvElements" 
                 Margin="0"
                 VerticalAlignment="Stretch"

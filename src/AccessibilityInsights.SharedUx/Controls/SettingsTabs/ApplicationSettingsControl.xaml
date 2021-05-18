@@ -180,7 +180,7 @@
                     <Label Name="lblDelay" Margin="0,5,0,0" Content="{x:Static Properties:Resources.lblDelayContent}" Padding="0" Style="{StaticResource LblText}" Target="{Binding ElementName=tbMouseDelay}"/>
                     <TextBox Name="tbMouseDelay" Height="26" Width="38" Margin="5,0,5,0" PreviewTextInput="textboxMouseDelay_PreviewTextInput" MaxLines="1" MaxLength="4" 
                      VerticalContentAlignment="Center" HorizontalContentAlignment="Right" Style="{StaticResource TxtBxText}" AutomationProperties.Name="{x:Static Properties:Resources.tbMouseDelayAutomationName}" TextChanged="tbMouseDelay_TextChanged"/>
-                    <Label Content="milliseconds" Margin="0,5,0,0" Padding="0" Style="{StaticResource LblText}"/>
+                    <Label Content="{x:Static Properties:Resources.ApplicationSettingsControl_milliseconds}" Margin="0,5,0,0" Padding="0" Style="{StaticResource LblText}"/>
                 </StackPanel>
             </Grid>
         </Grid>
@@ -236,7 +236,7 @@
                     <ColumnDefinition Width="151"/>
                     <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="lblFontSizeLabel" Grid.Column="0" Content="Font Size" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <Label Name="lblFontSizeLabel" Grid.Column="0" Content="{x:Static Properties:Resources.ApplicationSettingsControl_fontsize}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="2" x:Name ="fontSizeComboBox"
                           SelectedIndex="{Binding FontSize}"
                           AutomationProperties.Name="{x:Static Properties:Resources.fontSizeComboBoxAutomationPropertiesName}"

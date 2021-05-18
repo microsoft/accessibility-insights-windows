@@ -74,9 +74,9 @@
                    VerticalAlignment="Stretch"
                    AutomationProperties.Name="{x:Static Properties:Resources.tbResultAutomationPropertiesName}"/>
         <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Grid.Row="5" HorizontalAlignment="Right">
-            <Button x:Name="btnAction"  Width="60" Content="Run"
+            <Button x:Name="btnAction"  Width="60" Content="{x:Static Properties:Resources.MoveTextRangeDialog_Run}"
                     AutomationProperties.Name="{x:Static Properties:Resources.btnActionAutomationPropertiesNameMethod}" Click="btnAction_Click"/>
-            <Button Grid.Row="5" Margin="20,0,0,0" Width="60" Content="Close" IsDefault="True" IsCancel="True"/>
+            <Button Grid.Row="5" Margin="20,0,0,0" Width="60" Content="{x:Static Properties:Resources.MoveTextRangeDialog_Close}" IsDefault="True" IsCancel="True"/>
         </StackPanel>
     </Grid>
 </Window>

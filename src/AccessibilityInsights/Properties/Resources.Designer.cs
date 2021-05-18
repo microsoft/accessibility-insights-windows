@@ -745,6 +745,33 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 5.
+        /// </summary>
+        public static string MainWindow_NumberFive {
+            get {
+                return ResourceManager.GetString("MainWindow_NumberFive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One.
+        /// </summary>
+        public static string MainWindow_One {
+            get {
+                return ResourceManager.GetString("MainWindow_One", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _?.
+        /// </summary>
+        public static string MainWindow_QuestionMark {
+            get {
+                return ResourceManager.GetString("MainWindow_QuestionMark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An update is available..
         /// </summary>
         public static string MainWindow_ShowUpgradeDialog_An_update_is_available {
@@ -759,6 +786,15 @@ namespace AccessibilityInsights.Properties {
         public static string MainWindow_ShowUpgradeDialog_An_update_is_required {
             get {
                 return ResourceManager.GetString("MainWindow_ShowUpgradeDialog_An_update_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Two.
+        /// </summary>
+        public static string MainWindow_Two {
+            get {
+                return ResourceManager.GetString("MainWindow_Two", resourceCulture);
             }
         }
         
@@ -907,6 +943,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ..
+        /// </summary>
+        public static string SentenceEndPeriod {
+            get {
+                return ResourceManager.GetString("SentenceEndPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Only the first {0:N0} elements are being scanned. You will not be able to save the results or file any bugs from this scan..
         /// </summary>
         public static string SetElementCultureInfoFormatMessage {
@@ -930,6 +975,33 @@ namespace AccessibilityInsights.Properties {
         public static string SetElementInspectTestDetail {
             get {
                 return ResourceManager.GetString("SetElementInspectTestDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available patterns.
+        /// </summary>
+        public static string SnapshotModeControl_AvailablePatterns {
+            get {
+                return ResourceManager.GetString("SnapshotModeControl_AvailablePatterns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available properties.
+        /// </summary>
+        public static string SnapshotModeControl_AvailableProperties {
+            get {
+                return ResourceManager.GetString("SnapshotModeControl_AvailableProperties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Glimpse.
+        /// </summary>
+        public static string SnapshotModeControl_Glimpse {
+            get {
+                return ResourceManager.GetString("SnapshotModeControl_Glimpse", resourceCulture);
             }
         }
         

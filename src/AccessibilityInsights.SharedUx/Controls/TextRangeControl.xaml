@@ -139,7 +139,7 @@
                                                 </Style>
                                             </TextBlock.Style>
                                         </TextBlock>
-                                        <Button Grid.Column="2" Content="Details" Visibility="{Binding Path=DetailsVisibility}" Command="{Binding ClickCommand}" Margin="0,0,5,0" Style="{StaticResource btnLink}"/>
+                                        <Button Grid.Column="2" Content="{x:Static Properties:Resources.TextRangeControl_Details}" Visibility="{Binding Path=DetailsVisibility}" Command="{Binding ClickCommand}" Margin="0,0,5,0" Style="{StaticResource btnLink}"/>
                                     </Grid>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
