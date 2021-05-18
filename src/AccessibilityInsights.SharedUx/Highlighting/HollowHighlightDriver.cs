@@ -102,7 +102,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 }
             }
 
-            this.Highlighter.IsVisible = visible;
+            this.Highlighter.IsVisible = this.IsEnabled && visible;
         }
 
         /// <summary>
