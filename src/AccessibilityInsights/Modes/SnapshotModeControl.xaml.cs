@@ -393,7 +393,7 @@ namespace AccessibilityInsights.Modes
                 var se = this.ctrlHierarchy.SelectedElement ?? this.ElementContext.Element;
 
                 // glimpse
-                sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.SnapshotModeControl_Glimpse + ": {0}", se.Glimpse);
+                sb.AppendFormat(CultureInfo.CurrentCulture, Properties.Resources.SnapshotModeControl_GlimpseFormat, se.Glimpse);
                 sb.AppendLine();
                 sb.AppendLine();
 

@@ -747,9 +747,9 @@ namespace AccessibilityInsights.Properties {
         /// <summary>
         ///   Looks up a localized string similar to 5.
         /// </summary>
-        public static string MainWindow_NumberFive {
+        public static string MainWindow_DefaultTimerDelayInSeconds {
             get {
-                return ResourceManager.GetString("MainWindow_NumberFive", resourceCulture);
+                return ResourceManager.GetString("MainWindow_DefaultTimerDelayInSeconds", resourceCulture);
             }
         }
         
@@ -997,11 +997,11 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Glimpse.
+        ///   Looks up a localized string similar to Glimpse: {0}.
         /// </summary>
-        public static string SnapshotModeControl_Glimpse {
+        public static string SnapshotModeControl_GlimpseFormat {
             get {
-                return ResourceManager.GetString("SnapshotModeControl_Glimpse", resourceCulture);
+                return ResourceManager.GetString("SnapshotModeControl_GlimpseFormat", resourceCulture);
             }
         }
         

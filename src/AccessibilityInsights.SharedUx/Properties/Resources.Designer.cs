@@ -70,6 +70,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string ActionsDefaultDelayInSeconds {
+            get {
+                return ResourceManager.GetString("ActionsDefaultDelayInSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to passed value is not supported type..
         /// </summary>
         public static string ActionViewModelConverter_Convert_passed_value_is_not_supported_type {
@@ -109,9 +118,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Font Size.
         /// </summary>
-        public static string ApplicationSettingsControl_fontsize {
+        public static string ApplicationSettingsControl_Fontsize {
             get {
-                return ResourceManager.GetString("ApplicationSettingsControl_fontsize", resourceCulture);
+                return ResourceManager.GetString("ApplicationSettingsControl_Fontsize", resourceCulture);
             }
         }
         
@@ -181,9 +190,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Element path.
         /// </summary>
-        public static string AutomatedChecksControl_Element_Path {
+        public static string AutomatedChecksControl_ElementPath {
             get {
-                return ResourceManager.GetString("AutomatedChecksControl_Element_Path", resourceCulture);
+                return ResourceManager.GetString("AutomatedChecksControl_ElementPath", resourceCulture);
             }
         }
         
@@ -1371,15 +1380,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 0.
-        /// </summary>
-        public static string Delay_In_Seconds_Default {
-            get {
-                return ResourceManager.GetString("Delay_In_Seconds_Default", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Parameters.
         /// </summary>
         public static string dgParamsAutomationName {
@@ -1862,9 +1862,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Con_tent.
         /// </summary>
-        public static string HierarchyControl_Con_tent {
+        public static string HierarchyControl_Content {
             get {
-                return ResourceManager.GetString("HierarchyControl_Con_tent", resourceCulture);
+                return ResourceManager.GetString("HierarchyControl_Content", resourceCulture);
             }
         }
         
@@ -3825,9 +3825,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Recorded order results.
         /// </summary>
-        public static string TabStopControl_Recorded_order_results {
+        public static string TabStopControl_RecordedOrderResults {
             get {
-                return ResourceManager.GetString("TabStopControl_Recorded_order_results", resourceCulture);
+                return ResourceManager.GetString("TabStopControl_RecordedOrderResults", resourceCulture);
             }
         }
         

@@ -148,7 +148,7 @@
                             <MenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName1}">
                                 <MenuItem.Header>
-                                    <RadioButton x:Name="rbContent" Content="{x:Static Properties:Resources.HierarchyControl_Con_tent}" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
+                                    <RadioButton x:Name="rbContent" Content="{x:Static Properties:Resources.HierarchyControl_Content}" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
                                 </MenuItem.Header>
                             </MenuItem>
                         </MenuItem>

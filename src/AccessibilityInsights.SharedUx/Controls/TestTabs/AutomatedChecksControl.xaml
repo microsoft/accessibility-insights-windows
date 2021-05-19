@@ -108,7 +108,7 @@
                             </GridViewColumn>
                             <GridViewColumn x:Name="gvcElement" Width="Auto">
                                 <local:CustomGridViewColumnHeader Style="{StaticResource gvchAutomatedChecks}" Focusable="True" SizeChanged="CustomGridViewColumnHeader_SizeChanged">
-                                    <Label Content="{x:Static Properties:Resources.AutomatedChecksControl_Element_Path}" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
+                                    <Label Content="{x:Static Properties:Resources.AutomatedChecksControl_ElementPath}" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
                                 </local:CustomGridViewColumnHeader>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>

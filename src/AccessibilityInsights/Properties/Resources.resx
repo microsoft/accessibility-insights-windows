@@ -546,10 +546,10 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="SnapshotModeControl_AvailableProperties" xml:space="preserve">
     <value>Available properties</value>
   </data>
-  <data name="SnapshotModeControl_Glimpse" xml:space="preserve">
-    <value>Glimpse</value>
+  <data name="SnapshotModeControl_GlimpseFormat" xml:space="preserve">
+    <value>Glimpse: {0}</value>
   </data>
-  <data name="MainWindow_NumberFive" xml:space="preserve">
+  <data name="MainWindow_DefaultTimerDelayInSeconds" xml:space="preserve">
     <value>5</value>
   </data>
   <data name="MainWindow_One" xml:space="preserve">

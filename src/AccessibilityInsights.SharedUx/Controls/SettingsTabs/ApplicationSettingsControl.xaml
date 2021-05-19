@@ -236,7 +236,7 @@
                     <ColumnDefinition Width="151"/>
                     <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="lblFontSizeLabel" Grid.Column="0" Content="{x:Static Properties:Resources.ApplicationSettingsControl_fontsize}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <Label Name="lblFontSizeLabel" Grid.Column="0" Content="{x:Static Properties:Resources.ApplicationSettingsControl_Fontsize}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="2" x:Name ="fontSizeComboBox"
                           SelectedIndex="{Binding FontSize}"
                           AutomationProperties.Name="{x:Static Properties:Resources.fontSizeComboBoxAutomationPropertiesName}"
