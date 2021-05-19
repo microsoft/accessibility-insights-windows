@@ -135,6 +135,7 @@
   <data name="lbDelayContent" xml:space="preserve">
     <value>Delay in sec</value>
   </data>
+  
   <data name="tbResultAutomationPropertiesName" xml:space="preserve">
     <value>Execution result</value>
   </data>
@@ -146,6 +147,9 @@
   </data>
   <data name="GeneralActionView_Button_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
     <value>Input should be int value greater than or equal to 0.</value>
+  </data>
+  <data name="ActionsDefaultDelayInSeconds" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="GeneralActionView_ExecuteAction_Execution_result_passed" xml:space="preserve">
     <value>Execution result passed</value>
@@ -1520,5 +1524,65 @@ Do you want to change the channel? </value>
   </data>
   <data name="AutomatedChecksControl_RuleSourceLabel" xml:space="preserve">
     <value>Rule source</value>
+  </data>
+  <data name="ApplicationSettingsControl_Fontsize" xml:space="preserve">
+    <value>Font Size</value>
+  </data>
+  <data name="ApplicationSettingsControl_milliseconds" xml:space="preserve">
+    <value>milliseconds</value>
+  </data>
+  <data name="DisplayCount" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="HierarchyControl_Control" xml:space="preserve">
+    <value>_Control</value>
+  </data>
+  <data name="HierarchyControl_Content" xml:space="preserve">
+    <value>Con_tent</value>
+  </data>
+  <data name="HierarchyControl_Raw" xml:space="preserve">
+    <value>_Raw</value>
+  </data>
+  <data name="ScannerResultControl_Issue" xml:space="preserve">
+    <value>Issue</value>
+  </data>
+  <data name="ScannerResultControl_Rule" xml:space="preserve">
+    <value>Rule</value>
+  </data>
+  <data name="SentenceEndPeriod" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="AutomatedChecksControl_CloseParenthesis" xml:space="preserve">
+    <value>)</value>
+  </data>
+  <data name="AutomatedChecksControl_ElementPath" xml:space="preserve">
+    <value>Element path</value>
+  </data>
+  <data name="AutomatedChecksControl_Issue" xml:space="preserve">
+    <value>Issue</value>
+  </data>
+  <data name="AutomatedChecksControl_OpenParenthesis" xml:space="preserve">
+    <value>(</value>
+  </data>
+  <data name="MoveTextRangeDialog_Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="MoveTextRangeDialog_Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
+  <data name="StartUpModeControl_ShiftF6" xml:space="preserve">
+    <value>Shift + F6</value>
+  </data>
+  <data name="StartUpModeControl_ShiftF8" xml:space="preserve">
+    <value>Shift + F8</value>
+  </data>
+  <data name="StartUpModeControl_ShiftF9" xml:space="preserve">
+    <value>Shift + F9</value>
+  </data>
+  <data name="TabStopControl_RecordedOrderResults" xml:space="preserve">
+    <value>Recorded order results</value>
+  </data>
+  <data name="TextRangeControl_Details" xml:space="preserve">
+    <value>Details</value>
   </data>
 </root>

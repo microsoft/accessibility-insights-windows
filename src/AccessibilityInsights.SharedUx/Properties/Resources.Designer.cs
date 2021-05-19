@@ -70,6 +70,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0.
+        /// </summary>
+        public static string ActionsDefaultDelayInSeconds {
+            get {
+                return ResourceManager.GetString("ActionsDefaultDelayInSeconds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to passed value is not supported type..
         /// </summary>
         public static string ActionViewModelConverter_Convert_passed_value_is_not_supported_type {
@@ -98,6 +107,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Font Size.
+        /// </summary>
+        public static string ApplicationSettingsControl_Fontsize {
+            get {
+                return ResourceManager.GetString("ApplicationSettingsControl_Fontsize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Highlighter Mode.
         /// </summary>
         public static string ApplicationSettingsControl_HighlighterModeComboboxAutomationName {
@@ -112,6 +130,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ApplicationSettingsControl_KeyboardIconAutomationName {
             get {
                 return ResourceManager.GetString("ApplicationSettingsControl_KeyboardIconAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to milliseconds.
+        /// </summary>
+        public static string ApplicationSettingsControl_milliseconds {
+            get {
+                return ResourceManager.GetString("ApplicationSettingsControl_milliseconds", resourceCulture);
             }
         }
         
@@ -139,6 +166,42 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure {
             get {
                 return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ).
+        /// </summary>
+        public static string AutomatedChecksControl_CloseParenthesis {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_CloseParenthesis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Element path.
+        /// </summary>
+        public static string AutomatedChecksControl_ElementPath {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_ElementPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issue.
+        /// </summary>
+        public static string AutomatedChecksControl_Issue {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_Issue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (.
+        /// </summary>
+        public static string AutomatedChecksControl_OpenParenthesis {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_OpenParenthesis", resourceCulture);
             }
         }
         
@@ -1362,6 +1425,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 5.
+        /// </summary>
+        public static string DisplayCount {
+            get {
+                return ResourceManager.GetString("DisplayCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Display Delay count.
         /// </summary>
         public static string DisplayCountControlAutomationName {
@@ -1779,6 +1851,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Con_tent.
+        /// </summary>
+        public static string HierarchyControl_Content {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Control.
+        /// </summary>
+        public static string HierarchyControl_Control {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Control", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not find the selected item, the bug filing is canceled..
         /// </summary>
         public static string HierarchyControl_FileBug_Could_not_find_the_selected_item__the_bug_filing_is_canceled {
@@ -1803,6 +1893,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy {
             get {
                 return ResourceManager.GetString("HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Raw.
+        /// </summary>
+        public static string HierarchyControl_Raw {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Raw", resourceCulture);
             }
         }
         
@@ -2881,11 +2980,29 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string MoveTextRangeDialog_Close {
+            get {
+                return ResourceManager.GetString("MoveTextRangeDialog_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HResult: 0x{0:X8}.
         /// </summary>
         public static string MoveTextRangeDialog_GetExceptionString_HResult_0x_0_X8 {
             get {
                 return ResourceManager.GetString("MoveTextRangeDialog_GetExceptionString_HResult_0x_0_X8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run.
+        /// </summary>
+        public static string MoveTextRangeDialog_Run {
+            get {
+                return ResourceManager.GetString("MoveTextRangeDialog_Run", resourceCulture);
             }
         }
         
@@ -3301,11 +3418,29 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Issue.
+        /// </summary>
+        public static string ScannerResultControl_Issue {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_Issue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There were no failures..
         /// </summary>
         public static string ScannerResultControl_noFailures {
             get {
                 return ResourceManager.GetString("ScannerResultControl_noFailures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rule.
+        /// </summary>
+        public static string ScannerResultControl_Rule {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_Rule", resourceCulture);
             }
         }
         
@@ -3369,6 +3504,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string secondChooserAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("secondChooserAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ..
+        /// </summary>
+        public static string SentenceEndPeriod {
+            get {
+                return ResourceManager.GetString("SentenceEndPeriod", resourceCulture);
             }
         }
         
@@ -3562,6 +3706,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shift + F6.
+        /// </summary>
+        public static string StartUpModeControl_ShiftF6 {
+            get {
+                return ResourceManager.GetString("StartUpModeControl_ShiftF6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift + F8.
+        /// </summary>
+        public static string StartUpModeControl_ShiftF8 {
+            get {
+                return ResourceManager.GetString("StartUpModeControl_ShiftF8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift + F9.
+        /// </summary>
+        public static string StartUpModeControl_ShiftF9 {
+            get {
+                return ResourceManager.GetString("StartUpModeControl_ShiftF9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to These keystrokes are default, but you can customize your shortcut keystrokes in settings..
         /// </summary>
         public static string StartupModeControl_shortcutsDescription {
@@ -3639,6 +3810,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tabPropertiesAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tabPropertiesAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recorded order results.
+        /// </summary>
+        public static string TabStopControl_RecordedOrderResults {
+            get {
+                return ResourceManager.GetString("TabStopControl_RecordedOrderResults", resourceCulture);
             }
         }
         
@@ -4107,6 +4287,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextRangeActionView_ExecuteAction_Succeeded {
             get {
                 return ResourceManager.GetString("TextRangeActionView_ExecuteAction_Succeeded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string TextRangeControl_Details {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Details", resourceCulture);
             }
         }
         

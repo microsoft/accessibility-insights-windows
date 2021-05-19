@@ -73,7 +73,7 @@
             <TextBox x:Name="tbDelay" Grid.Column="1"
                      Margin="5"
                      VerticalContentAlignment="Center"
-                     Text="0" AutomationProperties.LabeledBy="{Binding ElementName=lbDelay}"
+                     Text="{x:Static Properties:Resources.ActionsDefaultDelayInSeconds}" AutomationProperties.LabeledBy="{Binding ElementName=lbDelay}"
                      PreviewTextInput="tbDelay_PreviewTextInput"/>
             <Button x:Name="btnAction" Grid.Column="2" Width="70" Content="{x:Static Properties:Resources.btnActionContent}"
                     AutomationProperties.Name="{x:Static Properties:Resources.btnActionAutomationPropertiesName}" Click="btnRun_Click"

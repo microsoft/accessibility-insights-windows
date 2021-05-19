@@ -393,11 +393,11 @@ namespace AccessibilityInsights.Modes
                 var se = this.ctrlHierarchy.SelectedElement ?? this.ElementContext.Element;
 
                 // glimpse
-                sb.AppendFormat(CultureInfo.InvariantCulture, "Glimpse: {0}", se.Glimpse);
+                sb.AppendFormat(CultureInfo.CurrentCulture, Properties.Resources.SnapshotModeControl_GlimpseFormat, se.Glimpse);
                 sb.AppendLine();
                 sb.AppendLine();
 
-                sb.AppendLine("Available properties");
+                sb.AppendLine(Properties.Resources.SnapshotModeControl_AvailableProperties);
                 // properties
                 foreach (var p in se.Properties)
                 {
@@ -407,7 +407,7 @@ namespace AccessibilityInsights.Modes
 
                 sb.AppendLine();
 
-                sb.AppendLine("Available patterns:");
+                sb.AppendLine(Properties.Resources.SnapshotModeControl_AvailablePatterns);
                 // patterns
                 foreach (var pt in se.Patterns)
                 {

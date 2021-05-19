@@ -537,4 +537,28 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="RequiredUpdateFailedUnknown" xml:space="preserve">
     <value>There was a problem updating the application. Because this is a required update, the app will be shut down. Please check your internet connection and try again.</value>
   </data>
+  <data name="SentenceEndPeriod" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="SnapshotModeControl_AvailablePatterns" xml:space="preserve">
+    <value>Available patterns:</value>
+  </data>
+  <data name="SnapshotModeControl_AvailableProperties" xml:space="preserve">
+    <value>Available properties</value>
+  </data>
+  <data name="SnapshotModeControl_GlimpseFormat" xml:space="preserve">
+    <value>Glimpse: {0}</value>
+  </data>
+  <data name="MainWindow_DefaultTimerDelayInSeconds" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="MainWindow_One" xml:space="preserve">
+    <value>One</value>
+  </data>
+  <data name="MainWindow_QuestionMark" xml:space="preserve">
+    <value>_?</value>
+  </data>
+  <data name="MainWindow_Two" xml:space="preserve">
+    <value>Two</value>
+  </data>
 </root>

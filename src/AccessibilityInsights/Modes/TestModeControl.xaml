@@ -62,12 +62,12 @@
                 <Run Text="{x:Static properties:Resources.TestModeControl_HoverAndTest}"/>
                 <fabric:FabricIconControl GlyphName="TestBeaker" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-2" Foreground="{DynamicResource ResourceKey=IconBrush}" FontStyle="Normal" ShowInControlView="False"/>
                 <Run Text="{x:Static properties:Resources.LiveModeControl_FocusOnElement}"/>
-                <Run Name="runHotkey"/><Run Text="."/>
+                <Run Name="runHotkey"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
                 <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate"
                             FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                     <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}"/>
                 </Hyperlink>
-                <Run Text="."/>
+                <Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
             </TextBlock>
             <TextBlock Grid.Row="2" Text="{x:Static properties:Resources.AutomatedChecksRole}" Style="{StaticResource TbFocusableCenter}" MinWidth="40"/>
         </Grid>

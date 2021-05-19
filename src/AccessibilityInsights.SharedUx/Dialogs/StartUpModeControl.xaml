@@ -123,7 +123,7 @@
                         <Run Text="{x:Static properties:Resources.StartupModeControl_shortcutsDescription}"/>
                     </TextBlock>
                     <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}" VerticalAlignment="Center">
-                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="Shift + F6" Padding="3,6">
+                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF6}" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
@@ -134,7 +134,7 @@
                     </Border>
                     <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BrdrKey}" VerticalAlignment="Center">
-                        <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="Shift + F8" Padding="3,6">
+                        <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF8}" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>
@@ -145,7 +145,7 @@
                     </Border>
                     <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="5" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="7" Grid.Column="1" Style="{StaticResource BrdrKey}" Height="32" VerticalAlignment="Center">
-                        <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="Shift + F9" Padding="3,6">
+                        <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF9}" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>

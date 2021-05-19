@@ -27,7 +27,7 @@
                <TextBlock>
                     <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" Style="{StaticResource hLink}">
                         <Run Text="{x:Static Properties:Resources.issueFilingLink}"/>
-                    </Hyperlink><Run Text="."/>
+                    </Hyperlink><Run Text="{x:Static Properties:Resources.SentenceEndPeriod}"/>
                 </TextBlock>
             </TextBlock>
             <StackPanel Grid.Row="2" x:Name="availableIssueReporters">

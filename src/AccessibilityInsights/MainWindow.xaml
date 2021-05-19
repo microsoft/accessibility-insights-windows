@@ -244,7 +244,7 @@
                                     <ToolTip Content="{x:Static properties:Resources.btnHelpToolTip}" />
                                 </Button.ToolTip>
                                 <Grid>
-                                    <AccessText Text="_?" Opacity="0"/>
+                                    <AccessText Text="{x:Static properties:Resources.MainWindow_QuestionMark}" Opacity="0"/>
                                     <fabric:FabricIconControl GlyphName="Unknown" GlyphSize="Small" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=WindowBorderTextBrush}"/>
                                 </Grid>
                             </Button>
@@ -458,7 +458,7 @@
                                                 <MenuItem.Header>
                                                     <TextBlock Name="tbTimer">
                                                     <Run Text="{x:Static properties:Resources.tbTimerText1}"/>
-                                                    <TextBox TextChanged="tbxTimer_TextChanged" Name="tbxTimer" PreviewTextInput="tbxTimer_PreviewTextInput" Text="5" MaxLength="2" FontSize="11" Width="16" Margin="2,-4" 
+                                                    <TextBox TextChanged="tbxTimer_TextChanged" Name="tbxTimer" PreviewTextInput="tbxTimer_PreviewTextInput" Text="{x:Static properties:Resources.MainWindow_DefaultTimerDelayInSeconds}" MaxLength="2" FontSize="11" Width="16" Margin="2,-4" 
                                                              AutomationProperties.LabeledBy="{Binding RelativeSource={RelativeSource AncestorType={x:Type TextBlock}}}"/>
                                                     <Run Text="{x:Static properties:Resources.tbTimerText2}"/>
                                                     </TextBlock>
@@ -486,12 +486,12 @@
                         </DockPanel>
                         <StackPanel Margin="0" Background="{DynamicResource ResourceKey=PrimaryBGBrush}" Name="spBreadcrumbs" Orientation="Horizontal" Height="34" Grid.Row="1" KeyboardNavigation.DirectionalNavigation="Contained" KeyboardNavigation.TabNavigation="Once">
                             <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbOne" Style="{StaticResource btnLink}" 
-                                    Content="One" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"
+                                    Content="{x:Static properties:Resources.MainWindow_One}" Click="btnCrumbOne_Click" Margin="8,0,0,0" VerticalAlignment="Center"
                                     AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbOneButton}"/>
                             <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbOne" Style="{StaticResource TbFocusable}" Margin="8,0,0,0" Text="Three" VerticalAlignment="Center" Height="Auto"/>
                             <fabric:FabricIconControl Name="ctrlFabCrumbOne" GlyphName="ChevronRight" GlyphSize="Small" Margin="4,2,4,0" Foreground="{DynamicResource ResourceKey=IconBrush}" VerticalAlignment="Center"/>
                             <Button FontSize="{StaticResource ConstXLTextSize}" Name="btnCrumbTwo" Style="{StaticResource btnLink}"
-                                    Content="Two" Click="btnCrumbTwo_Click" VerticalAlignment="Center"
+                                    Content="{x:Static properties:Resources.MainWindow_Two}" Click="btnCrumbTwo_Click" VerticalAlignment="Center"
                                     AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinBreadCrumbTwoButton}"/>
                             <TextBlock FontSize="{StaticResource ConstXLTextSize}" Name="tbCrumbTwo" Style="{StaticResource TbFocusable}" Text="Three" VerticalAlignment="Center" Height="Auto"/>
                             <fabric:FabricIconControl Name="ctrlFabCrumbTwo" GlyphName="ChevronRight" GlyphSize="Small" Foreground="{DynamicResource ResourceKey=IconBrush}" Margin="4,2,4,0" VerticalAlignment="Center"/>

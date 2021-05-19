@@ -108,7 +108,7 @@
                             </GridViewColumn>
                             <GridViewColumn x:Name="gvcElement" Width="Auto">
                                 <local:CustomGridViewColumnHeader Style="{StaticResource gvchAutomatedChecks}" Focusable="True" SizeChanged="CustomGridViewColumnHeader_SizeChanged">
-                                    <Label Content="Element path" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
+                                    <Label Content="{x:Static Properties:Resources.AutomatedChecksControl_ElementPath}" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
                                 </local:CustomGridViewColumnHeader>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -120,7 +120,7 @@
                             </GridViewColumn>
                             <GridViewColumn Width="Auto">
                                 <local:CustomGridViewColumnHeader Style="{StaticResource gvchAutomatedChecks}" Focusable="True">
-                                    <Label Visibility="{Binding BugColumnVisibility}" Content="Issue" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
+                                    <Label Visibility="{Binding BugColumnVisibility}" Content="{x:Static Properties:Resources.AutomatedChecksControl_Issue}" VerticalAlignment="Center" Style="{StaticResource lblFaint}"/>
                                 </local:CustomGridViewColumnHeader>
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>
@@ -285,10 +285,10 @@
                                                     <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
                                                             <Label Content="{Binding Path=Items[0].Description}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
-                                                            <Label Content="(" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
+                                                            <Label Content="{x:Static Properties:Resources.AutomatedChecksControl_OpenParenthesis}" Style="{StaticResource lblRowStyle}" Margin="4,0,0,0" VerticalAlignment="Center" />
                                                             <fabric:FabricIconControl VerticalAlignment="Bottom" Margin="1,2" GlyphName="{Binding Path=Items[0].GlyphName}" Foreground="{DynamicResource ResourceKey=HLbrushRed}" GlyphSize="Custom" FontSize="14"/>
                                                             <Label Content="{Binding ItemCount}" Style="{StaticResource lblRowStyle}" VerticalAlignment="Center" />
-                                                            <Label Content=")" Style="{StaticResource lblRowStyle}"  VerticalAlignment="Center" />
+                                                            <Label Content="{x:Static Properties:Resources.AutomatedChecksControl_CloseParenthesis}" Style="{StaticResource lblRowStyle}"  VerticalAlignment="Center" />
                                                         </StackPanel>
                                                     </local:CustomExpander.Header>
                                                     <ItemsPresenter/>

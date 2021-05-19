@@ -147,7 +147,7 @@
             <Run Text="{x:Static Properties:Resources.tbIntroTextSelectEventRecord}"/>
             <fabric:FabricIconControl GlyphName="CircleFill" GlyphSize="Custom" FontSize="{DynamicResource StandardTextSize}" Margin="0,-3" Foreground="{DynamicResource ResourceKey=EventStartBrush}" FontStyle="Normal" ShowInControlView="False"/>
             <Run Text="{x:Static Properties:Resources.tbIntroTextStartRecording}"/>
-            <Run Name="runHkRecord"/><Run Text="."/>
+            <Run Name="runHkRecord"/><Run Text="{x:Static Properties:Resources.SentenceEndPeriod}"/>
         </TextBlock>
         <ScrollViewer Name="svData" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Visibility="Collapsed" Padding="2,0" Margin="-2,0">
             <customcontrols:CustomDataGrid x:Name="dgEvents" GotKeyboardFocus="dgEvents_GotKeyboardFocus"

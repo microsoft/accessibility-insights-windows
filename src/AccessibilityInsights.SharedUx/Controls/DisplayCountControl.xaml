@@ -10,6 +10,6 @@
              d:DesignHeight="300" d:DesignWidth="300"
              AutomationProperties.Name="{x:Static Properties:Resources.DisplayCountControlAutomationName}">
     <Grid>
-        <TextBlock x:Name="lbCount" FontSize="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Blue" Text="5" FontWeight="Bold" Background="Transparent" AutomationProperties.LiveSetting="Polite"/>
+        <TextBlock x:Name="lbCount" FontSize="100" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Blue" FontWeight="Bold" Background="Transparent" AutomationProperties.LiveSetting="Polite"/>
     </Grid>
 </UserControl>
