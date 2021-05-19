@@ -161,7 +161,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 }
                 else
                 {
-                    Dispatcher.Invoke(() => MessageDialog.Show(Properties.Resources.ADO_URL_Fromat_Message));
+                    Dispatcher.Invoke(() => MessageDialog.Show(Properties.Resources.ADO_URL_Format_Message));
                 }
             }
         }

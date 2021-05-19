@@ -6,7 +6,7 @@ if /i '%1' == 'Disable' goto Confirm
 echo.
 echo UIAccess.cmd
 echo.
-echo This script will set the UIAccess status of Accessibilty Insights for Windows.
+echo This script will set the UIAccess status of Accessibility Insights for Windows.
 echo UIAccess support is disabled by default. This script must be run from an
 echo administrative command prompt.
 echo.
@@ -39,11 +39,11 @@ type UIAccess_%1d.manifest > AccessibilityInsights.exe.manifest && echo. || echo
 if errorlevel 1 goto UpdateFailed
 
 :UpdateSucceeded
-echo Update complete. Changes will take effect when Accessibilty Insights for
+echo Update complete. Changes will take effect when Accessibility Insights for
 echo Windows is next started.
 goto :eof
 
 :UpdateFailed
 echo Unable to complete the update. Please ensure that you are running this script
 echo with administrative privileges, and that you are running it from the same
-echo folder where Accessibilty Insights for Windows has been installed.
+echo folder where Accessibility Insights for Windows has been installed.

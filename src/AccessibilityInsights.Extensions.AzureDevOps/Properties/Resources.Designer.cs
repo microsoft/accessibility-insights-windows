@@ -63,9 +63,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         /// <summary>
         ///   Looks up a localized string similar to URL format is not valid. Example URL: https://dev.azure.com/fabrikam.
         /// </summary>
-        public static string ADO_URL_Fromat_Message {
+        public static string ADO_URL_Format_Message {
             get {
-                return ResourceManager.GetString("ADO_URL_Fromat_Message", resourceCulture);
+                return ResourceManager.GetString("ADO_URL_Format_Message", resourceCulture);
             }
         }
         

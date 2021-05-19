@@ -71,7 +71,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// reference to current theme resource
         /// </summary>
-        private ResourceDictionary themeResourceDictionaty;
+        private ResourceDictionary themeResourceDictionary;
 
         /// <summary>
         /// reference to current font resource
@@ -83,9 +83,9 @@ namespace AccessibilityInsights
         /// </summary>
         public void SetColorTheme(Theme theme)
         {
-            Resources.MergedDictionaries.Remove(this.themeResourceDictionaty);
-            this.themeResourceDictionaty = new ResourceDictionary() { Source = Brushes[theme] };
-            Resources.MergedDictionaries.Add(this.themeResourceDictionaty);
+            Resources.MergedDictionaries.Remove(this.themeResourceDictionary);
+            this.themeResourceDictionary = new ResourceDictionary() { Source = Brushes[theme] };
+            Resources.MergedDictionaries.Add(this.themeResourceDictionary);
             HollowHighlightDriver.ClearAllHighlighters();
 
             // give the window a border if in high contrast mode
