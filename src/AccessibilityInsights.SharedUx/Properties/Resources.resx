@@ -1544,7 +1544,7 @@ Do you want to change the channel? </value>
     <value>Con_tent</value>
   </data>
   <data name="HierarchyControl_Raw" xml:space="preserve">
-    <value>_RawForReals</value>
+    <value>_Raw</value>
   </data>
   <data name="ScannerResultControl_Issue" xml:space="preserve">
     <value>Issue</value>

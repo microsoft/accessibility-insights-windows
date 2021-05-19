@@ -407,7 +407,7 @@ namespace AccessibilityInsights.Modes
 
                 sb.AppendLine();
 
-                sb.AppendLine(Properties.Resources.SnapshotModeControl_AvailablePatterns + ":");
+                sb.AppendLine(Properties.Resources.SnapshotModeControl_AvailablePatterns);
                 // patterns
                 foreach (var pt in se.Patterns)
                 {

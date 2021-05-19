@@ -1906,7 +1906,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _RawForReals.
+        ///   Looks up a localized string similar to _Raw.
         /// </summary>
         public static string HierarchyControl_Raw {
             get {

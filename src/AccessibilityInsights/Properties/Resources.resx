@@ -541,7 +541,7 @@ Please ensure that you are opening a valid test file using the most recent relea
     <value>.</value>
   </data>
   <data name="SnapshotModeControl_AvailablePatterns" xml:space="preserve">
-    <value>Available patterns</value>
+    <value>Available patterns:</value>
   </data>
   <data name="SnapshotModeControl_AvailableProperties" xml:space="preserve">
     <value>Available properties</value>

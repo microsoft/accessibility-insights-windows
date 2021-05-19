@@ -979,7 +979,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Available patterns.
+        ///   Looks up a localized string similar to Available patterns:.
         /// </summary>
         public static string SnapshotModeControl_AvailablePatterns {
             get {
