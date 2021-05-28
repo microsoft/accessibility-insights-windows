@@ -521,15 +521,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next.
-        /// </summary>
-        public static string btnNextAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnNextAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string btnOkContent {

@@ -135,7 +135,6 @@
   <data name="lbDelayContent" xml:space="preserve">
     <value>Delay in sec</value>
   </data>
-  
   <data name="tbResultAutomationPropertiesName" xml:space="preserve">
     <value>Execution result</value>
   </data>
@@ -342,9 +341,6 @@
   </data>
   <data name="lblIssueFiling" xml:space="preserve">
     <value>Issue Filing</value>
-  </data>
-  <data name="btnNextAutomationPropertiesName" xml:space="preserve">
-    <value>Next</value>
   </data>
   <data name="RunTextFastPass" xml:space="preserve">
     <value>Quickly find accessibility issues with FastPass:</value>
