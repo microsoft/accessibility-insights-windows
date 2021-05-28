@@ -491,9 +491,6 @@
   <data name="tbFastPassInfoText" xml:space="preserve">
     <value>FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes.</value>
   </data>
-  <data name="FastPassLink" xml:space="preserve">
-    <value>Learn more about FastPass.</value>
-  </data>
   <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
     <value>{0} in less than {1}</value>
   </data>
@@ -1502,9 +1499,6 @@ Do you want to change the channel? </value>
   </data>
   <data name="ApplicationSettingsControl_milliseconds" xml:space="preserve">
     <value>milliseconds</value>
-  </data>
-  <data name="DisplayCount" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="HierarchyControl_Control" xml:space="preserve">
     <value>_Control</value>

@@ -1580,15 +1580,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about FastPass..
-        /// </summary>
-        public static string FastPassLink {
-            get {
-                return ResourceManager.GetString("FastPassLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Learn more about bug filing..
         /// </summary>
         public static string FileBugLink {
