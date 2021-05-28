@@ -3181,15 +3181,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Identify accessibility issues caused by low color contrast..
-        /// </summary>
-        public static string RunTextManualColorTest {
-            get {
-                return ResourceManager.GetString("RunTextManualColorTest", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to You can change this choice anytime under Settings..
         /// </summary>
         public static string RunTextPrivacyStatement {
