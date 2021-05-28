@@ -342,9 +342,6 @@
   <data name="lblIssueFiling" xml:space="preserve">
     <value>Issue Filing</value>
   </data>
-  <data name="RunTextFastPass" xml:space="preserve">
-    <value>Quickly find accessibility issues with FastPass:</value>
-  </data>
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
