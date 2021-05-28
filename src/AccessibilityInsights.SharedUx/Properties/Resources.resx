@@ -749,9 +749,6 @@
   <data name="StartupModeControl_moreGuidanceText" xml:space="preserve">
     <value>More guidance and tutorials</value>
   </data>
-  <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
-    <value>go to the latest release notes</value>
-  </data>
   <data name="StartUpModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Welcome page</value>
   </data>

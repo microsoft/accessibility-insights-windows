@@ -3507,15 +3507,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to go to the latest release notes.
-        /// </summary>
-        public static string StartupModeControl_latestReleaseNotes {
-            get {
-                return ResourceManager.GetString("StartupModeControl_latestReleaseNotes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to More guidance and tutorials.
         /// </summary>
         public static string StartupModeControl_moreGuidanceText {
