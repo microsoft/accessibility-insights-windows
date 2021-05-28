@@ -749,9 +749,6 @@
   <data name="lbNoPatternContent" xml:space="preserve">
     <value>No available pattern...</value>
   </data>
-  <data name="ProgressRingControlAutomationPropertiesName" xml:space="preserve">
-    <value>Progress Loading Ring</value>
-  </data>
   <data name="PropertyInfoControlAutomationPropertiesName" xml:space="preserve">
     <value>Selected Element Properties</value>
   </data>

@@ -3079,15 +3079,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Progress Loading Ring.
-        /// </summary>
-        public static string ProgressRingControlAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ProgressRingControlAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string propertiesLabelContent {
