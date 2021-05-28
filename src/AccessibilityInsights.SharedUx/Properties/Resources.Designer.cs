@@ -3152,15 +3152,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File bugs:.
-        /// </summary>
-        public static string RunTextFileBugs {
-            get {
-                return ResourceManager.GetString("RunTextFileBugs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to By opting into telemetry, you.
         /// </summary>
         public static string RunTextHelpCommunity1 {

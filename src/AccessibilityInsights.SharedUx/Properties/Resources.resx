@@ -491,9 +491,6 @@
   <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
     <value>{0} in less than {1}</value>
   </data>
-  <data name="RunTextFileBugs" xml:space="preserve">
-    <value>File bugs:</value>
-  </data>
   <data name="RunTextLogBugsIn" xml:space="preserve">
     <value>Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file.</value>
   </data>
