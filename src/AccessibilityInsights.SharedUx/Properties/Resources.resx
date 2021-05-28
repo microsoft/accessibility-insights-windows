@@ -1008,9 +1008,6 @@
   <data name="MoveTextRangeDialog_btnAction_Click_Return_0" xml:space="preserve">
     <value>Return: {0}</value>
   </data>
-  <data name="btnRefreshAutomationPropertiesName" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
   <data name="PropertyConfigDialogWindowTitle" xml:space="preserve">
     <value>Properties Configuration</value>
   </data>

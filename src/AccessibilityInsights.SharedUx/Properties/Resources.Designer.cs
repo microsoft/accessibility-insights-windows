@@ -521,15 +521,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        public static string btnRefreshAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnRefreshAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Update range.
         /// </summary>
         public static string btnRefreshAutomationPropertiesNameUpdateRange {
