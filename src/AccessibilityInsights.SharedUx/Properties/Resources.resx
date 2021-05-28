@@ -479,9 +479,6 @@
   <data name="tbTitleText" xml:space="preserve">
     <value>What's new</value>
   </data>
-  <data name="tbFastPassInfoText" xml:space="preserve">
-    <value>FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes.</value>
-  </data>
   <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
     <value>{0} in less than {1}</value>
   </data>

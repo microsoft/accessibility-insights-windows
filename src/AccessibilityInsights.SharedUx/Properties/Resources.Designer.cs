@@ -3693,15 +3693,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes..
-        /// </summary>
-        public static string tbFastPassInfoText {
-            get {
-                return ResourceManager.GetString("tbFastPassInfoText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select the events to listen to in the Configuration tab, and select Record.
         /// </summary>
         public static string tbIntroTextSelectEventRecord {
