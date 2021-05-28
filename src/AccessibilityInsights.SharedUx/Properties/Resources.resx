@@ -1002,9 +1002,6 @@
   <data name="MessageDialogWindowTitle" xml:space="preserve">
     <value>Microsoft Accessibility Insights</value>
   </data>
-  <data name="btnCloseAutomationPropertiesName1" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="MoveTextRangeDialogWindowTitle" xml:space="preserve">
     <value>Move/Compare TextRange...</value>
   </data>

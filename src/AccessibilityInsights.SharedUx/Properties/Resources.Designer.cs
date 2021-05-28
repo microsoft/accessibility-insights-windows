@@ -332,15 +332,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OK.
-        /// </summary>
-        public static string btnCloseAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnCloseAutomationPropertiesName1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Close.
         /// </summary>
         public static string btnCloseContent {
