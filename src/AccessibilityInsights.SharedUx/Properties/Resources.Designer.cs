@@ -2512,15 +2512,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to page.
-        /// </summary>
-        public static string LocalizedControlType_Page {
-            get {
-                return ResourceManager.GetString("LocalizedControlType_Page", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
         /// </summary>
         public static string LostExceptionTelemetry {

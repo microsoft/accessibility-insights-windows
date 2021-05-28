@@ -818,9 +818,6 @@
   <data name="tbVideoText2" xml:space="preserve">
     <value>Learn about Accessibility Insights for Windows with this 4-minute introductory video.</value>
   </data>
-  <data name="LocalizedControlType_Page" xml:space="preserve">
-    <value>page</value>
-  </data>
   <data name="btnVideo_ClickException" xml:space="preserve">
     <value>Failed to start the video. please use this URL to open page.
  {0}</value>
