@@ -3079,16 +3079,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp.
-        /// </summary>
-        public static string ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp {
-            get {
-                return ResourceManager.GetString("ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_Cu" +
-                        "rrentVersion_AccessibilityTemp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Progress Loading Ring.
         /// </summary>
         public static string ProgressRingControlAutomationPropertiesName {
