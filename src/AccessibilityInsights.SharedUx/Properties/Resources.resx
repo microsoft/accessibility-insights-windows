@@ -500,9 +500,6 @@
   <data name="RunTextLogBugsIn" xml:space="preserve">
     <value>Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file.</value>
   </data>
-  <data name="RunTextColorContrast" xml:space="preserve">
-    <value>Check color contrast:</value>
-  </data>
   <data name="RunTextManualColorTest" xml:space="preserve">
     <value>Identify accessibility issues caused by low color contrast.</value>
   </data>

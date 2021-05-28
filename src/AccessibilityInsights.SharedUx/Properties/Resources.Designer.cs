@@ -3152,15 +3152,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check color contrast:.
-        /// </summary>
-        public static string RunTextColorContrast {
-            get {
-                return ResourceManager.GetString("RunTextColorContrast", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Quickly find accessibility issues with FastPass:.
         /// </summary>
         public static string RunTextFastPass {
