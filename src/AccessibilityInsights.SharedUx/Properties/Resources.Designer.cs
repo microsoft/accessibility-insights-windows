@@ -3181,15 +3181,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file..
-        /// </summary>
-        public static string RunTextLogBugsIn {
-            get {
-                return ResourceManager.GetString("RunTextLogBugsIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Identify accessibility issues caused by low color contrast..
         /// </summary>
         public static string RunTextManualColorTest {
