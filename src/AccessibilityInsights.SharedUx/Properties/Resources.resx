@@ -512,9 +512,6 @@
   <data name="RunTextManualColorTest" xml:space="preserve">
     <value>Identify accessibility issues caused by low color contrast.</value>
   </data>
-  <data name="CCALink" xml:space="preserve">
-    <value>Learn more about checking color contrast.</value>
-  </data>
   <data name="ColorChooserAutomationPropertiesName" xml:space="preserve">
     <value>Color chooser</value>
   </data>

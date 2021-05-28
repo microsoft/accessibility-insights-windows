@@ -747,15 +747,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about checking color contrast..
-        /// </summary>
-        public static string CCALink {
-            get {
-                return ResourceManager.GetString("CCALink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Do not change channel.
         /// </summary>
         public static string ChangeChannelContainedDialog_BtnExit {
