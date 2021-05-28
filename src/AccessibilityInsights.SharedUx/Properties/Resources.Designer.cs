@@ -2062,15 +2062,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading....
-        /// </summary>
-        public static string LabelContentLoading {
-            get {
-                return ResourceManager.GetString("LabelContentLoading", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Other options.
         /// </summary>
         public static string LabelContentOtherOptions {
