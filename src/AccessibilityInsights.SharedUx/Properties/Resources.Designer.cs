@@ -1580,15 +1580,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about bug filing..
-        /// </summary>
-        public static string FileBugLink {
-            get {
-                return ResourceManager.GetString("FileBugLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to first color.
         /// </summary>
         public static string firstChooserAutomationPropertiesName {
