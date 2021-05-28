@@ -479,9 +479,6 @@
   <data name="tbTitleText" xml:space="preserve">
     <value>What's new</value>
   </data>
-  <data name="RunTextInspectLiveUIATree" xml:space="preserve">
-    <value>Inspect the live UI Automation tree using Inspect mode.</value>
-  </data>
   <data name="RunTextInspectMode" xml:space="preserve">
     <value>Verify an element has the expected UI Automation properties:</value>
   </data>

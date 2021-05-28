@@ -3181,15 +3181,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect the live UI Automation tree using Inspect mode..
-        /// </summary>
-        public static string RunTextInspectLiveUIATree {
-            get {
-                return ResourceManager.GetString("RunTextInspectLiveUIATree", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Verify an element has the expected UI Automation properties:.
         /// </summary>
         public static string RunTextInspectMode {
