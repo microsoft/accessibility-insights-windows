@@ -1389,15 +1389,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
-        /// </summary>
-        public static string DisplayCount {
-            get {
-                return ResourceManager.GetString("DisplayCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Display Delay count.
         /// </summary>
         public static string DisplayCountControlAutomationName {
