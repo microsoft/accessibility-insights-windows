@@ -3181,15 +3181,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Verify an element has the expected UI Automation properties:.
-        /// </summary>
-        public static string RunTextInspectMode {
-            get {
-                return ResourceManager.GetString("RunTextInspectMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file..
         /// </summary>
         public static string RunTextLogBugsIn {
