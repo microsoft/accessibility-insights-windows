@@ -996,9 +996,6 @@
   <data name="TextBlockTextPressEscabeToCancel" xml:space="preserve">
     <value>Press Escape to cancel.</value>
   </data>
-  <data name="MessageDialogWindowTitle" xml:space="preserve">
-    <value>Microsoft Accessibility Insights</value>
-  </data>
   <data name="MoveTextRangeDialogWindowTitle" xml:space="preserve">
     <value>Move/Compare TextRange...</value>
   </data>

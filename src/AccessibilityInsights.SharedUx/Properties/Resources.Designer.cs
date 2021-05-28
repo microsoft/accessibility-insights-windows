@@ -2836,15 +2836,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Accessibility Insights.
-        /// </summary>
-        public static string MessageDialogWindowTitle {
-            get {
-                return ResourceManager.GetString("MessageDialogWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bring Accessibility Insights for Windows to the foreground or minimize it..
         /// </summary>
         public static string minmizeOrActivateWindowText {
