@@ -3756,15 +3756,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to What&apos;s new.
-        /// </summary>
-        public static string tbTitleText {
-            get {
-                return ResourceManager.GetString("tbTitleText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Get started.
         /// </summary>
         public static string tbVideoText1 {

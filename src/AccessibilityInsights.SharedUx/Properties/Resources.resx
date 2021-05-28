@@ -476,9 +476,6 @@
   <data name="TabStopControl_StartRecordingEvent_NoSelection" xml:space="preserve">
     <value>No element is selected yet. please select first!!</value>
   </data>
-  <data name="tbTitleText" xml:space="preserve">
-    <value>What's new</value>
-  </data>
   <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
     <value>{0} in less than {1}</value>
   </data>
