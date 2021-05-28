@@ -1963,15 +1963,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about Inspect..
-        /// </summary>
-        public static string InspectModeLink {
-            get {
-                return ResourceManager.GetString("InspectModeLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid link {0}.
         /// </summary>
         public static string InvalidLink {
