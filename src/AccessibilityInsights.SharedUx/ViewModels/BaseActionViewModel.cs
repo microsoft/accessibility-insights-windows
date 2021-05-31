@@ -141,13 +141,13 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <returns></returns>
         internal static BaseActionViewModel GetActionViewModel(A11yPattern p, MethodInfo m)
         {
-            if (m.ReturnType == typeof(DesktopElement) || m.ReturnType == typeof(List<DesktopElement>))
+            if (m.ReturnType == typeof(DesktopElement) || m.ReturnType == typeof(IList<DesktopElement>))
             {
                 return new ReturnA11yElementsViewModel(p, m);
             }
             else if(m.ReturnType.Name != "IAccessible")
             {
-                if (m.ReturnType != typeof(TextRange) && m.ReturnType != typeof(List<TextRange>))
+                if (m.ReturnType != typeof(TextRange) && m.ReturnType != typeof(IList<TextRange>))
                 {
                     return new GeneralActionViewModel(p, m);
                 }
