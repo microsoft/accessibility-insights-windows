@@ -332,15 +332,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to OK.
-        /// </summary>
-        public static string btnCloseAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnCloseAutomationPropertiesName1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Close.
         /// </summary>
         public static string btnCloseContent {
@@ -521,29 +512,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Next.
-        /// </summary>
-        public static string btnNextAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnNextAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string btnOkContent {
             get {
                 return ResourceManager.GetString("btnOkContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Refresh.
-        /// </summary>
-        public static string btnRefreshAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("btnRefreshAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -770,15 +743,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string cbRangesAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("cbRangesAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Learn more about checking color contrast..
-        /// </summary>
-        public static string CCALink {
-            get {
-                return ResourceManager.GetString("CCALink", resourceCulture);
             }
         }
         
@@ -1425,15 +1389,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
-        /// </summary>
-        public static string DisplayCount {
-            get {
-                return ResourceManager.GetString("DisplayCount", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Display Delay count.
         /// </summary>
         public static string DisplayCountControlAutomationName {
@@ -1621,24 +1576,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string FailedEmphasizedText {
             get {
                 return ResourceManager.GetString("FailedEmphasizedText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Learn more about FastPass..
-        /// </summary>
-        public static string FastPassLink {
-            get {
-                return ResourceManager.GetString("FastPassLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Learn more about bug filing..
-        /// </summary>
-        public static string FileBugLink {
-            get {
-                return ResourceManager.GetString("FileBugLink", resourceCulture);
             }
         }
         
@@ -2026,15 +1963,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Learn more about Inspect..
-        /// </summary>
-        public static string InspectModeLink {
-            get {
-                return ResourceManager.GetString("InspectModeLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Invalid link {0}.
         /// </summary>
         public static string InvalidLink {
@@ -2076,15 +2004,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string LabelContentEventDetails {
             get {
                 return ResourceManager.GetString("LabelContentEventDetails", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Loading....
-        /// </summary>
-        public static string LabelContentLoading {
-            get {
-                return ResourceManager.GetString("LabelContentLoading", resourceCulture);
             }
         }
         
@@ -2539,15 +2458,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to page.
-        /// </summary>
-        public static string LocalizedControlType_Page {
-            get {
-                return ResourceManager.GetString("LocalizedControlType_Page", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Telemetry was lost! Exceptions were flushed from ReportExceptionBuffer, but the telemetry sink was not open..
         /// </summary>
         public static string LostExceptionTelemetry {
@@ -2863,15 +2773,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Microsoft Accessibility Insights.
-        /// </summary>
-        public static string MessageDialogWindowTitle {
-            get {
-                return ResourceManager.GetString("MessageDialogWindowTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bring Accessibility Insights for Windows to the foreground or minimize it..
         /// </summary>
         public static string minmizeOrActivateWindowText {
@@ -3115,25 +3016,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp.
-        /// </summary>
-        public static string ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp {
-            get {
-                return ResourceManager.GetString("ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_Cu" +
-                        "rrentVersion_AccessibilityTemp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Progress Loading Ring.
-        /// </summary>
-        public static string ProgressRingControlAutomationPropertiesName {
-            get {
-                return ResourceManager.GetString("ProgressRingControlAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string propertiesLabelContent {
@@ -3270,33 +3152,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Check color contrast:.
-        /// </summary>
-        public static string RunTextColorContrast {
-            get {
-                return ResourceManager.GetString("RunTextColorContrast", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quickly find accessibility issues with FastPass:.
-        /// </summary>
-        public static string RunTextFastPass {
-            get {
-                return ResourceManager.GetString("RunTextFastPass", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to File bugs:.
-        /// </summary>
-        public static string RunTextFileBugs {
-            get {
-                return ResourceManager.GetString("RunTextFileBugs", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to By opting into telemetry, you.
         /// </summary>
         public static string RunTextHelpCommunity1 {
@@ -3322,42 +3177,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string RunTextHelpCommunity3 {
             get {
                 return ResourceManager.GetString("RunTextHelpCommunity3", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inspect the live UI Automation tree using Inspect mode..
-        /// </summary>
-        public static string RunTextInspectLiveUIATree {
-            get {
-                return ResourceManager.GetString("RunTextInspectLiveUIATree", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Verify an element has the expected UI Automation properties:.
-        /// </summary>
-        public static string RunTextInspectMode {
-            get {
-                return ResourceManager.GetString("RunTextInspectMode", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file..
-        /// </summary>
-        public static string RunTextLogBugsIn {
-            get {
-                return ResourceManager.GetString("RunTextLogBugsIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Identify accessibility issues caused by low color contrast..
-        /// </summary>
-        public static string RunTextManualColorTest {
-            get {
-                return ResourceManager.GetString("RunTextManualColorTest", resourceCulture);
             }
         }
         
@@ -3688,15 +3507,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to go to the latest release notes.
-        /// </summary>
-        public static string StartupModeControl_latestReleaseNotes {
-            get {
-                return ResourceManager.GetString("StartupModeControl_latestReleaseNotes", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to More guidance and tutorials.
         /// </summary>
         public static string StartupModeControl_moreGuidanceText {
@@ -3883,15 +3693,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes..
-        /// </summary>
-        public static string tbFastPassInfoText {
-            get {
-                return ResourceManager.GetString("tbFastPassInfoText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select the events to listen to in the Configuration tab, and select Record.
         /// </summary>
         public static string tbIntroTextSelectEventRecord {
@@ -3951,15 +3752,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string tbTimeSpanAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tbTimeSpanAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to What&apos;s new.
-        /// </summary>
-        public static string tbTitleText {
-            get {
-                return ResourceManager.GetString("tbTitleText", resourceCulture);
             }
         }
         

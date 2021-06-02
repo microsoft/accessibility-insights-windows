@@ -135,7 +135,6 @@
   <data name="lbDelayContent" xml:space="preserve">
     <value>Delay in sec</value>
   </data>
-  
   <data name="tbResultAutomationPropertiesName" xml:space="preserve">
     <value>Execution result</value>
   </data>
@@ -343,12 +342,6 @@
   <data name="lblIssueFiling" xml:space="preserve">
     <value>Issue Filing</value>
   </data>
-  <data name="btnNextAutomationPropertiesName" xml:space="preserve">
-    <value>Next</value>
-  </data>
-  <data name="RunTextFastPass" xml:space="preserve">
-    <value>Quickly find accessibility issues with FastPass:</value>
-  </data>
   <data name="RunTextTabStops" xml:space="preserve">
     <value>Tab Stops</value>
   </data>
@@ -483,41 +476,8 @@
   <data name="TabStopControl_StartRecordingEvent_NoSelection" xml:space="preserve">
     <value>No element is selected yet. please select first!!</value>
   </data>
-  <data name="tbTitleText" xml:space="preserve">
-    <value>What's new</value>
-  </data>
-  <data name="RunTextInspectLiveUIATree" xml:space="preserve">
-    <value>Inspect the live UI Automation tree using Inspect mode.</value>
-  </data>
-  <data name="RunTextInspectMode" xml:space="preserve">
-    <value>Verify an element has the expected UI Automation properties:</value>
-  </data>
-  <data name="tbFastPassInfoText" xml:space="preserve">
-    <value>FastPass is a lightweight, two-step process that helps developers identify common, high-impact accessibility issues in less than 5 minutes.</value>
-  </data>
-  <data name="FastPassLink" xml:space="preserve">
-    <value>Learn more about FastPass.</value>
-  </data>
   <data name="MultiBindingStringFormattbFastPass" xml:space="preserve">
     <value>{0} in less than {1}</value>
-  </data>
-  <data name="RunTextFileBugs" xml:space="preserve">
-    <value>File bugs:</value>
-  </data>
-  <data name="RunTextLogBugsIn" xml:space="preserve">
-    <value>Can’t fix a bug right now? Log the bug in Azure Boards, complete with a snapshot file.</value>
-  </data>
-  <data name="FileBugLink" xml:space="preserve">
-    <value>Learn more about bug filing.</value>
-  </data>
-  <data name="RunTextColorContrast" xml:space="preserve">
-    <value>Check color contrast:</value>
-  </data>
-  <data name="RunTextManualColorTest" xml:space="preserve">
-    <value>Identify accessibility issues caused by low color contrast.</value>
-  </data>
-  <data name="CCALink" xml:space="preserve">
-    <value>Learn more about checking color contrast.</value>
   </data>
   <data name="ColorChooserAutomationPropertiesName" xml:space="preserve">
     <value>Color chooser</value>
@@ -753,15 +713,6 @@
   <data name="lbNoPatternContent" xml:space="preserve">
     <value>No available pattern...</value>
   </data>
-  <data name="ProgressRingControlAutomationPropertiesName" xml:space="preserve">
-    <value>Progress Loading Ring</value>
-  </data>
-  <data name="LabelContentLoading" xml:space="preserve">
-    <value>Loading...</value>
-  </data>
-  <data name="ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp" xml:space="preserve">
-    <value>Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp</value>
-  </data>
   <data name="PropertyInfoControlAutomationPropertiesName" xml:space="preserve">
     <value>Selected Element Properties</value>
   </data>
@@ -791,9 +742,6 @@
   </data>
   <data name="StartupModeControl_moreGuidanceText" xml:space="preserve">
     <value>More guidance and tutorials</value>
-  </data>
-  <data name="StartupModeControl_latestReleaseNotes" xml:space="preserve">
-    <value>go to the latest release notes</value>
   </data>
   <data name="StartUpModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Welcome page</value>
@@ -830,9 +778,6 @@
   </data>
   <data name="tbVideoText2" xml:space="preserve">
     <value>Learn about Accessibility Insights for Windows with this 4-minute introductory video.</value>
-  </data>
-  <data name="LocalizedControlType_Page" xml:space="preserve">
-    <value>page</value>
   </data>
   <data name="btnVideo_ClickException" xml:space="preserve">
     <value>Failed to start the video. please use this URL to open page.
@@ -1003,12 +948,6 @@
   <data name="TextBlockTextPressEscabeToCancel" xml:space="preserve">
     <value>Press Escape to cancel.</value>
   </data>
-  <data name="MessageDialogWindowTitle" xml:space="preserve">
-    <value>Microsoft Accessibility Insights</value>
-  </data>
-  <data name="btnCloseAutomationPropertiesName1" xml:space="preserve">
-    <value>OK</value>
-  </data>
   <data name="MoveTextRangeDialogWindowTitle" xml:space="preserve">
     <value>Move/Compare TextRange...</value>
   </data>
@@ -1029,9 +968,6 @@
   </data>
   <data name="MoveTextRangeDialog_btnAction_Click_Return_0" xml:space="preserve">
     <value>Return: {0}</value>
-  </data>
-  <data name="btnRefreshAutomationPropertiesName" xml:space="preserve">
-    <value>Refresh</value>
   </data>
   <data name="PropertyConfigDialogWindowTitle" xml:space="preserve">
     <value>Properties Configuration</value>
@@ -1371,9 +1307,6 @@ We collect anonymized data to identify the top accessibility issues found by use
   <data name="lblAutoDetectContent" xml:space="preserve">
     <value>Auto detect contrast ratio</value>
   </data>
-  <data name="InspectModeLink" xml:space="preserve">
-    <value>Learn more about Inspect.</value>
-  </data>
   <data name="ColorContrast_AutoDetectGuidance" xml:space="preserve">
     <value>Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
   </data>
@@ -1530,9 +1463,6 @@ Do you want to change the channel? </value>
   </data>
   <data name="ApplicationSettingsControl_milliseconds" xml:space="preserve">
     <value>milliseconds</value>
-  </data>
-  <data name="DisplayCount" xml:space="preserve">
-    <value>5</value>
   </data>
   <data name="HierarchyControl_Control" xml:space="preserve">
     <value>_Control</value>
