@@ -34,7 +34,7 @@ namespace AccessibilityInsights
             this.timerSelector = new Timer(InternalTimerSelector);
             this.timerSelector.Elapsed += new ElapsedEventHandler(this.OntimerSelectorElapsedEvent);
             this.timerSelector.Enabled = true;
-            this.timerSelector.AutoReset = false;// disable autoreset to do reset in timer handerl
+            this.timerSelector.AutoReset = false;// disable autoreset to do reset in timer handler
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace AccessibilityInsights
             this.timerAutoSnap = new Timer(IntervalTimerAutoSnap);
             this.timerAutoSnap.Elapsed += new ElapsedEventHandler(this.OntimerAutoSnapElapsedEvent);
             this.timerAutoSnap.Enabled = false;
-            this.timerAutoSnap.AutoReset = false;// disable autoreset to do reset in timer handerl
+            this.timerAutoSnap.AutoReset = false;// disable autoreset to do reset in timer handler
         }
 
         /// <summary>
