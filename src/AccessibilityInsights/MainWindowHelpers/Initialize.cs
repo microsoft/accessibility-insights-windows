@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions;
@@ -14,6 +15,7 @@ using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using System;
 using System.Globalization;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
@@ -100,6 +102,21 @@ namespace AccessibilityInsights
             this.WindowState = layout.WinState;
         }
 
+        /// <summary>Load and register for custom UI Automation properties if a configuration file exists.</summary>
+        private static void InitCustomUIA(string ConfigurationFolderPath)
+        {
+            const string ConfigurationFileName = "CustomUIA.json";
+            string path = Path.Combine(ConfigurationFolderPath, ConfigurationFileName);
+            if (File.Exists(path))
+            {
+                Axe.Windows.Core.CustomObjects.Config config = CustomUIAAction.ReadConfigFromFile(path);
+                if (config?.Properties != null)
+                {
+                    CustomUIAAction.RegisterCustomProperties(config.Properties);
+                }
+            }
+        }
+
         /// <summary>
         /// Populate all configurations
         /// </summary>
@@ -116,6 +133,8 @@ namespace AccessibilityInsights
 
             // Populate the App Config and Test Config
             ConfigurationManager.GetDefaultInstance(configPathProvider);
+
+            InitCustomUIA(configPathProvider.ConfigurationFolderPath);
 
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up.
