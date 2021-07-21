@@ -14,7 +14,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 #### New Features
 
-- Add support for inspecting and saving [Custom UIAutomation properties](https://docs.microsoft.com/en-us/windows/win32/winauto/uiauto-propertiesoverview). Details on how to configure this feature can be found [here](https://accessibilityinsights.io/docs/en/windows/reference/faq/)
+- Add support for inspecting and saving [Custom UIAutomation properties](https://docs.microsoft.com/en-us/windows/win32/winauto/uiauto-propertiesoverview). Details on how to configure this feature can be found [here](https://accessibilityinsights.io/docs/en/windows/reference/faq/#does-accessibility-insights-for-windows-support-custom-ui-automation-properties)
 
 #### Rule Updates
 
