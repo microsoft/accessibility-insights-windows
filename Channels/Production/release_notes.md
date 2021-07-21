@@ -24,5 +24,5 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 #### Bug Fixes
 
 - Use "milliseconds" instead of "ms" when describing the focus tracking delay [#1121](https://github.com/microsoft/accessibility-insights-windows/issues/1121)
-- Fix a bug where tracking in some comboboxes was incorrect [#1123](https://github.com/microsoft/accessibility-insights-windows/pull/1123)
+- Fix a bug where tooltip tracking in some comboboxes was incorrect [#1123](https://github.com/microsoft/accessibility-insights-windows/pull/1123)
 - Fix a color contrast issue in the properties search bar [#1149](https://github.com/microsoft/accessibility-insights-windows/pull/1149)
