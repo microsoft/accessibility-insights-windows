@@ -113,6 +113,7 @@ namespace AccessibilityInsights
                 if (config?.Properties != null)
                 {
                     CustomUIAAction.RegisterCustomProperties(config.Properties);
+                    Logger.PublishTelemetryEvent(TelemetryEventFactory.ForCustomUIAPropertyCount(config.Properties.Length));
                 }
             }
         }

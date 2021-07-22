@@ -50,6 +50,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ColorContrast_Click_HexChange,
 
         ReleaseChannel_ChangeConsidered,
+
+        Custom_UIA,
 #pragma warning restore CA1707 // Identifiers should not contain underscores
     }
 }
