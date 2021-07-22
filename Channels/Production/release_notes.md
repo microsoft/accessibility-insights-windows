@@ -1,8 +1,8 @@
-## July 21 2021 Production Release ([v1.1.1662.02](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1662.02))
+## July 22 2021 Production Release ([v1.1.1663.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1663.01))
 
-Welcome to the July 21 2021 Production release of Accessibility Insights for Windows.
+Welcome to the July 22 2021 Production release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1662.02/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1663.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
