@@ -2,6 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using System;
+using System.ComponentModel;
+using System.Threading;
 using System.Windows;
 
 namespace AccessibilityInsights.VersionSwitcher
@@ -13,6 +15,7 @@ namespace AccessibilityInsights.VersionSwitcher
     {
         private readonly static IExceptionReporter ExceptionReporter = new ExceptionReporter();
         const string ProductName = "Accessibility Insights For Windows v1.1";
+        bool _allowClosing;
 
         /// <summary>
         /// The entry point for our code
@@ -20,7 +23,16 @@ namespace AccessibilityInsights.VersionSwitcher
         public MainWindow()
         {
             InitializeComponent();
-            Hide();
+            Show();
+
+            // Don't block the UI thread or else our progress bar won't update
+            Thread t = new Thread(new ThreadStart(SwitchVersionAndInvokeCloseApplication));
+            t.Start();
+        }
+
+        private void SwitchVersionAndInvokeCloseApplication()
+        {
+            string errorMessage = null;
 
             try
             {
@@ -32,10 +44,20 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 EventLogger.WriteErrorMessage(e.ToString());
                 ExceptionReporter.ReportException(e);
-                MessageBox.Show(e.Message, Properties.Resources.InstallError);
+                errorMessage = e.Message;
             }
 #pragma warning restore CA1031 // Do not catch general exception types
 
+            Dispatcher.Invoke(() => CloseAppliction(errorMessage));
+        }
+
+        private void CloseAppliction(string errorMessage)
+        {
+            if (errorMessage != null)
+            {
+                MessageBox.Show(errorMessage, Properties.Resources.InstallError);
+            }
+            _allowClosing = true;
             Close();
         }
 
@@ -49,6 +71,15 @@ namespace AccessibilityInsights.VersionSwitcher
             {
                 ExceptionReporter.ReportException(e);
                 return null;
+            }
+        }
+
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            if (e != null)
+            {
+                base.OnClosing(e);
+                e.Cancel = !_allowClosing;
             }
         }
     }
