@@ -1,27 +1,28 @@
-## April 12, 2021 Production Release ([v1.1.1562.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1562.01))
+## July 22 2021 Production Release ([v1.1.1663.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1663.01))
 
-Welcome to the April 12, 2021 Production release of Accessibility Insights for Windows.
+Welcome to the July 22 2021 Production release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1562.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1663.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 ### Highlights
 
+- [New Features](#new-features)
 - [Rule Updates](#rule-updates)
 - [Bug Fixes](#bug-fixes)
 
+#### New Features
+
+- Added support for inspecting and saving [Custom UIAutomation properties](https://docs.microsoft.com/en-us/windows/win32/winauto/uiauto-propertiesoverview). Details on how to configure this feature can be found [in the online documentation](https://accessibilityinsights.io/docs/en/windows/reference/faq/#does-accessibility-insights-for-windows-support-custom-ui-automation-properties).
+
 #### Rule Updates
 
-- Add the `FrameworkDoesNotSupportUIAutomation` rule to report failures on frameworks that are known to not support UI AUtomation [#554](https://github.com/microsoft/axe-windows/issues/554)
-- Remove the `ControlShouldNotSupportTablePattern` rule as it wasn't generally useful [#566](https://github.com/microsoft/axe-windows/issues/566)
-- Remove false positives in the `BoundingRectangleCompletelyObscuresContainer` rule [#540](https://github.com/microsoft/axe-windows/issues/540)
-- Remove false positives in the `NameIsNotNull` rule [#556](https://github.com/microsoft/axe-windows/issues/556)
+- `TextBlock` contents inside `Button` elements are no longer flagged in the NameExcludesPrivateUnicodeCharacters rule for WPF. ([#572](https://github.com/microsoft/axe-windows/issues/572))
+- The implementation of `TogglePattern` on radio button elements is no longer flagged as an error due to the removal of the `ControlShouldNotSupportTogglePattern` rule. ([#590](https://github.com/microsoft/axe-windows/issues/590))
 
 #### Bug Fixes
 
-- Remove user configuration files when uninstalling the application [#1007](https://github.com/microsoft/accessibility-insights-windows/issues/1007)
-- Reduce memory overhead when using the eyedropper control in the Color Contrast Analyzer [#1033](https://github.com/microsoft/accessibility-insights-windows/pull/1033)
-- Improve discoverability of the help link in the TabStops instructions [#1052](https://github.com/microsoft/accessibility-insights-windows/pull/1052)
-- Set the automation names on headers in the properties grid [#1072](https://github.com/microsoft/accessibility-insights-windows/pull/1072)
-- Correct a color contrast issue in the Text Range find text dialog [#1086](https://github.com/microsoft/accessibility-insights-windows/pull/1086)
+- To improve usability, we now use "milliseconds" instead of "ms" when describing the focus tracking delay. ([#1121](https://github.com/microsoft/accessibility-insights-windows/issues/1121))
+- Fixed a bug where tooltip tracking in some combo boxes was incorrect. ([#1123](https://github.com/microsoft/accessibility-insights-windows/pull/1123))
+- Fixed a color contrast issue in the properties search bar. ([#1149](https://github.com/microsoft/accessibility-insights-windows/pull/1149))
