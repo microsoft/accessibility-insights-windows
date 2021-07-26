@@ -103,7 +103,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>Load and register for custom UI Automation properties if a configuration file exists.</summary>
-        private static void InitCustomUIA(string ConfigurationFolderPath)
+        private static void InitCustomUIA(string ConfigurationFolderPath, TelemetryBuffer telemetryBuffer)
         {
             const string ConfigurationFileName = "CustomUIA.json";
             string path = Path.Combine(ConfigurationFolderPath, ConfigurationFileName);
@@ -113,7 +113,7 @@ namespace AccessibilityInsights
                 if (config?.Properties != null)
                 {
                     CustomUIAAction.RegisterCustomProperties(config.Properties);
-                    Logger.PublishTelemetryEvent(TelemetryEventFactory.ForCustomUIAPropertyCount(config.Properties.Length));
+                    telemetryBuffer.AddEventFactory(() => TelemetryEventFactory.ForCustomUIAPropertyCount(config.Properties.Length));
                 }
             }
         }
@@ -121,7 +121,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// Populate all configurations
         /// </summary>
-        private static void PopulateConfigurations()
+        private static void PopulateConfigurations(TelemetryBuffer telemetryBuffer)
         {
             var defaultPaths = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
             var configPathProvider = new FixedConfigSettingsProvider(
@@ -135,7 +135,7 @@ namespace AccessibilityInsights
             // Populate the App Config and Test Config
             ConfigurationManager.GetDefaultInstance(configPathProvider);
 
-            InitCustomUIA(configPathProvider.ConfigurationFolderPath);
+            InitCustomUIA(configPathProvider.ConfigurationFolderPath, telemetryBuffer);
 
             // based on customer feedback, we will set default selection mode to Element
             // when AccessibilityInsights starts up.
