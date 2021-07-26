@@ -150,15 +150,17 @@ namespace AccessibilityInsights
 
         public MainWindow()
         {
+            TelemetryBuffer telemetryBuffer = new TelemetryBuffer();
+
             SystemEvents.UserPreferenceChanging += SystemEvents_UserPreferenceChanging;
 
             SetColorTheme();
 
-            ///in case we need to do any debugging with elevated app
+            // in case we need to do any debugging with elevated app
             SupportDebugging();
 
             // create necessary config folders & their internal config files
-            PopulateConfigurations();
+            PopulateConfigurations(telemetryBuffer);
 
             SetFontSize();
 
@@ -173,7 +175,7 @@ namespace AccessibilityInsights
             this.TreeNavigator = new TreeNavigator(this);
             this.TreeNavigator.SelectionChanged += this.HandleTargetSelectionChanged;
 
-            InitTelemetry();
+            InitTelemetry(telemetryBuffer);
 
             InitPanes();
         }
@@ -181,7 +183,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// Set up some context properties like installation id, app version, session id
         /// </summary>
-        private static void InitTelemetry()
+        private static void InitTelemetry(TelemetryBuffer telemetryBuffer)
         {
             var configFolder = ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath;
             // Initialize user info from file if it exists, reset if needed, and re-serialize
@@ -192,6 +194,7 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.SessionType, "Desktop");
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
             Logger.PublishTelemetryEvent(Misc.TelemetryEventFactory.ForMainWindowStartup());
+            telemetryBuffer.ProcessEventFactories(Logger.PublishTelemetryEvent);
         }
 
         /// <summary>
