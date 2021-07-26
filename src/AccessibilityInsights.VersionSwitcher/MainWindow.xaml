@@ -7,10 +7,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccessibilityInsights.VersionSwitcher"
         mc:Ignorable="d"
-        Title="Accessibility Insights Version Switcher" Height="332" Width="500" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
+        Title="Accessibility Insights for Windows Updater" Height="200" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
     <Grid>
-        <Image Name="image" Stretch="UniformToFill" HorizontalAlignment="Left" Height="312" VerticalAlignment="Top" Width="164" Source="pack://application:,,,/Resources/DialogBackground.png" />
-        <Label Margin="200,20,10,0" Height="30" VerticalAlignment="Top">Switching your version...</Label>
-        <ProgressBar Name ="progressBar" IsIndeterminate="True" HorizontalAlignment="Left" Height="10" Margin="200,0,0,0" VerticalAlignment="Center" Width="267"/>
+        <Image Name="image" Stretch="UniformToFill" HorizontalAlignment="Left" Height="180" VerticalAlignment="Top" Width="100" Source="pack://application:,,,/Resources/DialogBackground.png" />
+        <Label Margin="105,20,10.333,0" Height="30" VerticalAlignment="Top">Update in progress...</Label>
+        <ProgressBar Name ="progressBar" IsIndeterminate="True" HorizontalAlignment="Left" Height="10" Margin="105,0,0,0" VerticalAlignment="Center" Width="160"/>
     </Grid>
 </Window>
