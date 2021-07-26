@@ -123,7 +123,7 @@
                         <Run Text="{x:Static properties:Resources.StartupModeControl_shortcutsDescription}"/>
                     </TextBlock>
                     <Border Grid.Row="3" Grid.Column="1" Style="{StaticResource BrdrKey}" VerticalAlignment="Center">
-                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF6}" Padding="3,6">
+                        <Label Name="lblEventHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF7}" Padding="3,6">
                             <AutomationProperties.Name>
                                 <MultiBinding StringFormat="{}{0} {1}">
                                     <Binding RelativeSource="{RelativeSource Self}" Path="Content"/>

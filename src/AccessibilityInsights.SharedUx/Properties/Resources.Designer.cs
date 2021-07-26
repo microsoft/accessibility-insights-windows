@@ -3516,11 +3516,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Shift + F6.
+        ///   Looks up a localized string similar to Shift + F7.
         /// </summary>
-        public static string StartUpModeControl_ShiftF6 {
+        public static string StartUpModeControl_ShiftF7 {
             get {
-                return ResourceManager.GetString("StartUpModeControl_ShiftF6", resourceCulture);
+                return ResourceManager.GetString("StartUpModeControl_ShiftF7", resourceCulture);
             }
         }
         

@@ -1500,8 +1500,8 @@ Do you want to change the channel? </value>
   <data name="MoveTextRangeDialog_Run" xml:space="preserve">
     <value>Run</value>
   </data>
-  <data name="StartUpModeControl_ShiftF6" xml:space="preserve">
-    <value>Shift + F6</value>
+  <data name="StartUpModeControl_ShiftF7" xml:space="preserve">
+    <value>Shift + F7</value>
   </data>
   <data name="StartUpModeControl_ShiftF8" xml:space="preserve">
     <value>Shift + F8</value>
