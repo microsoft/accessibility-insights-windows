@@ -46,7 +46,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         public void LoadChannelInfoIntoStream(ReleaseChannel releaseChannel, Stream stream)
         {
-            GitHubClient.LoadUriContentsIntoStream(GetChannelSpecificUri(releaseChannel), stream, _timeout);
+            GitHubClient.LoadUriContentsIntoStream(GetChannelSpecificUri(releaseChannel), stream, _timeout, null);
         }
 
         /// <summary>

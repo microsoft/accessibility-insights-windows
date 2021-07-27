@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.SetupLibrary;
 using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
-using System.Windows.Automation.Peers;
 
 namespace AccessibilityInsights.VersionSwitcher
 {
@@ -31,37 +31,31 @@ namespace AccessibilityInsights.VersionSwitcher
             t.Start();
         }
 
-        private void RaiseRegionChangedEvent(object stateinfo)
-        {
-            Dispatcher.Invoke(() =>
-            {
-                var peer = FrameworkElementAutomationPeer.FromElement(updateLabel);
-                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-            });
-        }
-
         public void SwitchVersionAndInvokeCloseApplication()
         {
             string errorMessage = null;
 
-            using (Timer timer = new Timer(RaiseRegionChangedEvent, null, TimeSpan.Zero, TimeSpan.FromSeconds(5)))
+            try
             {
-                try
-                {
-                    InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
-                    engine.PerformInstallation();
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception e)
-                {
-                    EventLogger.WriteErrorMessage(e.ToString());
-                    ExceptionReporter.ReportException(e);
-                    errorMessage = e.Message;
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
+                InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
+                engine.PerformInstallation(DispatcherUpdateProgress);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                EventLogger.WriteErrorMessage(e.ToString());
+                ExceptionReporter.ReportException(e);
+                errorMessage = e.Message;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             Dispatcher.Invoke(() => CloseAppliction(errorMessage));
+        }
+
+        private void DispatcherUpdateProgress(int percentage)
+        {
+            Dispatcher.Invoke(() => progressBar.Value = percentage);
+            Thread.Sleep(TimeSpan.FromTicks(1)); // Yield momentarily to allow UI to update
         }
 
         private void CloseAppliction(string errorMessage)

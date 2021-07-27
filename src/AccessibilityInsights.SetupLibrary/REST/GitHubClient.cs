@@ -19,24 +19,30 @@ namespace AccessibilityInsights.SetupLibrary.REST
         {
             public bool Complete { get; set; }
             public Stream Stream { get; set; }
+            public Action<int> ProgressCallback { get; set; }
         }
 
         /// <summary>
         /// Load the contents of the given Uri into a Stream
         /// </summary>
-        public static void LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout)
+        public static void LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout, Action<int> progressCallback)
         {
             if (uri == null)
                 throw new ArgumentNullException(nameof(uri));
 
             Stopwatch stopwatch = Stopwatch.StartNew();
-            DownloadState state = new DownloadState { Stream = stream };
+            DownloadState state = new DownloadState 
+            {
+                Stream = stream,
+                ProgressCallback = progressCallback,
+            };
 
             try
             {
                 using (WebClient client = new WebClient())
                 {
                     client.DownloadDataCompleted += DownloadCompleted;
+                    client.DownloadProgressChanged += ProgressChanged;
                     client.DownloadDataAsync(uri, state);
 
                     while (!state.Complete)
@@ -65,6 +71,13 @@ namespace AccessibilityInsights.SetupLibrary.REST
 
             state.Stream.Write(e.Result, 0, e.Result.Length);
             state.Complete = true;
+        }
+
+        private static void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+        {
+            DownloadState state = e.UserState as DownloadState;
+
+            state.ProgressCallback?.Invoke(e.ProgressPercentage);
         }
     }
 }
