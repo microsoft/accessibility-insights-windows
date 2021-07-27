@@ -5,6 +5,7 @@ using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Automation.Peers;
 
 namespace AccessibilityInsights.VersionSwitcher
 {
@@ -26,27 +27,39 @@ namespace AccessibilityInsights.VersionSwitcher
             Show();
 
             // Don't block the UI thread or else our progress bar won't update
-            Thread t = new Thread(new ThreadStart(SwitchVersionAndInvokeCloseApplication));
+            Thread t = new Thread(SwitchVersionAndInvokeCloseApplication);
             t.Start();
         }
 
-        private void SwitchVersionAndInvokeCloseApplication()
+        private void RaiseRegionChangedEvent(object stateinfo)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                var peer = FrameworkElementAutomationPeer.FromElement(updateLabel);
+                peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+            });
+        }
+
+        public void SwitchVersionAndInvokeCloseApplication()
         {
             string errorMessage = null;
 
-            try
+            using (Timer timer = new Timer(RaiseRegionChangedEvent, null, TimeSpan.Zero, TimeSpan.FromSeconds(5)))
             {
-                InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
-                engine.PerformInstallation();
-            }
+                try
+                {
+                    InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
+                    engine.PerformInstallation();
+                }
 #pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                EventLogger.WriteErrorMessage(e.ToString());
-                ExceptionReporter.ReportException(e);
-                errorMessage = e.Message;
-            }
+                catch (Exception e)
+                {
+                    EventLogger.WriteErrorMessage(e.ToString());
+                    ExceptionReporter.ReportException(e);
+                    errorMessage = e.Message;
+                }
 #pragma warning restore CA1031 // Do not catch general exception types
+            }
 
             Dispatcher.Invoke(() => CloseAppliction(errorMessage));
         }
