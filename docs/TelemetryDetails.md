@@ -22,6 +22,13 @@ Additional properties: None.
 Trigger: The user enters a value in a hex dialog in the Color Contrast view.  
 Additional properties: None.
 
+#### Custom_UIA
+Trigger: The application was configured with a `CustomUIA.json` file as described in the [online documentation](https://accessibilityinsights.io/docs/en/windows/reference/faq/#does-accessibility-insights-for-windows-support-custom-ui-automation-properties).  
+Additional properties:
+Name | Value 
+--- | ---
+CustomUIAPropertyCount | The count of custom UIA properties that were defined in the `CustomUIA.json` file.
+
 #### Event_Load
 Trigger: The user successfully opens a previously-saved A11yEvents file.  
 Additional properties: None.
