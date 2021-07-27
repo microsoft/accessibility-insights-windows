@@ -23,7 +23,7 @@ Trigger: The user enters a value in a hex dialog in the Color Contrast view.
 Additional properties: None.
 
 #### Custom_UIA
-Trigger: The application was configured with a `CustomUIA.json` file as described in the [online documentation](https://accessibilityinsights.io/docs/en/windows/reference/faq/#does-accessibility-insights-for-windows-support-custom-ui-automation-properties).  
+Trigger: The application was configured with a `CustomUIA.json` file as described in the [online documentation](https://accessibilityinsights.io/docs/en/windows/reference/faq/#does-accessibility-insights-for-windows-support-custom-ui-automation-properties). This event is sent _only_ if a valid `Custom_UIA.json` exists.
 Additional properties:
 Name | Value 
 --- | ---
