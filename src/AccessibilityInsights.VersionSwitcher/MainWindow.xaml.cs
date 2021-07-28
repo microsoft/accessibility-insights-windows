@@ -58,8 +58,7 @@ namespace AccessibilityInsights.VersionSwitcher
         {
             progressBar.Value = percentage;
             statusText.Content = $"Update {percentage}% complete";
-            string x = this.Title + $" ({percentage}% complete)";
-            this.SetValue(AutomationProperties.HelpTextProperty, x);
+            SetValue(AutomationProperties.HelpTextProperty, this.Title + $" ({percentage}% complete)");
         }
 
         private void DispatcherUpdateProgress(int percentage)
