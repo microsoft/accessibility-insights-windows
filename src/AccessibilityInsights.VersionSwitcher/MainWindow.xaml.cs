@@ -6,6 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
+using System.Windows.Automation;
 
 namespace AccessibilityInsights.VersionSwitcher
 {
@@ -24,6 +25,7 @@ namespace AccessibilityInsights.VersionSwitcher
         public MainWindow()
         {
             InitializeComponent();
+            UpdateProgress(0);
             Show();
 
             // Don't block the UI thread or else our progress bar won't update
@@ -52,9 +54,17 @@ namespace AccessibilityInsights.VersionSwitcher
             Dispatcher.Invoke(() => CloseAppliction(errorMessage));
         }
 
+        private void UpdateProgress(int percentage)
+        {
+            progressBar.Value = percentage;
+            statusText.Content = $"Update {percentage}% complete";
+            string x = this.Title + $" ({percentage}% complete)";
+            this.SetValue(AutomationProperties.HelpTextProperty, x);
+        }
+
         private void DispatcherUpdateProgress(int percentage)
         {
-            Dispatcher.Invoke(() => progressBar.Value = percentage);
+            Dispatcher.Invoke(() => UpdateProgress(percentage));
             Thread.Sleep(TimeSpan.FromTicks(1)); // Yield momentarily to allow UI to update
         }
 
