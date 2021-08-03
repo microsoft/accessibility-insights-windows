@@ -298,10 +298,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             return dlg.IssueId;
 #else
-            if (MessageBoxResult.Yes ==  MessageBox.Show("Bug filing to Azure DevOps is not currently supported. This issue is tracked at https://github.com/microsoft/accessibility-insights-windows/issues/1167. Would you like to open the issue tracking this problem?", "Accessibility Insights for Windows", MessageBoxButton.YesNo))
-            {
-                Process.Start("https://github.com/microsoft/accessibility-insights-windows/issues/1167");
-            }
+            var dlg = new AdoNotSupportedDialog();
+            dlg.ShowDialog();
             return null;
 #endif
         }
