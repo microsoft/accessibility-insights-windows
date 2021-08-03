@@ -9,7 +9,7 @@
         Title="Accessibility Insights for Windows" Height="220" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
 <Grid>
         <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" >
-            <!-- Non-standard breaks around the hyperlink at to intentionaly to avoid whitespace around the link -->
+            <!-- Non-standard breaks around the hyperlink are intentional to avoid whitespace around the link -->
             <Run Text="Bug filing for AzureDevOps is not currently supported. This issue is being tracked at"/>
             <Hyperlink NavigateUri="https://github.com/microsoft/accessibility-insights-windows/issues/1167" Click="Hyperlink_Click">
                         <Run Text="https://github.com/microsoft/accessibility-insights-windows/issues/1167"/></Hyperlink><Run Text=". Please refer to that issue to learn the most recent state of the problem." />
