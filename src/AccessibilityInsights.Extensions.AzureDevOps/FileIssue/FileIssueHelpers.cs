@@ -298,7 +298,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             return dlg.IssueId;
 #else
-            var dlg = new AdoNotSupportedDialog();
+            var dlg = new AdoNotSupportedDialog(onTop);
             dlg.ShowDialog();
             return null;
 #endif

@@ -14,9 +14,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// </summary>
     public partial class AdoNotSupportedDialog : Window
     {
-        public AdoNotSupportedDialog()
+        public AdoNotSupportedDialog(bool onTop)
         {
             InitializeComponent();
+            Topmost = onTop;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
