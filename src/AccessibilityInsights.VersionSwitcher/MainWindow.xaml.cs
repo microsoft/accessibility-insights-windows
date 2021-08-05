@@ -6,7 +6,7 @@ using System;
 using System.ComponentModel;
 using System.Threading;
 using System.Windows;
-using System.Windows.Automation;
+using System.Windows.Automation.Peers;
 
 namespace AccessibilityInsights.VersionSwitcher
 {
@@ -56,9 +56,18 @@ namespace AccessibilityInsights.VersionSwitcher
 
         private void UpdateProgress(int percentage)
         {
-            progressBar.Value = percentage;
-            statusText.Content = $"Update {percentage}% complete";
-            SetValue(AutomationProperties.HelpTextProperty, Title + $" ({percentage}% complete)");
+            string newText = $"Update {percentage}% complete";
+
+            if (newText != statusText.Text)
+            {
+                progressBar.Value = percentage;
+                statusText.Text = newText;
+                var peer = FrameworkElementAutomationPeer.FromElement(statusText);
+                if (peer != null)
+                {
+                    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+                }
+            }
         }
 
         private void DispatcherUpdateProgress(int percentage)
