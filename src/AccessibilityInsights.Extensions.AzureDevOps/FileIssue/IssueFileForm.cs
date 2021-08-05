@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
+using Microsoft.Web.WebView2.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,22 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// </summary>
     public partial class IssueFileForm: Form
     {
+        enum State
+        {
+            Initializing,
+            TemplateIsOpen,
+            Saving,
+            Saved,
+        }
+
         private const int ZOOM_MAX = 1000;
         private const int ZOOM_MIN = 25;
         private const int ZOOM_STEP_SIZE = 25;
 
         // new work form item template URL
         private Uri Url;
+
+        private State _currentState;
 
         private bool makeTopMost;
 
@@ -58,7 +69,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             this.zoomOut.FlatAppearance.BorderSize = 0;
             this.ZoomValue = zoomLevel;
             this.FormClosed += IssueFileForm_FormClosed;
-            this.fileIssueBrowser.ScriptErrorsSuppressed = true; // Hides script errors AND other dialog boxes.
+            ZoomToValue();
         }
 
         /// <summary>
@@ -74,35 +85,71 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <summary>
         /// Use URL changes to check whether the issue has been filed or not, close the window if issue has been filed or closed
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Browser_Navigated(object sender, WebBrowserNavigatedEventArgs e)
+        private void NavigationComplete(object sender, CoreWebView2NavigationCompletedEventArgs e)
         {
-            ZoomToValue();
+            updateState();
+        }
 
-            var url = e.Url.PathAndQuery;
-            var savedUrlSubstrings = new List<String>() { "_queries/edit/", "_workitems/edit/", "_workitems?id=" };
-            int urlIndex = savedUrlSubstrings.FindIndex(str => url.Contains(str));
-            if (urlIndex >= 0)
+        private State updateState(bool revert = false)
+        {
+            Uri currentUri = fileIssueBrowser.Source;
+
+            if (currentUri != null)
             {
-                var matched = savedUrlSubstrings[urlIndex];
-                var endIndex = url.IndexOf(matched, StringComparison.Ordinal) + matched.Length;
-
-                // URL looks like "_queries/edit/2222222/..." where 2222222 is issue id
-                // or is "_workitems/edit/2222222"
-                // or is "_workitems?id=2222222"
-                url = url.Substring(endIndex);
-                int result;
-                bool worked = int.TryParse(new String(url.TakeWhile(Char.IsDigit).ToArray()), out result);
-                if (worked)
+                switch (_currentState)
                 {
-                    this.IssueId = result;
+                    case State.Initializing:
+                        if (currentUri.AbsoluteUri == Url.AbsoluteUri)
+                            _currentState = State.TemplateIsOpen;
+                        break;
+
+                    case State.TemplateIsOpen:
+                        if (currentUri.AbsoluteUri != Url.AbsoluteUri)
+                            _currentState = State.Saving;
+                        break;
+
+                    case State.Saving:
+                        _currentState = revert ? State.TemplateIsOpen : State.Saved;
+                        break;
+                }
+            }
+
+            return _currentState;
+        }
+
+        private void CoreWebView2_HistoryChanged(object sender, object e)
+        {
+            if (updateState() == State.Saving)
+            {
+                var url = fileIssueBrowser.Source.PathAndQuery;
+                var savedUrlSubstrings = new List<String>() { "_queries/edit/", "_workitems/edit/", "_workitems?id=" };
+                int urlIndex = savedUrlSubstrings.FindIndex(str => url.Contains(str));
+                if (urlIndex >= 0)
+                {
+                    var matched = savedUrlSubstrings[urlIndex];
+                    var endIndex = url.IndexOf(matched, StringComparison.Ordinal) + matched.Length;
+
+                    // URL looks like "_queries/edit/2222222/..." where 2222222 is issue id
+                    // or is "_workitems/edit/2222222"
+                    // or is "_workitems?id=2222222"
+                    url = url.Substring(endIndex);
+                    int result;
+                    bool worked = int.TryParse(new String(url.TakeWhile(Char.IsDigit).ToArray()), out result);
+                    if (worked)
+                    {
+                        this.IssueId = result;
+                    }
+                    else
+                    {
+                        this.IssueId = null;
+                    }
+                    updateState();
+                    this.Close();
                 }
                 else
                 {
-                    this.IssueId = null;
+                    updateState(revert: true);
                 }
-                this.Close();
             }
         }
 
@@ -110,15 +157,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// Navigates to the given url
         /// </summary>
         /// <param name="url"></param>
-        private void Navigate(Uri url) => fileIssueBrowser.Navigate(url);
+        private void Navigate(Uri url) => fileIssueBrowser.Source = url;
 
         private void IssueFileForm_Load(object sender, EventArgs e)
         {
-            this.fileIssueBrowser.ObjectForScripting = new ScriptInterface(this);
-            this.fileIssueBrowser.DocumentCompleted += (s, ea) => this.fileIssueBrowser.Document.InvokeScript("eval", new object[] { ScriptToRun });
-            fileIssueBrowser.Navigated += Browser_Navigated;
-            Navigate(this.Url);
+            this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
             this.TopMost = makeTopMost;
+            Navigate(this.Url);
+            AddHistoryChangedEventAsync();
+        }
+
+        private async void AddHistoryChangedEventAsync()
+        {
+            await this.fileIssueBrowser.EnsureCoreWebView2Async(null).ConfigureAwait(true);
+            this.fileIssueBrowser.CoreWebView2.HistoryChanged += CoreWebView2_HistoryChanged;
         }
 
         /// <summary>
@@ -129,8 +181,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         {
             try
             {
-                var browser = this.fileIssueBrowser.ActiveXInstance as SHDocVw.InternetExplorer;
-                browser.ExecWB(SHDocVw.OLECMDID.OLECMDID_OPTICAL_ZOOM, SHDocVw.OLECMDEXECOPT.OLECMDEXECOPT_DODEFAULT, ZoomValue, IntPtr.Zero);
+                this.fileIssueBrowser.ZoomFactor = ZoomValue / 100.0;
                 this.zoomLabel.Text = Invariant($"{ZoomValue}%");
             }
             catch (System.Runtime.InteropServices.COMException e)

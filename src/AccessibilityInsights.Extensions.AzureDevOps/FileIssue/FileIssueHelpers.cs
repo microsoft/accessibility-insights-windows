@@ -13,7 +13,6 @@ using System.Linq;
 using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows;
 using static System.FormattableString;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
@@ -285,25 +284,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// Change the configuration zoom level for the embedded browser
         /// </summary>
         /// <param name="url"></param>
-#pragma warning disable CA1801 // Review unused parameters
         private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
-#if ADO_HAS_BEEN_FIXED
-            System.Diagnostics.Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
-            IEBrowserEmulation.SetFeatureControls();
+            Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
             var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom);
             dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
 
             dlg.ShowDialog();
 
             return dlg.IssueId;
-#else
-            var dlg = new AdoNotSupportedDialog(onTop);
-            dlg.ShowDialog();
-            return null;
-#endif
         }
-#pragma warning restore CA1801 // Review unused parameters
 
         /// <summary>
         /// Creates a temp file with the given extension and returns its path
