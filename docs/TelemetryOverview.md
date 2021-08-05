@@ -49,4 +49,4 @@ catch (Exception e)
 All telemetry (including reported exceptions) is under user control. When the application starts the first time, the user is allowed to enable or disable telemetry. The user can change this option at any time via the settings page.
 
 ### More details
-More details are available in the [Telemetry Details Documentation](./TelemeryDetails.md)
+More details are available in the [Telemetry Details Documentation](./TelemetryDetails.md)
