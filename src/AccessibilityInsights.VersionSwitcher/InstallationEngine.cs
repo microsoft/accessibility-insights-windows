@@ -37,11 +37,12 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <summary>
         /// Triggers the installation and launches the installed app upon completion
         /// </summary>
-        internal void PerformInstallation()
+        internal void PerformInstallation(Action<int> progressCallback)
         {
             EventLogger.WriteInformationalMessage("Beginning Installation");
+            progressCallback(0);
             InstallationOptions options = GetInstallationOptions();
-            DownloadFromUriToLocalFile(options);
+            DownloadFromUriToLocalFile(options, (p) => progressCallback((p * 4) / 5));
             using (ValidateLocalFile(options.LocalInstallerFile))
             {
                 using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
@@ -49,9 +50,13 @@ namespace AccessibilityInsights.VersionSwitcher
                     InstallWithinTransaction(options, transaction);
                 }
             }
+            progressCallback(80);
             UpdateConfigWithNewChannel(options.NewChannel);
+            progressCallback(90);
             SetManifestForUIAccess(options.EnableUIAccess);
+            progressCallback(95);
             LaunchPostInstallApp();
+            progressCallback(100);
             EventLogger.WriteInformationalMessage("Completed Installation");
         }
 
@@ -135,7 +140,8 @@ namespace AccessibilityInsights.VersionSwitcher
         /// Download the installer to a computed local file
         /// </summary>
         /// <param name="options">The parameters to drive the install</param>
-        private void DownloadFromUriToLocalFile(InstallationOptions options)
+        /// <param name="progressCallback">Called to update download progress</param>
+        private void DownloadFromUriToLocalFile(InstallationOptions options, Action<int> progressCallback)
         {
             _installerDownloadStopwatch.Reset();
 
@@ -145,7 +151,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
                 try
                 {
-                    GitHubClient.LoadUriContentsIntoStream(options.MsiPath, stream, options.DownloadTimeout);
+                    GitHubClient.LoadUriContentsIntoStream(options.MsiPath, stream, options.DownloadTimeout, progressCallback);
                 }
                 finally
                 {
