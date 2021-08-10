@@ -2,8 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
 using Microsoft.Web.WebView2.Core;
+using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -60,6 +62,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         public IssueFileForm(Uri url, bool topmost, int zoomLevel, Action<int> updateZoom)
         {
             InitializeComponent();
+            this.fileIssueBrowser.CreationProperties = new CoreWebView2CreationProperties
+            {
+                // TODO: Pass this folder in from the main app!
+                UserDataFolder = Path.Combine(Environment.GetFolderPath(
+                    Environment.SpecialFolder.LocalApplicationData), 
+                    @"AccessibilityInsights\V1\Configurations\WebView2")
+            };
             this.UpdateZoomLevel = updateZoom;
             this.makeTopMost = topmost;
             this.Url = url;
