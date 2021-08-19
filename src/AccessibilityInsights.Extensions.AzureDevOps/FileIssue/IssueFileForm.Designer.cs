@@ -31,24 +31,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IssueFileForm));
-            this.fileIssueBrowser = new System.Windows.Forms.WebBrowser();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.zoomLabel = new System.Windows.Forms.Label();
             this.zoomOut = new System.Windows.Forms.Button();
             this.zoomIn = new System.Windows.Forms.Button();
+            this.fileIssueBrowser = new Microsoft.Web.WebView2.WinForms.WebView2();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIssueBrowser)).BeginInit();
             this.SuspendLayout();
-            // 
-            // fileIssueBrowser
-            // 
-            this.fileIssueBrowser.AccessibleDescription = "Form to file issue";
-            this.fileIssueBrowser.AccessibleName = "Issue filing browser";
-            this.fileIssueBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fileIssueBrowser.Location = new System.Drawing.Point(0, 0);
-            this.fileIssueBrowser.MinimumSize = new System.Drawing.Size(20, 20);
-            this.fileIssueBrowser.Name = "fileIssueBrowser";
-            this.fileIssueBrowser.Size = new System.Drawing.Size(1535, 804);
-            this.fileIssueBrowser.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
@@ -112,6 +102,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             this.zoomIn.Text = "+";
             this.zoomIn.UseVisualStyleBackColor = false;
             // 
+            // fileIssueBrowser
+            // 
+            this.fileIssueBrowser.AccessibleDescription = "Form to file issue";
+            this.fileIssueBrowser.AccessibleName = "Issue filing browser";
+            this.fileIssueBrowser.CreationProperties = null;
+            this.fileIssueBrowser.DefaultBackgroundColor = System.Drawing.Color.White;
+            this.fileIssueBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fileIssueBrowser.Location = new System.Drawing.Point(0, 0);
+            this.fileIssueBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.fileIssueBrowser.Name = "fileIssueBrowser";
+            this.fileIssueBrowser.Size = new System.Drawing.Size(1535, 804);
+            this.fileIssueBrowser.TabIndex = 0;
+            this.fileIssueBrowser.ZoomFactor = 1D;
+            // 
             // IssueFileForm
             // 
             this.AccessibleRole = System.Windows.Forms.AccessibleRole.MenuPopup;
@@ -127,16 +131,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             this.Load += new System.EventHandler(this.IssueFileForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fileIssueBrowser)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.WebBrowser fileIssueBrowser;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label zoomLabel;
         private System.Windows.Forms.Button zoomOut;
         private System.Windows.Forms.Button zoomIn;
+        private Microsoft.Web.WebView2.WinForms.WebView2 fileIssueBrowser;
     }
 }
