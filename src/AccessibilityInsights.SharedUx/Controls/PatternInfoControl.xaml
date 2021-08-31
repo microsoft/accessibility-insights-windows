@@ -55,7 +55,6 @@
         </TreeView>
         <Label x:Name="lbNoPattern" Content="{x:Static Properties:Resources.lbNoPatternContent}"
                    Grid.Row="1"
-                   Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                    Style="{DynamicResource LblFocusable}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"/>
