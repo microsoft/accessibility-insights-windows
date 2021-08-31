@@ -211,6 +211,8 @@
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="KeyboardNavigation.IsTabStop" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+    </Style>
+    <Style TargetType="{x:Type Label}" x:Key="LblFocusablePrimaryFG" BasedOn="{StaticResource ResourceKey=LblFocusable}">
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
     </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TxtTelemetrySettingInfo">
