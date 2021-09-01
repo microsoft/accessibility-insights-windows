@@ -44,7 +44,7 @@
             </TextBlock>
             <TextBlock Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Margin="0,0,0,10" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                 <Run FontWeight="SemiBold" FontSize="{DynamicResource ConstXLTextSize}" Text="{x:Static Properties:Resources.RunTextTabStops}" />
-                <Hyperlink TextDecorations="{x:Null}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
+                <Hyperlink FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"
                            NavigateUri="https://go.microsoft.com/fwlink/?linkid=2080645" RequestNavigate="Hyperlink_RequestNavigate"
                            Style="{StaticResource hLink}">
                     <Run Text="{x:Static Properties:Resources.TabStopsControl_TabStopsLink}"/>

@@ -25,7 +25,7 @@
                         TextWrapping="Wrap" Margin="0 0 0 15" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Focusable="True">
                 <Run Text="{x:Static Properties:Resources.connectionInstrText}"/>
                <TextBlock>
-                    <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" TextDecorations="None" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" Style="{StaticResource hLink}">
+                    <Hyperlink Name="hlLink" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2075269" Style="{StaticResource hLink}">
                         <Run Text="{x:Static Properties:Resources.issueFilingLink}"/>
                     </Hyperlink><Run Text="{x:Static Properties:Resources.SentenceEndPeriod}"/>
                 </TextBlock>
