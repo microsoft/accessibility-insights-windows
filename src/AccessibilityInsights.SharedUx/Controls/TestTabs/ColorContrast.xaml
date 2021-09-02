@@ -45,7 +45,7 @@
                 <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
                 <Hyperlink
                     AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click" Style="{StaticResource hLink}" Name="hlLearnMore">
-                    <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" />
+                    <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
                 </Hyperlink>
                 </TextBlock>
                 <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="24" Margin="0,16,0,0" VerticalAlignment="Top">
