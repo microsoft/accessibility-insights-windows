@@ -50,7 +50,7 @@
                     <Run Text="{x:Static properties:Resources.LabelContentAccessibilityInsightsForWindows}" FontSize="24"/>
                     <LineBreak/>
                     <LineBreak/>
-                    <Hyperlink x:Name="hlVersion" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="{Binding Path=AppVersionUri, Mode=OneWay}"
+                    <Hyperlink x:Name="hlVersion" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="{Binding Path=AppVersionUri, Mode=OneWay}"
                                 AutomationProperties.Name="{Binding Path=VersionInfoLabel, Mode=OneWay}" Style="{StaticResource hLink}">
                         <Run Text="{Binding Path=VersionInfoLabel, Mode=OneWay}" FontSize="12"/>
                     </Hyperlink>
@@ -89,7 +89,7 @@
                     </Button>
                     <TextBlock Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3" TextWrapping="Wrap" Foreground="{DynamicResource ResourceKey=StartupFGBrush}" Padding="0"
                            FontWeight="Light" VerticalAlignment="Center" TextAlignment="Left" Margin="12,17,12,12">
-                        <Hyperlink x:Name="hlHelp" TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077919"
+                        <Hyperlink x:Name="hlHelp" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077919"
                                     AutomationProperties.Name="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" Style="{StaticResource hLink}">
                             <Run Text="{x:Static properties:Resources.StartupModeControl_moreGuidanceText}" FontSize="12" FontWeight="Light"/>
                         </Hyperlink>
@@ -156,7 +156,7 @@
                     </Border>
                     <TextBlock Name="txtActivateHk" Grid.Row="7" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <TextBlock Grid.Row="8" Grid.ColumnSpan="8" Padding="16,4,0,10" TextWrapping="Wrap">
-                        <Hyperlink TextDecorations="None" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
+                        <Hyperlink FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
                                    AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
                             <Run x:Name="shortcutsDescTxt" Text="{x:Static properties:Resources.StartupModeControl_shortcutsLinkLabel}" FontSize="12" FontWeight="Light"/>
                         </Hyperlink>

@@ -14,8 +14,7 @@
                 AutomationProperties.Name="{x:Static Properties:Resources.PrivacyLearnMoreLink}" 
                 NavigateUri="https://privacy.microsoft.com/en-US/privacystatement" 
                 RequestNavigate="Hyperlink_RequestNavigate" 
-                FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" 
-                TextDecorations="None">
+                FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
         <Hyperlink.Style>
             <Style TargetType="Hyperlink" BasedOn="{StaticResource {x:Type Hyperlink}}">
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkFGBrush}"/>
