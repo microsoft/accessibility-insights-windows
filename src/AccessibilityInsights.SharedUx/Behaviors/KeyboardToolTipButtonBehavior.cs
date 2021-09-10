@@ -60,18 +60,6 @@ namespace AccessibilityInsights.SharedUx.Behaviors
                     tt.Placement = PlacementMode.Left;
                     tt.PlacementRectangle = new Rect(0, (sender as Control).Height + 5, 0, 0);
                     tt.IsOpen = true;
-
-                    // set up a timer to clear the tooltip after 5 secs if focus has not been changed
-                    DispatcherTimer timer = new DispatcherTimer() { Interval = TimeSpan.FromSeconds(5) };
-                    timer.Tick += delegate (object _sender, EventArgs _e)
-                    {
-                        ((DispatcherTimer)timer).Stop();
-                        if (tt.IsOpen)
-                        {
-                            tt.IsOpen = false;
-                        }
-                    };
-                    timer.Start();
                 }
             }
         }
