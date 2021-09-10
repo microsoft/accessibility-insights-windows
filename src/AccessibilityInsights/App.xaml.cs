@@ -5,6 +5,7 @@ using AccessibilityInsights.SharedUx.Highlighting;
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -106,13 +107,18 @@ namespace AccessibilityInsights
             Resources.MergedDictionaries.Add(this.fontResourceDictionary);
         }
 
-        // Stackoverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
         protected override void OnStartup(StartupEventArgs e)
         {
+            // StackOverflow: https://stackoverflow.com/questions/4951058/software-rendering-mode-wpf answer by Matt Varblow
             if (DisableHardwareRendering)
             {
                 RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
             }
+
+            // WPF hides tooltips after a few seconds, which is bad for accessibility.
+            // Override the default to 1 day
+            ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(UIElement),
+                new FrameworkPropertyMetadata((int)TimeSpan.FromDays(1).TotalMilliseconds));
         }
     }
 }
