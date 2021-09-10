@@ -116,9 +116,9 @@ namespace AccessibilityInsights
             }
 
             // WPF hides tooltips after a few seconds, which is bad for accessibility.
-            // Override the default for the longest possible value.
+            // Override the default to 1 day
             ToolTipService.ShowDurationProperty.OverrideMetadata(typeof(UIElement),
-                new FrameworkPropertyMetadata(int.MaxValue));
+                new FrameworkPropertyMetadata((int)TimeSpan.FromDays(1).TotalMilliseconds));
         }
     }
 }
