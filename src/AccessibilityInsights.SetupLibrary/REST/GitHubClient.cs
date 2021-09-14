@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SetupLibrary.REST
     {
         private class DownloadState
         {
-            public bool Complete { get; set; }
+            public TriState Status { get; set; }
             public Stream Stream { get; set; }
             public Action<int> ProgressCallback { get; set; }
         }
@@ -45,23 +45,31 @@ namespace AccessibilityInsights.SetupLibrary.REST
                     client.DownloadProgressChanged += ProgressChanged;
                     client.DownloadDataAsync(uri, state);
 
-                    while (!state.Complete)
+                    while (state.Status == TriState.Unknown)
                     {
                         if (stopwatch.ElapsedMilliseconds > timeout.TotalMilliseconds)
                         {
-                            throw new TimeoutException("Timeout exceeded");
+                            state.Status = TriState.Failure;
+                            break;
                         }
                         Thread.Sleep(TimeSpan.FromMilliseconds(500));
                     }
                 }
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
             {
-                throw new ArgumentException("Unable to get contents from " + uri.ToString(), nameof(uri));
+                state.Status = TriState.Failure;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 stopwatch.Stop();
+            }
+
+            if (state.Status != TriState.Success)
+            {
+                throw new ArgumentException("Unable to get contents from " + uri.ToString(), nameof(uri));
             }
         }
 
@@ -69,8 +77,17 @@ namespace AccessibilityInsights.SetupLibrary.REST
         {
             DownloadState state = e.UserState as DownloadState;
 
-            state.Stream.Write(e.Result, 0, e.Result.Length);
-            state.Complete = true;
+            try
+            {
+                state.Stream.Write(e.Result, 0, e.Result.Length);
+                state.Status = TriState.Success;
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
+            {
+                state.Status = TriState.Failure;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
