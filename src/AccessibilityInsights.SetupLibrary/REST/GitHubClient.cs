@@ -58,10 +58,10 @@ namespace AccessibilityInsights.SetupLibrary.REST
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)
-#pragma warning restore CA1031 // Do not catch general exception types
             {
                 state.Status = TriState.Failure;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 stopwatch.Stop();
@@ -77,14 +77,17 @@ namespace AccessibilityInsights.SetupLibrary.REST
         {
             DownloadState state = e.UserState as DownloadState;
 
-            if (e.Cancelled || e.Error != null)
+            try
+            {
+                state.Stream.Write(e.Result, 0, e.Result.Length);
+                state.Status = TriState.Success;
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception)
             {
                 state.Status = TriState.Failure;
-                return;
             }
-
-            state.Stream.Write(e.Result, 0, e.Result.Length);
-            state.Status = TriState.Success;
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         private static void ProgressChanged(object sender, DownloadProgressChangedEventArgs e)
