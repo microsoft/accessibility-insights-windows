@@ -6,7 +6,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Behaviors
 {
@@ -25,6 +24,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
         {
             base.OnAttached();
 
+            AssociatedObject.AddHandler(Button.KeyDownEvent, new KeyEventHandler(CancelButtonTooltipOnEscape), true);
             AssociatedObject.AddHandler(Button.LostKeyboardFocusEvent, new KeyboardFocusChangedEventHandler(ClearButtonTooltip), true);
             AssociatedObject.AddHandler(Button.GotKeyboardFocusEvent, new KeyboardFocusChangedEventHandler(ShowButtonTooltip), true);
             AssociatedObject.AddHandler(Button.MouseEnterEvent, new MouseEventHandler(ButtonMouseEnter), true);
@@ -37,6 +37,14 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             {
                 ToolTip tt = (ToolTip)(currentToolTipButton as Control).ToolTip;
                 tt.IsOpen = false;
+            }
+        }
+
+        private static void CancelButtonTooltipOnEscape(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                ClearButtonTooltip();
             }
         }
 
