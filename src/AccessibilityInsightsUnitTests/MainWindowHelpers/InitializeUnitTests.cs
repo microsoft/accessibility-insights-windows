@@ -100,7 +100,7 @@ namespace AccessibilityInsightsUnitTests.MainWindowHelpers
             MainWindow.EnsureWindowIsInVirtualScreenWithInjection(layout, DefaultTop, DefaultLeft,
                 VirtualLeft, VirtualTop, VirtualWidth, VirtualHeight);
 
-            Assert.AreEqual(VirtualHeight - oldHeight, layout.Top);
+            Assert.AreEqual(VirtualTop + VirtualHeight - oldHeight, layout.Top);
             Assert.AreEqual(oldLeft, layout.Left);
             Assert.AreEqual(oldWidth, layout.Width);
             Assert.AreEqual(oldHeight, layout.Height);
@@ -119,7 +119,7 @@ namespace AccessibilityInsightsUnitTests.MainWindowHelpers
                 VirtualLeft, VirtualTop, VirtualWidth, VirtualHeight);
 
             Assert.AreEqual(oldTop, layout.Top);
-            Assert.AreEqual(VirtualWidth - oldWidth, layout.Left);
+            Assert.AreEqual(VirtualLeft + VirtualWidth - oldWidth, layout.Left);
             Assert.AreEqual(oldWidth, layout.Width);
             Assert.AreEqual(oldHeight, layout.Height);
         }
@@ -226,7 +226,7 @@ namespace AccessibilityInsightsUnitTests.MainWindowHelpers
         public void EnsureWindowIsInVirtualScreenWithInjection_DefaultValues_VirtualScreenTooSmall_UsesFullVirtualScreen()
         {
             var layout = GetInitialConfig();
-            MainWindow.EnsureWindowIsInVirtualScreenWithInjection(layout, DefaultTop, DefaultLeft,
+            MainWindow.EnsureWindowIsInVirtualScreenWithInjection(layout, double.NaN, double.NaN,
                 VirtualLeft, VirtualTop, SmallVirtualWidth, SmallVirtualHeight);
 
             Assert.AreEqual(VirtualTop, layout.Top);

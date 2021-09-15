@@ -422,6 +422,23 @@ namespace AccessibilityInsights
                 SystemParameters.VirtualScreenWidth, SystemParameters.VirtualScreenHeight);
         }
 
+        /// <summary>
+        /// Return the first non-NaN number from an array of potentialNumbers.
+        /// Will return 0.0 if they're all NaN.
+        /// </summary>
+        private static double GetFirstNumber(double[] potentialNumbers)
+        {
+            foreach(double potentialNumber in potentialNumbers)
+            {
+                if (!double.IsNaN(potentialNumber))
+                {
+                    return potentialNumber;
+                }
+            }
+
+            return 0.0;
+        }
+
         internal static void EnsureWindowIsInVirtualScreenWithInjection(AppLayout layout,
             double windowTop, double windowLeft, double virtualLeft,
             double virtualTop, double virtualWidth, double virtualHeight)
@@ -431,8 +448,8 @@ namespace AccessibilityInsights
 
             if (layout != null)
             {
-                layout.Top = double.IsNaN(layout.Top) ? windowTop : layout.Top;
-                layout.Left = double.IsNaN(layout.Left) ? windowLeft : layout.Left;
+                layout.Top = GetFirstNumber(new double[] { layout.Top, windowTop, 200.0 });
+                layout.Left = GetFirstNumber(new double[] { layout.Left, windowLeft, 200.0 });
 
                 double top = layout.Top;
                 double left = layout.Left;
@@ -468,7 +485,7 @@ namespace AccessibilityInsights
                 {
                     layout.Top = virtualBottom - layout.Height;
                 }
-                if (top < virtualTop)
+                else if (top < virtualTop)
                 {
                     layout.Top = virtualTop;
                 }
