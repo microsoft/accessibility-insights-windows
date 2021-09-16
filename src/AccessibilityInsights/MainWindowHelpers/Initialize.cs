@@ -423,10 +423,10 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Return the first non-NaN number from an array of potentialNumbers.
+        /// Return the first defined number from an array of potentialNumbers.
         /// Will return 0.0 if they're all NaN.
         /// </summary>
-        private static double GetFirstNumber(double[] potentialNumbers)
+        private static double GetFirstDefinedNumber(double[] potentialNumbers)
         {
             foreach(double potentialNumber in potentialNumbers)
             {
@@ -436,7 +436,7 @@ namespace AccessibilityInsights
                 }
             }
 
-            return 0.0;
+            return 0.0; // Our ultimate fallback value
         }
 
         internal static void EnsureWindowIsInVirtualScreenWithInjection(AppLayout layout,
@@ -448,8 +448,9 @@ namespace AccessibilityInsights
 
             if (layout != null)
             {
-                layout.Top = GetFirstNumber(new double[] { layout.Top, windowTop, 200.0 });
-                layout.Left = GetFirstNumber(new double[] { layout.Left, windowLeft, 200.0 });
+                const double fallbackWindowPosition = 200.0;
+                layout.Top = GetFirstDefinedNumber(new double[] { layout.Top, windowTop, fallbackWindowPosition });
+                layout.Left = GetFirstDefinedNumber(new double[] { layout.Left, windowLeft, fallbackWindowPosition });
 
                 double top = layout.Top;
                 double left = layout.Left;
