@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AccessibilityInsightsUnitTests</AssemblyName>
+    <RootNamespace>AccessibilityInsightsUnitTests</RootNamespace>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\NetFrameworkTest.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Codecov" Version="1.13.0" />
+    <PackageReference Include="coverlet.collector" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.msbuild" Version="3.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.SharedUx\SharedUx.csproj" />
+    <ProjectReference Include="..\AccessibilityInsights\AccessibilityInsights.csproj" />
+  </ItemGroup>
+
+</Project>
