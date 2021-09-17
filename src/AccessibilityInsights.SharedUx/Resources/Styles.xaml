@@ -1226,6 +1226,7 @@
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
                             <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                             <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
                         </Trigger>
                         <Trigger Property="IsHighlighted" Value="false">
                             <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
