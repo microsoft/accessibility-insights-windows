@@ -504,6 +504,9 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}" />
     </Style>
     <Style x:Key="lviTabStops" TargetType="{x:Type ListViewItem}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderThickness" Value="2,0"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="False">
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
@@ -516,6 +519,11 @@
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
                 <Setter Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
                 <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                <Setter Property="BorderThickness" Value="2"/>
+                <Setter Property="Margin" Value="1, 1, 2, 1" />
             </Trigger>
         </Style.Triggers>
     </Style>
