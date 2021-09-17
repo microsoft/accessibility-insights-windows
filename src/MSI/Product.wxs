@@ -99,6 +99,10 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.TestResults.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.VisualStudio.Services.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.Core.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.WinForms.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.Wpf.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\WebView2Loader.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Win32.Registry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Xaml.Behaviors.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
