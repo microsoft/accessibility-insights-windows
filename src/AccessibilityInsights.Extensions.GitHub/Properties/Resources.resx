@@ -184,6 +184,6 @@ This accessibility issue was found using Accessibility Insights for Windows, a t
     <value>Invalid GitHub Link Format!</value>
   </data>
   <data name="RepoLinkAutomationName" xml:space="preserve">
-    <value>Repo link</value>
+    <value>GitHub repo link</value>
   </data>
 </root>
