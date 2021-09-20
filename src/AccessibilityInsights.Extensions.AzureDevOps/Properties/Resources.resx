@@ -124,7 +124,7 @@
     <value>)</value>
   </data>
   <data name="ServerComboBoxAutomationPropertiesName" xml:space="preserve">
-    <value>Repo link</value>
+    <value>Azure Boards link</value>
   </data>
   <data name="ConnectionDescriptionItalicized" xml:space="preserve">
     <value>https://dev.azure.com/fabrikam</value>

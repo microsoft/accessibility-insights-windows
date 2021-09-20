@@ -160,7 +160,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Repo link.
+        ///   Looks up a localized string similar to Azure Boards link.
         /// </summary>
         public static string ServerComboBoxAutomationPropertiesName {
             get {

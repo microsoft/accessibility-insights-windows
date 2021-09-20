@@ -141,7 +141,7 @@ namespace AccessibilityInsights.Extensions.GitHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Repo link.
+        ///   Looks up a localized string similar to GitHub repo link.
         /// </summary>
         public static string RepoLinkAutomationName {
             get {
