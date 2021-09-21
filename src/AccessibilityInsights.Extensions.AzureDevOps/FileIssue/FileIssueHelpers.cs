@@ -3,6 +3,7 @@
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using Microsoft.Web.WebView2.Core;
 using mshtml;
 using System;
 using System.Collections.Generic;
@@ -286,6 +287,18 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="url"></param>
         private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
+            try
+            {
+                CoreWebView2Environment.GetAvailableBrowserVersionString();
+            } 
+            catch (WebView2RuntimeNotFoundException e)
+            {
+                e.ReportException();
+                var webView = new WebviewRuntimeNotInstalled(onTop);
+                webView.ShowDialog();
+                return null;
+            }
+
             Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
             var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom);
             dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
