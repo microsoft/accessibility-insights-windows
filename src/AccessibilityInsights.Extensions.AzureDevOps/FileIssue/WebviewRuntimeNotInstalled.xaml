@@ -10,9 +10,9 @@
     <Grid>
         <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" >
             <Run Text="Bug filing requires the WebView2 runtime. You can install it at"/>
-            <Hyperlink NavigateUri="https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section" Click="Hyperlink_Click">
+            <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2173230" Click="Hyperlink_Click">
             <!-- Non-standard breaks around the hyperlink are intentional to avoid whitespace around the link -->
-            <Run Text="https://developer.microsoft.com/en-us/microsoft-edge/webview2/#download-section"/></Hyperlink><Run Text=". Please select 'Download' and install. You only need to do this once." />
+            <Run Text="https://go.microsoft.com/fwlink/?linkid=2173230"/></Hyperlink><Run Text=". You only need to do this once." />
         </TextBlock>
         <Button Content="OK" IsDefault="True" HorizontalAlignment="Center" Margin="0,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click"/>
     </Grid>
