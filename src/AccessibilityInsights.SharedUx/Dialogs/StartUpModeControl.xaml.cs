@@ -136,6 +136,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
-        protected override void SetFocusOnDefaultControl() => hlVersion.Focus();
+        public override void SetFocusOnDefaultControl() => hlVersion.Focus();
     }
 }

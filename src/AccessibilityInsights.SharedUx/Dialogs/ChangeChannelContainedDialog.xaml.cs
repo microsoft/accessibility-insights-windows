@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             WaitHandle.Reset();
         }
 
-        protected override void SetFocusOnDefaultControl()
+        public override void SetFocusOnDefaultControl()
         {
             btnOk.Focus();
         }
