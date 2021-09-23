@@ -33,15 +33,6 @@ namespace AccessibilityInsights.Misc
                 });
         }
 
-        public static TelemetryEvent ForReleaseNotesClick(string error)
-        {
-            return new TelemetryEvent(TelemetryAction.Upgrade_Update_ReleaseNote,
-                new Dictionary<TelemetryProperty, string>
-                {
-                    { TelemetryProperty.Error, error },
-                });
-        }
-
         public static TelemetryEvent ForTestRequested(string method, string scope)
         {
             return new TelemetryEvent(TelemetryAction.Test_Requested,
