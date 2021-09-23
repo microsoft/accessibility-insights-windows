@@ -20,6 +20,17 @@ namespace AccessibilityInsights.Modes
             InitializeComponent();
         }
 
+        private ContainedDialog currentTopDialog
+        {
+            get
+            {
+                if (gdContainer.Children.Count == 0)
+                    return null;
+
+                return gdContainer.Children[gdContainer.Children.Count - 1] as ContainedDialog;
+            }
+        }
+
         /// <summary>
         /// Override LocalizedControlType
         /// </summary>
@@ -39,12 +50,22 @@ namespace AccessibilityInsights.Modes
             if (gdContainer.Children.Count == 0)
             {
                 this.Visibility = Visibility.Collapsed;
+            } else
+            {
+                currentTopDialog.IsEnabled = true;
+                currentTopDialog.SetFocusOnDefaultControl();
             }
         });
 
         private void ShowControl(ContainedDialog containedDialog) => Dispatcher.InvokeAsync(() =>
         {
             this.Visibility = Visibility.Visible;
+
+            foreach (ContainedDialog child in gdContainer.Children)
+            {
+                child.IsEnabled = false;
+            }
+
             gdContainer.Children.Add(containedDialog);
         });
 
