@@ -40,12 +40,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btnUpdateNow" Click="UpdateNow_Click" Grid.Column="2" Width="100" Height="30" Style="{StaticResource BtnBlueRounded}">
-                    <TextBlock Text="{x:Static properties:Resources.btnUpdateNowText}" Margin="8px" LineHeight="15px"  FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
-                </Button>
-                <Button x:Name="btnUpdateLater" Click="UpdateLater_Dismiss" Grid.Column="1" Width="100" Height="30" Style="{StaticResource BtnBlueRounded}">
-                    <TextBlock Text="{x:Static properties:Resources.btnUpdateLaterText}" Margin="8px" LineHeight="15px" FontSize="11px" FontWeight="SemiBold" VerticalAlignment="Center"></TextBlock>
-                </Button>
+                <Button x:Name="btnUpdateNow" Click="UpdateNow_Click" Grid.Column="2" Width="100" Height="30"
+                        Style="{StaticResource BtnBlueRounded}" Content="{x:Static properties:Resources.btnUpdateNowText}"/>
+                <Button x:Name="btnUpdateLater" Click="UpdateLater_Dismiss" Grid.Column="1" Width="100" Height="30"
+                        Style="{StaticResource BtnBlueRounded}" Content="{x:Static properties:Resources.btnUpdateLaterText}"/>
             </Grid>
         </Grid>
     </Border>
