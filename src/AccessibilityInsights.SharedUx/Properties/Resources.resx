@@ -1515,4 +1515,31 @@ Do you want to change the channel? </value>
   <data name="TextRangeControl_Details" xml:space="preserve">
     <value>Details</value>
   </data>
+  <data name="UpdateDialogWindowTitle" xml:space="preserve">
+    <value>There is an update available</value>
+  </data>
+  <data name="UpdateContainedDialog_An_update_is_required" xml:space="preserve">
+    <value>An update is required</value>
+  </data>
+  <data name="UpdateContainedDialog_An_update_is_available" xml:space="preserve">
+    <value>An update is available</value>
+  </data>
+  <data name="ReleaseNotes_ClickLoadErrorMessage" xml:space="preserve">
+    <value>There was an error loading the URL.\nURL: {0}</value>
+  </data>
+  <data name="ReleaseNotes_ClickURLErrorMessage" xml:space="preserve">
+    <value>The URL was not properly formatted.\nURL: {0}</value>
+  </data>
+  <data name="ReleaseNotesText" xml:space="preserve">
+    <value>View the release notes here.</value>
+  </data>
+  <data name="btnUpdateLaterText" xml:space="preserve">
+    <value>Later</value>
+  </data>
+  <data name="btnUpdateNowText" xml:space="preserve">
+    <value>Update now</value>
+  </data>
+  <data name="closeDialogText" xml:space="preserve">
+    <value>Close</value>
+  </data>
 </root>
