@@ -69,12 +69,9 @@ namespace AccessibilityInsights
             else
             {
                 HandleBackToSelectingState();
-                // make sure that we disable selector before showing update
-                // otherwise, UI could be in weird state (Main window is gray out but still show selection and update dialog is disappearing)
-                DisableElementSelector();
                 ShowTelemetryDialog();
-                CheckForUpdates();
                 EnableElementSelector();
+                CheckForUpdates();
             }
 
             // chrome height is set to make sure system menu is shown over title bar area.
