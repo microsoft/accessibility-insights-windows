@@ -155,8 +155,8 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=HorizontalRuleBGBrush}" 
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Style="{StaticResource TbFocusable}"/>
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Style="{StaticResource TbFocusable}"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="4,4">
                         <fabric:FabricIconControl x:Name="smallTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
                             <fabric:FabricIconControl.Style>
