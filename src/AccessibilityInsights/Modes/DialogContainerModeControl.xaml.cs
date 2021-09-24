@@ -50,7 +50,8 @@ namespace AccessibilityInsights.Modes
             if (gdContainer.Children.Count == 0)
             {
                 this.Visibility = Visibility.Collapsed;
-            } else
+            }
+            else
             {
                 currentTopDialog.IsEnabled = true;
                 currentTopDialog.SetFocusOnDefaultControl();

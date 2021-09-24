@@ -4266,9 +4266,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to There is an update available.
         /// </summary>
-        public static string UpdateDialogWindowTitle {
+        public static string UpdateContainedDialogAutomationName {
             get {
-                return ResourceManager.GetString("UpdateDialogWindowTitle", resourceCulture);
+                return ResourceManager.GetString("UpdateContainedDialogAutomationName", resourceCulture);
             }
         }
         

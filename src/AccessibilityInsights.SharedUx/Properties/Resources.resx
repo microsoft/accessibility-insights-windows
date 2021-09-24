@@ -1515,7 +1515,7 @@ Do you want to change the channel? </value>
   <data name="TextRangeControl_Details" xml:space="preserve">
     <value>Details</value>
   </data>
-  <data name="UpdateDialogWindowTitle" xml:space="preserve">
+  <data name="UpdateContainedDialogAutomationName" xml:space="preserve">
     <value>There is an update available</value>
   </data>
   <data name="UpdateContainedDialog_An_update_is_required" xml:space="preserve">
