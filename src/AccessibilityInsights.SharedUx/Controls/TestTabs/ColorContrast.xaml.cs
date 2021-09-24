@@ -119,12 +119,20 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             if (pair == null)
             {
-                throw new InvalidOperationException("Unable to determine colors!");
+                SetConfidenceVisibility(Visibility.Hidden);
+                return;
             }
 
+            SetConfidenceVisibility(Visibility.Visible);
             this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
             this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
             tbConfidence.Text = result.ConfidenceValue().ToString();
+        }
+
+        private void SetConfidenceVisibility(Visibility visibility)
+        {
+            tbConfidence.Visibility = visibility;
+            tbConfidenceLabel.Visibility = visibility;
         }
 
         private void RaiseLiveRegionEvents()
@@ -164,7 +172,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.Reset();
             this.firstChooser.Reset();
             this.secondChooser.Reset();
-            this.tbConfidence.Text = string.Empty;
+            SetConfidenceVisibility(Visibility.Visible);
         }
 
         public object Confidence => this.tbConfidence.Text;
@@ -279,14 +287,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 CCAMode.HandleToggleStatusChanged(isEnabled);
             }
 
-            spConfidence.Children.Clear();
-            tbConfidence.Text = "";
-
-            if (isEnabled)
-            {
-                spConfidence.Children.Add(tbConfidenceLabel);
-                spConfidence.Children.Add(tbConfidence);
-            }
+            SetConfidenceVisibility(Visibility.Hidden);
         }
 
         public void SetAutoCCAState(bool state)
