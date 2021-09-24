@@ -119,8 +119,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             if (pair == null)
             {
-                SetConfidenceVisibility(Visibility.Hidden);
-                return;
+                throw new InvalidOperationException("Unable to determine colors!");
             }
 
             SetConfidenceVisibility(Visibility.Visible);
@@ -172,7 +171,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.Reset();
             this.firstChooser.Reset();
             this.secondChooser.Reset();
-            SetConfidenceVisibility(Visibility.Visible);
+            SetConfidenceVisibility(Visibility.Hidden);
         }
 
         public object Confidence => this.tbConfidence.Text;
