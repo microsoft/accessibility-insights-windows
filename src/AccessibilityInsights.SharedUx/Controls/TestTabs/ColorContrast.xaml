@@ -79,7 +79,6 @@
                                    HorizontalAlignment="Left"
                                    BorderBrush="Transparent"
                                    BorderThickness="2"
-                                   KeyboardNavigation.TabIndex="1"
                                    ColorPickerName="{x:Static Properties:Resources.ColorContrast_Color1}"
                                    AutomationProperties.Name="{x:Static Properties:Resources.firstChooserAutomationPropertiesName}" 
                                    StoredColor="{Binding Path=ContrastVM.FirstColor, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
@@ -95,7 +94,6 @@
                                BorderThickness="2" 
                                ColorPickerName="{x:Static Properties:Resources.ColorContrast_Color2}"
                                StoredColor="{Binding Path=ContrastVM.SecondColor, Mode=TwoWay, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"
-                               KeyboardNavigation.TabIndex="2"
                                AutomationProperties.Name="{x:Static Properties:Resources.secondChooserAutomationPropertiesName}"
                                />
                     </StackPanel>
@@ -108,7 +106,7 @@
                             <TextBlock x:Name="output" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
                                  AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                                  AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
-                                 KeyboardNavigation.TabIndex="3" Focusable="True" Style="{StaticResource TbFocusable}"
+                                 Focusable="True" Style="{StaticResource TbFocusable}"
                                  Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"/>
                         </StackPanel>
                         <StackPanel Name="spConfidence" Orientation="Vertical" Margin="10,10,0,6" MinWidth="132">
@@ -116,7 +114,7 @@
                             <TextBlock x:Name="tbConfidence" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
                                        AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
                                        AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_tbConfidenceAutomationName}}"
-                                       KeyboardNavigation.TabIndex="4" Focusable="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Style="{StaticResource TbFocusable}">
+                                       Focusable="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Style="{StaticResource TbFocusable}">
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
