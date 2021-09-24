@@ -55,7 +55,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             WaitHandle.Set();
         }
 
-        protected abstract void SetFocusOnDefaultControl();
+        public abstract void SetFocusOnDefaultControl();
 
         public Task<bool> ShowDialog(Action<ContainedDialog> hideDialog)
         {

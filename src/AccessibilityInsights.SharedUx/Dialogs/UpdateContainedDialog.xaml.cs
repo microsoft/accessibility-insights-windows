@@ -1,17 +1,19 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Misc;
+using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Telemetry;
 using System;
+using System.Diagnostics;
+using System.Globalization;
 using System.Windows;
 
-namespace AccessibilityInsights.Dialogs
+namespace AccessibilityInsights.SharedUx.Dialogs
 {
     /// <summary>
     /// Interaction logic for UpdateDialog.xaml
     /// </summary>
-    public partial class UpdateDialog : Window
+    public partial class UpdateContainedDialog : ContainedDialog
     {
         public Uri ReleaseNotesUri { get; }
 
@@ -19,31 +21,43 @@ namespace AccessibilityInsights.Dialogs
         /// Initializes update dialog
         /// </summary>
         /// <param name="releaseNotesUri">Uri to release notes</param>
-        public UpdateDialog(Uri releaseNotesUri)
+        public UpdateContainedDialog(Uri releaseNotesUri)
         {
             InitializeComponent();
             this.ReleaseNotesUri = releaseNotesUri;
-            Topmost = App.Current.MainWindow.Topmost;
+            WaitHandle.Reset();
         }
 
         private void UpdateNow_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
-            this.Close();
+            WaitHandle.Set();
         }
 
-        private void UpdateLater_Click(object sender, RoutedEventArgs e)
+        private void UpdateLater_Dismiss(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false;
-            this.Close();
+            DismissDialog();
         }
 
-        /// <summary>
-        /// Navigates to the url for the release notes
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ReleaseNotes_Click(object sender, RoutedEventArgs e)
+        private void UpdateLater_Close(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
+        }
+
+        public void SetModeToRequired()
+        {
+            lblUpdate.Content = Properties.Resources.UpdateContainedDialog_An_update_is_required;
+            btnUpdateLater.Content = Properties.Resources.closeDialogText;
+            btnUpdateLater.Click -= UpdateLater_Dismiss;
+            btnUpdateLater.Click += UpdateLater_Close;
+        }
+
+        public override void SetFocusOnDefaultControl()
+        {
+            btnUpdateNow.Focus();
+        }
+
+        private void hlReleaseNotes_Click(object sender, RoutedEventArgs e)
         {
             string error = string.Empty;
             string releaseNotesString = string.Empty;
@@ -53,11 +67,11 @@ namespace AccessibilityInsights.Dialogs
 
                 if (ReleaseNotesUri.Scheme == Uri.UriSchemeHttp || ReleaseNotesUri.Scheme == Uri.UriSchemeHttps)
                 {
-                    System.Diagnostics.Process.Start(releaseNotesString);
+                    Process.Start(releaseNotesString);
                 }
                 else
                 {
-                    error = Properties.Resources.ReleaseNotes_ClickURLErrorMessage + " " + releaseNotesString;
+                    error = string.Format(CultureInfo.CurrentCulture, Properties.Resources.ReleaseNotes_ClickURLErrorMessage, releaseNotesString);
                     MessageDialog.Show(error);
                 }
             }
@@ -65,7 +79,7 @@ namespace AccessibilityInsights.Dialogs
             catch (Exception ex)
             {
                 ex.ReportException();
-                error = Properties.Resources.ReleaseNotes_ClickLoadErrorMessage + " " + releaseNotesString;
+                error = string.Format(CultureInfo.CurrentCulture, Properties.Resources.ReleaseNotes_ClickLoadErrorMessage, releaseNotesString);
                 MessageDialog.Show(error);
             }
 #pragma warning restore CA1031 // Do not catch general exception types
