@@ -920,7 +920,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it..
+        ///   Looks up a localized string similar to Auto-detection allows you to evaluate color contrast ratios by hovering over an element or setting the keyboard focus on it..
         /// </summary>
         public static string ColorContrast_AutoDetectGuidance {
             get {
@@ -979,6 +979,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ColorContrast_LargeSampleHelpText {
             get {
                 return ResourceManager.GetString("ColorContrast_LargeSampleHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test result large text.
+        /// </summary>
+        public static string ColorContrast_LargeTextResultHelpText {
+            get {
+                return ResourceManager.GetString("ColorContrast_LargeTextResultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test result Graphical objects.
+        /// </summary>
+        public static string ColorContrast_NonTextObjectsTestResultHelpText {
+            get {
+                return ResourceManager.GetString("ColorContrast_NonTextObjectsTestResultHelpText", resourceCulture);
             }
         }
         
@@ -1074,7 +1092,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample small bold text.
+        ///   Looks up a localized string similar to Sample regular bold text.
         /// </summary>
         public static string ColorContrast_SmallSampleBoldHelpText {
             get {
@@ -1083,7 +1101,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample small text.
+        ///   Looks up a localized string similar to Sample regular text.
         /// </summary>
         public static string ColorContrast_SmallSampleHelpText {
             get {
@@ -1092,7 +1110,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test result small text.
+        ///   Looks up a localized string similar to Test result regular text.
         /// </summary>
         public static string ColorContrast_SmallTextResultHelpText {
             get {
@@ -2139,15 +2157,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string LabelUIAccessNotAvailable {
             get {
                 return ResourceManager.GetString("LabelUIAccessNotAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test result large text.
-        /// </summary>
-        public static string largeTextResultAutomationHelpText {
-            get {
-                return ResourceManager.GetString("largeTextResultAutomationHelpText", resourceCulture);
             }
         }
         

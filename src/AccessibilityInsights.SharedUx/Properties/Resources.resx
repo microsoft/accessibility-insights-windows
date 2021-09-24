@@ -441,7 +441,7 @@
   <data name="smallSampleText" xml:space="preserve">
     <value>The quick brown fox</value>
   </data>
-  <data name="largeTextResultAutomationHelpText" xml:space="preserve">
+  <data name="ColorContrast_LargeTextResultHelpText" xml:space="preserve">
     <value>Test result large text</value>
   </data>
   <data name="ColorContrast_OpenLinkFailed" xml:space="preserve">
@@ -1219,13 +1219,13 @@
     <value>Sample large text</value>
   </data>
   <data name="ColorContrast_SmallSampleBoldHelpText" xml:space="preserve">
-    <value>Sample small bold text</value>
+    <value>Sample regular bold text</value>
   </data>
   <data name="ColorContrast_SmallSampleHelpText" xml:space="preserve">
-    <value>Sample small text</value>
+    <value>Sample regular text</value>
   </data>
   <data name="ColorContrast_SmallTextResultHelpText" xml:space="preserve">
-    <value>Test result small text</value>
+    <value>Test result regular text</value>
   </data>
   <data name="PropertyConfigDialogAutomationName" xml:space="preserve">
     <value>Select properties to always show</value>
@@ -1308,7 +1308,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Auto detect contrast ratio</value>
   </data>
   <data name="ColorContrast_AutoDetectGuidance" xml:space="preserve">
-    <value>Auto-detection allows you to evaulate color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
+    <value>Auto-detection allows you to evaluate color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>
@@ -1514,6 +1514,9 @@ Do you want to change the channel? </value>
   </data>
   <data name="TextRangeControl_Details" xml:space="preserve">
     <value>Details</value>
+  </data>
+  <data name="ColorContrast_NonTextObjectsTestResultHelpText" xml:space="preserve">
+    <value>Test result Graphical objects</value>
   </data>
   <data name="UpdateContainedDialogAutomationName" xml:space="preserve">
     <value>There is an update available</value>

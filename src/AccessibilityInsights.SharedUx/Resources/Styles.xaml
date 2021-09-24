@@ -366,6 +366,7 @@
         </Style.Triggers>
     </Style>
     <Style TargetType="{x:Type Hyperlink}" x:Key="hLink" BasedOn="{StaticResource {x:Type Hyperlink}}">
+        <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ButtonLinkHoverFGBrush}"/>
