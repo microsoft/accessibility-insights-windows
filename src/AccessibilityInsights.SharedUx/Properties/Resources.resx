@@ -1219,13 +1219,13 @@
     <value>Sample large text</value>
   </data>
   <data name="ColorContrast_SmallSampleBoldHelpText" xml:space="preserve">
-    <value>Sample small bold text</value>
+    <value>Sample regular bold text</value>
   </data>
   <data name="ColorContrast_SmallSampleHelpText" xml:space="preserve">
-    <value>Sample small text</value>
+    <value>Sample regular text</value>
   </data>
   <data name="ColorContrast_SmallTextResultHelpText" xml:space="preserve">
-    <value>Test result small text</value>
+    <value>Test result regular text</value>
   </data>
   <data name="PropertyConfigDialogAutomationName" xml:space="preserve">
     <value>Select properties to always show</value>
@@ -1516,7 +1516,7 @@ Do you want to change the channel? </value>
     <value>Details</value>
   </data>
   <data name="ColorContrast_NonTextObjectsTestResultHelpText" xml:space="preserve">
-    <value>Test result non-text objects</value>
+    <value>Test result Graphical objects</value>
   </data>
   <data name="UpdateContainedDialogAutomationName" xml:space="preserve">
     <value>There is an update available</value>

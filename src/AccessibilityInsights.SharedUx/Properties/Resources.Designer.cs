@@ -992,7 +992,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test result non-text objects.
+        ///   Looks up a localized string similar to Test result Graphical objects.
         /// </summary>
         public static string ColorContrast_NonTextObjectsTestResultHelpText {
             get {
@@ -1092,7 +1092,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample small bold text.
+        ///   Looks up a localized string similar to Sample regular bold text.
         /// </summary>
         public static string ColorContrast_SmallSampleBoldHelpText {
             get {
@@ -1101,7 +1101,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sample small text.
+        ///   Looks up a localized string similar to Sample regular text.
         /// </summary>
         public static string ColorContrast_SmallSampleHelpText {
             get {
@@ -1110,7 +1110,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test result small text.
+        ///   Looks up a localized string similar to Test result regular text.
         /// </summary>
         public static string ColorContrast_SmallTextResultHelpText {
             get {
