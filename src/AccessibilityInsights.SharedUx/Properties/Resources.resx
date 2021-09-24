@@ -441,7 +441,7 @@
   <data name="smallSampleText" xml:space="preserve">
     <value>The quick brown fox</value>
   </data>
-  <data name="largeTextResultAutomationHelpText" xml:space="preserve">
+  <data name="ColorContrast_LargeTextResultHelpText" xml:space="preserve">
     <value>Test result large text</value>
   </data>
   <data name="ColorContrast_OpenLinkFailed" xml:space="preserve">
@@ -1514,5 +1514,8 @@ Do you want to change the channel? </value>
   </data>
   <data name="TextRangeControl_Details" xml:space="preserve">
     <value>Details</value>
+  </data>
+  <data name="ColorContrast_NonTextObjectsTestResultHelpText" xml:space="preserve">
+    <value>Test result non-text objects</value>
   </data>
 </root>

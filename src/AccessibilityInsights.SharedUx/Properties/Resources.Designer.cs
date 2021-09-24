@@ -956,6 +956,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Test result large text.
+        /// </summary>
+        public static string ColorContrast_LargeTextResultHelpText {
+            get {
+                return ResourceManager.GetString("ColorContrast_LargeTextResultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test result non-text objects.
+        /// </summary>
+        public static string ColorContrast_NonTextObjectsTestResultHelpText {
+            get {
+                return ResourceManager.GetString("ColorContrast_NonTextObjectsTestResultHelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Graphical objects and UI components.
         /// </summary>
         public static string ColorContrast_NonTextObjectsText {
@@ -2112,15 +2130,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string LabelUIAccessNotAvailable {
             get {
                 return ResourceManager.GetString("LabelUIAccessNotAvailable", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Test result large text.
-        /// </summary>
-        public static string largeTextResultAutomationHelpText {
-            get {
-                return ResourceManager.GetString("largeTextResultAutomationHelpText", resourceCulture);
             }
         }
         

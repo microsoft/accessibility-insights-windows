@@ -233,7 +233,7 @@
                             </fabric:FabricIconControl.Style>
                         </fabric:FabricIconControl>
                         <TextBlock x:Name="largeTextResult" KeyboardNavigation.IsTabStop="True" Focusable="True" FontWeight="SemiBold" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
-                               AutomationProperties.HelpText="{x:Static Properties:Resources.largeTextResultAutomationHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_LargeTextResultHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
@@ -305,7 +305,7 @@
                             </fabric:FabricIconControl.Style>
                         </fabric:FabricIconControl>
                         <TextBlock x:Name="nonTextObjectResult" FontWeight="SemiBold" KeyboardNavigation.IsTabStop="True" Focusable="True" FontSize="{DynamicResource ConstStandardTextSize}" Margin="8 0 0 0" 
-                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_SmallTextResultHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
+                               AutomationProperties.HelpText="{x:Static Properties:Resources.ColorContrast_NonTextObjectsTestResultHelpText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
