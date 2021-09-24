@@ -611,6 +611,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Later.
+        /// </summary>
+        public static string btnUpdateLaterText {
+            get {
+                return ResourceManager.GetString("btnUpdateLaterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update now.
+        /// </summary>
+        public static string btnUpdateNowText {
+            get {
+                return ResourceManager.GetString("btnUpdateNowText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to start the video. please use this URL to open page.
         /// {0}.
         /// </summary>
@@ -880,6 +898,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ckbxShowContent {
             get {
                 return ResourceManager.GetString("ckbxShowContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string closeDialogText {
+            get {
+                return ResourceManager.GetString("closeDialogText", resourceCulture);
             }
         }
         
@@ -3088,6 +3115,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was an error loading the URL.\nURL: {0}.
+        /// </summary>
+        public static string ReleaseNotes_ClickLoadErrorMessage {
+            get {
+                return ResourceManager.GetString("ReleaseNotes_ClickLoadErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL was not properly formatted.\nURL: {0}.
+        /// </summary>
+        public static string ReleaseNotes_ClickURLErrorMessage {
+            get {
+                return ResourceManager.GetString("ReleaseNotes_ClickURLErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View the release notes here..
+        /// </summary>
+        public static string ReleaseNotesText {
+            get {
+                return ResourceManager.GetString("ReleaseNotesText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Input should be int value greater than or equal to 0..
         /// </summary>
         public static string ReturnA11yElementsView_btnRun_Click_Input_should_be_int_value_greater_than_equal_to_0 {
@@ -4188,6 +4242,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TTAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("TTAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An update is available.
+        /// </summary>
+        public static string UpdateContainedDialog_An_update_is_available {
+            get {
+                return ResourceManager.GetString("UpdateContainedDialog_An_update_is_available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An update is required.
+        /// </summary>
+        public static string UpdateContainedDialog_An_update_is_required {
+            get {
+                return ResourceManager.GetString("UpdateContainedDialog_An_update_is_required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is an update available.
+        /// </summary>
+        public static string UpdateContainedDialogAutomationName {
+            get {
+                return ResourceManager.GetString("UpdateContainedDialogAutomationName", resourceCulture);
             }
         }
         

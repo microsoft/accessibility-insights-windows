@@ -322,15 +322,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Release notes.
-        /// </summary>
-        public static string btnReleaseNotesText {
-            get {
-                return ResourceManager.GetString("btnReleaseNotesText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Save.
         /// </summary>
         public static string btnSaveAutomationPropertiesName {
@@ -372,24 +363,6 @@ namespace AccessibilityInsights.Properties {
         public static string btnTimerAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnTimerAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Later.
-        /// </summary>
-        public static string btnUpdateLaterText {
-            get {
-                return ResourceManager.GetString("btnUpdateLaterText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Update now.
-        /// </summary>
-        public static string btnUpdateNowText {
-            get {
-                return ResourceManager.GetString("btnUpdateNowText", resourceCulture);
             }
         }
         
@@ -772,24 +745,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An update is available..
-        /// </summary>
-        public static string MainWindow_ShowUpgradeDialog_An_update_is_available {
-            get {
-                return ResourceManager.GetString("MainWindow_ShowUpgradeDialog_An_update_is_available", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to An update is required..
-        /// </summary>
-        public static string MainWindow_ShowUpgradeDialog_An_update_is_required {
-            get {
-                return ResourceManager.GetString("MainWindow_ShowUpgradeDialog_An_update_is_required", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Two.
         /// </summary>
         public static string MainWindow_Two {
@@ -894,24 +849,6 @@ namespace AccessibilityInsights.Properties {
         public static string PleaseMoveBackToLiveDialogMessage {
             get {
                 return ResourceManager.GetString("PleaseMoveBackToLiveDialogMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There was an error loading the URL.\nURL:.
-        /// </summary>
-        public static string ReleaseNotes_ClickLoadErrorMessage {
-            get {
-                return ResourceManager.GetString("ReleaseNotes_ClickLoadErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The URL was not properly formatted.\nURL:.
-        /// </summary>
-        public static string ReleaseNotes_ClickURLErrorMessage {
-            get {
-                return ResourceManager.GetString("ReleaseNotes_ClickURLErrorMessage", resourceCulture);
             }
         }
         
@@ -1336,15 +1273,6 @@ namespace AccessibilityInsights.Properties {
         public static string TitleTextMapTestTabStops {
             get {
                 return ResourceManager.GetString("TitleTextMapTestTabStops", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to There is an update available.
-        /// </summary>
-        public static string UpdateDialogWindowTitle {
-            get {
-                return ResourceManager.GetString("UpdateDialogWindowTitle", resourceCulture);
             }
         }
         

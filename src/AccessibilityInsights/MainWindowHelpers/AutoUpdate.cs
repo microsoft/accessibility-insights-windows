@@ -1,16 +1,14 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Dialogs;
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
 using AccessibilityInsights.Misc;
+using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.SharedUx.Utilities;
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Windows;
 
 namespace AccessibilityInsights
 {
@@ -91,27 +89,15 @@ namespace AccessibilityInsights
         /// <summary>
         /// Create the upgrade dialog based on releaseNotesUri and updateOption
         /// </summary>
-        private UpdateDialog CreateUpgradeDialog(Uri releaseNotesUri, AutoUpdateOption updateOption)
+        private UpdateContainedDialog CreateUpgradeDialog(Uri releaseNotesUri, AutoUpdateOption updateOption)
         {
-            UpdateDialog dialog = new UpdateDialog(releaseNotesUri);
+            UpdateContainedDialog dialog = new UpdateContainedDialog(releaseNotesUri);
             if (updateOption == AutoUpdateOption.RequiredUpgrade)
             {
-                dialog.btnUpdateLater.Visibility = Visibility.Collapsed;
-                dialog.txtUpdateNotice.Text = Properties.Resources.MainWindow_ShowUpgradeDialog_An_update_is_required;
+                dialog.SetModeToRequired();
             }
 
-            // center horizontally - does not work when maximized on secondary screen
-            Point topLeft = this.WindowState == WindowState.Maximized ?
-                            this.GetTopLeftPoint() : new Point(this.Left, this.Top);
-
-            dialog.Top = topLeft.Y + this.borderTitleBar.ActualHeight + 8;
-            dialog.Left = topLeft.X + this.ictMainMenu.ActualWidth;
-            dialog.Width = this.ActualWidth - this.ictMainMenu.ActualWidth;
-            dialog.Owner = this;
-
-            // Block until message bar disappears
-            this.modeGrid.Opacity = 0.5;
-            this.AllowFurtherAction = false;
+            AllowFurtherAction = false;
 
             return dialog;
         }
@@ -165,7 +151,7 @@ namespace AccessibilityInsights
             }
         }
 
-        private void ShowUpgradeDialog()
+        private async void ShowUpgradeDialog()
         {
             // Make the upgrade decision
             var autoUpdate = Container.GetDefaultInstance().AutoUpdate;
@@ -175,9 +161,9 @@ namespace AccessibilityInsights
             }
 
             // Create the upgrade dialog
-            UpdateDialog dialog = CreateUpgradeDialog(autoUpdate.ReleaseNotesUri, _updateOption);
+            UpdateContainedDialog dialog = CreateUpgradeDialog(autoUpdate.ReleaseNotesUri, _updateOption);
 
-            bool? dialogResult = dialog.ShowDialog();
+            bool? dialogResult = await ctrlDialogContainer.ShowDialog(dialog).ConfigureAwait(true);
             // user clicked update now (true)
             if (dialogResult.HasValue && dialogResult.Value)
             {

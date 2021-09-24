@@ -43,5 +43,14 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 { TelemetryProperty.IssueReporter, IssueReporter.DisplayName?.ToString(CultureInfo.InvariantCulture) },
             });
         }
+
+        public static TelemetryEvent ForReleaseNotesClick(string error)
+        {
+            return new TelemetryEvent(TelemetryAction.Upgrade_Update_ReleaseNote,
+                new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.Error, error },
+                });
+        }
     }
 }

@@ -261,21 +261,6 @@
   <data name="Window_ClosingException" xml:space="preserve">
     <value>Exception while closing MainWindow</value>
   </data>
-  <data name="btnReleaseNotesText" xml:space="preserve">
-    <value>Release notes</value>
-  </data>
-  <data name="btnUpdateLaterText" xml:space="preserve">
-    <value>Later</value>
-  </data>
-  <data name="btnUpdateNowText" xml:space="preserve">
-    <value>Update now</value>
-  </data>
-  <data name="ReleaseNotes_ClickLoadErrorMessage" xml:space="preserve">
-    <value>There was an error loading the URL.\nURL:</value>
-  </data>
-  <data name="ReleaseNotes_ClickURLErrorMessage" xml:space="preserve">
-    <value>The URL was not properly formatted.\nURL:</value>
-  </data>
   <data name="btnOkContent" xml:space="preserve">
     <value>Save and close</value>
   </data>
@@ -488,9 +473,6 @@ Please ensure that you are opening a valid test file using the most recent relea
     <value>Prerelease Build ({0})</value>
     <comment>{0} receives the build version</comment>
   </data>
-  <data name="UpdateDialogWindowTitle" xml:space="preserve">
-    <value>There is an update available</value>
-  </data>
   <data name="SetElementInspectTestDetail" xml:space="preserve">
     <value>Inspect Test Detail of {0}</value>
   </data>
@@ -499,12 +481,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="UpdateMainWindowLoginFieldsSignedInAs" xml:space="preserve">
     <value>Signed into {0}</value>
-  </data>
-  <data name="MainWindow_ShowUpgradeDialog_An_update_is_required" xml:space="preserve">
-    <value>An update is required.</value>
-  </data>
-  <data name="MainWindow_ShowUpgradeDialog_An_update_is_available" xml:space="preserve">
-    <value>An update is available.</value>
   </data>
   <data name="bdLeftNavAutomationPropertiesName" xml:space="preserve">
     <value>Navigation Bar</value>

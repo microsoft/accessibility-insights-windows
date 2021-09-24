@@ -79,4 +79,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Dialogs\UpdateContainedDialog.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+    </Page>
+  </ItemGroup>
+
 </Project>
