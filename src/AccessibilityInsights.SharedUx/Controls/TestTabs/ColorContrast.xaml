@@ -46,8 +46,7 @@
                 <Hyperlink
                     AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click" Style="{StaticResource hLink}" Name="hlLearnMore">
                     <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
-                </Hyperlink>
-                </TextBlock>
+                </Hyperlink>                
                 <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="24" Margin="0,16,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -55,9 +54,9 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <Label Name="lblAutoDetect" Content="{x:Static Properties:Resources.lblAutoDetectContent}" Grid.Column="0" VerticalAlignment="Center" Style="{StaticResource lblDark}"/>
-                    <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="2" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click">                    </ToggleButton>
+                    <ToggleButton Style="{StaticResource tgbSlider}" Grid.Column="2" Name="tgbtnAutoDetect" Margin="20,0,0,0" AutomationProperties.LabeledBy="{Binding ElementName=lblAutoDetect}" Click="TgbtnAutoDetect_Click"/>
                 </Grid>
-                <TextBlock Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Focusable="True">
+                <TextBlock Grid.Row="3" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Focusable="True" Style="{StaticResource TbFocusable}">
                     <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_AutoDetectGuidance}" />
                 </TextBlock>
                 <Grid Grid.Row="4" Grid.Column="0" Margin="0,16,0,0">
@@ -71,7 +70,7 @@
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Grid.Column="0" >
                         <TextBlock FontSize="14" Margin="0 4">
-                        <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.ColorContrast_Color1}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color1}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                            <Run FontWeight="SemiBold" Text="{x:Static Properties:Resources.ColorContrast_Color1}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color1}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </TextBlock>
                         <controls:ColorChooser x:Name="firstChooser"
                                    HorizontalAlignment="Left"
@@ -85,7 +84,7 @@
                     </StackPanel>
                     <StackPanel Grid.Row="1" Margin="0 8" Grid.Column="0">
                         <TextBlock FontSize="14" Margin="0 4">
-                    <Run FontWeight="SemiBold"  Text="{x:Static Properties:Resources.ColorContrast_Color2}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color2}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                            <Run FontWeight="SemiBold"  Text="{x:Static Properties:Resources.ColorContrast_Color2}" AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_Color2}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </TextBlock>
                         <controls:ColorChooser x:Name="secondChooser"
                                HorizontalAlignment="Left"
@@ -104,18 +103,17 @@
                         <StackPanel Orientation="Vertical" Margin="10,6,0,0" MinWidth="132">
                             <TextBlock Text="{x:Static Properties:Resources.ColorContrast_Ratio}" FontSize="14" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                             <TextBlock x:Name="output" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
-                               AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
-                               AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
-                               KeyboardNavigation.TabIndex="3" Focusable="True"
-                               Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}">
-                                </TextBlock>
+                                 AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
+                                 AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_OutputAutomationName}}"
+                                 KeyboardNavigation.TabIndex="3" Focusable="True" Style="{StaticResource TbFocusable}"
+                                 Text="{Binding Path=ContrastVM.FormattedRatio, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:ColorContrast}}"/>
                         </StackPanel>
                         <StackPanel Name="spConfidence" Orientation="Vertical" Margin="10,10,0,6" MinWidth="132">
                             <TextBlock Name="tbConfidenceLabel" Text="{x:Static Properties:Resources.ColorContrast_Confidence}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" FontSize="14"/>
                             <TextBlock x:Name="tbConfidence" FontWeight="SemiBold" FontSize="17" HorizontalAlignment="Left"
                                        AutomationProperties.LiveSetting="Polite" VerticalAlignment="Center"
                                        AutomationProperties.Name="{Binding Text, RelativeSource={RelativeSource Self}, StringFormat={x:Static Properties:Resources.ColorContrast_tbConfidenceAutomationName}}"
-                                       KeyboardNavigation.TabIndex="4" Focusable="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
+                                       KeyboardNavigation.TabIndex="4" Focusable="True" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}" Style="{StaticResource TbFocusable}">
                             </TextBlock>
                         </StackPanel>
                     </StackPanel>
@@ -156,8 +154,8 @@
                     </Grid.RowDefinitions>
                     <Border Grid.Row="0" Grid.ColumnSpan="4" BorderBrush="{DynamicResource ResourceKey=HorizontalRuleBGBrush}" 
                         BorderThickness="0,0,0,1" Background="{x:Null}" />
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
-                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextResult}" Grid.Row="0" Grid.Column="1" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Style="{StaticResource TbFocusable}"/>
+                    <TextBlock FontWeight="Bold" Text="{x:Static Properties:Resources.TextBlockTextElement}" Grid.Row="0" Grid.Column="2" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Style="{StaticResource TbFocusable}"/>
                     <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.Column="1" Margin="4,4">
                         <fabric:FabricIconControl x:Name="smallTextGlyph" VerticalAlignment="Center" Margin="0 0 2 0">
                             <fabric:FabricIconControl.Style>
@@ -193,6 +191,7 @@
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
+                                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -252,6 +251,7 @@
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
+                                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
@@ -323,6 +323,7 @@
                                             </MultiBinding>
                                         </Setter.Value>
                                     </Setter>
+                                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
