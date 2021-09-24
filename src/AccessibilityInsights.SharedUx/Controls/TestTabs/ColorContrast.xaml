@@ -41,12 +41,15 @@
                 <Label Grid.Row="0" Content="{x:Static Properties:Resources.ColorContrastAutomationPropertiesName}"
                 FontSize="{DynamicResource ConstXXLTextSize}"
                 Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0,0,0,16"/>
-                <TextBlock Grid.Row="1" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center">
-                <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
-                <Hyperlink
-                    AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click" Style="{StaticResource hLink}" Name="hlLearnMore">
-                    <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
-                </Hyperlink>                
+                <TextBlock Grid.Row="1" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource TbFocusable}">
+                    <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
+                    <TextBlock>
+                        <Hyperlink
+                            AutomationProperties.Name="{x:Static Properties:Resources.ColorContrast_IntroLink}" Click="hlLearnAboutColorContrast_Click" Style="{StaticResource hLink}" Name="hlLearnMore">
+                            <Run Text="{x:Static Properties:Resources.ColorContrast_IntroLink}" />
+                        </Hyperlink>
+                    </TextBlock>
+                </TextBlock>
                 <Grid Grid.Row="2" Grid.ColumnSpan="2" Height="24" Margin="0,16,0,0" VerticalAlignment="Top">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
