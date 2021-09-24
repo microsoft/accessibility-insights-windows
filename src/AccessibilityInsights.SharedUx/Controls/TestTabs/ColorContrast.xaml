@@ -41,7 +41,7 @@
                 <Label Grid.Row="0" Content="{x:Static Properties:Resources.ColorContrastAutomationPropertiesName}"
                 FontSize="{DynamicResource ConstXXLTextSize}"
                 Style="{StaticResource lblHeader}" HorizontalAlignment="Left" Margin="0,0,0,16"/>
-                <TextBlock Grid.Row="1" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource TbFocusable}">
+                <TextBlock Grid.Row="1" Name="tbInstructions" FontSize="{DynamicResource StandardTextSize}" Margin="0,0,0,0" TextWrapping="Wrap" Grid.ColumnSpan="2" VerticalAlignment="Center" Style="{StaticResource TbFocusable}">
                     <Run FontSize="{DynamicResource StandardTextSize}" Foreground="{DynamicResource ResourceKey=SecondaryFGBrush}" Text="{x:Static Properties:Resources.ColorContrast_IntroRun}" />
                     <TextBlock>
                         <Hyperlink

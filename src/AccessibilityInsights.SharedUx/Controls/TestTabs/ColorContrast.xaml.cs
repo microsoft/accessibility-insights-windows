@@ -316,7 +316,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         public new void Focus()
         {
-            this.hlLearnMore.Focus();
+            this.tbInstructions.Focus();
         }
     }
 }
