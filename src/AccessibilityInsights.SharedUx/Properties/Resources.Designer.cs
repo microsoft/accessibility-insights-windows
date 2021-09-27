@@ -2541,9 +2541,18 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Press right arrow key to expand, enter or space to toggle children highlighting.
         /// </summary>
-        public static string lvResultsListViewHelpText {
+        public static string lvResultsListViewHelpTextCollapsed {
             get {
-                return ResourceManager.GetString("lvResultsListViewHelpText", resourceCulture);
+                return ResourceManager.GetString("lvResultsListViewHelpTextCollapsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Press left arrow key to collapse, enter or space to toggle children highlighting.
+        /// </summary>
+        public static string lvResultsListViewHelpTextExpanded {
+            get {
+                return ResourceManager.GetString("lvResultsListViewHelpTextExpanded", resourceCulture);
             }
         }
         
