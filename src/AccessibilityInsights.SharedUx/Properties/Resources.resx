@@ -387,8 +387,11 @@
   <data name="lvResultsListViewAutomationPropertiesName" xml:space="preserve">
     <value>{1} errors - {0}, {2} children highlighted</value>
   </data>
-  <data name="lvResultsListViewHelpText" xml:space="preserve">
+  <data name="lvResultsListViewHelpTextCollapsed" xml:space="preserve">
     <value>Press right arrow key to expand, enter or space to toggle children highlighting</value>
+  </data>
+  <data name="lvResultsListViewHelpTextExpanded" xml:space="preserve">
+    <value>Press left arrow key to collapse, enter or space to toggle children highlighting</value>
   </data>
   <data name="lblCongratsContent" xml:space="preserve">
     <value>Congratulations</value>

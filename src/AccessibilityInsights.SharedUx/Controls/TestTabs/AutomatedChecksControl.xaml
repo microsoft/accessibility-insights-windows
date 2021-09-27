@@ -275,12 +275,11 @@
                                                 <Binding Path="Tag" RelativeSource="{RelativeSource Self}"/>
                                             </MultiBinding>
                                         </Setter.Value>
-                                    </Setter>
-                                    <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.lvResultsListViewHelpText}"/>
+                                </Setter>
                                     <Setter Property="Template">
                                         <Setter.Value>
                                             <ControlTemplate>
-                                                <local:CustomExpander IsExpanded="False" KeyboardNavigation.DirectionalNavigation="Local" 
+                                                <local:CustomExpander x:Name="expander" IsExpanded="False" KeyboardNavigation.DirectionalNavigation="Local" 
                                                           RequestBringIntoView="Expander_RequestBringIntoView" Collapsed="Expander_Collapsed" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}">
                                                     <local:CustomExpander.Header>
                                                         <StackPanel Focusable="False" Orientation="Horizontal" Height="20">
@@ -293,6 +292,14 @@
                                                     </local:CustomExpander.Header>
                                                     <ItemsPresenter/>
                                                 </local:CustomExpander>
+                                                <ControlTemplate.Triggers>
+                                                    <Trigger SourceName="expander" Property="IsExpanded" Value="True">
+                                                        <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.lvResultsListViewHelpTextExpanded}"/>
+                                                    </Trigger>
+                                                    <Trigger SourceName="expander" Property="IsExpanded" Value="False">
+                                                        <Setter Property="AutomationProperties.HelpText" Value="{x:Static Properties:Resources.lvResultsListViewHelpTextCollapsed}"/>
+                                                    </Trigger>
+                                                </ControlTemplate.Triggers>
                                             </ControlTemplate>
                                         </Setter.Value>
                                     </Setter>
