@@ -55,9 +55,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             DialogResult = ckbxAgreeToHelp.IsChecked ?? false;
 
             if (DialogResult)
-                TelemetryController.EnableTelemetry();
+                TelemetryController.OptIntoTelemetry();
             else
-                TelemetryController.DisableTelemetry();
+                TelemetryController.OptOutOfTelemetry();
 
             WaitHandle.Set();
         }

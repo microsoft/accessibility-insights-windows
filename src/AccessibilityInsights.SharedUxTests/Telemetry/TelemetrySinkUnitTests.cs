@@ -51,7 +51,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         [Timeout(1000)]
         public void IsTelemetryAllowed_DefaultToFalse()
         {
-            Assert.IsFalse(_telemetrySink.IsTelemetryAllowed);
+            Assert.IsFalse(_telemetrySink.HasUserOptedIntoTelemetry);
         }
 
         [TestMethod]
@@ -65,7 +65,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         [Timeout(1000)]
         public void IsEnabled_IsTelemetryAllowedIsTrue_ReturnsTrue()
         {
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             Assert.IsTrue(_telemetrySink.IsEnabled);
         }
 
@@ -82,7 +82,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         {
             PropertyBag actualPropertyBag = null;
 
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.PublishEvent(EventName1, It.IsAny<PropertyBag>()))
                 .Callback<string, PropertyBag>((_, p) => actualPropertyBag = p);
 
@@ -98,7 +98,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         public void PublishTelemetryEvent_SingleProperty_TelemetryAllowed_ThrowsOnPublish_ReportsException()
         {
             Exception expectedExpection = new OutOfMemoryException();
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.PublishEvent(EventName1, It.IsAny<PropertyBag>()))
                 .Throws(expectedExpection);
             _telemetryMock.Setup(x => x.ReportException(expectedExpection));
@@ -131,7 +131,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
                 { PropertyName2, Value2 },
             };
 
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.PublishEvent(EventName2, expectedPropertyBag));
             _telemetrySink.PublishTelemetryEvent(EventName2, expectedPropertyBag);
 
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
                 { PropertyName2, Value1 },
             };
 
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.PublishEvent(EventName2, expectedPropertyBag))
                 .Throws(expectedExpection);
             _telemetryMock.Setup(x => x.ReportException(expectedExpection));
@@ -170,7 +170,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         [Timeout(1000)]
         public void AddOrUpdateContextProperty_TelemetryIsAllowed_ChainsSameData()
         {
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.AddOrUpdateContextProperty(PropertyName2, Value2));
 
             _telemetrySink.AddOrUpdateContextProperty(PropertyName2, Value2);
@@ -183,7 +183,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         public void AddOrUpdateContextProperty_TelemetryIsAllowed_TelemetryThrowsException_ReportsException()
         {
             Exception expectedExpection = new OutOfMemoryException();
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.AddOrUpdateContextProperty(PropertyName2, Value2))
                 .Throws(expectedExpection);
             _telemetryMock.Setup(x => x.ReportException(expectedExpection));
@@ -204,7 +204,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         [Timeout(1000)]
         public void ReportException_TelemetryIsAllowed_ExceptionIsNull_DoesNotChain()
         {
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetrySink.ReportException(null);
         }
 
@@ -214,7 +214,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         {
             Exception expectedException = new OutOfMemoryException();
 
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.ReportException(expectedException));
 
             _telemetrySink.ReportException(expectedException);
@@ -229,7 +229,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
             Exception expectedException = new OutOfMemoryException();
             Exception unexpectedException = new InvalidOperationException();
 
-            _telemetrySink.IsTelemetryAllowed = true;
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
             _telemetryMock.Setup(x => x.ReportException(expectedException))
                 .Throws(unexpectedException);
 

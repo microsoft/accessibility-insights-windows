@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Whether or not telemetry toggle button is enabled in the settings.
         /// </summary>
-        bool IsTelemetryAllowed { get; set; }
+        bool HasUserOptedIntoTelemetry { get; set; }
 
         /// <summary>
         /// Whether or not telemetry is enabled. Exposed to allow callers who do lots of

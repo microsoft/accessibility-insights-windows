@@ -46,14 +46,14 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         public bool DoesGroupPolicyAllowTelemetry { get; }
 
         /// <summary>
-        /// Implements <see cref="ITelemetrySink.IsTelemetryAllowed"/>
+        /// Implements <see cref="ITelemetrySink.HasUserOptedIntoTelemetry"/>
         /// </summary>
-        public bool IsTelemetryAllowed { get; set; }
+        public bool HasUserOptedIntoTelemetry { get; set; }
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsEnabled"/>
         /// </summary>
-        public bool IsEnabled => DoesGroupPolicyAllowTelemetry && IsTelemetryAllowed && _telemetry != null;
+        public bool IsEnabled => DoesGroupPolicyAllowTelemetry && HasUserOptedIntoTelemetry && _telemetry != null;
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.PublishTelemetryEvent(string, string, string)"/>
