@@ -8,6 +8,11 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     internal interface ITelemetrySink
     {
         /// <summary>
+        /// We allow group policy to disable telemetry. This takes precedence over user opt-in
+        /// </summary>
+        bool DoesGroupPolicyAllowTelemetry { get; }
+
+        /// <summary>
         /// Whether or not telemetry toggle button is enabled in the settings.
         /// </summary>
         bool IsTelemetryAllowed { get; set; }

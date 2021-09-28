@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 
@@ -19,14 +20,30 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Holds the production TelemetrySink object
         /// </summary>
-        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry);
+        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry, ReadGroupPolicyFromRegistry());
 
         private readonly ITelemetry _telemetry;
 
-        internal TelemetrySink(ITelemetry telemetry)
+        internal TelemetrySink(ITelemetry telemetry, bool doesGroupPolicyAllowTelemetry)
         {
             _telemetry = telemetry;
+            DoesGroupPolicyAllowTelemetry = doesGroupPolicyAllowTelemetry;
         }
+
+        private static bool ReadGroupPolicyFromRegistry()
+        {
+            // Return true unless the policy exists to disable the telemetry
+            int? policyValue = (int?)Registry.GetValue(
+                @"HKEY_LOCAL_MACHINE\Software\Policies\Accessibility Insights",
+                "DisableTelemetry", 0);
+
+            return !(policyValue.HasValue && policyValue.Value == 1);
+        }
+
+        /// <summary>
+        /// Implements <see cref="ITelemetrySink.DoesGroupPolicyAllowTelemetry"/>
+        /// </summary>
+        public bool DoesGroupPolicyAllowTelemetry { get; }
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsTelemetryAllowed"/>
@@ -36,7 +53,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsEnabled"/>
         /// </summary>
-        public bool IsEnabled => IsTelemetryAllowed && _telemetry != null;
+        public bool IsEnabled => DoesGroupPolicyAllowTelemetry && IsTelemetryAllowed && _telemetry != null;
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.PublishTelemetryEvent(string, string, string)"/>

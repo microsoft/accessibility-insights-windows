@@ -28,14 +28,22 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         public void BeforeEachTest()
         {
             _telemetryMock = new Mock<ITelemetry>(MockBehavior.Strict);
-            _telemetrySink = new TelemetrySink(_telemetryMock.Object);
+            _telemetrySink = new TelemetrySink(_telemetryMock.Object, true);
         }
 
         [TestMethod]
         [Timeout(1000)]
         public void IsEnabled_TelemetryIsNull_ReturnsFalse()
         {
-            TelemetrySink sink = new TelemetrySink(null);
+            TelemetrySink sink = new TelemetrySink(null, true);
+            Assert.IsFalse(sink.IsEnabled);
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void IsEnabled_TelemetryIsDisabledByGroupPolicy_ReturnsFalse()
+        {
+            TelemetrySink sink = new TelemetrySink(_telemetryMock.Object, false);
             Assert.IsFalse(sink.IsEnabled);
         }
 
