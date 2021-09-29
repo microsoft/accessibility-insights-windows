@@ -34,7 +34,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         {
             // Return true unless the policy exists to disable the telemetry
             int? policyValue = (int?)Registry.GetValue(
-                @"HKEY_LOCAL_MACHINE\Software\Policies\Accessibility Insights",
+                @"HKEY_LOCAL_MACHINE\Software\Policies\Accessibility Insights for Windows",
                 "DisableTelemetry", 0);
 
             return !(policyValue.HasValue && policyValue.Value == 1);
