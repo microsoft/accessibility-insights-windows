@@ -10,21 +10,29 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
         public static void OptIntoTelemetry()
         {
-            // Open the telemetry sink
-            Sink.HasUserOptedIntoTelemetry = true;
+            if (DoesGroupPolicyAllowTelemetry)
+            {
+                // Open the telemetry sink
+                Sink.HasUserOptedIntoTelemetry = true;
 
-            // Begin listening for telemetry events
-            // This must be done after the low-level sink is opened above
-            // So that queued events get flushed to an open telemetry sink
-            EventTelemetrySink.Enable();
+                // Begin listening for telemetry events
+                // This must be done after the low-level sink is opened above
+                // So that queued events get flushed to an open telemetry sink
+                EventTelemetrySink.Enable();
 
-            AxeWindowsTelemetrySink.Enable();
+                AxeWindowsTelemetrySink.Enable();
+            }
         }
 
         public static void OptOutOfTelemetry()
         {
-            // Close the telemetry sink
-            Sink.HasUserOptedIntoTelemetry = false;
+            if (DoesGroupPolicyAllowTelemetry)
+            {
+                // Close the telemetry sink
+                Sink.HasUserOptedIntoTelemetry = false;
+            }
         }
+
+        public static bool DoesGroupPolicyAllowTelemetry => Sink.DoesGroupPolicyAllowTelemetry;
     } // class
 } // namespace

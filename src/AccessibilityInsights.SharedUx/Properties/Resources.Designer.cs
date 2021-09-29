@@ -152,6 +152,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telemetry has been disabled by an administrator of this computer..
+        /// </summary>
+        public static string ApplicationSettingsControl_TelemetryDisabledByAdministrator {
+            get {
+                return ResourceManager.GetString("ApplicationSettingsControl_TelemetryDisabledByAdministrator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Application settings.
         /// </summary>
         public static string ApplicationSettingsControlAutomationName {

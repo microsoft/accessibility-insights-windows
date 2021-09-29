@@ -6,6 +6,7 @@ using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                 this.btnHotkeyToggle,
                 this.btnHotkeyToParent
             };
+            if (!TelemetryController.DoesGroupPolicyAllowTelemetry)
+            {
+                this.telemetryDescription.Text = Properties.Resources.ApplicationSettingsControl_TelemetryDisabledByAdministrator;
+                this.privacyLearnMore.Visibility = Visibility.Collapsed;
+                this.lblEnableTelemetryLabel.Visibility = Visibility.Collapsed;
+                this.tgbtnEnableTelemetry.Visibility = Visibility.Collapsed;
+            }
         }
 
         /// <summary>
