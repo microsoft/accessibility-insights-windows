@@ -168,17 +168,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="url"></param>
         private void Navigate(Uri url) => fileIssueBrowser.Source = url;
 
-        private void IssueFileForm_Load(object sender, EventArgs e)
-        {
-            this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
-            this.TopMost = makeTopMost;
-            Navigate(this.Url);
-            AddHistoryChangedEventAsync();
-        }
-
-        private async void AddHistoryChangedEventAsync()
+        private async void IssueFileForm_Load(object sender, EventArgs e)
         {
             await this.fileIssueBrowser.EnsureCoreWebView2Async(null).ConfigureAwait(true);
+            this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
+
+            this.TopMost = makeTopMost;
+            Navigate(this.Url);
+
             this.fileIssueBrowser.CoreWebView2.HistoryChanged += CoreWebView2_HistoryChanged;
         }
 
