@@ -287,13 +287,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="url"></param>
         private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
         {
-            try
+            if (!IsWebView2RuntimeInstalled())
             {
-                CoreWebView2Environment.GetAvailableBrowserVersionString();
-            } 
-            catch (WebView2RuntimeNotFoundException e)
-            {
-                e.ReportException();
                 var webView = new WebviewRuntimeNotInstalled(onTop);
                 webView.ShowDialog();
                 return null;
@@ -306,6 +301,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             dlg.ShowDialog();
 
             return dlg.IssueId;
+        }
+
+        private static bool IsWebView2RuntimeInstalled()
+        {
+            try
+            {
+                CoreWebView2Environment.GetAvailableBrowserVersionString();
+                return true;
+            }
+            catch (WebView2RuntimeNotFoundException e)
+            {
+                e.ReportException();
+                return false;
+            }
         }
 
         /// <summary>
