@@ -45,8 +45,31 @@ catch (Exception e)
 }
 ```
 
-### User control
-All telemetry (including reported exceptions) is under user control. When the application starts the first time, the user is allowed to enable or disable telemetry. The user can change this option at any time via the settings page.
+### Control of Telemery
+Telemetry (including reported exceptions) can be disabled either by the computer's administrator or the current user.
+
+#### Administrative override
+An administrator can disable telemetry for all users of a system by adding a DWORD value the registry:
+
+```
+Key: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Accessibility Insights for Windows  
+Name: DisableTelemetry
+Value (DWORD): 1
+```
+Here is the same data expressed as a Windows REG file:
+```
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Accessibility Insights for Windows]
+"DisableTelemetry"=dword:00000001
+```
+
+Setting this override will disable telemetry for _all_ users of the computer. Since telemetry is disabled systemwide, users are never asked to enable or disable telemetry. The overridden status is reflected in the settings page within the application.
+
+This override exists to support organizations who may be sensitive to any data being collected by outside systems. It is the responsibility of the organization to set this flag through external means.
+
+#### User Control
+If no [administrative override](#administrative-override) is set, then telemetry is controlled by each user. When the application starts the first time, the user is asked to enable or disable telemetry. The user can change this setting at any time via the settings page. If the [administrative override](#administrative-override) is later enabled, it will overide the telemetry selection for new application sessions for all users.
 
 ### More details
 More details are available in the [Telemetry Details Documentation](./TelemetryDetails.md)
