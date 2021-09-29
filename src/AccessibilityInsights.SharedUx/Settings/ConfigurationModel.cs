@@ -631,7 +631,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 FontSize = FontSize.Standard,
                 HighlighterMode = HighlighterMode.HighlighterBeakerTooltip,
                 ShowAncestry = true,
-                EnableTelemetry = true,
+                EnableTelemetry = false,
                 ShowTelemetryDialog = true,
 
                 IsUnderElementScope = true,
