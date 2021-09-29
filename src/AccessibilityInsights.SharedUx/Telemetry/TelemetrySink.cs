@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Holds the production TelemetrySink object
         /// </summary>
-        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry, ReadGroupPolicyFromRegistry());
+        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry, DoesRegistryGroupPolicyAllowTelemetry());
 
         private readonly ITelemetry _telemetry;
 
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             DoesGroupPolicyAllowTelemetry = doesGroupPolicyAllowTelemetry;
         }
 
-        private static bool ReadGroupPolicyFromRegistry()
+        private static bool DoesRegistryGroupPolicyAllowTelemetry()
         {
             // Return true unless the policy exists to disable the telemetry
             int? policyValue = (int?)Registry.GetValue(
