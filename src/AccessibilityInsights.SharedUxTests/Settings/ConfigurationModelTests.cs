@@ -92,7 +92,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfirmEnumerablesMatchExpectations(new int[] { }, config.CoreTPAttributes.ToArray());
             Assert.IsFalse(config.DisableTestsInSnapMode);
             Assert.IsFalse(config.DisableDarkMode);
-            Assert.IsTrue(config.EnableTelemetry);
+            Assert.IsFalse(config.EnableTelemetry);
             Assert.IsTrue(config.EventRecordPath.Equals(testProvider.UserDataFolderPath));
             Assert.AreEqual(FontSize.Standard, config.FontSize);
             Assert.AreEqual(HighlighterMode.HighlighterBeakerTooltip, config.HighlighterMode);

@@ -263,11 +263,11 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="320"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="0" Style="{StaticResource TxtTelemetrySettingInfo}" TextWrapping="Wrap">
+                    <TextBlock Grid.Row="0" Name="telemetryDescription" Style="{StaticResource TxtTelemetrySettingInfo}" TextWrapping="Wrap">
                         <Run Text="{x:Static Properties:Resources.TextBlockTelemetrySettingInfo}"/>
                         <LineBreak/>
                     </TextBlock>
-                    <sharedControls:PrivacyLearnMore Style="{StaticResource TxtTelemetrySettingInfo}" Grid.Row="1"/>
+                    <sharedControls:PrivacyLearnMore x:Name="privacyLearnMore" Style="{StaticResource TxtTelemetrySettingInfo}" Grid.Row="1"/>
                 </Grid>
                 <Grid Grid.Row="2" Margin="1,5,0,0">
                     <Grid.ColumnDefinitions>

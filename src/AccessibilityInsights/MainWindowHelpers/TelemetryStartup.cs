@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Settings;
-using System.Windows;
+using AccessibilityInsights.SharedUx.Telemetry;
 
 namespace AccessibilityInsights
 {
@@ -16,7 +16,8 @@ namespace AccessibilityInsights
         /// </summary>
         private void ShowTelemetryDialog()
         {
-            if (ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog)
+            if (TelemetryController.DoesGroupPolicyAllowTelemetry &&
+                ConfigurationManager.GetDefaultInstance().AppConfig.ShowTelemetryDialog)
             {
 #pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
                 ctrlDialogContainer.ShowDialog(new TelemetryApproveContainedDialog());

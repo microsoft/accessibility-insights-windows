@@ -141,9 +141,12 @@ namespace AccessibilityInsights
             // Configure the correct ReleaseChannel for autoupdate
             Container.SetAutoUpdateReleaseChannel(ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
 
-            // enable/disable telemetry
-            if (ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
-                TelemetryController.EnableTelemetry();
+            // Opt into telemetry if allowed and user has chosen to do so
+            if (TelemetryController.DoesGroupPolicyAllowTelemetry &&
+                ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
+            {
+                TelemetryController.OptIntoTelemetry();
+            }
 
             // Update theming since it depends on config options
             SetColorTheme();

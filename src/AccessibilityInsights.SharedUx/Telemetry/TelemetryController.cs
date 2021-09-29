@@ -8,10 +8,13 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     {
         private static readonly ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
 
-        public static void EnableTelemetry()
+        public static void OptIntoTelemetry()
         {
+            if (!DoesGroupPolicyAllowTelemetry)
+                return;
+
             // Open the telemetry sink
-            Sink.IsTelemetryAllowed = true;
+            Sink.HasUserOptedIntoTelemetry = true;
 
             // Begin listening for telemetry events
             // This must be done after the low-level sink is opened above
@@ -21,10 +24,15 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             AxeWindowsTelemetrySink.Enable();
         }
 
-        public static void DisableTelemetry()
+        public static void OptOutOfTelemetry()
         {
+            if (!DoesGroupPolicyAllowTelemetry)
+                return;
+
             // Close the telemetry sink
-            Sink.IsTelemetryAllowed = false;
+            Sink.HasUserOptedIntoTelemetry = false;
         }
+
+        public static bool DoesGroupPolicyAllowTelemetry => Sink.DoesGroupPolicyAllowTelemetry;
     } // class
 } // namespace
