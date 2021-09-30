@@ -10,11 +10,11 @@ using System.Windows.Documents;
 namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 {
     /// <summary>
-    /// Interaction logic for AdoNotSupportedDialog.xaml
+    /// Interaction logic for WebviewRuntimeNotInstalled.xaml
     /// </summary>
-    public partial class AdoNotSupportedDialog : Window
+    public partial class WebviewRuntimeNotInstalled : Window
     {
-        public AdoNotSupportedDialog(bool onTop)
+        public WebviewRuntimeNotInstalled(bool onTop)
         {
             InitializeComponent();
             Topmost = onTop;

@@ -1,18 +1,18 @@
 ﻿<!-- Copyright (c) Microsoft. All rights reserved.
      Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
-<Window x:Class="AccessibilityInsights.Extensions.AzureDevOps.FileIssue.AdoNotSupportedDialog"
+<Window x:Class="AccessibilityInsights.Extensions.AzureDevOps.FileIssue.WebviewRuntimeNotInstalled"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Accessibility Insights for Windows" Height="220" Width="300" WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow">
-<Grid>
+    <Grid>
         <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" >
+            <Run Text="Bug filing requires the WebView2 runtime. You can install it at"/>
+            <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2173230" Click="Hyperlink_Click">
             <!-- Non-standard breaks around the hyperlink are intentional to avoid whitespace around the link -->
-            <Run Text="Bug filing for AzureDevOps is not currently supported. This issue is being tracked at"/>
-            <Hyperlink NavigateUri="https://github.com/microsoft/accessibility-insights-windows/issues/1167" Click="Hyperlink_Click">
-                        <Run Text="https://github.com/microsoft/accessibility-insights-windows/issues/1167"/></Hyperlink><Run Text=". Please refer to that issue to learn the most recent state of the problem." />
+            <Run Text="https://go.microsoft.com/fwlink/?linkid=2173230"/></Hyperlink><Run Text=". You only need to do this once." />
         </TextBlock>
         <Button Content="OK" IsDefault="True" HorizontalAlignment="Center" Margin="0,10" VerticalAlignment="Bottom" Width="75" Click="Button_Click"/>
     </Grid>
