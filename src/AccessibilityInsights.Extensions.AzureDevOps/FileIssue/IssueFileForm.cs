@@ -108,12 +108,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 switch (_currentState)
                 {
                     case State.Initializing:
-                        if (currentUri.AbsoluteUri == Url.AbsoluteUri)
+                        if (currentUri.Host == Url.Host && currentUri.AbsolutePath == Url.AbsolutePath)
                             _currentState = State.TemplateIsOpen;
                         break;
 
                     case State.TemplateIsOpen:
-                        if (currentUri.AbsoluteUri != Url.AbsoluteUri)
+                        if (currentUri.Host == Url.Host && currentUri.AbsolutePath != Url.AbsolutePath)
                             _currentState = State.Saving;
                         break;
 
