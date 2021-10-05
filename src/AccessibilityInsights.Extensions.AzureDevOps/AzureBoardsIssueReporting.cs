@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
-        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps;
+        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps && _devOpsIntegration.CheckIfAbleToGetProjects().Result;
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 

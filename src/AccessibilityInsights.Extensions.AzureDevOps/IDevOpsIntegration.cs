@@ -61,6 +61,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         Task PopulateUserProfile();
 
+        Task<bool> CheckIfAbleToGetProjects();
+
         /// <summary>
         /// Disconnects from AzureDevOps, resets AzureDevOps instance
         /// </summary>

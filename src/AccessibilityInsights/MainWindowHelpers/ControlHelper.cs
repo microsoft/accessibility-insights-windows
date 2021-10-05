@@ -73,6 +73,7 @@ namespace AccessibilityInsights
             UpdateMainCommandButtons();
             UpdateTabSelection();
             UpdateTitleString();
+            UpdateMainWindowConnectionFields();
         }
 
         /// <summary>
