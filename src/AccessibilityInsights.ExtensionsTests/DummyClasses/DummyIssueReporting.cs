@@ -26,7 +26,7 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
 
         public string LogoText => throw new NotImplementedException();
 
-        public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
+        public Task<IIssueResultWithPostAction> FileIssueAsync(IssueInformation issueInfo)
         {
             throw new NotImplementedException();
         }

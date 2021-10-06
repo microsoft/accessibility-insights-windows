@@ -66,6 +66,6 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// </summary>
         /// <param name="issueInfo">Information that describes the issue to create</param>
         /// <returns>Optionally, an issue result with details about this filed issue</returns>
-        Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo);
+        Task<IIssueResultWithPostAction> FileIssueAsync(IssueInformation issueInfo);
     }
 }

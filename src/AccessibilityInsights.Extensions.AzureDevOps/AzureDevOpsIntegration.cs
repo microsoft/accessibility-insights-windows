@@ -80,11 +80,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         public string Email => UserProfile?.EmailAddress;
 
-        #region base AzureDevOps (non-server) connection code
-
-        private const string BASE_VSO_URL = "https://app.vssps.visualstudio.com";
-        #endregion
-
         #region IssueFiling
         /// <summary>
         /// Implements <see cref="IDevOpsIntegration.ConnectToAzureDevOpsAccount(Uri, CredentialPromptType)"/>
@@ -115,6 +110,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
         }
 
+        public async Task<bool> CheckIfAbleToGetProjects()
+        {
+            try
+            {
+                ProjectHttpClient proClient = _baseServerConnection.GetClient<ProjectHttpClient>();
+                var project = await proClient.GetProjects(null, 1).ConfigureAwait(false);
+                return project.Count >= 0;
+            }
+            catch (VssException)
+            {
+                return false;
+            }
+        }
+
         /// Implements <see cref="IDevOpsIntegration.PopulateUserProfile"/>
         public Task PopulateUserProfile()
         {
@@ -124,9 +133,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     if (ConnectedToAzureDevOps)
                     {
-                        // We need to use deployment level connection to get profile info
-                        var deploymentConn = new VssConnection(new Uri(BASE_VSO_URL), _baseServerConnection.Credentials);
-                        ProfileHttpClient client = deploymentConn.GetClient<ProfileHttpClient>();
+                        ProfileHttpClient client = _baseServerConnection.GetClient<ProfileHttpClient>();
                         ProfileQueryContext context = new ProfileQueryContext(AttributesScope.Core, CoreProfileAttributes.All, null);
                         this.UserProfile = await client.GetProfileAsync(context).ConfigureAwait(false);
                     }
@@ -428,12 +435,18 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 await ConnectToAzureDevOpsAccount(serverUri, showDialog).ConfigureAwait(true);
                 await PopulateUserProfile().ConfigureAwait(true);
+                var canGetProjects = await CheckIfAbleToGetProjects().ConfigureAwait(true);
+                if (!canGetProjects)
+                {
+                    throw new Exception("unable to get projects");
+                }
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
             {
                 ex.ReportException();
                 FlushToken(serverUri);
+                Disconnect();
             }
 #pragma warning restore CA1031 // Do not catch general exception types
 
