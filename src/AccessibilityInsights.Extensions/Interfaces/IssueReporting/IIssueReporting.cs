@@ -51,6 +51,11 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         bool TryGetCurrentSerializedSettings(out string settings);
 
         /// <summary>
+        /// Passes along the configurationPath
+        /// </summary>
+        void SetConfigurationPath(string configurationPath);
+
+        /// <summary>
         /// Control to let user configure/login to issue reporting service.
         /// UpdateSaveButton action needs to be called when the extension is ready to save.
         /// </summary>
