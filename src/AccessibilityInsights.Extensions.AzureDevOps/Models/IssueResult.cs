@@ -20,4 +20,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         /// </summary>
         public Uri IssueLink { get; set; }
     }
+
+    public class IssueResultWithPostAction : IssueResult, IIssueResultWithPostAction
+    {
+        /// <summary>
+        /// Action to run on UI thread after issue filing is completed
+        /// </summary>
+        public Action PostAction { get; set; }
+    }
 }

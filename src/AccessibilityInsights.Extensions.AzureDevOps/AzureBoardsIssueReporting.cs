@@ -85,7 +85,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             return _devOpsIntegration.HandleLoginAsync();
         }
 
-        public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
+        public Task<IIssueResultWithPostAction> FileIssueAsync(IssueInformation issueInfo)
         {
             bool topMost = false;
             Application.Current.Dispatcher.Invoke(() => topMost = Application.Current.MainWindow.Topmost);
@@ -94,7 +94,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             (int? issueId, string newIssueId) = _fileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
                 topMost, Configuration.ZoomLevel, updateZoom);
 
-            return Task.Run<IIssueResult>(() => {
+            return Task.Run<IIssueResultWithPostAction>(() =>
+            {
                 // Check whether issue was filed once dialog closed & process accordingly
                 if (!issueId.HasValue)
                     return null;
@@ -103,13 +104,21 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     if (!_fileIssueHelpers.AttachIssueData(issueInfo, newIssueId, issueId.Value).Result)
                     {
-                        MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
+                        return new IssueResultWithPostAction()
+                        {
+                            DisplayText = null,
+                            IssueLink = null,
+                            PostAction = () => {
+                                MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
+                            },
+                        };
                     }
 
-                    return new IssueResult()
+                    return new IssueResultWithPostAction()
                     {
                         DisplayText = issueId.ToString(),
-                        IssueLink = _devOpsIntegration.GetExistingIssueUrl(issueId.Value)
+                        IssueLink = _devOpsIntegration.GetExistingIssueUrl(issueId.Value),
+                        PostAction = null,
                     };
                 }
 #pragma warning disable CA1031 // Do not catch general exception types

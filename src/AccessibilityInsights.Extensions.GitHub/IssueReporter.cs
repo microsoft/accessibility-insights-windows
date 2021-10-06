@@ -57,12 +57,12 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public bool CanAttachFiles => false;
 
-        public Task<IIssueResult> FileIssueAsync(IssueInformation issueInfo)
+        public Task<IIssueResultWithPostAction> FileIssueAsync(IssueInformation issueInfo)
         {
-            return Task.Run<IIssueResult>(() => FileIssueAsyncAction(issueInfo));
+            return Task.Run<IIssueResultWithPostAction>(() => FileIssueAsyncAction(issueInfo));
         }
 
-        private IIssueResult FileIssueAsyncAction(IssueInformation issueInfo)
+        private IIssueResultWithPostAction FileIssueAsyncAction(IssueInformation issueInfo)
         {
             if (this.IsConfigured)
             {

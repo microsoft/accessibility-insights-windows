@@ -19,4 +19,12 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         /// </summary>
         Uri IssueLink { get; }
     }
+
+    public interface IIssueResultWithPostAction : IIssueResult
+    {
+        /// <summary>
+        /// Action to run on UI thread after issue filing is completed
+        /// </summary>
+        Action PostAction { get; }
+    }
 }
