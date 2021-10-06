@@ -41,6 +41,11 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
             throw new NotImplementedException();
         }
 
+        public void SetConfigurationPath(string configurationPath)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool TryGetCurrentSerializedSettings(out string settings)
         {
             throw new NotImplementedException();
