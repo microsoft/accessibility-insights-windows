@@ -116,7 +116,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 ProjectHttpClient proClient = _baseServerConnection.GetClient<ProjectHttpClient>();
                 var project = await proClient.GetProjects(null, 1).ConfigureAwait(false);
-                return project.Any();
+                return project.Count >= 0;
             }
             catch (VssException)
             {
