@@ -59,15 +59,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <summary>
         /// Constructor
         /// </summary>
-        public IssueFileForm(Uri url, bool topmost, int zoomLevel, Action<int> updateZoom)
+        public IssueFileForm(Uri url, bool topmost, int zoomLevel, Action<int> updateZoom, string configurationPath)
         {
             InitializeComponent();
             this.fileIssueBrowser.CreationProperties = new CoreWebView2CreationProperties
             {
                 // TODO: Pass this folder in from the main app!
-                UserDataFolder = Path.Combine(Environment.GetFolderPath(
-                    Environment.SpecialFolder.LocalApplicationData), 
-                    @"AccessibilityInsights\V1\Configurations\WebView2")
+                UserDataFolder = Path.Combine(configurationPath, "WebView2")
             };
             this.UpdateZoomLevel = updateZoom;
             this.makeTopMost = topmost;

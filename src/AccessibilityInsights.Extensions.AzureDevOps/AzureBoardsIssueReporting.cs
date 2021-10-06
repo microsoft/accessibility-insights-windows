@@ -90,7 +90,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
             (int? issueId, string newIssueId) = _fileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
-                topMost, Configuration.ZoomLevel, updateZoom);
+                topMost, Configuration.ZoomLevel, updateZoom, @"C:\Users\jagibson\AppData\Local\AccessibilityInsights\V1\Configurations");
 
             return Task.Run<IIssueResult>(() => {
                 // Check whether issue was filed once dialog closed & process accordingly
