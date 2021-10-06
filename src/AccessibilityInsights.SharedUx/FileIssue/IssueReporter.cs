@@ -66,6 +66,14 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             return Task.CompletedTask;
         }
 
+        public static void SetConfigurationPath(string configurationPath)
+        {
+            if (IsEnabled && IssueReporting != null && IssueReporterManager.SelectedIssueReporterGuid != Guid.Empty)
+            {
+                IssueReporting.SetConfigurationPath(configurationPath);
+            }
+        }
+
         public static IIssueResult FileIssueAsync(IssueInformation issueInformation)
         {
             if (TestControlledFileIssueAsync != null)

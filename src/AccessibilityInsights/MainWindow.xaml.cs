@@ -724,6 +724,7 @@ namespace AccessibilityInsights
                 if (selectedIssueReporterGuid != Guid.Empty)
                 {
                     IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporterGuid);
+                    IssueReporter.SetConfigurationPath(ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath);
                     var serializedConfigsDict = appConfig.IssueReporterSerializedConfigs;
                     if (serializedConfigsDict != null)
                     {

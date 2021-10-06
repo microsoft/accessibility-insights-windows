@@ -49,6 +49,8 @@ namespace AccessibilityInsights.Extensions.GitHub
         public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; }
 
+        public string ConfigurationPath { get; private set; }
+
         public ReporterFabricIcon Logo => ReporterFabricIcon.GitHubLogo;
 
         public string LogoText => Properties.Resources.extensionName;
@@ -114,6 +116,11 @@ namespace AccessibilityInsights.Extensions.GitHub
         {
             settings = null;
             return false;
+        }
+
+        public void SetConfigurationPath(string configurationPath)
+        {
+            this.ConfigurationPath = configurationPath;
         }
     }
 }

@@ -104,6 +104,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
                     configuration.IssueReporterSerializedConfigs = JsonConvert.SerializeObject(configs);
                 }
                 IssueReporterManager.GetInstance().SetIssueReporter(selectedIssueReporter.StableIdentifier);
+                IssueReporter.SetConfigurationPath(ConfigurationManager.GetDefaultInstance().SettingsProvider.ConfigurationFolderPath);
                 issueConfigurationControl.OnDismiss();
                 return true;
             }

@@ -67,6 +67,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public ReporterFabricIcon Logo => ReporterFabricIcon.VSTSLogo;
 
+        public string ConfigurationPath { get; private set; }
+
         public string LogoText => "Azure Boards";
 
         public IssueConfigurationControl ConfigurationControl { get; } = new ConfigurationControl();
@@ -90,7 +92,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
             Action<int> updateZoom = (int x) => Configuration.ZoomLevel = x;
             (int? issueId, string newIssueId) = _fileIssueHelpers.FileNewIssue(issueInfo, Configuration.SavedConnection,
-                topMost, Configuration.ZoomLevel, updateZoom);
+                topMost, Configuration.ZoomLevel, updateZoom, this.ConfigurationPath);
 
             return Task.Run<IIssueResult>(() => {
                 // Check whether issue was filed once dialog closed & process accordingly
@@ -131,6 +133,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             settings = _devOpsIntegration?.Configuration?.GetSerializedConfig();
             return settings != null;
+        }
+
+        public void SetConfigurationPath(string configurationPath)
+        {
+            this.ConfigurationPath = configurationPath;
         }
     }
 }

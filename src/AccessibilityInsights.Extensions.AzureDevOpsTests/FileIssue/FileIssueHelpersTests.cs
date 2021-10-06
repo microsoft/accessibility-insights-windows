@@ -69,7 +69,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         [ExpectedException(typeof(ArgumentNullException))]
         public void FileNewIssue_FileIssueIsNull_ThrowsArgumentNullException()
         {
-            _fileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); });
+            _fileIssueHelpers.FileNewIssue(null, new ConnectionInfo(), false, 100, (unused) => { Assert.Fail("This method should never be called"); }, "sample_configuration_path");
         }
 
         [TestMethod]
@@ -83,9 +83,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             _adoIntegrationMock.Setup(x => x.GetIteration(connInfo))
                 .Returns(testIteration);
 
+            var configPath = "placeholderConfigurationPath";
+
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
             var output = _fileIssueHelpers.FileNewIssue(issueInfo,
-                connInfo, false, 0, (_) => { });
+                connInfo, false, 0, (_) => { }, configPath);
 
             Assert.IsNull(output.issueId);
             Assert.AreEqual(string.Empty, output.newIssueId);
@@ -104,8 +106,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 .Returns<string>(null);
 
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
+            var configPath = "placeholderConfigurationPath";
+
             var output = _fileIssueHelpers.FileNewIssue(issueInfo,
-                connInfo, false, 0, (_) => { });
+                connInfo, false, 0, (_) => { }, configPath);
 
             Assert.IsNull(output.issueId);
             Assert.AreEqual(string.Empty, output.newIssueId);
@@ -130,8 +134,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
                 .Returns(new Uri("https://www.bing.com"));
 
             var issueInfo = new IssueInformation(internalGuid: testIssueGuid);
+            var configPath = "placeholderConfigurationPath";
+
             var output = _fileIssueHelpers.FileNewIssueTestable(issueInfo,
-                connInfo, false, 0, (_) => { }, testIssueId);
+                connInfo, false, 0, (_) => { }, configPath, testIssueId);
 
             Assert.AreEqual(testIssueId, output.issueId);
             Assert.IsNotNull(output.newIssueId);

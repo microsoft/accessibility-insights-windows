@@ -39,15 +39,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <param name="zoomLevel">Zoom level for issue file window</param>
         /// <param name="updateZoom">Callback to update configuration with zoom level</param>
         /// <returns></returns>
-        internal (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom)
+        internal (int? issueId, string newIssueId) FileNewIssue(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, string configurationPath)
         {
-            return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, null);
+            return FileNewIssueTestable(issueInfo, connection, onTop, zoomLevel, updateZoom, configurationPath, null);
         }
 
         /// <summary>
         /// Testable version of FileNewIssue, allows caller to specify an issueId instead of going off-box
         /// </summary>
-        internal (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, int? testIssueId)
+        internal (int? issueId, string newIssueId) FileNewIssueTestable(IssueInformation issueInfo, ConnectionInfo connection, bool onTop, int zoomLevel, Action<int> updateZoom, string configurationPath, int? testIssueId)
         {
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
                 int? issueId = testIssueId.HasValue
                     ? testIssueId.Value
-                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom);
+                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom, configurationPath);
 
                 return (issueId, a11yIssueId);
             }
@@ -285,7 +285,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// Change the configuration zoom level for the embedded browser
         /// </summary>
         /// <param name="url"></param>
-        private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom)
+        private static int? FileIssueWindow(Uri url, bool onTop, int zoomLevel, Action<int> updateZoom, string configurationPath)
         {
             if (!IsWebView2RuntimeInstalled())
             {
@@ -295,7 +295,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             }
 
             Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
-            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom);
+            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom, configurationPath);
             dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
 
             dlg.ShowDialog();
