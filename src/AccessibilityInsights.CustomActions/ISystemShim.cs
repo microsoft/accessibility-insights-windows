@@ -12,6 +12,8 @@ namespace AccessibilityInsights.CustomActions
         IEnumerable<string> GetRunningProcessNames();
         IEnumerable<string> GetConfigFiles();
         void DeleteFile(string fileName);
+        void DeleteDirectory(string dirName);
+        bool DirectoryExists(string dirName);
         void LogToSession(string message);
     }
 }

@@ -52,16 +52,23 @@ namespace AccessibilityInsights.CustomActionsUnitTests
         [TestMethod]
         public void RunAction_VersionSwitcherIsNotRunning_ConfigFilesExist_FilesAreDeleted()
         {
-            List<string> configFiles = new List<string>{ "a.json", "b.json", "c.json" };
+            List<string> configFiles = new List<string> { "a.json", "b.json", "c.json" };
+            List<string> configDirs = new List<string> { "dir" };
             List<string> deletedFiles = new List<string>();
+            List<string> deletedDirs = new List<string>();
 
             _systemShimMock.Setup(x => x.GetConfigFiles())
-                .Returns(configFiles);
+                .Returns(configFiles.Concat(configDirs));
+            _systemShimMock.Setup(x => x.DirectoryExists(It.IsAny<string>()))
+                .Returns<string>(fileName => fileName.EndsWith("dir"));
+            _systemShimMock.Setup(x => x.DeleteDirectory(It.IsAny<string>()))
+                .Callback<string>(fileName => deletedDirs.Add(fileName));
             _systemShimMock.Setup(x => x.DeleteFile(It.IsAny<string>()))
                 .Callback<string>(fileName => deletedFiles.Add(fileName));
 
             Assert.AreEqual(ActionResult.Success, _cleaner.RunAction());
             Assert.IsTrue(configFiles.SequenceEqual(deletedFiles));
+            Assert.IsTrue(configDirs.SequenceEqual(deletedDirs));
 
             _systemShimMock.VerifyAll();
         }

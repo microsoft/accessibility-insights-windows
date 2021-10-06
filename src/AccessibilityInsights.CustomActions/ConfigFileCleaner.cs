@@ -62,8 +62,16 @@ namespace AccessibilityInsights.CustomActions
             _systemShim.LogToSession("RemoveUserConfigFiles: Finding config files");
             foreach (string fileName in _systemShim.GetConfigFiles())
             {
-                _systemShim.LogToSession("RemoveUserConfigFiles: Deleting file: " + fileName);
-                _systemShim.DeleteFile(fileName);
+                if (_systemShim.DirectoryExists(fileName)) 
+                {
+                    _systemShim.LogToSession("RemoveUserConfigFiles: Deleting directory: " + fileName);
+                    _systemShim.DeleteDirectory(fileName);
+                }
+                else
+                {
+                    _systemShim.LogToSession("RemoveUserConfigFiles: Deleting file: " + fileName);
+                    _systemShim.DeleteFile(fileName);
+                }
             }
         }
     }

@@ -5,6 +5,7 @@ using Microsoft.Deployment.WindowsInstaller;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 
 namespace AccessibilityInsights.CustomActions
 {
@@ -32,12 +33,22 @@ namespace AccessibilityInsights.CustomActions
         {
             string configPath = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
 
-            return Directory.EnumerateFiles(configPath);
+            return Directory.EnumerateDirectories(configPath).Concat(Directory.EnumerateFiles(configPath));
         }
 
         public void DeleteFile(string fileName)
         {
             File.Delete(fileName);
+        }
+
+        public void DeleteDirectory(string dirName)
+        {
+            Directory.Delete(dirName, true);
+        }
+
+        public bool DirectoryExists(string dirName)
+        {
+            return Directory.Exists(dirName);
         }
 
         public void LogToSession(string message)
