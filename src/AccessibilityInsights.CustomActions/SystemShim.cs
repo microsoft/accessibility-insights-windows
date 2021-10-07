@@ -29,18 +29,6 @@ namespace AccessibilityInsights.CustomActions
             }
         }
 
-        public IEnumerable<string> GetConfigFiles()
-        {
-            string configPath = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
-
-            return Directory.EnumerateDirectories(configPath).Concat(Directory.EnumerateFiles(configPath));
-        }
-
-        public void DeleteFile(string fileName)
-        {
-            File.Delete(fileName);
-        }
-
         public void DeleteDirectory(string dirName)
         {
             Directory.Delete(dirName, true);

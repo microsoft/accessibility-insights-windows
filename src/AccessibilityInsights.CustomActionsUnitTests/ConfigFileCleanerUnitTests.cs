@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CustomActions;
+using AccessibilityInsights.SetupLibrary;
 using Microsoft.Deployment.WindowsInstaller;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
@@ -39,36 +40,18 @@ namespace AccessibilityInsights.CustomActionsUnitTests
         }
 
         [TestMethod]
-        public void RunAction_VersionSwitcherIsNotRunning_NoConfigFilesExist_NothingIsDeleted()
-        {
-            _systemShimMock.Setup(x => x.GetConfigFiles())
-                .Returns(Enumerable.Empty<string>);
-
-            Assert.AreEqual(ActionResult.Success, _cleaner.RunAction());
-
-            _systemShimMock.VerifyAll();
-        }
-
-        [TestMethod]
         public void RunAction_VersionSwitcherIsNotRunning_ConfigFilesExist_FilesAreDeleted()
         {
-            List<string> configFiles = new List<string> { "a.json", "b.json", "c.json" };
-            List<string> configDirs = new List<string> { "dir" };
-            List<string> deletedFiles = new List<string>();
             List<string> deletedDirs = new List<string>();
 
-            _systemShimMock.Setup(x => x.GetConfigFiles())
-                .Returns(configFiles.Concat(configDirs));
+            var configDirectory = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
             _systemShimMock.Setup(x => x.DirectoryExists(It.IsAny<string>()))
-                .Returns<string>(fileName => fileName.EndsWith("dir"));
+                .Returns<string>(fileName => fileName.Equals(configDirectory));
             _systemShimMock.Setup(x => x.DeleteDirectory(It.IsAny<string>()))
                 .Callback<string>(fileName => deletedDirs.Add(fileName));
-            _systemShimMock.Setup(x => x.DeleteFile(It.IsAny<string>()))
-                .Callback<string>(fileName => deletedFiles.Add(fileName));
 
             Assert.AreEqual(ActionResult.Success, _cleaner.RunAction());
-            Assert.IsTrue(configFiles.SequenceEqual(deletedFiles));
-            Assert.IsTrue(configDirs.SequenceEqual(deletedDirs));
+            Assert.IsTrue(deletedDirs.Count == 1 && deletedDirs.First().Equals(configDirectory));
 
             _systemShimMock.VerifyAll();
         }

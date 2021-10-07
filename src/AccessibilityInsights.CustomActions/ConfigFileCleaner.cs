@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SetupLibrary;
 using Microsoft.Deployment.WindowsInstaller;
 using System;
 
@@ -59,19 +60,11 @@ namespace AccessibilityInsights.CustomActions
 
         private void DeleteConfigFiles()
         {
-            _systemShim.LogToSession("RemoveUserConfigFiles: Finding config files");
-            foreach (string fileName in _systemShim.GetConfigFiles())
+            var configDirectory = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
+            if (_systemShim.DirectoryExists(configDirectory)) 
             {
-                if (_systemShim.DirectoryExists(fileName)) 
-                {
-                    _systemShim.LogToSession("RemoveUserConfigFiles: Deleting directory: " + fileName);
-                    _systemShim.DeleteDirectory(fileName);
-                }
-                else
-                {
-                    _systemShim.LogToSession("RemoveUserConfigFiles: Deleting file: " + fileName);
-                    _systemShim.DeleteFile(fileName);
-                }
+                _systemShim.LogToSession("RemoveUserConfigFiles: Deleting config directory: " + configDirectory);
+                _systemShim.DeleteDirectory(configDirectory);
             }
         }
     }

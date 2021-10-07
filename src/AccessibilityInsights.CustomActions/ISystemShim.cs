@@ -10,8 +10,6 @@ namespace AccessibilityInsights.CustomActions
     internal interface ISystemShim
     {
         IEnumerable<string> GetRunningProcessNames();
-        IEnumerable<string> GetConfigFiles();
-        void DeleteFile(string fileName);
         void DeleteDirectory(string dirName);
         bool DirectoryExists(string dirName);
         void LogToSession(string message);
