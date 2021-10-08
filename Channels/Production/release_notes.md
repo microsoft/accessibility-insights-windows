@@ -22,4 +22,4 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 #### Bug Fixes
 
 - Re-enabled Azure DevOps Bug Filing [#1167](https://github.com/microsoft/accessibility-insights-windows/issues/1167)
-- Improve the AT experience in the color contrast dialog [#1202](https://github.com/microsoft/accessibility-insights-windows/pull/1202)
+- Improved the AT experience in the color contrast dialog [#1202](https://github.com/microsoft/accessibility-insights-windows/pull/1202)
