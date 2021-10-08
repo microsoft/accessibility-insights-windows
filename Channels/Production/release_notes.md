@@ -14,12 +14,12 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 #### New Features
 
-- Allow system administrators to suppress telemetry by policy https://github.com/microsoft/accessibility-insights-windows/issues/1182
+- Allow system administrators to suppress telemetry by policy [#1182](https://github.com/microsoft/accessibility-insights-windows/issues/1182)
 
 #### Rule Updates
-- Exclude WinForms edit control from ControlShouldSupportTextPattern rule https://github.com/microsoft/axe-windows/issues/636
+- Exclude WinForms edit control from ControlShouldSupportTextPattern rule [#636](https://github.com/microsoft/axe-windows/issues/636)
 
 #### Bug Fixes
 
-- Re-enabled Azure DevOps Bug Filing https://github.com/microsoft/accessibility-insights-windows/issues/1167
-- Improve the AT experience in the color contrast dialog https://github.com/microsoft/accessibility-insights-windows/pull/1202
+- Re-enabled Azure DevOps Bug Filing [#1167](https://github.com/microsoft/accessibility-insights-windows/issues/1167)
+- Improve the AT experience in the color contrast dialog [#1202](https://github.com/microsoft/accessibility-insights-windows/pull/1202)
