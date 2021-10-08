@@ -1,21 +1,25 @@
-## August 23 2021 Production Release ([v1.1.1689.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1689.01))
+## October 8 2021 Production Release ([v1.1.1741.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1741.01))
 
-Welcome to the August 23 2021 Production release of Accessibility Insights for Windows.
+Welcome to the October 8 2021 Production release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1689.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1741.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 ### Highlights
 
 - [New Features](#new-features)
+- [Rule Updates](#rule-updates)
 - [Bug Fixes](#bug-fixes)
 
 #### New Features
 
-- Added a progress indicator when switching between different update channels ([#1164](https://github.com/microsoft/accessibility-insights-windows/pull/1164)).
+- Added a way to allow system administrators to suppress telemetry by policy [#1182](https://github.com/microsoft/accessibility-insights-windows/issues/1182)
+
+#### Rule Updates
+- Excluded WinForms edit control from `ControlShouldSupportTextPattern` rule [#636](https://github.com/microsoft/axe-windows/issues/636)
 
 #### Bug Fixes
 
-- Made the error message when attempting to file a bug in Azure DevOps more clear ([#1169](https://github.com/microsoft/accessibility-insights-windows/pull/1169)). We are working to re-enable Azure DevOps bug filing in an upcoming version.
-- Updated the startup screen's "Frequently used shortcuts" listing to show the correct shortcut for "Start or stop event recording for the selected element" ([#1163](https://github.com/microsoft/accessibility-insights-windows/pull/1163)).
+- Re-enabled Azure DevOps Bug Filing [#1167](https://github.com/microsoft/accessibility-insights-windows/issues/1167)
+- Improved the AT experience in the color contrast dialog [#1202](https://github.com/microsoft/accessibility-insights-windows/pull/1202)
