@@ -17,7 +17,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - Added way to allow system administrators to suppress telemetry by policy [#1182](https://github.com/microsoft/accessibility-insights-windows/issues/1182)
 
 #### Rule Updates
-- Exclude WinForms edit control from ControlShouldSupportTextPattern rule [#636](https://github.com/microsoft/axe-windows/issues/636)
+- Excluded WinForms edit control from `ControlShouldSupportTextPattern` rule [#636](https://github.com/microsoft/axe-windows/issues/636)
 
 #### Bug Fixes
 
