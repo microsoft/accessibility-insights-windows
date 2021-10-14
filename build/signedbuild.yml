@@ -200,7 +200,7 @@ jobs:
   - ComplianceRelease
   - ComplianceDebug
   condition: and(succeeded(), succeeded())
-  pool: VSEng-MicroBuildVS2019
+  pool: MSEngSS-MicroBuild2019-1ES
   variables:
     runCodesignValidationInjection: 'true'
     SignAppForRelease: 'true'
