@@ -84,8 +84,9 @@ namespace UITests
             {
                 _process.Refresh(); // updates process.MainWindowHandle
                 var options = new AppiumOptions();
-                options.AddAdditionalCapability("deviceName", "WindowsPC");
-                options.AddAdditionalCapability("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
+                // See https://github.com/SeleniumHQ/selenium/issues/6563#issuecomment-440413605
+                options.AddAdditionalOption("deviceName", "WindowsPC");
+                options.AddAdditionalOption("appTopLevelWindow", _process.MainWindowHandle.ToString("x"));
                 _session = new WindowsDriver<WindowsElement>(new Uri(WindowsApplicationDriverUrl), options);
             }
             catch { }
