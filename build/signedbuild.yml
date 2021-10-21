@@ -211,6 +211,7 @@ jobs:
     displayName: 'Install Signing Plugin'
     inputs:
       signType: real
+      feedSource: '$(SigningPluginFeedSource)'
 
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
