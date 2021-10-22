@@ -14,7 +14,7 @@
         LostKeyboardFocus="Window_LostFocus" PreviewKeyDown="Window_PreviewKeyDown" Closing="Window_Closing">
     <Grid>
         <Canvas>
-            <Image Stretch="None" Name="imgScreenshot" RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True" />
+            <Image Stretch="None" Name="eyedropperPreview" RenderOptions.BitmapScalingMode="NearestNeighbor" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True" />
         </Canvas>
         <Border UseLayoutRounding="True" VerticalAlignment="Top" HorizontalAlignment="Left" BorderBrush="White" Margin="99,99,0,0" Width="6" Height="6" Background="{x:Null}" BorderThickness="1"/>
         <Border UseLayoutRounding="True" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="99,99,0,0" Width="6" Height="6" Background="{x:Null}" BorderThickness="1">
