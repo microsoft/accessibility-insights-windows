@@ -69,7 +69,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             updatePosTimer = new Timer()
             {
                 Enabled = true,
-                Interval = 10,
+                Interval = 5,
             };
             updatePosTimer.Tick += Timer_Tick;
         }
