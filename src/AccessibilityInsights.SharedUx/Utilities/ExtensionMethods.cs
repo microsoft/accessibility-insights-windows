@@ -286,9 +286,14 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 throw new ArgumentNullException(nameof(bitmap));
 
             var hbmp = bitmap.GetHbitmap();
-            var result = Imaging.CreateBitmapSourceFromHBitmap(hbmp, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
-            NativeMethods.DeleteObject(hbmp);
-            return result;
+            try
+            {
+                return Imaging.CreateBitmapSourceFromHBitmap(hbmp, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            }
+            finally
+            {
+                NativeMethods.DeleteObject(hbmp);
+            }
         }
 
         /// <summary>
