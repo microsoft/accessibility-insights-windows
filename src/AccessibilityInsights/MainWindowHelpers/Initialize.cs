@@ -19,7 +19,6 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Shell;
 
 namespace AccessibilityInsights
@@ -116,7 +115,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Populate all configurations
+        /// Populate all configurations. Call this method before calling any extension-dependent methods!
         /// </summary>
         private static void PopulateConfigurations(TelemetryBuffer telemetryBuffer)
         {
@@ -141,15 +140,18 @@ namespace AccessibilityInsights
             // Configure the correct ReleaseChannel for autoupdate
             Container.SetAutoUpdateReleaseChannel(ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
 
+            // Update theming since it depends on config options
+            SetColorTheme();
+        }
+
+        private static void InitializeTelemetry()
+        {
             // Opt into telemetry if allowed and user has chosen to do so
             if (TelemetryController.DoesGroupPolicyAllowTelemetry &&
                 ConfigurationManager.GetDefaultInstance().AppConfig.EnableTelemetry)
             {
                 TelemetryController.OptIntoTelemetry();
             }
-
-            // Update theming since it depends on config options
-            SetColorTheme();
         }
 
         /// <summary>

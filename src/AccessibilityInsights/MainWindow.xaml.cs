@@ -162,6 +162,8 @@ namespace AccessibilityInsights
             // create necessary config folders & their internal config files
             PopulateConfigurations(telemetryBuffer);
 
+            InitializeTelemetry();
+
             SetFontSize();
 
             InitCommandBindings();
