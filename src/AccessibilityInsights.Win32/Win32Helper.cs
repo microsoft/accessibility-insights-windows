@@ -57,7 +57,7 @@ namespace AccessibilityInsights.Win32
             }
 
             uint currentlyFocusedWindowProcessId = NativeMethods.GetWindowThreadProcessId(NativeMethods.GetForegroundWindow(), IntPtr.Zero);
-            uint appThread = (uint)Thread.CurrentThread.ManagedThreadId;
+            uint appThread = (uint)Environment.CurrentManagedThreadId;
 
             if (currentlyFocusedWindowProcessId != appThread)
             {
