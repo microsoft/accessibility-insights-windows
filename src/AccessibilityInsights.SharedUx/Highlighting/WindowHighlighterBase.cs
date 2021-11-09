@@ -87,8 +87,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         /// <param name="el"></param>
         public void UpdateElement(A11yElement el)
-            {
-            if (el != null && Items.Keys.Contains(el))
+        {
+            if (el != null && Items.ContainsKey(el))
             {
                 var hdo = Items[el];
 
@@ -141,7 +141,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             if (el != null)
             {
-                if (!Items.Keys.Contains(el))
+                if (!Items.ContainsKey(el))
                 {
                     if (this.IsVisible && !el.BoundingRectangle.IsEmpty && this.Dimensions.IntersectsWith(el.BoundingRectangle))
                     {
@@ -201,7 +201,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             if (el != null)
             {
-                if (!Items.Keys.Contains(el))
+                if (!Items.ContainsKey(el))
                 {
                     if (this.IsVisible && !el.BoundingRectangle.IsEmpty && this.Dimensions.IntersectsWith(el.BoundingRectangle))
                     {
@@ -255,7 +255,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void RemoveElement(A11yElement el)
         {
-            if (el != null && Items.Keys.Contains(el))
+            if (el != null && Items.ContainsKey(el))
             {
                 var elem = Items[el];
                 if (elem.Release())
