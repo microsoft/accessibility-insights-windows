@@ -113,7 +113,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void RunAutoCCA(Bitmap bitmap)
         {
-            var bmc = new BitmapCollection(bitmap);
+            var bmc = new BitmapCollection(bitmap, new DefaultColorContrastConfig());
             var result = bmc.RunColorContrastCalculation();
             var pair = result.MostLikelyColorPair;
 
