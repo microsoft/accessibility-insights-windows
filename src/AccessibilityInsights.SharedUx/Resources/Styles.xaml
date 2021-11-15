@@ -529,6 +529,16 @@
         </Style.Triggers>
     </Style>
     <!-- GridView related styles -->
+    <Style TargetType="GridViewColumnHeader" x:Key="ScannerResultColumnHeader">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ColumnHeaderFGBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="GridViewColumnHeader" x:Key="GvchNoContent">
         <Setter Property="Margin" Value="0,0,0,2"/>
         <Setter Property="Template">

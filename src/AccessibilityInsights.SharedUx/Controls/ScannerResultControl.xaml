@@ -83,7 +83,11 @@
                             <ListView.View>
                                 <GridView x:Name="gvRules">
                                     <GridViewColumn>
-                                        <GridViewColumnHeader Content="{x:Static Properties:Resources.ScannerResultControl_Rule}" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}" Background="Transparent" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                                        <GridViewColumnHeader 
+                                            Style="{DynamicResource ScannerResultColumnHeader}"
+                                            Content="{x:Static Properties:Resources.ScannerResultControl_Rule}" 
+                                            IsTabStop="False" 
+                                            Focusable="True"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -118,7 +122,12 @@
                                         </GridViewColumn.CellTemplate>
                                     </GridViewColumn>
                                     <GridViewColumn Width="{Binding BugColumnWidth}">
-                                        <GridViewColumnHeader Visibility="{Binding BugColumnVisibility}" Content="{x:Static Properties:Resources.ScannerResultControl_Issue}" IsTabStop="False" Focusable="True" FontSize="{DynamicResource StandardTextSize}" Background="Transparent" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                                        <GridViewColumnHeader 
+                                            Style="{DynamicResource ScannerResultColumnHeader}"
+                                            Visibility="{Binding BugColumnVisibility}" 
+                                            Content="{x:Static Properties:Resources.ScannerResultControl_Issue}" 
+                                            IsTabStop="False" 
+                                            Focusable="True"/>
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" MinWidth="200">
