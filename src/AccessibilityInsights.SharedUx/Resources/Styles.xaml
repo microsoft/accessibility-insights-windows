@@ -535,7 +535,7 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=ColumnHeaderFGBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
