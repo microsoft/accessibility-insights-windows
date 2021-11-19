@@ -184,7 +184,13 @@
   <data name="AttachTestFileComment" xml:space="preserve">
     <value>Accessibility Insights for Windows test file</value>
   </data>
+  <data name="ConcatenationMessage" xml:space="preserve">
+    <value>...open attached A11y test file for full details.</value>
+  </data>
   <data name="ServiceName" xml:space="preserve">
     <value>Azure Boards</value>
+  </data>
+  <data name="UnknownValue" xml:space="preserve">
+    <value>[unknown]</value>
   </data>
 </root>

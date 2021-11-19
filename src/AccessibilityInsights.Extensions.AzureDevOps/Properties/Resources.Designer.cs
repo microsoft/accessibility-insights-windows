@@ -151,6 +151,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ...open attached A11y test file for full details..
+        /// </summary>
+        public static string ConcatenationMessage {
+            get {
+                return ResourceManager.GetString("ConcatenationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string ConnectionControl_selectTeam {
@@ -257,6 +266,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         public static string UnableToConnectFormattedMessage {
             get {
                 return ResourceManager.GetString("UnableToConnectFormattedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [unknown].
+        /// </summary>
+        public static string UnknownValue {
+            get {
+                return ResourceManager.GetString("UnknownValue", resourceCulture);
             }
         }
         
