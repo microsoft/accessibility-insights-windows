@@ -193,6 +193,9 @@
   <data name="UnknownValue" xml:space="preserve">
     <value>[unknown]</value>
   </data>
+  <data name="LogoText" xml:space="preserve">
+    <value>Azure Boards</value>
+  </data>
   <data name="TeamProjectRetrievalError" xml:space="preserve">
     <value>Error when retrieving team projects</value>
   </data>

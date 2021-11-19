@@ -196,6 +196,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Boards.
+        /// </summary>
+        public static string LogoText {
+            get {
+                return ResourceManager.GetString("LogoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure Boards link.
         /// </summary>
         public static string ServerComboBoxAutomationPropertiesName {

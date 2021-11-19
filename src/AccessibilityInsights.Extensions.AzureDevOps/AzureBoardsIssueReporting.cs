@@ -71,7 +71,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public string ConfigurationPath { get; private set; }
 
-        public string LogoText => "Azure Boards";
+        public string LogoText => Properties.Resources.LogoText;
 
         public IssueConfigurationControl ConfigurationControl { get; } = new ConfigurationControl();
 
