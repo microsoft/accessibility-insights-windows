@@ -232,6 +232,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error when retrieving team projects.
+        /// </summary>
+        public static string TeamProjectRetrievalError {
+            get {
+                return ResourceManager.GetString("TeamProjectRetrievalError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change.
         /// </summary>
         public static string TextBlockTextChange {
