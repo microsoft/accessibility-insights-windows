@@ -178,6 +178,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Boards.
+        /// </summary>
+        public static string ServiceName {
+            get {
+                return ResourceManager.GetString("ServiceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string tbTeamProjectSearchAutomationPropertiesName {

@@ -175,4 +175,7 @@
   <data name="WaitingToConnect" xml:space="preserve">
     <value>Waiting to connect to Azure Boards</value>
   </data>
+  <data name="ServiceName" xml:space="preserve">
+    <value>Azure Boards</value>
+  </data>
 </root>
