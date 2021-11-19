@@ -664,6 +664,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available patterns:.
+        /// </summary>
+        public static string LiveModeControl_AvailablePatterns {
+            get {
+                return ResourceManager.GetString("LiveModeControl_AvailablePatterns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available properties.
         /// </summary>
         public static string LiveModeControl_CopyToClipboard_Available_properties {
@@ -714,6 +723,24 @@ namespace AccessibilityInsights.Properties {
         public static string LiveModeControl_LearnMoreInspect {
             get {
                 return ResourceManager.GetString("LiveModeControl_LearnMoreInspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live inspect with {0}.
+        /// </summary>
+        public static string LiveModeControl_LiveInspectWithFormat {
+            get {
+                return ResourceManager.GetString("LiveModeControl_LiveInspectWithFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: {1}.
+        /// </summary>
+        public static string LiveModeControl_PropertyValueFormat {
+            get {
+                return ResourceManager.GetString("LiveModeControl_PropertyValueFormat", resourceCulture);
             }
         }
         

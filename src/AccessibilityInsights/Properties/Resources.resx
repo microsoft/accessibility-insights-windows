@@ -550,4 +550,15 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="ColorContrast_UnknownElementType" xml:space="preserve">
     <value>Unknown Element Type!</value>
   </data>
+  <data name="LiveModeControl_AvailablePatterns" xml:space="preserve">
+    <value>Available patterns:</value>
+  </data>
+  <data name="LiveModeControl_LiveInspectWithFormat" xml:space="preserve">
+    <value>Live inspect with {0}</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="LiveModeControl_PropertyValueFormat" xml:space="preserve">
+    <value>{0}: {1}</value>
+    <comment>{0} is the property name; {1} is the property value</comment>
+  </data>
 </root>
