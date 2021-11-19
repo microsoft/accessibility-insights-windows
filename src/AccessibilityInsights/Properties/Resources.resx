@@ -282,12 +282,6 @@
   <data name="ctrlTabsElementAutomationPropertiesName" xml:space="preserve">
     <value>Element information</value>
   </data>
-  <data name="detectedFailuresMessagePart1" xml:space="preserve">
-    <value>Results for target</value>
-  </data>
-  <data name="detectedFailuresMessagePart2" xml:space="preserve">
-    <value>failures were detected.</value>
-  </data>
   <data name="EventModeControlAutomationPropertiesName" xml:space="preserve">
     <value>Event page</value>
   </data>
@@ -560,5 +554,16 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="LiveModeControl_PropertyValueFormat" xml:space="preserve">
     <value>{0}: {1}</value>
     <comment>{0} is the property name; {1} is the property value</comment>
+  </data>
+  <data name="TestModeControl_DetectedFailureFormat" xml:space="preserve">
+    <value>Results for target {0}. {1} failures were detected.</value>
+    <comment>{0} is the glimpse; {1} is the failure count</comment>
+  </data>
+  <data name="TestModeControl_SaveExceptionFormat" xml:space="preserve">
+    <value>Couldn't save the file: {0} {1}</value>
+    <comment>{0} is the file name; {1} is the message explaining the error</comment>
+  </data>
+  <data name="TestModeControl_Test" xml:space="preserve">
+    <value>Test</value>
   </data>
 </root>

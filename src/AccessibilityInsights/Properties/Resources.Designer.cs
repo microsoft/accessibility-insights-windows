@@ -529,24 +529,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Results for target.
-        /// </summary>
-        public static string detectedFailuresMessagePart1 {
-            get {
-                return ResourceManager.GetString("detectedFailuresMessagePart1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to failures were detected..
-        /// </summary>
-        public static string detectedFailuresMessagePart2 {
-            get {
-                return ResourceManager.GetString("detectedFailuresMessagePart2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Event page.
         /// </summary>
         public static string EventModeControlAutomationPropertiesName {
@@ -1169,6 +1151,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Results for target {0}. {1} failures were detected..
+        /// </summary>
+        public static string TestModeControl_DetectedFailureFormat {
+            get {
+                return ResourceManager.GetString("TestModeControl_DetectedFailureFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to or press Ctrl + I to go to Inspect mode, hover over the element within the target application, and select the Test icon.
         /// </summary>
         public static string TestModeControl_HoverAndTest {
@@ -1183,6 +1174,24 @@ namespace AccessibilityInsights.Properties {
         public static string TestModeControl_RunAutomatedChecks {
             get {
                 return ResourceManager.GetString("TestModeControl_RunAutomatedChecks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t save the file: {0} {1}.
+        /// </summary>
+        public static string TestModeControl_SaveExceptionFormat {
+            get {
+                return ResourceManager.GetString("TestModeControl_SaveExceptionFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test.
+        /// </summary>
+        public static string TestModeControl_Test {
+            get {
+                return ResourceManager.GetString("TestModeControl_Test", resourceCulture);
             }
         }
         
