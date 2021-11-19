@@ -188,7 +188,7 @@ namespace AccessibilityInsights.Modes
                     {
                         if (ec == null || ec.Element == null)
                         {
-                            toolTipText = "No Element Selected!";
+                            toolTipText = Properties.Resources.ColorContrast_NoElementSelected;
                         }
                         else
                         {
@@ -198,12 +198,12 @@ namespace AccessibilityInsights.Modes
                                 {
                                     this.ctrlContrast.SetElement(ec);
                                 })).Wait();
-                                toolTipText = string.Format(CultureInfo.InvariantCulture, "Ratio: {0}\nConfidence: {1}",
+                                toolTipText = string.Format(CultureInfo.InvariantCulture, Properties.Resources.ColorContrast_RatioAndConfidenceFormat,
                                     this.ctrlContrast.Ratio, this.ctrlContrast.Confidence);
                             }
                             else
                             {
-                                toolTipText = "Unknown Element Type!";
+                                toolTipText = Properties.Resources.ColorContrast_UnknownElementType;
                             }
                         }
 
@@ -228,7 +228,7 @@ namespace AccessibilityInsights.Modes
                         MainWin.CurrentView = CCAView.Automatic;
                         HollowHighlightDriver.GetDefaultInstance().HighlighterMode = HighlighterMode.HighlighterTooltip;
 
-                        HollowHighlightDriver.GetDefaultInstance().SetText("Unable to detect colors!");
+                        HollowHighlightDriver.GetDefaultInstance().SetText(Properties.Resources.ColorContrast_UnableToDetectColors);
                         // enable element selector
                         MainWin.EnableElementSelector();
 

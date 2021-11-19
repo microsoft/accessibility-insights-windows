@@ -537,4 +537,17 @@ Please ensure that you are opening a valid test file using the most recent relea
   <data name="MainWindow_Two" xml:space="preserve">
     <value>Two</value>
   </data>
+  <data name="ColorContrast_NoElementSelected" xml:space="preserve">
+    <value>No Element Selected!</value>
+  </data>
+  <data name="ColorContrast_RatioAndConfidenceFormat" xml:space="preserve">
+    <value>Ratio: {0}\nConfidence: {1}</value>
+    <comment>{0} is the ratio; {1} is the confidence</comment>
+  </data>
+  <data name="ColorContrast_UnableToDetectColors" xml:space="preserve">
+    <value>Unable to detect colors!</value>
+  </data>
+  <data name="ColorContrast_UnknownElementType" xml:space="preserve">
+    <value>Unknown Element Type!</value>
+  </data>
 </root>

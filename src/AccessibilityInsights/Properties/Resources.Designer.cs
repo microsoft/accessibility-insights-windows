@@ -430,6 +430,42 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Element Selected!.
+        /// </summary>
+        public static string ColorContrast_NoElementSelected {
+            get {
+                return ResourceManager.GetString("ColorContrast_NoElementSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ratio: {0}\nConfidence: {1}.
+        /// </summary>
+        public static string ColorContrast_RatioAndConfidenceFormat {
+            get {
+                return ResourceManager.GetString("ColorContrast_RatioAndConfidenceFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to detect colors!.
+        /// </summary>
+        public static string ColorContrast_UnableToDetectColors {
+            get {
+                return ResourceManager.GetString("ColorContrast_UnableToDetectColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Element Type!.
+        /// </summary>
+        public static string ColorContrast_UnknownElementType {
+            get {
+                return ResourceManager.GetString("ColorContrast_UnknownElementType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later..
         /// </summary>
         public static string ConfigurationModeControl_VersionSwitcherException {
