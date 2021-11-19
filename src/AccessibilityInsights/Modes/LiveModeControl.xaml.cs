@@ -194,7 +194,7 @@ namespace AccessibilityInsights.Modes
 
                         this.ctrlHierarchy.SetElement(ec);
 
-                        AutomationProperties.SetName(this, string.Format(CultureInfo.InvariantCulture, "Live inspect with {0}", ec.Element.Glimpse));
+                        AutomationProperties.SetName(this, string.Format(CultureInfo.InvariantCulture, Properties.Resources.LiveModeControl_LiveInspectWithFormat, ec.Element.Glimpse));
                     });
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -352,13 +352,13 @@ namespace AccessibilityInsights.Modes
                     // properties
                     foreach (var p in elementToCopy.Properties)
                     {
-                        sb.AppendFormat(CultureInfo.InvariantCulture, "{0}: {1}", p.Value.Name, p.Value.TextValue);
+                        sb.AppendFormat(CultureInfo.InvariantCulture, Properties.Resources.LiveModeControl_PropertyValueFormat, p.Value.Name, p.Value.TextValue);
                         sb.AppendLine();
                     }
 
                     sb.AppendLine();
 
-                    sb.AppendLine("Available patterns:");
+                    sb.AppendLine(Properties.Resources.LiveModeControl_AvailablePatterns);
                     // patterns
                     foreach (var pt in elementToCopy.Patterns)
                     {

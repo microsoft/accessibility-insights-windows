@@ -430,6 +430,42 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No Element Selected!.
+        /// </summary>
+        public static string ColorContrast_NoElementSelected {
+            get {
+                return ResourceManager.GetString("ColorContrast_NoElementSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ratio: {0}\nConfidence: {1}.
+        /// </summary>
+        public static string ColorContrast_RatioAndConfidenceFormat {
+            get {
+                return ResourceManager.GetString("ColorContrast_RatioAndConfidenceFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to detect colors!.
+        /// </summary>
+        public static string ColorContrast_UnableToDetectColors {
+            get {
+                return ResourceManager.GetString("ColorContrast_UnableToDetectColors", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Element Type!.
+        /// </summary>
+        public static string ColorContrast_UnknownElementType {
+            get {
+                return ResourceManager.GetString("ColorContrast_UnknownElementType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later..
         /// </summary>
         public static string ConfigurationModeControl_VersionSwitcherException {
@@ -489,24 +525,6 @@ namespace AccessibilityInsights.Properties {
         public static string CultureInfoErrorMessage {
             get {
                 return ResourceManager.GetString("CultureInfoErrorMessage", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Results for target.
-        /// </summary>
-        public static string detectedFailuresMessagePart1 {
-            get {
-                return ResourceManager.GetString("detectedFailuresMessagePart1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to failures were detected..
-        /// </summary>
-        public static string detectedFailuresMessagePart2 {
-            get {
-                return ResourceManager.GetString("detectedFailuresMessagePart2", resourceCulture);
             }
         }
         
@@ -628,6 +646,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available patterns:.
+        /// </summary>
+        public static string LiveModeControl_AvailablePatterns {
+            get {
+                return ResourceManager.GetString("LiveModeControl_AvailablePatterns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Available properties.
         /// </summary>
         public static string LiveModeControl_CopyToClipboard_Available_properties {
@@ -678,6 +705,24 @@ namespace AccessibilityInsights.Properties {
         public static string LiveModeControl_LearnMoreInspect {
             get {
                 return ResourceManager.GetString("LiveModeControl_LearnMoreInspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Live inspect with {0}.
+        /// </summary>
+        public static string LiveModeControl_LiveInspectWithFormat {
+            get {
+                return ResourceManager.GetString("LiveModeControl_LiveInspectWithFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: {1}.
+        /// </summary>
+        public static string LiveModeControl_PropertyValueFormat {
+            get {
+                return ResourceManager.GetString("LiveModeControl_PropertyValueFormat", resourceCulture);
             }
         }
         
@@ -1106,6 +1151,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Results for target {0}. {1} failures were detected..
+        /// </summary>
+        public static string TestModeControl_DetectedFailureFormat {
+            get {
+                return ResourceManager.GetString("TestModeControl_DetectedFailureFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to or press Ctrl + I to go to Inspect mode, hover over the element within the target application, and select the Test icon.
         /// </summary>
         public static string TestModeControl_HoverAndTest {
@@ -1120,6 +1174,24 @@ namespace AccessibilityInsights.Properties {
         public static string TestModeControl_RunAutomatedChecks {
             get {
                 return ResourceManager.GetString("TestModeControl_RunAutomatedChecks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t save the file: {0} {1}.
+        /// </summary>
+        public static string TestModeControl_SaveExceptionFormat {
+            get {
+                return ResourceManager.GetString("TestModeControl_SaveExceptionFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test.
+        /// </summary>
+        public static string TestModeControl_Test {
+            get {
+                return ResourceManager.GetString("TestModeControl_Test", resourceCulture);
             }
         }
         

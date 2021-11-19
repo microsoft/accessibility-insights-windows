@@ -139,7 +139,7 @@ namespace AccessibilityInsights.Modes
 
                 try
                 {
-                    AutomationProperties.SetName(this, "Test");
+                    AutomationProperties.SetName(this, Properties.Resources.TestModeControl_Test);
 
                     this.tabControl.IsEnabled = false;
                     this.ctrlProgressRing.Activate();
@@ -218,7 +218,9 @@ namespace AccessibilityInsights.Modes
                             }
 
                             var count = ec.DataContext?.GetRuleResultsViewModelList()?.Count ?? 0;
-                            AutomationProperties.SetName(this, Invariant($"{Properties.Resources.detectedFailuresMessagePart1} {this.ElementContext.Element.Glimpse}. {count} {Properties.Resources.detectedFailuresMessagePart2}"));
+                            AutomationProperties.SetName(this, 
+                                string.Format(CultureInfo.InvariantCulture, Properties.Resources.TestModeControl_DetectedFailureFormat,
+                                    this.ElementContext.Element.Glimpse, count));
 
                             if (!string.IsNullOrEmpty(warning))
                             {
@@ -399,7 +401,9 @@ namespace AccessibilityInsights.Modes
 #pragma warning disable CA1031 // Do not catch general exception types
                     catch (Exception ex)
                     {
-                        MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.SaveException + " " + ex.Message));
+                        MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
+                            Properties.Resources.TestModeControl_SaveExceptionFormat,
+                            dlg.FileName, ex.Message));
                     }
 #pragma warning restore CA1031 // Do not catch general exception types
                 }
