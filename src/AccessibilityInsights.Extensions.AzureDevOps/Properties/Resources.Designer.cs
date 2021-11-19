@@ -70,6 +70,33 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached an Accessibility Insights for Windows test file and screenshot..
+        /// </summary>
+        public static string AttachDataFilesDescription {
+            get {
+                return ResourceManager.GetString("AttachDataFilesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screenshot of element.
+        /// </summary>
+        public static string AttachScreenShotComment {
+            get {
+                return ResourceManager.GetString("AttachScreenShotComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accessibility Insights for Windows test file.
+        /// </summary>
+        public static string AttachTestFileComment {
+            get {
+                return ResourceManager.GetString("AttachTestFileComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect Azure Boards account.
         /// </summary>
         public static string btnNextAutomationPropertiesName {

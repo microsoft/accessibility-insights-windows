@@ -278,7 +278,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 Operation = Operation.Add,
                 Path = "/fields/System.History",
-                Value = "Attached an Accessibility Insights for Windows test file and screenshot."
+                Value = Properties.Resources.AttachDataFilesDescription,
             }
             );
             patchDoc.Add(new JsonPatchOperation()
@@ -289,7 +289,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     rel = "AttachedFile",
                     url = attachment.Url,
-                    attributes = new { comment = "Accessibility Insights for Windows test file" }
+                    attributes = new { comment = Properties.Resources.AttachTestFileComment },
                 }
             }
             );
@@ -325,7 +325,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 {
                     rel = "AttachedFile",
                     url = attachment.Url,
-                    attributes = new { comment = "Screenshot of element" }
+                    attributes = new { comment = Properties.Resources.AttachScreenShotComment },
                 }
             }
             );

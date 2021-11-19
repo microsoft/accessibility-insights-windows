@@ -175,6 +175,15 @@
   <data name="WaitingToConnect" xml:space="preserve">
     <value>Waiting to connect to Azure Boards</value>
   </data>
+  <data name="AttachDataFilesDescription" xml:space="preserve">
+    <value>Attached an Accessibility Insights for Windows test file and screenshot.</value>
+  </data>
+  <data name="AttachScreenShotComment" xml:space="preserve">
+    <value>Screenshot of element</value>
+  </data>
+  <data name="AttachTestFileComment" xml:space="preserve">
+    <value>Accessibility Insights for Windows test file</value>
+  </data>
   <data name="ServiceName" xml:space="preserve">
     <value>Azure Boards</value>
   </data>
