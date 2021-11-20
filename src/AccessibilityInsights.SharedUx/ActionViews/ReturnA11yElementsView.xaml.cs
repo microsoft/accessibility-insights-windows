@@ -350,7 +350,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             {
                 this.tbResult.Text = Properties.Resources.FailedEmphasizedText;
             }
-            AutomationProperties.SetName(this.tbResult, "Execution result failed");
+            AutomationProperties.SetName(this.tbResult, Properties.Resources.A11yElementView_ExecutionError);
         }
 
         private void cbElements_SelectionChanged(object sender, SelectionChangedEventArgs e)

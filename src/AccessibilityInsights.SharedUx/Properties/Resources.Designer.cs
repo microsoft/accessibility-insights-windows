@@ -61,6 +61,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execution result failed!.
+        /// </summary>
+        public static string A11yElementView_ExecutionError {
+            get {
+                return ResourceManager.GetString("A11yElementView_ExecutionError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Built with Axe.Windows {0}.
         /// </summary>
         public static string AboutTabControl_AxeVersionFormat {

@@ -1551,4 +1551,7 @@ Do you want to change the channel? </value>
   <data name="ApplicationSettingsControl_TelemetryDisabledByAdministrator" xml:space="preserve">
     <value>Telemetry has been disabled by an administrator of this computer.</value>
   </data>
+  <data name="A11yElementView_ExecutionError" xml:space="preserve">
+    <value>Execution result failed!</value>
+  </data>
 </root>
