@@ -505,7 +505,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             try
             {
                 var svm = GetSelectedTextRangeViewModel();
-                var trvm = new TextRangeViewModel(svm.TextRange.Clone(), string.Format(CultureInfo.InvariantCulture, "{0} - cloned", svm.Header));
+                var trvm = new TextRangeViewModel(svm.TextRange.Clone(),
+                    string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resources.TextPatternExplorerDialog_CloneFormat, svm.Header));
                 AddTextRangeViewModelToCustomList(trvm);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -550,7 +552,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(e.Message);
-            sb.AppendFormat(CultureInfo.InvariantCulture, "HResult: 0x{0:X8}", e.HResult);
+            sb.AppendFormat(CultureInfo.InvariantCulture,
+                Properties.Resources.TextPatternExplorerDialog_HresultFormat,
+                e.HResult);
             return sb.ToString();
         }
         #endregion

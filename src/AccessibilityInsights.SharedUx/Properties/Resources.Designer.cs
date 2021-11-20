@@ -4217,6 +4217,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} - cloned.
+        /// </summary>
+        public static string TextPatternExplorerDialog_CloneFormat {
+            get {
+                return ResourceManager.GetString("TextPatternExplorerDialog_CloneFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to retrieve range(s): {0}.
         /// </summary>
         public static string TextPatternExplorerDialog_GetRanges_Failed_to_retrieve_range_s____0 {
@@ -4231,6 +4240,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TextPatternExplorerDialog_GetRanges_This_option_is_not_supported_yet {
             get {
                 return ResourceManager.GetString("TextPatternExplorerDialog_GetRanges_This_option_is_not_supported_yet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HResult: 0x{0:X8}.
+        /// </summary>
+        public static string TextPatternExplorerDialog_HresultFormat {
+            get {
+                return ResourceManager.GetString("TextPatternExplorerDialog_HresultFormat", resourceCulture);
             }
         }
         
