@@ -1606,6 +1606,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t save the event record file: {0}.
+        /// </summary>
+        public static string EventRecordControl_FileSaveError {
+            get {
+                return ResourceManager.GetString("EventRecordControl_FileSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No element is selected yet. please select first!!.
         /// </summary>
         public static string EventRecordControl_StartRecordingEvent_No_element_is_selected_yet__please_select_first {

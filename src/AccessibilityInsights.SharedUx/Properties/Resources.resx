@@ -1560,4 +1560,8 @@ Do you want to change the channel? </value>
   <data name="EventConfigTabControl_Properties" xml:space="preserve">
     <value>Properties</value>
   </data>
+  <data name="EventRecordControl_FileSaveError" xml:space="preserve">
+    <value>Couldn't save the event record file: {0}</value>
+    <comment>{0} is the error message of the Exception</comment>
+  </data>
 </root>
