@@ -70,6 +70,15 @@ namespace AccessibilityInsights.VersionSwitcher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update {0}% complete.
+        /// </summary>
+        public static string ProgressIndicatorFormat {
+            get {
+                return ResourceManager.GetString("ProgressIndicatorFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Untrusted File!.
         /// </summary>
         public static string UntrustedFile {
