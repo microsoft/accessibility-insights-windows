@@ -3223,6 +3223,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Properties.
+        /// </summary>
+        public static string PropertyInfoControl_Properties {
+            get {
+                return ResourceManager.GetString("PropertyInfoControl_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Search nodes in hierarchy..
         /// </summary>
         public static string PropertyInfoControl_textboxSearch {
