@@ -120,6 +120,10 @@
   <data name="InstallError" xml:space="preserve">
     <value>An error occurred during install</value>
   </data>
+  <data name="ProgressIndicatorFormat" xml:space="preserve">
+    <value>Update {0}% complete</value>
+    <comment>{0} is an int from 0 to 100</comment>
+  </data>
   <data name="UntrustedFile" xml:space="preserve">
     <value>Untrusted File!</value>
   </data>
