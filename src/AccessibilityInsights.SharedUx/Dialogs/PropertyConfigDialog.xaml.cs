@@ -6,6 +6,7 @@ using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -33,9 +34,12 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
             InitializeComponent();
 
-            this.Title = $"{title} Configuration";
-            this.ctrlPropertySelect.LeftColumnTitle = $"All {title}";
-            this.ctrlPropertySelect.RightColumnTitle = $"Selected {title}";
+            this.Title = string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.PropertyConfigDialog_TitleFormat, title);
+            this.ctrlPropertySelect.LeftColumnTitle = string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.PropertyConfigDialog_AllItemsFormat, title);
+            this.ctrlPropertySelect.RightColumnTitle = string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.PropertyConfigDialog_SelectedItemsFormat, title);
 
             var list = (from kv in source.GetKeyValuePairList()
                        where !DesktopElement.IsExcludedProperty(kv.Key,kv.Value)

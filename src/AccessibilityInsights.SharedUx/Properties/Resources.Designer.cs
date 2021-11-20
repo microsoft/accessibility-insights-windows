@@ -3205,6 +3205,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All {0}.
+        /// </summary>
+        public static string PropertyConfigDialog_AllItemsFormat {
+            get {
+                return ResourceManager.GetString("PropertyConfigDialog_AllItemsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected {0}.
+        /// </summary>
+        public static string PropertyConfigDialog_SelectedItemsFormat {
+            get {
+                return ResourceManager.GetString("PropertyConfigDialog_SelectedItemsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Configuration.
+        /// </summary>
+        public static string PropertyConfigDialog_TitleFormat {
+            get {
+                return ResourceManager.GetString("PropertyConfigDialog_TitleFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select properties to always show.
         /// </summary>
         public static string PropertyConfigDialogAutomationName {
