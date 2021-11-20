@@ -1554,4 +1554,10 @@ Do you want to change the channel? </value>
   <data name="A11yElementView_ExecutionError" xml:space="preserve">
     <value>Execution result failed!</value>
   </data>
+  <data name="EventConfigTabControl_MyEvents" xml:space="preserve">
+    <value>My Events</value>
+  </data>
+  <data name="EventConfigTabControl_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
 </root>

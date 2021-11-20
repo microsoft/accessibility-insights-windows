@@ -1516,6 +1516,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to My Events.
+        /// </summary>
+        public static string EventConfigTabControl_MyEvents {
+            get {
+                return ResourceManager.GetString("EventConfigTabControl_MyEvents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties.
+        /// </summary>
+        public static string EventConfigTabControl_Properties {
+            get {
+                return ResourceManager.GetString("EventConfigTabControl_Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select the Events you want to listen to:.
         /// </summary>
         public static string EventConfigTabControl_SelectEvents {
