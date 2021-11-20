@@ -447,7 +447,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             foreach (var pair in issueFieldPairs)
             {
                 var name = Enum.GetName(typeof(IssueField), pair.Key);
-                var value = pair.Value ?? "[unknown]";
+                var value = pair.Value ?? Properties.Resources.UnknownValue;
                 inputTemplate = inputTemplate.Replace($"@[{name}]@", value);
             }
             return inputTemplate;
@@ -465,7 +465,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         {
             issueFieldPairs[IssueField.ProcessName] = TruncateString(issueInfo.ProcessName, 50, ".exe");
             issueFieldPairs[IssueField.Glimpse] = TruncateString(issueInfo.Glimpse, 50);
-            issueFieldPairs[IssueField.TestMessages] = TruncateString(issueInfo.TestMessages, 150, "...open attached A11y test file for full details.");
+            issueFieldPairs[IssueField.TestMessages] = TruncateString(issueInfo.TestMessages, 150, Properties.Resources.ConcatenationMessage);
             issueFieldPairs[IssueField.RuleSource] = RemoveSurroundingBrackets(issueInfo.RuleSource);
         }
 

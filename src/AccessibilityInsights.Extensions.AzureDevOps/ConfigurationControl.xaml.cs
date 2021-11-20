@@ -260,7 +260,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 catch (Exception e)
                 {
                     e.ReportException();
-                    Dispatcher.Invoke(() => MessageDialog.Show("Error when retrieving team projects"));
+                    Dispatcher.Invoke(() => MessageDialog.Show(Properties.Resources.TeamProjectRetrievalError));
                     ToggleLoading(false);
                     disconnectButton_Click(null, null);
                 }

@@ -59,7 +59,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public bool IsConnected => _devOpsIntegration.ConnectedToAzureDevOps;
 
-        public string ServiceName { get; } = "Azure Boards";
+        public string ServiceName { get; } = Properties.Resources.ServiceName;
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public string ConfigurationPath { get; private set; }
 
-        public string LogoText => "Azure Boards";
+        public string LogoText => Properties.Resources.LogoText;
 
         public IssueConfigurationControl ConfigurationControl { get; } = new ConfigurationControl();
 

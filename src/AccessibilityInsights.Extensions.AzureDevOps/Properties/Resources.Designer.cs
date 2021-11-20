@@ -70,6 +70,33 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attached an Accessibility Insights for Windows test file and screenshot..
+        /// </summary>
+        public static string AttachDataFilesDescription {
+            get {
+                return ResourceManager.GetString("AttachDataFilesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screenshot of element.
+        /// </summary>
+        public static string AttachScreenShotComment {
+            get {
+                return ResourceManager.GetString("AttachScreenShotComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accessibility Insights for Windows test file.
+        /// </summary>
+        public static string AttachTestFileComment {
+            get {
+                return ResourceManager.GetString("AttachTestFileComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Connect Azure Boards account.
         /// </summary>
         public static string btnNextAutomationPropertiesName {
@@ -124,6 +151,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ...open attached A11y test file for full details..
+        /// </summary>
+        public static string ConcatenationMessage {
+            get {
+                return ResourceManager.GetString("ConcatenationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string ConnectionControl_selectTeam {
@@ -160,6 +196,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Boards.
+        /// </summary>
+        public static string LogoText {
+            get {
+                return ResourceManager.GetString("LogoText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Azure Boards link.
         /// </summary>
         public static string ServerComboBoxAutomationPropertiesName {
@@ -178,11 +223,29 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Azure Boards.
+        /// </summary>
+        public static string ServiceName {
+            get {
+                return ResourceManager.GetString("ServiceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select your Azure Boards team.
         /// </summary>
         public static string tbTeamProjectSearchAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("tbTeamProjectSearchAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error when retrieving team projects.
+        /// </summary>
+        public static string TeamProjectRetrievalError {
+            get {
+                return ResourceManager.GetString("TeamProjectRetrievalError", resourceCulture);
             }
         }
         
@@ -221,6 +284,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Properties {
         public static string UnableToConnectFormattedMessage {
             get {
                 return ResourceManager.GetString("UnableToConnectFormattedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [unknown].
+        /// </summary>
+        public static string UnknownValue {
+            get {
+                return ResourceManager.GetString("UnknownValue", resourceCulture);
             }
         }
         
