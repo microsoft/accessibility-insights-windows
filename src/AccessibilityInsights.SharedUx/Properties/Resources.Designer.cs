@@ -278,6 +278,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Target: {0}.
+        /// </summary>
+        public static string AutomatedChecksControl_TargetFormat {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_TargetFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to detected..
         /// </summary>
         public static string AutomatedChecksControl_tbSubtitleRun {

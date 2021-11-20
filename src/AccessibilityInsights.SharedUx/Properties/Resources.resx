@@ -1596,4 +1596,8 @@ Do you want to change the channel? </value>
   <data name="PropertyInfoControl_Properties" xml:space="preserve">
     <value>Properties</value>
   </data>
+  <data name="AutomatedChecksControl_TargetFormat" xml:space="preserve">
+    <value>Target: {0}</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
 </root>

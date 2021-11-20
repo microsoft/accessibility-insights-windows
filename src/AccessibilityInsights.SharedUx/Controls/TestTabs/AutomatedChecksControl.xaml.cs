@@ -317,7 +317,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     this.chbxSelectAll.IsEnabled = ScreenshotAvailable;
                     this.lvResults.ItemsSource = null;
                     this.ElementContext = ec;
-                    this.tbGlimpse.Text = "Target: " + ec.Element.Glimpse;
+                    this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resources.AutomatedChecksControl_TargetFormat, ec.Element.Glimpse);
                     UpdateUI();
                 }
             }
