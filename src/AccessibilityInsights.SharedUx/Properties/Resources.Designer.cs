@@ -3115,6 +3115,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Available Patterns:.
+        /// </summary>
+        public static string PatternInfoControl_AvailablePatterns {
+            get {
+                return ResourceManager.GetString("PatternInfoControl_AvailablePatterns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - {0}: {1}.
+        /// </summary>
+        public static string PatternInfoControl_PatternPropertyFormat {
+            get {
+                return ResourceManager.GetString("PatternInfoControl_PatternPropertyFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected Element Patterns.
         /// </summary>
         public static string PatternInfoControlAutomationPropertiesName {
