@@ -4,6 +4,7 @@
 using AccessibilityInsights.SetupLibrary;
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Threading;
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -56,7 +57,8 @@ namespace AccessibilityInsights.VersionSwitcher
 
         private void UpdateProgress(int percentage)
         {
-            string newText = $"Update {percentage}% complete";
+            string newText = string.Format(CultureInfo.InvariantCulture,
+                Properties.Resources.ProgressIndicatorFormat, percentage);
 
             if (newText != statusText.Text)
             {
