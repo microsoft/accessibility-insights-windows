@@ -570,6 +570,6 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="tbxTimer_TextChangedFornmat" xml:space="preserve">
     <value>Start test in {0} seconds</value>
-    <comment>{0} is the timer duration in seconds</comment>
+    <comment>{0} is the timer delay in seconds</comment>
   </data>
 </root>
