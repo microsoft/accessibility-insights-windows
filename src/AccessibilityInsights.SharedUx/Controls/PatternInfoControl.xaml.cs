@@ -14,7 +14,6 @@ using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {

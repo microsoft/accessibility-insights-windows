@@ -13,7 +13,6 @@ using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows;
-using System.Windows.Input.StylusPlugIns;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
