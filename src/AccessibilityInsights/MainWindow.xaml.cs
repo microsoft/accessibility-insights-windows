@@ -955,7 +955,9 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void tbxTimer_TextChanged(object sender, TextChangedEventArgs e)
         {
-            this.miTimer.SetValue(AutomationProperties.NameProperty, Properties.Resources.tbxTimer_TextChangedText1 + " " + tbxTimer.Text + " " + Properties.Resources.tbxTimer_TextChangedText2);
+            this.miTimer.SetValue(AutomationProperties.NameProperty,
+                string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resources.tbxTimer_TextChangedFornmat, tbxTimer.Text));
         }
 
         #endregion

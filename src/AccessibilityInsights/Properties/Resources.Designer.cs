@@ -1106,20 +1106,11 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start timer in.
+        ///   Looks up a localized string similar to Start test in {0} seconds.
         /// </summary>
-        public static string tbxTimer_TextChangedText1 {
+        public static string tbxTimer_TextChangedFornmat {
             get {
-                return ResourceManager.GetString("tbxTimer_TextChangedText1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to seconds.
-        /// </summary>
-        public static string tbxTimer_TextChangedText2 {
-            get {
-                return ResourceManager.GetString("tbxTimer_TextChangedText2", resourceCulture);
+                return ResourceManager.GetString("tbxTimer_TextChangedFornmat", resourceCulture);
             }
         }
         
