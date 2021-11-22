@@ -1497,6 +1497,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} node.
+        /// </summary>
+        public static string EventConfigNodeViewModel_NodeFormat {
+            get {
+                return ResourceManager.GetString("EventConfigNodeViewModel_NodeFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  checked.
         /// </summary>
         public static string EventConfigNodeViewModel_ToString_checked {

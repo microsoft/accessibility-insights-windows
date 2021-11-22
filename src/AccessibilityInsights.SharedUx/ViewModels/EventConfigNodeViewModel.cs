@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input.StylusPlugIns;
@@ -441,7 +442,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
             else
             {
-                return this.ButtonText + " node";
+                return string.Format(CultureInfo.InvariantCulture,
+                    Resources.EventConfigNodeViewModel_NodeFormat, this.ButtonText);
             }
         }
 
