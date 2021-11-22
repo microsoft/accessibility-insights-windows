@@ -81,7 +81,6 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 catch (Exception ex)
                 {
                     // Fail silently in case of dups.
-                    Console.WriteLine("Found duplicate extensions / Extension failed to restore " + ex.StackTrace);
                     Logger.ReportException(ex);
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
