@@ -82,7 +82,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                 SuggestedNode.SortChildren();
             }
 
-            var properties = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
+            var properties = new EventConfigNodeViewModel(
+                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true) { Depth = 1 };
             properties.AddChildren(el.Properties.Values);
 
             if (properties.Children.Any())
@@ -96,9 +97,11 @@ namespace AccessibilityInsights.SharedUx.Controls
                 RootNodes.Add(SuggestedNode);
             }
 
-            CustomNode = new EventConfigNodeViewModel("My Events", isThreeState: true);
+            CustomNode = new EventConfigNodeViewModel(
+                Properties.Resources.EventConfigTabControl_MyEvents, isThreeState: true);
 
-            CustomPropertiesNode = new EventConfigNodeViewModel("Properties", isThreeState: true) { Depth = 1 };
+            CustomPropertiesNode = new EventConfigNodeViewModel(
+                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true) { Depth = 1 };
             EditBtnNode = new EventConfigNodeViewModel("", Visibility.Visible, Properties.Resources.EventConfigTabControl_SetElement_Edit_My_Events) { Depth = 1, TextVisibility = Visibility.Collapsed };
 
             UpdateCustomNode();

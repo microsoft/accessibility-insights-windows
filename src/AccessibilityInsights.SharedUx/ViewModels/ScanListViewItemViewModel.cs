@@ -12,11 +12,11 @@ using Axe.Windows.Desktop.Utility;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Input;
-using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
 {
@@ -199,7 +199,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <returns></returns>
         public override string ToString()
         {
-            return Invariant($"Scan {this.Status}: {this.Header}");
+            return string.Format(CultureInfo.InvariantCulture, 
+                Resources.ScanListViewItemViewModel_StatusFormat,
+                this.Status, this.Header);
         }
 
         /// <summary>

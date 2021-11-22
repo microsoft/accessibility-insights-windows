@@ -1,11 +1,9 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Core.Bases;
-using Axe.Windows.Core.Enums;
 using Axe.Windows.Desktop.UIAutomation;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
 using System;
@@ -110,7 +108,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             catch (Exception e)
             {
                 e.ReportException();
-                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Exception during invoking {0} : {1}", val, e.InnerException == null ? e.Message : e.InnerException.Message));
+                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BaseActionViewModel_ExceptionMessage,
+                    val, e.InnerException == null ? e.Message : e.InnerException.Message));
                 this.IsSucceeded = false;
                 this.ReturnValue = e.InnerException?.HResult;
                 this.ReturnType = typeof(void);

@@ -9,8 +9,8 @@ using Axe.Windows.Core.Results;
 using Axe.Windows.Core.Types;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
-using System.Text;
 using System.Windows;
 
 namespace AccessibilityInsights.SharedUx.ViewModels
@@ -301,10 +301,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="isLiveMode">Is node in live mode</param>
         private void UpdateIconInfoAndAutomationName(bool isLiveMode)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(this.Element.Glimpse);
-
             this.IconVisibility = Visibility.Collapsed;
+            string automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameDefaultFormat;
 
             if (!isLiveMode)
             {
@@ -313,21 +311,21 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     this.IconBack = FabricIcon.AlertSolid;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    sb.Append(" has failed test results.");
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameFailedResultsFormat;
                 }
                 else if(this.Element.TestStatus == ScanStatus.ScanNotSupported)
                 {
                     this.IconBack = FabricIcon.MapDirections;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    sb.Append(" is not scanned since it is Web element.");
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameNotSupportResultsFormat;
                 }
                 else if (this.Element.TestStatus == ScanStatus.Uncertain && this.ShowUncertain)
                 {
                     this.IconBack = FabricIcon.IncidentTriangle;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    sb.Append(" has uncertain test results.");
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameUncertainResultsFormat;
                 }
                 else
                 {
@@ -338,24 +336,25 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     if (this.AggregateStatusCounts[(int)ScanStatus.Fail] > 0)
                     {
                         this.IconFront = FabricIcon.AlertSolid;
-                        sb.Append(Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants);
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat;
                     }
                     else if (this.AggregateStatusCounts[(int)ScanStatus.Uncertain] > 0 && this.ShowUncertain)
                     {
                         this.IconFront = FabricIcon.IncidentTriangle;
-                        sb.Append(Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants);
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameUncertainResultsInDescendentsFormat;
                     }
                     else
                     {
                         this.IconBack = default(FabricIcon);
-                        sb.Append(Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result);
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameNoFailedOrUncertainResultsInDescendentsFormat;
                     }
 
                     this.IconVisibility = this.IsExpanded == false && this.IconBack != default(FabricIcon) ? Visibility.Visible : Visibility.Collapsed;
                 }
             }
 
-            this.AutomationName = sb.ToString();
+            this.AutomationName = string.Format(CultureInfo.InvariantCulture, automationNameFormat,
+                this.Element.Glimpse);
         }
 
         public bool ApplyFilter(string filter)

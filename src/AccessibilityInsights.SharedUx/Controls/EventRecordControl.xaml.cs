@@ -392,7 +392,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                             catch (Exception ex)
                             {
                                 ex.ReportException();
-                                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Couldn't save the event record file: {0}", ex.Message));
+                                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
+                                    Properties.Resources.EventRecordControl_FileSaveError, ex.Message));
                             }
 #pragma warning restore CA1031 // Do not catch general exception types
                         }

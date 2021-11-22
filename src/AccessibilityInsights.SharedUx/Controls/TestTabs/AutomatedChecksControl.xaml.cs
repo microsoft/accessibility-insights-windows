@@ -23,10 +23,8 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Navigation;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
@@ -317,7 +315,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     this.chbxSelectAll.IsEnabled = ScreenshotAvailable;
                     this.lvResults.ItemsSource = null;
                     this.ElementContext = ec;
-                    this.tbGlimpse.Text = "Target: " + ec.Element.Glimpse;
+                    this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resources.AutomatedChecksControl_TargetFormat, ec.Element.Glimpse);
                     UpdateUI();
                 }
             }

@@ -186,7 +186,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void mniIncludeAllPropertiesClicked()
         {
-            var dlg = new PropertyConfigDialog(Configuration.CoreProperties, PropertyType.GetInstance(), "Properties");
+            var dlg = new PropertyConfigDialog(Configuration.CoreProperties, PropertyType.GetInstance(),
+                Properties.Resources.PropertyInfoControl_Properties);
             var wnd = (IMainWindow)Application.Current.MainWindow;
 
             dlg.Owner = Window.GetWindow(this);

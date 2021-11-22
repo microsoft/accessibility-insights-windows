@@ -1149,14 +1149,17 @@
   <data name="EventConfigNodeViewModel_ToString_unchecked" xml:space="preserve">
     <value> unchecked</value>
   </data>
-  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants" xml:space="preserve">
-    <value> has failed test results in descendants.</value>
+  <data name="HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat" xml:space="preserve">
+    <value>{0} has failed test results in descendants.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
-  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants" xml:space="preserve">
-    <value> has uncertain test results in descendants.</value>
+  <data name="HierarchyNodeViewModel_AutomationNameUncertainResultsInDescendentsFormat" xml:space="preserve">
+    <value>{0} has uncertain test results in descendants.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
-  <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result" xml:space="preserve">
-    <value> has no failed or uncertain test result.</value>
+  <data name="HierarchyNodeViewModel_AutomationNameNoFailedOrUncertainResultsInDescendentsFormat" xml:space="preserve">
+    <value>{0} has no failed or uncertain test result.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="PatternViewModel_GetActionButtonText_Actions" xml:space="preserve">
     <value>Actions...</value>
@@ -1550,5 +1553,135 @@ Do you want to change the channel? </value>
   </data>
   <data name="ApplicationSettingsControl_TelemetryDisabledByAdministrator" xml:space="preserve">
     <value>Telemetry has been disabled by an administrator of this computer.</value>
+  </data>
+  <data name="A11yElementView_ExecutionError" xml:space="preserve">
+    <value>Execution result failed</value>
+  </data>
+  <data name="EventConfigTabControl_MyEvents" xml:space="preserve">
+    <value>My Events</value>
+  </data>
+  <data name="EventConfigTabControl_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="EventRecordControl_FileSaveError" xml:space="preserve">
+    <value>Couldn't save the event record file: {0}</value>
+    <comment>{0} is the error message of the Exception</comment>
+  </data>
+  <data name="HierarchyControl_ContentView_Checked" xml:space="preserve">
+    <value>Content view Checked</value>
+  </data>
+  <data name="HierarchyControl_ContentView_Unchecked" xml:space="preserve">
+    <value>Content view</value>
+  </data>
+  <data name="HierarchyControl_ControlView_Checked" xml:space="preserve">
+    <value>Control view Checked</value>
+  </data>
+  <data name="HierarchyControl_ControlView_Unchecked" xml:space="preserve">
+    <value>Control view</value>
+  </data>
+  <data name="HierarchyControl_LiveMode_InvokeToTestFormat" xml:space="preserve">
+    <value>Invoke to test {0} and descendants</value>
+    <comment>{0} is the glimpse of the current element</comment>
+  </data>
+  <data name="HierarchyControl_RawView_Checked" xml:space="preserve">
+    <value>Raw view Checked</value>
+  </data>
+  <data name="HierarchyControl_RawView_Unchecked" xml:space="preserve">
+    <value>Raw view</value>
+  </data>
+  <data name="PatternInfoControl_AvailablePatterns" xml:space="preserve">
+    <value>Available Patterns:</value>
+  </data>
+  <data name="PatternInfoControl_PatternPropertyFormat" xml:space="preserve">
+    <value>- {0}: {1}</value>
+    <comment>{0} is the propety name; {1} is the property value</comment>
+  </data>
+  <data name="PropertyInfoControl_Properties" xml:space="preserve">
+    <value>Properties</value>
+  </data>
+  <data name="AutomatedChecksControl_TargetFormat" xml:space="preserve">
+    <value>Target: {0}</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="PropertyConfigDialog_AllItemsFormat" xml:space="preserve">
+    <value>All {0}</value>
+    <comment>{0} is the type of item (Patterns, Properties, etc.) being configured</comment>
+  </data>
+  <data name="PropertyConfigDialog_SelectedItemsFormat" xml:space="preserve">
+    <value>Selected {0}</value>
+    <comment>{0} is the type of item (Patterns, Properties, etc.) being configured</comment>
+  </data>
+  <data name="PropertyConfigDialog_TitleFormat" xml:space="preserve">
+    <value>{0} Configuration</value>
+    <comment>{0} is the type of item (Patterns, Properties, etc.) being configured</comment>
+  </data>
+  <data name="TextPatternExplorerDialog_CloneFormat" xml:space="preserve">
+    <value>{0} - cloned</value>
+    <comment>{0} is the Header title</comment>
+  </data>
+  <data name="TextPatternExplorerDialog_HresultFormat" xml:space="preserve">
+    <value>HResult: 0x{0:X8}</value>
+    <comment>{0} is the HRESULT of the exception</comment>
+  </data>
+  <data name="BaseActionViewModel_ExceptionMessage" xml:space="preserve">
+    <value>Exception while invoking {0} : {1}</value>
+    <comment>{0} is the method; {1} is the Exception mesage</comment>
+  </data>
+  <data name="ColorContrastViewModel_ContrastRatioFormat" xml:space="preserve">
+    <value>{0}:1</value>
+    <comment>{0} is the numeric contrast value</comment>
+  </data>
+  <data name="EventConfigNodeViewModel_NodeFormat" xml:space="preserve">
+    <value>{0} node</value>
+    <comment>{0} is the button text</comment>
+  </data>
+  <data name="FileFilter_AllFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights files (*.a11ytest,*.a11yevent)|*.a11ytest;*.a11yevent|A11y Test files (*.a11ytest)|*.a11ytest|A11y Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11ytest" or "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_EventFilesExtension" xml:space="preserve">
+    <value>.a11yevent</value>
+    <comment>Do not localize "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_EventFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_TestFilesExtension" xml:space="preserve">
+    <value>.a11ytest</value>
+    <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_TestFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_AutomationNameDefaultFormat" xml:space="preserve">
+    <value>{0}</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_AutomationNameFailedResultsFormat" xml:space="preserve">
+    <value>{0} has failed test results.</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_AutomationNameNotSupportResultsFormat" xml:space="preserve">
+    <value>{0} is not scanned since it is Web element.</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_AutomationNameUncertainResultsFormat" xml:space="preserve">
+    <value>{0} has uncertain test results.</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="Highlight_Focusable" xml:space="preserve">
+    <value>Focusable</value>
+  </data>
+  <data name="Highlight_NotFocusable" xml:space="preserve">
+    <value>Not Focusable</value>
+  </data>
+  <data name="ScanListViewItemViewModel_StatusFormat" xml:space="preserve">
+    <value>Scan {0}: {1}</value>
+    <comment>{0} is the status; {1} is the header</comment>
+  </data>
+  <data name="String" xml:space="preserve">
+    <value>AutomationName</value>
   </data>
 </root>

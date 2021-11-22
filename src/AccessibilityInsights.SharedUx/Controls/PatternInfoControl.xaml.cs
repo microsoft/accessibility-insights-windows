@@ -7,13 +7,13 @@ using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static System.FormattableString;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -141,7 +141,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void CopyAllPatternsToClipboard()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("Available patterns:");
+            sb.AppendLine(Properties.Resources.PatternInfoControl_AvailablePatterns);
             // patterns
             foreach (var pt in this.Element.Patterns)
             {
@@ -163,7 +163,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 sb.AppendLine(pattern.Name);
                 foreach (var prop in pattern.Properties)
                 {
-                    sb.AppendLine(Invariant($"- {prop.Name}: {prop.Value}"));
+                    sb.AppendLine(string.Format(CultureInfo.InvariantCulture,
+                        Properties.Resources.PatternInfoControl_PatternPropertyFormat,
+                        prop.Name, prop.Value));
                 }
             }
         }
