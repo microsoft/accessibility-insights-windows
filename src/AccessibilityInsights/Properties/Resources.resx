@@ -249,12 +249,6 @@
   <data name="tbTimerText2" xml:space="preserve">
     <value>second(s)</value>
   </data>
-  <data name="tbxTimer_TextChangedText1" xml:space="preserve">
-    <value>Start timer in</value>
-  </data>
-  <data name="tbxTimer_TextChangedText2" xml:space="preserve">
-    <value>seconds</value>
-  </data>
   <data name="Window_ClosingDebugMessage" xml:space="preserve">
     <value>Enter: Closing MainWindow</value>
   </data>
@@ -447,21 +441,26 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="LiveModeControl_CopyToClipboard_Glimpse_0" xml:space="preserve">
     <value>Glimpse: {0}</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="MainWindow_UpdateMainCommandButtons_0_1_of_2" xml:space="preserve">
     <value>{0}: {1} of {2}</value>
+    <comment>{0} is a command name; {1} is the index of the current command; {2} is the total number of commands</comment>
   </data>
   <data name="MainWindow_UpdateTitleString_Accessibility_Insights_for_Windows_0" xml:space="preserve">
     <value>Accessibility Insights for Windows - {0}</value>
+    <comment>Title String. {0} describes the current POI and view</comment>
   </data>
   <data name="MainWindowWindowTitle" xml:space="preserve">
     <value>Accessibility Insights for Windows</value>
   </data>
   <data name="MainWindow_AutomationPropertiesName_0_1_2" xml:space="preserve">
     <value>{0} {1} {2}</value>
+    <comment>{0} is the property name; {1} is the current page; {2} is a boolean reflecting the enabled state</comment>
   </data>
   <data name="CultureInfoErrorMessage" xml:space="preserve">
     <value>"{0}" is not proper hotkey combination. Hotkey should be [Shift|Ctrl|Alt|Window]+[a single key including function key]</value>
+    <comment>{0} is the invalid hotkey combination</comment>
   </data>
   <data name="VersionBarPreReleaseVersion" xml:space="preserve">
     <value>Prerelease Build ({0})</value>
@@ -469,9 +468,11 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="SetElementInspectTestDetail" xml:space="preserve">
     <value>Inspect Test Detail of {0}</value>
+    <comment>{0} is the glimse</comment>
   </data>
   <data name="SaveException" xml:space="preserve">
     <value>Couldn't save the file: {0}</value>
+    <comment>{0} is the message of the save exception</comment>
   </data>
   <data name="UpdateMainWindowLoginFieldsSignedInAs" xml:space="preserve">
     <value>Signed into {0}</value>
@@ -518,6 +519,7 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="SnapshotModeControl_GlimpseFormat" xml:space="preserve">
     <value>Glimpse: {0}</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="MainWindow_DefaultTimerDelayInSeconds" xml:space="preserve">
     <value>5</value>
@@ -565,5 +567,9 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="TestModeControl_Test" xml:space="preserve">
     <value>Test</value>
+  </data>
+  <data name="tbxTimer_TextChangedFornmat" xml:space="preserve">
+    <value>Start test in {0} seconds</value>
+    <comment>{0} is the timer delay in seconds</comment>
   </data>
 </root>
