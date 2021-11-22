@@ -111,10 +111,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Configure the Highlighter mode
         /// </summary>
-        public void LoadHighlighterMode(HighlighterMode HilighterMode)
+        public void LoadHighlighterMode(HighlighterMode hilighterMode)
         {
             UpdateAllChildren(false, true);
-            switch (HilighterMode)
+            switch (hilighterMode)
             {
                 case HighlighterMode.HighlighterBeakerTooltip:
                     this.IsBorderVisible = true;
@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     this.Text.IsVisible = true;
                     break;
                 default:
-                    throw new ArgumentException($"Argument {this.HighlighterMode.ToString()} is invalid");
+                    throw new ArgumentException($"{hilighterMode} is unsupported", nameof(hilighterMode));
             }
         }
 
