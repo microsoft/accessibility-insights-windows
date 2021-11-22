@@ -254,30 +254,6 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             if (config == null)
                 throw new ArgumentNullException(nameof(config));
 
-            if (config.HotKeyForSnap != (string) this.btnHotkeyToggle.Content)
-            {
-                var dic = new Dictionary<string, string>();
-                dic.Add("HotkeyToggleMode", (string) this.btnHotkeyToggle.Content);
-            }
-
-            if (config.HotKeyForActivatingMainWindow != (string)this.btnHotkeyActivateWindow.Content)
-            {
-                var dic = new Dictionary<string, string>();
-                dic.Add("HotkeyActivateWIndow", (string)this.btnHotkeyActivateWindow.Content);
-            }
-
-            if (config.HotKeyForRecord != (string)this.btnHotkeyRecord.Content)
-            {
-                var dic = new Dictionary<string, string>();
-                dic.Add("HotkeyRecord", (string)this.btnHotkeyRecord.Content);
-            }
-
-            if (config.HotKeyForPause != (string)this.btnHotkeyPause.Content)
-            {
-                var dic = new Dictionary<string, string>();
-                dic.Add("HotkeyPause", (string)this.btnHotkeyPause.Content);
-            }
-
             config.HotKeyForActivatingMainWindow = (string)this.btnHotkeyActivateWindow.Content;
             config.HotKeyForSnap = (string)this.btnHotkeyToggle.Content;
             config.HotKeyForRecord = (string)this.btnHotkeyRecord.Content;
