@@ -1640,4 +1640,10 @@ Do you want to change the channel? </value>
     <value>AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*</value>
     <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
   </data>
+  <data name="Highlight_Focusable" xml:space="preserve">
+    <value>Focusable</value>
+  </data>
+  <data name="Highlight_NotFocusable" xml:space="preserve">
+    <value>Not Focusable</value>
+  </data>
 </root>

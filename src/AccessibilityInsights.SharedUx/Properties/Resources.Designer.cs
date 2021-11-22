@@ -2107,6 +2107,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Focusable.
+        /// </summary>
+        public static string Highlight_Focusable {
+            get {
+                return ResourceManager.GetString("Highlight_Focusable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Focusable.
+        /// </summary>
+        public static string Highlight_NotFocusable {
+            get {
+                return ResourceManager.GetString("Highlight_NotFocusable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         public static string hlHelpName {

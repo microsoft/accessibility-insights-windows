@@ -155,7 +155,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine(element.Glimpse);
-            sb.AppendLine(element.IsKeyboardFocusable ? "Focusable" : "Not Focusable");
+            sb.AppendLine(element.IsKeyboardFocusable ?
+                Properties.Resources.Highlight_Focusable : Properties.Resources.Highlight_NotFocusable);
 
             return sb.ToString();
         }
