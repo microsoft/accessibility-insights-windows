@@ -1150,13 +1150,16 @@
     <value> unchecked</value>
   </data>
   <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants" xml:space="preserve">
-    <value> has failed test results in descendants.</value>
+    <value>{0} has failed test results in descendants.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants" xml:space="preserve">
-    <value> has uncertain test results in descendants.</value>
+    <value>{0} has uncertain test results in descendants.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result" xml:space="preserve">
-    <value> has no failed or uncertain test result.</value>
+    <value>{0} has no failed or uncertain test result.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="PatternViewModel_GetActionButtonText_Actions" xml:space="preserve">
     <value>Actions...</value>
@@ -1651,6 +1654,18 @@ Do you want to change the channel? </value>
   <data name="FileFilter_TestFilesFilter" xml:space="preserve">
     <value>AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*</value>
     <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_FailedResultsFormat" xml:space="preserve">
+    <value>{0} has failed test results.</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_NotSupportResultsFormat" xml:space="preserve">
+    <value>{0} is not scanned since it is Web element.</value>
+    <comment>{0} is the glimpse</comment>
+  </data>
+  <data name="HierarchyNodeViewModel_UncertainResultsFormat" xml:space="preserve">
+    <value>{0} has uncertain test results.</value>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="Highlight_Focusable" xml:space="preserve">
     <value>Focusable</value>

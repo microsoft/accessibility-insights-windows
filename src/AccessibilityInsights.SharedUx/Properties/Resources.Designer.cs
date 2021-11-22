@@ -2104,7 +2104,34 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  has failed test results in descendants..
+        ///   Looks up a localized string similar to {0} has failed test results..
+        /// </summary>
+        public static string HierarchyNodeViewModel_FailedResultsFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_FailedResultsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not scanned since it is Web element..
+        /// </summary>
+        public static string HierarchyNodeViewModel_NotSupportResultsFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_NotSupportResultsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has uncertain test results..
+        /// </summary>
+        public static string HierarchyNodeViewModel_UncertainResultsFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_UncertainResultsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has failed test results in descendants..
         /// </summary>
         public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants {
             get {
@@ -2114,7 +2141,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  has no failed or uncertain test result..
+        ///   Looks up a localized string similar to {0} has no failed or uncertain test result..
         /// </summary>
         public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result {
             get {
@@ -2124,7 +2151,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  has uncertain test results in descendants..
+        ///   Looks up a localized string similar to {0} has uncertain test results in descendants..
         /// </summary>
         public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants {
             get {
