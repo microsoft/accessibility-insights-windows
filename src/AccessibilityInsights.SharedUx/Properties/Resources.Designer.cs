@@ -2104,59 +2104,66 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        public static string HierarchyNodeViewModel_AutomationNameDefaultFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameDefaultFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} has failed test results..
         /// </summary>
-        public static string HierarchyNodeViewModel_FailedResultsFormat {
+        public static string HierarchyNodeViewModel_AutomationNameFailedResultsFormat {
             get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_FailedResultsFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is not scanned since it is Web element..
-        /// </summary>
-        public static string HierarchyNodeViewModel_NotSupportResultsFormat {
-            get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_NotSupportResultsFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} has uncertain test results..
-        /// </summary>
-        public static string HierarchyNodeViewModel_UncertainResultsFormat {
-            get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_UncertainResultsFormat", resourceCulture);
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameFailedResultsFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0} has failed test results in descendants..
         /// </summary>
-        public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants {
+        public static string HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat {
             get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in" +
-                        "_descendants", resourceCulture);
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0} has no failed or uncertain test result..
         /// </summary>
-        public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result {
+        public static string HierarchyNodeViewModel_AutomationNameNoFailedOrUncertainResultsInDescendentsFormat {
             get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain" +
-                        "_test_result", resourceCulture);
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameNoFailedOrUncertainResultsInDescendentsForma" +
+                        "t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not scanned since it is Web element..
+        /// </summary>
+        public static string HierarchyNodeViewModel_AutomationNameNotSupportResultsFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameNotSupportResultsFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} has uncertain test results..
+        /// </summary>
+        public static string HierarchyNodeViewModel_AutomationNameUncertainResultsFormat {
+            get {
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameUncertainResultsFormat", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to {0} has uncertain test results in descendants..
         /// </summary>
-        public static string HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants {
+        public static string HierarchyNodeViewModel_AutomationNameUncertainResultsInDescendentsFormat {
             get {
-                return ResourceManager.GetString("HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results" +
-                        "_in_descendants", resourceCulture);
+                return ResourceManager.GetString("HierarchyNodeViewModel_AutomationNameUncertainResultsInDescendentsFormat", resourceCulture);
             }
         }
         
@@ -3944,6 +3951,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string StartUpModeControlAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("StartUpModeControlAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AutomationName.
+        /// </summary>
+        public static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
         

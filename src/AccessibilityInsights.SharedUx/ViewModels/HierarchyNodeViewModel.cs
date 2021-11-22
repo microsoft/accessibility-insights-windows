@@ -303,7 +303,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         private void UpdateIconInfoAndAutomationName(bool isLiveMode)
         {
             this.IconVisibility = Visibility.Collapsed;
-            string automationNameFormat = null;
+            string automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameDefaultFormat;
 
             if (!isLiveMode)
             {
@@ -312,21 +312,21 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     this.IconBack = FabricIcon.AlertSolid;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    automationNameFormat = Resources.HierarchyNodeViewModel_FailedResultsFormat;
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameFailedResultsFormat;
                 }
                 else if(this.Element.TestStatus == ScanStatus.ScanNotSupported)
                 {
                     this.IconBack = FabricIcon.MapDirections;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    automationNameFormat = Resources.HierarchyNodeViewModel_NotSupportResultsFormat;
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameNotSupportResultsFormat;
                 }
                 else if (this.Element.TestStatus == ScanStatus.Uncertain && this.ShowUncertain)
                 {
                     this.IconBack = FabricIcon.IncidentTriangle;
                     this.IconSizeBack = NormalIconSizeBack;
                     this.IconVisibility = Visibility.Visible;
-                    automationNameFormat = Resources.HierarchyNodeViewModel_UncertainResultsFormat;
+                    automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameUncertainResultsFormat;
                 }
                 else
                 {
@@ -337,17 +337,17 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     if (this.AggregateStatusCounts[(int)ScanStatus.Fail] > 0)
                     {
                         this.IconFront = FabricIcon.AlertSolid;
-                        automationNameFormat = Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_failed_test_results_in_descendants;
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat;
                     }
                     else if (this.AggregateStatusCounts[(int)ScanStatus.Uncertain] > 0 && this.ShowUncertain)
                     {
                         this.IconFront = FabricIcon.IncidentTriangle;
-                        automationNameFormat = Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_uncertain_test_results_in_descendants;
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameUncertainResultsInDescendentsFormat;
                     }
                     else
                     {
                         this.IconBack = default(FabricIcon);
-                        automationNameFormat = Resources.HierarchyNodeViewModel_UpdateIconInfoAndAutomationName_has_no_failed_or_uncertain_test_result;
+                        automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameNoFailedOrUncertainResultsInDescendentsFormat;
                     }
 
                     this.IconVisibility = this.IsExpanded == false && this.IconBack != default(FabricIcon) ? Visibility.Visible : Visibility.Collapsed;
