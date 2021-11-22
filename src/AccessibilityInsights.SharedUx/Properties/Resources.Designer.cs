@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Execution result failed!.
+        ///   Looks up a localized string similar to Execution result failed.
         /// </summary>
         public static string A11yElementView_ExecutionError {
             get {
