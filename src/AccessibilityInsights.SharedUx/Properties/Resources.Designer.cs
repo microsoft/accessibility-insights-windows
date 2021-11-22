@@ -1191,6 +1191,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}:1.
+        /// </summary>
+        public static string ColorContrastViewModel_ContrastRatioFormat {
+            get {
+                return ResourceManager.GetString("ColorContrastViewModel_ContrastRatioFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} eyedropper.
         /// </summary>
         public static string colorPickerAutomationPropertiesName {

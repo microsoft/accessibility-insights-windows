@@ -94,13 +94,15 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Formatted to 3 decimal places and then :1, ex: 5.444:1
+        /// Formatted to 3 decimal places and expressed as a ratio
         /// </summary>
         public String FormattedRatio
         {
             get
             {
-                return (Math.Truncate(1000 * Ratio) / 1000).ToString(CultureInfo.InvariantCulture) + ":1";
+                double ratio = Math.Truncate(1000 * Ratio) / 1000;
+                return string.Format(CultureInfo.InvariantCulture,
+                    Properties.Resources.ColorContrastViewModel_ContrastRatioFormat, ratio);
             }
         }
 
