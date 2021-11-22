@@ -1620,4 +1620,24 @@ Do you want to change the channel? </value>
     <value>HResult: 0x{0:X8}</value>
     <comment>{0} is the HRESULT of the exception</comment>
   </data>
+  <data name="FileFilter_AllFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights files (*.a11ytest,*.a11yevent)|*.a11ytest;*.a11yevent|A11y Test files (*.a11ytest)|*.a11ytest|A11y Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11ytest" or "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_EventFilesExtension" xml:space="preserve">
+    <value>.a11yevent</value>
+    <comment>Do not localize "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_EventFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11yevent" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_TestFilesExtension" xml:space="preserve">
+    <value>.a11ytest</value>
+    <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
+  <data name="FileFilter_TestFilesFilter" xml:space="preserve">
+    <value>AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*</value>
+    <comment>Do not localize "a11ytest" unless absolutely necessary. Changing it here means changing it everywhere, including the file association inside the wxs file</comment>
+  </data>
 </root>

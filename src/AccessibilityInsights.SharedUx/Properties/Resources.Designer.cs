@@ -1679,6 +1679,51 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to AccessibilityInsights files (*.a11ytest,*.a11yevent)|*.a11ytest;*.a11yevent|A11y Test files (*.a11ytest)|*.a11ytest|A11y Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*.
+        /// </summary>
+        public static string FileFilter_AllFilesFilter {
+            get {
+                return ResourceManager.GetString("FileFilter_AllFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .a11yevent.
+        /// </summary>
+        public static string FileFilter_EventFilesExtension {
+            get {
+                return ResourceManager.GetString("FileFilter_EventFilesExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AccessibilityInsights Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*.
+        /// </summary>
+        public static string FileFilter_EventFilesFilter {
+            get {
+                return ResourceManager.GetString("FileFilter_EventFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .a11ytest.
+        /// </summary>
+        public static string FileFilter_TestFilesExtension {
+            get {
+                return ResourceManager.GetString("FileFilter_TestFilesExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*.
+        /// </summary>
+        public static string FileFilter_TestFilesFilter {
+            get {
+                return ResourceManager.GetString("FileFilter_TestFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to first color.
         /// </summary>
         public static string firstChooserAutomationPropertiesName {

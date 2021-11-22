@@ -7,11 +7,11 @@ namespace AccessibilityInsights.SharedUx.Enums
     /// </summary>
     public static class FileFilters
     {
-        public const string A11yFileFilter = "AccessibilityInsights files (*.a11ytest,*.a11yevent)|*.a11ytest;*.a11yevent|A11y Test files (*.a11ytest)|*.a11ytest|A11y Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*";
-        public const string TestFileFilter = "AccessibilityInsights Test files (*.a11ytest)|*.a11ytest|All files (*.*)|*.*";
-        public const string EventsFileFilter = "AccessibilityInsights Events files (*.a11yevent)|*.a11yevent|All files (*.*)|*.*";
-        public const string TestExtension = ".a11ytest";
-        public const string EventsExtension = ".a11yevent";
+        public static readonly string A11yFileFilter = Properties.Resources.FileFilter_AllFilesFilter;
+        public static readonly string TestFileFilter = Properties.Resources.FileFilter_TestFilesFilter;
+        public static readonly string EventsFileFilter = Properties.Resources.FileFilter_EventFilesFilter;
+        public static readonly string TestExtension = Properties.Resources.FileFilter_TestFilesExtension;
+        public static readonly string EventsExtension = Properties.Resources.FileFilter_EventFilesExtension;
     }
 
     /// <summary>
