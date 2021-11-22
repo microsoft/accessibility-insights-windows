@@ -3588,6 +3588,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scan {0}: {1}.
+        /// </summary>
+        public static string ScanListViewItemViewModel_StatusFormat {
+            get {
+                return ResourceManager.GetString("ScanListViewItemViewModel_StatusFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To file issues, select where you want to file issues..
         /// </summary>
         public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {

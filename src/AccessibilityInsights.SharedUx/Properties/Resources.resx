@@ -1673,4 +1673,8 @@ Do you want to change the channel? </value>
   <data name="Highlight_NotFocusable" xml:space="preserve">
     <value>Not Focusable</value>
   </data>
+  <data name="ScanListViewItemViewModel_StatusFormat" xml:space="preserve">
+    <value>Scan {0}: {1}</value>
+    <comment>{0} is the status; {1} is the header</comment>
+  </data>
 </root>
