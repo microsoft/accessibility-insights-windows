@@ -314,6 +314,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Exception while invoking {0} : {1}.
+        /// </summary>
+        public static string BaseActionViewModel_ExceptionMessage {
+            get {
+                return ResourceManager.GetString("BaseActionViewModel_ExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Run action with the value.
         /// </summary>
         public static string btnActionAutomationPropertiesName {

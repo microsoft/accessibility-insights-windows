@@ -110,7 +110,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             catch (Exception e)
             {
                 e.ReportException();
-                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, "Exception during invoking {0} : {1}", val, e.InnerException == null ? e.Message : e.InnerException.Message));
+                MessageDialog.Show(string.Format(CultureInfo.InvariantCulture, Properties.Resources.BaseActionViewModel_ExceptionMessage,
+                    val, e.InnerException == null ? e.Message : e.InnerException.Message));
                 this.IsSucceeded = false;
                 this.ReturnValue = e.InnerException?.HResult;
                 this.ReturnType = typeof(void);
