@@ -1191,6 +1191,9 @@
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+    <Style TargetType="{x:Type TextBlock}" x:Key="TbStandardSize" BasedOn="{StaticResource TbBaseWrap}">
+        <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+    </Style>
     <Style TargetType="{x:Type TextBlock}" x:Key="TbFocusable" BasedOn="{StaticResource TbBaseWrap}">
         <Setter Property="Focusable" Value="True"/>
         <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>

@@ -132,7 +132,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtEventHk" Style="{StaticResource TbBaseWrap}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
+                    <TextBlock Name="txtEventHk" Style="{StaticResource TbStandardSize}" Grid.Row="3" Grid.Column="3" Text="{x:Static properties:Resources.toggleEventText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="5" Grid.Column="1" Style="{StaticResource BrdrKey}" VerticalAlignment="Center">
                         <Label Name="lblTestHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF8}" Padding="3,6">
                             <AutomationProperties.Name>
@@ -143,7 +143,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtTesttHk" Style="{StaticResource TbBaseWrap}" Grid.Row="5" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
+                    <TextBlock Name="txtTesttHk" Style="{StaticResource TbStandardSize}" Grid.Row="5" Grid.Column="3" Text="{x:Static properties:Resources.runSelectedTestText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <Border Grid.Row="7" Grid.Column="1" Style="{StaticResource BrdrKey}" Height="32" VerticalAlignment="Center">
                         <Label Name="lblActivateHk" Style="{StaticResource LblKey}" Content="{x:Static properties:Resources.StartUpModeControl_ShiftF9}" Padding="3,6">
                             <AutomationProperties.Name>
@@ -154,7 +154,7 @@
                             </AutomationProperties.Name>
                         </Label>
                     </Border>
-                    <TextBlock Name="txtActivateHk" Grid.Row="7" Grid.Column="3" Style="{StaticResource TbBaseWrap}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
+                    <TextBlock Name="txtActivateHk" Grid.Row="7" Grid.Column="3" Style="{StaticResource TbStandardSize}" Text="{x:Static properties:Resources.minmizeOrActivateWindowText}" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=StartupFGBrush}"/>
                     <TextBlock Grid.Row="8" Grid.ColumnSpan="8" Padding="16,4,0,10" TextWrapping="Wrap">
                         <Hyperlink FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" RequestNavigate="hlLink_RequestNavigate" NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853"
                                    AutomationProperties.Name="{Binding ElementName=shortcutsDescTxt, Path=Text}" Style="{StaticResource hLink}">
