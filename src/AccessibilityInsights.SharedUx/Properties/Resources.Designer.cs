@@ -4117,6 +4117,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Element.
+        /// </summary>
+        public static string TabStopControl_Element_Header {
+            get {
+                return ResourceManager.GetString("TabStopControl_Element_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order.
+        /// </summary>
+        public static string TabStopControl_Order_Header {
+            get {
+                return ResourceManager.GetString("TabStopControl_Order_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recorded order results.
         /// </summary>
         public static string TabStopControl_RecordedOrderResults {

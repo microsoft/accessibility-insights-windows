@@ -77,8 +77,8 @@
                 </ListView.Resources>
                 <ListView.View>
                     <GridView ColumnHeaderContainerStyle="{StaticResource gvchTabStops}">
-                        <GridViewColumn Header="Order" DisplayMemberBinding="{Binding Path=Number}" Width="40" />
-                        <GridViewColumn DisplayMemberBinding="{Binding Path=Element, Converter={StaticResource cvtElementToSender}}" Header="Element" Width="300"/>
+                        <GridViewColumn Header="{x:Static Properties:Resources.TabStopControl_Order_Header}" DisplayMemberBinding="{Binding Path=Number}" Width="40" />
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=Element, Converter={StaticResource cvtElementToSender}}" Header="{x:Static Properties:Resources.TabStopControl_Element_Header}" Width="300"/>
                     </GridView>
                 </ListView.View>
             </ListView>
