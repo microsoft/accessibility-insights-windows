@@ -3528,6 +3528,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string ReturnA11yElementsView_Header_Value {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Header_Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Configure properties to always show.
+        /// </summary>
+        public static string ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all properties that have values.
+        /// </summary>
+        public static string ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed:HResult (0x{0:X8}).
         /// </summary>
         public static string ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8 {
