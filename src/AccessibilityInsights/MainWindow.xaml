@@ -165,7 +165,7 @@
                             </i:Interaction.Behaviors>
                             <Grid Width="40" Height="40" x:Name="addAccountGrid">
                                 <Grid x:Name="newAccountGrid" Visibility="Visible">
-                                    <AccessText Text="_i" Opacity="0"/>
+                                    <AccessText Text="{x:Static properties:Resources.NavBar_IssueFilingConfig_AccessText}" Opacity="0"/>
                                     <fabric:FabricIconControl GlyphName="{Binding Path=vmReporterLogo.FabricIconLogoName, TargetNullValue=PlugDisconnected}" FontSize="24" VerticalAlignment="Center" Style="{StaticResource hoverAwareNavBarFabricIcon}" HorizontalAlignment="Center"/>
                                 </Grid>
                             </Grid>
@@ -185,7 +185,7 @@
                                 <behaviors:KeyboardToolTipButtonBehavior/>
                             </i:Interaction.Behaviors>
                             <Grid>
-                                <AccessText Text="_c" Opacity="0"/>
+                                <AccessText Text="{x:Static properties:Resources.NavBar_Config_AccessText}" Opacity="0"/>
                                 <fabric:FabricIconControl GlyphName="Settings" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareNavBarFabricIcon}"/>
                             </Grid>
                         </Button>

@@ -844,6 +844,24 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _c.
+        /// </summary>
+        public static string NavBar_Config_AccessText {
+            get {
+                return ResourceManager.GetString("NavBar_Config_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _i.
+        /// </summary>
+        public static string NavBar_IssueFilingConfig_AccessText {
+            get {
+                return ResourceManager.GetString("NavBar_IssueFilingConfig_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The element&apos;s bounding rectangle is empty (app minimized?)- no screenshot is available..
         /// </summary>
         public static string noScreenShotAvailableMessage {
