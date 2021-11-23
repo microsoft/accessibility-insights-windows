@@ -3573,15 +3573,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Value.
-        /// </summary>
-        public static string ReturnA11yElementsView_Header_Value {
-            get {
-                return ResourceManager.GetString("ReturnA11yElementsView_Header_Value", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Configure properties to always show.
         /// </summary>
         public static string ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow {
@@ -3605,6 +3596,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8 {
             get {
                 return ResourceManager.GetString("ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string ReturnA11yElementsView_Value_Header {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Value_Header", resourceCulture);
             }
         }
         

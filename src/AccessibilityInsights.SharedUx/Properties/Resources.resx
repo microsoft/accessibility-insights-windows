@@ -1711,14 +1711,14 @@ Do you want to change the channel? </value>
   <data name="InspectTabsControl_Menu_ShowAllPropertiesWithValues" xml:space="preserve">
     <value>_Include all properties that have values</value>
   </data>
-  <data name="ReturnA11yElementsView_Header_Value" xml:space="preserve">
-    <value>Value</value>
-  </data>
   <data name="ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
     <value>_Configure properties to always show</value>
   </data>
   <data name="ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues" xml:space="preserve">
     <value>_Include all properties that have values</value>
+  </data>
+  <data name="ReturnA11yElementsView_Value_Header" xml:space="preserve">
+    <value>Value</value>
   </data>
   <data name="TabStopControl_Element_Header" xml:space="preserve">
     <value>Element</value>
