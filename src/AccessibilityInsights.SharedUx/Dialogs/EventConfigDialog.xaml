@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <DockPanel Grid.Row="0">
             <TabControl SelectedIndex="0">
-                <TabItem x:Name="tabEvents" Header="_Events" AutomationProperties.Name="{x:Static Properties:Resources.tabEventsAutomationPropertiesName}"
+                <TabItem x:Name="tabEvents" Header="{x:Static Properties:Resources.EventConfigDialog_Events_Header}" AutomationProperties.Name="{x:Static Properties:Resources.tabEventsAutomationPropertiesName}"
                          AutomationProperties.HelpText="{x:Static Properties:Resources.tabEventsAutomationPropertiesHelpText}">
                     <Grid Grid.IsSharedSizeScope="True" Margin="10">
                         <Grid.RowDefinitions>
@@ -34,7 +34,7 @@
                         </DockPanel>
                     </Grid>
                 </TabItem>
-                <TabItem x:Name="tabProperties" Header="_Properties" AutomationProperties.Name="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesName}"
+                <TabItem x:Name="tabProperties" Header="{x:Static Properties:Resources.EventConfigDialog_Properties_Header}" AutomationProperties.Name="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesName}"
                          AutomationProperties.HelpText="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesHelpText}">
                     <Grid Grid.IsSharedSizeScope="True" Margin="10">
                         <Grid.RowDefinitions>

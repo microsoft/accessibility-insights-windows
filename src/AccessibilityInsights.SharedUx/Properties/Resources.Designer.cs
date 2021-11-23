@@ -1506,6 +1506,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Events.
+        /// </summary>
+        public static string EventConfigDialog_Events_Header {
+            get {
+                return ResourceManager.GetString("EventConfigDialog_Events_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Properties.
+        /// </summary>
+        public static string EventConfigDialog_Properties_Header {
+            get {
+                return ResourceManager.GetString("EventConfigDialog_Properties_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} node.
         /// </summary>
         public static string EventConfigNodeViewModel_NodeFormat {
