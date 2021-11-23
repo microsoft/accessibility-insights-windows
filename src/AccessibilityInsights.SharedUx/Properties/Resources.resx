@@ -1729,4 +1729,22 @@ Do you want to change the channel? </value>
   <data name="TextRangeActionView_Value_Header" xml:space="preserve">
     <value>Value</value>
   </data>
+  <data name="TextRangeControl_HighlightButton_AccessText" xml:space="preserve">
+    <value>_h</value>
+  </data>
+  <data name="TextRangeControl_Menu_CollapseAnnotationTypes" xml:space="preserve">
+    <value>_Collapse AnnotationTypes</value>
+  </data>
+  <data name="TextRangeControl_Menu_ConfigureAttributesToAlwaysShow" xml:space="preserve">
+    <value>_Configure attributes to always show</value>
+  </data>
+  <data name="TextRangeControl_Menu_ReplaceWhitespaceWithSymbols" xml:space="preserve">
+    <value>_Replace whitespace with formatting symbols</value>
+  </data>
+  <data name="TextRangeControl_Menu_ShowAllAttributesWithValues" xml:space="preserve">
+    <value>_Include all attributes that have values</value>
+  </data>
+  <data name="TextRangeControl_Value_Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
 </root>

@@ -4630,6 +4630,60 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _h.
+        /// </summary>
+        public static string TextRangeControl_HighlightButton_AccessText {
+            get {
+                return ResourceManager.GetString("TextRangeControl_HighlightButton_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Collapse AnnotationTypes.
+        /// </summary>
+        public static string TextRangeControl_Menu_CollapseAnnotationTypes {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_CollapseAnnotationTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Configure attributes to always show.
+        /// </summary>
+        public static string TextRangeControl_Menu_ConfigureAttributesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ConfigureAttributesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Replace whitespace with formatting symbols.
+        /// </summary>
+        public static string TextRangeControl_Menu_ReplaceWhitespaceWithSymbols {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ReplaceWhitespaceWithSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all attributes that have values.
+        /// </summary>
+        public static string TextRangeControl_Menu_ShowAllAttributesWithValues {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ShowAllAttributesWithValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string TextRangeControl_Value_Header {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Value_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to  ({0}):.
         /// </summary>
         public static string TextRangeFindDialog_cbAttributes_SelectionChanged {
