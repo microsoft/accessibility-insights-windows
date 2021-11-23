@@ -206,6 +206,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _e.
+        /// </summary>
+        public static string AutomatedChecksControl_ExpandCollapseAll_AccessText {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_ExpandCollapseAll_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issue.
         /// </summary>
         public static string AutomatedChecksControl_Issue {
