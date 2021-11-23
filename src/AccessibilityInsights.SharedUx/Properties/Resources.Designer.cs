@@ -2249,6 +2249,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Configure properties to always show.
+        /// </summary>
+        public static string InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all properties that have values.
+        /// </summary>
+        public static string InspectTabsControl_Menu_ShowAllPropertiesWithValues {
+            get {
+                return ResourceManager.GetString("InspectTabsControl_Menu_ShowAllPropertiesWithValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid link {0}.
         /// </summary>
         public static string InvalidLink {

@@ -1684,4 +1684,10 @@ Do you want to change the channel? </value>
   <data name="String" xml:space="preserve">
     <value>AutomationName</value>
   </data>
+  <data name="InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
+    <value>_Configure properties to always show</value>
+  </data>
+  <data name="InspectTabsControl_Menu_ShowAllPropertiesWithValues" xml:space="preserve">
+    <value>_Include all properties that have values</value>
+  </data>
 </root>

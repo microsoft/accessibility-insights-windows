@@ -92,9 +92,9 @@
                                     <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource ResourceKey=hoverAwareFabricIconOnButtonParent}"/>
                                     <Button.ContextMenu>
                                         <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
-                                            <MenuItem Header="_Include all properties that have values" x:Name="mniShowCoreProps" IsCheckable="true" 
+                                            <MenuItem Header="{x:Static Properties:Resources.InspectTabsControl_Menu_ShowAllPropertiesWithValues}" x:Name="mniShowCoreProps" IsCheckable="true" 
                                                     Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
-                                            <MenuItem Header="_Configure properties to always show" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click" />
+                                            <MenuItem Header="{x:Static Properties:Resources.InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow}" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click" />
                                         </ContextMenu>
                                     </Button.ContextMenu>
                                 </Button>
