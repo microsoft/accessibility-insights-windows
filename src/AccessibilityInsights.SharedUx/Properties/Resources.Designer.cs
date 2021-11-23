@@ -4612,6 +4612,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string TextRangeActionView_Value_Header {
+            get {
+                return ResourceManager.GetString("TextRangeActionView_Value_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string TextRangeControl_Details {

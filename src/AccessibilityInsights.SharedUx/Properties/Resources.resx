@@ -1726,4 +1726,7 @@ Do you want to change the channel? </value>
   <data name="TabStopControl_Order_Header" xml:space="preserve">
     <value>Order</value>
   </data>
+  <data name="TextRangeActionView_Value_Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
 </root>
