@@ -1690,6 +1690,9 @@ Do you want to change the channel? </value>
   <data name="EventConfigDialog_Properties_Header" xml:space="preserve">
     <value>_Properties</value>
   </data>
+  <data name="EventRecordControl_Menu_RecordAutomationFocusChanged" xml:space="preserve">
+    <value>Record _AutomationFocusChanged Event</value>
+  </data>
   <data name="InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
     <value>_Configure properties to always show</value>
   </data>

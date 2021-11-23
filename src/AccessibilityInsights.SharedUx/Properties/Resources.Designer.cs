@@ -1669,6 +1669,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Record _AutomationFocusChanged Event.
+        /// </summary>
+        public static string EventRecordControl_Menu_RecordAutomationFocusChanged {
+            get {
+                return ResourceManager.GetString("EventRecordControl_Menu_RecordAutomationFocusChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No element is selected yet. please select first!!.
         /// </summary>
         public static string EventRecordControl_StartRecordingEvent_No_element_is_selected_yet__please_select_first {
