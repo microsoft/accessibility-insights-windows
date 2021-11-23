@@ -1693,6 +1693,15 @@ Do you want to change the channel? </value>
   <data name="EventRecordControl_Menu_RecordAutomationFocusChanged" xml:space="preserve">
     <value>Record _AutomationFocusChanged Event</value>
   </data>
+  <data name="HierarchyControl_Menu_ShowAncestry" xml:space="preserve">
+    <value>Show _Ancestry</value>
+  </data>
+  <data name="HierarchyControl_Menu_ShowUncertainResults" xml:space="preserve">
+    <value>Show _Uncertain results</value>
+  </data>
+  <data name="HierarchyControl_Menu_TreeView" xml:space="preserve">
+    <value>Tree view</value>
+  </data>
   <data name="InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
     <value>_Configure properties to always show</value>
   </data>

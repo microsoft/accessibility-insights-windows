@@ -2068,6 +2068,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show _Ancestry.
+        /// </summary>
+        public static string HierarchyControl_Menu_ShowAncestry {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_ShowAncestry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show _Uncertain results.
+        /// </summary>
+        public static string HierarchyControl_Menu_ShowUncertainResults {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_ShowUncertainResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tree view.
+        /// </summary>
+        public static string HierarchyControl_Menu_TreeView {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_TreeView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No data to populate hierarchy..
         /// </summary>
         public static string HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy {
