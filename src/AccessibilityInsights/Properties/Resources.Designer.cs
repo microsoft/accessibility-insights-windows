@@ -466,6 +466,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _x.
+        /// </summary>
+        public static string ConfigPane_Exit_AccessText {
+            get {
+                return ResourceManager.GetString("ConfigPane_Exit_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later..
         /// </summary>
         public static string ConfigurationModeControl_VersionSwitcherException {
