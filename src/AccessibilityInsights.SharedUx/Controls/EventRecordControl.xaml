@@ -137,7 +137,7 @@
                                     </MenuItem.Header>
                                 </MenuItem>
                             </MenuItem>
-                            <MenuItem Header="Record _AutomationFocusChanged Event" x:Name="mniFocusChanged" IsCheckable="True"/>
+                            <MenuItem Header="{x:Static Properties:Resources.EventRecordControl_Menu_RecordAutomationFocusChanged}" x:Name="mniFocusChanged" IsCheckable="True"/>
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

@@ -48,7 +48,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Value" Width="200" 
+                <DataGridTemplateColumn Header="{x:Static Properties:Resources.TextRangeActionView_Value_Header}" Width="200" 
                     CellTemplateSelector="{StaticResource DynamicDataTemplateSelector}"/>
             </DataGrid.Columns>
         </DataGrid>

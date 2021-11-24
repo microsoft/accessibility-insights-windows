@@ -572,4 +572,13 @@ Please ensure that you are opening a valid test file using the most recent relea
     <value>Start test in {0} seconds</value>
     <comment>{0} is the timer delay in seconds</comment>
   </data>
+  <data name="ConfigPane_Exit_AccessText" xml:space="preserve">
+    <value>_x</value>
+  </data>
+  <data name="NavBar_Config_AccessText" xml:space="preserve">
+    <value>_c</value>
+  </data>
+  <data name="NavBar_IssueFilingConfig_AccessText" xml:space="preserve">
+    <value>_i</value>
+  </data>
 </root>

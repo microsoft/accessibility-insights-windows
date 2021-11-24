@@ -78,7 +78,7 @@
                                                 AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}"
                                                 AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksExpandAllButton}">
                                             <Grid>
-                                                <AccessText Text="_c" Opacity="0"/>
+                                                <AccessText Text="{x:Static Properties:Resources.AutomatedChecksControl_ExpandCollapseAll_AccessText}" Opacity="0"/>
                                                 <fabric:FabricIconControl x:Name="fabicnExpandAll" GlyphName="CaretSolidRight" GlyphSize="Custom" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}" Margin="0,2,0,-2"/>
                                             </Grid>
                                         </Button>

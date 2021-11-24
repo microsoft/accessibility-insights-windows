@@ -206,6 +206,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _e.
+        /// </summary>
+        public static string AutomatedChecksControl_ExpandCollapseAll_AccessText {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControl_ExpandCollapseAll_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issue.
         /// </summary>
         public static string AutomatedChecksControl_Issue {
@@ -1506,6 +1515,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Events.
+        /// </summary>
+        public static string EventConfigDialog_Events_Header {
+            get {
+                return ResourceManager.GetString("EventConfigDialog_Events_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Properties.
+        /// </summary>
+        public static string EventConfigDialog_Properties_Header {
+            get {
+                return ResourceManager.GetString("EventConfigDialog_Properties_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} node.
         /// </summary>
         public static string EventConfigNodeViewModel_NodeFormat {
@@ -1647,6 +1674,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string EventRecordControl_FileSaveError {
             get {
                 return ResourceManager.GetString("EventRecordControl_FileSaveError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Record _AutomationFocusChanged Event.
+        /// </summary>
+        public static string EventRecordControl_Menu_RecordAutomationFocusChanged {
+            get {
+                return ResourceManager.GetString("EventRecordControl_Menu_RecordAutomationFocusChanged", resourceCulture);
             }
         }
         
@@ -2041,6 +2077,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show _Ancestry.
+        /// </summary>
+        public static string HierarchyControl_Menu_ShowAncestry {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_ShowAncestry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Show _Uncertain results.
+        /// </summary>
+        public static string HierarchyControl_Menu_ShowUncertainResults {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_ShowUncertainResults", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tree view.
+        /// </summary>
+        public static string HierarchyControl_Menu_TreeView {
+            get {
+                return ResourceManager.GetString("HierarchyControl_Menu_TreeView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No data to populate hierarchy..
         /// </summary>
         public static string HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy {
@@ -2245,6 +2308,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string imageVideoAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("imageVideoAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Configure properties to always show.
+        /// </summary>
+        public static string InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all properties that have values.
+        /// </summary>
+        public static string InspectTabsControl_Menu_ShowAllPropertiesWithValues {
+            get {
+                return ResourceManager.GetString("InspectTabsControl_Menu_ShowAllPropertiesWithValues", resourceCulture);
             }
         }
         
@@ -3492,11 +3573,38 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _Configure properties to always show.
+        /// </summary>
+        public static string ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all properties that have values.
+        /// </summary>
+        public static string ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed:HResult (0x{0:X8}).
         /// </summary>
         public static string ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8 {
             get {
                 return ResourceManager.GetString("ReturnA11yElementsView_ShowErrorHResult_Failed_HResult_0x_0_X8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string ReturnA11yElementsView_Value_Header {
+            get {
+                return ResourceManager.GetString("ReturnA11yElementsView_Value_Header", resourceCulture);
             }
         }
         
@@ -4009,6 +4117,24 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Element.
+        /// </summary>
+        public static string TabStopControl_Element_Header {
+            get {
+                return ResourceManager.GetString("TabStopControl_Element_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Order.
+        /// </summary>
+        public static string TabStopControl_Order_Header {
+            get {
+                return ResourceManager.GetString("TabStopControl_Order_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recorded order results.
         /// </summary>
         public static string TabStopControl_RecordedOrderResults {
@@ -4486,11 +4612,74 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string TextRangeActionView_Value_Header {
+            get {
+                return ResourceManager.GetString("TextRangeActionView_Value_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
         public static string TextRangeControl_Details {
             get {
                 return ResourceManager.GetString("TextRangeControl_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _h.
+        /// </summary>
+        public static string TextRangeControl_HighlightButton_AccessText {
+            get {
+                return ResourceManager.GetString("TextRangeControl_HighlightButton_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Collapse AnnotationTypes.
+        /// </summary>
+        public static string TextRangeControl_Menu_CollapseAnnotationTypes {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_CollapseAnnotationTypes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Configure attributes to always show.
+        /// </summary>
+        public static string TextRangeControl_Menu_ConfigureAttributesToAlwaysShow {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ConfigureAttributesToAlwaysShow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Replace whitespace with formatting symbols.
+        /// </summary>
+        public static string TextRangeControl_Menu_ReplaceWhitespaceWithSymbols {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ReplaceWhitespaceWithSymbols", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _Include all attributes that have values.
+        /// </summary>
+        public static string TextRangeControl_Menu_ShowAllAttributesWithValues {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Menu_ShowAllAttributesWithValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string TextRangeControl_Value_Header {
+            get {
+                return ResourceManager.GetString("TextRangeControl_Value_Header", resourceCulture);
             }
         }
         

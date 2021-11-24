@@ -1684,4 +1684,67 @@ Do you want to change the channel? </value>
   <data name="String" xml:space="preserve">
     <value>AutomationName</value>
   </data>
+  <data name="AutomatedChecksControl_ExpandCollapseAll_AccessText" xml:space="preserve">
+    <value>_e</value>
+  </data>
+  <data name="EventConfigDialog_Events_Header" xml:space="preserve">
+    <value>_Events</value>
+  </data>
+  <data name="EventConfigDialog_Properties_Header" xml:space="preserve">
+    <value>_Properties</value>
+  </data>
+  <data name="EventRecordControl_Menu_RecordAutomationFocusChanged" xml:space="preserve">
+    <value>Record _AutomationFocusChanged Event</value>
+  </data>
+  <data name="HierarchyControl_Menu_ShowAncestry" xml:space="preserve">
+    <value>Show _Ancestry</value>
+  </data>
+  <data name="HierarchyControl_Menu_ShowUncertainResults" xml:space="preserve">
+    <value>Show _Uncertain results</value>
+  </data>
+  <data name="HierarchyControl_Menu_TreeView" xml:space="preserve">
+    <value>Tree view</value>
+  </data>
+  <data name="InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
+    <value>_Configure properties to always show</value>
+  </data>
+  <data name="InspectTabsControl_Menu_ShowAllPropertiesWithValues" xml:space="preserve">
+    <value>_Include all properties that have values</value>
+  </data>
+  <data name="ReturnA11yElementsView_Menu_ConfigurePropertiesToAlwaysShow" xml:space="preserve">
+    <value>_Configure properties to always show</value>
+  </data>
+  <data name="ReturnA11yElementsView_Menu_ShowAllPropertiesWithValues" xml:space="preserve">
+    <value>_Include all properties that have values</value>
+  </data>
+  <data name="ReturnA11yElementsView_Value_Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="TabStopControl_Element_Header" xml:space="preserve">
+    <value>Element</value>
+  </data>
+  <data name="TabStopControl_Order_Header" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="TextRangeActionView_Value_Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="TextRangeControl_HighlightButton_AccessText" xml:space="preserve">
+    <value>_h</value>
+  </data>
+  <data name="TextRangeControl_Menu_CollapseAnnotationTypes" xml:space="preserve">
+    <value>_Collapse AnnotationTypes</value>
+  </data>
+  <data name="TextRangeControl_Menu_ConfigureAttributesToAlwaysShow" xml:space="preserve">
+    <value>_Configure attributes to always show</value>
+  </data>
+  <data name="TextRangeControl_Menu_ReplaceWhitespaceWithSymbols" xml:space="preserve">
+    <value>_Replace whitespace with formatting symbols</value>
+  </data>
+  <data name="TextRangeControl_Menu_ShowAllAttributesWithValues" xml:space="preserve">
+    <value>_Include all attributes that have values</value>
+  </data>
+  <data name="TextRangeControl_Value_Header" xml:space="preserve">
+    <value>Value</value>
+  </data>
 </root>

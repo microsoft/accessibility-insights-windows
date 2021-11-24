@@ -132,7 +132,7 @@
                 <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings">
-                        <MenuItem Header="Tree view">
+                        <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_TreeView}">
                             <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
                                 <MenuItem.Header>
@@ -152,9 +152,9 @@
                                 </MenuItem.Header>
                             </MenuItem>
                         </MenuItem>
-                        <MenuItem Header="Show _Ancestry" x:Name="mniShowAncestry" IsCheckable="True" 
+                        <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_ShowAncestry}" x:Name="mniShowAncestry" IsCheckable="True" 
                                   Loaded="mniShowAncestry_Loaded" Click="mniShowAncestry_Click"/>
-                        <MenuItem Header="Show _Uncertain results" x:Name="mniShowUncertain" IsCheckable="True" 
+                        <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_ShowUncertainResults}" x:Name="mniShowUncertain" IsCheckable="True" 
                                   Click="mniShowUncertain_Click" Loaded="mniShowUncertain_Loaded"/>
                     </ContextMenu>
                 </Button.ContextMenu>

@@ -466,6 +466,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to _x.
+        /// </summary>
+        public static string ConfigPane_Exit_AccessText {
+            get {
+                return ResourceManager.GetString("ConfigPane_Exit_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows was unable to change channels. Please check your internet connection and try again later..
         /// </summary>
         public static string ConfigurationModeControl_VersionSwitcherException {
@@ -840,6 +849,24 @@ namespace AccessibilityInsights.Properties {
         public static string ModeIsEnabled {
             get {
                 return ResourceManager.GetString("ModeIsEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _c.
+        /// </summary>
+        public static string NavBar_Config_AccessText {
+            get {
+                return ResourceManager.GetString("NavBar_Config_AccessText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to _i.
+        /// </summary>
+        public static string NavBar_IssueFilingConfig_AccessText {
+            get {
+                return ResourceManager.GetString("NavBar_IssueFilingConfig_AccessText", resourceCulture);
             }
         }
         
