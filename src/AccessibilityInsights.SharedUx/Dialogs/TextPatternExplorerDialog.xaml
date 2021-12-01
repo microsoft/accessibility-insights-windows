@@ -52,7 +52,7 @@
                     <Button.ToolTip>
                         <ToolTip Content="{x:Static Properties:Resources.btnRefreshAutomationPropertiesNameUpdateRange}"/>
                     </Button.ToolTip>
-                    <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
+                    <fabric:FabricIconControl GlyphName="Refresh" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                 </Button>
             </StackPanel>
             <ListBox x:Name="ltbRanges" Grid.Row="1"

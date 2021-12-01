@@ -1564,6 +1564,16 @@
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="fabric:FabricIconControl" x:Key="hoverAwareFabricIconOnUnthemedButtonParent">
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType=Button,AncestorLevel=1}, Path=IsMouseOver}" Value="False">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=UnthemedIconFGBrush}"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
     <Style TargetType="fabric:FabricIconControl" x:Key="fabricIconOnPressedButtonParentStyle">
         <!-- This style is set programmatically, so renaming it will require a change in the code-behind -->
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=IconHoverFGBrush}"/>
