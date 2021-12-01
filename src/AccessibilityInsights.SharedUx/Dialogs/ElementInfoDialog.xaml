@@ -19,7 +19,7 @@
     <Window.Resources>
         <ResourceDictionary Source="..\Resources\Styles.xaml"/>
     </Window.Resources>
-    <Grid>
+    <Grid Background="{DynamicResource ResourceKey=PrimaryBGBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
