@@ -124,4 +124,5 @@
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverBGBrush" Color="#BEE6FD"/>
     <SolidColorBrush po:Freeze="True" x:Key="ComboToggleHoverFGBrush" Color="#000000"/>
     <SolidColorBrush po:Freeze="True" x:Key="NoDarkThemeContrastingFGBrush" Color="#000000"/>
+    <SolidColorBrush po:Freeze="True" x:Key="UnthemedIconFGBrush" Color="#000000"/>
 </ResourceDictionary>
