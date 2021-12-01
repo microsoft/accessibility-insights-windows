@@ -100,7 +100,7 @@
                                 AutomationProperties.Name="{x:Static Properties:Resources.btnMoveRightAutomationPropertiesName}"
                                 AutomationProperties.HelpText="{x:Static Properties:Resources.btnMoveRightAutomationPropertiesHelpText}"
                                 AutomationProperties.AcceleratorKey="Alt+A">
-                            <fabric:FabricIconControl GlyphName="CaretSolidRight" GlyphSize="Default" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                            <fabric:FabricIconControl GlyphName="CaretSolidRight" GlyphSize="Default" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                         </Button>
                     </DockPanel>
                     <DockPanel VerticalAlignment="Center" Grid.Row="2">
@@ -110,7 +110,7 @@
                                 AutomationProperties.Name="{x:Static Properties:Resources.btnMoveLeftAutomationPropertiesName}"
                                 AutomationProperties.HelpText="{x:Static Properties:Resources.btnMoveLeftAutomationPropertiesHelpText}"
                                 AutomationProperties.AcceleratorKey="Alt+R">
-                            <fabric:FabricIconControl GlyphName="CaretSolidLeft" GlyphSize="Default" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                            <fabric:FabricIconControl GlyphName="CaretSolidLeft" GlyphSize="Default" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                         </Button>
                     </DockPanel>
                 </Grid>
@@ -150,7 +150,7 @@
                     <Button.ToolTip>
                         <ToolTip Content="{x:Static Properties:Resources.btnMoveUpAutomationPropertiesName}"/>
                     </Button.ToolTip>
-                    <fabric:FabricIconControl GlyphName="Up" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                    <fabric:FabricIconControl GlyphName="Up" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                 </Button>
                 <Button x:Name="btnMoveDown" Width="20" Height="20" Click="btnMoveDown_Click"
                   Style="{StaticResource BtnStandard}"
@@ -164,7 +164,7 @@
                     <Button.ToolTip>
                         <ToolTip Content="{x:Static Properties:Resources.btnMoveDownAutomationPropertiesName}"/>
                     </Button.ToolTip>
-                    <fabric:FabricIconControl GlyphName="Down" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                    <fabric:FabricIconControl GlyphName="Down" GlyphSize="Small" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                 </Button>
             </Grid>
         </Grid>
