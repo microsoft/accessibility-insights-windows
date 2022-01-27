@@ -3509,7 +3509,8 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There was an error loading the URL.\nURL: {0}.
+        ///   Looks up a localized string similar to There was an error loading the URL.
+        ///URL: {0}.
         /// </summary>
         public static string ReleaseNotes_ClickLoadErrorMessage {
             get {
@@ -3518,7 +3519,8 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The URL was not properly formatted.\nURL: {0}.
+        ///   Looks up a localized string similar to The URL was not properly formatted.
+        ///URL: {0}.
         /// </summary>
         public static string ReleaseNotes_ClickURLErrorMessage {
             get {
