@@ -439,7 +439,8 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ratio: {0}\nConfidence: {1}.
+        ///   Looks up a localized string similar to Ratio: {0}
+        ///Confidence: {1}.
         /// </summary>
         public static string ColorContrast_RatioAndConfidenceFormat {
             get {

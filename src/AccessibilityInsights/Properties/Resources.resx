@@ -537,7 +537,8 @@ Please ensure that you are opening a valid test file using the most recent relea
     <value>No Element Selected!</value>
   </data>
   <data name="ColorContrast_RatioAndConfidenceFormat" xml:space="preserve">
-    <value>Ratio: {0}\nConfidence: {1}</value>
+    <value>Ratio: {0}
+Confidence: {1}</value>
     <comment>{0} is the ratio; {1} is the confidence</comment>
   </data>
   <data name="ColorContrast_UnableToDetectColors" xml:space="preserve">
