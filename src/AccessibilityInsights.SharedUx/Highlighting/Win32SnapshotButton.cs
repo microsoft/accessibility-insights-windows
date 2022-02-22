@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Utilities;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
 using System;
@@ -31,6 +32,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private System.Drawing.Color FontBrush;
         private System.Drawing.Color BackgroundBrush;
         private System.Drawing.Color HoveredBackgroundBrush;
+
+        // The font collection must be kept undisposed for at least as long as its FontFamily objects are in use
+        private PrivateFontCollection Fonts;
+        private System.Drawing.FontFamily IconFontFamily;
 
         private bool IsHovered;
         private bool isVisible;
@@ -69,6 +74,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             brush = Application.Current.Resources["SnapshotBtnFGBrush"] as SolidColorBrush;
             this.FontBrush = System.Drawing.Color.FromArgb(brush.Color.A, brush.Color.R, brush.Color.G, brush.Color.B);
 
+            this.Fonts = LoadFontResource();
+            this.IconFontFamily = (System.Drawing.FontFamily)Fonts.Families.GetValue(0);
+
             beakerIconCollection = new Dictionary<double, Bitmap>();
             hoveredBeakerIconCollection = new Dictionary<double, Bitmap>();
 
@@ -105,8 +113,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception ex)
                 {
-                    // TODO : Report this?
                     System.Diagnostics.Trace.WriteLine("Font stream exception: " + ex);
+                    ex.ReportException();
                 }
 #pragma warning restore CA1031 // Do not catch general exception types
                 finally
@@ -114,18 +122,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     Marshal.FreeCoTaskMem(data);
                 }
             }
+
             return fonts;
         }
 
         private Bitmap LoadBeakerImage(double DPI)
         {
-            System.Drawing.FontFamily family;
-            // Create font
-            using (PrivateFontCollection fonts = LoadFontResource())
-            {
-                // Get font family
-                family = (System.Drawing.FontFamily)fonts.Families.GetValue(0);
-            }
             // Create bitmap
             Bitmap bitmap = new Bitmap(Convert.ToInt32(DefaultWidth * DPI), Convert.ToInt32(DefaultHeight * DPI));
             // Create graphics from image
@@ -140,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 // Draw string
                 int fontSize = Convert.ToInt32(9.0f * DPI);
                 g.Clear(bkgColor);
-                using (Font font = new Font(family, fontSize, System.Drawing.FontStyle.Regular))
+                using (Font font = new Font(this.IconFontFamily, fontSize, System.Drawing.FontStyle.Regular))
                 using (SolidBrush brush = new SolidBrush(this.FontBrush))
                 {
                     g.DrawString(
@@ -312,6 +314,14 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             if (!disposedValue)
             {
+                if (disposing)
+                {
+                    // Managed cleanup
+                    this.IconFontFamily.Dispose();
+                    this.Fonts.Dispose();
+                }
+
+                // Unmanaged cleanup
                 Holder.Remove(hWnd);
                 NativeMethods.DestroyWindow(this.hWnd);
                 UnRegisterWindowClass();
