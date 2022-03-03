@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
 
-namespace AccessibilityInsights.SharedUxTests.Settings
+namespace AccessibilityInsights.SharedUxTests.Utilities
 {
     [TestClass]
     public class InstallationInfoTests
@@ -86,7 +86,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         [TestMethod]
         [Timeout(1000)]
-        public void LoadFromPath_FileIsOneMonthOld_FileIsRefreshedWithProvidedTime()
+        public void LoadFromPath_FileIsFromDifferentMonth_FileIsRefreshedWithProvidedTime()
         {
             DateTime now = February2015;
             bool wasRefreshed = false;
@@ -102,7 +102,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         [TestMethod]
         [Timeout(1000)]
-        public void LoadFromPath_FileIsOneYearOld_FileIsRefreshedWithProvidedTime()
+        public void LoadFromPath_FileIsFromDifferentYear_FileIsRefreshedWithProvidedTime()
         {
             DateTime now = January2016;
             bool wasRefreshed = false;
@@ -118,7 +118,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         [TestMethod]
         [Timeout(1000)]
-        public void LoadFromPath_FileIsOneMonthOld_UnableToWrite_ReturnsRefreshedDataEachTime()
+        public void LoadFromPath_FileIsFromDifferentMonth_UnableToWrite_ReturnsRefreshedDataEachTime()
         {
             // Intentionally don't set WriteToDiskOverride so that we try to write to disk.
             // Since we haven't created a folder for _testFolder, the attempt to write to
