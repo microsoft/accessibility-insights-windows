@@ -62,10 +62,8 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns>whether the object reset</returns>
         private bool ResetIfMonthChanged(DateTime utcNow)
         {
-            bool needToReset = utcNow.Month > LastReset.Month || utcNow.Year > LastReset.Year;
-            // months range from 1 to 12, year from 1 to 9999
-            // reset if the current month is later than old month.
-            // - need to check year too in case we compare 12/2017 to 1/2018
+            // We need to reset unless we're in the same month and year
+            bool needToReset = utcNow.Month != LastReset.Month || utcNow.Year != LastReset.Year;
             if (needToReset)
             {
                 RegenerateFields(Guid.NewGuid(), utcNow);
