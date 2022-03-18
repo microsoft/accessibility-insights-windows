@@ -28,14 +28,14 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         public void BeforeEachTest()
         {
             _telemetryMock = new Mock<ITelemetry>(MockBehavior.Strict);
-            _telemetrySink = new TelemetrySink(_telemetryMock.Object, true);
+            _telemetrySink = new TelemetrySink(new[] { _telemetryMock.Object }, true);
         }
 
         [TestMethod]
         [Timeout(1000)]
-        public void IsEnabled_TelemetryIsNull_ReturnsFalse()
+        public void IsEnabled_NoTelemetryTargetsExist_ReturnsFalse()
         {
-            TelemetrySink sink = new TelemetrySink(null, true);
+            TelemetrySink sink = new TelemetrySink(new List<ITelemetry>(), true);
             Assert.IsFalse(sink.IsEnabled);
         }
 
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
         [Timeout(1000)]
         public void IsEnabled_TelemetryIsDisabledByGroupPolicy_ReturnsFalse()
         {
-            TelemetrySink sink = new TelemetrySink(_telemetryMock.Object, false);
+            TelemetrySink sink = new TelemetrySink(new[] { _telemetryMock.Object }, false);
             Assert.IsFalse(sink.IsEnabled);
         }
 

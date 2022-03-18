@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.Extensions.AzureDevOps\Extensions.AzureDevOps.csproj" />
+    <ProjectReference Include="..\AccessibilityInsights.Extensions.DiskLoggingTelemetry\Extensions.DiskLoggingTelemetry.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHubAutoUpdate\Extensions.GitHubAutoUpdate.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions.GitHub\Extensions.GitHub.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions.Telemetry\Extensions.Telemetry.csproj" />

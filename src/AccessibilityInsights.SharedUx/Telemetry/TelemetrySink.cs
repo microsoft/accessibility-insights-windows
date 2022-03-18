@@ -5,6 +5,7 @@ using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace AccessibilityInsights.SharedUx.Telemetry
 {
@@ -20,13 +21,13 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Holds the production TelemetrySink object
         /// </summary>
-        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.Telemetry, DoesRegistryGroupPolicyAllowTelemetry());
+        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.TelemetryTargets, DoesRegistryGroupPolicyAllowTelemetry());
 
-        private readonly ITelemetry _telemetry;
+        private readonly IReadOnlyCollection<ITelemetry> _telemetry;
 
-        internal TelemetrySink(ITelemetry telemetry, bool doesGroupPolicyAllowTelemetry)
+        internal TelemetrySink(IEnumerable<ITelemetry> telemetry, bool doesGroupPolicyAllowTelemetry)
         {
-            _telemetry = telemetry;
+            _telemetry = telemetry.ToList();
             DoesGroupPolicyAllowTelemetry = doesGroupPolicyAllowTelemetry;
         }
 
@@ -53,7 +54,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Implements <see cref="ITelemetrySink.IsEnabled"/>
         /// </summary>
-        public bool IsEnabled => DoesGroupPolicyAllowTelemetry && HasUserOptedIntoTelemetry && _telemetry != null;
+        public bool IsEnabled => DoesGroupPolicyAllowTelemetry && HasUserOptedIntoTelemetry && _telemetry.Any();
 
         /// <summary>
         /// Implements <see cref="ITelemetrySink.PublishTelemetryEvent(string, string, string)"/>
@@ -74,16 +75,19 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (!IsEnabled)
                 return;
 
-            try
+            foreach (ITelemetry telemetry in _telemetry)
             {
-                _telemetry.PublishEvent(eventName, propertyBag);
-            }
+                try
+                {
+                    telemetry.PublishEvent(eventName, propertyBag);
+                }
 #pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                ReportException(e);
-            }
+                catch (Exception e)
+                {
+                    ReportException(e);
+                }
 #pragma warning restore CA1031 // Do not catch general exception types
+            }
         }
 
         /// <summary>
@@ -94,16 +98,19 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (!IsEnabled)
                 return;
 
-            try
+            foreach (ITelemetry telemetry in _telemetry)
             {
-                _telemetry.AddOrUpdateContextProperty(property, value);
-            }
+                try
+                {
+                    telemetry.AddOrUpdateContextProperty(property, value);
+                }
 #pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                ReportException(e);
-            }
+                catch (Exception e)
+                {
+                    ReportException(e);
+                }
 #pragma warning restore CA1031 // Do not catch general exception types
+            }
         }
 
         /// <summary>
@@ -116,13 +123,16 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (e == null)
                 return;
 
-            try
+            foreach (ITelemetry telemetry in _telemetry)
             {
-                _telemetry.ReportException(e);
-            }
+                try
+                {
+                    telemetry.ReportException(e);
+                }
 #pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)
+                catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)
 #pragma warning restore CA1031 // Do not catch general exception types
+            }
         }
     } // class
 } // namespace

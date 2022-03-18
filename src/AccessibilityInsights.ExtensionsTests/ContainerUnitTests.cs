@@ -44,11 +44,11 @@ namespace AccessibilityInsights.ExtensionsTests
 
         [TestMethod]
         [Timeout(1000)]
-        public void Telemetry_ExtensionsDoNotExist_ReturnsNull()
+        public void Telemetry_ExtensionsDoNotExist_ReturnsEmptySet()
         {
             using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
-                Assert.IsNull(container.Telemetry);
+                Assert.IsFalse(container.TelemetryTargets.Any());
             }
         }
 
@@ -58,9 +58,9 @@ namespace AccessibilityInsights.ExtensionsTests
         {
             using (Container container = new Container(ExtensionsExistSearchPattern))
             {
-                ITelemetry telemetry = container.Telemetry;
-                Assert.IsNotNull(telemetry);
-                Assert.IsInstanceOfType(telemetry, typeof(DummyTelemetry));
+                List<ITelemetry> telemetry = container.TelemetryTargets.ToList();
+                Assert.AreEqual(1, telemetry.Count);
+                Assert.IsInstanceOfType(telemetry[0], typeof(DummyTelemetry));
             }
         }
 
