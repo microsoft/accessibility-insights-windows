@@ -16,21 +16,20 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
     public class LocalTelemetry : ITelemetry
     {
         private Dictionary<string, string> _contextProperties = new Dictionary<string, string>();
-        private FileWrapper _fileWrapper;
+        private LogWriter _logWriter;
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         /// <summary>
         /// Production ctor--must be public for MEF
         /// </summary>
         public LocalTelemetry()
-            : this(new FileWrapper(() => DateTime.UtcNow))
+            : this(new LogWriter(() => DateTime.UtcNow, new LogFileHelper()))
         {
         }
 
-        internal LocalTelemetry(FileWrapper fileWrapper)
+        internal LocalTelemetry(LogWriter logWriter)
         {
-            _fileWrapper = fileWrapper;
-            _fileWrapper.InitializeFile();
+            _logWriter = logWriter;
         }
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
@@ -52,7 +51,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
                 eventData.EventProperties = new Dictionary<string, string>(CopyToDictionary(properties));
             }
 
-            _fileWrapper.LogThisData("Event was published",
+            _logWriter.LogThisData("Event was published",
                 JsonConvert.SerializeObject(eventData, Formatting.Indented));
         }
 
@@ -87,7 +86,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
                 Exception = e,
             };
 
-            _fileWrapper.LogThisData("Exception was reported",
+            _logWriter.LogThisData("Exception was reported",
                 JsonConvert.SerializeObject(exceptionData, Formatting.Indented));
         }
     }
