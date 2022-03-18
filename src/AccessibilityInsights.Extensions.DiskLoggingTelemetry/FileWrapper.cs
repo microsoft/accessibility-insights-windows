@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Globalization;
+using System.Collections.Generic;
 using System.IO;
 
 namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
@@ -24,21 +24,24 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 
         internal void InitializeFile()
         {
-            WriteWithTimeAndSeparator("New Session started", null);
+            WriteWithSeparatorAndTime("New Session started", null);
         }
 
         internal void LogThisData(string title, string data)
         {
-            WriteWithTimeAndSeparator(title, data);
+            WriteWithSeparatorAndTime(title, data);
         }
 
-        private void WriteWithTimeAndSeparator(string title, string data)
+        private void WriteWithSeparatorAndTime(string title, string data)
         {
-            string[] outputs = new string[3];
+            List<string> outputs = new List<string>();
 
-            outputs[0] = "--------------------------------------------------";
-            outputs[1] = $"{title} at {_timeProvider().ToUniversalTime().ToString("o")}";
-            outputs[2] = data;
+            outputs.Add("--------------------------------------------------");
+            outputs.Add($"{title} at {_timeProvider().ToUniversalTime().ToString("o")}");
+            if (data != null)
+            {
+                outputs.Add(data);
+            }
 
             File.AppendAllLines(_targetFile, outputs);
         }
