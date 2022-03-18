@@ -6,7 +6,7 @@ using System.IO;
 
 namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 {
-    public class LogFileHelper : ILogFileHelper
+    internal class LogFileHelper : ILogFileHelper
     {
         private readonly string _logFileName = Path.Combine(Path.GetTempPath(), "AccessibilityInsightsLocalTelemetry.txt");
 

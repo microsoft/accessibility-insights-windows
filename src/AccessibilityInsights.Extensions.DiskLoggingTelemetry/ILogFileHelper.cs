@@ -8,7 +8,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
     /// <summary>
     /// Abstraction to allow unit testing of LogFileWriter
     /// </summary>
-    public interface ILogFileHelper
+    internal interface ILogFileHelper
     {
         /// <summary>
         /// Append the provided lines to the log file
