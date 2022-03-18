@@ -10,7 +10,7 @@ using System.ComponentModel.Composition;
 namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 {
     /// <summary>
-    /// Application Insights-based implementation of ITelemetry
+    /// Disk logging implementation of ITelemetry
     /// </summary>
     [Export(typeof(ITelemetry))]
     public class LocalTelemetry : ITelemetry
@@ -35,8 +35,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
-        /// Publishes telemetry to AI with the given action and propertybag
-        /// Sent telemetry will also include all context values unless they are overwritten
+        /// Writes telemetry to a locak disk log
         /// </summary>
         /// <param name="eventName">Will be used as event name</param>
         /// <param name="properties">if null, doesn't send any additional property values beyond context</param>
@@ -72,17 +71,14 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
         /// <summary>
         /// Sets property/value pair of context; all values in context are sent in telemetry events
         /// </summary>
-        /// <param name="propertyName"></param>
-        /// <param name="propertyValue"></param>
         public void AddOrUpdateContextProperty(string propertyName, string propertyValue)
         {
             _contextProperties[propertyName] = propertyValue;
         }
 
         /// <summary>
-        /// Report an Exception into the pipeline
+        /// Log a reported Exception
         /// </summary>
-        /// <param name="e">The Exception to report</param>
         public void ReportException(Exception e)
         {
             ReportedExceptionData exceptionData = new ReportedExceptionData
