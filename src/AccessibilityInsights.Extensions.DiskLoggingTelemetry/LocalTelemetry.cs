@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
     public class LocalTelemetry : ITelemetry
     {
         private Dictionary<string, string> _contextProperties = new Dictionary<string, string>();
-        private LogWriter _logWriter;
+        private ILogWriter _logWriter;
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         /// <summary>
@@ -27,9 +27,9 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
         {
         }
 
-        internal LocalTelemetry(LogWriter logWriter)
+        internal LocalTelemetry(ILogWriter logWriter)
         {
-            _logWriter = logWriter;
+            _logWriter = logWriter ?? throw new ArgumentNullException(nameof(logWriter));
         }
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 

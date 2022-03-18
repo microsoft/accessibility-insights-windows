@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 {
-    internal class LogWriter
+    internal class LogWriter : ILogWriter
     {
         private readonly Func<DateTime> _timeProvider;
         private readonly ILogFileHelper _logFileHelper;
@@ -14,11 +14,11 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 
         internal LogWriter(Func<DateTime> timeProvider, ILogFileHelper logFileHelper)
         {
-            _timeProvider = timeProvider;
-            _logFileHelper = logFileHelper;
+            _timeProvider = timeProvider ?? throw new ArgumentNullException(nameof(timeProvider));
+            _logFileHelper = logFileHelper ?? throw new ArgumentNullException(nameof(logFileHelper));
         }
 
-        internal void LogThisData(string title, string data)
+        public void LogThisData(string title, string data)
         {
             List<string> outputs = new List<string>();
 

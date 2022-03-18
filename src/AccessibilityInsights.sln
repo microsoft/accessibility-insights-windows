@@ -87,7 +87,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomActionsUnitTests", "A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessibilityInsightsUnitTests", "AccessibilityInsightsUnitTests\AccessibilityInsightsUnitTests.csproj", "{757A7A71-E939-43DB-B7D3-4EC30347368B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.DiskLoggingTelemetry", "AccessibilityInsights.Extensions.DiskLoggingTelemetry\Extensions.DiskLoggingTelemetry.csproj", "{772E1812-AE54-4E3C-B44C-118BBA6305D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.DiskLoggingTelemetry", "AccessibilityInsights.Extensions.DiskLoggingTelemetry\Extensions.DiskLoggingTelemetry.csproj", "{772E1812-AE54-4E3C-B44C-118BBA6305D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.DiskLoggingTelemetryTests", "AccessibilityInsights.Extensions.DiskLoggingTelemetryTests\Extensions.DiskLoggingTelemetryTests.csproj", "{9A5CD914-222A-46A3-B8BA-9AD836929F01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -539,6 +541,24 @@ Global
 		{772E1812-AE54-4E3C-B44C-118BBA6305D2}.SignedRelease|x64.Build.0 = Release|Any CPU
 		{772E1812-AE54-4E3C-B44C-118BBA6305D2}.SignedRelease|x86.ActiveCfg = Release|Any CPU
 		{772E1812-AE54-4E3C-B44C-118BBA6305D2}.SignedRelease|x86.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|x64.Build.0 = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Debug|x86.Build.0 = Debug|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|x64.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|x64.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|x86.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.Release|x86.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|Any CPU.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x64.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x64.Build.0 = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x86.ActiveCfg = Release|Any CPU
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -569,6 +589,7 @@ Global
 		{3AB5DE55-FD68-40C2-A1AC-2F4422C75A5E} = {2190F103-4B22-43FE-A047-093356B1007A}
 		{757A7A71-E939-43DB-B7D3-4EC30347368B} = {809F77B0-82E0-4990-A9A4-4806157385E9}
 		{772E1812-AE54-4E3C-B44C-118BBA6305D2} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
+		{9A5CD914-222A-46A3-B8BA-9AD836929F01} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25101A75-9178-4066-B360-E932959B9758}
