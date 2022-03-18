@@ -37,7 +37,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
             List<string> outputs = new List<string>();
 
             outputs.Add("--------------------------------------------------");
-            outputs.Add($"{title} at {_timeProvider().ToUniversalTime().ToString("o")}");
+            outputs.Add($"{title} at {_timeProvider().ToUniversalTime():o}");
             if (data != null)
             {
                 outputs.Add(data);
