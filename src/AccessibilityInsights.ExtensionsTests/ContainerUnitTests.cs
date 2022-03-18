@@ -48,7 +48,7 @@ namespace AccessibilityInsights.ExtensionsTests
         {
             using (Container container = new Container(ExtensionsDoNotExistSearchPattern))
             {
-                Assert.IsFalse(container.TelemetryTargets.Any());
+                Assert.IsFalse(container.TelemetryClasses.Any());
             }
         }
 
@@ -58,7 +58,7 @@ namespace AccessibilityInsights.ExtensionsTests
         {
             using (Container container = new Container(ExtensionsExistSearchPattern))
             {
-                List<ITelemetry> telemetry = container.TelemetryTargets.ToList();
+                List<ITelemetry> telemetry = container.TelemetryClasses.ToList();
                 Assert.AreEqual(1, telemetry.Count);
                 Assert.IsInstanceOfType(telemetry[0], typeof(DummyTelemetry));
             }

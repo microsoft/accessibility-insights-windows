@@ -55,7 +55,7 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
 
         [TestMethod]
         [Timeout(1000)]
-        public void IsEnabled_NoTelemetryTargetsExist_ReturnsFalse()
+        public void IsEnabled_NoTelemetryClassesExist_ReturnsFalse()
         {
             TelemetrySink sink = new TelemetrySink(new List<ITelemetry>(), true);
             Assert.IsFalse(sink.IsEnabled);

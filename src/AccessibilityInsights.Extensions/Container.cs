@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions
         public IAutoUpdate AutoUpdate { get; set; }
 
         [ImportMany(typeof(ITelemetry))]
-        public IEnumerable<ITelemetry> TelemetryTargets { get; set; }
+        public IEnumerable<ITelemetry> TelemetryClasses { get; set; }
 
         [ImportMany(typeof(IIssueReporting))]
         public IEnumerable<IIssueReporting> IssueReportingOptions { get; set; }

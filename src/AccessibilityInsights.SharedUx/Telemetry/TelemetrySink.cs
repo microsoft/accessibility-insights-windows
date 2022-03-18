@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// <summary>
         /// Holds the production TelemetrySink object
         /// </summary>
-        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.TelemetryTargets, DoesRegistryGroupPolicyAllowTelemetry());
+        internal static ITelemetrySink DefaultTelemetrySink { get; } = new TelemetrySink(Container.GetDefaultInstance()?.TelemetryClasses, DoesRegistryGroupPolicyAllowTelemetry());
 
         private readonly IReadOnlyCollection<ITelemetry> _telemetry;
 
