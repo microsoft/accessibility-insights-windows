@@ -10,7 +10,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
     {
         private readonly Func<DateTime> _timeProvider;
         private readonly ILogFileHelper _logFileHelper;
-        private bool _haveWrittenThisSession;
+        private bool _logFileHasBeenReset;
 
         internal LogWriter(Func<DateTime> timeProvider, ILogFileHelper logFileHelper)
         {
@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
         {
             List<string> outputs = new List<string>();
 
-            ResetIfFirstWriteInSession();
+            ResetLogFileOnFirstWrite();
 
             outputs.Add("--------------------------------------------------");
             outputs.Add($"{title} at {_timeProvider().ToUniversalTime():o}");
@@ -31,12 +31,12 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
             _logFileHelper.AppendLinesToLogFile(outputs);
         }
 
-        private void ResetIfFirstWriteInSession()
+        private void ResetLogFileOnFirstWrite()
         {
-            if (!_haveWrittenThisSession)
+            if (!_logFileHasBeenReset)
             {
                 _logFileHelper.ResetLogFile();
-                _haveWrittenThisSession = true;
+                _logFileHasBeenReset = true;
             }
         }
     }
