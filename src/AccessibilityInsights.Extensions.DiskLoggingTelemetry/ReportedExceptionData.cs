@@ -5,7 +5,7 @@ using System;
 
 namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 {
-    public class ReportedExceptionData: PublishBaseData
+    public class ReportedExceptionData : PublishBaseData
     {
         public Exception Exception { get; set; }
     }
