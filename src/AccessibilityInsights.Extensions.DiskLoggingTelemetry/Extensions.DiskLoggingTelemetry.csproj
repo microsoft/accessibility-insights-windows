@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>AccessibilityInsights.Extensions.DiskLoggingTelemetry</AssemblyName>
+    <RootNamespace>AccessibilityInsights.Extensions.DiskLoggingTelemetry</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\..\build\NetFrameworkRelease.targets" />
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Composition" />
+  </ItemGroup>
+
+</Project>
