@@ -263,7 +263,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             config.HotKeyForMoveToNextSibling = (string)this.btnHotekyToNext.Content;
             config.HotKeyForMoveToFirstChild = (string)this.btnHotkeyToFirstChild.Content;
             config.HotKeyForMoveToLastChild = (string)this.btnTHotkeyoLastChild.Content;
-            config.MouseSelectionDelayMilliSeconds = Math.Max(int.Parse(this.tbMouseDelay.Text,CultureInfo.InvariantCulture), ConfigurationModel.MinimumSelectionDelayMilliseconds); // make sure that we allow only bigger than minimum value.
+            config.MouseSelectionDelayMilliSeconds = Math.Max(int.Parse(this.tbMouseDelay.Text, CultureInfo.InvariantCulture), ConfigurationModel.MinimumSelectionDelayMilliseconds); // make sure that we allow only bigger than minimum value.
             DataContextVM.SaveToConfig(config);
         }
 

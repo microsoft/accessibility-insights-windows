@@ -7,7 +7,6 @@ using AccessibilityInsights.Win32;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Forms.Design;
 
 namespace AccessibilityInsights.Misc
 {

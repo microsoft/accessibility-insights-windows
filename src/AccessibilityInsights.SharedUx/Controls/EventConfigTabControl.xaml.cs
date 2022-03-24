@@ -83,7 +83,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
 
             var properties = new EventConfigNodeViewModel(
-                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true) { Depth = 1 };
+                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true)
+            { Depth = 1 };
             properties.AddChildren(el.Properties.Values);
 
             if (properties.Children.Any())
@@ -101,7 +102,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                 Properties.Resources.EventConfigTabControl_MyEvents, isThreeState: true);
 
             CustomPropertiesNode = new EventConfigNodeViewModel(
-                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true) { Depth = 1 };
+                Properties.Resources.EventConfigTabControl_Properties, isThreeState: true)
+            { Depth = 1 };
             EditBtnNode = new EventConfigNodeViewModel("", Visibility.Visible, Properties.Resources.EventConfigTabControl_SetElement_Edit_My_Events) { Depth = 1, TextVisibility = Visibility.Collapsed };
 
             UpdateCustomNode();
@@ -139,8 +141,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             CustomNode.InsertChildAtIndex(0, EditBtnNode);
 
             custom = (from e in ConfigurationManager.GetDefaultInstance().EventConfig.Properties
-                          where e.IsRecorded
-                          select e.Id).ToList();
+                      where e.IsRecorded
+                      select e.Id).ToList();
 
             CustomPropertiesNode.Children.Where(c => c.Type != EventConfigNodeType.Group && !custom.Contains(c.Id)).ToList().ForEach(c => CustomPropertiesNode.RemoveChild(c));
 

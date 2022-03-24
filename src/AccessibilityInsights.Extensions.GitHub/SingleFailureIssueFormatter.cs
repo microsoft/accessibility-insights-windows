@@ -8,7 +8,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     /// <summary>
     /// GitHub Issue Single Issue Formatting
     /// </summary>
-    public class SingleFailureIssueFormatter:IIssueFormatter
+    public class SingleFailureIssueFormatter : IIssueFormatter
     {
         public IssueInformation IssueInfo { get; }
         public SingleFailureIssueFormatter(IssueInformation issueInfo)

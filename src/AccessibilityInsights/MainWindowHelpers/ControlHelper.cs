@@ -20,7 +20,7 @@ namespace AccessibilityInsights
     /// <summary>
     /// MainWindow partial class for Helping flow control
     /// </summary>
-    public partial class MainWindow: ICCAMode
+    public partial class MainWindow : ICCAMode
     {
         /// <summary>
         /// flag to allow any further action
@@ -38,7 +38,7 @@ namespace AccessibilityInsights
             if (!sa.IsPaused &&
                 ((CurrentPage == AppPage.Inspect && (InspectView)CurrentView == InspectView.Live)
                 ||
-                (CurrentPage == AppPage.CCA&& (CCAView)CurrentView == CCAView.Automatic)
+                (CurrentPage == AppPage.CCA && (CCAView)CurrentView == CCAView.Automatic)
                 ))
             {
                 this.AllowFurtherAction = true;

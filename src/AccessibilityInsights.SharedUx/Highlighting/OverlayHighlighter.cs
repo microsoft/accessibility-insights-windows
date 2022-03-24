@@ -216,8 +216,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             try
             {
-                var xyDpi = HelperMethods.GetDPI((int)this.HighlightWindow.Left+ (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
-                var l = (Dimensions.Width / xyDpi- toast.Width) - (GapWidth * 2) ;
+                var xyDpi = HelperMethods.GetDPI((int)this.HighlightWindow.Left + (3 * GapWidth), (int)this.HighlightWindow.Top + (3 * GapWidth));
+                var l = (Dimensions.Width / xyDpi - toast.Width) - (GapWidth * 2);
                 var t = (Dimensions.Height / xyDpi - toast.Height) - (GapWidth * 2);
                 canvas.Children.Add(toast);
                 toast.SetValue(Canvas.LeftProperty, l);

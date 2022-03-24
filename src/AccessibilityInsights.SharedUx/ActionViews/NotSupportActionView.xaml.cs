@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             InitializeComponent();
             this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
-            this.tbName.Text = string.Format(CultureInfo.InvariantCulture,"{0}.{1}", ActionViewModel.PatternName, ActionViewModel.Name);
+            this.tbName.Text = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", ActionViewModel.PatternName, ActionViewModel.Name);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

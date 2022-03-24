@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
                 if (value)
                 {
-                    if(hollowDriver.IsEnabled)
+                    if (hollowDriver.IsEnabled)
                     {
                         overlayDriver.Show();
                         ClearOverlayDriver.BringMainWindowOfPOIElementToFront();
@@ -151,7 +151,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             TurnOffHighlighter();
         }
 
-        public ReturnA11yElementsView(ReturnA11yElementsViewModel a )
+        public ReturnA11yElementsView(ReturnA11yElementsViewModel a)
         {
             this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
             this.Counter = 0;
@@ -202,7 +202,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             });
         }
 
-         private void btnRun_Click(object sender, RoutedEventArgs e)
+        private void btnRun_Click(object sender, RoutedEventArgs e)
         {
             SetElement();
             int delay;

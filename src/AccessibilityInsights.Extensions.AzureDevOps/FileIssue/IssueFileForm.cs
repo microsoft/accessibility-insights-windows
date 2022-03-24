@@ -17,7 +17,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
     /// Winform based issue filing dialog code.
     /// because of parenting issue, wpf can't be used for IE Control
     /// </summary>
-    public partial class IssueFileForm: Form
+    public partial class IssueFileForm : Form
     {
         enum State
         {

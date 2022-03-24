@@ -447,7 +447,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             if (ShowWelcomeScreenOnLaunch == false)
             {
-                if (this.AppVersion !=VersionTools.GetAppVersion())
+                if (this.AppVersion != VersionTools.GetAppVersion())
                 {
                     this.AppVersion = VersionTools.GetAppVersion();
                     this.ShowWelcomeScreenOnLaunch = true;

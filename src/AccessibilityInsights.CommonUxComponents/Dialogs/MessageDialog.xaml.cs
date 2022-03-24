@@ -66,7 +66,7 @@ namespace AccessibilityInsights.CommonUxComponents.Dialogs
         /// <param name="e"></param>
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Escape)
+            if (e.Key == Key.Escape)
             {
                 this.DialogResult = false;
                 this.Close();

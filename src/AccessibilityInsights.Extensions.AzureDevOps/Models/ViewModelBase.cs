@@ -7,7 +7,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
     /// <summary>
     /// ViewModel base class
     /// </summary>
-    public class ViewModelBase: INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         /// <summary>
         /// to notify property changes

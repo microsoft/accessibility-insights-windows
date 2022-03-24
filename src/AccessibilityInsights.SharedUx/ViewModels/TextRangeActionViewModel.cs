@@ -13,6 +13,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     public class TextRangeActionViewModel : BaseActionViewModel
     {
 
-        public TextRangeActionViewModel(A11yPattern pattern, MethodInfo m):base(pattern, m) { }
+        public TextRangeActionViewModel(A11yPattern pattern, MethodInfo m) : base(pattern, m) { }
     }
 }

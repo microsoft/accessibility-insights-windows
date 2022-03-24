@@ -372,7 +372,7 @@ namespace AccessibilityInsights
             // array of file handlers to be attempted in order. If one throws an exception, the next will be tried
             FileLoadHandler[] fileHandlers = { HandleLoadingSnapshotData, HandleLoadingEventData };
 
-            foreach(var fileHandler in fileHandlers)
+            foreach (var fileHandler in fileHandlers)
             {
                 try
                 {

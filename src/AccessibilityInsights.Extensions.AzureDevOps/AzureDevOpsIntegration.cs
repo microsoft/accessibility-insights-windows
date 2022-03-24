@@ -414,7 +414,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Implements <see cref="IDevOpsIntegration.HandleLoginAsync(CredentialPromptType, Uri)"/>
         /// </summary>
-        public async Task HandleLoginAsync(CredentialPromptType showDialog=CredentialPromptType.DoNotPrompt, Uri serverUri = null)
+        public async Task HandleLoginAsync(CredentialPromptType showDialog = CredentialPromptType.DoNotPrompt, Uri serverUri = null)
         {
             serverUri = serverUri ?? Configuration.SavedConnection.ServerUri;
 

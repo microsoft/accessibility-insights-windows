@@ -39,7 +39,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetryTests
 
         private void SetContextProperties()
         {
-            foreach(KeyValuePair<string, string> pair in ContextProperties)
+            foreach (KeyValuePair<string, string> pair in ContextProperties)
             {
                 _testSubject.AddOrUpdateContextProperty(pair.Key, pair.Value);
             }

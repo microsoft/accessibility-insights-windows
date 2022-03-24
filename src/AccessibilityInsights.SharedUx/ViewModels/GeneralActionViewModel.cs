@@ -17,6 +17,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         /// <param name="pattern"></param>
         /// <param name="m"></param>
-        public GeneralActionViewModel(A11yPattern pattern, MethodInfo m):base(pattern, m) { }
+        public GeneralActionViewModel(A11yPattern pattern, MethodInfo m) : base(pattern, m) { }
     }
 }

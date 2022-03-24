@@ -374,7 +374,7 @@ namespace AccessibilityInsights.Modes
         {
             StringBuilder sb = new StringBuilder();
 
-            if(Keyboard.FocusedElement is ListViewItem lvi && lvi.DataContext is ScanListViewItemViewModel stvi)
+            if (Keyboard.FocusedElement is ListViewItem lvi && lvi.DataContext is ScanListViewItemViewModel stvi)
             {
                 ListView listView = ItemsControl.ItemsControlFromItemContainer(lvi) as ListView;
                 foreach (var item in listView.SelectedItems)

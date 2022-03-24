@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         /// <param name="gap"></param>
         /// <param name="brush"></param>
-        public void SetElement(A11yElement el, int gap = 2, SolidColorBrush brush=null)
+        public void SetElement(A11yElement el, int gap = 2, SolidColorBrush brush = null)
         {
             this.BaseElement = el ?? throw new ArgumentNullException(nameof(el));
             if (brush == null)
@@ -98,7 +98,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
             // check whether el is from saved file.
             // if so make sure that dimension is correct to be visible.
-            if(el.PlatformObject == null)
+            if (el.PlatformObject == null)
             {
                 var dpi = HelperMethods.GetDPI((int)Application.Current.MainWindow.Top, (int)Application.Current.MainWindow.Left);
                 this.WinRect = new Rect()

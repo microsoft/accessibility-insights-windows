@@ -12,7 +12,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// Class for Text
     /// </summary>
-    public class TextAttributeViewModel: ViewModelBase
+    public class TextAttributeViewModel : ViewModelBase
     {
         private TextRangeViewModel TextRange;
         private DesktopElement Element;

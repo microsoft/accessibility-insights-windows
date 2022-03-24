@@ -61,7 +61,7 @@ namespace AccessibilityInsights.CustomActions
         private void DeleteConfigFiles()
         {
             var configDirectory = FixedConfigSettingsProvider.CreateDefaultSettingsProvider().ConfigurationFolderPath;
-            if (_systemShim.DirectoryExists(configDirectory)) 
+            if (_systemShim.DirectoryExists(configDirectory))
             {
                 _systemShim.LogToSession("RemoveUserConfigFiles: Deleting config directory: " + configDirectory);
                 _systemShim.DeleteDirectory(configDirectory);

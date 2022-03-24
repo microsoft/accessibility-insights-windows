@@ -59,7 +59,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
         {
             Dictionary<string, string> copy = new Dictionary<string, string>();
 
-            foreach(KeyValuePair<string, string> pair in original)
+            foreach (KeyValuePair<string, string> pair in original)
             {
                 copy.Add(pair.Key, pair.Value);
             }

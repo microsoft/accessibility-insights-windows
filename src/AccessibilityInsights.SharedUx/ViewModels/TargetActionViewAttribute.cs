@@ -9,7 +9,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// indicate the target action view for the ActionViewModel
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class TargetActionViewAttribute: Attribute
+    public class TargetActionViewAttribute : Attribute
     {
         public Type ViewType { get; set; }
     }

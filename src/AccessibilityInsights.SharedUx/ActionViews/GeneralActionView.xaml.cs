@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Globalization;
@@ -39,7 +38,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             this.Counter = 0;
             InitializeComponent();
 
-            if(this.ActionViewModel.Parameters == null || this.ActionViewModel.Parameters.Count == 0)
+            if (this.ActionViewModel.Parameters == null || this.ActionViewModel.Parameters.Count == 0)
             {
                 this.dgParams.Visibility = Visibility.Collapsed;
             }
@@ -159,7 +158,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             lock (_lockObject)
             {
-                if(Counter != 0 && this.IsVisible == false)
+                if (Counter != 0 && this.IsVisible == false)
                 {
                     this.timerInvoke.Enabled = false;
                     this.btnAction.IsEnabled = true;

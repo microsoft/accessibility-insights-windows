@@ -13,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// class TextRangeHilighter
     /// Hiligt all bounding rectangles from a Text Range
     /// </summary>
-    public class TextRangeHilighter: IDisposable
+    public class TextRangeHilighter : IDisposable
     {
         /// <summary>
         /// Hilighter color

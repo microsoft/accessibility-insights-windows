@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void lbElements_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(this.lbElements.SelectedItem != null)
+            if (this.lbElements.SelectedItem != null)
             {
                 var el = lbElements.SelectedItem as DesktopElement;
 

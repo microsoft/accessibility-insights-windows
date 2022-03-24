@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// hovering over the resulting rectangle still allows clicking through to the
     /// underlying element
     /// </summary>
-    public class HollowHighlightDriver:IDisposable
+    public class HollowHighlightDriver : IDisposable
     {
         readonly Highlighter Highlighter;
 
@@ -194,7 +194,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             HollowHighlightDriver ha = null;
 
-            if(sHighlightActions.ContainsKey(name))
+            if (sHighlightActions.ContainsKey(name))
             {
                 ha = sHighlightActions[name];
             }
@@ -215,9 +215,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// </summary>
         public static void ClearAllHighlighters()
         {
-            if(sHighlightActions != null && sHighlightActions.Count != 0)
+            if (sHighlightActions != null && sHighlightActions.Count != 0)
             {
-                foreach(var ha in sHighlightActions.Values)
+                foreach (var ha in sHighlightActions.Values)
                 {
                     ha.Dispose();
                 }

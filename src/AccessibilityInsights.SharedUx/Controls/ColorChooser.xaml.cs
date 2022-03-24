@@ -56,10 +56,11 @@ namespace AccessibilityInsights.SharedUx.Controls
         public static readonly DependencyProperty StoredColorProperty =
             DependencyProperty.Register("StoredColor", typeof(Color), typeof(ColorChooser));
 
-        public Color StoredColor {
+        public Color StoredColor
+        {
             get
             {
-                return (Color) GetValue(StoredColorProperty);
+                return (Color)GetValue(StoredColorProperty);
             }
             set
             {

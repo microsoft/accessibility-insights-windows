@@ -20,7 +20,7 @@ namespace AccessibilityInsights
         /// <returns></returns>
         void StartCCAMode(CCAView view)
         {
-            if(this.CurrentPage==AppPage.CCA && (CCAView) this.CurrentView == CCAView.CapturingData)
+            if (this.CurrentPage == AppPage.CCA && (CCAView)this.CurrentView == CCAView.CapturingData)
             {
                 return;
             }
@@ -95,7 +95,7 @@ namespace AccessibilityInsights
         {
             var mode = GetDataAction.GetDataContextMode();
 
-            switch(mode)
+            switch (mode)
             {
                 case DataContextMode.Live:
                     return DataContextMode.Test;

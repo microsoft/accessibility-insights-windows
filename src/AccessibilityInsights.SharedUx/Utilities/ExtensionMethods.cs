@@ -57,7 +57,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
             {
                 fn = GetTestResultFileNameWithId(namebase, idx, filetype);
 
-                if(File.Exists(Path.Combine(path,fn)) == false)
+                if (File.Exists(Path.Combine(path, fn)) == false)
                 {
                     break;
                 }
@@ -226,7 +226,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <param name="column">Column whose header is to be found</param>
         /// <param name="root">Element in which to search</param>
         /// <returns></returns>
-        public static DataGridColumnHeader GetDGColumnHeader(this DataGrid dg, DataGridColumn column, DependencyObject root=null)
+        public static DataGridColumnHeader GetDGColumnHeader(this DataGrid dg, DataGridColumn column, DependencyObject root = null)
         {
             if (root == null)
                 root = dg;

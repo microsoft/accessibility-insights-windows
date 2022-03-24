@@ -57,7 +57,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 this.Hilighter.HilightBoundingRectangles(false);
 
-                if(item.Item3 is List<KeyValuePair<int, string>> || item.Item3 is List<KeyValuePair<bool, string>>)
+                if (item.Item3 is List<KeyValuePair<int, string>> || item.Item3 is List<KeyValuePair<bool, string>>)
                 {
                     cbValues.ItemsSource = item.Item3;
                     cbValues.SelectedIndex = 0;
@@ -92,7 +92,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private object GetAttributeValue()
         {
             var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
-            if(item.Item3 == null)
+            if (item.Item3 == null)
             {
                 return ConvertToType(tbValue.Text, item.Item4);
             }
@@ -101,7 +101,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 return ((KeyValuePair<bool, string>)cbValues.SelectedItem).Key;
             }
 
-            var value = (KeyValuePair<int, string >)cbValues.SelectedItem;
+            var value = (KeyValuePair<int, string>)cbValues.SelectedItem;
             return value.Key;
         }
 
@@ -113,20 +113,20 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <returns></returns>
         private static object ConvertToType(string text, Type type)
         {
-            if(type == typeof(int))
+            if (type == typeof(int))
             {
-                return Convert.ToInt32(text,CultureInfo.InvariantCulture);
+                return Convert.ToInt32(text, CultureInfo.InvariantCulture);
             }
-            else if(type == typeof(double))
+            else if (type == typeof(double))
             {
                 return Convert.ToDouble(text, CultureInfo.InvariantCulture);
             }
-            else if(type== typeof(string))
+            else if (type == typeof(string))
             {
                 return text;
             }
 
-            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextRangeFindDialog_ConvertToType__0__type_is_not_supported,type.Name));
+            throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextRangeFindDialog_ConvertToType__0__type_is_not_supported, type.Name));
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             {
                 var attributeId = GetAttributeId();
 
-                range =  attributeId == SearchForText
+                range = attributeId == SearchForText
                     ? this.Finder.FindText(GetAttributeValue() as string, backward, chbIgnoreCase.IsChecked ?? false)
                     : this.Finder.Find(attributeId, GetAttributeValue(), backward);
 

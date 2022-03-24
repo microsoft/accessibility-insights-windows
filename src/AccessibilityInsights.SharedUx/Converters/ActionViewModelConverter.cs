@@ -22,9 +22,9 @@ namespace AccessibilityInsights.SharedUx.Converters
             if (value == null)
                 throw new ArgumentNullException(nameof(value));
 
-            var attrs = value.GetType().GetCustomAttributes(typeof(TargetActionViewAttribute),false);
+            var attrs = value.GetType().GetCustomAttributes(typeof(TargetActionViewAttribute), false);
 
-            if(attrs != null && attrs.Length == 1)
+            if (attrs != null && attrs.Length == 1)
             {
                 var attr = (TargetActionViewAttribute)attrs[0];
 

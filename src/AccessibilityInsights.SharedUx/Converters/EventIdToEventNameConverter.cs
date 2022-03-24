@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         { // do not let the culture default to local to prevent variable outcome re decimal syntax
-            var eId = (int) value;
+            var eId = (int)value;
             return EventType.GetInstance().GetNameById(eId);
         }
 

@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// TextRange ViewModel class
     /// </summary>
-    public class TextRangeViewModel:ViewModelBase
+    public class TextRangeViewModel : ViewModelBase
     {
         const int MaxTextSize = 5000; // based on Inspect code.
 
@@ -153,7 +153,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             switch (kv.Key)
             {
                 case TextAttributeType.UIA_AnimationStyleAttributeId:
-                    if(value is int)
+                    if (value is int)
                     {
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, AnimationStyle.GetInstance().GetNameById(value)));
                     }
@@ -264,7 +264,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 case TextAttributeType.UIA_TabsAttributeId:
                     var txt = ConvertArrayToString(value);
 
-                    if(txt != null)
+                    if (txt != null)
                     {
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, txt));
                     }
@@ -304,8 +304,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                             {
                                 strBuild.Append(Invariant($"{item.Key}: {item.Value}, "));
                             }
-                            strBuild.Length-=2; //remove final , and <space>
-                            list.Add(new TextAttributeViewModel(kv.Key, kv.Value,strBuild.ToString()));
+                            strBuild.Length -= 2; //remove final , and <space>
+                            list.Add(new TextAttributeViewModel(kv.Key, kv.Value, strBuild.ToString()));
                         }
                         else // create a row for each array value
                         {

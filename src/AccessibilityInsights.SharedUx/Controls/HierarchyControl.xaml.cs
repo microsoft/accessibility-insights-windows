@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
                 else
                 {
-                    UpdateTreeView(ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry,Configuration.ShowUncertain, this.IsLiveMode), expandall);
+                    UpdateTreeView(ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, this.IsLiveMode), expandall);
                     this._selectedElement = ec.Element;
                 }
 
@@ -259,7 +259,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         /// <param name="ec"></param>
         /// <param name="expandall"></param>
-        private void PopulateHierarchyTree(ElementContext ec , bool expandall)
+        private void PopulateHierarchyTree(ElementContext ec, bool expandall)
         {
             var begin = DateTime.Now;
             HierarchyNodeViewModel rnvm = null;
@@ -272,7 +272,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, this.IsLiveMode);
 
             // send exception to mode control.
-            if(rnvm == null)
+            if (rnvm == null)
             {
                 throw new ApplicationException(Properties.Resources.HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy);
             }
@@ -302,7 +302,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.HierarchyActions.SelectedElementChanged();
 
             // expand all if it is required.
-            if(expandall)
+            if (expandall)
             {
                 rnvm.Expand(true);
             }
@@ -363,7 +363,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void CleanUpTreeView()
         {
-            if(this.treeviewHierarchy.ItemsSource != null)
+            if (this.treeviewHierarchy.ItemsSource != null)
             {
                 try
                 {
@@ -414,9 +414,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void treeviewHierarchy_GotFocus(object sender, RoutedEventArgs e)
         {
-            if(this.treeviewHierarchy.SelectedItem == null)
+            if (this.treeviewHierarchy.SelectedItem == null)
             {
-                if(this._rootNode != null)
+                if (this._rootNode != null)
                 {
                     this._rootNode.IsSelected = true;
                 }
@@ -719,7 +719,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     btnMenu.Visibility = Visibility.Visible;
                     btnTestElement.Visibility = Visibility.Visible;
-                    var hlptxt = string.Format(CultureInfo.InvariantCulture, 
+                    var hlptxt = string.Format(CultureInfo.InvariantCulture,
                         Properties.Resources.HierarchyControl_LiveMode_InvokeToTestFormat,
                         vm.Element.Glimpse);
                     AutomationProperties.SetHelpText(btnTestElement, hlptxt);
@@ -809,7 +809,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             else
             {
                 right = 4;
-                treeviewHierarchy.Margin = new Thickness(0,0,2,0);
+                treeviewHierarchy.Margin = new Thickness(0, 0, 2, 0);
             }
 
             /// set button locations too.

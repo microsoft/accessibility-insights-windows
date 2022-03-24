@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// HierarchyTreeItem class
     /// ViewModel for A11yElement in Hierarchy tree
     /// </summary>
-    public class HierarchyNodeViewModel: ViewModelBase
+    public class HierarchyNodeViewModel : ViewModelBase
     {
         const int NormalIconSizeBack = 14; // size for non composite icon
         const int TreeIconSizeBack = 16;   // size for tree in composite icon
@@ -313,7 +313,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     this.IconVisibility = Visibility.Visible;
                     automationNameFormat = Resources.HierarchyNodeViewModel_AutomationNameFailedResultsFormat;
                 }
-                else if(this.Element.TestStatus == ScanStatus.ScanNotSupported)
+                else if (this.Element.TestStatus == ScanStatus.ScanNotSupported)
                 {
                     this.IconBack = FabricIcon.MapDirections;
                     this.IconSizeBack = NormalIconSizeBack;
@@ -381,7 +381,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 this.IsHilighted = true;
             }
 
-            if(isfiltered)
+            if (isfiltered)
             {
                 this.Visibility = Visibility.Collapsed;
             }
@@ -436,9 +436,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.IsExpanded = true;
 
-            if(expandchildren && this.Children.Count != 0)
+            if (expandchildren && this.Children.Count != 0)
             {
-                foreach(var c in this.Children)
+                foreach (var c in this.Children)
                 {
                     c.Expand(true);
                 }

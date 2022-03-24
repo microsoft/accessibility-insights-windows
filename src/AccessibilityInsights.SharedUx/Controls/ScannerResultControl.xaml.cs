@@ -123,9 +123,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         private void UpdateTree()
         {
             IEnumerable<ScanListViewItemViewModel> itemViewModel = from l in this.List
-                                         where l.Status == ScanStatus.Fail || l.Status == ScanStatus.ScanNotSupported || (Configuration.ShowUncertain && l.Status == ScanStatus.Uncertain) || ShowAllResults
-                                         orderby l.Status descending, l.Source, l.Header
-                                         select l;
+                                                                   where l.Status == ScanStatus.Fail || l.Status == ScanStatus.ScanNotSupported || (Configuration.ShowUncertain && l.Status == ScanStatus.Uncertain) || ShowAllResults
+                                                                   orderby l.Status descending, l.Source, l.Header
+                                                                   select l;
 
             var viewModelCount = itemViewModel.Count();
 
@@ -301,7 +301,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
                 if (IssueReporter.IsConnected)
                 {
-                    IssueInformation issueInformation = null ;
+                    IssueInformation issueInformation = null;
                     try
                     {
                         issueInformation = vm.GetIssueInformation();
@@ -321,7 +321,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 #pragma warning restore CA1031 // Do not catch general exception types
                     finally
                     {
-                        if(issueInformation != null && File.Exists(issueInformation.TestFileName))
+                        if (issueInformation != null && File.Exists(issueInformation.TestFileName))
                         {
                             File.Delete(issueInformation.TestFileName);
                         }

@@ -23,7 +23,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// ViewModel class for scanlistview Item
     /// </summary>
-    public class ScanListViewItemViewModel:ViewModelBase
+    public class ScanListViewItemViewModel : ViewModelBase
     {
         public static IList<ScanListViewItemViewModel> GetScanListViewItemViewModels(A11yElement e)
         {
@@ -34,9 +34,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
             var list = new List<ScanListViewItemViewModel>();
 
-            foreach(var sr in tr.Items)
+            foreach (var sr in tr.Items)
             {
-                foreach(var rr in sr.Items )
+                foreach (var rr in sr.Items)
                 {
                     list.Add(new ScanListViewItemViewModel(e, rr));
                 }
@@ -79,7 +79,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 {
                     return FabricIcon.CompletedSolid;
                 }
-                else if(this.Status == ScanStatus.ScanNotSupported)
+                else if (this.Status == ScanStatus.ScanNotSupported)
                 {
                     return FabricIcon.MapDirections;
                 }
@@ -199,7 +199,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, 
+            return string.Format(CultureInfo.InvariantCulture,
                 Resources.ScanListViewItemViewModel_StatusFormat,
                 this.Status, this.Header);
         }
