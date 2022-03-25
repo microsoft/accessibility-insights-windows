@@ -122,10 +122,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void UpdateTree()
         {
-            IEnumerable<ScanListViewItemViewModel> itemViewModel = from l in this.List
-                                                                   where l.Status == ScanStatus.Fail || l.Status == ScanStatus.ScanNotSupported || (Configuration.ShowUncertain && l.Status == ScanStatus.Uncertain) || ShowAllResults
-                                                                   orderby l.Status descending, l.Source, l.Header
-                                                                   select l;
+            var itemViewModel = from l in this.List
+                                where l.Status == ScanStatus.Fail || l.Status == ScanStatus.ScanNotSupported || (Configuration.ShowUncertain && l.Status == ScanStatus.Uncertain) || ShowAllResults
+                                orderby l.Status descending, l.Source, l.Header
+                                select l;
 
             var viewModelCount = itemViewModel.Count();
 
