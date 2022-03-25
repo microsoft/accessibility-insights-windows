@@ -45,7 +45,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             var control = d as ProgressRingControl;
             if (control != null)
             {
-                control.IsActive = (bool) e.NewValue;
+                control.IsActive = (bool)e.NewValue;
             }
         }
 
@@ -226,7 +226,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             }
             get
             {
-                return (int) (ell1.RenderTransformOrigin.Y * ell1.Height * -2);
+                return (int)(ell1.RenderTransformOrigin.Y * ell1.Height * -2);
             }
         }
 

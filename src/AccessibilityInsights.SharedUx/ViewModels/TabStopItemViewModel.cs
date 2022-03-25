@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// Class TabStopItemViewModel
     /// this is for tab stop listview
     /// </summary>
-    public class TabStopItemViewModel: ViewModelBase
+    public class TabStopItemViewModel : ViewModelBase
     {
         /// <summary>
         /// Element

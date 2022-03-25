@@ -88,7 +88,7 @@ namespace AccessibilityInsights
         {
             var mode = GetDataAction.GetDataContextMode();
 
-            switch(mode)
+            switch (mode)
             {
                 case DataContextMode.Live:
                     return DataContextMode.Test;

@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// Wraps and provides access to highlight capabilities for
     /// elements over an image
     /// </summary>
-    public class ImageOverlayDriver:IDisposable
+    public class ImageOverlayDriver : IDisposable
     {
         /// <summary>
         /// imageHighlighter to use

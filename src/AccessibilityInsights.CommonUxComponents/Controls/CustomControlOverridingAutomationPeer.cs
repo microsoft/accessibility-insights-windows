@@ -12,7 +12,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     /// CustomControlOverridingAutomationPeer class
     /// class to override LocalizedControlType and control/content element values for custom control(UserControl)
     /// </summary>
-    public class CustomControlOverridingAutomationPeer: UserControlAutomationPeer
+    public class CustomControlOverridingAutomationPeer : UserControlAutomationPeer
     {
         private bool IsControlElem;
 

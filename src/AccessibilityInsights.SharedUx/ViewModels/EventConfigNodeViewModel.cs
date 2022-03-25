@@ -216,7 +216,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// Add a single child to node
         /// </summary>
         /// <param name="child"></param>
-        public void AddChild(EventConfigNodeViewModel child, bool isChecked=false)
+        public void AddChild(EventConfigNodeViewModel child, bool isChecked = false)
         {
             if (child == null)
                 throw new ArgumentNullException(nameof(child));
@@ -293,7 +293,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             var l = _children.OrderBy(e => e.Header).ToList();
             this._children.Clear();
-            foreach(var c in l)
+            foreach (var c in l)
             {
                 this._children.Add(c);
             }
@@ -401,9 +401,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             this.IsExpanded = true;
 
-            if(expandchildren && this._children.Count != 0)
+            if (expandchildren && this._children.Count != 0)
             {
-                foreach(var c in this._children)
+                foreach (var c in this._children)
                 {
                     c.Expand(true);
                 }

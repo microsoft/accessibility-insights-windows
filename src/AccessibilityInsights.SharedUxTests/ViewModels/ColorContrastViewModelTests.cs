@@ -143,7 +143,7 @@ namespace AccessibilityInsights.SharedUxTest.ViewModels
         {
             ColorContrastViewModel vm = new ColorContrastViewModel();
             vm.FirstColor = Colors.White;
-            vm.SecondColor = Color.FromRgb(255, 0 ,0);
+            vm.SecondColor = Color.FromRgb(255, 0, 0);
             Assert.IsFalse(vm.PassSmallText);
         }
 

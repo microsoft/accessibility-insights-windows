@@ -30,7 +30,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// Production ctor--must be public for MEF
         /// </summary>
         public AITelemetry()
-            :this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(InstrumentationKey)))
+            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(InstrumentationKey)))
         {
         }
 

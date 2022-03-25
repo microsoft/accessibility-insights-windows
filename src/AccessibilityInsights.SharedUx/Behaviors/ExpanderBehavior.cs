@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SharedUx.Settings;
 using Microsoft.Xaml.Behaviors;
 using System;
 using System.Windows;
@@ -33,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
         /// <param name="e"></param>
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            double height = (double) Application.Current.Resources["ExpanderCollapsedHeight"];
+            double height = (double)Application.Current.Resources["ExpanderCollapsedHeight"];
 
             var exp = sender as Expander;
             int row = Grid.GetRow(exp);

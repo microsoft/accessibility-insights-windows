@@ -1,6 +1,5 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using System;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps.Enums
 {
@@ -31,11 +30,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Enums
             switch (value)
             {
                 // These fields are all documented at https://docs.microsoft.com/en-us/rest/api/azure/devops/wit/Revisions/List?view=azure-devops-rest-5.0
-                case AzureDevOpsField.Title:           return "System.Title";
-                case AzureDevOpsField.ReproSteps:      return "Microsoft.VSTS.TCM.ReproSteps";
-                case AzureDevOpsField.Tags:            return "System.Tags";
-                case AzureDevOpsField.AreaPath:        return "System.AreaPath";
-                case AzureDevOpsField.IterationPath:   return "System.IterationPath";
+                case AzureDevOpsField.Title: return "System.Title";
+                case AzureDevOpsField.ReproSteps: return "Microsoft.VSTS.TCM.ReproSteps";
+                case AzureDevOpsField.Tags: return "System.Tags";
+                case AzureDevOpsField.AreaPath: return "System.AreaPath";
+                case AzureDevOpsField.IterationPath: return "System.IterationPath";
             }
             return string.Empty;
         }

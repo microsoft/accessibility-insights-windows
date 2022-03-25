@@ -231,7 +231,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             {
                 if (disposing)
                 {
-                    if(this.Border.Count != 0)
+                    if (this.Border.Count != 0)
                     {
                         this.Border.ForEach(b => b.Dispose());
                         this.Border.Clear();

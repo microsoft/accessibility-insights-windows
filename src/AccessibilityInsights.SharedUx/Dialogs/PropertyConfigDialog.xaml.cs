@@ -42,13 +42,14 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 Properties.Resources.PropertyConfigDialog_SelectedItemsFormat, title);
 
             var list = (from kv in source.GetKeyValuePairList()
-                       where !DesktopElement.IsExcludedProperty(kv.Key,kv.Value)
-                       select new RecordEntitySetting {
-                           Id = kv.Key,
-                           Name = kv.Value,
-                           IsRecorded = coreProps.Contains(kv.Key),
-                           Type = RecordEntityType.Property
-                       }).ToList();
+                        where !DesktopElement.IsExcludedProperty(kv.Key, kv.Value)
+                        select new RecordEntitySetting
+                        {
+                            Id = kv.Key,
+                            Name = kv.Value,
+                            IsRecorded = coreProps.Contains(kv.Key),
+                            Type = RecordEntityType.Property
+                        }).ToList();
 
             var selList = coreProps.Select(l => list.Where(r => r.Id == l).FirstOrDefault()).ToList();
             CoreProperties = selList.ToList();// generate base list here.

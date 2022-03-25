@@ -20,9 +20,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// UI wrapper for Pattern
     /// </summary>
-    public class PatternViewModel:ViewModelBase
+    public class PatternViewModel : ViewModelBase
     {
-        public PatternViewModel(A11yElement e,A11yPattern pattern, bool isActionAllowed, bool isExpanded)
+        public PatternViewModel(A11yElement e, A11yPattern pattern, bool isActionAllowed, bool isExpanded)
         {
             this.IsExpanded = isExpanded;
             this.Pattern = pattern ?? throw new ArgumentNullException(nameof(pattern));
@@ -142,7 +142,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             {
                 ShowActionDialog();
             }
-            else if(this.ActionType == ActionType.TextExplorer)
+            else if (this.ActionType == ActionType.TextExplorer)
             {
                 ShowTextExplorerDialog();
             }
@@ -172,7 +172,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             var tp2 = this.Element.Patterns.ById(PatternType.UIA_TextPattern2Id);
 
-            var dlg = new TextPatternExplorerDialog((TextPattern)this.Pattern,tp2 == null ? null : (TextPattern2)tp2);
+            var dlg = new TextPatternExplorerDialog((TextPattern)this.Pattern, tp2 == null ? null : (TextPattern2)tp2);
 
             dlg.Owner = Application.Current.MainWindow;
 

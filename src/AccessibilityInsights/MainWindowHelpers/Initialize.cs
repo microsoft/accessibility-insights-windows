@@ -430,7 +430,7 @@ namespace AccessibilityInsights
         /// </summary>
         private static double GetFirstDefinedNumber(double[] potentialNumbers)
         {
-            foreach(double potentialNumber in potentialNumbers)
+            foreach (double potentialNumber in potentialNumbers)
             {
                 if (!double.IsNaN(potentialNumber))
                 {

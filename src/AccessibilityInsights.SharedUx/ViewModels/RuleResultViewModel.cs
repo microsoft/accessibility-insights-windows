@@ -18,7 +18,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// Class RuleResultViewModel
     /// this is for FastPass scan result display
     /// </summary>
-    public class RuleResultViewModel: ViewModelBase
+    public class RuleResultViewModel : ViewModelBase
     {
         /// <summary>
         /// Element
@@ -103,7 +103,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// reference to rule result object
         /// </summary>
-        public RuleResult RuleResult { get;}
+        public RuleResult RuleResult { get; }
 
         private System.Windows.Visibility loadingVisibility;
         /// <summary>
@@ -137,7 +137,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             var p = e.Properties.ById(rr.MetaInfo.PropertyId);
             if (p != null)
             {
-                this.Properties= String.Format(CultureInfo.InvariantCulture, "{0}={1}", p.Name, p.TextValue);
+                this.Properties = String.Format(CultureInfo.InvariantCulture, "{0}={1}", p.Name, p.TextValue);
             }
 
             if (StandardLinksHelper.GetDefaultInstance().HasStoredLink(rr.MetaInfo))

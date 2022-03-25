@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SetupLibrary.REST
                 throw new ArgumentNullException(nameof(uri));
 
             Stopwatch stopwatch = Stopwatch.StartNew();
-            DownloadState state = new DownloadState 
+            DownloadState state = new DownloadState
             {
                 Stream = stream,
                 ProgressCallback = progressCallback,

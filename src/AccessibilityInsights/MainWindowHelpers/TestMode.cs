@@ -3,13 +3,11 @@
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Misc;
-using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
 using Axe.Windows.Desktop.Settings;
 using System;
-using System.Globalization;
 
 namespace AccessibilityInsights
 {

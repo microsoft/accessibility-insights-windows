@@ -91,9 +91,9 @@ namespace AccessibilityInsights.Extensions
 
         public static Container GetDefaultInstance()
         {
-            if(_defaultInstance == null)
+            if (_defaultInstance == null)
             {
-                lock(_lockObject)
+                lock (_lockObject)
                 {
 #pragma warning disable CA1508 // Analyzer doesn't understand threading
                     if (_defaultInstance == null)

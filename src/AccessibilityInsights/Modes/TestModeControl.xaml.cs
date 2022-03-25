@@ -25,7 +25,6 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Threading;
-using static System.FormattableString;
 
 namespace AccessibilityInsights.Modes
 {
@@ -218,7 +217,7 @@ namespace AccessibilityInsights.Modes
                             }
 
                             var count = ec.DataContext?.GetRuleResultsViewModelList()?.Count ?? 0;
-                            AutomationProperties.SetName(this, 
+                            AutomationProperties.SetName(this,
                                 string.Format(CultureInfo.InvariantCulture, Properties.Resources.TestModeControl_DetectedFailureFormat,
                                     this.ElementContext.Element.Glimpse, count));
 
@@ -247,7 +246,8 @@ namespace AccessibilityInsights.Modes
 #pragma warning restore CA1031 // Do not catch general exception types
                 finally
                 {
-                    Application.Current.Dispatcher.Invoke(() => {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
                         this.ctrlProgressRing.Deactivate();
                     });
                 }

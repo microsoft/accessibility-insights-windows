@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +36,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
 
         public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
 
-        public static ReporterFabricIcon Logo => (IsEnabled && IssueReporting != null )? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected ;
+        public static ReporterFabricIcon Logo => (IsEnabled && IssueReporting != null) ? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected;
 
         public static string DisplayName
         {

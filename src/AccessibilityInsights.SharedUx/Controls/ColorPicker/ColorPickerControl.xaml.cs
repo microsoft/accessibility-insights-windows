@@ -414,7 +414,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             int dx = 0;
             int dy = 0;
 
-            switch(e.Key)
+            switch (e.Key)
             {
                 case Key.Left:
                     dx = -1;

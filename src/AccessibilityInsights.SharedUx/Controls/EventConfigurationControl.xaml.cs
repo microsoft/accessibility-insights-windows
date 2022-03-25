@@ -66,7 +66,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             get
             {
-                return (bool) this.GetValue(CanDragReorderProperty);
+                return (bool)this.GetValue(CanDragReorderProperty);
             }
             set
             {
@@ -107,7 +107,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             get
             {
-                return (bool) this.GetValue(ShowColumnLabelsProperty);
+                return (bool)this.GetValue(ShowColumnLabelsProperty);
             }
             set
             {
@@ -206,7 +206,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             new CommandBinding(MoveFocusToSearchCommand, OnMoveFocusToSearchField) };
         }
 
-    protected override AutomationPeer OnCreateAutomationPeer()
+        protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new CustomControlOverridingAutomationPeer(this, "pane");
         }
@@ -464,7 +464,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             var lvi = sender as ListViewItem;
             var listView = ItemsControl.ItemsControlFromItemContainer(lvi) as ListView;
-            var records =  from l in this.List where l.Id == (lvi.Content as RecordEntitySetting).Id select l;
+            var records = from l in this.List where l.Id == (lvi.Content as RecordEntitySetting).Id select l;
             var record = records.FirstOrDefault();
 
             if (listView == lvLeft)

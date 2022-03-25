@@ -93,7 +93,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         private void IssueConfigurationControl_IsVisibleChanged(object sender, System.Windows.DependencyPropertyChangedEventArgs e)
         {
-            if (sender!=null && (bool)e.NewValue)
+            if (sender != null && (bool)e.NewValue)
             {
                 if (Config != null && !string.IsNullOrEmpty(Config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(Config.RepoLink) && !Config.RepoLink.Equals(this.tbURL.Text, StringComparison.Ordinal))
                 {

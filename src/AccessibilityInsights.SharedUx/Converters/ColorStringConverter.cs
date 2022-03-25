@@ -36,7 +36,7 @@ namespace AccessibilityInsights.SharedUx.Converters
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            System.Windows.Media.Color colorValue = (System.Windows.Media.Color) value;
+            System.Windows.Media.Color colorValue = (System.Windows.Media.Color)value;
             return String.Format(CultureInfo.InvariantCulture, Resources.ColorStringConverter_Convert_0_X2_1_X2_2_X2, colorValue.R, colorValue.G, colorValue.B);
         }
 

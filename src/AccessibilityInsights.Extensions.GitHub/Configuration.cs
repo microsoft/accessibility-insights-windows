@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.GitHub
     {
         public string RepoLink { get; set; }
 
-        public ConnectionConfiguration(): this(String.Empty)
+        public ConnectionConfiguration() : this(String.Empty)
         {
         }
 

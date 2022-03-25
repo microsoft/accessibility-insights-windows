@@ -17,11 +17,11 @@ namespace AccessibilityInsights.Win32
 
         //https://msdn.microsoft.com/en-us/library/windows/desktop/dd145062(v=vs.85).aspx
         [DllImport("User32.dll")]
-        internal static extern IntPtr MonitorFromPoint([In]Point pt, [In]uint dwFlags);
+        internal static extern IntPtr MonitorFromPoint([In] Point pt, [In] uint dwFlags);
 
         //https://msdn.microsoft.com/en-us/library/windows/desktop/dn280510(v=vs.85).aspx
         [DllImport("Shcore.dll")]
-        internal static extern uint GetDpiForMonitor([In]IntPtr hmonitor, [In]DpiType dpiType, [Out]out uint dpiX, [Out]out uint dpiY);
+        internal static extern uint GetDpiForMonitor([In] IntPtr hmonitor, [In] DpiType dpiType, [Out] out uint dpiX, [Out] out uint dpiY);
 
         [DllImport("Gdi32.dll", CharSet = CharSet.Auto, SetLastError = true, ExactSpelling = true)]
         internal static extern IntPtr CreateCompatibleDC(IntPtr hDC);
@@ -195,7 +195,7 @@ namespace AccessibilityInsights.Win32
         [DllImport("wintrust.dll", ExactSpelling = true, SetLastError = false, CharSet = CharSet.Unicode)]
         public static extern WinVerifyTrustResult WinVerifyTrust(
         [In] IntPtr hwnd,
-        [In] [MarshalAs(UnmanagedType.LPStruct)] Guid pgActionID,
+        [In][MarshalAs(UnmanagedType.LPStruct)] Guid pgActionID,
         [In] WinTrustData pWVTData);
 
         public static readonly Guid WINTRUST_ACTION_GENERIC_VERIFY_V2 = new Guid("{00AAC56B-CD44-11d0-8CC2-00C04FC295EE}");

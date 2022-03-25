@@ -1,18 +1,16 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.SetupLibrary;
 using Microsoft.Deployment.WindowsInstaller;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 
 namespace AccessibilityInsights.CustomActions
 {
     /// <summary>
     /// Production implementation of ISystemShim
     /// </summary>
-    internal class SystemShim: ISystemShim
+    internal class SystemShim : ISystemShim
     {
         private readonly Session _session;
 

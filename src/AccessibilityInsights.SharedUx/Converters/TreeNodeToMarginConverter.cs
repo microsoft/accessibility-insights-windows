@@ -42,7 +42,7 @@ namespace AccessibilityInsights.SharedUx.Converters
                 // intent event recording config
                 nodeDepth = evnvm.Depth;
             }
-            return new Thickness(nodeDepth * -16, 0,0,0);
+            return new Thickness(nodeDepth * -16, 0, 0, 0);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

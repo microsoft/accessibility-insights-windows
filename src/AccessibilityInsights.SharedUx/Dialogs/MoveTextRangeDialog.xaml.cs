@@ -62,7 +62,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     break;
                 case OpMode.Move:
                 case OpMode.MoveEndpointByUnit:
-                    this.lbxTargetRanges.Visibility =  Visibility.Collapsed;
+                    this.lbxTargetRanges.Visibility = Visibility.Collapsed;
                     this.lbTargetTR.Visibility = Visibility.Collapsed;
                     break;
                 case OpMode.Compare:
@@ -100,7 +100,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             try
             {
                 var ps = GetParametersArray();
-                var ret = this.MethodInfo.Invoke(this.ViewModel.TextRange, ps );
+                var ret = this.MethodInfo.Invoke(this.ViewModel.TextRange, ps);
 
                 if (this.ReturnType != typeof(void))
                 {
@@ -108,7 +108,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 }
 
                 /// Refresh Highlighter via TextPatternExplorer dialog
-                if(UpdateHighlighter != null)
+                if (UpdateHighlighter != null)
                 {
                     UpdateHighlighter();
                 }
@@ -139,7 +139,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private object GetConvertedValue(Parameter p)
         {
-            if(p.ParamType == typeof(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange))
+            if (p.ParamType == typeof(Axe.Windows.Desktop.UIAutomation.Patterns.TextRange))
             {
                 return ((TextRangeViewModel)this.lbxTargetRanges.SelectedItem).TextRange;
             }

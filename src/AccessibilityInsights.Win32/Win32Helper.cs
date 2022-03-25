@@ -3,7 +3,6 @@
 using Microsoft.Win32;
 using System;
 using System.Drawing;
-using System.Threading;
 
 namespace AccessibilityInsights.Win32
 {

@@ -77,7 +77,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private void InitializeRenderTransform()
         {
             renderTransformGroup = new TransformGroup();
-            renderTransformGroup.Children.Add(new ScaleTransform(zoomLevel,  zoomLevel));
+            renderTransformGroup.Children.Add(new ScaleTransform(zoomLevel, zoomLevel));
             eyedropperPreview.RenderTransform = renderTransformGroup;
         }
 

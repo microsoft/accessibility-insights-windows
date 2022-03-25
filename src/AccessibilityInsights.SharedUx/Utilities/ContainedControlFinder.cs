@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
-    internal static class ContainedControlFinder<T> where T: DependencyObject
+    internal static class ContainedControlFinder<T> where T : DependencyObject
     {
         internal static IEnumerable<T> Find(DependencyObject currentControl)
         {

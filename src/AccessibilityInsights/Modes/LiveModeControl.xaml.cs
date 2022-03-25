@@ -34,7 +34,7 @@ namespace AccessibilityInsights.Modes
         /// <summary>
         /// Selected element from hierarchy
         /// </summary>
-        public Tuple<Guid,int> SelectedInHierarchyElement { get; private set; }
+        public Tuple<Guid, int> SelectedInHierarchyElement { get; private set; }
 
         /// <summary>
         /// Inidate whether need to EnableElementSelector at the hierarchy node Selection change.
@@ -185,7 +185,8 @@ namespace AccessibilityInsights.Modes
                     {
                         CaptureAction.SetLiveModeDataContext(ecId, Configuration.TreeViewMode);
                     }).ConfigureAwait(false);
-                    Application.Current.Dispatcher.Invoke(() => {
+                    Application.Current.Dispatcher.Invoke(() =>
+                    {
                         this.ctrlHierarchy.DataContext = ec.DataContext;
                         this.ElementContext = ec;
 
@@ -229,7 +230,7 @@ namespace AccessibilityInsights.Modes
 
             if (EnableSelectorWhenPOISelectedInHierarchy == false)
             {
-                Application.Current.Dispatcher.Invoke(() => UpdateStateMachineForLiveMode() );
+                Application.Current.Dispatcher.Invoke(() => UpdateStateMachineForLiveMode());
             }
         }
 

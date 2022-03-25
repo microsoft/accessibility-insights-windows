@@ -63,7 +63,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
 
         public Guid StableIdentifier { get; } = new Guid("73D8F6EB-E98A-4285-9BA3-B532A7601CC4");
 
-        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps 
+        public bool IsConfigured => _devOpsIntegration.ConnectedToAzureDevOps
             && Configuration?.SavedConnection?.IsPopulated == true
             && _devOpsIntegration.CheckIfAbleToGetProjects().Result;
 
@@ -110,7 +110,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                         {
                             DisplayText = null,
                             IssueLink = null,
-                            PostAction = () => {
+                            PostAction = () =>
+                            {
                                 MessageDialog.Show(Properties.Resources.There_was_an_error_identifying_the_created_issue_This_may_occur_if_the_ID_used_to_create_the_issue_is_removed_from_its_Azure_DevOps_description_Attachments_have_not_been_uploaded);
                             },
                         };

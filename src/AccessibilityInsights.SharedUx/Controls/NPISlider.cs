@@ -10,7 +10,7 @@ using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
-    public class NPISlider:Slider
+    public class NPISlider : Slider
     {
         protected override AutomationPeer OnCreateAutomationPeer()
         {
@@ -66,7 +66,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             set
             {
-                ((NPISlider)base.Owner).Value = Convert.ToDouble(value,CultureInfo.InvariantCulture);
+                ((NPISlider)base.Owner).Value = Convert.ToDouble(value, CultureInfo.InvariantCulture);
             }
         }
 
@@ -80,7 +80,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         public void SetValue(string value)
         {
-            ((NPISlider)base.Owner).Value = Convert.ToDouble(value,CultureInfo.InvariantCulture);
+            ((NPISlider)base.Owner).Value = Convert.ToDouble(value, CultureInfo.InvariantCulture);
         }
     }
 }

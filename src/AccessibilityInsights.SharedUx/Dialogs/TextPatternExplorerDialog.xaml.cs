@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                     trvms.Add(new TextRangeViewModel(list[i], string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextPatternExplorerDialog_UpdateTextRanges__0___1, prefix, i)));
                 }
             }
-            else if(list.Count == 1)
+            else if (list.Count == 1)
             {
                 trvms.Add(new TextRangeViewModel(list[0], string.Format(CultureInfo.InvariantCulture, Properties.Resources.TextPatternExplorerDialog_UpdateTextRanges__0, prefix)));
             }
@@ -566,7 +566,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="e"></param>
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
-            if(e.Key == Key.Escape)
+            if (e.Key == Key.Escape)
             {
                 this.Close();
             }
@@ -579,9 +579,9 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="e"></param>
         private void cbRanges_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(e.AddedItems.Count > 0)
+            if (e.AddedItems.Count > 0)
             {
-                Dispatcher.BeginInvoke(new Action( () => GetRanges((SourceTypes)(e.AddedItems[0] as ComboBoxItem).Tag)), DispatcherPriority.Background);
+                Dispatcher.BeginInvoke(new Action(() => GetRanges((SourceTypes)(e.AddedItems[0] as ComboBoxItem).Tag)), DispatcherPriority.Background);
             }
         }
 

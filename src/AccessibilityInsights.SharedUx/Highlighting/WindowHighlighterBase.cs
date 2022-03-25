@@ -101,7 +101,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     hdo.TbError.SetValue(Canvas.TopProperty, GetMidPoint(t, el.BoundingRectangle.Height, hdo.TbError.Height));
 
                     hdo.BrdrError.Width = 28;
-                    hdo.BrdrError.Height = 28 ;
+                    hdo.BrdrError.Height = 28;
                     hdo.BrdrError.SetValue(Canvas.LeftProperty, GetMidPoint(l, el.BoundingRectangle.Width, hdo.BrdrError.Width));
                     hdo.BrdrError.SetValue(Canvas.TopProperty, GetMidPoint(t, el.BoundingRectangle.Height, hdo.BrdrError.Height));
 

@@ -27,7 +27,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
             if (processor == null)
                 throw new ArgumentNullException(nameof(processor));
 
-            foreach(Func<TelemetryEvent> eventFactory in _eventFactoryList)
+            foreach (Func<TelemetryEvent> eventFactory in _eventFactoryList)
             {
                 processor(eventFactory());
             }

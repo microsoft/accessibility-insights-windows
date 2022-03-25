@@ -79,7 +79,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (control == null)
                 return;
 
-            control.Orientation = (Orientation) e.NewValue;
+            control.Orientation = (Orientation)e.NewValue;
         }
 
         /// <summary>

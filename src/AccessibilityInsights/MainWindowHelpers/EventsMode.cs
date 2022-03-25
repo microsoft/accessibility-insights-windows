@@ -31,7 +31,7 @@ namespace AccessibilityInsights
                 MessageDialog.Show(Properties.Resources.StartElementDetailViewNoElementIsSelectedMessage);
                 this.AllowFurtherAction = true;
             }
-            else if(e.IsSafeToRefresh() == false)
+            else if (e.IsSafeToRefresh() == false)
             {
                 this.AllowFurtherAction = false;
                 MessageDialog.Show(Properties.Resources.StartEventsModeElementNotAvailableMessage);
@@ -61,7 +61,7 @@ namespace AccessibilityInsights
 #pragma warning restore CS4014
                 this.CurrentPage = AppPage.Events;
                 this.CurrentView = EventsView.Config;
-                PageTracker.TrackPage(this.CurrentPage,this.CurrentView.ToString());
+                PageTracker.TrackPage(this.CurrentPage, this.CurrentView.ToString());
             }
         }
 

@@ -118,7 +118,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void treePatterns_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if(this.treePatterns.SelectedItem != null)
+            if (this.treePatterns.SelectedItem != null)
             {
                 dynamic si = this.treePatterns.SelectedItem;
                 if (si is ScanListViewItemViewModel)
@@ -211,7 +211,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             if (sender is TreeViewItem tvi && tvi.DataContext is PatternViewModel vm && vm.Pattern != null)
             {
-                    ExpStates[vm.Pattern.Id] = true;
+                ExpStates[vm.Pattern.Id] = true;
             }
         }
 

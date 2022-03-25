@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// ViewModel for Not yet supported Action.
     /// </summary>
     [TargetActionView(ViewType = typeof(NotSupportActionView))]
-    public class NotSupportedActionViewModel:BaseActionViewModel
+    public class NotSupportedActionViewModel : BaseActionViewModel
     {
         public NotSupportedActionViewModel(A11yPattern p, MethodInfo m) : base(p, m) { }
 

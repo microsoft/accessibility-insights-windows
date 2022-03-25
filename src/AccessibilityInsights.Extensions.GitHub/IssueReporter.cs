@@ -46,7 +46,7 @@ namespace AccessibilityInsights.Extensions.GitHub
 
         public string ServiceName => Properties.Resources.extensionName;
 
-        public Guid StableIdentifier => new Guid ("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
+        public Guid StableIdentifier => new Guid("bbdf3582-d4a6-4b76-93ea-ef508d1fd4b8");
         public bool IsConfigured { get; private set; }
 
         public string ConfigurationPath { get; private set; }
@@ -93,7 +93,7 @@ namespace AccessibilityInsights.Extensions.GitHub
         private void RestoreConfigurationAsyncAction(string serializedConfig)
         {
             ConnectionConfiguration config = JsonConvert.DeserializeObject<ConnectionConfiguration>(serializedConfig);
-            if (config!=null && !string.IsNullOrEmpty(config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(config.RepoLink))
+            if (config != null && !string.IsNullOrEmpty(config.RepoLink) && LinkValidator.IsValidGitHubRepoLink(config.RepoLink))
             {
                 this.configurationControl.Config = config;
                 this.IsConfigured = true;

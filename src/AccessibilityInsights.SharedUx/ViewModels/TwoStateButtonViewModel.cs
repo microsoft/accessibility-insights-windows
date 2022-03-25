@@ -5,10 +5,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// Keep the status of ToolBarButton
     /// </summary>
-    public class TwoStateButtonViewModel:ViewModelBase
+    public class TwoStateButtonViewModel : ViewModelBase
     {
         private ButtonState state = ButtonState.On;
-        public ButtonState State {
+        public ButtonState State
+        {
             get
             {
                 return state;
@@ -28,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         public void FlipButtonState()
         {
-            if(this.State == ButtonState.On)
+            if (this.State == ButtonState.On)
             {
                 this.State = ButtonState.Off;
             }

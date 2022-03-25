@@ -81,7 +81,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
         #region IDisposable Support
 
-        private bool IsDisposed { get ; set ; }
+        private bool IsDisposed { get; set; }
 
         private void Dispose(bool disposing)
         {

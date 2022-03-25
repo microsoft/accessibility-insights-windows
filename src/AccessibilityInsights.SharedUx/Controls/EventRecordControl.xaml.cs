@@ -39,7 +39,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Event handler to main window for recording start
         /// </summary>
-        public Action<bool> NotifyRecordingChange{ get; set; }
+        public Action<bool> NotifyRecordingChange { get; set; }
 
         /// Updates the focus changed checkbox based on current config setting
         public Action UpdateGlobalFocusEventCheckbox { get; set; }
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             set
             {
                 // if we already have it, release it from ListenAction first.
-                if(_eventRecorderId != null)
+                if (_eventRecorderId != null)
                 {
                     ListenAction.ReleaseInstance(_eventRecorderId.Value);
                 }
@@ -279,8 +279,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         private static IEnumerable<int> GeneratePropertyIds(RecorderSetting config)
         {
             return from c in config.Properties
-                where config.IsListeningAllEvents || c.CheckedCount > 0
-                select c.Id;
+                   where config.IsListeningAllEvents || c.CheckedCount > 0
+                   select c.Id;
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public async void StopRecordEvents(bool onclose = false)
         {
-            if(onclose)
+            if (onclose)
             {
                 this.isClosed = true;
                 if (this.EventRecorderId != null)
@@ -302,7 +302,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 this.ctrlProgressRing.Activate();
 
-                await Task.Run(() => {
+                await Task.Run(() =>
+                {
                     var la = ListenAction.GetInstance(this.EventRecorderId.Value);
                     la.Stop();
                 }).ConfigureAwait(false);
