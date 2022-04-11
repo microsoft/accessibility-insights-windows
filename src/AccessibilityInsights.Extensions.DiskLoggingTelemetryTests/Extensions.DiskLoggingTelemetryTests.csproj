@@ -20,7 +20,7 @@
     </PackageReference>
     <PackageReference Include="Moq" Version="4.17.2" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.8" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.2.8" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.2.9" />
   </ItemGroup>
 
   <ItemGroup>
