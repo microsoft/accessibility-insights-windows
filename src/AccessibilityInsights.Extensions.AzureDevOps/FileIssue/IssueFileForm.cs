@@ -168,8 +168,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
         private async void IssueFileForm_Load(object sender, EventArgs e)
         {
-            await this.fileIssueBrowser.EnsureCoreWebView2Async(null).ConfigureAwait(true);
-            this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
+            CoreWebView2EnvironmentOptions options = new CoreWebView2EnvironmentOptions()
+            {
+                AllowSingleSignOnUsingOSPrimaryAccount = true
+            };
+
+            CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options).ConfigureAwait(true);
+
+            await this.fileIssueBrowser.EnsureCoreWebView2Async(environment).ConfigureAwait(true); this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
 
             this.TopMost = makeTopMost;
             Navigate(this.Url);
