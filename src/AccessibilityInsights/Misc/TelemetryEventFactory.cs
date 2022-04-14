@@ -111,6 +111,7 @@ namespace AccessibilityInsights.Misc
                 new Dictionary<TelemetryProperty, string>
                 {
                     { TelemetryProperty.UIAccessEnabled, NativeMethods.IsRunningWithUIAccess().ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.OsArchitecture, Environment.Is64BitOperatingSystem ? "x64" : "x86" },
                     { TelemetryProperty.InstalledDotNetFrameworkVersion, formattedDotNetFrameworkVersion }
                 });
         }
