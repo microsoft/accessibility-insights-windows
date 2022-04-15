@@ -38,6 +38,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ReleaseChannelConsidered,
         IssueReporter,
         InstalledDotNetFrameworkVersion,
+        OsArchitecture,
         CustomUIAPropertyCount,
     }
 }
