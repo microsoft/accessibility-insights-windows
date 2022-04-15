@@ -88,7 +88,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
                 // so keeping it as is till we have a discussion. Check for blocking behavior at that link.
                 // https://github.com/Microsoft/accessibility-insights-windows/blob/main/src/AccessibilityInsights.SharedUx/Controls/HierarchyControl.xaml.cs#L858
                 IIssueResultWithPostAction result = IssueReporting.FileIssueAsync(issueInformation).Result;
-                result.PostAction?.Invoke();
+                result?.PostAction?.Invoke();
                 IssueReporterManager.GetInstance().UpdateIssueReporterSettings(IssueReporting);
                 return result;
             }
