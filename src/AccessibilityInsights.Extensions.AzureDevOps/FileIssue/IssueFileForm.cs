@@ -175,7 +175,8 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             CoreWebView2Environment environment = await CoreWebView2Environment.CreateAsync(null, null, options).ConfigureAwait(true);
 
-            await this.fileIssueBrowser.EnsureCoreWebView2Async(environment).ConfigureAwait(true); this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
+            await this.fileIssueBrowser.EnsureCoreWebView2Async(environment).ConfigureAwait(true);
+            this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
 
             this.TopMost = makeTopMost;
             Navigate(this.Url);
