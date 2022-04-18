@@ -27,5 +27,5 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - Fix scaling issue in welcome screen in large zoom mode [#1249](https://github.com/microsoft/accessibility-insights-windows/issues/1249)
 - Fix text contrast in the `TextPattern` explorer in dark mode [#1262](https://github.com/microsoft/accessibility-insights-windows/issues/1262)
 - Fix text contrast in the Attribute and Property pickers in dark mode [#1266](https://github.com/microsoft/accessibility-insights-windows/issues/1266)
-- Fix sporadic text highlighter button (and potential crash) [#1290](https://github.com/microsoft/accessibility-insights-windows/issues/1290)
+- Fix sporadic text highlighter button failure (and potential crash) [#1290](https://github.com/microsoft/accessibility-insights-windows/issues/1290)
 - Fix potential telemetry privacy issue if a file on the disk is malformed [#1297](https://github.com/microsoft/accessibility-insights-windows/pull/1297)
