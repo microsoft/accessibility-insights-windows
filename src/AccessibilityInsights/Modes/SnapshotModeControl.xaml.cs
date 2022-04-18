@@ -17,6 +17,7 @@ using Axe.Windows.Actions.Misc;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Desktop.Settings;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
@@ -135,6 +136,7 @@ namespace AccessibilityInsights.Modes
                 ElementContext ec = null;
                 await Task.Run(() =>
                 {
+                    Stopwatch stopwatch = Stopwatch.StartNew();
                     bool contextChanged = CaptureAction.SetTestModeDataContext(ecId,
                         this.DataContextMode, Configuration.TreeViewMode);
                     ec = GetDataAction.GetElementContext(ecId);
@@ -143,7 +145,7 @@ namespace AccessibilityInsights.Modes
                     {
                         // send telemetry of scan results.
                         var dc = GetDataAction.GetElementDataContext(ecId);
-                        dc.PublishScanResults();
+                        dc.PublishScanResults(stopwatch.ElapsedMilliseconds);
                     }
                 }).ConfigureAwait(false);
 
