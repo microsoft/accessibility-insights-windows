@@ -113,7 +113,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
         private void RunAutoCCA(Bitmap bitmap)
         {
-            var bmc = new BitmapCollection(bitmap, new DefaultColorContrastConfig());
+            var bmc = new BitmapCollection(bitmap, new ColorContrastConfigBuilder().Build());
             var result = bmc.RunColorContrastCalculation();
             var pair = result.MostLikelyColorPair;
 
@@ -125,7 +125,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             SetConfidenceVisibility(Visibility.Visible);
             this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
             this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
-            tbConfidence.Text = result.ConfidenceValue().ToString();
+            tbConfidence.Text = result.Confidence.ToString();
         }
 
         private void SetConfidenceVisibility(Visibility visibility)

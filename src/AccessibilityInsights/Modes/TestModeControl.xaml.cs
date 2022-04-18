@@ -148,6 +148,7 @@ namespace AccessibilityInsights.Modes
 
                     await Task.Run(() =>
                     {
+                        Stopwatch stopwatch = Stopwatch.StartNew();
                         bool contextChanged = CaptureAction.SetTestModeDataContext(ecId,
                             this.DataContextMode, Configuration.TreeViewMode);
                         ec = GetDataAction.GetElementContext(ecId);
@@ -163,7 +164,7 @@ namespace AccessibilityInsights.Modes
                         }
                         if (contextChanged && this.DataContextMode != DataContextMode.Load)
                         {
-                            dc.PublishScanResults();
+                            dc.PublishScanResults(stopwatch.ElapsedMilliseconds);
                         }
                     }).ConfigureAwait(false);
 
