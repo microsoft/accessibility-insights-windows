@@ -8,7 +8,7 @@
                     xmlns:colorpickers="clr-namespace:AccessibilityInsights.SharedUx.Controls.ColorPicker"
                     xmlns:controls="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
                     xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
-                      xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
+                    xmlns:properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <converters:TreeNodeToMarginConverter x:Key="nodeMargin"/>
     <Style x:Key="{x:Static SystemParameters.FocusVisualStyleKey}">
@@ -1233,10 +1233,9 @@
         <Setter Property="FontWeight" Value="Regular"/>
         <Style.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                 <Setter Property="TextBlock.LayoutTransform">
                     <Setter.Value>
+                        <!-- This reduces the visual shift that occurs due to the extra width of bold text-->
                         <ScaleTransform ScaleX=".97"/>
                     </Setter.Value>
                 </Setter>
@@ -1262,6 +1261,10 @@
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsHighlighted" Value="false">
                             <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
