@@ -1255,6 +1255,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <fabric:FabricIconControl Foreground="{TemplateBinding Foreground}" x:Name="fbIcn" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" GlyphName="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}" ShowInControlView="False"/>
+                            <fabric:FabricIconControl Foreground="{TemplateBinding Foreground}" x:Name="fbCheckMark" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" Visibility="Collapsed" GlyphName="CheckMark" ShowInControlView="False"/>
                             <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" LayoutTransform="{TemplateBinding LayoutTransform}"/>
                         </Grid>
                     </Border>
@@ -1266,14 +1267,19 @@
                             <Setter Property="Opacity" Value="0.5"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter TargetName="fbIcn" Property="GlyphName" Value="CheckMark"/>
+                            <Setter TargetName="fbCheckMark" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
-    <Style TargetType="{x:Type ContextMenu}" x:Key="menuDefault">
+    <Style TargetType="{x:Type ContextMenu}" x:Key="ctxMenuDefault">
+        <Style.Resources>
+            <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miBoldOnSelection}"/>
+        </Style.Resources>
+    </Style>
+    <Style TargetType="{x:Type Menu}" x:Key="menuDefault">
         <Style.Resources>
             <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miBoldOnSelection}"/>
         </Style.Resources>

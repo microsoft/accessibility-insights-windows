@@ -131,7 +131,7 @@
                 </Button.ToolTip>
                 <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                 <Button.ContextMenu>
-                    <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings" Style="{StaticResource menuDefault}">
+                    <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings" Style="{StaticResource ctxMenuDefault}">
                         <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_TreeView}">
                             <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
