@@ -453,7 +453,7 @@
                                     </i:Interaction.Behaviors>
                                     <fabric:FabricIconControl GlyphName="Timer" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                     <Button.ContextMenu>
-                                        <ContextMenu>
+                                        <ContextMenu Style="{StaticResource menuPlainWhite}">
                                             <MenuItem Name="miTimer" AutomationProperties.Name="{x:Static properties:Resources.miTimerAutomationPropertiesName}" Click="btnTimer_Click">
                                                 <MenuItem.Header>
                                                     <TextBlock Name="tbTimer">

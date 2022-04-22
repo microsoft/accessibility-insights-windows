@@ -63,8 +63,8 @@
                         </MenuItem>
                     </ContextMenu>
                     <ContextMenu x:Key="cmLive" FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
-                        <MenuItem Tag="LightningBolt" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderListenToEvents}" Click="mniEvents_Click" Style="{StaticResource miFabIcon}"/>
-                        <MenuItem Tag="LadybugSolid" Visibility ="{Binding FileBugVisibility}" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderNewIssue}" Click="mniFileBugLive_Click" Style="{StaticResource miFabIcon}"/>
+                        <MenuItem Tag="LightningBolt" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderListenToEvents}" Click="mniEvents_Click"/>
+                        <MenuItem Tag="LadybugSolid" Visibility ="{Binding FileBugVisibility}" IsCheckable="False" Header="{x:Static Properties:Resources.MenuItemHeaderNewIssue}" Click="mniFileBugLive_Click"/>
                     </ContextMenu>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
@@ -131,7 +131,7 @@
                 </Button.ToolTip>
                 <controls:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                 <Button.ContextMenu>
-                    <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings">
+                    <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings" Style="{StaticResource menuDefault}">
                         <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_TreeView}">
                             <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">

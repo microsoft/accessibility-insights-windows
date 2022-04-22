@@ -22,7 +22,7 @@
             <TreeView.ContextMenu>
                 <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                     <MenuItem x:Name="copyMenuItemPattern" Tag="Copy" IsCheckable="False" 
-                              Header="{x:Static Properties:Resources.copyMenuItemPatternHeader}" Style="{StaticResource miFabIcon}"
+                              Header="{x:Static Properties:Resources.copyMenuItemPatternHeader}"
                               Click="copyMenuItemPattern_Click"/>
                 </ContextMenu>
             </TreeView.ContextMenu>

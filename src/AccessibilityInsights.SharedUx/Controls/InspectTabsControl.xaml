@@ -91,7 +91,7 @@
                                     </Button.ToolTip>
                                     <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource ResourceKey=hoverAwareFabricIconOnButtonParent}"/>
                                     <Button.ContextMenu>
-                                        <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}">
+                                        <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName2}" Style="{StaticResource menuPlainWhite}">
                                             <MenuItem Header="{x:Static Properties:Resources.InspectTabsControl_Menu_ShowAllPropertiesWithValues}" x:Name="mniShowCoreProps" IsCheckable="true" 
                                                     Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
                                             <MenuItem Header="{x:Static Properties:Resources.InspectTabsControl_Menu_ConfigurePropertiesToAlwaysShow}" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click" />
