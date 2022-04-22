@@ -116,7 +116,7 @@
                     </Button.Style>
                     <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                     <Button.ContextMenu>
-                        <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded">
+                        <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded" Style="{StaticResource ctxMenuDefault}">
                             <MenuItem Header="{x:Static Properties:Resources.EventRecordControlScopeHeader}">
                                 <MenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRB_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName}">

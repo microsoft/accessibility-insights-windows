@@ -72,7 +72,7 @@
                             </i:Interaction.Behaviors>
                             <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="9" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                             <Button.ContextMenu>
-                                <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingContextMenuAutomationPropertiesName}">
+                                <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingContextMenuAutomationPropertiesName}" Style="{StaticResource menuPlainWhite}">
                                     <MenuItem Header="{x:Static Properties:Resources.mniShowCorePropsHeader}" x:Name="mniShowCoreProps" IsCheckable="true" 
                                     Background="White" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
                                     <MenuItem Header="{x:Static Properties:Resources.mniIncludeAllPropsHeader}" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"

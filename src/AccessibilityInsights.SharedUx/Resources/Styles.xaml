@@ -1229,39 +1229,68 @@
     <Style TargetType="{x:Type CheckBox}" x:Key="CkbxRightSide" BasedOn="{StaticResource CheckBoxContastingBorder}">
         <Setter Property="FontSize" Value="14"/>
     </Style>
-    <Style TargetType="{x:Type MenuItem}" x:Key="miFabIcon">
+    <Style TargetType="{x:Type MenuItem}" x:Key="miBoldOnSelection">
+        <Setter Property="FontWeight" Value="Regular"/>
+        <Style.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="TextBlock.LayoutTransform">
+                    <Setter.Value>
+                        <!-- This reduces the visual shift that occurs due to the extra width of bold text-->
+                        <ScaleTransform ScaleX=".97"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    <Style TargetType="{x:Type MenuItem}" x:Key="miFabIcon" BasedOn="{StaticResource miBoldOnSelection}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type MenuItem}">
-                    <Border Padding="8,4" x:Name="Border" Background="{DynamicResource ResourceKey=SecondaryBGBrush}">
+                    <Border Padding="8,4" x:Name="Border" Background="{TemplateBinding Background}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="24"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <fabric:FabricIconControl x:Name="fbIcn" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" GlyphName="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}" ShowInControlView="False"/>
-                            <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" />
+                            <fabric:FabricIconControl Foreground="{TemplateBinding Foreground}" x:Name="fbIcn" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" GlyphName="{Binding Tag, RelativeSource={RelativeSource Mode=TemplatedParent}}" ShowInControlView="False"/>
+                            <fabric:FabricIconControl Foreground="{TemplateBinding Foreground}" x:Name="fbCheckMark" VerticalAlignment="Center" Grid.Column="0" GlyphSize="Small" Visibility="Collapsed" GlyphName="CheckMark" ShowInControlView="False"/>
+                            <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" LayoutTransform="{TemplateBinding LayoutTransform}"/>
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
-                        <Trigger Property="IsHighlighted" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
-                            <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
-                            <Setter Property="FontWeight" Value="Bold"/>
-                        </Trigger>
                         <Trigger Property="IsHighlighted" Value="false">
                             <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
                         </Trigger>
+                        <Trigger Property="IsHighlighted" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="fbCheckMark" Property="Visibility" Value="Visible"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type ContextMenu}" x:Key="ctxMenuDefault">
+        <Style.Resources>
+            <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miBoldOnSelection}"/>
+        </Style.Resources>
+    </Style>
+    <Style TargetType="{x:Type Menu}" x:Key="menuDefault">
+        <Style.Resources>
+            <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miBoldOnSelection}"/>
+        </Style.Resources>
+    </Style>
     <Style TargetType="{x:Type ContextMenu}" x:Key="menuPlainWhite">
+        <Style.Resources>
+            <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miFabIcon}"/>
+        </Style.Resources>
         <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
         <Setter Property="Template">
             <Setter.Value>

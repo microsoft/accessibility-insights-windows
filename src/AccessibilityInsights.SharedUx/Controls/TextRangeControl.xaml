@@ -106,7 +106,7 @@
                         </i:Interaction.Behaviors>
                         <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                         <Button.ContextMenu>
-                            <ContextMenu FlowDirection="LeftToRight">
+                            <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                                 <MenuItem Header="{x:Static Properties:Resources.TextRangeControl_Menu_CollapseAnnotationTypes}" IsChecked="True" IsCheckable="True" Click="MenuItem_Click"/>
                                 <Separator/>
                                 <MenuItem Header="{x:Static Properties:Resources.TextRangeControl_Menu_ShowAllAttributesWithValues}" IsChecked="True" IsCheckable="True" Name="mniShowAll" Click="mniShowAll_Click"/>
@@ -183,7 +183,7 @@
                 </i:Interaction.Behaviors>
                 <fabric:FabricIconControl GlyphName="Settings" GlyphSize="Custom" FontSize="12" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnUnthemedButtonParent}"/>
                 <Button.ContextMenu>
-                    <ContextMenu FlowDirection="LeftToRight">
+                    <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
                         <MenuItem Header="{x:Static Properties:Resources.TextRangeControl_Menu_ReplaceWhitespaceWithSymbols}" IsChecked="True" IsCheckable="True" Name="mniWhitespace" Click="mniWhitespace_Click"/>
                     </ContextMenu>
                 </Button.ContextMenu>

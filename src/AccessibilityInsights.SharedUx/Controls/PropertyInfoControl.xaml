@@ -60,7 +60,7 @@
                     </i:Interaction.Behaviors>
                     <ListView.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Style="{StaticResource menuPlainWhite}">
-                            <MenuItem x:Name="copyMenuItemProperty" Tag="{x:Static Properties:Resources.copyMenuItemPropertyTag}" IsCheckable="False" Header="{x:Static Properties:Resources.copyMenuItemPropertyHeader}" Command="Copy" Style="{StaticResource miFabIcon}"/>
+                            <MenuItem x:Name="copyMenuItemProperty" Tag="{x:Static Properties:Resources.copyMenuItemPropertyTag}" IsCheckable="False" Header="{x:Static Properties:Resources.copyMenuItemPropertyHeader}" Command="Copy"/>
                         </ContextMenu>
                     </ListView.ContextMenu>
                     <ListView.View>
