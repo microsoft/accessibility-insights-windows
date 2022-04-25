@@ -142,7 +142,7 @@
     <value>Configure settings of Accessibility Insights for Windows</value>
   </data>
   <data name="btnConfigAutomationPropertiesName" xml:space="preserve">
-    <value>Settings 1 of 2</value>
+    <value>Application Settings</value>
   </data>
   <data name="btnConfigToolTip" xml:space="preserve">
     <value>Change settings...</value>

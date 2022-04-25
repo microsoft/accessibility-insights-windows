@@ -151,7 +151,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings 1 of 2.
+        ///   Looks up a localized string similar to Application Settings.
         /// </summary>
         public static string btnConfigAutomationPropertiesName {
             get {
