@@ -190,6 +190,7 @@ Name | Value
 --- | ---
 `customDimensions.ElementsInScan` | The number of elements included in the scan.
 `customDimensions.UpperBoundExceeded` | `True` if ElementsInScan exceeds our upper bound of 20,000, otherwise `False`.
+`customDimensions.ScanDurationInMilliseconds` | The time (measured in milliseconds) spent running the scan.
 
 #### SingleRule_Tested_Results
 Trigger: A single rule runs on all elements within a scan.  
