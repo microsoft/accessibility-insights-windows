@@ -320,7 +320,7 @@ namespace AccessibilityInsights
             else
             {
                 btnAccountConfig.Visibility = Visibility.Collapsed;
-                btnAccountConfig.SetValue(AutomationProperties.NameProperty, Properties.Resources.btnConfigAutomationPropertiesNameNoBugFiling);
+                btnConfig.SetValue(AutomationProperties.NameProperty, Properties.Resources.btnConfigAutomationPropertiesNameNoBugFiling);
             }
 
             handleWindowStateChange();
