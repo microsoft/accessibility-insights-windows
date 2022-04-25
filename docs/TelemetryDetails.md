@@ -190,6 +190,7 @@ Name | Value
 --- | ---
 `customDimensions.ElementsInScan` | The number of elements included in the scan.
 `customDimensions.UpperBoundExceeded` | `True` if ElementsInScan exceeds our upper bound of 20,000, otherwise `False`.
+`customDimensions.ScanDurationInMilliseconds` | The time (measured in milliseconds) spent running the scan.
 
 #### SingleRule_Tested_Results
 Trigger: A single rule runs on all elements within a scan.  
@@ -301,7 +302,7 @@ Name | Description | Dynamic Value? | Sample
 `customDimensions.ModeSessionId` | A Guid that allows correlation within a specific mode change within a session. | Yes | *some guid*
 
 ##### client_OS Values
-The Windows version is fetched directly from the registry. The CurrentVersion and CurrentBuildVersion registry values from the "HKLM\SOFTWARE\Microsoft\Windows NT" key are combined into a single string format. The current mappings (based on a blend of https://en.wikipedia.org/wiki/Windows_10_version_history and http://www.jrsoftware.org/ishelp/index.php?topic=winvernotes) include:
+The Windows version is fetched directly from the registry. The CurrentVersion and CurrentBuildVersion registry values from the "HKLM\SOFTWARE\Microsoft\Windows NT" key are combined into a single string format. The current mappings (based on a blend of https://en.wikipedia.org/wiki/Windows_10_version_history, https://en.wikipedia.org/wiki/Windows_11_version_history, and http://www.jrsoftware.org/ishelp/index.php?topic=winvernotes) include:
 
 Value | OS Version
 --- | ---
@@ -319,6 +320,10 @@ Value | OS Version
 6.3.18363 | Windows 10 (1909)
 6.3.19041 | Windows 10 (2004)
 6.3.19042 | Windows 10 (20H2)
+6.3.19043 | Windows 10 (21H1)
+6.3.19044 | Windows 10 (21H2)
+6.3.20348 | Windows Server 2022 (21H2)
+6.3.22000 | Windows 11 (21H2)
 
 This table includes only officially published builds. The data in table may also include builds that were not officially published, such as insider or preview builds.
 
