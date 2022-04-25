@@ -611,7 +611,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Hierarchy Tree Settings.
         /// </summary>
         public static string btnSettingsAutomationPropertiesName1 {
             get {
