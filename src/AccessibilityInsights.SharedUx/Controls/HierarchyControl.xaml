@@ -121,7 +121,7 @@
                   BorderThickness="0"  HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                   Height="28" Width="35" 
                   Style="{StaticResource BtnStandard}"
-                  AutomationProperties.Name="{x:Static Properties:Resources.btnSettingsAutomationPropertiesName1}">
+                  AutomationProperties.Name="{x:Static Properties:Resources.btnHierarchyTreeSettingsAutomationPropertiesName}">
                 <i:Interaction.Behaviors>
                     <behaviors:KeyboardToolTipButtonBehavior/>
                     <behaviors:DropDownButtonBehavior/>

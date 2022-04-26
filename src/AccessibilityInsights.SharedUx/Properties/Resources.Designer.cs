@@ -458,6 +458,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hierarchy Tree Settings.
+        /// </summary>
+        public static string btnHierarchyTreeSettingsAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("btnHierarchyTreeSettingsAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Highlight bounding rectangles.
         /// </summary>
         public static string btnHilightAutomationPropertiesName {
@@ -607,15 +616,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string btnSettingContextMenuAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnSettingContextMenuAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hierarchy Tree Settings.
-        /// </summary>
-        public static string btnSettingsAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnSettingsAutomationPropertiesName1", resourceCulture);
             }
         }
         
