@@ -1749,4 +1749,7 @@ URL: {0}</value>
   <data name="TextRangeControl_Value_Header" xml:space="preserve">
     <value>Value</value>
   </data>
+  <data name="btnEventSettingsAutomationPropertiesName" xml:space="preserve">
+    <value>Event Settings</value>
+  </data>
 </root>

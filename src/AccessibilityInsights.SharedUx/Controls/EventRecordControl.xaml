@@ -104,7 +104,7 @@
                 <Button x:Name="btnSetting" Grid.Column="1"
                         HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"
                         Height="28" Width="35" 
-                        AutomationProperties.Name="{x:Static Properties:Resources.btnSettingAutomationPropertiesName}">
+                        AutomationProperties.Name="{x:Static Properties:Resources.btnEventSettingsAutomationPropertiesName}">
                     <i:Interaction.Behaviors>
                         <behaviors:DropDownButtonBehavior/>
                         <behaviors:KeyboardToolTipButtonBehavior/>

@@ -395,6 +395,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event Settings.
+        /// </summary>
+        public static string btnEventSettingsAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("btnEventSettingsAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         public static string btnExitContentTelemetryOK {
