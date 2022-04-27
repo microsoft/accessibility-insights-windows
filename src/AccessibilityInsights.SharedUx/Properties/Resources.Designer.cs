@@ -395,6 +395,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Event Settings.
+        /// </summary>
+        public static string btnEventSettingsAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("btnEventSettingsAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
         public static string btnExitContentTelemetryOK {
@@ -454,6 +463,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string btnForwardAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnForwardAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hierarchy Tree Settings.
+        /// </summary>
+        public static string btnHierarchyTreeSettingsAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("btnHierarchyTreeSettingsAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -607,15 +625,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string btnSettingContextMenuAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnSettingContextMenuAutomationPropertiesName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Settings.
-        /// </summary>
-        public static string btnSettingsAutomationPropertiesName1 {
-            get {
-                return ResourceManager.GetString("btnSettingsAutomationPropertiesName1", resourceCulture);
             }
         }
         

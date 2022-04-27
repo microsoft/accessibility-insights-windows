@@ -88,11 +88,20 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sign in 2 of 2.
+        ///   Looks up a localized string similar to Sign in 1 of 2.
         /// </summary>
         public static string btnAccountConfigAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("btnAccountConfigAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} 1 of 2.
+        /// </summary>
+        public static string btnAccountConfigAutomationPropertiesNameFormat {
+            get {
+                return ResourceManager.GetString("btnAccountConfigAutomationPropertiesNameFormat", resourceCulture);
             }
         }
         
@@ -151,7 +160,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings 1 of 2.
+        ///   Looks up a localized string similar to Application Settings 2 of 2.
         /// </summary>
         public static string btnConfigAutomationPropertiesName {
             get {
@@ -160,7 +169,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Settings.
+        ///   Looks up a localized string similar to Application Settings.
         /// </summary>
         public static string btnConfigAutomationPropertiesNameNoBugFiling {
             get {
@@ -602,7 +611,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SignIn.
+        ///   Looks up a localized string similar to Sign in.
         /// </summary>
         public static string HandleLogoutRequestSignIn {
             get {

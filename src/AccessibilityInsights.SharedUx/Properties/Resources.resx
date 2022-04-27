@@ -632,8 +632,8 @@
   <data name="SetterValueSearchByName" xml:space="preserve">
     <value>Search by name and control type</value>
   </data>
-  <data name="btnSettingsAutomationPropertiesName1" xml:space="preserve">
-    <value>Settings</value>
+  <data name="btnHierarchyTreeSettingsAutomationPropertiesName" xml:space="preserve">
+    <value>Hierarchy Tree Settings</value>
   </data>
   <data name="btnSettingToolTip1" xml:space="preserve">
     <value>UI Automation Tree Settings</value>
@@ -1748,5 +1748,8 @@ URL: {0}</value>
   </data>
   <data name="TextRangeControl_Value_Header" xml:space="preserve">
     <value>Value</value>
+  </data>
+  <data name="btnEventSettingsAutomationPropertiesName" xml:space="preserve">
+    <value>Event Settings</value>
   </data>
 </root>
