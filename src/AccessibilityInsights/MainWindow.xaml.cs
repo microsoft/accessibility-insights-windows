@@ -494,8 +494,7 @@ namespace AccessibilityInsights
             if (gridlayerConfig.Visibility == Visibility.Visible)
                 return nextPane;
 
-            var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null)
+            if (!(this.ctrlCurMode is ISupportInnerF6Navigation subPaneNavigation))
                 return nextPane;
 
             var subPane = subPaneNavigation.GetFirstPane();
@@ -514,8 +513,7 @@ namespace AccessibilityInsights
             if (nextPane != this.gridLayerModes)
                 return nextPane;
 
-            var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null)
+            if (!(this.ctrlCurMode is ISupportInnerF6Navigation subPaneNavigation))
                 return nextPane;
 
             var subPane = subPaneNavigation.GetLastPane();
