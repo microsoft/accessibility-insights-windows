@@ -279,8 +279,10 @@ namespace AccessibilityInsights
         {
             if (CommandLineSettings.AttachToDebugger)
             {
-                var dlg = new MessageDialog();
-                dlg.Message = Properties.Resources.SupportDebuggingDialogMessage;
+                var dlg = new MessageDialog
+                {
+                    Message = Properties.Resources.SupportDebuggingDialogMessage
+                };
                 dlg.ShowDialog();
             }
         }
