@@ -755,7 +755,7 @@ namespace AccessibilityInsights
         {
             bool isConfigured = IssueReporter.IssueReporting != null && IssueReporter.IsConnected;
             string fabricIconName = IssueReporter.Logo.ToString("g");
-            fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
+            fabricIconName = int.TryParse(fabricIconName, out int _) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
 
             // Main window UI changes
             vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
