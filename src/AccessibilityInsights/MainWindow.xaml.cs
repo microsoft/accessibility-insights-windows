@@ -34,9 +34,7 @@ namespace AccessibilityInsights
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-#pragma warning disable CA1001 // Types that own disposable fields should be disposable
     public partial class MainWindow : Window, IMainWindow, IControlTreeNavigation
-#pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
 
@@ -890,9 +888,7 @@ namespace AccessibilityInsights
                 using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
                     Title = Properties.Resources.btnLoad_ClickDialogTitle,
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                     Filter = FileFilters.A11yFileFilter,
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
                     InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
                     AutoUpgradeEnabled = !SystemParameters.HighContrast,
                 })
