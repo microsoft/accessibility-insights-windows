@@ -918,8 +918,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
-            int sec;
-            if (int.TryParse(tbxTimer.Text, out sec))
+            if (int.TryParse(tbxTimer.Text, out int sec))
             {
                 sec = Math.Max(sec, 1); // make sure that delay is bigger than 1 seconds.
                 this.tbxTimer.Text = sec.ToString(CultureInfo.InvariantCulture); // set the new value back.
