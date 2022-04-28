@@ -34,7 +34,9 @@ namespace AccessibilityInsights
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
     public partial class MainWindow : Window, IMainWindow, IControlTreeNavigation
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         const string HelpDocLink = "https://go.microsoft.com/fwlink/?linkid=2077919";
 
