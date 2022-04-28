@@ -1035,8 +1035,8 @@ namespace AccessibilityInsights
                     break;
             }
         }
-#pragma warning restore IDE1006 // Naming Styles follow old standard
-
         #endregion
+
+#pragma warning restore IDE1006 // Naming Styles follow old standard
     }
 }
