@@ -41,6 +41,7 @@ namespace AccessibilityInsights
         IntPtr hWnd;
         private bool isClosed;
 
+#pragma warning disable IDE1006 // Naming Styles follow old standard
         public TwoStateButtonViewModel vmHilighter { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
         public TwoStateButtonViewModel vmLiveModePauseResume { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
 
@@ -1034,6 +1035,7 @@ namespace AccessibilityInsights
                     break;
             }
         }
+#pragma warning restore IDE1006 // Naming Styles follow old standard
 
         #endregion
     }
