@@ -43,6 +43,7 @@ namespace AccessibilityInsights
         IntPtr hWnd;
         private bool isClosed;
 
+#pragma warning disable IDE1006 // Naming Styles follow old standard
         public TwoStateButtonViewModel vmHilighter { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
         public TwoStateButtonViewModel vmLiveModePauseResume { get; private set; } = new TwoStateButtonViewModel(ButtonState.On);
 
@@ -281,8 +282,10 @@ namespace AccessibilityInsights
         {
             if (CommandLineSettings.AttachToDebugger)
             {
-                var dlg = new MessageDialog();
-                dlg.Message = Properties.Resources.SupportDebuggingDialogMessage;
+                var dlg = new MessageDialog
+                {
+                    Message = Properties.Resources.SupportDebuggingDialogMessage
+                };
                 dlg.ShowDialog();
             }
         }
@@ -494,8 +497,7 @@ namespace AccessibilityInsights
             if (gridlayerConfig.Visibility == Visibility.Visible)
                 return nextPane;
 
-            var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null)
+            if (!(this.ctrlCurMode is ISupportInnerF6Navigation subPaneNavigation))
                 return nextPane;
 
             var subPane = subPaneNavigation.GetFirstPane();
@@ -514,8 +516,7 @@ namespace AccessibilityInsights
             if (nextPane != this.gridLayerModes)
                 return nextPane;
 
-            var subPaneNavigation = this.ctrlCurMode as ISupportInnerF6Navigation;
-            if (subPaneNavigation == null)
+            if (!(this.ctrlCurMode is ISupportInnerF6Navigation subPaneNavigation))
                 return nextPane;
 
             var subPane = subPaneNavigation.GetLastPane();
@@ -755,7 +756,7 @@ namespace AccessibilityInsights
         {
             bool isConfigured = IssueReporter.IssueReporting != null && IssueReporter.IsConnected;
             string fabricIconName = IssueReporter.Logo.ToString("g");
-            fabricIconName = int.TryParse(fabricIconName, out int invalidLogo) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
+            fabricIconName = int.TryParse(fabricIconName, out int _) ? ReporterFabricIcon.PlugConnected.ToString("g") : fabricIconName;
 
             // Main window UI changes
             vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
@@ -890,9 +891,7 @@ namespace AccessibilityInsights
                 using (var dlg = new System.Windows.Forms.OpenFileDialog
                 {
                     Title = Properties.Resources.btnLoad_ClickDialogTitle,
-#pragma warning disable CA1303 // Do not pass literals as localized parameters
                     Filter = FileFilters.A11yFileFilter,
-#pragma warning restore CA1303 // Do not pass literals as localized parameters
                     InitialDirectory = ConfigurationManager.GetDefaultInstance().AppConfig.TestReportPath,
                     AutoUpgradeEnabled = !SystemParameters.HighContrast,
                 })
@@ -920,8 +919,7 @@ namespace AccessibilityInsights
         /// <param name="e"></param>
         private void btnTimer_Click(object sender, RoutedEventArgs e)
         {
-            int sec;
-            if (int.TryParse(tbxTimer.Text, out sec))
+            if (int.TryParse(tbxTimer.Text, out int sec))
             {
                 sec = Math.Max(sec, 1); // make sure that delay is bigger than 1 seconds.
                 this.tbxTimer.Text = sec.ToString(CultureInfo.InvariantCulture); // set the new value back.
@@ -1039,7 +1037,8 @@ namespace AccessibilityInsights
                     break;
             }
         }
-
         #endregion
+
+#pragma warning restore IDE1006 // Naming Styles follow old standard
     }
 }
