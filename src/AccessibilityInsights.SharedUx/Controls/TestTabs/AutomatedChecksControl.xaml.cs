@@ -3,6 +3,7 @@
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -303,12 +304,17 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
+                    var viewModel = new AutomatedChecksCustomListViewModel(ec.DataContext, NotifyElementSelected, SwitchToServerLogin)
+                    {
+                        ElementContext = ec,
+                    };
+                    
                     this.lblCongrats.Visibility = Visibility.Collapsed;
                     this.lblNoFail.Visibility = Visibility.Collapsed;
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
+                    this.lvResults2.SetViewModel(viewModel);
                     this.lvResults2.CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
-//                    this.chbxSelectAll.IsEnabled = ScreenshotAvailable;
                     this.lvResults2.ListView.ItemsSource = null;
                     this.ElementContext = ec;
                     this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
@@ -335,10 +341,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.AllExpanded = false;
             this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-            // fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.lvResults2.CheckBoxSelectAll.IsChecked = false;
-            // this.chbxSelectAll.IsChecked = false;
             HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
@@ -709,7 +713,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         ///// <param name="e"></param>
         //private void ListViewItem_Unselected(object sender, RoutedEventArgs e)
         //{
-
         //    var lvi = sender as ListViewItem;
         //    var exp = GetParentElem<Expander>(lvi) as Expander;
         //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
@@ -737,7 +740,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         //        groupitem.Tag = "zero";
         //    }
         //    UpdateSelectAll();
-
         //}
 
         /// <summary>
@@ -748,17 +750,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (SelectedItems.Count == 0)
             {
                 lvResults2.CheckBoxSelectAll.IsChecked = false;
-                // chbxSelectAll.IsChecked = false;
             }
             else if (SelectedItems.Count == lvResults2.ListView.Items.Count)
             {
                 lvResults2.CheckBoxSelectAll.IsChecked = true;
-                // chbxSelectAll.IsChecked = true;
             }
             else
             {
                 lvResults2.CheckBoxSelectAll.IsChecked = null;
-                // chbxSelectAll.IsChecked = null;
             }
         }
 
@@ -959,61 +958,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         //{
         //    e.Handled = true;
         //}
-
-//        /// <summary>
-//        /// Handles click on file bug button
-//        /// </summary>
-//        /// <param name="sender"></param>
-//        /// <param name="e"></param>
-//        private void btnFileBug_Click(object sender, RoutedEventArgs e)
-//        {
-//            var vm = ((Button)sender).Tag as RuleResultViewModel;
-//            if (vm.IssueLink != null)
-//            {
-//                // Bug already filed, open it in a new window
-//                try
-//                {
-//                    Process.Start(vm.IssueLink.OriginalString);
-//                }
-//#pragma warning disable CA1031 // Do not catch general exception types
-//                catch (Exception ex)
-//                {
-//                    ex.ReportException();
-//                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
-//                    MessageDialog.Show(ex.InnerException?.Message);
-//                    vm.IssueDisplayText = null;
-//                }
-//#pragma warning restore CA1031 // Do not catch general exception types
-//            }
-//            else
-//            {
-//                // File a new bug
-//                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
-//                Logger.PublishTelemetryEvent(telemetryEvent);
-
-//                if (IssueReporter.IsConnected)
-//                {
-//                    IssueInformation issueInformation = vm.GetIssueInformation();
-//                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
-
-//                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-//                    if (issueResult != null)
-//                    {
-//                        vm.IssueDisplayText = issueResult.DisplayText;
-//                        vm.IssueLink = issueResult.IssueLink;
-//                    }
-//                    File.Delete(issueInformation.TestFileName);
-//                }
-//                else
-//                {
-//                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
-//                    if (accepted.HasValue && accepted.Value)
-//                    {
-//                        SwitchToServerLogin();
-//                    }
-//                }
-//            }
-//        }
 
         //private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         //{

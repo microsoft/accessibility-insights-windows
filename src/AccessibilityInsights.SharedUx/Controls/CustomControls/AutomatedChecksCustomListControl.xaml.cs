@@ -2,6 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.SharedUx.ViewModels;
+using Axe.Windows.Actions.Contexts;
+using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,9 +36,16 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public FabricIconControl FabricIconExpandAll => this.fabicnExpandAll;
         public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
+        private AutomatedChecksCustomListViewModel _viewModel;
+
         public AutomatedChecksCustomListControl()
         {
             InitializeComponent();
+        }
+
+        internal void SetViewModel(AutomatedChecksCustomListViewModel viewModel)
+        {
+            _viewModel = viewModel;
         }
 
         /// <summary>
@@ -75,7 +85,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void ButtonElem_Click(object sender, RoutedEventArgs e)
         {
-            // TODO NotifySelected(((Button)sender).Tag as A11yElement);
+            _viewModel.NotifySelected(((Button)sender).Tag as A11yElement);
         }
 
         /// <summary>
@@ -85,52 +95,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
-//            var vm = ((Button)sender).Tag as RuleResultViewModel;
-//            if (vm.IssueLink != null)
-//            {
-//                // Bug already filed, open it in a new window
-//                try
-//                {
-//                    Process.Start(vm.IssueLink.OriginalString);
-//                }
-//#pragma warning disable CA1031 // Do not catch general exception types
-//                catch (Exception ex)
-//                {
-//                    ex.ReportException();
-//                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
-//                    MessageDialog.Show(ex.InnerException?.Message);
-//                    vm.IssueDisplayText = null;
-//                }
-//#pragma warning restore CA1031 // Do not catch general exception types
-//            }
-//            else
-//            {
-//                // File a new bug
-//                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
-//                Logger.PublishTelemetryEvent(telemetryEvent);
+            var vm = ((Button)sender).Tag as RuleResultViewModel;
+            _viewModel.FileBug(vm);
 
-//                if (IssueReporter.IsConnected)
-//                {
-//                    IssueInformation issueInformation = vm.GetIssueInformation();
-//                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
-
-//                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-//                    if (issueResult != null)
-//                    {
-//                        vm.IssueDisplayText = issueResult.DisplayText;
-//                        vm.IssueLink = issueResult.IssueLink;
-//                    }
-//                    File.Delete(issueInformation.TestFileName);
-//                }
-//                else
-//                {
-//                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
-//                    if (accepted.HasValue && accepted.Value)
-//                    {
-//                        SwitchToServerLogin();
-//                    }
-//                }
-//            }
         }
 
         private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
