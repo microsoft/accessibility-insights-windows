@@ -16,6 +16,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -26,6 +29,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private readonly Action _switchToServerLogin;
 
         internal ElementContext ElementContext { get; set; }
+        internal bool AllExpanded { get; set; }
 
         internal AutomatedChecksCustomListViewModel(ElementDataContext dataContext, Action notifyElementSelected, Action switchToServerLogin)
         {
@@ -89,6 +93,53 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                         _switchToServerLogin();
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Handles click on source link button
+        /// </summary>
+        public static void OpenLinkToRuleSource(RuleResultViewModel vm)
+        {
+            string urlToLaunch = vm?.URL?.ToString();
+            if (!string.IsNullOrEmpty(urlToLaunch))
+            {
+                Process.Start(urlToLaunch);
+            }
+        }
+
+        /// <summary>
+        /// Toggle the ExpandAll state, update expanders
+        /// </summary>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public bool ToggleExpandAll(DependencyObject root)
+        {
+            AllExpanded = !AllExpanded;
+            ExpandAllExpanders(root);
+            return AllExpanded;
+        }
+
+        /// <summary>
+        /// Finds and expands all expanders recursively
+        /// </summary>
+        /// <param name="root"></param>
+        public void ExpandAllExpanders(DependencyObject root)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            if (root is Expander)
+            {
+                (root as Expander).IsExpanded = AllExpanded;
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(root, x);
+                ExpandAllExpanders(child);
             }
         }
     }

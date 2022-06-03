@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
@@ -36,16 +37,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public FabricIconControl FabricIconExpandAll => this.fabicnExpandAll;
         public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
-        private AutomatedChecksCustomListViewModel _viewModel;
+        internal AutomatedChecksCustomListViewModel ViewModel { get; set; }
 
         public AutomatedChecksCustomListControl()
         {
             InitializeComponent();
-        }
-
-        internal void SetViewModel(AutomatedChecksCustomListViewModel viewModel)
-        {
-            _viewModel = viewModel;
         }
 
         /// <summary>
@@ -65,17 +61,14 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void btnExpandAll_Click(object sender, RoutedEventArgs e)
         {
-            //this.AllExpanded = !this.AllExpanded;
-            //if (this.AllExpanded)
-            //{
-            //    fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
-
-            //}
-            //else
-            //{
-            //    fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-            //}
-            //ExpandAllExpanders(lvResults);
+            if (ViewModel.ToggleExpandAll(content))
+            {
+                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
+            }
+            else
+            {
+                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
+            }
         }
 
         /// <summary>
@@ -85,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void ButtonElem_Click(object sender, RoutedEventArgs e)
         {
-            _viewModel.NotifySelected(((Button)sender).Tag as A11yElement);
+            ViewModel.NotifySelected(((Button)sender).Tag as A11yElement);
         }
 
         /// <summary>
@@ -96,16 +89,16 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
-            _viewModel.FileBug(vm);
+            ViewModel.FileBug(vm);
 
         }
 
         private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            //if ((bool)e.NewValue && (HelperMethods.FileBugVisibility == Visibility.Visible))
-            //{
-            //    ((Button)sender).GetBindingExpression(Button.ContentProperty).UpdateTarget();
-            //}
+            if ((bool)e.NewValue && (HelperMethods.FileBugVisibility == Visibility.Visible))
+            {
+                ((Button)sender).GetBindingExpression(Button.ContentProperty).UpdateTarget();
+            }
         }
 
         /// <summary>
@@ -115,12 +108,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void btnSourceLink_Click(object sender, RoutedEventArgs e)
         {
-            //var vm = ((Button)sender).Tag as RuleResultViewModel;
-            //string urlToLaunch = vm?.URL?.ToString();
-            //if (!string.IsNullOrEmpty(urlToLaunch))
-            //{
-            //    Process.Start(urlToLaunch);
-            //}
+            var vm = ((Button)sender).Tag as RuleResultViewModel;
+            AutomatedChecksCustomListViewModel.OpenLinkToRuleSource(vm);
         }
 
         /// <summary>
@@ -394,9 +383,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            //this.AllExpanded = false;
-            //this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-            //// fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
+            ViewModel.AllExpanded = false;
+            fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
         }
 
     }

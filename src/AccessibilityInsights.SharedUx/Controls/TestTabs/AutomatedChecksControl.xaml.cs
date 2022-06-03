@@ -36,11 +36,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
     public partial class AutomatedChecksControl : UserControl
     {
         /// <summary>
-        /// Tracks if all groups are expanded
-        /// </summary>
-        bool AllExpanded;
-
-        /// <summary>
         /// Element context
         /// </summary>
         public ElementContext ElementContext { get; set; }
@@ -243,16 +238,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
-        ///// <summary>
-        ///// Handles click on element snippet
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void ButtonElem_Click(object sender, RoutedEventArgs e)
-        //{
-        //    NotifySelected(((Button)sender).Tag as A11yElement);
-        //}
-
         /// <summary>
         /// Handles click on error exclamation point
         /// </summary>
@@ -272,21 +257,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.DataContext.FocusedElementUniqueId = e.UniqueId;
             NotifyElementSelected();
         }
-
-        ///// <summary>
-        ///// Handles click on source link button
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void btnSourceLink_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var vm = ((Button)sender).Tag as RuleResultViewModel;
-        //    string urlToLaunch = vm?.URL?.ToString();
-        //    if (!string.IsNullOrEmpty(urlToLaunch))
-        //    {
-        //        Process.Start(urlToLaunch);
-        //    }
-        //}
 
         /// <summary>
         /// Sets element context and updates UI
@@ -313,7 +283,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     this.lblNoFail.Visibility = Visibility.Collapsed;
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
-                    this.lvResults2.SetViewModel(viewModel);
+                    this.lvResults2.ViewModel = viewModel;
                     this.lvResults2.CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
                     this.lvResults2.ListView.ItemsSource = null;
                     this.ElementContext = ec;
@@ -339,7 +309,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblCongrats.Visibility = Visibility.Collapsed;
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
-            this.AllExpanded = false;
+            this.lvResults2.ViewModel.AllExpanded = false;
             this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.lvResults2.CheckBoxSelectAll.IsChecked = false;
@@ -381,52 +351,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.SelectedItems.Clear();
         }
 
-        ///// <summary>
-        ///// Handles expand all button click
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void btnExpandAll_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.AllExpanded = !this.AllExpanded;
-        //    if (this.AllExpanded)
-        //    {
-        //        this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
-        //        // fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
-        //    }
-        //    else
-        //    {
-        //        this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-        //        // fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-        //    }
-        //    ExpandAllExpanders(lvResults2.ListView);
-        //}
-
         /// <summary>
-        /// Finds and expands all expanders recursively
-        /// </summary>
-        /// <param name="root"></param>
-        public void ExpandAllExpanders(DependencyObject root)
-        {
-            if (root == null)
-            {
-                return;
-            }
-
-            if (root is Expander)
-            {
-                (root as Expander).IsExpanded = this.AllExpanded;
-            }
-
-            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(root, x);
-                ExpandAllExpanders(child);
-            }
-        }
-
-        /// <summary>
-        /// Rescannes current element
+        /// Rescanns current element
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -435,18 +361,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lvResults2.ListView.IsEnabled = false;
             this.RunAgainTest();
         }
-
-        ///// <summary>
-        ///// Handles expander collapse event
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Expander_Collapsed(object sender, RoutedEventArgs e)
-        //{
-        //    this.AllExpanded = false;
-        //    this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-        //    // fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
-        //}
 
         /// <summary>
         /// Finds all controls of the given type under the given object
@@ -931,41 +845,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             this.HighlightVisibility = false;
         }
-
-        ///// <summary>
-        ///// Don't let column auto-size past ~75 characters
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void CustomGridViewColumnHeader_SizeChanged(object sender, SizeChangedEventArgs e)
-        //{
-        //    // if (e.NewSize.Width > MaxElemPathColWidth && Double.IsNaN(gvcElement.Width))
-        //    if (e.NewSize.Width > MaxElemPathColWidth && Double.IsNaN(this.lvResults2.GridViewColumn.Width))
-        //    {
-        //        this.lvResults2.GridViewColumn.Width = MaxElemPathColWidth;
-        //        //gvcElement.Width = MaxElemPathColWidth;
-        //    }
-        //}
-
-        ///// <summary>
-        ///// We disable this because otherwise the scrollviewer will scroll past the
-        ///// left-most checkboxes and instead have the expander on the very left. This looks
-        ///// visually jarring.
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Expander_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
-        //{
-        //    e.Handled = true;
-        //}
-
-        //private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        //{
-        //    if ((bool)e.NewValue && (HelperMethods.FileBugVisibility == Visibility.Visible))
-        //    {
-        //        ((Button)sender).GetBindingExpression(Button.ContentProperty).UpdateTarget();
-        //    }
-        //}
 
         /// <summary>
         /// Click on view results in UIA tree button goes to Test Inspect view with POI element selected
