@@ -310,7 +310,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.lvResults2.ViewModel.AllExpanded = false;
-            this.lvResults2.FabricIconExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
+            this.lvResults2.FabricIconExpandAll.GlyphName = FabricIcon.CaretSolidRight;
             this.SelectedItems.Clear();
             this.lvResults2.CheckBoxSelectAll.IsChecked = false;
             HollowHighlightDriver.GetDefaultInstance().Clear();

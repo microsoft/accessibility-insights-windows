@@ -63,11 +63,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             if (ViewModel.ToggleExpandAll(content))
             {
-                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidDown;
+                fabicnExpandAll.GlyphName = FabricIcon.CaretSolidDown;
             }
             else
             {
-                fabicnExpandAll.GlyphName = CommonUxComponents.Controls.FabricIcon.CaretSolidRight;
+                fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
             }
         }
 
