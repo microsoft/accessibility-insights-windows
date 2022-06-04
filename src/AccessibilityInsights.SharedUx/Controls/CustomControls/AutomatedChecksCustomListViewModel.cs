@@ -18,6 +18,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
@@ -27,15 +28,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private readonly ElementDataContext _dataContext;
         private readonly Action _notifyElementSelected;
         private readonly Action _switchToServerLogin;
+        private readonly Func<IReadOnlyCollection<Object>, bool, bool> _setCheckedItems;
+        private readonly Func<DependencyObject, Type, DependencyObject> _getParentElementOfType;
 
         internal ElementContext ElementContext { get; set; }
         internal bool AllExpanded { get; set; }
 
-        internal AutomatedChecksCustomListViewModel(ElementDataContext dataContext, Action notifyElementSelected, Action switchToServerLogin)
+        internal AutomatedChecksCustomListViewModel(ElementDataContext dataContext, Action notifyElementSelected,
+            Action switchToServerLogin, Func<IReadOnlyCollection<Object>, bool, bool> setCheckedItems,
+             Func<DependencyObject, Type, DependencyObject> getParentElementOfType)
         {
             _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             _notifyElementSelected = notifyElementSelected ?? throw new ArgumentNullException(nameof(notifyElementSelected));
             _switchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
+            _setCheckedItems = setCheckedItems ?? throw new ArgumentNullException(nameof(setCheckedItems));
+            _getParentElementOfType = getParentElementOfType ?? throw new ArgumentNullException(nameof(getParentElementOfType));
         }
 
         public void NotifySelected(A11yElement element)
@@ -141,6 +148,65 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 DependencyObject child = VisualTreeHelper.GetChild(root, x);
                 ExpandAllExpanders(child);
             }
+        }
+
+        /// <summary>
+        /// Select expander's elements when expanded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void Exp_Checked(Expander exp)
+        {
+            var lst = exp.DataContext as CollectionViewGroup;
+            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            _setCheckedItems(lst.Items, cb.IsChecked.Value);
+        }
+
+        /// <summary>
+        /// Get child element of specified type
+        /// </summary>
+        private DependencyObject GetFirstChildElement<T>(DependencyObject element)
+        {
+            if (element == null)
+            {
+                return null;
+            }
+
+            if (element is T)
+            {
+                return element as DependencyObject;
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(element); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(element, x);
+                var b = GetFirstChildElement<T>(child);
+
+                if (b != null)
+                    return b;
+            }
+            return null;
+        }
+
+        public Expander CheckAllChildren(CheckBox cb)
+        {
+            Expander expander = null;
+
+            if (cb.IsEnabled)
+            {
+                var exp = _getParentElementOfType(cb, typeof(Expander)) as Expander;
+                var lst = cb.DataContext as CollectionViewGroup;
+                if (_setCheckedItems(lst.Items, cb.IsChecked.Value))
+                {
+                    expander = exp;
+                }
+
+                // update tag for whether the group item has children highlighted or not
+                var groupitem = _getParentElementOfType(exp, typeof(GroupItem)) as GroupItem;
+                groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
+            }
+
+            return expander;
         }
     }
 }

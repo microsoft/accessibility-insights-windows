@@ -271,21 +271,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         internal void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-            //var cb = sender as CheckBox;
-            //if (cb.IsEnabled)
-            //{
-            //    var exp = GetParentElem<Expander>(cb) as Expander;
-            //    var lst = cb.DataContext as CollectionViewGroup;
-            //    var itmsSelected = SetItemsChecked(lst.Items, cb.IsChecked.Value);
-            //    if (!itmsSelected)
-            //    {
-            //        exp.SizeChanged += Exp_Checked;
-            //    }
+            var cb = sender as CheckBox;
+            Expander expander = ViewModel.CheckAllChildren(cb);
 
-            //    // update tag for whether the group item has children highlighted or not
-            //    var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-            //    groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
-            //}
+            if (expander != null)
+            {
+                expander.SizeChanged += Exp_Checked;
+            }
         }
 
         /// <summary>
@@ -385,6 +377,18 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             ViewModel.AllExpanded = false;
             fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
+        }
+
+        /// <summary>
+        /// Select expander's elements when expanded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exp_Checked(object sender, SizeChangedEventArgs e)
+        {
+            var expander = sender as Expander;
+            ViewModel.Exp_Checked(expander);
+            expander.SizeChanged -= Exp_Checked;
         }
 
     }

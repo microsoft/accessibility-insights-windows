@@ -274,7 +274,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    var viewModel = new AutomatedChecksCustomListViewModel(ec.DataContext, NotifyElementSelected, SwitchToServerLogin)
+                    var viewModel = new AutomatedChecksCustomListViewModel(ec.DataContext, NotifyElementSelected,
+                        SwitchToServerLogin, SetItemsChecked, GetParentElementOfType)
                     {
                         ElementContext = ec,
                     };
@@ -446,6 +447,34 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
+        /// <summary>
+        /// Finds object up parent hierarchy of specified type
+        /// </summary>
+        private DependencyObject GetParentElementOfType(DependencyObject obj, Type type)
+        {
+            try
+            {
+                var par = VisualTreeHelper.GetParent(obj);
+                Type parentType = par.GetType();
+
+                if (parentType == type || parentType.IsSubclassOf(type))
+                {
+                    return par;
+                }
+                else
+                {
+                    return GetParentElementOfType(par, type);
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                e.ReportException();
+                return null;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
+
         ///// <summary>
         ///// Custom keyboard nav behavior
         ///// </summary>
@@ -573,9 +602,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Select all items in list
         /// </summary>
-        /// <param name="lst"></param>
-        /// <param name="check"></param>
-        /// <returns></returns>
         private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
         {
             var ret = true;
@@ -606,19 +632,19 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             return ret;
         }
 
-        /// <summary>
-        /// Select expander's elements when expanded
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Exp_Checked(object sender, SizeChangedEventArgs e)
-        {
-            var exp = sender as Expander;
-            var lst = exp.DataContext as CollectionViewGroup;
-            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            SetItemsChecked(lst.Items, cb.IsChecked.Value);
-            exp.SizeChanged -= Exp_Checked;
-        }
+        ///// <summary>
+        ///// Select expander's elements when expanded
+        ///// </summary>
+        ///// <param name="sender"></param>
+        ///// <param name="e"></param>
+        //private void Exp_Checked(object sender, SizeChangedEventArgs e)
+        //{
+        //    var exp = sender as Expander;
+        //    var lst = exp.DataContext as CollectionViewGroup;
+        //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+        //    SetItemsChecked(lst.Items, cb.IsChecked.Value);
+        //    exp.SizeChanged -= Exp_Checked;
+        //}
 
         ///// <summary>
         ///// Handles unselecting a listviewitem
