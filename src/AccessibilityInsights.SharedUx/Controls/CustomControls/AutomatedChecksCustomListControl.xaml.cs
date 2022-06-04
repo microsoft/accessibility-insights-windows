@@ -51,7 +51,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
         {
-            // CheckAllBoxes(lvResults, (sender as CheckBox).IsChecked.Value);
+            ViewModel.CheckAllBoxes(content, (sender as CheckBox).IsChecked.Value);
         }
 
         /// <summary>
@@ -271,13 +271,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         internal void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-            var cb = sender as CheckBox;
-            Expander expander = ViewModel.CheckAllChildren(cb);
-
-            if (expander != null)
-            {
-                expander.SizeChanged += Exp_Checked;
-            }
+            ViewModel.CheckBoxClick(sender, e);
         }
 
         /// <summary>
@@ -378,18 +372,5 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             ViewModel.AllExpanded = false;
             fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
         }
-
-        /// <summary>
-        /// Select expander's elements when expanded
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Exp_Checked(object sender, SizeChangedEventArgs e)
-        {
-            var expander = sender as Expander;
-            ViewModel.Exp_Checked(expander);
-            expander.SizeChanged -= Exp_Checked;
-        }
-
     }
 }

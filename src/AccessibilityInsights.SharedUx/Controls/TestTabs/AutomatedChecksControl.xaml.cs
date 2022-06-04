@@ -226,8 +226,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 {
                     header.Column.Width = header.MinWidth;
                 }
-                else
-                if (header.Column.ActualWidth + e.HorizontalChange > header.MaxWidth)
+                else if (header.Column.ActualWidth + e.HorizontalChange > header.MaxWidth)
                 {
                     header.Column.Width = header.MaxWidth;
                 }
@@ -275,7 +274,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
                     var viewModel = new AutomatedChecksCustomListViewModel(ec.DataContext, NotifyElementSelected,
-                        SwitchToServerLogin, SetItemsChecked, GetParentElementOfType)
+                        SwitchToServerLogin, SetItemsChecked)
                     {
                         ElementContext = ec,
                     };
@@ -334,7 +333,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 Dispatcher.Invoke(() =>
                 {
-                    CheckAllBoxes(lvResults2.ListView, true);
+                    lvResults2.ViewModel.CheckAllBoxes(lvResults2.ListView, true);
                 }, DispatcherPriority.Input);
             }
         }
@@ -447,34 +446,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 #pragma warning restore CA1031 // Do not catch general exception types
         }
 
-        /// <summary>
-        /// Finds object up parent hierarchy of specified type
-        /// </summary>
-        private DependencyObject GetParentElementOfType(DependencyObject obj, Type type)
-        {
-            try
-            {
-                var par = VisualTreeHelper.GetParent(obj);
-                Type parentType = par.GetType();
-
-                if (parentType == type || parentType.IsSubclassOf(type))
-                {
-                    return par;
-                }
-                else
-                {
-                    return GetParentElementOfType(par, type);
-                }
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                e.ReportException();
-                return null;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
         ///// <summary>
         ///// Custom keyboard nav behavior
         ///// </summary>
@@ -576,30 +547,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Finds and expands all expanders recursively
-        /// </summary>
-        /// <param name="root"></param>
-        public void CheckAllBoxes(DependencyObject root, bool check)
-        {
-            if (root == null)
-            {
-                return;
-            }
-
-            if (root is CheckBox cb && cb.Tag != null)
-            {
-                cb.IsChecked = check;
-                CheckBox_Click(cb, null);
-            }
-
-            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(root, x);
-                CheckAllBoxes(child, check);
-            }
-        }
-
-        /// <summary>
         /// Select all items in list
         /// </summary>
         private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
@@ -631,20 +578,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             UpdateSelectAll();
             return ret;
         }
-
-        ///// <summary>
-        ///// Select expander's elements when expanded
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void Exp_Checked(object sender, SizeChangedEventArgs e)
-        //{
-        //    var exp = sender as Expander;
-        //    var lst = exp.DataContext as CollectionViewGroup;
-        //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-        //    SetItemsChecked(lst.Items, cb.IsChecked.Value);
-        //    exp.SizeChanged -= Exp_Checked;
-        //}
 
         ///// <summary>
         ///// Handles unselecting a listviewitem
@@ -700,41 +633,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 lvResults2.CheckBoxSelectAll.IsChecked = null;
             }
         }
-
-        /// <summary>
-        /// Handles group level checkbox click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CheckBox_Click(object sender, RoutedEventArgs e)
-        {
-            this.lvResults2.CheckBoxClick(sender, e);
-            //var cb = sender as CheckBox;
-            //if (cb.IsEnabled)
-            //{
-            //    var exp = GetParentElem<Expander>(cb) as Expander;
-            //    var lst = cb.DataContext as CollectionViewGroup;
-            //    var itmsSelected = SetItemsChecked(lst.Items, cb.IsChecked.Value);
-            //    if (!itmsSelected)
-            //    {
-            //        exp.SizeChanged += Exp_Checked;
-            //    }
-
-            //    // update tag for whether the group item has children highlighted or not
-            //    var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-            //    groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
-            //}
-        }
-
-        ///// <summary>
-        ///// Handles click on select all checkbox
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
-        //{
-        //    CheckAllBoxes(lvResults2.ListView, (sender as CheckBox).IsChecked.Value);
-        //}
 
         ///// <summary>
         ///// Handles list view item selection

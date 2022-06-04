@@ -29,20 +29,17 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private readonly Action _notifyElementSelected;
         private readonly Action _switchToServerLogin;
         private readonly Func<IReadOnlyCollection<Object>, bool, bool> _setCheckedItems;
-        private readonly Func<DependencyObject, Type, DependencyObject> _getParentElementOfType;
 
         internal ElementContext ElementContext { get; set; }
         internal bool AllExpanded { get; set; }
 
         internal AutomatedChecksCustomListViewModel(ElementDataContext dataContext, Action notifyElementSelected,
-            Action switchToServerLogin, Func<IReadOnlyCollection<Object>, bool, bool> setCheckedItems,
-             Func<DependencyObject, Type, DependencyObject> getParentElementOfType)
+            Action switchToServerLogin, Func<IReadOnlyCollection<Object>, bool, bool> setCheckedItems)
         {
             _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             _notifyElementSelected = notifyElementSelected ?? throw new ArgumentNullException(nameof(notifyElementSelected));
             _switchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             _setCheckedItems = setCheckedItems ?? throw new ArgumentNullException(nameof(setCheckedItems));
-            _getParentElementOfType = getParentElementOfType ?? throw new ArgumentNullException(nameof(getParentElementOfType));
         }
 
         public void NotifySelected(A11yElement element)
@@ -163,6 +160,58 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
+        /// Finds and expands all expanders recursively
+        /// </summary>
+        /// <param name="root"></param>
+        public void CheckAllBoxes(DependencyObject root, bool check)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            if (root is CheckBox cb && cb.Tag != null)
+            {
+                cb.IsChecked = check;
+                CheckBoxClick(cb, null);
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(root, x);
+                CheckAllBoxes(child, check);
+            }
+        }
+
+        /// <summary>
+        /// Handles group level checkbox click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        internal void CheckBoxClick(object sender, RoutedEventArgs e)
+        {
+            var cb = sender as CheckBox;
+            Expander expander = CheckAllChildren(cb);
+
+            if (expander != null)
+            {
+                expander.SizeChanged += Exp_Checked;
+            }
+        }
+
+        /// <summary>
+        /// Select expander's elements when expanded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Exp_Checked(object sender, SizeChangedEventArgs e)
+        {
+            var expander = sender as Expander;
+            Exp_Checked(expander);
+            expander.SizeChanged -= Exp_Checked;
+        }
+
+        /// <summary>
         /// Get child element of specified type
         /// </summary>
         private DependencyObject GetFirstChildElement<T>(DependencyObject element)
@@ -194,7 +243,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
             if (cb.IsEnabled)
             {
-                var exp = _getParentElementOfType(cb, typeof(Expander)) as Expander;
+                var exp = GetParentElementOfType<Expander>(cb) as Expander;
                 var lst = cb.DataContext as CollectionViewGroup;
                 if (_setCheckedItems(lst.Items, cb.IsChecked.Value))
                 {
@@ -202,11 +251,39 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 }
 
                 // update tag for whether the group item has children highlighted or not
-                var groupitem = _getParentElementOfType(exp, typeof(GroupItem)) as GroupItem;
+                var groupitem = GetParentElementOfType<GroupItem>(exp) as GroupItem;
                 groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
             }
 
             return expander;
         }
+
+        /// <summary>
+        /// Finds object up parent hierarchy of specified type
+        /// </summary>
+        private DependencyObject GetParentElementOfType<T>(DependencyObject obj)
+        {
+            try
+            {
+                var par = VisualTreeHelper.GetParent(obj);
+
+                if (par is T)
+                {
+                    return par;
+                }
+                else
+                {
+                    return GetParentElementOfType<T>(par);
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                e.ReportException();
+                return null;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
+
     }
 }
