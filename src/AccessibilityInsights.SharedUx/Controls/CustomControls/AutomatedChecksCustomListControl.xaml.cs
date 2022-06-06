@@ -38,7 +38,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private bool _allExpanded;
 
-        public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
+        private CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
         /// <summary>
         /// Whether there is a screenshot available (if not, checkboxes should be disabled)
