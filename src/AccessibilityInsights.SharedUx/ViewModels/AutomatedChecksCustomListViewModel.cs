@@ -391,9 +391,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Finds all controls of the given type under the given object
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="element"></param>
-        /// <returns></returns>
         public IEnumerable<T> FindChildren<T>(DependencyObject element) where T : DependencyObject
         {
             if (element != null)
@@ -416,8 +413,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// Custom keyboard behavior for group items
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void OnGroupItemPreviewKeyDown(object sender, KeyEventArgs e)
         {
             var listViewItemParent = GetParentElem<ListViewItem>(Keyboard.FocusedElement as DependencyObject);

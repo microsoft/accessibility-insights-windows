@@ -1,26 +1,17 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
-using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -60,6 +51,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             CheckBoxSelectAll.IsChecked = false;
             ViewModel?.SelectedItems?.Clear();
             ListView.ItemsSource = null;
+        }
+
+        internal void SetItemsSource(IEnumerable<RuleResultViewModel> results)
+        {
+            if (results == null)
+            {
+                ListView.ItemsSource = null;
+                ListView.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ListView.IsEnabled = true;
+                ListView.ItemsSource = results;
+                ListView.Visibility = Visibility.Visible;
+            }
         }
 
         private void SetAllExpanded(bool allExpanded)

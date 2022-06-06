@@ -1,11 +1,6 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -15,17 +10,12 @@ using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Data;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Threading;
 
 namespace AccessibilityInsights.SharedUx.Controls.TestTabs
@@ -121,9 +111,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             if (results != null)
             {
-                this.lvResults2.ListView.IsEnabled = true;
-                this.lvResults2.ListView.ItemsSource = results;
-                this.lvResults2.ListView.Visibility = Visibility.Visible;
+                this.lvResults2.SetItemsSource(results);
                 this.lblCongrats.Visibility = Visibility.Collapsed;
                 this.lblNoFail.Visibility = Visibility.Collapsed;
                 this.gdFailures.Visibility = Visibility.Visible;
@@ -150,10 +138,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             else
             {
                 this.gdFailures.Visibility = Visibility.Collapsed;
-                this.lvResults2.ListView.ItemsSource = null;
                 this.lblCongrats.Visibility = Visibility.Visible;
                 this.lblNoFail.Visibility = Visibility.Visible;
-                this.lvResults2.ListView.Visibility = Visibility.Collapsed;
+                this.lvResults2.SetItemsSource(null);
             }
         }
 
@@ -240,7 +227,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     this.lblNoFail.Visibility = Visibility.Collapsed;
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
-                    this.lvResults2.ListView.ItemsSource = null;
+                    this.lvResults2.SetItemsSource(null);
                     this.ElementContext = ec;
                     this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
                         Properties.Resources.AutomatedChecksControl_TargetFormat, ec.Element.Glimpse);
