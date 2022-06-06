@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -42,6 +43,32 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public AutomatedChecksCustomListControl()
         {
             InitializeComponent();
+            AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
+        }
+
+        /// <summary>
+        /// Resize column widths
+        /// </summary>
+        void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            var thumb = e.OriginalSource as Thumb;
+            var header = thumb.TemplatedParent as GridViewColumnHeader;
+
+            if (header != null && header.Content != null)
+            {
+                if (header.Column.ActualWidth + e.HorizontalChange < header.MinWidth)
+                {
+                    header.Column.Width = header.MinWidth;
+                }
+                else if (header.Column.ActualWidth + e.HorizontalChange > header.MaxWidth)
+                {
+                    header.Column.Width = header.MaxWidth;
+                }
+                else
+                {
+                    header.Column.Width = header.Column.ActualWidth + e.HorizontalChange;
+                }
+            }
         }
 
         /// <summary>
@@ -119,77 +146,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void lviResults_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            //UIElement uie = e.OriginalSource as UIElement;
-
-            //if ((e.Key == Key.Right || e.Key == Key.Left) && Keyboard.FocusedElement is ListViewItem)
-            //{
-            //    if (e.Key == Key.Right)
-            //    {
-            //        var vb = GetFirstChildElement<CheckBox>(sender as DependencyObject) as CheckBox;
-            //        vb.Focus();
-            //    }
-            //    else
-            //    {
-            //        var parent = GetParentElem<Expander>(sender as DependencyObject) as Expander;
-            //        var vb = GetFirstChildElement<Label>(parent as DependencyObject) as Label;
-            //        vb.Focus();
-            //    }
-            //    e.Handled = true;
-            //}
-            //else if ((e.Key == Key.Right || e.Key == Key.Left) && (Keyboard.FocusedElement is CheckBox || Keyboard.FocusedElement is Button))
-            //{
-            //    var elements = new List<DependencyObject>();
-            //    elements.Add(GetFirstChildElement<CheckBox>(sender as DependencyObject));
-            //    elements.AddRange(FindChildren<Button>(sender as DependencyObject));
-            //    int selectedElementIndex = elements.FindIndex(b => b.Equals(Keyboard.FocusedElement));
-
-            //    if (e.Key == Key.Right)
-            //    {
-            //        if (selectedElementIndex + 1 < elements.Count)
-            //        {
-            //            ((UIElement)elements.ElementAt(selectedElementIndex + 1)).Focus();
-            //        }
-            //    }
-            //    else if (selectedElementIndex - 1 >= 0)
-            //    {
-            //        ((UIElement)elements.ElementAt(selectedElementIndex - 1)).Focus();
-            //    }
-            //    else
-            //    {
-            //        (sender as ListBoxItem).Focus();
-            //    }
-            //    System.Diagnostics.Debug.WriteLine(Keyboard.FocusedElement.ToString() + " " + FrameworkElementAutomationPeer.FromElement(Keyboard.FocusedElement as FrameworkElement)?.HasKeyboardFocus());
-            //    FrameworkElementAutomationPeer.FromElement(Keyboard.FocusedElement as FrameworkElement)?.RaiseAutomationEvent(AutomationEvents.AutomationFocusChanged);
-            //    e.Handled = true;
-            //}
-            //else if (e.Key == Key.Down || e.Key == Key.Up)
-            //{
-            //    (sender as ListViewItem).Focus();
-            //    uie = (UIElement)Keyboard.FocusedElement;
-
-            //    if (e.Key == Key.Down)
-            //    {
-            //        uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
-            //    }
-            //    else
-            //    {
-            //        var element = uie.PredictFocus(FocusNavigationDirection.Up);
-            //        if (element is ListViewItem)
-            //        {
-            //            uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
-            //        }
-            //        else
-            //        {
-            //            (GetParentElem<GroupItem>(sender as DependencyObject) as UIElement).Focus();
-            //        }
-            //    }
-            //    e.Handled = true;
-            //}
-            //else if (e.Key == Key.Return && Keyboard.FocusedElement is ListViewItem)
-            //{
-            //    var btn = GetFirstChildElement<Button>(sender as DependencyObject) as Button;
-            //    ButtonElem_Click(btn, e);
-            //}
+            ViewModel.OnListViewItemPreviewKeyDown(sender, e);
         }
 
         /// <summary>
@@ -281,60 +238,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void GroupItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            //var listViewItemParent = GetParentElem<ListViewItem>(Keyboard.FocusedElement as DependencyObject);
-            //if (Keyboard.FocusedElement is ListViewItem || listViewItemParent != null)
-            //{
-            //    // Let it be handled by the listviewitem previewkeydown handler
-            //    //  - this groupitem_previewkeydown event fires first
-            //    return;
-            //}
-
-            //var gi = sender as GroupItem;
-            //var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            //var exp = GetParentElem<Expander>(sp) as Expander;
-
-            //if (e.Key == Key.Right)
-            //{
-            //    if (!exp.IsExpanded)
-            //    {
-            //        exp.IsExpanded = true;
-            //    }
-            //    e.Handled = true;
-            //}
-            //else if (e.Key == Key.Left)
-            //{
-            //    if (exp.IsExpanded)
-            //    {
-            //        exp.IsExpanded = false;
-            //    }
-
-            //    e.Handled = true;
-            //}
-            //else if ((e.Key == Key.Space || e.Key == Key.Enter) && Keyboard.FocusedElement == sender)
-            //{
-            //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            //    cb.IsChecked = !cb.IsChecked ?? false;
-            //    CheckBox_Click(cb, null);
-            //    e.Handled = true;
-            //}
-            //else if (e.Key == Key.Down)
-            //{
-            //    if (!exp.IsExpanded)
-            //    {
-            //        gi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
-            //    }
-            //    else
-            //    {
-            //        ListViewItem firstResult = GetFirstChildElement<ListViewItem>(exp) as ListViewItem;
-            //        firstResult.Focus();
-            //    }
-            //    e.Handled = true;
-            //}
-            //else if (e.Key == Key.Up)
-            //{
-            //    gi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
-            //    e.Handled = true;
-            //}
+            ViewModel.OnGroupItemPreviewKeyDown(sender, e);
         }
 
         /// <summary>
