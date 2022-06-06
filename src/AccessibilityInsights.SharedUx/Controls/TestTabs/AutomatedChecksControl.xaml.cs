@@ -91,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (value)
                 {
                     ha.Show();
-                    foreach (var svm in lvResults2.SelectedItems)
+                    foreach (var svm in listControl.SelectedItems)
                     {
                         ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                     }
@@ -112,7 +112,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             if (results != null)
             {
-                this.lvResults2.SetItemsSource(results);
+                this.listControl.SetItemsSource(results);
                 this.lblCongrats.Visibility = Visibility.Collapsed;
                 this.lblNoFail.Visibility = Visibility.Collapsed;
                 this.gdFailures.Visibility = Visibility.Visible;
@@ -133,14 +133,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
 
                 PropertyGroupDescription groupDescription = new PropertyGroupDescription(Properties.Resources.AutomatedChecksControl_SetRuleResults_TitleURL);
-                lvResults2.AddGroupDescription(groupDescription);
+                listControl.AddGroupDescription(groupDescription);
             }
             else
             {
                 this.gdFailures.Visibility = Visibility.Collapsed;
                 this.lblCongrats.Visibility = Visibility.Visible;
                 this.lblNoFail.Visibility = Visibility.Visible;
-                this.lvResults2.SetItemsSource(null);
+                this.listControl.SetItemsSource(null);
             }
         }
 
@@ -163,7 +163,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 ha.Show();
 
-                foreach (var svm in lvResults2.SelectedItems)
+                foreach (var svm in listControl.SelectedItems)
                 {
                     ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                 }
@@ -221,8 +221,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    this.lvResults2.SetControlContext(new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin));
-                    this.lvResults2.SetItemsSource(null);
+                    this.listControl.SetControlContext(new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin));
+                    this.listControl.SetItemsSource(null);
 
                     this.lblCongrats.Visibility = Visibility.Collapsed;
                     this.lblNoFail.Visibility = Visibility.Collapsed;
@@ -250,7 +250,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblCongrats.Visibility = Visibility.Collapsed;
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
-            this.lvResults2.Reset();
+            this.listControl.Reset();
             HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
@@ -271,7 +271,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 Dispatcher.Invoke(() =>
                 {
-                    lvResults2.CheckAllBoxes();
+                    listControl.CheckAllBoxes();
                 }, DispatcherPriority.Input);
             }
         }
@@ -283,7 +283,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
-            this.lvResults2.Reset();
+            this.listControl.Reset();
             this.tbGlimpse.Text = Properties.Resources.GlimpseTextTarget;
             this.gdFailures.Visibility = Visibility.Collapsed;
         }
