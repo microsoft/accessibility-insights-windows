@@ -1,15 +1,26 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Highlighting;
+using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -30,14 +41,17 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public ListView ListView => this.content;
         public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
-        internal AutomatedChecksCustomListViewModel ViewModel { get; set; }
+        /// <summary>
+        /// Whether there is a screenshot available (if not, checkboxes should be disabled)
+        /// </summary>
+        private bool ScreenshotAvailable => _controlContext?.DataContext?.Screenshot != null;
 
-        internal IEnumerable<RuleResultViewModel> GetSelectedItems()
-        {
-            if (ViewModel == null) return Enumerable.Empty<RuleResultViewModel>();
+        private AutomatedChecksCustomListControlContext _controlContext;
 
-            return ViewModel.SelectedItems;
-        }
+        /// <summary>
+        /// Currently selected items
+        /// </summary>
+        internal IList<RuleResultViewModel> SelectedItems { get; } = new List<RuleResultViewModel>();
 
         public AutomatedChecksCustomListControl()
         {
@@ -45,33 +59,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
         }
 
-        internal void Reset()
+        internal void SetControlContext(AutomatedChecksCustomListControlContext context)
         {
-            SetAllExpanded(false);
-            CheckBoxSelectAll.IsChecked = false;
-            ViewModel?.SelectedItems?.Clear();
-            ListView.ItemsSource = null;
-        }
+            _controlContext = context ?? throw new ArgumentNullException(nameof(context));
 
-        internal void SetItemsSource(IEnumerable<RuleResultViewModel> results)
-        {
-            if (results == null)
-            {
-                ListView.ItemsSource = null;
-                ListView.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                ListView.IsEnabled = true;
-                ListView.ItemsSource = results;
-                ListView.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void SetAllExpanded(bool allExpanded)
-        {
-            _allExpanded = allExpanded;
-            fabicnExpandAll.GlyphName = _allExpanded ? FabricIcon.CaretSolidDown : FabricIcon.CaretSolidRight;
+            CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
         }
 
         /// <summary>
@@ -99,17 +91,37 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
-        internal void CheckAllBoxes()
+        /// <summary>
+        /// Handles click on element snippet
+        /// </summary>
+        private void ButtonElem_Click(object sender, RoutedEventArgs e)
         {
-            ViewModel.CheckAllBoxes(content, true);
+            NotifySelected(((Button)sender).Tag as A11yElement);
         }
 
         /// <summary>
-        /// Handles click on select all checkbox
+        /// Notify Element selection to swith mode to snapshot
         /// </summary>
-        private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
+        private void NotifySelected(A11yElement element)
         {
-            ViewModel.CheckAllBoxes(content, (sender as CheckBox).IsChecked.Value);
+            if (element != null)
+            {
+                _controlContext.DataContext.FocusedElementUniqueId = element.UniqueId;
+                _controlContext.NotifyElementSelected();
+            }
+        }
+
+        /// <summary>
+        /// Handles click on source link button
+        /// </summary>
+        private void btnSourceLink_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = ((Button)sender).Tag as RuleResultViewModel;
+            string urlToLaunch = vm?.URL?.ToString();
+            if (!string.IsNullOrEmpty(urlToLaunch))
+            {
+                Process.Start(urlToLaunch);
+            }
         }
 
         /// <summary>
@@ -144,38 +156,87 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
-        /// Handles click on element snippet
+        /// Handles expander collapse event
         /// </summary>
-        private void ButtonElem_Click(object sender, RoutedEventArgs e)
+        private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            ViewModel.NotifySelected(((Button)sender).Tag as A11yElement);
+            SetAllExpanded(false);
         }
+
 
         /// <summary>
-        /// Handles click on file bug button
+        /// Finds all controls of the given type under the given object
         /// </summary>
-        private void btnFileBug_Click(object sender, RoutedEventArgs e)
+        public IEnumerable<T> FindChildren<T>(DependencyObject element) where T : DependencyObject
         {
-            var vm = ((Button)sender).Tag as RuleResultViewModel;
-            ViewModel.FileBug(vm);
-
-        }
-
-        private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            if ((bool)e.NewValue && (HelperMethods.FileBugVisibility == Visibility.Visible))
+            if (element != null)
             {
-                ((Button)sender).GetBindingExpression(Button.ContentProperty).UpdateTarget();
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(element, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+                    foreach (T descendant in FindChildren<T>(child))
+                    {
+                        yield return descendant;
+                    }
+                }
             }
         }
 
         /// <summary>
-        /// Handles click on source link button
+        /// Get child element of specified type
         /// </summary>
-        private void btnSourceLink_Click(object sender, RoutedEventArgs e)
+        private DependencyObject GetFirstChildElement<T>(DependencyObject element)
         {
-            var vm = ((Button)sender).Tag as RuleResultViewModel;
-            AutomatedChecksCustomListViewModel.OpenLinkToRuleSource(vm);
+            if (element == null)
+            {
+                return null;
+            }
+
+            if (element is T)
+            {
+                return element as DependencyObject;
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(element); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(element, x);
+                var b = GetFirstChildElement<T>(child);
+
+                if (b != null)
+                    return b;
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Finds object up parent hierarchy of specified type
+        /// </summary>
+        private DependencyObject GetParentElem<T>(DependencyObject obj)
+        {
+            try
+            {
+                var par = VisualTreeHelper.GetParent(obj);
+
+                if (par is T)
+                {
+                    return par;
+                }
+                else
+                {
+                    return GetParentElem<T>(par);
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                e.ReportException();
+                return null;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
 
         /// <summary>
@@ -183,7 +244,148 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void lviResults_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            ViewModel.OnListViewItemPreviewKeyDown(sender, e);
+            UIElement uie = e.OriginalSource as UIElement;
+
+            if ((e.Key == Key.Right || e.Key == Key.Left) && Keyboard.FocusedElement is ListViewItem)
+            {
+                if (e.Key == Key.Right)
+                {
+                    var vb = GetFirstChildElement<CheckBox>(sender as DependencyObject) as CheckBox;
+                    vb.Focus();
+                }
+                else
+                {
+                    var parent = GetParentElem<Expander>(sender as DependencyObject) as Expander;
+                    var vb = GetFirstChildElement<Label>(parent as DependencyObject) as Label;
+                    vb.Focus();
+                }
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.Right || e.Key == Key.Left) && (Keyboard.FocusedElement is CheckBox || Keyboard.FocusedElement is Button))
+            {
+                var elements = new List<DependencyObject>();
+                elements.Add(GetFirstChildElement<CheckBox>(sender as DependencyObject));
+                elements.AddRange(FindChildren<Button>(sender as DependencyObject));
+                int selectedElementIndex = elements.FindIndex(b => b.Equals(Keyboard.FocusedElement));
+
+                if (e.Key == Key.Right)
+                {
+                    if (selectedElementIndex + 1 < elements.Count)
+                    {
+                        ((UIElement)elements.ElementAt(selectedElementIndex + 1)).Focus();
+                    }
+                }
+                else if (selectedElementIndex - 1 >= 0)
+                {
+                    ((UIElement)elements.ElementAt(selectedElementIndex - 1)).Focus();
+                }
+                else
+                {
+                    (sender as ListBoxItem).Focus();
+                }
+                System.Diagnostics.Debug.WriteLine(Keyboard.FocusedElement.ToString() + " " + FrameworkElementAutomationPeer.FromElement(Keyboard.FocusedElement as FrameworkElement)?.HasKeyboardFocus());
+                FrameworkElementAutomationPeer.FromElement(Keyboard.FocusedElement as FrameworkElement)?.RaiseAutomationEvent(AutomationEvents.AutomationFocusChanged);
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Down || e.Key == Key.Up)
+            {
+                (sender as ListViewItem).Focus();
+                uie = (UIElement)Keyboard.FocusedElement;
+
+                if (e.Key == Key.Down)
+                {
+                    uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
+                }
+                else
+                {
+                    var element = uie.PredictFocus(FocusNavigationDirection.Up);
+                    if (element is ListViewItem)
+                    {
+                        uie.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+                    }
+                    else
+                    {
+                        (GetParentElem<GroupItem>(sender as DependencyObject) as UIElement).Focus();
+                    }
+                }
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Return && Keyboard.FocusedElement is ListViewItem)
+            {
+                var btn = GetFirstChildElement<Button>(sender as DependencyObject) as Button;
+                NotifySelected(btn.Tag as A11yElement);
+            }
+        }
+
+        internal void CheckAllBoxes()
+        {
+            CheckAllBoxes(content, true);
+        }
+
+        /// <summary>
+        /// Finds and expands all expanders recursively
+        /// </summary>
+        internal void CheckAllBoxes(DependencyObject root, bool check)
+        {
+            if (root == null)
+            {
+                return;
+            }
+
+            if (root is CheckBox cb && cb.Tag != null)
+            {
+                cb.IsChecked = check;
+                CheckBoxClick(cb, null);
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(root, x);
+                CheckAllBoxes(child, check);
+            }
+        }
+
+        /// <summary>
+        /// Select all items in list
+        /// </summary>
+        private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
+        {
+            var ret = true;
+            foreach (RuleResultViewModel itm in lst.AsParallel())
+            {
+                if (check && !SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Add(itm);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(_controlContext.ElementContext.Id, itm.Element.UniqueId);
+                }
+
+                else if (!check && SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Remove(itm);
+                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(_controlContext.ElementContext.Id, itm.Element.UniqueId);
+                }
+                var lvi = ListView.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
+                if (lvi != null)
+                {
+                    lvi.IsSelected = check;
+                }
+                else
+                {
+                    ret = false;
+                }
+            }
+            UpdateSelectAll();
+            return ret;
+        }
+
+        /// <summary>
+        /// Select expander's elements when expanded
+        /// </summary>
+        private void Exp_Checked(object sender, SizeChangedEventArgs e)
+        {
+            var expander = sender as Expander;
+            Exp_Checked(expander);
+            expander.SizeChanged -= Exp_Checked;
         }
 
         /// <summary>
@@ -191,15 +393,52 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void ListViewItem_Unselected(object sender, RoutedEventArgs e)
         {
-            ViewModel.OnListViewItemUnselected(sender);
+            var lvi = sender as ListViewItem;
+            var exp = GetParentElem<Expander>(lvi) as Expander;
+            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            var srvm = lvi.DataContext as RuleResultViewModel;
+
+            // ElementContext can be null when app is closed.
+            if (this._controlContext.ElementContext != null)
+            {
+                ImageOverlayDriver.GetDefaultInstance().RemoveElement(_controlContext.ElementContext.Id, srvm.Element.UniqueId);
+            }
+
+            SelectedItems.Remove(srvm);
+            var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+            var dc = cb.DataContext as CollectionViewGroup;
+            var itms = dc.Items;
+            var any = itms.Intersect(SelectedItems).Any();
+            if (any)
+            {
+                cb.IsChecked = null;
+                groupitem.Tag = "some";
+            }
+            else
+            {
+                cb.IsChecked = false;
+                groupitem.Tag = "zero";
+            }
+            UpdateSelectAll();
         }
 
         /// <summary>
-        /// Handles list view item selection
+        /// Update select checkbox state
         /// </summary>
-        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        private void UpdateSelectAll()
         {
-            ViewModel.OnListViewItemUnselected(sender);
+            if (SelectedItems.Count == 0)
+            {
+                CheckBoxSelectAll.IsChecked = false;
+            }
+            else if (SelectedItems.Count == ListView.Items.Count)
+            {
+                CheckBoxSelectAll.IsChecked = true;
+            }
+            else
+            {
+                CheckBoxSelectAll.IsChecked = null;
+            }
         }
 
         /// <summary>
@@ -207,7 +446,62 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         internal void CheckBoxClick(object sender, RoutedEventArgs e)
         {
-            ViewModel.CheckBoxClick(sender, e);
+            var cb = sender as CheckBox;
+            if (cb.IsEnabled)
+            {
+                var exp = GetParentElem<Expander>(cb) as Expander;
+                var lst = cb.DataContext as CollectionViewGroup;
+                if (SetItemsChecked(lst.Items, cb.IsChecked.Value))
+                {
+                    exp.SizeChanged += Exp_Checked;
+                }
+
+                // update tag for whether the group item has children highlighted or not
+                var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+                groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
+            }
+        }
+
+        /// <summary>
+        /// Handles click on select all checkbox
+        /// </summary>
+        private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
+        {
+            CheckAllBoxes(content, (sender as CheckBox).IsChecked.Value);
+        }
+
+        /// <summary>
+        /// Handles list view item selection
+        /// </summary>
+        private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+        {
+            if (ScreenshotAvailable)
+            {
+                var lvi = sender as ListViewItem;
+                var exp = GetParentElem<Expander>(lvi) as Expander;
+                var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+                var itm = lvi.DataContext as RuleResultViewModel;
+                if (!SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Add(itm);
+                    UpdateSelectAll();
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(_controlContext.ElementContext.Id, itm.Element.UniqueId);
+                }
+                var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+                var dc = cb.DataContext as CollectionViewGroup;
+                var itms = dc.Items;
+                var any = itms.Except(SelectedItems).Any();
+                if (any)
+                {
+                    cb.IsChecked = null;
+                    groupitem.Tag = "some"; // used to indicate how many children are selected
+                }
+                else
+                {
+                    cb.IsChecked = true;
+                    groupitem.Tag = "all";
+                }
+            }
         }
 
         /// <summary>
@@ -215,7 +509,60 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void GroupItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            ViewModel.OnGroupItemPreviewKeyDown(sender, e);
+            var listViewItemParent = GetParentElem<ListViewItem>(Keyboard.FocusedElement as DependencyObject);
+            if (Keyboard.FocusedElement is ListViewItem || listViewItemParent != null)
+            {
+                // Let it be handled by the listviewitem previewkeydown handler
+                //  - this groupitem_previewkeydown event fires first
+                return;
+            }
+
+            var gi = sender as GroupItem;
+            var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
+            var exp = GetParentElem<Expander>(sp) as Expander;
+
+            if (e.Key == Key.Right)
+            {
+                if (!exp.IsExpanded)
+                {
+                    exp.IsExpanded = true;
+                }
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Left)
+            {
+                if (exp.IsExpanded)
+                {
+                    exp.IsExpanded = false;
+                }
+
+                e.Handled = true;
+            }
+            else if ((e.Key == Key.Space || e.Key == Key.Enter) && Keyboard.FocusedElement == sender)
+            {
+                var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+                cb.IsChecked = !cb.IsChecked ?? false;
+                CheckBoxClick(cb, null);
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Down)
+            {
+                if (!exp.IsExpanded)
+                {
+                    gi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Down));
+                }
+                else
+                {
+                    ListViewItem firstResult = GetFirstChildElement<ListViewItem>(exp) as ListViewItem;
+                    firstResult.Focus();
+                }
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Up)
+            {
+                gi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
+                e.Handled = true;
+            }
         }
 
         /// <summary>
@@ -230,6 +577,96 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
+        /// Handles click on file bug button
+        /// </summary>
+        private void btnFileBug_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = ((Button)sender).Tag as RuleResultViewModel;
+            if (vm.IssueLink != null)
+            {
+                // Bug already filed, open it in a new window
+                try
+                {
+                    Process.Start(vm.IssueLink.OriginalString);
+                }
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception ex)
+                {
+                    ex.ReportException();
+                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
+                    MessageDialog.Show(ex.InnerException?.Message);
+                    vm.IssueDisplayText = null;
+                }
+#pragma warning restore CA1031 // Do not catch general exception types
+            }
+            else
+            {
+                // File a new bug
+                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
+                Logger.PublishTelemetryEvent(telemetryEvent);
+
+                if (IssueReporter.IsConnected)
+                {
+                    IssueInformation issueInformation = vm.GetIssueInformation();
+                    FileIssueAction.AttachIssueData(issueInformation, _controlContext.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
+
+                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
+                    if (issueResult != null)
+                    {
+                        vm.IssueDisplayText = issueResult.DisplayText;
+                        vm.IssueLink = issueResult.IssueLink;
+                    }
+                    File.Delete(issueInformation.TestFileName);
+                }
+                else
+                {
+                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
+                    if (accepted.HasValue && accepted.Value)
+                    {
+                        _controlContext.SwitchToServerLogin();
+                    }
+                }
+            }
+        }
+
+        private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue && (HelperMethods.FileBugVisibility == Visibility.Visible))
+            {
+                ((Button)sender).GetBindingExpression(Button.ContentProperty).UpdateTarget();
+            }
+        }
+
+        internal void Reset()
+        {
+            SetAllExpanded(false);
+            CheckBoxSelectAll.IsChecked = false;
+            SelectedItems.Clear();
+            ListView.ItemsSource = null;
+        }
+
+        internal void SetItemsSource(IEnumerable<RuleResultViewModel> results)
+        {
+            if (results == null)
+            {
+                ListView.ItemsSource = null;
+                ListView.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                ListView.IsEnabled = true;
+                ListView.ItemsSource = results;
+                ListView.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void SetAllExpanded(bool allExpanded)
+        {
+            _allExpanded = allExpanded;
+            fabicnExpandAll.GlyphName = _allExpanded ? FabricIcon.CaretSolidDown : FabricIcon.CaretSolidRight;
+        }
+
+        /// <summary>
         /// We disable this because otherwise the scrollviewer will scroll past the
         /// left-most checkboxes and instead have the expander on the very left. This looks
         /// visually jarring.
@@ -239,12 +676,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             e.Handled = true;
         }
 
-        /// <summary>
-        /// Handles expander collapse event
+        /// Select expander's elements when expanded
         /// </summary>
-        private void Expander_Collapsed(object sender, RoutedEventArgs e)
+        private void Exp_Checked(Expander exp)
         {
-            SetAllExpanded(false);
+            var lst = exp.DataContext as CollectionViewGroup;
+            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            SetItemsChecked(lst.Items, cb.IsChecked.Value);
         }
     }
 }

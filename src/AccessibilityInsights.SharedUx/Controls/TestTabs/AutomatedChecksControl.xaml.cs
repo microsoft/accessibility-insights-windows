@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -90,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (value)
                 {
                     ha.Show();
-                    foreach (var svm in lvResults2.GetSelectedItems())
+                    foreach (var svm in lvResults2.SelectedItems)
                     {
                         ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                     }
@@ -163,7 +164,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 ha.Show();
 
-                foreach (var svm in lvResults2.GetSelectedItems())
+                foreach (var svm in lvResults2.SelectedItems)
                 {
                     ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                 }
@@ -221,13 +222,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    var viewModel = new AutomatedChecksCustomListViewModel(lvResults2, ec, NotifyElementSelected, SwitchToServerLogin);
-                    
+                    this.lvResults2.SetControlContext(new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin));
+                    this.lvResults2.SetItemsSource(null);
+
                     this.lblCongrats.Visibility = Visibility.Collapsed;
                     this.lblNoFail.Visibility = Visibility.Collapsed;
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
-                    this.lvResults2.SetItemsSource(null);
                     this.ElementContext = ec;
                     this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
                         Properties.Resources.AutomatedChecksControl_TargetFormat, ec.Element.Glimpse);
