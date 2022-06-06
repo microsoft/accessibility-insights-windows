@@ -3,8 +3,10 @@
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Core.Bases;
@@ -27,18 +29,23 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         private readonly ElementDataContext _dataContext;
         private readonly Action _notifyElementSelected;
         private readonly Action _switchToServerLogin;
-        private readonly Func<IReadOnlyCollection<Object>, bool, bool> _setCheckedItems;
+        private readonly AutomatedChecksCustomListControl _customListControl;
+
+        /// <summary>
+        /// Currently selected items
+        /// </summary>
+        internal IList<RuleResultViewModel> SelectedItems { get; }
 
         internal ElementContext ElementContext { get; set; }
-        internal bool AllExpanded { get; set; }
 
-        internal AutomatedChecksCustomListViewModel(ElementDataContext dataContext, Action notifyElementSelected,
-            Action switchToServerLogin, Func<IReadOnlyCollection<Object>, bool, bool> setCheckedItems)
+        internal AutomatedChecksCustomListViewModel(AutomatedChecksCustomListControl customListControl, ElementDataContext dataContext, Action notifyElementSelected,
+            Action switchToServerLogin)
         {
+            _customListControl = customListControl ?? throw new ArgumentNullException(nameof(customListControl));
             _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             _notifyElementSelected = notifyElementSelected ?? throw new ArgumentNullException(nameof(notifyElementSelected));
             _switchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
-            _setCheckedItems = setCheckedItems ?? throw new ArgumentNullException(nameof(setCheckedItems));
+            SelectedItems = new List<RuleResultViewModel>();
         }
 
         public void NotifySelected(A11yElement element)
@@ -112,41 +119,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Toggle the ExpandAll state, update expanders
-        /// </summary>
-        /// <param name="root"></param>
-        /// <returns></returns>
-        public bool ToggleExpandAll(DependencyObject root)
-        {
-            AllExpanded = !AllExpanded;
-            ExpandAllExpanders(root);
-            return AllExpanded;
-        }
-
-        /// <summary>
-        /// Finds and expands all expanders recursively
-        /// </summary>
-        /// <param name="root"></param>
-        public void ExpandAllExpanders(DependencyObject root)
-        {
-            if (root == null)
-            {
-                return;
-            }
-
-            if (root is Expander)
-            {
-                (root as Expander).IsExpanded = AllExpanded;
-            }
-
-            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(root, x);
-                ExpandAllExpanders(child);
-            }
-        }
-
-        /// <summary>
         /// Finds and expands all expanders recursively
         /// </summary>
         internal void CheckAllBoxes(DependencyObject root, bool check)
@@ -200,7 +172,59 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             var lst = exp.DataContext as CollectionViewGroup;
             var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            _setCheckedItems(lst.Items, cb.IsChecked.Value);
+            SetItemsChecked(lst.Items, cb.IsChecked.Value);
+        }
+
+        /// <summary>
+        /// Select all items in list
+        /// </summary>
+        private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
+        {
+            var ret = true;
+            foreach (RuleResultViewModel itm in lst.AsParallel())
+            {
+                if (check && !SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Add(itm);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                }
+
+                else if (!check && SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Remove(itm);
+                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
+                }
+                var lvi = _customListControl.ListView.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
+                if (lvi != null)
+                {
+                    lvi.IsSelected = check;
+                }
+                else
+                {
+                    ret = false;
+                }
+            }
+            UpdateSelectAll();
+            return ret;
+        }
+
+        /// <summary>
+        /// Update select checkbox state
+        /// </summary>
+        private void UpdateSelectAll()
+        {
+            if (SelectedItems.Count == 0)
+            {
+                _customListControl.CheckBoxSelectAll.IsChecked = false;
+            }
+            else if (SelectedItems.Count == _customListControl.ListView.Items.Count)
+            {
+                _customListControl.CheckBoxSelectAll.IsChecked = true;
+            }
+            else
+            {
+                _customListControl.CheckBoxSelectAll.IsChecked = null;
+            }
         }
 
         /// <summary>
@@ -237,7 +261,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             {
                 var exp = GetParentElem<Expander>(cb) as Expander;
                 var lst = cb.DataContext as CollectionViewGroup;
-                if (_setCheckedItems(lst.Items, cb.IsChecked.Value))
+                if (SetItemsChecked(lst.Items, cb.IsChecked.Value))
                 {
                     expander = exp;
                 }

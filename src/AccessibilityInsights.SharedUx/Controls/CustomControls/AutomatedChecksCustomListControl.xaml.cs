@@ -34,8 +34,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         const int MaxElemPathColWidth = 360;
 
+        private bool _allExpanded;
+
         public ListView ListView => this.content;
-        public FabricIconControl FabricIconExpandAll => this.fabicnExpandAll;
         public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
         internal AutomatedChecksCustomListViewModel ViewModel { get; set; }
@@ -44,6 +45,18 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             InitializeComponent();
             AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
+        }
+
+        internal void Reset()
+        {
+            SetAllExpanded(false);
+            CheckBoxSelectAll.IsChecked = false;
+        }
+
+        private void SetAllExpanded(bool allExpanded)
+        {
+            _allExpanded = allExpanded;
+            fabicnExpandAll.GlyphName = _allExpanded ? FabricIcon.CaretSolidDown : FabricIcon.CaretSolidRight;
         }
 
         /// <summary>
@@ -88,13 +101,30 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void btnExpandAll_Click(object sender, RoutedEventArgs e)
         {
-            if (ViewModel.ToggleExpandAll(content))
+            SetAllExpanded(!_allExpanded);
+            ExpandAllExpanders(content);
+        }
+
+        /// <summary>
+        /// Finds and expands all expanders recursively
+        /// </summary>
+        /// <param name="root"></param>
+        public void ExpandAllExpanders(DependencyObject root)
+        {
+            if (root == null)
             {
-                fabicnExpandAll.GlyphName = FabricIcon.CaretSolidDown;
+                return;
             }
-            else
+
+            if (root is Expander)
             {
-                fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
+                (root as Expander).IsExpanded = _allExpanded;
+            }
+
+            for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(root, x);
+                ExpandAllExpanders(child);
             }
         }
 
@@ -273,8 +303,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
-            ViewModel.AllExpanded = false;
-            fabicnExpandAll.GlyphName = FabricIcon.CaretSolidRight;
+            SetAllExpanded(false);
         }
     }
 }

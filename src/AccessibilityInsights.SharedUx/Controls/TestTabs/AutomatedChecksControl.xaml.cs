@@ -245,8 +245,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    var viewModel = new AutomatedChecksCustomListViewModel(ec.DataContext, NotifyElementSelected,
-                        SwitchToServerLogin, SetItemsChecked)
+                    var viewModel = new AutomatedChecksCustomListViewModel(lvResults2, ec.DataContext, NotifyElementSelected,
+                        SwitchToServerLogin)
                     {
                         ElementContext = ec,
                     };
@@ -281,8 +281,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblCongrats.Visibility = Visibility.Collapsed;
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
-            this.lvResults2.ViewModel.AllExpanded = false;
-            this.lvResults2.FabricIconExpandAll.GlyphName = FabricIcon.CaretSolidRight;
+            this.lvResults2.Reset();
             this.SelectedItems.Clear();
             this.lvResults2.CheckBoxSelectAll.IsChecked = false;
             HollowHighlightDriver.GetDefaultInstance().Clear();
@@ -354,39 +353,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
-        /// <summary>
-        /// Select all items in list
-        /// </summary>
-        private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
-        {
-            var ret = true;
-            foreach (RuleResultViewModel itm in lst.AsParallel())
-            {
-                if (check && !SelectedItems.Contains(itm))
-                {
-                    SelectedItems.Add(itm);
-                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
-                }
-
-                else if (!check && SelectedItems.Contains(itm))
-                {
-                    SelectedItems.Remove(itm);
-                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
-                }
-                var lvi = lvResults2.ListView.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
-                if (lvi != null)
-                {
-                    lvi.IsSelected = check;
-                }
-                else
-                {
-                    ret = false;
-                }
-            }
-            UpdateSelectAll();
-            return ret;
-        }
-
         ///// <summary>
         ///// Handles unselecting a listviewitem
         ///// </summary>
@@ -422,25 +388,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         //    }
         //    UpdateSelectAll();
         //}
-
-        /// <summary>
-        /// Update select checkbox state
-        /// </summary>
-        private void UpdateSelectAll()
-        {
-            if (SelectedItems.Count == 0)
-            {
-                lvResults2.CheckBoxSelectAll.IsChecked = false;
-            }
-            else if (SelectedItems.Count == lvResults2.ListView.Items.Count)
-            {
-                lvResults2.CheckBoxSelectAll.IsChecked = true;
-            }
-            else
-            {
-                lvResults2.CheckBoxSelectAll.IsChecked = null;
-            }
-        }
 
         ///// <summary>
         ///// Handles list view item selection
