@@ -81,11 +81,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Whether there is a screenshot available (if not, checkboxes should be disabled)
-        /// </summary>
-        public bool ScreenshotAvailable => DataContext != null && DataContext.Screenshot != null;
-
-        /// <summary>
         /// Gets/sets fastpass highlighter visibility, updating as necessary
         /// </summary>
 #pragma warning disable CA1822
@@ -105,7 +100,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (value)
                 {
                     ha.Show();
-                    foreach (var svm in SelectedItems)
+                    foreach (var svm in lvResults2.GetSelectedItems())
                     {
                         ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                     }
@@ -117,11 +112,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
             }
         }
-
-        /// <summary>
-        /// Currently selected items
-        /// </summary>
-        IList<RuleResultViewModel> SelectedItems = new List<RuleResultViewModel>();
 
         /// <summary>
         /// Set results and populate UI
@@ -186,7 +176,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 ha.Show();
 
-                foreach (var svm in SelectedItems)
+                foreach (var svm in lvResults2.GetSelectedItems())
                 {
                     ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                 }
@@ -232,7 +222,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Sets element context and updates UI
         /// </summary>
-        /// <param name="ec"></param>
         public void SetElement(ElementContext ec)
         {
             if (ec == null)
@@ -256,7 +245,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
                     this.lvResults2.ViewModel = viewModel;
-                    this.lvResults2.CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
                     this.lvResults2.ListView.ItemsSource = null;
                     this.ElementContext = ec;
                     this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
@@ -275,15 +263,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Displays loading indicator and updates UI
         /// </summary>
-        /// <param name="forceRefresh"></param>
         public void UpdateUI()
         {
             this.lblCongrats.Visibility = Visibility.Collapsed;
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
             this.lvResults2.Reset();
-            this.SelectedItems.Clear();
-            this.lvResults2.CheckBoxSelectAll.IsChecked = false;
             HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
@@ -316,17 +301,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
-            this.lvResults2.ListView.ItemsSource = null;
+            this.lvResults2.Reset();
             this.tbGlimpse.Text = Properties.Resources.GlimpseTextTarget;
             this.gdFailures.Visibility = Visibility.Collapsed;
-            this.SelectedItems.Clear();
         }
 
         /// <summary>
         /// Rescanns current element
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnRescan_Click(object sender, RoutedEventArgs e)
         {
             this.lvResults2.ListView.IsEnabled = false;
@@ -336,8 +318,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Add horizontal scroll bar when width is too narrow
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void scrollview_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             var view = sender as ScrollViewer;
@@ -353,83 +333,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
-        ///// <summary>
-        ///// Handles unselecting a listviewitem
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void ListViewItem_Unselected(object sender, RoutedEventArgs e)
-        //{
-        //    var lvi = sender as ListViewItem;
-        //    var exp = GetParentElem<Expander>(lvi) as Expander;
-        //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-        //    var srvm = lvi.DataContext as RuleResultViewModel;
-
-        //    // ElementContext can be null when app is closed.
-        //    if (this.ElementContext != null)
-        //    {
-        //        ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
-        //    }
-
-        //    SelectedItems.Remove(srvm);
-        //    var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-        //    var dc = cb.DataContext as CollectionViewGroup;
-        //    var itms = dc.Items;
-        //    var any = itms.Intersect(SelectedItems).Any();
-        //    if (any)
-        //    {
-        //        cb.IsChecked = null;
-        //        groupitem.Tag = "some";
-        //    }
-        //    else
-        //    {
-        //        cb.IsChecked = false;
-        //        groupitem.Tag = "zero";
-        //    }
-        //    UpdateSelectAll();
-        //}
-
-        ///// <summary>
-        ///// Handles list view item selection
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void ListViewItem_Selected(object sender, RoutedEventArgs e)
-        //{
-        //    if (ScreenshotAvailable)
-        //    {
-        //        var lvi = sender as ListViewItem;
-        //        var exp = GetParentElem<Expander>(lvi) as Expander;
-        //        var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-        //        var itm = lvi.DataContext as RuleResultViewModel;
-        //        if (!SelectedItems.Contains(itm))
-        //        {
-        //            SelectedItems.Add(itm);
-        //            UpdateSelectAll();
-        //            ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
-        //        }
-        //        var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-        //        var dc = cb.DataContext as CollectionViewGroup;
-        //        var itms = dc.Items;
-        //        var any = itms.Except(SelectedItems).Any();
-        //        if (any)
-        //        {
-        //            cb.IsChecked = null;
-        //            groupitem.Tag = "some"; // used to indicate how many children are selected
-        //        }
-        //        else
-        //        {
-        //            cb.IsChecked = true;
-        //            groupitem.Tag = "all";
-        //        }
-        //    }
-        //}
-
         /// <summary>
         /// Call show/hide when tab changes
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
 #pragma warning disable CA1801 // unused parameter
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801 // unused parameter
@@ -447,8 +353,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Handles click on show failures button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnShowFailures_Click(object sender, RoutedEventArgs e)
         {
             this.HighlightVisibility = !this.HighlightVisibility;
@@ -465,8 +369,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Click on view results in UIA tree button goes to Test Inspect view with POI element selected
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnTree_Click(object sender, RoutedEventArgs e)
         {
             NotifySelected(ElementContext.Element);

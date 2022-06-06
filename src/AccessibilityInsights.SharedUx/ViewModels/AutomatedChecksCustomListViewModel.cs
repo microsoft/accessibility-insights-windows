@@ -26,6 +26,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 {
     class AutomatedChecksCustomListViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Whether there is a screenshot available (if not, checkboxes should be disabled)
+        /// </summary>
+        private bool ScreenshotAvailable => _dataContext != null && _dataContext.Screenshot != null;
+
         private readonly ElementDataContext _dataContext;
         private readonly Action _notifyElementSelected;
         private readonly Action _switchToServerLogin;
@@ -46,6 +51,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             _notifyElementSelected = notifyElementSelected ?? throw new ArgumentNullException(nameof(notifyElementSelected));
             _switchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             SelectedItems = new List<RuleResultViewModel>();
+
+            _customListControl.CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
         }
 
         public void NotifySelected(A11yElement element)
@@ -464,6 +471,74 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             {
                 gi.MoveFocus(new TraversalRequest(FocusNavigationDirection.Up));
                 e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Handles unselecting a listviewitem
+        /// </summary>
+        internal void OnListViewItemUnselected(object sender)
+        {
+            var lvi = sender as ListViewItem;
+            var exp = GetParentElem<Expander>(lvi) as Expander;
+            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            var srvm = lvi.DataContext as RuleResultViewModel;
+
+            // ElementContext can be null when app is closed.
+            if (this.ElementContext != null)
+            {
+                ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
+            }
+
+            SelectedItems.Remove(srvm);
+            var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+            var dc = cb.DataContext as CollectionViewGroup;
+            var itms = dc.Items;
+            var any = itms.Intersect(SelectedItems).Any();
+            if (any)
+            {
+                cb.IsChecked = null;
+                groupitem.Tag = "some";
+            }
+            else
+            {
+                cb.IsChecked = false;
+                groupitem.Tag = "zero";
+            }
+            UpdateSelectAll();
+        }
+
+        /// <summary>
+        /// Handles list view item selection
+        /// </summary>
+        internal void OnListViewItemSelected(object sender)
+        {
+            if (ScreenshotAvailable)
+            {
+                var lvi = sender as ListViewItem;
+                var exp = GetParentElem<Expander>(lvi) as Expander;
+                var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+                var itm = lvi.DataContext as RuleResultViewModel;
+                if (!SelectedItems.Contains(itm))
+                {
+                    SelectedItems.Add(itm);
+                    UpdateSelectAll();
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                }
+                var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+                var dc = cb.DataContext as CollectionViewGroup;
+                var itms = dc.Items;
+                var any = itms.Except(SelectedItems).Any();
+                if (any)
+                {
+                    cb.IsChecked = null;
+                    groupitem.Tag = "some"; // used to indicate how many children are selected
+                }
+                else
+                {
+                    cb.IsChecked = true;
+                    groupitem.Tag = "all";
+                }
             }
         }
     }

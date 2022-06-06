@@ -41,6 +41,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         internal AutomatedChecksCustomListViewModel ViewModel { get; set; }
 
+        internal IEnumerable<RuleResultViewModel> GetSelectedItems()
+        {
+            if (ViewModel == null) return Enumerable.Empty<RuleResultViewModel>();
+
+            return ViewModel.SelectedItems;
+        }
+
         public AutomatedChecksCustomListControl()
         {
             InitializeComponent();
@@ -51,6 +58,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             SetAllExpanded(false);
             CheckBoxSelectAll.IsChecked = false;
+            ViewModel?.SelectedItems?.Clear();
+            ListView.ItemsSource = null;
         }
 
         private void SetAllExpanded(bool allExpanded)
@@ -87,8 +96,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles click on select all checkbox
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.CheckAllBoxes(content, (sender as CheckBox).IsChecked.Value);
@@ -97,8 +104,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles expand all button click
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnExpandAll_Click(object sender, RoutedEventArgs e)
         {
             SetAllExpanded(!_allExpanded);
@@ -108,7 +113,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Finds and expands all expanders recursively
         /// </summary>
-        /// <param name="root"></param>
         public void ExpandAllExpanders(DependencyObject root)
         {
             if (root == null)
@@ -131,8 +135,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles click on element snippet
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ButtonElem_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.NotifySelected(((Button)sender).Tag as A11yElement);
@@ -141,8 +143,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles click on file bug button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
@@ -161,8 +161,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles click on source link button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnSourceLink_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
@@ -172,8 +170,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Custom keyboard nav behavior
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lviResults_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             ViewModel.OnListViewItemPreviewKeyDown(sender, e);
@@ -182,80 +178,22 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles unselecting a listviewitem
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListViewItem_Unselected(object sender, RoutedEventArgs e)
         {
-            //var lvi = sender as ListViewItem;
-            //var exp = GetParentElem<Expander>(lvi) as Expander;
-            //var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            //var srvm = lvi.DataContext as RuleResultViewModel;
-
-            //// ElementContext can be null when app is closed.
-            //if (this.ElementContext != null)
-            //{
-            //    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
-            //}
-
-            //SelectedItems.Remove(srvm);
-            //var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-            //var dc = cb.DataContext as CollectionViewGroup;
-            //var itms = dc.Items;
-            //var any = itms.Intersect(SelectedItems).Any();
-            //if (any)
-            //{
-            //    cb.IsChecked = null;
-            //    groupitem.Tag = "some";
-            //}
-            //else
-            //{
-            //    cb.IsChecked = false;
-            //    groupitem.Tag = "zero";
-            //}
-            //UpdateSelectAll();
+            ViewModel.OnListViewItemUnselected(sender);
         }
 
         /// <summary>
         /// Handles list view item selection
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListViewItem_Selected(object sender, RoutedEventArgs e)
         {
-            //if (ScreenshotAvailable)
-            //{
-            //    var lvi = sender as ListViewItem;
-            //    var exp = GetParentElem<Expander>(lvi) as Expander;
-            //    var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            //    var itm = lvi.DataContext as RuleResultViewModel;
-            //    if (!SelectedItems.Contains(itm))
-            //    {
-            //        SelectedItems.Add(itm);
-            //        UpdateSelectAll();
-            //        ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
-            //    }
-            //    var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
-            //    var dc = cb.DataContext as CollectionViewGroup;
-            //    var itms = dc.Items;
-            //    var any = itms.Except(SelectedItems).Any();
-            //    if (any)
-            //    {
-            //        cb.IsChecked = null;
-            //        groupitem.Tag = "some"; // used to indicate how many children are selected
-            //    }
-            //    else
-            //    {
-            //        cb.IsChecked = true;
-            //        groupitem.Tag = "all";
-            //    }
-            //}
+            ViewModel.OnListViewItemUnselected(sender);
         }
 
         /// <summary>
         /// Handles group level checkbox click
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         internal void CheckBoxClick(object sender, RoutedEventArgs e)
         {
             ViewModel.CheckBoxClick(sender, e);
@@ -264,8 +202,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Custom keyboard behavior for group items
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void GroupItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             ViewModel.OnGroupItemPreviewKeyDown(sender, e);
@@ -274,8 +210,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Don't let column auto-size past ~75 characters
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CustomGridViewColumnHeader_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (e.NewSize.Width > MaxElemPathColWidth && Double.IsNaN(gvcElement.Width))
@@ -289,8 +223,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// left-most checkboxes and instead have the expander on the very left. This looks
         /// visually jarring.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Expander_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
         {
             e.Handled = true;
@@ -299,8 +231,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles expander collapse event
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Expander_Collapsed(object sender, RoutedEventArgs e)
         {
             SetAllExpanded(false);
