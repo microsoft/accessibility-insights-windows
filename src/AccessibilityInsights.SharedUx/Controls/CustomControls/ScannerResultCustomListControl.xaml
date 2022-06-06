@@ -3,10 +3,126 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
+             xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="..\..\Resources\Styles.xaml"/>
+    </UserControl.Resources>
     <Grid>
-            
+        <ListView x:Name="lvDetails" SizeChanged="lvDetails_SizeChanged"
+                            AutomationProperties.LabeledBy="{Binding ElementName=labelResults}"
+                            Background="Transparent"
+                            Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
+                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"
+                            Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"
+                            SelectionMode="Extended"
+                            SelectionChanged="lvDetails_SelectedItemChanged"
+                            IsVisibleChanged="lvDetails_IsVisibleChanged" PreviewMouseWheel="lvDetails_PreviewMouseWheel">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
+                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedRowFGBrush}"/>
+                            <Setter Property="FontWeight" Value="DemiBold"/>
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="FocusVisualStyle" Value="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <EventSetter Event="KeyDown" Handler="ListViewItem_KeyDown"/>
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Height" Value="24"/>
+                    <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
+                    <Setter Property="AutomationProperties.HelpText" Value="{Binding Path=AutomationHelpText, Mode=OneWay}"/>
+                    <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+                    <EventSetter Event="PreviewKeyDown" Handler="ListViewItem_PreviewKeyDown"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="{TemplateBinding BorderBrush}"
+                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                    Background="{TemplateBinding Background}">
+                                    <GridViewRowPresenter HorizontalAlignment="Stretch" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" Width="Auto" Margin="0" Content="{TemplateBinding Content}"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView x:Name="gvRules">
+                    <GridViewColumn>
+                        <GridViewColumnHeader 
+                                            Style="{DynamicResource ScannerResultColumnHeader}"
+                                            Content="{x:Static Properties:Resources.ScannerResultControl_Rule}" 
+                                            IsTabStop="False" 
+                                            Focusable="True"/>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <fabric:FabricIconControl GlyphName="{Binding Path=Icon}" Margin="15,0,4,0" GlyphSize="Default" FontSize="{DynamicResource StandardTextSize}" VerticalAlignment="Center">
+                                        <fabric:FabricIconControl.Style>
+                                            <Style TargetType="fabric:FabricIconControl">
+                                                <Style.Triggers>
+                                                    <Trigger Property="GlyphName" Value="AlertSolid">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}" />
+                                                    </Trigger>
+                                                    <Trigger Property="GlyphName" Value="MapDirections">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushRed}" />
+                                                    </Trigger>
+                                                    <Trigger Property="GlyphName" Value="IncidentTriangle">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=WarningBrush}"/>
+                                                    </Trigger>
+                                                    <Trigger Property="GlyphName" Value="CompletedSolid">
+                                                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HLbrushGreen}"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </fabric:FabricIconControl.Style>
+                                    </fabric:FabricIconControl>
+                                    <TextBlock Style="{DynamicResource VarStandardTextBlock}" VerticalAlignment="Center" Margin="0,0,0,2">
+                                                        <Run Text="{Binding Path=Header,Mode=OneWay}"/>
+                                                        <Hyperlink Click="Hyperlink_Click" AutomationProperties.Name="{Binding Path=Source}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource ResourceKey=hLink}">
+                                                            <TextBlock Text="{Binding Path=Source}"/>
+                                                        </Hyperlink>
+                                                    </TextBlock>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Width="{Binding BugColumnWidth}">
+                        <GridViewColumnHeader 
+                                            Style="{DynamicResource ScannerResultColumnHeader}"
+                                            Visibility="{Binding BugColumnVisibility}" 
+                                            Content="{x:Static Properties:Resources.ScannerResultControl_Issue}" 
+                                            IsTabStop="False" 
+                                            Focusable="True"/>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" MinWidth="200">
+                                    <fabric:FabricIconControl GlyphName="LadybugSolid" GlyphSize="Custom" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=BlueButtonBGBrush}"
+                                                                              Margin="0,0,4,0"  Visibility="{Binding Path=FileBugVisibility}"/>
+                                    <Button Style="{StaticResource ResourceKey=btnLink}" Name="btnFileBug" Click="btnFileBug_Click"
+                                                    Content="{Binding IssueDisplayText, TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
+                                                    Margin="-1" Focusable="True" IsTabStop="True" Tag="{Binding }" HorizontalAlignment="Center"
+                                                    AutomationProperties.HelpText="{Binding Path=Element.Glimpse, StringFormat='{x:Static Properties:Resources.btnFileBugAutomationPropertiesHelpText1}'}"
+                                                    AutomationProperties.Name="{Binding Path=BugIdString, StringFormat='Open link to bug #{0}', TargetNullValue='{x:Static Properties:Resources.btnFileIssueContent}'}"
+                                                    Visibility="{Binding Path=FileBugVisibility}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>
