@@ -289,15 +289,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Rescanns current element
-        /// </summary>
-        private void btnRescan_Click(object sender, RoutedEventArgs e)
-        {
-            this.lvResults2.ListView.IsEnabled = false;
-            this.RunAgainTest();
-        }
-
-        /// <summary>
         /// Add horizontal scroll bar when width is too narrow
         /// </summary>
         private void scrollview_SizeChanged(object sender, SizeChangedEventArgs e)
