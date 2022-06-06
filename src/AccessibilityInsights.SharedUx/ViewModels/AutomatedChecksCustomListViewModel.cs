@@ -31,6 +31,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         private bool ScreenshotAvailable => _dataContext != null && _dataContext.Screenshot != null;
 
+        private readonly ElementContext _elementContext;
         private readonly ElementDataContext _dataContext;
         private readonly Action _notifyElementSelected;
         private readonly Action _switchToServerLogin;
@@ -41,18 +42,19 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// </summary>
         internal IList<RuleResultViewModel> SelectedItems { get; }
 
-        internal ElementContext ElementContext { get; set; }
 
-        internal AutomatedChecksCustomListViewModel(AutomatedChecksCustomListControl customListControl, ElementDataContext dataContext, Action notifyElementSelected,
+        internal AutomatedChecksCustomListViewModel(AutomatedChecksCustomListControl customListControl, ElementContext elementContext, Action notifyElementSelected,
             Action switchToServerLogin)
         {
+            _elementContext = elementContext ?? throw new ArgumentNullException(nameof(elementContext));
+            _dataContext = elementContext.DataContext ?? throw new ArgumentException("Null DataContext not allowed", nameof(elementContext));
             _customListControl = customListControl ?? throw new ArgumentNullException(nameof(customListControl));
-            _dataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             _notifyElementSelected = notifyElementSelected ?? throw new ArgumentNullException(nameof(notifyElementSelected));
             _switchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             SelectedItems = new List<RuleResultViewModel>();
 
             _customListControl.CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
+            _customListControl.ViewModel = this;
         }
 
         public void NotifySelected(A11yElement element)
@@ -92,7 +94,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 if (IssueReporter.IsConnected)
                 {
                     IssueInformation issueInformation = vm.GetIssueInformation();
-                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
+                    FileIssueAction.AttachIssueData(issueInformation, _elementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
 
                     IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
                     if (issueResult != null)
@@ -193,13 +195,13 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 if (check && !SelectedItems.Contains(itm))
                 {
                     SelectedItems.Add(itm);
-                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(_elementContext.Id, itm.Element.UniqueId);
                 }
 
                 else if (!check && SelectedItems.Contains(itm))
                 {
                     SelectedItems.Remove(itm);
-                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().RemoveElement(_elementContext.Id, itm.Element.UniqueId);
                 }
                 var lvi = _customListControl.ListView.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
                 if (lvi != null)
@@ -485,9 +487,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             var srvm = lvi.DataContext as RuleResultViewModel;
 
             // ElementContext can be null when app is closed.
-            if (this.ElementContext != null)
+            if (this._elementContext != null)
             {
-                ImageOverlayDriver.GetDefaultInstance().RemoveElement(this.ElementContext.Id, srvm.Element.UniqueId);
+                ImageOverlayDriver.GetDefaultInstance().RemoveElement(_elementContext.Id, srvm.Element.UniqueId);
             }
 
             SelectedItems.Remove(srvm);
@@ -523,7 +525,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                 {
                     SelectedItems.Add(itm);
                     UpdateSelectAll();
-                    ImageOverlayDriver.GetDefaultInstance().AddElement(this.ElementContext.Id, itm.Element.UniqueId);
+                    ImageOverlayDriver.GetDefaultInstance().AddElement(_elementContext.Id, itm.Element.UniqueId);
                 }
                 var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
                 var dc = cb.DataContext as CollectionViewGroup;

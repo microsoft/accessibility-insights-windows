@@ -234,17 +234,12 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    var viewModel = new AutomatedChecksCustomListViewModel(lvResults2, ec.DataContext, NotifyElementSelected,
-                        SwitchToServerLogin)
-                    {
-                        ElementContext = ec,
-                    };
+                    var viewModel = new AutomatedChecksCustomListViewModel(lvResults2, ec, NotifyElementSelected, SwitchToServerLogin);
                     
                     this.lblCongrats.Visibility = Visibility.Collapsed;
                     this.lblNoFail.Visibility = Visibility.Collapsed;
                     this.gdFailures.Visibility = Visibility.Collapsed;
                     this.DataContext = ec.DataContext;
-                    this.lvResults2.ViewModel = viewModel;
                     this.lvResults2.ListView.ItemsSource = null;
                     this.ElementContext = ec;
                     this.tbGlimpse.Text = string.Format(CultureInfo.InvariantCulture,
@@ -289,7 +284,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 Dispatcher.Invoke(() =>
                 {
-                    lvResults2.ViewModel.CheckAllBoxes(lvResults2.ListView, true);
+                    lvResults2.CheckAllBoxes();
                 }, DispatcherPriority.Input);
             }
         }

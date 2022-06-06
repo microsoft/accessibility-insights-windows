@@ -93,6 +93,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
+        internal void CheckAllBoxes()
+        {
+            ViewModel.CheckAllBoxes(content, true);
+        }
+
         /// <summary>
         /// Handles click on select all checkbox
         /// </summary>
