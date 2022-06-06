@@ -38,7 +38,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private bool _allExpanded;
 
-        public ListView ListView => this.content;
         public CheckBox CheckBoxSelectAll => this.chbxSelectAll;
 
         /// <summary>
@@ -130,7 +129,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void btnExpandAll_Click(object sender, RoutedEventArgs e)
         {
             SetAllExpanded(!_allExpanded);
-            ExpandAllExpanders(content);
+            ExpandAllExpanders(lvResults);
         }
 
         /// <summary>
@@ -319,7 +318,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         internal void CheckAllBoxes()
         {
-            CheckAllBoxes(content, true);
+            CheckAllBoxes(lvResults, true);
         }
 
         /// <summary>
@@ -364,7 +363,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                     SelectedItems.Remove(itm);
                     ImageOverlayDriver.GetDefaultInstance().RemoveElement(_controlContext.ElementContext.Id, itm.Element.UniqueId);
                 }
-                var lvi = ListView.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
+                var lvi = lvResults.ItemContainerGenerator.ContainerFromItem(itm) as ListViewItem;
                 if (lvi != null)
                 {
                     lvi.IsSelected = check;
@@ -383,9 +382,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void Exp_Checked(object sender, SizeChangedEventArgs e)
         {
-            var expander = sender as Expander;
-            Exp_Checked(expander);
-            expander.SizeChanged -= Exp_Checked;
+            var exp = sender as Expander;
+            var lst = exp.DataContext as CollectionViewGroup;
+            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
+            SetItemsChecked(lst.Items, cb.IsChecked.Value);
+            exp.SizeChanged -= Exp_Checked;
         }
 
         /// <summary>
@@ -431,7 +432,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             {
                 CheckBoxSelectAll.IsChecked = false;
             }
-            else if (SelectedItems.Count == ListView.Items.Count)
+            else if (SelectedItems.Count == lvResults.Items.Count)
             {
                 CheckBoxSelectAll.IsChecked = true;
             }
@@ -467,7 +468,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void chbxSelectAll_Click(object sender, RoutedEventArgs e)
         {
-            CheckAllBoxes(content, (sender as CheckBox).IsChecked.Value);
+            CheckAllBoxes(lvResults, (sender as CheckBox).IsChecked.Value);
         }
 
         /// <summary>
@@ -577,6 +578,16 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
+        /// We disable this because otherwise the scrollviewer will scroll past the
+        /// left-most checkboxes and instead have the expander on the very left. This looks
+        /// visually jarring.
+        /// </summary>
+        private void Expander_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        /// <summary>
         /// Handles click on file bug button
         /// </summary>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
@@ -642,21 +653,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             SetAllExpanded(false);
             CheckBoxSelectAll.IsChecked = false;
             SelectedItems.Clear();
-            ListView.ItemsSource = null;
+            lvResults.ItemsSource = null;
         }
 
         internal void SetItemsSource(IEnumerable<RuleResultViewModel> results)
         {
             if (results == null)
             {
-                ListView.ItemsSource = null;
-                ListView.Visibility = Visibility.Collapsed;
+                lvResults.ItemsSource = null;
+                lvResults.Visibility = Visibility.Collapsed;
             }
             else
             {
-                ListView.IsEnabled = true;
-                ListView.ItemsSource = results;
-                ListView.Visibility = Visibility.Visible;
+                lvResults.IsEnabled = true;
+                lvResults.ItemsSource = results;
+                lvResults.Visibility = Visibility.Visible;
             }
         }
 
@@ -666,23 +677,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             fabicnExpandAll.GlyphName = _allExpanded ? FabricIcon.CaretSolidDown : FabricIcon.CaretSolidRight;
         }
 
-        /// <summary>
-        /// We disable this because otherwise the scrollviewer will scroll past the
-        /// left-most checkboxes and instead have the expander on the very left. This looks
-        /// visually jarring.
-        /// </summary>
-        private void Expander_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        internal void AddGroupDescription(PropertyGroupDescription groupDescription)
         {
-            e.Handled = true;
-        }
-
-        /// Select expander's elements when expanded
-        /// </summary>
-        private void Exp_Checked(Expander exp)
-        {
-            var lst = exp.DataContext as CollectionViewGroup;
-            var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
-            SetItemsChecked(lst.Items, cb.IsChecked.Value);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvResults.ItemsSource);
+            view.GroupDescriptions.Add(groupDescription);
         }
     }
 }

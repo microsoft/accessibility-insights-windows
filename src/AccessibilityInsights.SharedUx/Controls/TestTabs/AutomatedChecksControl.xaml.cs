@@ -132,9 +132,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                         break;
                 }
 
-                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(lvResults2.ListView.ItemsSource);
                 PropertyGroupDescription groupDescription = new PropertyGroupDescription(Properties.Resources.AutomatedChecksControl_SetRuleResults_TitleURL);
-                view.GroupDescriptions.Add(groupDescription);
+                lvResults2.AddGroupDescription(groupDescription);
             }
             else
             {

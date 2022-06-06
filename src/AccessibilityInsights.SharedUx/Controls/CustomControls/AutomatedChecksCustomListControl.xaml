@@ -16,7 +16,7 @@
     <Grid>
         <ListView KeyboardNavigation.TabNavigation="Once"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
-                    Name="content" Background="Transparent">
+                    Name="lvResults" Background="Transparent">
             <ListView.View>
                 <GridView x:Name="gv">
                     <GridViewColumn Width="26" DisplayMemberBinding="{x:Null}">
