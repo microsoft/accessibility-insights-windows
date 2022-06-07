@@ -222,7 +222,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
                     this.listControl.SetControlContext(
-                        new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin, Properties.Resources.lblTitleContent));
+                        new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin));
                     this.listControl.SetItemsSource(null);
 
                     this.lblCongrats.Visibility = Visibility.Collapsed;

@@ -15,6 +15,7 @@
     </UserControl.Resources>
     <Grid>
         <ListView KeyboardNavigation.TabNavigation="Once"
+                    AutomationProperties.Name="{Binding Path=DataGridAccessibleName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:AutomatedChecksCustomListControl}}"
                     HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
                     Name="lvResults" Background="Transparent">
             <ListView.View>

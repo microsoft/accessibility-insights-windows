@@ -17,7 +17,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -48,6 +47,19 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private AutomatedChecksCustomListControlContext _controlContext;
 
+        #region DataGridAccessibleName (Dependency Property)
+
+        public string DataGridAccessibleName
+        {
+            get { return (string)GetValue(DataGridAccessibleNameProperty); }
+            set { SetValue(DataGridAccessibleNameProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAccessibleNameProperty =
+            DependencyProperty.Register("DataGridAccessibleName", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         /// <summary>
         /// Currently selected items
         /// </summary>
@@ -64,7 +76,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
 
             CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
-            AutomationProperties.SetName(lvResults, controlContext.DataGridAccessibleName);
         }
 
         /// <summary>

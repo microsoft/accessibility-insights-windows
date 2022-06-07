@@ -59,7 +59,7 @@
                 </Grid>
             </Grid>
             <Border Grid.Row="1" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once"
+                <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.lblTitleContent}"
                           x:Name="listControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
                           AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}" Background="Transparent">
                 </local:AutomatedChecksCustomListControl>
