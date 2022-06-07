@@ -33,11 +33,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         private readonly List<ScanListViewItemViewModel> _list;
 
         /// <summary>
-        /// Keeps track of if we should automatically set lv column widths
-        /// </summary>
-        public bool HasUserResizedLvHeader { get; set; }
-
-        /// <summary>
         /// Constructor
         /// </summary>
         public ScannerResultControl()
@@ -220,7 +215,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             GridViewColumnHeader header = senderAsThumb.TemplatedParent as GridViewColumnHeader;
             if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Rule)
             {
-                HasUserResizedLvHeader = true;
+                this.lvDetails.HasUserResizedLvHeader = true;
             }
             if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
             {

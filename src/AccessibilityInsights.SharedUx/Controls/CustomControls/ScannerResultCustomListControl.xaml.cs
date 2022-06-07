@@ -28,6 +28,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         public ViewBase View { get; set; }
 
+        /// <summary>
+        /// Keeps track of if we should automatically set lv column widths
+        /// </summary>
+        public bool HasUserResizedLvHeader { get; set; }
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
@@ -40,7 +45,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void lvDetails_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            /*if (!HasUserResizedLvHeader)
+            if (!HasUserResizedLvHeader)
             {
                 ListView listView = sender as ListView;
                 GridView gView = listView.View as GridView;
@@ -54,7 +59,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                         gView.Columns[0].Width = width;
                     }
                 }
-            }*/
+            }
         }
 
         /// <summary>
@@ -74,7 +79,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void lvDetails_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            /*if (!e.Handled)
+            if (!e.Handled)
             {
                 e.Handled = true;
                 var eventArg = new MouseWheelEventArgs(e.MouseDevice, e.Timestamp, e.Delta);
@@ -82,7 +87,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 eventArg.Source = sender;
                 var parent = ((Control)sender).Parent as UIElement;
                 parent.RaiseEvent(eventArg);
-            }*/
+            }
         }
 
         /// <summary>
@@ -93,13 +98,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void lvDetails_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801 // unused parameter
         {
-            /*if ((bool)e.NewValue)
+            if ((bool)e.NewValue)
             {
                 var visible = this.btnShowAll.Visibility;
                 this.ShowAllResults = visible == Visibility.Collapsed;
                 UpdateTree();
                 this.btnShowAll.Visibility = visible;
-            }*/
+            }
         }
 
         /// <summary>

@@ -35,7 +35,11 @@
                 </Expander.Header>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Focusable="False" >
                     <StackPanel Focusable="False">
-                        <local:ScannerResultCustomListControl x:Name="lvDetails"/>
+                        <local:ScannerResultCustomListControl x:Name="lvDetails" AutomationProperties.LabeledBy="{Binding ElementName=labelResults}"
+                            Background="Transparent"
+                            Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
+                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"
+                            Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"/>
                         <Button Name="btnShowAll"
                             Height="Auto"
                             Width="Auto"
