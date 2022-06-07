@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -58,11 +59,12 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
         }
 
-        internal void SetControlContext(AutomatedChecksCustomListControlContext context)
+        internal void SetControlContext(AutomatedChecksCustomListControlContext controlContext)
         {
-            _controlContext = context ?? throw new ArgumentNullException(nameof(context));
+            _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
 
             CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
+            AutomationProperties.SetName(lvResults, controlContext.DataGridAccessibleName);
         }
 
         /// <summary>
