@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     /// </summary>
     public partial class ScannerResultCustomListControl : UserControl
     {
+        public IEnumerable ItemsSource { get; set; }
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
