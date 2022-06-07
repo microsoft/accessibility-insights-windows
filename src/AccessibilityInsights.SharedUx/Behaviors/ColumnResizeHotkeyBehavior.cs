@@ -53,6 +53,17 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             }
         }
 
+        private static void ResizeListView(ScannerResultCustomListControl lv)
+        {
+            if (lv.View is GridView gv)
+            {
+                foreach (var col in gv.Columns)
+                {
+                    col.Width = Double.NaN;
+                }
+            }
+        }
+
         /// <summary>
         /// Sets listview column widths to auto
         /// </summary>

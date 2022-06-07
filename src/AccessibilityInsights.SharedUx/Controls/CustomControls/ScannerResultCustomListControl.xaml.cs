@@ -23,6 +23,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     {
         public IEnumerable ItemsSource { get; set; }
 
+        public int SelectedIndex { get; set; }
+
+        public ViewBase View { get; set; }
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
