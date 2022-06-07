@@ -334,7 +334,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             if (root is CheckBox cb && cb.Tag != null)
             {
                 cb.IsChecked = check;
-                CheckBoxClick(cb, null);
+                CheckBox_Click(cb, null);
             }
 
             for (int x = 0; x < VisualTreeHelper.GetChildrenCount(root); x++)
@@ -445,14 +445,15 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles group level checkbox click
         /// </summary>
-        internal void CheckBoxClick(object sender, RoutedEventArgs e)
+        internal void CheckBox_Click(object sender, RoutedEventArgs e)
         {
             var cb = sender as CheckBox;
             if (cb.IsEnabled)
             {
                 var exp = GetParentElem<Expander>(cb) as Expander;
                 var lst = cb.DataContext as CollectionViewGroup;
-                if (SetItemsChecked(lst.Items, cb.IsChecked.Value))
+                var itemsSelected = SetItemsChecked(lst.Items, cb.IsChecked.Value);
+                if (!itemsSelected)
                 {
                     exp.SizeChanged += Exp_Checked;
                 }
@@ -543,7 +544,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             {
                 var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 cb.IsChecked = !cb.IsChecked ?? false;
-                CheckBoxClick(cb, null);
+                CheckBox_Click(cb, null);
                 e.Handled = true;
             }
             else if (e.Key == Key.Down)

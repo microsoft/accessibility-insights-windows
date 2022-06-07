@@ -185,7 +185,7 @@
                             <ControlTemplate TargetType="{x:Type Expander}">
                                 <Border Background="{TemplateBinding Background}">
                                     <DockPanel>
-                                        <CheckBox Margin="0,5,2,0" Tag="tag" Focusable="True" IsTabStop="False" Click="CheckBoxClick" AutomationProperties.Name="{x:Static Properties:Resources.lvResultsCheckBoxAutomationPropertiesName}" Style="{StaticResource CheckBoxContastingBorder}"/>
+                                        <CheckBox Margin="0,5,2,0" Tag="tag" Focusable="True" IsTabStop="False" Click="CheckBox_Click" AutomationProperties.Name="{x:Static Properties:Resources.lvResultsCheckBoxAutomationPropertiesName}" Style="{StaticResource CheckBoxContastingBorder}"/>
                                         <ToggleButton x:Name="HeaderSite" IsTabStop="False" ContentTemplate="{TemplateBinding HeaderTemplate}" ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" 
                                                                 Content="{TemplateBinding Header}" DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}" 
                                                                 FontWeight="{TemplateBinding FontWeight}" FontStyle="{TemplateBinding FontStyle}" FontStretch="{TemplateBinding FontStretch}" 
