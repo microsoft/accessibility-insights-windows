@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AccessibilityInsights.SharedUx.ViewModels;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -56,11 +57,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }*/
         }
 
+        /// <summary>
+        /// Update control based on failure selection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
             //this.spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
 
+        /// <summary>
+        /// Pass scrolling events through listview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvDetails_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             /*if (!e.Handled)
@@ -74,6 +85,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }*/
         }
 
+        /// <summary>
+        /// Ensure listview contents are displayed properly
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lvDetails_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801 // unused parameter
         {
@@ -86,6 +102,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }*/
         }
 
+        /// <summary>
+        /// Navigate to link on enter in listview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
         {
             /*if (e.Key == Key.Enter)
@@ -95,6 +116,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }*/
         }
 
+        /// <summary>
+        /// Handles click on file bug button
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             /*var vm = ((Button)sender).Tag as ScanListViewItemViewModel;
@@ -160,6 +186,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }*/
         }
 
+        /// <summary>
+        /// Custom keyboard nav behavior for listview
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             /*(sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.Local);
@@ -178,7 +209,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
-            //((sender as Hyperlink).DataContext as ScanListViewItemViewModel).InvokeHelpLink();
+            ((sender as Hyperlink).DataContext as ScanListViewItemViewModel).InvokeHelpLink();
         }
     }
 
