@@ -3,6 +3,7 @@
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
@@ -33,6 +34,16 @@ namespace AccessibilityInsights.SharedUx.Controls
         private readonly List<ScanListViewItemViewModel> _list;
 
         /// <summary>
+        /// Keeps track of if we should automatically set lv column widths
+        /// </summary>
+        public bool HasUserResizedLvHeader { get; internal set; }
+
+        /// <summary>
+        /// Action to perform when user needs to log into the server
+        /// </summary>
+        public Action SwitchToServerLogin { get; set; }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         public ScannerResultControl()
@@ -42,11 +53,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             lvDetails.AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
             Resources.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
         }
-
-        /// <summary>
-        /// Action to perform when user needs to log into the server
-        /// </summary>
-        public Action SwitchToServerLogin { get; set; }
 
         /// <summary>
         /// Current ecid
@@ -103,6 +109,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
+            this.lvDetails.SetControlContext(new ScannerResultCustomListViewModel(UpdateTree, this.btnShowAll, this.spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.lvDetails.ItemsSource = null;
 
@@ -187,22 +194,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             (sender as Button).Visibility = Visibility.Collapsed;
         }
 
-        /// <summary>
-        /// Moves focus from currently focused element in given direction
-        /// </summary>
-        /// <param name="dir"></param>
-        private static void MoveFocus(FocusNavigationDirection dir)
-        {
-            if (Keyboard.FocusedElement is FrameworkElement fe)
-            {
-                fe.MoveFocus(new TraversalRequest(dir));
-
-            }
-            else if (Keyboard.FocusedElement is FrameworkContentElement fce)
-            {
-                fce.MoveFocus(new TraversalRequest(dir));
-            }
-        }
+        
 
         /// <summary>
         /// Make bug column fixed width

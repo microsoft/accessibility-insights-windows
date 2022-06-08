@@ -14,19 +14,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AccessibilityInsights.SharedUx.ViewModels;
+using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.SharedUx.FileIssue;
+using System.IO;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
+
     /// <summary>
     /// Interaction logic for ScannerResultCustomListControl.xaml
     /// </summary>
     public partial class ScannerResultCustomListControl : UserControl
     {
+
+        private ScannerResultCustomListViewModel _controlContext;
+
         public IEnumerable ItemsSource { get; set; }
 
         public int SelectedIndex { get; set; }
 
         public ViewBase View { get; set; }
+
+        /// <summary>
+        /// Action to perform when user needs to log into the server
+        /// </summary>
+        public Action SwitchToServerLogin { get; set; }
 
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
@@ -36,6 +52,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
+        }
+
+        internal void SetControlContext(ScannerResultCustomListViewModel controlContext)
+        {
+            _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
         }
 
         /// <summary>
@@ -69,7 +90,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            //this.spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
+            _controlContext.DataContext.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
 
         /// <summary>
@@ -100,10 +121,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             if ((bool)e.NewValue)
             {
-                var visible = this.btnShowAll.Visibility;
-                this.ShowAllResults = visible == Visibility.Collapsed;
-                UpdateTree();
-                this.btnShowAll.Visibility = visible;
+                _controlContext.changeVisibility();
             }
         }
 
@@ -114,11 +132,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
         {
-            /*if (e.Key == Key.Enter)
+            if (e.Key == Key.Enter)
             {
                 ((sender as ListViewItem).DataContext as ScanListViewItemViewModel).InvokeHelpLink();
                 e.Handled = true;
-            }*/
+            }
         }
 
         /// <summary>
@@ -128,7 +146,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
-            /*var vm = ((Button)sender).Tag as ScanListViewItemViewModel;
+            var vm = ((Button)sender).Tag as ScanListViewItemViewModel;
             if (vm.IssueLink != null)
             {
                 // Bug already filed, open it in a new window
@@ -158,7 +176,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                     try
                     {
                         issueInformation = vm.GetIssueInformation();
-                        FileIssueAction.AttachIssueData(issueInformation, this.EcId, vm.Element.BoundingRectangle, vm.Element.UniqueId);
+                        FileIssueAction.AttachIssueData(issueInformation, _controlContext.EcId, vm.Element.BoundingRectangle, vm.Element.UniqueId);
                         IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
                         if (issueResult != null)
                         {
@@ -188,7 +206,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                         SwitchToServerLogin();
                     }
                 }
-            }*/
+            }
         }
 
         /// <summary>
@@ -198,7 +216,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void ListViewItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            /*(sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.Local);
+            (sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.Local);
 
             if (e.Key == Key.Right && !(Keyboard.FocusedElement is Button))
             {
@@ -209,14 +227,29 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 MoveFocus(FocusNavigationDirection.Previous);
             }
 
-            (sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.None);*/
+            (sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.None);
         }
 
         private void Hyperlink_Click(object sender, RoutedEventArgs e)
         {
             ((sender as Hyperlink).DataContext as ScanListViewItemViewModel).InvokeHelpLink();
         }
+
+        /// <summary>
+        /// Moves focus from currently focused element in given direction
+        /// </summary>
+        /// <param name="dir"></param>
+        private static void MoveFocus(FocusNavigationDirection dir)
+        {
+            if (Keyboard.FocusedElement is FrameworkElement fe)
+            {
+                fe.MoveFocus(new TraversalRequest(dir));
+
+            }
+            else if (Keyboard.FocusedElement is FrameworkContentElement fce)
+            {
+                fce.MoveFocus(new TraversalRequest(dir));
+            }
+        }
     }
-
-
 }
