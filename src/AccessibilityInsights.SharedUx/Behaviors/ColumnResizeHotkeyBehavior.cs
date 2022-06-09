@@ -49,7 +49,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             else if (sender is ScannerResultControl srCtrl)
             {
                 srCtrl.HasUserResizedLvHeader = true;
-                ResizeListView(srCtrl.lvDetails);
+                ResizeListView(srCtrl.listControl);
             }
         }
 

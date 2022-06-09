@@ -36,7 +36,11 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
-        public bool HasUserResizedLvHeader { get; internal set; }
+        public bool HasUserResizedLvHeader 
+        {
+            get => listControl.HasUserResizedLvHeader;
+            internal set { listControl.HasUserResizedLvHeader = value; } 
+        }
 
         /// <summary>
         /// Action to perform when user needs to log into the server
@@ -50,7 +54,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             InitializeComponent();
             _list = new List<ScanListViewItemViewModel>();
-            lvDetails.AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
+            listControl.AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
             Resources.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
         }
 
@@ -109,9 +113,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.lvDetails.SetControlContext(new ScannerResultCustomListViewModel(UpdateTree, this.btnShowAll, this.spHowToFix, this.EcId));
+            this.listControl.SetControlContext(new ScannerResultCustomListViewModel(UpdateTree, this.btnShowAll, this.spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.lvDetails.ItemsSource = null;
+            this.listControl.ItemsSource = null;
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
@@ -131,7 +135,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             var viewModelCount = itemViewModel.Count();
 
-            this.lvDetails.ItemsSource = itemViewModel;
+            this.listControl.ItemsSource = itemViewModel;
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -151,7 +155,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                lvDetails.SelectedIndex = 0;
+                listControl.SelectedIndex = 0;
                 this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
@@ -166,7 +170,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.lvDetails.ItemsSource = null;
+            this.listControl.ItemsSource = null;
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
@@ -207,7 +211,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             GridViewColumnHeader header = senderAsThumb.TemplatedParent as GridViewColumnHeader;
             if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Rule)
             {
-                this.lvDetails.HasUserResizedLvHeader = true;
+                this.listControl.HasUserResizedLvHeader = true;
             }
             if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
             {

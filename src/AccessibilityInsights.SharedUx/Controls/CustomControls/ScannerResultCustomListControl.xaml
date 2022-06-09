@@ -14,6 +14,7 @@
     <Grid>
         <ListView x:Name="lvDetails" SizeChanged="lvDetails_SizeChanged"
                             AutomationProperties.LabeledBy="{Binding ElementName=labelResults}"
+                            AutomationProperties.Name="{Binding Path=DataGridAccessibleName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ScannerResultCustomListControl}}"
                             Background="Transparent"
                             Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                             BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"

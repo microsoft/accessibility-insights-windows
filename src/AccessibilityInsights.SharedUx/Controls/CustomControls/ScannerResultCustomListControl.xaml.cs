@@ -24,16 +24,18 @@ using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
-
     /// <summary>
     /// Interaction logic for ScannerResultCustomListControl.xaml
     /// </summary>
     public partial class ScannerResultCustomListControl : UserControl
     {
-
         private ScannerResultCustomListViewModel _controlContext;
 
-        public IEnumerable ItemsSource { get; set; }
+        public IEnumerable ItemsSource 
+        {
+            get => lvDetails.ItemsSource;
+            set { lvDetails.ItemsSource = value; } 
+        }
 
         public int SelectedIndex { get; set; }
 
@@ -48,6 +50,19 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
         public bool HasUserResizedLvHeader { get; set; }
+
+        #region DataGridAccessibleName (Dependency Property)
+
+        public string DataGridAccessibleName
+        {
+            get { return (string)GetValue(DataGridAccessibleNameProperty); }
+            set { SetValue(DataGridAccessibleNameProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAccessibleNameProperty =
+            DependencyProperty.Register("DataGridAccessibleName", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
+
+        #endregion
 
         public ScannerResultCustomListControl()
         {
