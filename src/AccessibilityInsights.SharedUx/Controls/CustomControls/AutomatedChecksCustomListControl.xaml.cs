@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -60,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
-        #region DataGridAccessibleName (Dependency Property)
+        #region DataGridAutomationId (Dependency Property)
 
         public string DataGridAutomationId
         {
@@ -70,6 +71,29 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         public static readonly DependencyProperty DataGridAutomationIdProperty =
             DependencyProperty.Register("DataGridAutomationId", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
+        #region DataGridExpandAllAutomationId (Dependency Property)
+
+        public string DataGridExpandAllAutomationId
+        {
+            get { return (string)GetValue(DataGridExpandAllAutomationIdProperty); }
+            set { SetValue(DataGridExpandAllAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridExpandAllAutomationIdProperty =
+            DependencyProperty.Register("DataGridExpandAllAutomationId", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null, OnDataGridExpandAllAutomationIdChanged));
+
+        public static void OnDataGridExpandAllAutomationIdChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            AutomatedChecksCustomListControl sender = o as AutomatedChecksCustomListControl;
+
+            if (sender != null)
+            {
+                sender.btnExpandAll.SetValue(AutomationProperties.AutomationIdProperty, sender.DataGridExpandAllAutomationId);
+            }
+        }
 
         #endregion
 

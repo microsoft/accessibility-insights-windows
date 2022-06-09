@@ -42,16 +42,31 @@ namespace UITests.UILibrary
             results[element].FindElementByClassName("Button").Click();
         }
 
-        public void ValidateAutomatedChecks(int resultCount)
+        public void ValidateAutomatedChecks(int? nonFrameworkErrorCount, int? frameworkErrorCount)
         {
-            Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksExpandAllButton).Click();
-            var resultsGrid = Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsListView);
-            var results = resultsGrid.FindElementsByClassName("ListViewItem");
+            ValidateResultCountForSet(AutomationIDs.AutomatedChecksResultsListView, AutomationIDs.AutomatedChecksExpandAllButton, nonFrameworkErrorCount);
+            ValidateResultCountForSet(AutomationIDs.AutomatedChecksFrameworkResultsListView, AutomationIDs.AutomatedChecksFrameworkExpandAllButton, frameworkErrorCount);
             var resultsText = Session.FindElementByAccessibilityId(AutomationIDs.AutomatedChecksResultsTextBlock).Text;
             var resultTextCount = int.Parse(resultsText.Split()[0]);
 
-            Assert.AreEqual(resultCount, resultTextCount);
-            Assert.AreEqual(resultTextCount, results.Count);
+            int expectedTotalResultCount = (nonFrameworkErrorCount ?? 0) + (frameworkErrorCount ?? 0);
+            Assert.AreEqual(resultTextCount, expectedTotalResultCount);
+        }
+
+        private void ValidateResultCountForSet(string selector, string expandAllSelector, int? expectedErrorCount)
+        {
+            if (expectedErrorCount.HasValue)
+            {
+                var resultsGrid = Session.FindElementByAccessibilityId(selector);
+                Session.FindElementByAccessibilityId(expandAllSelector).Click();
+                var results = resultsGrid.FindElementsByClassName("ListViewItem");
+                Assert.AreEqual(expectedErrorCount, results.Count);
+            }
+            else
+            {
+                Assert.ThrowsException<WebDriverException>(() => Session.FindElementByAccessibilityId(selector));
+                Assert.ThrowsException<WebDriverException>(() => Session.FindElementByAccessibilityId(expandAllSelector));
+            }
         }
     }
 

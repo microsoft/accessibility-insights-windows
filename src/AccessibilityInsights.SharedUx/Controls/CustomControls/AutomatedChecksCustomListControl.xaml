@@ -34,8 +34,7 @@
                                     <Button Grid.Column="1" Name="btnExpandAll" Margin="0,-2,0,0" HorizontalAlignment="Left"
                                                     Style="{StaticResource BtnStandard}" Width="8" Height="8" Padding="0"
                                                     BorderThickness="0" Click="btnExpandAll_Click" IsHitTestVisible="True"
-                                                    AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}"
-                                                    AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksExpandAllButton}">
+                                                    AutomationProperties.Name="{x:Static Properties:Resources.btnExpandAllAutomationPropertiesName}">
                                         <Grid>
                                             <AccessText Text="{x:Static Properties:Resources.AutomatedChecksControl_ExpandCollapseAll_AccessText}" Opacity="0"/>
                                             <fabric:FabricIconControl x:Name="fabicnExpandAll" GlyphName="CaretSolidRight" GlyphSize="Custom" FontSize="8" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource hoverAwareFabricIconOnButtonParent}" Margin="0,2,0,-2"/>

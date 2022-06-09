@@ -5,6 +5,7 @@ namespace AccessibilityInsights.SharedUx.Properties
     public static class AutomationIDs
     {
         public static string AutomatedChecksExpandAllButton { get; } = nameof(AutomatedChecksExpandAllButton);
+        public static string AutomatedChecksFrameworkExpandAllButton { get; } = nameof(AutomatedChecksFrameworkExpandAllButton);
         public static string AutomatedChecksResultsListView { get; } = nameof(AutomatedChecksResultsListView);
         public static string AutomatedChecksFrameworkResultsListView { get; } = nameof(AutomatedChecksFrameworkResultsListView);
         public static string AutomatedChecksResultsTextBlock { get; } = nameof(AutomatedChecksResultsTextBlock);

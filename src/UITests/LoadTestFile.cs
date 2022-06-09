@@ -25,7 +25,7 @@ namespace UITests
         {
             driver.VerifyAccessibility(TestContext, "AutomatedChecks", 0);
             ScanResultsInUIATreePage();
-            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
+            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12, null);
             driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(0);
             ValidateResultsInUIATree();
         }

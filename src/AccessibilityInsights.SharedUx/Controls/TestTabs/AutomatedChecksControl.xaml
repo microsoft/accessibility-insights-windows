@@ -63,10 +63,12 @@
                     <StackPanel>
                     <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.lblTitleContent}"
                               x:Name="nonFrameworkListControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
+                              DataGridExpandAllAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksExpandAllButton}"
                               DataGridAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}" Background="Transparent">
                     </local:AutomatedChecksCustomListControl>
                         <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.AutomatedChecksControlFrameworkIssuesLabel}"
                               x:Name="frameworkListControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" SectionHeader="Potential framework issues"
+                              DataGridExpandAllAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksFrameworkExpandAllButton}"
                               DataGridAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksFrameworkResultsListView}" Background="Transparent">
                     </local:AutomatedChecksCustomListControl>
                 </StackPanel>
