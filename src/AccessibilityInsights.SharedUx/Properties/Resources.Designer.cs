@@ -314,6 +314,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Potential framework issues.
+        /// </summary>
+        public static string AutomatedChecksControlFrameworkIssuesLabel {
+            get {
+                return ResourceManager.GetString("AutomatedChecksControlFrameworkIssuesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help us improve.
         /// </summary>
         public static string AutomationNameTelemetryMode {

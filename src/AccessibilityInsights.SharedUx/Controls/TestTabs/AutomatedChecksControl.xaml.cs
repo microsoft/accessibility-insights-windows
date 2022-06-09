@@ -91,7 +91,11 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 if (value)
                 {
                     ha.Show();
-                    foreach (var svm in listControl.SelectedItems)
+                    foreach (var svm in nonFrameworkListControl.SelectedItems)
+                    {
+                        ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
+                    }
+                    foreach (var svm in frameworkListControl.SelectedItems)
                     {
                         ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                     }
@@ -112,7 +116,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             if (results != null)
             {
-                this.listControl.SetItemsSource(results);
+                List<RuleResultViewModel> frameworkIssues = new List<RuleResultViewModel>();
+                List<RuleResultViewModel> nonFrameworkIssues = new List<RuleResultViewModel>();
+                SplitResultList(results, frameworkIssues, nonFrameworkIssues);
+
+                this.nonFrameworkListControl.SetItemsSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
+                this.frameworkListControl.SetItemsSource(frameworkIssues.Any() ? frameworkIssues : null);
+
                 this.lblCongrats.Visibility = Visibility.Collapsed;
                 this.lblNoFail.Visibility = Visibility.Collapsed;
                 this.gdFailures.Visibility = Visibility.Visible;
@@ -133,14 +143,37 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 }
 
                 PropertyGroupDescription groupDescription = new PropertyGroupDescription(Properties.Resources.AutomatedChecksControl_SetRuleResults_TitleURL);
-                listControl.AddGroupDescription(groupDescription);
+                if (frameworkIssues.Any())
+                {
+                    frameworkListControl.AddGroupDescription(groupDescription);
+                }
+                if (nonFrameworkIssues.Any())
+                {
+                    nonFrameworkListControl.AddGroupDescription(groupDescription);
+                }
             }
             else
             {
                 this.gdFailures.Visibility = Visibility.Collapsed;
                 this.lblCongrats.Visibility = Visibility.Visible;
                 this.lblNoFail.Visibility = Visibility.Visible;
-                this.listControl.SetItemsSource(null);
+                this.nonFrameworkListControl.SetItemsSource(null);
+                this.frameworkListControl.SetItemsSource(null);
+            }
+        }
+
+        private static void SplitResultList(IEnumerable<RuleResultViewModel> results, IList<RuleResultViewModel> frameworkIssues, IList<RuleResultViewModel> nonFrameworkIssues)
+        {
+            foreach (var result in results)
+            {
+                if (result.RuleResult.FrameworkIssueLink == null)
+                {
+                    nonFrameworkIssues.Add(result);
+                }
+                else
+                {
+                    frameworkIssues.Add(result);
+                }
             }
         }
 
@@ -163,7 +196,11 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 ha.Show();
 
-                foreach (var svm in listControl.SelectedItems)
+                foreach (var svm in nonFrameworkListControl.SelectedItems)
+                {
+                    ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
+                }
+                foreach (var svm in frameworkListControl.SelectedItems)
                 {
                     ha.AddElement(this.ElementContext.Id, svm.Element.UniqueId);
                 }
@@ -221,9 +258,11 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)
                 {
-                    this.listControl.SetControlContext(
-                        new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin));
-                    this.listControl.SetItemsSource(null);
+                    var controlContext = new AutomatedChecksCustomListControlContext(ec, NotifyElementSelected, SwitchToServerLogin);
+                    this.nonFrameworkListControl.SetControlContext(controlContext);
+                    this.frameworkListControl.SetControlContext(controlContext);
+                    this.nonFrameworkListControl.SetItemsSource(null);
+                    this.frameworkListControl.SetItemsSource(null);
 
                     this.lblCongrats.Visibility = Visibility.Collapsed;
                     this.lblNoFail.Visibility = Visibility.Collapsed;
@@ -251,7 +290,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.lblCongrats.Visibility = Visibility.Collapsed;
             this.lblNoFail.Visibility = Visibility.Collapsed;
             this.gdFailures.Visibility = Visibility.Collapsed;
-            this.listControl.Reset();
+            this.nonFrameworkListControl.Reset();
+            this.frameworkListControl.Reset();
             HollowHighlightDriver.GetDefaultInstance().Clear();
 
             if (this.DataContext != null)
@@ -272,7 +312,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
                 Dispatcher.Invoke(() =>
                 {
-                    listControl.CheckAllBoxes();
+                    nonFrameworkListControl.CheckAllBoxes();
+                    frameworkListControl.CheckAllBoxes();
                 }, DispatcherPriority.Input);
             }
         }
@@ -284,7 +325,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             ImageOverlayDriver.ClearDefaultInstance();
             this.ElementContext = null;
-            this.listControl.Reset();
+            this.nonFrameworkListControl.Reset();
+            this.frameworkListControl.Reset();
             this.tbGlimpse.Text = Properties.Resources.GlimpseTextTarget;
             this.gdFailures.Visibility = Visibility.Collapsed;
         }

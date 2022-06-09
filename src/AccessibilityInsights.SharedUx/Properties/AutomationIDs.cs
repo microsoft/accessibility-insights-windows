@@ -6,6 +6,7 @@ namespace AccessibilityInsights.SharedUx.Properties
     {
         public static string AutomatedChecksExpandAllButton { get; } = nameof(AutomatedChecksExpandAllButton);
         public static string AutomatedChecksResultsListView { get; } = nameof(AutomatedChecksResultsListView);
+        public static string AutomatedChecksFrameworkResultsListView { get; } = nameof(AutomatedChecksFrameworkResultsListView);
         public static string AutomatedChecksResultsTextBlock { get; } = nameof(AutomatedChecksResultsTextBlock);
         public static string AutomatedChecksUIATreeButton { get; } = nameof(AutomatedChecksUIATreeButton);
         public static string ConnectionControl { get; } = nameof(ConnectionControl);

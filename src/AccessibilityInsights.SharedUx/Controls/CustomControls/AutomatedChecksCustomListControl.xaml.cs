@@ -60,6 +60,32 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
+        #region DataGridAccessibleName (Dependency Property)
+
+        public string DataGridAutomationId
+        {
+            get { return (string)GetValue(DataGridAutomationIdProperty); }
+            set { SetValue(DataGridAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAutomationIdProperty =
+            DependencyProperty.Register("DataGridAutomationId", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
+        #region SectionHeader (Dependency Property)
+
+        public string SectionHeader
+        {
+            get { return (string)GetValue(SectionHeaderProperty); }
+            set { SetValue(SectionHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty SectionHeaderProperty =
+            DependencyProperty.Register("SectionHeader", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         /// <summary>
         /// Currently selected items
         /// </summary>
@@ -76,6 +102,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
 
             CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
+            sectionHeader.Visibility = string.IsNullOrEmpty(SectionHeader) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>
@@ -675,13 +702,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             if (results == null)
             {
                 lvResults.ItemsSource = null;
-                lvResults.Visibility = Visibility.Collapsed;
+                Visibility = Visibility.Collapsed;
             }
             else
             {
                 lvResults.IsEnabled = true;
                 lvResults.ItemsSource = results;
-                lvResults.Visibility = Visibility.Visible;
+                Visibility = Visibility.Visible;
             }
         }
 
