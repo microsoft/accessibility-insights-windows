@@ -59,10 +59,20 @@
                 </Grid>
             </Grid>
             <Border Grid.Row="1" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.lblTitleContent}"
-                          x:Name="listControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
-                          AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}" Background="Transparent">
-                </local:AutomatedChecksCustomListControl>
+                <ScrollViewer HorizontalScrollBarVisibility ="Disabled" VerticalScrollBarVisibility="Auto">
+                    <StackPanel>
+                    <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.lblTitleContent}"
+                              x:Name="nonFrameworkListControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
+                              DataGridExpandAllAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksExpandAllButton}"
+                              DataGridAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksResultsListView}" Background="Transparent">
+                    </local:AutomatedChecksCustomListControl>
+                        <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.AutomatedChecksControlFrameworkIssuesLabel}"
+                              x:Name="frameworkListControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0" SectionHeader="Potential framework issues"
+                              DataGridExpandAllAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksFrameworkExpandAllButton}"
+                              DataGridAutomationId="{x:Static Properties:AutomationIDs.AutomatedChecksFrameworkResultsListView}" Background="Transparent">
+                    </local:AutomatedChecksCustomListControl>
+                </StackPanel>
+                </ScrollViewer>
             </Border>
             <Label Grid.Row="1" Name="lblCongrats" Visibility="Collapsed" Content="{x:Static Properties:Resources.lblCongratsContent}" HorizontalAlignment="Center"  Width="Auto" Style="{StaticResource lblHeader2}" Padding="0,32,0,0" />
             <TextBlock Grid.Row="1" Name="lblNoFail" Visibility="Collapsed" Text="{x:Static Properties:Resources.lblNoFailText}"  Style="{StaticResource tbHeaderDark}" TextWrapping="Wrap" Width="214" HorizontalAlignment="Center" TextAlignment="Center" Padding="0,49,0,0" />

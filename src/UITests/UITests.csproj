@@ -26,6 +26,9 @@
     <None Update="TestFiles\WildlifeManagerTest.a11ytest">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="TestFiles\WildlifeManagerTestWithFrameworkIssues.a11ytest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

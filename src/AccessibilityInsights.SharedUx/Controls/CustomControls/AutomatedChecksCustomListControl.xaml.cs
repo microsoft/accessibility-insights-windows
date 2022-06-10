@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -60,6 +61,55 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
+        #region DataGridAutomationId (Dependency Property)
+
+        public string DataGridAutomationId
+        {
+            get { return (string)GetValue(DataGridAutomationIdProperty); }
+            set { SetValue(DataGridAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAutomationIdProperty =
+            DependencyProperty.Register("DataGridAutomationId", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
+        #region DataGridExpandAllAutomationId (Dependency Property)
+
+        public string DataGridExpandAllAutomationId
+        {
+            get { return (string)GetValue(DataGridExpandAllAutomationIdProperty); }
+            set { SetValue(DataGridExpandAllAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridExpandAllAutomationIdProperty =
+            DependencyProperty.Register("DataGridExpandAllAutomationId", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null, OnDataGridExpandAllAutomationIdChanged));
+
+        public static void OnDataGridExpandAllAutomationIdChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
+        {
+            AutomatedChecksCustomListControl sender = o as AutomatedChecksCustomListControl;
+
+            if (sender != null)
+            {
+                sender.btnExpandAll.SetValue(AutomationProperties.AutomationIdProperty, sender.DataGridExpandAllAutomationId);
+            }
+        }
+
+        #endregion
+
+        #region SectionHeader (Dependency Property)
+
+        public string SectionHeader
+        {
+            get { return (string)GetValue(SectionHeaderProperty); }
+            set { SetValue(SectionHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty SectionHeaderProperty =
+            DependencyProperty.Register("SectionHeader", typeof(string), typeof(AutomatedChecksCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         /// <summary>
         /// Currently selected items
         /// </summary>
@@ -76,6 +126,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
 
             CheckBoxSelectAll.IsEnabled = ScreenshotAvailable;
+            sectionHeader.Visibility = string.IsNullOrEmpty(SectionHeader) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>
@@ -675,13 +726,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             if (results == null)
             {
                 lvResults.ItemsSource = null;
-                lvResults.Visibility = Visibility.Collapsed;
+                Visibility = Visibility.Collapsed;
             }
             else
             {
                 lvResults.IsEnabled = true;
                 lvResults.ItemsSource = results;
-                lvResults.Visibility = Visibility.Visible;
+                Visibility = Visibility.Visible;
             }
         }
 
