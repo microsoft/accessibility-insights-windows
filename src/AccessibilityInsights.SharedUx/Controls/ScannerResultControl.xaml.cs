@@ -113,7 +113,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.listControl.SetControlContext(new ScannerResultCustomListViewModel(UpdateTree, this.btnShowAll, this.spHowToFix, this.EcId));
+            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, this.btnShowAll, spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.listControl.ItemsSource = null;
 

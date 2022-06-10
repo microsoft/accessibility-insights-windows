@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     /// </summary>
     public partial class ScannerResultCustomListControl : UserControl
     {
-        private ScannerResultCustomListViewModel _controlContext;
+        private ScannerResultCustomListContext _controlContext;
 
         public IEnumerable ItemsSource 
         {
@@ -41,10 +41,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         public ViewBase View { get; set; }
 
-        /// <summary>
-        /// Action to perform when user needs to log into the server
-        /// </summary>
-        public Action SwitchToServerLogin { get; set; }
 
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
@@ -69,7 +65,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             InitializeComponent();
         }
 
-        internal void SetControlContext(ScannerResultCustomListViewModel controlContext)
+        internal void SetControlContext(ScannerResultCustomListContext controlContext)
         {
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
         }
@@ -218,7 +214,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                     bool? accepted = MessageDialog.Show(Properties.Resources.ScannerResultControl_btnFileBug_Click_File_Issue_Configure);
                     if (accepted.HasValue && accepted.Value)
                     {
-                        SwitchToServerLogin();
+                        _controlContext.SwitchToServerLogin();
                     }
                 }
             }

@@ -4,19 +4,19 @@ using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
-    class ScannerResultCustomListViewModel
+    class ScannerResultCustomListContext
     {
-        //internal ElementContext ElementContext { get; }
         internal Action UpdateTree { get; }
+        internal Action SwitchToServerLogin { get; }
         internal bool ShowAllResults;
         internal Button BtnShowAll;
-        internal StackPanel DataContext;
+        internal FrameworkElement DataContext;
         internal Guid EcId;
 
-        public ScannerResultCustomListViewModel( Action updateTree, Button btnShowAll, StackPanel dataContext, Guid ecId)
+        public ScannerResultCustomListContext( Action updateTree, Action switchToServerLogin, Button btnShowAll, FrameworkElement dataContext, Guid ecId)
         {
-            //ElementContext = elementContext ?? throw new ArgumentNullException(nameof(elementContext));
             UpdateTree = updateTree ?? throw new ArgumentNullException(nameof(updateTree));
+            SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             BtnShowAll = btnShowAll ?? throw new ArgumentNullException(nameof(btnShowAll));
             DataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             EcId = ecId;
