@@ -1,13 +1,8 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
-using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
@@ -15,14 +10,12 @@ using Axe.Windows.Core.Results;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
-using System.Windows.Input;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -36,10 +29,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
         /// </summary>
-        public bool HasUserResizedLvHeader 
+        public bool HasUserResizedLvHeader
         {
             get => listControl.HasUserResizedLvHeader;
-            internal set { listControl.HasUserResizedLvHeader = value; } 
+            internal set { listControl.HasUserResizedLvHeader = value; }
         }
 
         /// <summary>
@@ -113,7 +106,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, this.btnShowAll, spHowToFix, this.EcId));
+            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.listControl.ItemsSource = null;
 
@@ -198,8 +191,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             (sender as Button).Visibility = Visibility.Collapsed;
         }
 
-        
-
         /// <summary>
         /// Make bug column fixed width
         /// </summary>
@@ -217,6 +208,14 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 header.Column.Width = HelperMethods.FileIssueColumnWidth;
             }
+        }
+
+        public void ChangeVisibility()
+        {
+            var visible = this.btnShowAll.Visibility;
+            this.ShowAllResults = visible == Visibility.Collapsed;
+            UpdateTree();
+            this.btnShowAll.Visibility = visible;
         }
     }
 }

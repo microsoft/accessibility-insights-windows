@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Helpers;
+using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Enums;
+using AccessibilityInsights.SharedUx.FileIssue;
+using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.ViewModels;
+using System;
 using System.Collections;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using AccessibilityInsights.SharedUx.ViewModels;
-using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.SharedUx.FileIssue;
-using System.IO;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
-using AccessibilityInsights.SharedUx.Telemetry;
-using AccessibilityInsights.SharedUx.Enums;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -31,16 +24,15 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     {
         private ScannerResultCustomListContext _controlContext;
 
-        public IEnumerable ItemsSource 
+        public IEnumerable ItemsSource
         {
             get => lvDetails.ItemsSource;
-            set { lvDetails.ItemsSource = value; } 
+            set { lvDetails.ItemsSource = value; }
         }
 
         public int SelectedIndex { get; set; }
 
         public ViewBase View { get; set; }
-
 
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths
@@ -101,7 +93,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <param name="e"></param>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            _controlContext.DataContext.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
+            _controlContext.ElementToBind.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
 
         /// <summary>
@@ -132,7 +124,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             if ((bool)e.NewValue)
             {
-                _controlContext.changeVisibility();
+                _controlContext.ChangeVisibility();
             }
         }
 

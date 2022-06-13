@@ -1,6 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
@@ -8,26 +9,17 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     {
         internal Action UpdateTree { get; }
         internal Action SwitchToServerLogin { get; }
-        internal bool ShowAllResults;
-        internal Button BtnShowAll;
-        internal FrameworkElement DataContext;
-        internal Guid EcId;
+        internal Action ChangeVisibility { get; }
+        internal FrameworkElement ElementToBind { get; }
+        internal Guid EcId { get; }
 
-        public ScannerResultCustomListContext( Action updateTree, Action switchToServerLogin, Button btnShowAll, FrameworkElement dataContext, Guid ecId)
+        public ScannerResultCustomListContext(Action updateTree, Action switchToServerLogin, Action changeAction, FrameworkElement dataContext, Guid ecId)
         {
             UpdateTree = updateTree ?? throw new ArgumentNullException(nameof(updateTree));
             SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
-            BtnShowAll = btnShowAll ?? throw new ArgumentNullException(nameof(btnShowAll));
-            DataContext = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
+            ChangeVisibility = changeAction ?? throw new ArgumentNullException(nameof(changeAction));
+            ElementToBind = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             EcId = ecId;
-        }
-
-        public void changeVisibility()
-        {
-            var visible = this.BtnShowAll.Visibility;
-            this.ShowAllResults = visible == Visibility.Collapsed;
-            UpdateTree();
-            this.BtnShowAll.Visibility = visible;
         }
     }
 }
