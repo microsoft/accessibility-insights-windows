@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
@@ -23,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// <summary>
     /// ViewModel class for scanlistview Item
     /// </summary>
-    public class ScanListViewItemViewModel : ViewModelBase
+    public class ScanListViewItemViewModel : ViewModelBase, IIssueFilingSource
     {
         public static IList<ScanListViewItemViewModel> GetScanListViewItemViewModels(A11yElement e)
         {

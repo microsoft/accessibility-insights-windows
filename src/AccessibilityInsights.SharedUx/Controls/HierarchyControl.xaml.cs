@@ -4,7 +4,6 @@ using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -20,7 +19,6 @@ using Axe.Windows.Desktop.UIAutomation;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -846,51 +844,14 @@ namespace AccessibilityInsights.SharedUx.Controls
                 return;
             }
 
-            if (vm.IssueLink != null)
-            {
-                // Bug already filed, open it in a new window
-                try
-                {
-                    System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
-                    MessageDialog.Show(ex.InnerException?.Message);
-                    vm.IssueDisplayText = null;
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
-            }
-            else
-            {
-                // File a new bug
-                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.Hierarchy);
-                Logger.PublishTelemetryEvent(telemetryEvent);
-
-                if (IssueReporter.IsConnected)
-                {
-                    IssueInformation issueInformation = this._selectedElement.GetIssueInformation(IssueType.NoFailure);
-                    FileIssueAction.AttachIssueData(issueInformation, this.ElementContext.Id, this._selectedElement.BoundingRectangle,
-                                this._selectedElement.UniqueId);
-                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-                    if (issueResult != null)
-                    {
-                        vm.IssueDisplayText = issueResult.DisplayText;
-                        vm.IssueLink = issueResult.IssueLink;
-                    }
-                    File.Delete(issueInformation.TestFileName);
-                }
-                else
-                {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.HierarchyControl_FileIssue_Configure);
-                    if (accepted.HasValue && accepted.Value)
-                    {
-                        this.HierarchyActions.SwitchToServerLogin();
-                    }
-                }
-            }
+            var input = new FileIssueWrapperInput(
+                vm,
+                this.ElementContext.Id,
+                this.HierarchyActions.SwitchToServerLogin,
+                () => this._selectedElement.GetIssueInformation(IssueType.NoFailure),
+                FileBugRequestSource.Hierarchy,
+                Properties.Resources.HierarchyControl_FileIssue_Configure);
+            FileIssueWrapper.FileBugFromRuleResultViewModel(input);
         }
 
         /// <summary>

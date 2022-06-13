@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Misc;
@@ -18,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// Class RuleResultViewModel
     /// this is for FastPass scan result display
     /// </summary>
-    public class RuleResultViewModel : ViewModelBase
+    public class RuleResultViewModel : ViewModelBase, IIssueFilingSource
     {
         /// <summary>
         /// Element

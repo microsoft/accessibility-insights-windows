@@ -1,11 +1,8 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
-using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -14,7 +11,6 @@ using Axe.Windows.Core.Bases;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation;
@@ -658,51 +654,14 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as RuleResultViewModel;
-            if (vm.IssueLink != null)
-            {
-                // Bug already filed, open it in a new window
-                try
-                {
-                    Process.Start(vm.IssueLink.OriginalString);
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
-                    MessageDialog.Show(ex.InnerException?.Message);
-                    vm.IssueDisplayText = null;
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
-            }
-            else
-            {
-                // File a new bug
-                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.AutomatedChecks);
-                Logger.PublishTelemetryEvent(telemetryEvent);
-
-                if (IssueReporter.IsConnected)
-                {
-                    IssueInformation issueInformation = vm.GetIssueInformation();
-                    FileIssueAction.AttachIssueData(issueInformation, _controlContext.ElementContext.Id, vm.Element.BoundingRectangle, vm.Element.UniqueId);
-
-                    IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-                    if (issueResult != null)
-                    {
-                        vm.IssueDisplayText = issueResult.DisplayText;
-                        vm.IssueLink = issueResult.IssueLink;
-                    }
-                    File.Delete(issueInformation.TestFileName);
-                }
-                else
-                {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
-                    if (accepted.HasValue && accepted.Value)
-                    {
-                        _controlContext.SwitchToServerLogin();
-                    }
-                }
-            }
+            var input = new FileIssueWrapperInput(
+                vm,
+                _controlContext.ElementContext.Id,
+                _controlContext.SwitchToServerLogin,
+                vm.GetIssueInformation,
+                FileBugRequestSource.AutomatedChecks,
+                Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
+            FileIssueWrapper.FileBugFromRuleResultViewModel(input);
         }
 
         private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
