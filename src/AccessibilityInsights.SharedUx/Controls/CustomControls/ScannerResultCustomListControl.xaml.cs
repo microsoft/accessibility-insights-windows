@@ -32,9 +32,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             set { lvDetails.ItemsSource = value; }
         }
 
-        public int SelectedIndex { get; set; }
+        public int SelectedIndex => lvDetails.SelectedIndex;
 
-        public ViewBase View { get; set; }
+        public ViewBase View => this.gvRules;
 
         /// <summary>
         /// Keeps track of if we should automatically set lv column widths

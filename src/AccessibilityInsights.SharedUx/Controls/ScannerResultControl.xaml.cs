@@ -135,7 +135,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                listControl.SelectedIndex = 0;
+                listControl.lvDetails.SelectedItem = 0;
                 this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
