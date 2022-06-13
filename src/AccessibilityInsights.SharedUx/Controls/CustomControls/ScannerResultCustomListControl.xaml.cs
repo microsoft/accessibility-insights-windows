@@ -68,8 +68,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Make bug column fixed width
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
         {
             Thumb senderAsThumb = e.OriginalSource as Thumb;
@@ -87,8 +85,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Simulate * width for rule column
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lvDetails_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (!HasUserResizedLvHeader)
@@ -111,8 +107,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Update control based on failure selection
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
             _controlContext.ElementToBind.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
@@ -121,8 +115,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Pass scrolling events through listview
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lvDetails_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
             if (!e.Handled)
@@ -139,8 +131,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Ensure listview contents are displayed properly
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void lvDetails_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801 // unused parameter
         {
@@ -153,8 +143,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Navigate to link on enter in listview
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -167,8 +155,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Handles click on file bug button
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as ScanListViewItemViewModel;
@@ -237,8 +223,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Custom keyboard nav behavior for listview
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ListViewItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             (sender as ListViewItem).SetValue(KeyboardNavigation.TabNavigationProperty, KeyboardNavigationMode.Local);
@@ -263,7 +247,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// <summary>
         /// Moves focus from currently focused element in given direction
         /// </summary>
-        /// <param name="dir"></param>
         private static void MoveFocus(FocusNavigationDirection dir)
         {
             if (Keyboard.FocusedElement is FrameworkElement fe)

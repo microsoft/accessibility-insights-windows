@@ -91,7 +91,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Set data on the UI
         /// </summary>
-        /// <param name="e"></param>
         private void SetScannerResultTreeView(A11yElement e)
         {
             this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
@@ -160,8 +159,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Handles snippet click
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void HyperlinkSnippetClick(object sender, EventArgs e)
         {
             ((sender as Hyperlink).DataContext as ScanListViewItemViewModel).InvokeSnippetLink();
@@ -170,8 +167,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Show passed scan results
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnShowAll_Click(object sender, RoutedEventArgs e)
         {
             this.ShowAllResults = true;
@@ -179,6 +174,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             (sender as Button).Visibility = Visibility.Collapsed;
         }
 
+        /// <summary>
+        /// Change visibility of scanner results details
+        /// </summary>
         public void ChangeVisibility()
         {
             var visible = this.btnShowAll.Visibility;
