@@ -3,7 +3,6 @@
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Settings;
-using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Results;
@@ -14,7 +13,6 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Automation.Peers;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 
 namespace AccessibilityInsights.SharedUx.Controls
@@ -25,15 +23,6 @@ namespace AccessibilityInsights.SharedUx.Controls
     public partial class ScannerResultControl : UserControl
     {
         private readonly List<ScanListViewItemViewModel> _list;
-
-        /// <summary>
-        /// Keeps track of if we should automatically set lv column widths
-        /// </summary>
-        public bool HasUserResizedLvHeader
-        {
-            get => listControl.HasUserResizedLvHeader;
-            internal set { listControl.HasUserResizedLvHeader = value; }
-        }
 
         /// <summary>
         /// Action to perform when user needs to log into the server
@@ -47,7 +36,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             InitializeComponent();
             _list = new List<ScanListViewItemViewModel>();
-            listControl.AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
             Resources.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
         }
 
@@ -189,25 +177,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.ShowAllResults = true;
             UpdateTree();
             (sender as Button).Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Make bug column fixed width
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
-        {
-            Thumb senderAsThumb = e.OriginalSource as Thumb;
-            GridViewColumnHeader header = senderAsThumb.TemplatedParent as GridViewColumnHeader;
-            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Rule)
-            {
-                this.listControl.HasUserResizedLvHeader = true;
-            }
-            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
-            {
-                header.Column.Width = HelperMethods.FileIssueColumnWidth;
-            }
         }
 
         public void ChangeVisibility()

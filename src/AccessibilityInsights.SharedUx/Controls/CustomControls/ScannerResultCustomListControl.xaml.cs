@@ -6,12 +6,14 @@ using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 
@@ -55,11 +57,31 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
+            AddHandler(Thumb.DragDeltaEvent, new DragDeltaEventHandler(Thumb_DragDelta), true);
         }
 
         internal void SetControlContext(ScannerResultCustomListContext controlContext)
         {
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
+        }
+
+        /// <summary>
+        /// Make bug column fixed width
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void Thumb_DragDelta(object sender, DragDeltaEventArgs e)
+        {
+            Thumb senderAsThumb = e.OriginalSource as Thumb;
+            GridViewColumnHeader header = senderAsThumb.TemplatedParent as GridViewColumnHeader;
+            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Rule)
+            {
+                HasUserResizedLvHeader = true;
+            }
+            if ((header.Content as string) == Properties.Resources.ScannerResultControl_Thumb_DragDelta_Issue)
+            {
+                header.Column.Width = HelperMethods.FileIssueColumnWidth;
+            }
         }
 
         /// <summary>
