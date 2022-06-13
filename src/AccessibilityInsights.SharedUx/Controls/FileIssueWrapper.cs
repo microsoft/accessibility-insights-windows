@@ -11,9 +11,15 @@ using System.IO;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
+    /// <summary>
+    /// Simple class to consolidate control-related code for issue filing into a single place
+    /// </summary>
     internal static class FileIssueWrapper
     {
-        internal static void FileBugFromRuleResultViewModel(FileIssueWrapperInput input)
+        /// <summary>
+        /// Handles control-related issue filing
+        /// </summary>
+        internal static void FileIssueFromControl(FileIssueWrapperInput input)
         {
             IIssueFilingSource vm = input.VM;
             if (vm.IssueLink != null)

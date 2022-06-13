@@ -278,7 +278,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 vm.GetIssueInformation,
                 FileBugRequestSource.HowtoFix,
                 Properties.Resources.ScannerResultControl_btnFileBug_Click_File_Issue_Configure);
-            FileIssueWrapper.FileBugFromRuleResultViewModel(input);
+            FileIssueWrapper.FileIssueFromControl(input);
         }
 
         /// <summary>

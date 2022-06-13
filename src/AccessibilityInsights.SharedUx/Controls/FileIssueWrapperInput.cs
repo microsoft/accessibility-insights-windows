@@ -7,6 +7,10 @@ using System;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
+    /// <summary>
+    /// Holds inputs to the FileIssueWrapper.FileIssueFromControl method. Allows us to
+    /// decouple the control specifics from the shared code
+    /// </summary>
     internal class FileIssueWrapperInput
     {
         internal IIssueFilingSource VM { get; }

@@ -851,7 +851,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 () => this._selectedElement.GetIssueInformation(IssueType.NoFailure),
                 FileBugRequestSource.Hierarchy,
                 Properties.Resources.HierarchyControl_FileIssue_Configure);
-            FileIssueWrapper.FileBugFromRuleResultViewModel(input);
+            FileIssueWrapper.FileIssueFromControl(input);
         }
 
         /// <summary>

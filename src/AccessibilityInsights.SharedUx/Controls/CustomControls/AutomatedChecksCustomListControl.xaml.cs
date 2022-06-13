@@ -661,7 +661,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 vm.GetIssueInformation,
                 FileBugRequestSource.AutomatedChecks,
                 Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
-            FileIssueWrapper.FileBugFromRuleResultViewModel(input);
+            FileIssueWrapper.FileIssueFromControl(input);
         }
 
         private void btnFileBug_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
