@@ -849,8 +849,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.ElementContext.Id,
                 this.HierarchyActions.SwitchToServerLogin,
                 () => this._selectedElement.GetIssueInformation(IssueType.NoFailure),
-                FileBugRequestSource.Hierarchy,
-                Properties.Resources.HierarchyControl_FileIssue_Configure);
+                FileBugRequestSource.Hierarchy);
             FileIssueWrapper.FileIssueFromControl(input);
         }
 

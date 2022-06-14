@@ -163,8 +163,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 _controlContext.EcId,
                 _controlContext.SwitchToServerLogin,
                 vm.GetIssueInformation,
-                FileBugRequestSource.HowtoFix,
-                Properties.Resources.ScannerResultControl_btnFileBug_Click_File_Issue_Configure);
+                FileBugRequestSource.HowtoFix);
             FileIssueWrapper.FileIssueFromControl(input);
         }
 

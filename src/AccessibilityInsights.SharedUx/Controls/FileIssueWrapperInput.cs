@@ -18,18 +18,15 @@ namespace AccessibilityInsights.SharedUx.Controls
         internal Action SwitchToServerLogin { get; }
         internal Func<IssueInformation> IssueInformationProvider { get; }
         internal FileBugRequestSource RequestSource { get; }
-        internal string ConfigurePrompt { get; }
 
         internal FileIssueWrapperInput(IIssueFilingSource vm, Guid ecId, Action switchToServerLogin,
-            Func<IssueInformation> issueInformationProvider, FileBugRequestSource requestSource,
-            string configurePrompt)
+            Func<IssueInformation> issueInformationProvider, FileBugRequestSource requestSource)
         {
             VM = vm ?? throw new ArgumentNullException(nameof(vm));
             EcId = ecId;
             SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             IssueInformationProvider = issueInformationProvider ?? throw new ArgumentNullException(nameof(issueInformationProvider));
             RequestSource = requestSource;
-            ConfigurePrompt = configurePrompt ?? throw new ArgumentNullException(nameof(configurePrompt));
         }
     }
 }

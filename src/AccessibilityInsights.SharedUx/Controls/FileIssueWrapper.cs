@@ -75,7 +75,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }
                 else
                 {
-                    bool? accepted = MessageDialog.Show(input.ConfigurePrompt);
+                    bool? accepted = MessageDialog.Show(Properties.Resources.FileIssuesChooseLocation);
                     if (accepted.HasValue && accepted.Value)
                     {
                         input.SwitchToServerLogin();

@@ -659,8 +659,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 _controlContext.ElementContext.Id,
                 _controlContext.SwitchToServerLogin,
                 vm.GetIssueInformation,
-                FileBugRequestSource.AutomatedChecks,
-                Properties.Resources.AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure);
+                FileBugRequestSource.AutomatedChecks);
             FileIssueWrapper.FileIssueFromControl(input);
         }
 
