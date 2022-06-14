@@ -36,8 +36,7 @@
                         <local:ScannerResultCustomListControl x:Name="listControl" DataGridAccessibleName="{x:Static Properties:Resources.ScannerResultControlAutomationPropertiesName}"
                             Background="Transparent"
                             Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
-                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"
-                            Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"/>
+                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"/>
                         <Button Name="btnShowAll"
                             Height="Auto"
                             Width="Auto"
