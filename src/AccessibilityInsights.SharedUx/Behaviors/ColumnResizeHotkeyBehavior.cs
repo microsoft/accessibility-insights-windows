@@ -48,8 +48,8 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             }
             else if (sender is ScannerResultControl srCtrl)
             {
-                srCtrl.HasUserResizedLvHeader = true;
-                ResizeListView(srCtrl.lvDetails);
+                srCtrl.listControl.HasUserResizedLvHeader = true;
+                ResizeListView(srCtrl.listControl.lvDetails);
             }
         }
 
