@@ -1752,4 +1752,7 @@ URL: {0}</value>
   <data name="btnEventSettingsAutomationPropertiesName" xml:space="preserve">
     <value>Event Settings</value>
   </data>
+  <data name="AutomatedChecksControlFrameworkIssuesLabel" xml:space="preserve">
+    <value>Potential framework issues</value>
+  </data>
 </root>

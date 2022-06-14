@@ -31,7 +31,7 @@ namespace UITests
             RunTests();
             driver.VerifyAccessibility(TestContext, "LiveMode", 0);
             ValidateTestModeTitle();
-            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12);
+            driver.TestMode.AutomatedChecks.ValidateAutomatedChecks(12, 3);
             driver.TestMode.AutomatedChecks.GoToAutomatedChecksElementDetails(4);
             ValidateResultsInUIATree();
         }
