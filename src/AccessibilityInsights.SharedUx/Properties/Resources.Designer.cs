@@ -3741,6 +3741,35 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Fix the following.
+        /// </summary>
+        public static string ScannerResultControl_FixTheFollowing {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_FixTheFollowing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potential framework issue.
+        ///This failure can be caused by a known framework issue. Click the link below to learn more about investigating this issue.
+        ///.
+        /// </summary>
+        public static string ScannerResultControl_FrameworkIssueBoilerplate {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_FrameworkIssueBoilerplate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to investigate.
+        /// </summary>
+        public static string ScannerResultControl_HowToInvestigate {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_HowToInvestigate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Issue.
         /// </summary>
         public static string ScannerResultControl_Issue {
@@ -3800,6 +3829,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ScannerResultControl_UpdateTree_Passed_tests {
             get {
                 return ResourceManager.GetString("ScannerResultControl_UpdateTree_Passed_tests", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Code Sample.
+        /// </summary>
+        public static string ScannerResultControl_ViewCodeSample {
+            get {
+                return ResourceManager.GetString("ScannerResultControl_ViewCodeSample", resourceCulture);
             }
         }
         

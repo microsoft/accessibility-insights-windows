@@ -65,6 +65,11 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public string Source { get; private set; }
 
         /// <summary>
+        /// The text to display for the hyperlink
+        /// </summary>
+        public string HyperlinkText { get; private set; }
+
+        /// <summary>
         /// Error icon to show
         /// </summary>
         public FabricIcon Icon
@@ -168,24 +173,45 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             this.HelpUrl = sr.HelpUrl;
             this.HelpLinkVisibility = this.HelpUrl != null ? Visibility.Visible : Visibility.Collapsed;
 
-            if (this.Status != ScanStatus.Pass && sr.MetaInfo.PropertyId != 0 && StandardLinksHelper.GetDefaultInstance().HasStoredLink(sr.MetaInfo))
-            {
-                this.SnippetLink = StandardLinksHelper.GetDefaultInstance().GetSnippetQueryUrl(sr.MetaInfo);
-            }
-            else
-            {
-                this.SnippetLink = null;
-            }
-
             this.AutomationHelpText = GetAutomationHelpText();
 
+            this.HowToFixText = GetPossiblyOverriddenHowToFixText(sr);
+            this.HyperlinkText = GetHyperlinkText(sr);
+            this.SnippetLink = GetHyperlinkTarget(this.Status, sr);
+            this.Source = sr.Source;
+        }
+
+        private static string GetHyperlinkTarget(ScanStatus status, RuleResult rr)
+        {
+            if (status != ScanStatus.Pass && rr.MetaInfo.PropertyId != 0 && StandardLinksHelper.GetDefaultInstance().HasStoredLink(rr.MetaInfo))
+            {
+                return StandardLinksHelper.GetDefaultInstance().GetSnippetQueryUrl(rr.MetaInfo);
+            }
+
+            if (status != ScanStatus.Pass)
+            {
+                return rr.FrameworkIssueLink;
+            }
+
+            return null;
+        }
+        private static string GetPossiblyOverriddenHowToFixText(RuleResult rr)
+        {
+            if (rr.FrameworkIssueLink != null) return Resources.ScannerResultControl_FrameworkIssueBoilerplate;
+
             StringBuilder sb = new StringBuilder();
-            foreach (var message in sr.Messages)
+            foreach (var message in rr.Messages)
             {
                 sb.AppendLine(message);
             }
-            this.HowToFixText = sb.ToString();
-            this.Source = sr.Source;
+            return sb.ToString();
+        }
+
+        private static string GetHyperlinkText(RuleResult rr)
+        {
+            if (rr.FrameworkIssueLink == null) return Resources.ScannerResultControl_ViewCodeSample;
+
+            return Resources.ScannerResultControl_HowToInvestigate;
         }
 
         private string GetAutomationHelpText()

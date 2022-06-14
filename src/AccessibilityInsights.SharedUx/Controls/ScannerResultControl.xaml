@@ -170,7 +170,7 @@
                     <behaviors:ExpanderBehavior/>
                 </i:Interaction.Behaviors>
                 <Expander.Header>
-                    <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labelFixFollowing">Fix the following</Label>
+                    <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labelFixFollowing" Content="{x:Static Properties:Resources.ScannerResultControl_FixTheFollowing}" />
                 </Expander.Header>
                 <Grid Margin="8,4,8,8">
                     <StackPanel Name="spHowToFix" Grid.Row="1" >
@@ -209,7 +209,8 @@
                                 </Style>
                             </TextBlock.Style>
                             <Hyperlink Click="HyperlinkSnippetClick"
-                                FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">View Code Sample
+                                FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                                <Run Text="{Binding Path=HyperlinkText, Mode=OneWay}"/>
                                 <Hyperlink.Style>
                                     <Style TargetType="Hyperlink" BasedOn="{StaticResource hLink}">
                                         <Setter Property="FontSize" Value="{DynamicResource StandardTextSize}"/>
