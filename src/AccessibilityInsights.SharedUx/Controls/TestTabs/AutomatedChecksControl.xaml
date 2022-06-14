@@ -59,7 +59,7 @@
                 </Grid>
             </Grid>
             <Border Grid.Row="1" BorderBrush="{DynamicResource ResourceKey=TabBorderBrush}" BorderThickness="0,1,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <ScrollViewer HorizontalScrollBarVisibility ="Disabled" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer HorizontalScrollBarVisibility ="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel>
                     <local:AutomatedChecksCustomListControl KeyboardNavigation.TabNavigation="Once" DataGridAccessibleName="{x:Static Properties:Resources.lblTitleContent}"
                               x:Name="nonFrameworkListControl" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderThickness="0"
