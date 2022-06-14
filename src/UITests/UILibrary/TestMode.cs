@@ -90,7 +90,7 @@ namespace UITests.UILibrary
 
         public void SwitchToDetailsTab()
         {
-            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
+            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsListView);
             var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
 
             resultsAll.First().SendKeys(Keys.Control + Keys.Tab);
@@ -132,7 +132,7 @@ namespace UITests.UILibrary
 
         public void ValidateResults(int failedResultsCount, int allResultsCount)
         {
-            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsDetailsListView);
+            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsListView);
             var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
 
             if (allResultsCount > 0)

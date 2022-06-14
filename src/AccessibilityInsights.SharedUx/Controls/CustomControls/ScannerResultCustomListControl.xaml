@@ -19,7 +19,7 @@
                             AutomationProperties.Name="{Binding Path=DataGridAccessibleName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ScannerResultCustomListControl}}"
                             Background="Transparent"
                             Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
-                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsDetailsListView}"
+                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsListView}"
                             Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"
                             SelectionMode="Extended"
                             SelectionChanged="lvDetails_SelectedItemChanged"

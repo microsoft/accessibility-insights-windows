@@ -23,7 +23,8 @@ namespace AccessibilityInsights.SharedUx.Properties
         public static string MainWinPauseButton { get; } = nameof(MainWinPauseButton);
         public static string MainWinSettingsButton { get; } = nameof(MainWinSettingsButton);
         public static string MainWindow { get; } = nameof(MainWindow);
-        public static string ScannerResultsDetailsListView { get; } = nameof(ScannerResultsDetailsListView);
+        public static string ScannerResultsListView { get; } = nameof(ScannerResultsListView);
+        public static string ScannerResultsFrameworkResultsListView { get; } = nameof(ScannerResultsFrameworkResultsListView);
         public static string ScannerResultsFixFollowingTextBox { get; } = nameof(ScannerResultsFixFollowingTextBox);
         public static string ScannerResultsShowAllButton { get; } = nameof(ScannerResultsShowAllButton);
         public static string SettingsAboutTabItem { get; } = nameof(SettingsAboutTabItem);
