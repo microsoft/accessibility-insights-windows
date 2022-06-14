@@ -93,10 +93,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
+            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
             this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.listControl.ItemsSource = null;
+            this.nonFrameworkListControl.ItemsSource = null;
             this.frameworkListControl.ItemsSource = null;
 
             // enable UI elements since Clear() disables them.
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             var viewModelCount = itemViewModel.Count();
 
-            this.listControl.ItemsSource = itemViewModel;
+            this.nonFrameworkListControl.ItemsSource = itemViewModel;
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -137,7 +137,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                listControl.lvDetails.SelectedItem = 0;
+                nonFrameworkListControl.lvDetails.SelectedItem = 0;
                 this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
@@ -152,7 +152,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.listControl.ItemsSource = null;
+            this.nonFrameworkListControl.ItemsSource = null;
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
