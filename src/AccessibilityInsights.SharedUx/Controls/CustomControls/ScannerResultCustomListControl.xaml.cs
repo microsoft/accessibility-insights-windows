@@ -1,16 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
-using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
