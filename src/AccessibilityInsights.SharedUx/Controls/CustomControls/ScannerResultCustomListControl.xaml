@@ -93,11 +93,11 @@
                                         </fabric:FabricIconControl.Style>
                                     </fabric:FabricIconControl>
                                     <TextBlock Style="{DynamicResource VarStandardTextBlock}" VerticalAlignment="Center" Margin="0,0,0,2">
-                                                        <Run Text="{Binding Path=Header,Mode=OneWay}"/>
-                                                        <Hyperlink Click="Hyperlink_Click" AutomationProperties.Name="{Binding Path=Source}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource ResourceKey=hLink}">
-                                                            <TextBlock Text="{Binding Path=Source}"/>
-                                                        </Hyperlink>
-                                                    </TextBlock>
+                                        <Run Text="{Binding Path=Header,Mode=OneWay}"/>
+                                        <Hyperlink Click="Hyperlink_Click" AutomationProperties.Name="{Binding Path=Source}" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource ResourceKey=hLink}">
+                                            <TextBlock Text="{Binding Path=Source}"/>
+                                        </Hyperlink>
+                                    </TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>

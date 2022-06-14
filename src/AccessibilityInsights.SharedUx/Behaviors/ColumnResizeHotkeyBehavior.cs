@@ -49,18 +49,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
             else if (sender is ScannerResultControl srCtrl)
             {
                 srCtrl.listControl.HasUserResizedLvHeader = true;
-                ResizeListView(srCtrl.listControl);
-            }
-        }
-
-        private static void ResizeListView(ScannerResultCustomListControl lv)
-        {
-            if (lv.View is GridView gv)
-            {
-                foreach (var col in gv.Columns)
-                {
-                    col.Width = Double.NaN;
-                }
+                ResizeListView(srCtrl.listControl.lvDetails);
             }
         }
 

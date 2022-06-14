@@ -13,11 +13,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         internal FrameworkElement ElementToBind { get; }
         internal Guid EcId { get; }
 
-        public ScannerResultCustomListContext(Action updateTree, Action switchToServerLogin, Action changeAction, FrameworkElement dataContext, Guid ecId)
+        public ScannerResultCustomListContext(Action updateTree, Action switchToServerLogin, Action changeVisibility, FrameworkElement dataContext, Guid ecId)
         {
             UpdateTree = updateTree ?? throw new ArgumentNullException(nameof(updateTree));
             SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
-            ChangeVisibility = changeAction ?? throw new ArgumentNullException(nameof(changeAction));
+            ChangeVisibility = changeVisibility ?? throw new ArgumentNullException(nameof(changeVisibility));
             ElementToBind = dataContext ?? throw new ArgumentNullException(nameof(dataContext));
             EcId = ecId;
         }
