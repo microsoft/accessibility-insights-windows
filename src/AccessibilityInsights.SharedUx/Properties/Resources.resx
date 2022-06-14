@@ -1755,4 +1755,18 @@ URL: {0}</value>
   <data name="AutomatedChecksControlFrameworkIssuesLabel" xml:space="preserve">
     <value>Potential framework issues</value>
   </data>
+  <data name="ScannerResultControl_FixTheFollowing" xml:space="preserve">
+    <value>Fix the following</value>
+  </data>
+  <data name="ScannerResultControl_FrameworkIssueBoilerplate" xml:space="preserve">
+    <value>Potential framework issue.
+This failure can be caused by a known framework issue. Click the link below to learn more about investigating this issue.
+</value>
+  </data>
+  <data name="ScannerResultControl_HowToInvestigate" xml:space="preserve">
+    <value>How to investigate</value>
+  </data>
+  <data name="ScannerResultControl_ViewCodeSample" xml:space="preserve">
+    <value>View Code Sample</value>
+  </data>
 </root>
