@@ -179,15 +179,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
-        /// </summary>
-        public static string AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure {
-            get {
-                return ResourceManager.GetString("AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ).
         /// </summary>
         public static string AutomatedChecksControl_CloseParenthesis {
@@ -1805,6 +1796,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
+        /// </summary>
+        public static string FileIssuesChooseLocation {
+            get {
+                return ResourceManager.GetString("FileIssuesChooseLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to first color.
         /// </summary>
         public static string firstChooserAutomationPropertiesName {
@@ -2073,15 +2073,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
             get {
                 return ResourceManager.GetString("HierarchyControl_FileBug_Could_not_find_the_selected_item__the_bug_filing_is_canc" +
                         "eled", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
-        /// </summary>
-        public static string HierarchyControl_FileIssue_Configure {
-            get {
-                return ResourceManager.GetString("HierarchyControl_FileIssue_Configure", resourceCulture);
             }
         }
         
@@ -3728,15 +3719,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string ScanListViewItemViewModel_StatusFormat {
             get {
                 return ResourceManager.GetString("ScanListViewItemViewModel_StatusFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To file issues, select where you want to file issues..
-        /// </summary>
-        public static string ScannerResultControl_btnFileBug_Click_File_Issue_Configure {
-            get {
-                return ResourceManager.GetString("ScannerResultControl_btnFileBug_Click_File_Issue_Configure", resourceCulture);
             }
         }
         

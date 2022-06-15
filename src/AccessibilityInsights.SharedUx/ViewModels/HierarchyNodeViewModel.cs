@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Properties;
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
@@ -19,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// HierarchyTreeItem class
     /// ViewModel for A11yElement in Hierarchy tree
     /// </summary>
-    public class HierarchyNodeViewModel : ViewModelBase
+    public class HierarchyNodeViewModel : ViewModelBase, IIssueFilingSource
     {
         const int NormalIconSizeBack = 14; // size for non composite icon
         const int TreeIconSizeBack = 16;   // size for tree in composite icon
