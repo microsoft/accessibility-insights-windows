@@ -115,9 +115,14 @@ namespace AccessibilityInsights.SharedUx.Controls
                                 orderby l.Status descending, l.Source, l.Header
                                 select l;
 
+            List<ScanListViewItemViewModel> frameworkIssues = new List<ScanListViewItemViewModel>();
+            List<ScanListViewItemViewModel> nonFrameworkIssues = new List<ScanListViewItemViewModel>();
+            SplitResultList(itemViewModel, frameworkIssues, nonFrameworkIssues);
+
             var viewModelCount = itemViewModel.Count();
 
-            this.nonFrameworkListControl.ItemsSource = itemViewModel;
+            this.nonFrameworkListControl.ItemsSource = nonFrameworkIssues;
+            this.frameworkListControl.ItemsSource = frameworkIssues;
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -145,6 +150,21 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.spHowToFix.DataContext = null;
             }
             this.ShowAllResults = false;
+        }
+
+        private static void SplitResultList(IEnumerable<ScanListViewItemViewModel> results, List<ScanListViewItemViewModel> frameworkIssues, List<ScanListViewItemViewModel> nonFrameworkIssues)
+        {
+            foreach (var result in results)
+            {
+                if (result.RR.FrameworkIssueLink == null)
+                {
+                    nonFrameworkIssues.Add(result);
+                }
+                else
+                {
+                    frameworkIssues.Add(result);
+                }
+            }
         }
 
         /// <summary>
