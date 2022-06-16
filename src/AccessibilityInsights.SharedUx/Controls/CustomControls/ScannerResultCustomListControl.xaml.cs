@@ -124,7 +124,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            _controlContext.ElementToBind.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
+            _controlContext.ItemSelectedHandler(sender, e);
+
         }
 
         /// <summary>

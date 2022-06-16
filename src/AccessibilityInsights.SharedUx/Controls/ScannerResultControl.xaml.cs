@@ -93,8 +93,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
-            this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
+            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
+            this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
             this.nonFrameworkListControl.SetItemSource(null);
             this.frameworkListControl.SetItemSource(null);
@@ -208,6 +208,19 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.ShowAllResults = visible == Visibility.Collapsed;
             UpdateTree();
             this.btnShowAll.Visibility = visible;
+        }
+
+        private void ItemSelectedHandler(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.frameworkListControl.lvDetails == sender)
+            {
+                this.nonFrameworkListControl.lvDetails.UnselectAll();
+            }
+            else
+            {
+                this.frameworkListControl.lvDetails.UnselectAll();
+            }
+            spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
     }
 }
