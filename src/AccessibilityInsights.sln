@@ -89,7 +89,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AccessibilityInsightsUnitTe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.DiskLoggingTelemetry", "AccessibilityInsights.Extensions.DiskLoggingTelemetry\Extensions.DiskLoggingTelemetry.csproj", "{772E1812-AE54-4E3C-B44C-118BBA6305D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensions.DiskLoggingTelemetryTests", "AccessibilityInsights.Extensions.DiskLoggingTelemetryTests\Extensions.DiskLoggingTelemetryTests.csproj", "{9A5CD914-222A-46A3-B8BA-9AD836929F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.DiskLoggingTelemetryTests", "AccessibilityInsights.Extensions.DiskLoggingTelemetryTests\Extensions.DiskLoggingTelemetryTests.csproj", "{9A5CD914-222A-46A3-B8BA-9AD836929F01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
