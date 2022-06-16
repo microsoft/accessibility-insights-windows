@@ -15,7 +15,7 @@
     </UserControl.Resources>
     <Grid>
         <StackPanel>
-            <Label Name="testHeader" Margin="0 20 0 3" Content="{Binding Path=TestHeader, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ScannerResultCustomListControl}}" VerticalAlignment="Top" Style="{StaticResource lblHeader3}"/>
+            <Label Name="testHeader" Margin="10 20 10 3" Content="{Binding Path=TestHeader, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ScannerResultCustomListControl}}" VerticalAlignment="Top" Style="{StaticResource lblLarge}"/>
             <ListView x:Name="lvDetails" SizeChanged="lvDetails_SizeChanged"
                     AutomationProperties.LabeledBy="{Binding ElementName=labelResults}"
                     AutomationProperties.Name="{Binding Path=DataGridAccessibleName, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:ScannerResultCustomListControl}}"
