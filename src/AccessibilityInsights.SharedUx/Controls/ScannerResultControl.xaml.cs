@@ -96,8 +96,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
             this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.nonFrameworkListControl.ItemsSource = null;
-            this.frameworkListControl.ItemsSource = null;
+            this.nonFrameworkListControl.SetItemSource(null);
+            this.frameworkListControl.SetItemSource(null);
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
@@ -121,8 +121,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             var viewModelCount = itemViewModel.Count();
 
-            this.nonFrameworkListControl.ItemsSource = nonFrameworkIssues;
-            this.frameworkListControl.ItemsSource = frameworkIssues;
+            this.nonFrameworkListControl.SetItemSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
+            this.frameworkListControl.SetItemSource(frameworkIssues.Any() ? frameworkIssues : null);
+            
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -173,8 +174,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.nonFrameworkListControl.ItemsSource = null;
-            this.frameworkListControl.ItemsSource = null;
+            this.nonFrameworkListControl.SetItemSource(null);
+            this.frameworkListControl.SetItemSource(null);
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;

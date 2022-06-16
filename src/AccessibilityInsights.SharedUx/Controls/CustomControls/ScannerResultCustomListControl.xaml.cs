@@ -10,6 +10,7 @@ using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -271,6 +272,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             else if (Keyboard.FocusedElement is FrameworkContentElement fce)
             {
                 fce.MoveFocus(new TraversalRequest(dir));
+            }
+        }
+
+        internal void SetItemSource(IEnumerable<ScanListViewItemViewModel> results)
+        {
+            if(results == null)
+            {
+                lvDetails.ItemsSource = null;
+                Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lvDetails.IsEnabled = true;
+                lvDetails.ItemsSource = results;
+                Visibility = Visibility.Visible;
             }
         }
     }
