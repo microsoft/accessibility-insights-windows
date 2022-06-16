@@ -22,8 +22,8 @@ namespace UITests
         }
         readonly string TestFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestFiles");
 
-        [TestMethod]
-        [TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
+        //[TestMethod]
+        //[TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
         public void LoadFileWithNoFrameworkIssues()
         {
             LoadTestEngine(new TestCase
@@ -36,8 +36,8 @@ namespace UITests
             });
         }
 
-        [TestMethod]
-        [TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
+        //[TestMethod]
+        //[TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
         public void LoadFileWithFrameworkIssues()
         {
             LoadTestEngine(new TestCase
