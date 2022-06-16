@@ -123,7 +123,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             this.nonFrameworkListControl.SetItemSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
             this.frameworkListControl.SetItemSource(frameworkIssues.Any() ? frameworkIssues : null);
-            
+
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -214,11 +214,11 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             if (this.frameworkListControl.lvDetails == sender)
             {
-                this.nonFrameworkListControl.lvDetails.UnselectAll();
+                this.nonFrameworkListControl.UnselectAll();
             }
             else
             {
-                this.frameworkListControl.lvDetails.UnselectAll();
+                this.frameworkListControl.UnselectAll();
             }
             spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }

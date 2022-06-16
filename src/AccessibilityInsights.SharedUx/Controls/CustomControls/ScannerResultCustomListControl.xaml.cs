@@ -26,6 +26,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     public partial class ScannerResultCustomListControl : UserControl
     {
         private ScannerResultCustomListContext _controlContext;
+        private bool _ignoreNextSelectionChange;
 
         public IEnumerable ItemsSource
         {
@@ -119,13 +120,30 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
+        internal void UnselectAll()
+        {
+            if (Visibility == Visibility.Collapsed)
+                return;
+
+            if (lvDetails.SelectedItems.Count > 0)
+            {
+                _ignoreNextSelectionChange = true;
+                lvDetails.UnselectAll();
+            }
+        }
+
         /// <summary>
         /// Update control based on failure selection
         /// </summary>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            _controlContext.ItemSelectedHandler(sender, e);
+            if (_ignoreNextSelectionChange)
+            {
+                _ignoreNextSelectionChange = false;
+                return;
+            }
 
+            _controlContext.ItemSelectedHandler(sender, e);
         }
 
         /// <summary>
@@ -278,7 +296,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         internal void SetItemSource(IEnumerable<ScanListViewItemViewModel> results)
         {
-            if(results == null)
+            if (results == null)
             {
                 lvDetails.ItemsSource = null;
                 Visibility = Visibility.Collapsed;
