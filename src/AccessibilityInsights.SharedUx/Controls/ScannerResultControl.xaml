@@ -37,6 +37,11 @@
                             Background="Transparent"
                             Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                             BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsListView}"/>
+                        <local:ScannerResultCustomListControl x:Name="frameworkListControl" DataGridAccessibleName="{x:Static Properties:Resources.ScannerResultControlFrameworkIssues}"
+                            TestHeader="Potential framework issues"
+                            Background="Transparent"
+                            Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
+                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsFrameworkResultsListView}"/>
                         <Button Name="btnShowAll"
                             Height="Auto"
                             Width="Auto"
@@ -49,10 +54,6 @@
                                        TextDecorations="Underline" Style="{DynamicResource SmallTextBlock}"
                                        AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsShowAllButton}"/>
                         </Button>
-                        <local:ScannerResultCustomListControl x:Name="frameworkListControl" DataGridAccessibleName="{x:Static Properties:Resources.ScannerResultControlFrameworkIssues}"
-                            Background="Transparent"
-                            Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
-                            BorderThickness="0" AutomationProperties.AutomationId="{x:Static Properties:AutomationIDs.ScannerResultsFrameworkResultsListView}"/>
                     </StackPanel>
                 </ScrollViewer>
             </Expander>

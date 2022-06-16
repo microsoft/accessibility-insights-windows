@@ -54,6 +54,19 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
+        #region TestHeader (Dependency Property)
+
+        public string TestHeader
+        {
+            get { return (string)GetValue(TestHeaderProperty); }
+            set { SetValue(TestHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty TestHeaderProperty =
+            DependencyProperty.Register("TestHeader", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
@@ -63,6 +76,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         internal void SetControlContext(ScannerResultCustomListContext controlContext)
         {
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
+            testHeader.Visibility = string.IsNullOrEmpty(TestHeader) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>

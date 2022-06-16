@@ -143,6 +143,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (viewModelCount > 0)
             {
                 nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                frameworkListControl.lvDetails.SelectedItem = 0;
                 this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
@@ -173,6 +174,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         public void Clear()
         {
             this.nonFrameworkListControl.ItemsSource = null;
+            this.frameworkListControl.ItemsSource = null;
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
