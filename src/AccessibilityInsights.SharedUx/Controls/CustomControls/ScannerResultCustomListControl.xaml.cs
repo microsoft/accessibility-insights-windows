@@ -58,6 +58,19 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
+        #region DataGridAutomationId (Dependency Property)
+
+        public string DataGridAutomationId
+        {
+            get { return (string)GetValue(DataGridAutomationIdProperty); }
+            set { SetValue(DataGridAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAutomationIdProperty =
+            DependencyProperty.Register("DataGridAutomationId", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
