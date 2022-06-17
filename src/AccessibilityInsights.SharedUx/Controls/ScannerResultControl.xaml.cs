@@ -93,12 +93,13 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
+            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
+            this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.listControl.ItemsSource = null;
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
+            this.ShowAllResults = false;
 
             UpdateTree();
         }
@@ -113,9 +114,14 @@ namespace AccessibilityInsights.SharedUx.Controls
                                 orderby l.Status descending, l.Source, l.Header
                                 select l;
 
+            List<ScanListViewItemViewModel> frameworkIssues = new List<ScanListViewItemViewModel>();
+            List<ScanListViewItemViewModel> nonFrameworkIssues = new List<ScanListViewItemViewModel>();
+            SplitResultList(itemViewModel, frameworkIssues, nonFrameworkIssues);
+
             var viewModelCount = itemViewModel.Count();
 
-            this.listControl.ItemsSource = itemViewModel;
+            this.nonFrameworkListControl.SetItemsSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
+            this.frameworkListControl.SetItemsSource(frameworkIssues.Any() ? frameworkIssues : null);
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -135,14 +141,36 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                listControl.lvDetails.SelectedItem = 0;
-                this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
+                if (nonFrameworkIssues.Count > 0)
+                {
+                    nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                    this.spHowToFix.DataContext = nonFrameworkIssues.First<ScanListViewItemViewModel>();
+                }
+                else
+                {
+                    frameworkListControl.lvDetails.SelectedItem = 0;
+                    this.spHowToFix.DataContext = frameworkIssues.First<ScanListViewItemViewModel>();
+                }
             }
             else
             {
                 this.spHowToFix.DataContext = null;
             }
-            this.ShowAllResults = false;
+        }
+
+        private static void SplitResultList(IEnumerable<ScanListViewItemViewModel> results, List<ScanListViewItemViewModel> frameworkIssues, List<ScanListViewItemViewModel> nonFrameworkIssues)
+        {
+            foreach (var result in results)
+            {
+                if (result.RR.FrameworkIssueLink == null)
+                {
+                    nonFrameworkIssues.Add(result);
+                }
+                else
+                {
+                    frameworkIssues.Add(result);
+                }
+            }
         }
 
         /// <summary>
@@ -150,7 +178,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.listControl.ItemsSource = null;
+            this.nonFrameworkListControl.SetItemsSource(null);
+            this.frameworkListControl.SetItemsSource(null);
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
@@ -180,9 +209,21 @@ namespace AccessibilityInsights.SharedUx.Controls
         public void ChangeVisibility()
         {
             var visible = this.btnShowAll.Visibility;
-            this.ShowAllResults = visible == Visibility.Collapsed;
             UpdateTree();
             this.btnShowAll.Visibility = visible;
+        }
+
+        private void ItemSelectedHandler(object sender, SelectionChangedEventArgs e)
+        {
+            if (this.frameworkListControl.lvDetails == sender)
+            {
+                this.nonFrameworkListControl.UnselectAll();
+            }
+            else
+            {
+                this.frameworkListControl.UnselectAll();
+            }
+            spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
     }
 }

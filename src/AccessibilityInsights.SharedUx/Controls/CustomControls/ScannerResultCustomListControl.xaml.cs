@@ -4,7 +4,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -19,12 +19,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     public partial class ScannerResultCustomListControl : UserControl
     {
         private ScannerResultCustomListContext _controlContext;
-
-        public IEnumerable ItemsSource
-        {
-            get => lvDetails.ItemsSource;
-            set { lvDetails.ItemsSource = value; }
-        }
+        private bool _ignoreNextSelectionChange;
 
         public int SelectedIndex => lvDetails.SelectedIndex;
 
@@ -48,6 +43,32 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
+        #region SectionHeader (Dependency Property)
+
+        public string SectionHeader
+        {
+            get { return (string)GetValue(SectionHeaderProperty); }
+            set { SetValue(SectionHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty SectionHeaderProperty =
+            DependencyProperty.Register("TestHeader", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
+        #region DataGridAutomationId (Dependency Property)
+
+        public string DataGridAutomationId
+        {
+            get { return (string)GetValue(DataGridAutomationIdProperty); }
+            set { SetValue(DataGridAutomationIdProperty, value); }
+        }
+
+        public static readonly DependencyProperty DataGridAutomationIdProperty =
+            DependencyProperty.Register("DataGridAutomationId", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
+
+        #endregion
+
         public ScannerResultCustomListControl()
         {
             InitializeComponent();
@@ -57,6 +78,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         internal void SetControlContext(ScannerResultCustomListContext controlContext)
         {
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
+            testHeader.Visibility = string.IsNullOrEmpty(SectionHeader) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>
@@ -98,12 +120,30 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
+        internal void UnselectAll()
+        {
+            if (Visibility == Visibility.Collapsed)
+                return;
+
+            if (lvDetails.SelectedItems.Count > 0)
+            {
+                _ignoreNextSelectionChange = true;
+                lvDetails.UnselectAll();
+            }
+        }
+
         /// <summary>
         /// Update control based on failure selection
         /// </summary>
         private void lvDetails_SelectedItemChanged(object sender, SelectionChangedEventArgs e)
         {
-            _controlContext.ElementToBind.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
+            if (_ignoreNextSelectionChange)
+            {
+                _ignoreNextSelectionChange = false;
+                return;
+            }
+
+            _controlContext.ItemSelectedHandler(sender, e);
         }
 
         /// <summary>
@@ -198,6 +238,21 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             else if (Keyboard.FocusedElement is FrameworkContentElement fce)
             {
                 fce.MoveFocus(new TraversalRequest(dir));
+            }
+        }
+
+        internal void SetItemsSource(IEnumerable<ScanListViewItemViewModel> results)
+        {
+            if (results == null)
+            {
+                lvDetails.ItemsSource = null;
+                Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                lvDetails.IsEnabled = true;
+                lvDetails.ItemsSource = results;
+                Visibility = Visibility.Visible;
             }
         }
     }

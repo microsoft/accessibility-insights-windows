@@ -3833,6 +3833,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Potential framework issues.
+        /// </summary>
+        public static string ScannerResultControlPotentialFrameworkIssues {
+            get {
+                return ResourceManager.GetString("ScannerResultControlPotentialFrameworkIssues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows - Screenshot.
         /// </summary>
         public static string ScreenshotWindowTitle {
