@@ -142,7 +142,6 @@ namespace UITests.UILibrary
                 var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
                 Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
 
-
                 ValidateCurrentResultCount(AutomationIDs.ScannerResultsListView, expandedNonFrameworkResultsCount);
                 ValidateCurrentResultCount(AutomationIDs.ScannerResultsFrameworkResultsListView, expandedFrameworkResultsCount);
             }
