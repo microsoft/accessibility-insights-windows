@@ -1762,6 +1762,7 @@ This failure can be caused by a known framework issue. Click the link below to l
   </data>
   <data name="ScannerResultControlFrameworkIssues" xml:space="preserve">
     <value>Potential framework issues</value>
+  </data>
   <data name="FileIssuesChooseLocation" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
   </data>
