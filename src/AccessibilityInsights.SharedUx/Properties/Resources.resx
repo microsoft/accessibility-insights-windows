@@ -411,9 +411,6 @@
   <data name="AutomatedChecksControl_SetRuleResults_TitleURL" xml:space="preserve">
     <value>TitleURL</value>
   </data>
-  <data name="AutomatedChecksControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
-    <value>To file issues, select where you want to file issues.</value>
-  </data>
   <data name="ColorContrastAutomationPropertiesName" xml:space="preserve">
     <value>Color contrast analyzer</value>
   </data>
@@ -671,9 +668,6 @@
   <data name="HierarchyControl_FileBug_Could_not_find_the_selected_item__the_bug_filing_is_canceled" xml:space="preserve">
     <value>Could not find the selected item, the bug filing is canceled.</value>
   </data>
-  <data name="HierarchyControl_FileIssue_Configure" xml:space="preserve">
-    <value>To file issues, select where you want to file issues.</value>
-  </data>
   <data name="TextBlockTextDetails" xml:space="preserve">
     <value>DETAILS</value>
   </data>
@@ -800,9 +794,6 @@
   </data>
   <data name="ScannerResultControl_UpdateTree_Passed_and_Uncertain_tests" xml:space="preserve">
     <value>Passed and Uncertain tests</value>
-  </data>
-  <data name="ScannerResultControl_btnFileBug_Click_File_Issue_Configure" xml:space="preserve">
-    <value>To file issues, select where you want to file issues.</value>
   </data>
   <data name="ScannerResultControl_Thumb_DragDelta_Rule" xml:space="preserve">
     <value>Rule</value>
@@ -1771,5 +1762,7 @@ This failure can be caused by a known framework issue. Click the link below to l
   </data>
   <data name="ScannerResultControlFrameworkIssues" xml:space="preserve">
     <value>Potential framework issues</value>
+  <data name="FileIssuesChooseLocation" xml:space="preserve">
+    <value>To file issues, select where you want to file issues.</value>
   </data>
 </root>

@@ -10,6 +10,5 @@ namespace AccessibilityInsights.SharedUx.Enums
         AutomatedChecks,
         Hierarchy,
         HowtoFix,
-        ColorContrast
     }
 }
