@@ -38,9 +38,14 @@ namespace UITests
 
         private void ValidateResultsInUIATree()
         {
-            int expectedResultsCount = 12; // this number should only change if axe-windows or WildlifeManager are modified.
+            // These values shold only change in response to a change in Axe.Windows or WildlifeManager
+            int nonExpandedNonFrameworkExpectedResultsCount = 2;
+            int expandedNonFrameworkExpectedResultsCount = 12;
+            int nonExpandedFrameworkExpectedResultsCount = 0;
+            int expandedFrameworkExpectedResultsCount = 1;
 
-            driver.TestMode.ResultsInUIATree.ValidateResults(2, expectedResultsCount);
+            driver.TestMode.ResultsInUIATree.ValidateResults(nonExpandedNonFrameworkExpectedResultsCount, expandedNonFrameworkExpectedResultsCount,
+                nonExpandedFrameworkExpectedResultsCount, expandedFrameworkExpectedResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
             driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name: Property does not exist", 1, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);

@@ -131,8 +131,10 @@ namespace UITests
             var logPath = Path.Combine(testDir, "events.txt");
             using (StreamWriter w = File.AppendText(logPath))
             {
-                foreach (var e in Events)
+                // We sometimes see a race condition here, so use an index instead of an iterator
+                for (int index = 0; index < Events.Count; index++)
                 {
+                    var e = Events[index];
                     w.WriteLine($"{e.TimeGenerated},{e.Source},{e.Message}");
                 }
             }
