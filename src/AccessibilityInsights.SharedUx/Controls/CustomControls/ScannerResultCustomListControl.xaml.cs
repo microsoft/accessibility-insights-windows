@@ -28,12 +28,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private ScannerResultCustomListContext _controlContext;
         private bool _ignoreNextSelectionChange;
 
-        public IEnumerable ItemsSource
-        {
-            get => lvDetails.ItemsSource;
-            set { lvDetails.ItemsSource = value; }
-        }
-
         public int SelectedIndex => lvDetails.SelectedIndex;
 
         public ViewBase View => this.gvRules;
@@ -294,7 +288,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
-        internal void SetItemSource(IEnumerable<ScanListViewItemViewModel> results)
+        internal void SetItemsSource(IEnumerable<ScanListViewItemViewModel> results)
         {
             if (results == null)
             {

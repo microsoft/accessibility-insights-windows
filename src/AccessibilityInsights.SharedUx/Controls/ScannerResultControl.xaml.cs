@@ -96,8 +96,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
             this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.nonFrameworkListControl.SetItemSource(null);
-            this.frameworkListControl.SetItemSource(null);
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
@@ -121,9 +119,8 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             var viewModelCount = itemViewModel.Count();
 
-            this.nonFrameworkListControl.SetItemSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
-            this.frameworkListControl.SetItemSource(frameworkIssues.Any() ? frameworkIssues : null);
-
+            this.nonFrameworkListControl.SetItemsSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
+            this.frameworkListControl.SetItemsSource(frameworkIssues.Any() ? frameworkIssues : null);
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -143,8 +140,14 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                nonFrameworkListControl.lvDetails.SelectedItem = 0;
-                frameworkListControl.lvDetails.SelectedItem = 0;
+                if (nonFrameworkIssues.Count > 0)
+                {
+                    nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                }
+                else
+                {
+                    frameworkListControl.lvDetails.SelectedItem = 0;
+                }
                 this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
@@ -174,8 +177,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.nonFrameworkListControl.SetItemSource(null);
-            this.frameworkListControl.SetItemSource(null);
+            this.nonFrameworkListControl.SetItemsSource(null);
+            this.frameworkListControl.SetItemsSource(null);
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
