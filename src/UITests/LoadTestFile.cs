@@ -3,6 +3,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Reflection;
+using UITests.UILibrary;
 
 namespace UITests
 {
@@ -22,8 +23,8 @@ namespace UITests
         }
         readonly string TestFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestFiles");
 
-        //[TestMethod]
-        //[TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
+        [TestMethod]
+        [TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
         public void LoadFileWithNoFrameworkIssues()
         {
             LoadTestEngine(new TestCase
@@ -36,8 +37,8 @@ namespace UITests
             });
         }
 
-        //[TestMethod]
-        //[TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
+        [TestMethod]
+        [TestCategory(TestCategory.NoStrongName), TestCategory(TestCategory.Integration)]
         public void LoadFileWithFrameworkIssues()
         {
             LoadTestEngine(new TestCase
@@ -46,7 +47,7 @@ namespace UITests
                 AutomatedChecks_NonFrameworkErrorCount = 12,
                 AutomatedChecks_FrameworkErrorCount = 3,
                 UIATree_FailedResultsCount = 2,
-                UIATree_AllResultsCount = 30,
+                UIATree_AllResultsCount = 28,
             });
         }
 
@@ -86,7 +87,7 @@ namespace UITests
 
         private void ValidateFirstSelectedElement(TestCase testCase)
         {
-            driver.TestMode.ResultsInUIATree.ValidateResults(testCase.UIATree_FailedResultsCount, testCase.UIATree_AllResultsCount);
+            driver.TestMode.ResultsInUIATree.ValidateResults(ScannerResultList.NonFramework, testCase.UIATree_FailedResultsCount, testCase.UIATree_AllResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
             driver.TestMode.ResultsInUIATree.ValidateDetails("InvokePattern", "Name: Ok", 3, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1' has failed test results in descendants.", 16);
@@ -96,7 +97,7 @@ namespace UITests
         {
             driver.TestMode.ResultsInUIATree.ValidateDetails("LegacyIAccessiblePattern", "Name: Desktop 1", 10, 10);
             driver.TestMode.ResultsInUIATree.SwitchToResultsTab();
-            driver.TestMode.ResultsInUIATree.ValidateResults(0, 0);
+            driver.TestMode.ResultsInUIATree.ValidateResults(ScannerResultList.NonFramework, 0, 0);
         }
 
         private void ValidateResultsInUIATree(TestCase testCase)

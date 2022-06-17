@@ -24,6 +24,12 @@ namespace UITests.UILibrary
         }
     }
 
+    public enum ScannerResultList
+    {
+        NonFramework,
+        Framework,
+    }
+
     public class AutomatedChecks
     {
         WindowsDriver<WindowsElement> Session;
@@ -130,21 +136,31 @@ namespace UITests.UILibrary
             Assert.IsTrue(nodes.First().Text.Contains(firstNodeText));
         }
 
-        public void ValidateResults(int failedResultsCount, int allResultsCount)
+        public void ValidateResults(ScannerResultList list, int failedResultsCount, int allResultsCount)
         {
-            var resultsList = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsListView);
-            var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
-
-            if (allResultsCount > 0)
+            var automationId = (list == ScannerResultList.Framework) ? AutomationIDs.ScannerResultsFrameworkResultsListView : AutomationIDs.ScannerResultsListView;
+            if (allResultsCount == 0)
             {
-                Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
-                var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
-                Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
+                ValidateResultListIsCollapsed(automationId);
             }
-
-            var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
-            Assert.AreEqual(failedResultsCount, resultsFailedOnly.Count);
-            Assert.AreEqual(allResultsCount, resultsAll.Count);
+            else
+            {
+                var resultsList = Session.FindElementByAccessibilityId(automationId);
+                var resultsFailedOnly = resultsList.FindElementsByClassName("ListViewItem");
+                if (allResultsCount > 0)
+                {
+                    Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsShowAllButton).Click();
+                    var fixFollowTb = Session.FindElementByAccessibilityId(AutomationIDs.ScannerResultsFixFollowingTextBox);
+                    Assert.IsFalse(string.IsNullOrEmpty(fixFollowTb.Text));
+                }
+                var resultsAll = resultsList.FindElementsByClassName("ListViewItem");
+                Assert.AreEqual(failedResultsCount, resultsFailedOnly.Count);
+                Assert.AreEqual(allResultsCount, resultsAll.Count);
+            }
+        }
+        public void ValidateResultListIsCollapsed(string automationId)
+        {
+            Assert.ThrowsException<WebDriverException>(() => Session.FindElementByAccessibilityId(automationId));
         }
 
         private IEnumerable<AppiumWebElement> GetPatternsNodes(string parentId, ReadOnlyCollection<AppiumWebElement> nonPatternNodes)

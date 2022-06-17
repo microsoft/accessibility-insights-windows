@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Diagnostics;
 using System.IO;
+using UITests.UILibrary;
 
 namespace UITests
 {
@@ -40,7 +41,7 @@ namespace UITests
         {
             int expectedResultsCount = 12; // this number should only change if axe-windows or WildlifeManager are modified.
 
-            driver.TestMode.ResultsInUIATree.ValidateResults(2, expectedResultsCount);
+            driver.TestMode.ResultsInUIATree.ValidateResults(ScannerResultList.NonFramework, 2, expectedResultsCount);
             driver.TestMode.ResultsInUIATree.SwitchToDetailsTab();
             driver.TestMode.ResultsInUIATree.ValidateDetails("SynchronizedInputPattern", "Name: Property does not exist", 1, 10);
             driver.TestMode.ResultsInUIATree.ValidateTree("pane 'Desktop 1'", 16);
