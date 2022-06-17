@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             UpdateTree = updateTree ?? throw new ArgumentNullException(nameof(updateTree));
             SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));
             ChangeVisibility = changeVisibility ?? throw new ArgumentNullException(nameof(changeVisibility));
-            ItemSelectedHandler =  itemSelectedHandler ?? throw new ArgumentNullException(nameof(itemSelectedHandler));
+            ItemSelectedHandler = itemSelectedHandler ?? throw new ArgumentNullException(nameof(itemSelectedHandler));
             EcId = ecId;
         }
     }

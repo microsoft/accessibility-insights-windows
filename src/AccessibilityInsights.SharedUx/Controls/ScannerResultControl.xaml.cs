@@ -143,12 +143,13 @@ namespace AccessibilityInsights.SharedUx.Controls
                 if (nonFrameworkIssues.Count > 0)
                 {
                     nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                    this.spHowToFix.DataContext = nonFrameworkIssues.First<ScanListViewItemViewModel>();
                 }
                 else
                 {
                     frameworkListControl.lvDetails.SelectedItem = 0;
+                    this.spHowToFix.DataContext = frameworkIssues.First<ScanListViewItemViewModel>();
                 }
-                this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
             }
             else
             {
