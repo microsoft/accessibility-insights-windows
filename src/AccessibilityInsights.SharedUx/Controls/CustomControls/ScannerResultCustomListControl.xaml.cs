@@ -4,9 +4,7 @@ using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -45,15 +43,15 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         #endregion
 
-        #region TestHeader (Dependency Property)
+        #region SectionHeader (Dependency Property)
 
-        public string TestHeader
+        public string SectionHeader
         {
-            get { return (string)GetValue(TestHeaderProperty); }
-            set { SetValue(TestHeaderProperty, value); }
+            get { return (string)GetValue(SectionHeaderProperty); }
+            set { SetValue(SectionHeaderProperty, value); }
         }
 
-        public static readonly DependencyProperty TestHeaderProperty =
+        public static readonly DependencyProperty SectionHeaderProperty =
             DependencyProperty.Register("TestHeader", typeof(string), typeof(ScannerResultCustomListControl), new PropertyMetadata(null));
 
         #endregion
@@ -80,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         internal void SetControlContext(ScannerResultCustomListContext controlContext)
         {
             _controlContext = controlContext ?? throw new ArgumentNullException(nameof(controlContext));
-            testHeader.Visibility = string.IsNullOrEmpty(TestHeader) ? Visibility.Collapsed : Visibility.Visible;
+            testHeader.Visibility = string.IsNullOrEmpty(SectionHeader) ? Visibility.Collapsed : Visibility.Visible;
         }
 
         /// <summary>

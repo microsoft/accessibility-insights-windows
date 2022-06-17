@@ -1760,7 +1760,7 @@ This failure can be caused by a known framework issue. Click the link below to l
   <data name="ScannerResultControl_ViewCodeSample" xml:space="preserve">
     <value>View Code Sample</value>
   </data>
-  <data name="ScannerResultControlFrameworkIssues" xml:space="preserve">
+  <data name="ScannerResultControlPotentialFrameworkIssues" xml:space="preserve">
     <value>Potential framework issues</value>
   </data>
   <data name="FileIssuesChooseLocation" xml:space="preserve">

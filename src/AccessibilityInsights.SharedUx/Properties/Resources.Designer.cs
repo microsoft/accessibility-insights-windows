@@ -3835,9 +3835,9 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Potential framework issues.
         /// </summary>
-        public static string ScannerResultControlFrameworkIssues {
+        public static string ScannerResultControlPotentialFrameworkIssues {
             get {
-                return ResourceManager.GetString("ScannerResultControlFrameworkIssues", resourceCulture);
+                return ResourceManager.GetString("ScannerResultControlPotentialFrameworkIssues", resourceCulture);
             }
         }
         

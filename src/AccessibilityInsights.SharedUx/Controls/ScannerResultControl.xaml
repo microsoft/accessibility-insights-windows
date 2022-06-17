@@ -39,8 +39,8 @@
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                             DataGridAutomationId="{x:Static Properties:AutomationIDs.ScannerResultsListView}"
                             BorderThickness="0" />
-                        <local:ScannerResultCustomListControl x:Name="frameworkListControl" DataGridAccessibleName="{x:Static Properties:Resources.ScannerResultControlFrameworkIssues}"
-                            TestHeader="Potential framework issues"
+                        <local:ScannerResultCustomListControl x:Name="frameworkListControl" DataGridAccessibleName="{x:Static Properties:Resources.ScannerResultControlPotentialFrameworkIssues}"
+                            SectionHeader="Potential framework issues"
                             Background="Transparent"
                             Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                             HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
