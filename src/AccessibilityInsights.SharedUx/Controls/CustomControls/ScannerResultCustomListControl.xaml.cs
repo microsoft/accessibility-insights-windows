@@ -1,11 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
-using AccessibilityInsights.CommonUxComponents.Dialogs;
-using AccessibilityInsights.Extensions.Helpers;
-using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.Enums;
-using AccessibilityInsights.SharedUx.FileIssue;
-using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
@@ -192,66 +187,13 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void btnFileBug_Click(object sender, RoutedEventArgs e)
         {
             var vm = ((Button)sender).Tag as ScanListViewItemViewModel;
-            if (vm.IssueLink != null)
-            {
-                // Bug already filed, open it in a new window
-                try
-                {
-                    System.Diagnostics.Process.Start(vm.IssueLink.OriginalString);
-                }
-#pragma warning disable CA1031 // Do not catch general exception types
-                catch (Exception ex)
-                {
-                    ex.ReportException();
-                    // Happens when bug is deleted, message describes that work item doesn't exist / possible permission issue
-                    MessageDialog.Show(ex.InnerException?.Message);
-                    vm.IssueDisplayText = null;
-                }
-#pragma warning restore CA1031 // Do not catch general exception types
-            }
-            else
-            {
-                // File a new bug
-                var telemetryEvent = TelemetryEventFactory.ForIssueFilingRequest(FileBugRequestSource.HowtoFix);
-                Logger.PublishTelemetryEvent(telemetryEvent);
-
-                if (IssueReporter.IsConnected)
-                {
-                    IssueInformation issueInformation = null;
-                    try
-                    {
-                        issueInformation = vm.GetIssueInformation();
-                        FileIssueAction.AttachIssueData(issueInformation, _controlContext.EcId, vm.Element.BoundingRectangle, vm.Element.UniqueId);
-                        IIssueResult issueResult = FileIssueAction.FileIssueAsync(issueInformation);
-                        if (issueResult != null)
-                        {
-                            vm.IssueDisplayText = issueResult.DisplayText;
-                            vm.IssueLink = issueResult.IssueLink;
-                        }
-                    }
-#pragma warning disable CA1031 // Do not catch general exception types
-                    catch (Exception ex)
-                    {
-                        ex.ReportException();
-                    }
-#pragma warning restore CA1031 // Do not catch general exception types
-                    finally
-                    {
-                        if (issueInformation != null && File.Exists(issueInformation.TestFileName))
-                        {
-                            File.Delete(issueInformation.TestFileName);
-                        }
-                    }
-                }
-                else
-                {
-                    bool? accepted = MessageDialog.Show(Properties.Resources.ScannerResultControl_btnFileBug_Click_File_Issue_Configure);
-                    if (accepted.HasValue && accepted.Value)
-                    {
-                        _controlContext.SwitchToServerLogin();
-                    }
-                }
-            }
+            var input = new FileIssueWrapperInput(
+                vm,
+                _controlContext.EcId,
+                _controlContext.SwitchToServerLogin,
+                vm.GetIssueInformation,
+                FileBugRequestSource.HowtoFix);
+            FileIssueWrapper.FileIssueFromControl(input);
         }
 
         /// <summary>
