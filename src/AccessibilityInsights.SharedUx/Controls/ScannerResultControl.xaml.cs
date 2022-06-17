@@ -99,6 +99,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
+            this.ShowAllResults = false;
 
             UpdateTree();
         }
@@ -155,7 +156,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 this.spHowToFix.DataContext = null;
             }
-            this.ShowAllResults = false;
         }
 
         private static void SplitResultList(IEnumerable<ScanListViewItemViewModel> results, List<ScanListViewItemViewModel> frameworkIssues, List<ScanListViewItemViewModel> nonFrameworkIssues)
@@ -209,7 +209,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         public void ChangeVisibility()
         {
             var visible = this.btnShowAll.Visibility;
-            this.ShowAllResults = visible == Visibility.Collapsed;
             UpdateTree();
             this.btnShowAll.Visibility = visible;
         }
