@@ -50,7 +50,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Style dictionary
         /// </summary>
-        new ResourceDictionary Resources = new ResourceDictionary();
+        new readonly ResourceDictionary Resources = new ResourceDictionary();
 
         /// <summary>
         /// App configation
