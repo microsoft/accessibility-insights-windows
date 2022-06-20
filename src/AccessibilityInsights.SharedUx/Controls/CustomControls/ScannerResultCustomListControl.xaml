@@ -26,7 +26,7 @@
                     Grid.IsSharedSizeScope="True" KeyboardNavigation.TabNavigation="Once"
                     SelectionMode="Extended"
                     SelectionChanged="lvDetails_SelectedItemChanged"
-                    IsVisibleChanged="lvDetails_IsVisibleChanged" PreviewMouseWheel="lvDetails_PreviewMouseWheel">
+                    PreviewMouseWheel="lvDetails_PreviewMouseWheel">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="{x:Type ListViewItem}">
                         <Style.Triggers>

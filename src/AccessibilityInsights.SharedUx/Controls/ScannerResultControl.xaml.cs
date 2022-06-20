@@ -93,7 +93,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            var context = new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId);
+            var context = new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ItemSelectedHandler, this.EcId);
             this.nonFrameworkListControl.SetControlContext(context);
             this.frameworkListControl.SetControlContext(context);
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
@@ -202,16 +202,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.ShowAllResults = true;
             UpdateTree();
             (sender as Button).Visibility = Visibility.Collapsed;
-        }
-
-        /// <summary>
-        /// Change visibility of scanner results details
-        /// </summary>
-        public void ChangeVisibility()
-        {
-            var visible = this.btnShowAll.Visibility;
-            UpdateTree();
-            this.btnShowAll.Visibility = visible;
         }
 
         private void ItemSelectedHandler(ScannerResultCustomListControl control, SelectionChangedEventArgs e)

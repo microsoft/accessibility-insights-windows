@@ -163,18 +163,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
-        /// Ensure listview contents are displayed properly
-        /// </summary>
-        private void lvDetails_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801 // unused parameter
-        {
-            if ((bool)e.NewValue)
-            {
-                _controlContext.ChangeVisibility();
-            }
-        }
-
-        /// <summary>
         /// Navigate to link on enter in listview
         /// </summary>
         private void ListViewItem_KeyDown(object sender, KeyEventArgs e)
