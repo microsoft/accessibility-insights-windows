@@ -144,12 +144,12 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 if (nonFrameworkIssues.Count > 0)
                 {
-                    nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                    nonFrameworkListControl.lvDetails.SelectedIndex = 0;
                     this.spHowToFix.DataContext = nonFrameworkIssues.First<ScanListViewItemViewModel>();
                 }
                 else
                 {
-                    frameworkListControl.lvDetails.SelectedItem = 0;
+                    frameworkListControl.lvDetails.SelectedIndex = 0;
                     this.spHowToFix.DataContext = frameworkIssues.First<ScanListViewItemViewModel>();
                 }
             }
