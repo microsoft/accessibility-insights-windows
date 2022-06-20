@@ -2,7 +2,7 @@
 
 Welcome to the June 21 2022 Production release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1993.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1997.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
@@ -13,7 +13,8 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - [Bug Fixes](#bug-fixes)
 
 #### New Features
-- Display known potential framework issues separately, so you can more easily focus on problems that are directly in your control.
+- Display known potential framework issues separately to help you focus on problems that are directly in your control
+- Provide information about known framework issues, including potential workarounds or fixes
 
 #### Rule Updates
 - Remove the `BoundingRectangleOnUWPMenuBar` rule ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
