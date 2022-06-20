@@ -93,8 +93,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
-            this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
+            var context = new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId);
+            this.nonFrameworkListControl.SetControlContext(context);
+            this.frameworkListControl.SetControlContext(context);
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
 
             // enable UI elements since Clear() disables them.
