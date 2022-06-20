@@ -10,10 +10,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         internal Action UpdateTree { get; }
         internal Action SwitchToServerLogin { get; }
         internal Action ChangeVisibility { get; }
-        internal Action<object, SelectionChangedEventArgs> ItemSelectedHandler { get; }
+        internal Action<ScannerResultCustomListControl, SelectionChangedEventArgs> ItemSelectedHandler { get; }
         internal Guid EcId { get; }
 
-        public ScannerResultCustomListContext(Action updateTree, Action switchToServerLogin, Action changeVisibility, Action<object, SelectionChangedEventArgs> itemSelectedHandler, Guid ecId)
+        public ScannerResultCustomListContext(Action updateTree, Action switchToServerLogin, Action changeVisibility, Action<ScannerResultCustomListControl, SelectionChangedEventArgs> itemSelectedHandler, Guid ecId)
         {
             UpdateTree = updateTree ?? throw new ArgumentNullException(nameof(updateTree));
             SwitchToServerLogin = switchToServerLogin ?? throw new ArgumentNullException(nameof(switchToServerLogin));

@@ -214,9 +214,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             this.btnShowAll.Visibility = visible;
         }
 
-        private void ItemSelectedHandler(object sender, SelectionChangedEventArgs e)
+        private void ItemSelectedHandler(ScannerResultCustomListControl control, SelectionChangedEventArgs e)
         {
-            if (this.frameworkListControl.lvDetails == sender)
+            if (this.frameworkListControl == control)
             {
                 this.nonFrameworkListControl.UnselectAll();
             }

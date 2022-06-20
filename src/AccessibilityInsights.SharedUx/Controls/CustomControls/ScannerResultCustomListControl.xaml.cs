@@ -143,7 +143,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 return;
             }
 
-            _controlContext.ItemSelectedHandler(sender, e);
+            _controlContext.ItemSelectedHandler(this, e);
         }
 
         /// <summary>
