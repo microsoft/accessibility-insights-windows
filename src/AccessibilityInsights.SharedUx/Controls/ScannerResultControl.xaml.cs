@@ -50,7 +50,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Style dictionary
         /// </summary>
-        new ResourceDictionary Resources = new ResourceDictionary();
+        new readonly ResourceDictionary Resources = new ResourceDictionary();
 
         /// <summary>
         /// App configation
@@ -93,8 +93,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.nonFrameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
-            this.frameworkListControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, ItemSelectedHandler, this.EcId));
+            var context = new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ItemSelectedHandler, this.EcId);
+            this.nonFrameworkListControl.SetControlContext(context);
+            this.frameworkListControl.SetControlContext(context);
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
 
             // enable UI elements since Clear() disables them.
@@ -143,12 +144,12 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 if (nonFrameworkIssues.Count > 0)
                 {
-                    nonFrameworkListControl.lvDetails.SelectedItem = 0;
+                    nonFrameworkListControl.lvDetails.SelectedIndex = 0;
                     this.spHowToFix.DataContext = nonFrameworkIssues.First<ScanListViewItemViewModel>();
                 }
                 else
                 {
-                    frameworkListControl.lvDetails.SelectedItem = 0;
+                    frameworkListControl.lvDetails.SelectedIndex = 0;
                     this.spHowToFix.DataContext = frameworkIssues.First<ScanListViewItemViewModel>();
                 }
             }
@@ -203,19 +204,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             (sender as Button).Visibility = Visibility.Collapsed;
         }
 
-        /// <summary>
-        /// Change visibility of scanner results details
-        /// </summary>
-        public void ChangeVisibility()
+        private void ItemSelectedHandler(ScannerResultCustomListControl control, SelectionChangedEventArgs e)
         {
-            var visible = this.btnShowAll.Visibility;
-            UpdateTree();
-            this.btnShowAll.Visibility = visible;
-        }
-
-        private void ItemSelectedHandler(object sender, SelectionChangedEventArgs e)
-        {
-            if (this.frameworkListControl.lvDetails == sender)
+            if (this.frameworkListControl == control)
             {
                 this.nonFrameworkListControl.UnselectAll();
             }

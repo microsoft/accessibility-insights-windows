@@ -143,7 +143,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 return;
             }
 
-            _controlContext.ItemSelectedHandler(sender, e);
+            _controlContext.ItemSelectedHandler(this, e);
         }
 
         /// <summary>
@@ -159,18 +159,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 eventArg.Source = sender;
                 var parent = ((Control)sender).Parent as UIElement;
                 parent.RaiseEvent(eventArg);
-            }
-        }
-
-        /// <summary>
-        /// Ensure listview contents are displayed properly
-        /// </summary>
-        private void lvDetails_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801 // unused parameter
-        {
-            if ((bool)e.NewValue)
-            {
-                _controlContext.ChangeVisibility();
             }
         }
 
