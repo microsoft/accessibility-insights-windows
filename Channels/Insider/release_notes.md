@@ -17,9 +17,10 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - Provide information about known framework issues, including potential workarounds or fixes
 
 #### Rule Updates
-- Remove the `BoundingRectangleOnUWPMenuBar` rule ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
-- Remove the `BoundingRectangleOnUWPMenuItem` rule ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
-- Remove the `BoundingRectangleOnWPFTextParent` rule ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
+- Remove the following three rules:
+  - `BoundingRectangleOnUWPMenuBar` ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
+  - `BoundingRectangleOnUWPMenuItem` ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
+  - `BoundingRectangleOnWPFTextParent` ([Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698))
 - Add the `BoundingRectangleNotNullListViewXAML` rule to document possible workarounds to a framework limitation ([Axe.Windows #702](https://github.com/microsoft/axe-windows/pull/702))
 - Add the `BoundingRectangleNotNullTextBlockXAML` rule to document possible workarounds to a framework limitation ([Axe.Windows #702](https://github.com/microsoft/axe-windows/pull/702))
 - Add the `ClickablePointOnScreenWPF` rule to document possible workarounds to a framework limitation ([Axe.Windows #704](https://github.com/microsoft/axe-windows/pull/704))
