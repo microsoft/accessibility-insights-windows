@@ -1,8 +1,8 @@
-## April 19 2022 Insider Release ([v1.1.1934.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1934.01))
+## June 21 2022 Insider Release ([v1.1.1997.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.1997.01))
 
-Welcome to the April 19 2022 Insider release of Accessibility Insights for Windows.
+Welcome to the June 21 2022 Insider release of Accessibility Insights for Windows.
 
-Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1934.01/AccessibilityInsights.msi
+Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.1997.01/AccessibilityInsights.msi
 
 Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
@@ -13,19 +13,28 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 - [Bug Fixes](#bug-fixes)
 
 #### New Features
-- Allow Single Sign On (SSO) in ADO issue filing [#1312](https://github.com/microsoft/accessibility-insights-windows/pull/1312), [#1316](https://github.com/microsoft/accessibility-insights-windows/pull/1316)
+- Display known potential framework issues separately to help you focus on problems that are directly in your control
+- Provide information about known framework issues, including potential workarounds or fixes
 
 #### Rule Updates
-- Name-based rules are no longer applied to `Text` elements that are children of a WPF `CheckBox` element [#648](https://github.com/microsoft/axe-windows/issues/648)
-- Improve the messaging of the `SplitButtonInvokeAndTogglePatterns` rule to more accurately reflect what the rule checks [#653](https://github.com/microsoft/axe-windows/issues/653)
-- Fix false positive triggered by `ControlShouldSupportExpandCollapsePattern` on a Win32 `SplitButton` control [#659](https://github.com/microsoft/axe-windows/issues/659)
+- Remove the following three rules (see [Axe.Windows #698](https://github.com/microsoft/axe-windows/pull/698)):
+  - `BoundingRectangleOnUWPMenuBar`
+  - `BoundingRectangleOnUWPMenuItem`
+  - `BoundingRectangleOnWPFTextParent`
+- Add the `BoundingRectangleNotNullListViewXAML` rule to document possible workarounds to a framework limitation ([Axe.Windows #702](https://github.com/microsoft/axe-windows/pull/702))
+- Add the `BoundingRectangleNotNullTextBlockXAML` rule to document possible workarounds to a framework limitation ([Axe.Windows #702](https://github.com/microsoft/axe-windows/pull/702))
+- Add the `ClickablePointOnScreenWPF` rule to document possible workarounds to a framework limitation ([Axe.Windows #704](https://github.com/microsoft/axe-windows/pull/704))
+- Add the `ControlShouldSupportTextPatternEditWinform` rule to document possible workarounds to a framework limitation ([Axe.Windows #705](https://github.com/microsoft/axe-windows/pull/705))
+- Add the `IsControlElementTrueRequiredButtonWPF` rule to document possible workarounds to a framework limitation ([Axe.Windows #706](https://github.com/microsoft/axe-windows/pull/706))
+- Add the `IsControlElementTrueRequiredTextInEditXAML` rule to document possible workarounds to a framework limitation ([Axe.Windows #706](https://github.com/microsoft/axe-windows/pull/706))
+- Update the `FrameworkDoesNotSupportUIAutomation` rule to document possible workarounds to a framework limitation ([Axe.Windows #697](https://github.com/microsoft/axe-windows/pull/697))
+- Update the `ControlShouldSupportSetInfoWPF` rule to document possible workarounds to a framework limitation ([Axe.Windows #697](https://github.com/microsoft/axe-windows/pull/697))
+- Deprecate support for Edge Legacy ([Axe.Windows #687](https://github.com/microsoft/axe-windows/pull/687))
+  - Add the `EdgeBrowserHasBeenDeprecated` rule to document possible workarounds to Edge Legacy's [end of support](https://docs.microsoft.com/en-us/lifecycle/announcements/edge-legacy-eos-details)
+  - Remove the `ControlShouldSupportTablePatternInEdge` rule (only applicable in Edge Legacy)
+  - Remove the `LandmarkOneMain` rule (only applicable in Edge Legacy)
 
 #### Bug Fixes
 
-- Reduce the memory footprint when using color contrast eyedroppers [#951](https://github.com/microsoft/accessibility-insights-windows/issues/951)
-- Fix text contrast in dark mode [#845](https://github.com/microsoft/accessibility-insights-windows/issues/845)
-- Fix scaling issue in welcome screen in large zoom mode [#1249](https://github.com/microsoft/accessibility-insights-windows/issues/1249)
-- Fix text contrast in the `TextPattern` explorer in dark mode [#1262](https://github.com/microsoft/accessibility-insights-windows/issues/1262)
-- Fix text contrast in the Attribute and Property pickers in dark mode [#1266](https://github.com/microsoft/accessibility-insights-windows/issues/1266)
-- Fix sporadic text highlighter button failure (and potential crash) [#1290](https://github.com/microsoft/accessibility-insights-windows/issues/1290)
-- Fix potential telemetry privacy issue if a file on the disk is malformed [#1297](https://github.com/microsoft/accessibility-insights-windows/pull/1297)
+- Improve accessibility by bolding selected items in context menus ([#1321](https://github.com/microsoft/accessibility-insights-windows/pull/1321))
+- Improve accessibility by updating some control names ([#1322](https://github.com/microsoft/accessibility-insights-windows/issues/1322))
