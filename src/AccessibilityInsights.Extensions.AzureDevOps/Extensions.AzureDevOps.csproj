@@ -30,7 +30,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="16.170.0" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1245.22" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.19.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
