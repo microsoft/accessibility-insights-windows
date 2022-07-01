@@ -25,6 +25,9 @@ Standards have been documented on [Unit Test Bar and Standards](UnitTestBarAndSt
 #### Q. What about UI tests?
 Refer to the [UI Tests](../src/UITests/README.md) readme.
 
+#### Q. Why do I sometimes see delays when starting the app or running UI tests?
+This may be a result of your local virus scanner. [Virus Scanner Exclusions](VirusScannerExclusions.md) provides more information.
+
 #### Q. How do I go about making internal interfaces available for testing? 
 Please visit [Accessing Internals](AccessingInternals.md).
 
