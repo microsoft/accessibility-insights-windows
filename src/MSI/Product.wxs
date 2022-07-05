@@ -74,13 +74,13 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Axe.Windows.Win32.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Ben.Demystifier.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\CommandLine.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\HtmlAgilityPack.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.JsonWebTokens.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Logging.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Tokens.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.mshtml.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Build2.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Common.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.TeamFoundation.Core.WebApi.dll" />
