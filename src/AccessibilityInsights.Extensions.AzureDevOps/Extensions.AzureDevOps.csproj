@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.43" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.20.0" />
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.20.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.20.0" />
@@ -36,7 +37,6 @@
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
-    <PackageReference Include="Unofficial.Microsoft.mshtml" Version="7.0.3300" />
     <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj" />
   </ItemGroup>

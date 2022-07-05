@@ -47,7 +47,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             var guid = Guid.NewGuid().ToString();
             // Internal id doesn't exist if the text is modified by user in edit pane. this scenario simulate the case.
             string original = $"<br><br><div><hr>{guid}<hr></div>";
-            string expected = "\r\n<BODY><BR><BR>\r\n<DIV></DIV></BODY>";
+            string expected = "<br><br><div></div>";
 
             Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
         }
@@ -59,9 +59,19 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             var guid = Guid.NewGuid().ToString();
 
             string original = "<br><br><div><hr>should not be removed<hr></div>";
-            string expected = "\r\n<BODY><BR><BR>\r\n<DIV>\r\n<HR>\r\nshould not be removed\r\n<HR>\r\n</DIV></BODY>";
+            string expected = original;
 
             Assert.AreEqual(expected, FileIssueHelpers.RemoveInternalHTML(original, guid));
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void WrapInHtmlBody_AddsExtraData()
+        {
+            string original = "<br><br><div><hr>This is the original text<hr></div>";
+            string expected = "<body>" + original + "</body>";
+
+            Assert.AreEqual(expected, FileIssueHelpers.WrapInHtmlBody(original));
         }
 
         [TestMethod]
