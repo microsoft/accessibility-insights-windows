@@ -75,7 +75,9 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Ben.Demystifier.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\CommandLine.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Azure.DevOps.Comments.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Abstractions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.JsonWebTokens.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Logging.dll" />
@@ -102,7 +104,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.Core.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.WinForms.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Web.WebView2.Wpf.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net472\WebView2Loader.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Win32.Registry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Xaml.Behaviors.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Newtonsoft.Json.dll" />
@@ -120,6 +121,9 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.AccessControl.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.Principal.Windows.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Threading.Tasks.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Web.Http.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Web.Http.WebHost.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\WebView2Loader.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\ThirdPartyNotices.html"/>
               <File Source="..\AccessibilityInsights\bin\Release\net472\eula.rtf"/>
               <File Source="..\AccessibilityInsights\bin\Release\net472\links.json"/>
