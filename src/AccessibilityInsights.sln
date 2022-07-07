@@ -91,6 +91,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.DiskLoggingTelem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Extensions.DiskLoggingTelemetryTests", "AccessibilityInsights.Extensions.DiskLoggingTelemetryTests\Extensions.DiskLoggingTelemetryTests.csproj", "{9A5CD914-222A-46A3-B8BA-9AD836929F01}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsiFileTests", "MsiFileTests\MsiFileTests.csproj", "{83208A23-71B1-4D02-85C0-1D45C3F9A014}"
+	ProjectSection(ProjectDependencies) = postProject
+		{137DB774-6464-48BC-B577-091ABEAF0178} = {137DB774-6464-48BC-B577-091ABEAF0178}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -559,6 +564,22 @@ Global
 		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x64.Build.0 = Release|Any CPU
 		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x86.ActiveCfg = Release|Any CPU
 		{9A5CD914-222A-46A3-B8BA-9AD836929F01}.SignedRelease|x86.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Debug|x64.Build.0 = Debug|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|x64.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|x64.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|x86.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.Release|x86.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|Any CPU.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|Any CPU.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|x64.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|x64.Build.0 = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|x86.ActiveCfg = Release|Any CPU
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014}.SignedRelease|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -590,6 +611,7 @@ Global
 		{757A7A71-E939-43DB-B7D3-4EC30347368B} = {809F77B0-82E0-4990-A9A4-4806157385E9}
 		{772E1812-AE54-4E3C-B44C-118BBA6305D2} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
 		{9A5CD914-222A-46A3-B8BA-9AD836929F01} = {A7D302E8-FBAD-4564-80FF-F5A9BEEAAF76}
+		{83208A23-71B1-4D02-85C0-1D45C3F9A014} = {C23FB215-D2F6-454D-BD08-7736562CDFB3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {25101A75-9178-4066-B360-E932959B9758}
