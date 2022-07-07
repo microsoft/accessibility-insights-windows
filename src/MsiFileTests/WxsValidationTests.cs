@@ -18,7 +18,7 @@ namespace MsiFileTests
         public void AllDropFilesAreAccountedFor()
         {
             // Fails if any non-pdb drop files exist without a corresponding entry in either
-            // the WXS file or the set of intentional exceptions
+            // the WXS file or the set of intentional exclusions
             string currentFolder = Path.GetFullPath(Assembly.GetExecutingAssembly().Location);
             string repoRoot = Path.GetFullPath(Path.Combine(currentFolder, @"..\..\..\..\.."));
             string wxsFile = Path.GetFullPath(Path.Combine(repoRoot, @"MSI\Product.wxs"));
