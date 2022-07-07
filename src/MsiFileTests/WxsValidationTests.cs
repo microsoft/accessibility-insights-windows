@@ -38,9 +38,9 @@ namespace MsiFileTests
         {
             string dropPath = Path.Combine(repoRoot, relativeDropPath);
             HashSet<string> filesInDropPath = GetNonSymbolFilesInPath(dropPath, intentionalExclusions);
-            HashSet<string> filesInWxsSection = GetFilesIncludedInWxsSection(repoRoot, wxsFile, wxsComponentId);
+            HashSet<string> filesInWxsComponent = GetFilesIncludedInWxsComponent(repoRoot, wxsFile, wxsComponentId);
 
-            filesInDropPath.ExceptWith(filesInWxsSection);
+            filesInDropPath.ExceptWith(filesInWxsComponent);
 
             Assert.IsFalse(filesInDropPath.Any(), $"Drop files not in \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
         }
@@ -64,36 +64,28 @@ namespace MsiFileTests
             return filesInPath;
         }
 
-        private static HashSet<string> GetFilesIncludedInWxsSection(string repoRoot, string wxsFile, string componentId)
+        private static HashSet<string> GetFilesIncludedInWxsComponent(string repoRoot, string wxsFile, string componentId)
         {
             HashSet<string> filesInSection = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
             using (XmlReader reader = XmlReader.Create(wxsFile))
             {
-                bool inCorrectSection = false;
+                bool thisIsTheCorrectComponent = false;
 
                 while (reader.Read())
                 {
-                    switch (reader.NodeType)
+                    if (reader.NodeType == XmlNodeType.Element)
                     {
-                        case XmlNodeType.Element:
-                            {
-                                switch (reader.Name)
-                                {
-                                    case "Component":
-                                        string id = reader.GetAttribute("Id");
-                                        inCorrectSection = (id == componentId);
-                                        break;
-                                    case "File":
-                                        if (inCorrectSection)
-                                        {
-                                            string relativeFile = reader.GetAttribute("Source");
-                                            filesInSection.Add(repoRoot + relativeFile.Substring(2));
-                                        }
-                                        break;
-                                }
-                            }
-                            break;
+                        if (reader.Name == "Component")
+                        {
+                            string id = reader.GetAttribute("Id");
+                            thisIsTheCorrectComponent = (id == componentId);
+                        }
+                        else if (reader.Name == "File" && thisIsTheCorrectComponent)
+                        {
+                            string relativeFile = reader.GetAttribute("Source");
+                            filesInSection.Add(repoRoot + relativeFile.Substring(2));
+                        }
                     }
                 }
             }
