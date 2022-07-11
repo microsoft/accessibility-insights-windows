@@ -13,7 +13,7 @@ variables:
 jobs:
 - job: ComplianceRelease
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-2022'
   variables:
     PublicRelease: 'false'
   steps:
@@ -43,7 +43,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 16.0
+      vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: release
 
@@ -69,7 +69,7 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 16.0
+      vsTestVersion: 17.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: release
@@ -80,7 +80,7 @@ jobs:
 
 - job: ComplianceDebug
   pool:
-    vmImage: 'windows-2019'
+    vmImage: 'windows-2022'
   variables:
     PublicRelease: 'false'
   steps:
@@ -103,7 +103,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 16.0
+      vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: debug
 
@@ -132,9 +132,9 @@ jobs:
     displayName: 'Run Roslyn analyzers'
     inputs:
         userProvideBuildInfo: msBuildInfo
-        msbuildVersion: 16.0
+        msbuildVersion: 17.0
         msBuildArchitecture: '$(BuildPlatform)'
-        msBuildCommandline: '"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\msbuild.exe" "$(Build.SourcesDirectory)\src\AccessibilityInsights.sln" /p:platform="$(BuildPlatform)" /p:configuration="debug" /p:VisualStudioVersion="16.0"'
+        msBuildCommandline: '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" "$(Build.SourcesDirectory)\src\AccessibilityInsights.sln" /p:platform="$(BuildPlatform)" /p:configuration="debug" /p:VisualStudioVersion="17.0"'
         rulesetName: recommended
         internalAnalyzersVersion: Latest
         microsoftAnalyzersVersion: Latest
@@ -189,7 +189,7 @@ jobs:
         **\*test*.dll
         !**\obj\**
       testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      vsTestVersion: 16.0
+      vsTestVersion: 17.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: debug
@@ -200,7 +200,7 @@ jobs:
   - ComplianceRelease
   - ComplianceDebug
   condition: and(succeeded(), succeeded())
-  pool: MSEngSS-MicroBuild2019-1ES
+  pool: MSEngSS-MicroBuild2022-1ES
   variables:
     runCodesignValidationInjection: 'true'
     SignAppForRelease: 'true'
@@ -241,7 +241,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\AccessibilityInsights.sln'
     inputs:
-      vsVersion: 16.0
+      vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: SignedRelease
       solution: '**/AccessibilityInsights.sln'  # we only want to build AccessibilityInsights for signing
@@ -290,7 +290,7 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 16.0
+      vsTestVersion: 17.0
       codeCoverageEnabled: false
       platform: '$(BuildPlatform)'
       configuration: release
