@@ -58,7 +58,6 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 17.0
       codeCoverageEnabled: true
       platform: '$(BuildPlatform)'
       configuration: release

@@ -36,7 +36,6 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
