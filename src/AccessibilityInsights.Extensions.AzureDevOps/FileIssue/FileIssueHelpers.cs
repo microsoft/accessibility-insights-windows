@@ -3,8 +3,8 @@
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using HtmlAgilityPack;
 using Microsoft.Web.WebView2.Core;
-using mshtml;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -180,8 +180,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     htmlDescription = $"<img src=\"{imgUrl}\" alt=\"screenshot\"></img>";
                 }
 
-                var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId) + htmlDescription;
-                await _devOpsIntegration.ReplaceIssueDescription(scrubbedHTML, issueId).ConfigureAwait(false);
+                var scrubbedHTML = RemoveInternalHTML(filedIssueReproSteps, a11yIssueId);
+                var updatedHTML = WrapInHtmlBody(scrubbedHTML) + htmlDescription;
+                await _devOpsIntegration.ReplaceIssueDescription(updatedHTML, issueId).ConfigureAwait(false);
                 File.Delete(snapshotFileName);
                 if (imageFileName != null)
                 {
@@ -218,23 +219,23 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         /// <returns></returns>
         internal static string RemoveInternalHTML(string inputHTML, string keyText)
         {
-            object[] htmlText = { inputHTML };
-            HTMLDocument doc = new HTMLDocument();
-            IHTMLDocument2 doc2 = doc as IHTMLDocument2;
-            doc2.write(htmlText);
-            IHTMLDOMNode node = null;
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(inputHTML);
+
+            HtmlNode documentNode = doc.DocumentNode;
+            HtmlNode node = null;
 
             // search div with matching issueguid.
             // remove any of it if there is matched one.
-            var divnodes = doc.getElementsByTagName("div");
+            var divnodes = documentNode.Elements("div");
 
             if (divnodes != null)
             {
-                foreach (IHTMLDOMNode divnode in divnodes)
+                foreach (var divnode in divnodes)
                 {
-                    foreach (IHTMLDOMNode child in GetChildren(divnode))
+                    foreach (var child in divnode.ChildNodes)
                     {
-                        string nodevalue = child.nodeValue?.ToString();
+                        string nodevalue = child.NextSibling?.InnerHtml?.ToString();
                         if (nodevalue != null && nodevalue.Contains(keyText) == true)
                         {
                             node = divnode;
@@ -251,21 +252,18 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             if (node != null)
             {
-                foreach (IHTMLDOMNode child in GetChildren(node).ToList())
+                foreach (var child in node.ChildNodes.ToList())
                 {
-                    node.removeChild(child);
+                    node.RemoveChild(child);
                 }
             }
 
-            return doc.body.outerHTML;
+            return documentNode.WriteContentTo();
         }
 
-        private static IEnumerable<IHTMLDOMNode> GetChildren(IHTMLDOMNode node)
+        internal static string WrapInHtmlBody(string innerHtml)
         {
-            for (IHTMLDOMNode child = node.firstChild; child != null; child = child.nextSibling)
-            {
-                yield return child;
-            }
+            return $"<body>{innerHtml}</body>";
         }
 
         /// <summary>

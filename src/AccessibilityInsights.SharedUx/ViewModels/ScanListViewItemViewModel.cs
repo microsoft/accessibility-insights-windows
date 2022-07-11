@@ -188,14 +188,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             {
                 return StandardLinksHelper.GetDefaultInstance().GetSnippetQueryUrl(rr.MetaInfo);
             }
-
-            if (status != ScanStatus.Pass)
-            {
-                return rr.FrameworkIssueLink;
-            }
-
-            return null;
+            return rr.FrameworkIssueLink;
         }
+
         private static string GetPossiblyOverriddenHowToFixText(RuleResult rr)
         {
             if (rr.FrameworkIssueLink != null) return Resources.ScannerResultControl_FrameworkIssueBoilerplate;

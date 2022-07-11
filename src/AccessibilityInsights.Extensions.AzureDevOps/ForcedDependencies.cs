@@ -5,11 +5,11 @@ using System;
 namespace AccessibilityInsights.Extensions.AzureDevOps
 {
     /// <summary>
-    /// The C# compiler "helps" us by pruning indirect dependencies when it detect no code path that
+    /// The C# compiler "helps" us by pruning transitive dependencies when it detects no code path that
     /// can reach them. However, that detection is imperfect, and we end up lacking some assemblies
-    /// that we actually need. To counter this, we trick the compiler into detecting references
-    /// to the assemblies. It's very unfortunately that we need to do this, but it's the only
-    /// solution that I could find after multiple searches :(
+    /// that we genuinely need. To counter this, we trick the compiler into detecting references
+    /// to these assemblies that it fails to detect. It's very unfortunate that we need to do this,
+    /// but it's the only solution that I could find after multiple attempts to find a better option.
     /// </summary>
     static class ForcedDependencies
     {

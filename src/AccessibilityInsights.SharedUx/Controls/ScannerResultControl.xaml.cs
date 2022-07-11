@@ -50,7 +50,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Style dictionary
         /// </summary>
-        new ResourceDictionary Resources = new ResourceDictionary();
+        new readonly ResourceDictionary Resources = new ResourceDictionary();
 
         /// <summary>
         /// App configation
@@ -93,12 +93,14 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void SetScannerResultTreeView(A11yElement e)
         {
-            this.listControl.SetControlContext(new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ChangeVisibility, spHowToFix, this.EcId));
+            var context = new ScannerResultCustomListContext(UpdateTree, SwitchToServerLogin, ItemSelectedHandler, this.EcId);
+            this.nonFrameworkListControl.SetControlContext(context);
+            this.frameworkListControl.SetControlContext(context);
             _list.AddRange(ScanListViewItemViewModel.GetScanListViewItemViewModels(e));
-            this.listControl.ItemsSource = null;
 
             // enable UI elements since Clear() disables them.
             this.btnShowAll.IsEnabled = true;
+            this.ShowAllResults = false;
 
             UpdateTree();
         }
@@ -113,9 +115,14 @@ namespace AccessibilityInsights.SharedUx.Controls
                                 orderby l.Status descending, l.Source, l.Header
                                 select l;
 
+            List<ScanListViewItemViewModel> frameworkIssues = new List<ScanListViewItemViewModel>();
+            List<ScanListViewItemViewModel> nonFrameworkIssues = new List<ScanListViewItemViewModel>();
+            SplitResultList(itemViewModel, frameworkIssues, nonFrameworkIssues);
+
             var viewModelCount = itemViewModel.Count();
 
-            this.listControl.ItemsSource = itemViewModel;
+            this.nonFrameworkListControl.SetItemsSource(nonFrameworkIssues.Any() ? nonFrameworkIssues : null);
+            this.frameworkListControl.SetItemsSource(frameworkIssues.Any() ? frameworkIssues : null);
 
             btnShowAll.Visibility = Visibility.Visible;
 
@@ -135,14 +142,36 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             if (viewModelCount > 0)
             {
-                listControl.lvDetails.SelectedItem = 0;
-                this.spHowToFix.DataContext = itemViewModel.First<ScanListViewItemViewModel>();
+                if (nonFrameworkIssues.Count > 0)
+                {
+                    nonFrameworkListControl.lvDetails.SelectedIndex = 0;
+                    this.spHowToFix.DataContext = nonFrameworkIssues.First<ScanListViewItemViewModel>();
+                }
+                else
+                {
+                    frameworkListControl.lvDetails.SelectedIndex = 0;
+                    this.spHowToFix.DataContext = frameworkIssues.First<ScanListViewItemViewModel>();
+                }
             }
             else
             {
                 this.spHowToFix.DataContext = null;
             }
-            this.ShowAllResults = false;
+        }
+
+        private static void SplitResultList(IEnumerable<ScanListViewItemViewModel> results, List<ScanListViewItemViewModel> frameworkIssues, List<ScanListViewItemViewModel> nonFrameworkIssues)
+        {
+            foreach (var result in results)
+            {
+                if (result.RR.FrameworkIssueLink == null)
+                {
+                    nonFrameworkIssues.Add(result);
+                }
+                else
+                {
+                    frameworkIssues.Add(result);
+                }
+            }
         }
 
         /// <summary>
@@ -150,7 +179,8 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Clear()
         {
-            this.listControl.ItemsSource = null;
+            this.nonFrameworkListControl.SetItemsSource(null);
+            this.frameworkListControl.SetItemsSource(null);
             this.List.Clear();
             this.tbShowAll.Text = Properties.Resources.NoTestResult;
             this.btnShowAll.IsEnabled = false;
@@ -174,15 +204,17 @@ namespace AccessibilityInsights.SharedUx.Controls
             (sender as Button).Visibility = Visibility.Collapsed;
         }
 
-        /// <summary>
-        /// Change visibility of scanner results details
-        /// </summary>
-        public void ChangeVisibility()
+        private void ItemSelectedHandler(ScannerResultCustomListControl control, SelectionChangedEventArgs e)
         {
-            var visible = this.btnShowAll.Visibility;
-            this.ShowAllResults = visible == Visibility.Collapsed;
-            UpdateTree();
-            this.btnShowAll.Visibility = visible;
+            if (this.frameworkListControl == control)
+            {
+                this.nonFrameworkListControl.UnselectAll();
+            }
+            else
+            {
+                this.frameworkListControl.UnselectAll();
+            }
+            spHowToFix.DataContext = (e.AddedItems.Count > 0) ? (ScanListViewItemViewModel)e.AddedItems[0] : null;
         }
     }
 }
