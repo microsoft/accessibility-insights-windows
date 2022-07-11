@@ -39,7 +39,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 17.0
+      vsVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
 
