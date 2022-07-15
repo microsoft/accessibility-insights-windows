@@ -8,7 +8,7 @@ jobs:
   displayName: Build and run UI Tests - ${{ parameters.configuration }}
   condition: succeeded()
   pool:
-    vmImage: windows-2019
+    vmImage: windows-2022
   steps:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
@@ -21,7 +21,7 @@ jobs:
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
-      vsVersion: 16.0
+      vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
 
@@ -36,7 +36,6 @@ jobs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
-      vsTestVersion: 16.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
