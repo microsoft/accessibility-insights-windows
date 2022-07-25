@@ -7,14 +7,9 @@ namespace AccessibilityInsights.Extensions.Telemetry
 {
     static internal class TelemetryClientFactory
     {
-        static internal TelemetryClient GetClient(string connectionString)
+        static internal TelemetryClient GetClient(TelemetryConfiguration config)
         {
-#pragma warning disable CA2000 // Dispose objects before losing scope
-            var tc = new TelemetryClient(new TelemetryConfiguration
-            {
-                ConnectionString = connectionString,
-            });
-#pragma warning restore CA2000 // Dispose objects before losing scope
+            var tc = new TelemetryClient(config);
             tc.Context.Device.OperatingSystem = OSHelpers.GetVersion();
             tc.Context.Cloud.RoleInstance = "undefined";
             return tc;

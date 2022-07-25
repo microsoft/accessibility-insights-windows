@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -29,9 +30,19 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// <summary>
         /// Production ctor--must be public for MEF
         /// </summary>
+#pragma warning disable CA2000 // Dispose objects before losing scope
         public AITelemetry()
-            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(ConnectionString)))
+            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(GetTelemetryConfig())))
         {
+        }
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+        private static TelemetryConfiguration GetTelemetryConfig()
+        {
+            return new TelemetryConfiguration
+            {
+                ConnectionString = ConnectionString,
+            };
         }
 
         /// <summary>
