@@ -4,7 +4,6 @@ using AccessibilityInsights.Extensions.Telemetry;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
 
 namespace AccessibilityInsights.Extensions.TelemetryTests
 {
