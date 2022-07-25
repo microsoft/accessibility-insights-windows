@@ -16,9 +16,9 @@ namespace AccessibilityInsights.Extensions.Telemetry
     {
         private readonly ITelemetryClientWrapper _clientWrapper;
         /// <summary>
-        /// Instrumentation key from Azure portal
+        /// Connection string from Azure portal
         /// </summary>
-        const string InstrumentationKey = "0ad67074-7af0-494c-adee-be70a786448a";
+        const string ConnectionString = "InstrumentationKey=0ad67074-7af0-494c-adee-be70a786448a;IngestionEndpoint=https://southcentralus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://southcentralus.livediagnostics.monitor.azure.com/";
 
         /// <summary>
         /// Properties that are sent alongside all telemetry
@@ -30,7 +30,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// Production ctor--must be public for MEF
         /// </summary>
         public AITelemetry()
-            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(InstrumentationKey)))
+            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(ConnectionString)))
         {
         }
 
