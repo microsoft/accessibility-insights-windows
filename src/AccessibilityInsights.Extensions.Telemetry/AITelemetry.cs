@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
 using Microsoft.ApplicationInsights.DataContracts;
+using Microsoft.ApplicationInsights.Extensibility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -16,9 +17,9 @@ namespace AccessibilityInsights.Extensions.Telemetry
     {
         private readonly ITelemetryClientWrapper _clientWrapper;
         /// <summary>
-        /// Instrumentation key from Azure portal
+        /// Connection string from Azure portal
         /// </summary>
-        const string InstrumentationKey = "0ad67074-7af0-494c-adee-be70a786448a";
+        const string ConnectionString = "InstrumentationKey=0ad67074-7af0-494c-adee-be70a786448a;IngestionEndpoint=https://southcentralus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://southcentralus.livediagnostics.monitor.azure.com/";
 
         /// <summary>
         /// Properties that are sent alongside all telemetry
@@ -29,9 +30,19 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// <summary>
         /// Production ctor--must be public for MEF
         /// </summary>
+#pragma warning disable CA2000 // Dispose objects before losing scope
         public AITelemetry()
-            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(InstrumentationKey)))
+            : this(new TelemetryClientWrapper(TelemetryClientFactory.GetClient(GetTelemetryConfig())))
         {
+        }
+#pragma warning restore CA2000 // Dispose objects before losing scope
+
+        private static TelemetryConfiguration GetTelemetryConfig()
+        {
+            return new TelemetryConfiguration
+            {
+                ConnectionString = ConnectionString,
+            };
         }
 
         /// <summary>
