@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
@@ -77,8 +77,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     {
                         IntPtr hDC = wParam;
 
-                        RECT rc;
-                        NativeMethods.GetClientRect(hWnd, out rc);
+                        NativeMethods.GetClientRect(hWnd, out RECT rc);
 
                         IntPtr hBrush = NativeMethods.CreateSolidBrush(this.Color);
 #pragma warning disable CA1806 // Do not ignore method results
