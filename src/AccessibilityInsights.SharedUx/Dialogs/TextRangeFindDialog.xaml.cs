@@ -168,13 +168,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             //turn off hilighter
             this.Hilighter.HilightBoundingRectangles(false);
 
-            Axe.Windows.Desktop.UIAutomation.Patterns.TextRange range = null;
-
             try
             {
                 var attributeId = GetAttributeId();
 
-                range = attributeId == SearchForText
+                Axe.Windows.Desktop.UIAutomation.Patterns.TextRange range = attributeId == SearchForText
                     ? this.Finder.FindText(GetAttributeValue() as string, backward, chbIgnoreCase.IsChecked ?? false)
                     : this.Finder.Find(attributeId, GetAttributeValue(), backward);
 

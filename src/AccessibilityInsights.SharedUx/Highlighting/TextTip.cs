@@ -43,7 +43,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                  FontClipPrecision.CLIP_DEFAULT_PRECIS, FontQuality.CLEARTYPE_QUALITY, FontPitchAndFamily.DEFAULT_PITCH, "Calibri");
             this.WindowClassName = cn;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            var r = RegisterWindowClass();
+            RegisterWindowClass();
 
             this.hWnd = CreateWindow();
             Holder.Add(this.hWnd, this);
@@ -483,7 +483,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         NativeMethods.LineTo(hDC, rcClient.right - 1, 0);
                         NativeMethods.LineTo(hDC, 0, 0);
 
-                        hPen = NativeMethods.SelectObject(hDC, hPen);
+                        NativeMethods.SelectObject(hDC, hPen);
                         NativeMethods.SelectObject(hDC, hFont);
 
                         return (IntPtr)1;

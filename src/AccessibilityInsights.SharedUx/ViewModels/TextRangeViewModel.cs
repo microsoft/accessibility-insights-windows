@@ -276,7 +276,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
                     }
                     break;
                 case TextAttributeType.UIA_AnnotationTypesAttributeId:
-                    StringBuilder sb = new StringBuilder();
                     if (value is double)
                     {
                         list.Add(new TextAttributeViewModel(kv.Key, kv.Value, AnnotationType.GetInstance().GetNameById((int)value)));
