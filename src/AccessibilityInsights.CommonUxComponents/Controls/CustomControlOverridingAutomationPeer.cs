@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Properties;
 using System;
@@ -14,15 +14,15 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     /// </summary>
     public class CustomControlOverridingAutomationPeer : UserControlAutomationPeer
     {
-        private bool IsControlElem;
+        private readonly bool IsControlElem;
 
-        private bool IsContentElem;
+        private readonly bool IsContentElem;
 
-        private string LocalizedControlType;
+        private readonly string LocalizedControlType;
 
-        private AutomationControlType ControlType;
+        private readonly AutomationControlType ControlType;
 
-        private bool HideChildren;
+        private readonly bool HideChildren;
 
         public AutomationOrientation AutomationOrientation { get; set; }
 
