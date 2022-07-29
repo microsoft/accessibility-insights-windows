@@ -210,9 +210,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <returns></returns>
         private static IDictionary<string, string> GetPropertyBag(RecorderSetting cfg)
         {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-
-            dic.Add("Scope", cfg.ListenScope.ToString());
+            Dictionary<string, string> dic = new Dictionary<string, string>
+            {
+                { "Scope", cfg.ListenScope.ToString() }
+            };
 
             if (cfg.IsListeningFocusChangedEvent)
             {

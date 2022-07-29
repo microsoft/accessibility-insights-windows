@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
@@ -172,17 +172,20 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             var tp2 = this.Element.Patterns.ById(PatternType.UIA_TextPattern2Id);
 
-            var dlg = new TextPatternExplorerDialog((TextPattern)this.Pattern, tp2 == null ? null : (TextPattern2)tp2);
-
-            dlg.Owner = Application.Current.MainWindow;
+            var dlg = new TextPatternExplorerDialog((TextPattern)this.Pattern, tp2 == null ? null : (TextPattern2)tp2)
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             dlg.ShowDialog();
         }
 
         private void ShowActionDialog()
         {
-            ControlPatternDialog dlg = new ControlPatternDialog(this);
-            dlg.Owner = Application.Current.MainWindow;
+            ControlPatternDialog dlg = new ControlPatternDialog(this)
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             dlg.ShowDialog();
         }

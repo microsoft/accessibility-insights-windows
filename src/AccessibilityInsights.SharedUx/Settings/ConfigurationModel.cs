@@ -534,8 +534,8 @@ namespace AccessibilityInsights.SharedUx.Settings
 
                 config = GetDefaultConfigurationModel(provider);
 
-                config.HotKeyForRecord = hkrecord != null ? hkrecord : config.HotKeyForRecord;
-                config.HotKeyForPause = hkpause != null ? hkpause : config.HotKeyForPause;
+                config.HotKeyForRecord = hkrecord ?? config.HotKeyForRecord;
+                config.HotKeyForPause = hkpause ?? config.HotKeyForPause;
                 config.HotKeyForSnap = hksnapshot;
                 config.HotKeyForActivatingMainWindow = hkactivate;
             }

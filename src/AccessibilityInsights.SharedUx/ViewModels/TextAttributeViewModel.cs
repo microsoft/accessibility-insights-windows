@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Dialogs;
 using Axe.Windows.Desktop.Types;
@@ -93,8 +93,10 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 
         private void ShowElementInfo()
         {
-            var dlg = new ElementInfoDialog(this.Element);
-            dlg.Owner = Application.Current.MainWindow;
+            var dlg = new ElementInfoDialog(this.Element)
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             dlg.ShowDialog();
         }
