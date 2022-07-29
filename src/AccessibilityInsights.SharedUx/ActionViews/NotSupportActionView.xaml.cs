@@ -25,10 +25,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dic = new Dictionary<string, string>
-            {
-                { "name", this.tbName.Text }
-            };
+            // TODO: This appears to be a remnant of old legacy telemetry code. Consider bringing it back?
         }
     }
 }

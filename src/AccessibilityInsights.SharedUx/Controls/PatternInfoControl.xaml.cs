@@ -118,17 +118,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void treePatterns_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (this.treePatterns.SelectedItem != null)
-            {
-                dynamic si = this.treePatterns.SelectedItem;
-                if (si is ScanListViewItemViewModel)
-                {
-                    var dic = new Dictionary<string, string>
-                    {
-                        { "SelectedPattern", si.Pattern.Name }
-                    };
-                }
-            }
+            // TODO: This method does nothing--can we remove it? Old code was probably a telemetry hook at one point
         }
 
         private void copyMenuItemPattern_Click(object sender, RoutedEventArgs e)

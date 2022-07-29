@@ -204,42 +204,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Create a property bag based on RecorderSetting changes.
-        /// </summary>
-        /// <param name="cfg"></param>
-        /// <returns></returns>
-        private static IDictionary<string, string> GetPropertyBag(RecorderSetting cfg)
-        {
-            Dictionary<string, string> dic = new Dictionary<string, string>
-            {
-                { "Scope", cfg.ListenScope.ToString() }
-            };
-
-            if (cfg.IsListeningFocusChangedEvent)
-            {
-                dic.Add(EventType.UIA_AutomationFocusChangedEventId.ToString(CultureInfo.InvariantCulture), EventType.GetInstance().GetNameById(EventType.UIA_AutomationFocusChangedEventId));
-            }
-
-            foreach (var e in cfg.Events)
-            {
-                if (e.IsRecorded)
-                {
-                    dic.Add(e.Id.ToString(CultureInfo.InvariantCulture), e.Name);
-                }
-            }
-
-            foreach (var p in cfg.Properties)
-            {
-                if (p.IsRecorded)
-                {
-                    dic.Add(p.Id.ToString(CultureInfo.InvariantCulture), p.Name);
-                }
-            }
-
-            return dic;
-        }
-
-        /// <summary>
         /// Disable changing config while recording
         /// </summary>
         /// <param name="isRecording"></param>
