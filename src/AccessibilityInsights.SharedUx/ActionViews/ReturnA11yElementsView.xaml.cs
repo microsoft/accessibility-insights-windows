@@ -207,8 +207,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         private void btnRun_Click(object sender, RoutedEventArgs e)
         {
             SetElement();
-            int delay;
-            if (Int32.TryParse(this.tbDelay.Text, out delay))
+            if (Int32.TryParse(this.tbDelay.Text, out int delay))
             {
                 if (delay >= 1)
                 {

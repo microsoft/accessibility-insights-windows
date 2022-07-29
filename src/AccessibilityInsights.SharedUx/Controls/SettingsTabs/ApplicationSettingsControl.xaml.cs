@@ -191,8 +191,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
 
             // make sure that text is parsable.
-            int milsec;
-            var conv = int.TryParse(this.tbMouseDelay.Text, out milsec);
+            var conv = int.TryParse(this.tbMouseDelay.Text, out int milsec);
             if (conv == true && config.MouseSelectionDelayMilliSeconds != milsec)
             {
                 return true;

@@ -79,8 +79,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int delay;
-            if (Int32.TryParse(this.tbDelay.Text, out delay))
+            if (Int32.TryParse(this.tbDelay.Text, out int delay))
             {
                 if (delay >= 1)
                 {
