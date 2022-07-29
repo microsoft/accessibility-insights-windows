@@ -61,9 +61,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     : string.Empty;
                 Uri url = CreateIssuePreviewAsync(connection, issueInfo).Result;
 
-                int? issueId = testIssueId.HasValue
-                    ? testIssueId.Value
-                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom, configurationPath);
+                int? issueId = testIssueId ?? FileIssueWindow(url, onTop, zoomLevel, updateZoom, configurationPath);
 
                 return (issueId, a11yIssueId);
             }
