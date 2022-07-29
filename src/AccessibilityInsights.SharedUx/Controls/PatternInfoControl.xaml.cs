@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Settings;
@@ -123,8 +123,10 @@ namespace AccessibilityInsights.SharedUx.Controls
                 dynamic si = this.treePatterns.SelectedItem;
                 if (si is ScanListViewItemViewModel)
                 {
-                    var dic = new Dictionary<string, string>();
-                    dic.Add("SelectedPattern", si.Pattern.Name);
+                    var dic = new Dictionary<string, string>
+                    {
+                        { "SelectedPattern", si.Pattern.Name }
+                    };
                 }
             }
         }

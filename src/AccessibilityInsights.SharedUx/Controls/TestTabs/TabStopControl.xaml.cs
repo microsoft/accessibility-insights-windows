@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -494,9 +494,11 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         private void AddTraceToTelemetryForTabStopEnd()
         {
-            var dic = new Dictionary<string, string>();
-            dic.Add(TelemetryProperty.TabStopLooped.ToString(), IsTabStopLooped.ToString(CultureInfo.InvariantCulture));
-            dic.Add(TelemetryProperty.TabStopCount.ToString(), this.TabStopCount.ToString(CultureInfo.InvariantCulture));
+            var dic = new Dictionary<string, string>
+            {
+                { TelemetryProperty.TabStopLooped.ToString(), IsTabStopLooped.ToString(CultureInfo.InvariantCulture) },
+                { TelemetryProperty.TabStopCount.ToString(), this.TabStopCount.ToString(CultureInfo.InvariantCulture) }
+            };
         }
 
         /// <summary>

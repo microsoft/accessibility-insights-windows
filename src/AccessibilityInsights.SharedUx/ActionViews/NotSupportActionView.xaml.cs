@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
@@ -25,8 +25,10 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dic = new Dictionary<string, string>();
-            dic.Add("name", this.tbName.Text);
+            var dic = new Dictionary<string, string>
+            {
+                { "name", this.tbName.Text }
+            };
         }
     }
 }
