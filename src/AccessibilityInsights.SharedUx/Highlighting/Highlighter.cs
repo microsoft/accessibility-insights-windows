@@ -75,12 +75,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
-#pragma warning disable IDE0052 // TODO: Do we ever read this?
         private bool isBorderVisible;
         private bool IsBorderVisible
         {
-            get => this.isBorderVisible;
-
             set
             {
                 if (this.isBorderVisible != value)
@@ -90,7 +87,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 }
             }
         }
-#pragma warning restore IDE0052
 
         private HighlighterMode highlighterMode;
         public HighlighterMode HighlighterMode
