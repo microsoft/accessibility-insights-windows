@@ -16,8 +16,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     internal class TextTip : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, TextTip> Holder = new ReferenceHolder<IntPtr, TextTip>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+        private static readonly ReferenceHolder<IntPtr, TextTip> Holder = new ReferenceHolder<IntPtr, TextTip>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
 
         const int Max_Text_Length = 60;
         const int TEXTBORDER = 2;
