@@ -259,10 +259,11 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="expandall"></param>
         private void PopulateHierarchyTree(ElementContext ec, bool expandall)
         {
+#if POPULATE_HIERARCHY_TREE_DIAGNOSTICS
             var begin = DateTime.Now;
             var tm = Configuration.TreeViewMode;
             var showa = Configuration.ShowAncestry;
-
+#endif
             /// in the case that UIElement is not alive any more, it will fail.
             /// we need to handle it properly
             HierarchyNodeViewModel rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, IsLiveMode);
@@ -276,8 +277,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             UpdateTreeView(rnvm, expandall);
 
             this._selectedElement = ec.Element;
+#if POPULATE_HIERARCHY_TREE_DIAGNOSTICS
             var span = DateTime.Now - begin;
-
+#endif
             this.tbTimeSpan.Visibility = Visibility.Collapsed;
         }
 
