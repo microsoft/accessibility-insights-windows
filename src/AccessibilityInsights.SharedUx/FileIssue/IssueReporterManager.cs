@@ -51,10 +51,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         // Unit testing constructor
         internal IssueReporterManager(ConfigurationModel appConfig, IEnumerable<IIssueReporting> issueReportingOptions)
         {
-            if (appConfig == null)
-                throw new ArgumentNullException(nameof(appConfig));
-
-            _appConfig = appConfig;
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
             _issueReportingOptions = issueReportingOptions ?? Enumerable.Empty<IIssueReporting>();
         }
 
