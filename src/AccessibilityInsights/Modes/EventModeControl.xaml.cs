@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -28,7 +28,9 @@ namespace AccessibilityInsights.Modes
     /// </summary>
     public partial class EventModeControl : UserControlWithPanes, IModeControl
     {
+#pragma warning disable IDE0052 // TODO: Is this really unused?
         private ElementContext ElementContext;
+#pragma warning restore IDE0052
 
         /// <summary>
         /// MainWindow to access shared methods
@@ -301,13 +303,14 @@ namespace AccessibilityInsights.Modes
             return enabled;
         }
 
+#pragma warning disable IDE0051 // TODO: Is this really unused?
         /// <summary>
         /// Set focus when visible
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 #pragma warning disable CA1801
-        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void UserControl_IsVisibleChanged(object _, DependencyPropertyChangedEventArgs e)
 #pragma warning restore CA1801
         {
             if ((bool)e.NewValue)
@@ -318,6 +321,7 @@ namespace AccessibilityInsights.Modes
                 }, DispatcherPriority.Render);
             }
         }
+#pragma warning restore IDE0051
 
         /// <summary>
         /// Set focus on default control for mode
