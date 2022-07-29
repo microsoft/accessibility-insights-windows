@@ -53,12 +53,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private A11yElement CurrentElement { get; set; }
 
         /// <summary>
-        /// it is set to true, when TapStop enters into a loop with existing records.
-        /// it will be set back to false when new recording is started.
-        /// </summary>
-        private bool IsTabStopLooped;
-
-        /// <summary>
         /// Set Highlighter button state in main UI
         /// this should be provided from Test Mode controller.
         /// </summary>
@@ -358,7 +352,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (!IsRecordingActive && this.ElementContext != null)
             {
                 TabStopCount = 0;
-                IsTabStopLooped = false;
 
                 CurrentElement = null;
                 EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageReceived);
@@ -444,7 +437,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                             this.lvElements.ScrollIntoView(ev);
                         });
 
-                        IsTabStopLooped = true; // tab stop is looped!!
                         return;
                     }
                 }
