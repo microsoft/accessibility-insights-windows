@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
@@ -168,9 +168,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
 
             this.tbResult.Visibility = Visibility.Collapsed;
-            this.timerInvoke = new System.Timers.Timer(1000);
-            this.timerInvoke.Enabled = false;
-            this.timerInvoke.AutoReset = false;
+            this.timerInvoke = new System.Timers.Timer(1000)
+            {
+                Enabled = false,
+                AutoReset = false
+            };
             this.timerInvoke.Elapsed += new ElapsedEventHandler(this.ontimerElapsed);
             this.Loaded += Window_Loaded;
         }

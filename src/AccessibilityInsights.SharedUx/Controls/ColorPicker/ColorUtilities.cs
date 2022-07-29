@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
@@ -78,10 +78,12 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 }
             }
 
-            HsvColor hsvColor = new HsvColor();
-            hsvColor.H = h;
-            hsvColor.S = s;
-            hsvColor.V = v / 255;
+            HsvColor hsvColor = new HsvColor
+            {
+                H = h,
+                S = s,
+                V = v / 255
+            };
 
             return hsvColor;
         }

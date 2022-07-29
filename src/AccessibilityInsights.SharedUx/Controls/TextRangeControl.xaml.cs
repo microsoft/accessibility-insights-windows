@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -237,8 +237,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void mniConfig_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new PropertyConfigDialog(ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes, TextAttributeType.GetInstance(), "Attributes");
-            dlg.Owner = Window.GetWindow(this);
+            var dlg = new PropertyConfigDialog(ConfigurationManager.GetDefaultInstance().AppConfig.CoreTPAttributes, TextAttributeType.GetInstance(), "Attributes")
+            {
+                Owner = Window.GetWindow(this)
+            };
             dlg.ShowDialog();
 
             if (dlg.DialogResult == true)

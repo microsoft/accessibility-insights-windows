@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -99,8 +99,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             if (HkDialog == null || !HkDialog.IsLoaded)
             {
-                HkDialog = new HotkeyGrabDialog(button);
-                HkDialog.Owner = Window.GetWindow(this);
+                HkDialog = new HotkeyGrabDialog(button)
+                {
+                    Owner = Window.GetWindow(this)
+                };
                 HkDialog.ShowDialog();
             }
         }

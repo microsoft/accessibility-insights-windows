@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
@@ -183,8 +183,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void OpenConfigDialog()
         {
-            var window = new EventConfigWindow();
-            window.Owner = Application.Current.MainWindow;
+            var window = new EventConfigWindow
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             window.ShowDialog();
 
