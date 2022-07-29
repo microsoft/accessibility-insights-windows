@@ -441,6 +441,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
         }
 
+#pragma warning disable IDE0051 // This is referenced in the XAML file
         /// <summary>
         /// Update color and focus when control made visible
         /// </summary>
@@ -457,5 +458,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 m_color = SelectedColor;
             }
         }
+#pragma warning restore IDE0051 // This is referenced in the XAML file
     }
 }

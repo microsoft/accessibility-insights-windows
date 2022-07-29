@@ -139,16 +139,16 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             return item.Item1;
         }
 
-        /// <summary>
-        /// check whether it is text search or not
-        /// </summary>
-        /// <returns></returns>
-        private bool IsTextSearch()
-        {
-            var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
+        ///// <summary>
+        ///// check whether it is text search or not
+        ///// </summary>
+        ///// <returns></returns>
+        //private bool IsTextSearch()
+        //{
+        //    var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
 
-            return item.Item1 == SearchForText;
-        }
+        //    return item.Item1 == SearchForText;
+        //}
 
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {

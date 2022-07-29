@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -134,13 +134,13 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             tbConfidenceLabel.Visibility = visibility;
         }
 
-        private void RaiseLiveRegionEvents()
-        {
-            var peer = FrameworkElementAutomationPeer.FromElement(output) ?? new FrameworkElementAutomationPeer(output);
-            peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-            peer = FrameworkElementAutomationPeer.FromElement(tbConfidence) ?? new FrameworkElementAutomationPeer(tbConfidence);
-            peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-        }
+        //private void RaiseLiveRegionEvents()
+        //{
+        //    var peer = FrameworkElementAutomationPeer.FromElement(output) ?? new FrameworkElementAutomationPeer(output);
+        //    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+        //    peer = FrameworkElementAutomationPeer.FromElement(tbConfidence) ?? new FrameworkElementAutomationPeer(tbConfidence);
+        //    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+        //}
 
         /// <summary>
         /// When either chooser's color picker is clicked,
