@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Windows.Controls;
@@ -17,10 +17,7 @@ namespace AccessibilityInsights.SharedUx.Misc
 
         public ListViewSelectionLock(ListView listView)
         {
-            if (listView == null)
-                throw new ArgumentNullException(nameof(listView));
-
-            this.ListView = listView;
+            this.ListView = listView ?? throw new ArgumentNullException(nameof(listView));
             this.HadFocus = listView.IsKeyboardFocusWithin;
             this.SelectedIndex = listView.SelectedIndex;
         }

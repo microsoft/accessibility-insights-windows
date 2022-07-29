@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -31,10 +31,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         public GeneralActionView(GeneralActionViewModel a)
         {
-            if (a == null)
-                throw new ArgumentNullException(nameof(a));
-
-            this.ActionViewModel = a;
+            this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
             this.Counter = 0;
             InitializeComponent();
 
