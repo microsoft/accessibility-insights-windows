@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Utilities;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -284,10 +284,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     return (IntPtr)1;
                 case Win32Constants.WM_MOUSEMOVE:
                     // add track mouse event
-                    TRACKMOUSEEVENT track = new TRACKMOUSEEVENT();
-                    track.hWnd = this.hWnd;
-                    track.cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT));
-                    track.dwFlags = Win32Constants.TME_LEAVE;
+                    TRACKMOUSEEVENT track = new TRACKMOUSEEVENT
+                    {
+                        hWnd = this.hWnd,
+                        cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT)),
+                        dwFlags = Win32Constants.TME_LEAVE
+                    };
                     NativeMethods.TrackMouseEvent(ref track);
                     this.IsHovered = true;
                     DrawBeaker();
