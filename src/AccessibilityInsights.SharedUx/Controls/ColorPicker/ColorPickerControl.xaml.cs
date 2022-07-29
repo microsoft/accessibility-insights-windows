@@ -314,8 +314,8 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             {
                 double widthDifference = args.NewSize.Width / args.PreviousSize.Width;
                 double heightDifference = args.NewSize.Height / args.PreviousSize.Height;
-                markerTransform.X = markerTransform.X * widthDifference;
-                markerTransform.Y = markerTransform.Y * heightDifference;
+                markerTransform.X *= widthDifference;
+                markerTransform.Y *= heightDifference;
             }
             else if (m_ColorPosition != null)
             {
@@ -353,7 +353,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
 
             markerTransform.X = p.X;
-            p.X = p.X / brdrColorDetail.ActualWidth;
+            p.X /= brdrColorDetail.ActualWidth;
 
             if (p.Y < 0)
             {
@@ -365,7 +365,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
 
             markerTransform.Y = p.Y;
-            p.Y = p.Y / brdrColorDetail.ActualHeight;
+            p.Y /= brdrColorDetail.ActualHeight;
 
             m_ColorPosition = p;
             determineColor(p);
@@ -381,8 +381,8 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             Point p = new Point(hsv.S, 1 - hsv.V);
 
             m_ColorPosition = p;
-            p.X = p.X * brdrColorDetail.ActualWidth;
-            p.Y = p.Y * brdrColorDetail.ActualHeight;
+            p.X *= brdrColorDetail.ActualWidth;
+            p.Y *= brdrColorDetail.ActualHeight;
             markerTransform.X = p.X;
             markerTransform.Y = p.Y;
         }
