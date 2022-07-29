@@ -403,11 +403,11 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         #endregion
 
         #region Private Fields
-        private TranslateTransform markerTransform = new TranslateTransform();
+        private readonly TranslateTransform markerTransform = new TranslateTransform();
         private Point? m_ColorPosition;
         private Color m_color;
         private bool shouldFindPoint;
-        private bool templateApplied;
+        private readonly bool templateApplied;
         #endregion
 
         /// <summary>
