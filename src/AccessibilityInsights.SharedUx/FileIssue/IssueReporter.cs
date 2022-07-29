@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     /// <summary>
     /// Adapter between the core app and the issue reporting extension
     /// </summary>
-    static public class IssueReporter
+    public static class IssueReporter
     {
         #region Unit test overrides
         internal static bool? TestControlledIsEnabled;
