@@ -95,8 +95,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// For convenience, describes whether we are currently recording the first color or second color
         /// </summary>
-        private bool SelectingFirstColor => currentChooser == firstChooser;
-        private bool SelectingSecondColor => currentChooser == secondChooser;
+        private bool SelectingFirstColor => CurrentChooser == firstChooser;
+        private bool SelectingSecondColor => CurrentChooser == secondChooser;
 
         /// <summary>
         /// Sets element context and updates UI
