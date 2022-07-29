@@ -29,13 +29,13 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const String BeakerCode = "\uF3A6";
         private int Width = DefaultWidth;
         private int Height = DefaultHeight;
-        private System.Drawing.Color FontBrush;
-        private System.Drawing.Color BackgroundBrush;
-        private System.Drawing.Color HoveredBackgroundBrush;
+        private readonly System.Drawing.Color FontBrush;
+        private readonly System.Drawing.Color BackgroundBrush;
+        private readonly System.Drawing.Color HoveredBackgroundBrush;
 
         // The font collection must be kept undisposed for at least as long as its FontFamily objects are in use
-        private PrivateFontCollection Fonts;
-        private System.Drawing.FontFamily IconFontFamily;
+        private readonly PrivateFontCollection Fonts;
+        private readonly System.Drawing.FontFamily IconFontFamily;
 
         private bool IsHovered;
         private bool isVisible;
@@ -55,11 +55,11 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
+        readonly IntPtr hInstance;
         public Action Clicked { get; set; }
 
-        private Dictionary<double, Bitmap> beakerIconCollection;
-        private Dictionary<double, Bitmap> hoveredBeakerIconCollection;
+        private readonly Dictionary<double, Bitmap> beakerIconCollection;
+        private readonly Dictionary<double, Bitmap> hoveredBeakerIconCollection;
 
         public Win32SnapshotButton(string cnb)
         {

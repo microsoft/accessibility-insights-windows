@@ -17,7 +17,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     public class IssueReporterManager
     {
         public static Guid SelectedIssueReporterGuid { get; set; }
-        readonly static object _lockObject = new object();
+        static readonly object _lockObject = new object();
         Dictionary<Guid, IIssueReporting> IssueReportingOptionsDict = new Dictionary<Guid, IIssueReporting>();
         private static IssueReporterManager _defaultInstance;
         private readonly ConfigurationModel _appConfig;
