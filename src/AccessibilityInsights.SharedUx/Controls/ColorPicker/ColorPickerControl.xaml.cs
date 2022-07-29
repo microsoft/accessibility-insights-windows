@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using System;
@@ -270,8 +270,10 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         protected virtual void OnSelectedColorChanged(Color oldColor, Color newColor)
         {
             RoutedPropertyChangedEventArgs<Color> newEventArgs =
-                new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor);
-            newEventArgs.RoutedEvent = ColorPickerControl.SelectedColorChangedEvent;
+                new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor)
+                {
+                    RoutedEvent = ColorPickerControl.SelectedColorChangedEvent
+                };
             RaiseEvent(newEventArgs);
             if (this.DataContext is ColorChooser cc)
             {
@@ -387,9 +389,11 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
         private void determineColor(Point p)
         {
-            HsvColor hsv = new HsvColor(sliderColorSlider.Value, 1, 1);
-            hsv.S = p.X;
-            hsv.V = 1 - p.Y;
+            HsvColor hsv = new HsvColor(sliderColorSlider.Value, 1, 1)
+            {
+                S = p.X,
+                V = 1 - p.Y
+            };
             m_color = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
             shouldFindPoint = false;
             SetValue(HexadecimalStringProperty, m_color.ToString(CultureInfo.InvariantCulture));
