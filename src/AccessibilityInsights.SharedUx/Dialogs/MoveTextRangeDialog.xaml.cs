@@ -108,10 +108,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 }
 
                 /// Refresh Highlighter via TextPatternExplorer dialog
-                if (UpdateHighlighter != null)
-                {
-                    UpdateHighlighter();
-                }
+                UpdateHighlighter?.Invoke();
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
