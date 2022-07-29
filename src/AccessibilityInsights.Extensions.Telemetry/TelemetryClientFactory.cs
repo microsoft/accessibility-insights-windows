@@ -5,9 +5,9 @@ using Microsoft.ApplicationInsights.Extensibility;
 
 namespace AccessibilityInsights.Extensions.Telemetry
 {
-    static internal class TelemetryClientFactory
+    internal static class TelemetryClientFactory
     {
-        static internal TelemetryClient GetClient(TelemetryConfiguration config)
+        internal static TelemetryClient GetClient(TelemetryConfiguration config)
         {
             var tc = new TelemetryClient(config);
             tc.Context.Device.OperatingSystem = OSHelpers.GetVersion();
