@@ -241,11 +241,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             double dpi = UpdateBeakerSize();
 
-            Bitmap iconToDraw = null;
-
             var iconCollection = this.IsHovered ? hoveredBeakerIconCollection : beakerIconCollection;
 
-            if (!iconCollection.TryGetValue(dpi, out iconToDraw))
+            if (!iconCollection.TryGetValue(dpi, out Bitmap iconToDraw))
             {
                 iconToDraw = LoadBeakerImage(dpi);
             }
