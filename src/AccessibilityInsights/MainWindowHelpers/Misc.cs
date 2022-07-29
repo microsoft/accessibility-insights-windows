@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -18,7 +18,7 @@ namespace AccessibilityInsights
         /// List of text mappings for Title bar text
         /// it is based on CurrentPage and CurrentView.
         /// </summary>
-        private List<Tuple<AppPage, dynamic, string>> TitleTextMap = new List<Tuple<AppPage, dynamic, string>>()
+        private readonly List<Tuple<AppPage, dynamic, string>> TitleTextMap = new List<Tuple<AppPage, dynamic, string>>()
         {
             new Tuple<AppPage, dynamic, string>(AppPage.Start, null, Properties.Resources.TitleTextMapStart),
             new Tuple<AppPage, dynamic, string>(AppPage.Inspect,InspectView.Live,Properties.Resources.TitleTextMapInspectLive),

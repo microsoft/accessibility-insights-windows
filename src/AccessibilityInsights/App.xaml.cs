@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -41,12 +41,12 @@ namespace AccessibilityInsights
         /// <summary>
         /// Collection of Uris for theme resource dictionaries
         /// </summary>
-        Dictionary<Theme, Uri> Brushes;
+        readonly Dictionary<Theme, Uri> Brushes;
 
         /// <summary>
         /// Collection of Uris for font resource dictionaries
         /// </summary>
-        Dictionary<FontSize, Uri> Fonts;
+        readonly Dictionary<FontSize, Uri> Fonts;
 
         void App_DispatcherUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs e)
         {
