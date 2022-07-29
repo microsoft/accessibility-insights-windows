@@ -94,7 +94,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         #endregion
 
         #region Private Fields
-        private static string SpectrumDisplayName = "PART_SpectrumDisplay";
+        private const string SpectrumDisplayName = "PART_SpectrumDisplay";
         private Rectangle m_spectrumDisplay;
         private LinearGradientBrush pickerBrush;
         #endregion
