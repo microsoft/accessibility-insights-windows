@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Collections.Generic;
 using System.Windows;
@@ -93,10 +93,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         #region FontSize (Dependency Property)
 
-        new public static readonly DependencyProperty FontSizeProperty =
+        public static new readonly DependencyProperty FontSizeProperty =
             DependencyProperty.Register("FontSize", typeof(double), typeof(FabricIconControl), new PropertyMetadata(1.0, OnFontSizeChanged));
 
-        new public double FontSize
+        public new double FontSize
         {
             get { return (double)GetValue(FontSizeProperty); }
 
@@ -127,10 +127,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         #region Foreground (Dependency Property)
 
-        new public static readonly DependencyProperty ForegroundProperty =
+        public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(FabricIconControl), new PropertyMetadata(null, OnForegroundChanged));
 
-        new public Brush Foreground
+        public new Brush Foreground
         {
             get { return (Brush)GetValue(ForegroundProperty); }
 
