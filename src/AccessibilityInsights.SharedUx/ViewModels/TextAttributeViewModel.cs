@@ -14,8 +14,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class TextAttributeViewModel : ViewModelBase
     {
-        private TextRangeViewModel TextRange;
-        private DesktopElement Element;
+        private readonly TextRangeViewModel TextRange;
+        private readonly DesktopElement Element;
         public int Id { get; private set; }
 
         public string Name { get; private set; }
@@ -81,7 +81,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         private ICommand _clickCommand;
-        private CommandHandler Command;
+        private readonly CommandHandler Command;
 
         public ICommand ClickCommand
         {
