@@ -293,8 +293,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             }
 
             Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
-            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom, configurationPath);
-            dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
+            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom, configurationPath)
+            {
+                ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };"
+            };
 
             dlg.ShowDialog();
 
