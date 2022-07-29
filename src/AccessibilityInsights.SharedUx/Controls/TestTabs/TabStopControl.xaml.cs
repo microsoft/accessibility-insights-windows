@@ -494,6 +494,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// </summary>
         private void AddTraceToTelemetryForTabStopEnd()
         {
+            // TODO: This does nothing. Was it supposed to send a telemetry event?
             var dic = new Dictionary<string, string>
             {
                 { TelemetryProperty.TabStopLooped.ToString(), IsTabStopLooped.ToString(CultureInfo.InvariantCulture) },
