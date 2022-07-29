@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
@@ -38,7 +38,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Single VSO server connection object for reuse
         /// </summary>
         private VssConnection _baseServerConnection;
-        private object _lockObject = new object();
+        private readonly object _lockObject = new object();
 
         /// <summary>
         /// When selecting all team projects from AzureDevOps server, do so in chunks
@@ -473,7 +473,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Substitutions for characters when creating the bug URL
         /// </summary>
-        private static IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
+        private static readonly IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
         {
             { '\u00b7', '-' }, // middle dot (183) to dash (45)
         };
