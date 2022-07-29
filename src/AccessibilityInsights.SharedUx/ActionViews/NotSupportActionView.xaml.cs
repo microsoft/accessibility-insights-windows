@@ -14,7 +14,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     /// </summary>
     public partial class NotSupportActionView : UserControl
     {
-        private BaseActionViewModel ActionViewModel;
+        private readonly BaseActionViewModel ActionViewModel;
 
         public NotSupportActionView(BaseActionViewModel a)
         {

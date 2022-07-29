@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 #pragma warning restore CA1001
     {
         private TextRangeViewModel TextRangeViewModel;
-        private TextRangeHilighter Hilighter;
+        private readonly TextRangeHilighter Hilighter;
 
         private bool _isArrayCollapsed = true;
         /// <summary>

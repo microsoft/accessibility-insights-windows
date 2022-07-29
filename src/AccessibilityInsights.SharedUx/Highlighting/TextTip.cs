@@ -25,10 +25,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const int TEXTGAP = 8;       // Gep between object and rectangle
         const int Default_Font_Height = 25;
 
-        IntPtr hWnd;
+        readonly IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
+        readonly IntPtr hInstance;
 
         POINT size;
         int m_TabStop;

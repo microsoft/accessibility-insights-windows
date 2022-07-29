@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Keep track of which patterns are expanded
         /// </summary>
-        Dictionary<int, bool> ExpStates = new Dictionary<int, bool>();
+        readonly Dictionary<int, bool> ExpStates = new Dictionary<int, bool>();
 
         public A11yElement Element { get; private set; }
         public bool IsActionAllowed { get; private set; }

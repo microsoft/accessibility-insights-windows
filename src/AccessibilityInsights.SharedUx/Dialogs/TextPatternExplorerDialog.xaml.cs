@@ -31,7 +31,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <summary>
         /// Custom list which contains the user-added TextRangeViewModels
         /// </summary>
-        private List<TextRangeViewModel> CustomList;
+        private readonly List<TextRangeViewModel> CustomList;
 
         /// <summary>
         /// indidate the type of source methods

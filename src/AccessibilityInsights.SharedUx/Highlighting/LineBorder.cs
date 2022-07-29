@@ -22,9 +22,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
 
-        int Id;
+        readonly IntPtr hInstance;
+        readonly int Id;
 
         public int Color { get; set; }
         public Rectangle Rect { get; set; }
