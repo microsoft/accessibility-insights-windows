@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Misc;
@@ -547,8 +547,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             }
             else
             {
-                btnMoveUp.IsEnabled = lvRight.SelectedItems.Contains(SelectedList[0]) ? false : true;
-                btnMoveDown.IsEnabled = lvRight.SelectedItems.Contains(SelectedList.Last()) ? false : true;
+                btnMoveUp.IsEnabled = !lvRight.SelectedItems.Contains(SelectedList[0]);
+                btnMoveDown.IsEnabled = !lvRight.SelectedItems.Contains(SelectedList.Last());
             }
         }
 
