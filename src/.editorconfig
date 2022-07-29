@@ -97,6 +97,7 @@ csharp_prefer_simple_default_expression = false
 csharp_style_pattern_local_over_anonymous_function = true:suggestion
 csharp_style_inlined_variable_declaration = true:suggestion
 csharp_prefer_simple_using_statement = false:silent
+csharp_style_prefer_local_over_anonymous_function = false
 ###############################
 # C# Formatting Rules         #
 ###############################
