@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Microsoft.Win32;
 using System;
@@ -17,14 +17,11 @@ namespace AccessibilityInsights.Win32
         /// <returns></returns>
         internal static bool IsRunningWithUIAccess()
         {
-            IntPtr hToken;
-            if (NativeMethods.OpenProcessToken(System.Diagnostics.Process.GetCurrentProcess().Handle, Win32Constants.TOKEN_QUERY, out hToken))
+            if (NativeMethods.OpenProcessToken(System.Diagnostics.Process.GetCurrentProcess().Handle, Win32Constants.TOKEN_QUERY, out IntPtr hToken))
             {
                 try
                 {
-                    uint cbData;
-                    uint uIAccess;
-                    if (NativeMethods.GetTokenInformation(hToken, TOKEN_INFORMATION_CLASS.TokenUIAccess, out uIAccess, sizeof(uint), out cbData))
+                    if (NativeMethods.GetTokenInformation(hToken, TOKEN_INFORMATION_CLASS.TokenUIAccess, out uint uIAccess, sizeof(uint), out uint cbData))
                     {
                         if (uIAccess != 0)
                         {
@@ -155,8 +152,7 @@ namespace AccessibilityInsights.Win32
             }
             else
             {
-                uint localDpiX, localDpiY;
-                if (NativeMethods.GetDpiForMonitor(mon, dpiType, out localDpiX, out localDpiY) == S_OK)
+                if (NativeMethods.GetDpiForMonitor(mon, dpiType, out uint localDpiX, out uint localDpiY) == S_OK)
                 {
                     dpiX = localDpiX;
                     dpiY = localDpiY;
