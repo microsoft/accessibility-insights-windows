@@ -534,7 +534,7 @@ namespace AccessibilityInsights
 
             HollowHighlightDriver.GetDefaultInstance().HighlighterMode = configManager.AppConfig.HighlighterMode;
 
-            if (changes != null && changes.ContainsKey(ConfigurationModel.keyFontSize))
+            if (changes != null && changes.ContainsKey(ConfigurationModel.KeyFontSize))
             {
                 SetFontSize();
             }
