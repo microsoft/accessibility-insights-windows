@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -22,15 +22,14 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         const int zoomLevel = 4;
-
-        int radius;
-        ColorContrastViewModel ccVM;
-        bool selectingFirst;
-        bool selectingSecond;
+        readonly int radius;
+        readonly ColorContrastViewModel ccVM;
+        readonly bool selectingFirst;
+        readonly bool selectingSecond;
         Bitmap desktopScreenshot;
         Timer updatePosTimer;
         TransformGroup renderTransformGroup;
-        Action<object, EventArgs> onClose;
+        readonly Action<object, EventArgs> onClose;
 
         /// <summary>
         /// Constructor

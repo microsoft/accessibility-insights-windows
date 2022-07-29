@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     {
         private const int SearchForText = 0;
 
-        private TextRangeViewModel ViewModel;
+        private readonly TextRangeViewModel ViewModel;
         private TextRangeHilighter Hilighter;
         private TextRangeFinder Finder;
 

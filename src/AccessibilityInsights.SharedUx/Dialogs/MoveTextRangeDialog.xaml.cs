@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Telemetry;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -17,15 +17,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     /// </summary>
     public partial class MoveTextRangeDialog : Window
     {
-        private TextRangeViewModel ViewModel;
-        private OpMode Mode;
-        private MethodInfo MethodInfo;
-        private List<Parameter> Parameters;
-        private Type ReturnType;
+        private readonly TextRangeViewModel ViewModel;
+        private readonly OpMode Mode;
+        private readonly MethodInfo MethodInfo;
+        private readonly List<Parameter> Parameters;
+        private readonly Type ReturnType;
         /// <summary>
         /// Notify TextPattern Explorer to update Hilighter
         /// </summary>
-        private Action UpdateHighlighter;
+        private readonly Action UpdateHighlighter;
 
         public MoveTextRangeDialog(TextRangeViewModel vm, OpMode mode, IList<TextRangeViewModel> customList, Action updateHighlighter)
         {
