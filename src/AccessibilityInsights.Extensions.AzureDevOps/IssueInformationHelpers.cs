@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -35,24 +35,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             return value?.ToString();
         }
 
-        private static string GetStringValue(IssueType? value)
-        {
-            return value?.ToString();
-        }
-
         private static string GetStringValue(Guid? value)
         {
             return value?.ToString("D", CultureInfo.InvariantCulture);
-        }
-
-        private static string GetStringValue(double? value)
-        {
-            return value?.ToString(CultureInfo.InvariantCulture);
-        }
-
-        private static string GetStringValue(Color? value)
-        {
-            return value?.ToString(CultureInfo.InvariantCulture);
         }
 
         private static string GetStringValue(string value)
