@@ -22,7 +22,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     {
         public TextRangeActionViewModel ActionViewModel { get; private set; }
         int Counter;
-        System.Timers.Timer timerInvoke;
+        readonly System.Timers.Timer timerInvoke;
         private readonly object _lockObject = new object();
 
         public TextRangeActionView(TextRangeActionViewModel a)

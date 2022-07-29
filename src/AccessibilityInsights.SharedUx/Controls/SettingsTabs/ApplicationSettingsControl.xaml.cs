@@ -47,12 +47,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
-        private ApplicationSettingsViewModel DataContextVM = new ApplicationSettingsViewModel();
+        private readonly ApplicationSettingsViewModel DataContextVM = new ApplicationSettingsViewModel();
 
         /// <summary>
         /// Keep the list of Hotkey buttons for checking duplication later.
         /// </summary>
-        private List<Button> HotKeyButtons;
+        private readonly List<Button> HotKeyButtons;
 
         /// <summary>
         /// Constructor

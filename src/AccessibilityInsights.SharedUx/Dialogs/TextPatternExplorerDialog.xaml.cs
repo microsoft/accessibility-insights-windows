@@ -23,11 +23,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <summary>
         /// TextPattern
         /// </summary>
-        private TextPattern TextPattern;
+        private readonly TextPattern TextPattern;
         /// <summary>
         /// TextPattern2
         /// </summary>
-        private TextPattern2 TextPattern2;
+        private readonly TextPattern2 TextPattern2;
         /// <summary>
         /// Custom list which contains the user-added TextRangeViewModels
         /// </summary>

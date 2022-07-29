@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
     public class CustomExpanderAutomationPeer : ExpanderAutomationPeer
     {
-        GroupItem parentGroupItem;
+        readonly GroupItem parentGroupItem;
 
         public CustomExpanderAutomationPeer(Expander owner) : base(owner) => parentGroupItem = owner?.TemplatedParent as GroupItem;
 

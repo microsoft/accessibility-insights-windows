@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     {
         public ReturnA11yElementsViewModel ActionViewModel { get; private set; }
         int Counter;
-        System.Timers.Timer timerInvoke;
+        readonly System.Timers.Timer timerInvoke;
         private readonly object _lockObject = new object();
 
         /// <summary>
