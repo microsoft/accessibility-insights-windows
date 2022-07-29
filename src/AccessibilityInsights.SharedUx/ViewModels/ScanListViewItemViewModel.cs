@@ -264,12 +264,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public void InvokeHelpLink()
         {
             Process.Start(new ProcessStartInfo(this.HelpUrl.Url));
-
-            var dic = new Dictionary<string, string>
-            {
-                { "HelpLink", this.HelpUrl.Url },
-                { "UrlType", this.HelpUrl.Type.ToString() }
-            };
         }
         #endregion
 

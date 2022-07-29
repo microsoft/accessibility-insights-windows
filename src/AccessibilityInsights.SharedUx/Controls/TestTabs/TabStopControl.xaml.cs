@@ -485,21 +485,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 this.EventHandler.UnregisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId);
                 IsRecordingActive = false;
                 this.Toast.Visibility = Visibility.Collapsed;
-                AddTraceToTelemetryForTabStopEnd();
             }
-        }
-
-        /// <summary>
-        /// Record a telemetry log for tabstop recording end.
-        /// </summary>
-        private void AddTraceToTelemetryForTabStopEnd()
-        {
-            // TODO: This does nothing. Was it supposed to send a telemetry event?
-            var dic = new Dictionary<string, string>
-            {
-                { TelemetryProperty.TabStopLooped.ToString(), IsTabStopLooped.ToString(CultureInfo.InvariantCulture) },
-                { TelemetryProperty.TabStopCount.ToString(), this.TabStopCount.ToString(CultureInfo.InvariantCulture) }
-            };
         }
 
         /// <summary>
