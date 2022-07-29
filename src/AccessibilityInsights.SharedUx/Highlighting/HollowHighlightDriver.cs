@@ -192,7 +192,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <returns></returns>
         public static HollowHighlightDriver GetInstance(string name)
         {
-            HollowHighlightDriver ha = null;
+            HollowHighlightDriver ha;
 
             if (sHighlightActions.ContainsKey(name))
             {

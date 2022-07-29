@@ -41,7 +41,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             this.WindowClassName = Invariant($"{cnb}-{id}");
             this.hInstance = NativeMethods.GetModuleHandle(null);
             this.Id = id;
-            var r = RegisterWindowClass();
+            RegisterWindowClass();
 
             this.hWnd = CreateWindow();
             Holder.Add(this.hWnd, this);
@@ -115,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                             NativeMethods.LineTo(hDC, rc.right - this.Width - 1, rc.top);
                         }
 
-                        hPen = NativeMethods.SelectObject(hDC, hPen);
+                        NativeMethods.SelectObject(hDC, hPen);
                         return (IntPtr)1;
                     }
             }
