@@ -18,8 +18,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 {
     public class Win32SnapshotButton : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+        private static readonly ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
 
         private IntPtr hWnd;
 
