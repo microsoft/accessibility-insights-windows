@@ -74,7 +74,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
                 if (h < 0.0)
                 {
-                    h = h + 360;
+                    h += 360;
                 }
             }
 
@@ -110,7 +110,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 }
                 else
                 {
-                    h = h / 60;
+                    h /= 60;
                 }
 
                 i = (int)Math.Truncate(h);
