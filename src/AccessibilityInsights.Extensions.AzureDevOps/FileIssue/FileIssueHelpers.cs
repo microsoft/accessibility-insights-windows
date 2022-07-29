@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.Helpers;
@@ -118,7 +118,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 case WebException webEx:
                     return TransientWebExceptions.Contains(webEx.Status);
                 // This is what we saw happen to issue attachments in our telemetry
-                case TimeoutException tEx:
+                case TimeoutException _:
                     return true;
                 default:
                     return false;
