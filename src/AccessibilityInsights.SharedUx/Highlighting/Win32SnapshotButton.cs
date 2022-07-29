@@ -98,7 +98,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private static PrivateFontCollection LoadFontResource()
         {
             PrivateFontCollection fonts = new PrivateFontCollection();
-            Assembly assembly = Assembly.GetExecutingAssembly();
 
             using (Stream fontStream = SharedResources.FabricIconFontResource.Stream)
             {

@@ -91,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         // Converts an HSV color to an RGB color.
         public static Color ConvertHsvToRgb(double h, double s, double v)
         {
-            double r = 0, g = 0, b = 0;
+            double r, g, b;
 
             if (s == 0)
             {
