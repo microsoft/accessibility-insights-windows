@@ -126,7 +126,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         // If a web exception contains one of the following status values, it might be transient.
-        private readonly static HashSet<WebExceptionStatus> TransientWebExceptions = new HashSet<WebExceptionStatus>()
+        private static readonly HashSet<WebExceptionStatus> TransientWebExceptions = new HashSet<WebExceptionStatus>()
         {
             WebExceptionStatus.ConnectionClosed,
             WebExceptionStatus.Timeout,
