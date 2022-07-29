@@ -179,9 +179,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     {
         public static string GetIcon(FabricIcon key)
         {
-            string value;
-
-            return (Icons.TryGetValue(key, out value)) ? value : string.Empty;
+            return (Icons.TryGetValue(key, out var value)) ? value : string.Empty;
         }
 
         #region Icons
@@ -3257,9 +3255,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     {
         public static double GetGlyphSize(GlyphContext key)
         {
-            double value;
-
-            return (GlyphSizes.TryGetValue(key, out value)) ? value : 12.0;
+            return (GlyphSizes.TryGetValue(key, out double value)) ? value : 12.0;
         }
 
         private static readonly IReadOnlyDictionary<GlyphContext, double> GlyphSizes = new Dictionary<GlyphContext, double>
