@@ -16,8 +16,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     internal class LineBorder : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+        private static readonly ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
 
         IntPtr hWnd;
 

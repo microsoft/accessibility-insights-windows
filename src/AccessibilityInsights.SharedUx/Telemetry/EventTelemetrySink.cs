@@ -12,9 +12,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
     internal static class EventTelemetrySink
     {
         private static bool IsReportExceptionHandlerAttached;
-        private readonly static ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
-        private readonly static object LockObject = new object();
-        private readonly static ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(Sink.ReportException);
+        private static readonly ITelemetrySink Sink = TelemetrySink.DefaultTelemetrySink;
+        private static readonly object LockObject = new object();
+        private static readonly ReportExceptionBuffer ReportExceptionBuffer = new ReportExceptionBuffer(Sink.ReportException);
 
         static EventTelemetrySink()
         {
