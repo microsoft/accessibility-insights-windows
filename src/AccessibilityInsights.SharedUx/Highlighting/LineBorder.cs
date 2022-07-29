@@ -18,8 +18,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     {
         private static readonly ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
         private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
-
-        IntPtr hWnd;
+        readonly IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
 

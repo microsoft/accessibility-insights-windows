@@ -123,8 +123,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public Visibility ActionVisibility { get; private set; }
 
         private ICommand _clickCommand;
-        private ActionType ActionType;
-        private A11yElement Element;
+        private readonly ActionType ActionType;
+        private readonly A11yElement Element;
 
         public ICommand ClickCommand
         {

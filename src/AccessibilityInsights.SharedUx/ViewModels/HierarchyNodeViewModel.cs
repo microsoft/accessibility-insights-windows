@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Interfaces;
@@ -218,7 +218,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// These are searchable string properties
         /// Not all string properties are included to improve performance
         /// </summary>
-        private static int[] CommonStringProperties =
+        private static readonly int[] CommonStringProperties =
         {
             PropertyType.UIA_LocalizedControlTypePropertyId,
             PropertyType.UIA_NamePropertyId,

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using Axe.Windows.Actions;
@@ -164,7 +164,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         #endregion
 
         #region static methods
-        static Dictionary<string, HollowHighlightDriver> sHighlightActions = new Dictionary<string, HollowHighlightDriver>();
+        static readonly Dictionary<string, HollowHighlightDriver> sHighlightActions = new Dictionary<string, HollowHighlightDriver>();
 
         /// <summary>
         /// Get default HighlightAction

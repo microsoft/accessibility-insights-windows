@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -18,9 +18,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Hilighter color
         /// </summary>
-        private HighlighterColor Color;
+        private readonly HighlighterColor Color;
 
-        private List<Highlighter> Hilighters;
+        private readonly List<Highlighter> Hilighters;
 
         /// <summary>
         /// constructor
