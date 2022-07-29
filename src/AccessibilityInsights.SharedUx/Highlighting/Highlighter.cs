@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.Win32;
@@ -75,6 +75,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             }
         }
 
+#pragma warning disable IDE0052 // TODO: Do we ever read this?
         private bool isBorderVisible;
         private bool IsBorderVisible
         {
@@ -89,6 +90,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 }
             }
         }
+#pragma warning restore IDE0052
 
         private HighlighterMode highlighterMode;
         public HighlighterMode HighlighterMode
