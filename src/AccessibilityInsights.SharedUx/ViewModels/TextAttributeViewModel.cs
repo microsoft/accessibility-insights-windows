@@ -14,7 +14,9 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class TextAttributeViewModel : ViewModelBase
     {
+#pragma warning disable IDE0052 // TODO: Is this needed?
         private readonly TextRangeViewModel TextRange;
+#pragma warning restore IDE0052
         private readonly DesktopElement Element;
         public int Id { get; private set; }
 
