@@ -54,6 +54,7 @@ dotnet_style_prefer_inferred_anonymous_type_member_names = true:suggestion
 dotnet_style_prefer_auto_properties = true:silent
 dotnet_style_prefer_conditional_expression_over_assignment = true:silent
 dotnet_style_prefer_conditional_expression_over_return = true:silent
+dotnet_remove_unnecessary_suppression_exclusions=all
 ###############################
 # Naming Conventions          #
 ###############################
@@ -82,8 +83,8 @@ csharp_style_expression_bodied_properties = true:silent
 csharp_style_expression_bodied_indexers = true:silent
 csharp_style_expression_bodied_accessors = true:silent
 # Pattern matching preferences
-csharp_style_pattern_matching_over_is_with_cast_check = true:suggestion
-csharp_style_pattern_matching_over_as_with_null_check = true:suggestion
+csharp_style_pattern_matching_over_is_with_cast_check = false
+csharp_style_pattern_matching_over_as_with_null_check = false
 # Null-checking preferences
 csharp_style_throw_expression = true:suggestion
 csharp_style_conditional_delegate_call = true:suggestion
@@ -92,10 +93,11 @@ csharp_preferred_modifier_order = public,private,protected,internal,static,exter
 # Expression-level preferences
 csharp_prefer_braces = true:silent
 csharp_style_deconstructed_variable_declaration = true:suggestion
-csharp_prefer_simple_default_expression = true:suggestion
+csharp_prefer_simple_default_expression = false
 csharp_style_pattern_local_over_anonymous_function = true:suggestion
 csharp_style_inlined_variable_declaration = true:suggestion
 csharp_prefer_simple_using_statement = false:silent
+csharp_style_prefer_local_over_anonymous_function = false
 ###############################
 # C# Formatting Rules         #
 ###############################
