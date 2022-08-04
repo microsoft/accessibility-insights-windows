@@ -5,7 +5,6 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -139,7 +138,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                         break;
                 }
             }
-            Trace.WriteLine(Invariant($"State is {_currentState.ToString()}"));
 
             return _currentState;
         }
