@@ -114,9 +114,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                         if (currentUri.Host == Url.Host && currentUri.AbsolutePath == Url.AbsolutePath)
                             _currentState = State.TemplateIsOpen;
                         else
-                        {
                             _currentState = State.NeedsAuthentication;
-                        }
                         break;
                     case State.NeedsAuthentication:
                         _currentState = State.Authenticating;
@@ -132,7 +130,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                         if (currentUri.Host == Url.Host && currentUri.AbsolutePath != Url.AbsolutePath)
                             _currentState = State.Saving;
                         break;
-
                     case State.Saving:
                         _currentState = revert ? State.TemplateIsOpen : State.Saved;
                         break;
@@ -147,7 +144,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             switch (updateState())
             {
                 case State.Saving:
-
                     var url = fileIssueBrowser.Source.PathAndQuery;
                     var savedUrlSubstrings = new List<String>() { "_queries/edit/", "_workitems/edit/", "_workitems?id=" };
                     int urlIndex = savedUrlSubstrings.FindIndex(str => url.Contains(str));
