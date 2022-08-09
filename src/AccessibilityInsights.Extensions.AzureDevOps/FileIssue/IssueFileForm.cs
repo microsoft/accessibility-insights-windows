@@ -22,6 +22,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         enum State
         {
             Initializing,
+            NeedsAuthentication,
+            Authenticating,
+            Authenticated,
             TemplateIsOpen,
             Saving,
             Saved,
@@ -110,13 +113,23 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     case State.Initializing:
                         if (currentUri.Host == Url.Host && currentUri.AbsolutePath == Url.AbsolutePath)
                             _currentState = State.TemplateIsOpen;
+                        else
+                            _currentState = State.NeedsAuthentication;
                         break;
-
+                    case State.NeedsAuthentication:
+                        _currentState = State.Authenticating;
+                        break;
+                    case State.Authenticating:
+                        if (currentUri.Host == Url.Host && currentUri.AbsolutePath == Url.AbsolutePath)
+                            _currentState = State.Authenticated;
+                        break;
+                    case State.Authenticated:
+                        _currentState = State.Initializing;
+                        break;
                     case State.TemplateIsOpen:
                         if (currentUri.Host == Url.Host && currentUri.AbsolutePath != Url.AbsolutePath)
                             _currentState = State.Saving;
                         break;
-
                     case State.Saving:
                         _currentState = revert ? State.TemplateIsOpen : State.Saved;
                         break;
@@ -128,37 +141,45 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
         private void CoreWebView2_HistoryChanged(object sender, object e)
         {
-            if (updateState() == State.Saving)
+            switch (updateState())
             {
-                var url = fileIssueBrowser.Source.PathAndQuery;
-                var savedUrlSubstrings = new List<String>() { "_queries/edit/", "_workitems/edit/", "_workitems?id=" };
-                int urlIndex = savedUrlSubstrings.FindIndex(str => url.Contains(str));
-                if (urlIndex >= 0)
-                {
-                    var matched = savedUrlSubstrings[urlIndex];
-                    var endIndex = url.IndexOf(matched, StringComparison.Ordinal) + matched.Length;
-
-                    // URL looks like "_queries/edit/2222222/..." where 2222222 is issue id
-                    // or is "_workitems/edit/2222222"
-                    // or is "_workitems?id=2222222"
-                    url = url.Substring(endIndex);
-                    int result;
-                    bool worked = int.TryParse(new String(url.TakeWhile(Char.IsDigit).ToArray()), out result);
-                    if (worked)
+                case State.Saving:
+                    var url = fileIssueBrowser.Source.PathAndQuery;
+                    var savedUrlSubstrings = new List<String>() { "_queries/edit/", "_workitems/edit/", "_workitems?id=" };
+                    int urlIndex = savedUrlSubstrings.FindIndex(str => url.Contains(str));
+                    if (urlIndex >= 0)
                     {
-                        this.IssueId = result;
+                        var matched = savedUrlSubstrings[urlIndex];
+                        var endIndex = url.IndexOf(matched, StringComparison.Ordinal) + matched.Length;
+
+                        // URL looks like "_queries/edit/2222222/..." where 2222222 is issue id
+                        // or is "_workitems/edit/2222222"
+                        // or is "_workitems?id=2222222"
+                        url = url.Substring(endIndex);
+                        int result;
+                        bool worked = int.TryParse(new String(url.TakeWhile(Char.IsDigit).ToArray()), out result);
+                        if (worked)
+                        {
+                            this.IssueId = result;
+                        }
+                        else
+                        {
+                            this.IssueId = null;
+                        }
+                        updateState();
+                        this.Close();
                     }
                     else
                     {
-                        this.IssueId = null;
+                        updateState(revert: true);
                     }
-                    updateState();
-                    this.Close();
-                }
-                else
-                {
-                    updateState(revert: true);
-                }
+                    break;
+                case State.NeedsAuthentication:
+                    fileIssueBrowser.Source = new Uri(Url.GetLeftPart(UriPartial.Path));
+                    break;
+                case State.Authenticated:
+                    Navigate(Url);
+                    break;
             }
         }
 
@@ -178,7 +199,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
 
             await this.fileIssueBrowser.EnsureCoreWebView2Async(environment).ConfigureAwait(true);
             this.fileIssueBrowser.NavigationCompleted += NavigationComplete;
-
             this.TopMost = makeTopMost;
             Navigate(this.Url);
 
