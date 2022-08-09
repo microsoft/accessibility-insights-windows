@@ -96,6 +96,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsiFileTests", "MsiFileTest
 		{137DB774-6464-48BC-B577-091ABEAF0178} = {137DB774-6464-48BC-B577-091ABEAF0178}
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93F62CF7-9A3E-4402-BB45-67F66082EAFA}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
