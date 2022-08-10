@@ -427,7 +427,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <returns></returns>
         public A11yElement SelectedElement => (this.treeviewHierarchy.SelectedItem as HierarchyNodeViewModel).Element;
 
-#region Handle context menu for showing ancestry
+        #region Handle context menu for showing ancestry
         /// <summary>
         /// Event handler for Show Ancestry menu.
         /// </summary>
@@ -453,9 +453,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             ((MenuItem)sender).IsChecked = Configuration.ShowAncestry;
         }
-#endregion
+        #endregion
 
-#region Handle context menu for showing uncertain
+        #region Handle context menu for showing uncertain
 
         /// <summary>
         /// Handle menu click on Show Uncertain.
@@ -490,9 +490,9 @@ namespace AccessibilityInsights.SharedUx.Controls
                 mnu.Visibility = Visibility.Collapsed;
             }
         }
-#endregion
+        #endregion
 
-#region load context menus for Tree view mode
+        #region load context menus for Tree view mode
         /// <summary>
         /// update Raw ctxmenu
         /// </summary>
@@ -662,9 +662,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             selectAction.TreeViewMode = mode;
         }
-#endregion
+        #endregion
 
-#region prevent auto-horizontal scroll
+        #region prevent auto-horizontal scroll
         private bool mSuppressRequestBringIntoView;
         private ElementContext ElementContext;
 
@@ -749,7 +749,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
             e.Handled = true;
         }
-#endregion
+        #endregion
 
         /// <summary>
         /// Handle Context Menu : Expand all

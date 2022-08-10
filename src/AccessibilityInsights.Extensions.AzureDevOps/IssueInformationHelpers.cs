@@ -5,7 +5,6 @@ using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Windows.Media;
 
 namespace AccessibilityInsights.Extensions.AzureDevOps
 {

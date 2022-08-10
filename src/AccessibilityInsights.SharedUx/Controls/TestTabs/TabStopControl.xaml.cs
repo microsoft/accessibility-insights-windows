@@ -17,7 +17,6 @@ using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
 using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
