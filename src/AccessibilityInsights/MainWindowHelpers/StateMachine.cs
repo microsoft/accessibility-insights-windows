@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
@@ -22,7 +22,9 @@ namespace AccessibilityInsights
     /// this is partial class for MainWindow
     /// this portion will contain State machine logic
     /// </summary>
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
     public partial class MainWindow
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         /// <summary>
         /// Current Page variable to keep track of state.
