@@ -134,14 +134,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             tbConfidenceLabel.Visibility = visibility;
         }
 
-        //private void RaiseLiveRegionEvents()
-        //{
-        //    var peer = FrameworkElementAutomationPeer.FromElement(output) ?? new FrameworkElementAutomationPeer(output);
-        //    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-        //    peer = FrameworkElementAutomationPeer.FromElement(tbConfidence) ?? new FrameworkElementAutomationPeer(tbConfidence);
-        //    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-        //}
-
         /// <summary>
         /// When either chooser's color picker is clicked,
         /// we begin eyedropper color recording and set
