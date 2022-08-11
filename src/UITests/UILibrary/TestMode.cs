@@ -13,12 +13,10 @@ namespace UITests.UILibrary
 {
     public class TestMode
     {
-        WindowsDriver<WindowsElement> Session;
         public AutomatedChecks AutomatedChecks { get; }
         public ResultsInUIATree ResultsInUIATree { get; }
         public TestMode(WindowsDriver<WindowsElement> session)
         {
-            Session = session;
             AutomatedChecks = new AutomatedChecks(session);
             ResultsInUIATree = new ResultsInUIATree(session);
         }
@@ -26,7 +24,7 @@ namespace UITests.UILibrary
 
     public class AutomatedChecks
     {
-        WindowsDriver<WindowsElement> Session;
+        readonly WindowsDriver<WindowsElement> Session;
         public AutomatedChecks(WindowsDriver<WindowsElement> session)
         {
             Session = session;
@@ -72,7 +70,7 @@ namespace UITests.UILibrary
 
     public class ResultsInUIATree
     {
-        WindowsDriver<WindowsElement> Session;
+        readonly WindowsDriver<WindowsElement> Session;
         public ResultsInUIATree(WindowsDriver<WindowsElement> session)
         {
             Session = session;
@@ -100,7 +98,7 @@ namespace UITests.UILibrary
         {
             var tree = Session.FindElementByAccessibilityId(AutomationIDs.HierarchyControlUIATreeView);
             var nodes = tree.FindElementsByClassName("TreeViewItem");
-            nodes[0].SendKeys(Keys.Enter);
+            nodes[element].SendKeys(Keys.Enter);
         }
 
         public void ValidateDetails(string firstPattern, string firstProperty, int patternCount, int propCount)

@@ -6,10 +6,8 @@ namespace UITests.UILibrary
 {
     public class EventsMode
     {
-        WindowsDriver<WindowsElement> Session;
-        public EventsMode(WindowsDriver<WindowsElement> session)
+        public EventsMode()
         {
-            Session = session;
         }
     }
 }

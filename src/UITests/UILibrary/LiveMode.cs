@@ -8,7 +8,7 @@ namespace UITests.UILibrary
 {
     public class LiveMode
     {
-        WindowsDriver<WindowsElement> Session;
+        readonly WindowsDriver<WindowsElement> Session;
 
         // These AutomationIDs came from inspecting the open file dialog with ai-win.
         // The assumption is that they are the same accross machines--if they aren't,

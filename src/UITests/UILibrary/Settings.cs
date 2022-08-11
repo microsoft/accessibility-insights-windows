@@ -6,15 +6,8 @@ namespace UITests.UILibrary
 {
     public class Settings
     {
-        WindowsDriver<WindowsElement> Session;
-        ApplicationTab ApplicationTab { get; }
-        AboutTab AboutTab { get; }
-
-        public Settings(WindowsDriver<WindowsElement> session)
+        public Settings()
         {
-            Session = session;
-            AboutTab = new AboutTab(session);
-            ApplicationTab = new ApplicationTab(session);
         }
         public bool SaveAndClose() => false;
         public bool Back() => false;
@@ -22,19 +15,15 @@ namespace UITests.UILibrary
 
     public class ApplicationTab
     {
-        WindowsDriver<WindowsElement> Session;
-        public ApplicationTab(WindowsDriver<WindowsElement> session)
+        public ApplicationTab()
         {
-            Session = session;
         }
     }
 
     public class AboutTab
     {
-        WindowsDriver<WindowsElement> Session;
-        public AboutTab(WindowsDriver<WindowsElement> session)
+        public AboutTab()
         {
-            Session = session;
         }
     }
 }
