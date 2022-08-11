@@ -16,7 +16,7 @@ namespace AccessibilityInsights.Extensions.GitHub
             if (issueInfo == null)
                 throw new ArgumentNullException(nameof(issueInfo));
 
-            IIssueFormatter formatter = null;
+            IIssueFormatter formatter;
             switch (issueInfo.IssueType)
             {
                 case IssueType.NoFailure:

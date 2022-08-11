@@ -17,14 +17,16 @@ namespace AccessibilityInsights.Extensions.GitHub
     public class IssueReporter : IIssueReporting
     {
         private IssueReporter _instance;
-        private ConfigurationModel configurationControl;
+        private readonly ConfigurationModel configurationControl;
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         private IssueReporter()
         {
-            configurationControl = new ConfigurationModel();
-            configurationControl.IsConfigured = SetIsConfigured;
-            configurationControl.Config = new ConnectionConfiguration(string.Empty);
+            configurationControl = new ConfigurationModel
+            {
+                IsConfigured = SetIsConfigured,
+                Config = new ConnectionConfiguration(string.Empty)
+            };
         }
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps;
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
@@ -14,13 +14,13 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
     [TestClass]
     public class FileIssueHelpersTests
     {
-        const int testIssueId = 99999;
-        const string testProjectName = "ProjectName";
-        const string testIteration = "Some Iteration";
-        const string testTeamName = "Some Team";
-        const string testArea = "Some Area";
-        const string testIssueGuidString = "73e16008-4166-4305-b9ca-5621a38e04d0";
-        static readonly Guid testIssueGuid = new Guid(testIssueGuidString);
+        const int TestIssueId = 99999;
+        const string TestProjectName = "ProjectName";
+        const string TestIteration = "Some Iteration";
+        const string TestTeamName = "Some Team";
+        const string TestArea = "Some Area";
+        const string TestIssueGuidString = "73e16008-4166-4305-b9ca-5621a38e04d0";
+        static readonly Guid testIssueGuid = new Guid(TestIssueGuidString);
 
         Mock<IDevOpsIntegration> _adoIntegrationMock;
         FileIssueHelpers _fileIssueHelpers;
@@ -87,11 +87,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         public void FileNewIssue_GetAreaPathReturnsNull_ReturnsPlaceholder()
         {
             var connInfo = new ConnectionInfo(new Uri("https://accessibilityinsights.io"),
-                new AzureDevOps.Models.TeamProject(testProjectName, Guid.Empty), null);
+                new AzureDevOps.Models.TeamProject(TestProjectName, Guid.Empty), null);
             _adoIntegrationMock.Setup(x => x.GetAreaPath(connInfo))
                 .Returns<string>(null);
             _adoIntegrationMock.Setup(x => x.GetIteration(connInfo))
-                .Returns(testIteration);
+                .Returns(TestIteration);
 
             var configPath = "placeholderConfigurationPath";
 
@@ -109,9 +109,9 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         public void FileNewIssue_GetIterationReturnsNull_ReturnsPlaceholder()
         {
             var connInfo = new ConnectionInfo(new Uri("https://accessibilityinsights.io"),
-                new AzureDevOps.Models.TeamProject(testProjectName, Guid.Empty), null);
+                new AzureDevOps.Models.TeamProject(TestProjectName, Guid.Empty), null);
             _adoIntegrationMock.Setup(x => x.GetAreaPath(connInfo))
-                .Returns(testArea);
+                .Returns(TestArea);
             _adoIntegrationMock.Setup(x => x.GetIteration(connInfo))
                 .Returns<string>(null);
 
@@ -130,16 +130,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
         [Timeout(1000)]
         public void FileNewIssue_FieldsAreValid_ReturnsExpectedData()
         {
-            AzureDevOps.Models.AdoTeam expectedAdoTeam = new AzureDevOps.Models.AdoTeam(testTeamName, Guid.Empty);
+            AzureDevOps.Models.AdoTeam expectedAdoTeam = new AzureDevOps.Models.AdoTeam(TestTeamName, Guid.Empty);
             IReadOnlyDictionary<AzureDevOpsField, string> actualFields = null;
 
             var connInfo = new ConnectionInfo(new Uri("https://accessibilityinsights.io"),
-                new AzureDevOps.Models.TeamProject(testProjectName, Guid.Empty), expectedAdoTeam);
+                new AzureDevOps.Models.TeamProject(TestProjectName, Guid.Empty), expectedAdoTeam);
             _adoIntegrationMock.Setup(x => x.GetAreaPath(connInfo))
-                .Returns(testArea);
+                .Returns(TestArea);
             _adoIntegrationMock.Setup(x => x.GetIteration(connInfo))
-                .Returns(testIteration);
-            _adoIntegrationMock.Setup(x => x.CreateIssuePreview(testProjectName, testTeamName, It.IsAny<IReadOnlyDictionary<AzureDevOpsField, string>>()))
+                .Returns(TestIteration);
+            _adoIntegrationMock.Setup(x => x.CreateIssuePreview(TestProjectName, TestTeamName, It.IsAny<IReadOnlyDictionary<AzureDevOpsField, string>>()))
                 .Callback<string, string, IReadOnlyDictionary<AzureDevOpsField, string>>((_, __, fields) => actualFields = fields)
                 .Returns(new Uri("https://www.bing.com"));
 
@@ -147,17 +147,17 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests.FileIssue
             var configPath = "placeholderConfigurationPath";
 
             var output = _fileIssueHelpers.FileNewIssueTestable(issueInfo,
-                connInfo, false, 0, (_) => { }, configPath, testIssueId);
+                connInfo, false, 0, (_) => { }, configPath, TestIssueId);
 
-            Assert.AreEqual(testIssueId, output.issueId);
+            Assert.AreEqual(TestIssueId, output.issueId);
             Assert.IsNotNull(output.newIssueId);
-            Assert.AreEqual(testIssueGuidString, output.newIssueId);
+            Assert.AreEqual(TestIssueGuidString, output.newIssueId);
             Assert.AreEqual(5, actualFields.Count);
             Assert.IsFalse(string.IsNullOrEmpty(actualFields[AzureDevOpsField.Title]));
             Assert.IsFalse(string.IsNullOrEmpty(actualFields[AzureDevOpsField.Tags]));
             Assert.IsFalse(string.IsNullOrEmpty(actualFields[AzureDevOpsField.ReproSteps]));
-            Assert.AreEqual(testArea, actualFields[AzureDevOpsField.AreaPath]);
-            Assert.AreEqual(testIteration, actualFields[AzureDevOpsField.IterationPath]);
+            Assert.AreEqual(TestArea, actualFields[AzureDevOpsField.AreaPath]);
+            Assert.AreEqual(TestIteration, actualFields[AzureDevOpsField.IterationPath]);
             _adoIntegrationMock.VerifyAll();
         }
 
