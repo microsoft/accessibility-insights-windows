@@ -31,14 +31,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns>The data if it exists, or the default if not</returns>
         private T GetDataValue<T>(string key)
         {
-            return GetDataValueWithDefault<T>(key, default(T));
+            return GetDataValueWithDefault<T>(key, default(T), false);
         }
 
         /// <summary>
-        /// Get a data value of the specific type--don't use for enumerated values
+        /// Get a data value of the specific type--don't use for enumerated values. If the data
+        /// doesn't exist and setIfNoValueExists is true, then it will set the default value.
         /// </summary>
         /// <returns>The data if it exists, or defaultValue if not</returns>
-        private T GetDataValueWithDefault<T>(string key, T defaultValue)
+        private T GetDataValueWithDefault<T>(string key, T defaultValue, bool setIfNoValueExists)
         {
             if (_settings.TryGetValue(key, out object dataValue))
             {
@@ -48,6 +49,10 @@ namespace AccessibilityInsights.SharedUx.Settings
                 }
             }
 
+            if (setIfNoValueExists)
+            {
+                SetDataValue<T>(key, defaultValue);
+            }
             return defaultValue;
         }
 
@@ -445,7 +450,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         public int ColorContrastVersionThresholdSize
         {
-            get => GetDataValueWithDefault<int>(KeyColorContrastVersionThresholdSize, DefaultColorContrastVersionThresholdSize);
+            get => GetDataValueWithDefault<int>(KeyColorContrastVersionThresholdSize, DefaultColorContrastVersionThresholdSize, true);
             set => SetDataValue<int>(KeyColorContrastVersionThresholdSize, value);
         }
 
