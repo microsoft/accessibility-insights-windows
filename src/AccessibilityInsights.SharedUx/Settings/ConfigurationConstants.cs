@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 namespace AccessibilityInsights.SharedUx.Settings
@@ -28,6 +28,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string DefaultHotKeySnap = "Shift + F8";
         private const string OldHotKeyRecord = "Shift + F6";
         private const int DefaultSelectionDelayMilliseconds = 100; // milliseconds
+        private const int DefaultColorContrastVersionThresholdSize = 10000;
         internal const int MinimumSelectionDelayMilliseconds = 50;
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// </summary>
         private const string keyAlwaysOnTop = "AlwaysOnTop";
         private const string keyAppVersion = "AppVersion";
+        private const string KeyColorContrastVersionThresholdSize = "ColorContrastVersionThresholdSize";
         private const string keyCoreProperties = "CoreProperties";
         private const string keyCoreTPAttributes = "CoreTPAttributes";
         private const string keyDisableDarkMode = "DisableDarkMode";

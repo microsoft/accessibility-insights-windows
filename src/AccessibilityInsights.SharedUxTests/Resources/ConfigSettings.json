@@ -1,6 +1,7 @@
 {
     "AlwaysOnTop": false,
     "AppVersion": "1.1.700.1",
+    "ColorContrastVersionThresholdSize": 20000,
     "CoreProperties": [
         30005,
         30003,

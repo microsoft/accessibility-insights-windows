@@ -10,6 +10,16 @@ Application events are queried from the `customEvents` table. All application ev
 - A `name` property that matches one of the events defined below.
 - An optional set of event-specific properties, as defined with each event.
 
+#### ColorContrast_AutoDetect
+Trigger: The user autodetects colors on an element
+Additional properties:
+Name | Value
+--- | ---
+`customDimensions.AnalyzerVersion` | The analyzer version chosen based on the user configuration and the bitmap size
+`customDimensions.BitmapSize` | The bitmap size (in total pixels) that was analyzed
+`customDimensions.Confidence` | The confidence of the analysis. Possible values are `ERROR`, `None`, `Low`, `Mid`, or `High`
+`customDimensions.DurationInTicks` | The time (in ticks) spent performing the analysis
+
 #### ColorContrast_Click_Dropdown
 Trigger: The user opens a color picker popup in the Color Contrast view.  
 Additional properties: None.

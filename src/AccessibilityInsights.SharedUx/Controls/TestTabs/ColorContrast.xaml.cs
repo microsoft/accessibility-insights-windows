@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -12,6 +12,7 @@ using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.ColorContrastAnalyzer;
 using Axe.Windows.Desktop.Utility;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -111,21 +112,49 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
+        private static AnalyzerVersion SelectAnalyzerVersion(Bitmap bitmap)
+        {
+            int versionThresholdSize = ConfigurationManager.GetDefaultInstance().AppConfig.ColorContrastVersionThresholdSize;
+            return (bitmap.Width * bitmap.Height) > versionThresholdSize ? AnalyzerVersion.V1 : AnalyzerVersion.V2;
+        }
+
         private void RunAutoCCA(Bitmap bitmap)
         {
-            var bmc = new BitmapCollection(bitmap, new ColorContrastConfigBuilder().Build());
-            var result = bmc.RunColorContrastCalculation();
-            var pair = result.MostLikelyColorPair;
+            AnalyzerVersion analyzerVersion = SelectAnalyzerVersion(bitmap);
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            IColorContrastResult result = null;
 
-            if (pair == null)
+            try
             {
-                throw new InvalidOperationException("Unable to determine colors!");
-            }
+                var bmc = new BitmapCollection(bitmap,
+                    new ColorContrastConfigBuilder().WithAnalyzerVersion(analyzerVersion).Build());
+                result = bmc.RunColorContrastCalculation();
+                var pair = result.MostLikelyColorPair;
 
-            SetConfidenceVisibility(Visibility.Visible);
-            this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
-            this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
-            tbConfidence.Text = result.Confidence.ToString();
+                stopwatch.Stop();
+
+                if (pair == null)
+                {
+                    throw new InvalidOperationException("Unable to determine colors!");
+                }
+
+                SetConfidenceVisibility(Visibility.Visible);
+                this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
+                this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
+                tbConfidence.Text = result.Confidence.ToString();
+            }
+            finally
+            {
+                Logger.PublishTelemetryEvent(TelemetryAction.ColorContrast_AutoDetect,
+                    new Dictionary<TelemetryProperty, string>
+                    {
+                        { TelemetryProperty.AnalyzerVersion, analyzerVersion.ToString() },
+                        { TelemetryProperty.BitmapSize, (bitmap.Height * bitmap.Width).ToString(CultureInfo.InvariantCulture) },
+                        { TelemetryProperty.Confidence, result == null ? "ERROR" : result.Confidence.ToString() },
+                        { TelemetryProperty.DurationInTicks, stopwatch.ElapsedTicks.ToString(CultureInfo.InvariantCulture) },
+                    }
+                );
+            }
         }
 
         private void SetConfidenceVisibility(Visibility visibility)

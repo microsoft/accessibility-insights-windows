@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
@@ -31,6 +31,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <returns>The data if it exists, or the default if not</returns>
         private T GetDataValue<T>(string key)
         {
+            return GetDataValueWithDefault<T>(key, default(T));
+        }
+
+        /// <summary>
+        /// Get a data value of the specific type--don't use for enumerated values
+        /// </summary>
+        /// <returns>The data if it exists, or defaultValue if not</returns>
+        private T GetDataValueWithDefault<T>(string key, T defaultValue)
+        {
             if (_settings.TryGetValue(key, out object dataValue))
             {
                 if (dataValue != null && (dataValue.GetType() == typeof(T)))
@@ -39,7 +48,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 }
             }
 
-            return default(T);
+            return defaultValue;
         }
 
         /// <summary>
@@ -428,6 +437,16 @@ namespace AccessibilityInsights.SharedUx.Settings
         {
             get => GetDataValue<bool>(keyDisableDarkMode);
             set => SetDataValue<bool>(keyDisableDarkMode, value);
+        }
+
+        /// <summary>
+        /// The maximum size bitmap to be passed to the V2 color detection algorithm.
+        /// Set to 0 to completely disable the V2 algorithm.
+        /// </summary>
+        public int ColorContrastVersionThresholdSize
+        {
+            get => GetDataValueWithDefault<int>(KeyColorContrastVersionThresholdSize, DefaultColorContrastVersionThresholdSize);
+            set => SetDataValue<int>(KeyColorContrastVersionThresholdSize, value);
         }
 
         /// <summary>
