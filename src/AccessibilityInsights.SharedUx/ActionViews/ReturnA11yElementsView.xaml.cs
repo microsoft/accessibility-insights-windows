@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     {
         public ReturnA11yElementsViewModel ActionViewModel { get; private set; }
         int Counter;
-        System.Timers.Timer timerInvoke;
+        readonly System.Timers.Timer timerInvoke;
         private readonly object _lockObject = new object();
 
         /// <summary>
@@ -168,9 +168,11 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             }
 
             this.tbResult.Visibility = Visibility.Collapsed;
-            this.timerInvoke = new System.Timers.Timer(1000);
-            this.timerInvoke.Enabled = false;
-            this.timerInvoke.AutoReset = false;
+            this.timerInvoke = new System.Timers.Timer(1000)
+            {
+                Enabled = false,
+                AutoReset = false
+            };
             this.timerInvoke.Elapsed += new ElapsedEventHandler(this.ontimerElapsed);
             this.Loaded += Window_Loaded;
         }
@@ -205,8 +207,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         private void btnRun_Click(object sender, RoutedEventArgs e)
         {
             SetElement();
-            int delay;
-            if (Int32.TryParse(this.tbDelay.Text, out delay))
+            if (Int32.TryParse(this.tbDelay.Text, out int delay))
             {
                 if (delay >= 1)
                 {

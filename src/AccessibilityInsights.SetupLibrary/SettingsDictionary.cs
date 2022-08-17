@@ -103,7 +103,7 @@ namespace AccessibilityInsights.SetupLibrary
         {
             if (TryGetValue(oldSettingKey, out object value))
             {
-                if (!TryGetValue(newSettingKey, out object dummyValue))
+                if (!TryGetValue(newSettingKey, out _))
                 {
                     Add(newSettingKey, value);
                 }

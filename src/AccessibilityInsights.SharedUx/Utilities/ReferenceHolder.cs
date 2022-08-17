@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
     /// </summary>
     public class ReferenceHolder<TKey, TValue>
     {
-        private Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
+        private readonly Dictionary<TKey, TValue> _dictionary = new Dictionary<TKey, TValue>();
 
         public void Add(TKey key, TValue value)
         {

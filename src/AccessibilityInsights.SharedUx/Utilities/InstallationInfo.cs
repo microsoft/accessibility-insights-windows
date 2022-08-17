@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Newtonsoft.Json;
 using System;
@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         internal static Action<string, InstallationInfo> WriteToDiskOverride;
         #endregion
 
-        private readonly static DateTime DistantPast = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+        private static readonly DateTime DistantPast = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
         [JsonProperty]
         public Guid InstallationGuid { get; private set; }

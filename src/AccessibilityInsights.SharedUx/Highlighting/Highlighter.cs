@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.Win32;
@@ -78,8 +78,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private bool isBorderVisible;
         private bool IsBorderVisible
         {
-            get => this.isBorderVisible;
-
             set
             {
                 if (this.isBorderVisible != value)

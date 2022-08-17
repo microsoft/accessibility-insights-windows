@@ -90,7 +90,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <returns></returns>
         internal static double GetDPI(int left, int top)
         {
-            NativeMethods.GetDpi(new System.Drawing.Point(left, top), DpiType.Effective, out uint dpiX, out uint dpiY);
+            NativeMethods.GetDpi(new System.Drawing.Point(left, top), DpiType.Effective, out uint dpiX, out _);
 
             return GetDPIRate(dpiX);
         }

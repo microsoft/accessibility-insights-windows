@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// Base class for ActionViewModels
     /// ActionViewModel is to drive Action(method)s in a control
     /// </summary>
-    abstract public class BaseActionViewModel : ViewModelBase
+    public abstract class BaseActionViewModel : ViewModelBase
     {
         internal A11yPattern pattern;
         internal MethodInfo methodinfo;

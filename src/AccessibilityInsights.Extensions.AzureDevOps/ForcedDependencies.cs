@@ -17,6 +17,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
         }
 
+#pragma warning disable IDE0051 // Remove unused private members
         private static void TestEnforcedDependencies()
         {
             // Types that we can detect via unit tests. Namespace generally matches the package.
@@ -41,5 +42,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ForceDependency(typeof(System.Net.Http.Formatting.BaseJsonMediaTypeFormatter));
             ForceDependency(typeof(System.Reflection.Metadata.ArrayShape));
         }
+#pragma warning restore IDE0051 // Remove unused private members
     }
 }

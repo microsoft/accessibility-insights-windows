@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
@@ -16,8 +16,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     internal class TextTip : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, TextTip> Holder = new ReferenceHolder<IntPtr, TextTip>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+        private static readonly ReferenceHolder<IntPtr, TextTip> Holder = new ReferenceHolder<IntPtr, TextTip>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
 
         const int Max_Text_Length = 60;
         const int TEXTBORDER = 2;
@@ -25,10 +25,10 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const int TEXTGAP = 8;       // Gep between object and rectangle
         const int Default_Font_Height = 25;
 
-        IntPtr hWnd;
+        readonly IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
+        readonly IntPtr hInstance;
 
         POINT size;
         int m_TabStop;
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                  FontClipPrecision.CLIP_DEFAULT_PRECIS, FontQuality.CLEARTYPE_QUALITY, FontPitchAndFamily.DEFAULT_PITCH, "Calibri");
             this.WindowClassName = cn;
             this.hInstance = NativeMethods.GetModuleHandle(null);
-            var r = RegisterWindowClass();
+            RegisterWindowClass();
 
             this.hWnd = CreateWindow();
             Holder.Add(this.hWnd, this);
@@ -377,8 +377,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         IntPtr hDC = wParam;
                         IntPtr hFont = NativeMethods.SelectObject(hDC, this.hFont);
 
-                        RECT rcClient;
-                        NativeMethods.GetClientRect(hWnd, out rcClient);
+                        NativeMethods.GetClientRect(hWnd, out RECT rcClient);
 
                         IntPtr hBrush = NativeMethods.CreateSolidBrush(this.BackgroundColor);
 #pragma warning disable CA1806 // Do not ignore method results
@@ -484,7 +483,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                         NativeMethods.LineTo(hDC, rcClient.right - 1, 0);
                         NativeMethods.LineTo(hDC, 0, 0);
 
-                        hPen = NativeMethods.SelectObject(hDC, hPen);
+                        NativeMethods.SelectObject(hDC, hPen);
                         NativeMethods.SelectObject(hDC, hFont);
 
                         return (IntPtr)1;

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Telemetry;
 using Axe.Windows.Actions;
@@ -23,7 +23,7 @@ namespace AccessibilityInsights
     /// </summary>
     class TreeNavigator
     {
-        IControlTreeNavigation Controller;
+        readonly IControlTreeNavigation Controller;
         private readonly object _lockObject = new object();
 
         public Action SelectionChanged;

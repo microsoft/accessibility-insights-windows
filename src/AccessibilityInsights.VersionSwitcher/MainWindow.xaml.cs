@@ -16,7 +16,7 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly static IExceptionReporter ExceptionReporter = new ExceptionReporter();
+        private static readonly IExceptionReporter ExceptionReporter = new ExceptionReporter();
         const string ProductName = "Accessibility Insights For Windows v1.1";
         bool _allowClosing;
 

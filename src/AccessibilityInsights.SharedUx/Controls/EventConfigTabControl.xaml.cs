@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
@@ -183,8 +183,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         private void OpenConfigDialog()
         {
-            var window = new EventConfigWindow();
-            window.Owner = Application.Current.MainWindow;
+            var window = new EventConfigWindow
+            {
+                Owner = Application.Current.MainWindow
+            };
 
             window.ShowDialog();
 
@@ -199,41 +201,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 ConfigurationManager.GetDefaultInstance().PopulateEventConfiguration();
             }
-        }
-
-        /// <summary>
-        /// Create a property bag based on RecorderSetting changes.
-        /// </summary>
-        /// <param name="cfg"></param>
-        /// <returns></returns>
-        private static IDictionary<string, string> GetPropertyBag(RecorderSetting cfg)
-        {
-            Dictionary<string, string> dic = new Dictionary<string, string>();
-
-            dic.Add("Scope", cfg.ListenScope.ToString());
-
-            if (cfg.IsListeningFocusChangedEvent)
-            {
-                dic.Add(EventType.UIA_AutomationFocusChangedEventId.ToString(CultureInfo.InvariantCulture), EventType.GetInstance().GetNameById(EventType.UIA_AutomationFocusChangedEventId));
-            }
-
-            foreach (var e in cfg.Events)
-            {
-                if (e.IsRecorded)
-                {
-                    dic.Add(e.Id.ToString(CultureInfo.InvariantCulture), e.Name);
-                }
-            }
-
-            foreach (var p in cfg.Properties)
-            {
-                if (p.IsRecorded)
-                {
-                    dic.Add(p.Id.ToString(CultureInfo.InvariantCulture), p.Name);
-                }
-            }
-
-            return dic;
         }
 
         /// <summary>

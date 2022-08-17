@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Enums;
@@ -240,15 +240,6 @@ namespace AccessibilityInsights.Modes
             }
         }
 
-        /// <summary>
-        /// Make sure that statemachine and UI are updated for Live mode.
-        /// </summary>
-        private static void UpdateStateMachineForCCAAutomaticMode()
-        {
-            // enable selector once UI update is finished.
-            MainWin?.SetCurrentViewAndUpdateUI(CCAView.Automatic);
-            MainWin?.EnableElementSelector();
-        }
 #pragma warning restore CS1998
 
         /// <summary>

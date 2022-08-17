@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Runtime.InteropServices;
@@ -55,10 +55,10 @@ namespace AccessibilityInsights.Win32
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal class WinTrustFileInfo : IDisposable
     {
-        UInt32 StructSize = (UInt32)Marshal.SizeOf(typeof(WinTrustFileInfo));
+        readonly UInt32 StructSize = (UInt32)Marshal.SizeOf(typeof(WinTrustFileInfo));
         IntPtr pszFilePath;                     // required, file name to be verified
-        IntPtr hFile = IntPtr.Zero;             // optional, open handle to FilePath
-        IntPtr pgKnownSubject = IntPtr.Zero;    // optional, subject type if it is known
+        readonly IntPtr hFile = IntPtr.Zero;             // optional, open handle to FilePath
+        readonly IntPtr pgKnownSubject = IntPtr.Zero;    // optional, subject type if it is known
 
         public WinTrustFileInfo(String filePath)
         {
@@ -92,22 +92,25 @@ namespace AccessibilityInsights.Win32
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
     internal class WinTrustData : IDisposable
     {
-        UInt32 StructSize = (UInt32)Marshal.SizeOf(typeof(WinTrustData));
-        IntPtr PolicyCallbackData = IntPtr.Zero;
-        IntPtr SIPClientData = IntPtr.Zero;
+        readonly UInt32 StructSize = (UInt32)Marshal.SizeOf(typeof(WinTrustData));
+        readonly IntPtr PolicyCallbackData = IntPtr.Zero;
+        readonly IntPtr SIPClientData = IntPtr.Zero;
+
         // required: UI choice
-        WinTrustDataUIChoice UIChoice = WinTrustDataUIChoice.None;
+        readonly WinTrustDataUIChoice UIChoice = WinTrustDataUIChoice.None;
+
         // required: certificate revocation check options
-        WinTrustDataRevocationChecks RevocationChecks = WinTrustDataRevocationChecks.None;
+        readonly WinTrustDataRevocationChecks RevocationChecks = WinTrustDataRevocationChecks.None;
+
         // required: which structure is being passed in?
-        WinTrustDataChoice UnionChoice = WinTrustDataChoice.File;
+        readonly WinTrustDataChoice UnionChoice = WinTrustDataChoice.File;
         // individual file
         IntPtr FileInfoPtr = IntPtr.Zero;
-        WinTrustDataStateAction StateAction = WinTrustDataStateAction.Verify;
-        IntPtr StateData = IntPtr.Zero;
-        String URLReference;
-        WinTrustDataProvFlags ProvFlags = WinTrustDataProvFlags.RevocationCheckChainExcludeRoot;
-        WinTrustDataUIContext UIContext = WinTrustDataUIContext.Execute;
+        readonly WinTrustDataStateAction StateAction = WinTrustDataStateAction.Verify;
+        readonly IntPtr StateData = IntPtr.Zero;
+        readonly String URLReference;
+        readonly WinTrustDataProvFlags ProvFlags = WinTrustDataProvFlags.RevocationCheckChainExcludeRoot;
+        readonly WinTrustDataUIContext UIContext = WinTrustDataUIContext.Execute;
 
         // constructor for silent WinTrustDataChoice.File check
         public WinTrustData(WinTrustFileInfo fileInfo)

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
@@ -74,8 +74,10 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
             foreach (var item in e.ScanResults.Items)
             {
                 item.Items = new List<RuleResult>();
-                RuleResult r = new RuleResult();
-                r.Status = e.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail;
+                RuleResult r = new RuleResult
+                {
+                    Status = e.ControlTypeId == Axe.Windows.Core.Types.ControlType.UIA_ButtonControlTypeId ? ScanStatus.Pass : ScanStatus.Fail
+                };
                 item.Items.Add(r);
             };
             foreach (var c in e.Children)

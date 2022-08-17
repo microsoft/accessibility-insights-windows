@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.Helpers;
@@ -61,9 +61,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                     : string.Empty;
                 Uri url = CreateIssuePreviewAsync(connection, issueInfo).Result;
 
-                int? issueId = testIssueId.HasValue
-                    ? testIssueId.Value
-                    : FileIssueWindow(url, onTop, zoomLevel, updateZoom, configurationPath);
+                int? issueId = testIssueId ?? FileIssueWindow(url, onTop, zoomLevel, updateZoom, configurationPath);
 
                 return (issueId, a11yIssueId);
             }
@@ -118,7 +116,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
                 case WebException webEx:
                     return TransientWebExceptions.Contains(webEx.Status);
                 // This is what we saw happen to issue attachments in our telemetry
-                case TimeoutException tEx:
+                case TimeoutException _:
                     return true;
                 default:
                     return false;
@@ -126,7 +124,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         // If a web exception contains one of the following status values, it might be transient.
-        private readonly static HashSet<WebExceptionStatus> TransientWebExceptions = new HashSet<WebExceptionStatus>()
+        private static readonly HashSet<WebExceptionStatus> TransientWebExceptions = new HashSet<WebExceptionStatus>()
         {
             WebExceptionStatus.ConnectionClosed,
             WebExceptionStatus.Timeout,
@@ -293,8 +291,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
             }
 
             Trace.WriteLine(Invariant($"Url is {url.AbsoluteUri.Length} long: {url}"));
-            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom, configurationPath);
-            dlg.ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };";
+            var dlg = new IssueFileForm(url, onTop, zoomLevel, updateZoom, configurationPath)
+            {
+                ScriptToRun = "window.onerror = function(msg,url,line) { window.external.Log(msg); return true; };"
+            };
 
             dlg.ShowDialog();
 

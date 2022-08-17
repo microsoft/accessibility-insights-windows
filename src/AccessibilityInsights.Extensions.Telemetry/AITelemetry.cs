@@ -51,10 +51,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         /// <param name="clientWrapper">The wrapper of the TelemetryClient</param>
         internal AITelemetry(ITelemetryClientWrapper clientWrapper)
         {
-            if (clientWrapper == null)
-                throw new ArgumentNullException(nameof(clientWrapper));
-
-            _clientWrapper = clientWrapper;
+            _clientWrapper = clientWrapper ?? throw new ArgumentNullException(nameof(clientWrapper));
             ContextProperties = new Dictionary<string, string>();
         }
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]

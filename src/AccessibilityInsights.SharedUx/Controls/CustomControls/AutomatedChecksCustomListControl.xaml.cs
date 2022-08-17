@@ -322,8 +322,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
             else if ((e.Key == Key.Right || e.Key == Key.Left) && (Keyboard.FocusedElement is CheckBox || Keyboard.FocusedElement is Button))
             {
-                var elements = new List<DependencyObject>();
-                elements.Add(GetFirstChildElement<CheckBox>(sender as DependencyObject));
+                var elements = new List<DependencyObject>
+                {
+                    GetFirstChildElement<CheckBox>(sender as DependencyObject)
+                };
                 elements.AddRange(FindChildren<Button>(sender as DependencyObject));
                 int selectedElementIndex = elements.FindIndex(b => b.Equals(Keyboard.FocusedElement));
 

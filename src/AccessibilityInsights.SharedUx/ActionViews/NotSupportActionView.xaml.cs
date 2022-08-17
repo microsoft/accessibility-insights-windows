@@ -1,8 +1,7 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,7 +13,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     /// </summary>
     public partial class NotSupportActionView : UserControl
     {
-        private BaseActionViewModel ActionViewModel;
+        private readonly BaseActionViewModel ActionViewModel;
 
         public NotSupportActionView(BaseActionViewModel a)
         {
@@ -25,8 +24,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var dic = new Dictionary<string, string>();
-            dic.Add("name", this.tbName.Text);
+            // TODO: This appears to be a remnant of old legacy telemetry code. Consider bringing it back?
         }
     }
 }

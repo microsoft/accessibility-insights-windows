@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
@@ -21,16 +21,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     public partial class GlobalEyedropperWindow : Window
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
-        const int zoomLevel = 4;
-
-        int radius;
-        ColorContrastViewModel ccVM;
-        bool selectingFirst;
-        bool selectingSecond;
+        const int ZoomLevel = 4;
+        readonly int radius;
+        readonly ColorContrastViewModel ccVM;
+        readonly bool selectingFirst;
+        readonly bool selectingSecond;
         Bitmap desktopScreenshot;
         Timer updatePosTimer;
         TransformGroup renderTransformGroup;
-        Action<object, EventArgs> onClose;
+        readonly Action<object, EventArgs> onClose;
 
         /// <summary>
         /// Constructor
@@ -77,7 +76,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private void InitializeRenderTransform()
         {
             renderTransformGroup = new TransformGroup();
-            renderTransformGroup.Children.Add(new ScaleTransform(zoomLevel, zoomLevel));
+            renderTransformGroup.Children.Add(new ScaleTransform(ZoomLevel, ZoomLevel));
             eyedropperPreview.RenderTransform = renderTransformGroup;
         }
 
@@ -107,8 +106,8 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             UpdateColor(desktopScreenshot.GetPixel(screenshotPosition.X, screenshotPosition.Y));
 
             Rectangle desktopRegion = new Rectangle(
-                screenshotPosition.X - radius / zoomLevel,
-                screenshotPosition.Y - radius / zoomLevel,
+                screenshotPosition.X - radius / ZoomLevel,
+                screenshotPosition.Y - radius / ZoomLevel,
                 radius * 2,
                 radius * 2
             );
@@ -186,7 +185,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private static int StepSize(double stepWithCtrl)
         {
             if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
-                return (int)(stepWithCtrl / zoomLevel);
+                return (int)(stepWithCtrl / ZoomLevel);
             return 1;
         }
     }

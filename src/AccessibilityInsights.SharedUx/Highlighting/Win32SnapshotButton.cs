@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Utilities;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -9,7 +9,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Media;
@@ -18,8 +17,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 {
     public class Win32SnapshotButton : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
+        private static readonly ReferenceHolder<IntPtr, Win32SnapshotButton> Holder = new ReferenceHolder<IntPtr, Win32SnapshotButton>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
 
         private IntPtr hWnd;
 
@@ -29,13 +28,13 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const String BeakerCode = "\uF3A6";
         private int Width = DefaultWidth;
         private int Height = DefaultHeight;
-        private System.Drawing.Color FontBrush;
-        private System.Drawing.Color BackgroundBrush;
-        private System.Drawing.Color HoveredBackgroundBrush;
+        private readonly System.Drawing.Color FontBrush;
+        private readonly System.Drawing.Color BackgroundBrush;
+        private readonly System.Drawing.Color HoveredBackgroundBrush;
 
         // The font collection must be kept undisposed for at least as long as its FontFamily objects are in use
-        private PrivateFontCollection Fonts;
-        private System.Drawing.FontFamily IconFontFamily;
+        private readonly PrivateFontCollection Fonts;
+        private readonly System.Drawing.FontFamily IconFontFamily;
 
         private bool IsHovered;
         private bool isVisible;
@@ -55,11 +54,11 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         public Rectangle HiLighterRect { get; set; }
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
+        readonly IntPtr hInstance;
         public Action Clicked { get; set; }
 
-        private Dictionary<double, Bitmap> beakerIconCollection;
-        private Dictionary<double, Bitmap> hoveredBeakerIconCollection;
+        private readonly Dictionary<double, Bitmap> beakerIconCollection;
+        private readonly Dictionary<double, Bitmap> hoveredBeakerIconCollection;
 
         public Win32SnapshotButton(string cnb)
         {
@@ -98,7 +97,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private static PrivateFontCollection LoadFontResource()
         {
             PrivateFontCollection fonts = new PrivateFontCollection();
-            Assembly assembly = Assembly.GetExecutingAssembly();
 
             using (Stream fontStream = SharedResources.FabricIconFontResource.Stream)
             {
@@ -241,11 +239,9 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             double dpi = UpdateBeakerSize();
 
-            Bitmap iconToDraw = null;
-
             var iconCollection = this.IsHovered ? hoveredBeakerIconCollection : beakerIconCollection;
 
-            if (!iconCollection.TryGetValue(dpi, out iconToDraw))
+            if (!iconCollection.TryGetValue(dpi, out Bitmap iconToDraw))
             {
                 iconToDraw = LoadBeakerImage(dpi);
             }
@@ -284,10 +280,12 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     return (IntPtr)1;
                 case Win32Constants.WM_MOUSEMOVE:
                     // add track mouse event
-                    TRACKMOUSEEVENT track = new TRACKMOUSEEVENT();
-                    track.hWnd = this.hWnd;
-                    track.cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT));
-                    track.dwFlags = Win32Constants.TME_LEAVE;
+                    TRACKMOUSEEVENT track = new TRACKMOUSEEVENT
+                    {
+                        hWnd = this.hWnd,
+                        cbSize = Marshal.SizeOf(typeof(TRACKMOUSEEVENT)),
+                        dwFlags = Win32Constants.TME_LEAVE
+                    };
                     NativeMethods.TrackMouseEvent(ref track);
                     this.IsHovered = true;
                     DrawBeaker();

@@ -251,9 +251,11 @@ namespace AccessibilityInsights.VersionSwitcher
             }
             else
             {
-                ProcessStartInfo start = new ProcessStartInfo();
-                start.FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe");
-                start.Arguments = _appToLaunchAfterInstall;
+                ProcessStartInfo start = new ProcessStartInfo
+                {
+                    FileName = Path.Combine(Environment.GetEnvironmentVariable("windir"), "explorer.exe"),
+                    Arguments = _appToLaunchAfterInstall
+                };
                 if (Process.Start(start) != null)
                 {
                     EventLogger.WriteInformationalMessage("Successfully started process: {0}", _appToLaunchAfterInstall);
