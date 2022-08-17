@@ -33,10 +33,12 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
 
         static JArray BuildJArray()
         {
-            JArray array = new JArray();
-            array.Add(2);
-            array.Add(4);
-            array.Add(6);
+            JArray array = new JArray
+            {
+                2,
+                4,
+                6
+            };
 
             return array;
         }
@@ -85,8 +87,7 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
             {
                 { Key1, StringValue }
             };
-
-            Assert.IsFalse(settings.TryGetValue(Key1LowerCase, out object value));
+            Assert.IsFalse(settings.TryGetValue(Key1LowerCase, out _));
             settings.Add(Key1LowerCase, LongValue);
 
             Assert.AreEqual(2, settings.Count);
@@ -195,9 +196,10 @@ namespace AccessibilityInsights.SetupLibraryUnitTests
         [Timeout(2000)]
         public void RemapIntToEnumName_KeyExists_ValueIsLong_ValueIsNotValid_ReturnsCorrectEnum()
         {
-            SettingsDictionary settings = new SettingsDictionary();
-
-            settings.Add(Key1, LongValue);
+            SettingsDictionary settings = new SettingsDictionary
+            {
+                { Key1, LongValue }
+            };
 
             settings.RemapIntToEnumName<TestEnum>(Key1);
 

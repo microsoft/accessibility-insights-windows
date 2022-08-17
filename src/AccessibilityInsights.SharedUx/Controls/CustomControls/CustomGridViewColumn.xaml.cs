@@ -16,8 +16,8 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
     /// </summary>
     public partial class CustomGridViewColumn : GridViewColumn
     {
-        List<Border> borders = new List<Border>();
-        List<TextBlock> textBlocks = new List<TextBlock>();
+        readonly List<Border> borders = new List<Border>();
+        readonly List<TextBlock> textBlocks = new List<TextBlock>();
 
         string _registeredName;
         internal string RegisteredName

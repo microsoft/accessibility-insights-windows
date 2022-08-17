@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -259,15 +259,14 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="expandall"></param>
         private void PopulateHierarchyTree(ElementContext ec, bool expandall)
         {
+#if POPULATE_HIERARCHY_TREE_DIAGNOSTICS
             var begin = DateTime.Now;
-            HierarchyNodeViewModel rnvm = null;
-
             var tm = Configuration.TreeViewMode;
             var showa = Configuration.ShowAncestry;
-
+#endif
             /// in the case that UIElement is not alive any more, it will fail.
             /// we need to handle it properly
-            rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, this.IsLiveMode);
+            HierarchyNodeViewModel rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, IsLiveMode);
 
             // send exception to mode control.
             if (rnvm == null)
@@ -278,8 +277,9 @@ namespace AccessibilityInsights.SharedUx.Controls
             UpdateTreeView(rnvm, expandall);
 
             this._selectedElement = ec.Element;
+#if POPULATE_HIERARCHY_TREE_DIAGNOSTICS
             var span = DateTime.Now - begin;
-
+#endif
             this.tbTimeSpan.Visibility = Visibility.Collapsed;
         }
 
@@ -439,7 +439,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             Configuration.ShowAncestry = this.mniShowAncestry.IsChecked;
             if (this._selectedElement != null)
             {
-                var dic = new Dictionary<string, string>();
                 this.HierarchyActions.RefreshHierarchy(false);
             }
         }
@@ -468,7 +467,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             Configuration.ShowUncertain = this.mniShowUncertain.IsChecked;
             if (this._selectedElement != null)
             {
-                var dic = new Dictionary<string, string>();
                 this.HierarchyActions.RefreshHierarchy(false);
             }
         }

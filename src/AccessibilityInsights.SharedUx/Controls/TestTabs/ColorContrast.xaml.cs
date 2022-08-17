@@ -96,8 +96,8 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// For convenience, describes whether we are currently recording the first color or second color
         /// </summary>
-        private bool SelectingFirstColor => currentChooser == firstChooser;
-        private bool SelectingSecondColor => currentChooser == secondChooser;
+        private bool SelectingFirstColor => CurrentChooser == firstChooser;
+        private bool SelectingSecondColor => CurrentChooser == secondChooser;
 
         /// <summary>
         /// Sets element context and updates UI
@@ -161,14 +161,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         {
             tbConfidence.Visibility = visibility;
             tbConfidenceLabel.Visibility = visibility;
-        }
-
-        private void RaiseLiveRegionEvents()
-        {
-            var peer = FrameworkElementAutomationPeer.FromElement(output) ?? new FrameworkElementAutomationPeer(output);
-            peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-            peer = FrameworkElementAutomationPeer.FromElement(tbConfidence) ?? new FrameworkElementAutomationPeer(tbConfidence);
-            peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
         }
 
         /// <summary>

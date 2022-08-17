@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.ViewModels;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -105,54 +105,66 @@ namespace AccessibilityInsights.SharedUxTest.ViewModels
         [TestMethod]
         public void TestPassSmallText_WhiteWhite()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Colors.White;
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Colors.White
+            };
             Assert.IsFalse(vm.PassSmallText);
         }
 
         [TestMethod]
         public void TestPassLargeText_WhiteWhite()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Colors.White;
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Colors.White
+            };
             Assert.IsFalse(vm.PassLargeText);
         }
 
         [TestMethod]
         public void TestPassSmallText_WhiteBlack()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Colors.Black;
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Colors.Black
+            };
             Assert.IsTrue(vm.PassSmallText);
         }
 
         [TestMethod]
         public void TestPassLargeText_WhiteBlack()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Colors.Black;
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Colors.Black
+            };
             Assert.IsTrue(vm.PassLargeText);
         }
 
         [TestMethod]
         public void TestPassSmallText_WhiteRed()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Color.FromRgb(255, 0, 0);
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Color.FromRgb(255, 0, 0)
+            };
             Assert.IsFalse(vm.PassSmallText);
         }
 
         [TestMethod]
         public void TestPassLargeText_WhiteRed()
         {
-            ColorContrastViewModel vm = new ColorContrastViewModel();
-            vm.FirstColor = Colors.White;
-            vm.SecondColor = Color.FromRgb(255, 0, 0);
+            ColorContrastViewModel vm = new ColorContrastViewModel
+            {
+                FirstColor = Colors.White,
+                SecondColor = Color.FromRgb(255, 0, 0)
+            };
             Assert.IsTrue(vm.PassLargeText);
         }
         #endregion

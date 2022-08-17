@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.Win32;
@@ -16,15 +16,14 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     internal class LineBorder : IDisposable
     {
-        private readonly static ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
-        private readonly static WndProc MyWndProc = new WndProc(StaticWndProc);
-
-        IntPtr hWnd;
+        private static readonly ReferenceHolder<IntPtr, LineBorder> Holder = new ReferenceHolder<IntPtr, LineBorder>();
+        private static readonly WndProc MyWndProc = new WndProc(StaticWndProc);
+        readonly IntPtr hWnd;
 
         public string WindowClassName { get; private set; }
-        IntPtr hInstance;
 
-        int Id;
+        readonly IntPtr hInstance;
+        readonly int Id;
 
         public int Color { get; set; }
         public Rectangle Rect { get; set; }
@@ -42,7 +41,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
             this.WindowClassName = Invariant($"{cnb}-{id}");
             this.hInstance = NativeMethods.GetModuleHandle(null);
             this.Id = id;
-            var r = RegisterWindowClass();
+            RegisterWindowClass();
 
             this.hWnd = CreateWindow();
             Holder.Add(this.hWnd, this);
@@ -77,8 +76,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                     {
                         IntPtr hDC = wParam;
 
-                        RECT rc;
-                        NativeMethods.GetClientRect(hWnd, out rc);
+                        NativeMethods.GetClientRect(hWnd, out RECT rc);
 
                         IntPtr hBrush = NativeMethods.CreateSolidBrush(this.Color);
 #pragma warning disable CA1806 // Do not ignore method results
@@ -117,7 +115,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                             NativeMethods.LineTo(hDC, rc.right - this.Width - 1, rc.top);
                         }
 
-                        hPen = NativeMethods.SelectObject(hDC, hPen);
+                        NativeMethods.SelectObject(hDC, hPen);
                         return (IntPtr)1;
                     }
             }

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using System;
@@ -270,8 +270,10 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         protected virtual void OnSelectedColorChanged(Color oldColor, Color newColor)
         {
             RoutedPropertyChangedEventArgs<Color> newEventArgs =
-                new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor);
-            newEventArgs.RoutedEvent = ColorPickerControl.SelectedColorChangedEvent;
+                new RoutedPropertyChangedEventArgs<Color>(oldColor, newColor)
+                {
+                    RoutedEvent = ColorPickerControl.SelectedColorChangedEvent
+                };
             RaiseEvent(newEventArgs);
             if (this.DataContext is ColorChooser cc)
             {
@@ -312,8 +314,8 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             {
                 double widthDifference = args.NewSize.Width / args.PreviousSize.Width;
                 double heightDifference = args.NewSize.Height / args.PreviousSize.Height;
-                markerTransform.X = markerTransform.X * widthDifference;
-                markerTransform.Y = markerTransform.Y * heightDifference;
+                markerTransform.X *= widthDifference;
+                markerTransform.Y *= heightDifference;
             }
             else if (m_ColorPosition != null)
             {
@@ -351,7 +353,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
 
             markerTransform.X = p.X;
-            p.X = p.X / brdrColorDetail.ActualWidth;
+            p.X /= brdrColorDetail.ActualWidth;
 
             if (p.Y < 0)
             {
@@ -363,7 +365,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
 
             markerTransform.Y = p.Y;
-            p.Y = p.Y / brdrColorDetail.ActualHeight;
+            p.Y /= brdrColorDetail.ActualHeight;
 
             m_ColorPosition = p;
             determineColor(p);
@@ -379,17 +381,19 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             Point p = new Point(hsv.S, 1 - hsv.V);
 
             m_ColorPosition = p;
-            p.X = p.X * brdrColorDetail.ActualWidth;
-            p.Y = p.Y * brdrColorDetail.ActualHeight;
+            p.X *= brdrColorDetail.ActualWidth;
+            p.Y *= brdrColorDetail.ActualHeight;
             markerTransform.X = p.X;
             markerTransform.Y = p.Y;
         }
 
         private void determineColor(Point p)
         {
-            HsvColor hsv = new HsvColor(sliderColorSlider.Value, 1, 1);
-            hsv.S = p.X;
-            hsv.V = 1 - p.Y;
+            HsvColor hsv = new HsvColor(sliderColorSlider.Value, 1, 1)
+            {
+                S = p.X,
+                V = 1 - p.Y
+            };
             m_color = ColorUtilities.ConvertHsvToRgb(hsv.H, hsv.S, hsv.V);
             shouldFindPoint = false;
             SetValue(HexadecimalStringProperty, m_color.ToString(CultureInfo.InvariantCulture));
@@ -399,11 +403,11 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         #endregion
 
         #region Private Fields
-        private TranslateTransform markerTransform = new TranslateTransform();
+        private readonly TranslateTransform markerTransform = new TranslateTransform();
         private Point? m_ColorPosition;
         private Color m_color;
         private bool shouldFindPoint;
-        private bool templateApplied;
+        private readonly bool templateApplied;
         #endregion
 
         /// <summary>
@@ -437,6 +441,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
             }
         }
 
+#pragma warning disable IDE0051 // This is referenced in the XAML file
         /// <summary>
         /// Update color and focus when control made visible
         /// </summary>
@@ -453,5 +458,6 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 m_color = SelectedColor;
             }
         }
+#pragma warning restore IDE0051 // This is referenced in the XAML file
     }
 }

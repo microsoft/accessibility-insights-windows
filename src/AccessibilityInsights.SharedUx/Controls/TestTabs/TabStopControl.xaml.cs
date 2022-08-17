@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -17,7 +17,6 @@ using Axe.Windows.Desktop.UIAutomation.EventHandlers;
 using Axe.Windows.Desktop.UIAutomation.Patterns;
 using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
@@ -51,12 +50,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// The most recently focused element
         /// </summary>
         private A11yElement CurrentElement { get; set; }
-
-        /// <summary>
-        /// it is set to true, when TapStop enters into a loop with existing records.
-        /// it will be set back to false when new recording is started.
-        /// </summary>
-        private bool IsTabStopLooped;
 
         /// <summary>
         /// Set Highlighter button state in main UI
@@ -358,7 +351,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (!IsRecordingActive && this.ElementContext != null)
             {
                 TabStopCount = 0;
-                IsTabStopLooped = false;
 
                 CurrentElement = null;
                 EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageReceived);
@@ -444,7 +436,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                             this.lvElements.ScrollIntoView(ev);
                         });
 
-                        IsTabStopLooped = true; // tab stop is looped!!
                         return;
                     }
                 }
@@ -485,18 +476,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 this.EventHandler.UnregisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId);
                 IsRecordingActive = false;
                 this.Toast.Visibility = Visibility.Collapsed;
-                AddTraceToTelemetryForTabStopEnd();
             }
-        }
-
-        /// <summary>
-        /// Record a telemetry log for tabstop recording end.
-        /// </summary>
-        private void AddTraceToTelemetryForTabStopEnd()
-        {
-            var dic = new Dictionary<string, string>();
-            dic.Add(TelemetryProperty.TabStopLooped.ToString(), IsTabStopLooped.ToString(CultureInfo.InvariantCulture));
-            dic.Add(TelemetryProperty.TabStopCount.ToString(), this.TabStopCount.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>

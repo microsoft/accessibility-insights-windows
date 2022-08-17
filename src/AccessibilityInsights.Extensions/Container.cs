@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Extensions.Interfaces.Telemetry;
@@ -71,7 +71,7 @@ namespace AccessibilityInsights.Extensions
         #endregion
 
         #region static members
-        readonly static object _lockObject = new object();
+        static readonly object _lockObject = new object();
         static Container _defaultInstance;
 
         /// <summary>
@@ -83,8 +83,10 @@ namespace AccessibilityInsights.Extensions
         {
             if (e != null && ReportedExceptionEvent != null)
             {
-                ReportExceptionEventArgs args = new ReportExceptionEventArgs();
-                args.ReportedException = e;
+                ReportExceptionEventArgs args = new ReportExceptionEventArgs
+                {
+                    ReportedException = e
+                };
                 ReportedExceptionEvent(sender, args);
             }
         }

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Settings;
 using Axe.Windows.Core.Types;
@@ -21,7 +21,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <summary>
         /// Original selected properties list
         /// </summary>
-        List<RecordEntitySetting> CoreProperties;
+        readonly List<RecordEntitySetting> CoreProperties;
 
         /// <summary>
         /// Constructor for dialog

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -264,10 +264,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public void InvokeHelpLink()
         {
             Process.Start(new ProcessStartInfo(this.HelpUrl.Url));
-
-            var dic = new Dictionary<string, string>();
-            dic.Add("HelpLink", this.HelpUrl.Url);
-            dic.Add("UrlType", this.HelpUrl.Type.ToString());
         }
         #endregion
 

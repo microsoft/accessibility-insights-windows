@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
@@ -74,14 +74,16 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
                 if (h < 0.0)
                 {
-                    h = h + 360;
+                    h += 360;
                 }
             }
 
-            HsvColor hsvColor = new HsvColor();
-            hsvColor.H = h;
-            hsvColor.S = s;
-            hsvColor.V = v / 255;
+            HsvColor hsvColor = new HsvColor
+            {
+                H = h,
+                S = s,
+                V = v / 255
+            };
 
             return hsvColor;
         }
@@ -89,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         // Converts an HSV color to an RGB color.
         public static Color ConvertHsvToRgb(double h, double s, double v)
         {
-            double r = 0, g = 0, b = 0;
+            double r, g, b;
 
             if (s == 0)
             {
@@ -108,7 +110,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
                 }
                 else
                 {
-                    h = h / 60;
+                    h /= 60;
                 }
 
                 i = (int)Math.Truncate(h);

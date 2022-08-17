@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -23,15 +23,15 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <summary>
         /// TextPattern
         /// </summary>
-        private TextPattern TextPattern;
+        private readonly TextPattern TextPattern;
         /// <summary>
         /// TextPattern2
         /// </summary>
-        private TextPattern2 TextPattern2;
+        private readonly TextPattern2 TextPattern2;
         /// <summary>
         /// Custom list which contains the user-added TextRangeViewModels
         /// </summary>
-        private List<TextRangeViewModel> CustomList;
+        private readonly List<TextRangeViewModel> CustomList;
 
         /// <summary>
         /// indidate the type of source methods
@@ -244,8 +244,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
                 var list = GetSelectedTextRangeViewModel().TextRange.GetChildren();
                 if (list.Count != 0)
                 {
-                    ElementInfoDialog dlg = new ElementInfoDialog(list);
-                    dlg.Owner = Application.Current.MainWindow;
+                    ElementInfoDialog dlg = new ElementInfoDialog(list)
+                    {
+                        Owner = Application.Current.MainWindow
+                    };
                     dlg.ShowDialog();
                 }
                 else
@@ -267,8 +269,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             try
             {
                 var el = GetSelectedTextRangeViewModel().TextRange.GetEnclosingElement();
-                ElementInfoDialog dlg = new ElementInfoDialog(el);
-                dlg.Owner = Application.Current.MainWindow;
+                ElementInfoDialog dlg = new ElementInfoDialog(el)
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 dlg.ShowDialog();
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -365,8 +369,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         {
             try
             {
-                MoveTextRangeDialog dlg = new MoveTextRangeDialog(GetSelectedTextRangeViewModel(), mode, this.CustomList, UpdateHilighter);
-                dlg.Owner = Application.Current.MainWindow;
+                MoveTextRangeDialog dlg = new MoveTextRangeDialog(GetSelectedTextRangeViewModel(), mode, this.CustomList, UpdateHilighter)
+                {
+                    Owner = Application.Current.MainWindow
+                };
                 dlg.ShowDialog();
                 switch (mode)
                 {
@@ -521,8 +527,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void AddTextRangeViewModelToCustomList(TextRangeViewModel trvm)
         {
-            var dlg = new AddTextRangeToCustomListDialog(trvm.Header);
-            dlg.Owner = Application.Current.MainWindow;
+            var dlg = new AddTextRangeToCustomListDialog(trvm.Header)
+            {
+                Owner = Application.Current.MainWindow
+            };
             dlg.ShowDialog();
 
             if (dlg.DialogResult == true)
@@ -543,8 +551,10 @@ namespace AccessibilityInsights.SharedUx.Dialogs
 
         private void mniFind_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new TextRangeFindDialog(GetSelectedTextRangeViewModel());
-            dlg.Owner = Application.Current.MainWindow;
+            var dlg = new TextRangeFindDialog(GetSelectedTextRangeViewModel())
+            {
+                Owner = Application.Current.MainWindow
+            };
             dlg.ShowDialog();
         }
 

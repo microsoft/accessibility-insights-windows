@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Utilities;
 using Axe.Windows.Core.Bases;
@@ -19,7 +19,6 @@ namespace AccessibilityInsights.SharedUx.Highlighting
     /// </summary>
     public class OverlayHighlighter : WindowHighlighterBase, IDisposable
     {
-
         /// <summary>
         /// Selected element rectangle
         /// </summary>

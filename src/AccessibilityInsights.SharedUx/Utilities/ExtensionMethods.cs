@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
@@ -137,7 +137,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
             {
                 // if need to show ancestry, start from rootnode
                 // if not show ancestry, but element has no parent, return element itself.
-                return new HierarchyNodeViewModel(showAncestry ? dc.RootElment : dc.Element.Parent != null ? dc.Element.Parent : dc.Element, showUncertain, isLiveMode);
+                return new HierarchyNodeViewModel(showAncestry ? dc.RootElment : dc.Element.Parent ?? dc.Element, showUncertain, isLiveMode);
             }
 
             return null;

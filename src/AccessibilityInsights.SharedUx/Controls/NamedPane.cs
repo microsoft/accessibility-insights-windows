@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using System.Windows;
@@ -88,8 +88,10 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <returns></returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
-            var peer = new CustomControlOverridingAutomationPeer(this, "pane");
-            peer.AutomationOrientation = AutomationOrientation;
+            var peer = new CustomControlOverridingAutomationPeer(this, "pane")
+            {
+                AutomationOrientation = AutomationOrientation
+            };
             return peer;
         }
     }

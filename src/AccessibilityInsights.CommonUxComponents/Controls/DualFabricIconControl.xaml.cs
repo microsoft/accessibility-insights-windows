@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System.Windows;
 using System.Windows.Automation.Peers;
@@ -72,10 +72,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         #region Foreground (Dependency Property)
 
-        new public static readonly DependencyProperty ForegroundProperty =
+        public static new readonly DependencyProperty ForegroundProperty =
             DependencyProperty.Register("Foreground", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(null, OnForegroundChanged));
 
-        new public Brush Foreground
+        public new Brush Foreground
         {
             get { return (Brush)GetValue(ForegroundProperty); }
 
@@ -153,10 +153,10 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// </summary>
         #region Background (Dependency Property)
 
-        new public static readonly DependencyProperty BackgroundProperty =
+        public static new readonly DependencyProperty BackgroundProperty =
             DependencyProperty.Register("Background", typeof(Brush), typeof(DualFabricIconControl), new PropertyMetadata(null, OnBackgroundChanged));
 
-        new public Brush Background
+        public new Brush Background
         {
             get { return (Brush)GetValue(BackgroundProperty); }
 

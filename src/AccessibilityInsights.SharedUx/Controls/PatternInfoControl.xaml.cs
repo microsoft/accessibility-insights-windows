@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Settings;
@@ -25,7 +25,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <summary>
         /// Keep track of which patterns are expanded
         /// </summary>
-        Dictionary<int, bool> ExpStates = new Dictionary<int, bool>();
+        readonly Dictionary<int, bool> ExpStates = new Dictionary<int, bool>();
 
         public A11yElement Element { get; private set; }
         public bool IsActionAllowed { get; private set; }
@@ -76,7 +76,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 if (this.Element.Patterns != null && this.Element.Patterns.Count != 0)
                 {
                     var patterns = from p in this.Element.Patterns
-                                   select new PatternViewModel(this.Element, p, this.IsActionAllowed, ExpStates.ContainsKey(p.Id) ? ExpStates[p.Id] : false);
+                                   select new PatternViewModel(this.Element, p, this.IsActionAllowed, ExpStates.ContainsKey(p.Id) && ExpStates[p.Id]);
 
                     this.treePatterns.ItemsSource = patterns.ToList();
                     ShowPatternsTree();
@@ -118,15 +118,7 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         private void treePatterns_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            if (this.treePatterns.SelectedItem != null)
-            {
-                dynamic si = this.treePatterns.SelectedItem;
-                if (si is ScanListViewItemViewModel)
-                {
-                    var dic = new Dictionary<string, string>();
-                    dic.Add("SelectedPattern", si.Pattern.Name);
-                }
-            }
+            // TODO: This method does nothing--can we remove it? Old code was probably a telemetry hook at one point
         }
 
         private void copyMenuItemPattern_Click(object sender, RoutedEventArgs e)
@@ -238,7 +230,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 // Right arrow: first press expands; second press goes to button
                 var header = tvi.Template.FindName("PART_Header", tvi) as ContentPresenter;
                 var btn = header.ContentTemplate.FindName("buttonAction", header) as Button;
-                e.Handled = btn == null ? false : btn.Focus();
+                e.Handled = btn != null && btn.Focus();
             }
             else if (e.Key == Key.Right && Keyboard.FocusedElement is Button)
             {

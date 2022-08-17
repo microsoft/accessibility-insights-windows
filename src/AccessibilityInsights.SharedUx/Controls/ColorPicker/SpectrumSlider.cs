@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
@@ -72,10 +72,12 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
 
         private void createSpectrum()
         {
-            pickerBrush = new LinearGradientBrush();
-            pickerBrush.StartPoint = new Point(0, .5);
-            pickerBrush.EndPoint = new Point(1, .5);
-            pickerBrush.ColorInterpolationMode = ColorInterpolationMode.SRgbLinearInterpolation;
+            pickerBrush = new LinearGradientBrush
+            {
+                StartPoint = new Point(0, .5),
+                EndPoint = new Point(1, .5),
+                ColorInterpolationMode = ColorInterpolationMode.SRgbLinearInterpolation
+            };
 
             List<Color> colorsList = ColorUtilities.GenerateHsvSpectrum();
             double stopIncrement = (double)1 / colorsList.Count;
@@ -92,7 +94,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         #endregion
 
         #region Private Fields
-        private static string SpectrumDisplayName = "PART_SpectrumDisplay";
+        private const string SpectrumDisplayName = "PART_SpectrumDisplay";
         private Rectangle m_spectrumDisplay;
         private LinearGradientBrush pickerBrush;
         #endregion

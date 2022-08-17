@@ -17,8 +17,8 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     public class IssueReporterManager
     {
         public static Guid SelectedIssueReporterGuid { get; set; }
-        readonly static object _lockObject = new object();
-        Dictionary<Guid, IIssueReporting> IssueReportingOptionsDict = new Dictionary<Guid, IIssueReporting>();
+        static readonly object _lockObject = new object();
+        readonly Dictionary<Guid, IIssueReporting> IssueReportingOptionsDict = new Dictionary<Guid, IIssueReporting>();
         private static IssueReporterManager _defaultInstance;
         private readonly ConfigurationModel _appConfig;
         private readonly IEnumerable<IIssueReporting> _issueReportingOptions;
@@ -51,10 +51,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
         // Unit testing constructor
         internal IssueReporterManager(ConfigurationModel appConfig, IEnumerable<IIssueReporting> issueReportingOptions)
         {
-            if (appConfig == null)
-                throw new ArgumentNullException(nameof(appConfig));
-
-            _appConfig = appConfig;
+            _appConfig = appConfig ?? throw new ArgumentNullException(nameof(appConfig));
             _issueReportingOptions = issueReportingOptions ?? Enumerable.Empty<IIssueReporting>();
         }
 

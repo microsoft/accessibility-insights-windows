@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Windows;
@@ -33,9 +33,12 @@ namespace AccessibilityInsights.CommonUxComponents.Dialogs
         /// <param name="message"></param>
         public static bool? Show(string message)
         {
-            var dlg = new MessageDialog() { Message = message };
-            dlg.Owner = Application.Current.MainWindow;
-            dlg.Resources = Application.Current.MainWindow.Resources;
+            var dlg = new MessageDialog
+            {
+                Message = message,
+                Owner = Application.Current.MainWindow,
+                Resources = Application.Current.MainWindow.Resources
+            };
 
             return dlg.ShowDialog();
         }

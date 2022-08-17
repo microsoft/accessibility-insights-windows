@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Settings;
@@ -12,11 +12,11 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     public class AppLayoutTests
     {
         const string TestLayoutFile = "LayoutTest.Json";
-        private static FixedConfigSettingsProvider provider = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
+        private static readonly FixedConfigSettingsProvider provider = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
         public static string folderPath = Path.Combine(provider.UserDataFolderPath, "AppLayoutTests");
 
         [ClassInitialize()]
-        public static void ClassInit(TestContext context)
+        public static void ClassInit()
         {
             Directory.CreateDirectory(folderPath);
         }
@@ -159,8 +159,6 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         public static AppLayout FromJson(string path)
         {
             AppLayout element = null;
-            string exactPath = Path.GetFullPath(".../Resources");
-            var x = Directory.EnumerateDirectories("..");
             if (File.Exists(path))
             {
                 var json = File.ReadAllText(path);

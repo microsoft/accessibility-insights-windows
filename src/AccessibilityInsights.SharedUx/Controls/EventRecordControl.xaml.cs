@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -367,7 +367,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         {
             if (this.EventRecorderId != null)
             {
-                var la = ListenAction.GetInstance(this.EventRecorderId.Value);
+                _ = ListenAction.GetInstance(this.EventRecorderId.Value);
                 if (HasRecordedEvents())
                 {
                     using (var dlg = new System.Windows.Forms.SaveFileDialog

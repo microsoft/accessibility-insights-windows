@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.AzureDevOps.Enums;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
@@ -38,7 +38,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// Single VSO server connection object for reuse
         /// </summary>
         private VssConnection _baseServerConnection;
-        private object _lockObject = new object();
+        private readonly object _lockObject = new object();
 
         /// <summary>
         /// When selecting all team projects from AzureDevOps server, do so in chunks
@@ -90,9 +90,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 // reset connection state
                 Disconnect();
-                var credentials = new VssClientCredentials(false);
-                credentials.Storage = new VssClientCredentialStorage();
-                credentials.PromptType = prompt;
+                var credentials = new VssClientCredentials(false)
+                {
+                    Storage = new VssClientCredentialStorage(),
+                    PromptType = prompt
+                };
                 _baseServerConnection = new VssConnection(url, credentials);
                 return _baseServerConnection.ConnectAsync();
             }
@@ -237,13 +239,15 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 return null;
             }
             WorkItemTrackingHttpClient wit = _baseServerConnection.GetClient<WorkItemTrackingHttpClient>();
-            JsonPatchDocument patchDoc = new JsonPatchDocument();
-            patchDoc.Add(new JsonPatchOperation()
+            JsonPatchDocument patchDoc = new JsonPatchDocument
             {
-                Operation = Operation.Replace,
-                Path = Invariant($"/fields/{AzureDevOpsField.ReproSteps.ToApiString()}"),
-                Value = description
-            });
+                new JsonPatchOperation()
+                {
+                    Operation = Operation.Replace,
+                    Path = Invariant($"/fields/{AzureDevOpsField.ReproSteps.ToApiString()}"),
+                    Value = description
+                }
+            };
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
             return await wit.UpdateWorkItemAsync(patchDoc, issueId).ContinueWith(t => t.Result.Id);
@@ -266,33 +270,32 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}.a11ytest"), "Simple", null).ConfigureAwait(false);
             }
-            JsonPatchDocument patchDoc = new JsonPatchDocument();
-            patchDoc.Add(new JsonPatchOperation()
+            JsonPatchDocument patchDoc = new JsonPatchDocument
             {
-                Operation = Operation.Test,
-                Path = "/rev",
-                Value = "1"
-            }
-            );
-            patchDoc.Add(new JsonPatchOperation()
-            {
-                Operation = Operation.Add,
-                Path = "/fields/System.History",
-                Value = Properties.Resources.AttachDataFilesDescription,
-            }
-            );
-            patchDoc.Add(new JsonPatchOperation()
-            {
-                Operation = Operation.Add,
-                Path = "/relations/-",
-                Value = new
+                new JsonPatchOperation()
                 {
-                    rel = "AttachedFile",
-                    url = attachment.Url,
-                    attributes = new { comment = Properties.Resources.AttachTestFileComment },
+                    Operation = Operation.Test,
+                    Path = "/rev",
+                    Value = "1"
+                },
+                new JsonPatchOperation()
+                {
+                    Operation = Operation.Add,
+                    Path = "/fields/System.History",
+                    Value = Properties.Resources.AttachDataFilesDescription,
+                },
+                new JsonPatchOperation()
+                {
+                    Operation = Operation.Add,
+                    Path = "/relations/-",
+                    Value = new
+                    {
+                        rel = "AttachedFile",
+                        url = attachment.Url,
+                        attributes = new { comment = Properties.Resources.AttachTestFileComment },
+                    }
                 }
-            }
-            );
+            };
 
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
@@ -316,19 +319,20 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             {
                 attachment = await wit.CreateAttachmentAsync(outputStream, null, Invariant($"{issueId}-pic.png"), "Simple", null).ConfigureAwait(false);
             }
-            JsonPatchDocument patchDoc = new JsonPatchDocument();
-            patchDoc.Add(new JsonPatchOperation()
+            JsonPatchDocument patchDoc = new JsonPatchDocument
             {
-                Operation = Operation.Add,
-                Path = "/relations/-",
-                Value = new
+                new JsonPatchOperation()
                 {
-                    rel = "AttachedFile",
-                    url = attachment.Url,
-                    attributes = new { comment = Properties.Resources.AttachScreenShotComment },
+                    Operation = Operation.Add,
+                    Path = "/relations/-",
+                    Value = new
+                    {
+                        rel = "AttachedFile",
+                        url = attachment.Url,
+                        attributes = new { comment = Properties.Resources.AttachScreenShotComment },
+                    }
                 }
-            }
-            );
+            };
             // Return attachment URL once this work item is updated
 #pragma warning disable CA2007 // Do not directly await a Task
 #pragma warning disable CA2008 // Do not create tasks without passing a TaskScheduler
@@ -473,7 +477,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Substitutions for characters when creating the bug URL
         /// </summary>
-        private static IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
+        private static readonly IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
         {
             { '\u00b7', '-' }, // middle dot (183) to dash (45)
         };

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
     {
         private const int SearchForText = 0;
 
-        private TextRangeViewModel ViewModel;
+        private readonly TextRangeViewModel ViewModel;
         private TextRangeHilighter Hilighter;
         private TextRangeFinder Finder;
 
@@ -139,17 +139,6 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             return item.Item1;
         }
 
-        /// <summary>
-        /// check whether it is text search or not
-        /// </summary>
-        /// <returns></returns>
-        private bool IsTextSearch()
-        {
-            var item = cbAttributes.SelectedItem as Tuple<int, string, dynamic, Type>;
-
-            return item.Item1 == SearchForText;
-        }
-
         private void btnBackward_Click(object sender, RoutedEventArgs e)
         {
             FindTextRange(true);
@@ -168,13 +157,11 @@ namespace AccessibilityInsights.SharedUx.Dialogs
             //turn off hilighter
             this.Hilighter.HilightBoundingRectangles(false);
 
-            Axe.Windows.Desktop.UIAutomation.Patterns.TextRange range = null;
-
             try
             {
                 var attributeId = GetAttributeId();
 
-                range = attributeId == SearchForText
+                Axe.Windows.Desktop.UIAutomation.Patterns.TextRange range = attributeId == SearchForText
                     ? this.Finder.FindText(GetAttributeValue() as string, backward, chbIgnoreCase.IsChecked ?? false)
                     : this.Finder.Find(attributeId, GetAttributeValue(), backward);
 

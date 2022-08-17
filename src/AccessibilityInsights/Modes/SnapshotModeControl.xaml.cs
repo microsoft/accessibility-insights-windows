@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -322,6 +322,7 @@ namespace AccessibilityInsights.Modes
             this.ctrlTabs.CurrentMode = (TestView)(MainWin.CurrentView) == TestView.ElementHowToFix ? InspectTabMode.TestHowToFix : InspectTabMode.TestProperties;
         }
 
+#pragma warning disable IDE0051 // TODO: Is this really unused?
         /// <summary>
         /// Update current view based on tab selection
         /// </summary>
@@ -337,6 +338,7 @@ namespace AccessibilityInsights.Modes
                 MainWin.SetCurrentViewAndUpdateUI(TestView.ElementDetails);
             }
         }
+#pragma warning restore IDE0051
 
         /// <summary>
         /// Clear UI
@@ -375,8 +377,7 @@ namespace AccessibilityInsights.Modes
         public void CopyToClipboard()
         {
             StringBuilder sb = new StringBuilder();
-
-            if (Keyboard.FocusedElement is ListViewItem lvi && lvi.DataContext is ScanListViewItemViewModel stvi)
+            if (Keyboard.FocusedElement is ListViewItem lvi && lvi.DataContext is ScanListViewItemViewModel)
             {
                 ListView listView = ItemsControl.ItemsControlFromItemContainer(lvi) as ListView;
                 foreach (var item in listView.SelectedItems)

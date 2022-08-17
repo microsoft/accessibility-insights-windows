@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.Upgrades;
@@ -110,8 +110,10 @@ namespace AccessibilityInsights
         private void UpdateBreadcrumbs()
         {
             var sa = SelectAction.GetDefaultInstance();
-            var rd = new ResourceDictionary();
-            rd.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
+            _ = new ResourceDictionary
+            {
+                Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute)
+            };
 
             CollapseAllCrumbs();
 

@@ -11,7 +11,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
     /// <summary>
     /// Adapter between the core app and the issue reporting extension
     /// </summary>
-    static public class IssueReporter
+    public static class IssueReporter
     {
         #region Unit test overrides
         internal static bool? TestControlledIsEnabled;
@@ -34,7 +34,7 @@ namespace AccessibilityInsights.SharedUx.FileIssue
             }
         }
 
-        public static bool IsConnected => IsEnabled && (IssueReporting == null ? false : IssueReporting.IsConfigured);
+        public static bool IsConnected => IsEnabled && (IssueReporting != null && IssueReporting.IsConfigured);
 
         public static ReporterFabricIcon Logo => (IsEnabled && IssueReporting != null) ? IssueReporting.Logo : ReporterFabricIcon.PlugDisconnected;
 

@@ -11,19 +11,19 @@ namespace UITests.UILibrary
 {
     public class AIWinDriver
     {
-        WindowsDriver<WindowsElement> Session;
+        readonly WindowsDriver<WindowsElement> Session;
         public GettingStarted GettingStarted { get; }
         public EventsMode EventsMode { get; }
         public Settings Settings { get; }
         public LiveMode LiveMode { get; }
         public TestMode TestMode { get; }
 
-        int PID;
+        readonly int PID;
 
         public AIWinDriver(WindowsDriver<WindowsElement> session, int pid)
         {
-            EventsMode = new EventsMode(session);
-            Settings = new Settings(session);
+            EventsMode = new EventsMode();
+            Settings = new Settings();
             LiveMode = new LiveMode(session);
             TestMode = new TestMode(session);
             GettingStarted = new GettingStarted(session);

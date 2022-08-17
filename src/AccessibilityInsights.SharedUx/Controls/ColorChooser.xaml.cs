@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Telemetry;
@@ -44,14 +44,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public event EventHandler<ColorChangedEventArgs> ColorChangerInvoked;
 
-        /// <summary>
-        /// Two colors are maintained: StoredColor represents the
-        /// current color, but oldColor saves a copy of the storedColor
-        /// at the beginning of each recording session. Then if the user
-        /// cancels their new color selection, we revert StoredColor to
-        /// the value of oldColor
-        /// </summary>
-        private Color oldColor;
 
         public static readonly DependencyProperty StoredColorProperty =
             DependencyProperty.Register("StoredColor", typeof(Color), typeof(ColorChooser));
@@ -104,7 +96,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void Reset()
         {
-            oldColor = DefaultColor;
             StoredColor = DefaultColor;
             ColorSetByUser = false;
         }
@@ -116,7 +107,6 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// </summary>
         public void RecordingCompleted()
         {
-            oldColor = StoredColor;
             ColorSetByUser = true;
         }
 

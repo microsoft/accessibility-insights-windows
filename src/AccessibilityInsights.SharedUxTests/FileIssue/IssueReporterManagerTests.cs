@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         private const string TestGuidString = "84553fe4-0e1c-4ef8-bacc-a51dc47ec59e";
         private const string TestReporterConfigs = "hello world";
         private const string RandomTestGuid = "cfef03dc-c4ed-4c09-b7ac-d556148e15a4";
-        private string TestSerializedConfigs = "{\"" + TestGuidString + "\":\"" + TestReporterConfigs + "\"}";
+        private readonly string TestSerializedConfigs = "{\"" + TestGuidString + "\":\"" + TestReporterConfigs + "\"}";
         private Guid TestGuid = Guid.Parse(TestGuidString);
 
         [TestMethod]
@@ -53,8 +53,10 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
         [Timeout(1000)]
         public void RestorePersistedConfigurations_Normal_DictionaryPopulated()
         {
-            ConfigurationModel configs = new ConfigurationModel();
-            configs.IssueReporterSerializedConfigs = TestSerializedConfigs;
+            ConfigurationModel configs = new ConfigurationModel
+            {
+                IssueReporterSerializedConfigs = TestSerializedConfigs
+            };
 
             Mock<IIssueReporting> issueReporterMock = GetIssueReporterMock();
             List<IIssueReporting> issueReportingOptions = new List<IIssueReporting>() { issueReporterMock.Object };
@@ -274,8 +276,10 @@ namespace AccessibilityInsights.SharedUxTests.FileIssue
 
         private static ConfigurationModel GetConfigurationModel(string config)
         {
-            ConfigurationModel configs = new ConfigurationModel();
-            configs.IssueReporterSerializedConfigs = config;
+            ConfigurationModel configs = new ConfigurationModel
+            {
+                IssueReporterSerializedConfigs = config
+            };
             return configs;
         }
     }

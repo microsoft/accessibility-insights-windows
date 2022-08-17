@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -47,12 +47,12 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
         }
 
-        private ApplicationSettingsViewModel DataContextVM = new ApplicationSettingsViewModel();
+        private readonly ApplicationSettingsViewModel DataContextVM = new ApplicationSettingsViewModel();
 
         /// <summary>
         /// Keep the list of Hotkey buttons for checking duplication later.
         /// </summary>
-        private List<Button> HotKeyButtons;
+        private readonly List<Button> HotKeyButtons;
 
         /// <summary>
         /// Constructor
@@ -99,8 +99,10 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         {
             if (HkDialog == null || !HkDialog.IsLoaded)
             {
-                HkDialog = new HotkeyGrabDialog(button);
-                HkDialog.Owner = Window.GetWindow(this);
+                HkDialog = new HotkeyGrabDialog(button)
+                {
+                    Owner = Window.GetWindow(this)
+                };
                 HkDialog.ShowDialog();
             }
         }
@@ -189,8 +191,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             }
 
             // make sure that text is parsable.
-            int milsec;
-            var conv = int.TryParse(this.tbMouseDelay.Text, out milsec);
+            var conv = int.TryParse(this.tbMouseDelay.Text, out int milsec);
             if (conv == true && config.MouseSelectionDelayMilliSeconds != milsec)
             {
                 return true;

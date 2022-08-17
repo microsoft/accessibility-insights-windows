@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.SharedUx.FileIssue;
@@ -37,11 +37,13 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
 
         private RadioButton CreateRadioButton(IIssueReporting reporter)
         {
-            RadioButton issueReportingOption = new RadioButton();
-            issueReportingOption.Style = FindResource("primaryFGRadioButtonStyle") as Style;
-            issueReportingOption.Content = reporter.ServiceName;
-            issueReportingOption.Tag = reporter.StableIdentifier;
-            issueReportingOption.Margin = new Thickness(2, 2, 2, 2);
+            RadioButton issueReportingOption = new RadioButton
+            {
+                Style = FindResource("primaryFGRadioButtonStyle") as Style,
+                Content = reporter.ServiceName,
+                Tag = reporter.StableIdentifier,
+                Margin = new Thickness(2, 2, 2, 2)
+            };
             issueReportingOption.Checked += IssueReporterOnChecked;
             issueReportingOption.FontSize = 14;
             return issueReportingOption;

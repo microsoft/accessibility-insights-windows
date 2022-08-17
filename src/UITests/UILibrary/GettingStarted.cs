@@ -7,7 +7,7 @@ namespace UITests.UILibrary
 {
     public class GettingStarted
     {
-        WindowsDriver<WindowsElement> Session;
+        readonly WindowsDriver<WindowsElement> Session;
 
         public GettingStarted(WindowsDriver<WindowsElement> session)
         {
