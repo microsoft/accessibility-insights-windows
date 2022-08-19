@@ -190,7 +190,7 @@ namespace AccessibilityInsights.Modes
                         this.ctrlHierarchy.DataContext = ec.DataContext;
                         this.ElementContext = ec;
 
-                        // make sure that  when selected node is changed in hierarchy tree, enable selector.
+                        // make sure that when selected node is changed in hierarchy tree, enable selector.
                         EnableSelectorWhenPOISelectedInHierarchy = true;
 
                         this.ctrlHierarchy.SetElement(ec);
