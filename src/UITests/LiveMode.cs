@@ -38,7 +38,7 @@ namespace UITests
 
         private void ValidateResultsInUIATree()
         {
-            // These values shold only change in response to a change in Axe.Windows or WildlifeManager
+            // These values should only change in response to a change in Axe.Windows or WildlifeManager
             int nonExpandedNonFrameworkExpectedResultsCount = 2;
             int expandedNonFrameworkExpectedResultsCount = 12;
             int nonExpandedFrameworkExpectedResultsCount = 0;

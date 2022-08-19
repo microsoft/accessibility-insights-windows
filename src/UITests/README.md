@@ -4,7 +4,7 @@ UI tests reside in the `UITests` project. [WinAppDriver](https://github.com/Micr
 
 ### Running UI Tests
 * To run tests locally, [WinAppDriver](https://github.com/Microsoft/WinAppDriver) must already be running. Once WinAppDriver is open, simply run the UI tests from Visual Studio the [same way unit tests are run](https://docs.microsoft.com/en-us/previous-versions/ms182470(v=vs.140)). 
-* UI tests are automatically run as a part of Accessibility Insights for Windows's PR build. Results can be viewed in the [Tests tab](https://docs.microsoft.com/en-us/azure/devops/pipelines/test/review-continuous-test-results-after-build?view=azure-devops#tests-tab) of a specific build. The following attachements are associated with UI tests:
+* UI tests are automatically run as a part of Accessibility Insights for Windows's PR build. Results can be viewed in the [Tests tab](https://docs.microsoft.com/en-us/azure/devops/pipelines/test/review-continuous-test-results-after-build?view=azure-devops#tests-tab) of a specific build. The following attachments are associated with UI tests:
   * Screen capture. You can download a screen capture video of any UI test.
   * Events log. In case a crash occurs, we attach the Windows event log events that were captured during a UI test if there were any such events.
   * A11y test file. If an accessibility issue is found during a UI test, we attach the corresponding .a11ytest file. You can open this with Accessibility Insights for Windows.

@@ -11,7 +11,7 @@ namespace UITests.UILibrary
         readonly WindowsDriver<WindowsElement> Session;
 
         // These AutomationIDs came from inspecting the open file dialog with ai-win.
-        // The assumption is that they are the same accross machines--if they aren't,
+        // The assumption is that they are the same across machines--if they aren't,
         // we'll need a more robust way to navigate the dialog.
         const string OpenFileFolderTextBoxAutomationID = "41477";
         const string OpenFileFileTextBoxAutomationID = "1148";
