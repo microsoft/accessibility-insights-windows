@@ -20,7 +20,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         private readonly Action<Exception> _target;
 
         /// <summary>
-        /// Ctor
+        /// Constructor
         /// </summary>
         /// <param name="target">The target to receive exceptions</param>
         internal ReportExceptionBuffer(Action<Exception> target)

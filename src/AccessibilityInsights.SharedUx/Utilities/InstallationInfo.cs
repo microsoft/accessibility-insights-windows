@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         public DateTime LastReset { get; private set; }
 
         /// <summary>
-        /// Production ctor - Uses a new installId and current time
+        /// Production constructor - Uses a new installId and current time
         /// </summary>
         public InstallationInfo()
             : this(Guid.NewGuid(), DateTime.UtcNow)
@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         }
 
         /// <summary>
-        /// Unit test ctor - lets caller specify installID and lastReset time
+        /// Unit test constructor - lets caller specify installID and lastReset time
         /// </summary>
         /// <param name="installId">The initial value of InstallationGuid</param>
         /// <param name="lastReset">The initial value of LastReset</param>

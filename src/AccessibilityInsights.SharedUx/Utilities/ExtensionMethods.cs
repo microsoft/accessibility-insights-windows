@@ -128,14 +128,14 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// Get Root Node Hierarchy ViewModel based on currently populated data.
         /// </summary>
         /// <param name="dc">Datacontext to create nodes from</param>
-        /// <param name="showAncestry">Should ancestory be shown</param>
+        /// <param name="showAncestry">Should ancestry be shown</param>
         /// <param name="showUncertain">Should uncertain scans be shown</param>
         /// <param name="isLiveMode">Is node for live mode</param>
         public static HierarchyNodeViewModel GetRootNodeHierarchyViewModel(this ElementDataContext dc, bool showAncestry, bool showUncertain, bool isLiveMode)
         {
             if (dc?.RootElment?.Properties != null && dc.RootElment.Properties.Count != 0 && dc.Element != null)
             {
-                // if need to show ancestry, start from rootnode
+                // if need to show ancestry, start from root node
                 // if not show ancestry, but element has no parent, return element itself.
                 return new HierarchyNodeViewModel(showAncestry ? dc.RootElment : dc.Element.Parent ?? dc.Element, showUncertain, isLiveMode);
             }

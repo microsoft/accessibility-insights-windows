@@ -23,7 +23,7 @@
         <GradientStop Color="#004880" Offset="0"/>
         <GradientStop Color="#000000" Offset="0.5"/>
     </LinearGradientBrush>
-    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most eveywhere) -->
+    <SolidColorBrush po:Freeze="True" x:Key="PrimaryFGBrush" Color="#FFFFFF"/>          <!-- (UPDATED) Primary Foreground color (used most everywhere) -->
     <SolidColorBrush po:Freeze="True" x:Key="SecondaryFGBrush" Color="#B2B3B5"/>        <!-- (UPDATED) Secondary Foreground color (de-emphasized text) -->
     <SolidColorBrush po:Freeze="True" x:Key="BubbleBGBrush" Color="#696C6F"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble BG -->
     <SolidColorBrush po:Freeze="True" x:Key="BubbleFGBrush" Color="#FFFFFF"/>           <!-- (UPDATED) Used ONLY for "New for WCAG 2.1" bubble FG -->
