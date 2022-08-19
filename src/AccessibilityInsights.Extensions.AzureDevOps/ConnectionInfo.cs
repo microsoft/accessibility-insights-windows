@@ -30,12 +30,12 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public bool IsPopulated => ServerUri != null && Project != null;
 
         /// <summary>
-        /// Default ctor -- used exclusively for JSON serialization
+        /// Default constructor -- used exclusively for JSON serialization
         /// </summary>
         public ConnectionInfo() { }
 
         /// <summary>
-        /// Populates the server url, project, and team
+        /// Populates the server URL, project, and team
         /// - does not populate LastUsage, which is automatically
         /// set to a very early date (1/1/1900)
         /// </summary>
@@ -67,7 +67,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Copy ctor - enforces correct types internally
+        /// Copy constructor - enforces correct types internally
         /// </summary>
         /// <param name="original">The original object being copied</param>
         public ConnectionInfo(ConnectionInfo original)
@@ -83,7 +83,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         ///     as the other object. Ignores LastUsage
         /// </summary>
         /// <param name="other">The other object to compare</param>
-        /// <returns>true iff data fields match (ignores LastUsage field)</returns>
+        /// <returns>true if and only if data fields match (ignores LastUsage field)</returns>
         public bool DataEquals(ConnectionInfo other)
         {
             if (other == null)

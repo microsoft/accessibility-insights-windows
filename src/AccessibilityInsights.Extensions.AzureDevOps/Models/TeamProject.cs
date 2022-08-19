@@ -12,14 +12,14 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
     public class TeamProject : AzureDevOpsEntity
     {
         /// <summary>
-        /// Default ctor -- used exclusively for JSON serialization
+        /// Default constructor -- used exclusively for JSON serialization
         /// </summary>
         public TeamProject() { }
 
         public TeamProject(string name, Guid id) : base(name, id) { }
 
         /// <summary>
-        /// Copy ctor - enforces correct types internally
+        /// Copy constructor - enforces correct types internally
         /// </summary>
         /// <param name="original">The original object being copied</param>
 #pragma warning disable CA1062 // Validate arguments of public methods

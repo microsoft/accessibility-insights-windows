@@ -12,7 +12,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         public TeamProject ParentProject { get; set; }
 
         /// <summary>
-        /// Default ctor -- used exclusively for JSON serialization
+        /// Default constructor -- used exclusively for JSON serialization
         /// </summary>
         public AdoTeam() { }
 
@@ -22,7 +22,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         }
 
         /// <summary>
-        /// Copy ctor - enforces correct types internally
+        /// Copy constructor - enforces correct types internally
         /// </summary>
         /// <param name="original">The original object being copied</param>
 #pragma warning disable CA1062 // Validate arguments of public methods

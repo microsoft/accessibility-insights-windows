@@ -98,7 +98,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Returns the most recent connection with the given server URL (most recent globally if server url is null)
+        /// Returns the most recent connection with the given server URL (most recent globally if server URL is null)
         /// </summary>
         /// <param name="serverUri"></param>
         /// <returns></returns>

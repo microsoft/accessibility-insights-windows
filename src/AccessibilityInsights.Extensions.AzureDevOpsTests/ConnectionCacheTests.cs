@@ -155,7 +155,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOpsTests
         }
 
         /// <summary>
-        /// returns info object with both server url and last usage set
+        /// returns info object with both server URL and last usage set
         /// </summary>
         private ConnectionInfo GetConnectionInfo(int i, bool hasProject = false, int? offsetInTicks = null)
         {

@@ -184,7 +184,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.FileIssue
         }
 
         /// <summary>
-        /// Navigates to the given url
+        /// Navigates to the given URL
         /// </summary>
         /// <param name="url"></param>
         private void Navigate(Uri url) => fileIssueBrowser.Source = url;
