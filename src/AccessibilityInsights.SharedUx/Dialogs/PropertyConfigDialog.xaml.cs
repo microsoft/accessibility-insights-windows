@@ -69,7 +69,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Ok button click
+        /// OK button click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

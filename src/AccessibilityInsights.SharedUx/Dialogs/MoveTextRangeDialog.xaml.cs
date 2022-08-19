@@ -23,7 +23,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private readonly List<Parameter> Parameters;
         private readonly Type ReturnType;
         /// <summary>
-        /// Notify TextPattern Explorer to update Hilighter
+        /// Notify TextPattern Explorer to update Highlighter
         /// </summary>
         private readonly Action UpdateHighlighter;
 

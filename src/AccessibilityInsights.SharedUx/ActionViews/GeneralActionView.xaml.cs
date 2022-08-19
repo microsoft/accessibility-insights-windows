@@ -15,7 +15,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 {
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
     /// <summary>
-    /// Interaction logic for General ations
+    /// Interaction logic for General actions
     /// handle cases with any number of parameters and any type of returns except A11yElement
     /// </summary>
     public partial class GeneralActionView : UserControl
@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         readonly Timer timerInvoke;
         private readonly object _lockObject = new object();
 
-        // Keep track of comboxbox dropdown state
+        // Keep track of combobox dropdown state
         bool isDropDownOpen;
 
         public GeneralActionView(GeneralActionViewModel a)
@@ -199,7 +199,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 
             if (e.Key == Key.Escape)
             {
-                e.Handled = this.isDropDownOpen; // if the combobox dropdown was open, don't let esc close the dialog
+                e.Handled = this.isDropDownOpen; // if the combobox dropdown was open, don't let Esc close the dialog
                 this.isDropDownOpen = cmbx.IsDropDownOpen = false;
             }
         }

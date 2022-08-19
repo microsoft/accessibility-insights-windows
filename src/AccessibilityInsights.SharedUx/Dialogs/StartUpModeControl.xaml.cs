@@ -24,7 +24,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         const string VideoUrl = "https://go.microsoft.com/fwlink/?linkid=2077681";
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {

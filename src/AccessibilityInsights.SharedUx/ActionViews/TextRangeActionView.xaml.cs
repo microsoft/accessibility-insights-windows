@@ -14,7 +14,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
 {
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
     /// <summary>
-    /// Interaction logic for TextRange ations
+    /// Interaction logic for TextRange actions
     /// handle cases with any number of parameters and any type of returns except A11yElement
     /// </summary>
     public partial class TextRangeActionView : UserControl
