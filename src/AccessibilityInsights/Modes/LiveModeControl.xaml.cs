@@ -37,7 +37,7 @@ namespace AccessibilityInsights.Modes
         public Tuple<Guid, int> SelectedInHierarchyElement { get; private set; }
 
         /// <summary>
-        /// Inidate whether need to EnableElementSelector at the hierarchy node Selection change.
+        /// Indicates whether EnableElementSelector should be called at hierarchy node Selection change.
         /// </summary>
         private bool EnableSelectorWhenPOISelectedInHierarchy;
 
@@ -62,7 +62,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -190,7 +190,7 @@ namespace AccessibilityInsights.Modes
                         this.ctrlHierarchy.DataContext = ec.DataContext;
                         this.ElementContext = ec;
 
-                        // make sure that  when selected node is changed in hiearchy tree, enable selector.
+                        // make sure that when selected node is changed in hierarchy tree, enable selector.
                         EnableSelectorWhenPOISelectedInHierarchy = true;
 
                         this.ctrlHierarchy.SetElement(ec);
@@ -235,7 +235,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Make sure that statemachine and UI are updated for Live mode.
+        /// Make sure that state machine and UI are updated for Live mode.
         /// </summary>
         private static void UpdateStateMachineForLiveMode()
         {
@@ -270,7 +270,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Hide control and hilighter
+        /// Hide control and highlighter
         /// </summary>
         public void HideControl()
         {
@@ -281,7 +281,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Show control and hilighter
+        /// Show control and highlighter
         /// </summary>
         public void ShowControl()
         {
@@ -394,7 +394,7 @@ namespace AccessibilityInsights.Modes
         public bool IsRefreshEnabled { get { return false; } }
 
         /// <summary>
-        /// Save button is not neeeded on main command bar
+        /// Save button is not needed on main command bar
         /// </summary>
         public bool IsSaveEnabled { get { return false; } }
 

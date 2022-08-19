@@ -35,7 +35,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -224,7 +224,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Hide control and hilighter
+        /// Hide control and highlighter
         /// </summary>
         public void HideControl()
         {
@@ -232,7 +232,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Show control and hilighter
+        /// Show control and highlighter
         /// - if connection is true, routes to connection information
         /// </summary>
         public async void ShowControl(bool connection)

@@ -134,7 +134,7 @@ namespace AccessibilityInsights
                 this.btnPause.Visibility = Visibility.Visible;
             }
 
-            // clear selected element highliter
+            // clear selected element highlighter
             HollowHighlightDriver.GetInstance(HighlighterType.Selected).Clear();
             ImageOverlayDriver.ClearDefaultInstance();
 
@@ -238,7 +238,7 @@ namespace AccessibilityInsights
                     }
                 }
 
-                // Based on Ux model feedback from PM team, we decided to go to AutomatedTestResults as default page view for snapshot.
+                // Based on UX model feedback from PM team, we decided to go to AutomatedTestResults as default page view for snapshot.
                 StartTestMode(TestView.AutomatedTestResults);
 
                 Logger.PublishTelemetryEvent(TelemetryEventFactory.ForTestRequested(
@@ -338,7 +338,7 @@ namespace AccessibilityInsights
         delegate void FileLoadHandler(string path, int? selectedElementId = null);
 
         /// <summary>
-        /// Handle Load snapshot data and Request Ux Change
+        /// Handle Load snapshot data and Request UX Change
         /// </summary>
         /// <param name="path"></param>
         /// <param name="selectedEelement"></param>
@@ -351,7 +351,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Handle Load snapshot data and Request Ux Change
+        /// Handle Load snapshot data and Request UX Change
         /// </summary>
         /// <param name="path"></param>
         /// <param name="selectedEelement">Not used</param>

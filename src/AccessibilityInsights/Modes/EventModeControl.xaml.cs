@@ -44,7 +44,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -166,7 +166,7 @@ namespace AccessibilityInsights.Modes
                 this.ctrlTabs.CurrentMode = InspectTabMode.Events;
                 try
                 {
-                    // the element context is special one for Event. so it doen't have any data yet.
+                    // the element context is a special one for Event, so it doesn't have any data yet.
                     // need to populate data with selected element.
                     var e = GetDataAction.GetA11yElementWithLiveData(ecId, 0);
                     this.ElementContext = ec;
@@ -197,7 +197,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Hide control and hilighter
+        /// Hide control and highlighter
         /// </summary>
         public void HideControl()
         {
@@ -207,7 +207,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Show control and hilighter
+        /// Show control and highlighter
         /// </summary>
         public void ShowControl()
         {

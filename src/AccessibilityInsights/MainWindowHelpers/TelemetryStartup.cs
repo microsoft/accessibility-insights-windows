@@ -12,7 +12,7 @@ namespace AccessibilityInsights
     public partial class MainWindow
     {
         /// <summary>
-        /// Checks if telemetry startup dialog needs to be diplayed
+        /// Checks if telemetry startup dialog needs to be displayed
         /// </summary>
         private void ShowTelemetryDialog()
         {

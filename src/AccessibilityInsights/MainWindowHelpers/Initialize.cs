@@ -461,7 +461,7 @@ namespace AccessibilityInsights
                 double right = left + layout.Width;
                 double bottom = top + layout.Height;
 
-                // If the window is completely offscreen, open it in default location
+                // If the window is completely off-screen, open it in default location
                 if ((right <= virtualLeft) ||
                     (bottom <= virtualTop) ||
                     (left >= virtualRight) ||
