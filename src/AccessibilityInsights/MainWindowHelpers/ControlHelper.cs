@@ -30,7 +30,7 @@ namespace AccessibilityInsights
         /// <summary>
         /// Enable appropriate Tracker in SelectAction based on configuration
         /// Keyboard focus vs. Mouse
-        /// allow enable only in selection is feasibile based on mode.
+        /// allow enable only if selection is feasible based on mode.
         /// </summary>
         internal void EnableElementSelector()
         {

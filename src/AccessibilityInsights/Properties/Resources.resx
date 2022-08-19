@@ -468,7 +468,7 @@ Please ensure that you are opening a valid test file using the most recent relea
   </data>
   <data name="SetElementInspectTestDetail" xml:space="preserve">
     <value>Inspect Test Detail of {0}</value>
-    <comment>{0} is the glimse</comment>
+    <comment>{0} is the glimpse</comment>
   </data>
   <data name="SaveException" xml:space="preserve">
     <value>Couldn't save the file: {0}</value>

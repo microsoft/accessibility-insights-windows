@@ -110,7 +110,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// update the navgation bar
+        /// update the navigation bar
         /// </summary>
         private void UpdateNavigationBarAutomationName()
         {
@@ -696,7 +696,7 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Open config dialog. Update based on changes if user presses ok
+        /// Open config dialog. Update based on changes if user presses OK
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

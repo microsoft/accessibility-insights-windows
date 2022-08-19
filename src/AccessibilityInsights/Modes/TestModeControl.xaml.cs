@@ -53,7 +53,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -84,7 +84,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Hide control and hilighter
+        /// Hide control and highlighter
         /// </summary>
         public void HideControl()
         {
@@ -92,7 +92,7 @@ namespace AccessibilityInsights.Modes
         }
 
         /// <summary>
-        /// Show control and hilighter
+        /// Show control and highlighter
         /// </summary>
         public void ShowControl()
         {
@@ -341,7 +341,7 @@ namespace AccessibilityInsights.Modes
         public bool IsRefreshEnabled { get; private set; }
 
         /// <summary>
-        /// Save button is neeeded on main command bar
+        /// Save button is needed on main command bar
         /// if it is load mode(PlatformObject is null), disable it.
         /// </summary>
         public bool IsSaveEnabled { get; private set; }
