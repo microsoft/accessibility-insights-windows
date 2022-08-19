@@ -64,7 +64,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         const int TreeButtonVerticalSpacing = 36;
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -147,7 +147,7 @@ namespace AccessibilityInsights.SharedUx.Controls
                 UpdateButtonVisibility();
 
                 // We remove and re-add the "show uncertain" item from the visual tree
-                // in order to ensure n-of-m information is read correctly
+                // to ensure n-of-m information is read correctly
                 // by screen readers via the SizeOfSet and PositionInSet properties.
                 if (cmHierarchySettings.Items.Contains(mniShowUncertain))
                 {
@@ -787,7 +787,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Keep event butotn inside of scrollview
+        /// Keep event button inside of scrollview
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

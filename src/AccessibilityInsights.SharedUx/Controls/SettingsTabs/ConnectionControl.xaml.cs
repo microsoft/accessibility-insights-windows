@@ -134,7 +134,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         #endregion
 
         /// <summary>
-        /// Inititates the view. Fetches a list of all the available issue reporters and creates a list.
+        /// Initializes the view. Fetches a list of all the available issue reporters and creates a list.
         /// </summary>
         public void InitializeView()
         {

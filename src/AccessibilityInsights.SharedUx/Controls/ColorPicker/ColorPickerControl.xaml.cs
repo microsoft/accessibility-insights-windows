@@ -108,7 +108,7 @@ namespace AccessibilityInsights.SharedUx.Controls.ColorPicker
         }
         #endregion RGB Properties
 
-        // Gets or sets the the selected color in hexadecimal notation.
+        // Gets or sets the selected color in hexadecimal notation.
         public string HexadecimalString
         {
             get

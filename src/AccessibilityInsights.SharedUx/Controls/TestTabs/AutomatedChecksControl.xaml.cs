@@ -61,7 +61,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
@@ -189,7 +189,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         public void Show()
         {
             var ha = ImageOverlayDriver.GetDefaultInstance();
-            // set handler here. it will make sure that highliter button is shown and working.
+            // set handler here. It will make sure that highlighter button is shown and working.
             ha.SetHighlighterButtonClickHandler(TBElem_Click);
 
             if (this.HighlightVisibility)
@@ -234,7 +234,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         }
 
         /// <summary>
-        /// Notify Element selection to swith mode to snapshot
+        /// Notify Element selection to switch mode to snapshot
         /// </summary>
         /// <param name="e"></param>
         private void NotifySelected(A11yElement e)
@@ -253,7 +253,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             try
             {
-                // set handler here. it will make sure that highliter button is shown and working.
+                // set handler here. it will make sure that highlighter button is shown and working.
                 ImageOverlayDriver.GetDefaultInstance().SetHighlighterButtonClickHandler(TBElem_Click);
 
                 if (this.ElementContext == null || ec.Element != this.ElementContext.Element || this.DataContext != ec.DataContext)

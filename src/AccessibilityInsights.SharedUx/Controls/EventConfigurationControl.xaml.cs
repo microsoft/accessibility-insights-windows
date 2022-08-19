@@ -456,7 +456,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Switch listviewitem side on doubleclick
+        /// Switch listviewitem side on double-click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
