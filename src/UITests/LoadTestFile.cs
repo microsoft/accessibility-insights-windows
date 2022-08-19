@@ -21,7 +21,7 @@ namespace UITests
 
         readonly string TestFilePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "TestFiles");
 
-        // These values shold only change in response to a change in Axe.Windows or WildlifeManager
+        // These values should only change in response to a change in Axe.Windows or WildlifeManager
         const int AutomatedChecks_NonFrameworkErrorCount = 12;
         const int AutomatedChecks_FrameworkErrorCount = 3;
         const int UIATree_FailedResultsCount = 2;
