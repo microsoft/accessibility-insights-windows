@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public NotSupportedActionViewModel(A11yPattern p, MethodInfo m) : base(p, m) { }
 
         /// <summary>
-        /// Not needed but it is overriden
+        /// Not needed but it is overridden
         /// </summary>
         protected override void InvokeMethod() { }
     }

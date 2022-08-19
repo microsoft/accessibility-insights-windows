@@ -14,7 +14,7 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
     public class ViewModelTests
     {
         /// <summary>
-        /// Tests the descendent status counts in HierarchyNodeViewModel
+        /// Tests the descendant status counts in HierarchyNodeViewModel
         /// </summary>
         [TestMethod()]
         public void GetDescendentStatusCounts()
@@ -63,7 +63,7 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
         }
 
         /// <summary>
-        /// Populates all descendents with test results and sets them to
+        /// Populates all descendants with test results and sets them to
         ///     pass if the control is a button (any predicate would work)
         ///     and returns number that should pass
         /// </summary>

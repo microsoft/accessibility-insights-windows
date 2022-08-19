@@ -118,7 +118,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// overriden method to invoke method. it should be implemented by inherited method.
+        /// overridden method to invoke method. it should be implemented by inherited method.
         /// </summary>
         protected virtual void InvokeMethod()
         {

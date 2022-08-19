@@ -44,7 +44,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
 #pragma warning disable CA1819 // Properties should not return arrays
         /// <summary>
         /// Counts of aggregate scan statuses
-        ///     result[ScanStatusEnum] -> number of descendents with that scan status (including this element)
+        ///     result[ScanStatusEnum] -> number of descendants with that scan status (including this element)
         /// </summary>
         public int[] AggregateStatusCounts { get; private set; }
 #pragma warning restore CA1819 // Properties should not return arrays
@@ -151,7 +151,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// to indicate whether the node should be hilighted or not
+        /// to indicate whether the node should be highlighted or not
         /// </summary>
         private bool _ishilighted;
         public bool IsHilighted

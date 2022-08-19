@@ -97,7 +97,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public string SnippetLink { get; }
 
         /// <summary>
-        /// Name of Glypth for Fabric Icon
+        /// Name of Glyph for Fabric Icon
         /// </summary>
         public FabricIcon GlyphName { get; }
 
