@@ -103,7 +103,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
 
         /// <summary>
         /// Check if we need to play scanning sound, play sound while meet both conditions below:
-        ///    1. "play sound while scanning" option in settings pannel is on
+        ///    1. "play sound while scanning" option in settings panel is on
         ///    2. At least one AT tool is running
         /// </summary>
         public bool ShouldPlayScannerSound() => WithSound && IsScreenReaderActive();

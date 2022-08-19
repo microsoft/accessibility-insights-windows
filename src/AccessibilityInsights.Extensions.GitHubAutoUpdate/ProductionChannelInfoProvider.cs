@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         private readonly IGitHubWrapper _gitHubWrapper;
 
         /// <summary>
-        /// ctor
+        /// constructor
         /// </summary>
         /// <param name="gitHubWrapper">Provides access to GitHub</param>
         /// <param name="exceptionReporter">Provides a way to report exceptions</param>

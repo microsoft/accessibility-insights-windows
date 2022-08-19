@@ -7,7 +7,7 @@ using System.Globalization;
 namespace AccessibilityInsights.Extensions.GitHub
 {
     /// <summary>
-    /// GitHub Issue Issue Formatting
+    /// GitHub Issue Formatting
     /// </summary>
     public static class IssueFormatterFactory
     {
