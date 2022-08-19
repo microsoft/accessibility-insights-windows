@@ -175,7 +175,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         }
 
         /// <summary>
-        /// Is button visibile
+        /// Is button visible
         /// </summary>
         public Visibility ButtonVisibility { get; private set; }
 
@@ -374,7 +374,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <param name="name">Name to display (checkbox only)</param>
         /// <param name="vis">Initial Visibility State</param>
         /// <param name="txt">Text to display (buttons only)</param>
-        /// <param name="isThreeState">true to enable ThreeState behavior (chechboxes only)</param>
+        /// <param name="isThreeState">true to enable ThreeState behavior (checkboxes only)</param>
         public EventConfigNodeViewModel(string name, Visibility vis = Visibility.Collapsed, string txt = "", bool isThreeState = false)
         {
             this.Type = EventConfigNodeType.Group;
