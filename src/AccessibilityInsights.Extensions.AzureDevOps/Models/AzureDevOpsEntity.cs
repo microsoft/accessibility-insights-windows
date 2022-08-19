@@ -13,7 +13,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Default ctor -- used exclusively for JSON serialization
+        /// Default constructor -- used exclusively for JSON serialization
         /// </summary>
         public AzureDevOpsEntity() { }
 

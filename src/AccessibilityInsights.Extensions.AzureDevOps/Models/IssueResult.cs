@@ -11,7 +11,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
     public class IssueResult : IIssueResult
     {
         /// <summary>
-        /// Text to be displayed in ui
+        /// Text to be displayed in UI
         /// </summary>
         public string DisplayText { get; set; }
 

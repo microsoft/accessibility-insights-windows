@@ -24,7 +24,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
     /// </summary>
     public partial class ConfigurationControl : IssueConfigurationControl
     {
-        // This code can't be in a ctor due to initialization order
+        // This code can't be in a constructor due to initialization order
         private static IDevOpsIntegration AzureDevOps => AzureBoardsIssueReporting.DevOpsIntegration;
 
         public ConfigurationControl()
@@ -167,10 +167,10 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         }
 
         /// <summary>
-        /// Convert a Url string to a Uri, with proper handling of null inputs
+        /// Convert a URL string to a Uri, with proper handling of null inputs
         /// </summary>
-        /// <param name="stringValue">The url (potentially empty or null) to convert</param>
-        /// <returns>The Uri if the url is neither empty nor null</returns>
+        /// <param name="stringValue">The URL (potentially empty or null) to convert</param>
+        /// <returns>The URI if the URL is neither empty nor null</returns>
         private static Uri ToUri(string stringValue)
         {
             if (string.IsNullOrEmpty(stringValue))

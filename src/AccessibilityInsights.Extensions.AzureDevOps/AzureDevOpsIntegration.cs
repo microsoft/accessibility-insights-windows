@@ -54,7 +54,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         public ExtensionConfiguration Configuration { get; } = new ExtensionConfiguration();
 
         /// <summary>
-        /// Base uri of the AzureDevOps connection
+        /// Base URI of the AzureDevOps connection
         /// </summary>
         internal Uri ConnectedUri => _baseServerConnection?.Uri;
 

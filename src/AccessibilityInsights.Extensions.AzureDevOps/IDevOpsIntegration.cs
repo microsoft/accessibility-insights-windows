@@ -42,7 +42,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         ExtensionConfiguration Configuration { get; }
 
         /// <summary>
-        /// Connects to the AzureDevOps server at the given url (e.g. https://myaccount.visualstudio.com)
+        /// Connects to the AzureDevOps server at the given URL (e.g. https://myaccount.visualstudio.com)
         ///     If prompt is true, then we may prompt if needed - otherwise, we turn prompting off on credentials
         /// </summary>
         /// <param name="url">AzureDevOps URL to connect to</param>
@@ -117,7 +117,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <summary>
         /// Returns a link to the already filed issue
         /// </summary>
-        /// <param name="issueId">id of issue to get url of</param>
+        /// <param name="issueId">id of issue of which to get URL</param>
         /// <returns>URL to filed issue, or null if not connected to AzureDevOps</returns>
         Uri GetExistingIssueUrl(int issueId);
 
@@ -136,11 +136,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         string GetIteration(ConnectionInfo conn);
 
         /// <summary>
-        /// Returns the uri of the given team project name
+        /// Returns the URI of the given team project name
         /// </summary>
         /// <param name="projectName">AzureDevOps project name</param>
         /// <param name="teamName">AzureDevOps team project name</param>
-        /// <returns>encoded url to team project (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
+        /// <returns>encoded URL to team project (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
         Uri GetTeamProjectUri(string projectName, string teamName);
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// <param name="projectName">AzureDevOps project name</param>
         /// <param name="teamName">AzureDevOps team project name</param>
         /// <param name="AzureDevOpsFieldPairs">Key/Value pairs to use when creating the preview</param>
-        /// <returns>encoded uri to issue preview (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
+        /// <returns>encoded URI to issue preview (no trailing slash at end), or null if user is not connected to AzureDevOps</returns>
         Uri CreateIssuePreview(string projectName, string teamName, IReadOnlyDictionary<AzureDevOpsField, string> AzureDevOpsFieldPairs);
     }
 }
