@@ -24,7 +24,7 @@ namespace AccessibilityInsights.VersionSwitcher
         private readonly string _appToLaunchAfterInstall;
 
         /// <summary>
-        /// ctor
+        /// constructor
         /// </summary>
         /// <param name="productName">The localized product name</param>
         /// <param name="appToLaunchAfterInstall">The path to the app to launch after install completes</param>
