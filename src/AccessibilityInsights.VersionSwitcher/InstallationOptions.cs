@@ -12,7 +12,7 @@ namespace AccessibilityInsights.VersionSwitcher
     internal class InstallationOptions
     {
         /// <summary>
-        /// The URI to the iweb-hosted installer to use
+        /// The URI to the web-hosted installer to use
         /// </summary>
         internal Uri MsiPath { get; }
 
