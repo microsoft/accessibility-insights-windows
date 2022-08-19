@@ -46,7 +46,7 @@ namespace AccessibilityInsights.SetupLibrary
         }
 
         /// <summary>
-        /// Given a ReleaseChannel and a keyName, attempt to load the corresponding ChannelInfo objecvt
+        /// Given a ReleaseChannel and a keyName, attempt to load the corresponding ChannelInfo object
         /// </summary>
         /// <param name="releaseChannel">The ReleaseChannel being queried</param>
         /// <param name="channelInfo">Returns the ChannelInfo here</param>

@@ -22,7 +22,7 @@ namespace AccessibilityInsights.SetupLibrary
         private const string DefaultCanaryConfigFileUrl = "https://www.github.com/Microsoft/accessibility-insights-windows/blob/Canary/Channels/Canary/release_info.json?raw=true";
 
         /// <summary>
-        /// ctor
+        /// constructor
         /// </summary>
         /// <param name="exceptionReporter">Mechanism for reporting recoverable exceptions from the config</param>
         public GitHubWrapper(IExceptionReporter exceptionReporter)
