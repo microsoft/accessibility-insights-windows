@@ -17,12 +17,12 @@ namespace AccessibilityInsights.SetupLibrary
 #pragma warning restore CA2229 // Implement serialization constructors
     {
         /// <summary>
-        /// Typical ctor
+        /// Typical constructor
         /// </summary>
         public SettingsDictionary() { }
 
         /// <summary>
-        /// Copy ctor--converts longs to ints, JArrays to int arrays
+        /// Copy constructor--converts longs to ints, JArrays to int arrays
         /// </summary>
         public SettingsDictionary(SettingsDictionary source)
         {

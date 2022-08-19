@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// Installs a more recent version in response to an upgrade (retain the same channel)
         /// </summary>
-        /// <param name="installerUri">The uri to the web-hosted installer</param>
+        /// <param name="installerUri">The URI to the web-hosted installer</param>
         public static void InstallUpgrade(Uri installerUri)
         {
             DownloadAndInstall(installerUri, null);
@@ -43,7 +43,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// Private method that does the work shared between InstallUpgrade and ChangeChannel
         /// </summary>
-        /// <param name="installerUrl">The uri to the web-hosted installer</param>
+        /// <param name="installerUrl">The URL to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
         private static void DownloadAndInstall(Uri installerUri, ReleaseChannel? newChannel)
         {
@@ -157,7 +157,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// <summary>
         /// Create the arguments to pass to the Version Switcher process
         /// </summary>
-        /// <param name="installerUri">The uri to the web-hosted installer</param>
+        /// <param name="installerUri">The URI to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
         private static string GetVersionSwitcherArguments(Uri installerUri, ReleaseChannel? newChannel)
         {
