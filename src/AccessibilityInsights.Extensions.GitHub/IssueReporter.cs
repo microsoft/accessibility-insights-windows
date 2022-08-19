@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace AccessibilityInsights.Extensions.GitHub
 {
     /// <summary>
-    /// GitHub Issue Reprting
+    /// GitHub Issue Reporting
     /// </summary>
     [Export(typeof(IIssueReporting))]
     public class IssueReporter : IIssueReporting

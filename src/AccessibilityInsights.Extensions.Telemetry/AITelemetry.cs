@@ -28,7 +28,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         /// <summary>
-        /// Production ctor--must be public for MEF
+        /// Production constructor--must be public for MEF
         /// </summary>
 #pragma warning disable CA2000 // Dispose objects before losing scope
         public AITelemetry()
@@ -46,7 +46,7 @@ namespace AccessibilityInsights.Extensions.Telemetry
         }
 
         /// <summary>
-        /// Unit test ctor
+        /// Unit test constructor
         /// </summary>
         /// <param name="clientWrapper">The wrapper of the TelemetryClient</param>
         internal AITelemetry(ITelemetryClientWrapper clientWrapper)

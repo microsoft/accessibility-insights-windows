@@ -23,12 +23,12 @@ namespace AccessibilityInsights.Extensions
         internal static EventHandler<ReportExceptionEventArgs> ReportedExceptionEvent;
 
         /// <summary>
-        /// Production ctor
+        /// Production constructor
         /// </summary>
         private Container() : this(null) { }
 
         /// <summary>
-        /// Testable ctor
+        /// Testable constructor
         /// </summary>
         /// <param name="searchPatternOverride">Allows override of search pattern for testing</param>
         internal Container(string searchPatternOverride)

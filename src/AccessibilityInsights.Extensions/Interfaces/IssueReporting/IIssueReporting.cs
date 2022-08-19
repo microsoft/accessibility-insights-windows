@@ -18,7 +18,7 @@ namespace AccessibilityInsights.Extensions.Interfaces.IssueReporting
         Guid StableIdentifier { get; }
 
         /// <summary>
-        /// True iff the service needs no further configuration/login to file an issue
+        /// True if and only if the service needs no further configuration/login to file an issue
         /// </summary>
         bool IsConfigured { get; }
 

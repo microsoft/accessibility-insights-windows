@@ -12,7 +12,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
     /// FabricIconControl is a lightweight control derived from ContentControl,
     /// used to display glyphs housed within the Fabric MDL2 Symbol icon font.
     /// Set the GlyphName property to render an icon. Set the GlyphSize to map
-    /// to a pre-defined set of usage contexts.
+    /// to a predefined set of usage contexts.
     /// </summary>
     public partial class FabricIconControl : UserControl
     {
@@ -3115,7 +3115,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         SliderHandleSize,
         DefaultRatio,
         NumberSequence,
-#pragma warning disable CA1720 // GUID is type name. but it is ok here.
+#pragma warning disable CA1720 // GUID is type name, but it is OK here.
         GUID,
 #pragma warning restore CA1720
         ReportAdd,

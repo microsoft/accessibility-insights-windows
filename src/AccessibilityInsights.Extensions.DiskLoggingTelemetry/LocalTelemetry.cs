@@ -20,7 +20,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 
 #pragma warning disable RS0034 // Exported parts should have [ImportingConstructor]
         /// <summary>
-        /// Production ctor--must be public for MEF
+        /// Production constructor--must be public for MEF
         /// </summary>
         public LocalTelemetry()
             : this(new LogWriter(() => DateTime.UtcNow, new LogFileHelper()))
@@ -34,7 +34,7 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
 #pragma warning restore RS0034 // Exported parts should have [ImportingConstructor]
 
         /// <summary>
-        /// Writes telemetry to a locak disk log
+        /// Writes telemetry to a local disk log
         /// </summary>
         /// <param name="eventName">Will be used as event name</param>
         /// <param name="properties">if null, doesn't send any additional property values beyond context</param>
