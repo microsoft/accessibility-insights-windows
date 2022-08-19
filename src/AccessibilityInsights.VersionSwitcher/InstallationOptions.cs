@@ -12,7 +12,7 @@ namespace AccessibilityInsights.VersionSwitcher
     internal class InstallationOptions
     {
         /// <summary>
-        /// The Uri to the iweb-hosted nstaller to use
+        /// The URI to the web-hosted installer to use
         /// </summary>
         internal Uri MsiPath { get; }
 
@@ -37,7 +37,7 @@ namespace AccessibilityInsights.VersionSwitcher
         internal bool EnableUIAccess { get; }
 
         /// <summary>
-        /// ctor
+        /// constructor
         /// </summary>
         /// <param name="msiPath">String identifying the installer location</param>
         /// <param name="newChannel">String indicating the value for NewChannel</param>

@@ -22,7 +22,7 @@ namespace AccessibilityInsights.VersionSwitcher
         private EventLog _log;
 
         /// <summary>
-        /// ctor
+        /// constructor
         /// </summary>
         internal EventLogger()
         {
