@@ -58,7 +58,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <summary>
         /// Highlight BoundingRectangles
         /// </summary>
-        /// <param name="isVisible">hight when it is true</param>
+        /// <param name="isVisible">Highlight is displayed if true</param>
         public void HilightBoundingRectangles(bool isVisible)
         {
             this.Hilighters?.ForEach(hl => hl.IsVisible = isVisible);

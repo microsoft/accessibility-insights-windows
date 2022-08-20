@@ -12,7 +12,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
     /// Class Highlighter
-    /// highlight bounding rectangle and show tooltip
+    /// Highlight bounding rectangle and show tooltip
     /// </summary>
     public class Highlighter : IDisposable
     {
