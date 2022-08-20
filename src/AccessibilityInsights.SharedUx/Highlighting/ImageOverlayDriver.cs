@@ -67,7 +67,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         /// <summary>
-        /// Clear highligted elements in bitmap.
+        /// Clear highlighted elements in bitmap.
         /// </summary>
         public void ClearElements()
         {

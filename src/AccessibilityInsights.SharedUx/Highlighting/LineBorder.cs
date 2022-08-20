@@ -162,7 +162,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
                     IntPtr hrgnTemp = m_hrgn;
 
-                    // Subtrack the exclude region from this window's region...
+                    // Subtract the exclude region from this window's region...
                     IntPtr rgnExclude = NativeMethods.CreateRectRgn(rcExclude.left, rcExclude.top, rcExclude.right, rcExclude.bottom);
                     IntPtr rgnThis = NativeMethods.CreateRectRgn(0, 0, rcReal.right - rcReal.left, rcReal.bottom - rcReal.top);
                     IntPtr rgnResult = NativeMethods.CreateRectRgn(0, 0, 0, 0);

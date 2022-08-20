@@ -22,7 +22,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         const int Max_Text_Length = 60;
         const int TEXTBORDER = 2;
         const int TEXTTABMIN = 14;   // min space between left and right columns in rectangle
-        const int TEXTGAP = 8;       // Gep between object and rectangle
+        const int TEXTGAP = 8;       // Gap between object and rectangle
         const int Default_Font_Height = 25;
 
         readonly IntPtr hWnd;

@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
 
         #region public members
         /// <summary>
-        /// Hilight an element with selected hilighter
+        /// Highlight an element with selected highlighter
         /// </summary>
         /// <param name="ecId">ElementContext Id</param>
         /// <param name="eId"></param>
@@ -124,7 +124,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         }
 
         /// <summary>
-        /// Remove exising highlighter information
+        /// Remove existing highlighter information
         /// it will turn off highlighter
         /// </summary>
         public void Clear()

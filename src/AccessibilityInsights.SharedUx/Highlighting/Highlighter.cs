@@ -11,8 +11,8 @@ using System.Windows.Media;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Class Hilighter
-    /// hilight bounding rectangle and show tooltip
+    /// Class Highlighter
+    /// Highlight bounding rectangle and show tooltip
     /// </summary>
     public class Highlighter : IDisposable
     {
@@ -26,7 +26,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         private readonly string WndClassNameBase;
 
         /// <summary>
-        /// Hilighter constructor
+        /// Highlighter constructor
         /// </summary>
         /// <param name="color">RGB in int value</param>
         public Highlighter(HighlighterColor color = HighlighterColor.DefaultBrush, bool hasSnapshot = false)

@@ -12,7 +12,7 @@ using System.Windows.Media;
 namespace AccessibilityInsights.SharedUx.Highlighting
 {
     /// <summary>
-    /// Base functionality and data for window-based highlighers
+    /// Base functionality and data for window-based highlighters
     /// </summary>
     public abstract class WindowHighlighterBase
     {
