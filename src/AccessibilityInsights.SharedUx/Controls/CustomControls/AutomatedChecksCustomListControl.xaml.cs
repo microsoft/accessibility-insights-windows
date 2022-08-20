@@ -159,7 +159,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
-        /// Notify Element selection to swith mode to snapshot
+        /// Notify Element selection to switch mode to snapshot
         /// </summary>
         private void NotifySelected(A11yElement element)
         {

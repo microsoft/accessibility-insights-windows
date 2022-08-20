@@ -65,7 +65,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         private readonly object _lockObject = new object();
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {

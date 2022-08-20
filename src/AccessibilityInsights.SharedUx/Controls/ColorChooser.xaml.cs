@@ -140,7 +140,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         }
 
         /// <summary>
-        /// Close popup with esc
+        /// Close popup with Esc
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

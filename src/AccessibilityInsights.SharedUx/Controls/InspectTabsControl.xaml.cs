@@ -327,7 +327,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         /// <param name="e"></param>
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            // This handler can be called by selectionchanged events occuring in child controls of the tabcontrol
+            // This handler can be called by selectionchanged events occurring in child controls of the tabcontrol
             // We check to make sure the event source is actually the intended tab control before handling the event.
             if (e.Source == tabControlInspect && e.AddedItems.Count > 0)
             {

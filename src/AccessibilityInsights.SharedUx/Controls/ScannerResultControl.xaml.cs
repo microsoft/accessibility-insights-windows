@@ -53,7 +53,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         new readonly ResourceDictionary Resources = new ResourceDictionary();
 
         /// <summary>
-        /// App configation
+        /// App configuration
         /// </summary>
         public static ConfigurationModel Configuration
         {
