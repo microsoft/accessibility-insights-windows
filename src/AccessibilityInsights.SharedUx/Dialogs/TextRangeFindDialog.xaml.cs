@@ -154,7 +154,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         /// <param name="backward"></param>
         private void FindTextRange(bool backward)
         {
-            //turn off hilighter
+            //turn off highlighter
             this.Hilighter.HilightBoundingRectangles(false);
 
             try

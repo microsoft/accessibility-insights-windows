@@ -34,7 +34,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         private readonly List<TextRangeViewModel> CustomList;
 
         /// <summary>
-        /// indidate the type of source methods
+        /// indicate the type of source methods
         /// </summary>
         private SourceTypes CurrentSourceType;
 
@@ -397,7 +397,7 @@ namespace AccessibilityInsights.SharedUx.Dialogs
         }
 
         /// <summary>
-        /// Refresh highliter with new Bounding Rectangle information.
+        /// Refresh highlighter with new Bounding Rectangle information.
         /// </summary>
         private void UpdateHilighter()
         {
