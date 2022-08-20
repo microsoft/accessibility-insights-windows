@@ -40,7 +40,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         }
 
         /// <summary>
-        /// General visibilty status of bug-filing features. This is visible when a bug filing
+        /// General visibility status of bug-filing features. This is visible when a bug filing
         /// extension exists, otherwise it's collapsed. Used when the decision is independent
         /// of the selected ElementContext
         /// </summary>

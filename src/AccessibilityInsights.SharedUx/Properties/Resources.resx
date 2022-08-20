@@ -1273,7 +1273,7 @@
     <value>Select the Events you want to listen to:</value>
   </data>
   <data name="btnOkContent" xml:space="preserve">
-    <value>Ok</value>
+    <value>OK</value>
   </data>
   <data name="lblEnableTelemetryContent" xml:space="preserve">
     <value>Enable Telemetry</value>
@@ -1587,7 +1587,7 @@ URL: {0}</value>
   </data>
   <data name="PatternInfoControl_PatternPropertyFormat" xml:space="preserve">
     <value>- {0}: {1}</value>
-    <comment>{0} is the propety name; {1} is the property value</comment>
+    <comment>{0} is the property name; {1} is the property value</comment>
   </data>
   <data name="PropertyInfoControl_Properties" xml:space="preserve">
     <value>Properties</value>
@@ -1618,7 +1618,7 @@ URL: {0}</value>
   </data>
   <data name="BaseActionViewModel_ExceptionMessage" xml:space="preserve">
     <value>Exception while invoking {0} : {1}</value>
-    <comment>{0} is the method; {1} is the Exception mesage</comment>
+    <comment>{0} is the method; {1} is the Exception message</comment>
   </data>
   <data name="ColorContrastViewModel_ContrastRatioFormat" xml:space="preserve">
     <value>{0}:1</value>

@@ -91,7 +91,7 @@ namespace AccessibilityInsights.SharedUx.Settings
             if (this.Version == null || string.CompareOrdinal(this.Version, AppLayout.CurrentVersion) != 0)
             {
                 // for now we enforce the layout to be always be default if the version mismatch.
-                // it will reduce the unnecessary crashes or noize. but it may lose the previous layout info.
+                // it will reduce the unnecessary crashes or noise, but it may lose the previous layout info.
                 // we may bear the lose of previous layout for now.
                 this.Top = top;
                 this.Left = left;

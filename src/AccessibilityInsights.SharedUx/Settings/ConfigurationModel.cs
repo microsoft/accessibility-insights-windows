@@ -316,7 +316,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Indicate which hightlighter mode to use
+        /// Indicate which highlighter mode to use
         /// </summary>
         public HighlighterMode HighlighterMode
         {
@@ -343,7 +343,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// if it is true, show the full list of ancesters up to desktop in snap mode.
+        /// if it is true, show the full list of ancestors up to desktop in snap mode.
         /// </summary>
         public bool ShowAncestry
         {
@@ -472,7 +472,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// ctor from DiskConfigurationModel
+        /// constructor from DiskConfigurationModel
         /// </summary>
         private ConfigurationModel(SettingsDictionary source)
         {
@@ -482,7 +482,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// Copy ctor
+        /// Copy constructor
         /// </summary>
         /// <param name="source"></param>
         private ConfigurationModel(ConfigurationModel source)
