@@ -422,15 +422,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// If true, dark mode will be disabled
-        /// </summary>
-        public bool DisableDarkMode
-        {
-            get => GetDataValue<bool>(KeyDisableDarkMode);
-            set => SetDataValue<bool>(KeyDisableDarkMode, value);
-        }
-
-        /// <summary>
         /// If true, telemetry startup dialog will be displayed
         /// </summary>
         public bool ShowTelemetryDialog
