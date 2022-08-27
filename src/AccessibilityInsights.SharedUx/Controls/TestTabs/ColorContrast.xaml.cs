@@ -12,6 +12,7 @@ using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.ColorContrastAnalyzer;
 using Axe.Windows.Desktop.Utility;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
@@ -119,6 +120,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
 
             if (pair == null)
             {
+                Logger.PublishTelemetryEvent(
+                    TelemetryAction.ColorContrast_AutoDetect,
+                    new Dictionary<TelemetryProperty, string>
+                    {
+                        [TelemetryProperty.BitmapSize] = (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture),
+                        [TelemetryProperty.Confidence] = "None"
+                    }
+                );
                 throw new InvalidOperationException("Unable to determine colors!");
             }
 
@@ -126,6 +135,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
             this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
             tbConfidence.Text = result.Confidence.ToString();
+            Logger.PublishTelemetryEvent(
+                TelemetryAction.ColorContrast_AutoDetect,
+                new Dictionary<TelemetryProperty, string>
+                {
+                    [TelemetryProperty.BitmapSize] = (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture),
+                    [TelemetryProperty.Confidence] = result.Confidence.ToString()
+                }
+            );
         }
 
         private void SetConfidenceVisibility(Visibility visibility)
@@ -276,6 +293,14 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             if (CCAMode != null)
             {
                 CCAMode.HandleToggleStatusChanged(isEnabled);
+
+                Logger.PublishTelemetryEvent(
+                    TelemetryAction.ColorContrast_Click_Autodetect_Toggle,
+                    new Dictionary<TelemetryProperty, string>
+                    {
+                        [TelemetryProperty.IsAutoDetectColorContrastEnabled] = isEnabled.ToString(CultureInfo.InvariantCulture)
+                    }
+                );
             }
 
             SetConfidenceVisibility(Visibility.Hidden);
