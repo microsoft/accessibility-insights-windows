@@ -10,6 +10,21 @@ Application events are queried from the `customEvents` table. All application ev
 - A `name` property that matches one of the events defined below.
 - An optional set of event-specific properties, as defined with each event.
 
+#### ColorContrast_AutoDetect
+Trigger: Automatic contrast detection is run.
+Additional properties:
+Name | Value
+--- | ---
+`Confidence` | The confidence of the analysis. One of `High`, `Mid`, `Low`, or `None`.
+`BitmapSize` | The size in pixels (width times height) of the bitmap being processed.
+
+#### ColorContrast_Click_Autodetect_Toggle
+Trigger: The user clicks the "Auto detect contrast ratio" button in the color contrast view.
+Additional properties:
+Name | Value
+--- | ---
+`IsAutoDetectColorContrastEnabled` | one of `true` or `false` indicating whether automatic detection is enabled.
+
 #### ColorContrast_Click_Dropdown
 Trigger: The user opens a color picker popup in the Color Contrast view.  
 Additional properties: None.
@@ -27,7 +42,7 @@ Trigger: The application was configured with a `CustomUIA.json` file as describe
 Additional properties:
 Name | Value 
 --- | ---
-CustomUIAPropertyCount | The count of custom UIA properties that were defined in the `CustomUIA.json` file.
+`CustomUIAPropertyCount` | The count of custom UIA properties that were defined in the `CustomUIA.json` file.
 
 #### Event_Load
 Trigger: The user successfully opens a previously-saved A11yEvents file.  
