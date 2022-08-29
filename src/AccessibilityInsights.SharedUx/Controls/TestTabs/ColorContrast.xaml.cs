@@ -124,7 +124,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                     TelemetryAction.ColorContrast_AutoDetect,
                     new Dictionary<TelemetryProperty, string>
                     {
-                        [TelemetryProperty.BitmapSize] = (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture),
+                        {TelemetryProperty.BitmapSize, (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture)},
                         [TelemetryProperty.Confidence] = "None"
                     }
                 );
