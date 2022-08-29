@@ -118,16 +118,17 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             var result = bmc.RunColorContrastCalculation();
             var pair = result.MostLikelyColorPair;
 
+            Logger.PublishTelemetryEvent(
+                TelemetryAction.ColorContrast_AutoDetect,
+                new Dictionary<TelemetryProperty, string>
+                {
+                    {TelemetryProperty.BitmapSize, (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture)},
+                    { TelemetryProperty.Confidence, result.Confidence.ToString() }
+                }
+            );
+
             if (pair == null)
             {
-                Logger.PublishTelemetryEvent(
-                    TelemetryAction.ColorContrast_AutoDetect,
-                    new Dictionary<TelemetryProperty, string>
-                    {
-                        {TelemetryProperty.BitmapSize, (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture)},
-                        { TelemetryProperty.Confidence, "None" }
-                    }
-                );
                 throw new InvalidOperationException("Unable to determine colors!");
             }
 
@@ -135,14 +136,6 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.ContrastVM.FirstColor = pair.DarkerColor.DrawingColor.ToMediaColor();
             this.ContrastVM.SecondColor = pair.LighterColor.DrawingColor.ToMediaColor();
             tbConfidence.Text = result.Confidence.ToString();
-            Logger.PublishTelemetryEvent(
-                TelemetryAction.ColorContrast_AutoDetect,
-                new Dictionary<TelemetryProperty, string>
-                {
-                    { TelemetryProperty.BitmapSize, (bitmap.Width * bitmap.Height).ToString(CultureInfo.InvariantCulture) },
-                    { TelemetryProperty.Confidence, result.Confidence.ToString() }
-                }
-            );
         }
 
         private void SetConfidenceVisibility(Visibility visibility)
