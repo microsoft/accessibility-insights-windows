@@ -40,7 +40,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         InstalledDotNetFrameworkVersion,
         OsArchitecture,
         CustomUIAPropertyCount,
-        IsAutoDetectColorContrastEnabled,
+        IsNowEnabled,
         Confidence, // For automatic colour contrast detection
         BitmapSize, // For automatic colour contrast detection
     }
