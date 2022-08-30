@@ -23,7 +23,7 @@ Trigger: The user clicks the "Auto detect contrast ratio" button in the color co
 Additional properties:
 Name | Value
 --- | ---
-`IsAutoDetectColorContrastEnabled` | one of `true` or `false` indicating whether automatic detection is enabled.
+`IsNowEnabled` | one of `true` or `false` indicating whether automatic detection is enabled.
 
 #### ColorContrast_Click_Dropdown
 Trigger: The user opens a color picker popup in the Color Contrast view.  
