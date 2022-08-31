@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 namespace AccessibilityInsights.SharedUx.Telemetry
 {
@@ -45,6 +45,8 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 
         TestSelection_Set_Scope, // set the scope
 
+        ColorContrast_AutoDetect,
+        ColorContrast_Click_Autodetect_Toggle,
         ColorContrast_Click_Eyedropper,
         ColorContrast_Click_Dropdown,
         ColorContrast_Click_HexChange,
