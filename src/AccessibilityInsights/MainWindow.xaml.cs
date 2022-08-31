@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -229,10 +229,7 @@ namespace AccessibilityInsights
             }
             else
             {
-                // Due to initialization order, config will be null the first time this is called
-                ConfigurationModel config = ConfigurationManager.GetDefaultInstance()?.AppConfig;
-
-                theme = (config != null && !config.DisableDarkMode && NativeMethods.IsDarkModeEnabled())
+                theme = (NativeMethods.IsDarkModeEnabled())
                     ? App.Theme.Dark
                     : App.Theme.Light;
             }

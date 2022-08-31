@@ -37,7 +37,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyAppVersion = "AppVersion";
         private const string KeyCoreProperties = "CoreProperties";
         private const string KeyCoreTPAttributes = "CoreTPAttributes";
-        private const string KeyDisableDarkMode = "DisableDarkMode";
         private const string KeyDisableTestsInSnapMode = "DisableTestsInSnapMode";
         private const string KeyEnableTelemetry = "EnableTelemetry";
         private const string KeyEventRecordPath = "EventRecordPath";
