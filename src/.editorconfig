@@ -89,7 +89,7 @@ csharp_style_pattern_matching_over_as_with_null_check = false
 csharp_style_throw_expression = true:error
 csharp_style_conditional_delegate_call = true:error
 # Modifier preferences
-csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:error
+csharp_preferred_modifier_order = public,private,protected,internal,static,extern,new,virtual,abstract,sealed,override,readonly,unsafe,volatile,async:suggestion
 # Expression-level preferences
 csharp_prefer_braces = true:error
 csharp_style_deconstructed_variable_declaration = false
