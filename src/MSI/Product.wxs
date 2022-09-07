@@ -77,6 +77,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\HtmlAgilityPack.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Azure.DevOps.Comments.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Bcl.AsyncInterfaces.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Abstractions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
@@ -120,7 +121,10 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Runtime.CompilerServices.Unsafe.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.AccessControl.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Security.Principal.Windows.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Text.Encodings.Web.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.Text.Json.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Threading.Tasks.Extensions.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net472\System.ValueTuple.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Web.Http.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\System.Web.Http.WebHost.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net472\WebView2Loader.dll" />
