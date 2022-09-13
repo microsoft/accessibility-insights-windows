@@ -205,7 +205,7 @@ jobs:
     GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
   steps:
-  - task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@2
+  - task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@4
     displayName: 'Install Signing Plugin'
     inputs:
       signType: real
