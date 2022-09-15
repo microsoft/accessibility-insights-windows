@@ -1305,7 +1305,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Auto detect contrast ratio</value>
   </data>
   <data name="ColorContrast_AutoDetectGuidance" xml:space="preserve">
-    <value>Auto-detection allows you to evaluate color contrast ratios by hovering over an element or setting the keyboard focus on it.</value>
+    <value>Auto-detection allows you to evaluate color contrast ratios by hovering over an element or setting the keyboard focus on it. The colors are detected heuristically. If incorrect colors are detected, please use the eyedroppers to improve the accuracy of the results.</value>
   </data>
   <data name="hlHelpName" xml:space="preserve">
     <value>Help</value>

@@ -145,8 +145,6 @@ namespace AccessibilityInsights.Modes
                 this.SetFocusOnDefaultControl();
             }
             , System.Windows.Threading.DispatcherPriority.Input);
-
-            ctrlContrast.SetAutoCCAState(true);
         }
 
         /// <summary>
