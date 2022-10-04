@@ -94,14 +94,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         /// <summary>
-        /// Check if any Screen Reader is running
-        /// </summary>
-        public static bool IsScreenReaderActive()
-        {
-            return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive()) && AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged);
-        }
-
-        /// <summary>
         /// Check whether to play sound feedback while scanning
         /// </summary>
         public bool ShouldPlayScannerSound() => WithSound;
