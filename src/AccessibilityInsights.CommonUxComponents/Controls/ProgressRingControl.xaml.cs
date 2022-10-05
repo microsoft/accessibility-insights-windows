@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Win32;
 using Microsoft.Win32;
@@ -94,19 +94,9 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         }
 
         /// <summary>
-        /// Check if any Screen Reader is running
+        /// Check whether to play sound feedback while scanning
         /// </summary>
-        public static bool IsScreenReaderActive()
-        {
-            return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive()) && AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged);
-        }
-
-        /// <summary>
-        /// Check if we need to play scanning sound, play sound while meet both conditions below:
-        ///    1. "play sound while scanning" option in settings panel is on
-        ///    2. At least one AT tool is running
-        /// </summary>
-        public bool ShouldPlayScannerSound() => WithSound && IsScreenReaderActive();
+        public bool ShouldPlayScannerSound() => WithSound;
 
         /// <summary>
         /// Overriding LocalizedControlType
