@@ -156,11 +156,8 @@
   <data name="GeneralActionView_ExecuteAction_Failed" xml:space="preserve">
     <value>Failed!!</value>
   </data>
-  <data name="ButtonContent" xml:space="preserve">
-    <value>I want this Action!!!</value>
-  </data>
-  <data name="TextBlockText" xml:space="preserve">
-    <value>The below Action is not supported yet. If you want this action to be provided in this tool. please click below button.</value>
+  <data name="UnsupportedActionPart1BeforeActionName" xml:space="preserve">
+    <value>Accessibility Insights for Windows does not yet support the</value>
   </data>
   <data name="ReturnA11yElementsView_btnRun_Click_Input_should_be_int_value_greater_than_equal_to_0" xml:space="preserve">
     <value>Input should be int value greater than or equal to 0.</value>
@@ -1765,5 +1762,11 @@ This failure can be caused by a known framework issue. Click the link below to l
   </data>
   <data name="FileIssuesChooseLocation" xml:space="preserve">
     <value>To file issues, select where you want to file issues.</value>
+  </data>
+  <data name="UnsupportedActionPart2BetweenActionNameAndLink" xml:space="preserve">
+    <value>action. To request support for this action, please upvote an existing issue at</value>
+  </data>
+  <data name="UnsupportedActionPart3AfterLink" xml:space="preserve">
+    <value>. If no issue already exists, you can open a new issue (feature request) to request support for this action.</value>
   </data>
 </root>

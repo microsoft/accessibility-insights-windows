@@ -720,15 +720,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to I want this Action!!!.
-        /// </summary>
-        public static string ButtonContent {
-            get {
-                return ResourceManager.GetString("ButtonContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Ok.
         /// </summary>
         public static string buttonOkContent {
@@ -4381,15 +4372,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The below Action is not supported yet. If you want this action to be provided in this tool. please click below button..
-        /// </summary>
-        public static string TextBlockText {
-            get {
-                return ResourceManager.GetString("TextBlockText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to CONFIGURATION.
         /// </summary>
         public static string TextBlockTextCONFIGURATION {
@@ -4829,6 +4811,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string TTAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("TTAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Accessibility Insights for Windows does not yet support the.
+        /// </summary>
+        public static string UnsupportedActionPart1BeforeActionName {
+            get {
+                return ResourceManager.GetString("UnsupportedActionPart1BeforeActionName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to action. To request support for this action, please upvote an existing issue at.
+        /// </summary>
+        public static string UnsupportedActionPart2BetweenActionNameAndLink {
+            get {
+                return ResourceManager.GetString("UnsupportedActionPart2BetweenActionNameAndLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to . If no issue already exists, you can open a new issue (feature request) to request support for this action..
+        /// </summary>
+        public static string UnsupportedActionPart3AfterLink {
+            get {
+                return ResourceManager.GetString("UnsupportedActionPart3AfterLink", resourceCulture);
             }
         }
         

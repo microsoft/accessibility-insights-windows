@@ -1,7 +1,10 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.CommonUxComponents.Dialogs;
+using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,12 +22,22 @@ namespace AccessibilityInsights.SharedUx.ActionViews
         {
             InitializeComponent();
             this.ActionViewModel = a ?? throw new ArgumentNullException(nameof(a));
-            this.tbName.Text = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", ActionViewModel.PatternName, ActionViewModel.Name);
+            this.actionName.Text = string.Format(CultureInfo.InvariantCulture, "{0}.{1}", ActionViewModel.PatternName, ActionViewModel.Name);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
-            // TODO: This appears to be a remnant of old legacy telemetry code. Consider bringing it back?
+            try
+            {
+                Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception ex)
+            {
+                ex.ReportException();
+                MessageDialog.Show(Properties.Resources.hlLink_RequestNavigateException);
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }
