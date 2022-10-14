@@ -21,6 +21,8 @@ namespace AccessibilityInsights.SharedUx.ActionViews
     {
         private readonly BaseActionViewModel ActionViewModel;
 
+        private const int BoldFontWeight = 700;
+
         public NotSupportActionView(BaseActionViewModel a)
         {
             InitializeComponent();
@@ -42,7 +44,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             {
                 switch (part)
                 {
-                    case "{0}": return new Run { Text = actionID, FontWeight = FontWeight.FromOpenTypeWeight(700) };
+                    case "{0}": return new Run { Text = actionID, FontWeight = FontWeight.FromOpenTypeWeight(BoldFontWeight) };
                     case "{1}": 
                         var hyperLink = new Hyperlink(new Run { Text = url, }) { NavigateUri = new Uri(url) };
                         hyperLink.RequestNavigate += Hyperlink_RequestNavigate;
