@@ -4815,29 +4815,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Accessibility Insights for Windows does not yet support the.
+        ///   Looks up a localized string similar to Accessibility Insights for Windows does not yet support the {0} action. To request support for this action, please upvote an existing issue at {1}. If no issue already exists, you can open a new issue (feature request) to request support for this action..
         /// </summary>
-        public static string UnsupportedActionPart1BeforeActionName {
+        public static string UnsupportedActionMessageFormat {
             get {
-                return ResourceManager.GetString("UnsupportedActionPart1BeforeActionName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to action. To request support for this action, please upvote an existing issue at.
-        /// </summary>
-        public static string UnsupportedActionPart2BetweenActionNameAndLink {
-            get {
-                return ResourceManager.GetString("UnsupportedActionPart2BetweenActionNameAndLink", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to . If no issue already exists, you can open a new issue (feature request) to request support for this action..
-        /// </summary>
-        public static string UnsupportedActionPart3AfterLink {
-            get {
-                return ResourceManager.GetString("UnsupportedActionPart3AfterLink", resourceCulture);
+                return ResourceManager.GetString("UnsupportedActionMessageFormat", resourceCulture);
             }
         }
         

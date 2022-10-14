@@ -10,14 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <StackPanel VerticalAlignment="Center" Margin="10">
-            <TextBlock TextWrapping="Wrap">
-                <Run Text="{x:Static Properties:Resources.UnsupportedActionPart1BeforeActionName}"/>
-                <Run Name="actionName" FontWeight="Bold"/>
-                <Run Text="{x:Static Properties:Resources.UnsupportedActionPart2BetweenActionNameAndLink}"/>
-                <Hyperlink NavigateUri="https://github.com/microsoft/accessibility-insights-windows/issues" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" >
-                    <Run Text="https://github.com/microsoft/accessibility-insights-windows/issues" />
-                </Hyperlink><Run Text="{x:Static Properties:Resources.UnsupportedActionPart3AfterLink}"/>
-            </TextBlock>
+            <TextBlock Name="requestActionMessage" TextWrapping="Wrap" Text="{x:Static Properties:Resources.UnsupportedActionMessageFormat}" />
         </StackPanel>
     </Grid>
 </UserControl>
