@@ -5,6 +5,7 @@ using Axe.Windows.Automation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Appium.Windows;
 using System.IO;
+using System.Linq;
 using static System.FormattableString;
 
 namespace UITests.UILibrary
@@ -48,7 +49,7 @@ namespace UITests.UILibrary
 
             var scanner = ScannerFactory.CreateScanner(config);
 
-            var result = scanner.Scan();
+            var result = scanner.Scan(null).WindowScanOutputs.First();
             if (result.ErrorCount > 0)
             {
                 var newPath = Path.Combine(outputPath, Invariant($"{fileName}.a11ytest"));
