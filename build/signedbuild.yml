@@ -264,10 +264,10 @@ jobs:
     inputs:
       InputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\net472\\*.exe;\
-                      src\\AccessibilityInsights\\bin\\Release\\net472\\AccessibilityInsights.*.dll;\
-                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net472\\*.exe;\
-                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net472\\AccessibilityInsights.*.dll;"
+      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
+                      src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
+                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report (BinSkim)'
@@ -321,9 +321,9 @@ jobs:
     inputs:
       SourceFolder: '$(Build.SourcesDirectory)\src'
       Contents: |
-       AccessibilityInsights\bin\Release\net472\**\?(*.exe|*.dll)
-       AccessibilityInsights.VersionSwitcher\bin\Release\net472\**\?(*.exe|*.dll)
-       !AccessibilityInsights.VersionSwitcher\bin\Release\net472\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
+       AccessibilityInsights\bin\Release\net48\**\?(*.exe|*.dll)
+       AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
+       !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
        MSI\bin\Release\msi\**\AccessibilityInsights.msi
       TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 

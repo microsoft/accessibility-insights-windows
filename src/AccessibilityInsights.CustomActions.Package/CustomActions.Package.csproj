@@ -14,8 +14,9 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AccessibilityInsights.CustomActions.Package</RootNamespace>
     <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,9 +50,9 @@
   <Target Name="OverwriteWithSignedAssemblies">
     <!-- Manually overwrite assemblies with signed versions before packing everything up -->
     <ItemGroup>
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(Configuration)\net472\AccessibilityInsights.CustomActions.*" />
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Microsoft.Deployment.WindowsInstaller.dll" />
-      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net472\Newtonsoft.Json.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights.CustomActions\bin\$(Configuration)\net48\AccessibilityInsights.CustomActions.*" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net48\Microsoft.Deployment.WindowsInstaller.dll" />
+      <SignedOverwriteFiles Include="$(SolutionDir)AccessibilityInsights\bin\$(Configuration)\net48\Newtonsoft.Json.dll" />
     </ItemGroup>
     <Copy SourceFiles="@(SignedOverwriteFiles)" DestinationFolder="$(IntermediateOutputPath)" />
     <PropertyGroup>
