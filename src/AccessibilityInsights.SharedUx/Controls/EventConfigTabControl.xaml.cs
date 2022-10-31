@@ -227,6 +227,16 @@ namespace AccessibilityInsights.SharedUx.Controls
                 {
                     evm.IsChecked = !evm.IsChecked;
                 }
+
+                if (AutomationPeer.ListenerExists(AutomationEvents.LiveRegionChanged))
+                {
+                    TreeViewItemAutomationPeer peer = UIElementAutomationPeer.FromElement(sender as TreeViewItem) as TreeViewItemAutomationPeer;
+                    if (peer != null)
+                    {
+                        peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
+                    }
+                }
+
                 e.Handled = true;
             }
             else if (e.Key == Key.Enter)
