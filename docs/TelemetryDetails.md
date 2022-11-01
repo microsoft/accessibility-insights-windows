@@ -93,7 +93,7 @@ Additional properties:
 Name | Value
 --- | ---
 `customDimensions.UIAccessEnabled` | `True` if the user has explicitly enabled UIAccess, otherwise `False`. 
-`customDimensions.InstalledDotNetFrameworkVersion` | The numeric version of the installed .NET Framework version. If this value is 528040 or greater, then .NET Framework 4.8 is installed. Otherwise, .NET Framework 4.7.2 is installed.
+`customDimensions.InstalledDotNetFrameworkVersion` | The numeric version of the installed .NET Framework version. If this value is 528040 or greater, then .NET Framework 4.8 is installed.
 `customDimensions.OsArchitecture` | The architecture of the current Windows platform. Supported values: `x86` or `x64`
 
 #### Mainwindow_Timer_Started
