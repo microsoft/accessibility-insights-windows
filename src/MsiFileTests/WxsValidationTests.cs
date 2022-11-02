@@ -28,9 +28,9 @@ namespace MsiFileTests
                 "Axe.Windows.Automation.dll",
             };
 
-            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net472", wxsFile, "ProductComponent", productComponentExclusions);
-            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net472\IssueTemplates", wxsFile, "IssueTemplates");
-            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights.VersionSwitcher\bin\release\net472", wxsFile, "VersionSwitcher");
+            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net48", wxsFile, "ProductComponent", productComponentExclusions);
+            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net48\IssueTemplates", wxsFile, "IssueTemplates");
+            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights.VersionSwitcher\bin\release\net48", wxsFile, "VersionSwitcher");
         }
 
         private static void CompareWxsSectionToDropPath(string repoRoot, string relativeDropPath,
