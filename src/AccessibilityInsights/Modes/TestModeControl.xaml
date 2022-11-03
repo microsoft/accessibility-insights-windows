@@ -37,10 +37,12 @@
                         </Grid>
                     </TabItem.Header>
                 </TabItem>
-                <TabItem x:Name="tbiAutomatedChecks" Header="{x:Static properties:Resources.tbiAutomatedChecksHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiAutomatedChecksAutomationPropertiesName}" IsSelected="True">
+                <TabItem x:Name="tbiAutomatedChecks" Header="{x:Static properties:Resources.tbiAutomatedChecksHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiAutomatedChecksAutomationPropertiesName}"
+                         AutomationProperties.PositionInSet="1" AutomationProperties.SizeOfSet="2" IsSelected="True">
                     <TestTabViews:AutomatedChecksControl x:Name="ctrlAutomatedChecks" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </TabItem>
-                <TabItem x:Name="tbiTabStop" Header="{x:Static properties:Resources.tbiTabStopHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiTabStopAutomationPropertiesName}">
+                <TabItem x:Name="tbiTabStop" Header="{x:Static properties:Resources.tbiTabStopHeader}" AutomationProperties.Name="{x:Static properties:Resources.tbiTabStopAutomationPropertiesName}"
+                         AutomationProperties.PositionInSet="2" AutomationProperties.SizeOfSet="2">
                     <TestTabViews:TabStopControl x:Name="ctrlTabStop" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
                 </TabItem>
             </TabControl>
