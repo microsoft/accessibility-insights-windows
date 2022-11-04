@@ -1,4 +1,7 @@
-﻿using AccessibilityInsights.SharedUx.ViewModels;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using AccessibilityInsights.SharedUx.ViewModels;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
