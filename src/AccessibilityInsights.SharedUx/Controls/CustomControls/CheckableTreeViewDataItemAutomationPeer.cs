@@ -1,5 +1,4 @@
-﻿using System;
-using System.Windows.Automation;
+﻿using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
@@ -19,7 +18,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public override object GetPattern(PatternInterface patternInterface)
         {
             if (patternInterface == PatternInterface.Toggle)
+            {
                 return this;
+            }
 
             return base.GetPattern(patternInterface);
         }
@@ -34,7 +35,17 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
         public void Toggle()
         {
-            throw new NotImplementedException();
+            RaisePropertyChangedEvent(TogglePatternIdentifiers.ToggleStateProperty, ConvertToToggleState(!_checkBox.IsChecked), ConvertToToggleState(_checkBox.IsChecked));
+        }
+
+        private static ToggleState ConvertToToggleState(bool? value)
+        {
+            switch (value)
+            {
+                case (true): return ToggleState.On;
+                case (false): return ToggleState.Off;
+                default: return ToggleState.Indeterminate;
+            }
         }
     }
 }

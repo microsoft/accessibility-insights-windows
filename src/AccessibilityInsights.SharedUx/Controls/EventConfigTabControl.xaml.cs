@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
+using AccessibilityInsights.SharedUx.Controls.CustomControls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
@@ -226,6 +227,12 @@ namespace AccessibilityInsights.SharedUx.Controls
                 if (evm.IsEditEnabled)
                 {
                     evm.IsChecked = !evm.IsChecked;
+
+                    CheckableTreeViewItemAutomationPeer peer = UIElementAutomationPeer.FromElement(sender as TreeViewItem) as CheckableTreeViewItemAutomationPeer;
+                    if (peer != null && peer.EventsSource is CheckableTreeViewDataItemAutomationPeer)
+                    {
+                        (peer.EventsSource as CheckableTreeViewDataItemAutomationPeer).Toggle();
+                    }
                 }
                 e.Handled = true;
             }
