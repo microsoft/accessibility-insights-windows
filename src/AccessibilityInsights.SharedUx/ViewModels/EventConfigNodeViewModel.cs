@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Properties;
@@ -434,10 +434,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         {
             if (this.TextVisibility == Visibility.Visible)
             {
-                var check = (this.IsChecked.HasValue && this.IsChecked.Value)
-                    ? Resources.EventConfigNodeViewModel_ToString_checked
-                    : Resources.EventConfigNodeViewModel_ToString_unchecked;
-                return this.Header + check;
+                return this.Header;
             }
             else
             {
