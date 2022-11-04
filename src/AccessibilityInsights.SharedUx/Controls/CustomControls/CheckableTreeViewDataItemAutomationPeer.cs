@@ -1,18 +1,18 @@
-﻿using System.Windows.Automation;
+﻿using AccessibilityInsights.SharedUx.ViewModels;
+using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
-using System.Windows.Controls;
 
 namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     internal class CheckableTreeViewDataItemAutomationPeer : TreeViewDataItemAutomationPeer, IToggleProvider
     {
-        private CheckBox _checkBox;
+        private EventConfigNodeViewModel _owner;
 
-        public CheckableTreeViewDataItemAutomationPeer(object item, ItemsControlAutomationPeer itemsControlAutomationPeer, TreeViewDataItemAutomationPeer parentDataItemAutomationPeer, CheckBox checkBox)
+        public CheckableTreeViewDataItemAutomationPeer(object item, ItemsControlAutomationPeer itemsControlAutomationPeer, TreeViewDataItemAutomationPeer parentDataItemAutomationPeer)
             : base(item, itemsControlAutomationPeer, parentDataItemAutomationPeer)
         {
-            _checkBox = checkBox;
+            _owner = item as EventConfigNodeViewModel;
         }
 
         public override object GetPattern(PatternInterface patternInterface)
@@ -29,13 +29,14 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             get
             {
-                return _checkBox.IsChecked == true ? ToggleState.On : ToggleState.Off;
+                return _owner.IsChecked == true ? ToggleState.On : ToggleState.Off;
             }
         }
 
         public void Toggle()
         {
-            RaisePropertyChangedEvent(TogglePatternIdentifiers.ToggleStateProperty, ConvertToToggleState(!_checkBox.IsChecked), ConvertToToggleState(_checkBox.IsChecked));
+            _owner.IsChecked = !_owner.IsChecked;
+            RaisePropertyChangedEvent(TogglePatternIdentifiers.ToggleStateProperty, ConvertToToggleState(!_owner.IsChecked), ConvertToToggleState(_owner.IsChecked));
         }
 
         private static ToggleState ConvertToToggleState(bool? value)

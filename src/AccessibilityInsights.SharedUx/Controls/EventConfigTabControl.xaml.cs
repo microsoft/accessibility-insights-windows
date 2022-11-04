@@ -226,8 +226,6 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 if (evm.IsEditEnabled)
                 {
-                    evm.IsChecked = !evm.IsChecked;
-
                     CheckableTreeViewItemAutomationPeer peer = UIElementAutomationPeer.FromElement(sender as TreeViewItem) as CheckableTreeViewItemAutomationPeer;
                     if (peer != null && peer.EventsSource is CheckableTreeViewDataItemAutomationPeer)
                     {
