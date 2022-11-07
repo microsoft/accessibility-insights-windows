@@ -9,6 +9,11 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     internal class CheckableTreeViewItem : TreeViewItem
     {
+        protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new CheckableTreeViewItemAutomationPeer(this);
+        }
+
         protected override DependencyObject GetContainerForItemOverride()
         {
             return new CheckableTreeViewItem();
@@ -17,11 +22,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         protected override bool IsItemItsOwnContainerOverride(object item)
         {
             return item is CheckableTreeViewItem;
-        }
-
-        protected override AutomationPeer OnCreateAutomationPeer()
-        {
-            return new CheckableTreeViewItemAutomationPeer(this);
         }
     }
 }

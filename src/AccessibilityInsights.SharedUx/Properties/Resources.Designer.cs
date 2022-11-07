@@ -1542,24 +1542,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  checked.
-        /// </summary>
-        public static string EventConfigNodeViewModel_ToString_checked {
-            get {
-                return ResourceManager.GetString("EventConfigNodeViewModel_ToString_checked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to  unchecked.
-        /// </summary>
-        public static string EventConfigNodeViewModel_ToString_unchecked {
-            get {
-                return ResourceManager.GetString("EventConfigNodeViewModel_ToString_unchecked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Listen to All Events.
         /// </summary>
         public static string EventConfigTabControl_ckbxAllEvents {

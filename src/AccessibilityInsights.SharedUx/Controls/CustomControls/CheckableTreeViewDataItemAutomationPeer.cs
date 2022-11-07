@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             get
             {
-                return _owner.IsChecked == true ? ToggleState.On : ToggleState.Off;
+                return ConvertToToggleState(_owner.IsChecked);
             }
         }
 
