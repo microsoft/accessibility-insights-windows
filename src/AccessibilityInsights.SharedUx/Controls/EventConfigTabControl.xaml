@@ -7,6 +7,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:converters="clr-namespace:AccessibilityInsights.SharedUx.Converters"
              xmlns:local="clr-namespace:AccessibilityInsights.SharedUx.Controls"
+             xmlns:cc="clr-namespace:AccessibilityInsights.SharedUx.Controls.CustomControls"
              xmlns:vm="clr-namespace:AccessibilityInsights.SharedUx.ViewModels"
              xmlns:fabric="clr-namespace:AccessibilityInsights.CommonUxComponents.Controls;assembly=AccessibilityInsights.CommonUxComponents"
              xmlns:Properties="clr-namespace:AccessibilityInsights.SharedUx.Properties"
@@ -49,7 +50,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <TreeView Grid.Row="0" Name="trviewConfigEvents" BorderThickness="0" AutomationProperties.Name="{x:Static Properties:Resources.trviewConfigEventsAutomationPropertiesName}" Margin="2"
+                <cc:CheckableTreeView Grid.Row="0" x:Name="trviewConfigEvents" BorderThickness="0" AutomationProperties.Name="{x:Static Properties:Resources.trviewConfigEventsAutomationPropertiesName}" Margin="2"
                           ScrollViewer.CanContentScroll="False" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                     <TreeView.Resources>
                         <Style TargetType="TreeView">
@@ -80,7 +81,7 @@
                             <EventSetter Event="KeyDown" Handler="TreeViewItem_KeyDown"/>
                         </Style>
                     </TreeView.ItemContainerStyle>
-                </TreeView>
+                </cc:CheckableTreeView>
                 <CheckBox Grid.Row="1" Content="{x:Static Properties:Resources.EventConfigTabControl_ckbxAllEvents}"
                           Margin="27,2" FontSize="11" Name="ckbxAllEvents" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"
                           Checked="ckbxAllEvents_Checked" Unchecked="ckbxAllEvents_Unchecked" Style="{StaticResource CheckBoxContastingBorder}"

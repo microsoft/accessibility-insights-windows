@@ -1128,12 +1128,6 @@
   <data name="ExtensionMethods_CopyStringToClipboard_Error_copying_to_clipboard" xml:space="preserve">
     <value>Error copying to clipboard: </value>
   </data>
-  <data name="EventConfigNodeViewModel_ToString_checked" xml:space="preserve">
-    <value> checked</value>
-  </data>
-  <data name="EventConfigNodeViewModel_ToString_unchecked" xml:space="preserve">
-    <value> unchecked</value>
-  </data>
   <data name="HierarchyNodeViewModel_AutomationNameFailedResultsInDescendentsFormat" xml:space="preserve">
     <value>{0} has failed test results in descendants.</value>
     <comment>{0} is the glimpse</comment>
