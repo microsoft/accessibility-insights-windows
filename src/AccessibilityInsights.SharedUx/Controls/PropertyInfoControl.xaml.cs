@@ -1,9 +1,10 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Dialogs;
 using AccessibilityInsights.SharedUx.Interfaces;
 using AccessibilityInsights.SharedUx.Settings;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Core.Bases;
 using Axe.Windows.Core.Types;
@@ -15,6 +16,7 @@ using System.Windows.Automation.Peers;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
 
 namespace AccessibilityInsights.SharedUx.Controls
 {
@@ -238,6 +240,31 @@ namespace AccessibilityInsights.SharedUx.Controls
                 ApplicationCommands.Copy.Execute(null, lvProperties);
                 e.Handled = true;
             }
+        }
+
+        /// <summary>
+        /// Override WPF's behavior to automatically bring elements into focus via horizontal scrolling, since we treat this
+        /// grid as a list and it causes a jumpy appearance.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Grid_RequestBringIntoView(object sender, RequestBringIntoViewEventArgs e)
+        {
+            var scrollViewer = (sender as Grid).GetParentElem<ScrollViewer>() as ScrollViewer;
+
+            // If target rectangle is out of view vertically, scroll to it
+            var topIsVisible = e.TargetRect.Top >= scrollViewer.VerticalOffset;
+            var bottomIsVisible = e.TargetRect.Bottom <= (scrollViewer.ViewportHeight + scrollViewer.VerticalOffset);
+            if (!topIsVisible)
+            {
+                scrollViewer.ScrollToVerticalOffset(e.TargetRect.Top);
+            }
+            else if (!bottomIsVisible)
+            {
+                scrollViewer.ScrollToVerticalOffset(e.TargetRect.Bottom - scrollViewer.ViewportHeight);
+            }
+
+            e.Handled = true;
         }
     }
 }

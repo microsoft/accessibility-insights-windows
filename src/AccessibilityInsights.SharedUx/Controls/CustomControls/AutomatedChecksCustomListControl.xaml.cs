@@ -272,33 +272,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         }
 
         /// <summary>
-        /// Finds object up parent hierarchy of specified type
-        /// </summary>
-        private DependencyObject GetParentElem<T>(DependencyObject obj)
-        {
-            try
-            {
-                var par = VisualTreeHelper.GetParent(obj);
-
-                if (par is T)
-                {
-                    return par;
-                }
-                else
-                {
-                    return GetParentElem<T>(par);
-                }
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
-            {
-                e.ReportException();
-                return null;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
-        /// <summary>
         /// Custom keyboard nav behavior
         /// </summary>
         private void lviResults_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -314,7 +287,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 }
                 else
                 {
-                    var parent = GetParentElem<Expander>(sender as DependencyObject) as Expander;
+                    var parent = (sender as DependencyObject).GetParentElem<Expander>() as Expander;
                     var vb = GetFirstChildElement<Label>(parent as DependencyObject) as Label;
                     vb.Focus();
                 }
@@ -366,7 +339,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                     }
                     else
                     {
-                        (GetParentElem<GroupItem>(sender as DependencyObject) as UIElement).Focus();
+                        ((sender as DependencyObject).GetParentElem<GroupItem>() as UIElement).Focus();
                     }
                 }
                 e.Handled = true;
@@ -457,7 +430,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private void ListViewItem_Unselected(object sender, RoutedEventArgs e)
         {
             var lvi = sender as ListViewItem;
-            var exp = GetParentElem<Expander>(lvi) as Expander;
+            var exp = lvi.GetParentElem<Expander>() as Expander;
             var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
             var srvm = lvi.DataContext as RuleResultViewModel;
 
@@ -468,7 +441,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
 
             SelectedItems.Remove(srvm);
-            var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+            var groupitem = exp.GetParentElem<GroupItem>() as GroupItem;
             var dc = cb.DataContext as CollectionViewGroup;
             var itms = dc.Items;
             var any = itms.Intersect(SelectedItems).Any();
@@ -512,7 +485,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             var cb = sender as CheckBox;
             if (cb.IsEnabled)
             {
-                var exp = GetParentElem<Expander>(cb) as Expander;
+                var exp = cb.GetParentElem<Expander>() as Expander;
                 var lst = cb.DataContext as CollectionViewGroup;
                 var itemsSelected = SetItemsChecked(lst.Items, cb.IsChecked.Value);
                 if (!itemsSelected)
@@ -521,7 +494,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                 }
 
                 // update tag for whether the group item has children highlighted or not
-                var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+                var groupitem = exp.GetParentElem<GroupItem>() as GroupItem;
                 groupitem.Tag = cb.IsChecked.Value ? "all" : "zero";
             }
         }
@@ -542,7 +515,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             if (ScreenshotAvailable)
             {
                 var lvi = sender as ListViewItem;
-                var exp = GetParentElem<Expander>(lvi) as Expander;
+                var exp = lvi.GetParentElem<Expander>() as Expander;
                 var cb = GetFirstChildElement<CheckBox>(exp) as CheckBox;
                 var itm = lvi.DataContext as RuleResultViewModel;
                 if (!SelectedItems.Contains(itm))
@@ -551,7 +524,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
                     UpdateSelectAll();
                     ImageOverlayDriver.GetDefaultInstance().AddElement(_controlContext.ElementContext.Id, itm.Element.UniqueId);
                 }
-                var groupitem = GetParentElem<GroupItem>(exp) as GroupItem;
+                var groupitem = exp.GetParentElem<GroupItem>() as GroupItem;
                 var dc = cb.DataContext as CollectionViewGroup;
                 var itms = dc.Items;
                 var any = itms.Except(SelectedItems).Any();
@@ -573,7 +546,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         /// </summary>
         private void GroupItem_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            var listViewItemParent = GetParentElem<ListViewItem>(Keyboard.FocusedElement as DependencyObject);
+            var listViewItemParent = (Keyboard.FocusedElement as DependencyObject).GetParentElem<ListViewItem>();
             if (Keyboard.FocusedElement is ListViewItem || listViewItemParent != null)
             {
                 // Let it be handled by the listviewitem previewkeydown handler
@@ -583,7 +556,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 
             var gi = sender as GroupItem;
             var sp = GetFirstChildElement<StackPanel>(gi) as StackPanel;
-            var exp = GetParentElem<Expander>(sp) as Expander;
+            var exp = sp.GetParentElem<Expander>() as Expander;
 
             if (e.Key == Key.Right)
             {
