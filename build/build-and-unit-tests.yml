@@ -53,14 +53,14 @@ jobs:
     displayName: 'Publish Artifact: drop'
 
   - task: VSTest@2
-    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+    displayName: 'Test Assemblies **\*test*.dll;-:**\obj\**'
     inputs:
       testAssemblyVer2: |
         **\*test*.dll
         !**\obj\**
       codeCoverageEnabled: true
       platform: '$(BuildPlatform)'
-      configuration: release
+      configuration: ${{ parameters.configuration }}
       rerunFailedTests: true
       runSettingsFile: $(Build.SourcesDirectory)/src/UITests//UITests.runsettings
       testFiltercriteria: 'TestCategory!=UITest'
