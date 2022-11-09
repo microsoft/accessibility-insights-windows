@@ -305,5 +305,32 @@ namespace AccessibilityInsights.SharedUx.Utilities
                     where s.Bounds.Contains(p)
                     select s).Any();
         }
+
+        /// <summary>
+        /// Finds object up parent hierarchy of specified type
+        /// </summary>
+        internal static DependencyObject GetParentElem<T>(this DependencyObject obj)
+        {
+            try
+            {
+                var par = VisualTreeHelper.GetParent(obj);
+
+                if (par is T)
+                {
+                    return par;
+                }
+                else
+                {
+                    return GetParentElem<T>(par);
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch (Exception e)
+            {
+                e.ReportException();
+                return null;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
     }
 }
