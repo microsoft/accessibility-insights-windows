@@ -253,15 +253,17 @@ namespace AccessibilityInsights.SharedUx.Controls
             var scrollViewer = (sender as Grid).GetParentElem<ScrollViewer>() as ScrollViewer;
 
             // If target rectangle is out of view vertically, scroll to it
-            var topIsVisible = e.TargetRect.Top >= scrollViewer.VerticalOffset;
-            var bottomIsVisible = e.TargetRect.Bottom <= (scrollViewer.ViewportHeight + scrollViewer.VerticalOffset);
+            var top = this.dpFilter.Visibility == Visibility.Visible ? e.TargetRect.Top + this.dpFilter.Height + this.dpFilter.Margin.Top : e.TargetRect.Top;
+            var bottom = this.dpFilter.Visibility == Visibility.Visible ? e.TargetRect.Bottom + this.dpFilter.Height + this.dpFilter.Margin.Bottom : e.TargetRect.Bottom;
+            var topIsVisible = top >= scrollViewer.VerticalOffset;
+            var bottomIsVisible = bottom <= (scrollViewer.ViewportHeight + scrollViewer.VerticalOffset);
             if (!topIsVisible)
             {
-                scrollViewer.ScrollToVerticalOffset(e.TargetRect.Top);
+                scrollViewer.ScrollToVerticalOffset(top);
             }
             else if (!bottomIsVisible)
             {
-                scrollViewer.ScrollToVerticalOffset(e.TargetRect.Bottom - scrollViewer.ViewportHeight);
+                scrollViewer.ScrollToVerticalOffset(bottom - scrollViewer.ViewportHeight);
             }
 
             e.Handled = true;
