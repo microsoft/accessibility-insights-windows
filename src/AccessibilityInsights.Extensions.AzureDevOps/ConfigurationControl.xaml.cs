@@ -520,9 +520,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
         }
 
-#pragma warning disable CA1801 // unused parameter
-        private void IssueConfigurationControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801 // unused parameter
+        private void IssueConfigurationControl_IsVisibleChanged(object _, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue)
             {
