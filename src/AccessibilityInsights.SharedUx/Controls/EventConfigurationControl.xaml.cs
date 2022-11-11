@@ -260,10 +260,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (AutomationPeer.ListenerExists(AutomationEvents.AsyncContentLoaded))
             {
                 UserControlAutomationPeer peer = UIElementAutomationPeer.FromElement(this) as UserControlAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
-                }
+                peer?.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
             }
         }
 

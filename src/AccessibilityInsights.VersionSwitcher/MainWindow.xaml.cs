@@ -65,10 +65,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 progressBar.Value = percentage;
                 statusText.Text = newText;
                 var peer = FrameworkElementAutomationPeer.FromElement(statusText);
-                if (peer != null)
-                {
-                    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-                }
+                peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
             }
         }
 
