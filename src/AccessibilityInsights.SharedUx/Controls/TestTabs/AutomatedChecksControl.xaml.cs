@@ -353,7 +353,9 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// Call show/hide when tab changes
         /// </summary>
 #pragma warning disable CA1801 // unused parameter
+#pragma warning disable IDE0060 // Remove unused parameter
         private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+#pragma warning restore IDE0060 // Remove unused parameter
 #pragma warning restore CA1801 // unused parameter
         {
             if ((bool)e.NewValue == true)
