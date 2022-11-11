@@ -10,7 +10,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
 {
     internal class CheckableTreeViewDataItemAutomationPeer : TreeViewDataItemAutomationPeer, IToggleProvider
     {
-        private EventConfigNodeViewModel _owner;
+        private readonly EventConfigNodeViewModel _owner;
 
         public CheckableTreeViewDataItemAutomationPeer(object item, ItemsControlAutomationPeer itemsControlAutomationPeer, TreeViewDataItemAutomationPeer parentDataItemAutomationPeer)
             : base(item, itemsControlAutomationPeer, parentDataItemAutomationPeer)
