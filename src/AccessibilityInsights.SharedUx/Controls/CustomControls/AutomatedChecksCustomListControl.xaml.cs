@@ -382,7 +382,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private bool SetItemsChecked(IReadOnlyCollection<Object> lst, bool check)
         {
             var ret = true;
-            foreach (RuleResultViewModel itm in lst.AsParallel())
+            foreach (RuleResultViewModel itm in lst.AsParallel().Cast<RuleResultViewModel>())
             {
                 if (check && !SelectedItems.Contains(itm))
                 {
