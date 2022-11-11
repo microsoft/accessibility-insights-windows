@@ -84,7 +84,6 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         public static void OnDataGridExpandAllAutomationIdChanged(DependencyObject o, DependencyPropertyChangedEventArgs e)
         {
             AutomatedChecksCustomListControl sender = o as AutomatedChecksCustomListControl;
-
             sender?.btnExpandAll.SetValue(AutomationProperties.AutomationIdProperty, sender.DataGridExpandAllAutomationId);
         }
 
