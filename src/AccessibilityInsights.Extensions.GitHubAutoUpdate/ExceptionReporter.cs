@@ -17,10 +17,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         /// <param name="exception">The exception being reported</param>
         public void ReportException(Exception exception)
         {
-            if (exception != null)
-            {
-                exception.ReportException();
-            }
+            exception?.ReportException();
         }
     }
 }

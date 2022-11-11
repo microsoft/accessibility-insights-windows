@@ -85,10 +85,7 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             AutomatedChecksCustomListControl sender = o as AutomatedChecksCustomListControl;
 
-            if (sender != null)
-            {
-                sender.btnExpandAll.SetValue(AutomationProperties.AutomationIdProperty, sender.DataGridExpandAllAutomationId);
-            }
+            sender?.btnExpandAll.SetValue(AutomationProperties.AutomationIdProperty, sender.DataGridExpandAllAutomationId);
         }
 
         #endregion

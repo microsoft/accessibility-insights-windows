@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Types;
 using System;
@@ -28,14 +28,10 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (AutomationPeer.ListenerExists(AutomationEvents.PropertyChanged))
             {
                 var peer = UIElementAutomationPeer.FromElement(this) as NPISliderAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaisePropertyChangedEvent(
-                        AutomationProperty.LookupById(PropertyType.UIA_ValuePattern_ValuePropertyId),
-                        oldValue.ToString(CultureInfo.InvariantCulture),
-                        newValue.ToString(CultureInfo.InvariantCulture)
-                    );
-                }
+                peer?.RaisePropertyChangedEvent(
+                    AutomationProperty.LookupById(PropertyType.UIA_ValuePattern_ValuePropertyId),
+                    oldValue.ToString(CultureInfo.InvariantCulture),
+                    newValue.ToString(CultureInfo.InvariantCulture));
             }
         }
     }
