@@ -18,7 +18,7 @@ namespace AccessibilityInsights.ExtensionsTests
     public class ContainerUnitTests
     {
         const string ExtensionsDoNotExistSearchPattern = null;
-        static string ExtensionsExistSearchPattern = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
+        static readonly string ExtensionsExistSearchPattern = Path.GetFileName(Assembly.GetExecutingAssembly().Location);
 
         [TestMethod]
         [Timeout(1000)]
