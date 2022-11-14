@@ -8,11 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="$(TEMP)\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
+    <Compile Include="$(MSBuildProjectDirectory)\..\bld\A11yInsightsVersionInfo.cs" Link="A11yInsightsVersionInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(TEMP)\A11yInsightsAttributesInfo.cs" Link="A11yInsightsAttributesInfo.cs" />
+    <Compile Include="$(MSBuildProjectDirectory)\..\bld\A11yInsightsAttributesInfo.cs" Link="A11yInsightsAttributesInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
