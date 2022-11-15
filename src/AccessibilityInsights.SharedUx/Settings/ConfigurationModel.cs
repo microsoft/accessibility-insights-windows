@@ -325,12 +325,12 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// If true, sound will be played while scanning is running with ATs
+        /// Whether to provide feedback with sound: Auto (if screen reader flag is set), Always, or Never.
         /// </summary>
-        public bool PlayScanningSound
+        public SoundFeedbackMode SoundFeedback
         {
-            get => GetDataValue<bool>(KeyPlayScanningSound);
-            set => SetDataValue<bool>(KeyPlayScanningSound, value);
+            get => GetEnumDataValue<SoundFeedbackMode>(KeySoundFeedback);
+            set => SetEnumDataValue<SoundFeedbackMode>(KeySoundFeedback, value);
         }
 
         /// <summary>
@@ -614,7 +614,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 SelectionByMouse = true,
                 ShowWelcomeScreenOnLaunch = true,
                 AlwaysOnTop = true,
-                PlayScanningSound = false,
+                SoundFeedback = SoundFeedbackMode.Auto,
                 DisableTestsInSnapMode = false,
                 IsHighlighterOn = true,
                 ShowUncertain = false,

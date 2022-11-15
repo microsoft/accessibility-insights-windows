@@ -108,7 +108,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
-            Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(SoundFeedbackMode.Auto, config.SoundFeedback);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
@@ -181,7 +181,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
-            Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(SoundFeedbackMode.Auto, config.SoundFeedback);
             Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);

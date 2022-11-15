@@ -1,5 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.Win32;
@@ -70,7 +72,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <summary>
         /// Provides bindable property for ProgressRingControls
         /// </summary>
-        public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
+        public static SoundFeedbackMode soundFeedback => ConfigurationManager.GetDefaultInstance().AppConfig.SoundFeedback;
 
         /// <summary>
         /// Get DPI

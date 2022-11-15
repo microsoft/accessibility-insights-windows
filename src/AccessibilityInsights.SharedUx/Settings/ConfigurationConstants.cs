@@ -12,7 +12,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         /// <summary>
         /// Current version of configuration (should change only when the schema changes, which should be rare)
         /// </summary>
-        public const string CurrentVersion = "1.1.10";
+        public const string CurrentVersion = "1.2.0";
 
         /// <summary>
         /// Default values for the config
@@ -56,7 +56,6 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyIssueReporterSerializedConfigs = "IssueReporterSerializedConfigs";
         private const string KeyIsUnderElementScope = "IsUnderElementScope";
         private const string KeyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
-        private const string KeyPlayScanningSound = "PlayScanningSound";
         private const string KeyReleaseChannel = SetupLibrary.Constants.ReleaseChannelKey;
         private const string KeySelectedIssueReporter = "SelectedIssueReporter";
         private const string KeySelectionByFocus = "SelectionByFocus";
@@ -67,6 +66,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyShowUncertain = "ShowUncertain";
         private const string KeyShowWelcomeScreenOnLaunch = "ShowWelcomeScreenOnLaunch";
         private const string KeyShowWhitespaceInTextPatternViewer = "ShowWhitespaceInTextPatternViewer";
+        private const string KeySoundFeedback = "SoundFeedback";
         private const string KeyTestReportPath = "TestReportPath";
         private const string KeyTreeViewMode = "TreeViewMode";
         private const string KeyVersion = "Version";
