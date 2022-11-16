@@ -17,6 +17,13 @@ jobs:
   variables:
     PublicRelease: 'false'
   steps:
+  - task: PowerShell@2
+    displayName: 'License Header Check'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
     inputs:
@@ -32,13 +39,6 @@ jobs:
       projects: |
         **\*.csproj
         !**\CustomActions.Package.csproj
-
-  - task: PowerShell@2
-    displayName: 'License Header Check'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
-      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
