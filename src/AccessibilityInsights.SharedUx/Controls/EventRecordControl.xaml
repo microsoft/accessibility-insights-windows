@@ -158,10 +158,16 @@
                       SelectionChanged="listEvents_SelectionChanged" SelectionMode="Single"
                       HorizontalContentAlignment="Stretch"
                       FontSize="11" Margin="2,0"
-                      Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" RowStyle="{StaticResource dgrStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
+                      Style="{StaticResource dgStyle}" CellStyle="{StaticResource dgcStyle}" ColumnHeaderStyle="{StaticResource dgchStyle}">
                 <i:Interaction.Behaviors>
                     <behaviors:ColumnResizeHotkeyBehavior/>
                 </i:Interaction.Behaviors>
+                <DataGrid.RowStyle>
+                    <Style BasedOn="{StaticResource dgrStyle}" TargetType="DataGridRow">
+                        <!-- Empty row name to override WPF default of using long data type -->
+                        <Setter Property="AutomationProperties.Name" Value=" "/>
+                    </Style>
+                </DataGrid.RowStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=TimeStamp}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderTimeStamp}" Width="Auto" IsReadOnly="True" />
                     <DataGridTextColumn Binding="{Binding Path=EventId, Converter={StaticResource cvtIdToName}}" ElementStyle="{StaticResource DataGridTextCellStyle}" Header="{x:Static Properties:Resources.DataGridTextColumnHeaderEventName}" Width="Auto" IsReadOnly="True" />
