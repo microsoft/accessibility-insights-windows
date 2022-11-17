@@ -40,7 +40,7 @@ namespace AccessibilityInsights.SetupLibrary
                         var jArray = (JArray)(pair.Value);
 
                         List<int> list = new List<int>();
-                        foreach (int value in jArray)
+                        foreach (int value in jArray.Select(v => (int)v))
                         {
                             list.Add(value);
                         }

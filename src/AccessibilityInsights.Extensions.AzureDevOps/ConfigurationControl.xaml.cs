@@ -304,10 +304,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             if (AutomationPeer.ListenerExists(AutomationEvents.AsyncContentLoaded))
             {
                 UserControlAutomationPeer peer = UIElementAutomationPeer.FromElement(this) as UserControlAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(state, state == AsyncContentLoadedState.Beginning ? 0 : 100));
-                }
+                peer?.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(state, state == AsyncContentLoadedState.Beginning ? 0 : 100));
             }
         }
 
@@ -369,10 +366,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 if (starting)
                 {
                     var peer = FrameworkElementAutomationPeer.FromElement(ctrlProgressRing);
-                    if (peer != null)
-                    {
-                        peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-                    }
+                    peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
                 }
                 this.IsEnabled = InteractionAllowed;
             });
@@ -526,9 +520,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
         }
 
-#pragma warning disable CA1801 // unused parameter
-        private void IssueConfigurationControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801 // unused parameter
+        private void IssueConfigurationControl_IsVisibleChanged(object _, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue)
             {

@@ -347,10 +347,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (AutomationPeer.ListenerExists(AutomationEvents.AsyncContentLoaded))
             {
                 ListBoxAutomationPeer peer = UIElementAutomationPeer.FromElement(this.dgEvents) as ListBoxAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
-                }
+                peer?.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
             }
         }
 

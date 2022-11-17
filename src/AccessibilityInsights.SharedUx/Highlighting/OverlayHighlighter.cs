@@ -137,10 +137,7 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         {
             try
             {
-                if (canvas != null)
-                {
-                    canvas.Children.Remove(brd);
-                }
+                canvas?.Children.Remove(brd);
             }
             catch (InvalidOperationException)
             {

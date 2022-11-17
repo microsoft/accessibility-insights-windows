@@ -303,15 +303,11 @@ namespace AccessibilityInsights.Modes
             return enabled;
         }
 
-#pragma warning disable IDE0051 // TODO: Is this really unused?
+#pragma warning disable IDE0051 // This is referenced in the XAML file
         /// <summary>
         /// Set focus when visible
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-#pragma warning disable CA1801
         private void UserControl_IsVisibleChanged(object _, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801
         {
             if ((bool)e.NewValue)
             {
@@ -321,7 +317,7 @@ namespace AccessibilityInsights.Modes
                 }, DispatcherPriority.Render);
             }
         }
-#pragma warning restore IDE0051
+#pragma warning restore IDE0051 // This is referenced in the XAML file
 
         /// <summary>
         /// Set focus on default control for mode

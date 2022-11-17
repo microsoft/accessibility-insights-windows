@@ -377,9 +377,7 @@ namespace AccessibilityInsights.SharedUx.ActionViews
             e.Handled = !e.Text.IsTextAllowed();
         }
 
-#pragma warning disable CA1801 // unused parameter
-        private void UserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-#pragma warning restore CA1801 // unused parameter
+        private void UserControl_IsVisibleChanged(object _, DependencyPropertyChangedEventArgs _1)
         {
             lock (_lockObject)
             {

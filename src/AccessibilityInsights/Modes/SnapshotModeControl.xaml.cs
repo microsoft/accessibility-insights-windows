@@ -274,10 +274,7 @@ namespace AccessibilityInsights.Modes
             if (AutomationPeer.ListenerExists(AutomationEvents.AsyncContentLoaded))
             {
                 UserControlAutomationPeer peer = UIElementAutomationPeer.FromElement(this) as UserControlAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(state, state == AsyncContentLoadedState.Beginning ? 0 : 100));
-                }
+                peer?.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(state, state == AsyncContentLoadedState.Beginning ? 0 : 100));
             }
         }
 
@@ -321,24 +318,6 @@ namespace AccessibilityInsights.Modes
 
             this.ctrlTabs.CurrentMode = (TestView)(MainWin.CurrentView) == TestView.ElementHowToFix ? InspectTabMode.TestHowToFix : InspectTabMode.TestProperties;
         }
-
-#pragma warning disable IDE0051 // TODO: Is this really unused?
-        /// <summary>
-        /// Update current view based on tab selection
-        /// </summary>
-        /// <param name="mode"></param>
-        private static void UpdateMainWinView(InspectTabType type)
-        {
-            if (type == InspectTabType.HowToFix)
-            {
-                MainWin.SetCurrentViewAndUpdateUI(TestView.ElementHowToFix);
-            }
-            else if (type == InspectTabType.Details)
-            {
-                MainWin.SetCurrentViewAndUpdateUI(TestView.ElementDetails);
-            }
-        }
-#pragma warning restore IDE0051
 
         /// <summary>
         /// Clear UI

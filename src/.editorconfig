@@ -55,6 +55,7 @@ dotnet_style_prefer_auto_properties = true:silent
 dotnet_style_prefer_conditional_expression_over_assignment = true:silent
 dotnet_style_prefer_conditional_expression_over_return = true:silent
 dotnet_remove_unnecessary_suppression_exclusions=all
+dotnet_style_prefer_compound_assignment = false
 ###############################
 # Naming Conventions          #
 ###############################

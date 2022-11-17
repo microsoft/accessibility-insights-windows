@@ -331,10 +331,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             if (AutomationPeer.ListenerExists(AutomationEvents.AsyncContentLoaded))
             {
                 TreeViewAutomationPeer peer = UIElementAutomationPeer.FromElement(this.treeviewHierarchy) as TreeViewAutomationPeer;
-                if (peer != null)
-                {
-                    peer.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
-                }
+                peer?.RaiseAsyncContentLoadedEvent(new AsyncContentLoadedEventArgs(AsyncContentLoadedState.Completed, 100));
             }
         }
 
