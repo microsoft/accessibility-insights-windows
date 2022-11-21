@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="$(MSBuildProjectDirectory)\..\bld\A11yInsightsAttributesInfo.cs" Link="A11yInsightsAttributesInfo.cs" />
+    <Compile Include="$(MSBuildProjectDirectory)\..\Attributes\AttributesInfo.cs" Link="AttributesInfo.cs" />
   </ItemGroup>
 
   <ItemGroup>
