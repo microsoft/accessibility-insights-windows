@@ -8,20 +8,20 @@ Windows UI Automation (UIA) is the platform-provided way for accessibility tools
 - Properties: Each Property is a Key/Value pair that identifies some aspect of the Element. The key is the property type (for example, IsVisible) and the value is the state of that property (for example, true or false).
 - Patterns: There are several patterns that map to functionality that is exposed via the UI. For example, a list element will typically support a pattern that exposes all of the items in the list, as well as the ability to learn which item is currently selected, and the ability to select a different element, if desired.
 
-Accessibility Insights takes the data provided by UIA and compares it to a set of rules which identify cases where the given data would create issues for users of the assistive technologies which consume UIA data. The results of these rules are then displayed in an environment that supports exploration of the data in its appropriate context. The results can be saved to disk for later use or analysis. If these files are later loaded into Accessibility Insights, the rich exploration environment is re-created.
+Accessibility Insights uses [Axe.Windows](https://www.nuget.org/packages/Axe.Windows) to take the data provided by UIA and compare it to a set of rules which identify cases where the given data would create issues for users of the assistive technologies which consume UIA data. The results of these rules are then displayed in an environment that supports exploration of the data in its appropriate context. The results can be saved to disk for later use or analysis. If these files are later loaded into Accessibility Insights, the rich exploration environment is re-created.
 
 ### Code organization
 The code is organized into the following general areas:
 
-#### Main application projects
-These projects allow user interaction with the Runtime components and the Accessibility Rules.
+#### Core application projects
+These projects provide the primary interactive layer around the data exposed by [Axe.Windows](https://www.nuget.org/packages/Axe.Windows)
 
 Project | Responsibility
 --- | ---
 AccessibilityInsights | Provide the UI for most users. This application is built using WPF.
-CommonUxComponents | Provide non-specialized visual elements used by the main app and extensions. This allows the main app and extensions to share ux components that are unrelated to the runtime.
+CommonUxComponents | Provide non-specialized visual elements used by the core application and extensions. This allows the core application and extensions to share ux components that are unrelated to the runtime.
 Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
-SharedUx | Provide visual elements used by the main app. This code is in a separate assembly for historical reasons.
+SharedUx | Provide visual elements used by the core application. This code is in a separate assembly for historical reasons.
 Win32 | Provide a wrapper around Win32-specific code that is needed by other assemblies.
 
 #### Extension projects
@@ -55,7 +55,7 @@ These projects create the MSI file that we ultimately ship:
 Project | Responsibility
 --- | ---
 MSI | Builds the MSI file that installs the application.
-CustomActions | App-specific actions that are triggered during MSI installation
+CustomActions | Application-specific actions that are triggered during MSI installation
 CustomActions.Package | Packages the CustomActions into the format needed by MSI
 
 #### Test projects
