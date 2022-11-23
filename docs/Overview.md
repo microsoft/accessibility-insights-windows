@@ -54,9 +54,9 @@ These projects create the MSI file that we ultimately ship:
 
 Project | Responsibility
 --- | ---
-MSI | Builds the MSI file that installs the application.
-CustomActions | Application-specific actions that are triggered during MSI installation
-CustomActions.Package | Packages the CustomActions into the format needed by MSI
+MSI | Create the MSI file that installs the application.
+CustomActions | Provide application-specific actions that are triggered during MSI installation
+CustomActions.Package | Package the CustomActions into the format needed by MSI
 
 #### Test projects
 The following projects exist for testing purposes:
