@@ -1,7 +1,7 @@
 ## Overview of Accessibility Insights for Windows
 
 ### Tool overview
-Windows UI Automation (UIA) is the platform-provided way for accessibility tools to interact with programs. A fully accessible program is a program whose full functionality can be accessed exclusively through the UIA-provided mechanism. AccessibilityInsights for Windows uses the UIA-provided information to scan programs for accessibility issues. The basic units of UIA are:
+Windows UI Automation (UIA) is the platform-provided way for accessibility tools to interact with programs. A fully accessible program is a program whose full functionality can be accessed exclusively through the UIA-provided mechanism. Accessibility Insights for Windows uses the UIA-provided information to scan programs for accessibility issues. The basic units of UIA are:
 
 - Hierarchy: The entire surface of all interactive applications is represented as a tree of Elements.
 - Elements: Each Element may optionally have any combination of Properties, Patterns, and child Elements.
