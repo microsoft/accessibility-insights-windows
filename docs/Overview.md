@@ -18,7 +18,7 @@ These projects provide the primary interactive layer around the data exposed by 
 
 Project | Responsibility
 --- | ---
-AccessibilityInsights | Provide the UI for most users. This application is built using WPF.
+AccessibilityInsights | Provide the UI for most users. This application uses WPF and targets .NET Framework 4.8.
 CommonUxComponents | Provide non-specialized visual elements used by the core application and extensions. This allows the core application and extensions to share ux components that are unrelated to the runtime.
 Extensions | Provide extension points that allow certain non-core functionality to be implemented in a loosely coupled way.
 SharedUx | Provide visual elements used by the core application. This code is in a separate assembly for historical reasons.
@@ -47,7 +47,7 @@ These projects are used for upgrades and for changing release channels:
 Project | Responsibility
 --- | ---
 VersionSwitcher | Provide an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
-SetupLibrary | Provide setup-related classes that are shared across AccessibiltyInsights, Extensions.GitHubAutoUpdate, and VersionSwitcher
+SetupLibrary | Provide setup-related classes that are shared across AccessibilityInsights, Extensions.GitHubAutoUpdate, and VersionSwitcher projects.
 
 #### Package-related projects
 These projects create the MSI file that we ultimately ship:
@@ -55,24 +55,24 @@ These projects create the MSI file that we ultimately ship:
 Project | Responsibility
 --- | ---
 MSI | Create the MSI file that installs the application.
-CustomActions | Provide application-specific actions that are triggered during MSI installation
-CustomActions.Package | Package the CustomActions into the format needed by MSI
+CustomActions | Provide application-specific actions that are triggered during MSI installation.
+CustomActions.Package | Package the CustomActions into the format needed by MSI.
 
 #### Test projects
 The following projects exist for testing purposes:
 Project | Comment
 --- | ---
-CustomActionsUnitTests | Unit tests for CustomActions project
-Extensions.DiskLoggingTelemetryTests | Unit tests for Extensions.DiskLoggingTelemetry project
-Extensions.AzureDevOpsTests | Unit tests for Extensions.AzureDevOps project
-Extensions.GitHubAutoUpdateUnitTests | Unit tests for Extensions.GitHubAutoUpdate project
-Extensions.GitHubUnitTests | Unit tests for Extensions.GitHub project
-Extensions.TelemetryTests | Unit tests for Extensions.Telemetry project
-ExtensionsTests | Unit tests for Extensions project
-SetupLibraryUnitTests | Unit tests for SetupLibrary project
-SharedUxTests | Unit tests for SharedUx project
-AccessibilityInsightsUnitTests | Unit tests for AccessibilityInsights project
-MsiFileTests | Unit tests to validate MSI project
-UITests | Integration tests to run AIWin. Tests for basic functionality and accessibility issues
+CustomActionsUnitTests | Unit tests for CustomActions project.
+Extensions.DiskLoggingTelemetryTests | Unit tests for Extensions.DiskLoggingTelemetry project.
+Extensions.AzureDevOpsTests | Unit tests for Extensions.AzureDevOps project.
+Extensions.GitHubAutoUpdateUnitTests | Unit tests for Extensions.GitHubAutoUpdate project.
+Extensions.GitHubUnitTests | Unit tests for Extensions.GitHub project.
+Extensions.TelemetryTests | Unit tests for Extensions.Telemetry project.
+ExtensionsTests | Unit tests for Extensions project.
+SetupLibraryUnitTests | Unit tests for SetupLibrary project.
+SharedUxTests | Unit tests for SharedUx project.
+AccessibilityInsightsUnitTests | Unit tests for AccessibilityInsights project.
+MsiFileTests | Unit tests to validate MSI project.
+UITests | Integration tests to run AIWin. Tests for basic functionality and accessibility issues.
 
 For more information on test project standards, please refer to [Unit Test Bar and Standards](UnitTestBarAndStandards.md).
