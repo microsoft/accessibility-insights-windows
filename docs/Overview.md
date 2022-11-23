@@ -54,11 +54,18 @@ Project | Responsibility
 MSI | Builds the MSI file that installs the application.
 
 #### Tests
-Unit tests are built using Moq. The following assemblies exist for testing purposes:
-- AccessibilityInsights.Extensions.AzureDevOpsTests
-- AccessibilityInsights.Extensions.GitHubAutoUpdateUnitTests
-- AccessibilityInsights.Extensions.GitHubUnitTests
-- AccessibilityInsights.Extensions.TelemetryTests
-- AccessibilityInsights.ExtensionsTests
-- AccessibilityInsights.SetupLibraryUnitTests
-- AccessibilityInsights.SharedUxTests
+The following projects exist for testing purposes:
+Project | Comment
+--- | ---
+CustomActionsUnitTests | Unit tests for CustomActions project
+Extensions.DiskLoggingTelemetryTests | Unit tests for Extensions.DiskLoggingTelemetry project
+Extensions.AzureDevOpsTests | Unit tests for Extensions.AzureDevOps project
+Extensions.GitHubAutoUpdateUnitTests | Unit tests for Extensions.GitHubAutoUpdate project
+Extensions.GitHubUnitTests | Unit tests for Extensions.GitHub project
+Extensions.TelemetryTests | Unit tests for Extensions.Telemetry project
+ExtensionsTests | Unit tests for Extensions project
+SetupLibraryUnitTests | Unit tests for SetupLibrary project
+SharedUxTests | Unit tests for SharedUx project
+AccessibilityInsightsUnitTests | Unit tests for AccessibilityInsights project
+MsiFileTests | Unit tests to validate MSI project
+UITests | Integration tests to run AIWin. Tests for basic functionality and accessibility issues
