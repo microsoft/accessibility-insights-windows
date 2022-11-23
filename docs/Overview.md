@@ -46,8 +46,8 @@ These projects are used for upgrades and for changing release channels:
 
 Project | Responsibility
 --- | ---
-VersionSwitcher | Provides an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
-SetupLibrary | Provides setup-related classes that are shared across AccessibiltyInsights, Extensions.GitHubAutoUpdate, and VersionSwitcher
+VersionSwitcher | Provide an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
+SetupLibrary | Provide setup-related classes that are shared across AccessibiltyInsights, Extensions.GitHubAutoUpdate, and VersionSwitcher
 
 #### Package-related projects
 These projects create the MSI file that we ultimately ship:
@@ -74,3 +74,5 @@ SharedUxTests | Unit tests for SharedUx project
 AccessibilityInsightsUnitTests | Unit tests for AccessibilityInsights project
 MsiFileTests | Unit tests to validate MSI project
 UITests | Integration tests to run AIWin. Tests for basic functionality and accessibility issues
+
+For more information on test project standards, please refer to [Unit Test Bar and Standards](UnitTestBarAndStandards.md).
