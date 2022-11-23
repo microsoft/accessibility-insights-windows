@@ -36,7 +36,7 @@ The following extensions exist:
 Project | Responsibility
 --- | ---
 Extensions.DiskLoggingTelemetry | Implement simple telemetry to disk. Does not deploy with the production version.
-Extensions.GitHubAutoUpdate | Implement a web-based update mechanism. Requires that the files be publicly accessible via a Uri.
+Extensions.GitHubAutoUpdate | Implement a web-based update mechanism. Requires that the files be publicly accessible via a uniform resource identifier (URI).
 Extensions.AzureDevOps | Implement issue filing support using Azure Boards.
 Extensions.Github | Implement issue filing support using GitHub issues.
 Extensions.Telemetry | Implement simple telemetry built upon [Microsoft ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights).
