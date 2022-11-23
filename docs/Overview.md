@@ -13,7 +13,7 @@ Accessibility Insights takes the data provided by UIA and compares it to a set o
 ### Code organization
 The code is organized into the following general areas:
 
-#### Main application proejcts
+#### Main application projects
 These projects allow user interaction with the Runtime components and the Accessibility Rules.
 
 Project | Responsibility
