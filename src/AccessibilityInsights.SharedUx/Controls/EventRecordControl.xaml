@@ -164,8 +164,7 @@
                 </i:Interaction.Behaviors>
                 <DataGrid.RowStyle>
                     <Style BasedOn="{StaticResource dgrStyle}" TargetType="DataGridRow">
-                        <!-- Empty row name to override WPF default of using long data type -->
-                        <Setter Property="AutomationProperties.Name" Value=" "/>
+                        <Setter Property="AutomationProperties.Name" Value="{Binding Path=EventId, Converter={StaticResource cvtIdToName}}"/>
                     </Style>
                 </DataGrid.RowStyle>
                 <DataGrid.Columns>
