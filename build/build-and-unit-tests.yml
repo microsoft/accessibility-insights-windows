@@ -25,6 +25,11 @@ jobs:
     inputs:
       versionSpec: '5.x'
 
+  - task: CmdLine@2
+    displayName: 'Show environment variables'
+    inputs:
+      script: set
+
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
