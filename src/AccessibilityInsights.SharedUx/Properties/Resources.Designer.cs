@@ -161,6 +161,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Provide feedback with sound.
+        /// </summary>
+        public static string ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName {
+            get {
+                return ResourceManager.GetString("ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Telemetry has been disabled by an administrator of this computer..
         /// </summary>
         public static string ApplicationSettingsControl_TelemetryDisabledByAdministrator {
@@ -779,6 +788,33 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string cbiHLTTAutomationPropertiesName {
             get {
                 return ResourceManager.GetString("cbiHLTTAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Always.
+        /// </summary>
+        public static string cbiSFALWAYSAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("cbiSFALWAYSAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to According to screen reader flag.
+        /// </summary>
+        public static string cbiSFAUTOAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("cbiSFAUTOAutomationPropertiesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Never.
+        /// </summary>
+        public static string cbiSFNEVERAutomationPropertiesName {
+            get {
+                return ResourceManager.GetString("cbiSFNEVERAutomationPropertiesName", resourceCulture);
             }
         }
         
@@ -2677,6 +2713,15 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string lblRedContent {
             get {
                 return ResourceManager.GetString("lblRedContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Provide feedback with sound.
+        /// </summary>
+        public static string lblSoundFeedbackLabelContent {
+            get {
+                return ResourceManager.GetString("lblSoundFeedbackLabelContent", resourceCulture);
             }
         }
         

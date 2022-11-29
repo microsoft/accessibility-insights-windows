@@ -72,28 +72,6 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         private bool withSound;
 
         /// <summary>
-        /// Check if Narrator is running
-        /// </summary>
-        public static bool IsInternalScreenReaderActive()
-        {
-            try
-            {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(Properties.Resources.ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp))
-                {
-                    return key?.GetValue("narrator")?.ToString().Equals("1", StringComparison.Ordinal) == true;
-                }
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch
-            {
-                // TODO : Report this?
-                // fail silently and we might end up not playing sound
-                return false;
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
-        /// <summary>
         /// Check whether to play sound feedback while scanning
         /// </summary>
         public bool ShouldPlayScannerSound() => WithSound;

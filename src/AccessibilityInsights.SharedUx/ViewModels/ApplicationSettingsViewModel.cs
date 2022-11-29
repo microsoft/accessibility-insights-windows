@@ -119,16 +119,16 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
-        SoundFeedbackMode _SoundMode;
+        SoundFeedbackMode _soundMode;
         public SoundFeedbackMode soundFeedback
         {
             get
             {
-                return _SoundMode;
+                return _soundMode;
             }
             set
             {
-                _SoundMode = value;
+                _soundMode = value;
                 OnPropertyChanged(nameof(this.soundFeedback));
                 UpdateSaveButton();
             }

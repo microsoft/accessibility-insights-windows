@@ -210,8 +210,16 @@
                     <ColumnDefinition Width="151"/>
                     <ColumnDefinition Width="50"/>
                 </Grid.ColumnDefinitions>
-                <Label Name="lblPlayScanningSoundLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblPlayScanningSoundLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
-                <ToggleButton Grid.Column="2" Style="{StaticResource tgbSlider}" Name="tgbtnPlayScanningSound" AutomationProperties.LabeledBy="{Binding ElementName=lblPlayScanningSoundLabel}" IsChecked="{Binding PlayScanningSound}"/>
+                <Label Name="lblSoundFeedbackLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblSoundFeedbackLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
+                <ComboBox Grid.Column="2" x:Name ="soundFeedbackComboBox"
+                          SelectedIndex="{Binding SoundFeedbackMode}"
+                          AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName}"
+                          PreviewKeyDown ="cbComboBox_PreviewKeyDown"
+                          FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
+                    <ComboBoxItem x:Name="cbiSFAUTO" Content="{x:Static Properties:Resources.cbiSFAUTOAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFAUTOAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiSFALWAYS" Content="{x:Static Properties:Resources.cbiSFALWAYSAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFALWAYSAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiSFNEVER" Content="{x:Static Properties:Resources.cbiSFNEVERAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFNEVERAutomationPropertiesName}"/>
+                </ComboBox>
             </Grid>
             <Grid Grid.Row="5" Margin="1,5,0,0">
                 <Grid.ColumnDefinitions>
