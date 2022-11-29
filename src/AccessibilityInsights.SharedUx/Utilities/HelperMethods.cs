@@ -96,13 +96,16 @@ namespace AccessibilityInsights.SharedUx.Utilities
         /// <summary>
         /// Provides bindable property for ProgressRingControls
         /// </summary>
-        public static bool ShouldPlaySound()
+        public static bool ShouldPlaySound
         {
-            SoundFeedbackMode  setting = ConfigurationManager.GetDefaultInstance().AppConfig.SoundFeedback;
-            if (setting == SoundFeedbackMode.Always) return true;
-            if (setting == SoundFeedbackMode.Never) return false;
-            // If we get here, setting is Auto, so return according to the screen reader flag.
-            return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive());
+            get
+            {
+                SoundFeedbackMode setting = ConfigurationManager.GetDefaultInstance().AppConfig.SoundFeedback;
+                if (setting == SoundFeedbackMode.Always) return true;
+                if (setting == SoundFeedbackMode.Never) return false;
+                // If we get here, setting is Auto, so return according to the screen reader flag.
+                return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive());
+            }
         }
 
         /// <summary>
