@@ -48,6 +48,7 @@ Project | Responsibility
 --- | ---
 VersionSwitcher | Provide an out-of-process tool to switch user versions during upgrades or if the user changes to a different release channel.
 SetupLibrary | Provide setup-related classes that are shared across AccessibilityInsights, Extensions.GitHubAutoUpdate, and VersionSwitcher projects.
+Manifest | Create a signed manifest that helps protect the update mechanism from potential abuse.
 
 #### Package-related projects
 These projects create the MSI file that we ultimately ship:
