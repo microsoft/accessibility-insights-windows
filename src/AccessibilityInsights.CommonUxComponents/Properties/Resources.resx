@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp" xml:space="preserve">
-    <value>Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp</value>
-  </data>
   <data name="ProgressRingControlAutomationPropertiesName" xml:space="preserve">
     <value>Progress Loading Ring</value>
   </data>
