@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using System.IO;
 
 namespace AccessibilityInsights.SetupLibrary
@@ -15,6 +16,7 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="releaseChannel">The channel being requested</param>
         /// <param name="stream">The stream to populate</param>
-        void LoadChannelInfoIntoStream(ReleaseChannel releaseChannel, Stream stream);
+        /// <returns>Metadata about the stream</returns>
+        StreamMetadata LoadChannelInfoIntoStream(ReleaseChannel releaseChannel, Stream stream);
     }
 }

@@ -24,11 +24,11 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
         }
 
         /// <summary>
-        /// Implements <see cref="IChannelInfoProvider.TryGetChannelInfo(string, out ChannelInfo)"/>
+        /// Implements <see cref="IChannelInfoProvider.TryGetChannelInfo(string, out EnrichedChannelInfo)"/>
         /// </summary>
-        public bool TryGetChannelInfo(ReleaseChannel releaseChannel, out ChannelInfo channelInfo)
+        public bool TryGetChannelInfo(ReleaseChannel releaseChannel, out EnrichedChannelInfo enrichedChannelInfo)
         {
-            return ChannelInfoUtilities.TryGetChannelInfo(releaseChannel, out channelInfo, _gitHubWrapper, exceptionReporter: _exceptionReporter);
+            return ChannelInfoUtilities.TryGetChannelInfo(releaseChannel, out enrichedChannelInfo, _gitHubWrapper, exceptionReporter: _exceptionReporter);
         }
     }
 }

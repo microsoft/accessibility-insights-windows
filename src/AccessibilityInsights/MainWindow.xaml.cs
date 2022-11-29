@@ -5,6 +5,7 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Enums;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
 using AccessibilityInsights.Misc;
+using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Highlighting;
@@ -22,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Automation;
@@ -180,6 +182,8 @@ namespace AccessibilityInsights
 
             InitTelemetry(telemetryBuffer);
 
+            UploadVersionSwitcherResults();
+
             InitPanes();
         }
 
@@ -198,6 +202,34 @@ namespace AccessibilityInsights
             Logger.AddOrUpdateContextProperty(TelemetryProperty.ReleaseChannel, ConfigurationManager.GetDefaultInstance().AppConfig.ReleaseChannel.ToString());
             Logger.PublishTelemetryEvent(Misc.TelemetryEventFactory.ForMainWindowStartup());
             telemetryBuffer.ProcessEventFactories(Logger.PublishTelemetryEvent);
+        }
+
+        private static void UploadVersionSwitcherResults()
+        {
+            string dataFilePath = ExecutionHistory.GetDataFilePath();
+
+            if (File.Exists(dataFilePath))
+            {
+                ExecutionHistory data = FileHelpers.LoadDataFromJSON<ExecutionHistory>(dataFilePath);
+                // Make it impossible for local details to leak into telemetry
+                data.LocalDetails.Clear();
+
+                Logger.PublishTelemetryEvent(TelemetryAction.Upgrade_VersionSwitcherResults, new Dictionary<TelemetryProperty, string>
+                {
+                    { TelemetryProperty.StartingVersion, data.StartingVersion.ToString() },
+                    { TelemetryProperty.Result, data.ExecutionResult },
+                    { TelemetryProperty.RequestedMsi, data.RequestedMsi },
+                    { TelemetryProperty.ResolvedMsi, data.ResolvedMsi },
+                    { TelemetryProperty.ExpectedMsiSize, data.ExpectedMsiSizeInBytes.ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.ActualMsiSize, data.ActualMsiSizeInBytes.ToString(CultureInfo.InvariantCulture) },
+                    { TelemetryProperty.ExpectedMsiSha512, data.ExpectedMsiSha512 },
+                    { TelemetryProperty.ActualMsiSha512, data.ActualMsiSha512 },
+                    { TelemetryProperty.NewChannel, data.NewChannel },
+                    { TelemetryProperty.ExecutionTimeInMilliseconds, data.ExecutionTimeInMilliseconds.ToString(CultureInfo.InvariantCulture) },
+                });
+
+                File.Delete(dataFilePath);
+            }
         }
 
         /// <summary>

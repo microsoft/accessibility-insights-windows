@@ -118,6 +118,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Net.Http.Formatting.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Numerics.Vectors.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Reflection.Metadata.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Reflection.MetadataLoadContext.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Runtime.CompilerServices.Unsafe.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Security.AccessControl.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\System.Security.Principal.Windows.dll" />
@@ -165,6 +166,13 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
                 <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Buffers.dll" Id ="version_switcher_buffers"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Collections.Immutable.dll" Id ="version_switcher_collections"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Memory.dll" Id ="version_switcher_memory"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Numerics.Vectors.dll" Id ="version_switcher_vectors"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Reflection.Metadata.dll" Id ="version_switcher_metadata"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Reflection.MetadataLoadContext.dll" Id ="version_switcher_metadataloadcontext"/>
+                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Runtime.CompilerServices.Unsafe.dll" Id ="version_switcher_unsafe"/>
                 <!-- We sign the following assemblies in the main AccessibilityInsights project. To avoid duplicate signing, we reuse them below. -->
                 <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
                 <File Source="..\AccessibilityInsights\bin\Release\net48\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>

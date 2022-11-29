@@ -30,6 +30,9 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         UIAccessEnabled,
         UpdateTimedOut,
         UpdateInitializationTime,
+        UpdateManifestRequestUri,
+        UpdateManifestResponseUri,
+        UpdateManifestSizeInBytes,
         UpdateOptionWaitTime,
         UpdateOption,
         UpdateInstallerUpdateTime,
@@ -43,5 +46,17 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         IsNowEnabled,
         Confidence, // For automatic colour contrast detection
         BitmapSize, // For automatic colour contrast detection
+
+        // properties added for VersionSwitcher_VersionSwitcherResult
+        StartingVersion,
+        Result,
+        RequestedMsi,
+        ResolvedMsi,
+        ExpectedMsiSize,
+        ExpectedMsiSha512,
+        ActualMsiSize,
+        ActualMsiSha512,
+        NewChannel,
+        ExecutionTimeInMilliseconds,
     }
 }

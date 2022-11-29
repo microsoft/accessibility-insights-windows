@@ -39,6 +39,7 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         Upgrade_InstallationError,
         Upgrade_GetUpgradeOption,
         Upgrade_DoInstallation,
+        Upgrade_VersionSwitcherResults,
 
         TabStop_Record_On, // indicate whether TabStop Recording was on
         TabStop_Select_Records, // When any of recorded element is selected.

@@ -20,13 +20,17 @@ namespace AccessibilityInsights.SetupLibrary.REST
             public TriState Status { get; set; }
             public Stream Stream { get; set; }
             public Action<int> ProgressCallback { get; set; }
+            public int StreamLength { get; set; }
         }
 
         /// <summary>
         /// Load the contents of the given Uri into a Stream
         /// </summary>
-        public static void LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout, Action<int> progressCallback)
+        /// <returns>Metadata about the stream</returns>
+        public static StreamMetadata LoadUriContentsIntoStream(Uri uri, Stream stream, TimeSpan timeout, Action<int> progressCallback)
         {
+            Uri responseUri = null;
+
             if (uri == null)
                 throw new ArgumentNullException(nameof(uri));
 
@@ -39,7 +43,7 @@ namespace AccessibilityInsights.SetupLibrary.REST
 
             try
             {
-                using (WebClient client = new WebClient())
+                using (InterceptingWebClient client = new InterceptingWebClient())
                 {
                     client.DownloadDataCompleted += DownloadCompleted;
                     client.DownloadProgressChanged += ProgressChanged;
@@ -54,6 +58,8 @@ namespace AccessibilityInsights.SetupLibrary.REST
                         }
                         Thread.Sleep(TimeSpan.FromMilliseconds(500));
                     }
+
+                    responseUri = client.ResponseUri;
                 }
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -71,6 +77,8 @@ namespace AccessibilityInsights.SetupLibrary.REST
             {
                 throw new ArgumentException("Unable to get contents from " + uri.ToString(), nameof(uri));
             }
+
+            return new StreamMetadata(uri, responseUri, state.StreamLength);
         }
 
         private static void DownloadCompleted(object sender, DownloadDataCompletedEventArgs e)
@@ -81,6 +89,7 @@ namespace AccessibilityInsights.SetupLibrary.REST
             {
                 state.Stream.Write(e.Result, 0, e.Result.Length);
                 state.Status = TriState.Success;
+                state.StreamLength = e.Result.Length;
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception)

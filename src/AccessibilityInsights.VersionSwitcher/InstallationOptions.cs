@@ -27,6 +27,16 @@ namespace AccessibilityInsights.VersionSwitcher
         internal string NewChannel { get; }
 
         /// <summary>
+        /// The MSI size for validation. A value of 0 means that no validation is possible
+        /// </summary>
+        internal int MsiSizeInBytes { get; }
+
+        /// <summary>
+        /// The SHA512 of the MSI file. A value of null means that no validation is possible
+        /// </summary>
+        internal string MsiSha512 { get; }
+
+        /// <summary>
         /// The Timeout for downloads
         /// </summary>
         internal TimeSpan DownloadTimeout { get; }
@@ -39,14 +49,18 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <summary>
         /// constructor
         /// </summary>
-        /// <param name="msiPath">String identifying the installer location</param>
+        /// <param name="msiPath">The uri to the web-hosted installer</param>
+        /// <param name="msiSizeInBytes">The byte count of the MSI on disk, or 0 if unknown</param>
+        /// <param name="msiSha512">The SHA512 of the MSI on disk, or null if unknown</param>
         /// <param name="newChannel">String indicating the value for NewChannel</param>
         /// <param name="enableUIAccess">True only if we need to enable UIAccess post-install"</param>
-        internal InstallationOptions(string msiPath, string newChannel, bool enableUIAccess)
+        internal InstallationOptions(Uri msiPath, int msiSizeInBytes, string msiSha512, string newChannel, bool enableUIAccess)
         {
-            MsiPath = new Uri(msiPath);
-            NewChannel = newChannel;
+            MsiPath = msiPath;
             LocalInstallerFile = Path.ChangeExtension(Path.GetTempFileName(), "msi");
+            MsiSizeInBytes = msiSizeInBytes;
+            MsiSha512 = msiSha512;
+            NewChannel = newChannel;
             DownloadTimeout = TimeSpan.FromSeconds(60);
             EnableUIAccess = enableUIAccess;
         }

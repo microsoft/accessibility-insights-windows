@@ -37,6 +37,24 @@ namespace AccessibilityInsights.SetupLibrary
         public string ReleaseNotesAsset { get; set; }
 
         /// <summary>
+        /// The minimum supported production version
+        /// </summary>
+        [JsonProperty(PropertyName = "production_minimum_version")]
+        public Version ProductionMinimumVersion { get; set; }
+
+        /// <summary>
+        /// The size, in bytes, of the MSI file associated with this release
+        /// </summary>
+        [JsonProperty(PropertyName = "msi_size_in_bytes")]
+        public int MsiSizeInBytes { get; set; }
+
+        /// <summary>
+        /// The SHA512 of the MSI file associated with this release
+        /// </summary>
+        [JsonProperty(PropertyName = "msi_sha_512")]
+        public string MsiSha512 { get; set; }
+
+        /// <summary>
         /// Indicates if the object has values for all fields
         /// </summary>
         [JsonIgnore]
