@@ -78,7 +78,7 @@ namespace AccessibilityInsights.SharedUx.Utilities
         {
             try
             {
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(Properties.Resources.ProgressRingControl_IsInternalScreenReaderActive_Software_Microsoft_Windows_NT_CurrentVersion_AccessibilityTemp))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp"))
                 {
                     return key?.GetValue("narrator")?.ToString().Equals("1", StringComparison.Ordinal) == true;
                 }
