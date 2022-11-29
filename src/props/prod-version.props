@@ -1,0 +1,7 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <!-- If this is a required update, set this to the same version as what we're building.
+	     If this is an optional update, set this to the most recently released prod version. -->
+    <MinimumProdVersion Condition="$(MinimumProdVersion) == ''">1.1.2089.01</MinimumProdVersion>
+  </PropertyGroup>
+</Project>
