@@ -184,7 +184,7 @@
                                    Size="30" 
                                    Grid.Row="1" 
                                    Visibility="Collapsed"
-                                   WithSound="{Binding Path=(Util:HelperMethods.PlayScanningSound)}"
+                                   WithSound="{Binding Path=(Util:HelperMethods.ShouldPlaySound)}"
                                    HorizontalAlignment="Center" 
                                    VerticalAlignment="Center">
         </fabric:ProgressRingControl>

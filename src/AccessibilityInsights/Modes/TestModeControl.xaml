@@ -50,7 +50,7 @@
         <fabric:ProgressRingControl Size="30"
                                    x:Name="ctrlProgressRing"
                                    Visibility="Collapsed"
-                                   WithSound="{Binding Path=(Util:HelperMethods.PlayScanningSound)}"
+                                   WithSound="{Binding Path=(Util:HelperMethods.ShouldPlaySound)}"
                                    Grid.Row="1" Grid.Column="1" Background="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
         <Grid Grid.Row="1" x:Name="instructionsAutomatedChecks" Margin="230,50,40,0" Visibility="Visible">
             <Grid.RowDefinitions>
