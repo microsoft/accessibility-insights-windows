@@ -17,40 +17,50 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         private const string UplevelVersion = "1.1.1260";
         private const string DownlevelVersion = "1.1.1200";
         private const ReleaseChannel DefaultReleaseChannel = ReleaseChannel.Production;
+        private const int TestManifestFileSize = 123456;
+        private const string TestRequestUrl = "https://request-host/request-path";
+        private const string TestResponseUrl = "https://response-host/response-path";
 
         private static readonly IChannelInfoProvider InertChannelInfoProvider =
             BuildChannelInfoProvider().Object;
 
-        private static readonly ChannelInfo NoUpgradeChannelInfo = new ChannelInfo
+        private static readonly StreamMetadata TestManifestStreamData = new StreamMetadata(
+            new Uri(TestRequestUrl), new Uri(TestResponseUrl), TestManifestFileSize);
+
+        private static readonly EnrichedChannelInfo NoUpgradeChannelInfo = new EnrichedChannelInfo
         {
             CurrentVersion = new Version(TestInstalledVersion),
             MinimumVersion = new Version(TestInstalledVersion),
             InstallAsset = GetInstallerPath(TestInstalledVersion),
-            ReleaseNotesAsset = GetReleaseNotesPath(TestInstalledVersion)
+            ReleaseNotesAsset = GetReleaseNotesPath(TestInstalledVersion),
+            Metadata = TestManifestStreamData,
         };
 
-        private static readonly ChannelInfo OptionalUpgradeChannelInfo = new ChannelInfo
+        private static readonly EnrichedChannelInfo OptionalUpgradeChannelInfo = new EnrichedChannelInfo
         {
             CurrentVersion = new Version(UplevelVersion),
             MinimumVersion = new Version(TestInstalledVersion),
             InstallAsset = GetInstallerPath(UplevelVersion),
-            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion)
+            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion),
+            Metadata = TestManifestStreamData,
         };
 
-        private static readonly ChannelInfo RequiredUpgradeChannelInfo = new ChannelInfo
+        private static readonly EnrichedChannelInfo RequiredUpgradeChannelInfo = new EnrichedChannelInfo
         {
             CurrentVersion = new Version(UplevelVersion),
             MinimumVersion = new Version(UplevelVersion),
             InstallAsset = GetInstallerPath(UplevelVersion),
-            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion)
+            ReleaseNotesAsset = GetReleaseNotesPath(UplevelVersion),
+            Metadata = TestManifestStreamData,
         };
 
-        private static readonly ChannelInfo PreReleaseChannelInfo = new ChannelInfo
+        private static readonly EnrichedChannelInfo PreReleaseChannelInfo = new EnrichedChannelInfo
         {
             CurrentVersion = new Version(DownlevelVersion),
             MinimumVersion = new Version(DownlevelVersion),
             InstallAsset = GetInstallerPath(DownlevelVersion),
-            ReleaseNotesAsset = GetReleaseNotesPath(DownlevelVersion)
+            ReleaseNotesAsset = GetReleaseNotesPath(DownlevelVersion),
+            Metadata = TestManifestStreamData,
         };
 
         private static string GetInstallerPath(string version)
@@ -64,14 +74,14 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         }
 
         private static Mock<IChannelInfoProvider> BuildChannelInfoProvider(ReleaseChannel? expectedChannel = null,
-            ChannelInfo channelInfo = null)
+            EnrichedChannelInfo enrichedChannelInfo = null)
         {
             Mock<IChannelInfoProvider> providerMock =
                 new Mock<IChannelInfoProvider>(MockBehavior.Strict);
 
             if (expectedChannel.HasValue)
             {
-                providerMock.Setup(x => x.TryGetChannelInfo(expectedChannel.Value, out channelInfo)).Returns(channelInfo != null);
+                providerMock.Setup(x => x.TryGetChannelInfo(expectedChannel.Value, out enrichedChannelInfo)).Returns(enrichedChannelInfo != null);
             }
 
             return providerMock;
@@ -83,12 +93,27 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             return new AutoUpdate(() => releaseChannel, () => testInstalledVersion ?? TestInstalledVersion, channelProvider ?? InertChannelInfoProvider);
         }
 
+        private static void AssertSuccessfulManifestInformation(IAutoUpdate update)
+        {
+            Assert.AreEqual(TestRequestUrl, update.ManifestRequestUri.ToString());
+            Assert.AreEqual(TestResponseUrl, update.ManifestResponseUri.ToString());
+            Assert.AreEqual(TestManifestFileSize, update.ManifestSizeInBytes);
+        }
+
+        private static void AssertDefaultManifestInformation(IAutoUpdate update)
+        {
+            Assert.IsNull(update.ManifestRequestUri);
+            Assert.IsNull(update.ManifestResponseUri);
+            Assert.AreEqual(0, update.ManifestSizeInBytes);
+        }
+
         [TestMethod]
         [Timeout(2000)]
         public void ReleaseChannel_DefaultsToExpectedValue()
         {
             IAutoUpdate update = BuildAutoUpdate();
             Assert.AreEqual(DefaultReleaseChannel.ToString(), update.ReleaseChannel);
+            AssertDefaultManifestInformation(update);
         }
 
         [TestMethod]
@@ -110,6 +135,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.IsNull(update.CurrentChannelVersion);
             Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
+            AssertDefaultManifestInformation(update);
         }
 
         [TestMethod]
@@ -123,6 +149,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.IsNull(update.CurrentChannelVersion);
             Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
+            AssertDefaultManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -131,7 +158,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
         public void UpdateOptionAsync_ConfigIsInvalid_ReturnsUnknown_FieldsAreNull()
         {
             Mock<IChannelInfoProvider> providerMock = BuildChannelInfoProvider(DefaultReleaseChannel,
-                new ChannelInfo
+                new EnrichedChannelInfo
                 {
                     CurrentVersion = new Version(UplevelVersion)
                 });  // Config is only partially set, so it's invalid
@@ -141,6 +168,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.IsNull(update.CurrentChannelVersion);
             Assert.IsNull(update.MinimumChannelVersion);
             Assert.IsNull(update.ReleaseNotesUri);
+            AssertDefaultManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -155,6 +183,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(NoUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(NoUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(NoUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            AssertSuccessfulManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -169,6 +198,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(OptionalUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(OptionalUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(OptionalUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            AssertSuccessfulManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -183,6 +213,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(RequiredUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(RequiredUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(RequiredUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            AssertSuccessfulManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -197,6 +228,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(PreReleaseChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(PreReleaseChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(PreReleaseChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            AssertSuccessfulManifestInformation(update);
             providerMock.VerifyAll();
         }
 
@@ -212,6 +244,7 @@ namespace Extensions.GitHubAutoUpdateUnitTests
             Assert.AreEqual(OptionalUpgradeChannelInfo.CurrentVersion, update.CurrentChannelVersion);
             Assert.AreEqual(OptionalUpgradeChannelInfo.MinimumVersion, update.MinimumChannelVersion);
             Assert.AreEqual(OptionalUpgradeChannelInfo.ReleaseNotesAsset, update.ReleaseNotesUri.ToString());
+            AssertSuccessfulManifestInformation(update);
             providerMock.VerifyAll();
         }
 

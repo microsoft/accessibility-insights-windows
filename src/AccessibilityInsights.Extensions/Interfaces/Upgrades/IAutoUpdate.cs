@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Threading.Tasks;
@@ -24,6 +24,21 @@ namespace AccessibilityInsights.Extensions.Interfaces.Upgrades
         /// The currently installed version.
         /// </summary>
         Version InstalledVersion { get; }
+
+        /// <summary>
+        /// The Uri that was used to request the manifest
+        /// </summary>
+        Uri ManifestRequestUri { get; }
+
+        /// <summary>
+        /// The resolved Uri that ultimately provided the manifest
+        /// </summary>
+        Uri ManifestResponseUri { get; }
+
+        /// <summary>
+        /// The byte count of the MSI file referenced by the manifest
+        /// </summary>
+        int ManifestSizeInBytes { get; }
 
         /// <summary>
         /// The Release channel that was used when fetching upgrade information

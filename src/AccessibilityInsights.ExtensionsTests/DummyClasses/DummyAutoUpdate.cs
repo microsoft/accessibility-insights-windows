@@ -22,6 +22,12 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
 
         public string ReleaseChannel => throw new NotImplementedException();
 
+        public Uri ManifestRequestUri => throw new NotImplementedException();
+
+        public Uri ManifestResponseUri => throw new NotImplementedException();
+
+        public int ManifestSizeInBytes => throw new NotImplementedException();
+
         public TimeSpan? GetInitializationTime()
         {
             throw new NotImplementedException();

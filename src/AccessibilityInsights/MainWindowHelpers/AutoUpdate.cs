@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions;
@@ -31,7 +31,7 @@ namespace AccessibilityInsights
                     {
                         updateOptionStopwatch.Stop();
                     }
-                    Logger.PublishTelemetryEvent(TelemetryEventFactory.ForGetUpgradeOption(autoUpdate.GetInitializationTime(),
+                    Logger.PublishTelemetryEvent(TelemetryEventFactory.ForGetUpgradeOption(autoUpdate,
                         updateOptionStopwatch.Elapsed, updateOption.ToString(), timeOutOccurred));
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -103,9 +103,9 @@ namespace AccessibilityInsights
         }
 
         /// <summary>
-        /// Download the upgrade installer and close the app depending on if it is successful or not
+        /// Do the installation by running the VersionSwitcher. Close the app if the VersionSwitcher launched successfully.
         /// </summary>
-        private async void DownLoadInstaller(IAutoUpdate autoUpdate)
+        private async void DoInstallation(IAutoUpdate autoUpdate)
         {
             UpdateResult updateResult = UpdateResult.Unknown;
 
@@ -169,7 +169,7 @@ namespace AccessibilityInsights
             {
                 try
                 {
-                    DownLoadInstaller(autoUpdate);
+                    DoInstallation(autoUpdate);
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch (Exception e)

@@ -117,6 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadCommandLineMessageFormat" xml:space="preserve">
+    <value>Invalid command line: {0}</value>
+    <comment>{0} is the list of arguments</comment>
+  </data>
+  <data name="InstallerFileHasWrongHash" xml:space="preserve">
+    <value>The installer file does not match the expected checksum and may have been corrupted. Please try again.</value>
+  </data>
+  <data name="InstallerFileIsNotTrusted" xml:space="preserve">
+    <value>The installer file lacks a trusted signature and may have been corrupted. Please try again.</value>
+  </data>
+  <data name="InstallerFileIsWrongSize" xml:space="preserve">
+    <value>The installer file does not match the expected size and may have been corrupted. Please try again.</value>
+  </data>
   <data name="InstallError" xml:space="preserve">
     <value>An error occurred during install</value>
   </data>
@@ -124,7 +137,10 @@
     <value>Update {0}% complete</value>
     <comment>{0} is an int from 0 to 100</comment>
   </data>
-  <data name="UntrustedFile" xml:space="preserve">
-    <value>Untrusted File!</value>
+  <data name="UnableToCompleteInstallation" xml:space="preserve">
+    <value>Unable to complete the installation. Please restart your computer and try again. If that does not resolve the issue, try removing Accessibility Insights for Windows via the control panel and install it from www.accessibilityinsights.io.</value>
+  </data>
+  <data name="UnableToDownloadInstallerFile" xml:space="preserve">
+    <value>Unable to download the installer file. Please check your internet connection and try again.</value>
   </data>
 </root>
