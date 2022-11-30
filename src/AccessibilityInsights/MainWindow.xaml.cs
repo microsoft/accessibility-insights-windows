@@ -228,7 +228,7 @@ namespace AccessibilityInsights
                     { TelemetryProperty.ExecutionTimeInMilliseconds, data.ExecutionTimeInMilliseconds.ToString(CultureInfo.InvariantCulture) },
                 });
 
-                File.Delete(dataFilePath);
+                FileHelpers.RenameFileAsBackup(dataFilePath);
             }
         }
 
