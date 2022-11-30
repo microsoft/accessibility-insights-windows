@@ -50,14 +50,12 @@ namespace AccessibilityInsights.VersionSwitcher
                         return engine.PerformInstallation(DispatcherUpdateProgress);
                     });
             }
-#pragma warning disable CA1031 // Do not catch general exception types
             catch (ResultBearingException e)
             {
                 history.TypedExecutionResult = e.Result;
                 history.AddLocalDetail(e.ToString());
                 errorMessage = e.Message;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
             finally
             {
                 Dispatcher.Invoke(() =>
