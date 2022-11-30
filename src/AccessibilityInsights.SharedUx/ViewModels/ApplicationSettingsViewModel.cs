@@ -119,8 +119,8 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
-        SoundFeedbackMode _soundMode;
-        public SoundFeedbackMode soundFeedback
+        int _soundMode;
+        public int SoundFeedbackMode
         {
             get
             {
@@ -129,7 +129,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             set
             {
                 _soundMode = value;
-                OnPropertyChanged(nameof(this.soundFeedback));
+                OnPropertyChanged(nameof(this.SoundFeedbackMode));
                 UpdateSaveButton();
             }
         }
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             this.AlwaysOnTop = config.AlwaysOnTop;
             this.EnableTelemetry = config.EnableTelemetry;
             this.ShowTelemetryDialog = config.ShowTelemetryDialog;
-            this.soundFeedback = config.SoundFeedback;
+            this.SoundFeedbackMode = (int) config.SoundFeedback;
             this.HighlighterMode = (int)config.HighlighterMode;
             this.FontSize = (int)config.FontSize;
         }
@@ -164,7 +164,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             config.AlwaysOnTop = this.AlwaysOnTop;
             config.EnableTelemetry = this.EnableTelemetry;
             config.ShowTelemetryDialog = this.ShowTelemetryDialog;
-            config.SoundFeedback = this.soundFeedback;
+            config.SoundFeedback = (SoundFeedbackMode) this.SoundFeedbackMode;
             config.HighlighterMode = (HighlighterMode)this.HighlighterMode;
             config.FontSize = (FontSize)this.FontSize;
         }
