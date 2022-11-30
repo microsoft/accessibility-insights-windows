@@ -278,7 +278,7 @@ jobs:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: manifest'
     inputs:
-      PathtoPublish: 'src\Manifest\bin\Releasee\net48'
+      PathtoPublish: 'src\Manifest\bin\Release\net48'
       ArtifactName: 'manifest'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
