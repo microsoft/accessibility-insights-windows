@@ -23,20 +23,10 @@ namespace AccessibilityInsights.VersionSwitcher
         { }
 
         /// <summary>
-        /// Constructor taking a result and a message
-        /// </summary>
-        public ResultBearingException(ExecutionResult result, string message)
-            : base(message)
-        {
-            if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException(nameof(message));
-            Result = result;
-        }
-
-        /// <summary>
         /// Constructor taking a result, a message string,
         /// and an optional inner exception to wrap
         /// </summary>
-        public ResultBearingException(ExecutionResult result, string message, Exception innerException)
+        public ResultBearingException(ExecutionResult result, string message, Exception innerException = null)
             : base(message, innerException)
         {
             if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException(nameof(message));

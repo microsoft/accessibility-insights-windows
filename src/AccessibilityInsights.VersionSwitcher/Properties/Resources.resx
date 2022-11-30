@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BadCommandLineMessageFormat" xml:space="preserve">
-    <value>Invalid Command line: {0}</value>
+    <value>Invalid command line: {0}</value>
     <comment>{0} is the list of arguments</comment>
   </data>
   <data name="InstallerFileHasWrongHash" xml:space="preserve">

@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -10,16 +9,15 @@ using System.IO;
 namespace AccessibilityInsights.SetupLibrary
 {
     /// <summary>
-    /// Class to capture the exeuction history of the VersionSwitcher. Gets serialized to disk by
+    /// Class to capture the execution history of the VersionSwitcher. Gets serialized to disk by
     /// the VersionSwitcher, then gets uploaded to telemetry the next time the app boots
     /// </summary>
     public class ExecutionHistory
     {
         public static string GetDataFilePath()
         {
-            const string TempVariable = "temp";
             const string DataFile = "AccessibilityInsights.VersionSwitcher.ExecutionHistory.json";
-            return Path.Combine(Environment.GetEnvironmentVariable(TempVariable), DataFile);
+            return Path.Combine(Path.GetTempPath(), DataFile);
         }
 
         private ExecutionResult _typedExecutionResult;
@@ -28,7 +26,8 @@ namespace AccessibilityInsights.SetupLibrary
         {
             LocalDetails = new List<string>();
 
-            // This forces explicit initialization of VersionSwitcherResult
+            // ExecutionResult is uninitialized by default. Set the TypedExecutionResult
+            // to properly initialize ExecutionResult
             TypedExecutionResult = _typedExecutionResult;
         }
 

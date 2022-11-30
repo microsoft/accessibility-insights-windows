@@ -24,6 +24,7 @@ namespace AccessibilityInsights.SetupLibrary
             if (stream == null)
                 throw new ArgumentNullException(nameof(stream));
 
+            // TODO: Remove GetChannelInfoFromLegacyManifest when we deprecate unsigned manifests
             EnrichedChannelInfo info = GetChannelInfoFromSignedManifest(stream) ??
                 GetChannelInfoFromLegacyManifest(stream, keyName);
 

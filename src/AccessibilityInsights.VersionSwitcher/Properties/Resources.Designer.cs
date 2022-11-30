@@ -61,7 +61,7 @@ namespace AccessibilityInsights.VersionSwitcher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid Command line: {0}.
+        ///   Looks up a localized string similar to Invalid command line: {0}.
         /// </summary>
         public static string BadCommandLineMessageFormat {
             get {

@@ -10,8 +10,7 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
     internal interface IChannelInfoProvider
     {
         /// <summary>
-        /// Attempt to load a ChannelInfo (not necessarily completely valid) for the given channel,
-        /// then enrich it with metadata about the manifest file
+        /// Attempt to load an EnrichedChannelInfo (not necessarily completely valid) for the given channel
         /// </summary>
         /// <param name="releaseChannel">The channel being requested</param>
         /// <param name="enrichedChannelInfo">The EnrichedChannelInfo</param>
