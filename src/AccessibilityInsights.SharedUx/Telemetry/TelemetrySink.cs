@@ -134,5 +134,22 @@ namespace AccessibilityInsights.SharedUx.Telemetry
 #pragma warning restore CA1031 // Do not catch general exception types
             }
         }
+
+        /// <summary>
+        /// Application is shutting down, so flush any pending telemetry
+        /// </summary>
+        public void FlushAndShutDown()
+        {
+            foreach (ITelemetry telemetry in _telemetry)
+            {
+                try
+                {
+                    telemetry.FlushAndShutDown();
+                }
+#pragma warning disable CA1031 // Do not catch general exception types
+                catch (Exception) { }  // Silently eat this exception (nothing we could do about it anyway)
+#pragma warning restore CA1031 // Do not catch general exception types
+            }
+        }
     } // class
 } // namespace

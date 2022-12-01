@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using System;
 using System.Collections.Generic;
@@ -108,6 +108,17 @@ namespace AccessibilityInsights.SharedUx.Telemetry
                 return;
 
             Sink.ReportException(e);
+        }
+
+        /// <summary>
+        /// Application is shutting down, so flush any pending telemetry
+        /// </summary>
+        public static void FlushAndShutDown()
+        {
+            if (IsEnabled)
+            {
+                Sink.FlushAndShutDown();
+            }
         }
 
         internal static IReadOnlyDictionary<string, string> ConvertFromProperties(IReadOnlyDictionary<TelemetryProperty, string> properties)

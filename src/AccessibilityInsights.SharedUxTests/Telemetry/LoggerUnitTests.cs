@@ -239,5 +239,28 @@ namespace AccessibilityInsights.SharedUXTests.Telemetry
                 Assert.AreEqual(pair.Value, actual[pair.Key.ToString()]);
             }
         }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_SinkIsNotEnabled_DoesNotChainToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(false);
+
+            Logger.FlushAndShutDown();
+
+            _sinkMock.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_SinkIsEnabled_ChainsToSink()
+        {
+            _sinkMock.Setup(x => x.IsEnabled).Returns(true);
+            _sinkMock.Setup(x => x.FlushAndShutDown());
+
+            Logger.FlushAndShutDown();
+
+            _sinkMock.VerifyAll();
+        }
     }
 }

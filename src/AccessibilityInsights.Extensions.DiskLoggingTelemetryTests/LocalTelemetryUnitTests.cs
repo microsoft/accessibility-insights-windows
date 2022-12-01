@@ -269,5 +269,12 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetryTests
             AssertDictionariesAreEquivalent(ContextProperties, exceptionData.ContextProperties);
             _logWriterMock.VerifyAll();
         }
+
+        [TestMethod]
+        public void FlushAndShutDown_DoesNothing()
+        {
+            _testSubject.FlushAndShutDown();
+            _logWriterMock.VerifyAll();
+        }
     }
 }
