@@ -801,7 +801,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to According to screen reader flag.
+        ///   Looks up a localized string similar to Automatic.
         /// </summary>
         public static string cbiSFAUTOAutomationPropertiesName {
             get {

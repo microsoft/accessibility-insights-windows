@@ -1765,7 +1765,7 @@ This failure can be caused by a known framework issue. Click the link below to l
     <value>Always</value>
   </data>
   <data name="cbiSFAUTOAutomationPropertiesName" xml:space="preserve">
-    <value>According to screen reader flag</value>
+    <value>Automatic</value>
   </data>
   <data name="cbiSFNEVERAutomationPropertiesName" xml:space="preserve">
     <value>Never</value>
