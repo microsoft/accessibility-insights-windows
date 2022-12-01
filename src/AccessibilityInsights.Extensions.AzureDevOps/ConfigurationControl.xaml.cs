@@ -31,6 +31,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             InitializeComponent();
             DataContext = VMConfig;
+            serverTreeview.ItemsSource = null;
         }
 
         private bool canSave;

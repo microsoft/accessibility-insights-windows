@@ -29,7 +29,7 @@
                     <behaviors:ExpanderBehavior/>
                 </i:Interaction.Behaviors>
                 <Expander.Header>
-                    <Label  Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labelResults" Content="{x:Static Properties:Resources.ScannerResultControlAutomationPropertiesName}"/>
+                    <Label Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" x:Name="labelResults" Content="{x:Static Properties:Resources.ScannerResultControlAutomationPropertiesName}"/>
                 </Expander.Header>
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Focusable="False" >
                     <StackPanel Focusable="False">

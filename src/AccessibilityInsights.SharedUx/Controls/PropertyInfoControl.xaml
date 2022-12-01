@@ -24,7 +24,7 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement},Mode=OneWayToSource}"/>
+                    <ColumnDefinition Width="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}"/>
                 </Grid.ColumnDefinitions>
                 <Border Background="{DynamicResource ResourceKey=DataGridBGBrush}" x:Name="dpFilter" Grid.Row="0" HorizontalAlignment="Stretch" BorderBrush="LightGray" BorderThickness="0" Height="28" Margin="4,0,2,5">
                     <DockPanel>
