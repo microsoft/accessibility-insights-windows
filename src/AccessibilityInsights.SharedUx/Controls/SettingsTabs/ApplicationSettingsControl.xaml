@@ -208,7 +208,7 @@
             <Grid Grid.Row="3" Margin="1,5,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="151"/>
-                    <ColumnDefinition Width="50"/>
+                    <ColumnDefinition Width="180"/>
                 </Grid.ColumnDefinitions>
                 <Label Name="lblSoundFeedbackLabel" Grid.Column="0" Content="{x:Static Properties:Resources.lblSoundFeedbackLabelContent}" Padding="0" Style="{StaticResource LblText}" VerticalAlignment="Center"/>
                 <ComboBox Grid.Column="2" x:Name ="soundFeedbackComboBox"
