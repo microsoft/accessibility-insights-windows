@@ -121,7 +121,7 @@
                                                   GlyphName="Search" GlyphSize="Custom" FontSize="11" VerticalAlignment="Center" Foreground="{DynamicResource ResourceKey=IconBrush}"/>
             </Grid>
             <Grid Grid.Row="2" Style="{DynamicResource ResourceKey=gridPartialOpacityWhenDisabled}" Height="200px" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="0 12">
-                <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=projects}" 
+                <TreeView x:Name="serverTreeview" ItemsSource="{Binding Path=Projects}" 
                                   SelectedItemChanged="serverTreeview_SelectedItemChanged" AutomationProperties.Name="{x:Static Properties:Resources.serverTreeviewAutomationPropertiesName}"
                                   VirtualizingStackPanel.IsVirtualizing="False">
                     <TreeView.ItemContainerStyle>

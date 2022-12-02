@@ -1,5 +1,6 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using System.ComponentModel;
 using System.Windows;
 using static AccessibilityInsights.Extensions.AzureDevOps.ConfigurationControl;
 
@@ -133,5 +134,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps.Models
                 return string.IsNullOrEmpty(email) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
+
+        public BindingList<TeamProjectViewModel> Projects { get; } = new BindingList<TeamProjectViewModel>();
     }
 }

@@ -31,7 +31,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         {
             InitializeComponent();
             DataContext = VMConfig;
-            serverTreeview.ItemsSource = null;
         }
 
         private bool canSave;
@@ -67,10 +66,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         public ConfigurationViewModel VMConfig { get; private set; } = new ConfigurationViewModel();
 
-        /// <summary>
-        /// List of team projects
-        /// </summary>
-        public BindingList<TeamProjectViewModel> projects { get; private set; } = new BindingList<TeamProjectViewModel>();
         public override Action UpdateSaveButton { get; set; }
 
         #region configuration updating code
@@ -250,11 +245,11 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 try
                 {
                     ToggleLoading(true);
-                    Dispatcher.Invoke(projects.Clear);
+                    Dispatcher.Invoke(VMConfig.Projects.Clear);
                     var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread.
-                    Dispatcher.Invoke(() => newProjectList.ForEach(p => projects.Add(p)));
+                    Dispatcher.Invoke(() => newProjectList.ForEach(p => VMConfig.Projects.Add(p)));
                     ToggleLoading(false);
-                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = projects);
+                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = VMConfig.Projects);
                     Dispatcher.Invoke(() => serverTreeview.Focus());
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
