@@ -54,12 +54,21 @@ namespace AccessibilityInsights.SetupLibrary
             return null;
         }
 
-        internal static EnrichedChannelInfo GetChannelInfoFromSignedManifest(Stream stream)
+        private static bool IsStreamTrusted(Stream stream)
         {
             using (TrustVerifier verifier = new TrustVerifier(stream))
             {
-                if (!verifier.IsVerified)
-                    return null; // TODO: Capture this case in telemetry when we deprecate unsigned manifests
+                return verifier.IsVerified;
+            }
+        }
+
+        internal static EnrichedChannelInfo GetChannelInfoFromSignedManifest(Stream stream, Func<Stream, bool> streamTrustCheck = null)
+        {
+            Func<Stream, bool> trustCheck = streamTrustCheck ?? IsStreamTrusted;
+
+            if (!trustCheck(stream))
+            {
+                return null; // TODO: Capture this case in telemetry when we deprecate unsigned manifests
             }
 
             stream.Position = 0;
