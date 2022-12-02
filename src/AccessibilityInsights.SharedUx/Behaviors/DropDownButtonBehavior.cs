@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.SharedUx.Utilities;
@@ -118,10 +118,7 @@ namespace AccessibilityInsights.SharedUx.Behaviors
 
             isContextMenuOpen = false;
             var contextMenu = sender as ContextMenu;
-            if (contextMenu != null)
-            {
-                contextMenu.RemoveHandler(ContextMenu.ClosedEvent, new RoutedEventHandler(ContextMenu_Closed));
-            }
+            contextMenu?.RemoveHandler(ContextMenu.ClosedEvent, new RoutedEventHandler(ContextMenu_Closed));
         }
     }
 }

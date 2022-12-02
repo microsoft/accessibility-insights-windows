@@ -8,6 +8,9 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace AccessibilityInsights.VersionSwitcher
 {
@@ -19,36 +22,42 @@ namespace AccessibilityInsights.VersionSwitcher
         const string AppManifestFile = "AccessibilityInsights.exe.manifest";
         const string EnabledManifestFile = "UIAccess_Enabled.manifest";
 
-        private readonly Stopwatch _installerDownloadStopwatch = new Stopwatch();
         private readonly string _productName;
         private readonly string _appToLaunchAfterInstall;
+        private readonly ExecutionHistory _history;
+        private readonly Func<string[]> _commandLineProvider;
 
         /// <summary>
         /// constructor
         /// </summary>
         /// <param name="productName">The localized product name</param>
         /// <param name="appToLaunchAfterInstall">The path to the app to launch after install completes</param>
-        internal InstallationEngine(string productName, string appToLaunchAfterInstall)
+        /// <param name="history">Holder for history data</param>
+        /// <param name="commandLineProvider">Provider of command line arguments (production uses null)</param>
+        internal InstallationEngine(string productName, string appToLaunchAfterInstall, ExecutionHistory history, Func<string[]> commandLineProvider = null)
         {
             _productName = productName;
             _appToLaunchAfterInstall = appToLaunchAfterInstall;
+            _history = history;
+            _commandLineProvider = commandLineProvider ?? Environment.GetCommandLineArgs;
         }
 
         /// <summary>
         /// Triggers the installation and launches the installed app upon completion
         /// </summary>
-        internal void PerformInstallation(Action<int> progressCallback)
+        internal ExecutionResult PerformInstallation(Action<int> progressCallback)
         {
-            EventLogger.WriteInformationalMessage("Beginning Installation");
+            ExecutionResult result;
+
+            _history.AddLocalDetail("Beginning Installation");
             progressCallback(0);
             InstallationOptions options = GetInstallationOptions();
+            SetInitialTelemetryValues(options);
             DownloadFromUriToLocalFile(options, (p) => progressCallback((p * 4) / 5));
-            using (ValidateLocalFile(options.LocalInstallerFile))
+            using (ValidateLocalFile(options))
+            using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
             {
-                using (Transaction transaction = new Transaction(_productName, TransactionAttributes.ChainEmbeddedUI))
-                {
-                    InstallWithinTransaction(options, transaction);
-                }
+                result = InstallWithinTransaction(options, transaction);
             }
             progressCallback(80);
             UpdateConfigWithNewChannel(options.NewChannel);
@@ -57,42 +66,61 @@ namespace AccessibilityInsights.VersionSwitcher
             progressCallback(95);
             LaunchPostInstallApp();
             progressCallback(100);
-            EventLogger.WriteInformationalMessage("Completed Installation");
+            _history.AddLocalDetail("Completed Installation");
+
+            return result;
         }
 
         /// <summary>
         /// Create an InstallationOptions object based on available input
         /// </summary>
         /// <returns>The populated InstallationOptions object</returns>
-        private static InstallationOptions GetInstallationOptions()
+        internal InstallationOptions GetInstallationOptions()
         {
-            string[] args = Environment.GetCommandLineArgs();
-            string newChannel = null;
-
-            if (args.Length > 1)
-            {
-                string msiPath = args[1];
-
-                if (args.Length > 2)
+            string[] args = _commandLineProvider();
+            return ResultExecutionWrapper.Execute(ExecutionResult.ErrorBadCommandLine,
+                () => string.Format(Properties.Resources.BadCommandLineMessageFormat, string.Join(" ", args)),
+                () =>
                 {
-                    newChannel = args[2];
-                }
+                    string newChannel = null;
 
-                bool enableUIAccess = IsUIAccessEnabled();
+                    // args[0] is the app name and gets ignored
+                    Uri msiPath = new Uri(args[1]);
+                    int msiSizeInBytes = int.Parse(args[2]);
+                    string msiSha512 = args[3];
 
-                EventLogger.WriteInformationalMessage("Options:\nMSI Path = {0}\nNew Channel = {1},\nEnable UIAccess = {2}",
-                    msiPath, newChannel, enableUIAccess);
-                return new InstallationOptions(msiPath, newChannel, enableUIAccess);
-            }
+                    if (args.Length > 4)
+                    {
+                        newChannel = args[4];
+                    }
 
-            string input = string.Join(" | ", args);
-            throw new ArgumentException("Invalid Input: " + input);
+                    bool enableUIAccess = IsUIAccessEnabled();
+
+                    _history.AddLocalDetail("Option: MSI Path = {0}", msiPath);
+                    _history.AddLocalDetail("Option: MSI expected size = {0} bytes", msiSizeInBytes);
+                    _history.AddLocalDetail("Option: MSI expected SHA512 = {0}", msiSha512);
+                    _history.AddLocalDetail("Option: Enable UIAccess = {0}", enableUIAccess);
+                    if (newChannel != null)
+                    {
+                        _history.AddLocalDetail("Option: New channel = {0}", newChannel);
+                    }
+                    return new InstallationOptions(msiPath, msiSizeInBytes, (msiSha512 == "none") ? null : msiSha512, newChannel, enableUIAccess);
+                });
+        }
+
+        internal void SetInitialTelemetryValues(InstallationOptions options)
+        {
+            _history.StartingVersion = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion;
+            _history.RequestedMsi = options.MsiPath.ToString();
+            _history.ExpectedMsiSizeInBytes = options.MsiSizeInBytes;
+            _history.ExpectedMsiSha512 = options.MsiSha512;
+            _history.NewChannel = options.NewChannel;
         }
 
         /// <summary>
         /// Infer UIAccess state from the existing manifest files. Assume false unless proven otherwise
         /// </summary>
-        private static bool IsUIAccessEnabled()
+        private bool IsUIAccessEnabled()
         {
             try
             {
@@ -105,7 +133,7 @@ namespace AccessibilityInsights.VersionSwitcher
             catch (Exception e)
             {
                 // Report the error, assume no UIAccess
-                EventLogger.WriteWarningMessage("Unable to determine UIAccess status. Assuming disabled. Detail: {0}", e.ToString());
+                _history.AddLocalDetail("Unable to determine UIAccess status. Assuming disabled. Detail: {0}", e.ToString());
                 return false;
             }
 #pragma warning restore CA1031 // Do not catch general exception types
@@ -115,7 +143,7 @@ namespace AccessibilityInsights.VersionSwitcher
         /// Update manifest files as needed for UIAccess support
         /// </summary>
         /// <param name="enableUIAccess">Desired state of UIAccess.</param>
-        private static void SetManifestForUIAccess(bool enableUIAccess)
+        private void SetManifestForUIAccess(bool enableUIAccess)
         {
             if (!enableUIAccess)
                 return;   // UIAccess is disabled by default
@@ -125,13 +153,13 @@ namespace AccessibilityInsights.VersionSwitcher
                 string appPath = Path.GetDirectoryName(MsiUtilities.GetAppInstalledPath());
                 string enabledManifestContents = File.ReadAllText(Path.Combine(appPath, EnabledManifestFile));
                 File.WriteAllText(Path.Combine(appPath, AppManifestFile), enabledManifestContents, System.Text.Encoding.UTF8);
-                EventLogger.WriteInformationalMessage("UIAccess has been enabled");
+                _history.AddLocalDetail("UIAccess has been enabled");
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception e)
             {
                 // Report the error, assume no UIAccess
-                EventLogger.WriteWarningMessage("Unable to enable UIAccess. Detail: {0}", e.ToString());
+                _history.AddLocalDetail("Unable to enable UIAccess. Detail: {0}", e.ToString());
             }
 #pragma warning restore CA1031 // Do not catch general exception types
         }
@@ -143,43 +171,84 @@ namespace AccessibilityInsights.VersionSwitcher
         /// <param name="progressCallback">Called to update download progress</param>
         private void DownloadFromUriToLocalFile(InstallationOptions options, Action<int> progressCallback)
         {
-            _installerDownloadStopwatch.Reset();
-
-            using (Stream stream = new FileStream(options.LocalInstallerFile, FileMode.CreateNew))
-            {
-                _installerDownloadStopwatch.Start();
-
-                try
+            ResultExecutionWrapper.Execute(ExecutionResult.ErrorMsiDownloadFailed,
+                () => Properties.Resources.UnableToDownloadInstallerFile, 
+                () =>
                 {
-                    GitHubClient.LoadUriContentsIntoStream(options.MsiPath, stream, options.DownloadTimeout, progressCallback);
-                }
-                finally
-                {
-                    _installerDownloadStopwatch.Stop();
-                }
-            } // using
+                    using (Stream stream = new FileStream(options.LocalInstallerFile, FileMode.CreateNew))
+                    {
+                        StreamMetadata streamMetaData = GitHubClient.LoadUriContentsIntoStream(options.MsiPath, stream, options.DownloadTimeout, progressCallback);
+                        _history.ResolvedMsi = streamMetaData.ResponseUri.ToString();
+                    } // using
 
-            EventLogger.WriteInformationalMessage("Successfully downloaded Installer from {0} to {1}",
-                options.MsiPath.ToString(), options.LocalInstallerFile);
+                    _history.AddLocalDetail("Successfully downloaded Installer from {0} to {1}",
+                        options.MsiPath.ToString(), options.LocalInstallerFile);
+
+                    // Dummy return value to make wrapper work
+                    return 0;
+                });
         }
 
         /// <summary>
         /// Validate a local file for proper signing
         /// </summary>
-        /// <param name="localFile">The full path to the local file</param>
+        /// <param name="options">The InstallationOptions object that tells us about the MSI file</param>
         /// <returns>An initialized TrustVerifier object</returns>
-        private static TrustVerifier ValidateLocalFile(string localFile)
+        private TrustVerifier ValidateLocalFile(InstallationOptions options)
         {
-            TrustVerifier verifier = new TrustVerifier(localFile);
-            if (!verifier.IsVerified)
+            using (Stream lockingStream = new FileStream(options.LocalInstallerFile, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                // TODO : Better error messaging
-                throw new ArgumentException(Properties.Resources.UntrustedFile, nameof(localFile));
+                ValidateFileProperties(options.LocalInstallerFile, options.MsiSizeInBytes, options.MsiSha512);
+
+                TrustVerifier verifier = new TrustVerifier(options.LocalInstallerFile);
+                if (!verifier.IsVerified)
+                {
+                    throw new ResultBearingException(ExecutionResult.ErrorMsiBadSignature, Properties.Resources.InstallerFileIsNotTrusted);
+                }
+
+                _history.AddLocalDetail("Successfully validated local file: {0}", options.LocalInstallerFile);
+
+                return verifier;
+            }
+        }
+
+        internal void ValidateFileProperties(string filePath, int expectedFileSize, string expectedFileSha512)
+        {
+            // Save values to telemetry before performing any vaidation
+            _history.ActualMsiSizeInBytes = (int)new FileInfo(filePath).Length;
+            _history.ActualMsiSha512 = ComputeSha512(filePath);
+
+            if (expectedFileSize != 0 && expectedFileSize != _history.ActualMsiSizeInBytes)
+            {
+                throw new ResultBearingException(ExecutionResult.ErrorMsiSizeMismatch, Properties.Resources.InstallerFileIsWrongSize);
             }
 
-            EventLogger.WriteInformationalMessage("Successfully validated local file: {0}", localFile);
+            if (expectedFileSha512 != null && !expectedFileSha512.Equals(_history.ActualMsiSha512, StringComparison.OrdinalIgnoreCase))
+            {
+                throw new ResultBearingException(ExecutionResult.ErrorMsiSha512Mismatch, Properties.Resources.InstallerFileHasWrongHash);
+            }
+        }
 
-            return verifier;
+        /// <summary>
+        /// Compute the SHA512 value for the contents of the specified file
+        /// </summary>
+        /// <param name="filePath">The file to validate. The code assumes that the file exists</param>
+        /// <returns>The SHA512 as a string of hex digits</returns>
+        internal static string ComputeSha512(string filePath)
+        {
+            using (SHA512 sha = SHA512.Create())
+            using (Stream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+                StringBuilder sb = new StringBuilder();
+                byte[] bytes = sha.ComputeHash(stream);
+
+                foreach (byte b in bytes)
+                {
+                    sb.AppendFormat("{0:X2}", b);
+                }
+
+                return sb.ToString();
+            }
         }
 
         /// <summary>
@@ -187,40 +256,43 @@ namespace AccessibilityInsights.VersionSwitcher
         /// </summary>
         /// <param name="options">The parameters to drive the installation</param>
         /// <param name="transaction">The transaction to wrap the operation</param>
-        private void InstallWithinTransaction(InstallationOptions options, Transaction transaction)
+        private ExecutionResult InstallWithinTransaction(InstallationOptions options, Transaction transaction)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
-            bool success = false;
+            ExecutionResult result = ExecutionResult.Unknown;
             try
             {
-                RemoveOldVersion();
-                InstallNewVersion(options.LocalInstallerFile);
-                success = true;
+                result = ResultExecutionWrapper.Execute<ExecutionResult>(
+                    ExecutionResult.ErrorInstallingMsi,
+                    () => Properties.Resources.UnableToCompleteInstallation,
+                    () =>
+                    {
+                        RemoveOldVersion();
+                        InstallNewVersion(options.LocalInstallerFile);
+                        return ExecutionResult.Success;
+                    });
             }
             finally
             {
-                if (success)
+                string statusMessage;
+                if (result == ExecutionResult.Success)
                 {
                     transaction.Commit();
+                    statusMessage = "succeeded";
                 }
                 else
                 {
                     transaction.Rollback();
+                    statusMessage = "failed";
                 }
 
                 stopwatch.Stop();
 
                 const string messageTemplate = "VersionSwitcher {0} in {1} ms";
-
-                if (success)
-                {
-                    EventLogger.WriteInformationalMessage(messageTemplate, "succeeded", stopwatch.ElapsedMilliseconds);
-                }
-                else
-                {
-                    EventLogger.WriteErrorMessage(messageTemplate, "failed", stopwatch.ElapsedMilliseconds);
-                }
+                _history.AddLocalDetail(messageTemplate, statusMessage, stopwatch.ElapsedMilliseconds);
             }
+
+            return result;
         }
 
         /// <summary>
@@ -247,7 +319,7 @@ namespace AccessibilityInsights.VersionSwitcher
         {
             if (_appToLaunchAfterInstall == null)
             {
-                EventLogger.WriteWarningMessage("No application to launch");
+                _history.AddLocalDetail("No application to launch");
             }
             else
             {
@@ -258,11 +330,11 @@ namespace AccessibilityInsights.VersionSwitcher
                 };
                 if (Process.Start(start) != null)
                 {
-                    EventLogger.WriteInformationalMessage("Successfully started process: {0}", _appToLaunchAfterInstall);
+                    _history.AddLocalDetail("Successfully started process: {0}", _appToLaunchAfterInstall);
                 }
                 else
                 {
-                    EventLogger.WriteWarningMessage("Unable to start process: {0}", _appToLaunchAfterInstall);
+                    _history.AddLocalDetail("Unable to start process: {0}", _appToLaunchAfterInstall);
                 }
             }
         }
@@ -271,14 +343,14 @@ namespace AccessibilityInsights.VersionSwitcher
         /// Install from a local MSI file
         /// </summary>
         /// <param name="msiPath">full name to the MSI</param>
-        internal static void InstallNewVersion(string msiPath)
+        internal void InstallNewVersion(string msiPath)
         {
-            EventLogger.WriteInformationalMessage("Attempting to install from \"{0}\"", msiPath);
+            _history.AddLocalDetail("Attempting to install from \"{0}\"", msiPath);
             Stopwatch stopwatch = Stopwatch.StartNew();
             Installer.SetInternalUI(InstallUIOptions.Silent);
             Installer.InstallProduct(msiPath, "");
             stopwatch.Stop();
-            EventLogger.WriteInformationalMessage("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
+            _history.AddLocalDetail("Installed {0} in {1} milliseconds", msiPath, stopwatch.ElapsedMilliseconds);
         }
 
         /// <summary>
@@ -288,7 +360,7 @@ namespace AccessibilityInsights.VersionSwitcher
         {
             Exception exception = null;
             string productId = null;
-            EventLogger.WriteInformationalMessage("Attempting to find product: \"{0}\"", _productName);
+            _history.AddLocalDetail("Attempting to find product: \"{0}\"", _productName);
             try
             {
                 productId = FindInstalledProductKey(_productName).ToString("B", CultureInfo.InvariantCulture);
@@ -302,7 +374,7 @@ namespace AccessibilityInsights.VersionSwitcher
 
             if (exception != null)
             {
-                EventLogger.WriteWarningMessage("Unable to locate product {0}! Continuing without uninstall",
+                _history.AddLocalDetail("Unable to locate product {0}! Continuing without uninstall",
                     _productName);
                 return;
             }
@@ -311,7 +383,7 @@ namespace AccessibilityInsights.VersionSwitcher
             Installer.SetInternalUI(InstallUIOptions.Silent);
             Installer.ConfigureProduct(productId, 0, InstallState.Absent, "");
             stopwatch.Stop();
-            EventLogger.WriteInformationalMessage("Removed productId: {0} in {1} milliseconds",
+            _history.AddLocalDetail("Removed productId: {0} in {1} milliseconds",
                 productId, stopwatch.ElapsedMilliseconds);
         }
 

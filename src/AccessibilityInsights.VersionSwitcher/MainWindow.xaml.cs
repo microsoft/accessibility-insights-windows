@@ -4,6 +4,7 @@
 using AccessibilityInsights.SetupLibrary;
 using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.Threading;
 using System.Windows;
@@ -16,7 +17,6 @@ namespace AccessibilityInsights.VersionSwitcher
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static readonly IExceptionReporter ExceptionReporter = new ExceptionReporter();
         const string ProductName = "Accessibility Insights For Windows v1.1";
         bool _allowClosing;
 
@@ -36,21 +36,35 @@ namespace AccessibilityInsights.VersionSwitcher
 
         public void SwitchVersionAndInvokeCloseApplication()
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            ExecutionHistory history = new ExecutionHistory();
             string errorMessage = null;
 
             try
             {
-                InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath());
-                engine.PerformInstallation(DispatcherUpdateProgress);
+                history.TypedExecutionResult = ResultExecutionWrapper.Execute(ExecutionResult.Unknown, 
+                    () => Properties.Resources.UnableToCompleteInstallation,
+                    () =>
+                    {
+                        InstallationEngine engine = new InstallationEngine(ProductName, SafelyGetAppInstalledPath(history), history);
+                        return engine.PerformInstallation(DispatcherUpdateProgress);
+                    });
             }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch (Exception e)
+            catch (ResultBearingException e)
             {
-                EventLogger.WriteErrorMessage(e.ToString());
-                ExceptionReporter.ReportException(e);
+                history.TypedExecutionResult = e.Result;
+                history.AddLocalDetail(e.ToString());
                 errorMessage = e.Message;
             }
-#pragma warning restore CA1031 // Do not catch general exception types
+            finally
+            {
+                Dispatcher.Invoke(() =>
+                {
+                    history.ExecutionTimeInMilliseconds = stopwatch.ElapsedMilliseconds;
+                    string path = ExecutionHistory.GetDataFilePath();
+                    FileHelpers.SerializeDataToJSON(history, path);
+                });
+            }
 
             Dispatcher.Invoke(() => CloseAppliction(errorMessage));
         }
@@ -65,10 +79,7 @@ namespace AccessibilityInsights.VersionSwitcher
                 progressBar.Value = percentage;
                 statusText.Text = newText;
                 var peer = FrameworkElementAutomationPeer.FromElement(statusText);
-                if (peer != null)
-                {
-                    peer.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
-                }
+                peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
             }
         }
 
@@ -88,7 +99,7 @@ namespace AccessibilityInsights.VersionSwitcher
             Close();
         }
 
-        private static string SafelyGetAppInstalledPath()
+        private static string SafelyGetAppInstalledPath(ExecutionHistory history)
         {
             try
             {
@@ -96,7 +107,7 @@ namespace AccessibilityInsights.VersionSwitcher
             }
             catch (InvalidOperationException e)
             {
-                ExceptionReporter.ReportException(e);
+                history.AddLocalDetail(e.ToString());
                 return null;
             }
         }

@@ -29,8 +29,8 @@ namespace MsiFileTests
             };
 
             CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net48", wxsFile, "ProductComponent", productComponentExclusions);
-            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net48\IssueTemplates", wxsFile, "IssueTemplates");
-            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights.VersionSwitcher\bin\release\net48", wxsFile, "VersionSwitcher");
+            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights\bin\release\net48\IssueTemplates", wxsFile, "IssueTemplateComp");
+            CompareWxsSectionToDropPath(repoRoot, @"AccessibilityInsights.VersionSwitcher\bin\release\net48", wxsFile, "VersionSwitcherComp");
         }
 
         private static void CompareWxsSectionToDropPath(string repoRoot, string relativeDropPath,
@@ -38,11 +38,14 @@ namespace MsiFileTests
         {
             string dropPath = Path.Combine(repoRoot, relativeDropPath);
             HashSet<string> filesInDropPath = GetNonSymbolFilesInPath(dropPath, intentionalExclusions);
-            HashSet<string> filesInWxsComponent = GetFilesIncludedInWxsComponent(repoRoot, wxsFile, wxsComponentId);
+            HashSet<string> filesInWxsComponent = GetFilesIncludedInWxsComponent(wxsFile, wxsComponentId);
+
+            Assert.AreNotEqual(0, filesInDropPath.Count, $"No files found under {dropPath}");
+            Assert.AreNotEqual(0, filesInWxsComponent.Count, $"No files in Component {wxsComponentId}");
 
             filesInDropPath.ExceptWith(filesInWxsComponent);
 
-            Assert.IsFalse(filesInDropPath.Any(), $"Drop files not in \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
+            Assert.IsFalse(filesInDropPath.Any(), $"{filesInDropPath.Count} drop files are missing from \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
         }
 
         private static HashSet<string> GetNonSymbolFilesInPath(string path, HashSet<string> intentionalExclusions)
@@ -51,12 +54,12 @@ namespace MsiFileTests
 
             foreach (string file in Directory.EnumerateFiles(path))
             {
-                if (intentionalExclusions != null && !intentionalExclusions.Contains(Path.GetFileName(file)))
+                if (intentionalExclusions == null || !intentionalExclusions.Contains(Path.GetFileName(file)))
                 {
                     string extension = Path.GetExtension(file);
                     if (extension != ".pdb")
                     {
-                        filesInPath.Add(Path.GetFullPath(file));
+                        filesInPath.Add(Path.GetFileName(file));
                     }
                 }
             }
@@ -64,7 +67,7 @@ namespace MsiFileTests
             return filesInPath;
         }
 
-        private static HashSet<string> GetFilesIncludedInWxsComponent(string repoRoot, string wxsFile, string componentId)
+        private static HashSet<string> GetFilesIncludedInWxsComponent(string wxsFile, string componentId)
         {
             HashSet<string> filesInSection = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
@@ -84,7 +87,7 @@ namespace MsiFileTests
                         else if (reader.Name == "File" && thisIsTheCorrectComponent)
                         {
                             string relativeFile = reader.GetAttribute("Source");
-                            filesInSection.Add(repoRoot + relativeFile.Substring(2));
+                            filesInSection.Add(Path.GetFileName(relativeFile.Substring(2)));
                         }
                     }
                 }

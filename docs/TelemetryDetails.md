@@ -170,6 +170,9 @@ Additional properties:
 Name | Value
 --- | ---
 `customDimensions.UpdateInitializationTime` | The updater's measurement of how long it took to determine the UpdateOption. Format is Hours:Minutes:Seconds.FractionalSeconds.
+`customDimensions.UpdateManifestRequestUri` | The URI used to request the update manifest
+`customDimensions.UpdateManifestResponseUri` | The URI the ultimately provided the update manifest
+`customDimensions.UpdateManifestSizeInBytes` | The byte count of the retrieved update manifest
 `customDimensions.UpdateOptionWaitTime` | The app's measurement of how long it took to determine the UpdateOption. It is different from UpdateInitializationTime, since they start at different times on different threads. Format is Hours:Minutes:Seconds.FractionalSeconds.
 `customDimensions.UpdateOption` | The UpdateOption that was returned to the app (will be ignored if we timed out).
 `customDimensions.UpdateTimedOut` | `True` if the AutoUpdate process exceeded the 2 second timeout, otherwise `False`.
@@ -194,6 +197,22 @@ Additional properties:
 Name | Value
 --- | ---
 `customDimensions.Error` | The error from clicking the release notes button *note: Should this include the Exception type and/or the Uri to the release notes?*
+
+#### Upgrade_VersionSwitcherResults
+Trigger: The application starts up after running `AccessibilityInsights.VersionSwitcher.exe` to either upgrade or change release channels
+Additional properties: 
+Name | Value
+--- | ---
+`customDimensions.ActualMsiSha512` | The _actual_ SHA512 of the MSI file
+`customDimensions.ActualMsiSize` | The _actual_ size (in bytes) of the downladed MSI file
+`customDimensions.ExecutionTimeInMilliseconds` | The number of milliseconds spent running the VersionSwitcher
+`customDimensions.ExpectedMsiSha512` | The _expected_ SHA512 of the MSI file. Will be set to `null` if the SHA512 was unknown
+`customDimensions.ExpectedMsiSize` | The _expected_ size (in bytes) of the MSI file. Will be set to 0 if the size was unknown
+`customDimensions.NewChannel` | The new channel if VersionSwitcher was used to change channels. Supported values are `Production`, `Insider`, or `Canary` if the channel was changed, or `null` if this was an upgrade within the same channel
+`customDimensions.RequestedMsi` | The `Uri` used to request the MSI file
+`customDimensions.ResolvedMsi` | The final `Uri` (after all redirects) that identifies where the source of the MSI file
+`customDimensions.Result` | The result of the operation. Supported values: `Unknown`, `ErrorBadCommandLine`, `ErrorMsiDownloadFailed`, `ErrorMsiBadSignature`, `ErrorMsiSizeMismatch`, `ErrorMsiSha512Mismatch`, `ErrorInstallingMsi`, or `Success`.
+`customDimensions.StartingVersion` | The installed version of Accessibility Insights for Windows before the version switch
 
 ### Events from Axe.Windows
 Accessibility Insights for Windows provides a mechanism by which Axe.Windows is able to provide telemetry that then gets merged into the telemetry stream that already exists for the application. These events inherit all of the [Common Data Properties](#common-data-properties), and appear just like events that originate from Accessibility Insights for Windows. These will be documented in the Axe.Windows repo, but are duplicated here for convenience:

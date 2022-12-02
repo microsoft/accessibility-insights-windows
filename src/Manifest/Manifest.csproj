@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyName>AccessibilityInsights.Manifest</AssemblyName>
+    <RootNamespace>AccessibilityInsights.Manifest</RootNamespace>
+  </PropertyGroup>
+
+  <Import Project="..\props\prod-version.props" />
+  <Import Project="..\..\build\NetFrameworkRelease.targets" />
+
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildProjectDirectory)\..\bld\ReleaseInfo.json" />
+  </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -MsiBasePath $(SolutionDir)MSI\bin\Release\msi -MinimumProductionVersion $(MinimumProdVersion) -OutputPath $(MSBuildProjectDirectory)\..\bld -OutputFile ReleaseInfo.json" />
+  </Target>
+
+</Project>

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -17,9 +18,11 @@ namespace AccessibilityInsights.SetupLibrary
         /// Installs a more recent version in response to an upgrade (retain the same channel)
         /// </summary>
         /// <param name="installerUri">The URI to the web-hosted installer</param>
-        public static void InstallUpgrade(Uri installerUri)
+        /// <param name="msiSizeInBytes">The byte count of the MSI on disk, or 0 if unknown</param>
+        /// <param name="msiSha512">The SHA512 of the MSI on disk, or null if unknown</param>
+        public static void InstallUpgrade(Uri installerUri, int msiSizeInBytes, string msiSha512)
         {
-            DownloadAndInstall(installerUri, null);
+            DownloadAndInstall(installerUri, null, msiSizeInBytes, msiSha512);
         }
 
         /// <summary>
@@ -28,10 +31,10 @@ namespace AccessibilityInsights.SetupLibrary
         /// <param name="newChannel">The new channel to use</param>
         public static void ChangeChannel(ReleaseChannel newChannel)
         {
-            if (ChannelInfoUtilities.TryGetChannelInfo(newChannel, out ChannelInfo channelInfo, null)
-                && channelInfo.IsValid)
+            if (ChannelInfoUtilities.TryGetChannelInfo(newChannel, out EnrichedChannelInfo enrichedChannelInfo, null)
+                && enrichedChannelInfo.IsValid)
             {
-                DownloadAndInstall(new Uri(channelInfo.InstallAsset), newChannel);
+                DownloadAndInstall(new Uri(enrichedChannelInfo.InstallAsset), newChannel, enrichedChannelInfo.MsiSizeInBytes, enrichedChannelInfo.MsiSha512);
                 return;
             }
 
@@ -45,7 +48,9 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="installerUrl">The URL to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
-        private static void DownloadAndInstall(Uri installerUri, ReleaseChannel? newChannel)
+        /// <param name="msiSizeInBytes">The byte count of the MSI on disk, or 0 if unknown</param>
+        /// <param name="msiSha512">The SHA512 of the MSI on disk, or null if unknown</param>
+        private static void DownloadAndInstall(Uri installerUri, ReleaseChannel? newChannel, int msiSizeInBytes, string msiSha512)
         {
             List<FileStream> fileLocks = new List<FileStream>();
             try
@@ -57,7 +62,7 @@ namespace AccessibilityInsights.SetupLibrary
                 ProcessStartInfo start = new ProcessStartInfo
                 {
                     FileName = Path.Combine(temporaryFolder, "AccessibilityInsights.VersionSwitcher.exe"),
-                    Arguments = GetVersionSwitcherArguments(installerUri, newChannel)
+                    Arguments = GetVersionSwitcherArguments(installerUri, newChannel, msiSizeInBytes, msiSha512)
                 };
                 Process.Start(start);
             }
@@ -159,16 +164,16 @@ namespace AccessibilityInsights.SetupLibrary
         /// </summary>
         /// <param name="installerUri">The URI to the web-hosted installer</param>
         /// <param name="newChannel">If not null, the new channel to select</param>
-        private static string GetVersionSwitcherArguments(Uri installerUri, ReleaseChannel? newChannel)
+        /// <param name="msiSizeInBytes">The byte count of the MSI on disk, or 0 if unknown</param>
+        /// <param name="msiSha512">The SHA512 of the MSI on disk, or null if unknown</param>
+        private static string GetVersionSwitcherArguments(Uri installerUri, ReleaseChannel? newChannel, int msiSizeInBytes, string msiSha512)
         {
-            string arguments = installerUri.ToString();
-
-            if (newChannel.HasValue)
-            {
-                arguments += " " + newChannel.Value.ToString();
-            }
-
-            return arguments;
+            return string.Format(CultureInfo.InvariantCulture, "{0} {1} {2} {3}",
+                installerUri.ToString(),
+                msiSizeInBytes,
+                string.IsNullOrWhiteSpace(msiSha512) ? "none" : msiSha512,
+                newChannel.HasValue ? newChannel.Value.ToString() : string.Empty
+                );
         }
     }
 }

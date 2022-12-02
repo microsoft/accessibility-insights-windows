@@ -9,9 +9,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Reflection.MetadataLoadContext" Version="7.0.0" />
     <PackageReference Include="WiX" Version="3.11.2" />
-    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0" >
+    <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0">
       <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
     </Reference>
   </ItemGroup>

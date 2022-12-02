@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Win32;
 using System;
@@ -9,7 +9,7 @@ using static AccessibilityInsights.Win32.NativeMethods;
 
 namespace AccessibilityInsights.SetupLibrary
 {
-    public class TrustVerifier : IDisposable
+    internal class TrustVerifier : IDisposable
     {
         // This list intentionally excludes the CN, since we are validating only the organization
         private static readonly IReadOnlyCollection<string> TrustedCertIssuerEndings = new List<string>
@@ -23,11 +23,19 @@ namespace AccessibilityInsights.SetupLibrary
 
         public bool IsVerified { get; }
 
+        public TrustVerifier(Stream stream)
+        {
+            if (stream == null) throw new ArgumentNullException(nameof(stream));
+
+            string tempFilePath = CreateTempFileFromStream(stream);
+            IsVerified = VerifyFile(tempFilePath);
+        }
+
         public TrustVerifier(string filePath)
         {
             try
             {
-                IsVerified = IsFileTrusted(filePath) && IsFileIssuingOrganizationTrusted(filePath);
+                IsVerified = VerifyFile(filePath);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)
@@ -35,6 +43,25 @@ namespace AccessibilityInsights.SetupLibrary
                 System.Diagnostics.Debug.WriteLine(ex.ToString());
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        private static string CreateTempFileFromStream(Stream stream)
+        {
+            string tempFile = Path.GetTempFileName();
+
+            stream.Position = 0;
+            using (FileStream outStream = File.Open(tempFile, FileMode.Truncate))
+            {
+                stream.CopyTo(outStream);
+            }
+
+            return tempFile;
+        }
+
+
+        private bool VerifyFile(string filePath)
+        {
+            return IsFileTrusted(filePath) && IsFileIssuingOrganizationTrusted(filePath);
         }
 
         private bool IsFileTrusted(string filePath)

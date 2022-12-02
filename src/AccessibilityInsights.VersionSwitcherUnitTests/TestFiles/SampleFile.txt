@@ -1,0 +1,1 @@
+This is just a sample file that is used to test the metadata validation code.

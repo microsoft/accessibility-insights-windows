@@ -3,6 +3,8 @@
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
 using System.Text;
 
 using static System.FormattableString;
@@ -70,6 +72,30 @@ namespace AccessibilityInsights.SetupLibrary
             {
                 Directory.CreateDirectory(path);
             }
+        }
+
+        internal static byte[] ExtractResourceFromStream(Stream stream, string resourceName)
+        {
+#pragma warning disable CA2000 // Dispose objects before losing scope
+            // Don't dispose the StreamReader here, since it has the side effect of also
+            // disposing the passed-in Stream, which we don't own.
+            PEReader peReader = new PEReader(stream);
+#pragma warning restore CA2000 // Dispose objects before losing scope
+            MetadataReader metadataReader = peReader.GetMetadataReader();
+            foreach (ManifestResourceHandle handle in metadataReader.ManifestResources)
+            {
+                ManifestResource manifestResource = metadataReader.GetManifestResource(handle);
+                if (!metadataReader.StringComparer.Equals(manifestResource.Name, resourceName, false))
+                    continue;
+
+                PEMemoryBlock resourceDirectory = peReader.GetSectionData(peReader.PEHeaders.CorHeader.ResourcesDirectory.RelativeVirtualAddress);
+                BlobReader blobReader = resourceDirectory.GetReader((int)manifestResource.Offset, resourceDirectory.Length - (int)manifestResource.Offset);
+                uint size = blobReader.ReadUInt32();
+                byte[] bytes = blobReader.ReadBytes((int)size);
+                return bytes;
+            }
+
+            return null;
         }
     }
 }

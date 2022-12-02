@@ -17,10 +17,22 @@ jobs:
   variables:
     PublicRelease: 'false'
   steps:
+  - task: PowerShell@2
+    displayName: 'License Header Check'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
     inputs:
       versionSpec: '5.x'
+
+  - task: CmdLine@2
+    displayName: 'Show environment variables'
+    inputs:
+      script: set
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
@@ -32,13 +44,6 @@ jobs:
       projects: |
         **\*.csproj
         !**\CustomActions.Package.csproj
-
-  - task: PowerShell@2
-    displayName: 'License Header Check'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
-      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -87,6 +92,11 @@ jobs:
     displayName: 'Use NuGet 5.x'
     inputs:
       versionSpec: '5.x'
+
+  - task: CmdLine@2
+    displayName: 'Show environment variables'
+    inputs:
+      script: set
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
@@ -217,6 +227,11 @@ jobs:
     inputs:
       versionSpec: '5.x'
 
+  - task: CmdLine@2
+    displayName: 'Show environment variables'
+    inputs:
+      script: set
+
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
 
@@ -260,6 +275,12 @@ jobs:
       PathtoPublish: 'src\MSI\bin\Release\msi'
       ArtifactName: 'msi'
 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: manifest'
+    inputs:
+      PathtoPublish: 'src\Manifest\bin\Release\net48'
+      ArtifactName: 'manifest'
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@3
     displayName: 'Run BinSkim'
     inputs:
@@ -268,7 +289,8 @@ jobs:
       AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
                       src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
                       src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
-                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
+                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                      src\\Manifest\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@1
     displayName: 'Create Security Analysis Report (BinSkim)'
@@ -326,6 +348,7 @@ jobs:
        AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
        !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
        MSI\bin\Release\msi\**\AccessibilityInsights.msi
+       Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
       TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
   - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
