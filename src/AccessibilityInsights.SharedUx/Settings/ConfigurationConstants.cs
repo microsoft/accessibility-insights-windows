@@ -55,6 +55,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyHotKeyLegacyForMoveToPreviousSibling = "HotKeyForMoveToPreviousSibbling";
         private const string KeyIssueReporterSerializedConfigs = "IssueReporterSerializedConfigs";
         private const string KeyIsUnderElementScope = "IsUnderElementScope";
+        private const string KeyLegacySoundFeedback = "PlayScanningSound";
         private const string KeyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
         private const string KeyReleaseChannel = SetupLibrary.Constants.ReleaseChannelKey;
         private const string KeySelectedIssueReporter = "SelectedIssueReporter";

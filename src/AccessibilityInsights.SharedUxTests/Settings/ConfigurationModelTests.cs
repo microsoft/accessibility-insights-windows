@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
@@ -181,7 +182,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
-            Assert.AreEqual(SoundFeedbackMode.Auto, config.SoundFeedback);
+            Assert.AreEqual(SoundFeedbackMode.Always, config.SoundFeedback); // Verify that a true PlayScanningSound maps to Always
             Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);

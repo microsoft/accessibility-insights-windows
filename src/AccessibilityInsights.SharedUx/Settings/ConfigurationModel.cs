@@ -561,10 +561,10 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.RemapIntToEnumName<FontSize>(KeyFontSize);
 
                 // Remap old soundFeedback boolean setting
-                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue("PlayScanningSound", out Object value) && (bool)value)
+                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue(KeyLegacySoundFeedback, out Object value) && (bool)value)
                 {
-                    config.Add(KeySoundFeedback, "Always");
-                    // TODO: In a future compatibility-breaking release, remove the PlayScanningSound key
+                    config.Add(KeySoundFeedback, SoundFeedbackMode.Always.ToString());
+                    // TODO: In a future compatibility-breaking release, remove the PlayScanningSound key from config
                 }
                 return new ConfigurationModel(config);
             }
