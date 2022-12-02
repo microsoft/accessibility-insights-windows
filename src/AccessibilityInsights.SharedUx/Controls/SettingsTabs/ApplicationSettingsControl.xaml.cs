@@ -204,7 +204,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
             {
                 return true;
             }
-            if ((config.SoundFeedback != (SoundFeedbackMode)(this.DataContextVM.SoundFeedbackMode))
+            if (config.SoundFeedback != (SoundFeedbackMode)(this.DataContextVM.SoundFeedbackMode))
             {
                 return true;
             }
