@@ -1761,13 +1761,13 @@ This failure can be caused by a known framework issue. Click the link below to l
   <data name="ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName" xml:space="preserve">
     <value>Provide feedback with sound</value>
   </data>
-  <data name="cbiSFALWAYSAutomationPropertiesName" xml:space="preserve">
+  <data name="cbiSFAlwaysAutomationPropertiesName" xml:space="preserve">
     <value>Always</value>
   </data>
-  <data name="cbiSFAUTOAutomationPropertiesName" xml:space="preserve">
+  <data name="cbiSFAutoAutomationPropertiesName" xml:space="preserve">
     <value>Automatic</value>
   </data>
-  <data name="cbiSFNEVERAutomationPropertiesName" xml:space="preserve">
+  <data name="cbiSFNeverAutomationPropertiesName" xml:space="preserve">
     <value>Never</value>
   </data>
   <data name="lblSoundFeedbackLabelContent" xml:space="preserve">

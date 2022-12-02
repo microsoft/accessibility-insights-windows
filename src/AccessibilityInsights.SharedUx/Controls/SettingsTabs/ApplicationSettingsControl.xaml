@@ -216,9 +216,9 @@
                           AutomationProperties.Name="{x:Static Properties:Resources.ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName}"
                           PreviewKeyDown ="cbComboBox_PreviewKeyDown"
                           FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
-                    <ComboBoxItem x:Name="cbiSFAUTO" Content="{x:Static Properties:Resources.cbiSFAUTOAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFAUTOAutomationPropertiesName}"/>
-                    <ComboBoxItem x:Name="cbiSFALWAYS" Content="{x:Static Properties:Resources.cbiSFALWAYSAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFALWAYSAutomationPropertiesName}"/>
-                    <ComboBoxItem x:Name="cbiSFNEVER" Content="{x:Static Properties:Resources.cbiSFNEVERAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFNEVERAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiSFAuto" Content="{x:Static Properties:Resources.cbiSFAutoAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFAutoAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiSFAlways" Content="{x:Static Properties:Resources.cbiSFAlwaysAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFAlwaysAutomationPropertiesName}"/>
+                    <ComboBoxItem x:Name="cbiSFNever" Content="{x:Static Properties:Resources.cbiSFNeverAutomationPropertiesName}" AutomationProperties.Name="{x:Static Properties:Resources.cbiSFNeverAutomationPropertiesName}"/>
                 </ComboBox>
             </Grid>
             <Grid Grid.Row="5" Margin="1,5,0,0">

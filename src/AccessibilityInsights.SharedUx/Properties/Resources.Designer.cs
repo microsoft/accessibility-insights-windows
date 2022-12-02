@@ -794,27 +794,27 @@ namespace AccessibilityInsights.SharedUx.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Always.
         /// </summary>
-        public static string cbiSFALWAYSAutomationPropertiesName {
+        public static string cbiSFAlwaysAutomationPropertiesName {
             get {
-                return ResourceManager.GetString("cbiSFALWAYSAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("cbiSFAlwaysAutomationPropertiesName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Automatic.
         /// </summary>
-        public static string cbiSFAUTOAutomationPropertiesName {
+        public static string cbiSFAutoAutomationPropertiesName {
             get {
-                return ResourceManager.GetString("cbiSFAUTOAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("cbiSFAutoAutomationPropertiesName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Never.
         /// </summary>
-        public static string cbiSFNEVERAutomationPropertiesName {
+        public static string cbiSFNeverAutomationPropertiesName {
             get {
-                return ResourceManager.GetString("cbiSFNEVERAutomationPropertiesName", resourceCulture);
+                return ResourceManager.GetString("cbiSFNeverAutomationPropertiesName", resourceCulture);
             }
         }
         
