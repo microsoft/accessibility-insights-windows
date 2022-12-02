@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Misc;
@@ -559,6 +560,12 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.RemapIntToEnumName<HighlighterMode>(KeyHighlighterMode);
                 config.RemapIntToEnumName<FontSize>(KeyFontSize);
 
+                // Remap old soundFeedback boolean setting
+                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue("PlayScanningSound", out Object value) && (string)value == "true")
+                {
+                    config.Add(KeySoundFeedback, "Always");
+                    // TODO: In a future compatibility-breaking release, remove the PlayScanningSound key
+                }
                 return new ConfigurationModel(config);
             }
 
