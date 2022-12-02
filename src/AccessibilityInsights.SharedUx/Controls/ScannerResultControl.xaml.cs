@@ -37,7 +37,7 @@ namespace AccessibilityInsights.SharedUx.Controls
             InitializeComponent();
             _list = new List<ScanListViewItemViewModel>();
             Resources.Source = new Uri(@"pack://application:,,,/AccessibilityInsights.SharedUx;component/Resources/Styles.xaml", UriKind.Absolute);
-            this.spHowToFix.DataContext = null;
+            spHowToFix.DataContext = null;
         }
 
         /// <summary>
