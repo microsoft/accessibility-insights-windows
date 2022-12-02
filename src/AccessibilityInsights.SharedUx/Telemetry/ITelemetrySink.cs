@@ -50,5 +50,10 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         /// </summary>
         /// <param name="e">The Exception to report</param>
         void ReportException(Exception e);
+
+        /// <summary>
+        /// Application is shutting down, so flush any pending telemetry
+        /// </summary>
+        void FlushAndShutDown();
     }
 }

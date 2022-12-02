@@ -89,5 +89,13 @@ namespace AccessibilityInsights.Extensions.DiskLoggingTelemetry
             _logWriter.LogThisData("Exception was reported",
                 JsonConvert.SerializeObject(exceptionData, Formatting.Indented));
         }
+
+        /// <summary>
+        /// Application is shutting down, so flush any pending telemetry
+        /// </summary>
+        public void FlushAndShutDown()
+        {
+            // We never cache telemetry, so this does nothing
+        }
     }
 }

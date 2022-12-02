@@ -26,5 +26,10 @@ namespace AccessibilityInsights.Extensions.Telemetry
         {
             await Task.Run(new Action(() => _client.TrackException(e, contextProperties))).ConfigureAwait(false);
         }
+
+        public void FlushAndShutDown()
+        {
+            _client.Flush();
+        }
     }
 }

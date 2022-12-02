@@ -19,6 +19,11 @@ namespace AccessibilityInsights.ExtensionsTests.DummyClasses
             throw new NotImplementedException();
         }
 
+        public void FlushAndShutDown()
+        {
+            throw new NotImplementedException();
+        }
+
         public void PublishEvent(string eventName, IReadOnlyDictionary<string, string> properties)
         {
             throw new NotImplementedException();

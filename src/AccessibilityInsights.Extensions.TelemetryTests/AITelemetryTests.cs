@@ -147,5 +147,19 @@ namespace AccessibilityInsights.Extensions.TelemetryTests
 
             wrapperMock.VerifyAll();
         }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_CallsWrapper()
+        {
+            Mock<ITelemetryClientWrapper> wrapperMock = new Mock<ITelemetryClientWrapper>(MockBehavior.Strict);
+            wrapperMock.Setup(x => x.FlushAndShutDown());
+
+            var aiTelemetry = new AITelemetry(wrapperMock.Object);
+
+            aiTelemetry.FlushAndShutDown();
+
+            wrapperMock.VerifyAll();
+        }
     }
 }

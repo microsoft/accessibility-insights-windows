@@ -13,5 +13,6 @@ namespace AccessibilityInsights.Extensions.Telemetry
     {
         void TrackEvent(EventTelemetry data);
         void TrackException(Exception e, Dictionary<string, string> contextProperties);
+        void FlushAndShutDown();
     }
 }

@@ -43,5 +43,14 @@ namespace AccessibilityInsights.Extensions.TelemetryTests
 
             wrapper.TrackException(new InvalidOperationException(), new Dictionary<string, string>());
         }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_DoesNotThrow()
+        {
+            ITelemetryClientWrapper wrapper = new TelemetryClientWrapper(new TelemetryClient());
+
+            wrapper.FlushAndShutDown();
+        }
     }
 }

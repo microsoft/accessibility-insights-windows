@@ -422,6 +422,7 @@ namespace AccessibilityInsights
                     this.ctrlTestMode.Clear();
 
                     PageTracker.TrackPage(this.CurrentPage, null);
+                    Logger.FlushAndShutDown();
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
                 catch

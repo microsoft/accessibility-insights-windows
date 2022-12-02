@@ -359,5 +359,45 @@ namespace AccessibilityInsights.SharedUxTests.Telemetry
             _telemetryMock1.VerifyAll();
             _telemetryMock2.VerifyAll();
         }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_TelemetryIsNotAllowed_DoesNotChain()
+        {
+            _telemetrySink.FlushAndShutDown();
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_MultipleClasses_ChainsToAll()
+        {
+            SetupMultipleTelemetryClasses();
+
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
+            _telemetryMock1.Setup(x => x.FlushAndShutDown());
+            _telemetryMock2.Setup(x => x.FlushAndShutDown());
+
+            _telemetrySink.FlushAndShutDown();
+
+            _telemetryMock1.VerifyAll();
+            _telemetryMock2.VerifyAll();
+        }
+
+        [TestMethod]
+        [Timeout(1000)]
+        public void FlushAndShutDown_MultipleClasses_FirstMockThrows_SecondMockIsStillCalled()
+        {
+            SetupMultipleTelemetryClasses();
+
+            _telemetrySink.HasUserOptedIntoTelemetry = true;
+            _telemetryMock1.Setup(x => x.FlushAndShutDown())
+                .Throws(new OutOfMemoryException());
+            _telemetryMock2.Setup(x => x.FlushAndShutDown());
+
+            _telemetrySink.FlushAndShutDown();
+
+            _telemetryMock1.VerifyAll();
+            _telemetryMock2.VerifyAll();
+        }
     }
 }

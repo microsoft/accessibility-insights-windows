@@ -128,5 +128,13 @@ namespace AccessibilityInsights.Extensions.Telemetry
 #pragma warning restore CA1031 // Do not catch general exception types
             }
         }
+
+        /// <summary>
+        /// Application is shutting down, so flush any pending telemetry
+        /// </summary>
+        public void FlushAndShutDown()
+        {
+            _clientWrapper.FlushAndShutDown();
+        }
     }
 }
