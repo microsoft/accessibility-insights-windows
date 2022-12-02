@@ -31,6 +31,7 @@
     "IssueReporterSerializedConfigs": "{\"27f21dff-2fb3-4833-be55-25787fce3e17\":\"hello world\"}",
     "IsUnderElementScope": true,
     "MouseSelectionDelayMilliSeconds": 200,
+    "PlayScanningSound": false,
     "ReleaseChannel": "Canary",
     "SelectionByFocus": true,
     "SelectionByMouse": true,
@@ -43,7 +44,6 @@
     "ShowUncertain": false,
     "ShowWelcomeScreenOnLaunch": true,
     "ShowWhitespaceInTextPatternViewer": false,
-    "SoundFeedbackMode": "auto",
     "TestReportPath": "C:\\blah\\AccessibilityInsightsTestFiles",
     "TreeViewMode": "Content",
     "Version": "1.1.10"

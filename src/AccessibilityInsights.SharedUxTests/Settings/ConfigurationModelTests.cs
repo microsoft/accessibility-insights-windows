@@ -132,10 +132,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@".\Resources\LegacyConfigSettings.json", testProvider);
 
-            ConfirmOverrideConfigMatchesExpectation(
-                config, 
-                soundMode: SoundFeedbackMode.Always // Verify that a true PlayScanningSound (legacy key) maps to Always
-            );
+            ConfirmOverrideConfigMatchesExpectation(config);
         }
 
         [TestMethod]
@@ -146,8 +143,9 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfirmOverrideConfigMatchesExpectation(config,
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
-                releaseChannel: ReleaseChannel.Canary
-                );
+                releaseChannel: ReleaseChannel.Canary,
+                soundMode: SoundFeedbackMode.Always // Verify that a true PlayScanningSound (legacy key) maps to Always
+            );
         }
 
         private static ConfigurationModel GetDefaultConfig()

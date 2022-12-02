@@ -35,7 +35,7 @@
     "AlwaysOnTop": false,
     "FontSize": 0,
     "HighlighterMode": 2,
-    "PlayScanningSound": true,
+    "PlayScanningSound": false,
     "DisableTestsInSnapMode": false,
     "ShowAncestry": true,
     "ShowAllProperties": false,
