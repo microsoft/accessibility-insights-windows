@@ -249,7 +249,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                     var newProjectList = await UpdateTeamProjects().ConfigureAwait(true); // need to come back to original UI thread.
                     Dispatcher.Invoke(() => newProjectList.ForEach(p => VMConfig.Projects.Add(p)));
                     ToggleLoading(false);
-                    Dispatcher.Invoke(() => serverTreeview.ItemsSource = VMConfig.Projects);
                     Dispatcher.Invoke(() => serverTreeview.Focus());
                 }
 #pragma warning disable CA1031 // Do not catch general exception types
