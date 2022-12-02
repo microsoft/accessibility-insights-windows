@@ -561,7 +561,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.RemapIntToEnumName<FontSize>(KeyFontSize);
 
                 // Remap old soundFeedback boolean setting
-                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue("PlayScanningSound", out Object value) && (string)value == "true")
+                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue("PlayScanningSound", out Object value) && (bool)value)
                 {
                     config.Add(KeySoundFeedback, "Always");
                     // TODO: In a future compatibility-breaking release, remove the PlayScanningSound key
