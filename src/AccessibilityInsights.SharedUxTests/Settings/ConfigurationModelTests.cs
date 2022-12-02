@@ -132,7 +132,10 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         {
             ConfigurationModel config = ConfigurationModel.LoadFromJSON(@".\Resources\LegacyConfigSettings.json", testProvider);
 
-            ConfirmOverrideConfigMatchesExpectation(config);
+            ConfirmOverrideConfigMatchesExpectation(
+                config, 
+                soundMode: SoundFeedbackMode.Always // Verify that a true PlayScanningSound (legacy key) maps to Always
+            );
         }
 
         [TestMethod]
@@ -154,7 +157,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
             Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
-            ReleaseChannel? releaseChannel = null)
+            ReleaseChannel? releaseChannel = null, SoundFeedbackMode soundMode=SoundFeedbackMode.Auto)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -182,7 +185,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
-            Assert.AreEqual(SoundFeedbackMode.Always, config.SoundFeedback); // Verify that a true PlayScanningSound maps to Always
+            Assert.AreEqual(soundMode, config.SoundFeedback);
             Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
