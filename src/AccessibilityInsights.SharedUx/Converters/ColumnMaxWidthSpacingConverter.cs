@@ -19,7 +19,11 @@ namespace AccessibilityInsights.SharedUx.Converters
 
         public ColumnMaxWidthSpacingConverter() { }
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) => (double)value - SpacingConstant;
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var candidateResult = (double)value - SpacingConstant;
+            return candidateResult >= 0 ? candidateResult : 0;
+        }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) => (double)value + SpacingConstant;
 
