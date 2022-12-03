@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
@@ -108,7 +109,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsNull(config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(100, config.MouseSelectionDelayMilliSeconds);
-            Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(SoundFeedbackMode.Auto, config.SoundFeedback);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);
@@ -142,8 +143,9 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             ConfirmOverrideConfigMatchesExpectation(config,
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
-                releaseChannel: ReleaseChannel.Canary
-                );
+                releaseChannel: ReleaseChannel.Canary,
+                soundMode: SoundFeedbackMode.Always // Verify that a true PlayScanningSound (legacy key) maps to Always
+            );
         }
 
         private static ConfigurationModel GetDefaultConfig()
@@ -153,7 +155,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
             Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
-            ReleaseChannel? releaseChannel = null)
+            ReleaseChannel? releaseChannel = null, SoundFeedbackMode soundMode=SoundFeedbackMode.Auto)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
@@ -181,7 +183,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(issueReporterSerializedConfigs, config.IssueReporterSerializedConfigs);
             Assert.IsTrue(config.IsUnderElementScope);
             Assert.AreEqual(200, config.MouseSelectionDelayMilliSeconds);
-            Assert.IsFalse(config.PlayScanningSound);
+            Assert.AreEqual(soundMode, config.SoundFeedback);
             Assert.AreEqual(releaseChannel ?? ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual(selectedIssueReporter ?? Guid.Empty, config.SelectedIssueReporter);
             Assert.IsTrue(config.SelectionByFocus);

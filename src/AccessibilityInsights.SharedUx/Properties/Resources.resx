@@ -1758,4 +1758,19 @@ This failure can be caused by a known framework issue. Click the link below to l
     <value>Accessibility Insights for Windows does not yet support the {0} action. To request support for this action, please upvote an existing issue at {1}. If no issue already exists, you can open a new issue (feature request) to request support for this action.</value>
     <comment>{0} is the programmatic ID of the action in question. {1} is a clickable hyperlink whose text is a URL where the user can file issues.</comment>
   </data>
+  <data name="ApplicationSettingsControl_SoundFeedbackModeComboboxAutomationName" xml:space="preserve">
+    <value>Provide feedback with sound</value>
+  </data>
+  <data name="cbiSFAlwaysAutomationPropertiesName" xml:space="preserve">
+    <value>Always</value>
+  </data>
+  <data name="cbiSFAutoAutomationPropertiesName" xml:space="preserve">
+    <value>Automatic</value>
+  </data>
+  <data name="cbiSFNeverAutomationPropertiesName" xml:space="preserve">
+    <value>Never</value>
+  </data>
+  <data name="lblSoundFeedbackLabelContent" xml:space="preserve">
+    <value>Provide feedback with sound</value>
+  </data>
 </root>

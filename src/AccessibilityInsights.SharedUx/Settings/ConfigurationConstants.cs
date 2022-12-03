@@ -55,8 +55,8 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyHotKeyLegacyForMoveToPreviousSibling = "HotKeyForMoveToPreviousSibbling";
         private const string KeyIssueReporterSerializedConfigs = "IssueReporterSerializedConfigs";
         private const string KeyIsUnderElementScope = "IsUnderElementScope";
+        private const string KeyLegacySoundFeedback = "PlayScanningSound";
         private const string KeyMouseSelectionDelayMilliSeconds = "MouseSelectionDelayMilliSeconds";
-        private const string KeyPlayScanningSound = "PlayScanningSound";
         private const string KeyReleaseChannel = SetupLibrary.Constants.ReleaseChannelKey;
         private const string KeySelectedIssueReporter = "SelectedIssueReporter";
         private const string KeySelectionByFocus = "SelectionByFocus";
@@ -67,6 +67,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeyShowUncertain = "ShowUncertain";
         private const string KeyShowWelcomeScreenOnLaunch = "ShowWelcomeScreenOnLaunch";
         private const string KeyShowWhitespaceInTextPatternViewer = "ShowWhitespaceInTextPatternViewer";
+        private const string KeySoundFeedback = "SoundFeedback";
         private const string KeyTestReportPath = "TestReportPath";
         private const string KeyTreeViewMode = "TreeViewMode";
         private const string KeyVersion = "Version";

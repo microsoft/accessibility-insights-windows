@@ -43,7 +43,7 @@
         <controls:InspectTabsControl Name="ctrlTabs" Grid.Column="1" CurrentMode="TestProperties" AutomationProperties.Name="{x:Static properties:Resources.ctrlTabsElementAutomationPropertiesName}" Grid.RowSpan="2"/>
         <fabric:ProgressRingControl Size="30" Grid.RowSpan="2"
                                 x:Name="ctrlProgressRing"
-                                WithSound="{Binding Path=(Util:HelperMethods.PlayScanningSound)}"
+                                WithSound="{Binding Path=(Util:HelperMethods.ShouldPlaySound)}"
                                 Visibility="Collapsed"/>
     </Grid>
 </UserControl>

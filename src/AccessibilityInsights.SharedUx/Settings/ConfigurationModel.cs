@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Misc;
@@ -325,12 +326,12 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
-        /// If true, sound will be played while scanning is running with ATs
+        /// Whether to provide feedback with sound: Auto (if screen reader flag is set), Always, or Never.
         /// </summary>
-        public bool PlayScanningSound
+        public SoundFeedbackMode SoundFeedback
         {
-            get => GetDataValue<bool>(KeyPlayScanningSound);
-            set => SetDataValue<bool>(KeyPlayScanningSound, value);
+            get => GetEnumDataValue<SoundFeedbackMode>(KeySoundFeedback);
+            set => SetEnumDataValue<SoundFeedbackMode>(KeySoundFeedback, value);
         }
 
         /// <summary>
@@ -559,6 +560,12 @@ namespace AccessibilityInsights.SharedUx.Settings
                 config.RemapIntToEnumName<HighlighterMode>(KeyHighlighterMode);
                 config.RemapIntToEnumName<FontSize>(KeyFontSize);
 
+                // Remap old soundFeedback boolean setting
+                if (!config.TryGetValue(KeySoundFeedback, out Object _) && config.TryGetValue(KeyLegacySoundFeedback, out Object value) && (bool)value)
+                {
+                    config.Add(KeySoundFeedback, SoundFeedbackMode.Always.ToString());
+                    // TODO: In a future compatibility-breaking release, remove the PlayScanningSound key from config
+                }
                 return new ConfigurationModel(config);
             }
 
@@ -614,7 +621,7 @@ namespace AccessibilityInsights.SharedUx.Settings
                 SelectionByMouse = true,
                 ShowWelcomeScreenOnLaunch = true,
                 AlwaysOnTop = true,
-                PlayScanningSound = false,
+                SoundFeedback = SoundFeedbackMode.Auto,
                 DisableTestsInSnapMode = false,
                 IsHighlighterOn = true,
                 ShowUncertain = false,

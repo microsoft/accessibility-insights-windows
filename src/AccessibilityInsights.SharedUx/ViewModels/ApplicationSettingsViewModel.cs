@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.Settings;
@@ -119,17 +119,17 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             }
         }
 
-        bool _playingScanningSound;
-        public bool PlayScanningSound
+        int _soundFeedbackMode;
+        public int SoundFeedbackMode
         {
             get
             {
-                return _playingScanningSound;
+                return _soundFeedbackMode;
             }
             set
             {
-                _playingScanningSound = value;
-                OnPropertyChanged(nameof(this.PlayScanningSound));
+                _soundFeedbackMode = value;
+                OnPropertyChanged(nameof(this.SoundFeedbackMode));
                 UpdateSaveButton();
             }
         }
@@ -149,7 +149,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             this.AlwaysOnTop = config.AlwaysOnTop;
             this.EnableTelemetry = config.EnableTelemetry;
             this.ShowTelemetryDialog = config.ShowTelemetryDialog;
-            this.PlayScanningSound = config.PlayScanningSound;
+            this.SoundFeedbackMode = (int) config.SoundFeedback;
             this.HighlighterMode = (int)config.HighlighterMode;
             this.FontSize = (int)config.FontSize;
         }
@@ -164,7 +164,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             config.AlwaysOnTop = this.AlwaysOnTop;
             config.EnableTelemetry = this.EnableTelemetry;
             config.ShowTelemetryDialog = this.ShowTelemetryDialog;
-            config.PlayScanningSound = this.PlayScanningSound;
+            config.SoundFeedback = (SoundFeedbackMode) this.SoundFeedbackMode;
             config.HighlighterMode = (HighlighterMode)this.HighlighterMode;
             config.FontSize = (FontSize)this.FontSize;
         }

@@ -1,13 +1,17 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using AccessibilityInsights.SharedUx.Enums;
 using AccessibilityInsights.SharedUx.FileIssue;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.Win32;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
+using Microsoft.Win32;
 using System;
 using System.Drawing;
 using System.Windows;
+using System.Windows.Automation.Peers;
 
 namespace AccessibilityInsights.SharedUx.Utilities
 {
@@ -68,9 +72,41 @@ namespace AccessibilityInsights.SharedUx.Utilities
         }
 
         /// <summary>
+        ///     Checks whether Narrator is running.
+        /// </summary>
+        public static bool IsInternalScreenReaderActive()
+        {
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows NT\CurrentVersion\AccessibilityTemp"))
+                {
+                    return key?.GetValue("narrator")?.ToString().Equals("1", StringComparison.Ordinal) == true;
+                }
+            }
+#pragma warning disable CA1031 // Do not catch general exception types
+            catch
+            {
+                // TODO : Report this?
+                // fail silently and we might end up not playing sound
+                return false;
+            }
+#pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        /// <summary>
         /// Provides bindable property for ProgressRingControls
         /// </summary>
-        public static bool PlayScanningSound => ConfigurationManager.GetDefaultInstance().AppConfig.PlayScanningSound;
+        public static bool ShouldPlaySound
+        {
+            get
+            {
+                SoundFeedbackMode setting = ConfigurationManager.GetDefaultInstance().AppConfig.SoundFeedback;
+                if (setting == SoundFeedbackMode.Always) return true;
+                if (setting == SoundFeedbackMode.Never) return false;
+                // If we get here, setting is Auto, so return according to the screen reader flag.
+                return (IsInternalScreenReaderActive() || NativeMethods.IsExternalScreenReaderActive());
+            }
+        }
 
         /// <summary>
         /// Get DPI

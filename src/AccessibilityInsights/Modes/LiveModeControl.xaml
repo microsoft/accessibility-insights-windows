@@ -89,7 +89,7 @@
         </controls:InspectTabsControl>
         <fabric:ProgressRingControl Size="30" Grid.RowSpan="2" 
                                       x:Name="ctrlProgressRing" 
-                                      WithSound="{Binding Path=(Util:HelperMethods.PlayScanningSound)}" 
+                                      WithSound="{Binding Path=(Util:HelperMethods.ShouldPlaySound)}" 
                                       Visibility="Collapsed"/>
     </Grid>
 </misc:UserControlWithPanes>
