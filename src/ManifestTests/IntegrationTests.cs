@@ -64,7 +64,6 @@ namespace ManifestTests
                 Func<Stream, bool> signingOverride = null;          // Enforces signing requirement
 #else
                 Func<Stream, bool> signingOverride = (_) => true;   // Bypasses signing requirement
-
 #endif
                 ChannelInfo signedInfo = ChannelInfoUtilities.GetChannelInfoFromSignedManifest(stream, signingOverride);
 
