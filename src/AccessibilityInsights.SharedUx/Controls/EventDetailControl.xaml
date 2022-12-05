@@ -19,8 +19,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto" HorizontalAlignment="Stretch" >
             <Grid >
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="{Binding Path=Width, 
-           RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement},Mode=OneWayToSource}"/>
+                    <ColumnDefinition Width="{Binding Path=Width, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=UIElement}}"/>
                 </Grid.ColumnDefinitions>
                 <customcontrols:CustomDataGrid x:Name="dgEvents" GotKeyboardFocus="dgEvents_GotKeyboardFocus"
                   AutomationProperties.Name="{x:Static Properties:Resources.EventDetailControlAutomationPropertiesName}"
