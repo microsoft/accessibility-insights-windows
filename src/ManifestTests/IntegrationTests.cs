@@ -4,6 +4,7 @@
 using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.VersionSwitcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.IO;
 
 namespace ManifestTests
@@ -59,8 +60,15 @@ namespace ManifestTests
             {
                 stream.Position = 0;
 
-                ChannelInfo signedInfo = ChannelInfoUtilities.GetChannelInfoFromSignedManifest(stream, (_) => true);
+#if ENABLE_SIGNING
+                Func<Stream, bool> signingOverride = null;          // Enforces signing requirement
+#else
+                Func<Stream, bool> signingOverride = (_) => true;   // Bypasses signing requirement
 
+#endif
+                ChannelInfo signedInfo = ChannelInfoUtilities.GetChannelInfoFromSignedManifest(stream, signingOverride);
+
+                Assert.IsNotNull(signedInfo);
                 Assert.AreEqual(rawInfo.MsiSizeInBytes, signedInfo.MsiSizeInBytes);
                 Assert.AreEqual(rawInfo.MsiSha512, signedInfo.MsiSha512);
                 Assert.AreEqual(rawInfo.InstallAsset, signedInfo.InstallAsset);
