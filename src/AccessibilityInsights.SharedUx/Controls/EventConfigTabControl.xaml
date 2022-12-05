@@ -53,7 +53,7 @@
                 <cc:CheckableTreeView Grid.Row="0" x:Name="trviewConfigEvents" BorderThickness="0" AutomationProperties.Name="{x:Static Properties:Resources.trviewConfigEventsAutomationPropertiesName}" Margin="2"
                           ScrollViewer.CanContentScroll="False" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}">
                     <TreeView.Resources>
-                        <Style TargetType="TreeView">
+                        <Style TargetType="cc:CheckableTreeView">
                             <Setter Property="Template">
                                 <Setter.Value>
                                     <ControlTemplate TargetType="TreeView">
