@@ -64,6 +64,16 @@
                         </TextBlock>
                     </TextBlock>
 
+                    <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                        <Run Text="{x:Static properties:Resources.LiveModeControl_Keyboard}"/>
+                        <Run Name="runhkKeyboard"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2219444" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
+                                 <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreKeyboard}" />
+                            </Hyperlink><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
+                        </TextBlock>
+                    </TextBlock>
+
                 </StackPanel>
             </ScrollViewer>
             <controls:DisplayCountControl Grid.RowSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" x:Name="ccDisplayCount" Visibility="Collapsed"/>
