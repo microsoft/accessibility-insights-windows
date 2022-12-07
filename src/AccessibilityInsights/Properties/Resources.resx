@@ -586,4 +586,10 @@ Confidence: {1}</value>
     <value>{0} 1 of 2</value>
     <comment>{0} is the text displayed in the tooltip</comment>
   </data>
+  <data name="LiveModeControl_Keyboard" xml:space="preserve">
+    <value>Use Tab or Shift+Tab to move between fields in the same pane. Use F6 or Shift+F6 to move between panes</value>
+  </data>
+  <data name="LiveModeControl_LearnMoreKeyboard" xml:space="preserve">
+    <value>Learn more about keyboard shortcuts</value>
+  </data>
 </root>

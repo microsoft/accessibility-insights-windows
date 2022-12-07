@@ -710,6 +710,15 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use Tab or Shift+Tab to move between fields in the same pane. Use F6 or Shift+F6 to move between panes.
+        /// </summary>
+        public static string LiveModeControl_Keyboard {
+            get {
+                return ResourceManager.GetString("LiveModeControl_Keyboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Learn more about automated checks.
         /// </summary>
         public static string LiveModeControl_LearnMoreAutomated {
@@ -724,6 +733,15 @@ namespace AccessibilityInsights.Properties {
         public static string LiveModeControl_LearnMoreInspect {
             get {
                 return ResourceManager.GetString("LiveModeControl_LearnMoreInspect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more about keyboard shortcuts.
+        /// </summary>
+        public static string LiveModeControl_LearnMoreKeyboard {
+            get {
+                return ResourceManager.GetString("LiveModeControl_LearnMoreKeyboard", resourceCulture);
             }
         }
         
