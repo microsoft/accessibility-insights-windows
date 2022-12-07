@@ -710,7 +710,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Use Tab or Shift+Tab to move between fields in the same pane. Use F6 or Shift+F6 to move between panes.
+        ///   Looks up a localized string similar to Use Tab or Shift+Tab to move between fields in the currently active pane. Use F6 or Shift+F6 to move between panes.
         /// </summary>
         public static string LiveModeControl_Keyboard {
             get {
