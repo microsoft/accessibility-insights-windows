@@ -45,6 +45,9 @@ namespace AccessibilityInsights.SetupLibrary.REST
             {
                 using (InterceptingWebClient client = new InterceptingWebClient())
                 {
+                    // Enforce SSL certificate checks
+                    ServicePointManager.CheckCertificateRevocationList = true;
+
                     client.DownloadDataCompleted += DownloadCompleted;
                     client.DownloadProgressChanged += ProgressChanged;
                     client.DownloadDataAsync(uri, state);
