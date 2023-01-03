@@ -76,7 +76,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0" Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}" Target="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ToggleButton}}}" Content="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}" />
+                                <Label Grid.Column="0" Margin="4" Style="{StaticResource ResourceKey=lblAccordionHeader}"
+                                       Content="{x:Static Properties:Resources.ExpanderAutomationPropertiesNameProps}" />
                                 <Button x:Name="btnSetting" Grid.Column="2"
                                         BorderThickness="0"  HorizontalAlignment="Right" VerticalAlignment="Center" VerticalContentAlignment="Center"
                                         Height="22" Width="22" Padding="0"
