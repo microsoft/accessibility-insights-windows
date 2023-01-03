@@ -113,6 +113,7 @@ namespace AccessibilityInsights.SharedUx.Controls
         public HierarchyControl()
         {
             InitializeComponent();
+            btnMenu.DataContext = this;
         }
 
         /// <summary>
