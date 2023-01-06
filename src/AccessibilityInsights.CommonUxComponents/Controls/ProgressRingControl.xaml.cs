@@ -99,6 +99,7 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
                 case SelectedSound.Scanner:
                     return ".Resources.Sound.scanner_sound.wav";
                 default:
+                    // Please refer to comments in https://github.com/microsoft/accessibility-insights-windows/pull/1523 if this is thrown
                     throw new ArgumentException($"No sound loaded for {selectedSound}", nameof(selectedSound));
             }
         }
