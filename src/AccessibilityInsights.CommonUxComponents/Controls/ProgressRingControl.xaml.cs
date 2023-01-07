@@ -65,10 +65,44 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
         /// <summary>
         /// Private variables used
         /// </summary>
-        private SoundPlayer player;
+        private readonly SoundPlayer player;
         private Timer timer;
         private bool isPlayingSound;
         private bool withSound;
+        private SelectedSound _selectedSound;
+
+        public SelectedSound SelectedSound
+        {
+            get => _selectedSound;
+            set
+            {
+                if (value == _selectedSound) return;
+
+                // Enforce that we only allow the property to be changed once
+                if (_selectedSound != SelectedSound.NoSound)
+                {
+                    throw new ArgumentException("SelectedSound can only be changed once", nameof(value));
+                }
+
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                Stream stream = assembly.GetManifestResourceStream(assembly.GetName().Name + GetResourceForSound(value));
+                player.Stream = stream;
+
+                _selectedSound = value;
+            }
+        }
+
+        private static string GetResourceForSound(SelectedSound selectedSound)
+        {
+            switch (selectedSound)
+            {
+                case SelectedSound.Scanner:
+                    return ".Resources.Sound.scanner_sound.wav";
+                default:
+                    // Please refer to comments in https://github.com/microsoft/accessibility-insights-windows/pull/1523 if this is thrown
+                    throw new ArgumentException($"No sound loaded for {selectedSound}", nameof(selectedSound));
+            }
+        }
 
         /// <summary>
         /// Check whether to play sound feedback while scanning
@@ -197,34 +231,13 @@ namespace AccessibilityInsights.CommonUxComponents.Controls
             }
         }
 
-        private void LoadDefaultScanningSound()
-        {
-            // load default scanning sound file
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            // no sound by default
-            withSound = false;
-            isPlayingSound = false;
-            try
-            {
-                Stream stream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.scanner_sound.wav");
-                player = new SoundPlayer(stream);
-            }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch
-            {
-                // TODO : Report this Exception?
-                player = new SoundPlayer();
-            }
-#pragma warning restore CA1031 // Do not catch general exception types
-        }
-
         /// <summary>
         /// Constructor
         /// </summary>
         public ProgressRingControl()
         {
             InitializeComponent();
-            LoadDefaultScanningSound();
+            player = new SoundPlayer();
         }
     }
 }

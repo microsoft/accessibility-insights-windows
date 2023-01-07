@@ -525,6 +525,7 @@
             <modecontrols:DialogContainerModeControl Grid.RowSpan="2" Grid.ColumnSpan="2" x:Name="ctrlDialogContainer" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" VerticalAlignment="Stretch" Panel.ZIndex="2" Margin="0" Visibility="Collapsed"/>
             <fabric:ProgressRingControl Size="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"
                             x:Name="ctrlProgressRing"
+                            SelectedSound="Scanner"
                             Panel.ZIndex="3"
                             Visibility="Collapsed"/>
         </Grid>
