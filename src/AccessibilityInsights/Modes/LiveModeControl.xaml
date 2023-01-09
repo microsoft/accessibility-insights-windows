@@ -52,7 +52,7 @@
                         </TextBlock>
                     </TextBlock>
 
-                    <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                    <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                         <Run Text="{x:Static properties:Resources.LiveModeControl_HoverOverElement}"/>
                         <Run Name="runHkActivate"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
                         <TextBlock TextWrapping="Wrap">
