@@ -42,7 +42,17 @@
                                         VerticalAlignment="Stretch"/>
             <ScrollViewer Name ="svInstructions" VerticalScrollBarVisibility="Auto" Grid.Row="1">
                 <StackPanel Name="spInstructions" Grid.Row="1" KeyboardNavigation.IsTabStop="True">
-                    <TextBlock Name="tbInstructions" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                    <TextBlock Name="tbKeyboard" Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
+                        <Run Text="{x:Static properties:Resources.LiveModeControl_Keyboard}"/>
+                        <Run Name="runhkKeyboard"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
+                        <TextBlock TextWrapping="Wrap">
+                            <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
+                                 <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreKeyboard}" />
+                            </Hyperlink><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
+                        </TextBlock>
+                    </TextBlock>
+
+                    <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
                         <Run Text="{x:Static properties:Resources.LiveModeControl_HoverOverElement}"/>
                         <Run Name="runHkActivate"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
                         <TextBlock TextWrapping="Wrap">
@@ -60,16 +70,6 @@
                         <TextBlock TextWrapping="Wrap">
                             <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2077027" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
                                  <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreAutomated}" />
-                            </Hyperlink><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
-                        </TextBlock>
-                    </TextBlock>
-
-                    <TextBlock Width="Auto" Height="Auto" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="16" FontStyle="Italic" FontSize="{DynamicResource StandardTextSize}" Style="{StaticResource TbFocusable}">
-                        <Run Text="{x:Static properties:Resources.LiveModeControl_Keyboard}"/>
-                        <Run Name="runhkKeyboard"/><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
-                        <TextBlock TextWrapping="Wrap">
-                            <Hyperlink NavigateUri="https://go.microsoft.com/fwlink/?linkid=2073853" RequestNavigate="Hyperlink_RequestNavigate" FocusVisualStyle="{DynamicResource {x:Static SystemParameters.FocusVisualStyleKey}}" Style="{StaticResource hLink}">
-                                 <Run Text="{x:Static properties:Resources.LiveModeControl_LearnMoreKeyboard}" />
                             </Hyperlink><Run Text="{x:Static properties:Resources.SentenceEndPeriod}"/>
                         </TextBlock>
                     </TextBlock>

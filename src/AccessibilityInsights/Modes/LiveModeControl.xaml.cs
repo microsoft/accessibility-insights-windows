@@ -431,7 +431,7 @@ namespace AccessibilityInsights.Modes
             }
             else
             {
-                this.tbInstructions.Focus();
+                this.tbKeyboard.Focus();
             }
         }
 
