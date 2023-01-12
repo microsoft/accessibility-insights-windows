@@ -29,8 +29,6 @@
 
   <ItemGroup>
     <None Remove="Resources\Icons\BrandIcon.ico" />
-    <None Remove="Resources\Sound\start_event_recording.wav" />
-    <None Remove="Resources\Sound\stop_event_recording.wav" />
     <Resource Include="Resources\Icons\BrandIcon.ico" />
   </ItemGroup>
 
@@ -51,8 +49,6 @@
 
   <ItemGroup>
     <None Remove="Resources\video_thumb.png" />
-    <EmbeddedResource Include="Resources\Sound\start_event_recording.wav" />
-    <EmbeddedResource Include="Resources\Sound\stop_event_recording.wav" />
     <Resource Include="Resources\video_thumb.png" />
   </ItemGroup>
 
@@ -89,4 +85,13 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Sound\start_event_recording.wav" />
+    <EmbeddedResource Include="Resources\Sound\start_event_recording.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Sound\stop_event_recording.wav" />
+    <EmbeddedResource Include="Resources\Sound\stop_event_recording.wav" />
+  </ItemGroup>
 </Project>
