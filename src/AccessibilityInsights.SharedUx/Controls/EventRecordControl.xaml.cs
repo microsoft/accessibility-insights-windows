@@ -12,10 +12,14 @@ using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Media;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -35,6 +39,9 @@ namespace AccessibilityInsights.SharedUx.Controls
         private bool isClosed;
 
         public TwoStateButtonViewModel vmEventRecorder { get; private set; } = new TwoStateButtonViewModel(ButtonState.Off);
+
+        private Stream startRecordingSoundStream, stopRecordingSoundStream;
+        private SoundPlayer player;
 
         /// <summary>
         /// Event handler to main window for recording start
@@ -95,8 +102,12 @@ namespace AccessibilityInsights.SharedUx.Controls
         public EventRecordControl()
         {
             InitializeComponent();
-
             InitCommandBindings();
+
+            player = new SoundPlayer();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            startRecordingSoundStream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.start_event_recording.wav");
+            stopRecordingSoundStream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.stop_event_recording.wav");
         }
 
         void InitCommandBindings()
@@ -184,6 +195,18 @@ namespace AccessibilityInsights.SharedUx.Controls
             HollowHighlightDriver.GetDefaultInstance().Clear();
         }
 
+        /// <summary>If sounds are enabled, play the passed-in stream. Used to enable sound feedback when toggling recording.</summary>
+        private void PlaySoundIfNeeded(Stream stream)
+        {
+            if (HelperMethods.ShouldPlaySound)
+            {
+                player.Stop();
+                player.Stream = stream;
+                player.Stream.Position = 0;
+                player.Play();
+            }
+        }
+
         /// <summary>
         /// Toggle event recording
         /// </summary>
@@ -235,6 +258,8 @@ namespace AccessibilityInsights.SharedUx.Controls
             {
                 this.tbIntro.Visibility = Visibility.Collapsed;
                 this.svData.Visibility = Visibility.Visible;
+
+                PlaySoundIfNeeded(startRecordingSoundStream);
 
                 this.NotifyRecordingChange(true);
 
@@ -309,6 +334,8 @@ namespace AccessibilityInsights.SharedUx.Controls
                 }).ConfigureAwait(false);
 
                 this.ctrlProgressRing.Deactivate();
+
+                PlaySoundIfNeeded(stopRecordingSoundStream);
 
                 this.vmEventRecorder.State = ButtonState.Off;
                 this.NotifyRecordingChange(false);
