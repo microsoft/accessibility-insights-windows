@@ -49,6 +49,7 @@
         </Border>
         <fabric:ProgressRingControl Size="30"
                                    x:Name="ctrlProgressRing"
+                                   SelectedSound="Scanner"
                                    Visibility="Collapsed"
                                    WithSound="{Binding Path=(Util:HelperMethods.ShouldPlaySound)}"
                                    Grid.Row="1" Grid.Column="1" Background="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
