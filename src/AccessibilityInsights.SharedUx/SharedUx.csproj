@@ -85,4 +85,13 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Resources\Sound\start_event_recording.wav" />
+    <EmbeddedResource Include="Resources\Sound\start_event_recording.wav" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Sound\stop_event_recording.wav" />
+    <EmbeddedResource Include="Resources\Sound\stop_event_recording.wav" />
+  </ItemGroup>
 </Project>
