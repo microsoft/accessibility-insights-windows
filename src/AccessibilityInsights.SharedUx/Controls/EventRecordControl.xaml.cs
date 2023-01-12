@@ -12,7 +12,6 @@ using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
 using Axe.Windows.Desktop.Types;
 using Axe.Windows.Desktop.UIAutomation.EventHandlers;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
