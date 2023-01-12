@@ -1548,27 +1548,9 @@ URL: {0}</value>
     <value>Couldn't save the event record file: {0}</value>
     <comment>{0} is the error message of the Exception</comment>
   </data>
-  <data name="HierarchyControl_ContentView_Checked" xml:space="preserve">
-    <value>Content view Checked</value>
-  </data>
-  <data name="HierarchyControl_ContentView_Unchecked" xml:space="preserve">
-    <value>Content view</value>
-  </data>
-  <data name="HierarchyControl_ControlView_Checked" xml:space="preserve">
-    <value>Control view Checked</value>
-  </data>
-  <data name="HierarchyControl_ControlView_Unchecked" xml:space="preserve">
-    <value>Control view</value>
-  </data>
   <data name="HierarchyControl_LiveMode_InvokeToTestFormat" xml:space="preserve">
     <value>Invoke to test {0} and descendants</value>
     <comment>{0} is the glimpse of the current element</comment>
-  </data>
-  <data name="HierarchyControl_RawView_Checked" xml:space="preserve">
-    <value>Raw view Checked</value>
-  </data>
-  <data name="HierarchyControl_RawView_Unchecked" xml:space="preserve">
-    <value>Raw view</value>
   </data>
   <data name="PatternInfoControl_AvailablePatterns" xml:space="preserve">
     <value>Available Patterns:</value>

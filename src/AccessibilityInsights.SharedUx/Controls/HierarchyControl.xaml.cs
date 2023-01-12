@@ -508,11 +508,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.mniRaw.IsEnabled = false;
                 this.rbRaw.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Raw;
             }
-            bool isChecked = this.rbRaw.IsChecked.HasValue && this.rbRaw.IsChecked.Value;
-            this.mniRaw.SetValue(AutomationProperties.NameProperty,
-                isChecked ?
-                    Properties.Resources.HierarchyControl_RawView_Checked :
-                    Properties.Resources.HierarchyControl_RawView_Unchecked);
         }
 
         /// <summary>
@@ -532,11 +527,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.mniContent.IsEnabled = false;
                 this.rbContent.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Content;
             }
-            bool isChecked = this.rbContent.IsChecked.HasValue && this.rbContent.IsChecked.Value;
-            this.mniContent.SetValue(AutomationProperties.NameProperty,
-                isChecked ?
-                    Properties.Resources.HierarchyControl_ContentView_Checked :
-                    Properties.Resources.HierarchyControl_ContentView_Unchecked);
         }
 
         /// <summary>
@@ -556,11 +546,6 @@ namespace AccessibilityInsights.SharedUx.Controls
                 this.mniControl.IsEnabled = false;
                 this.rbControl.IsChecked = this.ElementContext.Element.TreeWalkerMode == TreeViewMode.Control;
             }
-            bool isChecked = this.rbControl.IsChecked.HasValue && this.rbControl.IsChecked.Value;
-            this.mniControl.SetValue(AutomationProperties.NameProperty,
-                isChecked ?
-                    Properties.Resources.HierarchyControl_ControlView_Checked :
-                    Properties.Resources.HierarchyControl_ControlView_Unchecked);
         }
 
         /// <summary>
