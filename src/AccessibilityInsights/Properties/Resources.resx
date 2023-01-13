@@ -443,10 +443,6 @@ Please ensure that you are opening a valid test file using the most recent relea
     <value>Glimpse: {0}</value>
     <comment>{0} is the glimpse</comment>
   </data>
-  <data name="MainWindow_UpdateMainCommandButtons_0_1_of_2" xml:space="preserve">
-    <value>{0}: {1} of {2}</value>
-    <comment>{0} is a command name; {1} is the index of the current command; {2} is the total number of commands</comment>
-  </data>
   <data name="MainWindow_UpdateTitleString_Accessibility_Insights_for_Windows_0" xml:space="preserve">
     <value>Accessibility Insights for Windows - {0}</value>
     <comment>Title String. {0} describes the current POI and view</comment>

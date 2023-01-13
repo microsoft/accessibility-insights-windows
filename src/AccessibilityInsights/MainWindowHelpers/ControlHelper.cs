@@ -219,9 +219,8 @@ namespace AccessibilityInsights
             int count = 1;
             foreach (var elem in visibleCommands)
             {
-                string name = elem.GetValue(AutomationProperties.NameProperty) as string;
-                var len = name.IndexOf(':') == -1 ? name.Length : name.IndexOf(':');
-                elem.SetValue(AutomationProperties.NameProperty, string.Format(CultureInfo.InvariantCulture, Properties.Resources.MainWindow_UpdateMainCommandButtons_0_1_of_2, name.Substring(0, len), count, visibleCommands.Count));
+                elem.SetValue(AutomationProperties.PositionInSetProperty, count);
+                elem.SetValue(AutomationProperties.SizeOfSetProperty, visibleCommands.Count);
                 count++;
             }
         }

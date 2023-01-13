@@ -836,15 +836,6 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0}: {1} of {2}.
-        /// </summary>
-        public static string MainWindow_UpdateMainCommandButtons_0_1_of_2 {
-            get {
-                return ResourceManager.GetString("MainWindow_UpdateMainCommandButtons_0_1_of_2", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Accessibility Insights for Windows - {0}.
         /// </summary>
         public static string MainWindow_UpdateTitleString_Accessibility_Insights_for_Windows_0 {
