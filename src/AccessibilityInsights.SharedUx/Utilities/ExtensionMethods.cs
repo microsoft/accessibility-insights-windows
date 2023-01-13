@@ -21,6 +21,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Interop;
@@ -331,6 +332,16 @@ namespace AccessibilityInsights.SharedUx.Utilities
                 return null;
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        internal static ToggleState ConvertToToggleState(bool? value)
+        {
+            switch (value)
+            {
+                case (true): return ToggleState.On;
+                case (false): return ToggleState.Off;
+                default: return ToggleState.Indeterminate;
+            }
         }
     }
 }

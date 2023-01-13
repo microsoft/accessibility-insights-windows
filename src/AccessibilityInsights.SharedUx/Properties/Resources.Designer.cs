@@ -2031,47 +2031,11 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Content view Checked.
-        /// </summary>
-        public static string HierarchyControl_ContentView_Checked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_ContentView_Checked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Content view.
-        /// </summary>
-        public static string HierarchyControl_ContentView_Unchecked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_ContentView_Unchecked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Control.
         /// </summary>
         public static string HierarchyControl_Control {
             get {
                 return ResourceManager.GetString("HierarchyControl_Control", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Control view Checked.
-        /// </summary>
-        public static string HierarchyControl_ControlView_Checked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_ControlView_Checked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Control view.
-        /// </summary>
-        public static string HierarchyControl_ControlView_Unchecked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_ControlView_Unchecked", resourceCulture);
             }
         }
         
@@ -2136,24 +2100,6 @@ namespace AccessibilityInsights.SharedUx.Properties {
         public static string HierarchyControl_Raw {
             get {
                 return ResourceManager.GetString("HierarchyControl_Raw", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Raw view Checked.
-        /// </summary>
-        public static string HierarchyControl_RawView_Checked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_RawView_Checked", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Raw view.
-        /// </summary>
-        public static string HierarchyControl_RawView_Unchecked {
-            get {
-                return ResourceManager.GetString("HierarchyControl_RawView_Unchecked", resourceCulture);
             }
         }
         

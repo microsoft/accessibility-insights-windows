@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
@@ -32,24 +33,14 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         {
             get
             {
-                return ConvertToToggleState(_owner.IsChecked);
+                return ExtensionMethods.ConvertToToggleState(_owner.IsChecked);
             }
         }
 
         public void Toggle()
         {
             _owner.IsChecked = !_owner.IsChecked;
-            RaisePropertyChangedEvent(TogglePatternIdentifiers.ToggleStateProperty, ConvertToToggleState(!_owner.IsChecked), ConvertToToggleState(_owner.IsChecked));
-        }
-
-        private static ToggleState ConvertToToggleState(bool? value)
-        {
-            switch (value)
-            {
-                case (true): return ToggleState.On;
-                case (false): return ToggleState.Off;
-                default: return ToggleState.Indeterminate;
-            }
+            RaisePropertyChangedEvent(TogglePatternIdentifiers.ToggleStateProperty, ExtensionMethods.ConvertToToggleState(!_owner.IsChecked), ExtensionMethods.ConvertToToggleState(_owner.IsChecked));
         }
     }
 }
