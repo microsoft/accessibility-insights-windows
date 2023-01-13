@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using AccessibilityInsights.SharedUx.Utilities;
+using System.IO;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
 using System.Windows.Automation.Provider;
@@ -17,6 +18,10 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             : base(item)
         {
             _radioButton = item.Header as RadioButton;
+            if (_radioButton == null)
+            {
+                throw new InvalidDataException("Invalid menu item header");
+            }
         }
 
         public override object GetPattern(PatternInterface patternInterface)
