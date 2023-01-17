@@ -898,7 +898,7 @@
     <value>Settings for recording events</value>
   </data>
   <data name="tabEventsAutomationPropertiesName" xml:space="preserve">
-    <value>Events 2 of 3</value>
+    <value>Events</value>
   </data>
   <data name="tabEventsAutomationPropertiesHelpText" xml:space="preserve">
     <value>with this tab, select events to record</value>
@@ -907,7 +907,7 @@
     <value>Events configuration</value>
   </data>
   <data name="tabPropertiesAutomationPropertiesName" xml:space="preserve">
-    <value>Properties 3 of 3</value>
+    <value>Properties</value>
   </data>
   <data name="tabPropertiesAutomationPropertiesHelpText" xml:space="preserve">
     <value>With this tab, select properties to record changes.</value>

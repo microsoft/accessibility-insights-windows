@@ -21,7 +21,7 @@
         <DockPanel Grid.Row="0">
             <TabControl SelectedIndex="0">
                 <TabItem x:Name="tabEvents" Header="{x:Static Properties:Resources.EventConfigDialog_Events_Header}" AutomationProperties.Name="{x:Static Properties:Resources.tabEventsAutomationPropertiesName}"
-                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabEventsAutomationPropertiesHelpText}">
+                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabEventsAutomationPropertiesHelpText}" AutomationProperties.PositionInSet="1" AutomationProperties.SizeOfSet="2">
                     <Grid Grid.IsSharedSizeScope="True" Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -35,7 +35,7 @@
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tabProperties" Header="{x:Static Properties:Resources.EventConfigDialog_Properties_Header}" AutomationProperties.Name="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesName}"
-                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesHelpText}">
+                         AutomationProperties.HelpText="{x:Static Properties:Resources.tabPropertiesAutomationPropertiesHelpText}" AutomationProperties.PositionInSet="2" AutomationProperties.SizeOfSet="2">
                     <Grid Grid.IsSharedSizeScope="True" Margin="10">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
