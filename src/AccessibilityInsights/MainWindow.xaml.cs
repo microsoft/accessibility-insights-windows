@@ -792,8 +792,7 @@ namespace AccessibilityInsights
             vmReporterLogo.FabricIconLogoName = isConfigured ? fabricIconName : null;
             string tooltipResource = isConfigured ? Properties.Resources.UpdateMainWindowLoginFieldsSignedInAs : Properties.Resources.HandleLogoutRequestSignIn;
             string tooltipText = string.Format(CultureInfo.InvariantCulture, tooltipResource, IssueReporter.DisplayName);
-            string automationName = string.Format(CultureInfo.InvariantCulture, Properties.Resources.btnAccountConfigAutomationPropertiesNameFormat, tooltipText);
-            AutomationProperties.SetName(btnAccountConfig, automationName);
+            AutomationProperties.SetName(btnAccountConfig, tooltipText);
             btnAccountConfig.ToolTip = new ToolTip() { Content = tooltipText };
         }
 

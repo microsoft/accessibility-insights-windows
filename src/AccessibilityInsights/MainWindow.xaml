@@ -154,7 +154,9 @@
                             x:Name="btnAccountConfig"
                             Click="btnAccountConfig_Click"
                             AutomationProperties.Name="{x:Static properties:Resources.btnAccountConfigAutomationPropertiesName}"
-                            AutomationProperties.HelpText="{x:Static properties:Resources.btnAccountConfigAutomationPropertiesHelpText}">
+                            AutomationProperties.HelpText="{x:Static properties:Resources.btnAccountConfigAutomationPropertiesHelpText}"
+                            AutomationProperties.PositionInSet="1"
+                            AutomationProperties.SizeOfSet="2">
                             <Button.ToolTip>
                                 <ToolTip>
                                     <Run Text="{x:Static properties:Resources.btnAccountConfigToolTip}" />
@@ -174,6 +176,8 @@
                                 x:Name="btnConfig" Grid.Row="1"
                                 AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinSettingsButton}"
                                 AutomationProperties.Name="{x:Static properties:Resources.btnConfigAutomationPropertiesName}"
+                                AutomationProperties.SizeOfSet="2"
+                                AutomationProperties.PositionInSet="2"
                                 AutomationProperties.HelpText="{x:Static properties:Resources.btnConfigAutomationPropertiesHelpText}"
                                 Style="{StaticResource btnLeftNav}" Click="onbtnConfigClicked">
                             <Button.ToolTip>
