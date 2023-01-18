@@ -115,7 +115,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color contrast analyzer 3 of 3.
+        ///   Looks up a localized string similar to Color contrast analyzer.
         /// </summary>
         public static string btnCCAAutomationPropertiesName {
             get {
@@ -232,7 +232,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Inspect mode 1 of 3.
+        ///   Looks up a localized string similar to Inspect mode.
         /// </summary>
         public static string btnInspectAutomationPropertiesName {
             get {
@@ -340,7 +340,7 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Tests FastPass mode 2 of 3.
+        ///   Looks up a localized string similar to Tests FastPass mode.
         /// </summary>
         public static string btnTestAutomationPropertiesName {
             get {

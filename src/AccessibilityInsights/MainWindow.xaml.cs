@@ -117,8 +117,14 @@ namespace AccessibilityInsights
         private void UpdateNavigationBarAutomationName()
         {
             AutomationProperties.SetName(btnInspect, AutomationPropertiesNameInspect);
+            AutomationProperties.SetPositionInSet(btnInspect, 1);
+            AutomationProperties.SetSizeOfSet(btnInspect, 3);
             AutomationProperties.SetName(btnTest, AutomationPropertiesNameTest);
+            AutomationProperties.SetPositionInSet(btnTest, 2);
+            AutomationProperties.SetSizeOfSet(btnTest, 3);
             AutomationProperties.SetName(btnCCA, AutomationPropertiesNameCCA);
+            AutomationProperties.SetPositionInSet(btnCCA, 3);
+            AutomationProperties.SetSizeOfSet(btnCCA, 3);
         }
 
         /// <summary>

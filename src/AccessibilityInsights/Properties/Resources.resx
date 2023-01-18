@@ -127,7 +127,7 @@
     <value>Sign in</value>
   </data>
   <data name="btnCCAAutomationPropertiesName" xml:space="preserve">
-    <value>Color contrast analyzer 3 of 3</value>
+    <value>Color contrast analyzer</value>
   </data>
   <data name="btnCCAToolTip" xml:space="preserve">
     <value>Contrast</value>
@@ -166,7 +166,7 @@
     <value>Highlighter On</value>
   </data>
   <data name="btnInspectAutomationPropertiesName" xml:space="preserve">
-    <value>Inspect mode 1 of 3</value>
+    <value>Inspect mode</value>
   </data>
   <data name="btnInspectToolTip" xml:space="preserve">
     <value>Inspect</value>
@@ -199,7 +199,7 @@
     <value>Save</value>
   </data>
   <data name="btnTestAutomationPropertiesName" xml:space="preserve">
-    <value>Tests FastPass mode 2 of 3</value>
+    <value>Tests FastPass mode</value>
   </data>
   <data name="btnTestToolTip" xml:space="preserve">
     <value>Test</value>
