@@ -4094,7 +4094,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Events 2 of 3.
+        ///   Looks up a localized string similar to Events.
         /// </summary>
         public static string tabEventsAutomationPropertiesName {
             get {
@@ -4121,7 +4121,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties 3 of 3.
+        ///   Looks up a localized string similar to Properties.
         /// </summary>
         public static string tabPropertiesAutomationPropertiesName {
             get {
