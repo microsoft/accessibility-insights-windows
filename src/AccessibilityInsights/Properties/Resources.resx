@@ -121,7 +121,7 @@
     <value>Sign into AzureDevOps and configure sign in settings</value>
   </data>
   <data name="btnAccountConfigAutomationPropertiesName" xml:space="preserve">
-    <value>Sign in 1 of 2</value>
+    <value>Sign in</value>
   </data>
   <data name="btnAccountConfigToolTip" xml:space="preserve">
     <value>Sign in</value>
@@ -142,7 +142,7 @@
     <value>Configure settings of Accessibility Insights for Windows</value>
   </data>
   <data name="btnConfigAutomationPropertiesName" xml:space="preserve">
-    <value>Application Settings 2 of 2</value>
+    <value>Application Settings</value>
   </data>
   <data name="btnConfigToolTip" xml:space="preserve">
     <value>Change settings...</value>
@@ -577,10 +577,6 @@ Confidence: {1}</value>
   </data>
   <data name="NavBar_IssueFilingConfig_AccessText" xml:space="preserve">
     <value>_i</value>
-  </data>
-  <data name="btnAccountConfigAutomationPropertiesNameFormat" xml:space="preserve">
-    <value>{0} 1 of 2</value>
-    <comment>{0} is the text displayed in the tooltip</comment>
   </data>
   <data name="LiveModeControl_Keyboard" xml:space="preserve">
     <value>Use Tab or Shift+Tab to move between fields in the currently active pane. Use F6 or Shift+F6 to move between panes</value>
