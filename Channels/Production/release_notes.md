@@ -1,4 +1,4 @@
-## January 27 2023 PRoduction Release ([v1.1.2213.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2213.01))
+## January 27 2023 Production Release ([v1.1.2213.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2213.01))
 
 Welcome to the January 27 2023 Production release of Accessibility Insights for Windows.
 
