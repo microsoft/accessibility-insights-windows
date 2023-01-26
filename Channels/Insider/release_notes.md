@@ -19,7 +19,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
   - New sounds now report start and stop of event recording [#1440](https://github.com/microsoft/accessibility-insights-windows/issues/1440)
   - Sound for scanning is now unique to minimize confusion from system sounds [#1444](https://github.com/microsoft/accessibility-insights-windows/issues/1444)
 - Improve discoverability of keystrokes for in-app navigation [#1509](https://github.com/microsoft/accessibility-insights-windows/pull/1509), [#1512](https://github.com/microsoft/accessibility-insights-windows/issues/1512)
-- Add support for signed upgrade manifests to prevent against tampering attacks [#1493](https://github.com/microsoft/accessibility-insights-windows/pull/1493)
+- Add support for signed upgrade manifests to protect against tampering attacks [#1493](https://github.com/microsoft/accessibility-insights-windows/pull/1493)
 - Display MSAA role names as strings (in addition to the numeric value) to describe `LegacyIAccessiblePattern.Role` values [#1454](https://github.com/microsoft/accessibility-insights-windows/issues/1454)
 
 #### Rule Updates
