@@ -1,8 +1,8 @@
 {
   "default": {
-    "current_version": "1.1.2089.01",
-    "minimum_version": "1.1.1997.01",
-    "installer_url": "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.2089.01/AccessibilityInsights.msi",
-    "release_notes_url": "https://www.github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2089.01"
+    "current_version": "1.1.2213.01",
+    "minimum_version": "1.1.2089.01",
+    "installer_url": "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v1.1.2213.01/AccessibilityInsights.msi",
+    "release_notes_url": "https://www.github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2213.01"
   }
 }
