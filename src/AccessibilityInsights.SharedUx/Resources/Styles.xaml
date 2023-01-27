@@ -1278,7 +1278,7 @@
         </Setter>
     </Style>
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
-        <Border x:Name="Border" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
+        <Border x:Name="Border" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="24"/>
@@ -1290,8 +1290,8 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
                 <Setter Property="TextBlock.LayoutTransform">
                     <Setter.Value>
                         <ScaleTransform ScaleX=".97"/>
@@ -1300,8 +1300,8 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Trigger>
             <Trigger Property="IsHighlighted" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <Setter Property="FontWeight" Value="Regular"/>
             </Trigger>
             <Trigger Property="IsChecked" Value="True">
@@ -1321,7 +1321,7 @@
         </ControlTemplate.Resources>
     </ControlTemplate>
     <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
-        <Border x:Name="Border" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
+        <Border x:Name="Border" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="24"/>
@@ -1331,7 +1331,7 @@
                 <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" LayoutTransform="{TemplateBinding LayoutTransform}"/>
                 <Path Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Data="M 0 0 L 0 7 L 4 3.5 Z" Fill="Gray"/>
                 <Popup x:Name="Popup" IsOpen="{TemplateBinding IsSubmenuOpen}" Focusable="False" Placement="Right" HorizontalOffset="9" VerticalOffset="-6">
-                    <Border x:Name="SubmenuBorder" Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" BorderThickness="1">
+                    <Border x:Name="SubmenuBorder" BorderBrush="Gray" BorderThickness="1">
                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
                     </Border>
                 </Popup>
@@ -1339,8 +1339,8 @@
         </Border>
         <ControlTemplate.Triggers>
             <Trigger Property="IsHighlighted" Value="True">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
                 <Setter Property="TextBlock.LayoutTransform">
                     <Setter.Value>
                         <ScaleTransform ScaleX=".97"/>
@@ -1349,8 +1349,8 @@
                 <Setter Property="FontWeight" Value="Bold"/>
             </Trigger>
             <Trigger Property="IsHighlighted" Value="False">
-                <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <Setter Property="FontWeight" Value="Regular"/>
             </Trigger>
         </ControlTemplate.Triggers>
