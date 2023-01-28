@@ -1,6 +1,6 @@
-## January 27 2023 Insider Release ([v1.1.2213.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2213.01))
+## January 30 2023 Insider Release ([v1.1.2213.01](https://github.com/Microsoft/accessibility-insights-windows/releases/tag/v1.1.2213.01))
 
-Welcome to the January 27 2023 Insider release of Accessibility Insights for Windows.
+Welcome to the January 30 2023 Insider release of Accessibility Insights for Windows.
 
 Installation Link: https://github.com/microsoft/accessibility-insights-windows/releases/download/v1.1.2213.01/AccessibilityInsights.msi
 
