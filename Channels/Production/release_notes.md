@@ -14,7 +14,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 #### New Features
 
-- We have added new features to improve the user experience for users who are blind:
+- We have added new features to improve usability for users who are blind or vision impaired:
   - Sound options are now "Always", "Never" or "Automatic" (plays sounds if an active screen reader is detected) [#1495](https://github.com/microsoft/accessibility-insights-windows/pull/1495)
   - New sounds now report start and stop of event recording [#1440](https://github.com/microsoft/accessibility-insights-windows/issues/1440)
   - The sound for scanning is now unique to minimize confusion with system sounds [#1444](https://github.com/microsoft/accessibility-insights-windows/issues/1444)
