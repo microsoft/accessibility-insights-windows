@@ -32,7 +32,7 @@ Documentation Link: https://accessibilityinsights.io/docs/en/windows/overview
 
 - Provide a user-transparent way to request support of unsupport pattern actions [#1420](https://github.com/microsoft/accessibility-insights-windows/issues/1420)
 - Target .NET Framework 4.8 to enable new accessibility features [#1465](https://github.com/microsoft/accessibility-insights-windows/issues/1465)
-- Leverage UIA properties (toggle state, items in a list, etc.) to support both braille and user-customized screen readers [#1323](https://github.com/microsoft/accessibility-insights-windows/issues/1323), [#1514](https://github.com/microsoft/accessibility-insights-windows/issues/1514)
+- Leverage UIA properties (toggle state, items in a list, etc.) to support both Braille and user-customized screen readers [#1323](https://github.com/microsoft/accessibility-insights-windows/issues/1323), [#1514](https://github.com/microsoft/accessibility-insights-windows/issues/1514)
 - Improve screen reader experience while navigating the event recording grid [#1438](https://github.com/microsoft/accessibility-insights-windows/issues/1438)
 - Address a visual glitch while navigating via keyboard [#1150](https://github.com/microsoft/accessibility-insights-windows/issues/1150)
 - Enforce SSL security checks to protect against spoof attacks when checking for new versions [#1516](https://github.com/microsoft/accessibility-insights-windows/pull/1516)
