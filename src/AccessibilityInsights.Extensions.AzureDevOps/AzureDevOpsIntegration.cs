@@ -479,6 +479,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         private static readonly IReadOnlyDictionary<char, char> CharacterSubstitutions = new Dictionary<char, char>()
         {
+            { '\u00a0', ' ' }, // non-breaking space (160) to regular space (32)
             { '\u00b7', '-' }, // middle dot (183) to dash (45)
         };
 
@@ -488,7 +489,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        private static string EscapeForUrl(string str)
+        internal static string EscapeForUrl(string str)
         {
             // characters such as the middle dot can
             // cause issues during navigation, so we only allow
