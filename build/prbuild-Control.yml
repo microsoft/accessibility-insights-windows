@@ -3,3 +3,12 @@ trigger: none
 pr: none
 
 jobs:
+- job: ValidateReleaseInfo
+  pool:
+    vmImage: 'windows-latest'
+  steps:
+  - task: NuGetCommand@2
+    displayName: 'NuGet - Octokit install'
+    inputs:
+      command: custom
+      arguments: 'install -version $(OctokitVersion) OctoKit -source "https://api.nuget.org/v3/index.json"'
