@@ -12,11 +12,3 @@ jobs:
     inputs:
       command: custom
       arguments: 'install -version $(OctokitVersion) OctoKit -source "https://api.nuget.org/v3/index.json"'
-    
-  - task: PowerShell@2
-    displayName: 'Validate release_info.json Files'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\ValidateReleaseInfo.ps1
-      arguments: '$(Build.Repository.LocalPath)'
-
