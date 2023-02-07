@@ -19,7 +19,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -884,7 +884,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Canary channel releases the latest builds, allowing users to try out new features under development. While these builds have passed limited testing, they may not be fully stable and should be considered alpha quality..
+        ///   Looks up a localized string similar to The Canary channel releases the latest builds, allowing users to try out new features under development. While these builds have passed limited testing, they may not be fully stable..
         /// </summary>
         public static string ChannelConfigControl_CanaryDescription {
             get {
@@ -893,7 +893,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to While usually identical to the production channel, the insider channel is used as a staging environment for upcoming production releases and should be considered beta quality..
+        ///   Looks up a localized string similar to While usually identical to the production channel, the insider channel is used as a staging environment for upcoming production releases..
         /// </summary>
         public static string ChannelConfigControl_InsiderDescription {
             get {
