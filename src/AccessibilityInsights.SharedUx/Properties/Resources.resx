@@ -1308,7 +1308,7 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>The Production channel releases stable builds that have been tested and verified by the Accessibility Insights team.</value>
   </data>
   <data name="ChannelConfigControl_InsiderDescription" xml:space="preserve">
-    <value>While usually identical to the production channel, the insider channel is used as a staging environment for upcoming production releases.</value>
+    <value>The insider channel is used as a validation environment for upcoming production releases. While insider builds may not be fully stable, they can be considered near production quality.</value>
   </data>
   <data name="ChannelConfigControl_CanaryDescription" xml:space="preserve">
     <value>The Canary channel releases the latest builds, allowing users to try out new features under development. While these builds have passed limited testing, they may not be fully stable.</value>
