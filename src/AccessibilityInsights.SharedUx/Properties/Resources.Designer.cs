@@ -893,7 +893,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The insider channel is used as a validation environment for upcoming production releases. While insider builds may not be fully stable, they can be considered near production quality..
+        ///   Looks up a localized string similar to The insider channel is used as a validation environment for upcoming production releases..
         /// </summary>
         public static string ChannelConfigControl_InsiderDescription {
             get {
