@@ -1305,13 +1305,13 @@ We collect anonymized data to identify the top accessibility issues found by use
     <value>Channel</value>
   </data>
   <data name="ChannelConfigControl_ProductionDescription" xml:space="preserve">
-    <value>Updated every month, the Production channel releases stable builds that have been tested and verified by the Accessibility Insights team.</value>
+    <value>The Production channel releases stable builds that have been tested and verified by the Accessibility Insights team.</value>
   </data>
   <data name="ChannelConfigControl_InsiderDescription" xml:space="preserve">
-    <value>Updated every 1 - 2 weeks, the Insiders channel allows users to try out new features under development. While this channel releases builds that have been tested, there may be some bugs and performance issues.</value>
+    <value>The insider channel is used as a validation environment for upcoming production releases.</value>
   </data>
   <data name="ChannelConfigControl_CanaryDescription" xml:space="preserve">
-    <value>Updated every few days, the Canary channel releases the latest builds. It has not been tested or used.</value>
+    <value>The Canary channel releases frequently from the mainline development branch. While these builds have passed limited testing, they may not be fully stable.</value>
   </data>
   <data name="RunTextHelpCommunity3" xml:space="preserve">
     <value>develop inclusive software.
