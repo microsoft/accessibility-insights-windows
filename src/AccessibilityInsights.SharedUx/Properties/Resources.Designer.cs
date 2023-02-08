@@ -884,7 +884,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Canary channel releases the latest builds, allowing users to try out new features under development. While these builds have passed limited testing, they may not be fully stable..
+        ///   Looks up a localized string similar to The Canary channel releases frequently from the mainline development branch, allowing users to try out new features under development. While these builds have passed limited testing, they may not be fully stable..
         /// </summary>
         public static string ChannelConfigControl_CanaryDescription {
             get {
