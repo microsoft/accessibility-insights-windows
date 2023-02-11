@@ -16,8 +16,12 @@
     <EmbeddedResource Include="$(MSBuildProjectDirectory)\..\bld\ReleaseInfo.json" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Octokit" Version="5.0.0" />
+  </ItemGroup>
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -MsiBasePath $(SolutionDir)MSI\bin\Release\msi -MinimumProductionVersion $(MinimumProdVersion) -OutputPath $(MSBuildProjectDirectory)\..\bld -OutputFile ReleaseInfo.json" />
+    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -MsiBasePath $(SolutionDir)MSI\bin\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(MSBuildProjectDirectory)\..\bld -OutputFile ReleaseInfo.json" />
   </Target>
 
 </Project>

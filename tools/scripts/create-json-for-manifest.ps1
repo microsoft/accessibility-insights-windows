@@ -7,19 +7,19 @@ Create the json file that will be packaged into AccessibilityInsights.Manifest.d
 .PARAMETER MsiBasePath
 The fixed path to where the MSI folder is located. This is typically $(SolutionDir)MSI\bin\Release\MSI
 
-.PARAMETER MinimumProductionVersion
-The minimum supported production version
+.PARAMETER IsMandatoryProdUpdate
+Whether or not this build includes a mandatory update for the Production ReleaseChannel
 
 .PARAMETER OutputPath
 The path and file name of the generated JSON file
 
 .Example Usage 
-.\create-json-for-manifest.ps1 -MsiBasePath "$(SolutionDir)MSI\bin\Release\MSI" -MinimumProductionVersion "1.1.1234.01" -OutputPath "$(SolutionDir)Manifest\obj\Release" -OutputFile "ReleaseInfo.json"
+.\create-json-for-manifest.ps1 -MsiBasePath "$(SolutionDir)MSI\bin\Release\MSI" -IsMandatoryProdUpdate "false" -OutputPath "$(SolutionDir)Manifest\obj\Release" -OutputFile "ReleaseInfo.json"
 #>
 
 param(
     [Parameter(Mandatory=$true)][string]$MsiBasePath,
-    [Parameter(Mandatory=$true)][string]$MinimumProductionVersion,
+    [Parameter(Mandatory=$true)][string]$IsMandatoryProdUpdate,
     [Parameter(Mandatory=$true)][string]$OutputPath,
     [Parameter(Mandatory=$true)][string]$OutputFile
 )
@@ -43,43 +43,81 @@ function CreatePaddedVersion([string]$version) {
     return $paddedVersion
 }
 
-function GetHighestBuiltVersion([string]$msiBasePath) {
-    Write-Verbose "  Entering GetHighestBuiltVersion"
+function Get-HighestBuiltVersion([string]$msiBasePath) {
+    Write-Verbose "  Entering Get-HighestBuiltVersion"
     Write-Verbose "    msiBasePath = $msiBasePath"
 
     $folders = Get-ChildItem -Path $msiBasePath -Directory | select Name
     $highestBuiltVersion = ($folders | Sort-Object -Property Name -Descending)[0].Name
 
-    Write-Verbose "  Exiting GetHighestBuiltVersion with $highestBuiltVersion"
+    Write-Verbose "  Exiting Get-HighestBuiltVersion with $highestBuiltVersion"
     return $highestBuiltVersion
 }
 
-function GetMsiInfo([string]$msiFilePath) {
-    Write-Verbose "  Entering GetMsiInfo"
+function Get-MsiInfo([string]$msiFilePath) {
+    Write-Verbose "  Entering Get-MsiInfo"
     Write-Verbose "    msiFilePath = $msiFilePath"
 
     $info = [ordered]@{}
     $info.msi_size_in_bytes = (Get-Item $msiFilePath).length
     $info.msi_sha_512 = (Get-FileHash -Path $msiFilePath -Algorithm "SHA512").Hash
 
-    Write-Verbose "  Exiting GetMsiInfo"
+    Write-Verbose "  Exiting Get-MsiInfo"
     return $info
 }
 
-function CreateJsonForManifest([string]$msiBasePath, [string]$minimumProductionVersion) {
+# Initialize the client
+function Get-Client()
+{
+    Write-Verbose "    Entering Get-Client"
+    # Load the octokit dll
+    $octoKitPath = "$($env:UserProfile)\.nuget\packages\Octokit\5.0.0\lib\netstandard2.0\Octokit.dll"
+    Write-Verbose "      Path to OctoKit.dll = $($octoKitPath)"
+    Add-Type -Path $($octoKitPath)
+
+    # Get a new client
+    $productHeader = [Octokit.ProductHeaderValue]::new("CreateJsonForManifest")
+    $client = [Octokit.GitHubClient]::new($productHeader)
+
+    Write-Verbose "    Exiting Get-Client"
+    return $client
+}
+
+function Get-MinimumProductionVersion([string]$currentVersion, $isMandatoryProdUpdate) {
+    Write-Verbose "  Entering Get-MinimumProductionVersion"
+    Write-Verbose "    currentVersion = $currentVersion"
+    Write-Verbose "    isMandatoryProdUpdate = $isMandatoryProdUpdate"
+
+    if ($isMandatoryProdUpdate -eq "true") {
+        Write-Verbose "    Using currentVersion for minimumProductionVersion"
+        $minimumProductionVersion = $currentVersion
+    } else {
+        Write-Verbose "    Fetching version from 'https://github.com/microsoft/accessibility-insights-windows/releases/tag/latest'"
+
+        $client = Get-Client
+        $release = $client.Repository.Release.GetLatest("Microsoft", "accessibility-insights-windows").Result
+
+        $minimumProductionVersion = $release.TagName.Substring(1)  # Tag names are in format of v1.1.1234.01 and we want to skip the 'v'
+    }
+
+    Write-Verbose "  Exiting Get-MinimumProductionVersion with value of $($minimumProductionVersion)"
+    return $minimumProductionVersion
+}
+
+function CreateJsonForManifest([string]$msiBasePath, [string]$isMandatoryProdUpdate) {
     Write-Verbose "Entering CreateJsonForManifest"
     Write-Verbose "  msiBasePath = $msiBasePath"
-    Write-Verbose "  minimumProductionVersion = $minimumProductionVersion"
+    Write-Verbose "  $isMandatoryProdUpdate = $isMandatoryProdUpdate"
 
-    $highestBuiltVersion = GetHighestBuiltVersion $msiBasePath
+    $highestBuiltVersion = Get-HighestBuiltVersion $msiBasePath
     $paddedVersion = CreatePaddedVersion $highestBuiltVersion
     $msiFilePath = Join-Path (Join-Path $msiBasePath $highestBuiltVersion) $MsiName
 
-    $info = GetMsiInfo $msiFilePath
+    $info = Get-MsiInfo $msiFilePath
     $info.installer_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v$paddedVersion/$MsiName"
     $info.release_notes_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/tag/v$paddedVersion"
-    $info.production_minimum_version = $minimumProductionVersion
     $info.current_version = $paddedVersion
+    $info.production_minimum_version = Get-MinimumProductionVersion $paddedVersion $IsMandatoryProdUpdate
 
     $json = $info | ConvertTo-Json
 
@@ -107,6 +145,6 @@ function CreateOutputFile([string]$json, [string]$outputPath, [string]$outputFil
 }
 
 $resolvedOutputPath = Resolve-Path $OutputPath
-$json = CreateJsonForManifest $MsiBasePath $MinimumProductionVersion
+$json = CreateJsonForManifest $MsiBasePath $isMandatoryProdUpdate
 CreateOutputFile $json $resolvedOutputPath $OutputFile
 exit 0
