@@ -5,14 +5,16 @@ using AccessibilityInsights.SetupLibrary;
 using AccessibilityInsights.VersionSwitcher;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ManifestTests
 {
     [TestClass]
     public class IntegrationTests
     {
-        private static readonly string RawManifestFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"bld\ReleaseInfo.json"));
+        private static readonly string RawManifestFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"Manifest\bin\Release\net48\ReleaseInfo.json"));
         private static readonly string SignedManifestFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll"));
         private static readonly string MsiFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"MSI\bin\Release\AccessibilityInsights.msi"));
         private static readonly ChannelInfo rawInfo = FileHelpers.LoadDataFromJSON<ChannelInfo>(RawManifestFilePath);
@@ -76,6 +78,25 @@ namespace ManifestTests
                 Assert.AreEqual(rawInfo.ProductionMinimumVersion, signedInfo.ProductionMinimumVersion);
                 Assert.AreEqual(rawInfo.MinimumVersion, signedInfo.MinimumVersion);
             }
+        }
+
+        [TestMethod]
+        public void ArtifactContentsAreCorrect()
+        {
+            string folder = Path.GetDirectoryName(Path.GetFullPath(SignedManifestFilePath));
+            HashSet<string> expectedFiles = new HashSet<string>(new string[] 
+            {
+                Path.Combine(folder, "AccessibilityInsights.Manifest.dll"), 
+                Path.Combine(folder, "ReleaseInfo.json"),
+            });
+
+            foreach (string file in Directory.EnumerateFiles(folder, "*.*", SearchOption.AllDirectories))
+            {
+                Assert.IsTrue(expectedFiles.Contains(file), $"Did not expect '{file}' in output folder");
+                expectedFiles.Remove(file);
+            }
+
+            Assert.AreEqual(0, expectedFiles.Count, $"Missing files: {string.Join(", ", expectedFiles)}");
         }
     }
 }

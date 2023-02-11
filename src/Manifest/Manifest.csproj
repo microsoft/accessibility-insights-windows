@@ -13,7 +13,7 @@
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
 
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildProjectDirectory)\..\bld\ReleaseInfo.json" />
+    <EmbeddedResource Include="$(TargetDir)ReleaseInfo.json" LogicalName="AccessibilityInsights.Manifest.ReleaseInfo.json" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,7 +21,11 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -MsiBasePath $(SolutionDir)MSI\bin\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(MSBuildProjectDirectory)\..\bld -OutputFile ReleaseInfo.json" />
+    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -MsiBasePath $(SolutionDir)MSI\bin\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(TargetDir) -OutputFile ReleaseInfo.json" />
+  </Target>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="del $(TargetDir)Octokit.dll" />
   </Target>
 
 </Project>
