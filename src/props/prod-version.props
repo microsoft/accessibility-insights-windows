@@ -1,7 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <!-- If this is a required update, set this to the same version as what we're building.
-	     If this is an optional update, set this to the most recently released prod version. -->
-    <MinimumProdVersion Condition="$(MinimumProdVersion) == ''">1.1.2089.01</MinimumProdVersion>
+    <!-- If this is a mandatory update for the Production ReleaseChannel, set this to true, otherwise leave it as false.
+         This should only be set to true for things like a security update, and should be reset to false immediately
+         after that version has released to Production-->
+    <IsMandatoryProdUpdate Condition="$(IsMandatoryProdUpdate) == ''">false</IsMandatoryProdUpdate>
   </PropertyGroup>
 </Project>
