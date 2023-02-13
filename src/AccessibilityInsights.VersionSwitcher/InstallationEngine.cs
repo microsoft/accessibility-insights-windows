@@ -104,7 +104,7 @@ namespace AccessibilityInsights.VersionSwitcher
                     {
                         _history.AddLocalDetail("Option: New channel = {0}", newChannel);
                     }
-                    return new InstallationOptions(msiPath, msiSizeInBytes, (msiSha512 == "none") ? null : msiSha512, newChannel, enableUIAccess);
+                    return new InstallationOptions(msiPath, msiSizeInBytes, msiSha512, newChannel, enableUIAccess);
                 });
         }
 
@@ -218,12 +218,12 @@ namespace AccessibilityInsights.VersionSwitcher
             _history.ActualMsiSizeInBytes = (int)new FileInfo(filePath).Length;
             _history.ActualMsiSha512 = ComputeSha512(filePath);
 
-            if (expectedFileSize != 0 && expectedFileSize != _history.ActualMsiSizeInBytes)
+            if (expectedFileSize != _history.ActualMsiSizeInBytes)
             {
                 throw new ResultBearingException(ExecutionResult.ErrorMsiSizeMismatch, Properties.Resources.InstallerFileIsWrongSize);
             }
 
-            if (expectedFileSha512 != null && !expectedFileSha512.Equals(_history.ActualMsiSha512, StringComparison.OrdinalIgnoreCase))
+            if (!expectedFileSha512.Equals(_history.ActualMsiSha512, StringComparison.OrdinalIgnoreCase))
             {
                 throw new ResultBearingException(ExecutionResult.ErrorMsiSha512Mismatch, Properties.Resources.InstallerFileHasWrongHash);
             }

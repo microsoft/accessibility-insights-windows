@@ -103,20 +103,6 @@ namespace AccessibilityInsights.VersionSwitcherUnitTests
         }
 
         [TestMethod]
-        public void GetInstallationOptions_ShaIsNone_OptionsAreCorrect()
-        {
-            _commandLineArgs = new string[] { CommandIgnored, CommandMsiPath, CommandMsiSize, "none" };
-            var options = _engine.GetInstallationOptions();
-
-            Assert.AreEqual(CommandMsiPath, options.MsiPath.ToString());
-            Assert.AreEqual(TestFileSize, options.MsiSizeInBytes);
-            Assert.IsNull(options.MsiSha512);
-            Assert.IsNull(options.NewChannel);
-
-            Assert.AreEqual(ExecutionResult.Unknown, _history.TypedExecutionResult);
-        }
-
-        [TestMethod]
         public void GetInstallationOptions_ChannelIsSet_OptionsAreCorrect()
         {
             _commandLineArgs = new string[] { CommandIgnored, CommandMsiPath, CommandMsiSize, TestFileSha512, CommandNewChannel };
@@ -176,34 +162,10 @@ namespace AccessibilityInsights.VersionSwitcherUnitTests
         }
 
         [TestMethod]
-        public void ValidateFileProperties_SizeIsOmitted_ShaIsOmitted_Passes()
-        {
-            _engine.ValidateFileProperties(TestFile, 0, null);
-            Assert.AreEqual(ExecutionResult.Unknown, _history.TypedExecutionResult);
-            AssertCorrectTelemetryValuesForValidateFileProperties();
-        }
-
-        [TestMethod]
-        public void ValidateFileProperties_SizeIsOmitted_ShaIsCorrect_Passes()
-        {
-            _engine.ValidateFileProperties(TestFile, 0, TestFileSha512);
-            Assert.AreEqual(ExecutionResult.Unknown, _history.TypedExecutionResult);
-            AssertCorrectTelemetryValuesForValidateFileProperties();
-        }
-
-        [TestMethod]
         public void ValidateFileProperties_SizeIsOmitted_ShaIsBad_ThrowsResultBearingException()
         {
             ResultBearingException e = Assert.ThrowsException<ResultBearingException>(() => _engine.ValidateFileProperties(TestFile, TestFileSize, BadTestFileSha512));
             Assert.AreEqual(ExecutionResult.ErrorMsiSha512Mismatch, e.Result);
-            AssertCorrectTelemetryValuesForValidateFileProperties();
-        }
-
-        [TestMethod]
-        public void ValidateFileProperties_SizeIsCorrect_ShaIsOmitted_Passes()
-        {
-            _engine.ValidateFileProperties(TestFile, TestFileSize, null);
-            Assert.AreEqual(ExecutionResult.Unknown, _history.TypedExecutionResult);
             AssertCorrectTelemetryValuesForValidateFileProperties();
         }
 
