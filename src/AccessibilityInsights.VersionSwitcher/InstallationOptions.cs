@@ -50,8 +50,8 @@ namespace AccessibilityInsights.VersionSwitcher
         /// constructor
         /// </summary>
         /// <param name="msiPath">The uri to the web-hosted installer</param>
-        /// <param name="msiSizeInBytes">The byte count of the MSI on disk, or 0 if unknown</param>
-        /// <param name="msiSha512">The SHA512 of the MSI on disk, or null if unknown</param>
+        /// <param name="msiSizeInBytes">The byte count of the MSI on disk</param>
+        /// <param name="msiSha512">The SHA512 of the MSI on disk</param>
         /// <param name="newChannel">String indicating the value for NewChannel</param>
         /// <param name="enableUIAccess">True only if we need to enable UIAccess post-install"</param>
         internal InstallationOptions(Uri msiPath, int msiSizeInBytes, string msiSha512, string newChannel, bool enableUIAccess)

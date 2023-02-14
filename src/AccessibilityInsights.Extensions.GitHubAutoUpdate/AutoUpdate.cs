@@ -12,17 +12,15 @@ namespace AccessibilityInsights.Extensions.GitHubAutoUpdate
 {
     /// <summary>
     /// GitHub-based implementation of IAutoUpdate. Basic strategy is as follows:
-    /// 1) Fetch a JSON file from a specified web location (typically in the GitHub repo)
-    /// 2) Extract the version information from the JSON file, then compare that to the
+    /// 1) Fetch a signed DLL from a specified web location (typically Azure blobs)
+    /// 2) Validate that the DLL has not been tampered
+    /// 3) Extract a JSON file that is an embedded resource within the DLL
+    /// 3) Extract the version information from the JSON file, then compare that to the
     ///    version of the currently installed app
-    /// 3) Cache the information needed to get the installer and release notes, then return
+    /// 4) Cache the information needed to get the installer and release notes, then return
     ///    the upgrade status to the caller
-    /// 4) If requested, use the cached information to download the installer, which will
+    /// 5) If requested, use the cached information to download the installer, which will
     ///    be stored locally and validate before is it launched.
-    ///
-    /// To allow multiple Release Channels, the JSON file can report back more than one
-    /// set of information (each ChannelInfo object holds the data for one channel). The
-    /// code defaults to the "default" channel, but this can be overridden by the caller.
     ///
     /// A note about timing: Due to the way that extensions get loaded, our constructor may get
     /// called some time before the app requests the upgrade status. Since we need to make
