@@ -246,17 +246,8 @@ jobs:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
-  - task: CopyFiles@2
-    displayName: 'TEMPORARY - Copy Prebuilt ThirdPartyNotices to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      SourceFolder: 'src\PrebuiltThirdPartyNotices'
-      Contents: 'thirdpartynotices.html'
-      TargetFolder: '$(System.DefaultWorkingDirectory)'
-      OverWrite: true
-      
   - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
     displayName: 'generate thirdpartynotices.html file'
-    continueOnError: true  # notice generator is currently not reliable
     inputs:
         outputfile: '$(System.DefaultWorkingDirectory)/thirdpartynotices.html'
         outputformat: html
