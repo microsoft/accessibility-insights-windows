@@ -118,19 +118,19 @@
                     <Button.ContextMenu>
                         <ContextMenu FlowDirection="LeftToRight" Loaded="ContextMenu_Loaded" Unloaded="ContextMenu_Unloaded" Style="{StaticResource ctxMenuDefault}">
                             <MenuItem Header="{x:Static Properties:Resources.EventRecordControlScopeHeader}">
-                                <customcontrols:ToggleMenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRB_Click" Style="{StaticResource miBoldOnSelection}"
+                                <customcontrols:ToggleMenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRB_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName}">
                                     <MenuItem.Header>
                                         <RadioButton x:Name="radiobuttonScopeSelf" GroupName="groupScope" Content="{x:Static Properties:Resources.mniRawAutomationPropertiesName}" Focusable="False"/>
                                     </MenuItem.Header>
                                 </customcontrols:ToggleMenuItem>
-                                <customcontrols:ToggleMenuItem x:Name="mniControl" IsCheckable="False" Click="mniRB_Click" Style="{StaticResource miBoldOnSelection}"
+                                <customcontrols:ToggleMenuItem x:Name="mniControl" IsCheckable="False" Click="mniRB_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.radiobuttonScopeSubtreeContent}">
                                     <MenuItem.Header>
                                         <RadioButton x:Name="radiobuttonScopeSubtree" GroupName="groupScope" Content="{x:Static Properties:Resources.radiobuttonScopeSubtreeContent}" Focusable="False"/>
                                     </MenuItem.Header>
                                 </customcontrols:ToggleMenuItem>
-                                <customcontrols:ToggleMenuItem x:Name="mniContent" IsCheckable="False" Click="mniRB_Click" Style="{StaticResource miBoldOnSelection}"
+                                <customcontrols:ToggleMenuItem x:Name="mniContent" IsCheckable="False" Click="mniRB_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName}">
                                     <MenuItem.Header>
                                         <RadioButton x:Name="radiobuttonScopeDescendents" GroupName="groupScope" Content="{x:Static Properties:Resources.mniContentAutomationPropertiesName}" Focusable="False"/>

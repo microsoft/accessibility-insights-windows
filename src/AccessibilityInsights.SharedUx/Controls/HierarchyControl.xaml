@@ -134,19 +134,19 @@
                 <Button.ContextMenu>
                     <ContextMenu FlowDirection="LeftToRight" x:Name="cmHierarchySettings" Style="{StaticResource ctxMenuDefault}">
                         <MenuItem Header="{x:Static Properties:Resources.HierarchyControl_Menu_TreeView}">
-                            <cc:ToggleMenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click" Style="{StaticResource miBoldOnSelection}"
+                            <cc:ToggleMenuItem x:Name="mniRaw" IsCheckable="False" Click="mniRaw_Click"
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniRawAutomationPropertiesName1}">
                                 <MenuItem.Header>
                                     <RadioButton x:Name="rbRaw" Content="{x:Static Properties:Resources.HierarchyControl_Raw}" Loaded="mniRaw_Loaded" Click="rbRaw_Click" Focusable="False" />
                                 </MenuItem.Header>
                             </cc:ToggleMenuItem>
-                            <cc:ToggleMenuItem x:Name="mniControl" IsCheckable="False" Click="mniControl_Click" Style="{StaticResource miBoldOnSelection}"
+                            <cc:ToggleMenuItem x:Name="mniControl" IsCheckable="False" Click="mniControl_Click" 
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniControlAutomationPropertiesName}">
                                 <MenuItem.Header>
                                     <RadioButton x:Name="rbControl" Content="{x:Static Properties:Resources.HierarchyControl_Control}" Loaded="mniControl_Loaded" Click="rbControl_Click" Focusable="False" />
                                 </MenuItem.Header>
                             </cc:ToggleMenuItem>
-                            <cc:ToggleMenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click" Style="{StaticResource miBoldOnSelection}"
+                            <cc:ToggleMenuItem x:Name="mniContent" IsCheckable="False" Click="mniContent_Click" 
                                   AutomationProperties.Name="{x:Static Properties:Resources.mniContentAutomationPropertiesName1}">
                                 <MenuItem.Header>
                                     <RadioButton x:Name="rbContent" Content="{x:Static Properties:Resources.HierarchyControl_Content}" Loaded="mniContent_Loaded" Click="rbContent_Click" Focusable="False" />
