@@ -1263,8 +1263,6 @@
                             <Setter TargetName="fbIcn" Property="Foreground" Value="{DynamicResource ResourceKey=IconBrush}"/>
                         </Trigger>
                         <Trigger Property="IsHighlighted" Value="True">
-                            <Setter Property="Background" Value="{DynamicResource ResourceKey=SelectedBrush}"/>
-                            <Setter Property="Foreground" Value="{DynamicResource ResourceKey=SelectedTextBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Opacity" Value="0.5"/>
@@ -1277,10 +1275,101 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="CheckMark" Visibility="Hidden" Focusable="False" IsHitTestVisible="False" Style="{StaticResource CheckBoxContastingBorder}"/>
+                <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" LayoutTransform="{TemplateBinding LayoutTransform}"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
+                <Setter Property="TextBlock.LayoutTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX=".97"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                <Setter Property="FontWeight" Value="Regular"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter TargetName="CheckMark" Property="IsChecked" Value="True" />
+            </Trigger>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter TargetName="CheckMark" Property="IsChecked" Value="False" />
+            </Trigger>
+            <Trigger Property="IsCheckable" Value="True">
+                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+        <ControlTemplate.Resources>
+            <Style TargetType="{x:Type RadioButton}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}, Path=IsHighlighted}" Value="True">
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}" />
+                    </DataTrigger>
+                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource AncestorType={x:Type MenuItem}}, Path=IsHighlighted}" Value="False">
+                        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </ControlTemplate.Resources>
+    </ControlTemplate>
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" BorderBrush="Gray" Padding="8,4" BorderThickness="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="24"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <ContentPresenter VerticalAlignment="Center" Grid.Column="1" ContentSource="Header" RecognizesAccessKey="True" LayoutTransform="{TemplateBinding LayoutTransform}"/>
+                <Path Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Data="M 0 0 L 0 7 L 4 3.5 Z" Fill="Gray"/>
+                <Popup x:Name="Popup" IsOpen="{TemplateBinding IsSubmenuOpen}" Focusable="False" Placement="Right" HorizontalOffset="9" VerticalOffset="-6">
+                    <Border x:Name="SubmenuBorder" BorderBrush="Gray" BorderThickness="1">
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="True">
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=TSRowSelectedFGBrush}"/>
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=TSRowSelectedBGBrush}"/>
+                <Setter Property="TextBlock.LayoutTransform">
+                    <Setter.Value>
+                        <ScaleTransform ScaleX=".97"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+            <Trigger Property="IsHighlighted" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource ResourceKey=PrimaryBGBrush}"/>
+                <Setter Property="Foreground" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
+                <Setter Property="FontWeight" Value="Regular"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
     <Style TargetType="{x:Type ContextMenu}" x:Key="ctxMenuDefault">
-        <Style.Resources>
-            <Style x:Key="{x:Type MenuItem}" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource miBoldOnSelection}"/>
-        </Style.Resources>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{DynamicResource ResourceKey=SecondaryBGBrush}" BorderBrush="Gray" BorderThickness="1">
+                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Cycle"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     <Style TargetType="{x:Type Menu}" x:Key="menuDefault">
         <Style.Resources>
