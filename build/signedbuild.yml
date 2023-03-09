@@ -170,6 +170,7 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload (CredScan, RoslynAnalyzers, and PoliCheck)'
+    condition: false
     inputs:
       tsaVersion: TsaV2
       codebase: NewOrUpdate
@@ -316,6 +317,7 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload (BinSkim)'
+    condition: false
     inputs:
       tsaVersion: TsaV2
       codebase: NewOrUpdate
