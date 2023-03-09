@@ -141,7 +141,7 @@ jobs:
         msbuildVersion: 17.0
         msBuildArchitecture: '$(BuildPlatform)'
         msBuildCommandline: '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" "$(Build.SourcesDirectory)\src\AccessibilityInsights.sln" /p:platform="$(BuildPlatform)" /p:configuration="debug" /p:VisualStudioVersion="17.0"'
-        rulesetName: recommended
+        rulesetName: Recommended
         internalAnalyzersVersion: Latest
         microsoftAnalyzersVersion: Latest
 
