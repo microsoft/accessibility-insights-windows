@@ -168,7 +168,7 @@ jobs:
       RoslynAnalyzers: true
       PoliCheck: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload (CredScan, RoslynAnalyzers, and PoliCheck)'
     inputs:
       tsaVersion: TsaV2
@@ -314,7 +314,7 @@ jobs:
       rerunFailedTests: true
       testFiltercriteria: 'TestCategory!=NoStrongName'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
     displayName: 'TSA upload (BinSkim)'
     inputs:
       tsaVersion: TsaV2
