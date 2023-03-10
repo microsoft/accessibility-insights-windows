@@ -284,11 +284,11 @@ jobs:
     inputs:
       InputType: Basic
       # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      AnalyzeTarget: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
-                      src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
-                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
-                      src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
-                      src\\Manifest\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
+      AnalyzeTargetGlob: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
+                          src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                          src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
+                          src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                          src\\Manifest\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
     displayName: 'Create Security Analysis Report (BinSkim)'
