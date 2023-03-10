@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <!-- NOTE: If you update this version, please also update the version in tools\scripts\create-json-for-manifest.ps1 -->
-    <PackageReference Include="Octokit" Version="5.0.0" />
+    <PackageReference Include="Octokit" Version="5.0.1" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
