@@ -109,6 +109,13 @@ jobs:
         **\*.csproj
         !**\CustomActions.Package.csproj
 
+  - task: PowerShell@2
+    displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools CredScan;Roslyn;Policheck -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
+  
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
     inputs:
@@ -180,13 +187,6 @@ jobs:
       RoslynAnalyzers: true
       PoliCheck: true
 
-  - task: PowerShell@2
-    displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools CredScan;Roslyn;Policheck -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
-  
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
     condition: false
@@ -234,6 +234,13 @@ jobs:
         **\*.csproj
         !**\CustomActions.Package.csproj
 
+  - task: PowerShell@2
+    displayName: 'Create tsa.config file (BinSkim)'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools BinSkim -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
+  
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
     displayName: 'Component Detection'
 
@@ -308,13 +315,6 @@ jobs:
       rerunFailedTests: true
       testFiltercriteria: 'TestCategory!=NoStrongName'
 
-  - task: PowerShell@2
-    displayName: 'Create tsa.config file (BinSkim)'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools BinSkim -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
-  
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (BinSkim)'
     condition: false
