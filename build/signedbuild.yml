@@ -168,26 +168,19 @@ jobs:
       RoslynAnalyzers: true
       PoliCheck: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
-    displayName: 'TSA upload (CredScan, RoslynAnalyzers, and PoliCheck)'
+  - task: PowerShell@2
+    displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools CredScan;Roslyn;Policheck -OutputFile $(Build.SourcesDirectory)\tsa.config'
+  
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
+    displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
     condition: false
     inputs:
-      tsaVersion: TsaV2
-      codebase: NewOrUpdate
-      codeBaseName: $(TSACodeBaseName)
-      notificationAlias: $(TSANotificationAlias)
-      codeBaseAdmins: $(TSACodeBaseAdmins)
-      instanceUrlForTsaV2: $(TSAInstance)
-      projectNameMSENG: $(TSAProjectName)
-      areaPath: $(TSAAreaPath)
-      iterationPath: $(TSAIterationPath)
-      uploadAPIScan: false
-      uploadBinSkim: false
-      uploadFortifySCA: false
-      uploadFxCop: false
-      uploadModernCop: false
-      uploadPREfast: false
-      uploadTSLint: false
+      GdnPublishTsaOnboard: true
+      GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
@@ -315,28 +308,19 @@ jobs:
       rerunFailedTests: true
       testFiltercriteria: 'TestCategory!=NoStrongName'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@1
+  - task: PowerShell@2
+    displayName: 'Create tsa.config file (BinSkim)'
+    inputs:
+      targetType: "filePath"
+      filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools BinSkim -OutputFile '$(Build.SourcesDirectory)\tsa.config'
+  
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (BinSkim)'
     condition: false
     inputs:
-      tsaVersion: TsaV2
-      codebase: NewOrUpdate
-      codeBaseName: $(TSACodeBaseName)
-      notificationAlias: $(TSANotificationAlias)
-      codeBaseAdmins: $(TSACodeBaseAdmins)
-      instanceUrlForTsaV2: $(TSAInstance)
-      projectNameMSENG: $(TSAProjectName)
-      areaPath: $(TSAAreaPath)
-      iterationPath: $(TSAIterationPath)
-      uploadAPIScan: false
-      uploadCredScan: false
-      uploadFortifySCA: false
-      uploadFxCop: false
-      uploadModernCop: false
-      uploadPoliCheck: false
-      uploadPREfast: false
-      uploadRoslyn: false
-      uploadTSLint: false
+      GdnPublishTsaOnboard: true
+      GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
   - task: CopyFiles@2
     displayName: 'Copy Files for Signing Validation'
