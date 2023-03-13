@@ -127,7 +127,19 @@ jobs:
     inputs:
       ArtifactName: 'Compliance'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
+  - task: VSTest@2
+    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
+    inputs:
+      testAssemblyVer2: |
+        **\*test*.dll
+        !**\obj\**
+      testFiltercriteria: 'TestCategory!=RequiresNetwork'
+      codeCoverageEnabled: false
+      platform: '$(BuildPlatform)'
+      configuration: debug
+      rerunFailedTests: true
+
+  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@2
     displayName: 'Run CredScan'
     inputs:
       toolMajorVersion: V3
@@ -173,7 +185,7 @@ jobs:
     inputs:
       targetType: "filePath"
       filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools CredScan;Roslyn;Policheck -OutputFile $(Build.SourcesDirectory)\tsa.config'
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools CredScan;Roslyn;Policheck -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
   
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
@@ -181,18 +193,6 @@ jobs:
     inputs:
       GdnPublishTsaOnboard: true
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
-
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: debug
-      rerunFailedTests: true
 
 - job: SignedRelease
   dependsOn: 
@@ -313,7 +313,7 @@ jobs:
     inputs:
       targetType: "filePath"
       filePath: tools\scripts\verification.scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools BinSkim -OutputFile '$(Build.SourcesDirectory)\tsa.config'
+      arguments: '-InstanceUrl $(TSAInstanceUrl) -ProjectName $(TSAProjectName) -CodeBaseName $(TSACodeBaseName) -CodeBaseAdmins $(TSACodeBaseAdmins) -AreaPath "$(TSAV2AreaPath)" -IterationPath $(TSAV2IterationPath) -NotificationAliases $(TSANotificationAlias) -Tools BinSkim -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
   
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (BinSkim)'
