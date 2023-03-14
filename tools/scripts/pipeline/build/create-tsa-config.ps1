@@ -66,14 +66,19 @@ function Get-ConfigObject([string]$codeBaseName,[string]$codeBaseAdmins,[string]
     $toolsArray = @(Get-ItemsFromSemicolonSeparatedList $tools) 
     
     $config = @{}
+    $config | Add-Member -Name "tsaVersion" -Type NoteProperty "TsaV2"
+    $config | Add-Member -Name "codebase" -Type NoteProperty "NewOrUpdate"
+    $config | Add-Member -Name "tsaStamp" -Type NoteProperty "DevDiv"
+    $config | Add-Member -Name "tsaEnvironment" -Type NoteProperty "PROD"
     $config | Add-Member -Name "codebaseName" -Type NoteProperty $codeBaseName
     $config | Add-Member -Name "notificationAliases" -Type NoteProperty $notificationAliasesArray
     $config | Add-Member -Name "codebaseAdmins" -Type NoteProperty $codebaseAdminsArray
     $config | Add-Member -Name "instanceUrl" -Type NoteProperty $instanceUrl
     $config | Add-Member -Name "projectName" -Type NoteProperty $projectName
     $config | Add-Member -Name "areaPath" -Type NoteProperty $areaPath
-    $config | Add-Member -Name "iterationPath" -Type NoteProperty $iterationpath
+    $config | Add-Member -Name "iterationPath" -Type NoteProperty $iterationPath
     $config | Add-Member -Name "tools" -Type NoteProperty $toolsArray
+    $config | Add-Member -Name "repositoryName" -Type NoteProperty "accessibility-insights-windows"
 
     return $config
 }
