@@ -70,6 +70,7 @@ function Get-ConfigObject([string]$codeBaseName,[string]$codeBaseAdmins,[string]
     $config | Add-Member -Name "codebase" -Type NoteProperty "NewOrUpdate"
     $config | Add-Member -Name "tsaStamp" -Type NoteProperty "DevDiv"
     $config | Add-Member -Name "tsaEnvironment" -Type NoteProperty "Prod"
+    $config | Add-Member -Name "template" -Type NoteProperty "TFSPowerBI"
     $config | Add-Member -Name "codebaseName" -Type NoteProperty $codeBaseName
     $config | Add-Member -Name "notificationAliases" -Type NoteProperty $notificationAliasesArray
     $config | Add-Member -Name "codebaseAdmins" -Type NoteProperty $codebaseAdminsArray
