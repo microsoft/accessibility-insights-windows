@@ -189,7 +189,6 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
-    condition: false
     inputs:
       GdnPublishTsaOnboard: true
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
