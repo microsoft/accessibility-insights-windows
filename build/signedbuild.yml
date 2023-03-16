@@ -203,10 +203,10 @@ jobs:
       script: 'xcopy /HIS %AGENT_BUILDDIRECTORY%\.gdn %BUILD_ARTIFACTSTAGINGDIRECTORY%\.gdn'
 
   - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: Guardian'
+    displayName: 'Publish Artifact: Guardian (from $(Build.ArtifactStagingDirectory)\.gdn)'
     inputs:
       ArtifactName: 'Guardian'
-      PathtoPublish: '.gdn'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)\.gdn'
 
   - task: CmdLine@2
     displayName: 'Show _sdt folders'
