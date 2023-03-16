@@ -192,11 +192,21 @@ jobs:
       GdnPublishTsaOnboard: true
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
+  - task: CmdLine@2
+    displayName: 'Show .gdn folders'
+    inputs:
+      script: 'dir /s %AGENT_BUILDDIRECTORY%\.gdn'
+
+  - task: CmdLine@2
+    displayName: 'Show _sdt folders'
+    inputs:
+      script: 'dir /s %AGENT_BUILDDIRECTORY%\_sdt'
+
   - task: PowerShell@2
-    displayName: 'Show guardian folders and abort'
+    displayName: 'Abort'
     inputs:
       targetType: "inline"
-      script: "dir -s $(AGENT_BUILDDIRECTORY)/.gdn;Write-Error 'Intentionally aborting';Exit 1"
+      script: "Write-Error 'Intentionally aborting';Exit 1"
 
 - job: SignedRelease
   dependsOn: 
