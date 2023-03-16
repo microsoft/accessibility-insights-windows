@@ -193,15 +193,14 @@ jobs:
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
   - task: CmdLine@2
-    displayName: 'Show .gdn folders'
+    displayName: 'Show $(Agent.BuildDirectory)\.gdn folders'
     inputs:
       script: 'dir /s %AGENT_BUILDDIRECTORY%\.gdn'
 
-  - task: CopyFiles@2
-    displayName: 'Copy .gdn files to: $(Build.ArtifactStagingDirectory)'
+  - task: CmdLine@2
+    displayName: 'xcopy /HIS $(Agent.BuildDirectory)\.gdn $(Build.ArtifactStagingDirectory)\.gdn'
     inputs:
-      Contents: '$(Agent.BuildDirectory)\.gdn\**\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+      script: 'xcopy /HIS %AGENT_BUILDDIRECTORY%\.gdn %BUILD_ARTIFACTSTAGINGDIRECTORY%\.gdn'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: Guardian'
