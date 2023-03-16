@@ -142,7 +142,6 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: 'Run CredScan'
     inputs:
-      toolMajorVersion: V3
       verboseOutput: true
       debugMode: false
 
@@ -186,12 +185,18 @@ jobs:
       targetType: "filePath"
       filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
       arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAV2ProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAV2AreaPath)" -IterationPath "$(TSAV2IterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "CredScan;.NET Analyzers;PoliCheck" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
-  
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
     inputs:
       GdnPublishTsaOnboard: true
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
+
+  - task: PowerShell@2
+    displayName: 'Show guardian folders and abort'
+    inputs:
+      targetType: "inline"
+      script: "dir -s $(AGENT_BUILDDIRECTORY)/.gdn;Write-Error 'Intentionally aborting';Exit 1"
 
 - job: SignedRelease
   dependsOn: 
