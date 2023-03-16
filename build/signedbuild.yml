@@ -200,7 +200,7 @@ jobs:
   - task: CopyFiles@2
     displayName: 'Copy .gdn files to: $(Build.ArtifactStagingDirectory)'
     inputs:
-      Contents: '$(Agent.BuildDirectory)/.gdn/**'
+      Contents: '$(Agent.BuildDirectory)\.gdn\**\**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - task: PublishBuildArtifacts@1
