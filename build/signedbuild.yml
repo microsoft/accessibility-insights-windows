@@ -164,10 +164,6 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
     displayName: 'Create Security Analysis Report (CredScan, RoslynAnalyzers, and PoliCheck)'
-    inputs:
-      CredScan: true
-      RoslynAnalyzers: true
-      PoliCheck: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
     displayName: 'Publish Security Analysis Logs (CredScan, RoslynAnalyzers, and PoliCheck)'
@@ -193,28 +189,12 @@ jobs:
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
   - task: CmdLine@2
-    displayName: 'Show $(Agent.BuildDirectory)\.gdn folders'
+    displayName: 'Show $(Agent.BuildDirectory)\.gdn folders (for diagnostics)'
     inputs:
       script: 'dir /s %AGENT_BUILDDIRECTORY%\.gdn'
 
-  - task: CmdLine@2
-    displayName: 'xcopy /HIS $(Agent.BuildDirectory)\.gdn $(Build.ArtifactStagingDirectory)\.gdn'
-    inputs:
-      script: 'xcopy /HIS %AGENT_BUILDDIRECTORY%\.gdn %BUILD_ARTIFACTSTAGINGDIRECTORY%\.gdn'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: Guardian (from $(Build.ArtifactStagingDirectory)\.gdn)'
-    inputs:
-      ArtifactName: 'Guardian'
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)\.gdn'
-
-  - task: CmdLine@2
-    displayName: 'Show _sdt folders'
-    inputs:
-      script: 'dir /s %AGENT_BUILDDIRECTORY%\_sdt'
-
   - task: PowerShell@2
-    displayName: 'Abort'
+    displayName: 'Abort the build to save resources'
     inputs:
       targetType: "inline"
       script: "Write-Error 'Intentionally aborting';Exit 1"
