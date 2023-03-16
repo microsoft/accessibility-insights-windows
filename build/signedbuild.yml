@@ -197,6 +197,18 @@ jobs:
     inputs:
       script: 'dir /s %AGENT_BUILDDIRECTORY%\.gdn'
 
+  - task: CopyFiles@2
+    displayName: 'Copy .gdn files to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '$(Agent.BuildDirectory)/.gdn/**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: Guardian'
+    inputs:
+      ArtifactName: 'Guardian'
+      PathtoPublish: '.gdn'
+
   - task: CmdLine@2
     displayName: 'Show _sdt folders'
     inputs:
