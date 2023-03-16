@@ -170,10 +170,6 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
     displayName: 'Post Analysis (CredScan, RoslynAnalyzers, and PoliCheck)'
-    inputs:
-      CredScan: true
-      RoslynAnalyzers: true
-      PoliCheck: true
 
   - task: PowerShell@2
     displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
@@ -290,16 +286,12 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
     displayName: 'Create Security Analysis Report (BinSkim)'
-    inputs:
-      BinSkim: true
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
     displayName: 'Publish Security Analysis Logs (BinSkim)'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
     displayName: 'Post Analysis (BinSkim)'
-    inputs:
-      BinSkim: true
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
