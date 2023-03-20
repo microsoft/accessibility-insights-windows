@@ -28,8 +28,16 @@ The tool[s] for which uploads are expected, as a semicolon delimited list
 .PARAMETER OutputFile
 The fully qualified path to the output file. Assumes that the folder already exists
 
-.Example Usage 
-.\create-tsa-config.ps1 -InstanceUrl MyInstancUrl -ProjectName MyProject -CodeBaseAdmins Domain/user1;Domain/user2 -AreaPath MyAreaPath -IterationPath -MyIterationPath -NotificationAliases MyTeam@MyCompany.com -Tools CredScan;Roslyn -OutputFolder .\tsa.config
+.EXAMPLE
+PS> .\create-tsa-config.ps1 `
+        -InstanceUrl "MyInstanceUrl" `
+        -ProjectName "MyProject" `
+        -CodeBaseAdmins "Domain/user1;Domain/user2" `
+        -AreaPath "MyAreaPath" `
+        -IterationPath "MyIterationPath" `
+        -NotificationAliases "MyTeam@MyCompany.com" `
+        -Tools "CredScan;Roslyn" `
+        -OutputFile ".\tsa.config"
 #>
 
 param(
