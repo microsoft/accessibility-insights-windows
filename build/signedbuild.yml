@@ -185,17 +185,6 @@ jobs:
       GdnPublishTsaOnboard: true
       GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
-  - task: CmdLine@2
-    displayName: 'Show $(Agent.BuildDirectory)\.gdn folders (for diagnostics)'
-    inputs:
-      script: 'dir /s %AGENT_BUILDDIRECTORY%\.gdn'
-
-  - task: PowerShell@2
-    displayName: 'Abort the build to save resources'
-    inputs:
-      targetType: "inline"
-      script: "Write-Error 'Intentionally aborting';Exit 1"
-
 - job: SignedRelease
   dependsOn: 
   - ComplianceRelease
