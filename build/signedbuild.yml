@@ -142,6 +142,7 @@ jobs:
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
     displayName: 'Run CredScan'
     inputs:
+      outputFormat: 'pre'
       verboseOutput: true
       debugMode: false
 
