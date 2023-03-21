@@ -59,7 +59,7 @@ function Get-Client()
     Add-Type -Path ((Get-Location).Path + "\Octokit.$($env:OctokitVersion)\lib\netstandard2.0\Octokit.dll")
 
     # Get a new client
-    $productHeader = [Octokit.ProductHeaderValue]::new("Production-Pipeline-PreValidation")
+    $productHeader = [Octokit.ProductHeaderValue]::new("Production-Old-Release-Cleanup")
     $client = [Octokit.GitHubClient]::new($productHeader)
 
     # Add credentials for authentication
