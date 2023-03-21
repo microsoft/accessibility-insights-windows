@@ -8,7 +8,6 @@ Set build variables that will be consumed by downstream scripts. It sets the fol
     A11yInsightsMinProdVersionTag    is the minimum supported Prod Release once this version deploys to Prod
 
 The script is assumed to run from $(Release.PrimaryArtifactSourceAlias)
-
 #>
 
 Set-StrictMode -Version Latest

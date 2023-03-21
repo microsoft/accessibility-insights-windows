@@ -9,7 +9,6 @@ Set build variables that will be consumed by downstream scripts. It sets the fol
     A11yInsightsTagName    is the associated tag name (e.g., v1.1.2227.01) for this release
 
 This script is assumed to run from $(Release.PrimaryArtifactSourceAlias)
-
 #>
 
 Set-StrictMode -Version Latest
