@@ -263,6 +263,12 @@ jobs:
       PathtoPublish: 'src\Manifest\bin\Release\net48'
       ArtifactName: 'manifest'
 
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish Artifact: deploy_scripts'
+    inputs:
+      PathtoPublish: '$(Build.SourcesDirectory)\tools\scripts\pipeline\deploy'
+      ArtifactName: 'deploy_scripts'
+
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
     displayName: 'Run BinSkim'
     inputs:
