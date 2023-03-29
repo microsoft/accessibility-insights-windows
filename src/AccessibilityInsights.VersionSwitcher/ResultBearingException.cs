@@ -29,7 +29,7 @@ namespace AccessibilityInsights.VersionSwitcher
         public ResultBearingException(ExecutionResult result, string message, Exception innerException = null)
             : base(message, innerException)
         {
-            if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException(nameof(message));
+            if (string.IsNullOrWhiteSpace(message)) throw new ArgumentException("parameter must be non-trivial", nameof(message));
             Result = result;
         }
 
