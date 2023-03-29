@@ -39,8 +39,9 @@ namespace AccessibilityInsights.SharedUx.Controls
 
         public TwoStateButtonViewModel vmEventRecorder { get; private set; } = new TwoStateButtonViewModel(ButtonState.Off);
 
-        private Stream startRecordingSoundStream, stopRecordingSoundStream;
-        private SoundPlayer player;
+        private readonly Stream startRecordingSoundStream;
+        private readonly Stream stopRecordingSoundStream;
+        private readonly SoundPlayer player;
 
         /// <summary>
         /// Event handler to main window for recording start
