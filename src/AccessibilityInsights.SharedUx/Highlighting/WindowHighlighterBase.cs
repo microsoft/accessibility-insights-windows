@@ -88,10 +88,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void UpdateElement(A11yElement el)
         {
-            if (el != null && Items.TryGetValue(el, out var value))
+            if (el != null && Items.TryGetValue(el, out GroupHighlighterItem hdo))
             {
-                var hdo = value;
-
                 if (!el.BoundingRectangle.IsEmpty && this.Dimensions.IntersectsWith(el.BoundingRectangle))
                 {
                     var l = (el.BoundingRectangle.Left - Dimensions.Left) / DPI;
@@ -255,9 +253,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void RemoveElement(A11yElement el)
         {
-            if (el != null && Items.TryGetValue(el, out var value))
+            if (el != null && Items.TryGetValue(el, out GroupHighlighterItem elem))
             {
-                var elem = value;
                 if (elem.Release())
                 {
                     canvas.Children.Remove(elem.BrdrError);
