@@ -21,7 +21,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
         private ScannerResultCustomListContext _controlContext;
         private bool _ignoreNextSelectionChange;
 
+#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         public int SelectedIndex => lvDetails.SelectedIndex;
+#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
 
         public ViewBase View => this.gvRules;
 

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CommonUxComponents.Controls;
 using AccessibilityInsights.CommonUxComponents.Dialogs;
@@ -211,7 +211,9 @@ namespace AccessibilityInsights.Modes
         /// Update UI based on Active Setting Mode.
         /// </summary>
         /// <param name="mode"></param>
+#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         private void UpdateUIBasedOnSettingMode(SettingModes mode)
+#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
         {
             if (mode == SettingModes.Application || mode == SettingModes.Connection)
             {

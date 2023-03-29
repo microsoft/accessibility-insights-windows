@@ -347,7 +347,9 @@ namespace AccessibilityInsights.SharedUx.Controls.CustomControls
             }
         }
 
+#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         internal void CheckAllBoxes()
+#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
         {
             CheckAllBoxes(lvResults, true);
         }
