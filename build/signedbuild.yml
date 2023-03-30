@@ -172,13 +172,18 @@ jobs:
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
     displayName: 'Post Analysis (CredScan, RoslynAnalyzers, and PoliCheck)'
+    inputs:
+      GdnBreakAllTools: false
+      GdnBreakGdnToolPoliCheck: false
+      GdnBreakGdnToolRoslynAnalyzers: false
+      GdnBreakGdnToolCredScan: true
 
   - task: PowerShell@2
     displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
     inputs:
       targetType: "filePath"
       filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAV2ProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAV2AreaPath)" -IterationPath "$(TSAV2IterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "CredScan;RoslynAnalyzers;PoliCheck" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
+      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "CredScan;RoslynAnalyzers;PoliCheck" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
 
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
@@ -308,7 +313,7 @@ jobs:
     inputs:
       targetType: "filePath"
       filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAV2ProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAV2AreaPath)" -IterationPath "$(TSAV2IterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "BinSkim" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
+      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "BinSkim" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
   
   - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
     displayName: 'TSA upload (BinSkim)'
