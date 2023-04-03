@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.Extensions.AzureDevOps</AssemblyName>
@@ -24,7 +24,7 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.27.0" />
-    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.27.0" />
+    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.28.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.27.0" />
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="16.170.0" />
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="16.170.0" />
