@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   This project exists to produce the AccessibilityInsights.CustomActions.CA.dll file that is
   consumed by the MSI installer. It's a very non-standard project, so exercise extreme care
@@ -65,7 +65,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="WiX" Version="3.11.2" />
+    <PackageReference Include="WiX" Version="4.0.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PlaceholderClass.cs" />

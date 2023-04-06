@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.VersionSwitcher</AssemblyName>
@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="WiX" Version="3.11.2" />
+    <PackageReference Include="WiX" Version="4.0.0" />
     <Reference Include="Microsoft.Deployment.WindowsInstaller" Version="3.0.0.0">
       <HintPath>..\packages\WiX.3.11.2\tools\Microsoft.Deployment.WindowsInstaller.dll</HintPath>
     </Reference>
