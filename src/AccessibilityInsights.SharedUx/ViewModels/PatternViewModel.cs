@@ -98,9 +98,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         /// <summary>
         /// No tooltip for parent nodes
         /// </summary>
-#pragma warning disable CA1822
         public string ToolTip
-#pragma warning restore CA1822
         {
             get
             {
@@ -155,10 +153,7 @@ namespace AccessibilityInsights.SharedUx.ViewModels
             IMainWindow wnd = Application.Current.MainWindow as IMainWindow;
 
             // Watson crashes suggest that this will be null sometimes
-            if (wnd != null)
-            {
-                wnd.SetAllowFurtherAction(enabled);
-            }
+            wnd?.SetAllowFurtherAction(enabled);
         }
 
         internal void Clear()

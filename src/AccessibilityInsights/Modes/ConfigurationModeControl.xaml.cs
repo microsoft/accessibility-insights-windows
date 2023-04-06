@@ -211,9 +211,7 @@ namespace AccessibilityInsights.Modes
         /// Update UI based on Active Setting Mode.
         /// </summary>
         /// <param name="mode"></param>
-#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         private void UpdateUIBasedOnSettingMode(SettingModes mode)
-#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
         {
             if (mode == SettingModes.Application || mode == SettingModes.Connection)
             {

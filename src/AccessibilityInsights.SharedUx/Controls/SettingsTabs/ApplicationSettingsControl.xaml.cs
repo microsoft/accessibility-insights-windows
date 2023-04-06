@@ -29,9 +29,7 @@ namespace AccessibilityInsights.SharedUx.Controls.SettingsTabs
         /// </summary>
         HotkeyGrabDialog HkDialog;
 
-#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         public ReleaseChannel SelectedReleaseChannel => ctrlChannelConfig.VM.CurrentChannel;
-#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
 
         /// <summary>
         /// Updates save button state based on data changes

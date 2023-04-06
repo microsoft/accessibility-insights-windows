@@ -138,9 +138,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             tbConfidence.Text = result.Confidence.ToString();
         }
 
-#pragma warning disable CA1822 // Analyzer incorectly thinks this can be static
         private void SetConfidenceVisibility(Visibility visibility)
-#pragma warning restore CA1822 // Analyzer incorectly thinks this can be static
         {
             tbConfidence.Visibility = visibility;
             tbConfidenceLabel.Visibility = visibility;
