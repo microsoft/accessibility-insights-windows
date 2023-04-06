@@ -267,14 +267,8 @@ namespace AccessibilityInsights.SharedUx.Controls
 #endif
             /// in the case that UIElement is not alive any more, it will fail.
             /// we need to handle it properly
-            HierarchyNodeViewModel rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, IsLiveMode);
-
-            // send exception to mode control.
-            if (rnvm == null)
-            {
+            HierarchyNodeViewModel rnvm = ec.DataContext.GetRootNodeHierarchyViewModel(Configuration.ShowAncestry, Configuration.ShowUncertain, IsLiveMode) ??
                 throw new ApplicationException(Properties.Resources.HierarchyControl_PopulateHierarchyTree_No_data_to_populate_hierarchy);
-            }
-
             UpdateTreeView(rnvm, expandall);
 
             this._selectedElement = ec.Element;

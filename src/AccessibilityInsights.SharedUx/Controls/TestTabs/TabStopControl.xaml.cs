@@ -108,9 +108,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
         /// <summary>
         /// Gets/sets fastpass highlighter visibility, updating as necessary
         /// </summary>
-#pragma warning disable CA1822
         public bool HighlightVisibility
-#pragma warning restore CA1822
         {
             get
             {

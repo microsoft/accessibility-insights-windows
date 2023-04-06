@@ -12,8 +12,6 @@ namespace AccessibilityInsights.SharedUx.ViewModels
     /// </summary>
     public class AboutTabViewModel : ViewModelBase
     {
-#pragma warning disable CA1822
-
         /// <summary>
         /// Provides the text for the UIAccess label
         /// </summary>
@@ -48,6 +46,5 @@ namespace AccessibilityInsights.SharedUx.ViewModels
         public string VersionInfoLabel => VersionTools.AppVersionLabel;
 
         public string AxeVersion => VersionTools.AxeVersion;
-#pragma warning restore CA1822
     }
 }

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using Axe.Windows.Core.Bases;
 using System.Collections.Generic;
@@ -88,10 +88,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void UpdateElement(A11yElement el)
         {
-            if (el != null && Items.ContainsKey(el))
+            if (el != null && Items.TryGetValue(el, out GroupHighlighterItem hdo))
             {
-                var hdo = Items[el];
-
                 if (!el.BoundingRectangle.IsEmpty && this.Dimensions.IntersectsWith(el.BoundingRectangle))
                 {
                     var l = (el.BoundingRectangle.Left - Dimensions.Left) / DPI;
@@ -255,9 +253,8 @@ namespace AccessibilityInsights.SharedUx.Highlighting
         /// <param name="el"></param>
         public void RemoveElement(A11yElement el)
         {
-            if (el != null && Items.ContainsKey(el))
+            if (el != null && Items.TryGetValue(el, out GroupHighlighterItem elem))
             {
-                var elem = Items[el];
                 if (elem.Release())
                 {
                     canvas.Children.Remove(elem.BrdrError);

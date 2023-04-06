@@ -1,0 +1,8 @@
+# Local suppressions
+root = false
+
+###############################
+# Noisy rules to suppress     #
+###############################
+[*.{cs}]
+dotnet_diagnostic.CA1822.severity = none
