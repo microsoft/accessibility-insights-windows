@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.Extensions.Helpers;
 using Newtonsoft.Json;
@@ -87,12 +87,7 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             }
 
             // For serialization purposes, we need a concrete class. Allocate one if necessary
-            ConnectionInfo typedConnection = connection as ConnectionInfo;
-            if (typedConnection == null)
-            {
-                typedConnection = new ConnectionInfo(connection);
-            }
-
+            ConnectionInfo typedConnection = connection as ConnectionInfo ?? new ConnectionInfo(connection);
             CachedConnections.Add(typedConnection);
             return removed > 0 || reachedCapacity;
         }
