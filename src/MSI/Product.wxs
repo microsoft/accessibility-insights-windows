@@ -76,6 +76,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net48\HtmlAgilityPack.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.ApplicationInsights.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Azure.DevOps.Comments.WebApi.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Azure.Pipelines.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Bcl.AsyncInterfaces.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Deployment.WindowsInstaller.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.Abstractions.dll" />
@@ -88,6 +89,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Core.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Dashboards.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" />
+              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Pipelines.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Policy.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Test.WebApi.dll" />
