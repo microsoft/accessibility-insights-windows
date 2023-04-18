@@ -72,7 +72,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
               <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.SystemAbstractions.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Telemetry.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Win32.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Ben.Demystifier.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\CommandLine.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\HtmlAgilityPack.dll" />
               <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.ApplicationInsights.dll" />
