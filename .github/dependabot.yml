@@ -5,6 +5,7 @@ updates:
   schedule:
     interval: daily
     time: "13:00"
+  open-pull-requests-limit: 10 # We use 4 VS Studio assemblies that need to merge in a specific order. Default value of 5 has been problematic
   ignore:
   - dependency-name: Microsoft.ApplicationInsights
     versions:

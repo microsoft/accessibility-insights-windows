@@ -28,7 +28,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ForceDependency(typeof(Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.WitConstants));
             ForceDependency(typeof(Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.BuildDefinitionReference));
             ForceDependency(typeof(Microsoft.VisualStudio.Services.TestResults.WebApi.Attachment));
-            ForceDependency(typeof(System.Diagnostics.EnhancedStackFrame));  // Ben.Demystifier
         }
 
         private static void ManuallyEnforcedDependencies()
@@ -40,7 +39,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
             ForceDependency(typeof(Microsoft.IdentityModel.Tokens.AsymmetricSecurityKey));
             ForceDependency(typeof(System.IdentityModel.Tokens.Jwt.JsonClaimValueTypes));
             ForceDependency(typeof(System.Net.Http.Formatting.BaseJsonMediaTypeFormatter));
-            ForceDependency(typeof(System.Reflection.Metadata.ArrayShape));
         }
 #pragma warning restore IDE0051 // Refer to class summary for why these are here
     }
