@@ -176,6 +176,7 @@ $releases.Result | Select-Object -Property Name, TagName | Format-Table
 $releaseMap = SortReleases $releases
 
 $foundMinProdVersion = $false
+$deleteList = @()
 
 foreach($releaseKV in $releaseMap)
 {
