@@ -74,9 +74,8 @@
                             <Button.ContextMenu>
                                 <ContextMenu AutomationProperties.Name="{x:Static Properties:Resources.btnSettingContextMenuAutomationPropertiesName}" Style="{StaticResource menuPlainWhite}">
                                     <MenuItem Header="{x:Static Properties:Resources.mniShowCorePropsHeader}" x:Name="mniShowCoreProps" IsCheckable="true" 
-                                    Background="White" Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
-                                    <MenuItem Header="{x:Static Properties:Resources.mniIncludeAllPropsHeader}" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"
-                                    Background="White"/>
+                                    Checked="mniShowCoreProps_Checked" Unchecked="mniShowCoreProps_Unchecked" Loaded="mniShowCoreProps_Loaded"/>
+                                    <MenuItem Header="{x:Static Properties:Resources.mniIncludeAllPropsHeader}" x:Name="mniIncludeAllProps" Click="mniIncludeAllProps_Click"/>
                                 </ContextMenu>
                             </Button.ContextMenu>
                         </Button>
