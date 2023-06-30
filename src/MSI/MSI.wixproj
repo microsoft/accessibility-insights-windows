@@ -1,5 +1,6 @@
 ﻿<Project>
   <Import Project="Sdk.props" Sdk="WixToolset.Sdk" Version="4.0.1" />
+
   <PropertyGroup>
     <OutputName>AccessibilityInsights</OutputName>
     <Revision Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER.Substring($(BUILD_BUILDNUMBER.LastIndexOf(`.`))))</Revision>
@@ -12,17 +13,21 @@
     <SignOutput>true</SignOutput>
     <Name>MSI</Name>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DefineConstants>Debug;BuildVer=$(BuildNumber);</DefineConstants>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DefineConstants>BuildVer=$(BuildNumber);</DefineConstants>
     <SuppressSpecificWarnings>1076;69</SuppressSpecificWarnings>
   </PropertyGroup>
+
   <!--<ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="bin\Debug\" />
   </ItemGroup>-->
+
   <ItemGroup>
     <PackageReference Include="WixToolset.NetFx.wixext" Version="4.0.1" />
     <PackageReference Include="WixToolset.UI.wixext" Version="4.0.1" />
@@ -32,12 +37,15 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\AccessibilityInsights.CustomActions.Package\CustomActions.Package.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.VersionSwitcher\VersionSwitcher.csproj" />
     <ProjectReference Include="..\AccessibilityInsights\AccessibilityInsights.csproj" />
   </ItemGroup>
+
   <Import Project="Sdk.targets" Sdk="WixToolset.Sdk" Version="4.0.1" />
+
   <Target Name="AfterBuild">
     <Copy SourceFiles="$(OutputPath)AccessibilityInsights.msi" DestinationFolder="$(OutputPath)\msi\$(BuildNumber)" ContinueOnError="true" />
   </Target>

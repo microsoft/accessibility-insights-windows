@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright (c) Microsoft. All rights reserved.
 Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
@@ -6,12 +6,15 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
            Manufacturer="Microsoft"
            UpgradeCode="0D760959-F713-46C4-9A3D-4E73619EE3B5"
            InstallerVersion="200">
+
     <MajorUpgrade Schedule="afterInstallInitialize" RemoveFeatures="All"
                   AllowDowngrades="no"
-                  DowngradeErrorMessage="A newer version of [ProductName] is already installed."
-                  AllowSameVersionUpgrades="no" />
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." 
+                  AllowSameVersionUpgrades="no"/>
+
     <Binary Id="CustomActions"
             SourceFile="AccessibilityInsights.CustomActions.CA.dll" />
+
     <UI>
       <ui:WixUI Id="WixUI_InstallDir" />
       <Publish Dialog="ExitDialog"
@@ -19,6 +22,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             Event="DoAction"
             Value="LaunchInstalledExe" Condition="NOT Installed" />
     </UI>
+
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />
@@ -42,7 +46,8 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
         <Directory Id="INSTALLFOLDER" Name="1.1">
           <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
             <File Id="FileExe" Source="AccessibilityInsights.exe" KeyPath="yes">
-              <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows" Description="Accessibility Insights For Windows v1.1" WorkingDirectory="INSTALLFOLDER" Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
+              <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
+                        Description="Accessibility Insights For Windows v1.1" WorkingDirectory="INSTALLFOLDER" Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
             </File>
             <File Id="AccessibilityInsights.exe.config" Source="AccessibilityInsights.exe.config" />
             <File Id="AccessibilityInsights.exe.manifest" Source="AccessibilityInsights.exe.manifest" />
@@ -133,6 +138,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
                 <Verb Id="open" Command="Open" TargetFile="FileExe" Argument="&quot;%1&quot;" />
               </Extension>
             </ProgId>
+
             <ProgId Id="A11y.Event" Description="Accessibility Insights For Windows Events file">
               <Extension Id="a11yevent" ContentType="AccessibilityInsights Events File">
                 <Verb Id="open" Command="Open" TargetFile="FileExe" Argument="&quot;%1&quot;" />
@@ -179,11 +185,12 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
       <Directory Id="ApplicationProgramsFolder" Name="AccessibilityInsights" />
     </StandardDirectory>
 
+    <!-- Note that, while the Icon's Id must have the same file extension as the shortcut's target, the source can be an ICO file (does not have to be a PE file). This change reduces the size of your MSI file -->
     <Icon Id="AccessibilityInsights.exe" SourceFile="..\AccessibilityInsights.SharedUx\Resources\Icons\BrandIconDesktop.ico" />
 
     <Property Id="WixShellExecTarget" Value="[#FileExe]"/>
-    <CustomAction Id="LaunchInstalledExe" DllEntry="WixShellExec" Impersonate="yes" BinaryRef="Wix4UtilCA_X86" />
-    <CustomAction Id="RemoveUserConfigFiles" DllEntry="RemoveUserConfigFiles" Impersonate="yes" BinaryRef="CustomActions" />
+    <CustomAction Id="LaunchInstalledExe" BinaryRef="Wix4UtilCA_X86" DllEntry="WixShellExec" Impersonate="yes" />
+    <CustomAction Id="RemoveUserConfigFiles" BinaryRef="CustomActions" DllEntry="RemoveUserConfigFiles" Impersonate="yes" />
 
     <InstallExecuteSequence>
       <Custom Action="RemoveUserConfigFiles" After="InstallFinalize" Condition="Installed and (REMOVE=&quot;ALL&quot;) and NOT UPGRADINGPRODUCTCODE" />
