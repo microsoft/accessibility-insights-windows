@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.CustomActions;
 using AccessibilityInsights.SetupLibrary;
-using Microsoft.Deployment.WindowsInstaller;
+using WixToolset.Dtf.WindowsInstaller;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

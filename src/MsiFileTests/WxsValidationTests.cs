@@ -87,7 +87,7 @@ namespace MsiFileTests
                         else if (reader.Name == "File" && thisIsTheCorrectComponent)
                         {
                             string relativeFile = reader.GetAttribute("Source");
-                            filesInSection.Add(Path.GetFileName(relativeFile.Substring(2)));
+                            filesInSection.Add(Path.GetFileName(relativeFile));
                         }
                     }
                 }

@@ -13,7 +13,7 @@
   <ItemGroup>
     <Drop3PartySignedFile Include="$(TargetDir)\CommandLine.dll" />
     <Drop3PartySignedFile Include="$(TargetDir)\HtmlAgilityPack.dll" />
-    <Drop3PartySignedFile Include="$(TargetDir)\Microsoft.Deployment.WindowsInstaller.dll" />
+    <Drop3PartySignedFile Include="$(TargetDir)\WixToolset.Dtf.WindowsInstaller.dll" />
     <Drop3PartySignedFile Include="$(TargetDir)\Newtonsoft.Json.dll" />
   </ItemGroup>
 

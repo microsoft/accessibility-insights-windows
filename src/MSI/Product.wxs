@@ -1,31 +1,29 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright (c) Microsoft. All rights reserved.
 Licensed under the MIT license. See LICENSE file in the project root for full license information.-->
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
-     xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension">
-  <Product Id="*"
-           Name="Accessibility Insights For Windows v1.1" Language="1033" Version="$(var.BuildVer)" 
-           Manufacturer="Microsoft" 
-           UpgradeCode="0D760959-F713-46C4-9A3D-4E73619EE3B5">
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x86"/>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+  <Package Name="Accessibility Insights For Windows v1.1" Language="1033" Version="$(var.BuildVer)"
+           Manufacturer="Microsoft"
+           UpgradeCode="0D760959-F713-46C4-9A3D-4E73619EE3B5"
+           InstallerVersion="200">
     <MajorUpgrade Schedule="afterInstallInitialize" RemoveFeatures="All"
                   AllowDowngrades="no"
-                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." 
-                  AllowSameVersionUpgrades="no"/>
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+                  AllowSameVersionUpgrades="no" />
     <Binary Id="CustomActions"
-            SourceFile="..\AccessibilityInsights.CustomActions.Package\bin\Release\AccessibilityInsights.CustomActions.CA.dll" />
+            SourceFile="AccessibilityInsights.CustomActions.CA.dll" />
     <UI>
-      <UIRef Id="WixUI_InstallDir"/>
+      <ui:WixUI Id="WixUI_InstallDir" />
       <Publish Dialog="ExitDialog"
             Control="Finish"
             Event="DoAction"
-            Value="LaunchInstalledExe">NOT Installed</Publish>
+            Value="LaunchInstalledExe" Condition="NOT Installed" />
     </UI>
     <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"/>
 
     <WixVariable Id="WixUIDialogBmp" Value="Resources\DialogBackground.png" />
     <WixVariable Id="WixUIBannerBmp" Value="Resources\WixDialogBanner.png" />
-    <WixVariable Id="WixUILicenseRtf" Value="..\AccessibilityInsights\bin\Release\net48\eula.rtf" />
+    <WixVariable Id="WixUILicenseRtf" Value="eula.rtf" />
 
     <MediaTemplate EmbedCab="yes" />
 
@@ -36,168 +34,160 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
       <ComponentRef Id="ApplicationShortcut" />
     </Feature>
 
-    <!--Until WIX_IS_NETFRAMEWORK_47_OR_LATER_INSTALLED property is supported,
-    this is our workaround as suggested here: https://github.com/wixtoolset/issues/issues/5575 -->
-    <!-- .NET 4.8 value is taken from https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies -->
-    <PropertyRef Id="NETFRAMEWORK45" />
-    <Condition Message="[ProductName] requires .NET Framework 4.8 or later.">
-      <![CDATA[Installed OR (NETFRAMEWORK45 AND NETFRAMEWORK45 >= "#528040")]]>
-    </Condition>
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
+    <Launch Condition="Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" Message="[ProductName] requires .NET Framework 4.8 or later." />
 
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="AccessibilityInsightsFolder" Name="AccessibilityInsights" >
-          <Directory Id="INSTALLFOLDER" Name="1.1">
-            <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
-              <File Id="FileExe" Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.exe" KeyPath="yes" >
-                <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows"
-                          Description="Accessibility Insights For Windows v1.1" WorkingDirectory='INSTALLFOLDER' Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
-              </File>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.exe.config" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.exe.manifest" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.CommonUxComponents.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Extensions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Extensions.AzureDevOps.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Extensions.GitHub.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Extensions.Telemetry.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.SetupLibrary.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.SharedUx.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.Win32.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Actions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Core.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Desktop.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Rules.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.RuleSelection.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.SystemAbstractions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Telemetry.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Axe.Windows.Win32.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\CommandLine.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\HtmlAgilityPack.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.ApplicationInsights.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Azure.DevOps.Comments.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Azure.Pipelines.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Bcl.AsyncInterfaces.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Deployment.WindowsInstaller.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.Abstractions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.JsonWebTokens.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.Logging.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.IdentityModel.Tokens.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Build2.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Common.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Core.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Dashboards.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Pipelines.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Policy.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Test.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.TestManagement.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Wiki.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.Work.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.VisualStudio.Services.Client.Interactive.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.VisualStudio.Services.Common.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.VisualStudio.Services.TestResults.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.VisualStudio.Services.WebApi.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Web.WebView2.Core.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Web.WebView2.WinForms.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Web.WebView2.Wpf.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Win32.Registry.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Xaml.Behaviors.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\Newtonsoft.Json.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Buffers.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Collections.Immutable.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Diagnostics.DiagnosticSource.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Drawing.Common.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.IdentityModel.Tokens.Jwt.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.IO.Packaging.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Memory.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Net.Http.Formatting.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Numerics.Vectors.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Reflection.Metadata.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Reflection.MetadataLoadContext.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Runtime.CompilerServices.Unsafe.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Security.AccessControl.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Security.Principal.Windows.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Text.Encodings.Web.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Text.Json.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Threading.Tasks.Extensions.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.ValueTuple.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Web.Http.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\System.Web.Http.WebHost.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\WebView2Loader.dll" />
-              <File Source="..\AccessibilityInsights\bin\Release\net48\ThirdPartyNotices.html"/>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\eula.rtf"/>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\links.json"/>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\UIAccess.cmd"/>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\UIAccess_Disabled.manifest"/>
-              <File Source="..\AccessibilityInsights\bin\Release\net48\UIAccess_Enabled.manifest"/>
+    <StandardDirectory Id="ProgramFilesFolder">
+      <Directory Id="AccessibilityInsightsFolder" Name="AccessibilityInsights">
+        <Directory Id="INSTALLFOLDER" Name="1.1">
+          <Component Id="ProductComponent" Guid="21CE5D3B-FE98-4B24-B1CE-FE2FE646B2A2">
+            <File Id="FileExe" Source="AccessibilityInsights.exe" KeyPath="yes">
+              <Shortcut Id="aiforwin" Directory="DesktopFolder" Name="Accessibility Insights For Windows" Description="Accessibility Insights For Windows v1.1" WorkingDirectory="INSTALLFOLDER" Icon="AccessibilityInsights.exe" IconIndex="0" Advertise="yes" />
+            </File>
+            <File Id="AccessibilityInsights.exe.config" Source="AccessibilityInsights.exe.config" />
+            <File Id="AccessibilityInsights.exe.manifest" Source="AccessibilityInsights.exe.manifest" />
+            <File Id="AccessibilityInsights.CommonUxComponents.dll" Source="AccessibilityInsights.CommonUxComponents.dll" />
+            <File Id="AccessibilityInsights.Extensions.dll" Source="AccessibilityInsights.Extensions.dll" />
+            <File Id="AccessibilityInsights.Extensions.AzureDevOps.dll" Source="AccessibilityInsights.Extensions.AzureDevOps.dll" />
+            <File Id="AccessibilityInsights.Extensions.GitHub.dll" Source="AccessibilityInsights.Extensions.GitHub.dll" />
+            <File Id="AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" Source="AccessibilityInsights.Extensions.GitHubAutoUpdate.dll" />
+            <File Id="AccessibilityInsights.Extensions.Telemetry.dll" Source="AccessibilityInsights.Extensions.Telemetry.dll" />
+            <File Id="AccessibilityInsights.SetupLibrary.dll" Source="AccessibilityInsights.SetupLibrary.dll" />
+            <File Id="AccessibilityInsights.SharedUx.dll" Source="AccessibilityInsights.SharedUx.dll" />
+            <File Id="AccessibilityInsights.Win32.dll" Source="AccessibilityInsights.Win32.dll" />
+            <File Id="Axe.Windows.Actions.dll" Source="Axe.Windows.Actions.dll" />
+            <File Id="Axe.Windows.Core.dll" Source="Axe.Windows.Core.dll" />
+            <File Id="Axe.Windows.Desktop.dll" Source="Axe.Windows.Desktop.dll" />
+            <File Id="Axe.Windows.Rules.dll" Source="Axe.Windows.Rules.dll" />
+            <File Id="Axe.Windows.RuleSelection.dll" Source="Axe.Windows.RuleSelection.dll" />
+            <File Id="Axe.Windows.SystemAbstractions.dll" Source="Axe.Windows.SystemAbstractions.dll" />
+            <File Id="Axe.Windows.Telemetry.dll" Source="Axe.Windows.Telemetry.dll" />
+            <File Id="Axe.Windows.Win32.dll" Source="Axe.Windows.Win32.dll" />
+            <File Id="CommandLine.dll" Source="CommandLine.dll" />
+            <File Id="HtmlAgilityPack.dll" Source="HtmlAgilityPack.dll" />
+            <File Id="Microsoft.ApplicationInsights.dll" Source="Microsoft.ApplicationInsights.dll" />
+            <File Id="Microsoft.Azure.DevOps.Comments.WebApi.dll" Source="Microsoft.Azure.DevOps.Comments.WebApi.dll" />
+            <File Id="Microsoft.Azure.Pipelines.WebApi.dll" Source="Microsoft.Azure.Pipelines.WebApi.dll" />
+            <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Source="Microsoft.Bcl.AsyncInterfaces.dll" />
+            <File Id="WixToolset.Dtf.WindowsInstaller.dll" Source="WixToolset.Dtf.WindowsInstaller.dll" />
+            <File Id="Microsoft.IdentityModel.Abstractions.dll" Source="Microsoft.IdentityModel.Abstractions.dll" />
+            <File Id="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" Source="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
+            <File Id="Microsoft.IdentityModel.JsonWebTokens.dll" Source="Microsoft.IdentityModel.JsonWebTokens.dll" />
+            <File Id="Microsoft.IdentityModel.Logging.dll" Source="Microsoft.IdentityModel.Logging.dll" />
+            <File Id="Microsoft.IdentityModel.Tokens.dll" Source="Microsoft.IdentityModel.Tokens.dll" />
+            <File Id="Microsoft.TeamFoundation.Build2.WebApi.dll" Source="Microsoft.TeamFoundation.Build2.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Common.dll" Source="Microsoft.TeamFoundation.Common.dll" />
+            <File Id="Microsoft.TeamFoundation.Core.WebApi.dll" Source="Microsoft.TeamFoundation.Core.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Dashboards.WebApi.dll" Source="Microsoft.TeamFoundation.Dashboards.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" Source="Microsoft.TeamFoundation.DistributedTask.Common.Contracts.dll" />
+            <File Id="Microsoft.TeamFoundation.Pipelines.WebApi.dll" Source="Microsoft.TeamFoundation.Pipelines.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Policy.WebApi.dll" Source="Microsoft.TeamFoundation.Policy.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.SourceControl.WebApi.dll" Source="Microsoft.TeamFoundation.SourceControl.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Test.WebApi.dll" Source="Microsoft.TeamFoundation.Test.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.TestManagement.WebApi.dll" Source="Microsoft.TeamFoundation.TestManagement.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Wiki.WebApi.dll" Source="Microsoft.TeamFoundation.Wiki.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.Work.WebApi.dll" Source="Microsoft.TeamFoundation.Work.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll" Source="Microsoft.TeamFoundation.WorkItemTracking.Process.WebApi.dll" />
+            <File Id="Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" Source="Microsoft.TeamFoundation.WorkItemTracking.WebApi.dll" />
+            <File Id="Microsoft.VisualStudio.Services.Client.Interactive.dll" Source="Microsoft.VisualStudio.Services.Client.Interactive.dll" />
+            <File Id="Microsoft.VisualStudio.Services.Common.dll" Source="Microsoft.VisualStudio.Services.Common.dll" />
+            <File Id="Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" Source="Microsoft.VisualStudio.Services.TestManagement.TestPlanning.WebApi.dll" />
+            <File Id="Microsoft.VisualStudio.Services.TestResults.WebApi.dll" Source="Microsoft.VisualStudio.Services.TestResults.WebApi.dll" />
+            <File Id="Microsoft.VisualStudio.Services.WebApi.dll" Source="Microsoft.VisualStudio.Services.WebApi.dll" />
+            <File Id="Microsoft.Web.WebView2.Core.dll" Source="Microsoft.Web.WebView2.Core.dll" />
+            <File Id="Microsoft.Web.WebView2.WinForms.dll" Source="Microsoft.Web.WebView2.WinForms.dll" />
+            <File Id="Microsoft.Web.WebView2.Wpf.dll" Source="Microsoft.Web.WebView2.Wpf.dll" />
+            <File Id="Microsoft.Win32.Registry.dll" Source="Microsoft.Win32.Registry.dll" />
+            <File Id="Microsoft.Xaml.Behaviors.dll" Source="Microsoft.Xaml.Behaviors.dll" />
+            <File Id="Newtonsoft.Json.dll" Source="Newtonsoft.Json.dll" />
+            <File Id="System.Buffers.dll" Source="System.Buffers.dll" />
+            <File Id="System.Collections.Immutable.dll" Source="System.Collections.Immutable.dll" />
+            <File Id="System.Diagnostics.DiagnosticSource.dll" Source="System.Diagnostics.DiagnosticSource.dll" />
+            <File Id="System.Drawing.Common.dll" Source="System.Drawing.Common.dll" />
+            <File Id="System.IdentityModel.Tokens.Jwt.dll" Source="System.IdentityModel.Tokens.Jwt.dll" />
+            <File Id="System.IO.Packaging.dll" Source="System.IO.Packaging.dll" />
+            <File Id="System.Memory.dll" Source="System.Memory.dll" />
+            <File Id="System.Net.Http.Formatting.dll" Source="System.Net.Http.Formatting.dll" />
+            <File Id="System.Numerics.Vectors.dll" Source="System.Numerics.Vectors.dll" />
+            <File Id="System.Reflection.Metadata.dll" Source="System.Reflection.Metadata.dll" />
+            <File Id="System.Reflection.MetadataLoadContext.dll" Source="System.Reflection.MetadataLoadContext.dll" />
+            <File Id="System.Runtime.CompilerServices.Unsafe.dll" Source="System.Runtime.CompilerServices.Unsafe.dll" />
+            <File Id="System.Security.AccessControl.dll" Source="System.Security.AccessControl.dll" />
+            <File Id="System.Security.Principal.Windows.dll" Source="System.Security.Principal.Windows.dll" />
+            <File Id="System.Text.Encodings.Web.dll" Source="System.Text.Encodings.Web.dll" />
+            <File Id="System.Text.Json.dll" Source="System.Text.Json.dll" />
+            <File Id="System.Threading.Tasks.Extensions.dll" Source="System.Threading.Tasks.Extensions.dll" />
+            <File Id="System.ValueTuple.dll" Source="System.ValueTuple.dll" />
+            <File Id="System.Web.Http.dll" Source="System.Web.Http.dll" />
+            <File Id="System.Web.Http.WebHost.dll" Source="System.Web.Http.WebHost.dll" />
+            <File Id="WebView2Loader.dll" Source="WebView2Loader.dll" />
+            <File Id="ThirdPartyNotices.html" Source="ThirdPartyNotices.html" />
+            <File Id="eula.rtf" Source="eula.rtf" />
+            <File Id="links.json" Source="links.json" />
+            <File Id="UIAccess.cmd" Source="UIAccess.cmd" />
+            <File Id="UIAccess_Disabled.manifest" Source="UIAccess_Disabled.manifest" />
+            <File Id="UIAccess_Enabled.manifest" Source="UIAccess_Enabled.manifest" />
 
-              <ProgId Id='A11y.Test' Description='Accessibility Insights For Windows Test file'>
-                <Extension Id='a11ytest' ContentType='AccessibilityInsights Test File'>
-                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
-                </Extension>
-              </ProgId>
-              <ProgId Id='A11y.Event' Description='Accessibility Insights For Windows Events file'>
-                <Extension Id='a11yevent' ContentType='AccessibilityInsights Events File'>
-                  <Verb Id='open' Command='Open' TargetFile='FileExe' Argument='"%1"' />
-                </Extension>
-              </ProgId>
+            <ProgId Id="A11y.Test" Description="Accessibility Insights For Windows Test file">
+              <Extension Id="a11ytest" ContentType="AccessibilityInsights Test File">
+                <Verb Id="open" Command="Open" TargetFile="FileExe" Argument="&quot;%1&quot;" />
+              </Extension>
+            </ProgId>
+            <ProgId Id="A11y.Event" Description="Accessibility Insights For Windows Events file">
+              <Extension Id="a11yevent" ContentType="AccessibilityInsights Events File">
+                <Verb Id="open" Command="Open" TargetFile="FileExe" Argument="&quot;%1&quot;" />
+              </Extension>
+            </ProgId>
+          </Component>
+
+          <Directory Id="IssueTemplates" Name="IssueTemplates">
+            <Component Id="IssueTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
+              <File Id="IssueNoFailures.json" Source="IssueTemplates\IssueNoFailures.json" />
+              <File Id="IssueNoFailures.html" Source="IssueTemplates\IssueNoFailures.html" />
+              <File Id="IssueSingleFailure.json" Source="IssueTemplates\IssueSingleFailure.json" />
+              <File Id="IssueSingleFailure.html" Source="IssueTemplates\IssueSingleFailure.html" />
+              <File Id="IssueColorContrast.json" Source="IssueTemplates\IssueColorContrast.json" />
+              <File Id="IssueColorContrast.html" Source="IssueTemplates\IssueColorContrast.html" />
             </Component>
-
-            <Directory Id="IssueTemplates" Name="IssueTemplates">
-              <Component Id="IssueTemplateComp" Guid="FEFD2999-2F07-4422-B0C7-BA349AF734B1">
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueNoFailures.json"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueNoFailures.html"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueSingleFailure.json"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueSingleFailure.html"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueColorContrast.json"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\IssueTemplates\IssueColorContrast.html"/>
-              </Component>
-            </Directory>
-
-            <Directory Id="VersionSwitcher" Name="VersionSwitcher">
-              <Component Id="VersionSwitcherComp" Guid="1AAD6099-09E1-4E8F-A28B-57806F4A29DF">
-                <!-- ID's are needed for these files, since several of them are also installed with the main app -->
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.SetupLibrary.dll" Id ="version_switcher_setuplibrary"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\AccessibilityInsights.Win32.dll" Id ="version_switcher_win32"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Buffers.dll" Id ="version_switcher_buffers"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Collections.Immutable.dll" Id ="version_switcher_collections"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Memory.dll" Id ="version_switcher_memory"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Numerics.Vectors.dll" Id ="version_switcher_vectors"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Reflection.Metadata.dll" Id ="version_switcher_metadata"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Reflection.MetadataLoadContext.dll" Id ="version_switcher_metadataloadcontext"/>
-                <File Source="..\AccessibilityInsights.VersionSwitcher\bin\Release\net48\System.Runtime.CompilerServices.Unsafe.dll" Id ="version_switcher_unsafe"/>
-                <!-- We sign the following assemblies in the main AccessibilityInsights project. To avoid duplicate signing, we reuse them below. -->
-                <File Source="..\AccessibilityInsights\bin\Release\net48\Microsoft.Deployment.WindowsInstaller.dll" Id ="version_switcher_deployment"/>
-                <File Source="..\AccessibilityInsights\bin\Release\net48\Newtonsoft.Json.dll" Id ="version_switcher_newtonsoft"/>
-              </Component>
-            </Directory>
-
           </Directory>
+
+          <Directory Id="VersionSwitcher" Name="VersionSwitcher">
+            <Component Id="VersionSwitcherComp" Guid="1AAD6099-09E1-4E8F-A28B-57806F4A29DF">
+              <!-- ID's are needed for these files, since several of them are also installed with the main app -->
+              <File Source="AccessibilityInsights.VersionSwitcher.exe" Id="version_switcher" />
+              <File Source="AccessibilityInsights.VersionSwitcher.exe.config" Id="version_switcher_config" />
+              <File Source="AccessibilityInsights.SetupLibrary.dll" Id="version_switcher_setuplibrary" />
+              <File Source="AccessibilityInsights.Win32.dll" Id="version_switcher_win32" />
+              <File Source="System.Buffers.dll" Id="version_switcher_buffers" />
+              <File Source="System.Collections.Immutable.dll" Id="version_switcher_collections" />
+              <File Source="System.Memory.dll" Id="version_switcher_memory" />
+              <File Source="System.Numerics.Vectors.dll" Id="version_switcher_vectors" />
+              <File Source="System.Reflection.Metadata.dll" Id="version_switcher_metadata" />
+              <File Source="System.Reflection.MetadataLoadContext.dll" Id="version_switcher_metadataloadcontext" />
+              <File Source="System.Runtime.CompilerServices.Unsafe.dll" Id="version_switcher_unsafe" />
+              <!-- We sign the following assemblies in the main AccessibilityInsights project. To avoid duplicate signing, we reuse them below. -->
+              <File Source="WixToolset.Dtf.WindowsInstaller.dll" Id="version_switcher_deployment" />
+              <File Source="Newtonsoft.Json.dll" Id="version_switcher_newtonsoft" />
+            </Component>
+          </Directory>
+
         </Directory>
       </Directory>
-      <Directory Id="DesktopFolder"/>
-      <Directory Id="ProgramMenuFolder">
-        <Directory Id="ApplicationProgramsFolder" Name="AccessibilityInsights"/>
-      </Directory>
-    </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="DesktopFolder" />
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ApplicationProgramsFolder" Name="AccessibilityInsights" />
+    </StandardDirectory>
 
-    <Icon Id="AccessibilityInsights.exe" SourceFile="..\AccessibilityInsights\bin\Release\net48\AccessibilityInsights.exe" />
+    <Icon Id="AccessibilityInsights.exe" SourceFile="..\AccessibilityInsights.SharedUx\Resources\Icons\BrandIconDesktop.ico" />
 
     <Property Id="WixShellExecTarget" Value="[#FileExe]"/>
-    <CustomAction Id="LaunchInstalledExe" BinaryKey="WixCA" DllEntry="WixShellExec" Impersonate="yes" />
-    <CustomAction Id="RemoveUserConfigFiles" BinaryKey="CustomActions" DllEntry="RemoveUserConfigFiles" Impersonate="yes" />
+    <CustomAction Id="LaunchInstalledExe" DllEntry="WixShellExec" Impersonate="yes" BinaryRef="Wix4UtilCA_X86" />
+    <CustomAction Id="RemoveUserConfigFiles" DllEntry="RemoveUserConfigFiles" Impersonate="yes" BinaryRef="CustomActions" />
 
     <InstallExecuteSequence>
-      <Custom Action='RemoveUserConfigFiles' After='InstallFinalize'>Installed and (REMOVE="ALL") and NOT UPGRADINGPRODUCTCODE</Custom>
-      <Custom Action='LaunchInstalledExe' After='RemoveUserConfigFiles'>NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE</Custom>
+      <Custom Action="RemoveUserConfigFiles" After="InstallFinalize" Condition="Installed and (REMOVE=&quot;ALL&quot;) and NOT UPGRADINGPRODUCTCODE" />
+      <Custom Action="LaunchInstalledExe" After="RemoveUserConfigFiles" Condition="NOT REMOVE and WIX_UPGRADE_DETECTED and NOT SECONDSEQUENCE" />
     </InstallExecuteSequence>
 
     <DirectoryRef Id="ApplicationProgramsFolder">
@@ -211,5 +201,5 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
         <RegistryValue Root="HKCU" Key="Software\AccessibilityInsights" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
       </Component>
     </DirectoryRef>
-  </Product>
+  </Package>
 </Wix>
