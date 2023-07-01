@@ -18,11 +18,11 @@
 
   <ItemGroup>
     <!-- NOTE: If you update this version, please also update the OctokitPath parameter in the PreBuild step that appears below -->
-    <PackageReference Include="Octokit" Version="6.1.0" />
+    <PackageReference Include="Octokit" Version="6.2.1" />
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -OctokitPath &quot;%UserProfile%\.nuget\packages\Octokit\6.1.0\lib\netstandard2.0\Octokit.dll&quot; -MsiBasePath $(SolutionDir)MSI\bin\x86\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(TargetDir) -OutputFile ReleaseInfo.json" />
+    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -OctokitPath &quot;%UserProfile%\.nuget\packages\Octokit\6.2.1\lib\netstandard2.0\Octokit.dll&quot; -MsiBasePath $(SolutionDir)MSI\bin\x86\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(TargetDir) -OutputFile ReleaseInfo.json" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
