@@ -8,7 +8,7 @@
    - Add ".NET Framework 4.8 development tools"
 
 ### Install Wix tools
-To build the MSI project, you need to install the HeatWave extension for Visual Studio from FireGiant. The extension is available in the Visual Studio marketplace and can be found [here](http://wixtoolset.org/docs/intro/#vs).
+To build the MSI project, you need to install the HeatWave extension for Visual Studio. The extension is can be downloaded from the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=FireGiant.FireGiantHeatWaveDev17).
 
 ### Install WinAppDriver
 1. To run the UI tests, install WinAppDriver from [here](https://github.com/Microsoft/WinAppDriver/releases)
