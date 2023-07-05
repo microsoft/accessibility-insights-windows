@@ -16,7 +16,7 @@ namespace ManifestTests
     {
         private static readonly string RawManifestFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"Manifest\bin\Release\net48\ReleaseInfo.json"));
         private static readonly string SignedManifestFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll"));
-        private static readonly string MsiFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"MSI\bin\Release\AccessibilityInsights.msi"));
+        private static readonly string MsiFilePath = Path.GetFullPath(Path.Combine(@"..\..\..\..", @"MSI\bin\x86\Release\AccessibilityInsights.msi"));
         private static readonly ChannelInfo rawInfo = FileHelpers.LoadDataFromJSON<ChannelInfo>(RawManifestFilePath);
 
         [TestMethod]

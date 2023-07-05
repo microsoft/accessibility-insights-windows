@@ -255,13 +255,19 @@ jobs:
       Contents: '**\bin\release\**'
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+  - task: CopyFiles@2
+    displayName: 'Copy MSI file to: $(Build.ArtifactStagingDirectory)'
+    inputs:
+      Contents: '**\MSI\bin\x86\Release\**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: msi'
     inputs:
-      PathtoPublish: 'src\MSI\bin\Release\msi'
+      PathtoPublish: 'src\MSI\bin\x86\Release\msi'
       ArtifactName: 'msi'
 
   - task: PublishBuildArtifacts@1

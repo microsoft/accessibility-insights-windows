@@ -36,7 +36,7 @@ You can find more information on how to set up your development environment [her
 #### 4. Build the MSI project
 The MSI project is used to package all the code into an installer that can be used to install Accessibility Insights for Windows. This is not a required step. By default the MSI project is not built in either configuration.
 Note: The MSI can only be built in the `Release` config.
-- The MSI project requires WIX. Download and install the Wix toolset from http://wixtoolset.org/.
+- The MSI project requires WIX. WiX is a modern SDK that restore will automatically download from NuGet. Learn about the Wix toolset from http://wixtoolset.org/.
 - To build the MSI locally, set build configuration to `Release`.
 - Find the MSI project in the solution explorer under the `packages` folder.
 - Right click on the MSI project and select `Build`.
