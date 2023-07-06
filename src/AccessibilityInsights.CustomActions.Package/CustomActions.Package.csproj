@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <RootNamespace>AccessibilityInsights.CustomActions.Package</RootNamespace>
     <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Dtf.CustomAction" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Dtf.CustomAction" Version="4.0.1" />
   </ItemGroup>
 
   <Target Name="OverwriteWithSignedAssemblies" BeforeTargets="PackCustomAction">
