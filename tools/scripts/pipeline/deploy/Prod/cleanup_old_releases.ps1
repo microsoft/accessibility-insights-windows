@@ -176,6 +176,8 @@ $releases.Result | Select-Object -Property Name, TagName | Format-Table
 $releaseMap = SortReleases $releases
 
 $foundMinProdVersion = $false
+$foundLatestProdVersion = $false
+
 $deleteList = @()
 
 foreach($releaseKV in $releaseMap)
@@ -187,9 +189,23 @@ foreach($releaseKV in $releaseMap)
         continue
     }
 
-    if (($release.Prerelease -eq $false) -and (($($release.TagName) -eq $($minProdVersionTag))))
+    if ($release.Prerelease -eq $false)
     {
-        $foundMinProdVersion = $true
+        if ($foundLatestProdVersion -eq $true)
+        {
+            if ($($release.TagName) -eq $($minProdVersionTag))
+            {
+                $foundMinProdVersion = $true
+            }
+        }
+        else
+        {
+            $foundLatestProdVersion = $true
+        }
+    }
+    elseif ($foundLatestProdVersion -eq $true)
+    {
+        $deleteList += $release
     }
 }
 
