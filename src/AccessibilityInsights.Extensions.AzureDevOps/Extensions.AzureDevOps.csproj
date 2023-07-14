@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.49" />
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.31.0" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="6.32.0" />
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="6.32.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.32.0" />
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="16.205.1" />
