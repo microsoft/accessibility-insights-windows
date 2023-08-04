@@ -69,7 +69,7 @@ function GetBranchName([string]$pipelineType, [string]$branchName) {
 				if ($prBranchName -ne $null) {
 					$trimmedBranchName = $prBranchName.Trim()
 				} else {
-					$trimmedBranchName = ($Env:SYSTEM_SOURCEBRANCH).Trim().Replace("refs/heads/","")
+					$trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/","")
 				}
             }
             "local" {
