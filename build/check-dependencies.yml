@@ -21,5 +21,5 @@ jobs:
   - task: PowerShell@2
     displayName: 'Check ClearlyDefined'
     inputs:
-      filePath: '$(Build.SourcesDirectory)\tools\scripts\pipeline\build\check-clearly-defined.ps1'
+      filePath: '$(Build.SourcesDirectory)\tools\scripts\pipeline\build\clearly-defined\check-clearly-defined.ps1'
       arguments: '-Verbose -PipelineType ado'
