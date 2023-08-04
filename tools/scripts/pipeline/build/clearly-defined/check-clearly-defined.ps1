@@ -65,12 +65,12 @@ function GetBranchName([string]$pipelineType, [string]$branchName) {
                 $trimmedBranchName = ($Env:GITHUB_HEAD_REF).Trim()
             }
             "ado" {
-				$prBranchName = $Env:SYSTEM_PULLREQUEST_SOURCEBRANCH
-				if ($prBranchName -ne $null) {
-					$trimmedBranchName = $prBranchName.Trim()
-				} else {
-					$trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/","")
-				}
+                $prBranchName = $Env:SYSTEM_PULLREQUEST_SOURCEBRANCH
+                if ($prBranchName -ne $null) {
+                    $trimmedBranchName = $prBranchName.Trim()
+                } else {
+                    $trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/","")
+                }
             }
             "local" {
                 $trimmedBranchName = ""
