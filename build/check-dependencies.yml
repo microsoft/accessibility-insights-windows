@@ -1,0 +1,25 @@
+# This template checks for assemblies that may need harvesting in ClearlyDefined
+
+parameters:
+  configuration: ''
+
+jobs:
+- job: CheckDependencies
+  displayName: Check Dependencies
+  condition: succeeded()
+  pool:
+    vmImage: windows-2022
+  steps:
+  - task: NuGetToolInstaller@1
+    displayName: 'Use NuGet 5.x'
+    inputs:
+      versionSpec: '5.x'
+
+  - task: NuGetCommand@2
+    displayName: 'NuGet restore'
+
+  - task: PowerShell@2
+    displayName: 'Check ClearlyDefined'
+    inputs:
+      filePath: '$(Build.SourcesDirectory)\tools\scripts\pipeline\build\check-clearly-defined.ps1'
+      arguments: '-Verbose -PipelineType ado'

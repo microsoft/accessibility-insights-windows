@@ -25,3 +25,7 @@ jobs:
 - template: ui-test-job.yml
   parameters:
     configuration: debug
+
+- template: check-dependencies.yml
+  parameters:
+    configuration: release
