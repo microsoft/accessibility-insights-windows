@@ -66,10 +66,10 @@ function GetBranchName([string]$pipelineType, [string]$branchName) {
             }
             "ado" {
                 $prBranchName = $Env:SYSTEM_PULLREQUEST_SOURCEBRANCH
-                if ($prBranchName -ne $null) {
-                    $trimmedBranchName = $prBranchName.Trim()
-                } else {
+                if ($prBranchName -eq $null) {
                     $trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/","")
+                } else {
+                    $trimmedBranchName = $prBranchName.Trim()
                 }
             }
             "local" {
