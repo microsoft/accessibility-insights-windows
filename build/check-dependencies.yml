@@ -22,4 +22,4 @@ jobs:
     displayName: 'Check ClearlyDefined'
     inputs:
       filePath: '$(Build.SourcesDirectory)\tools\scripts\pipeline\build\clearly-defined\check-clearly-defined.ps1'
-      arguments: '-Verbose -PipelineType ado -BranchName dependabot/nuget/Axe.Windows-3.1.3'
+      arguments: '-Verbose -PipelineType ado'
