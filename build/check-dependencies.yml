@@ -23,3 +23,4 @@ jobs:
     inputs:
       filePath: '$(Build.SourcesDirectory)\tools\scripts\pipeline\build\clearly-defined\check-clearly-defined.ps1'
       arguments: '-Verbose -PipelineType ado'
+
