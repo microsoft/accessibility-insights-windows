@@ -51,3 +51,6 @@ updates:
   - dependency-name: System.Drawing.Common
     versions:
     - 5.0.1
+  - dependency-name: Moq
+    versions:
+    - ">= 4.20"  # moq/moq#1372
