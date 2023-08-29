@@ -1,1 +1,4 @@
-["-/Moq"]
+[
+"-/Microsoft.CodeAnalysis.NetAnalyzers",
+"-/Moq"
+]
