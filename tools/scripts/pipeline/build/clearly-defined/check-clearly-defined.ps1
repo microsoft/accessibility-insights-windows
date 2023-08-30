@@ -67,8 +67,9 @@ function GetBranchName([string]$pipelineType, [string]$branchName) {
             "ado" {
                 $prBranchName = $Env:SYSTEM_PULLREQUEST_SOURCEBRANCH
                 if ($prBranchName -eq $null) {
-                    $trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/","")
-                } else {
+                    $trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/", "")
+                }
+                else {
                     $trimmedBranchName = $prBranchName.Trim()
                 }
             }
@@ -108,6 +109,10 @@ function IsPackageExcluded([string]$namespaceAndPackage) {
     return $exclusions -ne $null -and $exclusions.Contains($namespaceAndPackage)
 }
 
+function IsDockerImage([string]$provider) {
+    return $provider -eq "docker"
+}
+
 function AdjustNamespace([string]$provider, [string]$rawNamespace) {
     if (($provider -eq "npmjs") -and ($rawNamespace -ne "-")) {
         return "@$rawNameSpace"
@@ -120,7 +125,7 @@ function AdjustNamespace([string]$provider, [string]$rawNamespace) {
     return $rawNamespace
 }
 
-function GetUri([string]$branchName){
+function GetUri([string]$branchName) {
     $elements = $branchName.Split('/')
 
     if ($elements[0] -ne 'dependabot') {
@@ -133,7 +138,8 @@ function GetUri([string]$branchName){
     if ($elements.Length -eq 3) {
         $rawNamespace = "-"
         $fullPackage = $elements[2]
-    } else {
+    }
+    else {
         $rawNamespace = $elements[2]
         $fullPackage = $elements[3]
     }
@@ -141,7 +147,10 @@ function GetUri([string]$branchName){
     $indexOfLastDash = $fullPackage.LastIndexOf('-') + 1
     $packageName = $fullPackage.Substring(0, $indexOfLastDash - 1)
     $packageVersion = $fullPackage.Substring($indexOfLastDash)
-
+    if (IsDockerImage $provider) {
+        Write-Host "'$packageName' is a Docker image, skipping check"
+        Exit 0
+    }
     $namespaceAndPackage = "$namespace/$packageName"
     if (IsPackageExcluded $namespaceAndPackage) {
         Write-Host "Package '$namespaceAndPackage' is a known exclusion, skipping check"
@@ -175,7 +184,7 @@ try {
     Write-Host "Getting data from $uri"
     $response = Invoke-RestMethod -Uri $uri -Method Get -ErrorAction Stop
 
-    if(Get-Member -inputobject $response -name "files" -Membertype Properties) {
+    if (Get-Member -inputobject $response -name "files" -Membertype Properties) {
         Write-Host "ClearlyDefined has a definition for this package version."
         Exit 0
     }
