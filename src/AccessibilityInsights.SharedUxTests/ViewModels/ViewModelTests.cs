@@ -16,7 +16,7 @@ namespace AccessibilityInsights.SharedUxTests.ViewModels
         /// <summary>
         /// Tests the descendant status counts in HierarchyNodeViewModel
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void GetDescendentStatusCounts()
         {
             A11yElement e = LoadA11yElementsFromJSON("./Snapshots/Taskbar.snapshot");
