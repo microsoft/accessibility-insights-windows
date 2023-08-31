@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft. All rights reserved.
+﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 using AccessibilityInsights.SharedUx.Settings;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -6,13 +6,13 @@ using System.Windows;
 
 namespace AccessibilityInsights.SharedUxTests.Tests
 {
-    [TestClass()]
+    [TestClass]
     public class LayoutTests
     {
         /// <summary>
         /// Ensures GetLayoutLive populates a Layout with proper default values.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void GetLayoutLiveTest()
         {
             MainWindowLayout la = MainWindowLayout.GetLayoutLive();
@@ -29,7 +29,7 @@ namespace AccessibilityInsights.SharedUxTests.Tests
         /// <summary>
         /// Ensures GetLayoutSnapshot populates a Layout with proper default values.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void GetLayoutSnapshotTest()
         {
             MainWindowLayout la = MainWindowLayout.GetLayoutSnapshot();
