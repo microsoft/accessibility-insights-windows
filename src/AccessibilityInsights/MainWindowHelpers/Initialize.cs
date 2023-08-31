@@ -201,7 +201,8 @@ namespace AccessibilityInsights
             sa.IsFocusSelectOn = ConfigurationManager.GetDefaultInstance().AppConfig.SelectionByFocus;
             sa.IsMouseSelectOn = ConfigurationManager.GetDefaultInstance().AppConfig.SelectionByMouse;
             sa.TreeViewMode = ConfigurationManager.GetDefaultInstance().AppConfig.TreeViewMode;
-
+            // TODO: Enable this once Axe.Windows is updated
+            //SelectAction.ShouldTestAllChromiumContent = ConfigurationManager.GetDefaultInstance().AppConfig.ShouldTestAllChromiumContent;
         }
 
         /// <summary>

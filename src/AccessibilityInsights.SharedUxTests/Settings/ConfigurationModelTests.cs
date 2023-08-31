@@ -115,6 +115,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(config.SelectionByFocus);
             Assert.IsTrue(config.SelectionByMouse);
             Assert.IsFalse(config.ShowAllProperties);
+            Assert.IsFalse(config.ShouldTestAllChromiumContent);
             Assert.IsTrue(config.ShowAncestry);
             Assert.IsTrue(config.ShowTelemetryDialog);
             Assert.IsFalse(config.ShowUncertain);
@@ -124,7 +125,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.AreEqual(TreeViewMode.Control, config.TreeViewMode);
             Assert.AreEqual(ReleaseChannel.Production, config.ReleaseChannel);
             Assert.AreEqual("1.1.10", config.Version);
-            Assert.AreEqual(36, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
+            Assert.AreEqual(37, typeof(ConfigurationModel).GetProperties().Length, "Count of ConfigurationModel properties has changed! Please ensure that you are testing the default value for all properties, then update the expected value");
         }
 
         [TestMethod]
@@ -144,6 +145,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
                 issueReporterSerializedConfigs: @"{""27f21dff-2fb3-4833-be55-25787fce3e17"":""hello world""}",
                 selectedIssueReporter: new Guid("{27f21dff-2fb3-4833-be55-25787fce3e17}"),
                 releaseChannel: ReleaseChannel.Canary,
+                shouldTestAllChromiumContent: true,
                 soundMode: SoundFeedbackMode.Always // Verify that a true PlayScanningSound (legacy key) maps to Always
             );
         }
@@ -155,11 +157,13 @@ namespace AccessibilityInsights.SharedUxTests.Settings
 
         private static void ConfirmOverrideConfigMatchesExpectation(ConfigurationModel config,
             Guid? selectedIssueReporter = null, string issueReporterSerializedConfigs = null,
-            ReleaseChannel? releaseChannel = null, SoundFeedbackMode soundMode=SoundFeedbackMode.Auto)
+            ReleaseChannel? releaseChannel = null, SoundFeedbackMode soundMode=SoundFeedbackMode.Auto,
+            bool shouldTestAllChromiumContent = false)
         {
             Assert.IsFalse(config.AlwaysOnTop);
             Assert.AreEqual("1.1.", config.AppVersion.Substring(0, 4));
             Assert.AreNotEqual("1.1.700.1", config.AppVersion);
+            Assert.AreEqual(shouldTestAllChromiumContent, config.ShouldTestAllChromiumContent);
 
             ConfirmEnumerablesMatchExpectations(
                 new int[] { 30005, 30003, 30004, 30009, 30001, 30007, 30006, 30013, 30102, 30101 },
