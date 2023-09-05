@@ -1,4 +1,5 @@
 [
 "-/Microsoft.CodeAnalysis.NetAnalyzers",
-"-/Moq"
+"-/Moq",
+"-/System.IdentityModel.Tokens.Jwt"
 ]
