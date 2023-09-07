@@ -1,6 +1,7 @@
 [
   "-/Microsoft.CodeAnalysis.NetAnalyzers",
   "-/Microsoft.IdentityModel.Logging",
+  "-/Microsoft.IdentityModel.Tokens",
   "-/Moq",
   "-/System.IdentityModel.Tokens.Jwt"
 ]
