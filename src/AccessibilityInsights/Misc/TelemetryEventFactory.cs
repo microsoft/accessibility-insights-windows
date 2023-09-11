@@ -33,13 +33,14 @@ namespace AccessibilityInsights.Misc
                 });
         }
 
-        public static TelemetryEvent ForTestRequested(string method, string scope)
+        public static TelemetryEvent ForTestRequested(string method, string scope, bool shouldTestAllChromiumContent)
         {
             return new TelemetryEvent(TelemetryAction.Test_Requested,
                 new Dictionary<TelemetryProperty, string>
                 {
                     { TelemetryProperty.By, method },
                     { TelemetryProperty.Scope, scope },
+                    { TelemetryProperty.ShouldTestAllChromiumContent, shouldTestAllChromiumContent.ToString(CultureInfo.InvariantCulture) },
                 });
         }
 
