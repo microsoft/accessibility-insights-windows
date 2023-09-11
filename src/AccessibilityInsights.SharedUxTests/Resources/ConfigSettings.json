@@ -38,6 +38,7 @@
     "SelectedIssueReporter": "{27f21dff-2fb3-4833-be55-25787fce3e17}",
     "SerializedCachedConnections": "[]",
     "SerializedSavedConnection": "",
+    "ShouldTestAllChromiumContent": true,
     "ShowAllProperties": false,
     "ShowAncestry": true,
     "ShowTelemetryDialog": false,

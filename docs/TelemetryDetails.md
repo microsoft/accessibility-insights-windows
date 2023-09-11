@@ -155,6 +155,7 @@ Name | Value
 --- | ---
 `customDimensions.By` | The trigger mechanism. Current values are `HotKey`, `Beaker`, `HierarchyMode`, or `Timer`.
 `customDimensions.Scope` | The scope of the selection. Current values are `App` or `Element`.
+`customDimensions.ShouldTestAllChromiumContent` | If the user has enabled the advanced option to test all Chromium content (intended for debugging by browser development teams).
 
 #### Upgrade_DoInstallation
 Trigger: The user completes an install from the Upgrade dialog.  

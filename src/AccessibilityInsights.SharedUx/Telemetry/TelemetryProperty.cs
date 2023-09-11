@@ -58,5 +58,6 @@ namespace AccessibilityInsights.SharedUx.Telemetry
         ActualMsiSha512,
         NewChannel,
         ExecutionTimeInMilliseconds,
+        ShouldTestAllChromiumContent,
     }
 }

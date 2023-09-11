@@ -242,7 +242,7 @@ namespace AccessibilityInsights
                 StartTestMode(TestView.AutomatedTestResults);
 
                 Logger.PublishTelemetryEvent(TelemetryEventFactory.ForTestRequested(
-                    method.ToString(), SelectAction.GetDefaultInstance().Scope.ToString()));
+                    method.ToString(), SelectAction.GetDefaultInstance().Scope.ToString(), ConfigurationManager.GetDefaultInstance().AppConfig.ShouldTestAllChromiumContent));
             }
             HollowHighlightDriver.GetDefaultInstance().Clear();
             UpdateMainWindowUI();

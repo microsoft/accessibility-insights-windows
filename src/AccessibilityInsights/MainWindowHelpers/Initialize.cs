@@ -201,7 +201,7 @@ namespace AccessibilityInsights
             sa.IsFocusSelectOn = ConfigurationManager.GetDefaultInstance().AppConfig.SelectionByFocus;
             sa.IsMouseSelectOn = ConfigurationManager.GetDefaultInstance().AppConfig.SelectionByMouse;
             sa.TreeViewMode = ConfigurationManager.GetDefaultInstance().AppConfig.TreeViewMode;
-
+            SelectAction.ShouldTestAllChromiumContent = ConfigurationManager.GetDefaultInstance().AppConfig.ShouldTestAllChromiumContent;
         }
 
         /// <summary>

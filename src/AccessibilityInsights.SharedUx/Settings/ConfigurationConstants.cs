@@ -61,6 +61,7 @@ namespace AccessibilityInsights.SharedUx.Settings
         private const string KeySelectedIssueReporter = "SelectedIssueReporter";
         private const string KeySelectionByFocus = "SelectionByFocus";
         private const string KeySelectionByMouse = "SelectionByMouse";
+        private const string KeyShouldTestAllChromiumContent = "ShouldTestAllChromiumContent";
         private const string KeyShowAllProperties = "ShowAllProperties";
         private const string KeyShowAncestry = "ShowAncestry";
         private const string KeyShowTelemetryDialog = "ShowTelemetryDialog";

@@ -344,6 +344,15 @@ namespace AccessibilityInsights.SharedUx.Settings
         }
 
         /// <summary>
+        /// if it is true, tell Axe.Windows to run rules against all Chromium content.
+        /// </summary>
+        public bool ShouldTestAllChromiumContent
+        {
+            get => GetDataValue<bool>(KeyShouldTestAllChromiumContent);
+            set => SetDataValue<bool>(KeyShouldTestAllChromiumContent, value);
+        }
+
+        /// <summary>
         /// if it is true, show the full list of ancestors up to desktop in snap mode.
         /// </summary>
         public bool ShowAncestry
