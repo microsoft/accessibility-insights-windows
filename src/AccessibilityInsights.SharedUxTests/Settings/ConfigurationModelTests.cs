@@ -16,12 +16,12 @@ namespace AccessibilityInsights.SharedUxTests.Settings
     /// <summary>
     /// Tests for ConfigurationModel
     /// </summary>
-    [TestClass()]
+    [TestClass]
     public class ConfigurationModelTests
     {
         private static FixedConfigSettingsProvider testProvider;
 
-        [ClassInitialize()]
+        [ClassInitialize]
         public static void ClassInit(TestContext context)
         {
             string testBaseDirectory = Path.Combine(context.TestRunDirectory, context.FullyQualifiedTestClassName);
@@ -35,7 +35,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         /// <summary>
         /// Check serialization of selected properties
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void ConfigurationModelTest()
         {
             string path = Path.Combine(testProvider.ConfigurationFolderPath, "config.test");
@@ -56,7 +56,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
             Assert.IsTrue(coreProps.SequenceEqual(newConfig.CoreProperties));
         }
 
-        [TestMethod()]
+        [TestMethod]
         public void GetCurrentConfigurationTest()
         {
             const string expectedHotKeyForRecord = "Recording HotKey";

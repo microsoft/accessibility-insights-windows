@@ -1,4 +1,9 @@
 [
-"-/Microsoft.CodeAnalysis.NetAnalyzers",
-"-/Moq"
+  "-/Microsoft.CodeAnalysis.NetAnalyzers",
+  "-/Microsoft.IdentityModel.JsonWebTokens",
+  "-/Microsoft.IdentityModel.Logging",
+  "-/Microsoft.IdentityModel.Tokens",
+  "-/Microsoft.Web.WebView2",
+  "-/Moq",
+  "-/System.IdentityModel.Tokens.Jwt"
 ]

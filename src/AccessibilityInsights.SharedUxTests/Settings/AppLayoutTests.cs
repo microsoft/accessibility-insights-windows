@@ -8,20 +8,20 @@ using System.IO;
 
 namespace AccessibilityInsights.SharedUxTests.Settings
 {
-    [TestClass()]
+    [TestClass]
     public class AppLayoutTests
     {
         const string TestLayoutFile = "LayoutTest.Json";
         private static readonly FixedConfigSettingsProvider provider = FixedConfigSettingsProvider.CreateDefaultSettingsProvider();
         public static string folderPath = Path.Combine(provider.UserDataFolderPath, "AppLayoutTests");
 
-        [ClassInitialize()]
-        public static void ClassInit()
+        [ClassInitialize]
+        public static void ClassInit(TestContext _)
         {
             Directory.CreateDirectory(folderPath);
         }
 
-        [ClassCleanup()]
+        [ClassCleanup]
         public static void ClassCleanup()
         {
             Directory.Delete(folderPath);
@@ -32,7 +32,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         /// and saving it, and then reading it back into a new AppLayout. Values are then
         /// compared to original values.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void LoadDefaultAppLayoutTest()
         {
             string path = Path.Combine(provider.UserDataFolderPath, TestLayoutFile);
@@ -67,7 +67,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         /// Tests AppLayout constructor against given values and expected
         /// default values.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void AppLayoutTest()
         {
             AppLayout al = new AppLayout(10, 11);
@@ -93,7 +93,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         /// a new AppLayout, and removing it. A backup is then verified to have
         /// been created.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void RemoveConfigurationTest()
         {
             string path = Path.Combine(provider.UserDataFolderPath, TestLayoutFile);
@@ -126,7 +126,7 @@ namespace AccessibilityInsights.SharedUxTests.Settings
         /// <summary>
         /// Test: replacing old layout with new one if version is change.
         /// </summary>
-        [TestMethod()]
+        [TestMethod]
         public void LoadLayoutIfPrevVersionTest()
         {
             var al = FromJson("Resources/Layout_S122.json");
