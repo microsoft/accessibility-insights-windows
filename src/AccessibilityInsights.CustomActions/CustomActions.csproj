@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.CustomActions</AssemblyName>
@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="4.0.1" />
+    <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="4.0.2" />
   </ItemGroup>
 
   <ItemGroup>
