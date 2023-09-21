@@ -76,7 +76,6 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Source="Microsoft.Bcl.AsyncInterfaces.dll" />
             <File Id="WixToolset.Dtf.WindowsInstaller.dll" Source="WixToolset.Dtf.WindowsInstaller.dll" />
             <File Id="Microsoft.IdentityModel.Abstractions.dll" Source="Microsoft.IdentityModel.Abstractions.dll" />
-            <File Id="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" Source="Microsoft.IdentityModel.Clients.ActiveDirectory.dll" />
             <File Id="Microsoft.IdentityModel.JsonWebTokens.dll" Source="Microsoft.IdentityModel.JsonWebTokens.dll" />
             <File Id="Microsoft.IdentityModel.Logging.dll" Source="Microsoft.IdentityModel.Logging.dll" />
             <File Id="Microsoft.IdentityModel.Tokens.dll" Source="Microsoft.IdentityModel.Tokens.dll" />
