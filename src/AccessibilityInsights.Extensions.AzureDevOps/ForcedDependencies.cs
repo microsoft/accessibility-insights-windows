@@ -33,7 +33,6 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
         private static void ManuallyEnforcedDependencies()
         {
             // Types that we can't detect via unit tests. Namespace generally matches the package.
-            ForceDependency(typeof(Microsoft.IdentityModel.Clients.ActiveDirectory.AdalClaimChallengeException));
             ForceDependency(typeof(Microsoft.IdentityModel.JsonWebTokens.JsonClaimValueTypes));
             ForceDependency(typeof(Microsoft.IdentityModel.Logging.IdentityModelEventSource));
             ForceDependency(typeof(Microsoft.IdentityModel.Tokens.AsymmetricSecurityKey));
