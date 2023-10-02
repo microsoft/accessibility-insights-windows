@@ -5,6 +5,7 @@
   "-/Microsoft.IdentityModel.Tokens",
   "-/Microsoft.Web.WebView2",
   "-/Moq",
+  "-/Octokit",
   "-/System.IdentityModel.Tokens.Jwt",
   "-/WixToolset.Dtf.CustomAction"
 ]
