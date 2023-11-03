@@ -66,10 +66,9 @@ function GetBranchName([string]$pipelineType, [string]$branchName) {
             }
             "ado" {
                 $prBranchName = $Env:SYSTEM_PULLREQUEST_SOURCEBRANCH
-                if ($prBranchName -eq $null) {
+                if ($null -eq $prBranchName) {
                     $trimmedBranchName = ($Env:BUILD_SOURCEBRANCH).Trim().Replace("refs/heads/", "")
-                }
-                else {
+                } else {
                     $trimmedBranchName = $prBranchName.Trim()
                 }
             }
@@ -106,7 +105,11 @@ function IsPackageExcluded([string]$namespaceAndPackage) {
     # licensing purposes, can be added to clearly-defined-exclusions.json
     $exclusionFile = Join-Path $PSScriptRoot "clearly-defined-exclusions.json"
     $exclusions = Get-Content -Path $exclusionFile | ConvertFrom-Json
-    return $exclusions -ne $null -and $exclusions.Contains($namespaceAndPackage)
+    return $null -ne $exclusions -and $exclusions.Contains($namespaceAndPackage)
+}
+
+function IsGithubActionsType([string]$namespace) {
+    return $namespace -eq "github_actions"
 }
 
 function IsDockerImage([string]$provider) {
@@ -125,6 +128,10 @@ function AdjustNamespace([string]$provider, [string]$rawNamespace) {
     return $rawNamespace
 }
 
+function IsTypesNamespace([string]$nameSpace) {
+    return $nameSpace -eq "@types"
+}
+
 function GetUri([string]$branchName) {
     $elements = $branchName.Split('/')
 
@@ -134,16 +141,26 @@ function GetUri([string]$branchName) {
     }
 
     $type = GetType $elements[1]
+    if (IsGithubActionsType $type) {
+        Write-Host "type is github_actions, skipping check"
+        Exit 0
+    }
     $provider = GetProvider $elements[1]
+
     if ($elements.Length -eq 3) {
         $rawNamespace = "-"
         $fullPackage = $elements[2]
-    }
-    else {
+    } else {
         $rawNamespace = $elements[2]
         $fullPackage = $elements[3]
     }
+
     $nameSpace = AdjustNamespace $provider $rawNamespace
+    if (IsTypesNamespace $nameSpace) {
+        Write-Host "Namespace is @types, skipping check"
+        Exit 0
+    }
+    
     $indexOfLastDash = $fullPackage.LastIndexOf('-') + 1
     $packageName = $fullPackage.Substring(0, $indexOfLastDash - 1)
     $packageVersion = $fullPackage.Substring($indexOfLastDash)
@@ -188,8 +205,7 @@ try {
         Write-Host "ClearlyDefined has a definition for this package version."
         Exit 0
     }
-}
-catch {
+} catch {
     WriteFormattedError $pipelineType "Caught error - details below"
     $Error[0] | Format-List * -Force
     Exit 1
