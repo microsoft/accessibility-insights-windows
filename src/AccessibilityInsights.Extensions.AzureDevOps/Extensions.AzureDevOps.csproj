@@ -29,7 +29,7 @@
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="19.227.0-preview" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2088.41" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2151.40" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
