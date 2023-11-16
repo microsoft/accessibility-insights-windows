@@ -3,6 +3,7 @@
   "-/Microsoft.IdentityModel.JsonWebTokens",
   "-/Microsoft.IdentityModel.Logging",
   "-/Microsoft.IdentityModel.Tokens",
+  "-/Microsoft.SourceLink.GitHub",
   "-/Microsoft.Web.WebView2",
   "-/Moq",
   "-/Octokit",
