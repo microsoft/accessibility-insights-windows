@@ -1,4 +1,5 @@
 [
+  "-/Microsoft.ApplicationInsights",
   "-/Microsoft.CodeAnalysis.NetAnalyzers",
   "-/Microsoft.IdentityModel.JsonWebTokens",
   "-/Microsoft.IdentityModel.Logging",
