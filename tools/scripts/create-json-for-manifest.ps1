@@ -4,8 +4,8 @@
 .SYNOPSIS
 Create the json file that will be packaged into AccessibilityInsights.Manifest.dll
 
-.PARAMETER OctokitPath
-The path to the Octokit assembly that will be used when fetching the current release version
+.PARAMETER OctokitRelativePath
+The path (relative to the package cache) to the Octokit assembly that will be used when fetching the current release version
 
 .PARAMETER MsiBasePath
 The fixed path to where the MSI folder is located. This is typically $(SolutionDir)MSI\bin\Release\MSI
@@ -17,11 +17,11 @@ Whether or not this build includes a mandatory update for the Production Release
 The path and file name of the generated JSON file
 
 .Example Usage 
-.\create-json-for-manifest.ps1 -OctokitPath "%UserProfile%\.nuget\packages\Octokit\5.0.1\lib\netstandard2.0\Octokit.dll" -MsiBasePath "$(SolutionDir)MSI\bin\Release\MSI" -IsMandatoryProdUpdate "false" -OutputPath "$(SolutionDir)Manifest\obj\Release" -OutputFile "ReleaseInfo.json"
+.\create-json-for-manifest.ps1 -OctokitRelativePath "Octokit\5.0.1\lib\netstandard2.0\Octokit.dll" -MsiBasePath "$(SolutionDir)MSI\bin\Release\MSI" -IsMandatoryProdUpdate "false" -OutputPath "$(SolutionDir)Manifest\obj\Release" -OutputFile "ReleaseInfo.json"
 #>
 
 param(
-    [Parameter(Mandatory=$true)][string]$OctokitPath,
+    [Parameter(Mandatory=$true)][string]$OctokitRelativePath,
     [Parameter(Mandatory=$true)][string]$MsiBasePath,
     [Parameter(Mandatory=$true)][string]$IsMandatoryProdUpdate,
     [Parameter(Mandatory=$true)][string]$OutputPath,
@@ -32,7 +32,7 @@ Set-StrictMode -Version Latest
 $script:ErrorActionPreference = 'Stop'
 
 # Uncomment the next line for debugging
-#$VerbosePreference='continue'
+$VerbosePreference='continue'
 
 Set-Variable MsiName -Option Readonly -Value "AccessibilityInsights.msi"
 
@@ -70,13 +70,28 @@ function Get-MsiInfo([string]$msiFilePath) {
     return $info
 }
 
+# Get the package cache location
+function GetNugetCacheRoot()
+{
+    $overrideValue = $Env:NUGET_PACKAGES
+    if ($overrideValue) {
+        return $overrideValue
+    }
+
+    return Join-Path -Path $Env:UserProfile -ChildPath '.nuget\packages'
+}
+
 # Initialize the client
-function Get-Client([string]$octokitPath)
+function Get-Client([string]$octokitRelativePath)
 {
     Write-Verbose "    Entering Get-Client"
     # Load the octokit dll
-    Write-Verbose "      Path to OctoKit.dll = $($octoKitPath)"
-    Add-Type -Path $($octoKitPath)
+    Write-Verbose "      Relative path to OctoKit.dll = $($octokitRelativePath)"
+	
+    # Resolve the octokit path
+    $octokitFullPath = Join-Path -Path $(GetNugetCacheRoot) -ChildPath $($octokitRelativePath)
+    Write-Verbose "      Full path to OctoKit.dll = $($octokitFullPath)"
+    Add-Type -Path $($octokitFullPath)
 
     # Get a new client
     $productHeader = [Octokit.ProductHeaderValue]::new("CreateJsonForManifest")
@@ -86,10 +101,10 @@ function Get-Client([string]$octokitPath)
     return $client
 }
 
-function Get-MinimumProductionVersion([string]$currentVersion, [string]$octokitPath, [string]$isMandatoryProdUpdate) {
+function Get-MinimumProductionVersion([string]$currentVersion, [string]$octokitRelativePath, [string]$isMandatoryProdUpdate) {
     Write-Verbose "  Entering Get-MinimumProductionVersion"
     Write-Verbose "    currentVersion = $currentVersion"
-    Write-Verbose "    octokitPath = $octokitPath"
+    Write-Verbose "    octokitRelativePath = $octokitRelativePath"
     Write-Verbose "    isMandatoryProdUpdate = $isMandatoryProdUpdate"
 
     if ($isMandatoryProdUpdate -eq "true") {
@@ -98,7 +113,7 @@ function Get-MinimumProductionVersion([string]$currentVersion, [string]$octokitP
     } else {
         Write-Verbose "    Fetching version from 'https://github.com/microsoft/accessibility-insights-windows/releases/tag/latest'"
 
-        $client = Get-Client $octokitPath
+        $client = Get-Client $octokitRelativePath
         $release = $client.Repository.Release.GetLatest("Microsoft", "accessibility-insights-windows").Result
 
         $minimumProductionVersion = $release.TagName.Substring(1)  # Tag names are in format of v1.1.1234.01 and we want to skip the 'v'
@@ -108,10 +123,10 @@ function Get-MinimumProductionVersion([string]$currentVersion, [string]$octokitP
     return $minimumProductionVersion
 }
 
-function CreateJsonForManifest([string]$msiBasePath, [string]$octokitPath, [string]$isMandatoryProdUpdate) {
+function CreateJsonForManifest([string]$msiBasePath, [string]$octokitRelativePath, [string]$isMandatoryProdUpdate) {
     Write-Verbose "Entering CreateJsonForManifest"
     Write-Verbose "  msiBasePath = $msiBasePath"
-    Write-Verbose "  octokitPath = $octokitPath"
+    Write-Verbose "  octokitRelativePath = $octokitRelativePath"
     Write-Verbose "  isMandatoryProdUpdate = $isMandatoryProdUpdate"
 
     $highestBuiltVersion = Get-HighestBuiltVersion $msiBasePath
@@ -122,7 +137,7 @@ function CreateJsonForManifest([string]$msiBasePath, [string]$octokitPath, [stri
     $info.installer_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v$paddedVersion/$MsiName"
     $info.release_notes_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/tag/v$paddedVersion"
     $info.current_version = $paddedVersion
-    $info.production_minimum_version = Get-MinimumProductionVersion $paddedVersion $octokitPath $IsMandatoryProdUpdate
+    $info.production_minimum_version = Get-MinimumProductionVersion $paddedVersion $octokitRelativePath $IsMandatoryProdUpdate
 
     $json = $info | ConvertTo-Json
 
@@ -150,6 +165,6 @@ function CreateOutputFile([string]$json, [string]$outputPath, [string]$outputFil
 }
 
 $resolvedOutputPath = Resolve-Path $OutputPath
-$json = CreateJsonForManifest $MsiBasePath $OctokitPath $isMandatoryProdUpdate
+$json = CreateJsonForManifest $MsiBasePath $OctokitRelativePath $isMandatoryProdUpdate
 CreateOutputFile $json $resolvedOutputPath $OutputFile
 exit 0
