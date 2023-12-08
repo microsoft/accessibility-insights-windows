@@ -32,7 +32,7 @@ Set-StrictMode -Version Latest
 $script:ErrorActionPreference = 'Stop'
 
 # Uncomment the next line for debugging
-$VerbosePreference='continue'
+#$VerbosePreference='continue'
 
 Set-Variable MsiName -Option Readonly -Value "AccessibilityInsights.msi"
 
