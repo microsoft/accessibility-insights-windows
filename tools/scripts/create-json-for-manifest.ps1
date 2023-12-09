@@ -137,7 +137,7 @@ function CreateJsonForManifest([string]$msiBasePath, [string]$octokitRelativePat
     $info.installer_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/download/v$paddedVersion/$MsiName"
     $info.release_notes_url = "https://www.github.com/Microsoft/accessibility-insights-windows/releases/tag/v$paddedVersion"
     $info.current_version = $paddedVersion
-    $info.production_minimum_version = Get-MinimumProductionVersion $paddedVersion $octokitRelativePath $IsMandatoryProdUpdate
+    $info.production_minimum_version = Get-MinimumProductionVersion $paddedVersion $octokitRelativePath $isMandatoryProdUpdate
 
     $json = $info | ConvertTo-Json
 
@@ -165,6 +165,6 @@ function CreateOutputFile([string]$json, [string]$outputPath, [string]$outputFil
 }
 
 $resolvedOutputPath = Resolve-Path $OutputPath
-$json = CreateJsonForManifest $MsiBasePath $OctokitRelativePath $isMandatoryProdUpdate
+$json = CreateJsonForManifest $MsiBasePath $OctokitRelativePath $IsMandatoryProdUpdate
 CreateOutputFile $json $resolvedOutputPath $OutputFile
 exit 0

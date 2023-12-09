@@ -7,7 +7,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 namespace ManifestTests
 {
@@ -77,6 +76,20 @@ namespace ManifestTests
                 Assert.AreEqual(rawInfo.CurrentVersion, signedInfo.CurrentVersion);
                 Assert.AreEqual(rawInfo.ProductionMinimumVersion, signedInfo.ProductionMinimumVersion);
                 Assert.AreEqual(rawInfo.MinimumVersion, signedInfo.MinimumVersion);
+
+                string isMandatoryProdUpdate = Environment.GetEnvironmentVariable("IsMandatoryProdUpdate");
+
+                if (isMandatoryProdUpdate == "true")
+                {
+                    Assert.AreEqual(rawInfo.CurrentVersion, rawInfo.ProductionMinimumVersion);
+                }
+                else
+                {
+                    Assert.IsTrue(string.IsNullOrEmpty(isMandatoryProdUpdate) || isMandatoryProdUpdate == "false",
+                        "The IsMandatoryProdUpdate environment variable must be 'true' or 'false' (case sensitive) if it is set.");
+                    Assert.IsTrue(rawInfo.CurrentVersion > rawInfo.ProductionMinimumVersion,
+                        "This is not a mandatory prod update. CurrentVersion must be newer than ProductionMininmumVersion");
+                }
             }
         }
 

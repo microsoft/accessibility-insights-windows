@@ -13,6 +13,15 @@ This is the most common scenario that leads to a version change. The process wor
 - It exits the application after the VersionSwitcher has successfully launched with administrative privilege.
 - It includes telemetry results written by the VersionSwitcher on its next boot.
 
+#### Update policies
+- In the **Canary** and **Insider** channels, users are _always_ required to update to the latest version if an update exists.
+- In the **Production** channel, users are _generally_ allowed to use either of the 2 most recent **Production** releases. Once a third **Production** release is available, users will be required to update to the most recent version.
+- There are _occasional_ cases where a **Production** release is required. This is done to ensure that all users are running a version that is supported by the Accessibility Insights for Windows team. This is done in the following cases:
+  - A security vulnerability is discovered in a previous version (and fixed in the most recent version).
+  - A critical bug is discovered in a previous version (and fixed in the most recent version).
+
+To generate a Production release that creates a mandatory upgrade, run the build pipeline with the `IsMandatoryProdUpdate` variable set to `true`. This variable defaults to 'false' in the build pipeline and can be overridden when manually running a signed build.
+
 ### Changing channels
 This scenario occurs after the user changes the release channel from the Settings tab. The application does the following:
 - It makes a web call to retrieve the update manifest for the newly selected release channel.
