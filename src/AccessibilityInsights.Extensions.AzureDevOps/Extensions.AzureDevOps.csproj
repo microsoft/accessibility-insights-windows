@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.54" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.55" />
     <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.0.3" />
     <PackageReference Include="Microsoft.IdentityModel.Logging" Version="7.0.3" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
