@@ -54,9 +54,6 @@ jobs:
       Contents: ${{ format('**\bin\{0}\**', parameters.configuration) }}
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
-
   - task: VSTest@2
     displayName: 'Test Assemblies **\*test*.dll;-:**\obj\**'
     inputs:
