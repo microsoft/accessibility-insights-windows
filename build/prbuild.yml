@@ -31,7 +31,7 @@ extends:
     stages:
       - stage: Stage
         jobs:
-          - job: "build-and-unit-tests"
+          - job: "build_and_unit_tests"
             templateContext:
               outputs:
                 - output: pipelineArtifact
