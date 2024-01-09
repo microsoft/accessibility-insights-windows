@@ -23,16 +23,16 @@
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.0.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="7.0.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="7.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.1.2" />
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.2" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
