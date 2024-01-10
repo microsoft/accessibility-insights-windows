@@ -9,8 +9,8 @@ jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
   templateContext:
               outputs:
-                - output: pipelineArtifact
-                  targetPath: "$(System.DefaultWorkingDirectory)/build/test-results"
+                - output: buildArtifacts
+                  targetPath: "$(System.DefaultWorkingDirectory)/build"
                   artifactName: CodeAnalysisLogs
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
