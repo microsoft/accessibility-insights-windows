@@ -12,8 +12,9 @@ jobs:
                 - output: buildArtifacts
                   targetPath: "$(System.DefaultWorkingDirectory)/build"
                   artifactName: CodeAnalysisLogs
-  displayName: Build and run unit tests - ${{ parameters.configuration }}
-  condition: succeeded()
+                  displayName: Build and run unit tests - ${{ parameters.configuration }}
+                  condition: succeeded()
+                  PathtoPublish: $(Build.SourcesDirectory)/build
   pool:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
