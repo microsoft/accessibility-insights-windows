@@ -7,10 +7,17 @@ parameters:
 
 jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
+  templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: "$(System.DefaultWorkingDirectory)/build/test-results"
+                  artifactName: CodeAnalysisLogs
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
   pool:
-    vmImage: windows-2022
+    name: $(a11yInsightsPool)
+    image: windows-2022-secure
+    os: windows
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2

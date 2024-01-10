@@ -31,12 +31,6 @@ extends:
     stages:
       - stage: Stage
         jobs:
-          - job: "build_and_unit_tests"
-            templateContext:
-              outputs:
-                - output: pipelineArtifact
-                  targetPath: "$(System.DefaultWorkingDirectory)/build/test-results"
-                  artifactName: CodeAnalysisLogs
           - template: build/build-and-unit-tests.yml@self
             parameters:
               configuration: release
