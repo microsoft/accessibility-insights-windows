@@ -10,10 +10,8 @@ jobs:
   templateContext:
               outputs:
                 - output: buildArtifacts
-                  targetPath: "$(System.DefaultWorkingDirectory)/build"
-                  artifactName: CodeAnalysisLogs
+                  artifactName: drop
                   displayName: Build and run unit tests - ${{ parameters.configuration }}
-                  condition: succeeded()
                   PathtoPublish: $(Build.SourcesDirectory)/build
   pool:
     name: $(a11yInsightsPool)
