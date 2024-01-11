@@ -12,7 +12,7 @@ jobs:
                 - output: buildArtifacts
                   artifactName: drop
                   displayName: Build and run unit tests - ${{ parameters.configuration }}
-                  PathtoPublish: $(Build.SourcesDirectory)/build
+                  PathtoPublish: "$(Build.ArtifactStagingDirectory)/build"
   pool:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
