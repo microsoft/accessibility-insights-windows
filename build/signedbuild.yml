@@ -10,15 +10,16 @@ variables:
   system.debug: 'true' #set to true in case our signed build flakes out again
   runCodesignValidationInjection: 'false'
   isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+
 resources:
   repositories:
-  - repository: MicroBuildTemplate
+  - repository: MicroBuildTemplates
     type: git
     name: Personal/MicroBuildTemplatePilot
-    ref: refs/tags/release
+    ref: refs/heads/release
 
 extends:
-  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplate
+  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplates
   parameters:
     pool: 
       name: MSEngSS-MicroBuild2022-1ES
