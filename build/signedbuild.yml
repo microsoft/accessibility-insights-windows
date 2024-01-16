@@ -14,7 +14,7 @@ resources:
   repositories:
   - repository: MicroBuildTemplate
     type: git
-    name: Personal/MicroBuildTemplate
+    name: Personal/MicroBuildTemplatePilot
     ref: refs/tags/release
 
 extends:
