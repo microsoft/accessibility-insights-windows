@@ -13,13 +13,13 @@ variables:
 
 resources:
   repositories:
-  - repository: MicroBuildTemplates
+  - repository: MicroBuildTemplate
     type: git
-    name: Personal/MicroBuildTemplatePilot
-    ref: refs/heads/release
+    name: 1ESPipelineTemplates/MicroBuildTemplate
+    ref: refs/tags/release
 
 extends:
-  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplates
+  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplate
   parameters:
     pool: 
       name: MSEngSS-MicroBuild2022-1ES
