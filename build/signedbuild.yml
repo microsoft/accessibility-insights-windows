@@ -25,11 +25,11 @@ extends:
       name: MSEngSS-MicroBuild2022-1ES
     sdl:
       binskim:
-        analyzeTargetGlob: "src\\AccessibilityInsights\\bin\\**\\*.exe;\
-                            src\\AccessibilityInsights\\bin\\**\\AccessibilityInsights.*.dll;\
-                            src\\AccessibilityInsights.VersionSwitcher\\bin\\**\\*.exe;\
-                            src\\AccessibilityInsights.VersionSwitcher\\bin\\**\\AccessibilityInsights.*.dll;\
-                            src\\Manifest\\bin\\**\\AccessibilityInsights.*.dll;"
+        analyzeTargetGlob: "src\\AccessibilityInsights\\**\\*.exe;\
+                            src\\AccessibilityInsights\\**\\AccessibilityInsights.*.dll;\
+                            src\\AccessibilityInsights.VersionSwitcher\\**\\*.exe;\
+                            src\\AccessibilityInsights.VersionSwitcher\\**\\AccessibilityInsights.*.dll;\
+                            src\\Manifest\\**\\AccessibilityInsights.*.dll;"
     stages:
     - stage: Stage
       jobs:
