@@ -63,7 +63,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="{x:Static SystemColors.HighlightTextColor}"/>
 
     <!-- NEW SETTINGS -->
-    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">0</Thickness>
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">1</Thickness>
     <Thickness po:Freeze="True" x:Key="ActionsButtonBorderThickness">1</Thickness>
 
@@ -72,7 +71,7 @@
     <SolidColorBrush x:Key="SearchAndIconForegroundBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush x:Key="SearchPlaceholderFGBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush x:Key="SearchPanelBGBrush" Color="Transparent"/>
-    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="Transparent"/>
+    <SolidColorBrush x:Key="SearchPanelBorderBrush" Color="{x:Static SystemColors.ControlTextColor}"/>
     <SolidColorBrush x:Key="GenericBorderBrush" Color="#A6A6A6 "/>  <!-- TODO: Find better value for this? -->
     <SolidColorBrush x:Key="StartupBackgroundBrush" Color="#0C5086 "/>
     <SolidColorBrush x:Key="StartupVideoBorder" Color="#403E3E "/>

@@ -76,7 +76,6 @@
     <SolidColorBrush po:Freeze="True" x:Key="TestViewTabItemSelectedFGBrush" Color="#FFFFFF"/>
 
     <!-- NEW SETTINGS -->
-    <Thickness po:Freeze="True" x:Key="SearchPanelBorderThickness">1</Thickness>          <!-- (UPDATED) Thickness of border around search panel -->
     <Thickness po:Freeze="True" x:Key="TestModeBorderThickness">0</Thickness>             <!-- (UPDATED) Thickness of border around test mode view -->
     <Thickness po:Freeze="True" x:Key="ActionsButtonBorderThickness">0</Thickness>        <!-- Thickness of border around Actions buttons (patterns view) -->
 
