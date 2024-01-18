@@ -7,11 +7,12 @@ parameters:
 
 jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
+  displayName: Build and run unit tests - ${{ parameters.configuration }}
   templateContext:
               outputs:
                 - output: buildArtifacts
                   artifactName: drop
-                  displayName: Build and run unit tests - ${{ parameters.configuration }}
+                  displayName: 'Publish Artifact: drop'
                   PathtoPublish: "$(Build.ArtifactStagingDirectory)"
   pool:
     name: $(a11yInsightsPool)
