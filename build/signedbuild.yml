@@ -230,7 +230,7 @@ extends:
             mb:
               signing:
                 enabled: true
-                feedSource: '$(MicrobuildPluginFeedSource)'
+                feedSource: '$(SigningPluginFeedSource)'
                 signType: real
             outputParentDirectory: $(Build.ArtifactStagingDirectory)
             outputs:
