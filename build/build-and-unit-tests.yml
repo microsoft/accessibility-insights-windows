@@ -8,6 +8,7 @@ parameters:
 jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
   displayName: Build and run unit tests - ${{ parameters.configuration }}
+  condition: succeeded()
   templateContext:
               outputs:
                 - output: buildArtifacts
