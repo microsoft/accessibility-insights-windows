@@ -10,11 +10,11 @@ jobs:
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
   templateContext:
-              outputs:
-                - output: buildArtifacts
-                  artifactName: drop
-                  displayName: 'Publish Artifact: drop'
-                  PathtoPublish: "$(Build.ArtifactStagingDirectory)"
+    outputs:
+      - output: buildArtifacts
+        artifactName: drop
+        displayName: 'Publish Artifact: drop'
+        PathtoPublish: "$(Build.ArtifactStagingDirectory)"
   pool:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
