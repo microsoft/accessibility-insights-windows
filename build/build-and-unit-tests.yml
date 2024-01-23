@@ -9,8 +9,16 @@ jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
+  templateContext:
+    outputs:
+      - output: buildArtifacts
+        artifactName: drop
+        displayName: 'Publish Artifact: drop'
+        PathtoPublish: "$(Build.ArtifactStagingDirectory)"
   pool:
-    vmImage: windows-2022
+    name: $(a11yInsightsPool)
+    image: windows-2022-secure
+    os: windows
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2
@@ -53,9 +61,6 @@ jobs:
     inputs:
       Contents: ${{ format('**\bin\{0}\**', parameters.configuration) }}
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\*test*.dll;-:**\obj\**'
