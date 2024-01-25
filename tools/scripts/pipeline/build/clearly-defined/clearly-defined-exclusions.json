@@ -9,5 +9,6 @@
   "-/Moq",
   "-/Octokit",
   "-/System.IdentityModel.Tokens.Jwt",
-  "-/WixToolset.Dtf.CustomAction"
+  "-/WixToolset.Dtf.CustomAction",
+  "-/MSTest.TestFramework"
 ]
