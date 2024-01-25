@@ -40,8 +40,6 @@ extends:
             - output: buildArtifacts
               PathtoPublish: $(Build.ArtifactStagingDirectory)
               ArtifactName: Compliance
-        #pool:
-        #  vmImage: 'windows-2022'
         variables:
           PublicRelease: 'false'
         steps:
@@ -91,11 +89,6 @@ extends:
             Contents: '**\bin\release\**'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: Compliance'
-        #  inputs:
-        #    ArtifactName: 'Compliance'
-
         - task: VSTest@2
           displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
           inputs:
@@ -107,9 +100,6 @@ extends:
             configuration: release
             rerunFailedTests: true
 
-        #- task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-        #  displayName: 'Component Detection'
-
       - job: ComplianceDebug
         templateContext:
             outputParentDirectory: $(Build.ArtifactStagingDirectory)
@@ -117,8 +107,6 @@ extends:
             - output: buildArtifacts
               PathtoPublish: $(Build.ArtifactStagingDirectory)
               ArtifactName: Compliance
-        #pool:
-        #  vmImage: 'windows-2022'
         variables:
           PublicRelease: 'false'
         steps:
@@ -155,11 +143,6 @@ extends:
           inputs:
             Contents: '**\bin\debug\**'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: Compliance'
-        #  inputs:
-        #    ArtifactName: 'Compliance'
 
         - task: VSTest@2
           displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
@@ -250,20 +233,12 @@ extends:
         - ComplianceRelease
         - ComplianceDebug
         condition: and(succeeded(), succeeded())
-        #pool: MSEngSS-MicroBuild2022-1ES
         variables:
           runCodesignValidationInjection: 'true'
           SignAppForRelease: 'true'
           GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
-          #Codeql.Enabled: 'true'
 
         steps:
-        #- task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@4
-        #  displayName: 'Install Signing Plugin'
-        #  inputs:
-        #    signType: real
-        #    feedSource: '$(SigningPluginFeedSource)'
-
         - task: NuGetToolInstaller@1
           displayName: 'Use NuGet 5.x'
           inputs:
@@ -314,37 +289,17 @@ extends:
             Contents: '**\MSI\bin\x86\Release\**'
             TargetFolder: '$(Build.ArtifactStagingDirectory)\drop'
 
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: drop'
-
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: msi'
-        #  inputs:
-        #    PathtoPublish: 'src\MSI\bin\x86\Release\msi'
-        #    ArtifactName: 'msi'
         - task: CopyFiles@2
           displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
           inputs:
             Contents: '**\src\MSI\bin\x86\Release\msi\**'
             TargetFolder: '$(Build.ArtifactStagingDirectory)\msi'
-
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: manifest'
-        #  inputs:
-        #    PathtoPublish: 'src\Manifest\bin\Release\net48'
-        #    ArtifactName: 'manifest'
         
         - task: CopyFiles@2
           displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
           inputs:
             Contents: '**\src\Manifest\bin\Release\net48\**'
             TargetFolder: '$(Build.ArtifactStagingDirectory)\manifest'
-
-        #- task: PublishBuildArtifacts@1
-        #  displayName: 'Publish Artifact: deploy_scripts'
-        #  inputs:
-        #    PathtoPublish: '$(Build.SourcesDirectory)\tools\scripts\pipeline\deploy'
-        #    ArtifactName: 'deploy_scripts'
         
         - task: CopyFiles@2
           displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
@@ -408,8 +363,4 @@ extends:
              !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
              MSI\bin\Release\msi\**\AccessibilityInsights.msi
              Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
-            TargetFolder: '$(Build.ArtifactStagingDirectory)\drop\SigningValidation'
-
-        #- task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
-        #  displayName: 'Perform Cleanup Tasks'
-        #  condition: succeededOrFailed()
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
