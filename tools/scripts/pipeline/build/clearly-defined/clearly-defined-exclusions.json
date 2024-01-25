@@ -7,8 +7,8 @@
   "-/Microsoft.SourceLink.GitHub",
   "-/Microsoft.Web.WebView2",
   "-/Moq",
+  "-/MSTest.TestFramework",
   "-/Octokit",
   "-/System.IdentityModel.Tokens.Jwt",
-  "-/WixToolset.Dtf.CustomAction",
-  "-/MSTest.TestFramework"
+  "-/WixToolset.Dtf.CustomAction"
 ]
