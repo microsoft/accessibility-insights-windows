@@ -15,7 +15,7 @@ Set-StrictMode -Version Latest
 $script:ErrorActionPreference = 'Stop'
 
 $msiFolder = ".\msi"
-$a11yInsightsVersion = Get-ChildItem -Name -Directory $($msiFolder)
+$a11yInsightsVersion = Get-ChildItem -Name -Directory $($msiFolder) -Exclude '_manifest'
 $a11yInsightsTagName = "v" + $($a11yInsightsVersion)
 $a11yInsightsMsiFile = $($a11yInsightsVersion) + "\" + "AccessibilityInsights.msi"
 

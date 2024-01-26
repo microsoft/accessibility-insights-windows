@@ -362,9 +362,9 @@ extends:
           inputs:
             SourceFolder: '$(Build.SourcesDirectory)\src'
             Contents: |
-             AccessibilityInsights\bin\Release\net48\**\?(*.exe|*.dll)
-             AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
-             !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
-             MSI\bin\Release\msi\**\AccessibilityInsights.msi
-             Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
+              AccessibilityInsights\bin\Release\net48\**\?(*.exe|*.dll)
+              AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
+              !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
+              MSI\bin\Release\msi\**\AccessibilityInsights.msi
+              Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
             TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
