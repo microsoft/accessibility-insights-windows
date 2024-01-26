@@ -32,14 +32,15 @@ extends:
                             src\\Manifest\\**\\AccessibilityInsights.*.dll;"
     stages:
     - stage: Stage
+
       jobs:
       - job: ComplianceRelease
         templateContext:
-            outputParentDirectory: $(Build.ArtifactStagingDirectory)
-            outputs:
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)
-              ArtifactName: Compliance
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+            ArtifactName: Compliance
         variables:
           PublicRelease: 'false'
         steps:
@@ -102,11 +103,11 @@ extends:
 
       - job: ComplianceDebug
         templateContext:
-            outputParentDirectory: $(Build.ArtifactStagingDirectory)
-            outputs:
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)
-              ArtifactName: Compliance
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+            ArtifactName: Compliance
         variables:
           PublicRelease: 'false'
         steps:
@@ -210,25 +211,26 @@ extends:
 
       - job: SignedRelease
         templateContext:
-            mb:
-              signing:
-                enabled: true
-                feedSource: '$(SigningPluginFeedSource)'
-                signType: real
-            outputParentDirectory: $(Build.ArtifactStagingDirectory)
-            outputs:
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)\drop
-              ArtifactName: drop
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)\msi\src\MSI\bin\x86\Release\msi
-              ArtifactName: msi
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)\manifest\src\Manifest\bin\Release\net48\
-              ArtifactName: manifest
-            - output: buildArtifacts
-              PathtoPublish: $(Build.ArtifactStagingDirectory)\deploy_scripts\tools\scripts\pipeline\deploy\
-              ArtifactName: deploy_scripts
+          mb:
+            signing:
+              enabled: true
+              feedSource: '$(SigningPluginFeedSource)'
+              signType: real
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\drop
+            ArtifactName: drop
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\msi\src\MSI\bin\x86\Release\msi
+            ArtifactName: msi
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\manifest\src\Manifest\bin\Release\net48\
+            ArtifactName: manifest
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\deploy_scripts\tools\scripts\pipeline\deploy\
+            ArtifactName: deploy_scripts
+            
         dependsOn: 
         - ComplianceRelease
         - ComplianceDebug
