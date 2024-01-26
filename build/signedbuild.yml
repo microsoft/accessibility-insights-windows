@@ -25,6 +25,7 @@ extends:
       name: MSEngSS-MicroBuild2022-1ES
     sdl:
       binskim:
+        # If you modify this list, you also need to modify the list in the Run BinSkim task in Signed Release Job or vice-versa to keep them in sync
         analyzeTargetGlob: "src\\AccessibilityInsights\\**\\*.exe;\
                             src\\AccessibilityInsights\\**\\AccessibilityInsights.*.dll;\
                             src\\AccessibilityInsights.VersionSwitcher\\**\\*.exe;\
@@ -314,6 +315,7 @@ extends:
           inputs:
             InputType: Basic
             # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+            # If you modify this list, you also need to modify the list in the sdl: binskim parameter of the 1ES template or vice-versa to keep them in sync
             AnalyzeTargetGlob: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
                                 src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
                                 src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
