@@ -113,10 +113,14 @@ $PSLicense= Get-LineCommentedHeader $SplitVanillaLicenseHeader "#"
     $fileContent=Get-FileText $path
     if($fileContent -ne $Null -and $fileContent.Contains($copyRightHeader)){
     } else {
-       $FailedFiles += $path
-       if($AddIfAbsent){
-           "$copyRightHeader" + $fileContent | Set-Content -NoNewLine $path -Encoding UTF8
-           echo "Added the header to $path"
+        if ($path.Contains('\.github\policies\')){
+            echo "Ignoring policy file: $path"
+        } else {
+            $FailedFiles += $path
+            if($AddIfAbsent){
+                "$copyRightHeader" + $fileContent | Set-Content -NoNewLine $path -Encoding UTF8
+                echo "Added the header to $path"
+            }
         }
     }
 }
