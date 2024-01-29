@@ -17,7 +17,7 @@ The extensions of the files in the target folder that will be processed. Current
 If a file with no license header is detected, whether a header should be added.
 
 .Example Usage 
-.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.cs,*.ps1 -AddIfAbsent $false
+.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.cs,*.ps1,*.yml,*.targets -AddIfAbsent $false
 #>
 
 param(
