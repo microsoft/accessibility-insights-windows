@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -OctokitRelativePath Octokit\9.1.0\lib\netstandard2.0\Octokit.dll -MsiBasePath $(SolutionDir)MSI\bin\x86\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(TargetDir) -OutputFile ReleaseInfo.json" />
+    <Exec Command="powershell -f $(SolutionDir)..\tools\scripts\create-json-for-manifest.ps1 -Verbose -OctokitRelativePath Octokit\9.1.1\lib\netstandard2.0\Octokit.dll -MsiBasePath $(SolutionDir)MSI\bin\x86\Release\msi -IsMandatoryProdUpdate $(IsMandatoryProdUpdate) -OutputPath $(TargetDir) -OutputFile ReleaseInfo.json" />
   </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
