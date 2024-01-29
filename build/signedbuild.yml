@@ -11,335 +11,360 @@ variables:
   runCodesignValidationInjection: 'false'
   isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
 
-jobs:
-- job: ComplianceRelease
-  pool:
-    vmImage: 'windows-2022'
-  variables:
-    PublicRelease: 'false'
-  steps:
-  - task: PowerShell@2
-    displayName: 'License Header Check'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
-      arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+resources:
+  repositories:
+  - repository: MicroBuildTemplate
+    type: git
+    name: 1ESPipelineTemplates/MicroBuildTemplate
+    ref: refs/tags/release
 
-  - task: NuGetToolInstaller@1
-    displayName: 'Use NuGet 5.x'
-    inputs:
-      versionSpec: '5.x'
+extends:
+  template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplate
+  parameters:
+    pool: 
+      name: MSEngSS-MicroBuild2022-1ES
+    sdl:
+      binskim:
+        # If you modify this list, you also need to modify the list in the Run BinSkim task in Signed Release Job or vice-versa to keep them in sync
+        analyzeTargetGlob: "src\\AccessibilityInsights\\**\\*.exe;\
+                            src\\AccessibilityInsights\\**\\AccessibilityInsights.*.dll;\
+                            src\\AccessibilityInsights.VersionSwitcher\\**\\*.exe;\
+                            src\\AccessibilityInsights.VersionSwitcher\\**\\AccessibilityInsights.*.dll;\
+                            src\\Manifest\\**\\AccessibilityInsights.*.dll;"
+    stages:
+    - stage: Stage
 
-  - task: CmdLine@2
-    displayName: 'Show environment variables'
-    inputs:
-      script: set
+      jobs:
+      - job: ComplianceRelease
+        templateContext:
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+            ArtifactName: Compliance
+        variables:
+          PublicRelease: 'false'
+        steps:
+        - task: PowerShell@2
+          displayName: 'License Header Check'
+          inputs:
+            targetType: "filePath"
+            filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
+            arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
 
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
+        - task: NuGetToolInstaller@1
+          displayName: 'Use NuGet 5.x'
+          inputs:
+            versionSpec: '5.x'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet restore'
-    inputs:
-      command: restore
-      projects: |
-        **\*.csproj
-        !**\CustomActions.Package.csproj
+        - task: CmdLine@2
+          displayName: 'Show environment variables'
+          inputs:
+            script: set
 
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
-    inputs:
-      vsVersion: 17.0
-      platform: '$(BuildPlatform)'
-      configuration: release
+        - task: NuGetCommand@2
+          displayName: 'NuGet restore'
 
-#  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
-#    displayName: 'WPF Static Analysis'
-#    inputs:
-#      input: 'src\AccessibilityInsights\bin\Release'
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet restore'
+          inputs:
+            command: restore
+            projects: |
+              **\*.csproj
+              !**\CustomActions.Package.csproj
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\release\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        - task: VSBuild@1
+          displayName: 'Build Solution **\*.sln'
+          inputs:
+            vsVersion: 17.0
+            platform: '$(BuildPlatform)'
+            configuration: release
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: Compliance'
-    inputs:
-      ArtifactName: 'Compliance'
+      #  - task: ms.build-release-task.custom-build-release-task.wpf-static-analysis@0
+      #    displayName: 'WPF Static Analysis'
+      #    inputs:
+      #      input: 'src\AccessibilityInsights\bin\Release'
 
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: release
-      rerunFailedTests: true
+        - task: CopyFiles@2
+          displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\bin\release\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
+        - task: VSTest@2
+          displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+          inputs:
+            testAssemblyVer2: |
+              **\*test*.dll
+              !**\obj\**
+            codeCoverageEnabled: false
+            platform: '$(BuildPlatform)'
+            configuration: release
+            rerunFailedTests: true
 
-- job: ComplianceDebug
-  pool:
-    vmImage: 'windows-2022'
-  variables:
-    PublicRelease: 'false'
-  steps:
-  - task: NuGetToolInstaller@1
-    displayName: 'Use NuGet 5.x'
-    inputs:
-      versionSpec: '5.x'
+      - job: ComplianceDebug
+        templateContext:
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)
+            ArtifactName: Compliance
+        variables:
+          PublicRelease: 'false'
+        steps:
+        - task: NuGetToolInstaller@1
+          displayName: 'Use NuGet 5.x'
+          inputs:
+            versionSpec: '5.x'
 
-  - task: CmdLine@2
-    displayName: 'Show environment variables'
-    inputs:
-      script: set
+        - task: CmdLine@2
+          displayName: 'Show environment variables'
+          inputs:
+            script: set
 
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
+        - task: NuGetCommand@2
+          displayName: 'NuGet restore'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet restore'
-    inputs:
-      command: restore
-      projects: |
-        **\*.csproj
-        !**\CustomActions.Package.csproj
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet restore'
+          inputs:
+            command: restore
+            projects: |
+              **\*.csproj
+              !**\CustomActions.Package.csproj
 
-  - task: VSBuild@1
-    displayName: 'Build Solution **\*.sln'
-    inputs:
-      vsVersion: 17.0
-      platform: '$(BuildPlatform)'
-      configuration: debug
+        - task: VSBuild@1
+          displayName: 'Build Solution **\*.sln'
+          inputs:
+            vsVersion: 17.0
+            platform: '$(BuildPlatform)'
+            configuration: debug
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\debug\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        - task: CopyFiles@2
+          displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\bin\debug\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: Compliance'
-    inputs:
-      ArtifactName: 'Compliance'
+        - task: VSTest@2
+          displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
+          inputs:
+            testAssemblyVer2: |
+              **\*test*.dll
+              !**\obj\**
+            testFiltercriteria: 'TestCategory!=RequiresNetwork'
+            codeCoverageEnabled: false
+            platform: '$(BuildPlatform)'
+            configuration: debug
+            rerunFailedTests: true
 
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\debug\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      testFiltercriteria: 'TestCategory!=RequiresNetwork'
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: debug
-      rerunFailedTests: true
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
+          displayName: 'Run CredScan'
+          inputs:
+            outputFormat: 'pre'
+            verboseOutput: true
+            debugMode: false
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-credscan.CredScan@3
-    displayName: 'Run CredScan'
-    inputs:
-      outputFormat: 'pre'
-      verboseOutput: true
-      debugMode: false
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-roslynanalyzers.RoslynAnalyzers@3
+          displayName: 'Run Roslyn analyzers'
+          inputs:
+              userProvideBuildInfo: msBuildInfo
+              msbuildVersion: 17.0
+              msBuildArchitecture: '$(BuildPlatform)'
+              msBuildCommandline: '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" "$(Build.SourcesDirectory)\src\AccessibilityInsights.sln" /p:platform="$(BuildPlatform)" /p:configuration="debug" /p:VisualStudioVersion="17.0"'
+              rulesetName: Recommended
+              internalAnalyzersVersion: Latest
+              microsoftAnalyzersVersion: Latest
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-roslynanalyzers.RoslynAnalyzers@3
-    displayName: 'Run Roslyn analyzers'
-    inputs:
-        userProvideBuildInfo: msBuildInfo
-        msbuildVersion: 17.0
-        msBuildArchitecture: '$(BuildPlatform)'
-        msBuildCommandline: '"C:\Program Files\Microsoft Visual Studio\2022\Enterprise\MSBuild\Current\Bin\msbuild.exe" "$(Build.SourcesDirectory)\src\AccessibilityInsights.sln" /p:platform="$(BuildPlatform)" /p:configuration="debug" /p:VisualStudioVersion="17.0"'
-        rulesetName: Recommended
-        internalAnalyzersVersion: Latest
-        microsoftAnalyzersVersion: Latest
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@2
+          displayName: 'Run PoliCheck'
+          inputs:
+            targetType: F
+          continueOnError: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-policheck.PoliCheck@2
-    displayName: 'Run PoliCheck'
-    inputs:
-      targetType: F
-    continueOnError: true
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
+          displayName: 'Create Security Analysis Report (CredScan, RoslynAnalyzers, and PoliCheck)'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
-    displayName: 'Create Security Analysis Report (CredScan, RoslynAnalyzers, and PoliCheck)'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+          displayName: 'Publish Security Analysis Logs (CredScan, RoslynAnalyzers, and PoliCheck)'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
-    displayName: 'Publish Security Analysis Logs (CredScan, RoslynAnalyzers, and PoliCheck)'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
+          displayName: 'Post Analysis (CredScan, RoslynAnalyzers, and PoliCheck)'
+          inputs:
+            GdnBreakAllTools: false
+            GdnBreakGdnToolPoliCheck: false
+            GdnBreakGdnToolRoslynAnalyzers: false
+            GdnBreakGdnToolCredScan: true
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
-    displayName: 'Post Analysis (CredScan, RoslynAnalyzers, and PoliCheck)'
-    inputs:
-      GdnBreakAllTools: false
-      GdnBreakGdnToolPoliCheck: false
-      GdnBreakGdnToolRoslynAnalyzers: false
-      GdnBreakGdnToolCredScan: true
+        - task: PowerShell@2
+          displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
+          inputs:
+            targetType: "filePath"
+            filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
+            arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "CredScan;RoslynAnalyzers;PoliCheck" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
 
-  - task: PowerShell@2
-    displayName: 'Create tsa.config file (CredScan, Roslyn, and PoliCheck)'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "CredScan;RoslynAnalyzers;PoliCheck" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
+          displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
+          condition: and(succeeded(), eq(variables.isMain, true))
+          inputs:
+            GdnPublishTsaOnboard: true
+            GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
-    displayName: 'TSA upload (CredScan, Roslyn, and PoliCheck)'
-    condition: and(succeeded(), eq(variables.isMain, true))
-    inputs:
-      GdnPublishTsaOnboard: true
-      GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
+      - job: SignedRelease
+        templateContext:
+          mb:
+            signing:
+              enabled: true
+              feedSource: '$(SigningPluginFeedSource)'
+              signType: real
+          outputParentDirectory: $(Build.ArtifactStagingDirectory)
+          outputs:
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\drop
+            ArtifactName: drop
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\msi\src\MSI\bin\x86\Release\msi
+            ArtifactName: msi
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\manifest\src\Manifest\bin\Release\net48\
+            ArtifactName: manifest
+          - output: buildArtifacts
+            PathtoPublish: $(Build.ArtifactStagingDirectory)\deploy_scripts\tools\scripts\pipeline\deploy\
+            ArtifactName: deploy_scripts
+            
+        dependsOn: 
+        - ComplianceRelease
+        - ComplianceDebug
+        condition: and(succeeded(), succeeded())
+        variables:
+          runCodesignValidationInjection: 'true'
+          SignAppForRelease: 'true'
+          GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
 
-- job: SignedRelease
-  dependsOn: 
-  - ComplianceRelease
-  - ComplianceDebug
-  condition: and(succeeded(), succeeded())
-  pool: MSEngSS-MicroBuild2022-1ES
-  variables:
-    runCodesignValidationInjection: 'true'
-    SignAppForRelease: 'true'
-    GDN_CODESIGN_TARGETDIRECTORY: '$(Build.ArtifactStagingDirectory)\SigningValidation'
-    Codeql.Enabled: 'true'
+        steps:
+        - task: NuGetToolInstaller@1
+          displayName: 'Use NuGet 5.x'
+          inputs:
+            versionSpec: '5.x'
 
-  steps:
-  - task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@4
-    displayName: 'Install Signing Plugin'
-    inputs:
-      signType: real
-      feedSource: '$(SigningPluginFeedSource)'
+        - task: CmdLine@2
+          displayName: 'Show environment variables'
+          inputs:
+            script: set
 
-  - task: NuGetToolInstaller@1
-    displayName: 'Use NuGet 5.x'
-    inputs:
-      versionSpec: '5.x'
+        - task: NuGetCommand@2
+          displayName: 'NuGet restore'
 
-  - task: CmdLine@2
-    displayName: 'Show environment variables'
-    inputs:
-      script: set
+        - task: DotNetCoreCLI@2
+          displayName: 'dotnet restore'
+          inputs:
+            command: restore
+            projects: |
+              **\*.csproj
+              !**\CustomActions.Package.csproj
 
-  - task: NuGetCommand@2
-    displayName: 'NuGet restore'
+        - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
+          displayName: 'Component Detection'
 
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet restore'
-    inputs:
-      command: restore
-      projects: |
-        **\*.csproj
-        !**\CustomActions.Package.csproj
+        - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
+          displayName: 'generate thirdpartynotices.html file'
+          inputs:
+              outputfile: '$(System.DefaultWorkingDirectory)/thirdpartynotices.html'
+              outputformat: html
 
-  - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
-    displayName: 'Component Detection'
+        - task: VSBuild@1
+          displayName: 'Build Solution **\AccessibilityInsights.sln'
+          inputs:
+            vsVersion: 17.0
+            platform: '$(BuildPlatform)'
+            configuration: SignedRelease
+            solution: '**/AccessibilityInsights.sln'  # we only want to build AccessibilityInsights for signing
 
-  - task: msospo.ospo-extension.8d7f9abb-6896-461d-9e25-4f74ed65ddb2.notice@0
-    displayName: 'generate thirdpartynotices.html file'
-    inputs:
-        outputfile: '$(System.DefaultWorkingDirectory)/thirdpartynotices.html'
-        outputformat: html
+        - task: CopyFiles@2
+          displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\bin\release\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\drop'
 
-  - task: VSBuild@1
-    displayName: 'Build Solution **\AccessibilityInsights.sln'
-    inputs:
-      vsVersion: 17.0
-      platform: '$(BuildPlatform)'
-      configuration: SignedRelease
-      solution: '**/AccessibilityInsights.sln'  # we only want to build AccessibilityInsights for signing
+        - task: CopyFiles@2
+          displayName: 'Copy MSI file to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\MSI\bin\x86\Release\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\drop'
 
-  - task: CopyFiles@2
-    displayName: 'Copy Files to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\bin\release\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        - task: CopyFiles@2
+          displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\src\MSI\bin\x86\Release\msi\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\msi'
+        
+        - task: CopyFiles@2
+          displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\src\Manifest\bin\Release\net48\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\manifest'
+        
+        - task: CopyFiles@2
+          displayName: 'Copy msi to: $(Build.ArtifactStagingDirectory)'
+          inputs:
+            Contents: '**\tools\scripts\pipeline\deploy\**'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\deploy_scripts'
 
-  - task: CopyFiles@2
-    displayName: 'Copy MSI file to: $(Build.ArtifactStagingDirectory)'
-    inputs:
-      Contents: '**\MSI\bin\x86\Release\**'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
+          displayName: 'Run BinSkim'
+          inputs:
+            InputType: Basic
+            # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
+            # If you modify this list, you also need to modify the list in the sdl: binskim parameter of the 1ES template or vice-versa to keep them in sync
+            AnalyzeTargetGlob: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
+                                src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                                src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
+                                src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
+                                src\\Manifest\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
+          displayName: 'Create Security Analysis Report (BinSkim)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: msi'
-    inputs:
-      PathtoPublish: 'src\MSI\bin\x86\Release\msi'
-      ArtifactName: 'msi'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
+          displayName: 'Publish Security Analysis Logs (BinSkim)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: manifest'
-    inputs:
-      PathtoPublish: 'src\Manifest\bin\Release\net48'
-      ArtifactName: 'manifest'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
+          displayName: 'Post Analysis (BinSkim)'
 
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: deploy_scripts'
-    inputs:
-      PathtoPublish: '$(Build.SourcesDirectory)\tools\scripts\pipeline\deploy'
-      ArtifactName: 'deploy_scripts'
+        - task: VSTest@2
+          displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
+          inputs:
+            testAssemblyVer2: |
+              **\*test*.dll
+              !**\obj\**
+            codeCoverageEnabled: false
+            platform: '$(BuildPlatform)'
+            configuration: release
+            rerunFailedTests: true
+            testFiltercriteria: 'TestCategory!=NoStrongName'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-binskim.BinSkim@4
-    displayName: 'Run BinSkim'
-    inputs:
-      InputType: Basic
-      # Double-quote syntax with trailing backslash on each line concatenates lines without spaces
-      AnalyzeTargetGlob: "src\\AccessibilityInsights\\bin\\Release\\net48\\*.exe;\
-                          src\\AccessibilityInsights\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
-                          src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\*.exe;\
-                          src\\AccessibilityInsights.VersionSwitcher\\bin\\Release\\net48\\AccessibilityInsights.*.dll;\
-                          src\\Manifest\\bin\\Release\\net48\\AccessibilityInsights.*.dll;"
+        - task: PowerShell@2
+          displayName: 'Create tsa.config file (BinSkim)'
+          inputs:
+            targetType: "filePath"
+            filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
+            arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "BinSkim" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-report.SdtReport@2
-    displayName: 'Create Security Analysis Report (BinSkim)'
+        - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
+          displayName: 'TSA upload (BinSkim)'
+          condition: and(succeeded(), eq(variables.isMain, true))
+          inputs:
+            GdnPublishTsaOnboard: true
+            GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
 
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-publishsecurityanalysislogs.PublishSecurityAnalysisLogs@3
-    displayName: 'Publish Security Analysis Logs (BinSkim)'
-
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-postanalysis.PostAnalysis@2
-    displayName: 'Post Analysis (BinSkim)'
-
-  - task: VSTest@2
-    displayName: 'Test Assemblies **\release\*test*.dll;-:**\obj\**'
-    inputs:
-      testAssemblyVer2: |
-        **\*test*.dll
-        !**\obj\**
-      codeCoverageEnabled: false
-      platform: '$(BuildPlatform)'
-      configuration: release
-      rerunFailedTests: true
-      testFiltercriteria: 'TestCategory!=NoStrongName'
-
-  - task: PowerShell@2
-    displayName: 'Create tsa.config file (BinSkim)'
-    inputs:
-      targetType: "filePath"
-      filePath: tools\scripts\pipeline\build\create-tsa-config.ps1
-      arguments: '-InstanceUrl "$(TSAInstanceUrl)" -ProjectName "$(TSAProjectName)" -CodeBaseAdmins "$(TSACodeBaseAdmins)" -AreaPath "$(TSAAreaPath)" -IterationPath "$(TSAIterationPath)" -NotificationAliases "$(TSANotificationAlias)" -Tools "BinSkim" -OutputFile "$(Build.SourcesDirectory)\tsa.config"'
-  
-  - task: securedevelopmentteam.vss-secure-development-tools.build-task-uploadtotsa.TSAUpload@2
-    displayName: 'TSA upload (BinSkim)'
-    condition: and(succeeded(), eq(variables.isMain, true))
-    inputs:
-      GdnPublishTsaOnboard: true
-      GdnPublishTsaConfigFile: '$(Build.SourcesDirectory)\tsa.config'
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files for Signing Validation'
-    inputs:
-      SourceFolder: '$(Build.SourcesDirectory)\src'
-      Contents: |
-       AccessibilityInsights\bin\Release\net48\**\?(*.exe|*.dll)
-       AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
-       !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
-       MSI\bin\Release\msi\**\AccessibilityInsights.msi
-       Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
-      TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
-
-  - task: ms-vseng.MicroBuildTasks.521a94ea-9e68-468a-8167-6dcf361ea776.MicroBuildCleanup@1
-    displayName: 'Perform Cleanup Tasks'
-    condition: succeededOrFailed()
+        - task: CopyFiles@2
+          displayName: 'Copy Files for Signing Validation'
+          inputs:
+            SourceFolder: '$(Build.SourcesDirectory)\src'
+            Contents: |
+              AccessibilityInsights\bin\Release\net48\**\?(*.exe|*.dll)
+              AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(*.exe|*.dll)
+              !AccessibilityInsights.VersionSwitcher\bin\Release\net48\**\?(Microsoft.Deployment.WindowsInstaller.dll|Newtonsoft.Json.dll)
+              MSI\bin\Release\msi\**\AccessibilityInsights.msi
+              Manifest\bin\Release\net48\AccessibilityInsights.Manifest.dll
+            TargetFolder: '$(Build.ArtifactStagingDirectory)\SigningValidation'
