@@ -1,4 +1,5 @@
 [
+  "-/coverlet.msbuild",
   "-/Microsoft.ApplicationInsights",
   "-/Microsoft.CodeAnalysis.NetAnalyzers",
   "-/Microsoft.IdentityModel.JsonWebTokens",
