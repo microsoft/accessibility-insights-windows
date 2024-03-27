@@ -1,4 +1,5 @@
 [
+  "-/Axe.Windows",
   "-/coverlet.msbuild",
   "-/Microsoft.ApplicationInsights",
   "-/Microsoft.CodeAnalysis.NetAnalyzers",
