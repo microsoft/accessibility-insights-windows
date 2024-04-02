@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
-    <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="4.0.4" />
+    <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="4.0.5" />
   </ItemGroup>
 
   <ItemGroup>
