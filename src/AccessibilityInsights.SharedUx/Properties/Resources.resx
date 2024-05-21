@@ -510,7 +510,7 @@
     <value>filter</value>
   </data>
   <data name="textboxSearchAutomationPropertiesHelpText" xml:space="preserve">
-    <value>Filter the items in the both lists.</value>
+    <value>Filter the items in both lists.</value>
   </data>
   <data name="lvLeftAutomationPropertiesName" xml:space="preserve">
     <value>Available</value>
