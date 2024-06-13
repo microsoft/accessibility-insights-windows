@@ -30,6 +30,7 @@ using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 using static AccessibilityInsights.Misc.FrameworkNavigator;
+using AccessibilityInsights.Modes;
 
 namespace AccessibilityInsights
 {
@@ -945,6 +946,16 @@ namespace AccessibilityInsights
                     }
                 }
             }
+        }
+
+        private void ShiftRight_Click(object sender, RoutedEventArgs e)
+        {
+            HandlePanelColumn(-5);
+        }
+
+        private void ShiftLeft_Click(object sender, RoutedEventArgs e)
+        {
+            HandlePanelColumn(5);
         }
 
         /// <summary>

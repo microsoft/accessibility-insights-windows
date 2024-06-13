@@ -15,8 +15,11 @@ using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Automation;
+using AccessibilityInsights.SharedUx.Utilities;
+using System.Windows.Input;
 
 namespace AccessibilityInsights
+
 {
     /// <summary>
     /// this is partial class for MainWindow
@@ -629,6 +632,10 @@ namespace AccessibilityInsights
                 AutomationProperties.SetName(btnPause, Properties.Resources.btnPauseAutomationPropertiesNameOff);
             }
             UpdateMainWindowUI();
+        }
+        internal void HandlePanelColumn(int increment)
+        {
+            this.ctrlLiveMode.columnSnap.ResizeColumn(increment);
         }
     }
 }
