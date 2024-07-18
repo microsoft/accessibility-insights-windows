@@ -331,6 +331,24 @@ namespace AccessibilityInsights.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Shift Splitter left.
+        /// </summary>
+        public static string btnShiftSplitterLeft {
+            get {
+                return ResourceManager.GetString("btnShiftSplitterLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift Splitter right.
+        /// </summary>
+        public static string btnShiftSplitterRight {
+            get {
+                return ResourceManager.GetString("btnShiftSplitterRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tests FastPass mode.
         /// </summary>
         public static string btnTestAutomationPropertiesName {

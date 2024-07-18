@@ -485,6 +485,34 @@
                                     </i:Interaction.Behaviors>
                                     <fabric:FabricIconControl GlyphName="OpenFolderHorizontal" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
                                 </Button>
+                                <Button x:Name="btnShiftRight"
+                                     Style="{StaticResource BtnNoAutoHelpText}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinLoadButton}"
+                                     VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                     AutomationProperties.Name="{x:Static properties:Resources.btnShiftSplitterRight}" Click="ShiftRight_Click">
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            <Run Text="{x:Static properties:Resources.btnShiftSplitterRight}" />
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:KeyboardToolTipButtonBehavior/>
+                                    </i:Interaction.Behaviors>
+                                    <fabric:FabricIconControl GlyphName="ChromeBack" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                                </Button>
+                                <Button x:Name="btnShiftLeft"
+                                 Style="{StaticResource BtnNoAutoHelpText}" AutomationProperties.AutomationId="{x:Static sharedProps:AutomationIDs.MainWinLoadButton}"
+                                 VerticalAlignment="Center" HorizontalAlignment="Left" Height="24" Width="24" Margin="4,0,0,0"
+                                 AutomationProperties.Name="{x:Static properties:Resources.btnShiftSplitterLeft}" Click="ShiftLeft_Click">
+                                    <Button.ToolTip>
+                                        <ToolTip>
+                                            <Run Text="{x:Static properties:Resources.btnShiftSplitterLeft}" />
+                                        </ToolTip>
+                                    </Button.ToolTip>
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:KeyboardToolTipButtonBehavior/>
+                                    </i:Interaction.Behaviors>
+                                    <fabric:FabricIconControl GlyphName="ChromeBackMirrored" FontSize="16" Style="{StaticResource hoverAwareFabricIconOnButtonParent}"/>
+                                </Button>
                             </StackPanel>
                             <Label DockPanel.Dock="Right" Padding="8,0" Name="lblVersion" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0" FontSize="{StaticResource ConstStandardTextSize}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                         </DockPanel>

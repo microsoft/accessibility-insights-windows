@@ -584,4 +584,10 @@ Confidence: {1}</value>
   <data name="LiveModeControl_LearnMoreKeyboard" xml:space="preserve">
     <value>Learn more about keyboard shortcuts</value>
   </data>
+  <data name="btnShiftSplitterLeft" xml:space="preserve">
+    <value>Shift Splitter left</value>
+  </data>
+  <data name="btnShiftSplitterRight" xml:space="preserve">
+    <value>Shift Splitter right</value>
+  </data>
 </root>
