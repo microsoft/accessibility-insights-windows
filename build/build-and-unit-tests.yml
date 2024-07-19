@@ -1,3 +1,5 @@
+﻿# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license. See LICENSE file in the project root for full license information.
 # This template contains jobs to build and run unit tests
 
 parameters:
@@ -9,8 +11,16 @@ jobs:
 - job: BuildAndUnitTests${{ parameters.configuration }}
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
+  templateContext:
+    outputs:
+      - output: buildArtifacts
+        artifactName: drop
+        displayName: 'Publish Artifact: drop'
+        PathtoPublish: "$(Build.ArtifactStagingDirectory)"
   pool:
-    vmImage: windows-2022
+    name: $(a11yInsightsPool)
+    image: windows-2022-secure
+    os: windows
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2
@@ -18,7 +28,7 @@ jobs:
       inputs:
         targetType: "filePath"
         filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
-        arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1 -addIfAbsent $false'
+        arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1,*.yml,*.targets -addIfAbsent $false'
 
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
@@ -53,9 +63,6 @@ jobs:
     inputs:
       Contents: ${{ format('**\bin\{0}\**', parameters.configuration) }}
       TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - task: PublishBuildArtifacts@1
-    displayName: 'Publish Artifact: drop'
 
   - task: VSTest@2
     displayName: 'Test Assemblies **\*test*.dll;-:**\obj\**'

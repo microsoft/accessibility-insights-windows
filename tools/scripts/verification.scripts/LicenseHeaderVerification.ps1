@@ -17,7 +17,7 @@ The extensions of the files in the target folder that will be processed. Current
 If a file with no license header is detected, whether a header should be added.
 
 .Example Usage 
-.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.cs,*.ps1 -AddIfAbsent $false
+.\LicenseHeaderVerification.ps1 -Target '.\Powershell test\' -LicenseHeaderPath .\LicenseHeader.txt -Extensions *.xaml,*.xml,*.cs,*.ps1,*.yml,*.targets -AddIfAbsent $false
 #>
 
 param(
@@ -40,13 +40,13 @@ function Get-FileText($pathToFile){
 function Get-CopyrightHeader($extension){
     switch ( $extension )
     {
-        {(($extension -eq '.xaml') -or ($extension -eq '.xml') -or ($extension -eq '.wxs'))}{
+        {(($extension -eq '.xaml') -or ($extension -eq '.xml') -or ($extension -eq '.wxs') -or ($extension -eq '.targets'))}{
             return $XmlLicense;
         }
         .cs {
             return $CSharpLicense;
         }
-        .ps1{
+        {(($extension -eq '.ps1') -or ($extension -eq '.yml'))}{
             return $PSLicense;
         }
         #Add more Extensions support here
@@ -101,22 +101,26 @@ function Get-BlockCommentedHeader($SplitVanillaLicenseHeader, $blockCommentStart
 }
 
 $SplitVanillaLicenseHeader = (Get-FileText $LicenseHeaderPath).split($NewLine)
-$XmlLicense = Get-BlockCommentedHeader $SplitVanillaLicenseHeader "<!--" "-->"
+$XmlLicense = (Get-BlockCommentedHeader $SplitVanillaLicenseHeader "<!--" "-->") + $NewLine
 $CSharpLicense =  Get-LineCommentedHeader $SplitVanillaLicenseHeader "//"
 $PSLicense= Get-LineCommentedHeader $SplitVanillaLicenseHeader "#"
 #Add more Extensions support here
 
 (Get-ChildItem $Target\* -Include $Extensions -Recurse) | Where {$_.FullName -notmatch $excludeList} | Foreach-Object {
     $path = $_.FullName
+	Write-Host "Path = $path"
     $copyRightHeader=Get-CopyrightHeader $_.Extension
     $fileContent=Get-FileText $path
     if($fileContent -ne $Null -and $fileContent.Contains($copyRightHeader)){
-        echo "$path has copyright header"
     } else {
-       $FailedFiles += $path
-       if($AddIfAbsent){
-           "$copyRightHeader" + $fileContent | Set-Content -NoNewLine $path -Encoding UTF8
-           echo "Added the header to $path"
+        if ($path.Contains('\.github\policies\')){
+            echo "Ignoring policy file: $path"
+        } else {
+            $FailedFiles += $path
+            if($AddIfAbsent){
+                "$copyRightHeader" + $fileContent | Set-Content -NoNewLine $path -Encoding UTF8
+                echo "Added the header to $path"
+            }
         }
     }
 }

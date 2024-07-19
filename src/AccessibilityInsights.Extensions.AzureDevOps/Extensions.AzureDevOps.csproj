@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+  
   <PropertyGroup>
     <AssemblyName>AccessibilityInsights.Extensions.AzureDevOps</AssemblyName>
     <RootNamespace>AccessibilityInsights.Extensions.AzureDevOps</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
+  
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
-
+  
   <ItemGroup>
     <COMReference Include="SHDocVw.dll">
       <Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
@@ -22,34 +22,36 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.57" />
-    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.0.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="7.0.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.0.3" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.61" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.61.3" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="7.6.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Logging" Version="7.6.3" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.6.3" />
     <PackageReference Include="Microsoft.TeamFoundationServer.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.Client" Version="19.227.0-preview" />
     <PackageReference Include="Microsoft.VisualStudio.Services.InteractiveClient" Version="19.227.0-preview" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2210.55" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2478.35" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="System.Buffers" Version="4.5.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.6.3" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="8.0.4" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Remove="Resources\Icons\BrandIcon.ico" />
     <Resource Include="Resources\Icons\BrandIcon.ico" />
   </ItemGroup>
-
+  
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -57,14 +59,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
-
+  
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-
+  
   <ItemGroup>
     <None Update="IssueTemplates\IssueColorContrast.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -85,5 +87,5 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+  
 </Project>

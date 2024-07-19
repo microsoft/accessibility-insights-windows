@@ -4444,7 +4444,7 @@ namespace AccessibilityInsights.SharedUx.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Filter the items in the both lists..
+        ///   Looks up a localized string similar to Filter the items in both lists..
         /// </summary>
         public static string textboxSearchAutomationPropertiesHelpText {
             get {

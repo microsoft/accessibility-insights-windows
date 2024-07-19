@@ -1,3 +1,5 @@
+﻿# Copyright (c) Microsoft. All rights reserved.
+# Licensed under the MIT license. See LICENSE file in the project root for full license information.
 # This template checks for assemblies that may need harvesting in ClearlyDefined
 
 parameters:
@@ -8,7 +10,9 @@ jobs:
   displayName: Check Dependencies
   condition: succeeded()
   pool:
-    vmImage: windows-2022
+    name: $(a11yInsightsPool) # Name of your hosted pool
+    image: windows-2022-secure # Name of the image in your pool. If not specified, first image of the pool is used
+    os: windows # OS of the image. Allowed values: windows, linux, macOS
   steps:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'

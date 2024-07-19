@@ -1,4 +1,6 @@
 [
+  "-/Axe.Windows",
+  "-/coverlet.msbuild",
   "-/Microsoft.ApplicationInsights",
   "-/Microsoft.CodeAnalysis.NetAnalyzers",
   "-/Microsoft.IdentityModel.JsonWebTokens",
@@ -7,7 +9,9 @@
   "-/Microsoft.SourceLink.GitHub",
   "-/Microsoft.Web.WebView2",
   "-/Moq",
+  "-/MSTest.TestFramework",
   "-/Octokit",
   "-/System.IdentityModel.Tokens.Jwt",
-  "-/WixToolset.Dtf.CustomAction"
+  "-/WixToolset.Dtf.CustomAction",
+  "-/WixToolset.Dtf.WindowsInstaller"
 ]
