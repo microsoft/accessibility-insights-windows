@@ -5,6 +5,7 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.SharedUx.Highlighting;
 using AccessibilityInsights.SharedUx.Settings;
 using AccessibilityInsights.SharedUx.Telemetry;
+using AccessibilityInsights.SharedUx.Utilities;
 using AccessibilityInsights.SharedUx.ViewModels;
 using Axe.Windows.Actions;
 using Axe.Windows.Actions.Contexts;
@@ -19,7 +20,10 @@ using Axe.Windows.Desktop.UIAutomation.TreeWalkers;
 using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Media;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -146,12 +150,21 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             }
         }
 
+        private readonly Stream startRecordingSoundStream;
+        private readonly Stream stopRecordingSoundStream;
+        private readonly SoundPlayer player;
+
         /// <summary>
         /// Constructor
         /// </summary>
         public TabStopControl()
         {
             InitializeComponent();
+
+            player = new SoundPlayer();
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            startRecordingSoundStream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.start_event_recording.wav");
+            stopRecordingSoundStream = assembly.GetManifestResourceStream(assembly.GetName().Name + ".Resources.Sound.stop_event_recording.wav");
         }
 
         /// <summary>
@@ -282,6 +295,18 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             this.HighlightVisibility = false;
         }
 
+        /// <summary>If sounds are enabled, play the passed-in stream. Used to enable sound feedback when toggling recording.</summary>
+        private void PlaySoundIfNeeded(Stream stream)
+        {
+            if (HelperMethods.ShouldPlaySound)
+            {
+                player.Stop();
+                player.Stream = stream;
+                player.Stream.Position = 0;
+                player.Play();
+            }
+        }
+
         /// <summary>
         /// Toggle event recording
         /// </summary>
@@ -354,6 +379,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
                 EventHandler?.RegisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId, this.EventMessageReceived);
                 lvElements.Items.Clear();
                 IsRecordingActive = true;
+                PlaySoundIfNeeded(startRecordingSoundStream);
                 Logger.PublishTelemetryEvent(TelemetryAction.TabStop_Record_On,
                     TelemetryProperty.Scope, SelectAction.GetDefaultInstance().Scope.ToString());
             }
@@ -473,6 +499,7 @@ namespace AccessibilityInsights.SharedUx.Controls.TestTabs
             {
                 this.EventHandler.UnregisterAutomationEventListener(EventType.UIA_AutomationFocusChangedEventId);
                 IsRecordingActive = false;
+                PlaySoundIfNeeded(stopRecordingSoundStream);
                 this.Toast.Visibility = Visibility.Collapsed;
             }
         }
