@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="WixToolset.Dtf.CustomAction" Version="5.0.0" />
+    <PackageReference Include="WixToolset.Dtf.CustomAction" Version="5.0.1" />
   </ItemGroup>
 
   <Target Name="OverwriteWithSignedAssemblies" BeforeTargets="PackCustomAction">
