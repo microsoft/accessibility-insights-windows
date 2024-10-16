@@ -45,7 +45,7 @@ namespace MsiFileTests
 
             filesInDropPath.ExceptWith(filesInWxsComponent);
 
-            Assert.IsFalse(filesInDropPath.Any(), $"{filesInDropPath.Count} drop files are missing from \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
+            Assert.IsFalse(filesInDropPath.count > 0, $"{filesInDropPath.Count} drop files are missing from \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
         }
 
         private static HashSet<string> GetNonSymbolFilesInPath(string path, HashSet<string> intentionalExclusions)
