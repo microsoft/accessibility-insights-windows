@@ -38,7 +38,7 @@ extends:
           - template: build/build-and-unit-tests.yml@self
             parameters:
               configuration: release
-              checkLicenseHeaders: false
+              checkLicenseHeaders: true
               runComponentGovernance: false
 
           - template: build/build-and-unit-tests.yml@self
