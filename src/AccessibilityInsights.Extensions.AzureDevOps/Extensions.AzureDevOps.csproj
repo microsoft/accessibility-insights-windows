@@ -37,7 +37,7 @@
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
-    <PackageReference Include="System.Text.Json" Version="8.1.2" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
     <ProjectReference Include="..\AccessibilityInsights.CommonUxComponents\CommonUxComponents.csproj" />
     <ProjectReference Include="..\AccessibilityInsights.Extensions\Extensions.csproj" />
