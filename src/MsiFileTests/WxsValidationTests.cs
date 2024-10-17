@@ -50,7 +50,6 @@ namespace MsiFileTests
 
             Assert.AreNotEqual(0, filesInDropPath.Count, $"No files found under {dropPath}");
             Assert.AreNotEqual(0, filesInWxsComponent.Count, $"No files in Component {wxsComponentId}");
- 
             filesInDropPath.ExceptWith(filesInWxsComponent);
 
             Assert.IsFalse(filesInDropPath.Any(), $"{filesInDropPath.Count} drop files are missing from \"{wxsComponentId}\" of WXS: {string.Join(", ", filesInDropPath)}");
