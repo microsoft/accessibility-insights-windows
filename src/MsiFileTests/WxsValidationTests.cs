@@ -37,7 +37,6 @@ namespace MsiFileTests
             string wxsFile, string wxsComponentId, HashSet<string> intentionalExclusions = null)
         {
             string dropPath = Path.Combine(repoRoot, relativeDropPath);
-
             HashSet<string> filesInDropPath = GetNonSymbolFilesInPath(dropPath, intentionalExclusions);
             HashSet<string> filesInWxsComponent = GetFilesIncludedInWxsComponent(wxsFile, wxsComponentId);
 
