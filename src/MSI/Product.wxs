@@ -74,6 +74,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             <File Id="Microsoft.Azure.DevOps.Comments.WebApi.dll" Source="Microsoft.Azure.DevOps.Comments.WebApi.dll" />
             <File Id="Microsoft.Azure.Pipelines.WebApi.dll" Source="Microsoft.Azure.Pipelines.WebApi.dll" />
             <File Id="Microsoft.Bcl.AsyncInterfaces.dll" Source="Microsoft.Bcl.AsyncInterfaces.dll" />
+            <File Id="Microsoft.Bcl.TimeProvider.dll" Source="Microsoft.Bcl.TimeProvider.dll" />
             <File Id="WixToolset.Dtf.WindowsInstaller.dll" Source="WixToolset.Dtf.WindowsInstaller.dll" />
             <File Id="Microsoft.Identity.Client.dll" Source="Microsoft.Identity.Client.dll" />
             <File Id="Microsoft.Identity.Client.Extensions.Msal.dll" Source="Microsoft.Identity.Client.Extensions.Msal.dll" />
