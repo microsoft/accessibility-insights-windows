@@ -27,6 +27,8 @@ extends:
       name: MSEngSS-MicroBuild2022-1ES
     sdl:
       binskim:
+        # #1903: Hold BinSkim back at 4.3.1 to resolve a pipeline incompatibility
+        preReleaseVersion: ''
         # If you modify this list, you also need to modify the list in the Run BinSkim task in Signed Release Job or vice-versa to keep them in sync
         analyzeTargetGlob: "src\\AccessibilityInsights\\**\\*.exe;\
                             src\\AccessibilityInsights\\**\\AccessibilityInsights.*.dll;\
