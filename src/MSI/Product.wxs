@@ -113,6 +113,7 @@ Licensed under the MIT license. See LICENSE file in the project root for full li
             <File Id="System.Drawing.Common.dll" Source="System.Drawing.Common.dll" />
             <File Id="System.IdentityModel.Tokens.Jwt.dll" Source="System.IdentityModel.Tokens.Jwt.dll" />
             <File Id="System.IO.Packaging.dll" Source="System.IO.Packaging.dll" />
+            <File Id="System.IO.Pipelines.dll" Source="System.IO.Pipelines.dll" />
             <File Id="System.Memory.dll" Source="System.Memory.dll" />
             <File Id="System.Net.Http.Formatting.dll" Source="System.Net.Http.Formatting.dll" />
             <File Id="System.Numerics.Vectors.dll" Source="System.Numerics.Vectors.dll" />
