@@ -102,9 +102,11 @@
                                 <Setter Property="CaretBrush" Value="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="False">
+                                        <Setter Property="ToolTip" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByString}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding IsLiveMode, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:HierarchyControl}}" Value="True">
+                                        <Setter Property="ToolTip" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
                                         <Setter Property="Placeholder" Value="{x:Static Properties:Resources.SetterValueSearchByName}"/>
                                     </DataTrigger>
                                     <DataTrigger Binding="{Binding Text, ElementName=textboxSearch}" Value="">
