@@ -107,21 +107,21 @@
                     <RowDefinition Height="4" />
                     <RowDefinition Height="32" />
                 </Grid.RowDefinitions>
-                <Label Grid.Column="0" Grid.Row="0" Padding="0" Name="lblHex" Content="{x:Static Properties:Resources.lblHexContent}"/>
+                <Label Grid.Column="0" Grid.Row="0" Padding="0" Name="lblHex" Content="{x:Static Properties:Resources.lblHexContent}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <TextBox Grid.Column="0" Grid.Row="2" FontSize="14"
                     MaxLength="9" Padding="3" AutomationProperties.LabeledBy="{Binding ElementName=lblHex}"
                     Text="{Binding HexadecimalString, Mode=TwoWay, ElementName=Root}" />
-                <Label Grid.Column="2" Grid.Row="0" Padding="0" Name="lblRed" Content="{x:Static Properties:Resources.lblRedContent}" />
+                <Label Grid.Column="2" Grid.Row="0" Padding="0" Name="lblRed" Content="{x:Static Properties:Resources.lblRedContent}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <TextBox FontSize="14" AutomationProperties.LabeledBy="{Binding ElementName=lblRed}"
                     Grid.Column="2" Grid.Row="2"
                     MaxLength="3" Padding="3"
                     Text="{Binding Red, Mode=TwoWay, ElementName=Root}" />
-                <Label Grid.Column="4" Grid.Row="0" Padding="0" Name="lblGreen" Content="{x:Static Properties:Resources.lblGreenContent}" />
+                <Label Grid.Column="4" Grid.Row="0" Padding="0" Name="lblGreen" Content="{x:Static Properties:Resources.lblGreenContent}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <TextBox FontSize="14" AutomationProperties.LabeledBy="{Binding ElementName=lblGreen}"
                     Grid.Column="4" Grid.Row="2"
                     MaxLength="3" Padding="3"
                     Text="{Binding Green, Mode=TwoWay, ElementName=Root}" />
-                <Label Grid.Column="6" Grid.Row="0" Padding="0" Name="lblBlue" Content="{x:Static Properties:Resources.lblBlueContent}"/>
+                <Label Grid.Column="6" Grid.Row="0" Padding="0" Name="lblBlue" Content="{x:Static Properties:Resources.lblBlueContent}" Foreground="{DynamicResource ResourceKey=PrimaryFGBrush}"/>
                 <TextBox FontSize="14" 
                         Grid.Column="6" Grid.Row="2"
                         MaxLength="3" Padding="3" AutomationProperties.LabeledBy="{Binding ElementName=lblBlue}"
