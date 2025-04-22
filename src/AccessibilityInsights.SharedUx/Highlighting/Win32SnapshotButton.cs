@@ -104,7 +104,16 @@ namespace AccessibilityInsights.SharedUx.Highlighting
                 try
                 {
                     byte[] fontdata = new byte[fontStream.Length];
-                    fontStream.Read(fontdata, 0, (int)fontStream.Length);
+                    int bytesRead = 0;
+                    while (bytesRead < fontdata.Length)
+                    {
+                        int read = fontStream.Read(fontdata, bytesRead, fontdata.Length - bytesRead);
+                        if (read <= 0)
+                        {
+                            throw new EndOfStreamException("Unexpected end of stream");
+                        }
+                        bytesRead += read;
+                    }
                     Marshal.Copy(fontdata, 0, data, (int)fontStream.Length);
                     fonts.AddMemoryFont(data, (int)fontStream.Length);
                 }
