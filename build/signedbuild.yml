@@ -221,6 +221,7 @@ extends:
               enabled: true
               feedSource: '$(SigningPluginFeedSource)'
               signType: real
+              signWithProd: true
           outputParentDirectory: $(Build.ArtifactStagingDirectory)
           outputs:
           - output: buildArtifacts
