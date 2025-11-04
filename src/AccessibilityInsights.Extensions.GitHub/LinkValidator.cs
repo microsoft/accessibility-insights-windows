@@ -1,5 +1,6 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
+using AccessibilityInsights.SetupLibrary;
 using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
@@ -39,6 +40,17 @@ namespace AccessibilityInsights.Extensions.GitHub
             string userName = parts[0];
             string repoName = parts[1];
             if (!CheckUserNameLength(userName) || !CheckUserNameAtLeastOneChar(userName) || !CheckRepoNameLength(repoName) || !CheckRepoNameSpecialCases(repoName))
+            {
+                return false;
+            }
+
+            // SSRF Protection: Validate URL after format validation
+            if (!Uri.TryCreate(link.StartsWith("http", StringComparison.OrdinalIgnoreCase) ? link : $"https://{GitHubLink}/{link}", UriKind.Absolute, out Uri uri))
+            {
+                return false;
+            }
+
+            if (!SsrfProtection.IsUrlSafe(uri))
             {
                 return false;
             }

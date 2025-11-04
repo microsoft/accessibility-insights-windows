@@ -4,6 +4,7 @@ using AccessibilityInsights.CommonUxComponents.Dialogs;
 using AccessibilityInsights.Extensions.AzureDevOps.Models;
 using AccessibilityInsights.Extensions.Helpers;
 using AccessibilityInsights.Extensions.Interfaces.IssueReporting;
+using AccessibilityInsights.SetupLibrary;
 using Microsoft.VisualStudio.Services.Common;
 using System;
 using System.Collections.Generic;
@@ -137,6 +138,16 @@ namespace AccessibilityInsights.Extensions.AzureDevOps
                 if (Uri.IsWellFormedUriString(ServerComboBox.Text, UriKind.Absolute))
                 {
                     var serverUri = ToUri(ServerComboBox.Text);
+
+                    // SSRF Protection: Validate URL before connecting
+                    if (!SsrfProtection.IsUrlSafe(serverUri))
+                    {
+                        Dispatcher.Invoke(() => MessageDialog.Show(string.Format(CultureInfo.InvariantCulture,
+                            "The server URL '{0}' is blocked by security policy. Please verify the URL and try again.",
+                            serverUri.ToString())));
+                        Dispatcher.Invoke(ServerComboBox.Focus);
+                        return;
+                    }
 
                     // block clicking "next" until login request is done
                     ToggleLoading(true);

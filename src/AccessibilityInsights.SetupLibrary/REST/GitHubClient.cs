@@ -34,6 +34,10 @@ namespace AccessibilityInsights.SetupLibrary.REST
             if (uri == null)
                 throw new ArgumentNullException(nameof(uri));
 
+            // SSRF Protection: Validate URL before making request
+            if (!SsrfProtection.IsUrlSafe(uri))
+                throw new System.Security.SecurityException($"URL blocked by SSRF protection: {uri}");
+
             Stopwatch stopwatch = Stopwatch.StartNew();
             DownloadState state = new DownloadState
             {
