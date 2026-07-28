@@ -24,7 +24,7 @@ extends:
   template: azure-pipelines/MicroBuild.1ES.Official.yml@MicroBuildTemplate
   parameters:
     pool: 
-      name: MSEngSS-MicroBuild2022-1ES
+      name: VSEng-MicroBuildVSStable
     sdl:
       binskim:
         # #1903: Hold BinSkim back at 4.3.1 to resolve a pipeline incompatibility
