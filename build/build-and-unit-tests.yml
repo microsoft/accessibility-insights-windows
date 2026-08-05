@@ -21,6 +21,8 @@ jobs:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
     os: windows
+  settings:
+    networkIsolationPolicy: Permissive,CFSClean
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2
@@ -42,6 +44,9 @@ jobs:
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
+    inputs:
+      feedsToUse: config
+      nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
@@ -50,6 +55,8 @@ jobs:
       projects: |
         **\*.csproj
         !**\CustomActions.Package.csproj
+        feedsToUse: config
+        nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
