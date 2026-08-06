@@ -22,9 +22,15 @@ jobs:
     inputs:
       versionSpec: '5.x'
 
+  # Authenticate to the private Azure Artifacts feed defined in nuget.config
+  - task: NuGetAuthenticate@1
+    displayName: 'Authenticate to NuGet feeds'
+
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
+      command: restore
+      restoreSolution: '**/*.sln'
       feedsToUse: config
       nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
@@ -34,6 +40,9 @@ jobs:
       vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
+      # Force the implicit MSBuild restore to use the same nuget.config.
+      # Without this, VSBuild falls back to api.nuget.org.
+      msbuildArgs: '/p:RestoreConfigFile=$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
