@@ -12,6 +12,8 @@ jobs:
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
   templateContext:
+    settings:
+      networkIsolationPolicy: Permissive,CFSClean
     outputs:
       - output: buildArtifacts
         artifactName: drop
@@ -21,8 +23,6 @@ jobs:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
     os: windows
-  settings:
-    networkIsolationPolicy: Permissive,CFSClean
   steps:
   - ${{ if eq(parameters.checkLicenseHeaders, 'true') }}:
     - task: PowerShell@2

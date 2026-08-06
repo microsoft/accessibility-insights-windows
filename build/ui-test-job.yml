@@ -10,11 +10,11 @@ jobs:
   displayName: Build and run UI Tests - ${{ parameters.configuration }}
   condition: succeeded()
   pool:
-    name: $(a11yInsightsPool) # Name of your hosted pool
-    image: windows-2022-secure # Name of the image in your pool. If not specified, first image of the pool is used
-    os: windows # OS of the image. Allowed values: windows, linux, macOS
+    name: $(a11yInsightsPool)
+    image: windows-2022-secure
+    os: windows
   settings:
-    networkIsolationPolicy: Permissive,CFSClean   
+    networkIsolationPolicy: Permissive,CFSClean
   steps:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
