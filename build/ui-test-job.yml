@@ -32,7 +32,7 @@ jobs:
       command: restore
       restoreSolution: '**/*.sln'
       feedsToUse: config
-      nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
+      nugetConfigPath: '$(Build.SourcesDirectory)/nuget.config'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -40,9 +40,7 @@ jobs:
       vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
-      # Force the implicit MSBuild restore to use the same nuget.config.
-      # Without this, VSBuild falls back to api.nuget.org.
-      msbuildArgs: '/p:RestoreConfigFile=$(Build.SourcesDirectory)/src/nuget.config'
+      msbuildArgs: '/restore /p:RestoreConfigFile=$(Build.SourcesDirectory)/nuget.config'
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
