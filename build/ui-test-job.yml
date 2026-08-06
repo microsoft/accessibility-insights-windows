@@ -13,8 +13,9 @@ jobs:
     name: $(a11yInsightsPool)
     image: windows-2022-secure
     os: windows
-  settings:
-    networkIsolationPolicy: Permissive,CFSClean
+  templateContext:
+    settings:
+      networkIsolationPolicy: Permissive,CFSClean
   steps:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
