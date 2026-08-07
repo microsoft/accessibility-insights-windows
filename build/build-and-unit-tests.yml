@@ -42,8 +42,14 @@ jobs:
     inputs:
       script: set
 
+  - task: NuGetAuthenticate@1
+    displayName: 'Authenticate to NuGet feeds'
+
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
+    inputs:
+      feedsToUse: config
+      nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet restore'
@@ -52,6 +58,8 @@ jobs:
       projects: |
         **\*.csproj
         !**\CustomActions.Package.csproj
+      feedsToUse: config
+      nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
