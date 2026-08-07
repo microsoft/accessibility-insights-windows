@@ -5,21 +5,10 @@
     <RootNamespace>AccessibilityInsights.Extensions.AzureDevOps</RootNamespace>
     <UseWindowsForms>true</UseWindowsForms>
     <UseWPF>true</UseWPF>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
-  
+
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
-  
-  <ItemGroup>
-    <COMReference Include="SHDocVw.dll">
-      <Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>1</VersionMinor>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.72" />
@@ -36,6 +25,7 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
     <PackageReference Include="System.Memory" Version="4.5.5" />
     <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+    <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="9.0.1" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.4" />
