@@ -32,7 +32,7 @@ jobs:
         filePath: tools\scripts\verification.scripts\LicenseHeaderVerification.ps1
         arguments: '-target  $(Build.Repository.LocalPath) -licenseHeaderPath tools\scripts\verification.scripts\LicenseHeader.txt -extensions *.xaml,*.xml,*.cs,*.ps1,*.yml,*.targets -addIfAbsent $false'
 
-    - task: NuGetToolInstaller@1
+  - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
     inputs:
       versionSpec: '5.x'
