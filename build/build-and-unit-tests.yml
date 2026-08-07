@@ -12,6 +12,8 @@ jobs:
   displayName: Build and run unit tests - ${{ parameters.configuration }}
   condition: succeeded()
   templateContext:
+    settings:
+      networkIsolationPolicy: Permissive,CFSClean
     outputs:
       - output: buildArtifacts
         artifactName: drop
