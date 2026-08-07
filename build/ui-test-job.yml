@@ -32,7 +32,7 @@ jobs:
       command: restore
       restoreSolution: '**/*.sln'
       feedsToUse: config
-      nugetConfigPath: '$(Build.SourcesDirectory)/nuget.config'
+      nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: VSBuild@1
     displayName: 'Build Solution **\*.sln'
@@ -40,7 +40,7 @@ jobs:
       vsVersion: 17.0
       platform: '$(BuildPlatform)'
       configuration: ${{ parameters.configuration }}
-      msbuildArgs: '/restore /p:RestoreConfigFile=$(Build.SourcesDirectory)/nuget.config'
+      msbuildArgs: '/restore /p:RestoreConfigFile=$(Build.SourcesDirectory)/src/nuget.config'
 
   - task: WinAppDriver.winappdriver-pipelines-task.winappdriver-pipelines-task.Windows Application Driver@0
     displayName: 'Start - WinAppDriver'
