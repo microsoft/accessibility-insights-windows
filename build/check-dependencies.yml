@@ -20,6 +20,9 @@ jobs:
     inputs:
       versionSpec: '5.x'
 
+  - task: NuGetAuthenticate@1
+    displayName: 'Authenticate to NuGet feeds'
+
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
     inputs:
