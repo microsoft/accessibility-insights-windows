@@ -68,6 +68,9 @@ extends:
 
         - task: NuGetCommand@2
           displayName: 'NuGet restore'
+          inputs:
+            feedsToUse: config
+            nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: DotNetCoreCLI@2
           displayName: 'dotnet restore'
@@ -76,6 +79,8 @@ extends:
             projects: |
               **\*.csproj
               !**\CustomActions.Package.csproj
+              feedsToUse: config
+              nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: VSBuild@1
           displayName: 'Build Solution **\*.sln'
@@ -128,6 +133,11 @@ extends:
 
         - task: NuGetCommand@2
           displayName: 'NuGet restore'
+          inputs:
+            command: 'restore'
+            restoreSolution: '$(Build.SourcesDirectory)\src\AccessibilityInsights.sln'
+            feedsToUse: config
+            nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: DotNetCoreCLI@2
           displayName: 'dotnet restore'
@@ -136,6 +146,8 @@ extends:
             projects: |
               **\*.csproj
               !**\CustomActions.Package.csproj
+              feedsToUse: config
+              nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: VSBuild@1
           displayName: 'Build Solution **\*.sln'
@@ -259,6 +271,9 @@ extends:
 
         - task: NuGetCommand@2
           displayName: 'NuGet restore'
+          inputs:
+            feedsToUse: config
+            nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: DotNetCoreCLI@2
           displayName: 'dotnet restore'
@@ -267,6 +282,8 @@ extends:
             projects: |
               **\*.csproj
               !**\CustomActions.Package.csproj
+              feedsToUse: config
+              nugetConfigPath: '$(Build.SourcesDirectory)/src/nuget.config'
 
         - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
           displayName: 'Component Detection'

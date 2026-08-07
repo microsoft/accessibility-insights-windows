@@ -6,6 +6,7 @@
 	<ApplicationManifest>AppManifests\app.manifest</ApplicationManifest>
     <OutputType>WinExe</OutputType>
     <UseWPF>true</UseWPF>
+    <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
   </PropertyGroup>
 
   <Import Project="..\..\build\NetFrameworkRelease.targets" />
@@ -13,6 +14,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="WixToolset.Dtf.WindowsInstaller" Version="5.0.2" />
+    <PackageReference Include="System.Resources.Extensions" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
