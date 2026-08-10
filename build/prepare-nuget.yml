@@ -1,7 +1,7 @@
 # Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
-# Prepares NuGet for a solution restore: authenticates to the Azure Artifacts
-# feed, then pre-downloads the MSBuild project SDKs that MSI.wixproj needs.
+# Prepares NuGet for a solution restore by authenticating to the Azure Artifacts
+# feed declared in nuget.config.
 
 parameters:
 - name: nugetConfigPath
@@ -11,22 +11,3 @@ parameters:
 steps:
 - task: NuGetAuthenticate@1
   displayName: 'Authenticate to NuGet feeds'
-
-# MSBuild resolves MSI.wixproj's WixToolset.Sdk at evaluation time through the
-# NuGet SDK resolver, which cannot authenticate to the feed. Downloading the SDK
-# into the global packages folder first lets that resolution succeed offline.
-# The version is read from MSI.wixproj so the two can never drift apart.
-- task: PowerShell@2
-  displayName: 'Seed MSBuild SDK packages'
-  inputs:
-    targetType: inline
-    script: |
-      $ErrorActionPreference = 'Stop'
-      $wixproj = '$(Build.SourcesDirectory)/src/MSI/MSI.wixproj'
-      $match = Select-String -Path $wixproj -Pattern 'Sdk="WixToolset\.Sdk"\s+Version="([^"]+)"' | Select-Object -First 1
-      if (-not $match) { throw "Could not find a WixToolset.Sdk version in $wixproj" }
-      $version = $match.Matches[0].Groups[1].Value
-      Write-Host "Seeding WixToolset.Sdk $version"
-      $seed = Join-Path '$(Agent.TempDirectory)' 'sdk-seed.csproj'
-      Set-Content -Path $seed -Encoding UTF8 -Value "<Project Sdk='Microsoft.NET.Sdk'><PropertyGroup><TargetFramework>netstandard2.0</TargetFramework></PropertyGroup><ItemGroup><PackageDownload Include='WixToolset.Sdk' Version='[$version]' /></ItemGroup></Project>"
-      dotnet restore $seed --configfile '${{ parameters.nugetConfigPath }}'
