@@ -1,4 +1,4 @@
-﻿# Copyright (c) Microsoft. All rights reserved.
+# Copyright (c) Microsoft. All rights reserved.
 # Licensed under the MIT license. See LICENSE file in the project root for full license information.
 # This template checks for assemblies that may need harvesting in ClearlyDefined
 
@@ -13,15 +13,16 @@ jobs:
     name: $(a11yInsightsPool) # Name of your hosted pool
     image: windows-2022-secure # Name of the image in your pool. If not specified, first image of the pool is used
     os: windows # OS of the image. Allowed values: windows, linux, macOS
-    networkIsolationPolicy: Permissive,CFSClean
+  templateContext:
+    settings:
+      networkIsolationPolicy: Permissive,CFSClean
   steps:
   - task: NuGetToolInstaller@1
     displayName: 'Use NuGet 5.x'
     inputs:
       versionSpec: '5.x'
 
-  - task: NuGetAuthenticate@1
-    displayName: 'Authenticate to NuGet feeds'
+  - template: prepare-nuget.yml
 
   - task: NuGetCommand@2
     displayName: 'NuGet restore'
